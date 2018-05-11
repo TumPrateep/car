@@ -158,11 +158,14 @@ CREATE TABLE `userprofile` (
 --
 
 CREATE TABLE `users` (
-  `userId` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `categolory` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `users` (`id`, `username`, `password`, `categolory`) VALUES
+(1, 'dodi', 'ca26331c6bfbf9487a7cde0f1f95644449e83baa', 1);
 
 -- --------------------------------------------------------
 
@@ -238,7 +241,7 @@ ALTER TABLE `userprofile`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`userId`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `year`
