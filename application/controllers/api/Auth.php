@@ -36,7 +36,13 @@ class Auth extends BD_Controller {
             $token['iat'] = $date->getTimestamp();
             $token['exp'] = $date->getTimestamp() + 60*60*5; //To here is to generate token
             $output['token'] = JWT::encode($token,$kunci ); //This is the output token
+            $output['userid'] = $val->id;
             $this->set_response($output, REST_Controller::HTTP_OK); //This is the respon if success
+            $sess_array = array(
+                'id' => $val->id,
+                'username' => $val->username
+            );
+            $this->session->set_userdata('logged_in', $sess_array);
         }
         else {
             $this->set_response($invalidLogin, REST_Controller::HTTP_NOT_FOUND); //This is the respon if failed

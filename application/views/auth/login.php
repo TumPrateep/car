@@ -34,36 +34,39 @@
 
   <script>
   $(document).ready(function() {
-    $('.ui.form').form({
-      fields: {
-        username: {
-          identifier  : 'username',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please enter your username'
-            },
-            {
-              type   : 'length[6]',
-              prompt : 'Your username must be at least 6 characters'
-            }
-          ]
-        },
-        password: {
-          identifier  : 'password',
-          rules: [
-            {
-               type   : 'empty',
-              prompt : 'Please enter your password'
-            },
-            {
-              type   : 'length[6]',
-              prompt : 'Your password must be at least 6 characters'
-            }
-          ]
-        }
-      }
-    });
+
+
+
+  //   $('.ui.form').form({
+  //     fields: {
+  //       username: {
+  //         identifier  : 'username',
+  //         rules: [
+  //           {
+  //             type   : 'empty',
+  //             prompt : 'Please enter your username'
+  //           },
+  //           {
+  //             type   : 'length[6]',
+  //             prompt : 'Your username must be at least 6 characters'
+  //           }
+  //         ]
+  //       },
+  //       password: {
+  //         identifier  : 'password',
+  //         rules: [
+  //           {
+  //              type   : 'empty',
+  //             prompt : 'Please enter your password'
+  //           },
+  //           {
+  //             type   : 'length[6]',
+  //             prompt : 'Your password must be at least 6 characters'
+  //           }
+  //         ]
+  //       }
+  //     }
+  //   });
     
   });
   </script>
@@ -134,7 +137,8 @@
                   <i class="car big icon"></i>
               </div>
           </h2>
-          <form class="ui large form">
+          <form class="ui large form" id="form-login">
+          <div class="ui error message"></div>
               <div class="ui stacked segment">
                   <div class="field">
                       <div class="ui left icon input"><i class="user icon"></i>
@@ -146,10 +150,12 @@
                         <input type="password" name="password" placeholder="Password">
                       </div>
                   </div>
-                  <div class="ui fluid large teal submit button">Login</div>
+                  
+                  <div class="ui fluid large teal submit button" id="login">Login</div>
                   <div class="ui horizontal divider">
                     Or
                   </div>
+                  </form>
                   <div class="field">
                       <button class="ui large facebook button">
                         <i class="facebook icon"></i>
@@ -161,9 +167,6 @@
                       </button>
                   </div>
               </div>
-
-              <div class="ui error message"></div>
-          </form>
           <div class="ui message">
               New to us? <a href="">Sign Up</a>
           </div>
@@ -173,7 +176,34 @@
 
   </div>
 
-  
+  <script>
+    $(document).ready(function(){
+
+      $("#form-login").submit(function(){
+        login();
+      })
+
+      $("#login").click(function(){
+        login();
+      })
+
+      function login(){
+        event.preventDefault();
+        var data = $("#form-login").serialize();
+        $.post(base_url+"api/auth/login",data,
+          function(data){
+            localStorage.token = data.token;
+            localStorage.id = data.id;
+            window.location.assign(base_url+"welcome");
+          }
+        )
+        .fail(function() {
+          alert( "error" );
+        })
+      }
+
+    });
+  </script>
 
 </body>
 </html>
