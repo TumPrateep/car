@@ -18,6 +18,8 @@
   <link href="<?=base_url("/public/css/sb-admin.css") ?>" rel="stylesheet">
   
   <style type="text/css">
-    
+    .navbar-nav.navbar-sidenav{
+      background-color: #47d147; 
+    }
   </style>
 </head>
