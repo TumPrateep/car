@@ -19,7 +19,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		echo "test";	
+		$this->load->view("admin/index");	
 	}
 }
 
