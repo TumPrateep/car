@@ -137,8 +137,6 @@
           <a class="item">คลังอะไหล่</a>
           <a class="item">ข้อมูลส่วนตัว</a>
           <div class="right item">
-            <!-- <img class="ui avatar image" src="assert/images/square-image.png"> -->
-            <!-- <span>Username</span> -->
             <a class="blue ui head-logo"><i class="black car icon"></i>CarJaidee.com</a>
             <a class="ui red button head-button">สมัครใช้งาน</a>
             <a class="ui primary button head-button">ลงชื่อเข้าใช้</a>
@@ -147,8 +145,6 @@
       </div>
 
     </div>
-  
-   
       
       <h2 class="ui container green center header">Register</h2>
 
@@ -176,8 +172,9 @@
               </div>
           </div>
               <button class="ui green button" type="submit">Submit</button>
+          <div class="ui error message"></div>
         </div>
-        <div class="ui error message"></div>
+        
       </form>
     </div>
 
