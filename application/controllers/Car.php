@@ -23,7 +23,7 @@ class Car extends CI_Controller {
 		$this->load->view("admin/car/script");
 	}
 
-	public function model
+	public function model()
 	{
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
