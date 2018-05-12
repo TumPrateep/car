@@ -16,4 +16,6 @@
   <link href="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.css") ?>" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="<?=base_url("/public/css/sb-admin.css") ?>" rel="stylesheet">
+
+  <link href="<?=base_url("/public/css/custom.css") ?>" rel="stylesheet">
 </head>

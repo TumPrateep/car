@@ -12,30 +12,10 @@
           <div class="table-responsive">
             <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
               <thead>
-                <tr>
-                  <th>ลำดับ</th>
-                  <th>รูปยี่ห้อรถ</th>
-                  <th>ชื่อยีห้อรถ</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tfoot>
-                <tr>
-                  <th>ลำดับ</th>
-                  <th>รูปยี่ห้อรถ</th>
-                  <th>ชื่อยีห้อรถ</th>
-                  <th></th>
-                </tr>
-              </tfoot>
-              <tbody>
-                <tr>
-                  <td>Donna Snider</td>
-                  <td>Customer Support</td>
-                  <td>New York</td>
-                  <td></td>
-                </tr>
-              </tbody>
+                <th>ลำดับ</th>
+                <th>รูปยี่ห้อรถ</th>
+                <th>ชื่อยี่ห้อรถ</th>
+                <th></th>
+              </thead>	
             </table>
-      
-    
-    </div>
+          </div>

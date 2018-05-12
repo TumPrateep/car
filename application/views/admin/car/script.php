@@ -1,5 +1,5 @@
 <script>
-    $('#brand-table').DataTable({
+    var table = $('#brand-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -18,17 +18,55 @@
                     "sLast": "หน้าสุดท้าย" // This is the link to the last page
                 }
             },
-            "order": [
-                [1, 'desc']
-            ],
+            "bLengthChange": false,
             "searching": false,
-            "pagingType": "full_numbers",
+            "processing": true,
+            "serverSide": true,
+            "ajax":{
+                "url": base_url+"api/car/search",
+                "dataType": "json",
+                "type": "POST"
+            },
+            "columns": [
+                { "data": "brandId" },
+                { "data": "brandPic" },
+                { "data": "brandName" }
+            ],
             "columnDefs": [
-                {"className": "dt-center", "targets": [0]},
-                {"className": "dt-head-center", "targets": [1,2]}
-            ]
+                {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": [0,1,3]
+                },{
+                    "targets": 3,
+                    "data": null
+                },
+                { "orderable": false, "targets": 0 },
+                {"className": "dt-head-center", "targets": [1,2]},
+                {"className": "dt-center", "targets": [0,3]},
+                { "width": "10%", "targets": 0 },
+                { "width": "20%", "targets": 3 }
+            ]	 
 
     });
+
+    table.on( 'order.dt search.dt', function () {
+        table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+        table.column(3, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = '<button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> '
++'<button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>';
+        } );
+    } ).draw();
+
+
+    
+
+    $('#brand-table tbody').on( 'click', 'button', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        alert( data.brandId );
+    } );
 </script>
 
 </body>
