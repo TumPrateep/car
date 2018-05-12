@@ -27,6 +27,6 @@
           <th>รูปยี่ห้อรถ</th>
           <th>ชื่อยี่ห้อรถ</th>
           <th></th>
-        </thead>	
+        </thead>  
       </table>
     </div>
