@@ -25,10 +25,13 @@
             "ajax":{
                 "url": base_url+"api/car/search",
                 "dataType": "json",
-                "type": "POST"
+                "type": "POST",
+                "data": function ( data ) {
+                    data.brandName = $("#table-search").val()
+                }
             },
             "columns": [
-                { "data": "brandId" },
+                null,
                 { "data": "brandPic" },
                 { "data": "brandName" }
             ],
@@ -39,7 +42,18 @@
                     "targets": [0,1,3]
                 },{
                     "targets": 3,
-                    "data": null
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return '<a href="'+base_url+"car/updateBrand/"+data.brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>'
+                    }
+                },
+                {
+                    "targets": 0,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return meta.row + 1;
+                    }
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [1,2]},
@@ -50,23 +64,14 @@
 
     });
 
-    table.on( 'order.dt search.dt', function () {
-        table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-            cell.innerHTML = i+1;
-        } );
-        table.column(3, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-            cell.innerHTML = '<button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> '
-+'<button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>';
-        } );
-    } ).draw();
-
-
-    
-
-    $('#brand-table tbody').on( 'click', 'button', function () {
+    $('#brand-table tbody').on( 'click', 'button.delete', function () {
         var data = table.row( $(this).parents('tr') ).data();
         alert( data.brandId );
     } );
+
+    $("#btn-search").click(function(){
+        table.ajax.reload();
+    })
 </script>
 
 </body>

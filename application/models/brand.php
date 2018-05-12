@@ -40,8 +40,7 @@ class Brand extends CI_Model{
     {
         $query = $this
                 ->db
-                ->like('brandId',$search)
-                ->or_like('brandName',$search)
+                ->like('brandName',$search)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('brand');
@@ -61,8 +60,7 @@ class Brand extends CI_Model{
     {
         $query = $this
                 ->db
-                ->like('brandId',$search)
-                ->or_like('brandName',$search)
+                ->like('brandName',$search)
                 ->get('brand');
     
         return $query->num_rows();
