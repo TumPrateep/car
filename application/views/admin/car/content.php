@@ -12,7 +12,7 @@
         
     <div class="card-tools">
         <div class="input-group input-group-sm float-right" style="width: 300px; padding: 2px;">
-          <button type="submit" class="btn btn-success"  ><i class="fa fa-plus"> Create</i></button>
+          <a href="<?=base_url("car/createBrand") ?>"><button class="btn btn-success"><i class="fa fa-plus"> Create</i></button></a>
           <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
           <div class="input-group-append">
             <button type="submit" class="btn btn-info"><i class="fa fa-search"></i></button>
