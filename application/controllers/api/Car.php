@@ -64,4 +64,58 @@ class Car extends BD_Controller {
         $this->set_response($json_data);
     }
 
+    function year_post(){
+
+        $brandId = $this->post("brandId");
+        $modelId = $this->post("modelId");
+        $year = $this->post("year");
+
+        $data = array(
+            'brandId' => $brandId,
+            'modelId' => $modelId,
+            'year' => $year
+        );
+
+        $this->load->model("Brand");
+        $isCheck = $this->Brand->year_search($data);
+        if($isCheck){
+            $this->Brand->insert_year($data);
+            $output["status"] = true;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+        else{
+            $output["status"] = false;
+            $output["data"] = "year ซ้ำ";
+            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+        }
+    }
+
+
+    function model_post(){
+
+        $modelName = $this->post("modelName");
+
+        $this->load->model("Brand");
+        $isCheck = $this->Brand->model_search($modelName);
+
+        if($isCheck){
+            $data = array(
+                'modelId' => null,
+                'modelName' => $modelName,
+            );
+            $this->Brand->insert_model($data);
+            $output["status"] = true;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+        else{
+            $output["status"] = false;
+            $output["data"] = "model ซ้ำ";
+            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+        }
+
+
+    }
+
+    
+
 }

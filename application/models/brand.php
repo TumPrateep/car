@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class Brand extends CI_Model{
+class Brand extends CI_Model {
 
 	function __construct() {
         parent::__construct(); 
@@ -14,7 +14,7 @@ class Brand extends CI_Model{
                 ->get('brand');
     
         return $query->num_rows();  
-
+                                                                                                                                                                                                
     }
     
     function allBrand($limit,$start,$col,$dir)
@@ -67,5 +67,40 @@ class Brand extends CI_Model{
     
         return $query->num_rows();
     } 
+
+    function year_search($search){
+
+        $this->db->where('brandId',$search['brandId']);
+        $this->db->where('modelId',$search['modelId']);
+        $this->db->where('year',$search['year']);
+        $result = $this->db->get('year');
+         
+        if($result->num_rows() > 0){
+            return false;
+        }   
+        return true;
+    }
+
+    function insert_year($data){
+		$this->db->insert('year', $data);
+    }
+
+
+    function insert_model($data){
+		$this->db->insert('model', $data);
+
+    }
+    
+    function model_search($modelName){
+        $this->db->select("modelName");
+        $this->db->from("model");
+        $this->db->where("modelName", $modelName);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
 	
 }
