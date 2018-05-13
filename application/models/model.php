@@ -74,10 +74,11 @@ class Model extends CI_Model{
 
     }
     
-    function model_search($modelName){
+    function get_model($modelName){
+
         $this->db->select("modelName");
         $this->db->from("model");
-        $this->db->where("modelName", $modelName);
+        $this->db->where('modelName', $modelName);
         $result = $this->db->count_all_results();
 
         if($result > 0){
