@@ -100,7 +100,7 @@ class Car extends BD_Controller {
         $modelName = $this->post("modelName");
 
         $this->load->model("Model");
-        $isCheck = $this->Model->model_search($modelName);
+        $isCheck = $this->Model->get_model($modelName);
 
         if($isCheck){
             $data = array(
@@ -177,6 +177,12 @@ class Car extends BD_Controller {
     }
 
     function viewBrand(){
+
+        $brandname = $this->post('brandname');
+        $this->load->model("Brand");
+        $this->Brand->get_brand($brandname);
+
+        
 
     }
 
