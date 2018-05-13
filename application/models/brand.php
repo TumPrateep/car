@@ -69,19 +69,23 @@ class Brand extends CI_Model {
     
 
     
-    function get_brand($brandname) {
+    function check_brand($brandName) {
 
         $this->db->select("*");
         $this->db->from("brand");
-        $this->db->where('brandName',$brandname);
+        $this->db->where('brandName',$brandName);
         $result = $this->db->count_all_results();
 
         if($result > 0){
-            return $this->db->get_where('brand',$brandname);
+            return true;
         }else{
-        return false;
+            return false;
         }
 
-	}
+    }
+    
+    function get_brand($brandName){
+        return $this->db->get_where('brandName',$brandName);
+    }
 	
 }

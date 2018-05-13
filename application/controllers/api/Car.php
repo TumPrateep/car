@@ -180,9 +180,14 @@ class Car extends BD_Controller {
 
         $brandname = $this->post('brandname');
         $this->load->model("Brand");
-        $this->Brand->get_brand($brandname);
+        $isCheck = $this->Brand->check_brand($brandname);
 
-        
+        if($isCheck){
+            $this->load->get_brand($brandName);
+        else{
+           
+        }
+
 
     }
 
