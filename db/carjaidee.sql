@@ -208,7 +208,7 @@ CREATE TABLE `model` (
 
 LOCK TABLES `model` WRITE;
 /*!40000 ALTER TABLE `model` DISABLE KEYS */;
-INSERT INTO `model` VALUES (1,'i8',NULL),(2,'M2',NULL),(3,'Aventador',NULL),(4,'Huracan',NULL);
+INSERT INTO `model` VALUES (1,'i8','1'),(2,'M2','1'),(3,'Aventador','2'),(4,'Huracan','2');
 /*!40000 ALTER TABLE `model` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -401,4 +401,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-13 16:18:30
+-- Dump completed on 2018-05-13 16:23:53
