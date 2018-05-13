@@ -189,7 +189,7 @@
         login();
       })
 
-      function login(){s
+      function login(){
         event.preventDefault();
         var isValid = $("#form-login").valid();
         if(isValid){

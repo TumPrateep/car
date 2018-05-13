@@ -8,7 +8,7 @@ class Register extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        
+
     }
 
     function register_post(){
