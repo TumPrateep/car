@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class Model extends CI_Model{
+class Year extends CI_Model{
 
     function year_search($search){
         $this->db->where('brandId',$search['brandId']);
