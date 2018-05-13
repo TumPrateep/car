@@ -64,7 +64,7 @@ class Car extends BD_Controller {
         $this->set_response($json_data);
     }
 
-    function year_post(){
+    function createYear_post(){
 
         $brandId = $this->post("brandId");
         $modelId = $this->post("modelId");
@@ -79,9 +79,13 @@ class Car extends BD_Controller {
         $this->load->model("Brand");
         $isCheck = $this->Brand->year_search($data);
         if($isCheck){
-            $this->Brand->insert_year($data);
-            $output["status"] = true;
-            $this->set_response($output, REST_Controller::HTTP_OK);
+            $result = $this->Brand->insert_year($data);
+            $output["status"] = $result;
+            if($result){
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
         }
         else{
             $output["status"] = false;

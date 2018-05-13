@@ -80,7 +80,8 @@ class Brand extends CI_Model {
     }
 
     function insert_year($data){
-		$this->db->insert('year', $data);
+        $result = $this->db->insert('year', $data);
+        return $result;
     }
 
 
