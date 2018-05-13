@@ -176,4 +176,8 @@ class Car extends BD_Controller {
         $this->set_response($json_data);
     }
 
+    function viewBrand(){
+        
+    }
+
 }
