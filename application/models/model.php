@@ -1,15 +1,10 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class ModelCar extends CI_Model{
-
-	function __construct() {
-        parent::__construct(); 
-        
-    }
+class Model extends CI_Model{
 
     function allModel_count($brandId)
     {   
-        $this->db->where("branId", $brandId);
+        $this->db->where("brandId", $brandId);
         $query = $this->db->get('model');
     
         return $query->num_rows();  
@@ -18,7 +13,7 @@ class ModelCar extends CI_Model{
     
     function allModel($limit,$start,$col,$dir,$brandId)
     {   
-       $this->db->where("branId", $brandId);
+        $this->db->where("brandId", $brandId);
        $query = $this
                 ->db
                 ->limit($limit,$start)
@@ -38,7 +33,7 @@ class ModelCar extends CI_Model{
    
     function model_search($limit,$start,$search,$col,$dir,$brandIds)
     {
-        $this->db->where("branId", $brandId);
+        $this->db->where("brandId", $brandId);
         $query = $this
                 ->db
                 ->like('modelName',$search)
@@ -59,7 +54,7 @@ class ModelCar extends CI_Model{
 
     function model_search_count($search, $brandId)
     {
-        $this->db->where("branId", $brandId);
+        $this->db->where("brandId", $brandId);
         $query = $this
                 ->db
                 ->like('modelName',$search)
@@ -71,10 +66,9 @@ class ModelCar extends CI_Model{
     
     function insert_model($data){
 		$this->db->insert('model', $data);
-
     }
     
-    function model_search($modelName){
+    function get_model($modelName){
         $this->db->select("modelName");
         $this->db->from("model");
         $this->db->where("modelName", $modelName);
