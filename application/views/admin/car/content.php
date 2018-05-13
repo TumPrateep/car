@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">ยื่ห้อรถ</a>
+          <a href="#">ยี่ห้อรถ</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>

@@ -1,5 +1,5 @@
 <script>
-    var table = $('#brand-table').DataTable({
+    var table = $('#model-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -23,25 +23,26 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/car/search",
+                "url": base_url+"api/car/searchModel",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.brandName = $("#table-search").val()
+                    // data.brandName = $("#table-search").val()
+                    data.brandId = $("#brandId").val()
                 }
             },
             "columns": [
                 null,
-                { "data": "brandPic" },
-                { "data": "brandName" }
+                { "data": "modelName" },
+                null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,1,3]
+                    "targets": [0,2]
                 },{
-                    "targets": 3,
+                    "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"car/model/"+data.brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
@@ -57,10 +58,10 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [1,2]},
-                {"className": "dt-center", "targets": [0,3]},
+                {"className": "dt-head-center", "targets": [1]},
+                {"className": "dt-center", "targets": [1,2]},
                 { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 3 }
+                { "width": "20%", "targets": 2 }
             ]	 
 
     });
