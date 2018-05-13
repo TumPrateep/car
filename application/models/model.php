@@ -31,7 +31,7 @@ class Model extends CI_Model{
         
     }
    
-    function model_search($limit,$start,$search,$col,$dir,$brandIds)
+    function model_search($limit,$start,$search,$col,$dir,$brandId)
     {
         $this->db->where("brandId", $brandId);
         $query = $this

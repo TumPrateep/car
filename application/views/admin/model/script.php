@@ -27,7 +27,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    // data.brandName = $("#table-search").val()
+                    data.modelName = $("#table-search").val()
                     data.brandId = $("#brandId").val()
                 }
             },
