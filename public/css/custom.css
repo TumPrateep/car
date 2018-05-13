@@ -194,3 +194,17 @@
   .dt-center{
     text-align: center;
   }
+
+  input.error { border: 1px solid red !important; }
+
+  .text-left{
+    text-align: left;
+  }
+
+  .error{
+    color: red;
+  }
+
+  .hide{
+    display: none;
+  }

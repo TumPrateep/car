@@ -31,42 +31,41 @@
 
   <script src="<?php echo base_url() ?>public/js/jquery.min.js"></script>
   <script src="<?php echo base_url() ?>public/js/semantic.js"></script>
+  <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
 
   <script>
   $(document).ready(function() {
 
-
-
-  //   $('.ui.form').form({
-  //     fields: {
-  //       username: {
-  //         identifier  : 'username',
-  //         rules: [
-  //           {
-  //             type   : 'empty',
-  //             prompt : 'Please enter your username'
-  //           },
-  //           {
-  //             type   : 'length[6]',
-  //             prompt : 'Your username must be at least 6 characters'
-  //           }
-  //         ]
-  //       },
-  //       password: {
-  //         identifier  : 'password',
-  //         rules: [
-  //           {
-  //              type   : 'empty',
-  //             prompt : 'Please enter your password'
-  //           },
-  //           {
-  //             type   : 'length[6]',
-  //             prompt : 'Your password must be at least 6 characters'
-  //           }
-  //         ]
-  //       }
-  //     }
-  //   });
+    $('#form-login').validate({
+      errorPlacement: function (error, element) {
+          switch (element.attr("name")) {
+              case "username":
+                  $("#username-error").html(error[0].innerHTML);
+                  break;
+              case "password":
+                  $("#password-error").html(error[0].innerHTML);
+                  break;
+              default:
+                  //nothing
+          }
+      },
+      rules: {
+        username: {
+          required: true
+        },
+        password: {
+          required: true
+        }
+      },
+      messages: {
+        username: {
+          required: "กรุณากรอกชื่อผู้ใช้งาน"
+        },
+        password: {
+          required: "กรุณากรอกรหัสผ่าน"
+        }
+      }
+    });
     
   });
   </script>
@@ -140,18 +139,21 @@
           <form class="ui large form" id="form-login">
           <div class="ui error message"></div>
               <div class="ui stacked segment">
+              <div class="ui red message text-left hide" id="error-message">ชื่อหรือรหัสผ่านไม่ถูกต้อง</div>
                   <div class="field">
                       <div class="ui left icon input"><i class="user icon"></i>
                         <input type="username" name="username" placeholder="Username">
                       </div>
+                      <div class="text-left error" id="username-error"></div>
                   </div>
                   <div class="field">
                       <div class="ui left icon input"><i class="lock icon"></i>
                         <input type="password" name="password" placeholder="Password">
                       </div>
+                      <div class="text-left error" id="password-error"></div>
                   </div>
                   
-                  <div class="ui fluid large teal submit button" id="login">Login</div>
+                  <button type="submit" class="ui fluid large teal submit button" id="login">Login</button>
                   <div class="ui horizontal divider">
                     Or
                   </div>
@@ -189,17 +191,24 @@
 
       function login(){
         event.preventDefault();
-        var data = $("#form-login").serialize();
-        $.post(base_url+"api/auth/login",data,
-          function(data){
-            localStorage.token = data.token;
-            localStorage.id = data.id;
-            window.location.assign(base_url+"welcome");
-          }
-        )
-        .fail(function() {
-          alert( "error" );
-        })
+        var isValid = $("#form-login").valid();
+        if(isValid){
+          $("#error-message").hide();
+          $("#username-error").html("");
+          $("#password-error").html("");
+          var data = $("#form-login").serialize();
+          $.post(base_url+"api/auth/login",data,
+            function(data){
+              localStorage.token = data.token;
+              localStorage.id = data.id;
+              window.location.assign(base_url+"welcome");
+            }
+          )
+          .fail(function() {
+            $("#error-message").show();
+          })
+        }
+      
       }
 
     });
