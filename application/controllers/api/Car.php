@@ -12,8 +12,9 @@ class Car extends BD_Controller {
 
     function search_post(){
         $columns = array( 
-            0 => null, 
-            1 =>'modelName'
+            0 => null,
+            1 => null, 
+            2 =>'brandName'
         );
 
         $limit = $this->post('length');
