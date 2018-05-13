@@ -95,7 +95,7 @@ class Car extends BD_Controller {
     }
 
 
-    function model_post(){
+    function createModel_post(){
 
         $modelName = $this->post("modelName");
 
