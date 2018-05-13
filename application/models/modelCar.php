@@ -67,5 +67,23 @@ class ModelCar extends CI_Model{
     
         return $query->num_rows();
     } 
+
+    
+    function insert_model($data){
+		$this->db->insert('model', $data);
+
+    }
+    
+    function model_search($modelName){
+        $this->db->select("modelName");
+        $this->db->from("model");
+        $this->db->where("modelName", $modelName);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
 	
 }

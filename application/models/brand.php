@@ -66,40 +66,11 @@ class Brand extends CI_Model {
         return $query->num_rows();
     } 
 
-    function year_search($search){
-
-        $this->db->where('brandId',$search['brandId']);
-        $this->db->where('modelId',$search['modelId']);
-        $this->db->where('year',$search['year']);
-        $result = $this->db->get('year');
-         
-        if($result->num_rows() > 0){
-            return false;
-        }   
-        return true;
-    }
-
-    function insert_year($data){
-        $result = $this->db->insert('year', $data);
-        return $result;
-    }
-
-
-    function insert_model($data){
-		$this->db->insert('model', $data);
-
-    }
     
-    function model_search($modelName){
-        $this->db->select("modelName");
-        $this->db->from("model");
-        $this->db->where("modelName", $modelName);
-        $result = $this->db->count_all_results();
 
-        if($result > 0){
-            return false;
-        }
-        return true;
-    }
+    function get_brand($brandname) {
+
+		return $this->db->get_where('brand',$brandname);
+	}
 	
 }
