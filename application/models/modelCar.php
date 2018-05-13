@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class Model extends CI_Model{
+class ModelCar extends CI_Model{
 
 	function __construct() {
         parent::__construct(); 

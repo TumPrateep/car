@@ -134,22 +134,22 @@ class Car extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
         $brandId = $this->post('brandId');
 
-        $this->load->model("Model");
-        $totalData = $this->Model->allBrand_count($brandId);
+        $this->load->model("ModelCar");
+        $totalData = $this->ModelCar->allModel_count($brandId);
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('modelName')) || empty($this->post('brandId')))
-        {            
-            $posts = $this->Model->allBrand($limit,$start,$order,$dir,$brandId);
-        }
-        else {
-            $search = $this->post('modelName'); 
+        // if(empty($this->post('modelName')) || empty($this->post('brandId')))
+        // {            
+            $posts = $this->ModelCar->allModel($limit,$start,$order,$dir,$brandId);
+        // }
+        // else {
+        //     $search = $this->post('modelName'); 
 
-            $posts =  $this->Model->brand_search($limit,$start,$search,$order,$dir,$brandId);
+        //     $posts =  $this->ModelCar->model_search($limit,$start,$search,$order,$dir,$brandId);
 
-            $totalFiltered = $this->Model->brand_search_count($search, $brandId);
-        }
+        //     $totalFiltered = $this->ModelCar->model_search_count($search, $brandId);
+        // }
 
         $data = array();
         if(!empty($posts))
