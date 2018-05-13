@@ -22,14 +22,14 @@ class Auth extends BD_Controller {
     public function login_post()
     {
         $u = $this->post('username'); //Username Posted
-        $p = sha1($this->post('password')); //Pasword Posted
+        $p = $this->post('password'); //Pasword Posted
         $q = array('username' => $u); //For where query condition
         $kunci = $this->config->item('thekey');
         $invalidLogin = ['status' => 'Invalid Login']; //Respon if login invalid
         $val = $this->M_main->get_user($q)->row(); //Model to get single data row from database base on username
         if($this->M_main->get_user($q)->num_rows() == 0){$this->response($invalidLogin, REST_Controller::HTTP_NOT_FOUND);}
 		$match = $val->password;   //Get password for user from database
-        if($p == $match){  //Condition if password matched
+        if(password_verify($p, $match)){  //Condition if password matched
         	$token['id'] = $val->id;  //From here
             $token['username'] = $u;
             $date = new DateTime();
