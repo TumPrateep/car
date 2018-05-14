@@ -88,4 +88,21 @@ class Brand extends CI_Model {
         return $this->db->get_where('brandName',$brandName);
     }
 	
+
+    function insert_brand($data){
+		$this->db->insert('brand', $data);
+    }
+
+    function checkBrand($name){
+        $this->db->select("brandName");
+        $this->db->from("brand");
+        $this->db->where("brandName", $name);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+
 }

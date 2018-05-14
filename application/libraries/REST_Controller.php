@@ -18,6 +18,22 @@ abstract class REST_Controller extends CI_Controller {
 
     // Note: Only the widely used HTTP status codes are documented
 
+    //message
+    const MGS_NOT_CREATE = 1001;
+    const MGS_NOT_UPDATE = 1002;
+    const MGS_NOT_DELETE = 1003;
+    const MGS_BE_USED = 1004;
+    const MGS_BE_DELETED = 1005;
+
+    const MSG_SUCCESS = 200;
+
+    const MSG_CREATE_DUPLICATE = 3001;
+    const MSG_UPDATE_DUPLICATE = 3002;
+
+    const MSG_LOGIN_FAIL = 2001;
+
+    const MSG_ERROR = 400;
+
     // Informational
 
     const HTTP_CONTINUE = 100;
