@@ -206,14 +206,11 @@ class Car extends BD_Controller {
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
+            }else{
                 $output["message"] = REST_Controller::MSG_ERROR;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-            }
-           
-        else{
+        }else{
             $output["status"] = false;
             $output["data"] = "ไม่พบ brand";
             $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
