@@ -34,6 +34,16 @@ class Year extends CI_Model{
         return $this->db->delete('year', array('brandId' => $brandId , 'modelId' => $modelId , 'year' => $year));
     }
 
+
+    function allYear_count($year)
+    {   
+        $this->db->where("year", $year);
+        $query = $this->db->get('year');
+    
+        return $query->num_rows();  
+
+    }
+   
 }
 
 ?>

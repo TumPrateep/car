@@ -1,5 +1,5 @@
 <script>
-    var table = $('#model-table').DataTable({
+    var table = $('#year-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -23,17 +23,18 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/car/searchModel",
+                "url": base_url+"api/car/searchYear",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
                     data.modelName = $("#table-search").val()
                     data.brandId = $("#brandId").val()
+                    data.year = $('#year').val()
                 }
             },
             "columns": [
                 null,
-                { "data": "modelName" },
+                { "data": "year" },
                 null
             ],
             "columnDefs": [
