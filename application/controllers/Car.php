@@ -57,11 +57,11 @@ class Car extends CI_Controller {
 	
 	public function year($brandId,$modelId){
 		$data['brandId'] = $brandId;
-		$data1['modelId'] = $modelId;
+		$data['modelId'] = $modelId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/year/content",$data,$data1);
+		$this->load->view("admin/year/content",$data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/year/script");

@@ -217,60 +217,61 @@ class Car extends BD_Controller {
 
     }
 
-    // function searchYear_post(){
-    //     $columns = array( 
-    //         0 =>null, 
-    //         1 =>year
-           
-    //     );
+    function searchYear_post(){
+        $columns = array( 
+            0 =>null, 
+            1 =>year
+        );
 
-    //     $limit = $this->post('length');
-    //     $start = $this->post('start');
-    //     $order = $columns[$this->post('order')[0]['column']];
-    //     $dir = $this->post('order')[0]['dir'];
-    //     $brandId = $this->post('brandId');
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $brandId = $this->post('brandId');
+        $modelId = $this->post('modelId');
+    
+        $this->load->model("Year");
+        $totalData = $this->Year->allYear_count($brandId,$modelId);
 
-    //     $this->load->model("Year");
-    //     $totalData = $this->Year->allYear_count($year);
+        $totalFiltered = $totalData; 
 
-    //     $totalFiltered = $totalData; 
+        if(empty($this->post('year')) || empty($this->post('brandId')) || empty($this->post('modelId')))
+        {            
+            $posts = $this->Year->allYear($limit,$start,$order,$dir,$brandId,$modelId);
+        }
+        else {
+            $search = $this->post('year'); 
 
-    //     if(empty($this->post('year')) || empty($this->post('brandId') || empty($this->post('modelId')))
-    //     {            
-    //         $posts = $this->Year->allYear($limit,$start,$order,$dir,$brandId,$modelId);
-    //     }
-    //     else {
-    //         $search = $this->post('year'); 
+            $posts =  $this->Year->year_search($limit,$start,$search,$order,$dir,$brandId,$modelId);
 
-    //         $posts =  $this->Year->year_search($limit,$start,$search,$order,$dir,$brandId,$modelId);
+            $totalFiltered = $this->Year->year_search_count($search,$brandId,$modelId);
+        }
 
-    //         $totalFiltered = $this->Year->year_search_count($search, $brandId, $modelId);
-    //     }
+        $data = array();
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
 
-    //     $data = array();
-    //     if(!empty($posts))
-    //     {
-    //         foreach ($posts as $post)
-    //         {
+                $nestedData['brandId'] = $post->brandId;
+                $nestedData['modelId'] = $post->modelId;
+                $nestedData['year'] = $post->year;
+                $nestedData['id'] = $post->id;
 
-    //             $nestedData['brandId'] = $post->brandId;
-    //             $nestedData['modelId'] = $post->modelId;
-    //             $nestedData['modelName'] = $post->modelName;
+                $data[] = $nestedData;
 
-    //             $data[] = $nestedData;
+            }
+        }
 
-    //         }
-    //     }
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
 
-    //     $json_data = array(
-    //         "draw"            => intval($this->post('draw')),  
-    //         "recordsTotal"    => intval($totalData),  
-    //         "recordsFiltered" => intval($totalFiltered), 
-    //         "data"            => $data   
-    //     );
-
-    //     $this->set_response($json_data);
-    // }
+        $this->set_response($json_data);
+    }
 
     
     function deleteBrand_get(){
