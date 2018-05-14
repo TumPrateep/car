@@ -25,21 +25,25 @@ class Register extends BD_Controller {
             $data = array(
                 'id' => null,
                 'username' => $username,
-                'email' => $email,
+                'email' => (empty($email))?null:$email,
                 'phone' => $phone,
                 'password' => $p, 
-                'categolory' => null
+                'category' => null
             );
-            $this->User->insert_user($data);
-            $output["status"] = true;
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
+            $result = $this->User->insert_user($data);
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
         }
         else{
             $output["status"] = false;
             $output["data"] = "username ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }
 
     }

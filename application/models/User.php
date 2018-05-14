@@ -5,8 +5,7 @@ if(!defined('BASEPATH')) exit('No direct script allowed');
 class User extends CI_Model{
 
 	function insert_user($data){
-		$this->db->insert('users', $data);
-
+		return $this->db->insert('users', $data);
     }
     
     function checkUser($username){

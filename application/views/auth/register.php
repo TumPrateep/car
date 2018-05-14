@@ -12,58 +12,50 @@
 
   <script src="<?php echo base_url() ?>public/js/jquery.min.js"></script>
   <script src="<?php echo base_url() ?>public/js/semantic.js"></script>
+  <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
 
   <script>
   $(document).ready(function() {
-    $('.ui.form').form({
-      fields: {
+    $('#form-register').validate({
+      rules: {
         username: {
-          identifier  : 'username',
-          rules: [
-            {
-              type   : 'empty',
-              prompt : 'Please input your username'
-            }
-          ]
+          required: true
+        },
+          email: {
+            email: true
+        },  
+          phone: {
+            required: true
+        },    
+        password: {
+          required: true
+        },
+        confirmpassword: { 
+          required: true,
+          equalTo: "#password"
+        }
+      },
+      messages: {
+        username: {
+          required: "กรุณากรอกชื่อผู้ใช้งาน"
         },
         email: {
-          identifier  : 'email',
-          rules: [
-            {
-               type   : 'empty',
-              prompt : 'Please input your email'
-            }
-          ]
+          email: "กรุณากรอกอีเมลให้ถูกต้อง"
         },
         phone: {
-          identifier  : 'phone',
-          rules: [
-            {
-               type   : 'empty',
-              prompt : 'Please input your phone'
-            }
-          ]
+          required: "กรุณากรอกเบอร์โทร"
         },
         password: {
-          identifier  : 'password',
-          rules: [
-            {
-               type   : 'empty',
-              prompt : 'Please input your password'
-            }
-          ]
+          required: "กรุณากรอกรหัสผ่าน"
         },
         confirmpassword: {
-          identifier  : 'confirmpassword',
-          rules: [
-            {
-               type   : 'empty',
-              prompt : 'Please input your confirmpassword'
-            }
-          ]
+          required: "กรุณากรอกรหัสผ่านอีกครั้ง",
+          equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
         }
       }
     });
+
+    
     
   });
   </script>
@@ -123,28 +115,28 @@
       </div>
 
     </div>
-      <form class="ui form register">
+      <form class="ui form register" id="form-register">
         <div class="ui stacked segment container register">
           <div class="field">
               <h2 class="ui container center header">สมัครเข้าใช้งาน</h2>
           </div>
           <div class="field"><label>ชื่อผู้ใช้งาน</label>
-              <input class="ui input" type="text" name="username" placeholder="ชื่อผู้ใช้งาน">
+              <input class="ui input" type="text" id="username" name="username" placeholder="ชื่อผู้ใช้งาน">
           </div>
           <div class="field"><label>อีเมล</label>
-              <input type="text" name="email" placeholder="อีเมล">
+              <input type="text" id="email" name="email" placeholder="อีเมล">
           </div>
           <div class="field"><label>เบอร์โทรศัพท์</label>
-              <input type="text" name="phone" placeholder="เบอร์โทรศัพท์">
+              <input type="text" id="phone" name="phone" placeholder="เบอร์โทรศัพท์">
           </div>
           <div class="field"><label>รหัสผ่าน</label>
-              <input type="password" name="password" placeholder="รหัสผ่าน">
+              <input type="password" id="password" name="password" placeholder="รหัสผ่าน">
           </div>
           <div class="field"><label>ยืนยันรหัสผ่าน</label>
-              <input type="password" name="confirmpassword" placeholder="ยืนยันรหัสผ่าน">
+              <input type="password" id="confirmpassword" name="confirmpassword" placeholder="ยืนยันรหัสผ่าน">
           </div>
           <div class="field">
-              <button class="ui green button" type="submit">สมัคร</button>
+              <button class="ui green button" type="submit" id="register">สมัคร</button>
           </div>
           <div class="ui error message"></div>
         </div>
@@ -152,6 +144,40 @@
       </form>
     </div>
 
+
+    <script>
+    $(document).ready(function(){
+
+      $("#form-register").submit(function(){
+        register();
+      })
+
+      $("#register").click(function(){
+        register();
+      })
+
+      function register(){
+        event.preventDefault();
+        var isValid = $("#form-register").valid();
+        
+        if(isValid){
+          var data = $("#form-register").serialize();
+          $.post(base_url+"api/register/register",data,
+            function(data){
+              if(data.message == 200){
+                window.location.assign(base_url);
+              }
+            }
+          )
+          .fail(function() {
+            $("#error-message").show();
+          })
+        }
+      
+      }
+
+    });
+  </script>
 
 </body>
 </html>
