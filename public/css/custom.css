@@ -229,9 +229,10 @@
     width: 800px !important;
   }
 
-  .ui.middle.aligned.center.aligned.grid {
+  .ui.form.register,.ui.middle.aligned.aligned.grid{
     padding-top: 4em !important;
   }
   .card-body.black{
     color: #000000 !important;
   }
+  

@@ -86,7 +86,7 @@ class Car extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
-                $output["message"] = REST_Controller::MGS_NOT_CREATE;
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }
@@ -104,7 +104,7 @@ class Car extends BD_Controller {
         $brandId = $this->post("brandId");
 
         $this->load->model("Model");
-        $isCheck = $this->Model->get_model($modelName);
+        $isCheck = $this->Model->get_model($brandId,$modelName);
 
         if($isCheck){
             $data = array(
@@ -121,7 +121,7 @@ class Car extends BD_Controller {
             }
             else{
                 $output["status"] = false;
-                $output["message"] = REST_Controller::MGS_NOT_CREATE;
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
 
@@ -285,11 +285,11 @@ class Car extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
-                $output["message"] = REST_Controller::MGS_BE_USED;
+                $output["message"] = REST_Controller::MSG_BE_USED;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }else{
-            $output["message"] = REST_Controller::MGS_BE_DELETED;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
@@ -305,11 +305,11 @@ class Car extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
-                $output["message"] = REST_Controller::MGS_BE_USED;
+                $output["message"] = REST_Controller::MSG_BE_USED;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }else{
-            $output["message"] = REST_Controller::MGS_BE_DELETED;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
@@ -325,11 +325,79 @@ class Car extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
-                $output["message"] = REST_Controller::MGS_BE_USED;
+                $output["message"] = REST_Controller::MSG_BE_USED;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }else{
-            $output["message"] = REST_Controller::MGS_BE_DELETED;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function updateModel_post(){
+
+        $modelId = $this->post('modelId');
+        $modelName = $this->post('modelName');
+        $brandId = $this->post('brandId');
+        $this->load->model("Model");
+
+        $result = $this->Model->wherenot($modelId,$modelName,$brandId);
+
+        if($result){
+            $data = array(
+                'modelId' => $modelId,
+                'modelName' => $modelName,
+                'brandId' => $brandId,
+                'status' => 1
+            );
+            $result = $this->Model->update($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function updateYear_post(){
+
+        $brandId = $this->post('brandId');
+        $modelId = $this->post('modelId');
+        $year = $this->post('year');
+        $id = $this->post('id');
+        $this->load->model("Year");
+
+        $result = $this->Year->wherenot($brandId,$modelId,$id,$year);
+
+        if($result){
+            $data = array(
+                'brandId' => $brandId,
+                'modelId' => $modelId,
+                'year' => $year,
+                'id' => $id,
+                'status' => 1
+            );
+            $result = $this->Year->update($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
