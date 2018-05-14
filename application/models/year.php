@@ -4,7 +4,8 @@ class Year extends CI_Model{
     
     function allYear_count($brandId,$modelId)
     {   
-        $this->db->where("brandId", $brandId,$modelId);
+        $this->db->where("brandId", $brandId);
+        $this->db->where("modelId", $modelId);
         $query = $this->db->get('year');
     
         return $query->num_rows();  
@@ -32,20 +33,31 @@ class Year extends CI_Model{
         
     }
 
-    function year_search($limit,$start,$search,$col,$dir,$brandId,$modelId){
-        $this->db->where('brandId',$search['brandId']);
-        $this->db->where('modelId',$search['modelId']);
-        $this->db->where('year',$search['year']);
-        $result = $this->db->get('year');
-        
-        if($result->num_rows() > 0){
-            return false;
-        }   
-        return true;
-    }
-    function year_search_count($search, $brandId, $modelId)
+    function year_search($limit,$start,$search,$col,$dir,$brandId,$modelId)
     {
         $this->db->where("brandId", $brandId);
+        $this->db->where("modelId", $modelId);
+        $result = $this
+                  ->db
+                  ->like('brandId',$search)
+                  ->like('modelId',$search)
+                  ->limit($limit,$start)
+                  ->order_by($col,$dir)
+                  ->get('year');
+        
+        if($result->num_rows() > 0){
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    function year_search_count($search, $brandId, $modelId)
+    {
+        $this->db->where("brandId",$brandId);
         $this->db->where('modelId',$modelId);
         $query = $this
                 ->db
@@ -85,19 +97,5 @@ class Year extends CI_Model{
     function delete($id){
         return $this->db->delete('year', array('id' => $id));
     }
-
-
-    function allYear_count($year)
-    {   
-        $this->db->where("brandIdr", $brandId);
-        $this->db->where("modelId", $modelId);
-        $this->db->where("year", $year);
-        $query = $this->db->get('year');
-    
-        return $query->num_rows();  
-
-    }
-   
 }
 
-?>

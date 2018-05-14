@@ -26,8 +26,8 @@
         </div>
     </div>
 
-    <input type="hidden" id="brandId" value="<?=$id ?>">
-  
+    <input type="hidden" id="brandId" value="<?=$brandId ?>">
+    
     
     
     <div class="table-responsive">

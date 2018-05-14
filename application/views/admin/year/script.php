@@ -28,8 +28,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.modelId = $("#table-search").val()
-                    data.brandId = $("#brandId").val()
+                    data.brandId = $("#table-search").val()
+                    data.modelId = $("#modelId").val()
                     data.year = $('#year').val()
                 }
             },
