@@ -83,14 +83,17 @@ class Car extends BD_Controller {
             $result = $this->Year->insert_year($data);
             $output["status"] = $result;
             if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
+                $output["message"] = REST_Controller::MGS_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }
         else{
             $output["status"] = false;
             $output["data"] = "year ซ้ำ";
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
         }
     }
