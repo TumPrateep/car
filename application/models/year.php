@@ -87,15 +87,36 @@ class Year extends CI_Model{
     }
 
 
-    function allYear_count($year)
-    {   
-        $this->db->where("brandIdr", $brandId);
-        $this->db->where("modelId", $modelId);
-        $this->db->where("year", $year);
-        $query = $this->db->get('year');
+    // function allYear_count($year)
+    // {   
+    //     $this->db->where("brandIdr", $brandId);
+    //     $this->db->where("modelId", $modelId);
+    //     $this->db->where("year", $year);
+    //     $query = $this->db->get('year');
     
-        return $query->num_rows();  
+    //     return $query->num_rows();  
 
+    // }
+
+    function update($data){
+        $this->db->where('id',$data['id']);
+        $result = $this->db->update('year', $data);
+        return $result;
+    }
+
+    function wherenot($brandId,$modelId,$id,$year){
+        $this->db->select("year");
+        $this->db->from("year");
+        $this->db->where('brandId', $brandId);
+        $this->db->where('modelId', $modelId);
+        $this->db->where('year', $year);
+        $this->db->where_not_in('id', $id);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
     }
    
 }

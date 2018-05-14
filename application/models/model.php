@@ -69,10 +69,11 @@ class Model extends CI_Model{
         return $result;
     }
     
-    function get_model($modelName){
+    function get_model($brandId,$modelName){
         $this->db->select("modelName");
         $this->db->from("model");
         $this->db->where('modelName', $modelName);
+        $this->db->where('brandId', $brandId);
         $result = $this->db->count_all_results();
 
         if($result > 0){
@@ -87,9 +88,28 @@ class Model extends CI_Model{
         return $result;
     }
 
-    
-
     function delete($modelId){
         return $this->db->delete('model', array('modelId' => $modelId));
     }
+
+    function update($data){
+        $this->db->where('modelId',$data['modelId']);
+        $result = $this->db->update('model', $data);
+        return $result;
+    }
+
+    function wherenot($modelId,$modelName,$brandId){
+        $this->db->select("modelName");
+        $this->db->from("model");
+        $this->db->where('modelName', $modelName);
+        $this->db->where('brandId', $brandId);
+        $this->db->where_not_in('modelId', $modelId);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+
 }
