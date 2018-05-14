@@ -10,25 +10,6 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/semantic.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/custom.css">
 
-  <style type="text/css">
-    body {
-      background-color: #DADADA;
-    }
-    body > .grid {
-      height: 100%;
-    }
-    .image {
-      margin-top: -100px;
-    }
-    .column {
-      max-width: 450px;
-    }
-    .ui.middle.aligned.center.aligned.grid {
-      padding: 5em;
-    }
-
-  </style>
-
   <script src="<?php echo base_url() ?>public/js/jquery.min.js"></script>
   <script src="<?php echo base_url() ?>public/js/semantic.js"></script>
   <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
@@ -129,53 +110,51 @@
     </div>
   
   
-  <div class="ui middle aligned center aligned grid">
-      <div class="column">
-          <h2 class="ui teal image header">
-              <div class="content">
-                  <i class="car big icon"></i>
-              </div>
-          </h2>
-          <form class="ui large form" id="form-login">
-          <div class="ui error message"></div>
-              <div class="ui stacked segment">
-              <div class="ui red message text-left hide" id="error-message">ชื่อหรือรหัสผ่านไม่ถูกต้อง</div>
-                  <div class="field">
-                      <div class="ui left icon input"><i class="user icon"></i>
-                        <input type="username" name="username" placeholder="Username">
-                      </div>
-                      <div class="text-left error" id="username-error"></div>
-                  </div>
-                  <div class="field">
-                      <div class="ui left icon input"><i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password">
-                      </div>
-                      <div class="text-left error" id="password-error"></div>
-                  </div>
-                  
-                  <button type="submit" class="ui fluid large teal submit button" id="login">Login</button>
-                  <div class="ui horizontal divider">
-                    Or
-                  </div>
-                  </form>
-                  <div class="field">
-                      <button class="ui large facebook button">
-                        <i class="facebook icon"></i>
-                        Facebook
-                      </button>
-                      <button class="ui large youtube button">
-                        <i class="google plus icon"></i>
-                        G-mail
-                      </button>
-                  </div>
-              </div>
-          <div class="ui message">
-              New to us? <a href="">Sign Up</a>
-          </div>
-      </div>
-  </div>
-  
-
+    <div class="ui middle aligned center aligned grid">
+        <div class="column login">
+            <h2 class="ui teal image header">
+                <div class="content">
+                    <i class="car big icon"></i>
+                </div>
+            </h2>
+            <form class="ui large form" id="form-login">
+            <div class="ui error message"></div>
+                <div class="ui stacked segment">
+                <div class="ui red message text-left hide" id="error-message">ชื่อหรือรหัสผ่านไม่ถูกต้อง</div>
+                    <div class="field">
+                        <div class="ui left icon input"><i class="user icon"></i>
+                          <input type="username" name="username" placeholder="Username">
+                        </div>
+                        <div class="text-left error" id="username-error"></div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input"><i class="lock icon"></i>
+                          <input type="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="text-left error" id="password-error"></div>
+                    </div>
+                    
+                    <button type="submit" class="ui fluid large teal submit button" id="login">Login</button>
+                    <div class="ui horizontal divider">
+                      Or
+                    </div>
+                    </form>
+                    <div class="field">
+                        <button class="ui large facebook button">
+                          <i class="facebook icon"></i>
+                          Facebook
+                        </button>
+                        <button class="ui large youtube button">
+                          <i class="google plus icon"></i>
+                          G-mail
+                        </button>
+                    </div>
+                    <div class="ui divider"></div>
+                    <label>New to us? <a href="">Sign Up</a></label>
+                </div>
+        </div>
+    </div>
+    
   </div>
 
   <script>

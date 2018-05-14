@@ -10,28 +10,6 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/semantic.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/custom.css">
 
-  <style type="text/css">
-    body {
-      background-color: #DADADA;
-    }
-    body > .grid {
-      height: 100%;
-    }
-    .image {
-      margin-top: -100px;
-    }
-    .column {
-      max-width: 450px;
-    }
-    .ui.form {
-      padding: 1em;
-    }
-    .ui.stacked.segment{
-      width: 800px;
-    }
-
-  </style>
-
   <script src="<?php echo base_url() ?>public/js/jquery.min.js"></script>
   <script src="<?php echo base_url() ?>public/js/semantic.js"></script>
 
@@ -147,9 +125,8 @@
     </div>
       
       <h2 class="ui container green center header">Register</h2>
-
       <form class="ui form">
-        <div class="ui stacked segment container" >
+        <div class="ui stacked segment container register" >
           <div class="field"><label>User Name</label>
               <input class="ui input" type="text" name="username" placeholder="User Name">
           </div>
@@ -166,12 +143,8 @@
               <input type="password" name="confirmpassword" placeholder="Confirm Password">
           </div>
           <div class="field">
-              <div class="ui checkbox">
-                  <input type="checkbox" tabindex="0" class="hidden">
-                  <label>I agree to the Terms and Conditions</label>
-              </div>
-          </div>
               <button class="ui green button" type="submit">Submit</button>
+          </div>
           <div class="ui error message"></div>
         </div>
         

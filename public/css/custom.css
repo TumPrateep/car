@@ -1,4 +1,4 @@
-.hidden.menu {
+  .hidden.menu {
     display: none;
   }
 
@@ -207,4 +207,31 @@
 
   .hide{
     display: none;
+  }
+
+  body {
+    background-color: #DADADA  !important;
+  }
+
+  body > .grid {
+    height: 100% ;
+  }
+
+  .image {
+    margin-top: -100px ;
+  }
+
+  .column.login{
+    max-width: 480px !important;
+  }
+
+  .ui.stacked.segment.register{
+    width: 800px !important;
+  }
+
+  .ui.middle.aligned.center.aligned.grid {
+    padding-top: 4em !important;
+  }
+  .card-body.black{
+    color: #000000 !important;
   }

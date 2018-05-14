@@ -9,6 +9,11 @@ class Auth extends CI_Controller {
         $this->load->view("auth/login");
     }
 
+    public function register()
+    {
+        $this->load->view("auth/register");
+    }
+
     public function logout(){
         session_destroy();
         redirect("auth/login");
