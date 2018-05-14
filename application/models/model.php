@@ -65,7 +65,8 @@ class Model extends CI_Model{
 
     
     function insert_model($data){
-		$this->db->insert('model', $data);
+        $result = $this->db->insert('model', $data);
+        return $result;
     }
     
     function get_model($modelName){
