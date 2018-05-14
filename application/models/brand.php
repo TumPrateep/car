@@ -74,6 +74,7 @@ class Brand extends CI_Model {
         $this->db->select("*");
         $this->db->from("brand");
         $this->db->where('brandName',$brandName);
+        // $this->db->get();
         $result = $this->db->count_all_results();
 
         if($result > 0){
@@ -85,7 +86,7 @@ class Brand extends CI_Model {
     }
     
     function get_brand($brandName){
-        return $this->db->get_where('brandName',$brandName);
+        return $this->db->where('brandName',$brandName)->get("brand")->row();
     }
 	
 
@@ -103,6 +104,14 @@ class Brand extends CI_Model {
             return false;
         }
         return true;
+    }
+
+    function delete($brandId){
+        return $this->db->delete('brand', array('brandId' => $brandId));
+    }
+
+    function getBrandById($brandId){
+        return $this->db->where('brandId',$brandId)->get("brand")->row();
     }
 
 }

@@ -92,9 +92,8 @@ class Car extends BD_Controller {
         }
         else{
             $output["status"] = false;
-            $output["data"] = "year ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
 
@@ -122,7 +121,6 @@ class Car extends BD_Controller {
             }
             else{
                 $output["status"] = false;
-                $output["data"] = "สร้างไม่สำเร็จ";
                 $output["message"] = REST_Controller::MGS_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
@@ -130,9 +128,8 @@ class Car extends BD_Controller {
         }
         else{
             $output["status"] = false;
-            $output["data"] = "model ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }
 
 
@@ -194,17 +191,17 @@ class Car extends BD_Controller {
         $this->set_response($json_data);
     }
 
-    function viewBrand(){
+    function getBrand_post(){
 
-        $brandname = $this->post('brandname');
+        $brandName = $this->post('brandName');
         $this->load->model("Brand");
-        $isCheck = $this->Brand->check_brand($brandname);
+        $isCheck = $this->Brand->check_brand($brandName);
 
         if($isCheck){
-            $result = $this->load->get_brand($brandName);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
+            $output["status"] = true;
+            $result = $this->Brand->get_brand($brandName);
+            if($result != null){
+                $output["data"] = $result;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
                 $output["message"] = REST_Controller::MSG_ERROR;
@@ -275,5 +272,23 @@ class Car extends BD_Controller {
     }
 
     
+    function deleteBrand_get(){
+        $brandId = $this->get('brandId');
+        $this->load->model("Brand");
+        $brand = $this->Brand->getBrandById($brandId);
+        if($brand != null){
+            $isDelete = $this->Brand->delete($brandId);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MGS_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MGS_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
 }

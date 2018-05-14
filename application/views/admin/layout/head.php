@@ -18,4 +18,10 @@
   <link href="<?=base_url("/public/css/sb-admin.css") ?>" rel="stylesheet">
 
   <link href="<?=base_url("/public/css/custom.css") ?>" rel="stylesheet">
+
+  <style type="text/css">
+    .card-body.black{
+      color: #000000 !important;
+    }
+  </style>
 </head>
