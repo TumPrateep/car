@@ -92,7 +92,6 @@ class Car extends BD_Controller {
         }
         else{
             $output["status"] = false;
-            $output["data"] = "year ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
@@ -122,7 +121,6 @@ class Car extends BD_Controller {
             }
             else{
                 $output["status"] = false;
-                $output["data"] = "สร้างไม่สำเร็จ";
                 $output["message"] = REST_Controller::MGS_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
@@ -130,7 +128,6 @@ class Car extends BD_Controller {
         }
         else{
             $output["status"] = false;
-            $output["data"] = "model ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
