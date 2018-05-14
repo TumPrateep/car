@@ -18,6 +18,15 @@ class Year extends CI_Model{
         $result = $this->db->insert('year', $data);
         return $result;
     }
+    function allYear_count($year)
+    {   
+        $this->db->where("year", $year);
+        $query = $this->db->get('year');
+    
+        return $query->num_rows();  
+
+    }
+   
 }
 
 ?>

@@ -54,12 +54,14 @@ class Car extends CI_Controller {
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/model/script");
 	}
-	public function year($brandID,$modelID){
-		$data['id'] = $id;
+	
+	public function year($brandId,$modelId){
+		$data['brandId'] = $brandId;
+		$data1['modelId'] = $modelId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/year/content",$data);
+		$this->load->view("admin/year/content",$data,$data1);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/year/script");
@@ -82,5 +84,6 @@ class Car extends CI_Controller {
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/model/update/script");
 	}
+	
 	
 }
