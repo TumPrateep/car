@@ -381,12 +381,13 @@ CREATE TABLE `year` (
   `modelId` int(11) NOT NULL,
   `year` varchar(45) NOT NULL,
   `status` int(11) NOT NULL,
-  PRIMARY KEY (`brandId`,`modelId`,`year`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`,`brandId`,`modelId`),
   KEY `fk_brand_has_model_model1_idx` (`modelId`),
   KEY `fk_brand_has_model_brand1_idx` (`brandId`),
   CONSTRAINT `fk_brand_has_model_brand1` FOREIGN KEY (`brandId`) REFERENCES `brand` (`brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_brand_has_model_model1` FOREIGN KEY (`modelId`) REFERENCES `model` (`modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,7 +396,7 @@ CREATE TABLE `year` (
 
 LOCK TABLES `year` WRITE;
 /*!40000 ALTER TABLE `year` DISABLE KEYS */;
-INSERT INTO `year` VALUES (1,1,'2016',1),(1,1,'2017',1),(1,2,'2016',1),(2,1,'2015',1),(2,1,'2016',1),(2,2,'2014',1),(2,2,'2015',1);
+INSERT INTO `year` VALUES (1,1,'2016',1,1),(1,1,'2017',1,2),(1,2,'2016',1,3),(2,1,'2015',1,4),(2,1,'2016',1,5),(2,2,'2014',1,6),(2,2,'2015',1,7);
 /*!40000 ALTER TABLE `year` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -412,4 +413,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-14 10:19:43
+-- Dump completed on 2018-05-14 13:14:42
