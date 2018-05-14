@@ -16,18 +16,15 @@ class Year extends CI_Model{
     {   
         $this->db->where("brandId", $brandId);
         $this->db->where("modelId", $modelId);
-       $query = $this
-                ->db
-                ->limit($limit,$start)
-                ->order_by($col,$dir)
-                ->get('year');
-        
-        if($query->num_rows()>0)
-        {
+        $query = $this
+                    ->db
+                    ->limit($limit,$start)
+                    ->order_by($col,$dir)
+                    ->get('year');
+            
+        if($query->num_rows()>0){
             return $query->result(); 
-        }
-        else
-        {
+        }else{
             return null;
         }
         
@@ -39,15 +36,14 @@ class Year extends CI_Model{
         $this->db->where("modelId", $modelId);
         $result = $this
                   ->db
-                  ->like('brandId',$search)
-                  ->like('modelId',$search)
+                  ->like('year',$search)
                   ->limit($limit,$start)
                   ->order_by($col,$dir)
                   ->get('year');
         
-        if($result->num_rows() > 0){
+        if($result->num_rows() > 0)
         {
-            return $query->result();  
+            return $result->result();  
         }
         else
         {

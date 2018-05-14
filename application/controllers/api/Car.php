@@ -221,7 +221,6 @@ class Car extends BD_Controller {
         $columns = array( 
             0 =>null, 
             1 =>year
-           
         );
 
         $limit = $this->post('length');
@@ -231,13 +230,12 @@ class Car extends BD_Controller {
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
     
-
         $this->load->model("Year");
         $totalData = $this->Year->allYear_count($brandId,$modelId);
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('year')) || empty($this->post('brandId')))
+        if(empty($this->post('year')) || empty($this->post('brandId')) || empty($this->post('modelId')))
         {            
             $posts = $this->Year->allYear($limit,$start,$order,$dir,$brandId,$modelId);
         }
@@ -258,6 +256,7 @@ class Car extends BD_Controller {
                 $nestedData['brandId'] = $post->brandId;
                 $nestedData['modelId'] = $post->modelId;
                 $nestedData['year'] = $post->year;
+                $nestedData['id'] = $post->id;
 
                 $data[] = $nestedData;
 

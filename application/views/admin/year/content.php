@@ -27,11 +27,11 @@
     </div>
 
     <input type="hidden" id="brandId" value="<?=$brandId ?>">
-    
+    <input type="hidden" id="modelId" value="<?=$modelId ?>">
     
     
     <div class="table-responsive">
-      <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="year-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
           <th>ปี</th>

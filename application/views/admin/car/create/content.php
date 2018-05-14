@@ -30,13 +30,9 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputFile">เพิ่มข้อมูลรูปภาพ</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" class="custom-file-input" >
-                            <label class="custom-file-label" >เลือกรูปภาพ</label>
-                          </div>
-                        </div>
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                        <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
                       </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">บันทึก</button>

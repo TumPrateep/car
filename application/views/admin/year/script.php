@@ -28,9 +28,9 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.brandId = $("#table-search").val()
-                    data.modelId = $("#modelId").val()
-                    data.year = $('#year').val()
+                    data.brandId = $("#brandId").val();
+                    data.modelId = $("#modelId").val();
+                    data.year = $("#table-search").val();
                 }
             },
             "columns": [
@@ -47,9 +47,7 @@
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"car/year/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"car/updateModel/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
+                        return '<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
