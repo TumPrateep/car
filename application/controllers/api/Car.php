@@ -235,4 +235,26 @@ class Car extends BD_Controller {
         }
     }
 
+    function deleteYear_get(){
+        $brandId = $this->get('brandId');
+        $modelId = $this->get('modelId');
+        $year = $this->get('year');
+
+        $this->load->model("Year");
+        $year = $this->Year->getyear($brandId,$modelId,$year);
+        if($year != null){
+            $isDelete = $this->Year->delete($brandId,$modelId,$year);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MGS_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MGS_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
 }
