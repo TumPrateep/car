@@ -32,11 +32,13 @@ class Register extends BD_Controller {
             );
             $this->User->insert_user($data);
             $output["status"] = true;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
         else{
             $output["status"] = false;
             $output["data"] = "username ซ้ำ";
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
         }
 
