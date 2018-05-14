@@ -19,11 +19,11 @@ abstract class REST_Controller extends CI_Controller {
     // Note: Only the widely used HTTP status codes are documented
 
     //message
-    const MGS_NOT_CREATE = 1001; 
-    const MGS_NOT_UPDATE = 1002;
-    const MGS_NOT_DELETE = 1003;
-    const MGS_BE_USED = 1004; // ถูกใช้งาน
-    const MGS_BE_DELETED = 1005; //ถูกลบไปแล้ว
+    const MSG_NOT_CREATE = 1001; 
+    const MSG_NOT_UPDATE = 1002;
+    const MSG_NOT_DELETE = 1003;
+    const MSG_BE_USED = 1004; // ถูกใช้งาน
+    const MSG_BE_DELETED = 1005; //ถูกลบไปแล้ว
 
     const MSG_SUCCESS = 200;
 
