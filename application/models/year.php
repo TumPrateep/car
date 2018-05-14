@@ -61,8 +61,8 @@ class Year extends CI_Model{
         return $result;
     }
 
-<<<<<<< HEAD
-=======
+
+
     function get_year($modelid,$brandId){
         $this->db->select("modelId");
         $this->db->select("brandId");
@@ -76,7 +76,7 @@ class Year extends CI_Model{
         }
         return true;
     }
->>>>>>> a603858171b6280aa6e4b39e8b0f0abb9e08e035
+
 
 
     
