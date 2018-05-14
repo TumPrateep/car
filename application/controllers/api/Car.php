@@ -73,7 +73,8 @@ class Car extends BD_Controller {
         $data = array(
             'brandId' => $brandId,
             'modelId' => $modelId,
-            'year' => $year
+            'year' => $year,
+            'status' => 1
         );
 
         $this->load->model("Year");
@@ -109,7 +110,7 @@ class Car extends BD_Controller {
                 'modelId' => null,
                 'modelName' => $modelName,
                 'brandId' => $brandId,
-                'status' => $status
+                'status' => 1
             );
             $this->Model->insert_model($data);
             $output["status"] = true;
