@@ -76,19 +76,14 @@ class Year extends CI_Model{
     }
 
 
-    function getyear($brandId,$modelId,$year){
-
-        $this->db->where('brandId',$search['brandId']);
-        $this->db->where('modelId',$search['modelId']);
-        $this->db->where('year',$search['year']);
+    function getyear($id){
+        $this->db->where('id',$id);
         $result = $this->db->get('year')->row();
-
         return $result;
-
     }
 
-    function delete($brandId,$modelId,$year){
-        return $this->db->delete('year', array('brandId' => $brandId , 'modelId' => $modelId , 'year' => $year));
+    function delete($id){
+        return $this->db->delete('year', array('id' => $id));
     }
 
 
