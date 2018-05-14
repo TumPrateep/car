@@ -7,7 +7,7 @@ class Car extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        //$this->auth();
     }
 
     function search_post(){
@@ -103,7 +103,6 @@ class Car extends BD_Controller {
 
         $modelName = $this->post("modelName");
         $brandId = $this->post("brandId");
-        $status = $this->post("status");
 
         $this->load->model("Model");
         $isCheck = $this->Model->get_model($modelName);
@@ -115,10 +114,19 @@ class Car extends BD_Controller {
                 'brandId' => $brandId,
                 'status' => 1
             );
-            $this->Model->insert_model($data);
-            $output["status"] = true;
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
+            $result = $this->Model->insert_model($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["data"] = "สร้างไม่สำเร็จ";
+                $output["message"] = REST_Controller::MGS_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+
         }
         else{
             $output["status"] = false;
@@ -193,9 +201,19 @@ class Car extends BD_Controller {
         $isCheck = $this->Brand->check_brand($brandname);
 
         if($isCheck){
-            $this->load->get_brand($brandName);
-        else{
-           
+            $result = $this->load->get_brand($brandName);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_ERROR;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["data"] = "ไม่พบ brand";
+            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
         }
 
 
