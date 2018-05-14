@@ -81,5 +81,15 @@ class Model extends CI_Model{
         return true;
     }
 
+    function getmodel($modelId){
+        $this->db->where('modelId',$modelId);
+        $result = $this->db->get('model')->row();
+        return $result;
+    }
+
     
+
+    function delete($modelId){
+        return $this->db->delete('model', array('modelId' => $modelId));
+    }
 }

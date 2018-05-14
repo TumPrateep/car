@@ -313,12 +313,12 @@ class Car extends BD_Controller {
     }
 
     function deleteModel_get(){
-        $id = $this->get('id');
+        $modelId = $this->get('modelId');
 
-        $this->load->model("Year");
-        $year = $this->Year->getyear($id);
-        if($year != null){
-            $isDelete = $this->Year->delete($id);
+        $this->load->model("Model");
+        $model = $this->Model->getmodel($modelId);
+        if($model != null){
+            $isDelete = $this->Model->delete($modelId);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
