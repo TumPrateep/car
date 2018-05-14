@@ -43,6 +43,7 @@ class Year extends CI_Model{
         }   
         return true;
     }
+
     function year_search_count($search, $brandId, $modelId)
     {
         $this->db->where("brandId", $brandId);
@@ -78,21 +79,23 @@ class Year extends CI_Model{
     }
 
 
+    function getyear($id){
+        $this->db->where('id',$id);
+        $result = $this->db->get('year')->row();
+        return $result;
+    }
 
     
 
-    function delete($brandId,$modelId,$year){
-        return $this->db->delete('year', array('brandId' => $brandId , 'modelId' => $modelId , 'year' => $year));
+    function delete($id){
+        return $this->db->delete('year', array('id' => $id));
     }
 
 
-    function allYear_count($year)
-    {   
-        $this->db->where("year", $year);
-        $query = $this->db->get('year');
-
-    
-   
+    // function allYear_count($year)
+    // {   
+    //     $this->db->where("year", $year);
+    //     $query = $this->db->get('year');   
+    // }
 }
-
 ?>
