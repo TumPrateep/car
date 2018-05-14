@@ -26,6 +26,7 @@ CREATE TABLE `brand` (
   `brandId` int(11) NOT NULL AUTO_INCREMENT,
   `brandPicture` varchar(255) DEFAULT NULL,
   `brandName` varchar(255) NOT NULL,
+  `statusBrand` int(11) NOT NULL,
   PRIMARY KEY (`brandId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -36,7 +37,7 @@ CREATE TABLE `brand` (
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES (1,NULL,'BMW'),(2,NULL,'Lamborghini');
+INSERT INTO `brand` VALUES (1,NULL,'BMW',1),(2,NULL,'Lamborghini',1);
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,6 +53,7 @@ CREATE TABLE `car_accessories` (
   `car_accessoriesName` varchar(255) NOT NULL,
   `businessRegistration` varchar(255) DEFAULT NULL,
   `id` int(11) NOT NULL,
+  `status_car_accessories` int(11) NOT NULL,
   PRIMARY KEY (`car_accessoriesId`),
   KEY `fk_car_accessories_users1_idx` (`id`),
   CONSTRAINT `fk_car_accessories_users1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -82,6 +84,7 @@ CREATE TABLE `car_profile` (
   `pictureBack` varchar(255) DEFAULT NULL,
   `circlePlate` varchar(255) DEFAULT NULL,
   `id` int(11) NOT NULL,
+  `status_car_profile` int(11) NOT NULL,
   PRIMARY KEY (`car_profileId`),
   KEY `fk_car_profile_users1_idx` (`id`),
   CONSTRAINT `fk_car_profile_users1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -107,6 +110,7 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `status_category` int(11) NOT NULL,
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -131,6 +135,7 @@ CREATE TABLE `district` (
   `districtId` int(11) NOT NULL AUTO_INCREMENT,
   `districtName` varchar(255) NOT NULL,
   `provinceId` int(11) NOT NULL,
+  `status_district` int(11) NOT NULL,
   PRIMARY KEY (`districtId`),
   KEY `fk_district_province_idx` (`provinceId`),
   CONSTRAINT `fk_district_province` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -167,6 +172,7 @@ CREATE TABLE `garage` (
   `subdistrictId` int(11) NOT NULL,
   `districtId` int(11) NOT NULL,
   `province_provinceId` int(11) NOT NULL,
+  `status_garage` int(11) NOT NULL,
   PRIMARY KEY (`garageId`,`garageMaster`),
   KEY `fk_garage_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_garage_district1_idx` (`districtId`),
@@ -196,9 +202,11 @@ DROP TABLE IF EXISTS `model`;
 CREATE TABLE `model` (
   `modelId` int(11) NOT NULL AUTO_INCREMENT,
   `modelName` varchar(255) NOT NULL,
-  `brandId` varchar(255) DEFAULT NULL,
+  `brandId` int(11) NOT NULL,
+  `status_model` varchar(45) NOT NULL,
   PRIMARY KEY (`modelId`),
-  KEY `brandId_idx` (`brandId`)
+  KEY `brandId_idx` (`brandId`),
+  CONSTRAINT `brandId` FOREIGN KEY (`brandId`) REFERENCES `brand` (`brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -208,7 +216,7 @@ CREATE TABLE `model` (
 
 LOCK TABLES `model` WRITE;
 /*!40000 ALTER TABLE `model` DISABLE KEYS */;
-INSERT INTO `model` VALUES (1,'i8','1'),(2,'M2','1'),(3,'Aventador','2'),(4,'Huracan','2');
+INSERT INTO `model` VALUES (1,'i8',1,'1'),(2,'M2',1,'1'),(3,'Aventador',2,'1'),(4,'Huracan',2,'1');
 /*!40000 ALTER TABLE `model` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,7 +229,8 @@ DROP TABLE IF EXISTS `province`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `province` (
   `provinceId` int(11) NOT NULL AUTO_INCREMENT,
-  `provinceName` varchar(255) DEFAULT NULL,
+  `provinceName` varchar(255) NOT NULL,
+  `status_province` int(11) NOT NULL,
   PRIMARY KEY (`provinceId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -247,6 +256,7 @@ CREATE TABLE `subdistrict` (
   `subdistrictName` varchar(25) NOT NULL,
   `districtId` int(11) NOT NULL,
   `provinceId` int(11) NOT NULL,
+  `status_subdistrict` int(11) NOT NULL,
   PRIMARY KEY (`subdistrictId`),
   KEY `fk_subdistrict_district1_idx` (`districtId`),
   KEY `fk_subdistrict_province1_idx` (`provinceId`),
@@ -275,7 +285,7 @@ CREATE TABLE `user_profile` (
   `user_profile` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(45) NOT NULL,
   `lastname` varchar(45) NOT NULL,
-  `status` varchar(45) NOT NULL,
+  `status` int(11) NOT NULL,
   `tell1` varchar(45) DEFAULT NULL,
   `tell2` varchar(45) NOT NULL,
   `provinceId` int(11) NOT NULL,
@@ -342,11 +352,11 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `category` varchar(45) DEFAULT NULL,
+  `category` int(11) NOT NULL,
   `email` varchar(45) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -355,7 +365,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin',NULL);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe',1,'admin@admin',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,6 +380,7 @@ CREATE TABLE `year` (
   `brandId` int(11) NOT NULL,
   `modelId` int(11) NOT NULL,
   `year` varchar(45) NOT NULL,
+  `status_year` int(11) NOT NULL,
   PRIMARY KEY (`brandId`,`modelId`,`year`),
   KEY `fk_brand_has_model_model1_idx` (`modelId`),
   KEY `fk_brand_has_model_brand1_idx` (`brandId`),
@@ -384,7 +395,7 @@ CREATE TABLE `year` (
 
 LOCK TABLES `year` WRITE;
 /*!40000 ALTER TABLE `year` DISABLE KEYS */;
-INSERT INTO `year` VALUES (1,1,'2016'),(1,1,'2017'),(1,2,'2016'),(2,1,'2015'),(2,1,'2016'),(2,2,'2014'),(2,2,'2015');
+INSERT INTO `year` VALUES (1,1,'2016',1),(1,1,'2017',1),(1,2,'2016',1),(2,1,'2015',1),(2,1,'2016',1),(2,2,'2014',1),(2,2,'2015',1);
 /*!40000 ALTER TABLE `year` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -401,4 +412,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-13 16:23:53
+-- Dump completed on 2018-05-14  9:58:30
