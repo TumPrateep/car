@@ -216,4 +216,23 @@ class Car extends BD_Controller {
 
     }
 
+    function deleteBrand_get(){
+        $brandId = $this->get('brandId');
+        $this->load->model("Brand");
+        $brand = $this->Brand->getBrandById($brandId);
+        if($brand != null){
+            $isDelete = $this->Brand->delete($brandId);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MGS_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MGS_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
 }

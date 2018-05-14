@@ -106,4 +106,12 @@ class Brand extends CI_Model {
         return true;
     }
 
+    function delete($brandId){
+        return $this->db->delete('brand', array('brandId' => $brandId));
+    }
+
+    function getBrandById($brandId){
+        return $this->db->where('brandId',$brandId)->get("brand")->row();
+    }
+
 }
