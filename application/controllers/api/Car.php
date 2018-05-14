@@ -98,6 +98,8 @@ class Car extends BD_Controller {
     function createModel_post(){
 
         $modelName = $this->post("modelName");
+        $brandId = $this->post("brandId");
+        $status = $this->post("status");
 
         $this->load->model("Model");
         $isCheck = $this->Model->get_model($modelName);
@@ -106,14 +108,18 @@ class Car extends BD_Controller {
             $data = array(
                 'modelId' => null,
                 'modelName' => $modelName,
+                'brandId' => $brandId,
+                'status' => $status
             );
             $this->Model->insert_model($data);
             $output["status"] = true;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
         else{
             $output["status"] = false;
             $output["data"] = "model ซ้ำ";
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
         }
 
