@@ -1,5 +1,6 @@
 <script>
-    var table = $('#Year-table').DataTable({
+
+    var table = $('#year-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -29,6 +30,7 @@
                 "data": function ( data ) {
                     data.modelId = $("#table-search").val()
                     data.brandId = $("#brandId").val()
+                    data.year = $('#year').val()
                 }
             },
             "columns": [

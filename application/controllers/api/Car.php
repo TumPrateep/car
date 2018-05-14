@@ -92,9 +92,8 @@ class Car extends BD_Controller {
         }
         else{
             $output["status"] = false;
-            $output["data"] = "year ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
 
@@ -122,7 +121,6 @@ class Car extends BD_Controller {
             }
             else{
                 $output["status"] = false;
-                $output["data"] = "สร้างไม่สำเร็จ";
                 $output["message"] = REST_Controller::MGS_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
@@ -130,9 +128,8 @@ class Car extends BD_Controller {
         }
         else{
             $output["status"] = false;
-            $output["data"] = "model ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }
 
 
@@ -249,17 +246,17 @@ class Car extends BD_Controller {
         $this->set_response($json_data);
     }
 
-    function viewBrand(){
+    function getBrand_post(){
 
-        $brandname = $this->post('brandname');
+        $brandName = $this->post('brandName');
         $this->load->model("Brand");
-        $isCheck = $this->Brand->check_brand($brandname);
+        $isCheck = $this->Brand->check_brand($brandName);
 
         if($isCheck){
-            $result = $this->load->get_brand($brandName);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
+            $output["status"] = true;
+            $result = $this->Brand->get_brand($brandName);
+            if($result != null){
+                $output["data"] = $result;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
                 $output["message"] = REST_Controller::MSG_ERROR;
@@ -272,6 +269,103 @@ class Car extends BD_Controller {
         }
 
 
+    }
+
+    function searchYear_post(){
+        $columns = array( 
+            0 =>null, 
+            1 =>year
+           
+        );
+
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $brandId = $this->post('brandId');
+
+        $this->load->model("Year");
+        $totalData = $this->Year->allYear_count($year);
+
+        $totalFiltered = $totalData; 
+
+        if(empty($this->post('year')) || empty($this->post('brandId')))
+        {            
+            $posts = $this->Model->allModel($limit,$start,$order,$dir,$brandId);
+        }
+        else {
+            $search = $this->post('year'); 
+
+            $posts =  $this->Model->year_search($limit,$start,$search,$order,$dir,$brandId);
+
+            $totalFiltered = $this->Model->model_search_count($search, $brandId);
+        }
+
+        $data = array();
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+
+                $nestedData['brandId'] = $post->brandId;
+                $nestedData['modelId'] = $post->modelId;
+                $nestedData['modelName'] = $post->modelName;
+
+                $data[] = $nestedData;
+
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+
+        $this->set_response($json_data);
+    }
+
+    
+    function deleteBrand_get(){
+        $brandId = $this->get('brandId');
+        $this->load->model("Brand");
+        $brand = $this->Brand->getBrandById($brandId);
+        if($brand != null){
+            $isDelete = $this->Brand->delete($brandId);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MGS_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MGS_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function deleteYear_get(){
+        $brandId = $this->get('brandId');
+        $modelId = $this->get('modelId');
+        $year = $this->get('year');
+
+        $this->load->model("Year");
+        $year = $this->Year->getyear($brandId,$modelId,$year);
+        if($year != null){
+            $isDelete = $this->Year->delete($brandId,$modelId,$year);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MGS_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MGS_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
     }
 
 }
