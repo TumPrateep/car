@@ -14,9 +14,14 @@
       <!-- Example DataTables Card-->
         
     <div class="card-tools">
-        <div class="input-group input-group-sm float-right" style="width: 300px; padding: 2px;">
-          <a href="<?=base_url("car/model") ?>"><button class="btn btn-success"><i class="fa fa-plus"> Create</i></button></a>
-          <input type="text" name="table_search" id="table-search" class="form-control float-right" placeholder="Search">
+
+        <div class="input-group input-group-sm" >
+          <img src="https://image.freepik.com/free-vector/workplace-background-with-laptop_1284-1119.jpg" class="rounded float-left" alt="">
+          <h3 class="car-img">ชื่อยี่ห้อ</h3>
+        </div>
+        <div class="input-group input-group-sm float-right" >
+          <a href="<?=base_url("car/createModel") ?>"><button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button></a>
+          <input type="text" name="table_search" id="table-search" class="form-control float-right" placeholder="ค้นหา">
           <div class="input-group-append">
             <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-search"></i></button>
           </div>
@@ -31,7 +36,7 @@
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
-          <th>ชื่อยี่ห้อรถ</th>
+          <th>ชื่อรุ่น</th>
           <th></th>
         </thead>	
       </table>
