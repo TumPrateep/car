@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Login</title>
+  <title>Register</title>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/semantic.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/custom.css">
 
@@ -123,27 +123,28 @@
       </div>
 
     </div>
-      
-      <h2 class="ui container green center header">Register</h2>
-      <form class="ui form">
-        <div class="ui stacked segment container register" >
-          <div class="field"><label>User Name</label>
-              <input class="ui input" type="text" name="username" placeholder="User Name">
+      <form class="ui form register">
+        <div class="ui stacked segment container register">
+          <div class="field">
+              <h2 class="ui container center header">สมัครเข้าใช้งาน</h2>
           </div>
-          <div class="field"><label>E-mail</label>
-              <input type="text" name="email" placeholder="E-mail">
+          <div class="field"><label>ชื่อผู้ใช้งาน</label>
+              <input class="ui input" type="text" name="username" placeholder="ชื่อผู้ใช้งาน">
           </div>
-          <div class="field"><label>Phone</label>
-              <input type="text" name="phone" placeholder="Phone">
+          <div class="field"><label>อีเมล</label>
+              <input type="text" name="email" placeholder="อีเมล">
           </div>
-          <div class="field"><label>Password</label>
-              <input type="password" name="password" placeholder="Password">
+          <div class="field"><label>เบอร์โทรศัพท์</label>
+              <input type="text" name="phone" placeholder="เบอร์โทรศัพท์">
+          </div>
+          <div class="field"><label>รหัสผ่าน</label>
+              <input type="password" name="password" placeholder="รหัสผ่าน">
+          </div>
+          <div class="field"><label>ยืนยันรหัสผ่าน</label>
+              <input type="password" name="confirmpassword" placeholder="ยืนยันรหัสผ่าน">
           </div>
           <div class="field">
-              <input type="password" name="confirmpassword" placeholder="Confirm Password">
-          </div>
-          <div class="field">
-              <button class="ui green button" type="submit">Submit</button>
+              <button class="ui green button" type="submit">สมัคร</button>
           </div>
           <div class="ui error message"></div>
         </div>
@@ -151,9 +152,6 @@
       </form>
     </div>
 
-  
-
-  
 
 </body>
 </html>
