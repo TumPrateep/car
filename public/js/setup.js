@@ -19,11 +19,15 @@ function fnDelete(option) {
    deleteUrl = base_url+"api"+option.url;
 }
 
-function showMessage(message){
+function showMessage(message, url=null){
     if(message == 200){
         $("#success-modal").modal("show");
     }else{
         alert(message);
+    }
+
+    if(url != null){
+        window.location.assign(url);
     }
 }
 
