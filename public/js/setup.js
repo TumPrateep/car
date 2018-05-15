@@ -22,6 +22,8 @@ function fnDelete(option) {
 function showMessage(message){
     if(message == 200){
         $("#success-modal").modal("show");
+    }else{
+        alert(message);
     }
 }
 
