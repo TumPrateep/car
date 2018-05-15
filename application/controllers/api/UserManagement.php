@@ -48,7 +48,7 @@ class UserManagement extends BD_Controller {
             foreach ($posts as $post)
             {
 
-                $nestedData['Id'] = $post->Id;
+                $nestedData['id'] = $post->id;
                 $nestedData['username'] = $post->username;
                 $nestedData['phone'] = $post->phone;
                 $nestedData['email'] = $post->email;
