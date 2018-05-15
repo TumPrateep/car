@@ -12,14 +12,15 @@ $(document).on({
 });
 
 var deleteUrl = null;
+var modalUrl = null;
 function fnDelete(option) {
    $("#lebel-delete").html(option.label);
    $("#content-delete").html(option.content);
    $("#delete-modal").modal("show");
    deleteUrl = base_url+"api"+option.url;
+   modalUrl = option.gotoUrl;
 }
 
-var modalUrl = null;
 function showMessage(message, url=null){
     if(message == 200){
         $("#success-modal").modal("show");
@@ -39,6 +40,6 @@ $("#success-modal").on('show.bs.modal', function () {
 $("#btn-delete-modal").click(function(){
     $.get(deleteUrl,{},function(data){
         $("#delete-modal").modal("hide");
-        showMessage(data.message);
+        showMessage(data.message, modalUrl);
     });
 })
