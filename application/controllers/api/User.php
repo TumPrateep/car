@@ -67,6 +67,7 @@ class User extends BD_Controller {
 
         $this->set_response($json_data);
     }
+    
 
     function createUser_post(){
 
