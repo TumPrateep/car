@@ -15,28 +15,19 @@
               <div class="card text-white bg-success">
                   <div class="card-header">
 
-                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เพิ่มข้อมูลยี่ห้อรถ</h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เเก้ไขข้อมูลยี่ห้อรถ</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                    <div class="card-body black bg-light">
+                  <div class="card-body black bg-light">
                       <div class="form-group">
                         <label>ชื่อยี่ห้อรถ</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-fw fa-car"></i></span>
-                          </div>
-                          <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ">
-                        </div>
+                        <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputFile">เพิ่มข้อมูลรูปภาพ</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" class="custom-file-input" >
-                            <label class="custom-file-label" >เลือกรูปภาพ</label>
-                          </div>
-                        </div>
+                        <label for="exampleInputFile">รูปภาพ</label>
+                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                        <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่ต้องการจะเพิ่ม</small>
                       </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">บันทึก</button>
@@ -44,7 +35,7 @@
                     </div>
                     <!-- /.card-body -->
                  
-                </div>
+                  </div>
               </div>
           </div>
         </div>

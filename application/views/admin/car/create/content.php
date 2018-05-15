@@ -19,7 +19,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                    <div class="card-body black bg-light">
+                  <div class="card-body black bg-light">
                       <div class="form-group">
                         <label>ชื่อยี่ห้อรถ</label>
                         <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ">
@@ -35,7 +35,7 @@
                     </div>
                     <!-- /.card-body -->
                  
-                </div>
+                  </div>
               </div>
           </div>
         </div>
