@@ -19,6 +19,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
+                  <form id="create-brand">
                     <div class="card-body black bg-light">
                       <div class="form-group">
                         <label>ชื่อยี่ห้อรถ</label>
@@ -26,7 +27,7 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-fw fa-car"></i></span>
                           </div>
-                          <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ">
+                          <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName">
                         </div>
                       </div>
                       <div class="form-group">
@@ -38,6 +39,7 @@
                         <button type="submit" class="btn btn-primary">บันทึก</button>
                       </div>
                     </div>
+                  </form> 
                     <!-- /.card-body -->
                  
                 </div>
