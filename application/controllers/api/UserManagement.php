@@ -87,5 +87,42 @@ class UserManagement extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+
+    function create_post(){
+
+        $username = $this->post('username');
+        $email = $this->post('email');
+        $phone = $this->post('phone');
+        $password = "password";
+
+        $this->load->model("User");
+        $isCheck = $this->User->checkUser($username);
+        if($isCheck){
+            $data = array(
+                'id' => null,
+                'username' => $username,
+                'email' => (empty($email))?null:$email,
+                'phone' => $phone,
+                'password' => $password, 
+                'category' => null
+            );
+            $result = $this->User->insert_user($data);
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+        else{
+            $output["status"] = false;
+            $output["data"] = "username ซ้ำ";
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+        }
+
+    }
     
 }

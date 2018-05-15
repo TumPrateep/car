@@ -1,5 +1,5 @@
 
-    
+
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
@@ -21,20 +21,36 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
+                  <form id="submit">
+                    <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
                     <div class="card-body black bg-light">
-                      <div class="form-group">
-                        <label>ชื่อรุ่นรถ</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-fw fa-car"></i></span>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>ชื่อรุ่นรถ</label>
+                            <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ" name="modelName">
                           </div>
-                          <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>ปีที่เริ่ม</label>
+                            <input type="number" class="form-control" placeholder="ปีที่เริ่ม" name="yearStart">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>ปีที่สิ้นสุด</label>
+                            <input type="number" class="form-control" placeholder="ปีที่สิ้นสุด" name="yearEnd">
+                          </div>
                         </div>
                       </div>
                       <div class="form-group">
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <button type="submit" class="btn btn-primary ">บันทึก</button>
                       </div>
                     </div>
+                    </form>
                     <!-- /.card-body -->
                  
                 </div>
