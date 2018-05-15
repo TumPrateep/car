@@ -13,3 +13,5 @@
     <script src="<?=base_url("/public/js/sb-admin.min.js") ?>"></script>
    
     <script src="<?=base_url("/public/js/setup.js") ?>"></script>
+
+    <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
