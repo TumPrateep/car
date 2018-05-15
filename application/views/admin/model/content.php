@@ -3,10 +3,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">ยี่ห้อรถ</a>
+        <a href="<?=base_url("car") ?>">ยี่ห้อรถ</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="#">รุ่น</a>
+          <a href="<?=base_url("car/model/$id") ?>">รุ่น</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
