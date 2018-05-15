@@ -124,11 +124,11 @@
           <div class="field"><label>ชื่อผู้ใช้งาน</label>
               <input class="ui input" type="text" id="username" name="username" placeholder="ชื่อผู้ใช้งาน">
           </div>
-          <div class="field"><label>อีเมล</label>
-              <input type="text" id="email" name="email" placeholder="อีเมล">
-          </div>
           <div class="field"><label>เบอร์โทรศัพท์</label>
               <input type="text" id="phone" name="phone" placeholder="เบอร์โทรศัพท์">
+          </div>
+          <div class="field"><label>อีเมล</label>
+              <input type="text" id="email" name="email" placeholder="อีเมล">
           </div>
           <div class="field"><label>รหัสผ่าน</label>
               <input type="password" id="password" name="password" placeholder="รหัสผ่าน">
