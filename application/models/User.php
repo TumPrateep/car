@@ -20,5 +20,17 @@ class User extends CI_Model{
         return true;
     }
 
+    function getUser($id){
+        $this->db->where('id',$id);
+        $result = $this->db->get('users')->row();
+        return $result;
+    }
+
+    function delete($id){
+        $this->db->not_in("username" , "admin");
+        return $this->db->delete('users', array('id' => $id));
+    }
+
+
 	
 }
