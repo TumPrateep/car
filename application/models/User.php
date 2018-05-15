@@ -114,7 +114,5 @@ class User extends CI_Model{
         $this->db->where_not_in("username" , "admin");
         return $this->db->delete('users', array('id' => $id));
     }
-
-
 	
 }
