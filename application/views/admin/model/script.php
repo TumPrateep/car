@@ -71,7 +71,8 @@
         var option = {
             url: "/car/deleteModel?modelId="+data.modelId,
             label: "ลบรุ่นรถ",
-            content: "คุณต้องการลบ "+data.modelName+" ใช่หรือไม่"
+            content: "คุณต้องการลบ "+data.modelName+" ใช่หรือไม่",
+            gotoUrl: "car/model/"+data.modelId
         }
         fnDelete(option);
     } );
