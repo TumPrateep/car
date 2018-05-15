@@ -1,4 +1,4 @@
-<body class="fixed-nav sticky-footer bg-dark loading-modal" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Start Bootstrap</a>
