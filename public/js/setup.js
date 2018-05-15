@@ -30,9 +30,9 @@ function showMessage(message, url=null){
     modalUrl = url;
 }
 
-$("#success-modal").on('show.bs.modal', function () {
+$("#success-modal").on('hidden.bs.modal', function () {
     if(modalUrl != null){
-        window.location.assign(base_url+url);
+        window.location.assign(base_url+modalUrl);
     }
 });
 
