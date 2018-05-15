@@ -3,6 +3,7 @@
 if(!defined('BASEPATH')) exit('No direct script allowed');
 
 class User extends CI_Model{
+
     function allUser_count($Id)
     {   
         $this->db->where("Id", $Id);
@@ -55,14 +56,13 @@ class User extends CI_Model{
         }
     }
 
-    function user_search_count($search,$Id)
+    function user_search_count($search)
     {
-        $this->db->where("Id", $Id);
         $query = $this
                 ->db
                 ->like('username',$search)
-                ->like('email',$search)
-                ->like('phone',$search)
+                ->or_like('email',$search)
+                ->or_like('phone',$search)
                 ->get('users');
     
         return $query->num_rows();
@@ -74,12 +74,8 @@ class User extends CI_Model{
     
     function checkUser($username,$email,$phone){
         $this->db->select("username");
-        $this->db->select("email");
-        $this->db->select("phone");
         $this->db->from("users");
         $this->db->where("username", $username);
-        $this->db->where("email", $email);
-        $this->db->where("phone", $phone);
         $result = $this->db->count_all_results();
 
         if($result > 0){
@@ -87,19 +83,10 @@ class User extends CI_Model{
         }
         return true;
     }
+    
     function check_User($id){
         $this->db->where('id',$id);
         $result = $this->db->get('users')->row();
-        return $result;
-    }
-
-    function delete($id){
-        return $this->db->delete('users', array('id' => $id));
-    }
-
-    function update($data){
-        $this->db->where('id',$data['id']);
-        $result = $this->db->update('users', $data);
         return $result;
     }
 
@@ -124,7 +111,7 @@ class User extends CI_Model{
     }
 
     function delete($id){
-        $this->db->not_in("username" , "admin");
+        $this->db->where_not_in("username" , "admin");
         return $this->db->delete('users', array('id' => $id));
     }
 
