@@ -19,4 +19,6 @@
 
   <link href="<?=base_url("/public/css/custom.css") ?>" rel="stylesheet">
 
+  <link href="<?=base_url("/public/css/loading.css") ?>" rel="stylesheet">
+
 </head>

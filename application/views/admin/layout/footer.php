@@ -29,6 +29,28 @@
       </div>
     </div>
 
+    <div class="modal-loading" id="loading">
+      <div class="modal-loading-content">
+        <div class="cssload-bell">
+            <div class="cssload-circle">
+              <div class="cssload-inner"></div>
+            </div>
+            <div class="cssload-circle">
+              <div class="cssload-inner"></div>
+            </div>
+            <div class="cssload-circle">
+              <div class="cssload-inner"></div>
+            </div>
+            <div class="cssload-circle">
+              <div class="cssload-inner"></div>
+            </div>
+            <div class="cssload-circle">
+              <div class="cssload-inner"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+
     <script>
       function logout(){
         localStorage.clear();
