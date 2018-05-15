@@ -24,11 +24,23 @@
                     <div class="card-body black bg-light">
                       <div class="form-group">
                         <label>ชื่อรุ่นรถ</label>
+                        <button class="btn btn-info car">เพิ่มจำนวนรุ่น</button>
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-fw fa-car"></i></span>
                           </div>
                           <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-fw fa-car"></i></span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ">
+                          <div class="input-group-append">
+                            <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                          </div>
                         </div>
                       </div>
                       <div class="form-group">

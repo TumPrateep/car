@@ -247,3 +247,6 @@
     padding-top: 0.8em; 
     padding-left: 0.5em;
   }
+  .input-group.car{
+    padding-top: 1em !important;
+  }
