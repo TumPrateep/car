@@ -19,8 +19,15 @@ function fnDelete(option) {
    deleteUrl = base_url+"api"+option.url;
 }
 
+function showMessage(message){
+    if(message == 200){
+        $("#success-modal").modal("show");
+    }
+}
+
 $("#btn-delete-modal").click(function(){
     $.get(deleteUrl,{},function(data){
-        alert(data.message);
+        $("#delete-modal").modal("hide");
+        showMessage(data.message);
     });
 })
