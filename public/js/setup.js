@@ -27,7 +27,7 @@ function showMessage(message, url=null){
     }
 
     if(url != null){
-        window.location.assign(url);
+        window.location.assign(base_url+url);
     }
 }
 
