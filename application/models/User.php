@@ -4,18 +4,18 @@ if(!defined('BASEPATH')) exit('No direct script allowed');
 
 class User extends CI_Model{
 
-    function allUser_count($Id)
+    function allUser_count($id)
     {   
-        $this->db->where("Id", $Id);
+        $this->db->where("id", $id);
         $query = $this->db->get('users');
     
         return $query->num_rows();  
 
     }
     
-    function allUser($limit,$start,$col,$dir,$Id)
+    function allUser($limit,$start,$col,$dir,$id)
     {   
-        $this->db->where("Id", $Id);
+        $this->db->where("id", $id);
        $query = $this
                 ->db
                 ->limit($limit,$start)
@@ -33,9 +33,9 @@ class User extends CI_Model{
         
     }
    
-    function user_search($limit,$start,$search,$col,$dir,$Id)
+    function user_search($limit,$start,$search,$col,$dir,$id)
     {
-        $this->db->where("Id", $Id);
+        $this->db->where("id", $id);
         $query = $this
                 ->db
                 ->like('username',$search)
