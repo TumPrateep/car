@@ -19,6 +19,7 @@ function fnDelete(option) {
    deleteUrl = base_url+"api"+option.url;
 }
 
+var modalUrl = null;
 function showMessage(message, url=null){
     if(message == 200){
         $("#success-modal").modal("show");
@@ -26,10 +27,14 @@ function showMessage(message, url=null){
         alert(message);
     }
 
-    if(url != null){
+    modalUrl = url;
+}
+
+$("#success-modal").on('show.bs.modal', function () {
+    if(modalUrl != null){
         window.location.assign(base_url+url);
     }
-}
+});
 
 $("#btn-delete-modal").click(function(){
     $.get(deleteUrl,{},function(data){
