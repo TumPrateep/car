@@ -65,9 +65,15 @@
 
     });
 
-    $('#brand-table tbody').on( 'click', 'button.delete', function () {
+    $('#model-table tbody').on( 'click', 'button.delete', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        alert( data.brandId );
+        // alert( data.brandId );
+        var option = {
+            url: "/car/deleteModel?modelId="+data.modelId,
+            label: "ลบรุ่นรถ",
+            content: "คุณต้องการลบ "+data.modelName+" ใช่หรือไม่"
+        }
+        fnDelete(option);
     } );
 
     $("#btn-search").click(function(){
