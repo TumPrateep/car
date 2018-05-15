@@ -22,24 +22,40 @@
                   <!-- /.card-header -->
                   <!-- form start -->
                     <div class="card-body black bg-light">
-                      <div class="form-group">
-                        <label>ชื่อรุ่นรถ</label>
-                        <button class="btn btn-info car">เพิ่มจำนวนรุ่น</button>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-fw fa-car"></i></span>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>ชื่อรุ่นรถ</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-fw fa-car"></i></span>
+                              </div>
+                              <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ">
+                            </div>
                           </div>
-                          <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ">
                         </div>
                       </div>
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-fw fa-car"></i></span>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>ปีที่เริ่ม</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-calendar-o"></i></span>
+                              </div>
+                              <input type="number" class="form-control" placeholder="ปีที่เริ่ม">
+                            </div>
                           </div>
-                          <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ">
-                          <div class="input-group-append">
-                            <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label>ปีที่สิ้นสุด</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-calendar-o"></i></span>
+                              </div>
+                              <input type="number" class="form-control" placeholder="ปีที่สิ้นสุด">
+                            </div>
                           </div>
                         </div>
                       </div>
