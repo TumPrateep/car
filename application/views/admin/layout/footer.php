@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-
+    <!-- Delete Modal-->
     <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -38,10 +38,61 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body" id="content-delete"></div>
+          <div class="modal-body" id="content-delete"><i class="fa fa-trash-o"></i>Delete</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
             <a class="btn btn-primary" href="#" id="btn-delete-modal">ลบ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Success Modal-->
+    <div class="modal fade" id="success-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="lebel-success">Success</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body" id="content-success"><i class="fa fa-check"></i>Success</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">ปิด</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Warning Modal-->
+    <div class="modal fade" id="warning-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="lebel-warning">Warning</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body" id="content-warning"><i class="fa fa-exclamation"></i>Warning</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">ปิด</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Danger Modal-->
+    <div class="modal fade" id="danger-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="lebel-danger">Danger</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body" id="content-danger"><i class="fa fa-times" ></i>Danger</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">ปิด</button>
           </div>
         </div>
       </div>

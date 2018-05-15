@@ -6,57 +6,56 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse " id="navbarResponsive">
-      <ul class="navbar-nav navbar-sidenav bg-green" id="exampleAccordion" >
-      <!-- style="background-color: #4dff4d;" -->
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="<?=base_url("car") ?>">
+      <ul class="navbar-nav navbar-sidenav bg-green " id="exampleAccordion" >
+        <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link text-white" href="<?=base_url("car") ?>">
             <i class="fa fa-fw fa-car"></i>
             <span class="nav-link-text">ยี่ห้อรถ</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link text-white" href="charts.html">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Charts</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link text-white" href="tables.html">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Tables</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+          <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">Components</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.html">Navbar</a>
+              <a class="text-white" href="navbar.html">Navbar</a>
             </li>
             <li>
-              <a href="cards.html">Cards</a>
+              <a class="text-white" href="cards.html">Cards</a>
             </li>
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+          <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-file"></i>
             <span class="nav-link-text">Example Pages</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="login.html">Login Page</a>
+              <a class="text-white" href="login.html">Login Page</a>
             </li>
             <li>
-              <a href="register.html">Registration Page</a>
+              <a class="text-white" href="register.html">Registration Page</a>
             </li>
             <li>
-              <a href="forgot-password.html">Forgot Password Page</a>
+              <a class="text-white" href="forgot-password.html">Forgot Password Page</a>
             </li>
             <li>
-              <a href="blank.html">Blank Page</a>
+              <a class="text-white" href="blank.html">Blank Page</a>
             </li>
           </ul>
         </li>
