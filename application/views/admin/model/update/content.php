@@ -6,7 +6,9 @@
         <li class="breadcrumb-item">
           <a href="<?=base_url("car") ?>">ยี่ห้อรถ</a>
         </li>
-        <li class="breadcrumb-item active">รุ่นรถ</li>
+        <li class="breadcrumb-item">
+          <a href="<?=base_url("car/model/$id") ?>">รุ่น</a>
+        </li>
         <li class="breadcrumb-item active">เเก้ไขข้อมูล</li>
       </ol>
       <!-- Icon Cards-->
@@ -17,7 +19,7 @@
               <div class="card text-white bg-success">
                   <div class="card-header">
 
-                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เเก้ไขข้อมูลรุ่นรถ</h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เเก้ไขข้อมูลรุ่น</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -27,7 +29,7 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label>ชื่อรุ่นรถ</label>
+                            <label>ชื่อรุ่น</label>
                             <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ" name="modelName">
                           </div>
                         </div>
