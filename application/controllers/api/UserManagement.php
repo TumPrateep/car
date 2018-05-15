@@ -28,14 +28,12 @@ class UserManagement extends BD_Controller {
 
         $totalFiltered = $totalData; 
         
-        if(empty($this->post('username')) || empty($this->post('phone')) || empty($this->post('email')))
+        if(empty($this->post('search')))
         {            
             $posts = $this->User->allUser($limit,$start,$order,$dir);
         }
         else {
-            $search = $this->post('username');
-            $search = $this->post('phone');
-            $search = $this->post('email'); 
+            $search = $this->post('search'); 
 
             $posts =  $this->User->user_search($limit,$start,$search,$order,$dir);
 

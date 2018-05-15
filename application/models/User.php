@@ -13,9 +13,9 @@ class User extends CI_Model{
 
     }
     
-    function allUser($limit,$start,$col,$dir,$id)
+    function allUser($limit,$start,$col,$dir)
     {   
-        $this->db->where("id", $id);
+        
        $query = $this
                 ->db
                 ->limit($limit,$start)
@@ -39,8 +39,8 @@ class User extends CI_Model{
         $query = $this
                 ->db
                 ->like('username',$search)
-                ->like('email',$search)
-                ->like('phone',$search)
+                ->or_like('email',$search)
+                ->or_like('phone',$search)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('users');
