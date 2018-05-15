@@ -22,17 +22,12 @@
                     <div class="card-body black bg-light">
                       <div class="form-group">
                         <label>ชื่อยี่ห้อรถ</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-fw fa-car"></i></span>
-                          </div>
-                          <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ">
-                        </div>
+                        <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
+                        <label for="exampleInputFile">รูปภาพ</label>
                         <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                        <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                        <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่ต้องการจะเพิ่ม</small>
                       </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">บันทึก</button>
