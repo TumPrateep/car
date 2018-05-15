@@ -4,7 +4,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">ยื่ห้อรถ</a>
+          <a href="<?=base_url("car") ?>">ยี่ห้อรถ</a>
         </li>
         <li class="breadcrumb-item active">รุ่นรถ</li>
         <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
