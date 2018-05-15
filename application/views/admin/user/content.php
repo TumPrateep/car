@@ -3,60 +3,31 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("car/createUser") ?>">เพิ่มข้อมูลผู้ใช้</a>
+          <a href="<?=base_url("car/User") ?>">ข้อมูลผู้ใช้งาน</a>
         </li>
-        <li class="breadcrumb-item active">รายละเอียด</li>
+        <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
 
       <!-- Example DataTables Card-->
         
-    	<section class="content">
-	        <div class="container-fluid">
-	          <div class="row">
-	            <div class="col-md-10">
-	              <div class="card text-white bg-success">
-	                  <div class="card-header">
-	                    <h3 class="card-title"><i class="fa fa-user-circle-o" ></i>เพิ่มข้อมูลผู้ใช้งาน</h3>
-	                  </div>
-	                  <!-- /.card-header -->
-	                  <!-- form start -->
-	                    <div class="card-body black bg-light">
-	                      <div class="form-group">
-	                        <label>ชื่อผู้ใช้งาน</label>
-	                        <div class="input-group">
-	                          <div class="input-group-prepend">
-	                            <span class="input-group-text"><i class="fa fa-user" ></i></span>
-	                          </div>
-	                          <input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน">
-	                        </div>
-	                      </div>
-	                      <div class="form-group">
-	                        <label>เบอร์โทรศัพท์</label>
-	                        <div class="input-group">
-	                          <div class="input-group-prepend">
-	                            <span class="input-group-text"><i class="fa fa-phone-square"></i></span>
-	                          </div>
-	                          <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์">
-	                        </div>
-	                      </div>
-	                      <div class="form-group">
-	                        <label>อีเมล</label>
-	                        <div class="input-group">
-	                          <div class="input-group-prepend">
-	                            <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
-	                          </div>
-	                          <input type="text" class="form-control" placeholder="อีเมล">
-	                        </div>
-	                      </div>
-	                      
-	                      <div class="form-group">
-	                        <button type="submit" class="btn btn-primary">บันทึก</button>
-	                      </div>
-	                    </div>
-	                    <!-- /.card-body -->
-	                 
-	                </div>
-	              </div>
-	          </div>
-	        </div>
-	     </section>
+    <div class="card-tools">
+        <div class="input-group input-group-sm float-right">
+          <a href="<?=base_url("car/createUser") ?>"><button class="btn btn-success"><i class="fa fa-plus"> สร้าง</i></button></a>
+          <input type="text" name="table_search" id="table-search" class="form-control float-right" placeholder="ค้นหา">
+          <div class="input-group-append">
+            <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+    </div>
+    
+    <div class="table-responsive">
+      <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
+        <thead>
+          <th>ลำดับ</th>
+          <th>ชื่อผู้ใช้งาน</th>
+          <th>เบอร์โทรศัพท์</th>
+          <th>อีเมล</th>
+          <th></th>
+        </thead>	
+      </table>
+    </div>
