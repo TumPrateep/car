@@ -67,7 +67,12 @@
 
     $('#brand-table tbody').on( 'click', 'button.delete', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        alert( data.brandId );
+        var option = {
+            url: "/car/deleteBrand?brandId="+data.brandId,
+            label: "ลบยี่ห้อรถ",
+            content: "คุณต้องการลบ "+data.brandName+" ใช่หรือไม่"
+        }
+        fnDelete(option);
     } );
 
     $("#btn-search").click(function(){
