@@ -19,10 +19,11 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
+                  <form id="create-brand">
                   <div class="card-body black bg-light">
                       <div class="form-group">
                         <label>ชื่อยี่ห้อรถ</label>
-                        <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ">
+                        <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputFile">รูปภาพ</label>
@@ -33,6 +34,7 @@
                         <button type="submit" class="btn btn-primary">บันทึก</button>
                       </div>
                     </div>
+                  </form> 
                     <!-- /.card-body -->
                  
                   </div>
