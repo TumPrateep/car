@@ -2,12 +2,12 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends BD_Controller {
+class UserManagement extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
-        //$this->auth();
+        // $this->auth();
     }
 
     function search_post(){
@@ -24,7 +24,7 @@ class User extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
 
         $this->load->model("User");
-        $totalData = $this->user->allUser_count();
+        $totalData = $this->User->allUser_count();
 
         $totalFiltered = $totalData; 
         
@@ -67,82 +67,8 @@ class User extends BD_Controller {
 
         $this->set_response($json_data);
     }
-    
 
-    function createUser_post(){
-
-        $Id = $this->post("Id");
-
-        $data = array(
-            'Id' => $Id,
-            'status' => 1
-        );
-
-        
-        $this->load->model("User");
-        $isCheck = $this->User->User_search($data);
-        if($isCheck){
-            $result = $this->User->insert_User($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }
-        else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-    }
-
-    function createUser_post(){
-
-        $Id = $this->post("Id");
-        $username = $this->post("username");
-        $phone = $this->post("phone");
-        $email = $this->post("email");
-        
-       
-
-        $this->load->model("User");
-        $isCheck = $this->Model->get_checkUser($Id,$username,$phone,$email);
-
-        if($isCheck){
-            $data = array(
-                'Id' => null,
-                'username' => $username,
-                'phone' => $phone,
-                'email' => $email,
-                'status' => 1,
-               
-            );
-            $result = $this->User->insert_user($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-
-        }
-        else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-
-
-    }
-
-    function deleteUser_get(){
+    function delete_get(){
         $id = $this->get('id');
         
         $this->load->model("User");
@@ -161,3 +87,5 @@ class User extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+    
+}

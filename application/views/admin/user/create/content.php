@@ -20,6 +20,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
+                    <form id="group">
                       <div class="card-body black bg-light">
                         <div class="form-group">
                           <label>ชื่อผู้ใช้งาน</label>
@@ -27,7 +28,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fa fa-user" ></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน">
+                            <input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน" name="userName">
                           </div>
                         </div>
                         <div class="form-group">
@@ -36,7 +37,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fa fa-phone-square"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์">
+                            <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์" name="phoneNumber"> 
                           </div>
                         </div>
                         <div class="form-group">
@@ -53,6 +54,7 @@
                           <button type="submit" class="btn btn-primary">บันทึก</button>
                         </div>
                       </div>
+                      </form>
                       <!-- /.card-body -->
                    
                   </div>
