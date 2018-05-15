@@ -120,6 +120,7 @@
           <div class="field">
               <h2 class="ui container center header">สมัครเข้าใช้งาน</h2>
           </div>
+          <div class="ui red message text-left hide" id="error-message">ชื่อผู้ใช้ซ้ำ</div>
           <div class="field"><label>ชื่อผู้ใช้งาน</label>
               <input class="ui input" type="text" id="username" name="username" placeholder="ชื่อผู้ใช้งาน">
           </div>
@@ -159,7 +160,7 @@
       function register(){
         event.preventDefault();
         var isValid = $("#form-register").valid();
-        
+        $("#error-message").hide();
         if(isValid){
           var data = $("#form-register").serialize();
           $.post(base_url+"api/register/register",data,
@@ -169,8 +170,10 @@
               }
             }
           )
-          .fail(function() {
-            $("#error-message").show();
+          .fail(function(data) {
+            if(data.responseJSON.message == 3001){
+              $("#error-message").show();
+            }
           })
         }
       
