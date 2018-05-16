@@ -56,7 +56,10 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body" id="content-success"><i class="fa fa-check"></i>Success</div>
+          <div class="modal-body" >
+            <h1 class="display-3 text-center"><i class="fa fa-check text-success "></i></h1>
+            <h6 class="text-center" id="content-success">Success</h6> 
+          </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">ปิด</button>
           </div>
@@ -73,7 +76,10 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body" id="content-warning"><i class="fa fa-exclamation"></i>Warning</div>
+          <div class="modal-body" >
+            <h1 class="display-3 text-center"><i class="fa fa-exclamation text-warning "></i></h1>
+            <h6 class="text-center" id="content-warning">Warning</h6> 
+          </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">ปิด</button>
           </div>
@@ -90,7 +96,10 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body" id="content-danger"><i class="fa fa-times" ></i>Danger</div>
+          <div class="modal-body" >
+            <h1 class="display-3 text-center"><i class="fa fa-times text-danger "></i></h1>
+            <h6 class="text-center" id="content-danger">Danger</h6> 
+          </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">ปิด</button>
           </div>

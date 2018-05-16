@@ -20,9 +20,9 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link text-white" href="tables.html">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Tables</span>
+          <a class="nav-link text-white" href="<?=base_url("sparepartcar") ?>">
+            <i class="fa fa fa-wrench"></i>
+            <span class="nav-link-text">อะไหล่</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
