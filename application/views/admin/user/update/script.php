@@ -2,19 +2,25 @@
      $("#group").validate({
             rules: {
                 userName: {
-                required: true
+                    required: true
                 },
                 phoneNumber: {
-                required: true
+                    required: true
+                },
+                email: {
+                    email: true
                 } 
             },
             messages: {
                 userName: {
-                required: "กรุณากรอกชื่อผู้ใช้งาน"
+                    required: "กรุณากรอกชื่อผู้ใช้งาน"
                 },
                 phoneNumber: {
-                required: "กรุณากรอกเบอร์โทรศัพท์"
-                }
+                    required: "กรุณากรอกเบอร์โทรศัพท์"
+                },
+                email: {
+                    email: "กรุณากรอกอีเมลให้ถูกต้อง"
+                } 
             },
         });
 

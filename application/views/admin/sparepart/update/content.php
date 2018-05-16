@@ -5,7 +5,7 @@
         <li class="breadcrumb-item">
         <a href="<?=base_url("sparepartcar") ?>">ยี่ห้ออะไหล่</a>
         </li>
-        <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
+        <li class="breadcrumb-item active">เเก้ไขข้อมูล</li>
       </ol>
       <!-- Icon Cards-->
       <section class="content">
@@ -15,7 +15,7 @@
               <div class="card text-white bg-success">
                   <div class="card-header">
 
-                    <h3 class="card-title"><i class="fa fa fa-wrench"></i>เพิ่มยี่ห้ออะไหล่</h3>
+                    <h3 class="card-title"><i class="fa fa fa-wrench"></i>เเก้ไขยี่ห้ออะไหล่</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
