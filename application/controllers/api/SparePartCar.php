@@ -67,15 +67,15 @@ class SparePartCar extends BD_Controller {
 
         $sparesbrandName = $this->post("sparesbrandName");
         
-        $this->load->model("Spare");
-        $isCheck = $this->Spare->getBrandforTF($sparesbrandName);
+        $this->load->model("Sparesbrand");
+        $isCheck = $this->Sparesbrand->getBrandforTF($sparesbrandName);
 
         if($isCheck){
             $data = array(
                 'sparesbrandId' => null,
                 'sparesbrandName' => $sparesbrandName
             );
-            $result = $this->Spare->insertBrand($data);
+            $result = $this->Sparesbrand->insertBrand($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -174,12 +174,12 @@ class SparePartCar extends BD_Controller {
     function getSpare_post(){
 
         $sparesId = $this->post('sparesId');
-        $this->load->model("Spare");
-        $isCheck = $this->Spare->getSparebyId($sparesId);
+        $this->load->model("Sparesbrand");
+        $isCheck = $this->Sparesbrand->getSparebyId($sparesId);
 
         if($isCheck){
             $output["status"] = true;
-            $result = $this->Spare->getSpare($sparesId);
+            $result = $this->Sparesbrand->getSpare($sparesId);
             if($result != null){
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
