@@ -259,10 +259,11 @@ CREATE TABLE `spares` (
   `sparesId` int(11) NOT NULL AUTO_INCREMENT,
   `sparesName` varchar(45) DEFAULT NULL,
   `sparesbrandId` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
   PRIMARY KEY (`sparesId`),
   KEY `fk_spares_sparesBrand1_idx` (`sparesbrandId`),
   CONSTRAINT `fk_spares_sparesBrand1` FOREIGN KEY (`sparesbrandId`) REFERENCES `sparesbrand` (`sparesbrandId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -271,6 +272,7 @@ CREATE TABLE `spares` (
 
 LOCK TABLES `spares` WRITE;
 /*!40000 ALTER TABLE `spares` DISABLE KEYS */;
+INSERT INTO `spares` VALUES (1,'ลูกปืนล้อหน้า',1,1),(2,'ลูกปืนล้อหลัง',1,1),(3,'ผ้าเบรคหน้า',1,1),(4,'ผ้าเบรคหลัง',1,1),(5,'โช้คอัพหน้า',1,1),(6,'โช้คอัพหลัง',1,1),(7,'ชุดประกอบ',1,1),(8,'ปีกนกล่างหน้าซ้าย (ไม่มีลูกหมาก)',1,1),(9,'ปีกนกล่างหน้าขวา (ไม่มีลูกหมาก)',1,1),(10,'ปีกนกบนหน้าซ้าย (ไม่มีลูกหมาก)',1,1),(11,'ปีกนกบนหน้าขวา (ไม่มีลูกหมาก)',1,1),(12,'คานหลังซ้าย',1,1),(13,'คานหลังขวา',1,1),(14,'ลูกหมากปีกนกบนซ้าย',1,1),(15,'ลูกหมากปีกนกบนขวา',1,1),(16,'ลูกหมากปีกนกล่างซ้าย',1,1),(17,'ลูกหมากปีกนกล่างขวา',1,1),(18,'ลูกหมากคันชักนอกซ้าย (สั้น)',1,1),(19,'ลูกหมากคันชักนอกขวา(สั้น)',1,1),(20,'ลูกหมากคันชักในซ้าย (ยาว)',1,1),(21,'ลูกหมากคันชักในขวา (ยาว)',1,1),(22,'คันส่งกลาง',1,1),(23,'กล้องยา',1,1),(24,'ขาไก่กระปุกพวงมาลัย',1,1),(25,'ลูกหมากแร็คซ้าย',1,1),(26,'ลูกหมากแร็คขวา',1,1),(27,'ลูกหมากกันโคลงหน้าซ้าย',1,1),(28,'ลูกหมากกันโคลงหน้าขวา',1,1),(29,'ยางแท่งเครื่อง',1,1),(30,'ยางเพลากลาง',1,1),(31,'สายพานไทมิ่ง',1,1),(32,'ครัช (แผ่น หวี ลูกปืน)',1,1),(33,'อื่นๆ.....(ให้เพิ่มเอง)',1,1);
 /*!40000 ALTER TABLE `spares` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,9 +285,10 @@ DROP TABLE IF EXISTS `sparesbrand`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sparesbrand` (
   `sparesbrandId` int(11) NOT NULL AUTO_INCREMENT,
-  `sparesbrandName` varchar(255) DEFAULT NULL,
+  `sparesbrandName` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
   PRIMARY KEY (`sparesbrandId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,6 +297,7 @@ CREATE TABLE `sparesbrand` (
 
 LOCK TABLES `sparesbrand` WRITE;
 /*!40000 ALTER TABLE `sparesbrand` DISABLE KEYS */;
+INSERT INTO `sparesbrand` VALUES (1,'TRW',1);
 /*!40000 ALTER TABLE `sparesbrand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -461,4 +465,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-16 14:49:10
+-- Dump completed on 2018-05-16 15:32:39
