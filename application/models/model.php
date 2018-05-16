@@ -82,11 +82,10 @@ class Model extends CI_Model{
         return true;
     }
 
-    function get_modelbyId($brandId,$modelId){
-        $this->db->select("$modelId");
+    function get_modelbyId($modelId){
+        $this->db->select("modelId");
         $this->db->from("model");
-        $this->db->where('$modelId', $$modelId);
-        $this->db->where('brandId', $brandId);
+        $this->db->where('modelId', $$modelId);
         $result = $this->db->count_all_results();
 
         if($result > 0){

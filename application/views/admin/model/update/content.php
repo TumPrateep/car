@@ -31,7 +31,7 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>ชื่อรุ่น</label>
-                            <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ" name="modelName" value="<?=$modelName?>">
+                            <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ" id="modelName" name="modelName" value="">
                           </div>
                         </div>
                       </div>
@@ -39,13 +39,13 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label>ปีที่เริ่ม</label>
-                            <input type="number" class="form-control" placeholder="ปีที่เริ่ม" name="yearStart" value="<?$yearStart?>">
+                            <input type="number" class="form-control" placeholder="ปีที่เริ่ม" id="yearStart" name="yearStart" value="">
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <label>ปีที่สิ้นสุด</label>
-                            <input type="number" class="form-control" placeholder="ปีที่สิ้นสุด" name="yearEnd" value="<?$yearEnd?>">
+                            <input type="number" class="form-control" placeholder="ปีที่สิ้นสุด" id="yearEnd" name="yearEnd" value="">
                           </div>
                         </div>
                       </div>

@@ -403,7 +403,7 @@ class Car extends BD_Controller {
 
     function getModel_post(){
 
-        $brandName = $this->post('modelId');
+        $modelId = $this->post('modelId');
         $this->load->model("Model");
         $isCheck = $this->Model->get_modelbyId($modelId);
 
@@ -412,6 +412,7 @@ class Car extends BD_Controller {
             $result = $this->Model->getmodel($modelId);
             if($result != null){
                 $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
                 $output["message"] = REST_Controller::MSG_ERROR;

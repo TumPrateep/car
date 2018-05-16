@@ -32,7 +32,7 @@ abstract class REST_Controller extends CI_Controller {
 
     const MSG_LOGIN_FAIL = 2001;
 
-    const MSG_ERROR = 400;
+    const MSG_ERROR = 404;
 
     // Informational
 

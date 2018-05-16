@@ -1,15 +1,22 @@
 <script>
 
-    $.post(base_url+"api/car/getModel",data,
-    function(data){
-        var modelId = $("#modelId").val();
-        var brandId = $("#brandId").val();
-        var yearStart = $("#yearStart").val();
-        var yearEnd = $("#yearEnd").val();
-       
+    var modelId = $("#modelId").val();
+    var brandId = $("#brandId").val();
+
+    $.post(base_url+"api/car/getModel",{
+        "modelId": $("#modelId").val()
+    },function(data){
         if(data.message!=200){
-            showMessage(data.message,"car/model/"+modelId);
+            showMessage(data.message,"car/model/"+brandId+"/"+modelId);
         }
+
+        if(data.message == 200){
+            result = data.data;
+            $("#modelName").val(result.modelName);
+            $("#yearStart").val(result.yearStart);
+            $("#yearEnd").val(result.yearEnd);
+        }
+        
     });
     
     $("#submit").validate({
@@ -32,21 +39,20 @@
     });
 
 
-    // function updateModel(){
-    //         event.preventDefault();
-    //         var isValid = $("#submit").valid();
+    function updateModel(){
+            event.preventDefault();
+            var isValid = $("#submit").valid();
             
-    //         if(isValid){
-    //             var data = $("#submit").serialize();
-    //             $.post(base_url+"api/car/updateModel",data,
-    //             function(data){
-    //                 var brandId = $("#brandId").val();
-    //                 showMessage(data.message,"car/model/"+brandId);
-    //             });
+            if(isValid){
+                var data = $("#submit").serialize();
+                $.post(base_url+"api/car/updateModel",data,
+                function(data){
+                    var brandId = $("#brandId").val();
+                    showMessage(data.message,"car/model/"+brandId);
+                });
                 
-    //         }
-    //     }
-    // });
+            }
+        }
 
 </script>
 
