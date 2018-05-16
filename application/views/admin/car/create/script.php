@@ -2,12 +2,12 @@
       $("#create-brand").validate({
         rules: {
             brandName: {
-            required: true
+                required: true
             },
         },
         messages: {
             brandName: {
-            required: "กรุณากรอกยี่ห้อรถ"
+                required: "กรุณากรอกยี่ห้อรถ"
             }
         },
     });

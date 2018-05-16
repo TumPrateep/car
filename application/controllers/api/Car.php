@@ -205,12 +205,13 @@ class Car extends BD_Controller {
                 $output["data"] = $result;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
-                $output["message"] = REST_Controller::MSG_ERROR;
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }else{
             $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_ERROR;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
 
@@ -415,12 +416,13 @@ class Car extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
-                $output["message"] = REST_Controller::MSG_ERROR;
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }else{
             $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_ERROR;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
 

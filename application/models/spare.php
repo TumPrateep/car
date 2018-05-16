@@ -128,4 +128,36 @@ class Spare extends CI_Model{
     }
 
 
+    function checkSpareBrand($sparesbrandName) {
+        $this->db->select("*");
+        $this->db->from("sparesbrand");
+        $this->db->where('sparesbrandName',$sparesbrandName);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    function getSparebyId($sparesId){
+        $this->db->select("sparesId");
+        $this->db->from("spares");
+        $this->db->where('sparesId', $$sparesId);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+
+    function getSpare($sparesId){
+        $this->db->where('sparesId',$sparesId);
+        $result = $this->db->get('spares')->row();
+        return $result;
+    }
+
 }
