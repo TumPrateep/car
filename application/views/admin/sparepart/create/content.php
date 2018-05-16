@@ -19,14 +19,13 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form id="submit">
-                    <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
+                  <form id="spares">
                     <div class="card-body black bg-light">
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>ชื่อยี่ห้ออะไหล่</label>
-                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้ออะไหล่" name="spareName">
+                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้ออะไหล่" name="sparesbrandName">
                           </div>
                         </div>
                       </div>
