@@ -20,6 +20,7 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form id="group">
+                      <input type="hidden" name="id" value="<?=$id ?>">
                       <div class="card-body black bg-light">
                         <div class="form-group">
                           <label>ชื่อผู้ใช้งาน</label>
@@ -31,7 +32,7 @@
                         </div>
                         <div class="form-group">
                           <label>อีเมล</label>
-                          <input type="text" class="form-control" placeholder="อีเมล">
+                          <input type="text" class="form-control" placeholder="อีเมล" name="email">
                         </div>
                         
                         <div class="form-group">
