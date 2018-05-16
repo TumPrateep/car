@@ -32,6 +32,16 @@ class SparePartCar extends CI_Controller {
 		$this->load->view("admin/sparepart/create/script");
 	}
 
+	public function updatespare(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/sparepart/update/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/sparepart/update/script");
+	}
+
 	public function typespare(){
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
@@ -52,5 +62,14 @@ class SparePartCar extends CI_Controller {
 		$this->load->view("admin/typespare/create/script");
 	}
 	
+	public function updatetypespare(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/typespare/update/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/typespare/update/script");
+	}
 
 }
