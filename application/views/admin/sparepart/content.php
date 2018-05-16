@@ -13,7 +13,7 @@
 
         <div class="input-group input-group-sm" >
           <img src="https://image.freepik.com/free-vector/workplace-background-with-laptop_1284-1119.jpg" class="rounded float-left" alt="">
-          <h3 class="car-img">ชื่อยี่ห้อ</h3>
+          <h3 class="car-img">ชื่อยี่ห้ออะไหล่</h3>
         </div>
         <div class="input-group input-group-sm float-right" >
           <a href="<?=base_url("sparepartcar/createspartcar") ?>"><button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button></a>
@@ -32,7 +32,7 @@
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
-          <th>ชื่อรุ่น</th>
+          <th>ชื่อยี่ห้ออะไหล่</th>
           <th></th>
         </thead>	
       </table>
