@@ -3,9 +3,9 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("car") ?>">ยี่ห้ออะไหล่</a>
+        <a href="<?=base_url("sparepartcar") ?>">ยี่ห้ออะไหล่</a>
         </li>
-        <li class="breadcrumb-item active">ค้นหา</li>
+        <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
       </ol>
       <!-- Icon Cards-->
       <section class="content">
