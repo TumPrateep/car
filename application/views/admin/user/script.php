@@ -42,7 +42,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0]
+                    "targets": [0,4]
                 },{
                     "targets": 4,
                     "data": null,
@@ -59,10 +59,10 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [1]},
-                {"className": "dt-center", "targets": [1,2]},
+                {"className": "dt-head-center", "targets": [1,2,3]},
+                {"className": "dt-center", "targets": [0,4]},
                 { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 2 }
+                { "width": "20%", "targets": 3 }
             ]	 
 
     });
@@ -74,7 +74,7 @@
             url: "/UserManagement/delete?id="+data.id,
             label: "ลบข้อมูลผู้ใช้งาน",
             content: "คุณต้องการลบ "+data.username+" ใช่หรือไม่",
-            gotoUrl: "car/User/"
+            gotoUrl: "usermanagement"
         }
         fnDelete(option);
     } );

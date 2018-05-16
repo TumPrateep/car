@@ -118,7 +118,7 @@ class UserManagement extends BD_Controller {
             $output["status"] = false;
             $output["data"] = "username ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }
 
     }

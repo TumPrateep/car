@@ -34,7 +34,7 @@
                 $.post(base_url+"api/UserManagement/create",data,
                 function(data){
                     var username = $("#username").val();
-                    showMessage(data.message,"car/createUser/"+username);
+                    showMessage(data.message,"usermanagement");
                 });
                 
             }
