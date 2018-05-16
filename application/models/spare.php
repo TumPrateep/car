@@ -62,3 +62,20 @@ class Spare extends CI_Model{
     
         return $query->num_rows();
     }
+
+    function insertBrand($data){
+        $result = $this->db->insert('sparesbrand', $data);
+        return $result;
+    }
+
+    function getBrand($sparesbrandName){
+        $this->db->select("sparesbrandName");
+        $this->db->from("sparesbrand");
+        $this->db->where('sparesbrandName', $sparesbrandName);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
