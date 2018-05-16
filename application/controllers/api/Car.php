@@ -194,28 +194,20 @@ class Car extends BD_Controller {
 
     function getBrand_post(){
 
-        $brandName = $this->post('brandName');
+        $brandId = $this->post('brandId');
         $this->load->model("Brand");
-        $isCheck = $this->Brand->check_brand($brandName);
 
-        if($isCheck){
-            $output["status"] = true;
-            $result = $this->Brand->get_brand($brandName);
-            if($result != null){
-                $output["data"] = $result;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+        $output["status"] = true;
+        $result = $this->Brand->getBrandById($brandId);
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $output["status"] = false;
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
-
-
     }
 
     function searchYear_post(){

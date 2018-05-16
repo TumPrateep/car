@@ -1,3 +1,5 @@
+var pathImage = base_url+"public/image/";
+
 $.ajaxSetup({
     beforeSend: function(xhrObj){
         xhrObj.setRequestHeader("Authorization", "Bearer "+localStorage.token)

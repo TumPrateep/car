@@ -1,4 +1,23 @@
 <script>
+
+    var brandId = $("#brandId").val();
+
+    $.post(base_url+"api/car/getBrand",{
+        "brandId": brandId
+    },function(data){
+        if(data.message == 200){
+            result = data.data;
+            $("#brandName").html(result.brandName);
+            var path = pathImage + "brand/"+result.brandPicture;
+            var imageHtml = '<img src="'+ path +'" class="rounded float-left">';
+            $("#brandPicture").html(imageHtml);
+        }
+        
+    });
+
+
+
+
     var table = $('#model-table').DataTable({
         "language": {
                 "aria": {
@@ -80,6 +99,7 @@
     $("#btn-search").click(function(){
         table.ajax.reload();
     })
+    
 </script>
 
 </body>
