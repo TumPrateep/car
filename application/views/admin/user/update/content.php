@@ -1,11 +1,10 @@
- 
-    <div class="container-fluid">
+<div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="<?=base_url("car/User") ?>">ข้อมูลผู้ใช้งาน</a>
         </li>
-        <li class="breadcrumb-item active">เพิ่มผู้ใช้งาน</li>
+        <li class="breadcrumb-item active">เเก้ไขผู้ใช้งาน</li>
       </ol>
 
       <!-- Example DataTables Card-->
@@ -16,7 +15,7 @@
               <div class="col-md-10">
                 <div class="card text-white bg-success">
                     <div class="card-header">
-                      <h3 class="card-title"><i class="fa fa-user-circle-o" ></i>เพิ่มข้อมูลผู้ใช้งาน</h3>
+                      <h3 class="card-title"><i class="fa fa-user-circle-o" ></i>เเก้ไขข้อมูลผู้ใช้งาน</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -24,7 +23,7 @@
                       <div class="card-body black bg-light">
                         <div class="form-group">
                           <label>ชื่อผู้ใช้งาน</label>
-                          <input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน" name="username">
+                          <input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน" name="userName">
                         </div>
                         <div class="form-group">
                           <label>เบอร์โทรศัพท์</label>
@@ -32,7 +31,7 @@
                         </div>
                         <div class="form-group">
                           <label>อีเมล</label>
-                          <input type="text" class="form-control" name="email" placeholder="อีเมล">
+                          <input type="text" class="form-control" placeholder="อีเมล">
                         </div>
                         
                         <div class="form-group">

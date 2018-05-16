@@ -37,7 +37,7 @@ CREATE TABLE `brand` (
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES (1,'Isuzu','ISUZU',1),(2,'Toyota','TOYOTA',1),(3,'Mitsubishi','MITSUBISHI',1),(4,'Nissan','NISSAN',1),(5,'Chevrolet','CHEVROLET',1),(6,'Ford','FORD',1),(7,'Mazda','MAZDA',1),(8,'Honda','HONDA',1);
+INSERT INTO `brand` VALUES (1,'Isuzu.png','ISUZU',1),(2,'Toyota.png','TOYOTA',1),(3,'Mitsubishi.png','MITSUBISHI',1),(4,'Nissan.png','NISSAN',1),(5,'Chevrolet.png','CHEVROLET',1),(6,'Ford.png','FORD',1),(7,'Mazda.png','MAZDA',1),(8,'Honda.png','HONDA',1);
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -354,7 +354,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `category` int(11) NOT NULL,
+  `category` int(11) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -367,7 +367,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe',1,'admin@admin',NULL);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe',1,'admin@admin','0812587469');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -384,4 +384,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-15 13:55:20
+-- Dump completed on 2018-05-16  9:34:06

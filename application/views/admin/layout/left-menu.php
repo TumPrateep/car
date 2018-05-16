@@ -14,7 +14,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link text-white" href="<?=base_url("car/User") ?>">
+          <a class="nav-link text-white" href="<?=base_url("usermanagement") ?>">
             <i class="fa fa-user-plus"></i>
             <span class="nav-link-text">เพิ่มผู้ใช้งาน</span>
           </a>

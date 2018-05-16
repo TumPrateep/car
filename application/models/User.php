@@ -13,9 +13,9 @@ class User extends CI_Model{
 
     }
     
-    function allUser($limit,$start,$col,$dir,$id)
+    function allUser($limit,$start,$col,$dir)
     {   
-        $this->db->where("id", $id);
+        
        $query = $this
                 ->db
                 ->limit($limit,$start)
@@ -39,8 +39,8 @@ class User extends CI_Model{
         $query = $this
                 ->db
                 ->like('username',$search)
-                ->like('email',$search)
-                ->like('phone',$search)
+                ->or_like('email',$search)
+                ->or_like('phone',$search)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('users');
@@ -72,7 +72,7 @@ class User extends CI_Model{
 		return $this->db->insert('users', $data);
     }
     
-    function checkUser($username,$email,$phone){
+    function checkUser($username){
         $this->db->select("username");
         $this->db->from("users");
         $this->db->where("username", $username);
@@ -90,12 +90,13 @@ class User extends CI_Model{
         return $result;
     }
 
-    function wherenot($id,$user){
+    function wherenot($id,$users){
         $this->db->select("users");
         $this->db->from("users");
-        $this->db->where('Id', $d);
+        $this->db->where('id', $id);
         $this->db->where('users', $users);
         $this->db->where_not_in('id', $id);
+        
         $result = $this->db->count_all_results();
 
         if($result > 0){

@@ -24,8 +24,37 @@ function fnDelete(option) {
 function showMessage(message, url=null){
     if(message == 200){
         $("#success-modal").modal("show");
+    }else if(message == 404 || message == 1005 || message == 1004 || message == 1003){
+        $("#lebel-warning").html("คำเตือน");
+        var dangerContent = $("#content-danger");
+        if(message == 1004){
+            dangerContent.html(message);
+        }else if(message == 1005){
+            dangerContent.html(message);
+        }else if(message == 1003){
+            dangerContent.html(message);
+        }else if(message == 404){
+            dangerContent.html(message);
+        }else{
+            dangerContent.html(message);
+        }
+
+        $("#danger-modal").modal("show");
     }else{
-        alert(message);
+        // 1001 1002 3001 3002 2001
+        $("#lebel-warning").html("ผิดพลาด");
+        var warningContent = $("#content-warning");
+        if(message == 1001){
+            warningContent.html(message);
+        }else if(message == 1002){
+            warningContent.html(message);
+        }else if(message == 3001){
+            warningContent.html(message);
+        }else{
+            warningContent.html(message);
+        }
+
+        $("#warning-modal").modal("show");
     }
 
     modalUrl = url;
