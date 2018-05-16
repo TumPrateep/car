@@ -1,8 +1,8 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class Spare extends CI_Model{
+class Sparesbrand extends CI_Model{
 
-    function allSpare_count($brandsbrandId)
+    function allSsparesbrand_count($sparesbrandId)
     {   
         $this->db->where("sparesbrandId", $sparesbrandId);
         $query = $this->db->get('sparesbrand');
@@ -11,7 +11,7 @@ class Spare extends CI_Model{
 
     }
     
-    function allSpare($limit,$start,$col,$dir,$sparesbrandId)
+    function allSparesbrand($limit,$start,$col,$dir,$sparesbrandId)
     {   
         $this->db->where("sparesbrandId", $sparesbrandId);
        $query = $this
@@ -31,7 +31,7 @@ class Spare extends CI_Model{
         
     }
    
-    function spare_search($limit,$start,$search,$col,$dir,$sparesbrandId)
+    function sparesbrand_search($limit,$start,$search,$col,$dir,$sparesbrandId)
     {
         $this->db->where("sparesbrandId", $sparesbrandId);
         $query = $this
@@ -52,13 +52,13 @@ class Spare extends CI_Model{
         }
     }
 
-    function spare_search_count($search, $sparesbrandId)
+    function sparesbrand_search_count($search, $sparesbrandId)
     {
         $this->db->where("sparesbrandId", $sparesbrandId);
         $query = $this
                 ->db
                 ->like('sparesbrandName',$search)
-                ->get('sparesbrandName');
+                ->get('sparesbrand');
     
         return $query->num_rows();
     }

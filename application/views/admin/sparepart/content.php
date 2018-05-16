@@ -2,7 +2,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("car") ?>">ยี่ห้ออะไหล่</a>
+        <a href="<?=base_url("SparePartCar") ?>">ยี่ห้ออะไหล่</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
@@ -24,12 +24,12 @@
         </div>
     </div>
 
-    <input type="hidden" id="brandId" value="<?=$id ?>">
+    <!-- <input type="hidden" id="brandId" value="<?=$id ?>"> -->
   
     
     
     <div class="table-responsive">
-      <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="sparesbrand-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
           <th>ชื่อยี่ห้ออะไหล่</th>

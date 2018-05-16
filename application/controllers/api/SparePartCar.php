@@ -22,21 +22,21 @@ class SparePartCar extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
-        $this->load->model("Spare");
-        $totalData = $this->Spare->allSpare_count();
+        $this->load->model("Sparesbrand");
+        $totalData = $this->Sparesbrand->allSpare_count();
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('sparesbrandName')))
         {            
-            $posts = $this->Spare->allSpare($limit,$start,$order,$dir);
+            $posts = $this->Sparesbrand->allSpare($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('sparesbrandName'); 
 
-            $posts =  $this->Spare->spare_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->Sparesbrand->spare_search($limit,$start,$search,$order,$dir);
 
-            $totalFiltered = $this->Spare->spare_search_count($search);
+            $totalFiltered = $this->Sparesbrand->spare_search_count($search);
         }
 
         $data = array();
