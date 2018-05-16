@@ -13,7 +13,7 @@ class SparePartCar extends BD_Controller {
     function search_post(){
         $columns = array( 
             0 => null,
-            1 => 'brandSpare', 
+            1 => 'sparesbrandName', 
             
         );
 
@@ -27,12 +27,12 @@ class SparePartCar extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('SpareName')))
+        if(empty($this->post('sparesbrandName')))
         {            
             $posts = $this->Spare->allSpare($limit,$start,$order,$dir);
         }
         else {
-            $search = $this->post('SpareName'); 
+            $search = $this->post('sparesbrandName'); 
 
             $posts =  $this->Spare->spare_search($limit,$start,$search,$order,$dir);
 
@@ -45,8 +45,8 @@ class SparePartCar extends BD_Controller {
             foreach ($posts as $post)
             {
 
-                $nestedData['spareId'] = $post->spareId;
-                $nestedData['spareName'] = $post->spareName;
+                $nestedData['sparesbrandId'] = $post->sparesbrandId;
+                $nestedData['sparesbrandName'] = $post->sparesbrandName;
 
                 $data[] = $nestedData;
 

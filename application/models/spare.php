@@ -2,23 +2,23 @@
 
 class Spare extends CI_Model{
 
-    function allSpare_count($brandId)
+    function allSpare_count($brandsbrandId)
     {   
-        $this->db->where("spareId", $spareId);
-        $query = $this->db->get('spare');
+        $this->db->where("sparesbrandId", $sparesbrandId);
+        $query = $this->db->get('sparesbrand');
     
         return $query->num_rows();  
 
     }
     
-    function allSpare($limit,$start,$col,$dir,$spareId)
+    function allSpare($limit,$start,$col,$dir,$sparesbrandId)
     {   
-        $this->db->where("spareId", $spareId);
+        $this->db->where("sparesbrandId", $sparesbrandId);
        $query = $this
                 ->db
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
-                ->get('spare');
+                ->get('sparesbrand');
         
         if($query->num_rows()>0)
         {
@@ -31,15 +31,15 @@ class Spare extends CI_Model{
         
     }
    
-    function spare_search($limit,$start,$search,$col,$dir,$spareId)
+    function spare_search($limit,$start,$search,$col,$dir,$sparesbrandId)
     {
-        $this->db->where("spareId", $spareId);
+        $this->db->where("sparesbrandId", $sparesbrandId);
         $query = $this
                 ->db
-                ->like('spareName',$search)
+                ->like('sparesbrandName',$search)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
-                ->get('spare');
+                ->get('sparesbrand');
         
        
         if($query->num_rows()>0)
@@ -52,13 +52,13 @@ class Spare extends CI_Model{
         }
     }
 
-    function spare_search_count($search, $spareId)
+    function spare_search_count($search, $sparesbrandId)
     {
-        $this->db->where("spareId", $spareId);
+        $this->db->where("sparesbrandId", $sparesbrandId);
         $query = $this
                 ->db
-                ->like('SpareName',$search)
-                ->get('Spare');
+                ->like('sparesbrandName',$search)
+                ->get('sparesbrandName');
     
         return $query->num_rows();
     }
