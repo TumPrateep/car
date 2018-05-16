@@ -72,7 +72,7 @@ class User extends CI_Model{
 		return $this->db->insert('users', $data);
     }
     
-    function checkUser($username,$email,$phone){
+    function checkUser($username){
         $this->db->select("username");
         $this->db->from("users");
         $this->db->where("username", $username);
@@ -90,12 +90,13 @@ class User extends CI_Model{
         return $result;
     }
 
-    function wherenot($id,$user){
+    function wherenot($id,$users){
         $this->db->select("users");
         $this->db->from("users");
-        $this->db->where('Id', $d);
+        $this->db->where('id', $id);
         $this->db->where('users', $users);
         $this->db->where_not_in('id', $id);
+        
         $result = $this->db->count_all_results();
 
         if($result > 0){

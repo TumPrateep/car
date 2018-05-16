@@ -24,7 +24,7 @@
                       <div class="card-body black bg-light">
                         <div class="form-group">
                           <label>ชื่อผู้ใช้งาน</label>
-                          <input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน" name="userName">
+                          <input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน" name="username">
                         </div>
                         <div class="form-group">
                           <label>เบอร์โทรศัพท์</label>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group">
                           <label>อีเมล</label>
-                          <input type="text" class="form-control" placeholder="อีเมล">
+                          <input type="text" class="form-control" name="email" placeholder="อีเมล">
                         </div>
                         
                         <div class="form-group">

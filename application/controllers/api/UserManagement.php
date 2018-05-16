@@ -91,8 +91,8 @@ class UserManagement extends BD_Controller {
 
         $username = $this->post('username');
         $email = $this->post('email');
-        $phone = $this->post('phone');
-        $password = "password";
+        $phone = $this->post('phoneNumber');
+        $password = password_hash("password", PASSWORD_BCRYPT);
 
         $this->load->model("User");
         $isCheck = $this->User->checkUser($username);
