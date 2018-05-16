@@ -68,7 +68,7 @@ class SparePartCar extends BD_Controller {
         $sparesbrandName = $this->post("sparesbrandName");
         
         $this->load->model("Spare");
-        $isCheck = $this->Spare->getBrand($sparesbrandName);
+        $isCheck = $this->Spare->getBrandforTF($sparesbrandName);
 
         if($isCheck){
             $data = array(
@@ -93,6 +93,84 @@ class SparePartCar extends BD_Controller {
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+    }
+
+
+    function updateSpareBrand_post(){
+
+        $sparesbrandId = $this->post('sparesbrandId');
+        $sparesbrandName = $this->post('sparesbrandName');
+        
+        $this->load->model("Spare");
+
+        $result = $this->Spare->wherenotBrand($sparesbrandId,$sparesbrandName);
+
+        if($result){
+            $data = array(
+                'sparesbrandId' => $sparesbrandId,
+                'sparesbrandName' => $sparesbrandName
+            );
+            $result = $this->Spare->updateBrand($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+
+    function deleteSpareBrand_get(){
+        $sparesbrandId = $this->get('sparesbrandId');
+
+        $this->load->model("Spare");
+        $sparBrand = $this->Spare->getSpareBrandbyId($sparesbrandId);
+        if($sparBrand != null){
+            $isDelete = $this->Spare->delete($sparesbrandId);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function getBrand_post(){
+
+        $sparesbrandName = $this->post('sparesbrandName');
+        $this->load->model("Spare");
+        $isCheck = $this->Spare->checkBrand($sparesbrandName);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->Spare->getBrand($sparesbrandName);
+            if($result != null){
+                $output["data"] = $result;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_ERROR;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+
+
     }
 
 

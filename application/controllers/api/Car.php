@@ -210,8 +210,8 @@ class Car extends BD_Controller {
             }
         }else{
             $output["status"] = false;
-            $output["data"] = "ไม่พบ brand";
-            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }
 
 
@@ -420,8 +420,8 @@ class Car extends BD_Controller {
             }
         }else{
             $output["status"] = false;
-            $output["data"] = "ไม่พบ brand";
-            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }
 
 
