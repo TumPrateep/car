@@ -79,3 +79,5 @@ class Spare extends CI_Model{
         }
         return true;
     }
+
+}

@@ -62,3 +62,38 @@ class SparePartCar extends BD_Controller {
 
         $this->set_response($json_data);
     }
+
+    function createSpareBrand_post(){
+
+        $sparesbrandName = $this->post("sparesbrandName");
+        
+        $this->load->model("Spare");
+        $isCheck = $this->Spare->getBrand($sparesbrandName);
+
+        if($isCheck){
+            $data = array(
+                'sparesbrandId' => null,
+                'sparesbrandName' => $sparesbrandName
+            );
+            $result = $this->Spare->insertBrand($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+
+        }
+        else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+
+    }
