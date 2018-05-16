@@ -60,7 +60,7 @@ function showMessage(message, url=null){
     modalUrl = url;
 }
 
-$("#success-modal").on('hidden.bs.modal', function () {
+$("#success-modal, #warning-modal, #danger-modal").on('hidden.bs.modal', function () {
     if(modalUrl != null){
         window.location.assign(base_url+modalUrl);
     }
