@@ -12,7 +12,10 @@
                         },
                         phoneNumber: {
                             required: true
-                        } 
+                        },
+                        email: {
+                            email: true
+                        }
                     },
                     messages: {
                         username: {
@@ -20,6 +23,9 @@
                         },
                         phoneNumber: {
                             required: "กรุณากรอกเบอร์โทรศัพท์"
+                        },
+                        email: {
+                            email: "กรุณากรอกอีเมลให้ถูกต้อง"
                         }
                     },
                 });
