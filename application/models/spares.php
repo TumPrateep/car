@@ -4,7 +4,7 @@ class Spares extends CI_Model{
 
     function allSpares_count($sparesId)
     {   
-        $this->db->where("sparesbrandId", $sparesId);
+        $this->db->where("sparesId", $sparesId);
         $query = $this->db->get('sparesbrand');
     
         return $query->num_rows();  
