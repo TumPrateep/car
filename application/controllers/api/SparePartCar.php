@@ -152,7 +152,7 @@ class SparePartCar extends BD_Controller {
 
         $sparesbrandName = $this->post('sparesbrandName');
         $this->load->model("Spare");
-        $isCheck = $this->Spare->checkBrand($sparesbrandName);
+        $isCheck = $this->Spare->checkSpareBrand($sparesbrandName);
 
         if($isCheck){
             $output["status"] = true;
@@ -169,9 +169,35 @@ class SparePartCar extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+    }
+
+    function getSpare_post(){
+
+        $sparesId = $this->post('sparesId');
+        $this->load->model("Spare");
+        $isCheck = $this->Spare->getSparebyId($sparesId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->Spare->getSpare($sparesId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
 
 
     }
+
 
 
     }
