@@ -411,4 +411,30 @@ class Car extends BD_Controller {
         }
     }
 
+    function getModel_post(){
+
+        $brandName = $this->post('modelId');
+        $this->load->model("Model");
+        $isCheck = $this->Model->get_modelbyId($modelId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->Model->getmodel($modelId);
+            if($result != null){
+                $output["data"] = $result;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_ERROR;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["data"] = "ไม่พบ brand";
+            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+        }
+
+
+    }
+
+
 }
