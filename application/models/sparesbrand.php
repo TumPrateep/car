@@ -64,14 +64,15 @@ class Sparesbrand extends CI_Model{
     }
 
     function insertBrand($data){
-        $result = $this->db->insert('sparesbrand', $data);
+        $result = $this->db->insert('spares_brand', $data);
         return $result;
     }
 
-    function getBrandforTF($sparesbrandName){
-        $this->db->select("sparesbrandName");
-        $this->db->from("sparesbrand");
-        $this->db->where('sparesbrandName', $sparesbrandName);
+    function getBrandforTF($spares_brandName,$spares_undercarriageId){
+        $this->db->select("spares_brandName");
+        $this->db->from("spares_brand");
+        $this->db->where('spares_brandName', $spares_brandName);
+        $this->db->where('spares_undercarriageId' , $spares_undercarriageId);
         $result = $this->db->count_all_results();
 
         if($result > 0){
@@ -80,11 +81,12 @@ class Sparesbrand extends CI_Model{
         return true;
     }
 
-    function wherenotBrand($sparesbrandId,$sparesbrandName){
-        $this->db->select("sparesbrandName");
-        $this->db->from("sparesbrand");
-        $this->db->where('sparesbrandName', $sparesbrandName);
-        $this->db->where_not_in('sparesbrandId', $sparesbrandId);
+    function wherenotBrand($spares_brandId,$spares_brandName,$spares_undercarriageId){
+        $this->db->select("spares_brandName");
+        $this->db->from("spares_brand");
+        $this->db->where('spares_brandName', $spares_brandName);
+        $this->db->where('spares_undercarriageId', $spares_undercarriageId);
+        $this->db->where_not_in('spares_brandId', $spares_brandId);
         $result = $this->db->count_all_results();
 
         if($result > 0){
@@ -94,8 +96,8 @@ class Sparesbrand extends CI_Model{
     }
 
     function updateBrand($data){
-        $this->db->where('sparesbrandId',$data['sparesbrandId']);
-        $result = $this->db->update('sparesbrand', $data);
+        $this->db->where('spares_brandId',$data['spares_brandId']);
+        $result = $this->db->update('spares_brand', $data);
         return $result;
     }
 

@@ -1,31 +1,33 @@
 <script>
-    $("#spares").validate({
+    $("#createsparesBrand").validate({
         rules: {
-            sparesbrandName: {
+            spares_brandName: {
                 required: true
             },
         },
         messages: {
-            sparesbrandName: {
+            spares_brandName: {
                 required: "กรุณากรอกยี่ห้ออะไหล่"
             }
         },
     });
     
-    $("#spares").submit(function(){
+    $("#createsparesBrand").submit(function(){
         createSpares();
     })
 
+
     function createSpares(){
         event.preventDefault();
-        var isValid = $("#spares").valid();
+        var isValid = $("#createsparesBrand").valid();
         
         if(isValid){
-            var data = $("#spares").serialize();
+            var data = $("#createsparesBrand").serialize();
             $.post(base_url+"api/sparepartcar/createSpareBrand",data,
             function(data){
+                var spares_undercarriageId = $("#spares_undercarriageId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"sparepartcar");
+                    showMessage(data.message,"sparepartcar/sparepart/"+spares_undercarriageId);
                 }else{
                     showMessage(data.message);
                 }
