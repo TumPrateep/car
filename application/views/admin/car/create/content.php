@@ -19,7 +19,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form id="create-brand">
+                  <form id="create-brand" enctype="multipart/form-data" >
                   <div class="card-body black bg-light">
                       <div class="form-group">
                         <label>ชื่อยี่ห้อรถ</label>
@@ -27,8 +27,8 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleInputFile">รูปภาพ</label>
-                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                        <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่ต้องการจะเพิ่ม</small>
+                        <input type="file" class="form-control-file" name="brandPicture" id="brandPicture">
+                        <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                       </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">บันทึก</button>

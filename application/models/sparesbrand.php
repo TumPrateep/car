@@ -101,9 +101,9 @@ class Sparesbrand extends CI_Model{
         return $result;
     }
 
-    function getSpareBrandbyId($sparesbrandId){
-        $this->db->where('sparesbrandId',$sparesbrandId);
-        $result = $this->db->get('sparesbrand')->row();
+    function getSpareBrandbyId($spares_brandId){
+        $this->db->where('spares_brandId',$spares_brandId);
+        $result = $this->db->get('spares_brand')->row();
         return $result;
     }
 
@@ -111,29 +111,11 @@ class Sparesbrand extends CI_Model{
         return $this->db->delete('sparesbrand', array('sparesbrandId' => $sparesbrandId));
     }
 
-    function checkBrand($sparesbrandName) {
+    function checkSpareBrand($spares_brandId,$spares_undercarriageId) {
         $this->db->select("*");
-        $this->db->from("sparesbrand");
-        $this->db->where('sparesbrandName',$sparesbrandName);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return true;
-        }else{
-            return false;
-        }
-
-    }
-    
-    function getBrand($sparesbrandName){
-        return $this->db->where('sparesbrandName',$sparesbrandName)->get("sparesbrand")->row();
-    }
-
-
-    function checkSpareBrand($sparesbrandName) {
-        $this->db->select("*");
-        $this->db->from("sparesbrand");
-        $this->db->where('sparesbrandName',$sparesbrandName);
+        $this->db->from("spares_brand");
+        $this->db->where('spares_brandId',$spares_brandId);
+        $this->db->where('spares_undercarriageId',$spares_undercarriageId);
         $result = $this->db->count_all_results();
 
         if($result > 0){
@@ -144,22 +126,5 @@ class Sparesbrand extends CI_Model{
 
     }
 
-    function getSparebyId($sparesId){
-        $this->db->select("sparesId");
-        $this->db->from("spares");
-        $this->db->where('sparesId', $$sparesId);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return false;
-        }
-        return true;
-    }
-
-    function getSpare($sparesId){
-        $this->db->where('sparesId',$sparesId);
-        $result = $this->db->get('spares')->row();
-        return $result;
-    }
 
 }

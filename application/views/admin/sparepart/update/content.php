@@ -23,12 +23,14 @@
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form id="spares">
+                  <input type="hidden" id="spares_undercarriageId" name="spares_undercarriageId" value="<?=$spares_undercarriageId ?>">
+                  <input type="hidden" id="spares_brandId" name="spares_brandId" value="<?=$spares_brandId ?>">
                     <div class="card-body black bg-light">
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>ชื่อยี่ห้ออะไหล่</label>
-                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้ออะไหล่" name="sparesbrandName">
+                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้ออะไหล่" id="spares_brandName" name="spares_brandName" value="">
                           </div>
                         </div>
                       </div>

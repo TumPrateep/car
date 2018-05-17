@@ -7,7 +7,7 @@ class SparePartCar extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
     }
 
     function search_post(){
@@ -158,15 +158,18 @@ class SparePartCar extends BD_Controller {
 
     function getBrand_post(){
 
-        $sparesbrandName = $this->post('sparesbrandName');
+        $spares_brandId = $this->post('spares_brandId');
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+
         $this->load->model("Sparesbrand");
-        $isCheck = $this->Sparesbrand->checkSpareBrand($sparesbrandName);
+        $isCheck = $this->Sparesbrand->checkSpareBrand($spares_brandId,$spares_undercarriageId);
 
         if($isCheck){
             $output["status"] = true;
-            $result = $this->Sparesbrand->getBrand($sparesbrandName);
+            $result = $this->Sparesbrand->getSpareBrandbyId($spares_brandId);
             if($result != null){
                 $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
                 $output["message"] = REST_Controller::MSG_ERROR;
@@ -178,6 +181,8 @@ class SparePartCar extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+
 
 
 
