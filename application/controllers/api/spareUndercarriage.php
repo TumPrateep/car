@@ -58,69 +58,70 @@ class spareUndercarriage extends BD_Controller {
     }
     
 
-    // function createspareUndercarriage_post(){
+    function createspareUndercarriage_post(){
 
-    //     $spares_undercarriageName = $this->post("spares_undercarriageName");
+        $spares_undercarriageName = $this->post("spares_undercarriageName");
         
-    //     $this->load->model("sparesUndercarriages");
-    //     $isCheck = $this->sparesUndercarriages->getsparesUndercarriageforTF($spares_undercarriageName);
+        $this->load->model("sparesUndercarriages");
+        $isCheck = $this->sparesUndercarriages->checksparesUndercarriage($spares_undercarriageName);
 
-    //     if($isCheck){
-    //         $data = array(
-    //             'spares_undercarriageId' => null,
-    //             'spares_undercarriageName' => $spares_undercarriageName
-    //         );
-    //         $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
-    //         $output["status"] = $result;
-    //         if($result){
-    //             $output["message"] = REST_Controller::MSG_SUCCESS;
-    //             $this->set_response($output, REST_Controller::HTTP_OK);
-    //         }
-    //         else{
-    //             $output["status"] = false;
-    //             $output["message"] = REST_Controller::MSG_NOT_CREATE;
-    //             $this->set_response($output, REST_Controller::HTTP_OK);
-    //         }
-
-    //     }
-    //     else{
-    //         $output["status"] = false;
-    //         $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-    //         $this->set_response($output, REST_Controller::HTTP_OK);
-    //     }
-    // }
-
-
-    // function updatespareUndercarriage_post(){
-
-    //     $spares_undercarriageId = $this->post('spares_undercarriageId');
-    //     $spares_undercarriageName = $this->post('spares_undercarriageName');
+        if($isCheck){
+            $data = array(
+                'spares_undercarriageId' => null,
+                'spares_undercarriageName' => $spares_undercarriageName,
+                'status' => 1
+            );
+            $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
         
-    //     $this->load->model("sparesUndercarriages");
+        else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
-    //     $result = $this->sparesUndercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
 
-    //     if($result){
-    //         $data = array(
-    //             'spares_undercarriageId' => $spares_undercarriageId,
-    //             'spares_undercarriageName' => $spares_undercarriageName
-    //         );
-    //         // $result = $this->spareUndercarriages->updatesparesUndercarriage($data);
-    //         $output["status"] = $result;
-    //         if($result){
-    //             $output["message"] = REST_Controller::MSG_SUCCESS;
-    //             $this->set_response($output, REST_Controller::HTTP_OK);
-    //         }
-    //         else{
-    //             $output["status"] = false;
-    //             $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-    //             $this->set_response($output, REST_Controller::HTTP_OK);
-    //         }
-    //     }else{
-    //         $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-    //         $this->set_response($output, REST_Controller::HTTP_OK);
-    //     }
-    // }
+    function updatespareUndercarriage_post(){
+
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $spares_undercarriageName = $this->post('spares_undercarriageName');
+        
+        $this->load->model("sparesUndercarriages");
+
+        $result = $this->sparesUndercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
+
+        if($result){
+            $data = array(
+                'spares_undercarriageId' => $spares_undercarriageId,
+                'spares_undercarriageName' => $spares_undercarriageName
+            );
+            // $result = $this->spareUndercarriages->updatesparesUndercarriage($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
 
     function deletespareUndercarriage_get(){
@@ -143,53 +144,53 @@ class spareUndercarriage extends BD_Controller {
         }
     }
 
-    // function getspareUndercarriage_post(){
+    function getspareUndercarriage_post(){
 
-    //     $spares_undercarriageName = $this->post('spares_undercarriageId');
-    //     $this->load->model("sparesUndercarriages");
-    //     $isCheck = $this->spareUndercarriages->checkSpare($spares_undercarriageName);
+        $spares_undercarriageName = $this->post('spares_undercarriageId');
+        $this->load->model("sparesUndercarriages");
+        $isCheck = $this->spareUndercarriages->checkSpare($spares_undercarriageName);
 
-    //     if($isCheck){
-    //         $output["status"] = true;
-    //         $result = $this->spareUndercarriages->getsparesUndercarriage($spares_undercarriageName);
-    //         if($result != null){
-    //             $output["data"] = $result;
-    //             $this->set_response($output, REST_Controller::HTTP_OK);
-    //         }else{
-    //             $output["message"] = REST_Controller::MSG_ERROR;
-    //             $this->set_response($output, REST_Controller::HTTP_OK);
-    //         }
-    //     }else{
-    //         $output["status"] = false;
-    //         $output["message"] = REST_Controller::MSG_ERROR;
-    //         $this->set_response($output, REST_Controller::HTTP_OK);
-    //     }
-    // }
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->spareUndercarriages->getsparesUndercarriage($spares_undercarriageName);
+            if($result != null){
+                $output["data"] = $result;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_ERROR;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
-    // function getspareUndercarriage_post(){
+    function getspareUndercarriage_post(){
 
-    //     $spares_undercarriageId = $this->post('spares_undercarriageId');
-    //     $this->load->model("sparesUndercarriages");
-    //     $isCheck = $this->spareUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $this->load->model("sparesUndercarriages");
+        $isCheck = $this->spareUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
 
-    //     if($isCheck){
-    //         $output["status"] = true;
-    //         $result = $this->spareUndercarriages->getsparesUndercarriage($spares_undercarriageId);
-    //         if($result != null){
-    //             $output["data"] = $result;
-    //             $output["message"] = REST_Controller::MSG_SUCCESS;
-    //             $this->set_response($output, REST_Controller::HTTP_OK);
-    //         }else{
-    //             $output["status"] = false;
-    //             $output["message"] = REST_Controller::MSG_BE_DELETED;
-    //             $this->set_response($output, REST_Controller::HTTP_OK);
-    //         }
-    //     }else{
-    //         $output["status"] = false;
-    //         $output["message"] = REST_Controller::MSG_BE_DELETED;
-    //         $this->set_response($output, REST_Controller::HTTP_OK);
-    //     }
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->spareUndercarriages->getsparesUndercarriage($spares_undercarriageId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
 
-    // }
+    }
 
     }
