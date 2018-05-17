@@ -6,7 +6,7 @@ class spareUndercarriage extends BD_Controller {
     function searchspareUndercarriage_post(){
         $columns = array( 
             0 => null,
-            1 => 'spares_ndercarriageName', 
+            1 => 'spares_ndercarriageName' 
             
             
         );
