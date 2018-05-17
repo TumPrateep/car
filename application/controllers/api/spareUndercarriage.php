@@ -174,7 +174,7 @@ class spareUndercarriage extends BD_Controller {
 
         if($isCheck){
             $output["status"] = true;
-            $result = $this->spareUndercarriages->getSgetsparesUndercarriagepare($sparesId);
+            $result = $this->spareUndercarriages->getsparesUndercarriage($spares_undercarriageId);
             if($result != null){
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
