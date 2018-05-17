@@ -13,7 +13,8 @@ class SparePartCar extends BD_Controller {
     function search_post(){
         $columns = array( 
             0 => null,
-            1 => 'sparesbrandName'
+            1 => 'spares_brandName'
+            
             
         );
 
@@ -23,18 +24,18 @@ class SparePartCar extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
 
         $this->load->model("Sparesbrand");
-        $totalData = $this->Sparesbrand->allSparesbrand_count();
+        $totalData = $this->Sparesbrand->allSpares_brand_count();
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('search')))
         {            
-            $posts = $this->Sparesbrand->allSparesbrand($limit,$start,$order,$dir);
+            $posts = $this->Sparesbrand->allSpares_brand($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('search'); 
 
-            $posts =  $this->Sparesbrand->sparesbrand_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->Sparesbrand->spares_brand_search($limit,$start,$search,$order,$dir);
 
             $totalFiltered = $this->Sparesbrand->sparesbrand_search_count($search);
         }
@@ -45,8 +46,8 @@ class SparePartCar extends BD_Controller {
             foreach ($posts as $post)
             {
 
-                $nestedData['sparesbrandId'] = $post->sparesbrandId;
-                $nestedData['sparesbrandName'] = $post->sparesbrandName;
+                $nestedData['spares_brandId'] = $post->spares_brandId;
+                $nestedData['spares_brandName'] = $post->spares_brandName;
 
                 $data[] = $nestedData;
 

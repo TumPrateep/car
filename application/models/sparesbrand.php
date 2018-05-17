@@ -2,23 +2,23 @@
 
 class Sparesbrand extends CI_Model{
 
-    function allSparesbrand_count($sparesbrandId)
+    function allSpares_brand_count($spares_brandId)
     {   
-        $this->db->where("sparesbrandId", $sparesbrandId);
-        $query = $this->db->get('sparesbrand');
+        $this->db->where("spares_brandId", $spares_brandId);
+        $query = $this->db->get('spares_brand');
     
         return $query->num_rows();  
 
     }
     
-    function allSparesbrand($limit,$start,$col,$dir,$sparesbrandId)
+    function allSpares_brand($limit,$start,$col,$dir,$spares_brandId)
     {   
-        $this->db->where("sparesbrandId", $sparesbrandId);
+        $this->db->where("spares_brandId", $spares_brandId);
        $query = $this
                 ->db
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
-                ->get('sparesbrand');
+                ->get('spares_brand');
         
         if($query->num_rows()>0)
         {
@@ -31,15 +31,15 @@ class Sparesbrand extends CI_Model{
         
     }
    
-    function sparesbrand_search($limit,$start,$search,$col,$dir,$sparesbrandId)
+    function spares_brand_search($limit,$start,$search,$col,$dir,$spares_brandId)
     {
-        $this->db->where("sparesbrandId", $sparesbrandId);
+        $this->db->where("spares_brandId", $spares_brandId);
         $query = $this
                 ->db
-                ->like('sparesbrandName',$search)
+                ->like('spares_brandName',$search)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
-                ->get('sparesbrand');
+                ->get('spares_brand');
         
        
         if($query->num_rows()>0)
@@ -52,13 +52,13 @@ class Sparesbrand extends CI_Model{
         }
     }
 
-    function sparesbrand_search_count($search, $sparesbrandId)
+    function spares_brand_search_count($search, $spares_brandId)
     {
-        $this->db->where("sparesbrandId", $sparesbrandId);
+        $this->db->where("spares_brandId", $spares_brandId);
         $query = $this
                 ->db
-                ->like('sparesbrandName',$search)
-                ->get('sparesbrand');
+                ->like('spares_brandName',$search)
+                ->get('spares_brand');
     
         return $query->num_rows();
     }

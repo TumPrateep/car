@@ -1,5 +1,5 @@
 <script>
-    var table = $('#spares_undercarriage-table').DataTable({
+    var table = $('#spares_brand-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -23,16 +23,16 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/spareUndercarriage/searchspareUndercarriage",
+                "url": base_url+"api/SparePartCar/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_undercarriageName = $("#table-search").val()
+                    data.spares_brandName = $("#table-search").val()
                 }
             },
             "columns": [
                 null,
-                { "data": "spares_undercarriageName" }
+                { "data": "spares_brandName" }
                 null
             ],
             "columnDefs": [
@@ -65,7 +65,7 @@
 
     });
 
-    $('#spares_undercarriage-table tbody').on( 'click', 'button.delete', function () {
+    $('#spares_brand-table tbody').on( 'click', 'button.delete', function () {
         var data = table.row( $(this).parents('tr') ).data();
         var option = {
             url: "/spareUndercarriage/deleteSpareBrand?spares_undercarriageId="+data.spares_undercarriageId,

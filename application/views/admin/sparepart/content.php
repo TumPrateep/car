@@ -33,7 +33,7 @@
     
     
     <div class="table-responsive">
-      <table class="table table-bordered" id="spares_undercarriage-table" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="spares_brand-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
           <th>ชื่อยี่ห้ออะไหล่</th>
