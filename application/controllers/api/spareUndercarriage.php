@@ -16,7 +16,7 @@ class spareUndercarriage extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
-        $this->load->model("spares_undercarriage");
+        $this->load->model("sparesUndercarriages");
         $totalData = $this->sparesUndercarriages->allSsparesUndercarriages_count();
 
         $totalFiltered = $totalData; 
@@ -62,7 +62,7 @@ class spareUndercarriage extends BD_Controller {
 
         $spares_undercarriageName = $this->post("spares_undercarriageName");
         
-        $this->load->model("spares_undercarriage");
+        $this->load->model("sparesUndercarriages");
         $isCheck = $this->sparesUndercarriages->getsparesUndercarriageforTF($spares_undercarriageName);
 
         if($isCheck){
@@ -96,7 +96,7 @@ class spareUndercarriage extends BD_Controller {
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_undercarriageName = $this->post('spares_undercarriageName');
         
-        $this->load->model("spares_undercarriage");
+        $this->load->model("sparesUndercarriages");
 
         $result = $this->sparesUndercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
 
@@ -126,7 +126,7 @@ class spareUndercarriage extends BD_Controller {
     function deletespareUndercarriage_get(){
         $spares_undercarriageId = $this->get('spares_undercarriageId');
 
-        $this->load->model("spares_undercarriage");
+        $this->load->model("sparesUndercarriages");
         $spares_undercarriage = $this->spareUndercarriages->getSparebyId($sparesId);
         if($spares_undercarriage != null){
             $isDelete = $this->spareUndercarriages->delete($spares_undercarriageId);
@@ -146,7 +146,7 @@ class spareUndercarriage extends BD_Controller {
     function getspareUndercarriage_post(){
 
         $spares_undercarriageName = $this->post('spares_undercarriageId');
-        $this->load->model("spares_undercarriageId");
+        $this->load->model("sparesUndercarriages");
         $isCheck = $this->spareUndercarriages->checkSpare($spares_undercarriageName);
 
         if($isCheck){
@@ -169,7 +169,7 @@ class spareUndercarriage extends BD_Controller {
     function getspareUndercarriage_post(){
 
         $spares_undercarriageId = $this->post('spares_undercarriageId');
-        $this->load->model("spares_undercarriage");
+        $this->load->model("sparesUndercarriages");
         $isCheck = $this->spareUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
 
         if($isCheck){
