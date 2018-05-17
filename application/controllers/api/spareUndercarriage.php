@@ -3,10 +3,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class spareUndercarriage extends BD_Controller {
-    function searchspares_post(){
+    function searchspareUndercarriage_post(){
         $columns = array( 
             0 => null,
-            1 => 'spares_ndercarriageName', 
+            1 => 'spares_ndercarriageName' 
             
             
         );
@@ -17,20 +17,20 @@ class spareUndercarriage extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
 
         $this->load->model("spares_undercarriage");
-        $totalData = $this->spares->allSsparesUndercarriages_count();
+        $totalData = $this->sparesUndercarriages->allSsparesUndercarriages_count();
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('spares_undercarriageName')))
         {            
-            $posts = $this->spares->allsparesUndercarriage($limit,$start,$order,$dir);
+            $posts = $this->sparesUndercarriages->allsparesUndercarriage($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('spares_undercarriageName'); 
 
-            $posts =  $this->spares->sparesUndercarriage_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->sparesUndercarriages->sparesUndercarriage_search($limit,$start,$search,$order,$dir);
 
-            $totalFiltered = $this->spares->sparesUndercarriage_search_count($search);
+            $totalFiltered = $this->sparesUndercarriages->sparesUndercarriage_search_count($search);
         }
 
         $data = array();
@@ -58,19 +58,19 @@ class spareUndercarriage extends BD_Controller {
     }
 
 
-    function createSpares_post(){
+    function createspareUndercarriage_post(){
 
         $spares_undercarriageName = $this->post("spares_undercarriageName");
         
         $this->load->model("spares_undercarriage");
-        $isCheck = $this->spares->getsparesUndercarriageforTF($spares_undercarriageName);
+        $isCheck = $this->sparesUndercarriages->getsparesUndercarriageforTF($spares_undercarriageName);
 
         if($isCheck){
             $data = array(
                 'spares_undercarriageId' => null,
                 'spares_undercarriageName' => $spares_undercarriageName
             );
-            $result = $this->Spare->insertsparesUndercarriage($data);
+            $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -91,14 +91,14 @@ class spareUndercarriage extends BD_Controller {
     }
 
 
-    function updateSpare_post(){
+    function updatespareUndercarriage_post(){
 
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_undercarriageName = $this->post('spares_undercarriageName');
         
         $this->load->model("spares_undercarriage");
 
-        $result = $this->spares->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
+        $result = $this->sparesUndercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
 
         if($result){
             $data = array(
@@ -123,7 +123,7 @@ class spareUndercarriage extends BD_Controller {
     }
 
 
-    function deleteSpareBrand_get(){
+    function deletespareUndercarriage_get(){
         $spares_undercarriageId = $this->get('spares_undercarriageId');
 
         $this->load->model("spares_undercarriage");
@@ -143,7 +143,7 @@ class spareUndercarriage extends BD_Controller {
         }
     }
 
-    function getSpares_post(){
+    function getspareUndercarriage_post(){
 
         $spares_undercarriageName = $this->post('spares_undercarriageId');
         $this->load->model("spares_undercarriageId");
@@ -166,7 +166,7 @@ class spareUndercarriage extends BD_Controller {
         }
     }
 
-    function getSpare_post(){
+    function getspareUndercarriage_post(){
 
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $this->load->model("spares_undercarriage");
