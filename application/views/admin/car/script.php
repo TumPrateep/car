@@ -32,7 +32,7 @@
             },
             "columns": [
                 null,
-                { "data": "brandPic" },
+                null,
                 { "data": "brandName" }
             ],
             "columnDefs": [
@@ -56,10 +56,20 @@
                         return meta.row + 1;
                     }
                 },
+                {
+                    "targets": 1,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var path = pathImage + "brand/"+data.brandPic;
+                        var imageHtml = '<img src="'+ path +'" class="rounded" width="100px">';
+                        return imageHtml;
+                    }
+                },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [2]},
                 {"className": "dt-center", "targets": [0,1,3]},
                 { "width": "10%", "targets": 0 },
+                { "width": "20%", "targets": 1 },
                 { "width": "20%", "targets": 3 }
             ]	 
 
