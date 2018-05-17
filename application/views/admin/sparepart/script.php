@@ -27,7 +27,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.sparesbrandName = $("#sparesbrand-search").val()
+                    data.sparesbrandName = $("#table-search").val()
                 }
             },
             "columns": [
@@ -64,10 +64,10 @@
 
     });
 
-    $('#sparebrand-table tbody').on( 'click', 'button.delete', function () {
+    $('#sparesbrand-table tbody').on( 'click', 'button.delete', function () {
         var data = table.row( $(this).parents('tr') ).data();
         var option = {
-            url: "/SparePartCar/deleteSpareBrand?brandId="+data.sparesbrandId,
+            url: "/SparePartCar/deleteSpareBrand?sparesbrandId="+data.sparesbrandId,
             label: "ลบยี่ห้ออะไหล่",
             content: "คุณต้องการลบ "+data.sparesbrandName+" ใช่หรือไม่"
         }

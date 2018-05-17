@@ -7,13 +7,13 @@ class SparePartCar extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        //$this->auth();
+        // $this->auth();
     }
 
     function search_post(){
         $columns = array( 
             0 => null,
-            1 => 'sparesbrandName', 
+            1 => 'sparesbrandName'
             
         );
 
@@ -23,20 +23,20 @@ class SparePartCar extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
 
         $this->load->model("Sparesbrand");
-        $totalData = $this->Sparesbrand->allSpare_count();
+        $totalData = $this->Sparesbrand->allSparesbrand_count();
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('sparesbrandName')))
+        if(empty($this->post('search')))
         {            
-            $posts = $this->Sparesbrand->allSpare($limit,$start,$order,$dir);
+            $posts = $this->Sparesbrand->allSparesbrand($limit,$start,$order,$dir);
         }
         else {
-            $search = $this->post('sparesbrandName'); 
+            $search = $this->post('search'); 
 
-            $posts =  $this->Sparesbrand->spare_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->Sparesbrand->sparesbrand_search($limit,$start,$search,$order,$dir);
 
-            $totalFiltered = $this->Sparesbrand->spare_search_count($search);
+            $totalFiltered = $this->Sparesbrand->sparesbrand_search_count($search);
         }
 
         $data = array();
@@ -65,15 +65,19 @@ class SparePartCar extends BD_Controller {
 
     function createSpareBrand_post(){
 
-        $sparesbrandName = $this->post("sparesbrandName");
+        $spares_brandName = $this->post("spares_brandName");
+        $spares_undercarriageId = $this->post("spares_undercarriageId");
         
         $this->load->model("Sparesbrand");
-        $isCheck = $this->Sparesbrand->getBrandforTF($sparesbrandName);
+        $isCheck = $this->Sparesbrand->getBrandforTF($spares_brandName,$spares_undercarriageId);
 
         if($isCheck){
             $data = array(
-                'sparesbrandId' => null,
-                'sparesbrandName' => $sparesbrandName
+                'spares_brandId' => null,
+                'spares_brandName' => $spares_brandName,
+                'status' => 1,
+                'spares_undercarriageId' => $spares_undercarriageId
+                
             );
             $result = $this->Sparesbrand->insertBrand($data);
             $output["status"] = $result;

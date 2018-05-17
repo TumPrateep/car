@@ -2,7 +2,7 @@
 
 class Sparesbrand extends CI_Model{
 
-    function allSsparesbrand_count($sparesbrandId)
+    function allSparesbrand_count($sparesbrandId)
     {   
         $this->db->where("sparesbrandId", $sparesbrandId);
         $query = $this->db->get('sparesbrand');
@@ -64,14 +64,15 @@ class Sparesbrand extends CI_Model{
     }
 
     function insertBrand($data){
-        $result = $this->db->insert('sparesbrand', $data);
+        $result = $this->db->insert('spares_brand', $data);
         return $result;
     }
 
-    function getBrandforTF($sparesbrandName){
-        $this->db->select("sparesbrandName");
-        $this->db->from("sparesbrand");
-        $this->db->where('sparesbrandName', $sparesbrandName);
+    function getBrandforTF($spares_brandName,$spares_undercarriageId){
+        $this->db->select("spares_brandName");
+        $this->db->from("spares_brand");
+        $this->db->where('spares_brandName', $spares_brandName);
+        $this->db->where('spares_undercarriageId' , $spares_undercarriageId);
         $result = $this->db->count_all_results();
 
         if($result > 0){

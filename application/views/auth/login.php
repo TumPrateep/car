@@ -180,7 +180,7 @@
             function(data){
               localStorage.token = data.token;
               localStorage.id = data.id;
-              window.location.assign(base_url+"welcome");
+              window.location.assign(base_url+"role");
             }
           )
           .fail(function() {
