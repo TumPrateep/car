@@ -57,8 +57,8 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [1,2]},
-                {"className": "dt-center", "targets": [0,3]},
+                {"className": "dt-head-center", "targets": [2]},
+                {"className": "dt-center", "targets": [0,1,3]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 3 }
             ]	 

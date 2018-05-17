@@ -7,7 +7,7 @@ class SparePartCar extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
 
     function search_post(){
