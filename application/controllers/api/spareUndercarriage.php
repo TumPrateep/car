@@ -1,7 +1,6 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class spareUndercarriage extends BD_Controller {
     function searchspareUndercarriage_post(){
         $columns = array( 
@@ -56,7 +55,6 @@ class spareUndercarriage extends BD_Controller {
 
         $this->set_response($json_data);
     }
-    
 
     function createspareUndercarriage_post(){
 
@@ -90,40 +88,6 @@ class spareUndercarriage extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-
-
-    function updatespareUndercarriage_post(){
-
-        $spares_undercarriageId = $this->post('spares_undercarriageId');
-        $spares_undercarriageName = $this->post('spares_undercarriageName');
-        
-        $this->load->model("sparesUndercarriages");
-
-        $result = $this->sparesUndercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
-
-        if($result){
-            $data = array(
-                'spares_undercarriageId' => $spares_undercarriageId,
-                'spares_undercarriageName' => $spares_undercarriageName
-            );
-            // $result = $this->spareUndercarriages->updatesparesUndercarriage($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-    }
-
-
     function deletespareUndercarriage_get(){
         $spares_undercarriageId = $this->get('spares_undercarriageId');
 
@@ -144,53 +108,41 @@ class spareUndercarriage extends BD_Controller {
         }
     }
 
-    function getspareUndercarriage_post(){
 
-        $spares_undercarriageName = $this->post('spares_undercarriageId');
-        $this->load->model("sparesUndercarriages");
-        $isCheck = $this->spareUndercarriages->checkSpare($spares_undercarriageName);
-
-        if($isCheck){
-            $output["status"] = true;
-            $result = $this->spareUndercarriages->getsparesUndercarriage($spares_undercarriageName);
-            if($result != null){
-                $output["data"] = $result;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_ERROR;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_ERROR;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-    }
-
-    function getspareUndercarriage_post(){
+    function updatesparesUndercarriage_post(){
 
         $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $spares_undercarriageName = $this->post('spares_undercarriageName');
+        
         $this->load->model("sparesUndercarriages");
-        $isCheck = $this->spareUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
 
-        if($isCheck){
-            $output["status"] = true;
-            $result = $this->spareUndercarriages->getsparesUndercarriage($spares_undercarriageId);
-            if($result != null){
-                $output["data"] = $result;
+        $result = $this->sparesUndercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
+
+        if($result){
+            $data = array(
+                'spares_undercarriageId' => $spares_undercarriageId,
+                'spares_undercarriageName' => $spares_undercarriageName,
+                'status' => 1
+            );
+            $result = $this->sparesUndercarriages->updatesparesUndercarriage($data);
+            $output["status"] = $result;
+            if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
+            }
+            else{
                 $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
+        }
+        else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
-
     }
+
+
+    
 
     }
