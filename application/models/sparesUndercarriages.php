@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class sparesUndercarriages.php extends CI_Model{
+class SparesUndercarriages extends CI_Model{
 
     function allSsparesUndercarriages_count($spares_undercarriageId)
     {   
@@ -14,7 +14,7 @@ class sparesUndercarriages.php extends CI_Model{
     function allsparesUndercarriage($limit,$start,$col,$dir,$spares_undercarriageId)
     {   
         $this->db->where("spares_undercarriageId", $spares_undercarriageId);
-       $query = $this
+        $query = $this
                 ->db
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
