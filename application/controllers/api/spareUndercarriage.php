@@ -2,11 +2,11 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class spares extends BD_Controller {
+class spareUndercarriage extends BD_Controller {
     function searchspares_post(){
         $columns = array( 
             0 => null,
-            1 => 'sparesName', 
+            1 => 'spares_ndercarriageName', 
             
             
         );
@@ -16,21 +16,21 @@ class spares extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
-        $this->load->model("spares");
-        $totalData = $this->spares->allSpares_count();
+        $this->load->model("spares_undercarriage");
+        $totalData = $this->spares->allSsparesUndercarriages_count();
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('sparesName')))
+        if(empty($this->post('spares_undercarriageName')))
         {            
-            $posts = $this->spares->allSpares($limit,$start,$order,$dir);
+            $posts = $this->spares->allsparesUndercarriage($limit,$start,$order,$dir);
         }
         else {
-            $search = $this->post('sparesName'); 
+            $search = $this->post('spares_undercarriageName'); 
 
-            $posts =  $this->spares->spare_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->spares->sparesUndercarriage_search($limit,$start,$search,$order,$dir);
 
-            $totalFiltered = $this->spares->spare_search_count($search);
+            $totalFiltered = $this->spares->sparesUndercarriage_search_count($search);
         }
 
         $data = array();
@@ -39,8 +39,8 @@ class spares extends BD_Controller {
             foreach ($posts as $post)
             {
 
-                $nestedData['sparesbrandId'] = $post->sparesbrandId;
-                $nestedData['sparesbrandName'] = $post->sparesbrandName;
+                $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
+                $nestedData['spares_undercarriageName'] = $post->spares_undercarriageName;
 
                 $data[] = $nestedData;
 
@@ -60,17 +60,17 @@ class spares extends BD_Controller {
 
     function createSpares_post(){
 
-        $sparesbrandName = $this->post("sparesName");
+        $spares_undercarriageName = $this->post("spares_undercarriageName");
         
-        $this->load->model("spares");
-        $isCheck = $this->spares->getBrandforTF($sparesName);
+        $this->load->model("spares_undercarriage");
+        $isCheck = $this->spares->getsparesUndercarriageforTF($spares_undercarriageName);
 
         if($isCheck){
             $data = array(
-                'sparesId' => null,
-                'sparesName' => $sparesName
+                'spares_undercarriageId' => null,
+                'spares_undercarriageName' => $spares_undercarriageName
             );
-            $result = $this->Spare->insertSpares($data);
+            $result = $this->Spare->insertsparesUndercarriage($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -93,19 +93,19 @@ class spares extends BD_Controller {
 
     function updateSpare_post(){
 
-        $sparesId = $this->post('sparesId');
-        $spareName = $this->post('sparesName');
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $spares_undercarriageName = $this->post('spares_undercarriageName');
         
-        $this->load->model("spares");
+        $this->load->model("spares_undercarriage");
 
-        $result = $this->spares->wherenotspares($sparesId,$sparesName);
+        $result = $this->spares->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
 
         if($result){
             $data = array(
-                'sparesId' => $sparesId,
-                'sparesName' => $sparesName
+                'spares_undercarriageId' => $spares_undercarriageId,
+                'spares_undercarriageName' => $spares_undercarriageName
             );
-            $result = $this->Spare->updateSpares($data);
+            $result = $this->spareUndercarriages->updatesparesUndercarriage($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -124,12 +124,12 @@ class spares extends BD_Controller {
 
 
     function deleteSpareBrand_get(){
-        $sparesbrandId = $this->get('sparesId');
+        $spares_undercarriageId = $this->get('spares_undercarriageId');
 
-        $this->load->model("spares");
-        $sparBrand = $this->spares->getSparebyId($sparesId);
-        if($sparBrand != null){
-            $isDelete = $this->Spare->delete($sparesId);
+        $this->load->model("spares_undercarriage");
+        $spares_undercarriage = $this->spareUndercarriages->getSparebyId($sparesId);
+        if($spares_undercarriage != null){
+            $isDelete = $this->spareUndercarriages->delete($spares_undercarriageId);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -145,13 +145,13 @@ class spares extends BD_Controller {
 
     function getSpares_post(){
 
-        $sparesName = $this->post('sparesName');
-        $this->load->model("spares");
-        $isCheck = $this->spares->checkSpare($sparesName);
+        $spares_undercarriageName = $this->post('spares_undercarriageId');
+        $this->load->model("spares_undercarriageId");
+        $isCheck = $this->spareUndercarriages->checkSpare($spares_undercarriageName);
 
         if($isCheck){
             $output["status"] = true;
-            $result = $this->spares->getSpares($sparesName);
+            $result = $this->spareUndercarriages->getsparesUndercarriage($spares_undercarriageName);
             if($result != null){
                 $output["data"] = $result;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -168,13 +168,13 @@ class spares extends BD_Controller {
 
     function getSpare_post(){
 
-        $sparesId = $this->post('sparesId');
-        $this->load->model("spares");
-        $isCheck = $this->spares->getSparebyId($sparesId);
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $this->load->model("spares_undercarriage");
+        $isCheck = $this->spareUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
 
         if($isCheck){
             $output["status"] = true;
-            $result = $this->Spare->getSpare($sparesId);
+            $result = $this->spareUndercarriages->getSgetsparesUndercarriagepare($sparesId);
             if($result != null){
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
