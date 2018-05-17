@@ -1,5 +1,5 @@
 <script>
-    var table = $('#sparesbrand-table').DataTable({
+    var table = $('#spares_undercarriage-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -23,16 +23,17 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/SparePartCar/search",
+                "url": base_url+"api/spareUndercarriage/searchspareUndercarriage",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.sparesbrandName = $("#table-search").val()
+                    data.spares_undercarriageName = $("#table-search").val()
                 }
             },
             "columns": [
                 null,
-                { "data": "sparesbrandName" }
+                { "data": "spares_undercarriageName" }
+                null
             ],
             "columnDefs": [
                 {
@@ -43,8 +44,8 @@
                     "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"SparePartCar/model/"+data.brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"SparePartCar/updateBrand/"+data.brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"SparePartCar/createSpares/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"SparePartCar/updateBrand/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -64,12 +65,12 @@
 
     });
 
-    $('#sparesbrand-table tbody').on( 'click', 'button.delete', function () {
+    $('#spares_undercarriage-table tbody').on( 'click', 'button.delete', function () {
         var data = table.row( $(this).parents('tr') ).data();
         var option = {
-            url: "/SparePartCar/deleteSpareBrand?sparesbrandId="+data.sparesbrandId,
+            url: "/spareUndercarriage/deleteSpareBrand?spares_undercarriageId="+data.spares_undercarriageId,
             label: "ลบยี่ห้ออะไหล่",
-            content: "คุณต้องการลบ "+data.sparesbrandName+" ใช่หรือไม่"
+            content: "คุณต้องการลบ "+data.spares_undercarriageName+" ใช่หรือไม่"
         }
         fnDelete(option);
     } );
