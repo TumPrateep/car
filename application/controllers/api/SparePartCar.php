@@ -65,15 +65,19 @@ class SparePartCar extends BD_Controller {
 
     function createSpareBrand_post(){
 
-        $sparesbrandName = $this->post("sparesbrandName");
+        $spares_brandName = $this->post("spares_brandName");
+        $spares_undercarriageId = $this->post("spares_undercarriageId");
         
         $this->load->model("Sparesbrand");
-        $isCheck = $this->Sparesbrand->getBrandforTF($sparesbrandName);
+        $isCheck = $this->Sparesbrand->getBrandforTF($spares_brandName,$spares_undercarriageId);
 
         if($isCheck){
             $data = array(
-                'sparesbrandId' => null,
-                'sparesbrandName' => $sparesbrandName
+                'spares_brandId' => null,
+                'spares_brandName' => $spares_brandName,
+                'status' => 1,
+                'spares_undercarriageId' => $spares_undercarriageId
+                
             );
             $result = $this->Sparesbrand->insertBrand($data);
             $output["status"] = $result;
