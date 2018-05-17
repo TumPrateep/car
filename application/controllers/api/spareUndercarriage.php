@@ -3,7 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class spareUndercarriage extends BD_Controller {
-    function searchspares_post(){
+    function searchspareUndercarriage_post(){
         $columns = array( 
             0 => null,
             1 => 'spares_ndercarriageName', 
@@ -58,7 +58,7 @@ class spareUndercarriage extends BD_Controller {
     }
 
 
-    function createSpares_post(){
+    function createspareUndercarriage_post(){
 
         $spares_undercarriageName = $this->post("spares_undercarriageName");
         
@@ -91,7 +91,7 @@ class spareUndercarriage extends BD_Controller {
     }
 
 
-    function updateSpare_post(){
+    function updatespareUndercarriage_post(){
 
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_undercarriageName = $this->post('spares_undercarriageName');
@@ -123,7 +123,7 @@ class spareUndercarriage extends BD_Controller {
     }
 
 
-    function deleteSpareBrand_get(){
+    function deletespareUndercarriage_get(){
         $spares_undercarriageId = $this->get('spares_undercarriageId');
 
         $this->load->model("spares_undercarriage");
@@ -143,7 +143,7 @@ class spareUndercarriage extends BD_Controller {
         }
     }
 
-    function getSpares_post(){
+    function getspareUndercarriage_post(){
 
         $spares_undercarriageName = $this->post('spares_undercarriageId');
         $this->load->model("spares_undercarriageId");
@@ -166,7 +166,7 @@ class spareUndercarriage extends BD_Controller {
         }
     }
 
-    function getSpare_post(){
+    function getspareUndercarriage_post(){
 
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $this->load->model("spares_undercarriage");
