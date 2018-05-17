@@ -91,7 +91,7 @@ class Brand extends CI_Model {
 	
 
     function insert_brand($data){
-		$this->db->insert('brand', $data);
+		return $this->db->insert('brand', $data);
     }
 
     function checkBrand($name){
@@ -101,9 +101,9 @@ class Brand extends CI_Model {
         $result = $this->db->count_all_results();
 
         if($result > 0){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     function delete($brandId){

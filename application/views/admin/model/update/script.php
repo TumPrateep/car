@@ -39,6 +39,11 @@
     });
 
 
+    $("#submit").submit(function(){
+        updateModel();
+    })
+
+
     function updateModel(){
             event.preventDefault();
             var isValid = $("#submit").valid();

@@ -42,11 +42,12 @@ class SparePartCar extends CI_Controller {
 		$this->load->view("admin/typespare/update/script");
 	}
 
-	public function sparepart(){
+	public function sparepart($spares_undercarriageId){
+		$data['spares_undercarriageId'] = $spares_undercarriageId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/sparepart/content");
+		$this->load->view("admin/sparepart/content",$data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/sparepart/script");
@@ -62,11 +63,13 @@ class SparePartCar extends CI_Controller {
 		$this->load->view("admin/sparepart/create/script");
 	}
 
-	public function updatespare(){
+	public function updatespare($spares_undercarriageId,$spares_brandId){
+		$data['spares_brandId'] = $spares_brandId;
+		$data['spares_undercarriageId'] = $spares_undercarriageId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/sparepart/update/content");
+		$this->load->view("admin/sparepart/update/content",$data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/sparepart/update/script");
