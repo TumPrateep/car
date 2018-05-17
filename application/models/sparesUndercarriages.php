@@ -109,38 +109,38 @@ class sparesUndercarriages extends CI_Model{
         return $this->db->delete('spares_undercarriage', array('spares_undercarriageId' => $spares_undercarriageId));
     }
 
-    // function checksparesUndercarriage($spares_undercarriageName) {
-    //     $this->db->select("*");
-    //     $this->db->from("spares_undercarriageName");
-    //     $this->db->where('spares_undercarriageName',$spares_undercarriageName);
-    //     $result = $this->db->count_all_results();
+    function checksparesUndercarriage($spares_undercarriageName) {
+        $this->db->select("*");
+        $this->db->from("spares_undercarriageName");
+        $this->db->where('spares_undercarriageName',$spares_undercarriageName);
+        $result = $this->db->count_all_results();
 
-    //     if($result > 0){
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
+        if($result > 0){
+            return true;
+        }else{
+            return false;
+        }
 
-    // }
+    }
     
-    // function getsparesUndercarriage($spares_undercarriageName){
-    //     return $this->db->where('spares_undercarriageName',$spares_undercarriageName)->get("spares_undercarriage")->row();
-    // }
+    function getsparesUndercarriage($spares_undercarriageName){
+        return $this->db->where('spares_undercarriageName',$spares_undercarriageName)->get("spares_undercarriage")->row();
+    }
 
 
-    // function checksparesUndercarriage($spares_undercarriageName) {
-    //     $this->db->select("*");
-    //     $this->db->from("spares_undercarriage");
-    //     $this->db->where('spares_undercarriageName',$spares_undercarriageName);
-    //     $result = $this->db->count_all_results();
+    function checksparesUndercarriage($spares_undercarriageName) {
+        $this->db->select("*");
+        $this->db->from("spares_undercarriage");
+        $this->db->where('spares_undercarriageName',$spares_undercarriageName);
+        $result = $this->db->count_all_results();
 
-    //     if($result > 0){
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
+        if($result > 0){
+            return true;
+        }else{
+            return false;
+        }
 
-    //}
+    }
 
     
 
