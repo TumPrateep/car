@@ -421,5 +421,51 @@ class Car extends BD_Controller {
 
     }
 
+    function createBrand_post(){
+        $config['upload_path'] = 'public/image/brand/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        // $config['max_size'] = '100';
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
+        $config['overwrite'] = TRUE;
+        $config['encrypt_name'] = TRUE;
+        $config['remove_spaces'] = TRUE;
 
+        $this->load->library('upload', $config);
+        $this->load->model("Brand");
+        
+		if ( ! $this->upload->do_upload("brandPicture"))
+		{
+            $error = array('error' => $this->upload->display_errors());
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $output["data"] = $error;
+			$this->set_response($output, REST_Controller::HTTP_OK);
+		}
+		else
+		{
+            $imageDetailArray = $this->upload->data();
+            $image =  $imageDetailArray['file_name'];
+            $brandName = $this->post("brandName");
+            $isDublicte = $this->Brand->checkBrand($brandName);
+            if($isDublicte){
+                $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $data = array(
+                    "brandId"=> null,
+                    "brandPicture"=> $image,
+                    "brandName"=> $brandName,
+                    "status"=> 1
+                );
+                $isResult = $this->Brand->insert_brand($data);
+                if($isResult){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }
+		}
+    }
 }
