@@ -46,7 +46,7 @@ class Car extends BD_Controller {
             {
 
                 $nestedData['brandId'] = $post->brandId;
-                $nestedData['brandPic'] = '';
+                $nestedData['brandPic'] = $post->brandPicture;
                 $nestedData['brandName'] = $post->brandName;
 
                 $data[] = $nestedData;

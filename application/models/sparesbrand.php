@@ -2,7 +2,7 @@
 
 class Sparesbrand extends CI_Model{
 
-    function allSsparesbrand_count($sparesbrandId)
+    function allSparesbrand_count($sparesbrandId)
     {   
         $this->db->where("sparesbrandId", $sparesbrandId);
         $query = $this->db->get('sparesbrand');

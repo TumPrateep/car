@@ -7,13 +7,13 @@ class SparePartCar extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        //$this->auth();
+        // $this->auth();
     }
 
     function search_post(){
         $columns = array( 
             0 => null,
-            1 => 'sparesbrandName', 
+            1 => 'sparesbrandName'
             
         );
 
@@ -23,20 +23,20 @@ class SparePartCar extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
 
         $this->load->model("Sparesbrand");
-        $totalData = $this->Sparesbrand->allSpare_count();
+        $totalData = $this->Sparesbrand->allSparesbrand_count();
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('sparesbrandName')))
+        if(empty($this->post('search')))
         {            
-            $posts = $this->Sparesbrand->allSpare($limit,$start,$order,$dir);
+            $posts = $this->Sparesbrand->allSparesbrand($limit,$start,$order,$dir);
         }
         else {
-            $search = $this->post('sparesbrandName'); 
+            $search = $this->post('search'); 
 
-            $posts =  $this->Sparesbrand->spare_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->Sparesbrand->sparesbrand_search($limit,$start,$search,$order,$dir);
 
-            $totalFiltered = $this->Sparesbrand->spare_search_count($search);
+            $totalFiltered = $this->Sparesbrand->sparesbrand_search_count($search);
         }
 
         $data = array();
