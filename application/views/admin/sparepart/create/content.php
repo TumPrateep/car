@@ -3,9 +3,12 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("sparepartcar") ?>">ยี่ห้ออะไหล่</a>
+        <a href="<?=base_url("sparepartcar") ?>">รายการอะไหล่</a>
         </li>
-        <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
+        <li class="breadcrumb-item">
+        <a href="<?=base_url("sparepartcar/sparepart") ?>">ยี่ห้ออะไหล่</a>
+        </li>
+        <li class="breadcrumb-item active">เพิ่มยี่ห้ออะไหล่</li>
       </ol>
       <!-- Icon Cards-->
       <section class="content">
@@ -34,7 +37,7 @@
                         <button type="submit" class="btn btn-primary">บันทึก</button>
                       </div>
                     </div>
-                    </form>
+                  </form>
                     <!-- /.card-body -->
                  
                 </div>
