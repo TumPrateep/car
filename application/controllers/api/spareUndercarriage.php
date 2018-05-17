@@ -127,7 +127,7 @@ class spareUndercarriage extends BD_Controller {
         $spares_undercarriageId = $this->get('spares_undercarriageId');
 
         $this->load->model("sparesUndercarriages");
-        $spares_undercarriage = $this->spareUndercarriages->getSparebyId($sparesId);
+        $spares_undercarriage = $this->spareUndercarriages->getSparebyId($spares_undercarriageId);
         if($spares_undercarriage != null){
             $isDelete = $this->spareUndercarriages->delete($spares_undercarriageId);
             if($isDelete){
