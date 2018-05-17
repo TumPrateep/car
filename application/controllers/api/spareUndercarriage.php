@@ -63,14 +63,14 @@ class spareUndercarriage extends BD_Controller {
         $spares_undercarriageName = $this->post("spares_undercarriageName");
         
         $this->load->model("spares_undercarriage");
-        $isCheck = $this->spares->getsparesUndercarriageforTF($spares_undercarriageName);
+        $isCheck = $this->sparesUndercarriages->getsparesUndercarriageforTF($spares_undercarriageName);
 
         if($isCheck){
             $data = array(
                 'spares_undercarriageId' => null,
                 'spares_undercarriageName' => $spares_undercarriageName
             );
-            $result = $this->Spare->insertsparesUndercarriage($data);
+            $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -98,7 +98,7 @@ class spareUndercarriage extends BD_Controller {
         
         $this->load->model("spares_undercarriage");
 
-        $result = $this->spares->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
+        $result = $this->sparesUndercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
 
         if($result){
             $data = array(
