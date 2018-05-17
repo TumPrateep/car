@@ -1,5 +1,20 @@
 <script>
 
+        
+    $("#spares").validate({
+            rules: {
+                spares_brandName: {
+                    required: true
+                },
+            },
+            messages: {
+                spares_brandName: {
+                    required: "กรุณากรอกยี่ห้ออะไหล่"
+                }
+            },
+        });
+  
+
 
     var spares_brandId = $("#spares_brandId").val();
     var spares_undercarriageId = $("#spares_undercarriageId").val();
@@ -19,21 +34,6 @@
         
     });
 
-
-
-    $("#spares").validate({
-        rules: {
-            sparesbrandName: {
-                required: true
-            },
-        },
-        messages: {
-            sparesbrandName: {
-                required: "กรุณากรอกยี่ห้ออะไหล่"
-            }
-        },
-    });
-  
     
     $("#spares").submit(function(){
         updateBrand();
