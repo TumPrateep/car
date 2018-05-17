@@ -17,20 +17,20 @@ class spareUndercarriage extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
 
         $this->load->model("spares_undercarriage");
-        $totalData = $this->spares->allSsparesUndercarriages_count();
+        $totalData = $this->sparesUndercarriages->allSsparesUndercarriages_count();
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('spares_undercarriageName')))
         {            
-            $posts = $this->spares->allsparesUndercarriage($limit,$start,$order,$dir);
+            $posts = $this->sparesUndercarriages->allsparesUndercarriage($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('spares_undercarriageName'); 
 
-            $posts =  $this->spares->sparesUndercarriage_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->sparesUndercarriages->sparesUndercarriage_search($limit,$start,$search,$order,$dir);
 
-            $totalFiltered = $this->spares->sparesUndercarriage_search_count($search);
+            $totalFiltered = $this->sparesUndercarriages->sparesUndercarriage_search_count($search);
         }
 
         $data = array();
