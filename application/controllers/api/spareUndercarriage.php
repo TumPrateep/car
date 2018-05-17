@@ -127,9 +127,9 @@ class spareUndercarriage extends BD_Controller {
         $spares_undercarriageId = $this->get('spares_undercarriageId');
 
         $this->load->model("sparesUndercarriages");
-        $spares_undercarriage = $this->spareUndercarriages->getSparebyId($spares_undercarriageId);
+        $spares_undercarriage = $this->sparesUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
         if($spares_undercarriage != null){
-            $isDelete = $this->spareUndercarriages->delete($spares_undercarriageId);
+            $isDelete = $this->sparesUndercarriages->delete($spares_undercarriageId);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
