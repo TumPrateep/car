@@ -2,7 +2,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("sparepartcar") ?>">ยี่ห้ออะไหล่</a>
+        <a href="<?=base_url("sparepartcar") ?>">รายการอะไหล่</a>
+        </li>
+        <li class="breadcrumb-item">
+        <a href="<?=base_url("sparepartcar/sparepart") ?>">ยี่ห้ออะไหล่</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
@@ -10,7 +13,6 @@
       <!-- Example DataTables Card-->
         
     <div class="card-tools">
-
         <div class="input-group input-group-sm" >
           <img src="https://image.freepik.com/free-vector/workplace-background-with-laptop_1284-1119.jpg" class="rounded float-left" >
           <h3 class="car-img">ชื่อยี่ห้ออะไหล่</h3>

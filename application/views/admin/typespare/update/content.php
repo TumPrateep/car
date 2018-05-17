@@ -3,10 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("sparepartcar") ?>">ยี่ห้ออะไหล่</a>
-        </li>
-        <li class="breadcrumb-item">
-        <a href="<?=base_url("sparepartcar/typespare") ?>">รายการอะไหล่</a>
+          <a href="<?=base_url("sparepartcar") ?>">รายการอะไหล่</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขรายการอะไหล่</li>
       </ol>
@@ -18,7 +15,7 @@
               <div class="card text-white bg-success">
                   <div class="card-header">
 
-                    <h3 class="card-title"><i class="fa fa fa-wrench"></i>เเก้ไขชนิดอะไหล่</h3>
+                    <h3 class="card-title"><i class="fa fa fa-wrench"></i>เเก้ไขรายการอะไหล่</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -28,8 +25,8 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label>ชื่อชนิดอะไหล่</label>
-                            <input type="text" class="form-control" placeholder="ชื่อชนิดอะไหล่" name="spareTypeName">
+                            <label>ชื่อรายการอะไหล่</label>
+                            <input type="text" class="form-control" placeholder="ชื่อรายการอะไหล่" name="spareTypeName">
                           </div>
                         </div>
                       </div>
