@@ -133,4 +133,15 @@ class Brand extends CI_Model {
         return $result;
     }
 
+    function checkBrandforget($brandId){
+        $this->db->select("brandId");
+        $this->db->from("brand");
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
+        }
+        return false;
+    }
+
 }
