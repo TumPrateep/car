@@ -81,7 +81,8 @@
         var option = {
             url: "/car/deleteBrand?brandId="+data.brandId,
             label: "ลบยี่ห้อรถ",
-            content: "คุณต้องการลบ "+data.brandName+" ใช่หรือไม่"
+            content: "คุณต้องการลบ "+data.brandName+" ใช่หรือไม่",
+            gotoUrl: "car"
         }
         fnDelete(option);
     } );
