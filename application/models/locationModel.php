@@ -17,4 +17,15 @@ class LocationModel extends CI_Model {
 
     }
 
+    function getDistrict($provinceId){
+        $this->db->from('district');
+        $this->db->where('provinceId',$provinceId);
+        $this->db->where('status',1);
+        $this->db->order_by("districtName", "asc");
+        $result = $this->db->get();
+        return $result->result();
+
+    }
+
+
 }
