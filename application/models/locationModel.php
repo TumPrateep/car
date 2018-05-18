@@ -27,5 +27,14 @@ class LocationModel extends CI_Model {
 
     }
 
+    function getProvince(){
+        $this->db->from('province');
+        $this->db->where('status',1);
+        $this->db->order_by("provinceName", "asc");
+        $result = $this->db->get();
+        return $result->result();
+
+    }
+
 
 }
