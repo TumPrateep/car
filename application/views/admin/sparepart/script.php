@@ -70,7 +70,8 @@
         var option = {
             url: "/spareUndercarriage/deleteSpareBrand?spares_undercarriageId="+data.spares_undercarriageId,
             label: "ลบยี่ห้ออะไหล่",
-            content: "คุณต้องการลบ "+data.spares_undercarriageName+" ใช่หรือไม่"
+            content: "คุณต้องการลบ "+data.spares_undercarriageName+" ใช่หรือไม่",
+            gotoUrl: "car/SparePartCar/sparepart/"+spares_undercarriageId
         }
         fnDelete(option);
     } );
@@ -78,6 +79,9 @@
     $("#btn-search").click(function(){
         table.ajax.reload();
     })
+
+
+    
 </script>
 
 </body>
