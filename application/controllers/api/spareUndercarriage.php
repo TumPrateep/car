@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class spareUndercarriage extends BD_Controller {
+class SpareUndercarriage extends BD_Controller {
     function searchspareUndercarriage_post(){
         $columns = array( 
             0 => null,
