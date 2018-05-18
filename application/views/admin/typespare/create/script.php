@@ -1,12 +1,12 @@
 <script>
     $("#submit").validate({
         rules: {
-            spareTypeName: {
+            spares_undercarriageName: {
                 required: true
             },
         },
         messages: {
-            spareTypeName: {
+            spares_undercarriageName: {
                 required: "กรุณากรอกรายการอะไหล่"
             }
         },
@@ -23,7 +23,7 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/SpareUndercarriage/createspareUndercarriage",data,
+            $.post(base_url+"api/spareundercarriage/createspareUndercarriage",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"sparepartcar");

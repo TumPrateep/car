@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>ชื่อรายการอะไหล่</label>
-                            <input type="text" class="form-control" placeholder="ชื่อรายการอะไหล่" name="spareTypeName">
+                            <input type="text" class="form-control" placeholder="ชื่อรายการอะไหล่" name="spares_undercarriageName">
                           </div>
                         </div>
                       </div>
