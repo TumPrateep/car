@@ -18,6 +18,7 @@
                     "sLast": "หน้าสุดท้าย" // This is the link to the last page
                 }
             },
+            "responsive": true,
             "bLengthChange": true,
             "searching": false,
             "processing": true,

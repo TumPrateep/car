@@ -21,4 +21,8 @@
 
   <link href="<?=base_url("/public/css/loading.css") ?>" rel="stylesheet">
 
+  <link href="<?=base_url("/public/css/toggle-switch.css") ?>" rel="stylesheet">
+
+  <link href="<?=base_url("/public/css/responsive.dataTables.min.css") ?>" rel="stylesheet">
+
 </head>

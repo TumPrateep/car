@@ -11,7 +11,7 @@ class sparesUndercarriages extends CI_Model{
         return $query->num_rows();  
 
     }
-    
+
     function allsparesUndercarriage($limit,$start,$col,$dir)
     {   
         $query = $this
@@ -31,7 +31,6 @@ class sparesUndercarriages extends CI_Model{
 
         
     }
-   
     function sparesUndercarriage_search($limit,$start,$search,$col,$dir,$spares_undercarriageId)
     {
         $this->db->where("spares_undercarriageId", $spares_undercarriageId);
@@ -52,7 +51,6 @@ class sparesUndercarriages extends CI_Model{
             return null;
         }
     }
-
     function sparesUndercarriage_search_count($search, $spares_undercarriageId)
     {
         $this->db->where("spares_undercarriageId", $spares_undercarriageId);
@@ -68,78 +66,43 @@ class sparesUndercarriages extends CI_Model{
         $result = $this->db->insert('spares_undercarriage', $data);
         return $result;
     }
-
-    function getsparesUndercarriageforTF($spares_undercarriageName){
-        $this->db->select("spares_undercarriageName");
+    function checksparesUndercarriage($spares_undercarriageName) {
+        $this->db->select("*");
         $this->db->from("spares_undercarriage");
-        $this->db->where('spares_undercarriageName', $spares_undercarriageName);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return false;
-        }
-        return true;     
-    }
-
-    function wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName){
-        $this->db->select("spares_undercarriageName");
-        $this->db->from("spares_undercarriage");
-        $this->db->where('spares_undercarriageName', $spares_undercarriageName);
-        $this->db->where_not_in('spares_undercarriageId', $spares_undercarriageId);
+        $this->db->where('spares_undercarriageName',$spares_undercarriageName);
         $result = $this->db->count_all_results();
 
         if($result > 0){
             return false;
         }
         return true;
+
     }
-
-    function updatesparesUndercarriage($data){
-        $this->db->where('spares_undercarriageId',$data['spares_undercarriageId']);
-        $result = $this->db->update('spares_undercarriage', $data);
-        return $result;
-    }
-
-    
-
     function delete($spares_undercarriageId){
         return $this->db->delete('spares_undercarriage', array('spares_undercarriageId' => $spares_undercarriageId));
     }
+    function getsparesUndercarriagebyId($spares_undercarriageId){
+        return $this->db->where('spares_undercarriageId',$spares_undercarriageId)->get("spares_undercarriage")->row();
+    }
 
-    function checksparesUndercarriage($spares_undercarriageName) {
-        $this->db->select("*");
-        $this->db->from("spares_undercarriageName");
-        $this->db->where('spares_undercarriageName',$spares_undercarriageName);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
+    function wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName){
+            $this->db->select("spares_undercarriageName");
+            $this->db->from("spares_undercarriage");
+            $this->db->where('spares_undercarriageName', $spares_undercarriageName);
+            $this->db->where_not_in('spares_undercarriageId', $spares_undercarriageId);
+            $result = $this->db->count_all_results();
+    
+            if($result > 0){
+                return false;
+            }
             return true;
-        }else{
-            return false;
         }
 
-    }
-    
-    function getsparesUndercarriage($spares_undercarriageName){
-        return $this->db->where('spares_undercarriageName',$spares_undercarriageName)->get("spares_undercarriage")->row();
-    }
-
-
-    function checksparesUndercarriage($spares_undercarriageName) {
-        $this->db->select("*");
-        $this->db->from("spares_undercarriage");
-        $this->db->where('spares_undercarriageName',$spares_undercarriageName);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return false;
-        }
-        return true;
-
-    }
-
-    
-
+        function updatesparesUndercarriage($data){
+                $this->db->where('spares_undercarriageId',$data['spares_undercarriageId']);
+                $result = $this->db->update('spares_undercarriage', $data);
+                return $result;
+            }
    
 
 }

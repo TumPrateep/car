@@ -28,6 +28,7 @@
           <th>เบอร์โทรศัพท์</th>
           <th>อีเมล</th>
           <th></th>
+          <th></th>
         </thead>	
       </table>
     </div>
