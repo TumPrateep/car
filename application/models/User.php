@@ -4,9 +4,8 @@ if(!defined('BASEPATH')) exit('No direct script allowed');
 
 class User extends CI_Model{
 
-    function allUser_count($id)
+    function allUser_count()
     {   
-        $this->db->where("id", $id);
         $query = $this->db->get('users');
     
         return $query->num_rows();  
