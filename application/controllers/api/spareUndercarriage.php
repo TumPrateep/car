@@ -144,6 +144,33 @@ class SpareUndercarriage extends BD_Controller {
     }
 
 
+    function getsparesUndercarriage_post(){
+
+        $spares_brandId = $this->post('spares_brandId');
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+
+        $this->load->model("sparesUndercarriages");
+        $isCheck = $this->sparesUndercarriages->checksparesUndercarriage($spares_undercarriageId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->sparesUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_ERROR;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+
     
 
     }
