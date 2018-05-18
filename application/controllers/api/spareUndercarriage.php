@@ -146,7 +146,6 @@ class SpareUndercarriage extends BD_Controller {
 
     function getsparesUndercarriage_post(){
 
-        $spares_brandId = $this->post('spares_brandId');
         $spares_undercarriageId = $this->post('spares_undercarriageId');
 
         $this->load->model("sparesUndercarriages");
