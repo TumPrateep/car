@@ -13,11 +13,11 @@
     });
     
     $("#submit").submit(function(){
-        createSpares();
+        sparesundercarriageName();
     })
 
 
-    function createSpares(){
+    function sparesundercarriageName(){
         event.preventDefault();
         var isValid = $("#submit").valid();
         
