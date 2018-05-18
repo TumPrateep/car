@@ -48,8 +48,11 @@
             var data = $("#spares").serialize();
             $.post(base_url+"api/SparePartCar/updateSpareBrand",data,
             function(data){
-                // var spares_brandId = $("#spares_brandId").val();
-                showMessage(data.message,"SparePartCar/sparepart/"+spares_undercarriageId);
+                if(data.message == 200){
+                    showMessage(data.message,"SparePartCar/sparepart/"+spares_undercarriageId);
+                }else{
+                    showMessage(data.message);
+                }
             });
             
         }

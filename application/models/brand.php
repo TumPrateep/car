@@ -114,4 +114,34 @@ class Brand extends CI_Model {
         return $this->db->where('brandId',$brandId)->get("brand")->row();
     }
 
+    function wherenot($brandId,$brandName){
+        $this->db->select("brandName");
+        $this->db->from("brand");
+        $this->db->where('brandName', $brandName);
+        $this->db->where_not_in('brandId', $brandId);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+
+    function update($data){
+        $this->db->where('brandId',$data['brandId']);
+        $result = $this->db->update('brand', $data);
+        return $result;
+    }
+
+    function checkBrandforget($brandId){
+        $this->db->select("brandId");
+        $this->db->from("brand");
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -33,11 +33,12 @@ class Car extends CI_Controller {
 		$this->load->view("admin/car/create/script");
 	}
 
-	public function updateBrand(){
+	public function updateBrand($brandId){
+		$data['brandId'] = $brandId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/car/update/content");
+		$this->load->view("admin/car/update/content",$data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/car/update/script");

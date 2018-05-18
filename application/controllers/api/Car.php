@@ -468,4 +468,72 @@ class Car extends BD_Controller {
             }
 		}
     }
+
+    function updateBrand_post(){
+        $config['upload_path'] = 'public/image/brand/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        // $config['max_size'] = '100';
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
+        $config['overwrite'] = TRUE;
+        $config['encrypt_name'] = TRUE;
+        $config['remove_spaces'] = TRUE;
+
+        $this->load->library('upload', $config);
+        $this->load->model("Brand");
+        
+        $imageDetailArray = $this->upload->data();
+        $image =  $imageDetailArray['file_name'];
+        $brandName = $this->post("brandName");
+        $brandId = $this->post("brandId");
+        $isDublicte = $this->Brand->wherenot($brandId,$brandName);
+        if($isDublicte){
+            $data = array(
+                "brandId"=> null,
+                "brandPicture"=> $image,
+                "brandName"=> $brandName,
+                "status"=> 1
+            );
+            $isResult = $this->Brand->update($data);
+            if($isResult){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+
+        }else{
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+		
+    }
+
+    function getBrandforupdate_post(){
+
+        $brandId = $this->post('brandId');
+        $this->load->model("Brand");
+        $isCheck = $this->Brand->checkBrandforget($brandId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->Brand->getBrandById($brandId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+
+
+    }
 }

@@ -7,7 +7,7 @@
         "modelId": $("#modelId").val()
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"car/model/"+brandId+"/"+modelId);
+            showMessage(data.message,"car/model/"+brandId);
         }
 
         if(data.message == 200){
@@ -53,7 +53,11 @@
                 $.post(base_url+"api/car/updateModel",data,
                 function(data){
                     var brandId = $("#brandId").val();
-                    showMessage(data.message,"car/model/"+brandId);
+                    if(data.message == 200){
+                        showMessage(data.message,"car/model/"+brandId);
+                    }else{
+                    showMessage(data.message);
+                    }
                 });
                 
             }

@@ -68,7 +68,7 @@
     $('#spares_undercarriage-table tbody').on( 'click', 'button.delete', function () {
         var data = table.row( $(this).parents('tr') ).data();
         var option = {
-            url: "/spareUndercarriage/deleteSpareBrand?spares_undercarriageId="+data.spares_undercarriageId,
+            url: "/spareUndercarriage/deletespareUndercarriage?spares_undercarriageId="+data.spares_undercarriageId,
             label: "ลบยี่ห้ออะไหล่",
             content: "คุณต้องการลบ "+data.spares_undercarriageName+" ใช่หรือไม่"
         }
