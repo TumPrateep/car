@@ -51,7 +51,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
+                           +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
                     }
                 },{
                     "targets": 5,

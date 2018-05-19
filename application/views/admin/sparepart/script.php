@@ -23,16 +23,17 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/SparePartCar/search",
+                "url": base_url+"api/SparePartCar/searchSpares",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_brandName = $("#table-search").val()
-                }
+                    data.spares_brandName= $("#table-search").val(),
+                    data.spares_undercarriageId = $("#spares_undercarriageId").val()
+                  }
             },
             "columns": [
                 null,
-                { "data": "spares_brandName" }
+                { "data": "spares_brandName" },
                 null
             ],
             "columnDefs": [
@@ -41,11 +42,11 @@
                     "orderable": false,
                     "targets": [0,1]
                 },{
-                    "targets": 1,
+                    "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"SparePartCar/createSpares/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"SparePartCar/updateBrand/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"SparePartCar/updateBrand/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -68,7 +69,7 @@
     $('#spares_brand-table tbody').on( 'click', 'button.delete', function () {
         var data = table.row( $(this).parents('tr') ).data();
         var option = {
-            url: "/spareUndercarriage/deleteSpareBrand?spares_undercarriageId="+data.spares_undercarriageId,
+            url: "/SparePartCar/deleteSpareBrand?spares_brandId="+data.spares_brandId,
             label: "ลบยี่ห้ออะไหล่",
             content: "คุณต้องการลบ "+data.spares_undercarriageName+" ใช่หรือไม่",
             gotoUrl: "car/SparePartCar/sparepart/"+spares_undercarriageId

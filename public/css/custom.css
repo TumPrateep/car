@@ -229,7 +229,7 @@
     width: 800px !important;
   }
 
-  .ui.form.register,.ui.middle.aligned.aligned.grid{
+  .ui.form.register{
     padding-top: 4em !important;
   }
   .card-body.black{
@@ -249,4 +249,10 @@
   }
   .input-group.car{
     padding-top: 1em !important;
+  }
+  .step{
+    margin-top: 3px;
+  }
+  span.error{
+    color:red;
   }

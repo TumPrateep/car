@@ -11,6 +11,8 @@
       </ol>
 
       <!-- Example DataTables Card-->
+
+      <input type="hidden" id="spares_undercarriageId" value="<?=$spares_undercarriageId ?>">
         
     <div class="card-tools">
         <div class="input-group input-group-sm" >
@@ -28,7 +30,7 @@
         </div>
     </div>
 
-    <!-- <input type="hidden" id="brandId" value="<?=$id ?>"> -->
+
   
     
     

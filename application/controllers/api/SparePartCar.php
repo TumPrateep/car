@@ -7,10 +7,10 @@ class SparePartCar extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
 
-    function search_post(){
+    function searchSpares_post(){
         $columns = array( 
             0 => null,
             1 => 'spares_brandName'
@@ -23,21 +23,22 @@ class SparePartCar extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
+        $spares_undercarriageId = $this->post("spares_undercarriageId");
         $this->load->model("Sparesbrand");
-        $totalData = $this->Sparesbrand->allSpares_brand_count();
+        $totalData = $this->Sparesbrand->allSpares_brand_count($spares_undercarriageId);
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('search')))
+        if(empty($this->post('spares_brandName'))  || empty($this->post('spares_undercarriageId')))
         {            
-            $posts = $this->Sparesbrand->allSpares_brand($limit,$start,$order,$dir);
+            $posts = $this->Sparesbrand->allSpares_brand($limit,$start,$order,$dir, $spares_undercarriageId);
         }
         else {
-            $search = $this->post('search'); 
+            $search = $this->post('spares_brandName'); 
 
-            $posts =  $this->Sparesbrand->spares_brand_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->Sparesbrand->spares_brand_search($limit,$start,$search,$order,$dir, $spares_undercarriageId);
 
-            $totalFiltered = $this->Sparesbrand->sparesbrand_search_count($search);
+            $totalFiltered = $this->Sparesbrand->spares_brand_search_count($search, $spares_undercarriageId);
         }
 
         $data = array();
@@ -45,8 +46,8 @@ class SparePartCar extends BD_Controller {
         {
             foreach ($posts as $post)
             {
-
                 $nestedData['spares_brandId'] = $post->spares_brandId;
+                $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
                 $nestedData['spares_brandName'] = $post->spares_brandName;
 
                 $data[] = $nestedData;

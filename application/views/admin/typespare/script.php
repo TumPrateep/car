@@ -27,7 +27,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_undercarriageName = $("#table-search").val()
+                    data.spares_undercarriageName = $("#table-search").val();
                 }
             },
             "columns": [
@@ -41,11 +41,11 @@
                     "orderable": false,
                     "targets": [0,1]
                 },{
-                    "targets": 1,
+                    "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"SparePartCar/createSpares/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"SparePartCar/updateBrand/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"sparepartcar/sparepart/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"sparepartcar/updateUser/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
                     }
                 },

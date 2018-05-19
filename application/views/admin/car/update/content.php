@@ -20,10 +20,11 @@
                   <!-- /.card-header -->
                   <!-- form start -->
               <form id="update-brand">
+                  <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
                   <div class="card-body black bg-light">
                       <div class="form-group">
                         <label>ชื่อยี่ห้อรถ</label>
-                        <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName">
+                        <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName" id="brandName" value="">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputFile">รูปภาพ</label>

@@ -13,7 +13,7 @@ class UserProfile extends CI_Controller {
     }
 
     function index(){
-        echo "ข้อมูลผู้ใช้งาน";
+        $this->load->view("auth/profile");
     }
 
 }
