@@ -101,8 +101,8 @@
             <!-- <img class="ui avatar image" src="assert/images/square-image.png"> -->
             <!-- <span>Username</span> -->
             <a class="blue ui head-logo"><i class="black car icon"></i>CarJaidee.com</a>
-            <a class="ui red button head-button">สมัครใช้งาน</a>
-            <a class="ui primary button head-button">ลงชื่อเข้าใช้</a>
+            <a class="ui red button head-button " href="<?=base_url("/auth/register") ?>">สมัครใช้งาน</a>
+            <a class="ui primary button head-button" href="<?=base_url("/auth/login") ?>">ลงชื่อเข้าใช้</a>
           </div>
         </div>
       </div>
