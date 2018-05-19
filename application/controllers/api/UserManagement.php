@@ -15,7 +15,8 @@ class UserManagement extends BD_Controller {
             0 => null,
             1 =>'username', 
             2 =>'phone',
-            3 =>'email'
+            3 =>'email',
+            4=>'category',
         );
 
         $limit = $this->post('length');
@@ -50,6 +51,15 @@ class UserManagement extends BD_Controller {
                 $nestedData['username'] = $post->username;
                 $nestedData['phone'] = $post->phone;
                 $nestedData['email'] = $post->email;
+                switch($post->category){
+                    case "1" : $nestedData['category'] ="admin";break;
+                    case "2" : $nestedData['category'] ="caraccessory";break;
+                    case "3" : $nestedData['category'] ="garage";break;
+                    case "4" : $nestedData['category'] ="user";break;
+                    default  : $nestedData['category'] ="no category";break;
+
+                    
+                }
 
                 $data[] = $nestedData;
 

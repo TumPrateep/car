@@ -37,6 +37,7 @@
                 { "data": "username" },
                 { "data": "phone" },
                 { "data": "email" },
+                { "data": "category" },
                 null,
                 null
             ],
@@ -44,16 +45,16 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,4,5]
+                    "targets": [0,5,6]
                 },{
-                    "targets": 5,
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
                     }
                 },{
-                    "targets": 4,
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<label class="switch">'
@@ -70,8 +71,8 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [1,2,3]},
-                {"className": "dt-center", "targets": [0,4,5]},
+                {"className": "dt-head-center", "targets": [1,2,3,4]},
+                {"className": "dt-center", "targets": [0,5,6]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 3 }
             ]	 
