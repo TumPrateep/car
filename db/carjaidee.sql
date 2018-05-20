@@ -411,6 +411,7 @@ CREATE TABLE `user_profile` (
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
   `users_id` int(11) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_profile`),
   KEY `fk_user_profile_province1_idx` (`provinceId`),
   KEY `fk_user_profile_district1_idx` (`districtId`),
@@ -486,4 +487,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-20 16:57:36
+-- Dump completed on 2018-05-20 17:26:20
