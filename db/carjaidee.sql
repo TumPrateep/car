@@ -406,22 +406,24 @@ CREATE TABLE `user_profile` (
   `provinceId` int(11) NOT NULL,
   `districtId` int(11) NOT NULL,
   `subdistrictId` int(11) NOT NULL,
-  `create_by` int(11) DEFAULT NULL,
-  `update_by` int(11) DEFAULT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL,
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
+  `users_id` int(11) NOT NULL,
   PRIMARY KEY (`user_profile`),
   KEY `fk_user_profile_province1_idx` (`provinceId`),
   KEY `fk_user_profile_district1_idx` (`districtId`),
   KEY `fk_user_profile_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_user_profile_users1_idx` (`create_by`),
   KEY `fk_user_profile_users2_idx` (`update_by`),
+  KEY `fk_user_profile_users3_idx` (`users_id`),
   CONSTRAINT `fk_user_profile_district1` FOREIGN KEY (`districtId`) REFERENCES `district` (`districtId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_province1` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_subdistrict1` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_profile_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_user_profile_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_profile_users3` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -484,4 +486,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-20 15:55:18
+-- Dump completed on 2018-05-20 16:57:36
