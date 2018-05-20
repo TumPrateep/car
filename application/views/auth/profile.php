@@ -94,33 +94,33 @@
                           <div class="form-row">
                             <div class="form-group col-md-6">
                               <label>ชื่อ</label><span class="error">*</span>
-                              <input type="text" name="firstname" class="form-control" placeholder="ชื่อ">
+                              <input type="text" name="firstname" id="firstname" class="form-control" placeholder="ชื่อ">
                             </div>
                             <div class="form-group col-md-6">
                               <label>นามสกุล</label><span class="error">*</span>
-                              <input type="text" name="lastname" class="form-control" placeholder="นามสกุล">
+                              <input type="text" name="lastname" id="lastname" class="form-control" placeholder="นามสกุล">
                             </div>
                           </div>
                           <div class="form-group">
                             <label>ที่อยู่:</label><span class="error">*</span>
-                            <textarea class="form-control" name="address" rows="3"></textarea>
+                            <textarea class="form-control" name="address" id="address" rows="3"></textarea>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>จังหวัด</label><span class="error">*</span>
-                              <select class="form-control" name="provinceId">
+                              <select class="form-control" name="provinceId" id="provinceId">
                                 <option>เลือกจังหวัด</option>
                               </select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>อำเภอ</label><span class="error">*</span>
-                              <select class="form-control" name="districtId">
+                              <select class="form-control" name="districtId" id="districtId">
                                 <option>เลือกอำเภอ</option>
                               </select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>ตำบล</label><span class="error">*</span>
-                              <select class="form-control" name="subdistrictId">
+                              <select class="form-control" name="subdistrictId" id="subdistrictId">
                                 <option>เลือกตำบล</option>
                               </select>
                             </div>
@@ -128,7 +128,7 @@
                           <div class="form-row">
                             <div class="form-group col-md-6">
                               <label>เบอร์โทรศัพท์</label>
-                              <input type="text" name="phone1" class="form-control" placeholder="เบอร์โทรศัพท์">
+                              <input type="text" name="phone1" id="phone1" class="form-control" placeholder="เบอร์โทรศัพท์">
                             </div>
                             <div class="form-group col-md-6">
                               <label>เบอร์โทรศัพท์ที่สามารถติดต่อได้</label><span class="error">*</span>
