@@ -26,16 +26,16 @@ CREATE TABLE `brand` (
   `brandId` int(11) NOT NULL AUTO_INCREMENT,
   `brandPicture` varchar(255) DEFAULT NULL,
   `brandName` varchar(255) NOT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`brandId`),
   KEY `fk_brand_users1_idx` (`create_by`),
   KEY `fk_brand_users2_idx` (`update_by`),
-  CONSTRAINT `fk_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `id` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `update_by` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -64,8 +64,8 @@ CREATE TABLE `car_accessories` (
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
   `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`car_accessoriesId`),
   KEY `fk_car_accessories_users1_idx` (`id`),
   KEY `fk_car_accessories_users2_idx` (`create_by`),
@@ -102,8 +102,8 @@ CREATE TABLE `car_profile` (
   `id` int(11) NOT NULL,
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`car_profileId`),
   KEY `fk_car_profile_users1_idx` (`id`),
@@ -135,8 +135,8 @@ CREATE TABLE `district` (
   `districtId` int(11) NOT NULL AUTO_INCREMENT,
   `districtName` varchar(255) NOT NULL,
   `provinceId` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
-  `create_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
   `status` int(11) NOT NULL,
@@ -181,8 +181,8 @@ CREATE TABLE `garage` (
   `subdistrictId` int(11) NOT NULL,
   `districtId` int(11) NOT NULL,
   `province_provinceId` int(11) NOT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
   `status` int(11) NOT NULL,
@@ -222,8 +222,8 @@ CREATE TABLE `model` (
   `brandId` int(11) NOT NULL,
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL,
   `yearStart` int(11) NOT NULL,
   `yearEnd` int(11) DEFAULT NULL,
@@ -257,8 +257,8 @@ DROP TABLE IF EXISTS `province`;
 CREATE TABLE `province` (
   `provinceId` int(11) NOT NULL AUTO_INCREMENT,
   `provinceName` varchar(255) DEFAULT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
   `status` int(11) NOT NULL,
@@ -292,8 +292,8 @@ CREATE TABLE `spares_brand` (
   `spares_brandName` varchar(45) NOT NULL,
   `status` varchar(45) NOT NULL,
   `spares_undercarriageId` int(11) NOT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
   `create_add` datetime DEFAULT NULL,
   PRIMARY KEY (`spares_brandId`),
@@ -327,8 +327,8 @@ CREATE TABLE `spares_undercarriage` (
   `spares_undercarriageId` int(11) NOT NULL AUTO_INCREMENT,
   `spares_undercarriageName` varchar(45) NOT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
   PRIMARY KEY (`spares_undercarriageId`),
@@ -361,8 +361,8 @@ CREATE TABLE `subdistrict` (
   `subdistrictName` varchar(25) NOT NULL,
   `districtId` int(11) NOT NULL,
   `provinceId` int(11) NOT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
@@ -406,10 +406,11 @@ CREATE TABLE `user_profile` (
   `provinceId` int(11) NOT NULL,
   `districtId` int(11) NOT NULL,
   `subdistrictId` int(11) NOT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_profile`),
   KEY `fk_user_profile_province1_idx` (`provinceId`),
   KEY `fk_user_profile_district1_idx` (`districtId`),
@@ -444,20 +445,20 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `categolory` varchar(45) DEFAULT NULL,
+  `category` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_users_users1_idx` (`create_by`),
   KEY `fk_users_users2_idx` (`update_by`),
   CONSTRAINT `fk_users_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -466,7 +467,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1),(2,'sdf','$2y$10$0FxAqagF0sCpn5whZ7gMo.qd55HrsmEqmqriJDZV4.FBM9HdDa0XO',NULL,'nar@gmail.com','045465',NULL,NULL,1,1,1);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1),(3,'nnnn','$2y$10$AF2p2j3eG6EA7Qpg9cjWAeLHKtHlvXORKWbG6PxESbAiQVW.DvELy',NULL,'nar@gmail.com','45456546',NULL,NULL,NULL,NULL,NULL),(4,'5454','4554','3','445@gmail.com','45456456456',NULL,NULL,1,1,1),(5,'nnn','$2y$10$8NagaB3Kjeat0omA4NqcjeWE9G4411lahp34c85ZqWiBoaAus3puu','','nana@gmail.com','2646542',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -483,4 +484,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-18 15:08:05
+-- Dump completed on 2018-05-20 15:55:18
