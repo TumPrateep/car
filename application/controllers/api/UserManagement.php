@@ -206,16 +206,8 @@ class UserManagement extends BD_Controller {
 
             $result = $this->User->insertUserprofile($data);
 
+        }
 
-            $this->db->trans_complete();
-            if($result){
-                $output["data"] = $result;
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }    
-    } 
+    }
+
 }
