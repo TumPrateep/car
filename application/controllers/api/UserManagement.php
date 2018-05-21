@@ -145,45 +145,78 @@ class UserManagement extends BD_Controller {
         $subdistrictId = $this->post("subdistrictId");
         $phone1 = $this->post("phone1");
         $phone2 = $this->post("phone2");
-        // $create_by = $this->post("create_by");
-        // $update_by = $this->post("update_by");
-
-        $create_by = $this->session->userdata['logged_in']['id'];
-        
+        // $users_id = $this->post("users_id");
        
         $this->load->model("User");
-        $this->db->trans_start();
-        $data = array(
-            'user_profile' => null,
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'status' => 1,
-            'address' => $address,
-            'phone1' => $phone1, 
-            'phone2' => $phone2,
-            'provinceId' => $provinceId, 
-            'districtId' => $districtId,
-            'subdistrictId' => $subdistrictId,
-            'create_by' => $create_by,
-            'update_by' => null,
-            'create_add' => date('Y-m-d H:i:s',time()),
-            'update_add' => date('Y-m-d H:i:s',time())
-        );
 
-        $result = $this->User->insertUserprofile($data);
+        $isupdate = $this->User->checkUserid($users_id);
+
+        $userId = (int)$this->session->userdata['logged_in']['id'];
+
+        if($isupdate){
+            $this->db->trans_start();
+            $data = array(
+                'user_profile' => null,
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'status' => 1,
+                'address' => $address,
+                'phone1' => $phone1, 
+                'phone2' => $phone2,
+                'provinceId' => $provinceId, 
+                'districtId' => $districtId,
+                'subdistrictId' => $subdistrictId,
+                'create_by' => $userId,
+                'create_add' => date('Y-m-d H:i:s',time()),
+                'users_id' => $userId
+            );
+
+            $result = $this->User->insertUserprofile($data);
 
 
-        $this->db->trans_complete();
-        if($result){
-            $output["data"] = $result;
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
+            $this->db->trans_complete();
+            if($result){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+
         }else{
-            $output["message"] = REST_Controller::MSG_NOT_CREATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-        
-        
+            $create_by = $this->session->userdata['logged_in']['id'];
+            $this->db->trans_start();
+            $data = array(
+                'user_profile' => null,
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'status' => 1,
+                'address' => $address,
+                'phone1' => $phone1, 
+                'phone2' => $phone2,
+                'provinceId' => $provinceId, 
+                'districtId' => $districtId,
+                'subdistrictId' => $subdistrictId,
+                'create_by' => $userId,
+
+                'create_add' => date('Y-m-d H:i:s',time()),
+                'users_id' => $userId
+            );
+
+            $result = $this->User->insertUserprofile($data);
+
+
+            $this->db->trans_complete();
+            if($result){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }    
     }
     
 }

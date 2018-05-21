@@ -119,6 +119,17 @@ class User extends CI_Model{
         return $this->db->insert('user_profile', $data);
     }
 
-    
+    function checkUserid($users_id){
+        $this->db->select("users_id");
+        $this->db->from("user_profile");
+        $this->db->where('users_id', $users_id);
+        
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
+        }
+        return false;
+    }
 	
 }
