@@ -114,18 +114,13 @@ class User extends CI_Model{
         $this->db->where_not_in("username" , "admin");
         return $this->db->delete('users', array('id' => $id));
     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> d0a89dcb4140f9d621d31dac1b82e2d53d991103
+
 
     function insertUserprofile($data){
         return $this->db->insert('user_profile', $data);
     }
 
-<<<<<<< HEAD
-    
-=======
+
     function checkUserid($users_id){
         $this->db->select("users_id");
         $this->db->from("user_profile");
@@ -138,8 +133,5 @@ class User extends CI_Model{
         }
         return false;
     }
-=======
->>>>>>> 93560fe652c9fa7f00ea3c8e77bd5ae8962ffe05
->>>>>>> d0a89dcb4140f9d621d31dac1b82e2d53d991103
-	
+
 }
