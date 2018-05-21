@@ -7,7 +7,7 @@ class UserManagement extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
 
     function search_post(){
@@ -132,6 +132,7 @@ class UserManagement extends BD_Controller {
         }
 
     }
+<<<<<<< HEAD
 
     function createUserprofile_post(){
 
@@ -218,5 +219,7 @@ class UserManagement extends BD_Controller {
             }
         }    
     }
+=======
+>>>>>>> 93560fe652c9fa7f00ea3c8e77bd5ae8962ffe05
     
 }
