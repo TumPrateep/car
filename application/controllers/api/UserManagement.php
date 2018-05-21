@@ -132,6 +132,10 @@ class UserManagement extends BD_Controller {
         }
 
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d0a89dcb4140f9d621d31dac1b82e2d53d991103
 
     function createUserprofile_post(){
 
@@ -145,6 +149,7 @@ class UserManagement extends BD_Controller {
         $subdistrictId = $this->post("subdistrictId");
         $phone1 = $this->post("phone1");
         $phone2 = $this->post("phone2");
+<<<<<<< HEAD
         // $create_by = $this->post("create_by");
         // $update_by = $this->post("update_by");
 
@@ -185,5 +190,82 @@ class UserManagement extends BD_Controller {
         
         
     }
+=======
+        // $users_id = $this->post("users_id");
+       
+        $this->load->model("User");
+
+        $isupdate = $this->User->checkUserid($users_id);
+
+        $userId = (int)$this->session->userdata['logged_in']['id'];
+
+        if($isupdate){
+            $this->db->trans_start();
+            $data = array(
+                'user_profile' => null,
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'status' => 1,
+                'address' => $address,
+                'phone1' => $phone1, 
+                'phone2' => $phone2,
+                'provinceId' => $provinceId, 
+                'districtId' => $districtId,
+                'subdistrictId' => $subdistrictId,
+                'create_by' => $userId,
+                'create_add' => date('Y-m-d H:i:s',time()),
+                'users_id' => $userId
+            );
+
+            $result = $this->User->insertUserprofile($data);
+
+
+            $this->db->trans_complete();
+            if($result){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+
+        }else{
+            $create_by = $this->session->userdata['logged_in']['id'];
+            $this->db->trans_start();
+            $data = array(
+                'user_profile' => null,
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'status' => 1,
+                'address' => $address,
+                'phone1' => $phone1, 
+                'phone2' => $phone2,
+                'provinceId' => $provinceId, 
+                'districtId' => $districtId,
+                'subdistrictId' => $subdistrictId,
+                'create_by' => $userId,
+
+                'create_add' => date('Y-m-d H:i:s',time()),
+                'users_id' => $userId
+            );
+
+            $result = $this->User->insertUserprofile($data);
+
+
+            $this->db->trans_complete();
+            if($result){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }    
+    }
+=======
+>>>>>>> 93560fe652c9fa7f00ea3c8e77bd5ae8962ffe05
+>>>>>>> d0a89dcb4140f9d621d31dac1b82e2d53d991103
     
 }
