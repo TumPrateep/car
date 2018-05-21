@@ -94,33 +94,33 @@
                           <div class="form-row">
                             <div class="form-group col-md-6">
                               <label>ชื่อ</label><span class="error">*</span>
-                              <input type="text" name="firstname" class="form-control" placeholder="ชื่อ">
+                              <input type="text" name="firstname" id="firstname" class="form-control" placeholder="ชื่อ">
                             </div>
                             <div class="form-group col-md-6">
                               <label>นามสกุล</label><span class="error">*</span>
-                              <input type="text" name="lastname" class="form-control" placeholder="นามสกุล">
+                              <input type="text" name="lastname" id="lastname" class="form-control" placeholder="นามสกุล">
                             </div>
                           </div>
                           <div class="form-group">
                             <label>ที่อยู่:</label><span class="error">*</span>
-                            <textarea class="form-control" name="address" rows="3"></textarea>
+                            <textarea class="form-control" name="address" id="address" rows="3"></textarea>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>จังหวัด</label><span class="error">*</span>
-                              <select class="form-control" name="provinceId">
+                              <select class="form-control" name="provinceId" id="provinceId">
                                 <option>เลือกจังหวัด</option>
                               </select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>อำเภอ</label><span class="error">*</span>
-                              <select class="form-control" name="districtId">
+                              <select class="form-control" name="districtId" id="districtId">
                                 <option>เลือกอำเภอ</option>
                               </select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>ตำบล</label><span class="error">*</span>
-                              <select class="form-control" name="subdistrictId">
+                              <select class="form-control" name="subdistrictId" id="subdistrictId">
                                 <option>เลือกตำบล</option>
                               </select>
                             </div>
@@ -128,7 +128,7 @@
                           <div class="form-row">
                             <div class="form-group col-md-6">
                               <label>เบอร์โทรศัพท์</label>
-                              <input type="text" name="phone1" class="form-control" placeholder="เบอร์โทรศัพท์">
+                              <input type="text" name="phone1" id="phone1" class="form-control" placeholder="เบอร์โทรศัพท์">
                             </div>
                             <div class="form-group col-md-6">
                               <label>เบอร์โทรศัพท์ที่สามารถติดต่อได้</label><span class="error">*</span>
@@ -157,131 +157,154 @@
 
                 <div id="step-3">
                     <div id="form-step-2" role="form" data-toggle="validator">
-                    <h5>ทะเบียนรถ</h5>
+                    <h5>ข้อมูลรถ</h5>
                       <form id="form-3">
                         <div id="role-4">  
                           <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label>ตัวอักษรนำหน้า</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ตัวอักษรนำหน้า">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>ตัวเลข</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ตัวเลข">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>จังหวัด</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="จังหวัด">
-                              </div>
+                            <div class="form-group col-md-4">
+                              <label>ทะเบียนรถ</label><span class="error">*</span>
+                              <input type="text" name="licensePlate" class="form-control" placeholder="ทะเบียนรถ">
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>เลขไมล์</label><span class="error">*</span>
+                              <input type="text" name="mileage" class="form-control" placeholder="เลขไมล์">
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>สี</label><span class="error">*</span>
+                              <input type="text" name="colorCar" class="form-control" placeholder="สีรถ">
+                            </div>
                           </div>
                           <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label>เลขไมล์</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="เลขไมล์">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>สี</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="สี">
-                              </div>
+                            <div class="form-group col-md-4">
+                              <label>รูปด้านหน้ารถ </label>
+                              <input type="file" class="form-control-file" name="frontPicture" id="frontPicture">
+                              <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>รูปด้านหลังรถ </label>
+                              <input type="file" class="form-control-file" name="backPicture" id="backPicture">
+                              <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>รูปป้ายวงกลม </label>
+                              <input type="file" class="form-control-file" name="circlesignPicture" id="circlesignPicture">
+                              <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
+                            </div>
                           </div>
-                          <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label>รูปด้านหน้ารถ</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="รูปด้านหน้ารถ">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>รูปด้านหลังรถ</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="รูปด้านหลังรถ">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>รูปป้ายวงกลม</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="รูปป้ายวงกลม">
-                              </div>
-                          </div>
+                          
                         </div>
-                        <hr>
-                        <div id="role-4">  
-                          <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label>ตัวอักษรนำหน้า</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ตัวอักษรนำหน้า">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>ตัวเลข</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ตัวเลข">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>จังหวัด</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="จังหวัด">
-                              </div>
-                          </div>
-                          <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label>เลขไมล์</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="เลขไมล์">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>สี</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="สี">
-                              </div>
-                          </div>
-                          <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label>รูปด้านหน้ารถ</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="รูปด้านหน้ารถ">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>รูปด้านหลังรถ</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="รูปด้านหลังรถ">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>รูปป้ายวงกลม</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="รูปป้ายวงกลม">
-                              </div>
-                          </div>
-                        </div>
-                        <hr>
-                        <div id="role-4">  
-                          <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label>ตัวอักษรนำหน้า</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ตัวอักษรนำหน้า">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>ตัวเลข</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ตัวเลข">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>จังหวัด</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="จังหวัด">
-                              </div>
-                          </div>
-                          <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label>เลขไมล์</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="เลขไมล์">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>สี</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="สี">
-                              </div>
-                          </div>
-                          <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label>รูปด้านหน้ารถ</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="รูปด้านหน้ารถ">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>รูปด้านหลังรถ</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="รูปด้านหลังรถ">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label>รูปป้ายวงกลม</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="รูปป้ายวงกลม">
-                              </div>
-                          </div>
-                        </div>
+                      </form>
 
+                      <hr>
+                      <h5>ข้อมูลอู่</h5>
+                    
+                      <form id="form-4">
+                        <div id="role-5">  
+                          <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label>ชื่ออู่</label><span class="error">*</span>
+                                <input type="text" class="form-control" name="garageName" placeholder="ชื่ออู่" >
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label>ใบทะเบียนการค้า</label>
+                                <input type="text" class="form-control" name="tradeRegistration" placeholder="ใบทะเบียนการค้า">
+                              </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group col-md-12">
+                                <label>ที่อยู่</label><span class="error">*</span>
+                                <input type="text" class="form-control" name="addressGarage" placeholder="ที่อยู่">
+                              </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label>จังหวัด</label><span class="error">*</span>
+                              <select class="form-control" name="provinceId">
+                                <option>เลือกจังหวัด</option>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>อำเภอ</label><span class="error">*</span>
+                              <select class="form-control" name="districtId">
+                                <option>เลือกอำเภอ</option>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>ตำบล</label><span class="error">*</span>
+                              <select class="form-control" name="subdistrictId">
+                                <option>เลือกตำบล</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label>รหัสไปรษณีย์</label><span class="error">*</span>
+                              <input type="text" class="form-control" name="zipCode" placeholder="รหัสไปรษณีย์">
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>ละติจูด</label>
+                              <input type="text" class="form-control" name="latitude" placeholder="ละติจูด">
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>ลองจิจูด</label>
+                              <input type="text" class="form-control" name="longtitude" placeholder="ลองจิจูด">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label>คำอธิบาย</label><span class="error">*</span>
+                            <textarea class="form-control" name="comment" rows="3"></textarea>
+                          </div>
+                          <label>สิ่งอำนวยความสะดวก</label>
+                          <div class="form-row"> 
+                            <div class="form-group">
+                              <div class="form-check panding">
+                                <input class="form-check-input" type="checkbox" id="box1" value="1">
+                                <label class="form-check-label">Wifi</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="box2" value="2">
+                                <label class="form-check-label">ห้องพัก-เเอร์</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="box3" value="3">
+                                <label class="form-check-label">ห้องพักพัดลม</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="box4" value="4">
+                                <label class="form-check-label">ที่นั่งรอ-พัดลม</label>
+                              </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                              <input type="text" class="form-control" name="longtitude" placeholder="อื่นๆ">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label>รูปภาพของอู่ </label>
+                              <input type="file" class="form-control-file" name="circlesignPicture" id="circlesignPicture">
+                              <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    
+
+                      <hr>
+                      <h5>ข้อมูลร้านอะไหล่</h5>
+                    
+                      <form id="form-5">
+                        <div id="role-6">
+                          <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label>ชื่อร้านค้าส่ง</label><span class="error">*</span>
+                                <input type="text" class="form-control" placeholder="ชื่ออู">
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label>ใบทะเบียนการค้า</label><span class="error">*</span>
+                                <input type="text" class="form-control" placeholder="ใบทะเบียนการค้">
+                              </div>
+                          </div>
+                        </div>
                       </form>
                     </div>
                 </div>

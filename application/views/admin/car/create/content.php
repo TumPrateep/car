@@ -26,14 +26,13 @@
                       <label>ชื่อยี่ห้อรถ</label>
                       <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName">
                     </div>
-                    <div class="container kv-main">
-
-        <form enctype="multipart/form-data">
-            <input id="input-b3" name="input-b3[]" type="file" class="file" multiple 
-    data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
-            <br>
-        </form>
-</div>
+                    <div class="container kv-main ">
+                        <form enctype="multipart/form-data">
+                            <input id="input-b3" name="input-b3[]" type="file" class="file" multiple 
+                        data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
+                                <br>
+                            </form>
+                    </div>
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary">บันทึก</button>
                     </div>

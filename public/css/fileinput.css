@@ -393,7 +393,15 @@
     background: transparent url(../img/loading.gif) no-repeat scroll center center content-box !important;
 }
 
-
+.file-drop-zone {
+    border: 1px dashed #aaa;
+    border-radius: 4px;
+    height: 300px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 12px 15px 12px 12px;
+    padding: 5px;
+}
 
 .file-drop-zone.clickable:hover {
     border: 2px dashed #999;

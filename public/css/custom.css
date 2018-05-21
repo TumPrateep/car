@@ -256,6 +256,7 @@
   span.error{
     color:red;
   }
+<<<<<<< HEAD
   .file-drop-zone {
     border: 1px dashed #aaa;
     border-radius: 4px;
@@ -269,3 +270,8 @@
       width: 100%;
       height: 100px ;
     }
+=======
+  .form-check.panding{
+    padding-left: 2em !important;
+  }
+>>>>>>> d5cf43c951aab00a63be4beb682846b57a8edced
