@@ -5,8 +5,8 @@
                 required: true
             },
             brandPicture: {
-                required: true,
-                extension: "jpg|jpeg"
+                // required: true,
+                // extension: "jpg|jpeg"
             }
         },
         messages: {

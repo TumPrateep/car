@@ -257,4 +257,6 @@
     color:red;
   }
   
-    
+    .file-drop-zone {
+      height: auto !important;
+}

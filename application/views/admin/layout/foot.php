@@ -21,15 +21,9 @@
     <script src="<?php echo base_url() ?>public/js/datatable-responsive.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
 
 
-    <script src="<?=base_url("/publicjs/plugins/sortable.js") ?>"></script>
     <script src="<?=base_url("/public/js/fileinput.js") ?>"></script>
-    <script src="<?=base_url("/public/js/locales/fr.js") ?>"></script>
-    <script src="<?=base_url("/public/js/locales/es.js") ?>"></script>
-    <script src="<?=base_url("/themes/explorer-fa/theme.js") ?>"></script>
-    <script src="<?=base_url("//themes/fa/theme.js") ?>"></script>
     
     
 
