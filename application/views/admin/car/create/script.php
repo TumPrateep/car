@@ -20,6 +20,15 @@
         },
     });
 
+    $("#input-b3").fileinput({
+    theme: 'fa',
+    allowedFileExtensions: ['jpg'],
+        overwriteInitial: false,
+        maxFileSize: 300,
+        
+        
+});
+
     $("#create-brand").submit(function(){
         createBrand();
     });
