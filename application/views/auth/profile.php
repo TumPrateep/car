@@ -156,10 +156,10 @@
                 </div>
 
                 <div id="step-3">
-                    <div id="form-step-2" role="form" data-toggle="validator">
+                  <div id="form-step-2" role="form" data-toggle="validator">
+                    <div id="role-4">
                     <h5>ข้อมูลรถ</h5>
-                      <form id="form-3">
-                        <div id="role-4">  
+                      <form id="form-role-4">  
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>ทะเบียนรถ</label><span class="error">*</span>
@@ -192,14 +192,13 @@
                             </div>
                           </div>
                           
-                        </div>
                       </form>
+                    </div>
 
                       <hr>
-                      <h5>ข้อมูลอู่</h5>
-                    
-                      <form id="form-4">
-                        <div id="role-5">  
+                    <div id="role-3">
+                    <h5>ข้อมูลอู่</h5>
+                      <form id="form-role-3"> 
                           <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label>ชื่ออู่</label><span class="error">*</span>
@@ -207,7 +206,7 @@
                               </div>
                               <div class="form-group col-md-6">
                                 <label>ใบทะเบียนการค้า</label>
-                                <input type="text" class="form-control" name="tradeRegistration" placeholder="ใบทะเบียนการค้า">
+                                <input type="text" class="form-control" name="carTradeRegistration" placeholder="ใบทะเบียนการค้า">
                               </div>
                           </div>
                           <div class="form-row">
@@ -275,7 +274,7 @@
                               </div>
                             </div>
                             <div class="form-group col-md-12">
-                              <input type="text" class="form-control" name="longtitude" placeholder="อื่นๆ">
+                              <input type="text" class="form-control" name="other" placeholder="อื่นๆ">
                             </div>
                           </div>
                           <div class="form-row">
@@ -285,28 +284,28 @@
                               <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                             </div>
                           </div>
-                        </div>
+                        
                       </form>
-                    
+                    </div>
 
                       <hr>
-                      <h5>ข้อมูลร้านอะไหล่</h5>
-                    
-                      <form id="form-5">
-                        <div id="role-6">
+                    <div id="role-2">
+                    <h5>ข้อมูลร้านอะไหล่</h5>
+                      <form id="form-role-2"> 
                           <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label>ชื่อร้านค้าส่ง</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ชื่ออู">
+                                <input type="text" name="nameAccessory" class="form-control" placeholder="ชื่ออู">
                               </div>
                               <div class="form-group col-md-6">
                                 <label>ใบทะเบียนการค้า</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ใบทะเบียนการค้">
+                                <input type="text" name="accessoryTradeRegistration" class="form-control" placeholder="ใบทะเบียนการค้">
                               </div>
                           </div>
-                        </div>
+                        
                       </form>
                     </div>
+                  </div>
                 </div>
           </div>
       </div>
