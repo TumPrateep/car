@@ -5,7 +5,7 @@
                 required: true
             },
             brandPicture: {
-                // required: true,
+                required: true
                 // extension: "jpg|jpeg"
             }
         },
@@ -20,11 +20,14 @@
         },
     });
 
-    $("#input-b3").fileinput({
+    $("#brandPicture").fileinput({
     theme: 'fa',
     allowedFileExtensions: ['jpg'],
         overwriteInitial: false,
         maxFileSize: 300,
+        Maxheight :300,
+        Maxwidth : 300
+
         
         
 });

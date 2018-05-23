@@ -21,14 +21,15 @@
                   <!-- form start -->
                   <form id="create-brand" enctype="multipart/form-data" >
                   <div class="card-body black bg-light">
+                    
                       <div class="form-group">
                         <label>ชื่อยี่ห้อรถ</label>
                         <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName">
                       </div>
-                      <div class="form-group">
-                          <input id="brandPicture" name="brandPicture" type="file" class="file" multiple 
-                            data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
+                      <div class="file-loading">
+                          <input id="brandPicture" name ="brandPicture" class="file" type="file">
                       </div>
+                    
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">บันทึก</button>
                       </div>

@@ -1405,7 +1405,7 @@
                 self._handler(self.$btnFile, 'click', $.proxy(self._browse, self));
             }
             self._handler($cont.find('.fileinput-remove:not([disabled])'), 'click', $.proxy(self.clear, self));
-            self._handler($cont.find('.fileinput-cancel'), 'click', $.proxy(self.cancel, self));
+            self._handler($cont.find('.fileinput-cancel:not([disabled])'), 'click', $.proxy(self.cancel, self));
             self._initDragDrop();
             self._handler($form, 'reset', $.proxy(self.clear, self));
             if (!self.isAjaxUpload) {

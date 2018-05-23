@@ -27,9 +27,8 @@
                         <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName" id="brandName" value="">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputFile">รูปภาพ</label>
-                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                        <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่ต้องการจะเพิ่ม</small>
+                      <label>Preview File Icon</label>
+                      <input id="brandPicture" type="file" multiple >
                       </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">บันทึก</button>
