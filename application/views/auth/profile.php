@@ -352,6 +352,8 @@
         function loadDistrict(provinceId){
           districtDropdown.html("");
           districtDropdown.append('<option value="">เลือกอำเภอ</option>');
+          subdistrictDropdown.html("");
+          subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
           
           $.post(base_url+"api/location/getDistrict",{
             provinceId: provinceId
