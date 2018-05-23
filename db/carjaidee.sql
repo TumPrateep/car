@@ -36,7 +36,7 @@ CREATE TABLE `brand` (
   KEY `fk_brand_users2_idx` (`update_by`),
   CONSTRAINT `id` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `update_by` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `brand` (
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES (1,'Isuzu.png','ISUZU',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(2,'Toyota.png','TOYOTA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(3,'Mitsubishi.png','MITSUBISHI',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(4,'Nissan.png','NISSAN',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(5,'Chevrolet.png','CHEVROLET',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(6,'Ford.png','FORD',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(7,'Mazda.png','MAZDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(8,'Honda.png','HONDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1);
+INSERT INTO `brand` VALUES (1,'Isuzu.png','ISUZU',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(2,'Toyota.png','TOYOTA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(3,'Mitsubishi.png','MITSUBISHI',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(4,'Nissan.png','NISSAN',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(5,'Chevrolet.png','CHEVROLET',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(6,'Ford.png','FORD',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(7,'Mazda.png','MAZDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(8,'Honda.png','HONDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(9,'5751c78e78bd512acee94b6809be2eab.jpg','45',NULL,NULL,NULL,NULL,1),(10,'5501aa3a77e716b29aae48fdf77a7585.jpg','4545456',NULL,NULL,NULL,NULL,1),(11,'1c33cae099959a719e397dff5cbf3d86.jpg','lkhkjh',NULL,NULL,NULL,NULL,1),(12,'92d7b7064dd86dc10e2e79bdd2fa2f44.jpg','hjhj',NULL,NULL,NULL,NULL,1),(13,'6f46805c2f7da96934179f65ae53ecf0.jpg','asdasd1111',NULL,NULL,NULL,NULL,1);
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,6 +186,11 @@ CREATE TABLE `garage` (
   `create_add` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
   `status` int(11) NOT NULL,
+  `option1` int(11) DEFAULT NULL,
+  `option2` int(11) DEFAULT NULL,
+  `option3` int(11) DEFAULT NULL,
+  `option4` int(11) DEFAULT NULL,
+  `option_outher` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`garageId`,`garageMaster`),
   KEY `fk_garage_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_garage_district1_idx` (`districtId`),
@@ -483,4 +488,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-21 14:55:34
+-- Dump completed on 2018-05-23 17:09:14

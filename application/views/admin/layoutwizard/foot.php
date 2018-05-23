@@ -19,12 +19,13 @@
     <script src="<?php echo base_url() ?>public/js/additional-methods.min.js"></script>
 
     <script src="<?php echo base_url() ?>public/js/datatable-responsive.js"></script>
-    
-    
-    <script src="<?=base_url("/public/js/popper.min.js") ?>"></script>
-
-    <script src="<?=base_url("/public/js/fileinput.js") ?>"></script>
-    
-    
-
-   
+    <!-- form step wizard -->
+    <script src="<?=base_url("public/js/jquery.min.js"); ?>"></script>
+    <script src="<?=base_url("public/js/semantic.min.js");?>"></script>
+    <script src="<?=base_url("public/js/visibility.js"); ?>"></script>
+    <script src="<?=base_url("public/js/sidebar.js"); ?>"></script>
+    <script src="<?=base_url("public/js/custom.js"); ?>"></script>
+    <script src="<?=base_url("public/js/popper.min.js"); ?>"></script>
+    <script src="<?=base_url("public/js/jquery.smartWizard.js"); ?>"></script>
+    <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
+    <script src="<?php echo base_url() ?>public/js/image-picker.js"></script>

@@ -259,7 +259,7 @@
                               </div>
                             </div>
                             <div class="form-group col-md-12">
-                              <input type="text" class="form-control" name="longtitude" placeholder="อื่นๆ">
+                              <input type="text" class="form-control" name="other" placeholder="อื่นๆ">
                             </div>
                           </div>
                           <div class="form-row">
@@ -288,6 +288,7 @@
                         </form>
                       </div>
                     </div>
+                  </div>
                 </div>
           </div>
       </div>

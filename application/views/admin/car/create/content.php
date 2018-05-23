@@ -26,10 +26,9 @@
                         <label>ชื่อยี่ห้อรถ</label>
                         <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName">
                       </div>
-                      <div class="file-loading">
+                        <div class="form-group">
                           <input id="brandPicture" name ="brandPicture" class="file" type="file">
-                      </div>
-                    
+                        </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">บันทึก</button>
                       </div>
