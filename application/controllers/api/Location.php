@@ -42,7 +42,7 @@ class Location extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $output["message"] = REST_Controller::MSG_ERROR;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
@@ -58,7 +58,7 @@ class Location extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $output["message"] = REST_Controller::MSG_ERROR;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }

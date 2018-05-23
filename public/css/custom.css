@@ -195,7 +195,9 @@
     text-align: center;
   }
 
-  input.error { border: 1px solid red !important; }
+  input.error, textarea.error, select.error { 
+    border: 1px solid red !important; 
+  }
 
   .text-left{
     text-align: left;
@@ -257,8 +259,7 @@
     color:red;
   }
   
-    .file-drop-zone {
+  .file-drop-zone {
       height: auto !important;
-
-}
+  }
   

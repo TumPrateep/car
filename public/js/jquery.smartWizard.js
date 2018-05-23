@@ -518,7 +518,7 @@
             // Auto adjust height of the container
             if (this.options.autoAdjustHeight) {
                 var selPage = this.steps.eq(idx).length > 0 ? $(this.steps.eq(idx).attr("href"), this.main) : null;
-                this.container.finish().animate({ minHeight: selPage.outerHeight() }, this.options.transitionSpeed, function () {});
+                // this.container.finish().animate({ minHeight: selPage.outerHeight() }, this.options.transitionSpeed, function () {});
             }
             return true;
         },
