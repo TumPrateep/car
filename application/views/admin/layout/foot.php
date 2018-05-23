@@ -20,8 +20,8 @@
 
     <script src="<?php echo base_url() ?>public/js/datatable-responsive.js"></script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
-
+    
+    <script src="<?=base_url("/public/js/popper.min.js") ?>"></script>
 
     <script src="<?=base_url("/public/js/fileinput.js") ?>"></script>
     
