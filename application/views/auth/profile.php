@@ -86,7 +86,7 @@
               <li><a href="#step-3">Step 3<br /><small>Address</small></a></li>
           </ul>
 
-          <div>
+          <div id="content" style="min-height:30px !important">
                 <div id="step-1">
                     <h4>ข้อมูลส่วนตัว</h4>
                     <div id="form-step-0" role="form" data-toggle="validator">
@@ -94,41 +94,35 @@
                           <div class="form-row">
                             <div class="form-group col-md-6">
                               <label>ชื่อ</label><span class="error">*</span>
-                              <input type="text" name="firstname" class="form-control" placeholder="ชื่อ">
+                              <input type="text" name="firstname" id="firstname" class="form-control" placeholder="ชื่อ">
                             </div>
                             <div class="form-group col-md-6">
                               <label>นามสกุล</label><span class="error">*</span>
-                              <input type="text" name="lastname" class="form-control" placeholder="นามสกุล">
+                              <input type="text" name="lastname" id="lastname" class="form-control" placeholder="นามสกุล">
                             </div>
                           </div>
                           <div class="form-group">
                             <label>ที่อยู่:</label><span class="error">*</span>
-                            <textarea class="form-control" name="address" rows="3"></textarea>
+                            <textarea class="form-control" name="address" id="address" rows="3"></textarea>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>จังหวัด</label><span class="error">*</span>
-                              <select class="form-control" name="provinceId">
-                                <option>เลือกจังหวัด</option>
-                              </select>
+                              <select class="form-control" name="provinceId" id="provinceId"></select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>อำเภอ</label><span class="error">*</span>
-                              <select class="form-control" name="districtId">
-                                <option>เลือกอำเภอ</option>
-                              </select>
+                              <select class="form-control" name="districtId" id="districtId"></select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>ตำบล</label><span class="error">*</span>
-                              <select class="form-control" name="subdistrictId">
-                                <option>เลือกตำบล</option>
-                              </select>
+                              <select class="form-control" name="subdistrictId" id="subdistrictId"></select>
                             </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-6">
                               <label>เบอร์โทรศัพท์</label>
-                              <input type="text" name="phone1" class="form-control" placeholder="เบอร์โทรศัพท์">
+                              <input type="text" name="phone1" id="phone1" class="form-control" placeholder="เบอร์โทรศัพท์">
                             </div>
                             <div class="form-group col-md-6">
                               <label>เบอร์โทรศัพท์ที่สามารถติดต่อได้</label><span class="error">*</span>
@@ -145,7 +139,6 @@
                       <form id="form-2">
                         <div class="form-group text-center">
                           <select id="role" class="image-picker show-html" name="role">
-                            <option value=""></option>
                             <option data-img-src="<?=base_url("public/image/role/4.jpg");?>" value="4" selected>ผู้ใช้งาน</option>
                             <option data-img-src="<?=base_url("public/image/role/3.jpg");?>" value="3">อู่</option>
                             <option data-img-src="<?=base_url("public/image/role/2.jpg");?>" value="2">ร้านอะไหล่</option>
@@ -156,10 +149,10 @@
                 </div>
 
                 <div id="step-3">
-                  <div id="form-step-2" role="form" data-toggle="validator">
-                    <div id="role-4">
-                    <h5>ข้อมูลรถ</h5>
-                      <form id="form-role-4">  
+                    <div id="form-step-2" role="form" data-toggle="validator">
+                    <div id="role-4" style="display:none">  
+                      <h5>ข้อมูลรถ</h5>
+                      <form id="form-3">  
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>ทะเบียนรถ</label><span class="error">*</span>
@@ -191,14 +184,12 @@
                               <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                             </div>
                           </div>
-                          
-                      </form>
-                    </div>
-
-                      <hr>
-                    <div id="role-3">
-                    <h5>ข้อมูลอู่</h5>
-                      <form id="form-role-3"> 
+                        </form>
+                      </div>
+                      
+                      <div id="role-3" style="display:none">
+                        <h5>ข้อมูลอู่</h5>
+                        <form id="form-4">  
                           <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label>ชื่ออู่</label><span class="error">*</span>
@@ -284,14 +275,12 @@
                               <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                             </div>
                           </div>
-                        
-                      </form>
-                    </div>
+                        </form>
+                      </div>
 
-                      <hr>
-                    <div id="role-2">
-                    <h5>ข้อมูลร้านอะไหล่</h5>
-                      <form id="form-role-2"> 
+                      <div id="role-2" style="display:none">
+                        <h5>ข้อมูลร้านอะไหล่</h5>
+                        <form id="form-5">
                           <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label>ชื่อร้านค้าส่ง</label><span class="error">*</span>
@@ -302,8 +291,8 @@
                                 <input type="text" name="accessoryTradeRegistration" class="form-control" placeholder="ใบทะเบียนการค้">
                               </div>
                           </div>
-                        
-                      </form>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -329,6 +318,79 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+
+        var provinceDropdown = $("#provinceId");
+        provinceDropdown.append('<option value="">เลือกจังหวัด</option>');
+
+        var districtDropdown = $('#districtId');
+        districtDropdown.append('<option value="">เลือกอำเภอ</option>');
+
+        var subdistrictDropdown = $('#subdistrictId');
+        subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+        
+        function onLoad(){
+          loadProvince();
+        }
+
+        onLoad();
+
+        function loadProvince(){
+          $.post(base_url+"api/location/getProvince",{},
+            function(data){
+              var province = data.data;
+              $.each(province, function( index, value ) {
+                provinceDropdown.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
+              });
+            }
+          );
+        }
+
+        provinceDropdown.change(function(){
+          var provinceId = $(this).val();
+          loadDistrict(provinceId);
+        });
+
+        function loadDistrict(provinceId){
+          districtDropdown.html("");
+          districtDropdown.append('<option value="">เลือกอำเภอ</option>');
+          subdistrictDropdown.html("");
+          subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+          
+          $.post(base_url+"api/location/getDistrict",{
+            provinceId: provinceId
+          },
+            function(data){
+              var district = data.data;
+              $.each(district, function( index, value ) {
+                districtDropdown.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+              });
+            }
+          );
+
+        }
+
+        districtDropdown.change(function(){
+          var districtId = $(this).val();
+          loadSubdistrict(districtId);
+        });
+
+        function loadSubdistrict(districtId){
+          subdistrictDropdown.html("");
+          subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+          
+          $.post(base_url+"api/location/getSubdistrict",{
+            districtId: districtId
+          },
+            function(data){
+              var subDistrict = data.data;
+              $.each(subDistrict, function( index, value ) {
+                subdistrictDropdown.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+              });
+            }
+          );
+
+        }
+
         $("#role").imagepicker({
           show_label: true
         });
@@ -358,17 +420,53 @@
             }
         });
 
-        // $('#smartwizard').smartWizard("reset");
+        $('#smartwizard').smartWizard("reset");
         
         $("#form-1").validate({
           rules:{
             firstname: {
+              required: true
+            },
+            lastname: {
+              required: true
+            },
+            address:{
+              required: true
+            },
+            provinceId:{
+              required: true
+            },
+            districtId: {
+              required: true
+            },
+            subdistrictId: {
+              required: true
+            },
+            phone2: {
               required: true
             }
           },
           messages:{
             firstname: {
               required: "กรุณากรอกชื่อ"
+            },
+            lastname: {
+              required: "กรุณากรอกนามสกุล"
+            },
+            address:{
+              required: "กรุณากรอกที่อยู่"
+            },
+            provinceId:{
+              required: "กรุณาเลือกจังหวัด"
+            },
+            districtId: {
+              required: "กรุณาเลือกอำเภอ"
+            },
+            subdistrictId: {
+              required: "กรุณาเลือกตำบล"
+            },
+            phone2: {
+              required: "กรุณากรอกเบอร์โทรที่สามารถติดต่อได้"
             }
           }
         });
@@ -410,11 +508,21 @@
 
         function showRole(){
           var role = $("#role").val();
-          render(role);
+          clear();
+          if(role == '2'){
+            $("#role-2").show();
+          }else if(role == '3'){
+            $("#role-3").show();
+          }else{
+            $("#role-4").show();
+          }
+          // $("#content").css("min-height", "138px");
         }
 
-        function render(role){
-          // $("#form-3").html(role);
+        function clear(role){
+          $("#role-4").hide();
+          $("#role-3").hide();
+          $("#role-2").hide();
         }
     });
 </script>

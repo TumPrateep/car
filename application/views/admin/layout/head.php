@@ -25,4 +25,12 @@
 
   <link href="<?=base_url("/public/css/responsive.dataTables.min.css") ?>" rel="stylesheet">
 
+  <link href="<?=base_url("/public/css/fileinput.css") ?>" rel="stylesheet" type="text/css"/>
+
+  <link href="<?=base_url("/public/css/glyphicon.min.css") ?>" rel="stylesheet" type="text/css"/>
+
+
 </head>
+
+
+    

@@ -89,4 +89,5 @@ class Car extends CI_Controller {
 		$this->load->view("admin/model/update/script");
 	}
 	
+	
 }

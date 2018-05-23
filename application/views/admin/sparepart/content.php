@@ -5,7 +5,7 @@
         <a href="<?=base_url("sparepartcar") ?>">รายการอะไหล่</a>
         </li>
         <li class="breadcrumb-item">
-        <a href="<?=base_url("sparepartcar/sparepart") ?>">ยี่ห้ออะไหล่</a>
+        <a href="<?=base_url("sparepartcar/sparepart/$spares_undercarriageId") ?>">ยี่ห้ออะไหล่</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>

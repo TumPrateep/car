@@ -195,7 +195,9 @@
     text-align: center;
   }
 
-  input.error { border: 1px solid red !important; }
+  input.error, textarea.error, select.error { 
+    border: 1px solid red !important; 
+  }
 
   .text-left{
     text-align: left;
@@ -256,6 +258,8 @@
   span.error{
     color:red;
   }
-  .form-check.panding{
-    padding-left: 2em !important;
+  
+  .file-drop-zone {
+      height: auto !important;
   }
+  

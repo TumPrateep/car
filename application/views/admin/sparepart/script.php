@@ -45,8 +45,7 @@
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"SparePartCar/createSpares/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"SparePartCar/updateBrand/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"SparePartCar/updatespare/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -59,7 +58,7 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [0,1]},
-                {"className": "dt-center", "targets": [0]},
+                {"className": "dt-center", "targets": [2]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 2 }
             ]	 
