@@ -252,19 +252,19 @@
                           <div class="form-row"> 
                             <div class="form-group">
                               <div class="form-check panding">
-                                <input class="form-check-input" type="checkbox" id="box1" value="1">
+                                <input class="form-check-input" type="checkbox" id="box1">
                                 <label class="form-check-label">Wifi</label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="box2" value="2">
+                                <input class="form-check-input" type="checkbox" id="box2">
                                 <label class="form-check-label">ห้องพัก-เเอร์</label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="box3" value="3">
+                                <input class="form-check-input" type="checkbox" id="box3">
                                 <label class="form-check-label">ห้องพักพัดลม</label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="box4" value="4">
+                                <input class="form-check-input" type="checkbox" id="box4">
                                 <label class="form-check-label">ที่นั่งรอ-พัดลม</label>
                               </div>
                             </div>
@@ -292,7 +292,7 @@
                               </div>
                               <div class="form-group col-md-6">
                                 <label>ใบทะเบียนการค้า</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="ใบทะเบียนการค้">
+                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistrationAccessories" placeholder="ใบทะเบียนการค้">
                               </div>
                           </div>
                         </form>
@@ -499,20 +499,27 @@
               formData.append("latitude", $("#latitude").val());
               formData.append("longtitude", $("#longtitude").val());
               formData.append("comment", $("#comment").val());
-              formData.append("option1", $("#box1").val());
-              formData.append("option2", $("#box2").val());
-              formData.append("option3", $("#box3").val());
-              formData.append("option4", $("#box4").val());
+              var isCheckBox1 = $("#box1").is(':checked');
+              var isCheckBox2 = $("#box2").is(':checked');
+              var isCheckBox3 = $("#box3").is(':checked');
+              var isCheckBox4 = $("#box4").is(':checked');
+              var checkBox1 = (isCheckBox1)?1:2;
+              var checkBox2 = (isCheckBox2)?1:2;
+              var checkBox3 = (isCheckBox3)?1:2;
+              var checkBox4 = (isCheckBox4)?1:2;
+              formData.append("option1", checkBox1);
+              formData.append("option2", checkBox2);
+              formData.append("option3", checkBox3);
+              formData.append("option4", checkBox4);
               formData.append("option_other", $("#other").val());
               formData.append("image", $("#circlesignPicture")[0].files[0]);
             }else if(role == "2"){ //ร้านค้าอะไหล่
               formData.append("car_accessoriesName", $("#car_accessoriesName").val());
-              formData.append("businessRegistration", $("#businessRegistration").val());
+              formData.append("businessRegistrationAccessories", $("#businessRegistrationAccessories").val());
             }else{
               formData.append("frontPicture", $("#frontPicture")[0].files[0]);
               formData.append("backPicture", $("#backPicture")[0].files[0]);
               formData.append("circlesignPicture", $("#circlesignPicture")[0].files[0]);
-              // formData.append("licensePlate", $("#licensePlate").val());
               formData.append("characterPlate", $("#characterPlate").val());
               formData.append("numberPlate", $("#numberPlate").val());
               formData.append("provincePlate", $("#provincePlate").val());
@@ -569,7 +576,7 @@
             }
         });
 
-        // $('#smartwizard').smartWizard("reset");
+        $('#smartwizard').smartWizard("reset");
         
         $("#form-1").validate({
           rules:{
