@@ -219,7 +219,7 @@ class UserManagement extends BD_Controller {
         }    
     }
 
-    function userTypeAndData(){
+    function userTypeAndData_post(){
         $role = $this->post("role");
 
         if($role == "3"){
@@ -249,7 +249,10 @@ class UserManagement extends BD_Controller {
                 $latitude = $this->post("latitude");
                 $longtitude = $this->post("longtitude");
                 $comment = $this->post("comment");
-                $option = $this->post("box1");
+                $option1 = $this->post("box1");
+                $option2 = $this->post("box2");
+                $option3 = $this->post("box3");
+                $option4 = $this->post("box4");
                 $option_outher = $this->post("other");
                 $garageAddress = $this->post("addressGarage");
                 $provinceId = $this->post("provinceId");
@@ -266,7 +269,10 @@ class UserManagement extends BD_Controller {
                     'latitude' => $latitude,
                     'longtitude' => $longtitude,
                     'comment' => $comment,
-                    'option' => $option,
+                    'option1' => $option1,
+                    'option2' => $option2,
+                    'option3' => $option3,
+                    'option4' => $option4,
                     'create_add' => date('Y-m-d H:i:s',time()),
                     'create_by' => $create_add,
                     'status' => 1,
@@ -275,7 +281,7 @@ class UserManagement extends BD_Controller {
                     'subdistrictId' => $subdistrictId,
                     'garageMaster' => $garageMaster,
                     'option_outher' => $option_outher,
-
+                    'garageAddress' => $garageAddress
                 );
                 $isResult = $this->User->insert_role3($data);
                 $this->db->trans_complete();

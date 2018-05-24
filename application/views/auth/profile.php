@@ -126,7 +126,7 @@
                             </div>
                             <div class="form-group col-md-6">
                               <label>เบอร์โทรศัพท์ที่สามารถติดต่อได้</label><span class="error">*</span>
-                              <input type="text" name="phone2" class="form-control" placeholder="เบอร์โทรศัพท์ที่สามารถติดต่อได้">
+                              <input type="text" name="phone2" id="phone2" class="form-control" placeholder="เบอร์โทรศัพท์ที่สามารถติดต่อได้">
                             </div>
                           </div>
                         </form>
@@ -156,15 +156,15 @@
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>ทะเบียนรถ</label><span class="error">*</span>
-                              <input type="text" name="licensePlate" class="form-control" placeholder="ทะเบียนรถ">
+                              <input type="text" name="licensePlate" id="licensePlate" class="form-control" placeholder="ทะเบียนรถ">
                             </div>
                             <div class="form-group col-md-4">
                               <label>เลขไมล์</label><span class="error">*</span>
-                              <input type="text" name="mileage" class="form-control" placeholder="เลขไมล์">
+                              <input type="text" name="mileage" id="mileage" class="form-control" placeholder="เลขไมล์">
                             </div>
                             <div class="form-group col-md-4">
                               <label>สี</label><span class="error">*</span>
-                              <input type="text" name="colorCar" class="form-control" placeholder="สีรถ">
+                              <input type="text" name="colorCar" id="colorCar" class="form-control" placeholder="สีรถ">
                             </div>
                           </div>
                           <div class="form-row">
@@ -193,17 +193,17 @@
                           <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label>ชื่ออู่</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="garageName" placeholder="ชื่ออู่" >
+                                <input type="text" class="form-control" name="garageName" id="garageName" placeholder="ชื่ออู่" >
                               </div>
                               <div class="form-group col-md-6">
                                 <label>ใบทะเบียนการค้า</label>
-                                <input type="text" class="form-control" name="businessRegistration" placeholder="ใบทะเบียนการค้า">
+                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="ใบทะเบียนการค้า">
                               </div>
                           </div>
                           <div class="form-row">
                               <div class="form-group col-md-12">
                                 <label>ที่อยู่</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="addressGarage" placeholder="ที่อยู่">
+                                <input type="text" class="form-control" name="addressGarage" id="addressGarage" placeholder="ที่อยู่">
                               </div>
                           </div>
                           <div class="form-row">
@@ -223,20 +223,20 @@
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>รหัสไปรษณีย์</label><span class="error">*</span>
-                              <input type="text" class="form-control" name="zipCode" placeholder="รหัสไปรษณีย์">
+                              <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="รหัสไปรษณีย์">
                             </div>
                             <div class="form-group col-md-4">
                               <label>ละติจูด</label>
-                              <input type="text" class="form-control" name="latitude" placeholder="ละติจูด">
+                              <input type="text" class="form-control" name="latitude" id="latitude" placeholder="ละติจูด">
                             </div>
                             <div class="form-group col-md-4">
                               <label>ลองจิจูด</label>
-                              <input type="text" class="form-control" name="longtitude" placeholder="ลองจิจูด">
+                              <input type="text" class="form-control" name="longtitude" id="longtitude" placeholder="ลองจิจูด">
                             </div>
                           </div>
                           <div class="form-group">
                             <label>คำอธิบาย</label>
-                            <textarea class="form-control" name="comment" rows="3"></textarea>
+                            <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
                           </div>
                           <label>สิ่งอำนวยความสะดวก</label>
                           <div class="form-row"> 
@@ -278,11 +278,11 @@
                           <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label>ชื่อร้านค้าส่ง</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="car_accessoriesName" placeholder="ชื่ออู">
+                                <input type="text" class="form-control" name="car_accessoriesName" id="car_accessoriesName" placeholder="ชื่ออู">
                               </div>
                               <div class="form-group col-md-6">
                                 <label>ใบทะเบียนการค้า</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="businessRegistration" placeholder="ใบทะเบียนการค้">
+                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="ใบทะเบียนการค้">
                               </div>
                           </div>
                         </form>
@@ -457,7 +457,55 @@
         function finish(){
           var role = $("#role").val();
           var id = "#form-role-"+role;
-          var form = $(id).valid();
+          var isValid = $(id).valid();
+          if(isValid){
+            var formData = new FormData();
+            formData.append("role",role);
+            if(role == "3"){ //อู่
+              formData.append("garageName", $("#garageName").val());
+              formData.append("businessRegistration", $("#businessRegistration").val());
+              formData.append("garageAddress", $("#addressGarage").val());
+              formData.append("provinceId", $("#garage-provinceId").val());
+              formData.append("districtId", $("#garage-districtId").val());
+              formData.append("subdistrictId", $("#garage-subdistrictId").val());
+              formData.append("postCode", $("#zipCode").val());
+              formData.append("latitude", $("#latitude").val());
+              formData.append("longtitude", $("#longtitude").val());
+              formData.append("comment", $("#comment").val());
+              formData.append("option1", $("#box1").val());
+              formData.append("option2", $("#box2").val());
+              formData.append("option3", $("#box3").val());
+              formData.append("option4", $("#box4").val());
+              formData.append("option_outher", $("#other").val());
+              formData.append("image", $("#circlesignPicture")[0].files[0]);
+            }else if(role == "2"){ //ร้านค้าอะไหล่
+              formData.append("car_accessoriesName", $("#car_accessoriesName").val());
+              formData.append("businessRegistration", $("#businessRegistration").val());
+            }else{
+              formData.append("image", $("#frontPicture")[0].files[0]);
+              formData.append("image2", $("#backPicture")[0].files[0]);
+              formData.append("image3", $("#circlesignPicture")[0].files[0]);
+              formData.append("licensePlate", $("#licensePlate").val());
+              formData.append("mileage", $("#mileage").val());
+              formData.append("colorCar", $("#colorCar").val());
+            }
+
+            $.ajax({
+                url: base_url+"api/UserManagement/userTypeAndData",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (data) {
+                    if(data.message == 200){
+                        showMessage(data.message,"car");
+                    }else{
+                        showMessage(data.message);
+                    }
+                }
+            });
+
+          }
         }
 
         $("#role").imagepicker({
