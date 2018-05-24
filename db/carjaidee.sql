@@ -29,8 +29,8 @@ CREATE TABLE `users` (
   `category` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
-  `create_add` datetime DEFAULT NULL,
-  `update_add` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
@@ -61,8 +61,8 @@ CREATE TABLE `brand` (
   `brandName` varchar(255) NOT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
-  `create_add` datetime DEFAULT NULL,
-  `update_add` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`brandId`),
   KEY `fk_brand_users1_idx` (`create_by`),
@@ -94,7 +94,7 @@ CREATE TABLE `car_accessories` (
   `car_accessoriesName` varchar(255) NOT NULL,
   `businessRegistration` varchar(255) DEFAULT NULL,
   `id` int(11) NOT NULL,
-  `create_add` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
   `update_add` datetime DEFAULT NULL,
   `create_by` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL,
@@ -132,14 +132,15 @@ CREATE TABLE `car_profile` (
   `pictureBack` varchar(255) DEFAULT NULL,
   `circlePlate` varchar(255) DEFAULT NULL,
   `userId` int(11) NOT NULL,
-  `create_add` datetime DEFAULT NULL,
-  `update_add` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL,
   `character_plate` varchar(45) NOT NULL,
   `number_plate` varchar(45) NOT NULL,
   `province_plate` varchar(45) NOT NULL,
+  `color` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`car_profileId`),
   KEY `fk_car_profile_users1_idx` (`userId`),
   KEY `fk_car_profile_users2_idx` (`create_by`),
@@ -172,8 +173,8 @@ CREATE TABLE `district` (
   `provinceId` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
-  `create_add` datetime DEFAULT NULL,
-  `update_add` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`districtId`),
   KEY `fk_district_province_idx` (`provinceId`),
@@ -218,8 +219,8 @@ CREATE TABLE `garage` (
   `province_provinceId` int(11) NOT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
-  `create_add` datetime DEFAULT NULL,
-  `update_add` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
   `status` int(11) NOT NULL,
   `option1` int(11) DEFAULT NULL,
   `option2` int(11) DEFAULT NULL,
@@ -260,8 +261,8 @@ CREATE TABLE `model` (
   `modelId` int(11) NOT NULL AUTO_INCREMENT,
   `modelName` varchar(255) NOT NULL,
   `brandId` int(11) NOT NULL,
-  `create_add` datetime DEFAULT NULL,
-  `update_add` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL,
@@ -299,8 +300,8 @@ CREATE TABLE `province` (
   `provinceName` varchar(255) DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
-  `create_add` datetime DEFAULT NULL,
-  `update_add` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`provinceId`),
   KEY `fk_province_users1_idx` (`create_by`),
@@ -334,8 +335,8 @@ CREATE TABLE `spares_brand` (
   `spares_undercarriageId` int(11) NOT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
-  `update_add` datetime DEFAULT NULL,
-  `create_add` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
   PRIMARY KEY (`spares_brandId`),
   KEY `fk_spares_brand_spares_undercarriage1_idx` (`spares_undercarriageId`),
   KEY `fk_spares_brand_users1_idx` (`create_by`),
@@ -369,8 +370,8 @@ CREATE TABLE `spares_undercarriage` (
   `status` varchar(45) DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
-  `create_add` datetime DEFAULT NULL,
-  `update_add` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
   PRIMARY KEY (`spares_undercarriageId`),
   KEY `fk_spares_undercarriage_users1_idx` (`create_by`),
   KEY `fk_spares_undercarriage_users2_idx` (`update_by`),
@@ -403,8 +404,8 @@ CREATE TABLE `subdistrict` (
   `provinceId` int(11) NOT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
-  `create_add` datetime DEFAULT NULL,
-  `update_add` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `subdistrictcol` varchar(45) NOT NULL,
   PRIMARY KEY (`subdistrictId`),
@@ -430,34 +431,6 @@ INSERT INTO `subdistrict` VALUES (1,'ในเมือง',215,19,1,1,'0000-00-
 UNLOCK TABLES;
 
 --
--- Table structure for table `table_name`
---
-
-DROP TABLE IF EXISTS `table_name`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `table_name` (
-  `provinceId` int(11) DEFAULT NULL,
-  `provinceName` varchar(100) DEFAULT NULL,
-  `create_by` decimal(10,2) DEFAULT NULL,
-  `update_by` decimal(10,2) DEFAULT NULL,
-  `create_add` varchar(100) DEFAULT NULL,
-  `update_add` varchar(100) DEFAULT NULL,
-  `status` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `table_name`
---
-
-LOCK TABLES `table_name` WRITE;
-/*!40000 ALTER TABLE `table_name` DISABLE KEYS */;
-INSERT INTO `table_name` VALUES (1,'กรุงเทพมหานคร',1.00,1.00,'','',1.00),(2,'สมุทรปราการ',1.00,1.00,'','',1.00),(3,'นนทบุรี',1.00,1.00,'','',1.00),(4,'ปทุมธานี',1.00,1.00,'','',1.00),(5,'พระนครศรีอยุธยา',1.00,1.00,'','',1.00),(6,'อ่างทอง',1.00,1.00,'','',1.00),(7,'ลพบุรี',1.00,1.00,'','',1.00),(8,'สิงห์บุรี',1.00,1.00,'','',1.00),(9,'ชัยนาท',1.00,1.00,'','',1.00),(10,'สระบุรี',1.00,1.00,'','',1.00),(11,'ชลบุรี',1.00,1.00,'','',1.00),(12,'ระยอง',1.00,1.00,'','',1.00),(13,'จันทบุรี',1.00,1.00,'','',1.00),(14,'ตราด',1.00,1.00,'','',1.00),(15,'ฉะเชิงเทรา',1.00,1.00,'','',1.00),(16,'ปราจีนบุรี',1.00,1.00,'','',1.00),(17,'นครนายก',1.00,1.00,'','',1.00),(18,'สระแก้ว',1.00,1.00,'','',1.00),(19,'นครราชสีมา',1.00,1.00,'','',1.00),(20,'บุรีรัมย์',1.00,1.00,'','',1.00),(21,'สุรินทร์',1.00,1.00,'','',1.00),(22,'ศรีสะเกษ',1.00,1.00,'','',1.00),(23,'อุบลราชธานี',1.00,1.00,'','',1.00),(24,'ยโสธร',1.00,1.00,'','',1.00),(25,'ชัยภูมิ',1.00,1.00,'','',1.00),(26,'อำนาจเจริญ',1.00,1.00,'','',1.00),(27,'หนองบัวลำภู',1.00,1.00,'','',1.00),(28,'ขอนแก่น',1.00,1.00,'','',1.00),(29,'อุดรธานี',1.00,1.00,'','',1.00),(30,'เลย',1.00,1.00,'','',1.00),(31,'หนองคาย',1.00,1.00,'','',1.00),(32,'มหาสารคาม',1.00,1.00,'','',1.00),(33,'ร้อยเอ็ด',1.00,1.00,'','',1.00),(34,'กาฬสินธุ์',1.00,1.00,'','',1.00),(35,'สกลนคร',1.00,1.00,'','',1.00),(36,'นครพนม',1.00,1.00,'','',1.00),(37,'มุกดาหาร',1.00,1.00,'','',1.00),(38,'เชียงใหม่',1.00,1.00,'','',1.00),(39,'ลำพูน',1.00,1.00,'','',1.00),(40,'ลำปาง',1.00,1.00,'','',1.00),(41,'อุตรดิตถ์',1.00,1.00,'','',1.00),(42,'แพร่',1.00,1.00,'','',1.00),(43,'น่าน',1.00,1.00,'','',1.00),(44,'พะเยา',1.00,1.00,'','',1.00),(45,'เชียงราย',1.00,1.00,'','',1.00),(46,'แม่ฮ่องสอน',1.00,1.00,'','',1.00),(47,'นครสวรรค์',1.00,1.00,'','',1.00),(48,'อุทัยธานี',1.00,1.00,'','',1.00),(49,'กำแพงเพชร',1.00,1.00,'','',1.00),(50,'ตาก',1.00,1.00,'','',1.00),(51,'สุโขทัย',1.00,1.00,'','',1.00),(52,'พิษณุโลก',1.00,1.00,'','',1.00),(53,'พิจิตร',1.00,1.00,'','',1.00),(54,'เพชรบูรณ์',1.00,1.00,'','',1.00),(55,'ราชบุรี',1.00,1.00,'','',1.00),(56,'กาญจนบุรี',1.00,1.00,'','',1.00),(57,'สุพรรณบุรี',1.00,1.00,'','',1.00),(58,'นครปฐม',1.00,1.00,'','',1.00),(59,'สมุทรสาคร',1.00,1.00,'','',1.00),(60,'สมุทรสงคราม',1.00,1.00,'','',1.00),(61,'เพชรบุรี',1.00,1.00,'','',1.00),(62,'ประจวบคีรีขันธ์',1.00,1.00,'','',1.00),(63,'นครศรีธรรมราช',1.00,1.00,'','',1.00),(64,'กระบี่',1.00,1.00,'','',1.00),(65,'พังงา',1.00,1.00,'','',1.00),(66,'ภูเก็ต',1.00,1.00,'','',1.00),(67,'สุราษฎร์ธานี',1.00,1.00,'','',1.00),(68,'ระนอง',1.00,1.00,'','',1.00),(69,'ชุมพร',1.00,1.00,'','',1.00),(70,'สงขลา',1.00,1.00,'','',1.00),(71,'สตูล',1.00,1.00,'','',1.00),(72,'ตรัง',1.00,1.00,'','',1.00),(73,'พัทลุง',1.00,1.00,'','',1.00),(74,'ปัตตานี',1.00,1.00,'','',1.00),(75,'ยะลา',1.00,1.00,'','',1.00),(76,'นราธิวาส',1.00,1.00,'','',1.00),(77,'บึงกาฬ',1.00,1.00,'','',1.00);
-/*!40000 ALTER TABLE `table_name` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user_profile`
 --
 
@@ -475,20 +448,20 @@ CREATE TABLE `user_profile` (
   `districtId` int(11) NOT NULL,
   `subdistrictId` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
-  `create_add` datetime DEFAULT NULL,
-  `users_id` int(11) NOT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `userId` int(11) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_profile`),
   KEY `fk_user_profile_province1_idx` (`provinceId`),
   KEY `fk_user_profile_district1_idx` (`districtId`),
   KEY `fk_user_profile_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_user_profile_users1_idx` (`create_by`),
-  KEY `fk_user_profile_users3_idx` (`users_id`),
+  KEY `fk_user_profile_users3_idx` (`userId`),
   CONSTRAINT `fk_user_profile_district1` FOREIGN KEY (`districtId`) REFERENCES `district` (`districtId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_province1` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_subdistrict1` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_profile_users3` FOREIGN KEY (`users_id`) REFERENCES `users` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_user_profile_users3` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -506,6 +479,12 @@ UNLOCK TABLES;
 --
 
 
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
 
 --
 -- Dumping events for database 'carjaidee'
@@ -520,4 +499,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-24 10:59:43
+-- Dump completed on 2018-05-24 11:31:57
