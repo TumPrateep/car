@@ -151,18 +151,28 @@
                 <div id="step-3">
                     <div id="form-step-2" role="form" data-toggle="validator">
                     <div id="role-4" style="display:none">  
-                      <h5>ข้อมูลรถ</h5>
-                      <form id="form-role-4">  
+                      <h5>ข้อมูลรถ</h5><label>ทะเบียนรถ</label><span class="error">*</span>
+                      <form id="form-role-4">
                           <div class="form-row">
                             <div class="form-group col-md-4">
-                              <label>ทะเบียนรถ</label><span class="error">*</span>
-                              <input type="text" name="licensePlate" id="licensePlate" class="form-control" placeholder="ทะเบียนรถ">
+                              <label>ตัวอักษรนำหน้า</label><span class="error">*</span>
+                              <input type="text" name="characterPlate" id="characterPlate" class="form-control" placeholder="ตัวอักษรนำหน้า">
                             </div>
                             <div class="form-group col-md-4">
+                              <label>ตัวเลข</label><span class="error">*</span>
+                              <input type="text" name="numberPlate" id="numberPlate" class="form-control" placeholder="ตัวเลข">
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>จังหวัด</label><span class="error">*</span>
+                              <input type="text" name="provincePlate" id="provincePlate" class="form-control" placeholder="จังหวัด">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
                               <label>เลขไมล์</label><span class="error">*</span>
                               <input type="text" name="mileage" id="mileage" class="form-control" placeholder="เลขไมล์">
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                               <label>สี</label><span class="error">*</span>
                               <input type="text" name="colorCar" id="colorCar" class="form-control" placeholder="สีรถ">
                             </div>
@@ -203,7 +213,7 @@
                           <div class="form-row">
                               <div class="form-group col-md-12">
                                 <label>ที่อยู่</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="addressGarage" id="addressGarage" placeholder="ที่อยู่">
+                                <textarea class="form-control" name="addressGarage" id="addressGarage" placeholder="ที่อยู่" rows="3"></textarea>
                               </div>
                           </div>
                           <div class="form-row">
@@ -259,7 +269,7 @@
                               </div>
                             </div>
                             <div class="form-group col-md-12">
-                              <input type="text" class="form-control" name="other" placeholder="อื่นๆ">
+                              <input type="text" class="form-control" name="other" id="other" placeholder="อื่นๆ">
                             </div>
                           </div>
                           <div class="form-row">
@@ -309,6 +319,7 @@
 <script src="<?=base_url("public/js/jquery.smartWizard.js"); ?>"></script>
 <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
 <script src="<?php echo base_url() ?>public/js/image-picker.js"></script>
+<script src="<?php echo base_url() ?>public/js/setup.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -396,15 +407,25 @@
             colorCar: {
               required: true
             },
-            frontPicture:{
+            characterPlate: {
               required: true
             },
-            backPicture:{
+            numberPlate: {
               required: true
             },
-            circlesignPicture:{
+            provincePlate: {
               required: true
             }
+            // ,
+            // frontPicture:{
+            //   required: true
+            // },
+            // backPicture:{
+            //   required: true
+            // },
+            // circlesignPicture:{
+            //   required: true
+            // }
           },
           messages:{
 
@@ -461,6 +482,12 @@
           if(isValid){
             var formData = new FormData();
             formData.append("role",role);
+            
+            var profileData = $("#form-1").serializeArray();
+            $.each(profileData, function( index, value ) {
+              formData.append(value.name, value.value);
+            });
+
             if(role == "3"){ //อู่
               formData.append("garageName", $("#garageName").val());
               formData.append("businessRegistration", $("#businessRegistration").val());
@@ -476,16 +503,19 @@
               formData.append("option2", $("#box2").val());
               formData.append("option3", $("#box3").val());
               formData.append("option4", $("#box4").val());
-              formData.append("option_outher", $("#other").val());
+              formData.append("option_other", $("#other").val());
               formData.append("image", $("#circlesignPicture")[0].files[0]);
             }else if(role == "2"){ //ร้านค้าอะไหล่
               formData.append("car_accessoriesName", $("#car_accessoriesName").val());
               formData.append("businessRegistration", $("#businessRegistration").val());
             }else{
-              formData.append("image", $("#frontPicture")[0].files[0]);
-              formData.append("image2", $("#backPicture")[0].files[0]);
-              formData.append("image3", $("#circlesignPicture")[0].files[0]);
-              formData.append("licensePlate", $("#licensePlate").val());
+              formData.append("frontPicture", $("#frontPicture")[0].files[0]);
+              formData.append("backPicture", $("#backPicture")[0].files[0]);
+              formData.append("circlesignPicture", $("#circlesignPicture")[0].files[0]);
+              // formData.append("licensePlate", $("#licensePlate").val());
+              formData.append("characterPlate", $("#characterPlate").val());
+              formData.append("numberPlate", $("#numberPlate").val());
+              formData.append("provincePlate", $("#provincePlate").val());
               formData.append("mileage", $("#mileage").val());
               formData.append("colorCar", $("#colorCar").val());
             }
@@ -539,7 +569,7 @@
             }
         });
 
-        $('#smartwizard').smartWizard("reset");
+        // $('#smartwizard').smartWizard("reset");
         
         $("#form-1").validate({
           rules:{
