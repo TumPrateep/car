@@ -238,123 +238,123 @@ class UserManagement extends BD_Controller {
         $phone2 = $this->post("phone2");
 
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->set_response($userId, REST_Controller::HTTP_OK);
 
-        // $this->load->model("Profile");
+        $this->load->model("Profile");
     
-        // $profileData = array(
-        //     'user_profile' => null,
-        //     'firstname' => $firstname,
-        //     'lastname' => $lastname,
-        //     'status' => 1,
-        //     'address' => $address,
-        //     'phone1' => $phone1, 
-        //     'phone2' => $phone2,
-        //     'provinceId' => $provinceId, 
-        //     'districtId' => $districtId,
-        //     'subdistrictId' => $subdistrictId,
-        //     'create_by' => $userId,
-        //     'create_at' => date('Y-m-d H:i:s',time()),
-        //     'users_id' => $userId
-        // );
+        $profileData = array(
+            'user_profile' => null,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'status' => 1,
+            'address' => $address,
+            'phone1' => $phone1, 
+            'phone2' => $phone2,
+            'provinceId' => $provinceId, 
+            'districtId' => $districtId,
+            'subdistrictId' => $subdistrictId,
+            'create_by' => $userId,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'userId' => $userId
+        );
 
-        // if($role == 3){
+        if($role == 3){
 
-        // }else if($role == 2){
-        //     $car_accessoriesName = $this->post("car_accessoriesName");
-        //     $businessRegistrationAccessories = $this->post("businessRegistrationAccessories");
-        //     $roleData = array(
-        //         'car_accessoriesId' => null,
-        //         'car_accessoriesName' => $car_accessoriesName,
-        //         'businessRegistration' => $businessRegistrationAccessories,
-        //         'userId' => $userId,
-        //         'create_at' => date('Y-m-d H:i:s',time()),
-        //         'create_by' => $create_add,
-        //         'update_at' => null,
-        //         'update_by' => null,
-        //         'status' => 1  
-        //     );
-        // }else if($role == 4){
-        //     $path = 'public/image/car_profile/'.$userId;
-        //     mkdir($path);
-        //     $config['upload_path'] = $path;
+        }else if($role == 2){
+            $car_accessoriesName = $this->post("car_accessoriesName");
+            $businessRegistrationAccessories = $this->post("businessRegistrationAccessories");
+            $roleData = array(
+                'car_accessoriesId' => null,
+                'car_accessoriesName' => $car_accessoriesName,
+                'businessRegistration' => $businessRegistrationAccessories,
+                'userId' => $userId,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'update_at' => null,
+                'update_by' => null,
+                'status' => 1  
+            );
+        }else if($role == 4){
+            $path = 'public/image/car_profile/'.$userId;
+            mkdir($path);
+            $config['upload_path'] = $path;
 
-        //     $frontPicture = $this->post("frontPicture");
-        //     $backPicture = $this->post("backPicture");
-        //     $circlesignPicture = $this->post("circlesignPicture");
-        //     $characterPlate = $this->post("characterPlate");
-        //     $numberPlate = $this->post("numberPlate");
-        //     $provincePlate = $this->post("provincePlate");
-        //     $mileage = $this->post("mileage");
-        //     $colorCar = $this->post("colorCar");
+            $frontPicture = $this->post("frontPicture");
+            $backPicture = $this->post("backPicture");
+            $circlesignPicture = $this->post("circlesignPicture");
+            $characterPlate = $this->post("characterPlate");
+            $numberPlate = $this->post("numberPlate");
+            $provincePlate = $this->post("provincePlate");
+            $mileage = $this->post("mileage");
+            $colorCar = $this->post("colorCar");
 
-        //     $this->load->library('upload', $config);
-        //     $pictureFrontName = null;
-        //     $pictureBackName = null;
-        //     $circlePlateName = null;
-        //     if($frontPicture != "undefined"){
-        //         if ( ! $this->upload->do_upload("frontPicture")){
-        //             $error = array('error' => $this->upload->display_errors());
-        //             $output["message"] = REST_Controller::MSG_ERROR;
-        //             $output["data"] = $error;
-        //             $this->set_response($output, REST_Controller::HTTP_OK);
-        //         }else{
-        //             $imageDetailArray = $this->upload->data();
-        //             $pictureFrontName =  $imageDetailArray['frontPicture'];
-        //         }      
-        //     }
+            $this->load->library('upload', $config);
+            $pictureFrontName = null;
+            $pictureBackName = null;
+            $circlePlateName = null;
+            if($frontPicture != "undefined"){
+                if ( ! $this->upload->do_upload("frontPicture")){
+                    $error = array('error' => $this->upload->display_errors());
+                    $output["message"] = REST_Controller::MSG_ERROR;
+                    $output["data"] = $error;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $imageDetailArray = $this->upload->data();
+                    $pictureFrontName =  $imageDetailArray['file_name'];
+                }      
+            }
 
-        //     if($backPicture != "undefined"){
-        //         if ( ! $this->upload->do_upload("backPicture")){
-        //             $error = array('error' => $this->upload->display_errors());
-        //             $output["message"] = REST_Controller::MSG_ERROR;
-        //             $output["data"] = $error;
-        //             $this->set_response($output, REST_Controller::HTTP_OK);
-        //         }else{
-        //             $imageDetailArray = $this->upload->data();
-        //             $pictureBackName =  $imageDetailArray['backPicture'];
-        //         }
-        //     }
+            if($backPicture != "undefined"){
+                if ( ! $this->upload->do_upload("backPicture")){
+                    $error = array('error' => $this->upload->display_errors());
+                    $output["message"] = REST_Controller::MSG_ERROR;
+                    $output["data"] = $error;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $imageDetailArray = $this->upload->data();
+                    $pictureBackName =  $imageDetailArray['file_name'];
+                }
+            }
 
-        //     if($circlesignPicture != "undefined"){
-        //         if ( ! $this->upload->do_upload("circlesignPicture")){
-        //             $error = array('error' => $this->upload->display_errors());
-        //             $output["message"] = REST_Controller::MSG_ERROR;
-        //             $output["data"] = $error;
-        //             $this->set_response($output, REST_Controller::HTTP_OK);
-        //         }else{
-        //             $imageDetailArray = $this->upload->data();
-        //             $circlePlateName =  $imageDetailArray['circlesignPicture'];
-        //         }
-        //     }
+            if($circlesignPicture != "undefined"){
+                if ( ! $this->upload->do_upload("circlesignPicture")){
+                    $error = array('error' => $this->upload->display_errors());
+                    $output["message"] = REST_Controller::MSG_ERROR;
+                    $output["data"] = $error;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $imageDetailArray = $this->upload->data();
+                    $circlePlateName =  $imageDetailArray['file_name'];
+                }
+            }
 
-        //     $roleData = array(
-        //         "car_profileId" => null,
-        //         "mileage" => $mileage,
-        //         "pictureFront" => $pictureFront,
-        //         "pictureBack" => $pictureBack,
-        //         "circlePlate" => $circlePlate,
-        //         "create_at" => date('Y-m-d H:i:s',time()),
-        //         "create_by" => $userId,
-        //         "userId" => $userId,
-        //         "update_at" => null,
-        //         "update_by" => null,
-        //         "status" => 1,
-        //         "character_plate" => $characterPlate,
-        //         "number_plate" => $numberPlate,
-        //         "province_plate" => $provincePlate,
-        //         "color" => $colorCar
-        //     );
-        // }else{
-        //     $roleData = null;
-        // }
+            $roleData = array(
+                "car_profileId" => null,
+                "mileage" => $mileage,
+                "pictureFront" => $pictureFrontName,
+                "pictureBack" => $pictureBackName,
+                "circlePlate" => $circlePlateName,
+                "create_at" => date('Y-m-d H:i:s',time()),
+                "create_by" => $userId,
+                "userId" => $userId,
+                "update_at" => null,
+                "update_by" => null,
+                "status" => 1,
+                "character_plate" => $characterPlate,
+                "number_plate" => $numberPlate,
+                "province_plate" => $provincePlate,
+                "color" => $colorCar
+            );
+        }else{
+            $roleData = null;
+        }
 
-        // $result = $this->Profile->saveProfileRoleUser($role, $userId, $profileData, $roleData);
-        // if($result){
-        //     $output["message"] = REST_Controller::MSG_SUCCESS;
-        // }else{
-        //     $output["message"] = REST_Controller::MSG_ERROR;
-        // }
+        $result = $this->Profile->saveProfileRoleUser($role, $userId, $profileData, $roleData);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+        }else{
+            $output["message"] = REST_Controller::MSG_ERROR;
+        }
+        $this->set_response($output, REST_Controller::HTTP_OK);
         
         
 
