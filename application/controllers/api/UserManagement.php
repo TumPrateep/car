@@ -52,11 +52,11 @@ class UserManagement extends BD_Controller {
                 $nestedData['phone'] = $post->phone;
                 $nestedData['email'] = $post->email;
                 switch($post->category){
-                    case "1" : $nestedData['category'] ="admin";break;
-                    case "2" : $nestedData['category'] ="caraccessory";break;
-                    case "3" : $nestedData['category'] ="garage";break;
-                    case "4" : $nestedData['category'] ="user";break;
-                    default  : $nestedData['category'] ="no category";break;
+                    case "1" : $nestedData['category'] ="ผู้ดูแลระบบ";break;
+                    case "2" : $nestedData['category'] ="ร้านอะไหล่";break;
+                    case "3" : $nestedData['category'] ="อู่";break;
+                    case "4" : $nestedData['category'] ="ผู้ใช้";break;
+                    default  : $nestedData['category'] =" ";break;
 
                     
                 }
@@ -491,8 +491,32 @@ class UserManagement extends BD_Controller {
         //             $this->set_response($output, REST_Controller::HTTP_OK);
         //         }
         //     }
-        // }
-        //else{
+        // }else if($role == "2"){
+
+        //     $car_accessoriesName = $this->post("car_accessoriesName");
+        //     $businessRegistration = $this->post("businessRegistration");
+        //     $create_add = $this->session->userdata['logged_in']['id'];
+
+        //     $this->db->trans_start();
+        //     $data = array(
+        //         'car_accessoriesId' => null,
+        //         'car_accessoriesName' => $car_accessoriesName,
+        //         'businessRegistration' => $businessRegistration,
+        //         'id' => $create_add,
+        //         'create_add' => date('Y-m-d H:i:s',time()),
+        //         'create_by' => $create_add,
+        //         'status' => 1
+        //     );
+        //     $isResult = $this->User->insert_role2($data);
+        //     $this->db->trans_complete();
+        //     if($isResult){
+        //         $output["message"] = REST_Controller::MSG_SUCCESS;
+        //         $this->set_response($output, REST_Controller::HTTP_OK);
+        //     }else{
+        //         $output["message"] = REST_Controller::MSG_NOT_CREATE;
+        //         $this->set_response($output, REST_Controller::HTTP_OK);
+        //     }
+        // }else{
         //     $config['upload_path'] = 'public/image/brand/';
         //     $config['allowed_types'] = 'gif|jpg|png';
         //     // $config['max_size'] = '100';

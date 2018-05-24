@@ -60,17 +60,17 @@ CREATE TABLE `car_accessories` (
   `car_accessoriesId` int(11) NOT NULL AUTO_INCREMENT,
   `car_accessoriesName` varchar(255) NOT NULL,
   `businessRegistration` varchar(255) DEFAULT NULL,
-  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
   `create_at` datetime DEFAULT NULL,
-  `update_add` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
   `create_by` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`car_accessoriesId`),
-  KEY `fk_car_accessories_users1_idx` (`id`),
+  KEY `fk_car_accessories_users1_idx` (`userId`),
   KEY `fk_car_accessories_users2_idx` (`create_by`),
   KEY `fk_car_accessories_users3_idx` (`update_by`),
-  CONSTRAINT `fk_car_accessories_users1` FOREIGN KEY (`id`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_car_accessories_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_car_accessories_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_car_accessories_users3` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -194,6 +194,7 @@ CREATE TABLE `garage` (
   `option3` int(11) DEFAULT NULL,
   `option4` int(11) DEFAULT NULL,
   `option_outher` varchar(255) DEFAULT NULL,
+  `garagePicture` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`garageId`,`garageMaster`),
   KEY `fk_garage_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_garage_district1_idx` (`districtId`),
@@ -491,4 +492,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-24 12:16:27
+-- Dump completed on 2018-05-24 13:48:14
