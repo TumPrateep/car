@@ -3,7 +3,8 @@
     var brandId = $("#brandId").val();
 
     $.post(base_url+"api/car/getBrandforupdate",{
-        "brandId": brandId
+        "brandId": brandId,
+        
     },function(data){
         if(data.message!=200){
             showMessage(data.message,"car/car");
@@ -15,7 +16,42 @@
         }
         
     });
+    
+    // var brandId = $("#brandId").val();
 
+    // $.post(base_url+"api/car/getBrandforupdate",{
+    //     "brandPicture": brandPicture,
+        
+    // },function(data){
+    //     if(data.message!=200){
+    //         showMessage(data.message,"car/car");
+    //     }
+
+    //     if(data.message == 200){
+    //         result = data.data;
+    //         $("#brandName").val(result.brandName);
+    //     }
+        
+    // });
+    $("#file-3").fileinput({
+        theme: 'fa',
+        showUpload: false,
+        showCancel: false,
+        showCaption: false,
+        browseClass: "btn btn-primary btn-lg",
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        overwriteInitial: false,
+        initialPreviewAsData: true,
+        allowedFileExtensions: ['jpg'],
+        
+        initialPreview: [
+          
+    
+        ],
+        initialPreviewConfig: [
+           
+        ]
+    });
 
 $("#update-brand").validate({
         rules: {

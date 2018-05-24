@@ -43,4 +43,13 @@ class UserManagement extends CI_Controller {
 		$this->load->view("admin/user/update/script");
 	}
 
+	public function userproflie(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/user/create/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/user/create/script");
+	}
 }

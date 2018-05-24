@@ -86,7 +86,7 @@
               <li><a href="#step-3">Step 3<br /><small>Address</small></a></li>
           </ul>
 
-          <div>
+          <div id="content" style="min-height:30px !important">
                 <div id="step-1">
                     <h4>ข้อมูลส่วนตัว</h4>
                     <div id="form-step-0" role="form" data-toggle="validator">
@@ -108,21 +108,15 @@
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>จังหวัด</label><span class="error">*</span>
-                              <select class="form-control" name="provinceId" id="provinceId">
-                                <option>เลือกจังหวัด</option>
-                              </select>
+                              <select class="form-control" name="provinceId" id="provinceId"></select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>อำเภอ</label><span class="error">*</span>
-                              <select class="form-control" name="districtId" id="districtId">
-                                <option>เลือกอำเภอ</option>
-                              </select>
+                              <select class="form-control" name="districtId" id="districtId"></select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>ตำบล</label><span class="error">*</span>
-                              <select class="form-control" name="subdistrictId" id="subdistrictId">
-                                <option>เลือกตำบล</option>
-                              </select>
+                              <select class="form-control" name="subdistrictId" id="subdistrictId"></select>
                             </div>
                           </div>
                           <div class="form-row">
@@ -132,7 +126,7 @@
                             </div>
                             <div class="form-group col-md-6">
                               <label>เบอร์โทรศัพท์ที่สามารถติดต่อได้</label><span class="error">*</span>
-                              <input type="text" name="phone2" class="form-control" placeholder="เบอร์โทรศัพท์ที่สามารถติดต่อได้">
+                              <input type="text" name="phone2" id="phone2" class="form-control" placeholder="เบอร์โทรศัพท์ที่สามารถติดต่อได้">
                             </div>
                           </div>
                         </form>
@@ -145,7 +139,6 @@
                       <form id="form-2">
                         <div class="form-group text-center">
                           <select id="role" class="image-picker show-html" name="role">
-                            <option value=""></option>
                             <option data-img-src="<?=base_url("public/image/role/4.jpg");?>" value="4" selected>ผู้ใช้งาน</option>
                             <option data-img-src="<?=base_url("public/image/role/3.jpg");?>" value="3">อู่</option>
                             <option data-img-src="<?=base_url("public/image/role/2.jpg");?>" value="2">ร้านอะไหล่</option>
@@ -157,21 +150,31 @@
 
                 <div id="step-3">
                     <div id="form-step-2" role="form" data-toggle="validator">
-                    <h5>ข้อมูลรถ</h5>
-                      <form id="form-3">
-                        <div id="role-4">  
+                    <div id="role-4" style="display:none">  
+                      <h5>ข้อมูลรถ</h5><label>ทะเบียนรถ</label><span class="error">*</span>
+                      <form id="form-role-4">
                           <div class="form-row">
                             <div class="form-group col-md-4">
-                              <label>ทะเบียนรถ</label><span class="error">*</span>
-                              <input type="text" name="licensePlate" class="form-control" placeholder="ทะเบียนรถ">
+                              <label>ตัวอักษรนำหน้า</label><span class="error">*</span>
+                              <input type="text" name="characterPlate" id="characterPlate" class="form-control" placeholder="ตัวอักษรนำหน้า">
                             </div>
                             <div class="form-group col-md-4">
+                              <label>ตัวเลข</label><span class="error">*</span>
+                              <input type="text" name="numberPlate" id="numberPlate" class="form-control" placeholder="ตัวเลข">
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>จังหวัด</label><span class="error">*</span>
+                              <input type="text" name="provincePlate" id="provincePlate" class="form-control" placeholder="จังหวัด">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
                               <label>เลขไมล์</label><span class="error">*</span>
-                              <input type="text" name="mileage" class="form-control" placeholder="เลขไมล์">
+                              <input type="text" name="mileage" id="mileage" class="form-control" placeholder="เลขไมล์">
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                               <label>สี</label><span class="error">*</span>
-                              <input type="text" name="colorCar" class="form-control" placeholder="สีรถ">
+                              <input type="text" name="colorCar" id="colorCar" class="form-control" placeholder="สีรถ">
                             </div>
                           </div>
                           <div class="form-row">
@@ -191,68 +194,59 @@
                               <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                             </div>
                           </div>
-                          
-                        </div>
-                      </form>
-
-                      <hr>
-                      <h5>ข้อมูลอู่</h5>
-                    
-                      <form id="form-4">
-                        <div id="role-5">  
+                        </form>
+                      </div>
+                      
+                      <div id="role-3" style="display:none">
+                        <h5>ข้อมูลอู่</h5>
+                        <form id="form-role-3">  
                           <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label>ชื่ออู่</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="garageName" placeholder="ชื่ออู่" >
+                                <input type="text" class="form-control" name="garageName" id="garageName" placeholder="ชื่ออู่" >
                               </div>
                               <div class="form-group col-md-6">
                                 <label>ใบทะเบียนการค้า</label>
-                                <input type="text" class="form-control" name="tradeRegistration" placeholder="ใบทะเบียนการค้า">
+                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="ใบทะเบียนการค้า">
                               </div>
                           </div>
                           <div class="form-row">
                               <div class="form-group col-md-12">
                                 <label>ที่อยู่</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="addressGarage" placeholder="ที่อยู่">
+                                <textarea class="form-control" name="addressGarage" id="addressGarage" placeholder="ที่อยู่" rows="3"></textarea>
                               </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>จังหวัด</label><span class="error">*</span>
-                              <select class="form-control" name="provinceId">
-                                <option>เลือกจังหวัด</option>
-                              </select>
+                              <select class="form-control" name="garage-provinceId" id="garage-provinceId"></select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>อำเภอ</label><span class="error">*</span>
-                              <select class="form-control" name="districtId">
-                                <option>เลือกอำเภอ</option>
-                              </select>
+                              <select class="form-control" name="garage-districtId" id="garage-districtId"></select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>ตำบล</label><span class="error">*</span>
-                              <select class="form-control" name="subdistrictId">
-                                <option>เลือกตำบล</option>
-                              </select>
+                              <select class="form-control" name="garage-subdistrictId" id="garage-subdistrictId"></select>
                             </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>รหัสไปรษณีย์</label><span class="error">*</span>
-                              <input type="text" class="form-control" name="zipCode" placeholder="รหัสไปรษณีย์">
+                              <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="รหัสไปรษณีย์">
                             </div>
                             <div class="form-group col-md-4">
                               <label>ละติจูด</label>
-                              <input type="text" class="form-control" name="latitude" placeholder="ละติจูด">
+                              <input type="text" class="form-control" name="latitude" id="latitude" placeholder="ละติจูด">
                             </div>
                             <div class="form-group col-md-4">
                               <label>ลองจิจูด</label>
-                              <input type="text" class="form-control" name="longtitude" placeholder="ลองจิจูด">
+                              <input type="text" class="form-control" name="longtitude" id="longtitude" placeholder="ลองจิจูด">
                             </div>
                           </div>
                           <div class="form-group">
-                            <label>คำอธิบาย</label><span class="error">*</span>
-                            <textarea class="form-control" name="comment" rows="3"></textarea>
+                            <label>คำอธิบาย</label>
+                            <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
                           </div>
                           <label>สิ่งอำนวยความสะดวก</label>
                           <div class="form-row"> 
@@ -275,7 +269,7 @@
                               </div>
                             </div>
                             <div class="form-group col-md-12">
-                              <input type="text" class="form-control" name="longtitude" placeholder="อื่นๆ">
+                              <input type="text" class="form-control" name="other" id="other" placeholder="อื่นๆ">
                             </div>
                           </div>
                           <div class="form-row">
@@ -285,28 +279,26 @@
                               <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                             </div>
                           </div>
-                        </div>
-                      </form>
-                    
+                        </form>
+                      </div>
 
-                      <hr>
-                      <h5>ข้อมูลร้านอะไหล่</h5>
-                    
-                      <form id="form-5">
-                        <div id="role-6">
+                      <div id="role-2" style="display:none">
+                        <h5>ข้อมูลร้านอะไหล่</h5>
+                        <form id="form-role-2">
                           <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label>ชื่อร้านค้าส่ง</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ชื่ออู">
+                                <input type="text" class="form-control" name="car_accessoriesName" id="car_accessoriesName" placeholder="ชื่ออู">
                               </div>
                               <div class="form-group col-md-6">
                                 <label>ใบทะเบียนการค้า</label><span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ใบทะเบียนการค้">
+                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="ใบทะเบียนการค้">
                               </div>
                           </div>
-                        </div>
-                      </form>
+                        </form>
+                      </div>
                     </div>
+                  </div>
                 </div>
           </div>
       </div>
@@ -327,16 +319,234 @@
 <script src="<?=base_url("public/js/jquery.smartWizard.js"); ?>"></script>
 <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
 <script src="<?php echo base_url() ?>public/js/image-picker.js"></script>
+<script src="<?php echo base_url() ?>public/js/setup.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
+
+        var provinceDropdown = $("#provinceId");
+        provinceDropdown.append('<option value="">เลือกจังหวัด</option>');
+
+        var districtDropdown = $('#districtId');
+        districtDropdown.append('<option value="">เลือกอำเภอ</option>');
+
+        var subdistrictDropdown = $('#subdistrictId');
+        subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+        
+        function onLoad(){
+          loadProvince();
+        }
+
+        onLoad();
+
+        function loadProvince(){
+          $.post(base_url+"api/location/getProvince",{},
+            function(data){
+              var province = data.data;
+              $.each(province, function( index, value ) {
+                provinceDropdown.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
+              });
+            }
+          );
+        }
+
+        provinceDropdown.change(function(){
+          var provinceId = $(this).val();
+          loadDistrict(provinceId);
+        });
+
+        function loadDistrict(provinceId){
+          districtDropdown.html("");
+          districtDropdown.append('<option value="">เลือกอำเภอ</option>');
+          subdistrictDropdown.html("");
+          subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+          $.post(base_url+"api/location/getDistrict",{
+            provinceId: provinceId
+          },
+            function(data){
+              var district = data.data;
+              $.each(district, function( index, value ) {
+                districtDropdown.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+              });
+            }
+          );
+
+        }
+
+        districtDropdown.change(function(){
+          var districtId = $(this).val();
+          loadSubdistrict(districtId);
+        });
+
+        function loadSubdistrict(districtId){
+          subdistrictDropdown.html("");
+          subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+          
+          $.post(base_url+"api/location/getSubdistrict",{
+            districtId: districtId
+          },
+            function(data){
+              var subDistrict = data.data;
+              $.each(subDistrict, function( index, value ) {
+                subdistrictDropdown.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+              });
+            }
+          );
+
+        }
+
+        $("#form-role-4").validate({
+          rules:{
+            licensePlate: {
+              required: true
+            },
+            mileage: {
+              required: true
+            },
+            colorCar: {
+              required: true
+            },
+            characterPlate: {
+              required: true
+            },
+            numberPlate: {
+              required: true
+            },
+            provincePlate: {
+              required: true
+            }
+            // ,
+            // frontPicture:{
+            //   required: true
+            // },
+            // backPicture:{
+            //   required: true
+            // },
+            // circlesignPicture:{
+            //   required: true
+            // }
+          },
+          messages:{
+
+          }
+        });
+
+        $("#form-role-3").validate({
+          rules:{
+            garageName:{
+              required: true
+            },
+            businessRegistration:{
+              required: true
+            },
+            addressGarage:{
+              required: true
+            },
+            "garage-provinceId":{
+              required: true
+            },
+            "garage-districtId":{
+              required: true
+            },
+            "garage-subdistrictId":{
+              required: true
+            },
+            zipCode:{
+              required: true
+            }
+          },
+          messages:{
+
+          }
+        });
+
+        $("#form-role-2").validate({
+          rules:{
+            car_accessoriesName:{
+              required: true
+            },
+            businessRegistration:{
+              required: true
+            }
+          },
+          messages:{
+
+          }
+        });
+
+        function finish(){
+          var role = $("#role").val();
+          var id = "#form-role-"+role;
+          var isValid = $(id).valid();
+          if(isValid){
+            var formData = new FormData();
+            formData.append("role",role);
+            
+            var profileData = $("#form-1").serializeArray();
+            $.each(profileData, function( index, value ) {
+              formData.append(value.name, value.value);
+            });
+
+            if(role == "3"){ //อู่
+              formData.append("garageName", $("#garageName").val());
+              formData.append("businessRegistration", $("#businessRegistration").val());
+              formData.append("garageAddress", $("#addressGarage").val());
+              formData.append("provinceId", $("#garage-provinceId").val());
+              formData.append("districtId", $("#garage-districtId").val());
+              formData.append("subdistrictId", $("#garage-subdistrictId").val());
+              formData.append("postCode", $("#zipCode").val());
+              formData.append("latitude", $("#latitude").val());
+              formData.append("longtitude", $("#longtitude").val());
+              formData.append("comment", $("#comment").val());
+              formData.append("option1", $("#box1").val());
+              formData.append("option2", $("#box2").val());
+              formData.append("option3", $("#box3").val());
+              formData.append("option4", $("#box4").val());
+              formData.append("option_other", $("#other").val());
+              formData.append("image", $("#circlesignPicture")[0].files[0]);
+            }else if(role == "2"){ //ร้านค้าอะไหล่
+              formData.append("car_accessoriesName", $("#car_accessoriesName").val());
+              formData.append("businessRegistration", $("#businessRegistration").val());
+            }else{
+              formData.append("frontPicture", $("#frontPicture")[0].files[0]);
+              formData.append("backPicture", $("#backPicture")[0].files[0]);
+              formData.append("circlesignPicture", $("#circlesignPicture")[0].files[0]);
+              // formData.append("licensePlate", $("#licensePlate").val());
+              formData.append("characterPlate", $("#characterPlate").val());
+              formData.append("numberPlate", $("#numberPlate").val());
+              formData.append("provincePlate", $("#provincePlate").val());
+              formData.append("mileage", $("#mileage").val());
+              formData.append("colorCar", $("#colorCar").val());
+            }
+
+            $.ajax({
+                url: base_url+"api/UserManagement/userTypeAndData",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (data) {
+                    if(data.message == 200){
+                        showMessage(data.message,"car");
+                    }else{
+                        showMessage(data.message);
+                    }
+                }
+            });
+
+          }
+        }
+
         $("#role").imagepicker({
           show_label: true
         });
         // Toolbar extra buttons
         var btnFinish = $('<button disabled></button>').text('Finish')
                 .addClass('btn btn-info btn-finish')
-                .on('click', function(){ alert('Finish Clicked'); });
+                .on('click', function(){
+                  finish();
+                });
         var btnCancel = $('<button></button>').text('Cancel')
                 .addClass('btn btn-danger')
                 .on('click', function(){ $('#smartwizard').smartWizard("reset"); });
@@ -365,11 +575,47 @@
           rules:{
             firstname: {
               required: true
+            },
+            lastname: {
+              required: true
+            },
+            address:{
+              required: true
+            },
+            provinceId:{
+              required: true
+            },
+            districtId: {
+              required: true
+            },
+            subdistrictId: {
+              required: true
+            },
+            phone2: {
+              required: true
             }
           },
           messages:{
             firstname: {
               required: "กรุณากรอกชื่อ"
+            },
+            lastname: {
+              required: "กรุณากรอกนามสกุล"
+            },
+            address:{
+              required: "กรุณากรอกที่อยู่"
+            },
+            provinceId:{
+              required: "กรุณาเลือกจังหวัด"
+            },
+            districtId: {
+              required: "กรุณาเลือกอำเภอ"
+            },
+            subdistrictId: {
+              required: "กรุณาเลือกตำบล"
+            },
+            phone2: {
+              required: "กรุณากรอกเบอร์โทรที่สามารถติดต่อได้"
             }
           }
         });
@@ -411,13 +657,90 @@
 
         function showRole(){
           var role = $("#role").val();
-          render(role);
+          clear();
+          if(role == '2'){
+            $("#role-2").show();
+          }else if(role == '3'){
+            $("#role-3").show();
+            loadGarageProvince();
+          }else{
+            $("#role-4").show();
+          }
+          // $("#content").css("min-height", "138px");
         }
 
-        function render(role){
-          // $("#form-3").html(role);
+        function clear(role){
+          $("#role-4").hide();
+          $("#role-3").hide();
+          $("#role-2").hide();
         }
     });
+
+    var garageProvinceDropdown = $("#garage-provinceId");
+    garageProvinceDropdown.append('<option value="">เลือกจังหวัด</option>');
+
+    var garageDistrictDropdown = $('#garage-districtId');
+    garageDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
+
+    var garageSubdistrictDropdown = $('#garage-subdistrictId');
+    garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+    function loadGarageProvince(){
+      $.post(base_url+"api/location/getProvince",{},
+        function(data){
+          var province = data.data;
+          $.each(province, function( index, value ) {
+            garageProvinceDropdown.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
+          });
+        }
+      );
+    }
+
+    garageProvinceDropdown.change(function(){
+      var provinceId = $(this).val();
+      loadGarageDistrict(provinceId);
+    });
+
+    function loadGarageDistrict(provinceId){
+      garageDistrictDropdown.html("");
+      garageDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
+      garageSubdistrictDropdown.html("");
+      garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+      $.post(base_url+"api/location/getDistrict",{
+        provinceId: provinceId
+      },
+        function(data){
+          var district = data.data;
+          $.each(district, function( index, value ) {
+            garageDistrictDropdown.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+          });
+        }
+      );
+
+    }
+
+    garageDistrictDropdown.change(function(){
+      var districtId = $(this).val();
+      loadGarageSubdistrict(districtId);
+    });
+
+    function loadGarageSubdistrict(districtId){
+      garageSubdistrictDropdown.html("");
+      garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+      
+      $.post(base_url+"api/location/getSubdistrict",{
+        districtId: districtId
+      },
+        function(data){
+          var subDistrict = data.data;
+          $.each(subDistrict, function( index, value ) {
+            garageSubdistrictDropdown.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+          });
+        }
+      );
+
+    }
 </script>
 </body>
 </html>

@@ -5,8 +5,7 @@
                 required: true
             },
             brandPicture: {
-                // required: true,
-                // extension: "jpg|jpeg"
+                
             }
         },
         messages: {
@@ -20,11 +19,19 @@
         },
     });
 
-    $("#input-b3").fileinput({
-    theme: 'fa',
-    allowedFileExtensions: ['jpg'],
+    $("#brandPicture").fileinput({
+        theme: 'fa',
+        allowedFileExtensions: ['jpg'],
         overwriteInitial: false,
         maxFileSize: 300,
+        required: true,
+        showCancel: false,
+        showUpload: false,
+                
+        
+        // MaxFileHeight :300,
+        // MaxFileWidth : 300
+
         
         
 });

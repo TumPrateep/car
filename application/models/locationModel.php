@@ -8,6 +8,7 @@ class LocationModel extends CI_Model {
     }
 
     function getSubdistrict($districtId){
+        $this->db->select("subdistrictId, subdistrictName");
         $this->db->from('subdistrict');
         $this->db->where('districtId',$districtId);
         $this->db->where('status',1);
@@ -18,6 +19,7 @@ class LocationModel extends CI_Model {
     }
 
     function getDistrict($provinceId){
+        $this->db->select('districtId, districtName');
         $this->db->from('district');
         $this->db->where('provinceId',$provinceId);
         $this->db->where('status',1);
@@ -28,6 +30,7 @@ class LocationModel extends CI_Model {
     }
 
     function getProvince(){
+        $this->db->select('provinceId,provinceName');
         $this->db->from('province');
         $this->db->where('status',1);
         $this->db->order_by("provinceName", "asc");
