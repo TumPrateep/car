@@ -275,7 +275,7 @@
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>รูปภาพของอู่ </label>
-                              <input type="file" class="form-control-file" name="circlesignPicture" id="circlesignPicture">
+                              <input type="file" class="form-control-file" name="garagePicture" id="garagenPicture">
                               <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                             </div>
                           </div>
@@ -512,7 +512,7 @@
               formData.append("option3", checkBox3);
               formData.append("option4", checkBox4);
               formData.append("option_other", $("#other").val());
-              formData.append("image", $("#circlesignPicture")[0].files[0]);
+              formData.append("garagePicture", $("#garagePicture")[0].files[0]);
             }else if(role == "2"){ //ร้านค้าอะไหล่
               formData.append("car_accessoriesName", $("#car_accessoriesName").val());
               formData.append("businessRegistrationAccessories", $("#businessRegistrationAccessories").val());
