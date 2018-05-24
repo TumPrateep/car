@@ -134,4 +134,17 @@ class User extends CI_Model{
         return false;
     }
 
+    function insert_role4($data){
+        return $this->db->insert('car_profile', $data);
+    }
+
+    function insert_role3($data){
+        return $this->db->insert('garage', $data);
+    }
+    
+    function insert_role2($data){
+        return $this->db->insert('car_accessories', $data);
+    }
+
+
 }
