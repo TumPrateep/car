@@ -443,19 +443,19 @@ CREATE TABLE `user_profile` (
   `subdistrictId` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
   `create_add` datetime DEFAULT NULL,
-  `users_id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_profile`),
   KEY `fk_user_profile_province1_idx` (`provinceId`),
   KEY `fk_user_profile_district1_idx` (`districtId`),
   KEY `fk_user_profile_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_user_profile_users1_idx` (`create_by`),
-  KEY `fk_user_profile_users3_idx` (`users_id`),
+  KEY `fk_user_profile_users3_idx` (`userId`),
   CONSTRAINT `fk_user_profile_district1` FOREIGN KEY (`districtId`) REFERENCES `district` (`districtId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_province1` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_subdistrict1` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_profile_users3` FOREIGN KEY (`users_id`) REFERENCES `users` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_user_profile_users3` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -518,4 +518,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-24 10:59:43
+-- Dump completed on 2018-05-24 11:15:03
