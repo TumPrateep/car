@@ -275,7 +275,7 @@
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>รูปภาพของอู่ </label>
-                              <input type="file" class="form-control-file" name="garagePicture" id="garagenPicture">
+                              <input type="file" class="form-control-file" name="garagePicture" id="garagePicture">
                               <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                             </div>
                           </div>
@@ -428,7 +428,24 @@
             // }
           },
           messages:{
-
+            licensePlate: {
+              required: "กรุณากรอกทะเบียนรถ"
+            },
+            mileage: {
+              required: "กรุณากรอกจำนวนเลขไมล์"
+            },
+            colorCar: {
+              required: "กรุณากรอกสีรถ"
+            },
+            characterPlate: {
+              required: "กรุณากรอกตัวอักษรป้ายทะเบียน"
+            },
+            numberPlate: {
+              required: "กรุณากรอกตัวเลขป้านทะเบียน"
+            },
+            provincePlate: {
+              required: "กรุณากรอกจังหวัด"
+            }
           }
         });
 
@@ -457,7 +474,27 @@
             }
           },
           messages:{
-
+            garageName:{
+              required: "กรุณากรอกชื่ออู่"
+            },
+            businessRegistration:{
+              required: "กรุณากรอกใบทะเบียนการค้า"
+            },
+            addressGarage:{
+              required: "กรุณากรอกที่อยู่"
+            },
+            "garage-provinceId":{
+              required: "กรุณาเลือกจังหวัด"
+            },
+            "garage-districtId":{
+              required: "กรุณาเลือกอำเภอ"
+            },
+            "garage-subdistrictId":{
+              required: "กรุณาเลือกตำบล"
+            },
+            zipCode:{
+              required: "กรุณากรอกรหัสไปรษณีย์"
+            }
           }
         });
 
@@ -471,7 +508,12 @@
             }
           },
           messages:{
-
+            car_accessoriesName:{
+              required: "กรุณากรอกชื่อร้านค้าส่ง"
+            },
+            businessRegistration:{
+              required: "กรุณากรอกใบทะเบียนการค้า"
+            }
           }
         });
 
