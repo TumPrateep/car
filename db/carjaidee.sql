@@ -94,7 +94,6 @@ DROP TABLE IF EXISTS `car_profile`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `car_profile` (
   `car_profileId` int(11) NOT NULL AUTO_INCREMENT,
-  `licenseplate` varchar(255) DEFAULT NULL,
   `mileage` varchar(255) DEFAULT NULL,
   `pictureFront` varchar(255) DEFAULT NULL,
   `pictureBack` varchar(255) DEFAULT NULL,
@@ -105,6 +104,9 @@ CREATE TABLE `car_profile` (
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL,
+  `character_plate` varchar(45) NOT NULL,
+  `number_plate` varchar(45) NOT NULL,
+  `province_plate` varchar(45) NOT NULL,
   PRIMARY KEY (`car_profileId`),
   KEY `fk_car_profile_users1_idx` (`id`),
   KEY `fk_car_profile_users2_idx` (`create_by`),
@@ -488,4 +490,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-23 17:09:14
+-- Dump completed on 2018-05-24  9:30:10
