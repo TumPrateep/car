@@ -258,6 +258,67 @@ class UserManagement extends BD_Controller {
         );
 
         if($role == 3){
+            $path = 'public/image/garage/'.$userId;
+            mkdir($path);
+            $config['upload_path'] = $path;
+
+            $garageName = $this->post("garageName");
+            $businessRegistration = $this->post("businessRegistration");
+            $postCode = $this->post("zipCode");
+            $latitude = $this->post("latitude");
+            $longtitude = $this->post("longtitude");
+            $comment = $this->post("comment");
+            $option1 = $this->post("box1");
+            $option2 = $this->post("box2");
+            $option3 = $this->post("box3");
+            $option4 = $this->post("box4");
+            $option_outher = $this->post("other");
+            $garageAddress = $this->post("addressGarage");
+            $provinceId = $this->post("provinceId");
+            $districtId = $this->post("districtId");
+            $subdistrictId = $this->post("subdistrictId");
+            $garagePicture = $this->post("garagePicture");
+
+            $garagePictureName = null;
+
+            if($garagePicture != "undefined"){
+                if ( ! $this->upload->do_upload("garagePicture")){
+                    $error = array('error' => $this->upload->display_errors());
+                    $output["message"] = REST_Controller::MSG_ERROR;
+                    $output["data"] = $error;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $imageDetailArray = $this->upload->data();
+                    $garagePictureName =  $imageDetailArray['file_name'];
+                }      
+            }
+
+            $data = array(
+                'garageId' => null,
+                'garageName' => $garageName,
+                'businessRegistration' => $businessRegistration,
+                'province_provinceId' => $provinceId, 
+                'districtId' => $districtId,
+                'subdistrictId' => $subdistrictId,
+                'garageAddress' => $garageAddress,
+                'postCode'=> $postCode,
+                'latitude' => $latitude,
+                'longtitude' => $longtitude,
+                'comment' => $comment,
+                'option1' => $option1,
+                'option2' => $option2,
+                'option3' => $option3,
+                'option4' => $option4,
+                'option_outher' => $option_outher,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'update_at' => null,
+                'create_by' => $create_add,
+                'update_by' => null,
+                'status' => 1,
+                'garageMaster' => $garageMaster,
+                'approve' => 2
+            );
+
 
         }else if($role == 2){
             $car_accessoriesName = $this->post("car_accessoriesName");
