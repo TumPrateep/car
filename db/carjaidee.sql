@@ -194,6 +194,7 @@ CREATE TABLE `garage` (
   `option3` int(11) DEFAULT NULL,
   `option4` int(11) DEFAULT NULL,
   `option_outher` varchar(255) DEFAULT NULL,
+  `garagePicture` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`garageId`,`garageMaster`),
   KEY `fk_garage_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_garage_district1_idx` (`districtId`),
@@ -491,4 +492,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-24 13:39:50
+-- Dump completed on 2018-05-24 13:48:14
