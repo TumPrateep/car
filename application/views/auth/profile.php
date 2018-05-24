@@ -275,7 +275,7 @@
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>รูปภาพของอู่ </label>
-                              <input type="file" class="form-control-file" name="garagePicture" id="garagenPicture">
+                              <input type="file" class="form-control-file" name="garagePicture" id="garagePicture">
                               <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                             </div>
                           </div>
