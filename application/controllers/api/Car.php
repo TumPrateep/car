@@ -435,7 +435,8 @@ class Car extends BD_Controller {
 
         $this->load->library('upload', $config);
         $this->load->model("Brand");
-        
+        $userId = $this->session->userdata['logged_in']['id'];
+
 		if ( ! $this->upload->do_upload("brandPicture"))
 		{
             $error = array('error' => $this->upload->display_errors());
@@ -457,7 +458,11 @@ class Car extends BD_Controller {
                     "brandId"=> null,
                     "brandPicture"=> $image,
                     "brandName"=> $brandName,
-                    "status"=> 1
+                    "status"=> 1,
+                    "create_at" => date('Y-m-d H:i:s',time()),
+                    "create_by" => $userId,
+                    'update_at' => null,
+                    'update_by' => null
                 );
                 $isResult = $this->Brand->insert_brand($data);
                 if($isResult){
