@@ -456,6 +456,9 @@
           );
 
         }
+        jQuery.validator.addMethod("numberPlate", function(value, element) {
+            return this.optional( element ) || /^[0-9]*$/.test( value );
+          }, 'กรุณากรอกตัวเลขเท่านั้น');
 
         $("#form-role-4").validate({
           rules:{
@@ -472,7 +475,8 @@
               required: true
             },
             numberPlate: {
-              required: true
+              required: true,
+              numberPlate:true
             },
             provincePlate: {
               required: true
@@ -502,7 +506,7 @@
               required: "กรุณากรอกตัวอักษรป้ายทะเบียน"
             },
             numberPlate: {
-              required: "กรุณากรอกตัวเลขป้านทะเบียน"
+              required: "กรุณากรอกตัวเลขป้ายทะเบียน"
             },
             provincePlate: {
               required: "กรุณากรอกจังหวัด"
