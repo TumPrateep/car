@@ -86,7 +86,7 @@
             url: "/UserManagement/delete?id="+data.id,
             label: "ลบข้อมูลผู้ใช้งาน",
             content: "คุณต้องการลบ "+data.username+" ใช่หรือไม่",
-            gotoUrl: "usermanagement"
+            gotoUrl: "admin/usermanagement"
         }
         fnDelete(option);
     } );
