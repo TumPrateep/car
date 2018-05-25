@@ -7,7 +7,7 @@ class SparePartCar extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
     }
 
     function searchSpares_post(){
@@ -82,8 +82,8 @@ class SparePartCar extends BD_Controller {
                 'spares_undercarriageId' => $spares_undercarriageId,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
-                'update_at' => $userId,
-                'update_by' => null
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId
                 
             );
             $result = $this->Sparesbrand->insertBrand($data);
