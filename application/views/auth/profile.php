@@ -660,14 +660,16 @@
           show_label: true
         });
         // Toolbar extra buttons
-        var btnFinish = $('<button disabled></button>').text('Finish')
+        var btnFinish = $('<button disabled></button>').text('เสร็จสิ้น')
                 .addClass('btn btn-info btn-finish')
                 .on('click', function(){
                   finish();
                 });
-        var btnCancel = $('<button></button>').text('Cancel')
+        var btnCancel = $('<button></button>').text('ยกเลิก')
                 .addClass('btn btn-danger')
-                .on('click', function(){ $('#smartwizard').smartWizard("reset"); });
+                .on('click', function(){ 
+                  window.location.assign(base_url+"Auth/logout");
+                });
         
         $('#smartwizard').smartWizard({
             selected: 0,
