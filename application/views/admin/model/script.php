@@ -92,7 +92,7 @@
             url: "/car/deleteModel?modelId="+data.modelId,
             label: "ลบรุ่นรถ",
             content: "คุณต้องการลบ "+data.modelName+" ใช่หรือไม่",
-            gotoUrl: "car/model/"+data.brandId
+            gotoUrl: "admin/car/model/"+data.brandId
         }
         fnDelete(option);
     } );
