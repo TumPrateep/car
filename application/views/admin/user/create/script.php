@@ -40,7 +40,7 @@
                 $.post(base_url+"api/UserManagement/create",data,
                 function(data){
                     var username = $("#username").val();
-                    showMessage(data.message,"usermanagement");
+                    showMessage(data.message,"admin/usermanagement");
                 });
                 
             }
