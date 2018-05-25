@@ -71,6 +71,7 @@ class SparePartCar extends BD_Controller {
         $spares_undercarriageId = $this->post("spares_undercarriageId");
         
         $this->load->model("Sparesbrand");
+        $userId = $this->session->userdata['logged_in']['id'];
         $isCheck = $this->Sparesbrand->getBrandforTF($spares_brandName,$spares_undercarriageId);
 
         if($isCheck){
@@ -78,7 +79,11 @@ class SparePartCar extends BD_Controller {
                 'spares_brandId' => null,
                 'spares_brandName' => $spares_brandName,
                 'status' => 1,
-                'spares_undercarriageId' => $spares_undercarriageId
+                'spares_undercarriageId' => $spares_undercarriageId,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'update_at' => $userId,
+                'update_by' => null
                 
             );
             $result = $this->Sparesbrand->insertBrand($data);
