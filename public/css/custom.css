@@ -204,7 +204,7 @@
   }
 
   .error{
-    color: red;
+    color: red !important;
   }
 
   .hide{
@@ -256,7 +256,7 @@
     margin-top: 3px;
   }
   span.error{
-    color:red;
+    color:red !important;
   }
   
   .file-drop-zone {
