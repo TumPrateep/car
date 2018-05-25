@@ -18,3 +18,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //                                 'filename' => 'Tokenvalidation.php',
 //                                 'filepath' => 'hooks'
 //                                 );
+
+$hook['post_controller_constructor'] = array(
+    'class'    => 'Onload',
+    'function' => 'check_user',
+    'filename' => 'onload.php',
+    'filepath' => 'hooks'
+);

@@ -7,9 +7,6 @@ class SparePartCar extends CI_Controller {
         // Construct the parent class
 		parent::__construct();
 		$this->load->view("lib");
-		if(!isset($this->session->userdata['logged_in'])){
-			redirect("auth/login");
-		}
     }
 
     public function index(){
