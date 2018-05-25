@@ -33,7 +33,7 @@
     //     }
         
     // });
-    $("#file-3").fileinput({
+    $("#brandPicture").fileinput({
         theme: 'fa',
         showUpload: false,
         showCancel: false,

@@ -9,7 +9,7 @@
             result = data.data;
             $("#brandName").html(result.brandName);
             var path = pathImage + "brand/"+result.brandPicture;
-            var imageHtml = '<img src="'+ path +'" class="rounded float-left">';
+            var imageHtml = '<img src="'+ path +'" class="float-left">';
             $("#brandPicture").html(imageHtml);
         }
         
@@ -47,22 +47,25 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.modelName = $("#table-search").val()
+                    data.search = $("#table-search").val()
                     data.brandId = $("#brandId").val()
                 }
             },
+            "order": [[ 1, "asc" ]],
             "columns": [
                 null,
                 { "data": "modelName" },
+                { "data": "yearStart" },
+                { "data": "yearEnd" },
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,2]
+                    "targets": [0,4]
                 },{
-                    "targets": 2,
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/car/updateModel/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -78,7 +81,7 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [1]},
-                {"className": "dt-center", "targets": [1,2]},
+                {"className": "dt-center", "targets": [0,1,2,3,4]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 2 }
             ]	 

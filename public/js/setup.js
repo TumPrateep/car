@@ -30,15 +30,15 @@ function showMessage(message, url=null){
         $("#lebel-warning").html("คำเตือน");
         var dangerContent = $("#content-danger");
         if(message == 1004){
-            dangerContent.html(message);
+            dangerContent.html("ข้อมูลนี้ถูกใช้งาน");
         }else if(message == 1005){
-            dangerContent.html(message);
+            dangerContent.html("ข้อมูลนี้ถูกลบแล้ว");
         }else if(message == 1003){
-            dangerContent.html(message);
+            dangerContent.html("ลบไม่สำเร็จ");
         }else if(message == 404){
-            dangerContent.html(message);
+            dangerContent.html("เกิดข้อผิดพลาด");
         }else{
-            dangerContent.html(message);
+            dangerContent.html("เกิดข้อผิดพลาด");
         }
 
         $("#danger-modal").modal("show");
@@ -47,13 +47,13 @@ function showMessage(message, url=null){
         $("#lebel-warning").html("ผิดพลาด");
         var warningContent = $("#content-warning");
         if(message == 1001){
-            warningContent.html(message);
+            warningContent.html("สร้างไม่สำเร็จ");
         }else if(message == 1002){
-            warningContent.html(message);
+            warningContent.html("แก้ไขไม่สำเร็จ");
         }else if(message == 3001){
-            warningContent.html(message);
+            warningContent.html("ชื่อถูกใช้งานแล้ว");
         }else{
-            warningContent.html(message);
+            warningContent.html("เกิดข้อผิดพลาด");
         }
 
         $("#warning-modal").modal("show");

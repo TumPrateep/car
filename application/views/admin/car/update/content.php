@@ -28,7 +28,7 @@
                       </div>
                       <div class="form-group">
                           <label>Preview File Icon</label>
-                          <input id="file-3" type="file" multiple name="brandPicture">
+                          <input id="brandPicture" type="file" multiple name="brandPicture">
                         
                       </div>
                       <div class="form-group">
