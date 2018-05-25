@@ -81,9 +81,9 @@
       <!-- SmartWizard html -->
       <div id="smartwizard">
           <ul>
-              <li><a href="#step-1">Step 1<br /><small>Email Address</small></a></li>
-              <li><a href="#step-2">Step 2<br /><small>Name</small></a></li>
-              <li><a href="#step-3">Step 3<br /><small>Address</small></a></li>
+              <li><a href="#step-1">Step 1<br /><small>ข้อมูลส่วนตัว</small></a></li>
+              <li><a href="#step-2">Step 2<br /><small>ประเภทผู้ใช้งาน</small></a></li>
+              <li><a href="#step-3">Step 3<br /><small>ข้อมูลเพิ่มเติม</small></a></li>
           </ul>
 
           <div id="content" style="min-height:30px !important">
@@ -102,7 +102,7 @@
                             </div>
                           </div>
                           <div class="form-group">
-                            <label>ที่อยู่:</label><span class="error">*</span>
+                            <label>ที่อยู่</label><span class="error">*</span>
                             <textarea class="form-control" name="address" id="address" rows="3"></textarea>
                           </div>
                           <div class="form-row">

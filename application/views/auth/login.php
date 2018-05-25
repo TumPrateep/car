@@ -123,20 +123,20 @@
                 <div class="ui red message text-left hide" id="error-message">ชื่อหรือรหัสผ่านไม่ถูกต้อง</div>
                     <div class="field">
                         <div class="ui left icon input"><i class="user icon"></i>
-                          <input type="username" name="username" placeholder="Username">
+                          <input type="username" name="username" placeholder="ชื่อผู้ใช้งาน">
                         </div>
                         <div class="text-left error" id="username-error"></div>
                     </div>
                     <div class="field">
                         <div class="ui left icon input"><i class="lock icon"></i>
-                          <input type="password" name="password" placeholder="Password">
+                          <input type="password" name="password" placeholder="รหัสผ่าน">
                         </div>
                         <div class="text-left error" id="password-error"></div>
                     </div>
                     
-                    <button type="submit" class="ui fluid large teal submit button" id="login">Login</button>
+                    <button type="submit" class="ui fluid large teal submit button" id="login">เข้าสู่ระบบ</button>
                     <div class="ui horizontal divider">
-                      Or
+                    หรือ
                     </div>
                     </form>
                     <div class="field">
@@ -149,9 +149,8 @@
                           G-mail
                         </button>
                     </div>
-                    <div class="ui divider"></div>
-                    <label>New to us? <a href="">Sign Up</a></label>
-                </div>
+                 <div class="ui divider"></div>
+            </div>
         </div>
     </div>
     
