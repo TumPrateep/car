@@ -28,7 +28,8 @@
             required: true
         },    
         password: {
-          required: true
+          required: true,
+          minlength:6
         },
         confirmpassword: { 
           required: true,
@@ -46,7 +47,8 @@
           required: "กรุณากรอกเบอร์โทร"
         },
         password: {
-          required: "กรุณากรอกรหัสผ่าน"
+          required: "กรุณากรอกรหัสผ่าน",
+          minlength: "กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัวอักษร"
         },
         confirmpassword: {
           required: "กรุณากรอกรหัสผ่านอีกครั้ง",
@@ -121,19 +123,19 @@
               <h2 class="ui container center header">สมัครเข้าใช้งาน</h2>
           </div>
           <div class="ui red message text-left hide" id="error-message">ชื่อผู้ใช้ซ้ำ</div>
-          <div class="field"><label>ชื่อผู้ใช้งาน</label>
+          <div class="field"><label>ชื่อผู้ใช้งาน<span class="error">*</span></label>
               <input class="ui input" type="text" id="username" name="username" placeholder="ชื่อผู้ใช้งาน">
           </div>
-          <div class="field"><label>เบอร์โทรศัพท์</label>
+          <div class="field"><label>เบอร์โทรศัพท์<span class="error">*</span></label>
               <input type="text" id="phone" name="phone" placeholder="เบอร์โทรศัพท์">
           </div>
           <div class="field"><label>อีเมล์</label>
               <input type="text" id="email" name="email" placeholder="อีเมล์">
           </div>
-          <div class="field"><label>รหัสผ่าน</label>
+          <div class="field"><label>รหัสผ่าน<span class="error">*</span></label>
               <input type="password" id="password" name="password" placeholder="รหัสผ่าน">
           </div>
-          <div class="field"><label>ยืนยันรหัสผ่าน</label>
+          <div class="field"><label>ยืนยันรหัสผ่าน<span class="error">*</span></label>
               <input type="password" id="confirmpassword" name="confirmpassword" placeholder="ยืนยันรหัสผ่าน">
           </div>
           <div class="field">
@@ -151,6 +153,7 @@
 
       $("#form-register").submit(function(){
         register();
+            
       })
 
       $("#register").click(function(){
@@ -180,6 +183,7 @@
       }
 
     });
+    
   </script>
 
 </body>
