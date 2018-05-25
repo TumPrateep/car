@@ -325,6 +325,10 @@ class UserManagement extends BD_Controller {
 
         $result = $this->Profile->saveProfileRoleUser($role, $userId, $profileData, $roleData);
         if($result){
+            $sess_array = array(
+                'role' => $role
+            );
+            $this->session->set_userdata('logged_in', $sess_array);
             $output["message"] = REST_Controller::MSG_SUCCESS;
         }else{
             $output["message"] = REST_Controller::MSG_ERROR;
