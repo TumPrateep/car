@@ -123,13 +123,13 @@
                 <div class="ui red message text-left hide" id="error-message">ชื่อหรือรหัสผ่านไม่ถูกต้อง</div>
                     <div class="field">
                         <div class="ui left icon input"><i class="user icon"></i>
-                          <input type="username" name="username" placeholder="ชื่อผู้ใช้งาน">
+                          <input type="username" name="username" id="username" placeholder="ชื่อผู้ใช้งาน">
                         </div>
                         <div class="text-left error" id="username-error"></div>
                     </div>
                     <div class="field">
                         <div class="ui left icon input"><i class="lock icon"></i>
-                          <input type="password" name="password" placeholder="รหัสผ่าน">
+                          <input type="password" name="password" id="password" placeholder="รหัสผ่าน">
                         </div>
                         <div class="text-left error" id="password-error"></div>
                     </div>
@@ -166,14 +166,31 @@
       $("#login").click(function(){
         login();
       })
+      
+      $("#username").keyup(function(){
+        var username = $(this).val();
+        if(username.length > 0){
+          $("#username-error").html("");
+          $(this).removeClass("error");
+        }
+      });
+
+      $("#password").keyup(function(){
+        var password = $(this).val();
+        if(password.length > 0){
+          $("#password-error").html("");
+          $(this).removeClass("error");
+        }
+      });
 
       function login(){
         event.preventDefault();
+        $("#username-error").html("");
+        $("#password-error").html("");
+        $("#error-message").hide();
         var isValid = $("#form-login").valid();
         if(isValid){
           $("#error-message").hide();
-          $("#username-error").html("");
-          $("#password-error").html("");
           var data = $("#form-login").serialize();
           $.post(base_url+"api/auth/login",data,
             function(data){
