@@ -16,10 +16,16 @@
 
   <script>
   $(document).ready(function() {
+    jQuery.validator.addMethod("username", function(value, element) {
+      return this.optional( element ) || /^[A-Za-z][A-Za-z0-9]*$/.test( value );
+  }, 'กรุณากรอกภาษาอังกฤษหรือตัวเลขเท่านั้น');
+
     $('#form-register').validate({
       rules: {
         username: {
-          required: true
+          required: true,
+          username:true,
+          minlength:4
         },
           email: {
             email: true
@@ -38,7 +44,8 @@
       },
       messages: {
         username: {
-          required: "กรุณากรอกชื่อผู้ใช้งาน"
+          required: "กรุณากรอกชื่อผู้ใช้งาน",
+          minlength:"กรุณากรอกชื่อผู้ใช้อย่างน้อย 4 ตัวอักษร"
         },
         email: {
           email: "กรุณากรอกอีเมลให้ถูกต้อง"
@@ -55,6 +62,8 @@
           equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
         }
       }
+
+      
     });
 
     
