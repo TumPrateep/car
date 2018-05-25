@@ -2,10 +2,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("sparepartcar") ?>">รายการอะไหล่</a>
+        <a href="<?=base_url("admin/sparepartcar") ?>">รายการอะไหล่</a>
         </li>
         <li class="breadcrumb-item">
-        <a href="<?=base_url("sparepartcar/sparepart/$spares_undercarriageId") ?>">ยี่ห้ออะไหล่</a>
+        <a href="<?=base_url("admin/sparepartcar/sparepart/$spares_undercarriageId") ?>">ยี่ห้ออะไหล่</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
@@ -20,7 +20,7 @@
           <h3 class="car-img">ชื่อยี่ห้ออะไหล่</h3>
         </div>
         <div class="input-group input-group-sm float-right" >
-          <a href="<?=base_url("sparepartcar/createspare") ?>">
+          <a href="<?=base_url("admin/sparepartcar/createspare") ?>">
             <button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button>
           </a>
           <input type="text" name="table_search" id="table-search" class="form-control float-right" placeholder="ค้นหา">

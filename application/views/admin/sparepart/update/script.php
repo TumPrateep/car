@@ -24,7 +24,7 @@
         "spares_undercarriageId" : spares_undercarriageId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"SparePartCar/sparepart/"+spares_undercarriageId);
+            showMessage(data.message,"admin/SparePartCar/sparepart/"+spares_undercarriageId);
         }
 
         if(data.message == 200){
@@ -49,7 +49,7 @@
             $.post(base_url+"api/SparePartCar/updateSpareBrand",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"SparePartCar/sparepart/"+spares_undercarriageId);
+                    showMessage(data.message,"admin/SparePartCar/sparepart/"+spares_undercarriageId);
                 }else{
                     showMessage(data.message);
                 }

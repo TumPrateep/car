@@ -27,7 +27,7 @@
             function(data){
                 var spares_undercarriageId = $("#spares_undercarriageId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"sparepartcar/sparepart/"+spares_undercarriageId);
+                    showMessage(data.message,"admin/sparepartcar/sparepart/"+spares_undercarriageId);
                 }else{
                     showMessage(data.message);
                 }

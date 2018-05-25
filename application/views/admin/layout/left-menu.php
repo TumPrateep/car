@@ -8,19 +8,19 @@
     <div class="collapse navbar-collapse " id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav bg-green " id="exampleAccordion" >
         <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link text-white" href="<?=base_url("car") ?>">
+          <a class="nav-link text-white" href="<?=base_url("admin/car") ?>">
             <i class="fa fa-fw fa-car"></i>
             <span class="nav-link-text">ยี่ห้อรถ</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link text-white" href="<?=base_url("usermanagement") ?>">
+          <a class="nav-link text-white" href="<?=base_url("admin/usermanagement") ?>">
             <i class="fa fa-user-plus"></i>
             <span class="nav-link-text">เพิ่มผู้ใช้งาน</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link text-white" href="<?=base_url("sparepartcar") ?>">
+          <a class="nav-link text-white" href="<?=base_url("admin/sparepartcar") ?>">
             <i class="fa fa fa-wrench"></i>
             <span class="nav-link-text">อะไหล่</span>
           </a>

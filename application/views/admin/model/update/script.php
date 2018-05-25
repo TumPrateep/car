@@ -7,7 +7,7 @@
         "modelId": $("#modelId").val()
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"car/model/"+brandId);
+            showMessage(data.message,"admin/car/model/"+brandId);
         }
 
         if(data.message == 200){
@@ -54,7 +54,7 @@
                 function(data){
                     var brandId = $("#brandId").val();
                     if(data.message == 200){
-                        showMessage(data.message,"car/model/"+brandId);
+                        showMessage(data.message,"admin/car/model/"+brandId);
                     }else{
                     showMessage(data.message);
                     }

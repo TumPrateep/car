@@ -33,7 +33,7 @@
                 $.post(base_url+"api/car/createModel",data,
                 function(data){
                     var brandId = $("#brandId").val();
-                    showMessage(data.message,"car/model/"+brandId);
+                    showMessage(data.message,"admin/car/model/"+brandId);
                 });
                 
             }
