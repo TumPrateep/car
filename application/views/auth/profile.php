@@ -198,7 +198,7 @@
                                 <input type="text" class="form-control" name="garageName" id="garageName" placeholder="ชื่ออู่" >
                               </div>
                               <div class="form-group col-md-6">
-                                <label>ใบทะเบียนการค้า</label>
+                                <label>ใบทะเบียนการค้า</label><span class="error">*</span>
                                 <input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="ใบทะเบียนการค้า">
                               </div>
                           </div>
