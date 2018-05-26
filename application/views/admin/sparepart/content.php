@@ -15,10 +15,6 @@
       <input type="hidden" id="spares_undercarriageId" value="<?=$spares_undercarriageId ?>">
         
     <div class="card-tools">
-        <div class="input-group input-group-sm" >
-          <img src="https://image.freepik.com/free-vector/workplace-background-with-laptop_1284-1119.jpg" class="rounded float-left" >
-          <h3 class="car-img">ชื่อยี่ห้ออะไหล่</h3>
-        </div>
         <div class="input-group input-group-sm float-right" >
           <a href="<?=base_url("admin/sparepartcar/createspare/$spares_undercarriageId") ?>">
             <button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button>
