@@ -9,6 +9,26 @@
   <title>Register</title>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/semantic.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/custom.css">
+  <style type="text/css">
+    .ui.stacked.segment{
+      /*width: 800px !important;*/
+      max-width: 750px !important;
+      text-align:left !important;
+    }
+    .ui.form{
+      padding-top: 4em !important;
+    }
+    .ui.middle.aligned.center.container{
+        padding-left: 16em ;
+      }
+    @media only screen and (max-width: 992px) {
+      .ui.middle.aligned.center.container{
+        padding-left: 0.4em ;
+      }
+    } 
+    
+
+  </style>
 
   <script src="<?php echo base_url() ?>public/js/jquery.min.js"></script>
   <script src="<?php echo base_url() ?>public/js/semantic.js"></script>
@@ -16,9 +36,6 @@
   <script src="<?=base_url("public/js/visibility.js"); ?>"></script>
   <script src="<?=base_url("public/js/sidebar.js"); ?>"></script>
   <script src="<?=base_url("public/js/custom.js"); ?>"></script>
-
-
-
   <script>
   $(document).ready(function() {
     jQuery.validator.addMethod("username", function(value, element) {
@@ -136,9 +153,9 @@
 </div>
 
 <div class="pusher">
-  <div class="ui stackable one column grid container register">
-    <form class="ui form register" id="form-register">
-      <div class="ui stacked segment register">
+  <div class="ui middle aligned center container ">
+    <form class="ui form " id="form-register">
+      <div class="ui stacked segment ">
         <div class="field">
             <h2 class="ui container center header">สมัครเข้าใช้งาน</h2>
         </div>
