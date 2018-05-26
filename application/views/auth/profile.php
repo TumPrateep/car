@@ -135,7 +135,7 @@
                 </div>
               
                 <div id="step-2">
-                    <h4>ข้อมูลส่วนตัว</h4>
+                    <h4>ประเภทผู้ใช้งาน</h4>
                     <div id="form-step-1" role="form" data-toggle="validator">
                       <form id="form-2">
                         <div class="form-group text-center">
