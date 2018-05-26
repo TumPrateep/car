@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("car") ?>">ยี่ห้อรถ</a>
+          <a href="<?=base_url("admin/car") ?>">ยี่ห้อรถ</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขข้อมูลรถ</li>
       </ol>
@@ -28,7 +28,7 @@
                       </div>
                       <div class="form-group">
                           <label>Preview File Icon</label>
-                          <input id="file-3" type="file" multiple name="brandPicture">
+                          <input id="brandPicture" type="file" multiple name="brandPicture">
                         
                       </div>
                       <div class="form-group">

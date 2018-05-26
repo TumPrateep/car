@@ -20,7 +20,7 @@
           <h3 class="car-img">ชื่อยี่ห้ออะไหล่</h3>
         </div>
         <div class="input-group input-group-sm float-right" >
-          <a href="<?=base_url("admin/sparepartcar/createspare") ?>">
+          <a href="<?=base_url("admin/sparepartcar/createspare/$spares_undercarriageId") ?>">
             <button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button>
           </a>
           <input type="text" name="table_search" id="table-search" class="form-control float-right" placeholder="ค้นหา">

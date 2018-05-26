@@ -13,7 +13,7 @@ class Model extends CI_Model{
     
     function allModel($limit,$start,$col,$dir,$brandId)
     {   
-        $this->db->where("brandId", $brandId);
+       $this->db->where("brandId", $brandId);
        $query = $this
                 ->db
                 ->limit($limit,$start)
@@ -33,10 +33,13 @@ class Model extends CI_Model{
    
     function model_search($limit,$start,$search,$col,$dir,$brandId)
     {
-        $this->db->where("brandId", $brandId);
         $query = $this
                 ->db
-                ->like('modelName',$search)
+                ->where("(`modelName` LIKE '%".$search."%' or  `yearStart` LIKE '%".$search."%' or `yearEnd` LIKE '%".$search."%') and `brandId` = ".$brandId,null,false)
+                // ->like('modelName',$search)
+                // ->or_like('yearStart',$search)
+                // ->or_like('yearEnd',$search)
+                // ->where("brandId", $brandId)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('model');
@@ -54,11 +57,13 @@ class Model extends CI_Model{
 
     function model_search_count($search, $brandId)
     {
-        $this->db->where("brandId", $brandId);
-        $query = $this
-                ->db
-                ->like('modelName',$search)
-                ->get('model');
+        $query = $this->db
+            ->where("(`modelName` LIKE '%".$search."%' or  `yearStart` LIKE '%".$search."%' or `yearEnd` LIKE '%".$search."%') and `brandId` = ".$brandId,null,false)
+            // ->like('modelName',$search)
+            // ->or_like('yearStart',$search)
+            // ->or_like('yearEnd',$search)
+            // ->where("brandId", $brandId)
+            ->get('model');
     
         return $query->num_rows();
     } 

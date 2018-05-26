@@ -7,7 +7,7 @@
         
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"car/car");
+            showMessage(data.message,"admin/car/car");
         }
 
         if(data.message == 200){
@@ -33,7 +33,7 @@
     //     }
         
     // });
-    $("#file-3").fileinput({
+    $("#brandPicture").fileinput({
         theme: 'fa',
         showUpload: false,
         showCancel: false,
@@ -86,7 +86,7 @@ $("#update-brand").validate({
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"car");
+                        showMessage(data.message,"admin/car");
                     }else{
                         showMessage(data.message);
                     }

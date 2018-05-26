@@ -456,14 +456,26 @@
           );
 
         }
+        jQuery.validator.addMethod("numberPlate", function(value, element) {
+            return this.optional( element ) || /^[0-9]*$/.test( value );
+          }, 'กรุณากรอกตัวเลขเท่านั้น');
+          
+        
+        jQuery.validator.addMethod("mileage", function(value, element) {
+            return this.optional( element ) || /^[0-9]*$/.test( value );
+        }, 'กรุณากรอกตัวเลขเท่านั้น');
 
+        jQuery.validator.addMethod("zipCode", function(value, element) {
+            return this.optional( element ) || /^[0-9]*$/.test( value );
+          }, 'กรุณากรอกตัวเลขเท่านั้น');
         $("#form-role-4").validate({
           rules:{
             licensePlate: {
               required: true
             },
             mileage: {
-              required: true
+              required: true,
+              mileage:true
             },
             colorCar: {
               required: true
@@ -472,7 +484,8 @@
               required: true
             },
             numberPlate: {
-              required: true
+              required: true,
+              numberPlate:true
             },
             provincePlate: {
               required: true
@@ -502,7 +515,7 @@
               required: "กรุณากรอกตัวอักษรป้ายทะเบียน"
             },
             numberPlate: {
-              required: "กรุณากรอกตัวเลขป้านทะเบียน"
+              required: "กรุณากรอกตัวเลขป้ายทะเบียน"
             },
             provincePlate: {
               required: "กรุณากรอกจังหวัด"
@@ -530,8 +543,9 @@
             "garage-subdistrictId":{
               required: true
             },
-            zipCode:{
-              required: true
+            "zipCode":{
+              required: true,
+              zipCode :true 
             }
           },
           messages:{
@@ -652,14 +666,16 @@
           show_label: true
         });
         // Toolbar extra buttons
-        var btnFinish = $('<button disabled></button>').text('Finish')
+        var btnFinish = $('<button disabled></button>').text('เสร็จสิ้น')
                 .addClass('btn btn-info btn-finish')
                 .on('click', function(){
                   finish();
                 });
-        var btnCancel = $('<button></button>').text('Cancel')
+        var btnCancel = $('<button></button>').text('ยกเลิก')
                 .addClass('btn btn-danger')
-                .on('click', function(){ $('#smartwizard').smartWizard("reset"); });
+                .on('click', function(){ 
+                  window.location.assign(base_url+"Auth/logout");
+                });
         
         $('#smartwizard').smartWizard({
             selected: 0,

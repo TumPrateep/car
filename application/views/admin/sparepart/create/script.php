@@ -23,7 +23,7 @@
         
         if(isValid){
             var data = $("#createsparesBrand").serialize();
-            $.post(base_url+"api/sparepartcar/createSpareBrand",data,
+            $.post(base_url+"api/SparePartCar/createSpareBrand",data,
             function(data){
                 var spares_undercarriageId = $("#spares_undercarriageId").val();
                 if(data.message == 200){

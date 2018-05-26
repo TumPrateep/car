@@ -139,8 +139,9 @@ class Car extends BD_Controller {
     function searchModel_post(){
         $columns = array( 
             0 =>null, 
-            1 =>null,
-            2 =>'modelName'
+            1 =>'modelName',
+            2 => 'yearStart',
+            3 => 'yearEnd'
         );
 
         $limit = $this->post('length');
@@ -154,12 +155,12 @@ class Car extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('modelName')) || empty($this->post('brandId')))
+        if(empty($this->post('search')) || empty($this->post('brandId')) )
         {            
             $posts = $this->Model->allModel($limit,$start,$order,$dir,$brandId);
         }
         else {
-            $search = $this->post('modelName'); 
+            $search = $this->post('search');
 
             $posts =  $this->Model->model_search($limit,$start,$search,$order,$dir,$brandId);
 
@@ -175,7 +176,8 @@ class Car extends BD_Controller {
                 $nestedData['brandId'] = $post->brandId;
                 $nestedData['modelId'] = $post->modelId;
                 $nestedData['modelName'] = $post->modelName;
-
+                $nestedData['yearStart'] = $post->yearStart;
+                $nestedData['yearEnd'] = $post->yearEnd;
                 $data[] = $nestedData;
 
             }
@@ -433,7 +435,8 @@ class Car extends BD_Controller {
 
         $this->load->library('upload', $config);
         $this->load->model("Brand");
-        
+        $userId = $this->session->userdata['logged_in']['id'];
+
 		if ( ! $this->upload->do_upload("brandPicture"))
 		{
             $error = array('error' => $this->upload->display_errors());
@@ -455,7 +458,11 @@ class Car extends BD_Controller {
                     "brandId"=> null,
                     "brandPicture"=> $image,
                     "brandName"=> $brandName,
-                    "status"=> 1
+                    "status"=> 1,
+                    "create_at" => date('Y-m-d H:i:s',time()),
+                    "create_by" => $userId,
+                    'update_at' => null,
+                    'update_by' => null
                 );
                 $isResult = $this->Brand->insert_brand($data);
                 if($isResult){
