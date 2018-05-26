@@ -26,7 +26,7 @@ class Register extends BD_Controller {
                 'id' => null,
                 'username' => $username,
                 'email' => (empty($email))?null:$email,
-                'phone' => $phone,
+                'phone' => (empty($phone))?null:$phone,
                 'password' => $p, 
                 'category' => null
             );

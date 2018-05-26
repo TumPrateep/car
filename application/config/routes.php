@@ -55,7 +55,7 @@ $route['translate_uri_dashes'] = TRUE;
 
 $route['admin'] = 'admin/admin';
 $route['user'] = 'user/user';
-$route['caraccessory'] = 'caraccessory/caraccessory';
+$route['caraccessory'] = 'caraccessory/CarAccessory';
 $route['garage'] = 'garage/garage';
 
 /*

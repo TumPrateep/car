@@ -59,9 +59,12 @@
     display: none;
   }
 
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 992px) {
     .ui.fixed.menu {
       display: none !important;
+    }
+    .ui.stacked.segment{
+      margin-bottom: 30px;
     }
     .secondary.pointing.menu .item,
     .secondary.pointing.menu .menu {
@@ -110,6 +113,11 @@
     .left-2, .right-2{
       text-align: center !important;
     }
+
+    .pusher{
+      text-align: -webkit-center;
+    }
+
   }
 
   .ui.secondary.inverted.pointing.menu{
@@ -257,4 +265,3 @@
   .file-drop-zone {
       height: auto !important;
   }
-  

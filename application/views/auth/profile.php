@@ -289,11 +289,11 @@
                           <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label>ชื่อร้านค้าส่ง</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="car_accessoriesName" id="car_accessoriesName" placeholder="ชื่ออู">
+                                <input type="text" class="form-control" name="car_accessoriesName" id="car_accessoriesName" placeholder="ชื่ออู่">
                               </div>
                               <div class="form-group col-md-6">
                                 <label>ใบทะเบียนการค้า</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistrationAccessories" placeholder="ใบทะเบียนการค้">
+                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistrationAccessories" placeholder="ใบทะเบียนการค้า">
                               </div>
                           </div>
                         </form>
@@ -584,7 +584,7 @@
           },
           messages:{
             car_accessoriesName:{
-              required: "กรุณากรอกชื่อร้านค้าส่ง"
+              required: "กรุณากรอกชื่ออู่"
             },
             businessRegistration:{
               required: "กรุณากรอกใบทะเบียนการค้า"
@@ -696,7 +696,8 @@
         });
 
         $('#smartwizard').smartWizard("reset");
-        
+          
+
         $("#form-1").validate({
           rules:{
             firstname: {
@@ -717,8 +718,12 @@
             subdistrictId: {
               required: true
             },
+            phone1: {
+              minlength: 9
+            },
             phone2: {
-              required: true
+              required: true,
+              minlength: 9
             }
           },
           messages:{
@@ -740,8 +745,13 @@
             subdistrictId: {
               required: "กรุณาเลือกตำบล"
             },
+            phone1: {
+              minlength:"กรุณากรอกตัวเลขอย่างน้อย 9 ตัว"
+            },
             phone2: {
-              required: "กรุณากรอกเบอร์โทรที่สามารถติดต่อได้"
+              required: "กรุณากรอกเบอร์โทรที่สามารถติดต่อได้",
+              minlength:"กรุณากรอกตัวเลขอย่างน้อย 9 ตัว"
+              
             }
           }
         });
