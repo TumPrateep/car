@@ -150,6 +150,7 @@ class UserManagement extends BD_Controller {
         $subdistrictId = $this->post("subdistrictId");
         $phone1 = $this->post("phone1");
         $phone2 = $this->post("phone2");
+        $titleName = $this->post("titleName");
 
         $userId = $this->session->userdata['logged_in']['id'];
 
@@ -157,6 +158,7 @@ class UserManagement extends BD_Controller {
     
         $profileData = array(
             'user_profile' => null,
+            'titleName' => $titleName,
             'firstname' => $firstname,
             'lastname' => $lastname,
             'status' => 1,
