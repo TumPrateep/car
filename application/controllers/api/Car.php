@@ -102,6 +102,8 @@ class Car extends BD_Controller {
 
         $modelName = $this->post("modelName");
         $brandId = $this->post("brandId");
+        $yearStart = $this->post("yearStart");
+        $yearEnd = $this->post("yearEnd");
 
         $this->load->model("Model");
         $isCheck = $this->Model->get_model($brandId,$modelName);
@@ -111,6 +113,8 @@ class Car extends BD_Controller {
                 'modelId' => null,
                 'modelName' => $modelName,
                 'brandId' => $brandId,
+                'yearStart' => $yearStart,
+                'yearEnd' => $yearEnd,
                 'status' => 1
             );
             $result = $this->Model->insert_model($data);
