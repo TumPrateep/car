@@ -222,11 +222,6 @@
   .image {
     margin-top: -100px ;
   }
-
-  .column.login{
-    max-width: 480px !important;
-  }
-
   .ui.stacked.segment.register{
     width: 800px !important;
   }

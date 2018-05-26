@@ -13,6 +13,15 @@
   <script src="<?php echo base_url() ?>public/js/jquery.min.js"></script>
   <script src="<?php echo base_url() ?>public/js/semantic.js"></script>
   <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
+  <script src="<?=base_url("public/js/visibility.js"); ?>"></script>
+  <script src="<?=base_url("public/js/sidebar.js"); ?>"></script>
+  <script src="<?=base_url("public/js/custom.js"); ?>"></script>
+  <style type="text/css">
+    .ui.middle.aligned.center.aligned.grid{
+      max-width: 480px !important;
+      padding-top: 4em !important;
+    }
+  </style>
 
   <script>
   $(document).ready(function() {
@@ -52,7 +61,7 @@
   </script>
 </head>
 
-<body>
+<body class="pushable">
   <div class="ui large top fixed hidden menu">
     <div class="ui container">
       <a class="active item">Home</a>
@@ -108,52 +117,48 @@
       </div>
 
     </div>
+  </div>
   
-  
-    <div class="ui middle aligned center aligned grid">
-        <div class="column login">
+  <div class="pusher">
+    <div class="ui middle aligned center aligned grid container">
+        
             <h2 class="ui teal image header">
-                <div class="content">
-                    <i class="car big icon"></i>
-                </div>
+                <div class="content"><i class="car big icon"></i></div>
             </h2>
-            <form class="ui large form" id="form-login">
+            
+          <form class="ui large form" id="form-login">
             <div class="ui error message"></div>
-                <div class="ui stacked segment">
+              <div class="ui stacked segment">
                 <div class="ui red message text-left hide" id="error-message">ชื่อหรือรหัสผ่านไม่ถูกต้อง</div>
-                    <div class="field">
+                  <div class="field">
                         <div class="ui left icon input"><i class="user icon"></i>
-                          <input type="username" name="username" id="username" placeholder="ชื่อผู้ใช้งาน">
+                            <input type="username" name="username" id="username" placeholder="ชื่อผู้ใช้งาน">
                         </div>
                         <div class="text-left error" id="username-error"></div>
-                    </div>
-                    <div class="field">
+                  </div>
+                  <div class="field">
                         <div class="ui left icon input"><i class="lock icon"></i>
                           <input type="password" name="password" id="password" placeholder="รหัสผ่าน">
                         </div>
                         <div class="text-left error" id="password-error"></div>
-                    </div>
+                  </div>
                     
-                    <button type="submit" class="ui fluid large teal submit button" id="login">เข้าสู่ระบบ</button>
-                    <div class="ui horizontal divider">
-                    หรือ
-                    </div>
-                    </form>
+                  <button type="submit" class="ui fluid large teal submit button" id="login">เข้าสู่ระบบ</button>
+                  <div class="ui horizontal divider">หรือ</div>
+          </form>
+
                     <div class="field">
                         <button class="ui large facebook button">
-                          <i class="facebook icon"></i>
-                          Facebook
+                          <i class="facebook icon"></i>Facebook
                         </button>
                         <button class="ui large youtube button">
-                          <i class="google plus icon"></i>
-                          G-mail
+                          <i class="google plus icon"></i>G-mail
                         </button>
                     </div>
-                 <div class="ui divider"></div>
-            </div>
-        </div>
+                    <div class="ui divider"></div>
+              </div>
+        
     </div>
-    
   </div>
 
   <script>

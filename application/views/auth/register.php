@@ -13,6 +13,11 @@
   <script src="<?php echo base_url() ?>public/js/jquery.min.js"></script>
   <script src="<?php echo base_url() ?>public/js/semantic.js"></script>
   <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
+  <script src="<?=base_url("public/js/visibility.js"); ?>"></script>
+  <script src="<?=base_url("public/js/sidebar.js"); ?>"></script>
+  <script src="<?=base_url("public/js/custom.js"); ?>"></script>
+
+
 
   <script>
   $(document).ready(function() {
@@ -63,90 +68,96 @@
   </script>
 </head>
 
-<body>
-  <div class="ui large top fixed hidden menu">
-    <div class="ui container">
-      <a class="active item">Home</a>
-      <a class="item">อู่รถยนต์</a>
-      <a class="item">ช่างซ่อม</a>
-      <a class="item">นัดหมาย</a>
-      <a class="item">คลังอะไหล่</a>
-      <a class="item">ข้อมูลส่วนตัว</a>
-      <div class="right menu">
-        <div class="item">
-          <a class="ui button" href="<?=base_url("/auth/register") ?>">สมัครใช้งาน</a>
-        </div>
-        <div class="item">
-          <a class="ui primary button" href="<?=base_url("/auth/register") ?>">ลงชื่อเข้าใช้</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<body class="pushable">
 
-  <!-- Sidebar Menu -->
-  <div class="ui vertical inverted sidebar menu left">
+<!-- Following Menu -->
+<div class="ui large top fixed hidden menu">
+  <div class="ui container">
     <a class="active item">Home</a>
     <a class="item">อู่รถยนต์</a>
     <a class="item">ช่างซ่อม</a>
     <a class="item">นัดหมาย</a>
     <a class="item">คลังอะไหล่</a>
     <a class="item">ข้อมูลส่วนตัว</a>
+    <div class="right menu">
+      <div class="item">
+        <a class="ui button">สมัครใช้งาน</a>
+      </div>
+      <div class="item">
+        <a class="ui primary button">ลงชื่อเข้าใช้</a>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div id="top-menu" class="pusher">
+<!-- Sidebar Menu -->
+<div class="ui vertical inverted sidebar menu left">
+  <a class="active item">Home</a>
+  <a class="item">อู่รถยนต์</a>
+  <a class="item">ช่างซ่อม</a>
+  <a class="item">นัดหมาย</a>
+  <a class="item">คลังอะไหล่</a>
+  <a class="item">ข้อมูลส่วนตัว</a>
+</div>
 
-    <div class="ui inverted vertical masthead center aligned segment">
+<div id="top-menu" class="pusher">
 
-      <div class="ui container">
-        <div class="ui large secondary inverted pointing menu">
-          <a class="toc item">
-            <i class="sidebar icon"></i>
-          </a>
-          <a class="active item">Home</a>
-          <a class="item">อู่รถยนต์</a>
-          <a class="item">ช่างซ่อม</a>
-          <a class="item">นัดหมาย</a>
-          <a class="item">คลังอะไหล่</a>
-          <a class="item">ข้อมูลส่วนตัว</a>
-          <div class="right item">
-            <a class="blue ui head-logo"><i class="black car icon"></i>CarJaidee.com</a>
-            <a class="ui red button head-button " href="<?=base_url("/auth/register") ?>">สมัครใช้งาน</a>
-            <a class="ui primary button head-button" href="<?=base_url("/auth/login") ?>">ลงชื่อเข้าใช้</a>
-          </div>
+  <div class="ui inverted vertical masthead center aligned segment">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted pointing menu">
+        <a class="toc item">
+          <i class="sidebar icon"></i>
+        </a>
+        <a class="active item">Home</a>
+        <a class="item">อู่รถยนต์</a>
+        <a class="item">ช่างซ่อม</a>
+        <a class="item">นัดหมาย</a>
+        <a class="item">คลังอะไหล่</a>
+        <a class="item">ข้อมูลส่วนตัว</a>
+        <div class="right item">
+          <a class="blue ui head-logo"><i class="black car icon"></i>CarJaidee.com</a>
+          <a class="ui red button head-button " href="<?=base_url("/auth/register") ?>">สมัครใช้งาน</a>
+          <a class="ui primary button head-button" href="<?=base_url("/auth/login") ?>">ลงชื่อเข้าใช้</a>
         </div>
       </div>
-
     </div>
-      <form class="ui form register" id="form-register">
-        <div class="ui stacked segment container register">
-          <div class="field">
-              <h2 class="ui container center header">สมัครเข้าใช้งาน</h2>
-          </div>
-          <div class="ui red message text-left hide" id="error-message">ชื่อผู้ใช้ซ้ำ</div>
-          <div class="field"><label>ชื่อผู้ใช้งาน<span class="error">*</span></label>
-              <input class="ui input" type="text" id="username" name="username" placeholder="ชื่อผู้ใช้งาน">
-          </div>
-          <div class="field"><label>เบอร์โทรศัพท์<span class="error">*</span></label>
-              <input type="text" id="phone" name="phone" placeholder="เบอร์โทรศัพท์">
-          </div>
-          <div class="field"><label>อีเมล์</label>
-              <input type="text" id="email" name="email" placeholder="อีเมล์">
-          </div>
-          <div class="field"><label>รหัสผ่าน<span class="error">*</span></label>
-              <input type="password" id="password" name="password" placeholder="รหัสผ่าน">
-          </div>
-          <div class="field"><label>ยืนยันรหัสผ่าน<span class="error">*</span></label>
-              <input type="password" id="confirmpassword" name="confirmpassword" placeholder="ยืนยันรหัสผ่าน">
-          </div>
-          <div class="field">
-              <button class="ui green button" type="submit" id="register">สมัคร</button>
-          </div>
-          <div class="ui error message"></div>
+
+  </div>
+</div>
+
+<div class="pusher">
+  <div class="ui stackable one column grid container register">
+    <form class="ui form register" id="form-register">
+      <div class="ui stacked segment register">
+        <div class="field">
+            <h2 class="ui container center header">สมัครเข้าใช้งาน</h2>
         </div>
-        
-      </form>
-    </div>
-
+        <div class="ui red message text-left hide" id="error-message">ชื่อผู้ใช้ซ้ำ</div>
+        <div class="field"><label>ชื่อผู้ใช้งาน<span class="error">*</span></label>
+            <input class="ui input" type="text" id="username" name="username" placeholder="ชื่อผู้ใช้งาน">
+        </div>
+        <div class="field"><label>เบอร์โทรศัพท์<span class="error">*</span></label>
+            <input type="text" id="phone" name="phone" placeholder="เบอร์โทรศัพท์">
+        </div>
+        <div class="field"><label>อีเมล์</label>
+            <input type="text" id="email" name="email" placeholder="อีเมล์">
+        </div>
+        <div class="field"><label>รหัสผ่าน<span class="error">*</span></label>
+            <input type="password" id="password" name="password" placeholder="รหัสผ่าน">
+        </div>
+        <div class="field"><label>ยืนยันรหัสผ่าน<span class="error">*</span></label>
+            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="ยืนยันรหัสผ่าน">
+        </div>
+        <div class="field">
+            <button class="ui green button" type="submit" id="register">สมัคร</button>
+        </div>
+        <div class="ui error message"></div>
+      </div>
+      
+    </form>
+  </div>
+</div>
 
     <script>
     $(document).ready(function(){
