@@ -93,11 +93,20 @@
                     <div id="form-step-0" role="form" data-toggle="validator">
                         <form id="form-1">
                           <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-2">
+                              <label>ชื่อ</label><span class="error">*</span>
+                              <select class="form-control" name="titleName">
+                                <option value="">คำนำหน้า</option>
+                                <option value="นาย">นาย</option>
+                                <option value="นาง">นาง</option>
+                                <option value="นางสาว">นางสาว</option>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-5">
                               <label>ชื่อ</label><span class="error">*</span>
                               <input type="text" name="firstname" id="firstname" class="form-control" placeholder="ชื่อ">
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-5">
                               <label>นามสกุล</label><span class="error">*</span>
                               <input type="text" name="lastname" id="lastname" class="form-control" placeholder="นามสกุล">
                             </div>
@@ -700,6 +709,9 @@
 
         $("#form-1").validate({
           rules:{
+            titleName:{
+              required: true
+            },
             firstname: {
               required: true
             },
@@ -727,6 +739,9 @@
             }
           },
           messages:{
+            titleName:{
+              required: "กรุณาเลือกคำนำหน้า"
+            },
             firstname: {
               required: "กรุณากรอกชื่อ"
             },
