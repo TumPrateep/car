@@ -462,12 +462,13 @@ CREATE TABLE `users` (
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `nameTitle` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_users_users1_idx` (`create_by`),
   KEY `fk_users_users2_idx` (`update_by`),
   CONSTRAINT `fk_users_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -476,7 +477,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1),(3,'nnnn','$2y$10$AF2p2j3eG6EA7Qpg9cjWAeLHKtHlvXORKWbG6PxESbAiQVW.DvELy',NULL,'nar@gmail.com','45456546',NULL,NULL,NULL,NULL,NULL),(4,'5454','4554','3','445@gmail.com','45456456456',NULL,NULL,1,1,1),(5,'nnn','$2y$10$8NagaB3Kjeat0omA4NqcjeWE9G4411lahp34c85ZqWiBoaAus3puu','4','nana@gmail.com','2646542',NULL,NULL,NULL,NULL,NULL),(6,'aaa','$2y$10$RBxtD.UFGsb5oCuChJm7helVbXiHj/k6UT4KiV5dY6kSteDlHhcw6',NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL),(7,'ำำำำำ','$2y$10$iw/JeHxnjFvyyDkik83iruHZRp/FHLEO1IPO1F3MyPPR9hpiyEpX6',NULL,NULL,'',NULL,NULL,NULL,NULL,NULL),(8,'yodev','$2y$10$MxwmnF/2uIU9RAaJ406El.5Vzqk.S/heB3b4JgUqDSWqMgdxGLQje',NULL,NULL,'0123',NULL,NULL,NULL,NULL,NULL),(9,'yodev1','$2y$10$xKiWGWgszRacdfcGQU1DD.4VSVS/eD8hO41e8.qD5C5YoQcEbxCoK',NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,''),(3,'nnnn','$2y$10$AF2p2j3eG6EA7Qpg9cjWAeLHKtHlvXORKWbG6PxESbAiQVW.DvELy',NULL,'nar@gmail.com','45456546',NULL,NULL,NULL,NULL,NULL,''),(4,'5454','4554','3','445@gmail.com','45456456456',NULL,NULL,1,1,1,''),(5,'nnn','$2y$10$8NagaB3Kjeat0omA4NqcjeWE9G4411lahp34c85ZqWiBoaAus3puu','4','nana@gmail.com','2646542',NULL,NULL,NULL,NULL,NULL,''),(6,'aaa','$2y$10$RBxtD.UFGsb5oCuChJm7helVbXiHj/k6UT4KiV5dY6kSteDlHhcw6',NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,'');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -493,4 +494,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-26 15:33:30
+-- Dump completed on 2018-05-26 16:16:57
