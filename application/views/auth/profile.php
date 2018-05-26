@@ -59,7 +59,7 @@
 </div>
 
 <div class="pusher">
-  <div class="ui stackable one column grid container width-top">
+  <div class="ui stackable one column grid container width-top" style="max-width: 1000px !important;">
     <div class="column ui stacked segment container register step">
       <!-- SmartWizard html -->
       <div id="smartwizard">
@@ -76,7 +76,7 @@
                         <form id="form-1">
                           <div class="form-row">
                             <div class="form-group col-md-2">
-                              <label>ชื่อ</label><span class="error">*</span>
+                              <label>คำนำหน้า</label><span class="error">*</span>
                               <select class="form-control" name="titleName">
                                 <option value="">คำนำหน้า</option>
                                 <option value="นาย">นาย</option>

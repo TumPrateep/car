@@ -55,7 +55,7 @@ class UserManagement extends BD_Controller {
                     case "1" : $nestedData['category'] ="ผู้ดูแลระบบ";break;
                     case "2" : $nestedData['category'] ="ร้านอะไหล่";break;
                     case "3" : $nestedData['category'] ="อู่";break;
-                    case "4" : $nestedData['category'] ="ผู้ใช้";break;
+                    case "4" : $nestedData['category'] ="ผู้ใช้งาน";break;
                     default  : $nestedData['category'] =" ";break;
 
                     
