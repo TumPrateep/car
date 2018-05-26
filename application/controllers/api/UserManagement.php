@@ -184,10 +184,10 @@ class UserManagement extends BD_Controller {
             $latitude = $this->post("latitude");
             $longtitude = $this->post("longtitude");
             $comment = $this->post("comment");
-            $option1 = $this->post("box1");
-            $option2 = $this->post("box2");
-            $option3 = $this->post("box3");
-            $option4 = $this->post("box4");
+            $option1 = $this->post("option1");
+            $option2 = $this->post("option2");
+            $option3 = $this->post("option3");
+            $option4 = $this->post("option4");
             $option_outher = $this->post("other");
             $garageAddress = $this->post("garageAddress");
             $provinceId = $this->post("provinceId");
@@ -252,7 +252,7 @@ class UserManagement extends BD_Controller {
                 'status' => 1  
             );
         }else if($role == 4){
-            $path = 'public/image/car_profile/'.$userId;
+            $path = "public/image/profile/$userId";
             mkdir($path);
             $config['upload_path'] = $path;
 
@@ -328,6 +328,7 @@ class UserManagement extends BD_Controller {
         $result = $this->Profile->saveProfileRoleUser($role, $userId, $profileData, $roleData);
         if($result){
             $sess_array = array(
+                'id' => $userId,
                 'role' => $role
             );
             $this->session->set_userdata('logged_in', $sess_array);
@@ -335,6 +336,7 @@ class UserManagement extends BD_Controller {
         }else{
             $output["message"] = REST_Controller::MSG_ERROR;
         }
+        $output['userId'] = $userId;
         $this->set_response($output, REST_Controller::HTTP_OK);
 
     }
