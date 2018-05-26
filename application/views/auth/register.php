@@ -23,10 +23,9 @@
 
 
   <script>
-  $(document).ready(function() {
-    jQuery.validator.addMethod("username", function(value, element) {
-      return this.optional( element ) || /^[A-Za-z][A-Za-z0-9]*$/.test( value );
-  }, 'กรุณากรอกภาษาอังกฤษหรือตัวเลขเท่านั้น');
+      jQuery.validator.addMethod("username", function(value, element) {
+        return this.optional( element ) || /^[A-Za-z\d]+$/.test( value );
+      }, 'กรุณากรอกภาษาอังกฤษหรือตัวเลขเท่านั้น');
 
     $('#form-register').validate({
       rules: {
