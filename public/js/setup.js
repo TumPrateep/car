@@ -26,6 +26,7 @@ function fnDelete(option) {
 function showMessage(message, url=null){
     if(message == 200){
         $("#success-modal").modal("show");
+        $("#content-success").html("บันทึกสำเร็จ");
     }else if(message == 404 || message == 1005 || message == 1004 || message == 1003){
         $("#lebel-warning").html("คำเตือน");
         var dangerContent = $("#content-danger");
