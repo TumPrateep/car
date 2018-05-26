@@ -42,10 +42,11 @@
   <script src="<?=base_url("public/js/setup.js"); ?>"></script>
 
   <script>
-      jQuery.validator.addMethod("username", function(value, element) {
-        return this.optional( element ) || /^[A-Za-z\d]+$/.test( value );
-      }, 'กรุณากรอกภาษาอังกฤษหรือตัวเลขเท่านั้น');
-
+  $(document).ready(function() {
+    jQuery.validator.addMethod("username", function(value, element) {
+      return this.optional( element ) || /^[A-Za-z][A-Za-z0-9]*$/.test( value );
+    }, 'กรุณากรอกภาษาอังกฤษหรือตัวเลขเท่านั้น');
+    
     $('#form-register').validate({
       rules: {
         username: {
@@ -77,7 +78,7 @@
           email: "กรุณากรอกอีเมลให้ถูกต้อง"
         },
         phone: {
-          required: "กรุณากรอกเบอร์โทรศัพท์"
+          required: "กรุณากรอกเบอร์โทร"
         },
         password: {
           required: "กรุณากรอกรหัสผ่าน",
@@ -88,10 +89,8 @@
           equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
         }
       }
-
       
     });
-
     
     
   });
@@ -99,26 +98,6 @@
 </head>
 
 <body class="pushable">
-
-<!-- Following Menu -->
-<div class="ui large top fixed hidden menu">
-  <div class="ui container">
-    <a class="active item">Home</a>
-    <a class="item">อู่รถยนต์</a>
-    <a class="item">ช่างซ่อม</a>
-    <a class="item">นัดหมาย</a>
-    <a class="item">คลังอะไหล่</a>
-    <a class="item">ข้อมูลส่วนตัว</a>
-    <div class="right menu">
-      <div class="item">
-        <a class="ui button">สมัครใช้งาน</a>
-      </div>
-      <div class="item">
-        <a class="ui primary button">ลงชื่อเข้าใช้</a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Sidebar Menu -->
 <div class="ui vertical inverted sidebar menu left">
@@ -128,6 +107,8 @@
   <a class="item">นัดหมาย</a>
   <a class="item">คลังอะไหล่</a>
   <a class="item">ข้อมูลส่วนตัว</a>
+  <a class="item" href="<?=base_url("/auth/register") ?>">สมัครใช้งาน</a>
+  <a class="item" href="<?=base_url("/auth/login") ?>">ลงชื่อเข้าใช้</a>
 </div>
 
 <div id="top-menu" class="pusher">
