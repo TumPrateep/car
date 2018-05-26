@@ -152,7 +152,7 @@
                 <div id="step-3">
                     <div id="form-step-2" role="form" data-toggle="validator">
                     <div id="role-4" style="display:none">  
-                      <h5>ข้อมูลรถ</h5><label>ทะเบียนรถ</label><span class="error">*</span>
+                      <h5>ข้อมูลรถ</h5><label><h6>ทะเบียนรถ</h6></label><span class="error">*</span>
                       <form id="form-role-4">
                           <div class="form-row">
                             <div class="form-group col-md-4">
@@ -174,8 +174,8 @@
                               <input type="text" name="mileage" id="mileage" class="form-control" placeholder="เลขไมล์">
                             </div>
                             <div class="form-group col-md-6">
-                              <label>สี</label><span class="error">*</span>
-                              <input type="text" name="colorCar" id="colorCar" class="form-control" placeholder="สีรถ">
+                              <label>สีของรถ</label><span class="error">*</span>
+                              <input type="text" name="colorCar" id="colorCar" class="form-control" placeholder="สีของรถ">
                             </div>
                           </div>
                           <div class="form-row">
@@ -509,13 +509,13 @@
               required: "กรุณากรอกจำนวนเลขไมล์"
             },
             colorCar: {
-              required: "กรุณากรอกสีรถ"
+              required: "กรุณากรอกสีของรถ"
             },
             characterPlate: {
-              required: "กรุณากรอกตัวอักษรป้ายทะเบียน"
+              required: "กรุณากรอกตัวอักษรนำหน้า"
             },
             numberPlate: {
-              required: "กรุณากรอกตัวเลขป้ายทะเบียน"
+              required: "กรุณากรอกตัวเลข"
             },
             provincePlate: {
               required: "กรุณากรอกจังหวัด"
