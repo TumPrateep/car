@@ -44,7 +44,7 @@
   <script>
   $(document).ready(function() {
     jQuery.validator.addMethod("username", function(value, element) {
-      return this.optional( element ) || /^[A-Za-z][A-Za-z0-9]*$/.test( value );
+      return this.optional( element ) || /^[A-Za-z\d]+$/.test( value );
     }, 'กรุณากรอกภาษาอังกฤษหรือตัวเลขเท่านั้น');
     
     $('#form-register').validate({
@@ -58,7 +58,8 @@
             email: true
         },  
           phone: {
-            required: true
+            required: true,
+            minlength:9
         },    
         password: {
           required: true,
@@ -78,7 +79,8 @@
           email: "กรุณากรอกอีเมลให้ถูกต้อง"
         },
         phone: {
-          required: "กรุณากรอกเบอร์โทร"
+          required: "กรุณากรอกเบอร์โทรศัพท์",
+          minlength:"กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว"
         },
         password: {
           required: "กรุณากรอกรหัสผ่าน",
