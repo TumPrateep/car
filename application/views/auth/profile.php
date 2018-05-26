@@ -59,7 +59,7 @@
 </div>
 
 <div class="pusher">
-  <div class="ui stackable one column grid container">
+  <div class="ui stackable one column grid container width-top">
     <div class="column ui stacked segment container register step">
       <!-- SmartWizard html -->
       <div id="smartwizard">

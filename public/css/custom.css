@@ -118,6 +118,10 @@
       text-align: -webkit-center;
     }
 
+    .width-top{
+      margin-top: 5px !important;
+    }
+
   }
 
   .ui.secondary.inverted.pointing.menu{
