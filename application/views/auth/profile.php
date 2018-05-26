@@ -696,7 +696,8 @@
         });
 
         $('#smartwizard').smartWizard("reset");
-        
+          
+
         $("#form-1").validate({
           rules:{
             firstname: {
@@ -717,8 +718,12 @@
             subdistrictId: {
               required: true
             },
+            phone1: {
+              minlength: 9
+            },
             phone2: {
-              required: true
+              required: true,
+              minlength: 9
             }
           },
           messages:{
@@ -740,8 +745,13 @@
             subdistrictId: {
               required: "กรุณาเลือกตำบล"
             },
+            phone1: {
+              minlength:"กรุณากรอกตัวเลขอย่างน้อย 9 ตัว"
+            },
             phone2: {
-              required: "กรุณากรอกเบอร์โทรที่สามารถติดต่อได้"
+              required: "กรุณากรอกเบอร์โทรที่สามารถติดต่อได้",
+              minlength:"กรุณากรอกตัวเลขอย่างน้อย 9 ตัว"
+              
             }
           }
         });
