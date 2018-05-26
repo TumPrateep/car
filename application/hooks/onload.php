@@ -20,16 +20,15 @@ class Onload{
 		}else{
             if($directory != "api/" && $controller != "role" && $controller != "auth"){
                 $role = $this->ci->session->userdata['logged_in']['role'];
-
                 if($role == 1){
                     if($directory != "admin/"){
                         redirect("role");
                     }
-                }else if($role == 2){
+                }else if($role == 3){
                     if($directory != "garage/"){
                         redirect("role");
                     }
-                }else if($role == 3){
+                }else if($role == 2){
                     if($directory != "caraccessory/"){
                         redirect("role");
                     }

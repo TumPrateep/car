@@ -9,6 +9,7 @@
   <title>Register</title>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/semantic.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/custom.css">
+
   <style type="text/css">
     .ui.stacked.segment{
       /*width: 800px !important;*/
@@ -29,18 +30,21 @@
     
 
   </style>
+  <link href="<?=base_url("/public/vendor/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
+  <link href="<?=base_url("/public/vendor/font-awesome/css/font-awesome.min.css") ?>" rel="stylesheet" type="text/css">
 
   <script src="<?php echo base_url() ?>public/js/jquery.min.js"></script>
-  <script src="<?php echo base_url() ?>public/js/semantic.js"></script>
+  <script src="<?=base_url("/public/vendor/bootstrap/js/bootstrap.bundle.min.js") ?>"></script>
   <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
   <script src="<?=base_url("public/js/visibility.js"); ?>"></script>
   <script src="<?=base_url("public/js/sidebar.js"); ?>"></script>
   <script src="<?=base_url("public/js/custom.js"); ?>"></script>
+  <script src="<?=base_url("public/js/setup.js"); ?>"></script>
+
   <script>
-  $(document).ready(function() {
-    jQuery.validator.addMethod("username", function(value, element) {
-      return this.optional( element ) || /^[A-Za-z][A-Za-z0-9]*$/.test( value );
-  }, 'กรุณากรอกภาษาอังกฤษหรือตัวเลขเท่านั้น');
+      jQuery.validator.addMethod("username", function(value, element) {
+        return this.optional( element ) || /^[A-Za-z\d]+$/.test( value );
+      }, 'กรุณากรอกภาษาอังกฤษหรือตัวเลขเท่านั้น');
 
     $('#form-register').validate({
       rules: {
@@ -73,7 +77,7 @@
           email: "กรุณากรอกอีเมลให้ถูกต้อง"
         },
         phone: {
-          required: "กรุณากรอกเบอร์โทร"
+          required: "กรุณากรอกเบอร์โทรศัพท์"
         },
         password: {
           required: "กรุณากรอกรหัสผ่าน",
@@ -185,6 +189,88 @@
   </div>
 </div>
 
+<div class="modal fade" id="success-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lebel-success">บันทึกสำเร็จ</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <h1 class="display-3 text-center"><i class="fa fa-check text-success "></i></h1>
+        <h6 class="text-center" id="content-success">บันทึกสำเร็จ</h6> 
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Warning Modal-->
+<div class="modal fade" id="warning-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lebel-warning">Warning</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <h1 class="display-3 text-center"><i class="fa fa-exclamation text-warning "></i></h1>
+        <h6 class="text-center" id="content-warning">Warning</h6> 
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Danger Modal-->
+<div class="modal fade" id="danger-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lebel-danger">Danger</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <h1 class="display-3 text-center"><i class="fa fa-times text-danger "></i></h1>
+        <h6 class="text-center" id="content-danger">Danger</h6> 
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-loading" id="loading">
+  <div class="modal-loading-content">
+    <div class="cssload-bell">
+        <div class="cssload-circle">
+          <div class="cssload-inner"></div>
+        </div>
+        <div class="cssload-circle">
+          <div class="cssload-inner"></div>
+        </div>
+        <div class="cssload-circle">
+          <div class="cssload-inner"></div>
+        </div>
+        <div class="cssload-circle">
+          <div class="cssload-inner"></div>
+        </div>
+        <div class="cssload-circle">
+          <div class="cssload-inner"></div>
+        </div>
+    </div>
+  </div>
+</div>
+
     <script>
     $(document).ready(function(){
 
@@ -206,7 +292,9 @@
           $.post(base_url+"api/register/register",data,
             function(data){
               if(data.message == 200){
-                window.location.assign(base_url);
+                showMessage(data.message,"auth/login");
+              }else{
+                showMessage(data.message);
               }
             }
           )
@@ -219,6 +307,10 @@
       
       }
 
+    });
+
+    $("#success-modal").on('hidden.bs.modal', function () {
+      window.location.assign(base_url+"auth/login");
     });
     
   </script>
