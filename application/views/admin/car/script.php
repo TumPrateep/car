@@ -82,7 +82,7 @@
             url: "/car/deleteBrand?brandId="+data.brandId,
             label: "ลบยี่ห้อรถ",
             content: "คุณต้องการลบ "+data.brandName+" ใช่หรือไม่",
-            gotoUrl: "car"
+            gotoUrl: "admin/car"
         }
         fnDelete(option);
     } );

@@ -54,7 +54,7 @@
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"car");
+                        showMessage(data.message,"admin/car");
                     }else{
                         showMessage(data.message);
                     }
