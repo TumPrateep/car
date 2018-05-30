@@ -30,4 +30,39 @@ class rim extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function createRim_post(){
+
+        $rimName = $this->post("rimName");
+
+        $this->load->model("rims");
+        $isCheck = $this->rims->checkrim($rimName);
+
+        if($isCheck){
+            $data = array(
+                'rimId' => null,
+                'rimName' => $rimName,
+                'status' => 1
+            );
+            $result = $this->rims->insert_rim($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+
+        }
+        else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+
+
+    }
 }
