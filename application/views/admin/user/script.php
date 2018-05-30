@@ -57,10 +57,11 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<label class="switch">'
-                        +'<input type="checkbox" '+'checked'+'>'
-                        +'<span class="slider round"></span>'
-                        +'</label>';
+                        return '<div class="col-sm-5">'
+                        +'<button type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
                     }
                 },
                 {
