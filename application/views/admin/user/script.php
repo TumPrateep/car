@@ -31,6 +31,7 @@
                     data.search = $("#table-search").val()
                 }
             },
+            "order": [[ 1, "asc" ]],
             "columns": [
                 null,
                 { "data": "username" },
@@ -44,7 +45,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5,6]
+                    "targets": [0,6]
                 },{
                     "targets": 6,
                     "data": null,
@@ -64,8 +65,8 @@
                             switchVal = "false";
                             active = "";
                         }
-                        return '<div class="col-sm-5">'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus()">'
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.id+','+data.status+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
@@ -103,9 +104,20 @@
         table.ajax.reload();
     })
 
-    function updateStatus(){
-        alert("test");
+    function updateStatus(id,status){
+        $.post(base_url+"api/UserManagement/changeStatus",{
+            "id": id,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/usermanagement");
+            }else{
+                showMessage(data.message);
+            }
+        });
     }
+
+
 </script>
 
 </body>

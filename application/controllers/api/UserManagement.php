@@ -7,7 +7,7 @@ class UserManagement extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        //$this->auth();
+        $this->auth();
     }
 
     function search_post(){
@@ -16,7 +16,8 @@ class UserManagement extends BD_Controller {
             1 =>'username', 
             2 =>'phone',
             3 =>'email',
-            4=>'category',
+            4 =>'category',
+            5 =>'status' 
         );
 
         $limit = $this->post('length');
@@ -343,6 +344,11 @@ class UserManagement extends BD_Controller {
     function changeStatus_post(){
         $id = $this->post("id");
         $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
         $data = array(
             'status' => $status
         );

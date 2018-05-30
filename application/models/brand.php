@@ -144,4 +144,10 @@ class Brand extends CI_Model {
         return false;
     }
 
+    function updateStatus($brandId,$data){
+        $this->db->where('brandId',$brandId);
+        $result = $this->db->update('brand', $data);
+        return $result; 
+    }
+
 }
