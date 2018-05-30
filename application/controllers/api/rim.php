@@ -3,7 +3,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class rim extends BD_Controller {
+class Rim extends BD_Controller {
 
     function __construct()
     {
@@ -42,6 +42,10 @@ class rim extends BD_Controller {
             $data = array(
                 'rimId' => null,
                 'rimName' => $rimName,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId,
                 'status' => 1
             );
             $result = $this->rims->insert_rim($data);
@@ -69,9 +73,7 @@ class rim extends BD_Controller {
     function searchrim_post(){
         $columns = array( 
             0 => null,
-            1 => 'rimName' 
-            
-            
+            1 => 'rimName'   
         );
 
         $limit = $this->post('length');
@@ -133,6 +135,10 @@ class rim extends BD_Controller {
             $data = array(
                 'rimId' => $rimId,
                 'rimName' => $rimName,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId,
                 'status' => 1
             );
             $result = $this->rims->updaterim($data);
