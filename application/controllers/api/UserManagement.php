@@ -16,7 +16,8 @@ class UserManagement extends BD_Controller {
             1 =>'username', 
             2 =>'phone',
             3 =>'email',
-            4=>'category',
+            4 =>'category',
+            5 =>'status' 
         );
 
         $limit = $this->post('length');
@@ -52,14 +53,13 @@ class UserManagement extends BD_Controller {
                 $nestedData['phone'] = $post->phone;
                 $nestedData['email'] = $post->email;
                 switch($post->category){
-                    case "1" : $nestedData['category'] ="ผู้ดูแลระบบ";break;
-                    case "2" : $nestedData['category'] ="ร้านอะไหล่";break;
-                    case "3" : $nestedData['category'] ="อู่";break;
-                    case "4" : $nestedData['category'] ="ผู้ใช้งาน";break;
-                    default  : $nestedData['category'] =" ";break;
-
-                    
+                    case 1 : $nestedData['category'] ="ผู้ดูแลระบบ";break;
+                    case 2 : $nestedData['category'] ="ร้านอะไหล่";break;
+                    case 3 : $nestedData['category'] ="อู่";break;
+                    case 4 : $nestedData['category'] ="ผู้ใช้งาน";break;
+                    default  : $nestedData['category'] = null;break;
                 }
+                $nestedData['status'] = $post->status;
 
                 $data[] = $nestedData;
 
@@ -341,4 +341,25 @@ class UserManagement extends BD_Controller {
 
     }
 
+    function changeStatus_post(){
+        $id = $this->post("id");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status
+        );
+        $this->load->model("User");
+        $result = $this->User->updateStatus($id,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 }

@@ -29,9 +29,9 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.search = $("#table-search").val()
-                   
                 }
             },
+            "order": [[ 1, "asc" ]],
             "columns": [
                 null,
                 { "data": "username" },
@@ -45,7 +45,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5,6]
+                    "targets": [0,6]
                 },{
                     "targets": 6,
                     "data": null,
@@ -57,10 +57,19 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<label class="switch">'
-                        +'<input type="checkbox" '+'checked'+'>'
-                        +'<span class="slider round"></span>'
-                        +'</label>';
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.id+','+data.status+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
                     }
                 },
                 {
@@ -94,6 +103,21 @@
     $("#btn-search").click(function(){
         table.ajax.reload();
     })
+
+    function updateStatus(id,status){
+        $.post(base_url+"api/UserManagement/changeStatus",{
+            "id": id,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/usermanagement");
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
+
+
 </script>
 
 </body>

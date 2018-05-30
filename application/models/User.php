@@ -146,5 +146,11 @@ class User extends CI_Model{
         return $this->db->insert('car_accessories', $data);
     }
 
+    function updateStatus($id,$data){
+        $this->db->where('id',$id);
+        $result = $this->db->update('users', $data);
+        return $result; 
+    }
+
 
 }
