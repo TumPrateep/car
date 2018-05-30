@@ -298,19 +298,20 @@ DROP TABLE IF EXISTS `rim`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rim` (
-  `rimId` int(11) NOT NULL,
+  `rimId` int(11) NOT NULL AUTO_INCREMENT,
   `rimName` varchar(45) DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
+  `rimcol` varchar(45) NOT NULL,
   PRIMARY KEY (`rimId`),
   KEY `fk_rim_users1_idx` (`create_by`),
   KEY `fk_rim_users2_idx` (`update_by`),
   CONSTRAINT `fk_rim_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_rim_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -319,6 +320,7 @@ CREATE TABLE `rim` (
 
 LOCK TABLES `rim` WRITE;
 /*!40000 ALTER TABLE `rim` DISABLE KEYS */;
+INSERT INTO `rim` VALUES (1,'1',1,1,NULL,NULL,'1',''),(2,'222',1,1,NULL,NULL,'1','');
 /*!40000 ALTER TABLE `rim` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -438,7 +440,7 @@ DROP TABLE IF EXISTS `tire_model`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tire_model` (
-  `tire_modelId` int(11) NOT NULL,
+  `tire_modelId` int(11) NOT NULL AUTO_INCREMENT,
   `tire_modelName` varchar(45) DEFAULT NULL,
   `trie_brandId` int(11) DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
@@ -473,7 +475,7 @@ DROP TABLE IF EXISTS `trie_brand`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `trie_brand` (
-  `trie_brandId` int(11) NOT NULL,
+  `trie_brandId` int(11) NOT NULL AUTO_INCREMENT,
   `trie_brandName` varchar(45) DEFAULT NULL,
   `trie_brandPicture` varchar(45) DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
@@ -506,7 +508,7 @@ DROP TABLE IF EXISTS `trie_data`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `trie_data` (
-  `trie_dataId` int(11) NOT NULL,
+  `trie_dataId` int(11) NOT NULL AUTO_INCREMENT,
   `rimId` int(11) NOT NULL,
   `trie_sizeId` int(11) NOT NULL,
   `trie_brandId` int(11) NOT NULL,
@@ -549,7 +551,7 @@ DROP TABLE IF EXISTS `trie_size`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `trie_size` (
-  `trie_sizeId` int(11) NOT NULL,
+  `trie_sizeId` int(11) NOT NULL AUTO_INCREMENT,
   `trie_size` varchar(45) DEFAULT NULL,
   `rimId` int(11) NOT NULL,
   `create_by` int(11) DEFAULT NULL,
@@ -672,4 +674,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-30 11:05:00
+-- Dump completed on 2018-05-30 13:15:45
