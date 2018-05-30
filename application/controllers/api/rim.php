@@ -65,4 +65,58 @@ class rim extends BD_Controller {
 
 
     }
+
+    function searchrim_post(){
+        $columns = array( 
+            0 => null,
+            1 => 'rimName' 
+            
+            
+        );
+
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+
+        $this->load->model("rims");
+        $totalData = $this->rims->allrim_count();
+
+        $totalFiltered = $totalData; 
+
+        if(empty($this->post('rimName')))
+        {            
+            $posts = $this->rims->allrim($limit,$start,$order,$dir);
+        }
+        else {
+            $search = $this->post('rimName'); 
+
+            $posts =  $this->rims->rim_search($limit,$start,$search,$order,$dir);
+
+            $totalFiltered = $this->rims->rim_search_count($search);
+        }
+
+        $data = array();
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+
+                $nestedData['rimId'] = $post->rimId;
+                $nestedData['rimName'] = $post->rimName;
+
+                $data[] = $nestedData;
+
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+
+        $this->set_response($json_data);
+    }
 }

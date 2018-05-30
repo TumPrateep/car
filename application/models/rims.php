@@ -25,4 +25,63 @@ class rims extends CI_Model{
         return true;
 
     }
+    function allrim_count()
+    {   
+        $query = $this
+                ->db
+                ->get('rim');
+    
+        return $query->num_rows();  
+
+    }
+
+    function allrim($limit,$start,$col,$dir)
+    {   
+        $query = $this
+            ->db
+            ->limit($limit,$start)
+            ->order_by($col,$dir)
+            ->get('rim');
+
+            if($query->num_rows()>0)
+            {
+                return $query->result(); 
+            }
+            else
+            {
+                return null;
+            }
+
+        
+    }
+
+    function rim_search($limit,$start,$search,$col,$dir)
+    {
+        $query = $this
+                ->db
+                ->like('rimName',$search)
+                ->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('rim');
+        
+       
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    function rim_search_count($search)
+    {
+        $query = $this
+                ->db
+                ->like('rimName',$search)
+                ->get('rim');
+    
+        return $query->num_rows();
+    }
 }
