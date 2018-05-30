@@ -119,4 +119,37 @@ class rim extends BD_Controller {
 
         $this->set_response($json_data);
     }
+
+    function updaterim_post(){
+
+        $rimId = $this->post('rimId');
+        $rimName = $this->post('rimName');
+        
+        $this->load->model("rims");
+
+        $result = $this->rims->wherenotrim($rimId,$rimName);
+
+        if($result){
+            $data = array(
+                'rimId' => $rimId,
+                'rimName' => $rimName,
+                'status' => 1
+            );
+            $result = $this->rims->updaterim($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+        else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 }

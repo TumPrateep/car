@@ -84,4 +84,23 @@ class rims extends CI_Model{
     
         return $query->num_rows();
     }
+
+    function wherenotrim($rimId,$rimName){
+        $this->db->select("rimName");
+        $this->db->from("rim");
+        $this->db->where('rimName', $rimName);
+        $this->db->where_not_in('rimId', $rimId);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+
+    function updaterim($data){
+        $this->db->where('rimId',$data['rimId']);
+        $result = $this->db->update('rim', $data);
+        return $result;
+    }
 }
