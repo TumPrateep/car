@@ -36,7 +36,7 @@ CREATE TABLE `brand` (
   KEY `fk_brand_users2_idx` (`update_by`),
   CONSTRAINT `id` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `update_by` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `brand` (
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES (1,'Isuzu.png','ISUZU',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(2,'Toyota.png','TOYOTA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(3,'Mitsubishi.png','MITSUBISHI',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(4,'Nissan.png','NISSAN',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(5,'Chevrolet.png','CHEVROLET',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(6,'Ford.png','FORD',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(7,'Mazda.png','MAZDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(8,'Honda.png','HONDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(9,'5751c78e78bd512acee94b6809be2eab.jpg','45',NULL,NULL,NULL,NULL,1),(10,'5501aa3a77e716b29aae48fdf77a7585.jpg','4545456',NULL,NULL,NULL,NULL,1),(11,'1c33cae099959a719e397dff5cbf3d86.jpg','lkhkjh',NULL,NULL,NULL,NULL,1),(12,'92d7b7064dd86dc10e2e79bdd2fa2f44.jpg','hjhj',NULL,NULL,NULL,NULL,1),(13,'6f46805c2f7da96934179f65ae53ecf0.jpg','asdasd1111',NULL,NULL,NULL,NULL,1);
+INSERT INTO `brand` VALUES (1,'Isuzu.png','ISUZU',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(2,'Toyota.png','TOYOTA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(3,'Mitsubishi.png','MITSUBISHI',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(4,'Nissan.png','NISSAN',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(5,'Chevrolet.png','CHEVROLET',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(6,'Ford.png','FORD',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(7,'Mazda.png','MAZDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(8,'Honda.png','HONDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1);
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,7 +277,7 @@ CREATE TABLE `province` (
   KEY `fk_province_users2_idx` (`update_by`),
   CONSTRAINT `fk_province_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_province_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,6 +288,38 @@ LOCK TABLES `province` WRITE;
 /*!40000 ALTER TABLE `province` DISABLE KEYS */;
 INSERT INTO `province` VALUES (1,'กรุงเทพมหานคร',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(2,'สมุทรปราการ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(3,'นนทบุรี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(4,'ปทุมธานี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(5,'พระนครศรีอยุธยา',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(6,'อ่างทอง',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(7,'ลพบุรี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(8,'สิงห์บุรี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(9,'ชัยนาท',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(10,'สระบุรี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(11,'ชลบุรี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(12,'ระยอง',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(13,'จันทบุรี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(14,'ตราด',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(15,'ฉะเชิงเทรา',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(16,'ปราจีนบุรี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(17,'นครนายก',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(18,'สระแก้ว',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(19,'นครราชสีมา',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(20,'บุรีรัมย์',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(21,'สุรินทร์',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(22,'ศรีสะเกษ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(23,'อุบลราชธานี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(24,'ยโสธร',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(25,'ชัยภูมิ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(26,'อำนาจเจริญ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(27,'หนองบัวลำภู',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(28,'ขอนแก่น',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(29,'อุดรธานี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(30,'เลย',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(31,'หนองคาย',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(32,'มหาสารคาม',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(33,'ร้อยเอ็ด',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(34,'กาฬสินธุ์',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(35,'สกลนคร',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(36,'นครพนม',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(37,'มุกดาหาร',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(38,'เชียงใหม่',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(39,'ลำพูน',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(40,'ลำปาง',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(41,'อุตรดิตถ์',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(42,'แพร่',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(43,'น่าน',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(44,'พะเยา',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(45,'เชียงราย',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(46,'แม่ฮ่องสอน',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(47,'นครสวรรค์',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(48,'อุทัยธานี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(49,'กำแพงเพชร',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(50,'ตาก',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(51,'สุโขทัย',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(52,'พิษณุโลก',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(53,'พิจิตร',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(54,'เพชรบูรณ์',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(55,'ราชบุรี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(56,'กาญจนบุรี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(57,'สุพรรณบุรี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(58,'นครปฐม',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(59,'สมุทรสาคร',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(60,'สมุทรสงคราม',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(61,'เพชรบุรี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(62,'ประจวบคีรีขันธ์',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(63,'นครศรีธรรมราช',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(64,'กระบี่',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(65,'พังงา',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(66,'ภูเก็ต',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(67,'สุราษฎร์ธานี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(68,'ระนอง',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(69,'ชุมพร',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(70,'สงขลา',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(71,'สตูล',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(72,'ตรัง',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(73,'พัทลุง',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(74,'ปัตตานี',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(75,'ยะลา',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(76,'นราธิวาส',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(97,'บึงกาฬ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1);
 /*!40000 ALTER TABLE `province` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rim`
+--
+
+DROP TABLE IF EXISTS `rim`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rim` (
+  `rimId` int(11) NOT NULL,
+  `rimName` varchar(45) DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`rimId`),
+  KEY `fk_rim_users1_idx` (`create_by`),
+  KEY `fk_rim_users2_idx` (`update_by`),
+  CONSTRAINT `fk_rim_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rim_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rim`
+--
+
+LOCK TABLES `rim` WRITE;
+/*!40000 ALTER TABLE `rim` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rim` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -399,6 +431,152 @@ INSERT INTO `subdistrict` VALUES (1,'พระบรมมหาราชวั�
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tire_model`
+--
+
+DROP TABLE IF EXISTS `tire_model`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tire_model` (
+  `tire_modelId` int(11) NOT NULL,
+  `tire_modelName` varchar(45) DEFAULT NULL,
+  `trie_brandId` int(11) DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) NOT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`tire_modelId`),
+  KEY `fk_tire_model_trie_brand1_idx` (`trie_brandId`),
+  KEY `fk_tire_model_users1_idx` (`create_by`),
+  KEY `fk_tire_model_users2_idx` (`update_by`),
+  CONSTRAINT `fk_tire_model_trie_brand1` FOREIGN KEY (`trie_brandId`) REFERENCES `trie_brand` (`trie_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_model_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_model_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tire_model`
+--
+
+LOCK TABLES `tire_model` WRITE;
+/*!40000 ALTER TABLE `tire_model` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tire_model` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `trie_brand`
+--
+
+DROP TABLE IF EXISTS `trie_brand`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `trie_brand` (
+  `trie_brandId` int(11) NOT NULL,
+  `trie_brandName` varchar(45) DEFAULT NULL,
+  `trie_brandPicture` varchar(45) DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`trie_brandId`),
+  KEY `fk_trie_brand_users1_idx` (`create_by`),
+  KEY `fk_trie_brand_users2_idx` (`update_by`),
+  CONSTRAINT `fk_trie_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `trie_brand`
+--
+
+LOCK TABLES `trie_brand` WRITE;
+/*!40000 ALTER TABLE `trie_brand` DISABLE KEYS */;
+/*!40000 ALTER TABLE `trie_brand` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `trie_data`
+--
+
+DROP TABLE IF EXISTS `trie_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `trie_data` (
+  `trie_dataId` int(11) NOT NULL,
+  `rimId` int(11) NOT NULL,
+  `trie_sizeId` int(11) NOT NULL,
+  `trie_brandId` int(11) NOT NULL,
+  `tire_modelId` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`trie_dataId`),
+  KEY `fk_trie_data_rim1_idx` (`rimId`),
+  KEY `fk_trie_data_trie_size1_idx` (`trie_sizeId`),
+  KEY `fk_trie_data_trie_brand1_idx` (`trie_brandId`),
+  KEY `fk_trie_data_tire_model1_idx` (`tire_modelId`),
+  KEY `fk_trie_data_users1_idx` (`create_by`),
+  KEY `fk_trie_data_users2_idx` (`update_by`),
+  CONSTRAINT `fk_trie_data_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_data_tire_model1` FOREIGN KEY (`tire_modelId`) REFERENCES `tire_model` (`tire_modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_data_trie_brand1` FOREIGN KEY (`trie_brandId`) REFERENCES `trie_brand` (`trie_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_data_trie_size1` FOREIGN KEY (`trie_sizeId`) REFERENCES `trie_size` (`trie_sizeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_data_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_data_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `trie_data`
+--
+
+LOCK TABLES `trie_data` WRITE;
+/*!40000 ALTER TABLE `trie_data` DISABLE KEYS */;
+/*!40000 ALTER TABLE `trie_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `trie_size`
+--
+
+DROP TABLE IF EXISTS `trie_size`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `trie_size` (
+  `trie_sizeId` int(11) NOT NULL,
+  `trie_size` varchar(45) DEFAULT NULL,
+  `rimId` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`trie_sizeId`),
+  KEY `fk_trie_size_rim1_idx` (`rimId`),
+  KEY `fk_trie_size_users1_idx` (`create_by`),
+  KEY `fk_trie_size_users2_idx` (`update_by`),
+  CONSTRAINT `fk_trie_size_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_size_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_size_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `trie_size`
+--
+
+LOCK TABLES `trie_size` WRITE;
+/*!40000 ALTER TABLE `trie_size` DISABLE KEYS */;
+/*!40000 ALTER TABLE `trie_size` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_profile`
 --
 
@@ -468,7 +646,7 @@ CREATE TABLE `users` (
   KEY `fk_users_users2_idx` (`update_by`),
   CONSTRAINT `fk_users_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -477,7 +655,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1),(3,'nnnn','$2y$10$AF2p2j3eG6EA7Qpg9cjWAeLHKtHlvXORKWbG6PxESbAiQVW.DvELy',NULL,'nar@gmail.com','45456546',NULL,NULL,NULL,NULL,NULL),(4,'5454','4554','3','445@gmail.com','45456456456',NULL,NULL,1,1,1),(5,'nnn','$2y$10$8NagaB3Kjeat0omA4NqcjeWE9G4411lahp34c85ZqWiBoaAus3puu','4','nana@gmail.com','2646542',NULL,NULL,NULL,NULL,NULL),(6,'aaa','$2y$10$RBxtD.UFGsb5oCuChJm7helVbXiHj/k6UT4KiV5dY6kSteDlHhcw6',NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1),(3,'nnnn','$2y$10$AF2p2j3eG6EA7Qpg9cjWAeLHKtHlvXORKWbG6PxESbAiQVW.DvELy',NULL,'nar@gmail.com','45456546',NULL,NULL,NULL,NULL,NULL),(4,'5454','4554','3','445@gmail.com','45456456456',NULL,NULL,1,1,1),(5,'nnn','$2y$10$8NagaB3Kjeat0omA4NqcjeWE9G4411lahp34c85ZqWiBoaAus3puu','4','nana@gmail.com','2646542',NULL,NULL,NULL,NULL,NULL),(6,'aaa','$2y$10$RBxtD.UFGsb5oCuChJm7helVbXiHj/k6UT4KiV5dY6kSteDlHhcw6',NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL),(12,'','$2y$10$adCdDAjUNzL1798Z/CES7OfmmFeLb0SOkRXftm/89lyzg1NsocQKG',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(13,'yodev','$2y$10$a3izxfMOjI.8elJ8mB0clufdRtFpK62A7aE3DT9UFzWYfuuZR2LjO',NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL),(14,'12','$2y$10$3BH5bQVQcwbEqcBxi9OdWOepSIekndwQIvYr7PetTGop.0BAgegOy',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(15,'zzzz','$2y$10$jiC.n00V.A209UoDzIKfnOK8.oaArciaMNHr3Erm1uyGQpcjk8wKe',NULL,NULL,'111111111',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -494,4 +672,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-26 16:38:14
+-- Dump completed on 2018-05-30 11:05:00
