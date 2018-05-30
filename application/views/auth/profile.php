@@ -642,11 +642,11 @@
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
-                    // if(data.message == 200){
-                    //     showMessage(data.message,"role");
-                    // }else{
+                    if(data.message == 200){
+                        showMessage(data.message,"role");
+                    }else{
                         showMessage(data.message);
-                    // }
+                    }
                 }
             });
 
