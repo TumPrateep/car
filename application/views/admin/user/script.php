@@ -58,12 +58,14 @@
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
                         var active = " active";
-                        if(data.status != "1"){
+                        if(data.status == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
                             switchVal = "false";
                             active = "";
                         }
                         return '<div class="col-sm-5">'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus()">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
@@ -100,6 +102,10 @@
     $("#btn-search").click(function(){
         table.ajax.reload();
     })
+
+    function updateStatus(){
+        alert("test");
+    }
 </script>
 
 </body>

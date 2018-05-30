@@ -262,3 +262,7 @@
   .file-drop-zone {
       height: auto !important;
   }
+
+  .gray{
+    color: gray;
+  }
