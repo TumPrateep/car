@@ -7,7 +7,7 @@ class UserManagement extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        //$this->auth();
     }
 
     function search_post(){
@@ -52,14 +52,13 @@ class UserManagement extends BD_Controller {
                 $nestedData['phone'] = $post->phone;
                 $nestedData['email'] = $post->email;
                 switch($post->category){
-                    case "1" : $nestedData['category'] ="ผู้ดูแลระบบ";break;
-                    case "2" : $nestedData['category'] ="ร้านอะไหล่";break;
-                    case "3" : $nestedData['category'] ="อู่";break;
-                    case "4" : $nestedData['category'] ="ผู้ใช้งาน";break;
-                    default  : $nestedData['category'] =" ";break;
-
-                    
+                    case 1 : $nestedData['category'] ="ผู้ดูแลระบบ";break;
+                    case 2 : $nestedData['category'] ="ร้านอะไหล่";break;
+                    case 3 : $nestedData['category'] ="อู่";break;
+                    case 4 : $nestedData['category'] ="ผู้ใช้งาน";break;
+                    default  : $nestedData['category'] = null;break;
                 }
+                $nestedData['status'] = $post->status;
 
                 $data[] = $nestedData;
 
@@ -341,4 +340,20 @@ class UserManagement extends BD_Controller {
 
     }
 
+    function changeStatus_post(){
+        $id = $this->post("id");
+        $status = $this->post("status");
+        $data = array(
+            'status' => $status
+        );
+        $this->load->model("User");
+        $result = $this->User->updateStatus($id,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 }
