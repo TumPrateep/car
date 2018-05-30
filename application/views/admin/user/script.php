@@ -29,7 +29,6 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.search = $("#table-search").val()
-                   
                 }
             },
             "columns": [
@@ -57,8 +56,14 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
                         return '<div class="col-sm-5">'
-                        +'<button type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';

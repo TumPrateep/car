@@ -52,14 +52,13 @@ class UserManagement extends BD_Controller {
                 $nestedData['phone'] = $post->phone;
                 $nestedData['email'] = $post->email;
                 switch($post->category){
-                    case "1" : $nestedData['category'] ="ผู้ดูแลระบบ";break;
-                    case "2" : $nestedData['category'] ="ร้านอะไหล่";break;
-                    case "3" : $nestedData['category'] ="อู่";break;
-                    case "4" : $nestedData['category'] ="ผู้ใช้งาน";break;
-                    default  : $nestedData['category'] =" ";break;
-
-                    
+                    case 1 : $nestedData['category'] ="ผู้ดูแลระบบ";break;
+                    case 2 : $nestedData['category'] ="ร้านอะไหล่";break;
+                    case 3 : $nestedData['category'] ="อู่";break;
+                    case 4 : $nestedData['category'] ="ผู้ใช้งาน";break;
+                    default  : $nestedData['category'] = null;break;
                 }
+                $nestedData['status'] = $post->status;
 
                 $data[] = $nestedData;
 
