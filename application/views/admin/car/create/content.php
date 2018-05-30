@@ -4,7 +4,7 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/car") ?>">ยี่ห้อรถ</a>
+        <a href="<?=base_url("admin/car") ?>">การจัดการยี่ห้อ</a>
       </li>
       <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
     </ol>
@@ -23,13 +23,13 @@
                   <div class="card-body black bg-light">
                     
                       <div class="form-group">
-                        <label>ชื่อยี่ห้อรถ</label>
+                        <label>ชื่อยี่ห้อรถ</label> <span class="error">*</span>
                         <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName">
                       </div>
-                        <div class="form-group">
+                        <div class="form-group"> 
                           <input id="brandPicture" name ="brandPicture" class="file" type="file">
                         </div>
-                      <div class="form-group">
+                      <div class="form-group"> 
                         <button type="submit" class="btn btn-primary">บันทึก</button>
                       </div>
                     </div>
