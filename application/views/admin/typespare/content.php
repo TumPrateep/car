@@ -30,6 +30,7 @@
         <thead>
           <th>ลำดับ</th>
           <th>รายการอะไหล่</th>
+          <th>สถานะอะไหล่</th>
           <th></th>
         </thead>	
       </table>

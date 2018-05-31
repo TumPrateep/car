@@ -32,7 +32,8 @@
             },
             "columns": [
                 null,
-                { "data": "spares_undercarriageName" }
+                { "data": "spares_undercarriageName" },
+                null
                 
             ],
             "columnDefs": [
@@ -42,6 +43,16 @@
                     "targets": [0,1]
                 },{
                     "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.status != null){
+                            return data.status;
+                        }else{
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }
+                    }
+                },{
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/sparepartcar/sparepart/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
