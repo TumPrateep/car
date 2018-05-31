@@ -36,7 +36,7 @@
                 null,
                 { "data": "username" },
                 { "data": "phone" },
-                { "data": "email" },
+                null,
                 { "data": "category" },
                 null,
                 null
@@ -46,6 +46,16 @@
                     "searchable": false,
                     "orderable": false,
                     "targets": [0,6]
+                },{
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.email != null){
+                            return data.email;
+                        }else{
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }
+                    }
                 },{
                     "targets": 6,
                     "data": null,
