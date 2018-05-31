@@ -109,6 +109,11 @@ class User extends CI_Model{
         $result = $this->db->get('users')->row();
         return $result;
     }
+    
+    function getuserById($id){
+        $this->db->select("id,username,email,phone");
+        return $this->db->where('id',$id)->get("users")->row();
+    }
 
     function delete($id){
         $this->db->where_not_in("username" , "admin");

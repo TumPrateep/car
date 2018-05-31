@@ -55,8 +55,8 @@
             "columns": [
                 null,
                 { "data": "modelName" },
-                { "data": "yearStart" },
-                { "data": "yearEnd" },
+                null,
+                { "data": "status" },
                 null
             ],
             "columnDefs": [
@@ -64,6 +64,15 @@
                     "searchable": false,
                     "orderable": false,
                     "targets": [0,4]
+                },{
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.yearEnd != null){
+                            return data.yearStart+' - '+data.yearEnd;
+                        }
+                        return data.yearStart;
+                    }
                 },{
                     "targets": 4,
                     "data": null,

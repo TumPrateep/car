@@ -147,7 +147,7 @@ class Car extends BD_Controller {
             0 =>null, 
             1 =>'modelName',
             2 => 'yearStart',
-            3 => 'yearEnd'
+            3 => 'status'
         );
 
         $limit = $this->post('length');
@@ -184,6 +184,7 @@ class Car extends BD_Controller {
                 $nestedData['modelName'] = $post->modelName;
                 $nestedData['yearStart'] = $post->yearStart;
                 $nestedData['yearEnd'] = $post->yearEnd;
+                $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
 
             }

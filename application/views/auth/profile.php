@@ -200,6 +200,22 @@
                               <div class="form-group col-md-6">
                                 <label>ใบทะเบียนการค้า</label><span class="error">*</span>
                                 <input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="ใบทะเบียนการค้า">
+                              </div> 
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>ชื่อ</label><span class="error">*</span>
+                                <input type="text" name="firstname" id="firstname" class="form-control" placeholder="ชื่อ">
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label>นามสกุล</label><span class="error">*</span>
+                                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="นามสกุล">
+                              </div>
+                          </div>
+                          <div class=form-row>
+                              <div class="form-group col-md-12">
+                                <label>เลขบัตรประชาชน</label><span class="error">*</span>
+                                <input type="text" name="idcard" id="idcard" class="form-control" placeholder="เลขบัตรประชาชน" rows="3"></textarea>
                               </div>
                           </div>
                           <div class="form-row">
@@ -280,12 +296,54 @@
                           <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label>ชื่อร้านค้าส่ง</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="car_accessoriesName" id="car_accessoriesName" placeholder="ชื่ออู่">
+                                <input type="text" class="form-control" name="car_accessoriesName" id="car_accessoriesName" placeholder="ชื่อร้านค้าส่ง">
                               </div>
                               <div class="form-group col-md-6">
                                 <label>ใบทะเบียนการค้า</label><span class="error">*</span>
                                 <input type="text" class="form-control" name="businessRegistration" id="businessRegistrationAccessories" placeholder="ใบทะเบียนการค้า">
                               </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label>ชื่อ</label><span class="error">*</span>
+                                <input type="text" name="firstname" id="firstname" class="form-control" placeholder="ชื่อ">
+                              </div>
+                            <div class="form-group col-md-6">
+                                <label>นามสกุล</label><span class="error">*</span>
+                                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="นามสกุล">
+                              </div>
+                          </div>
+                          <div class=form-row>
+                              <div class="form-group col-md-12">
+                                <label>เลขบัตรประชาชน</label><span class="error">*</span>
+                                <input type="text" name="idcard" id="idcard" class="form-control" placeholder="เลขบัตรประชาชน" rows="3"></textarea>
+                              </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group col-md-12">
+                                <label>ที่อยู่</label><span class="error">*</span>
+                                <textarea class="form-control" name="addressGarage" id="addressGarage" placeholder="ที่อยู่" rows="3"></textarea>
+                              </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label>จังหวัด</label><span class="error">*</span>
+                              <select class="form-control" name="garage-provinceId" id="garage-provinceId"></select>
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>อำเภอ</label><span class="error">*</span>
+                              <select class="form-control" name="garage-districtId" id="garage-districtId"></select>
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label>ตำบล</label><span class="error">*</span>
+                              <select class="form-control" name="garage-subdistrictId" id="garage-subdistrictId"></select>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label>รหัสไปรษณีย์</label><span class="error">*</span>
+                              <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="รหัสไปรษณีย์">
+                            </div>
                           </div>
                         </form>
                       </div>
@@ -514,6 +572,19 @@
           }
         });
 
+        function checkID(id) {
+            if(id.length != 13) return false;
+            for(i=0, sum=0; i < 12; i++)
+                sum += parseFloat(id.charAt(i))*(13-i);
+            if((11-sum%11)%10!=parseFloat(id.charAt(12)))
+                return false;
+            return true;
+        }
+
+        jQuery.validator.addMethod("pid", function(value, element) {
+          return checkID(value);
+        }, 'กรุณากรอกเลขบัตรประชาชนให้ถูกต้อง');
+
         $("#form-role-3").validate({
           rules:{
             garageName:{
@@ -521,6 +592,16 @@
             },
             businessRegistration:{
               required: true
+            },
+            firstname:{
+              required: true
+            },
+            lastname:{
+              required: true
+            },
+            idcard:{
+              required: true,
+              pid: true
             },
             addressGarage:{
               required: true
@@ -546,6 +627,15 @@
             businessRegistration:{
               required: "กรุณากรอกใบทะเบียนการค้า"
             },
+            firstname:{
+              required: "กรุณากรอกชื่อ"
+            },
+            lastname:{
+              required: "กรุณากรอกนามสกุล"
+            },
+            idcard:{
+              required: "กรุณากรอกเลขบัตรประชาชน"
+            }, 
             addressGarage:{
               required: "กรุณากรอกที่อยู่"
             },
@@ -571,7 +661,33 @@
             },
             businessRegistration:{
               required: true
-            }
+            },
+            firstname:{
+              required: true
+            },
+            lastname:{
+              required: true
+            },
+            idcard:{
+              required: true,
+              pid: true
+            },
+            addressGarage:{
+              required: true
+            },
+            "garage-provinceId":{
+              required: true
+            },
+            "garage-districtId":{
+              required: true
+            },
+            "garage-subdistrictId":{
+              required: true
+            },
+            "zipCode":{
+              required: true,
+              zipCode :true 
+            } 
           },
           messages:{
             car_accessoriesName:{
@@ -579,6 +695,30 @@
             },
             businessRegistration:{
               required: "กรุณากรอกใบทะเบียนการค้า"
+            },
+            firstname:{
+              required: "กรุณากรอกชื่อ"
+            },
+            lastname:{
+              required: "กรุณากรอกนามสกุล"
+            },
+            idcard:{
+              required: "กรุณากรอกเลขบัตรประชาชน"
+            }, 
+            addressGarage:{
+              required: "กรุณากรอกที่อยู่"
+            },
+            "garage-provinceId":{
+              required: "กรุณาเลือกจังหวัด"
+            },
+            "garage-districtId":{
+              required: "กรุณาเลือกอำเภอ"
+            },
+            "garage-subdistrictId":{
+              required: "กรุณาเลือกตำบล"
+            },
+            zipCode:{
+              required: "กรุณากรอกรหัสไปรษณีย์"
             }
           }
         });
