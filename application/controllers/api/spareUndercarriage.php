@@ -6,7 +6,8 @@ class SpareUndercarriage extends BD_Controller {
     function searchspareUndercarriage_post(){
         $columns = array( 
             0 => null,
-            1 => 'spares_undercarriageName' 
+            1 => 'spares_undercarriageName',
+            2 => 'status'
             
             
         );
@@ -41,6 +42,7 @@ class SpareUndercarriage extends BD_Controller {
 
                 $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
                 $nestedData['spares_undercarriageName'] = $post->spares_undercarriageName;
+                $nestedData['status'] = $post->status;
 
                 $data[] = $nestedData;
 

@@ -34,6 +34,7 @@
             "columns": [
                 null,
                 { "data": "spares_brandName" },
+                null,
                 null
             ],
             "columnDefs": [
@@ -45,8 +46,26 @@
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.spares_brandId+','+data.status+','+data.spares_undercarriageId+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
+                    }
+                },{
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/SparePartCar/updatespare/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareBrand('+data.spares_brandId+',\''+data.spares_brandName+'\',\''+data.spares_undercarriageId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -58,28 +77,40 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [0,1]},
-                {"className": "dt-center", "targets": [2]},
+                {"className": "dt-center", "targets": [2,3]},
                 { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 2 }
+                { "width": "10%", "targets": 2 },
+                { "width": "20%", "targets": 3 }
             ]	 
 
     });
 
-    $('#spares_brand-table tbody').on( 'click', 'button.delete', function () {
-        var data = table.row( $(this).parents('tr') ).data();
+    function deleteSpareBrand(spares_brandId,spares_brandName,spares_undercarriageId){
         var option = {
-            url: "/SparePartCar/deleteSpareBrand?spares_brandId="+data.spares_brandId,
+            url: "/SparePartCar/deleteSpareBrand?spares_brandId="+spares_brandId,
             label: "ลบยี่ห้ออะไหล่",
-            content: "คุณต้องการลบ "+data.spares_brandName+" ใช่หรือไม่",
-            gotoUrl: "admin/car/SparePartCar/sparepart/"+spares_undercarriageId
+            content: "คุณต้องการลบ "+spares_brandName+" ใช่หรือไม่",
+            gotoUrl: "admin/SparePartCar/sparepart/"+spares_undercarriageId
         }
         fnDelete(option);
-    } );
+    }
 
     $("#btn-search").click(function(){
         table.ajax.reload();
     })
 
+    function updateStatus(spares_brandId,status,spares_undercarriageId){
+        $.post(base_url+"api/SparePartCar/changeStatus",{
+            "spares_brandId": spares_brandId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/sparepartcar/sparepart/"+spares_undercarriageId);
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
 
     
 </script>

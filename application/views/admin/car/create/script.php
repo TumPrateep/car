@@ -20,6 +20,7 @@
     });
 
     $("#brandPicture").fileinput({
+        language: "th",
         theme: 'fa',
         allowedFileExtensions: ['jpg'],
         overwriteInitial: false,

@@ -39,5 +39,14 @@ class LocationModel extends CI_Model {
 
     }
 
+    function getProvincecar(){
+        $this->db->select('provinceforcarId,provinceforcarName');
+        $this->db->from('provinceforcar');
+        $this->db->where('status',1);
+        $this->db->order_by("provinceforcarName", "asc");
+        $result = $this->db->get();
+        return $result->result();
+
+    }
 
 }

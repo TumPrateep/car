@@ -63,6 +63,22 @@ class Location extends BD_Controller {
         }
     }
 
+    function getProvinceforcar_post(){
+
+        $this->load->model("LocationModel");
+        $output["status"] = true;
+        $result = $this->LocationModel->getProvincecar();
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
 
 
 }
