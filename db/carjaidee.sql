@@ -68,6 +68,10 @@ CREATE TABLE `car_accessories` (
   `create_by` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `firstname` varchar(45) DEFAULT NULL,
+  `lastname` varchar(45) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
+  `idcard` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`car_accessoriesId`),
   KEY `fk_car_accessories_users1_idx` (`userId`),
   KEY `fk_car_accessories_users2_idx` (`create_by`),
@@ -197,6 +201,10 @@ CREATE TABLE `garage` (
   `option4` int(11) DEFAULT NULL,
   `option_outher` varchar(255) DEFAULT NULL,
   `garagePicture` varchar(255) DEFAULT NULL,
+  `firstname` varchar(45) DEFAULT NULL,
+  `lastname` varchar(45) DEFAULT NULL,
+  `idcard` varchar(45) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`garageId`,`garageMaster`),
   KEY `fk_garage_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_garage_district1_idx` (`districtId`),
@@ -652,7 +660,7 @@ CREATE TABLE `users` (
   KEY `fk_users_users2_idx` (`update_by`),
   CONSTRAINT `fk_users_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -661,7 +669,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(7,'natza9301','$2y$10$t4EujZxRWZ0mikKuynnREO1ZNXPVC43eIra/LC9PhqBRZIu4jJ8/e',NULL,NULL,'0122222222222',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(8,'hgj','$2y$10$kbX6ILFZRfJzjxR8LBzOsetcKxzOuz6S3K555goSvFpNG7jGbdmI6',NULL,NULL,'ghj',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -678,4 +686,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-31 10:46:43
+-- Dump completed on 2018-05-31 14:20:33
