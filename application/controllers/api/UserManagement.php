@@ -7,7 +7,7 @@ class UserManagement extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        //$this->auth();
     }
 
     function search_post(){
@@ -362,7 +362,6 @@ class UserManagement extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-
     function getuser_post(){
 
         $id = $this->post('id');
@@ -388,4 +387,43 @@ class UserManagement extends BD_Controller {
         }
     }
 
+    function updateUser_post(){
+
+        $id = $this->post('id');
+        $username = $this->post('username');
+        $phone = $this->post('phone');
+        $email = $this->post('email');
+        
+        $this->load->model("User");
+
+        $userId = $this->session->userdata['logged_in']['id'];
+
+        $result = $this->User->wherenotUser($id,$username);
+
+        if($result){
+            $data = array(
+                'id' => $id,
+                'username' => $username,
+                'phone' => $phone,
+                'email' => $email,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId
+            );
+            $result = $this->User->updateUser($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+        
 }
