@@ -156,7 +156,8 @@
                             </div>
                             <div class="form-group col-md-4">
                               <label>จังหวัด</label><span class="error">*</span>
-                              <input type="text" name="provincePlate" id="provincePlate" class="form-control" placeholder="จังหวัด">
+                              <select class="form-control" name="provincePlate" id="provincePlate"c lass="form-control" placeholder="จังหวัด"></select>
+                              
                             </div>
                           </div>
                           <div class="form-row">
@@ -434,6 +435,10 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
+      
+        var provincePlateDropdown = $("#provincePlate");
+        provincePlateDropdown.append('<option value="">เลือกจังหวัด</option>');
+
         var provinceDropdown = $("#provinceId");
         provinceDropdown.append('<option value="">เลือกจังหวัด</option>');
 
@@ -446,8 +451,28 @@
         function onLoad(){
           loadProvince();
         }
+        function onLoadprovinceforcar(){
+          loadProvince1();
+        }
 
         onLoad();
+        onLoadprovinceforcar();
+
+        function loadProvince1(){
+          $.post(base_url+"api/location/getProvinceforcar",{},
+            function(data){
+              var provinceforcar = data.data;
+              $.each(provinceforcar, function( index, value ) {
+                provincePlateDropdown.append('<option value="'+value.provinceforcarId+'">'+value.provinceforcarName+'</option>');
+              });
+            }
+          );
+        }
+
+        provinceDropdown.change(function(){
+          var provinceforcarId = $(this).val();
+          loadDistrict(provinceforcarId);
+        });
 
         function loadProvince(){
           $.post(base_url+"api/location/getProvince",{},
