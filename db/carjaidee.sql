@@ -72,6 +72,7 @@ CREATE TABLE `car_accessories` (
   `lastname` varchar(45) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,
   `idcard` varchar(45) DEFAULT NULL,
+  `postCode` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`car_accessoriesId`),
   KEY `fk_car_accessories_users1_idx` (`userId`),
   KEY `fk_car_accessories_users2_idx` (`create_by`),
@@ -121,7 +122,7 @@ CREATE TABLE `car_profile` (
   CONSTRAINT `fk_car_profile_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_car_profile_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_car_profile_users3` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,6 +131,7 @@ CREATE TABLE `car_profile` (
 
 LOCK TABLES `car_profile` WRITE;
 /*!40000 ALTER TABLE `car_profile` DISABLE KEYS */;
+INSERT INTO `car_profile` VALUES (2,'12','b26d372124aa23507b787c1c37d9f2c7.png','d5e22bc3cba987795116979e597b013c.png','b365cc96b9685f9db5fe9c102743bc93.png',9,'2018-05-31 16:05:53',NULL,9,NULL,1,'12','12','1','21');
 /*!40000 ALTER TABLE `car_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -321,7 +323,7 @@ CREATE TABLE `provinceforcar` (
 
 LOCK TABLES `provinceforcar` WRITE;
 /*!40000 ALTER TABLE `provinceforcar` DISABLE KEYS */;
-INSERT INTO `provinceforcar` VALUES (1,'กรุงเทพมหานคร','1'),(2,'สมุทรปราการ','2'),(3,'นนทบุรี','3'),(4,'ปทุมธานี','4'),(5,'พระนครศรีอยุธยา','5'),(6,'อ่างทอง','6'),(7,'ลพบุรี','7'),(8,'สิงห์บุรี','8'),(9,'ชัยนาท','9'),(10,'สระบุรี','10'),(11,'ชลบุรี','11'),(12,'ระยอง','12'),(13,'จันทบุรี','13'),(14,'ตราด','14'),(15,'ฉะเชิงเทรา','15'),(16,'ปราจีนบุรี','16'),(17,'นครนายก','17'),(18,'สระแก้ว','18'),(19,'นครราชสีมา','19'),(20,'บุรีรัมย์','20'),(21,'สุรินทร์','21'),(22,'ศรีสะเกษ','22'),(23,'อุบลราชธานี','23'),(24,'ยโสธร','24'),(25,'ชัยภูมิ','25'),(26,'อำนาจเจริญ','26'),(27,'หนองบัวลำภู','27'),(28,'ขอนแก่น','28'),(29,'อุดรธานี','29'),(30,'เลย','30'),(31,'หนองคาย','31'),(32,'มหาสารคาม','32'),(33,'ร้อยเอ็ด','33'),(34,'กาฬสินธุ์','34'),(35,'สกลนคร','35'),(36,'นครพนม','36'),(37,'มุกดาหาร','37'),(38,'เชียงใหม่','38'),(39,'ลำพูน','39'),(40,'ลำปาง','40'),(41,'อุตรดิตถ์','41'),(42,'แพร่','42'),(43,'น่าน','43'),(44,'พะเยา','44'),(45,'เชียงราย','45'),(46,'แม่ฮ่องสอน','46'),(47,'นครสวรรค์','47'),(48,'อุทัยธานี','48'),(49,'กำแพงเพชร','49'),(50,'ตาก','50'),(51,'สุโขทัย','51'),(52,'พิษณุโลก','52'),(53,'พิจิตร','53'),(54,'เพชรบูรณ์','54'),(55,'ราชบุรี','55'),(56,'กาญจนบุรี','56'),(57,'สุพรรณบุรี','57'),(58,'นครปฐม','58'),(59,'สมุทรสาคร','59'),(60,'สมุทรสงคราม','60'),(61,'เพชรบุรี','61'),(62,'ประจวบคีรีขันธ์','62'),(63,'นครศรีธรรมราช','63'),(64,'กระบี่','64'),(65,'พังงา','65'),(66,'ภูเก็ต','66'),(67,'สุราษฎร์ธานี','67'),(68,'ระนอง','68'),(69,'ชุมพร','69'),(70,'สงขลา','70'),(71,'สตูล','71'),(72,'ตรัง','72'),(73,'พัทลุง','73'),(74,'ปัตตานี','74'),(75,'ยะลา','75'),(76,'นราธิวาส','76'),(77,'บึงกาฬ','77'),(78,'เบตง','78');
+INSERT INTO `provinceforcar` VALUES (1,'กรุงเทพมหานคร','1'),(2,'สมุทรปราการ','1'),(3,'นนทบุรี','1'),(4,'ปทุมธานี','1'),(5,'พระนครศรีอยุธยา','1'),(6,'อ่างทอง','1'),(7,'ลพบุรี','1'),(8,'สิงห์บุรี','1'),(9,'ชัยนาท','1'),(10,'สระบุรี','1'),(11,'ชลบุรี','1'),(12,'ระยอง','1'),(13,'จันทบุรี','1'),(14,'ตราด','1'),(15,'ฉะเชิงเทรา','1'),(16,'ปราจีนบุรี','1'),(17,'นครนายก','1'),(18,'สระแก้ว','1'),(19,'นครราชสีมา','1'),(20,'บุรีรัมย์','1'),(21,'สุรินทร์','1'),(22,'ศรีสะเกษ','1'),(23,'อุบลราชธานี','1'),(24,'ยโสธร','1'),(25,'ชัยภูมิ','1'),(26,'อำนาจเจริญ','1'),(27,'หนองบัวลำภู','1'),(28,'ขอนแก่น','1'),(29,'อุดรธานี','1'),(30,'เลย','1'),(31,'หนองคาย','1'),(32,'มหาสารคาม','1'),(33,'ร้อยเอ็ด','1'),(34,'กาฬสินธุ์','1'),(35,'สกลนคร','1'),(36,'นครพนม','1'),(37,'มุกดาหาร','1'),(38,'เชียงใหม่','1'),(39,'ลำพูน','1'),(40,'ลำปาง','1'),(41,'อุตรดิตถ์','1'),(42,'แพร่','1'),(43,'น่าน','1'),(44,'พะเยา','1'),(45,'เชียงราย','1'),(46,'แม่ฮ่องสอน','1'),(47,'นครสวรรค์','1'),(48,'อุทัยธานี','1'),(49,'กำแพงเพชร','1'),(50,'ตาก','1'),(51,'สุโขทัย','1'),(52,'พิษณุโลก','1'),(53,'พิจิตร','1'),(54,'เพชรบูรณ์','1'),(55,'ราชบุรี','1'),(56,'กาญจนบุรี','1'),(57,'สุพรรณบุรี','1'),(58,'นครปฐม','1'),(59,'สมุทรสาคร','1'),(60,'สมุทรสงคราม','1'),(61,'เพชรบุรี','1'),(62,'ประจวบคีรีขันธ์','1'),(63,'นครศรีธรรมราช','1'),(64,'กระบี่','1'),(65,'พังงา','1'),(66,'ภูเก็ต','1'),(67,'สุราษฎร์ธานี','1'),(68,'ระนอง','1'),(69,'ชุมพร','1'),(70,'สงขลา','1'),(71,'สตูล','1'),(72,'ตรัง','1'),(73,'พัทลุง','1'),(74,'ปัตตานี','1'),(75,'ยะลา','1'),(76,'นราธิวาส','1'),(77,'บึงกาฬ','1'),(78,'เบตง','1');
 /*!40000 ALTER TABLE `provinceforcar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -646,7 +648,7 @@ CREATE TABLE `user_profile` (
   CONSTRAINT `fk_user_profile_province1` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_subdistrict1` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -655,7 +657,7 @@ CREATE TABLE `user_profile` (
 
 LOCK TABLES `user_profile` WRITE;
 /*!40000 ALTER TABLE `user_profile` DISABLE KEYS */;
-INSERT INTO `user_profile` VALUES (1,'admin','admin','1',NULL,NULL,63,843,710,1,NULL,1,NULL,NULL,NULL);
+INSERT INTO `user_profile` VALUES (1,'admin','admin','1',NULL,NULL,63,843,710,1,NULL,1,NULL,NULL,NULL),(2,'12','12','1','','122222222222222222',58,813,7343,9,'2018-05-31 16:05:53',9,'21','นาย',NULL);
 /*!40000 ALTER TABLE `user_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -694,7 +696,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(8,'hgj','$2y$10$kbX6ILFZRfJzjxR8LBzOsetcKxzOuz6S3K555goSvFpNG7jGbdmI6',NULL,NULL,'ghj',NULL,NULL,NULL,NULL,NULL,NULL),(9,'natza9301','$2y$10$9Tphrpm9Yuc79zGaoaZ3o.hkYpP8FK32dM4l3dOB4/hyYpDV/x4pa',NULL,NULL,'222222222222222',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(9,'natza9301','$2y$10$9Tphrpm9Yuc79zGaoaZ3o.hkYpP8FK32dM4l3dOB4/hyYpDV/x4pa','4',NULL,'222222222222222',NULL,NULL,NULL,NULL,1,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -711,4 +713,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-31 15:38:58
+-- Dump completed on 2018-05-31 16:32:12
