@@ -72,7 +72,7 @@ class SparePartCar extends BD_Controller {
         
         $this->load->model("Sparesbrand");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->Sparesbrand->getBrandforTF($spares_brandName,$spares_undercarriageId);
+        $isCheck = $this->Sparesbrand->isGetBrand($spares_brandName,$spares_undercarriageId);
 
         if($isCheck){
             $data = array(
@@ -91,8 +91,7 @@ class SparePartCar extends BD_Controller {
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
+            }else{
                 $output["status"] = false;
                 $output["message"] = REST_Controller::MSG_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
