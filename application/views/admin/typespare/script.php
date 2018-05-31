@@ -45,11 +45,19 @@
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        if(data.status != null){
-                            return data.status;
-                        }else{
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status == null){
                             return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
                         }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.brandId+','+data.status+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
                     }
                 },{
                     "targets": 3,
