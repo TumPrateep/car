@@ -79,6 +79,18 @@
         table.ajax.reload();
     })
 
+    function updateStatus(spares_brandId,status,spares_undercarriageId){
+        $.post(base_url+"api/SparePartCar/changeStatus",{
+            "modelId": spares_brandId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/car/model/"+spares_undercarriageId);
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
 
     
 </script>

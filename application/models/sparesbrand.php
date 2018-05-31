@@ -132,5 +132,11 @@ class Sparesbrand extends CI_Model{
 
     }
 
+    function updateStatus($spares_brandId,$data){
+        $this->db->where('spares_brandId',$spares_brandId);
+        $result = $this->db->update('spares_brand', $data);
+        return $result; 
+    }
+
 
 }
