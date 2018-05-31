@@ -78,7 +78,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/car/updateModel/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareBrand('+data.modelId+',\''+data.modelName+'\',\''+data.brandId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -97,17 +97,15 @@
 
     });
 
-    $('#model-table tbody').on( 'click', 'button.delete', function () {
-        var data = table.row( $(this).parents('tr') ).data();
-        // alert( data.brandId );
+    function deleteSpareBrand(modelId,modelName,brandId){
         var option = {
-            url: "/car/deleteModel?modelId="+data.modelId,
+            url: "/car/deleteModel?modelId="+modelId,
             label: "ลบรุ่นรถ",
-            content: "คุณต้องการลบ "+data.modelName+" ใช่หรือไม่",
-            gotoUrl: "admin/car/model/"+data.brandId
+            content: "คุณต้องการลบ "+modelName+" ใช่หรือไม่",
+            gotoUrl: "admin/car/model/"+brandId
         }
         fnDelete(option);
-    } );
+    }
 
     $("#btn-search").click(function(){
         table.ajax.reload();

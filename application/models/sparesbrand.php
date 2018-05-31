@@ -109,8 +109,8 @@ class Sparesbrand extends CI_Model{
         return $result;
     }
 
-    function delete($sparesbrandId){
-        return $this->db->delete('sparesbrand', array('sparesbrandId' => $sparesbrandId));
+    function delete($spares_brandId){
+        return $this->db->delete('spares_brand', array('spares_brandId' => $spares_brandId));
     }
 
     function checkSpareBrand($spares_brandId,$spares_undercarriageId) {
