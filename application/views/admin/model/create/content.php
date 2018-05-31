@@ -35,16 +35,14 @@
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                           <div class="form-group">
-                            <label>ปีที่เริ่ม</label> <span class="error">*</span>
-                            <input type="number" class="form-control" placeholder="ปีที่เริ่ม" name="yearStart">
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label>ปีที่สิ้นสุด</label>
-                            <input type="number" class="form-control" placeholder="ปีที่สิ้นสุด" name="yearEnd">
+                            <label>ปีที่ผลิต</label> <span class="error">*</span> <label id="yearStart-error" class="error" for="yearStart"></label>
+                            <div class="form-inline">
+                              <select class="form-control col-md-5" name="yearStart" id="yearStart"></select>
+                              <label class="col-md-2">ถึง</label>
+                              <select class="form-control col-md-5" name="yearEnd" id="yearEnd"></select>
+                            </div>
                           </div>
                         </div>
                       </div>
