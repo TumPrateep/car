@@ -23,11 +23,11 @@
                     <form id="group">
                       <div class="card-body black bg-light">
                         <div class="form-group">
-                          <label>ชื่อผู้ใช้งาน</label>
+                          <label>ชื่อผู้ใช้งาน</label> <span class="error">*</span>
                           <input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน" name="username">
                         </div>
                         <div class="form-group">
-                          <label>เบอร์โทรศัพท์</label>
+                          <label>เบอร์โทรศัพท์</label> <span class="error">*</span>
                           <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์" name="phoneNumber"> 
                         </div>
                         <div class="form-group">

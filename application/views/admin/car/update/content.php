@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car") ?>">ยี่ห้อรถ</a>
+          <a href="<?=base_url("admin/car") ?>">การจัดการยี่ห้อ</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขข้อมูลรถ</li>
       </ol>
@@ -23,7 +23,7 @@
                   <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
                   <div class="card-body black bg-light">
                       <div class="form-group">
-                        <label>ชื่อยี่ห้อรถ</label>
+                        <label>ชื่อยี่ห้อรถ</label> <span class="error">*</span>
                         <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName" id="brandName" value="">
                       </div>
                       <div class="form-group">

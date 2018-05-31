@@ -4,10 +4,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car") ?>">ยี่ห้อรถ</a>
+          <a href="<?=base_url("admin/car") ?>">การจัดการยี่ห้อ</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car/model/$brandId") ?>">รุ่น</a>
+          <a href="<?=base_url("admin/car/model/$brandId") ?>">รุ่นรถ</a>
         </li>
         <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
       </ol>
@@ -29,7 +29,7 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label>ชื่อรุ่น</label>
+                            <label>ชื่อรุ่น</label> <span class="error">*</span>
                             <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ" name="modelName">
                           </div>
                         </div>
@@ -37,7 +37,7 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label>ปีที่เริ่ม</label>
+                            <label>ปีที่เริ่ม</label> <span class="error">*</span>
                             <input type="number" class="form-control" placeholder="ปีที่เริ่ม" name="yearStart">
                           </div>
                         </div>
