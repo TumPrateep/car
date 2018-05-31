@@ -141,12 +141,12 @@ class SparePartCar extends BD_Controller {
 
 
     function deleteSpareBrand_get(){
-        $sparesbrandId = $this->get('sparesbrandId');
+        $spares_brandId = $this->get('spares_brandId');
 
         $this->load->model("Sparesbrand");
-        $sparBrand = $this->SpaSparesbrandre->getSpareBrandbyId($sparesbrandId);
+        $sparBrand = $this->Sparesbrand->getSpareBrandbyId($spares_brandId);
         if($sparBrand != null){
-            $isDelete = $this->Sparesbrand->delete($sparesbrandId);
+            $isDelete = $this->Sparesbrand->delete($spares_brandId);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
