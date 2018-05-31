@@ -61,7 +61,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                           +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
+                           +'<button type="button" class="delete btn btn-danger" onclick="deleteUser('+data.id+',\''+data.username+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{
                     "targets": 5,
@@ -98,17 +98,16 @@
 
     });
 
-    $('#user-table tbody').on( 'click', 'button.delete', function () {
-        var data = table.row( $(this).parents('tr') ).data();
-        
+    function deleteUser(id,username){
         var option = {
-            url: "/UserManagement/delete?id="+data.id,
+            url: "/UserManagement/delete?id="+id,
             label: "ลบข้อมูลผู้ใช้งาน",
-            content: "คุณต้องการลบ "+data.username+" ใช่หรือไม่",
+            content: "คุณต้องการลบ "+username+" ใช่หรือไม่",
             gotoUrl: "admin/usermanagement"
         }
         fnDelete(option);
-    } );
+    }
+   
 
     $("#btn-search").click(function(){
         table.ajax.reload();
