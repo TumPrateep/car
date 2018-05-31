@@ -107,6 +107,11 @@ class Car extends BD_Controller {
         $yearStart = $this->post("yearStart");
         $yearEnd = $this->post("yearEnd");
 
+        if($yearEnd == 1){
+            $yearEnd = null;
+        }
+
+
         $this->load->model("Model");
         $isCheck = $this->Model->get_model($brandId,$modelName);
 
@@ -341,7 +346,11 @@ class Car extends BD_Controller {
         $modelName = $this->post('modelName');
         $brandId = $this->post('brandId');
         $this->load->model("Model");
-
+        
+        if($yearEnd == 1){
+            $yearEnd = null;
+        }
+        
         $result = $this->Model->wherenot($modelId,$modelName,$brandId);
 
         if($result){
