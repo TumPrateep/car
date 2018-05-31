@@ -16,9 +16,7 @@ class Auth extends BD_Controller {
         $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
         $this->load->model('M_main');
     }
-
     
-
     public function login_post()
     {
         $u = $this->post('username'); //Username Posted
@@ -37,10 +35,13 @@ class Auth extends BD_Controller {
             $token['exp'] = $date->getTimestamp() + 60*60*5; //To here is to generate token
             $output['token'] = JWT::encode($token,$kunci ); //This is the output token
             $output['userid'] = $val->id;
+            $this->load->model("Profile");
+            $profile = $this->Profile->findUserProfileById($val->id);
             $sess_array = array(
                 'id' => $val->id,
                 'username' => $val->username,
-                'role' => (int)$val->category
+                'role' => (int)$val->category,
+                'name' => $profile->firstname." ".$profile->lastname
             );
             $this->session->set_userdata('logged_in', $sess_array);
             $this->set_response($output, REST_Controller::HTTP_OK); //This is the respon if success

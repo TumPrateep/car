@@ -66,4 +66,9 @@ class Profile extends CI_Model{
         $this->db->update('users');
     }
 
+    function findUserProfileById($userId){
+        $this->db->where("userId", $userId);    
+        return $this->db->get('user_profile')->row();
+    }
+
 }
