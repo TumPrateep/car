@@ -20,19 +20,19 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form id="group">
-                      <input type="hidden" name="id" value="<?=$id ?>">
+                      <input type="hidden" name="id" id="id" value="<?=$id ?>">
                       <div class="card-body black bg-light">
                         <div class="form-group">
                           <label>ชื่อผู้ใช้งาน</label> <span class="error">*</span>
-                          <input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน" name="userName">
+                          <input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน" name="username" id="username" >
                         </div>
                         <div class="form-group">
                           <label>เบอร์โทรศัพท์</label> <span class="error">*</span>
-                          <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์" name="phoneNumber"> 
+                          <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์" name="phone" id="phone"> 
                         </div>
                         <div class="form-group">
                           <label>อีเมล</label>
-                          <input type="text" class="form-control" placeholder="อีเมล" name="email">
+                          <input type="text" class="form-control" placeholder="อีเมล" name="email" id="email">
                         </div>
                         
                         <div class="form-group">

@@ -1,10 +1,10 @@
 <script>
      $("#group").validate({
             rules: {
-                userName: {
+                username: {
                     required: true
                 },
-                phoneNumber: {
+                phone: {
                     required: true
                 },
                 email: {
@@ -12,10 +12,10 @@
                 } 
             },
             messages: {
-                userName: {
+                username: {
                     required: "กรุณากรอกชื่อผู้ใช้งาน"
                 },
-                phoneNumber: {
+                phone: {
                     required: "กรุณากรอกเบอร์โทรศัพท์"
                 },
                 email: {
@@ -23,6 +23,27 @@
                 } 
             },
         });
+
+    
+
+        var id = $("#id").val();
+
+        $.post(base_url+"api/UserManagement/getuser",{
+            "id": id
+        },function(data){
+            if(data.message!=200){
+                showMessage(data.message,"admin/usermanagement");
+            }
+
+            if(data.message == 200){
+                result = data.data;
+                $("#username").val(result.username);
+                $("#phone").val(result.phone);
+                $("#email").val(result.email);
+            }
+            
+        });
+    
 
 
 </script>

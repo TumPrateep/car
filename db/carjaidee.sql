@@ -623,7 +623,6 @@ CREATE TABLE `user_profile` (
 
 LOCK TABLES `user_profile` WRITE;
 /*!40000 ALTER TABLE `user_profile` DISABLE KEYS */;
-INSERT INTO `user_profile` VALUES (1,'as','as',1,'','as',58,584,7736,5,'2018-05-25 13:58:45',5,'as','');
 /*!40000 ALTER TABLE `user_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -653,7 +652,7 @@ CREATE TABLE `users` (
   KEY `fk_users_users2_idx` (`update_by`),
   CONSTRAINT `fk_users_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -662,7 +661,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(5,'nnn','$2y$10$8NagaB3Kjeat0omA4NqcjeWE9G4411lahp34c85ZqWiBoaAus3puu','','nana@gmail.com','2646542',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(7,'natza9301','$2y$10$t4EujZxRWZ0mikKuynnREO1ZNXPVC43eIra/LC9PhqBRZIu4jJ8/e',NULL,NULL,'0122222222222',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -679,4 +678,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-31 10:25:48
+-- Dump completed on 2018-05-31 10:46:43

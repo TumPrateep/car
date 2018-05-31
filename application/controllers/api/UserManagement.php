@@ -362,4 +362,30 @@ class UserManagement extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function getuser_post(){
+
+        $id = $this->post('id');
+        $this->load->model("User");
+        $isCheck = $this->User->checkuser($id);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->User->getuserById($id);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
 }
