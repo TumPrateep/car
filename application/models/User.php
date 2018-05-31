@@ -109,7 +109,7 @@ class User extends CI_Model{
         $result = $this->db->get('users')->row();
         return $result;
     }
-    
+
     function getuserById($id){
         $this->db->select("id,username,email,phone");
         return $this->db->where('id',$id)->get("users")->row();
@@ -157,5 +157,22 @@ class User extends CI_Model{
         return $result; 
     }
 
+    function wherenotUser($id,$username){
+        $this->db->select("username");
+        $this->db->from("users");
+        $this->db->where('id', $id);
+        $this->db->where_not_in('id', $id);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+    function updateUser($data){
+        $this->db->where('id',$data['id']);
+        $result = $this->db->update('users', $data);
+        return $result; 
+    }
 
 }

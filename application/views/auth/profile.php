@@ -206,17 +206,17 @@
                           <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>ชื่อ</label><span class="error">*</span>
-                                <input type="text" name="firstname" id="firstname" class="form-control" placeholder="ชื่อ">
+                                <input type="text" name="firstnameGarage" id="firstnameGarage" class="form-control" placeholder="ชื่อ">
                               </div>
                               <div class="form-group col-md-6">
                                 <label>นามสกุล</label><span class="error">*</span>
-                                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="นามสกุล">
+                                <input type="text" name="lastnameGarage" id="lastnameGarage" class="form-control" placeholder="นามสกุล">
                               </div>
                           </div>
                           <div class=form-row>
                               <div class="form-group col-md-12">
                                 <label>เลขบัตรประชาชน</label><span class="error">*</span>
-                                <input type="text" name="idcard" id="idcard" class="form-control" placeholder="เลขบัตรประชาชน" rows="3"></textarea>
+                                <input type="text" name="idcardGarage" id="idcardGarage" class="form-control" placeholder="เลขบัตรประชาชน" rows="3"></textarea>
                               </div>
                           </div>
                           <div class="form-row">
@@ -307,43 +307,43 @@
                           <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label>ชื่อ</label><span class="error">*</span>
-                                <input type="text" name="firstname" id="firstname" class="form-control" placeholder="ชื่อ">
+                                <input type="text" name="sparepart-firstname" id="sparepart-firstname" class="form-control" placeholder="ชื่อ">
                               </div>
                             <div class="form-group col-md-6">
                                 <label>นามสกุล</label><span class="error">*</span>
-                                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="นามสกุล">
+                                <input type="text" name="sparepart-lastname" id="sparepart-lastname" class="form-control" placeholder="นามสกุล">
                               </div>
                           </div>
                           <div class=form-row>
                               <div class="form-group col-md-12">
                                 <label>เลขบัตรประชาชน</label><span class="error">*</span>
-                                <input type="text" name="idcard" id="idcard" class="form-control" placeholder="เลขบัตรประชาชน" rows="3"></textarea>
+                                <input type="text" name="sparepart-idcard" id="sparepart-idcard" class="form-control" placeholder="เลขบัตรประชาชน" rows="3"></textarea>
                               </div>
                           </div>
                           <div class="form-row">
                               <div class="form-group col-md-12">
                                 <label>ที่อยู่</label><span class="error">*</span>
-                                <textarea class="form-control" name="addressGarage" id="addressGarage" placeholder="ที่อยู่" rows="3"></textarea>
+                                <textarea class="form-control" name="sparepart-address" id="sparepart-address" placeholder="ที่อยู่" rows="3"></textarea>
                               </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>จังหวัด</label><span class="error">*</span>
-                              <select class="form-control" name="garage-provinceId" id="garage-provinceId"></select>
+                              <select class="form-control" name="sparepart-provinceId" id="sparepart-provinceId"></select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>อำเภอ</label><span class="error">*</span>
-                              <select class="form-control" name="garage-districtId" id="garage-districtId"></select>
+                              <select class="form-control" name="sparepart-districtId" id="sparepart-districtId"></select>
                             </div>
                             <div class="form-group col-md-4">
                               <label>ตำบล</label><span class="error">*</span>
-                              <select class="form-control" name="garage-subdistrictId" id="garage-subdistrictId"></select>
+                              <select class="form-control" name="sparepart-subdistrictId" id="sparepart-subdistrictId"></select>
                             </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label>รหัสไปรษณีย์</label><span class="error">*</span>
-                              <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="รหัสไปรษณีย์">
+                              <input type="text" class="form-control" name="sparepart-zipCode" id="sparepart-zipCode" placeholder="รหัสไปรษณีย์">
                             </div>
                           </div>
                         </form>
@@ -618,13 +618,13 @@
             businessRegistration:{
               required: true
             },
-            firstname:{
+            firstnameGarage:{
               required: true
             },
-            lastname:{
+            lastnameGarage:{
               required: true
             },
-            idcard:{
+            idcardGarage:{
               required: true,
               pid: true
             },
@@ -652,13 +652,13 @@
             businessRegistration:{
               required: "กรุณากรอกใบทะเบียนการค้า"
             },
-            firstname:{
+            firstnameGarage:{
               required: "กรุณากรอกชื่อ"
             },
-            lastname:{
+            lastnameGarage:{
               required: "กรุณากรอกนามสกุล"
             },
-            idcard:{
+            idcardGarage:{
               required: "กรุณากรอกเลขบัตรประชาชน"
             }, 
             addressGarage:{
@@ -687,29 +687,29 @@
             businessRegistration:{
               required: true
             },
-            firstname:{
+            "sparepart-firstname":{
               required: true
             },
-            lastname:{
+            "sparepart-lastname":{
               required: true
             },
-            idcard:{
+            "sparepart-idcard":{
               required: true,
               pid: true
             },
-            addressGarage:{
+            "sparepart-address":{
               required: true
             },
-            "garage-provinceId":{
+            "sparepart-provinceId":{
               required: true
             },
-            "garage-districtId":{
+            "sparepart-districtId":{
               required: true
             },
-            "garage-subdistrictId":{
+            "sparepart-subdistrictId":{
               required: true
             },
-            "zipCode":{
+            "sparepart-zipCode":{
               required: true,
               zipCode :true 
             } 
@@ -721,28 +721,28 @@
             businessRegistration:{
               required: "กรุณากรอกใบทะเบียนการค้า"
             },
-            firstname:{
+            "sparepart-firstname":{
               required: "กรุณากรอกชื่อ"
             },
-            lastname:{
+            "sparepart-lastname":{
               required: "กรุณากรอกนามสกุล"
             },
-            idcard:{
+            "sparepart-idcard":{
               required: "กรุณากรอกเลขบัตรประชาชน"
             }, 
-            addressGarage:{
+            "sparepart-address":{
               required: "กรุณากรอกที่อยู่"
             },
-            "garage-provinceId":{
+            "sparepart-provinceId":{
               required: "กรุณาเลือกจังหวัด"
             },
-            "garage-districtId":{
+            "sparepart-districtId":{
               required: "กรุณาเลือกอำเภอ"
             },
-            "garage-subdistrictId":{
+            "sparepart-subdistrictId":{
               required: "กรุณาเลือกตำบล"
             },
-            zipCode:{
+            "sparepart-zipCode":{
               required: "กรุณากรอกรหัสไปรษณีย์"
             }
           }
@@ -786,9 +786,21 @@
               formData.append("option4", checkBox4);
               formData.append("option_other", $("#other").val());
               formData.append("garagePicture", $("#garagePicture")[0].files[0]);
+              formData.append("firstnameGarage", $("#firstnameGarage").val());  
+              formData.append("lastnameGarage", $("#lastnameGarage").val());  
+              formData.append("idcardGarage", $("#idcardGarage").val());  
+              formData.append("addressGarage", $("#addressGarage").val());                                 
             }else if(role == "2"){ //ร้านค้าอะไหล่
               formData.append("car_accessoriesName", $("#car_accessoriesName").val());
               formData.append("businessRegistrationAccessories", $("#businessRegistrationAccessories").val());
+              formData.append("sparepart-firstname", $("#sparepart-firstname").val());  
+              formData.append("sparepart-lastname", $("#sparepart-lastname").val());  
+              formData.append("sparepart-idcard", $("#sparepart-idcard").val());  
+              formData.append("sparepart-address", $("#sparepart-address").val());
+              formData.append("sparepart-provinceId", $("#sparepart-provinceId").val());
+              formData.append("sparepart-districtId", $("#sparepart-districtId").val());
+              formData.append("sparepart-subdistrictId", $("#sparepart-subdistrictId").val());
+              formData.append("sparepart-postCode", $("#sparepart-zipCode").val());
             }else{
               formData.append("frontPicture", $("#frontPicture")[0].files[0]);
               formData.append("backPicture", $("#backPicture")[0].files[0]);
@@ -958,6 +970,7 @@
           clear();
           if(role == '2'){
             $("#role-2").show();
+            loadSparepartProvince();
           }else if(role == '3'){
             $("#role-3").show();
             loadGarageProvince();
@@ -1034,6 +1047,72 @@
           var subDistrict = data.data;
           $.each(subDistrict, function( index, value ) {
             garageSubdistrictDropdown.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+          });
+        }
+      );
+
+    }
+
+    var sparepartProvinceDropdown = $("#sparepart-provinceId");
+    sparepartProvinceDropdown.append('<option value="">เลือกจังหวัด</option>');
+
+    var sparepartDistrictDropdown = $('#sparepart-districtId');
+    sparepartDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
+
+    var sparepartSubdistrictDropdown = $('#sparepart-subdistrictId');
+    sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+    function loadSparepartProvince(){
+      $.post(base_url+"api/location/getProvince",{},
+        function(data){
+          var province = data.data;
+          $.each(province, function( index, value ) {
+            sparepartProvinceDropdown.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
+          });
+        }
+      );
+    }
+
+    sparepartProvinceDropdown.change(function(){
+      var provinceId = $(this).val();
+      loadSparepartDistrict(provinceId);
+    });
+
+    function loadSparepartDistrict(provinceId){
+      sparepartDistrictDropdown.html("");
+      sparepartDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
+      sparepartSubdistrictDropdown.html("");
+      sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+      $.post(base_url+"api/location/getDistrict",{
+        provinceId: provinceId
+      },
+        function(data){
+          var district = data.data;
+          $.each(district, function( index, value ) {
+            sparepartDistrictDropdown.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+          });
+        }
+      );
+
+    }
+
+    sparepartDistrictDropdown.change(function(){
+      var districtId = $(this).val();
+      loadSparepartSubdistrict(districtId);
+    });
+
+    function loadSparepartSubdistrict(districtId){
+      sparepartSubdistrictDropdown.html("");
+      sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+      
+      $.post(base_url+"api/location/getSubdistrict",{
+        districtId: districtId
+      },
+        function(data){
+          var subDistrict = data.data;
+          $.each(subDistrict, function( index, value ) {
+            sparepartSubdistrictDropdown.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
           });
         }
       );

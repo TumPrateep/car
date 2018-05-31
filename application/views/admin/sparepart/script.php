@@ -34,6 +34,7 @@
             "columns": [
                 null,
                 { "data": "spares_brandName" },
+                null,
                 null
             ],
             "columnDefs": [
@@ -43,6 +44,24 @@
                     "targets": [0,1]
                 },{
                     "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.spares_brandId+','+data.status+','+data.spares_undercarriageId+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
+                    }
+                },{
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/SparePartCar/updatespare/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -58,9 +77,10 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [0,1]},
-                {"className": "dt-center", "targets": [2]},
+                {"className": "dt-center", "targets": [2,3]},
                 { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 2 }
+                { "width": "10%", "targets": 2 },
+                { "width": "20%", "targets": 3 }
             ]	 
 
     });
@@ -81,11 +101,11 @@
 
     function updateStatus(spares_brandId,status,spares_undercarriageId){
         $.post(base_url+"api/SparePartCar/changeStatus",{
-            "modelId": spares_brandId,
+            "spares_brandId": spares_brandId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/car/model/"+spares_undercarriageId);
+                showMessage(data.message,"admin/sparepartcar/sparepart/"+spares_undercarriageId);
             }else{
                 showMessage(data.message);
             }
