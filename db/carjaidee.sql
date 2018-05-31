@@ -639,8 +639,8 @@ CREATE TABLE `user_profile` (
   KEY `fk_user_profile_province1_idx` (`provinceId`),
   KEY `fk_user_profile_district1_idx` (`districtId`),
   KEY `fk_user_profile_subdistrict1_idx` (`subdistrictId`),
-  KEY `fk_user_profile_users1_idx` (`create_by`),
   KEY `fk_user_profile_users3_idx` (`userId`),
+  KEY `create_by_idx` (`create_by`),
   CONSTRAINT `create_by` FOREIGN KEY (`create_by`) REFERENCES `users` (`create_by`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `districtId` FOREIGN KEY (`districtId`) REFERENCES `district` (`districtId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_users3` FOREIGN KEY (`userId`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -685,7 +685,7 @@ CREATE TABLE `users` (
   KEY `fk_users_users2_idx` (`update_by`),
   CONSTRAINT `fk_users_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -694,7 +694,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(8,'hgj','$2y$10$kbX6ILFZRfJzjxR8LBzOsetcKxzOuz6S3K555goSvFpNG7jGbdmI6',NULL,NULL,'ghj',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(8,'hgj','$2y$10$kbX6ILFZRfJzjxR8LBzOsetcKxzOuz6S3K555goSvFpNG7jGbdmI6',NULL,NULL,'ghj',NULL,NULL,NULL,NULL,NULL,NULL),(9,'natza9301','$2y$10$9Tphrpm9Yuc79zGaoaZ3o.hkYpP8FK32dM4l3dOB4/hyYpDV/x4pa',NULL,NULL,'222222222222222',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -711,4 +711,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-31 14:45:24
+-- Dump completed on 2018-05-31 15:03:52
