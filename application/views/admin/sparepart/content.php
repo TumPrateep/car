@@ -35,6 +35,7 @@
         <thead>
           <th>ลำดับ</th>
           <th>ชื่อยี่ห้ออะไหล่</th>
+          <th>สถานะ</th>
           <th></th>
         </thead>	
       </table>
