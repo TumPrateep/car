@@ -66,11 +66,15 @@ class Sparesbrand extends CI_Model{
     }
 
     function insertBrand($data){
-        $result = $this->db->insert('spares_brand', $data);
+        $isfound = $this->isGetBrand($data['spares_brandName'], $data['spares_undercarriageId']);
+        $result = false;
+        if($isfound){
+            $result = $this->db->insert('spares_brand', $data);
+        }
         return $result;
     }
 
-    function getBrandforTF($spares_brandName,$spares_undercarriageId){
+    function isGetBrand($spares_brandName,$spares_undercarriageId){
         $this->db->select("spares_brandName");
         $this->db->from("spares_brand");
         $this->db->where('spares_brandName', $spares_brandName);

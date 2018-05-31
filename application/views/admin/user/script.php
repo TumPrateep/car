@@ -36,8 +36,8 @@
                 null,
                 { "data": "username" },
                 { "data": "phone" },
-                { "data": "email" },
-                { "data": "category" },
+                null,
+                null,
                 null,
                 null
             ],
@@ -46,6 +46,26 @@
                     "searchable": false,
                     "orderable": false,
                     "targets": [0,6]
+                },{
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.category != null){
+                            return data.category;
+                        }else{
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }
+                    }
+                },{
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.email != null){
+                            return data.email;
+                        }else{
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }
+                    }
                 },{
                     "targets": 6,
                     "data": null,
