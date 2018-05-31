@@ -79,9 +79,11 @@
         var endStartYear = dropdownStart.val();
         dropdownStop.html('');
         dropdownStop.append('<option value="">เลือกปี</option>');
-        dropdownStop.append('<option value="'+nowYear+'">'+nowYear+' (ปัจจุบัน)</option>');
-        for(var i=nowYear-1;i>endStartYear;i--){
-            dropdownStop.append('<option value="'+i+'">'+i+'</option>');
+        if(dropdownStart.val() != ""){
+            dropdownStop.append('<option value="'+nowYear+'">'+nowYear+' (ปัจจุบัน)</option>');
+            for(var i=nowYear-1;i>endStartYear;i--){
+                dropdownStop.append('<option value="'+i+'">'+i+'</option>');
+            }
         }
     });
 
