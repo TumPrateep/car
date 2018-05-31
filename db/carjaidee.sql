@@ -301,6 +301,30 @@ INSERT INTO `province` VALUES (1,'กรุงเทพมหานคร',1,1,'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `provinceforcar`
+--
+
+DROP TABLE IF EXISTS `provinceforcar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `provinceforcar` (
+  `provinceforcarId` int(11) NOT NULL,
+  `provinceforcarName` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`provinceforcarId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `provinceforcar`
+--
+
+LOCK TABLES `provinceforcar` WRITE;
+/*!40000 ALTER TABLE `provinceforcar` DISABLE KEYS */;
+INSERT INTO `provinceforcar` VALUES (1,'กรุงเทพมหานคร'),(2,'สมุทรปราการ'),(3,'นนทบุรี'),(4,'ปทุมธานี'),(5,'พระนครศรีอยุธยา'),(6,'อ่างทอง'),(7,'ลพบุรี'),(8,'สิงห์บุรี'),(9,'ชัยนาท'),(10,'สระบุรี'),(11,'ชลบุรี'),(12,'ระยอง'),(13,'จันทบุรี'),(14,'ตราด'),(15,'ฉะเชิงเทรา'),(16,'ปราจีนบุรี'),(17,'นครนายก'),(18,'สระแก้ว'),(19,'นครราชสีมา'),(20,'บุรีรัมย์'),(21,'สุรินทร์'),(22,'ศรีสะเกษ'),(23,'อุบลราชธานี'),(24,'ยโสธร'),(25,'ชัยภูมิ'),(26,'อำนาจเจริญ'),(27,'หนองบัวลำภู'),(28,'ขอนแก่น'),(29,'อุดรธานี'),(30,'เลย'),(31,'หนองคาย'),(32,'มหาสารคาม'),(33,'ร้อยเอ็ด'),(34,'กาฬสินธุ์'),(35,'สกลนคร'),(36,'นครพนม'),(37,'มุกดาหาร'),(38,'เชียงใหม่'),(39,'ลำพูน'),(40,'ลำปาง'),(41,'อุตรดิตถ์'),(42,'แพร่'),(43,'น่าน'),(44,'พะเยา'),(45,'เชียงราย'),(46,'แม่ฮ่องสอน'),(47,'นครสวรรค์'),(48,'อุทัยธานี'),(49,'กำแพงเพชร'),(50,'ตาก'),(51,'สุโขทัย'),(52,'พิษณุโลก'),(53,'พิจิตร'),(54,'เพชรบูรณ์'),(55,'ราชบุรี'),(56,'กาญจนบุรี'),(57,'สุพรรณบุรี'),(58,'นครปฐม'),(59,'สมุทรสาคร'),(60,'สมุทรสงคราม'),(61,'เพชรบุรี'),(62,'ประจวบคีรีขันธ์'),(63,'นครศรีธรรมราช'),(64,'กระบี่'),(65,'พังงา'),(66,'ภูเก็ต'),(67,'สุราษฎร์ธานี'),(68,'ระนอง'),(69,'ชุมพร'),(70,'สงขลา'),(71,'สตูล'),(72,'ตรัง'),(73,'พัทลุง'),(74,'ปัตตานี'),(75,'ยะลา'),(76,'นราธิวาส'),(77,'บึงกาฬ'),(78,'เบตง');
+/*!40000 ALTER TABLE `provinceforcar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `rim`
 --
 
@@ -617,11 +641,11 @@ CREATE TABLE `user_profile` (
   KEY `fk_user_profile_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_user_profile_users1_idx` (`create_by`),
   KEY `fk_user_profile_users3_idx` (`userId`),
-  CONSTRAINT `fk_user_profile_district1` FOREIGN KEY (`districtId`) REFERENCES `district` (`districtId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_profile_province1` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_profile_subdistrict1` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_profile_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_profile_users3` FOREIGN KEY (`userId`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `create_by` FOREIGN KEY (`create_by`) REFERENCES `users` (`create_by`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `districtId` FOREIGN KEY (`districtId`) REFERENCES `district` (`districtId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_profile_users3` FOREIGN KEY (`userId`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `provinceId` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `subdistrictId` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -631,6 +655,7 @@ CREATE TABLE `user_profile` (
 
 LOCK TABLES `user_profile` WRITE;
 /*!40000 ALTER TABLE `user_profile` DISABLE KEYS */;
+INSERT INTO `user_profile` VALUES (1,'admin','admin',1,NULL,NULL,63,843,710,1,'0000-00-00 00:00:00',1,NULL,'');
 /*!40000 ALTER TABLE `user_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -686,4 +711,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-31 14:20:33
+-- Dump completed on 2018-05-31 14:45:24
