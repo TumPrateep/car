@@ -342,13 +342,12 @@ CREATE TABLE `rim` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `rimcol` varchar(45) NOT NULL,
   PRIMARY KEY (`rimId`),
   KEY `fk_rim_users1_idx` (`create_by`),
   KEY `fk_rim_users2_idx` (`update_by`),
   CONSTRAINT `fk_rim_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_rim_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -357,7 +356,7 @@ CREATE TABLE `rim` (
 
 LOCK TABLES `rim` WRITE;
 /*!40000 ALTER TABLE `rim` DISABLE KEYS */;
-INSERT INTO `rim` VALUES (1,'1',1,1,NULL,NULL,'1',''),(3,'20',NULL,NULL,NULL,NULL,'1',''),(4,'300',NULL,NULL,NULL,NULL,'1',''),(5,'9999',NULL,NULL,NULL,NULL,'1',''),(6,'23',NULL,NULL,NULL,NULL,'1',''),(7,'200',NULL,NULL,NULL,NULL,'1',''),(8,'205',NULL,NULL,'2018-05-30 14:20:42','2018-05-30 14:20:42','1',''),(9,'202',NULL,NULL,'2018-05-30 14:18:28','2018-05-30 14:18:28','1','');
+INSERT INTO `rim` VALUES (1,'13',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(2,'14',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(3,'15 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(4,'16 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(5,'17 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(6,'18 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(7,'19 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(8,'20 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(9,'21 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(10,'22 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1');
 /*!40000 ALTER TABLE `rim` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -470,6 +469,81 @@ INSERT INTO `subdistrict` VALUES (1,'พระบรมมหาราชวั�
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tire_brand`
+--
+
+DROP TABLE IF EXISTS `tire_brand`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tire_brand` (
+  `tire_brandId` int(11) NOT NULL AUTO_INCREMENT,
+  `tire_brandName` varchar(45) DEFAULT NULL,
+  `tire_brandPicture` varchar(45) DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`tire_brandId`),
+  KEY `fk_trie_brand_users1_idx` (`create_by`),
+  KEY `fk_trie_brand_users2_idx` (`update_by`),
+  CONSTRAINT `fk_trie_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tire_brand`
+--
+
+LOCK TABLES `tire_brand` WRITE;
+/*!40000 ALTER TABLE `tire_brand` DISABLE KEYS */;
+INSERT INTO `tire_brand` VALUES (1,'MICHELIN\r ','MICHELIN\r.png',1,1,NULL,NULL,'1');
+/*!40000 ALTER TABLE `tire_brand` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tire_data`
+--
+
+DROP TABLE IF EXISTS `tire_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tire_data` (
+  `tire_dataId` int(11) NOT NULL AUTO_INCREMENT,
+  `rimId` int(11) NOT NULL,
+  `tire_sizeId` int(11) NOT NULL,
+  `tire_brandId` int(11) NOT NULL,
+  `tire_modelId` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`tire_dataId`),
+  KEY `fk_trie_data_rim1_idx` (`rimId`),
+  KEY `fk_trie_data_trie_size1_idx` (`tire_sizeId`),
+  KEY `fk_trie_data_trie_brand1_idx` (`tire_brandId`),
+  KEY `fk_trie_data_tire_model1_idx` (`tire_modelId`),
+  KEY `fk_trie_data_users1_idx` (`create_by`),
+  KEY `fk_trie_data_users2_idx` (`update_by`),
+  CONSTRAINT `fk_trie_data_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_data_tire_model1` FOREIGN KEY (`tire_modelId`) REFERENCES `tire_model` (`tire_modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_data_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_data_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tire_data`
+--
+
+LOCK TABLES `tire_data` WRITE;
+/*!40000 ALTER TABLE `tire_data` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tire_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tire_model`
 --
 
@@ -479,20 +553,20 @@ DROP TABLE IF EXISTS `tire_model`;
 CREATE TABLE `tire_model` (
   `tire_modelId` int(11) NOT NULL AUTO_INCREMENT,
   `tire_modelName` varchar(45) DEFAULT NULL,
-  `trie_brandId` int(11) DEFAULT NULL,
+  `tire_brandId` int(11) DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) NOT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`tire_modelId`),
-  KEY `fk_tire_model_trie_brand1_idx` (`trie_brandId`),
+  KEY `fk_tire_model_trie_brand1_idx` (`tire_brandId`),
   KEY `fk_tire_model_users1_idx` (`create_by`),
   KEY `fk_tire_model_users2_idx` (`update_by`),
-  CONSTRAINT `fk_tire_model_trie_brand1` FOREIGN KEY (`trie_brandId`) REFERENCES `trie_brand` (`trie_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_model_trie_brand1` FOREIGN KEY (`tire_brandId`) REFERENCES `tire_brand` (`tire_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_model_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_model_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -501,119 +575,44 @@ CREATE TABLE `tire_model` (
 
 LOCK TABLES `tire_model` WRITE;
 /*!40000 ALTER TABLE `tire_model` DISABLE KEYS */;
+INSERT INTO `tire_model` VALUES (1,'XCD2',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(2,'AGILIS',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(3,'CROSS TERRAIN',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(4,'LTX Force',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(5,'LATTITUDE TOUR',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(6,'LATTITUDE TOUR HP',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(7,'LATTITUDE CROSS',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(8,'PRIMACY SUV',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(9,'ENERGY XM1',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(10,'ENERGY XM2',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(11,'PILOT SPORT3',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(12,'PILOT SPORT3 ZP',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(13,'PILOT SPORT4',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(14,'PRIMACY LC',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(15,'PRIACY3 ZP',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(16,'PRIMACY3 ST',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1');
 /*!40000 ALTER TABLE `tire_model` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `trie_brand`
+-- Table structure for table `tire_size`
 --
 
-DROP TABLE IF EXISTS `trie_brand`;
+DROP TABLE IF EXISTS `tire_size`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `trie_brand` (
-  `trie_brandId` int(11) NOT NULL AUTO_INCREMENT,
-  `trie_brandName` varchar(45) DEFAULT NULL,
-  `trie_brandPicture` varchar(45) DEFAULT NULL,
-  `create_by` int(11) DEFAULT NULL,
-  `update_by` int(11) DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`trie_brandId`),
-  KEY `fk_trie_brand_users1_idx` (`create_by`),
-  KEY `fk_trie_brand_users2_idx` (`update_by`),
-  CONSTRAINT `fk_trie_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `trie_brand`
---
-
-LOCK TABLES `trie_brand` WRITE;
-/*!40000 ALTER TABLE `trie_brand` DISABLE KEYS */;
-/*!40000 ALTER TABLE `trie_brand` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `trie_data`
---
-
-DROP TABLE IF EXISTS `trie_data`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `trie_data` (
-  `trie_dataId` int(11) NOT NULL AUTO_INCREMENT,
-  `rimId` int(11) NOT NULL,
-  `trie_sizeId` int(11) NOT NULL,
-  `trie_brandId` int(11) NOT NULL,
-  `tire_modelId` int(11) NOT NULL,
-  `create_by` int(11) DEFAULT NULL,
-  `update_by` int(11) DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`trie_dataId`),
-  KEY `fk_trie_data_rim1_idx` (`rimId`),
-  KEY `fk_trie_data_trie_size1_idx` (`trie_sizeId`),
-  KEY `fk_trie_data_trie_brand1_idx` (`trie_brandId`),
-  KEY `fk_trie_data_tire_model1_idx` (`tire_modelId`),
-  KEY `fk_trie_data_users1_idx` (`create_by`),
-  KEY `fk_trie_data_users2_idx` (`update_by`),
-  CONSTRAINT `fk_trie_data_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_data_tire_model1` FOREIGN KEY (`tire_modelId`) REFERENCES `tire_model` (`tire_modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_data_trie_brand1` FOREIGN KEY (`trie_brandId`) REFERENCES `trie_brand` (`trie_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_data_trie_size1` FOREIGN KEY (`trie_sizeId`) REFERENCES `trie_size` (`trie_sizeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_data_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_data_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `trie_data`
---
-
-LOCK TABLES `trie_data` WRITE;
-/*!40000 ALTER TABLE `trie_data` DISABLE KEYS */;
-/*!40000 ALTER TABLE `trie_data` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `trie_size`
---
-
-DROP TABLE IF EXISTS `trie_size`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `trie_size` (
-  `trie_sizeId` int(11) NOT NULL AUTO_INCREMENT,
-  `trie_size` varchar(45) DEFAULT NULL,
+CREATE TABLE `tire_size` (
+  `tire_sizeId` int(11) NOT NULL AUTO_INCREMENT,
+  `tire_size` varchar(45) DEFAULT NULL,
   `rimId` int(11) NOT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`trie_sizeId`),
+  PRIMARY KEY (`tire_sizeId`),
   KEY `fk_trie_size_rim1_idx` (`rimId`),
   KEY `fk_trie_size_users1_idx` (`create_by`),
   KEY `fk_trie_size_users2_idx` (`update_by`),
   CONSTRAINT `fk_trie_size_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_trie_size_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_trie_size_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `trie_size`
+-- Dumping data for table `tire_size`
 --
 
-LOCK TABLES `trie_size` WRITE;
-/*!40000 ALTER TABLE `trie_size` DISABLE KEYS */;
-INSERT INTO `trie_size` VALUES (1,'500',1,NULL,NULL,'2018-05-30 15:05:21','2018-05-30 15:05:21','1'),(2,'50',1,NULL,NULL,'2018-05-30 15:05:02','2018-05-30 15:05:02','1');
-/*!40000 ALTER TABLE `trie_size` ENABLE KEYS */;
+LOCK TABLES `tire_size` WRITE;
+/*!40000 ALTER TABLE `tire_size` DISABLE KEYS */;
+INSERT INTO `tire_size` VALUES (1,'175/70R13',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(2,'185/70R13',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(3,'195R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(4,'165/65R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(5,'175/65R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(6,'185/70R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(7,'185/65R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(8,'185/60R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(9,'195/60R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(10,'195/70R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(11,'205/75R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(12,'215/75R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(13,'225/75R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(14,'195R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(15,'175/65R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(16,'185/55R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(17,'185/60R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(18,'185/65R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(19,'195/50R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(20,'195/55R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(21,'195/60R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(22,'195/65R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(23,'205/60R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(24,'205/65R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(25,'205/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(26,'215/65R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(27,'215/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(28,'225/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(29,'225/75R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(30,'235/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(31,'235/75R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(32,'255/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(33,'265/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(34,'185/55R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(35,'195/50R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(36,'195/55R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(37,'195/60R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(38,'195/75R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(39,'205/60R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(40,'205/65R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(41,'205/50R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(42,'205/55R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(43,'215/55R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(44,'215/60R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(45,'215/65R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(46,'215/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(47,'215/75R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(48,'225/50R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(49,'225/55R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(50,'225/60R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(51,'225/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(52,'235/60R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(53,'235/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(54,'245/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(55,'265/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(56,'275/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(57,'205/40R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(58,'205/45R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(59,'205/50R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(60,'205/55R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(61,'215/45R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(62,'215/50R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(63,'215/55R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(64,'215/60R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(65,'225/45R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(66,'225/50R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(67,'225/55R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(68,'225/60R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(69,'225/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(70,'235/45R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(71,'235/55R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(72,'235/60R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(73,'235/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(74,'245/40R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(75,'245/45R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(76,'245/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(77,'255/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(78,'265/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(79,'275/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(80,'215/45R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(81,'225/40R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(82,'225/45R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(83,'225/60R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(84,'235/40R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(85,'235/45R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(86,'235/50R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(87,'235/55R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(88,'235/60R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(89,'245/40R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(90,'245/45R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(91,'245/50R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(92,'255/35R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(93,'255/40R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(94,'255/45R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(95,'255/55R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(96,'255/60R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(97,'265/35R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(98,'265/60R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(99,'245/40R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(100,'245/45R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(101,'255/35R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(102,'255/50R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(103,'275/40R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(104,'275/35R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1');
+/*!40000 ALTER TABLE `tire_size` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -687,7 +686,7 @@ CREATE TABLE `users` (
   KEY `fk_users_users2_idx` (`update_by`),
   CONSTRAINT `fk_users_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -696,7 +695,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(9,'natza9301','$2y$10$9Tphrpm9Yuc79zGaoaZ3o.hkYpP8FK32dM4l3dOB4/hyYpDV/x4pa','4',NULL,'222222222222222',NULL,NULL,NULL,NULL,1,NULL);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(9,'natza9301','$2y$10$9Tphrpm9Yuc79zGaoaZ3o.hkYpP8FK32dM4l3dOB4/hyYpDV/x4pa','4',NULL,'222222222222222',NULL,NULL,NULL,NULL,1,NULL),(10,'natza9302','$2y$10$K6XcC8Qhgu0wgRfi052mH.aeEDqiTlCyF3STnjndP2Llj8B6gt90y',NULL,NULL,'000000000000000',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -713,4 +712,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-31 16:32:12
+-- Dump completed on 2018-06-01 15:40:49

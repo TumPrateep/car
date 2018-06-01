@@ -243,7 +243,7 @@ class UserManagement extends BD_Controller {
                 'firstname' => $firstnameGarage,
                 'lastname' => $lastnameGarage,
                 'idcard' => $idcardGarage,
-                'address' => $addressGarage
+                'addressGarage' => $addressGarage
             );
         }else if($role == 2){
             $car_accessoriesName = $this->post("car_accessoriesName");

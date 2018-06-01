@@ -121,7 +121,56 @@
     .width-top{
       margin-top: 5px !important;
     }
+    a.right{
+     padding-left: 46em !important;
+    }
+    .input-group.float-right{
+      width: 780px;
+      padding: 2px;
+      height: 42px;
+    }
 
+  }
+  @media only screen and (max-width: 1025px) {
+    a.right{
+     padding-left: 33em !important;
+    }
+  }
+  @media only screen and (max-width: 769px) {
+    a.right{
+     padding-left: 32.5em !important;
+    }
+  }
+  @media only screen and (max-width: 415px) {
+    a.right{
+     padding-left: 10em !important;
+    }
+  }
+  @media only screen and (max-width: 375px) {
+    a.right{
+     padding-left: 8em !important;
+    }
+  }
+  @media only screen and (max-width: 361px) {
+    a.right{
+     padding-left: 7em !important;
+    }
+  }
+  @media only screen and (max-width: 321px) {
+    a.right{
+     padding-left: 4.5em !important;
+     /*display: inherit !important;*/
+    }
+  }
+
+  a.right{
+    padding-left: 53.5em;
+    /*display: none;*/
+  }
+  .input-group.float-right{
+    width: 780px;
+    padding: 2px;
+    height: 42px;
   }
 
   .ui.secondary.inverted.pointing.menu{
@@ -236,10 +285,6 @@
   }
   .card-body.black{
     color: #000000 !important;
-  }
-  .input-group.input-group-sm.float-right{
-    width: 300px;
-    padding: 2px;
   }
   .rounded.float-left{
     width: 80px; 

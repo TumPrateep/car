@@ -2,10 +2,10 @@
 //ยี่ห้อยาง นะ
 class triebrands extends CI_Model{
 
-    function checktriebrands($trie_brandName) {
+    function checktriebrands($tire_brandName) {
         $this->db->select("*");
-        $this->db->from("trie_brand");
-        $this->db->where('trie_brandName',$trie_brandName);
+        $this->db->from("tire_brand");
+        $this->db->where('tire_brandName',$tire_brandName);
         $result = $this->db->count_all_results();
 
         if($result > 0){
@@ -15,7 +15,7 @@ class triebrands extends CI_Model{
 
     }
     function insert_triebrands($data){
-		return $this->db->insert('trie_brand', $data);
+		return $this->db->insert('tire_brand', $data);
     }
 
 }
