@@ -199,8 +199,8 @@
                                 <input type="text" class="form-control" name="garageName" id="garageName" placeholder="ชื่ออู่" >
                               </div>
                               <div class="form-group col-md-6">
-                                <label>ใบทะเบียนการค้า</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="ใบทะเบียนการค้า">
+                                <label>หมายเลขทะเบียนการค้า</label><span class="error">*</span>
+                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า">
                               </div> 
                           </div>
                           <div class="form-row">
@@ -300,8 +300,8 @@
                                 <input type="text" class="form-control" name="car_accessoriesName" id="car_accessoriesName" placeholder="ชื่อร้านค้าส่ง">
                               </div>
                               <div class="form-group col-md-6">
-                                <label>ใบทะเบียนการค้า</label><span class="error">*</span>
-                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistrationAccessories" placeholder="ใบทะเบียนการค้า">
+                                <label>หมายเลขทะเบียนการค้า</label><span class="error">*</span>
+                                <input type="text" class="form-control" name="businessRegistration" id="businessRegistrationAccessories" placeholder="หมายเลขทะเบียนการค้า">
                               </div>
                           </div>
                           <div class="form-row">
@@ -650,7 +650,7 @@
               required: "กรุณากรอกชื่ออู่"
             },
             businessRegistration:{
-              required: "กรุณากรอกใบทะเบียนการค้า"
+              required: "กรุณากรอกหมายเลขทะเบียนการค้า"
             },
             firstnameGarage:{
               required: "กรุณากรอกชื่อ"
@@ -719,7 +719,7 @@
               required: "กรุณากรอกชื่ออู่"
             },
             businessRegistration:{
-              required: "กรุณากรอกใบทะเบียนการค้า"
+              required: "กรุณากรอกหมายเลขทะเบียนการค้า"
             },
             "sparepart-firstname":{
               required: "กรุณากรอกชื่อ"
