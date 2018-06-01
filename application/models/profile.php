@@ -56,9 +56,19 @@ class Profile extends CI_Model{
     }
 
     function editRole($role, $userId){
+        $status = 2;
+        if($role == 4){
+            $status = 1;
+        }
         $this->db->set('category', $role);
+        $this->db->set('status', $status);
         $this->db->where('id', $userId);
         $this->db->update('users');
+    }
+
+    function findUserProfileById($userId){
+        $this->db->where("userId", $userId);    
+        return $this->db->get('user_profile')->row();
     }
 
 }

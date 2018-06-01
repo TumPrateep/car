@@ -7,7 +7,7 @@ class UserManagement extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        //$this->auth();
     }
 
     function search_post(){
@@ -16,7 +16,8 @@ class UserManagement extends BD_Controller {
             1 =>'username', 
             2 =>'phone',
             3 =>'email',
-            4=>'category',
+            4 =>'category',
+            5 =>'status' 
         );
 
         $limit = $this->post('length');
@@ -52,14 +53,13 @@ class UserManagement extends BD_Controller {
                 $nestedData['phone'] = $post->phone;
                 $nestedData['email'] = $post->email;
                 switch($post->category){
-                    case "1" : $nestedData['category'] ="ผู้ดูแลระบบ";break;
-                    case "2" : $nestedData['category'] ="ร้านอะไหล่";break;
-                    case "3" : $nestedData['category'] ="อู่";break;
-                    case "4" : $nestedData['category'] ="ผู้ใช้งาน";break;
-                    default  : $nestedData['category'] =" ";break;
-
-                    
+                    case 1 : $nestedData['category'] ="ผู้ดูแลระบบ";break;
+                    case 2 : $nestedData['category'] ="ร้านอะไหล่";break;
+                    case 3 : $nestedData['category'] ="อู่";break;
+                    case 4 : $nestedData['category'] ="ผู้ใช้งาน";break;
+                    default  : $nestedData['category'] = null;break;
                 }
+                $nestedData['status'] = $post->status;
 
                 $data[] = $nestedData;
 
@@ -194,6 +194,10 @@ class UserManagement extends BD_Controller {
             $districtId = $this->post("districtId");
             $subdistrictId = $this->post("subdistrictId");
             $garagePicture = $this->post("garagePicture");
+            $firstnameGarage = $this->post("firstnameGarage");
+            $lastnameGarage = $this->post("lastnameGarage");
+            $idcardGarage = $this->post("idcardGarage");
+            $addressGarage = $this->post("addressGarage");
 
             $garagePictureName = null;
 
@@ -235,11 +239,22 @@ class UserManagement extends BD_Controller {
                 'status' => 1,
                 'garageMaster' => $userId,
                 'garagePicture' => $garagePictureName,
-                'approve' => 2
+                'approve' => 2,
+                'firstname' => $firstnameGarage,
+                'lastname' => $lastnameGarage,
+                'idcard' => $idcardGarage,
+                'addressGarage' => $addressGarage
             );
         }else if($role == 2){
             $car_accessoriesName = $this->post("car_accessoriesName");
             $businessRegistrationAccessories = $this->post("businessRegistrationAccessories");
+            $sparepart_firstname = $this->post("sparepart-firstname");
+            $sparepart_lastname = $this->post("sparepart-lastname");
+            $sparepart_idcard = $this->post("sparepart-idcard");
+            $sparepart_address = $this->post("sparepart-address");
+            $sparepart_postCode = $this->post("sparepart-postCode");
+            
+
             $roleData = array(
                 'car_accessoriesId' => null,
                 'car_accessoriesName' => $car_accessoriesName,
@@ -249,7 +264,12 @@ class UserManagement extends BD_Controller {
                 'create_by' => $userId,
                 'update_at' => null,
                 'update_by' => null,
-                'status' => 1  
+                'status' => 1,
+                'firstname' => $sparepart_firstname,
+                'lastname' => $sparepart_lastname,
+                'idcard' => $sparepart_idcard,
+                'address' => $sparepart_address,
+                'postCode' => $sparepart_postCode
             );
         }else if($role == 4){
             $path = "public/image/profile/$userId";
@@ -341,4 +361,89 @@ class UserManagement extends BD_Controller {
 
     }
 
+    function changeStatus_post(){
+        $id = $this->post("id");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status
+        );
+        $this->load->model("User");
+        $result = $this->User->updateStatus($id,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+    function getuser_post(){
+
+        $id = $this->post('id');
+        $this->load->model("User");
+        $isCheck = $this->User->checkuser($id);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->User->getuserById($id);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function updateUser_post(){
+
+        $id = $this->post('id');
+        $username = $this->post('username');
+        $phone = $this->post('phone');
+        $email = $this->post('email');
+        
+        $this->load->model("User");
+
+        $userId = $this->session->userdata['logged_in']['id'];
+
+        $result = $this->User->wherenotUser($id,$username);
+
+        if($result){
+            $data = array(
+                'id' => $id,
+                'username' => $username,
+                'phone' => $phone,
+                'email' => $email,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId
+            );
+            $result = $this->User->updateUser($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+        
 }

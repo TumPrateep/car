@@ -14,7 +14,8 @@ class Car extends BD_Controller {
         $columns = array( 
             0 => null,
             1 => null, 
-            2 =>'brandName'
+            2 =>'brandName',
+            3 =>'status'
         );
 
         $limit = $this->post('length');
@@ -48,6 +49,7 @@ class Car extends BD_Controller {
                 $nestedData['brandId'] = $post->brandId;
                 $nestedData['brandPic'] = $post->brandPicture;
                 $nestedData['brandName'] = $post->brandName;
+                $nestedData['status'] = $post->status;
 
                 $data[] = $nestedData;
 
@@ -145,7 +147,7 @@ class Car extends BD_Controller {
             0 =>null, 
             1 =>'modelName',
             2 => 'yearStart',
-            3 => 'yearEnd'
+            3 => 'status'
         );
 
         $limit = $this->post('length');
@@ -182,6 +184,7 @@ class Car extends BD_Controller {
                 $nestedData['modelName'] = $post->modelName;
                 $nestedData['yearStart'] = $post->yearStart;
                 $nestedData['yearEnd'] = $post->yearEnd;
+                $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
 
             }
@@ -544,7 +547,50 @@ class Car extends BD_Controller {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
-
-
     }
+
+    function changeStatus_post(){
+        $brandId = $this->post("brandId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status
+        );
+        $this->load->model("Brand");
+        $result = $this->Brand->updateStatus($brandId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function changeStatusModel_post(){
+        $modelId = $this->post("modelId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status
+        );
+        $this->load->model("Model");
+        $result = $this->Model->updateStatus($modelId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
 }

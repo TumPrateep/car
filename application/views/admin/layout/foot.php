@@ -24,6 +24,8 @@
     <script src="<?=base_url("/public/js/popper.min.js") ?>"></script>
 
     <script src="<?=base_url("/public/js/fileinput.js") ?>"></script>
+
+    <script src="<?=base_url("/public/locales/th.js") ?>"></script>
     
     
 

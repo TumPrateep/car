@@ -110,6 +110,11 @@ class User extends CI_Model{
         return $result;
     }
 
+    function getuserById($id){
+        $this->db->select("id,username,email,phone");
+        return $this->db->where('id',$id)->get("users")->row();
+    }
+
     function delete($id){
         $this->db->where_not_in("username" , "admin");
         return $this->db->delete('users', array('id' => $id));
@@ -146,5 +151,28 @@ class User extends CI_Model{
         return $this->db->insert('car_accessories', $data);
     }
 
+    function updateStatus($id,$data){
+        $this->db->where('id',$id);
+        $result = $this->db->update('users', $data);
+        return $result; 
+    }
+
+    function wherenotUser($id,$username){
+        $this->db->select("username");
+        $this->db->from("users");
+        $this->db->where('id', $id);
+        $this->db->where_not_in('id', $id);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+    function updateUser($data){
+        $this->db->where('id',$data['id']);
+        $result = $this->db->update('users', $data);
+        return $result; 
+    }
 
 }

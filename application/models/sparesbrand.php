@@ -66,11 +66,15 @@ class Sparesbrand extends CI_Model{
     }
 
     function insertBrand($data){
-        $result = $this->db->insert('spares_brand', $data);
+        $isfound = $this->isGetBrand($data['spares_brandName'], $data['spares_undercarriageId']);
+        $result = false;
+        if($isfound){
+            $result = $this->db->insert('spares_brand', $data);
+        }
         return $result;
     }
 
-    function getBrandforTF($spares_brandName,$spares_undercarriageId){
+    function isGetBrand($spares_brandName,$spares_undercarriageId){
         $this->db->select("spares_brandName");
         $this->db->from("spares_brand");
         $this->db->where('spares_brandName', $spares_brandName);
@@ -109,8 +113,8 @@ class Sparesbrand extends CI_Model{
         return $result;
     }
 
-    function delete($sparesbrandId){
-        return $this->db->delete('sparesbrand', array('sparesbrandId' => $sparesbrandId));
+    function delete($spares_brandId){
+        return $this->db->delete('spares_brand', array('spares_brandId' => $spares_brandId));
     }
 
     function checkSpareBrand($spares_brandId,$spares_undercarriageId) {
@@ -126,6 +130,12 @@ class Sparesbrand extends CI_Model{
             return false;
         }
 
+    }
+
+    function updateStatus($spares_brandId,$data){
+        $this->db->where('spares_brandId',$spares_brandId);
+        $result = $this->db->update('spares_brand', $data);
+        return $result; 
     }
 
 

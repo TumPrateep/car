@@ -55,8 +55,8 @@
             "columns": [
                 null,
                 { "data": "modelName" },
-                { "data": "yearStart" },
-                { "data": "yearEnd" },
+                null,
+                null,
                 null
             ],
             "columnDefs": [
@@ -65,11 +65,20 @@
                     "orderable": false,
                     "targets": [0,4]
                 },{
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.yearEnd != null){
+                            return data.yearStart+' - '+data.yearEnd;
+                        }
+                        return data.yearStart;
+                    }
+                },{
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/car/updateModel/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteModel('+data.modelId+',\''+data.modelName+'\',\''+data.brandId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -77,6 +86,24 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
+                    }
+                },{
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatusModel('+data.modelId+','+data.status+','+data.brandId+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
                     }
                 },
                 { "orderable": false, "targets": 0 },
@@ -88,22 +115,33 @@
 
     });
 
-    $('#model-table tbody').on( 'click', 'button.delete', function () {
-        var data = table.row( $(this).parents('tr') ).data();
-        // alert( data.brandId );
+    function deleteModel(modelId,modelName,brandId){
         var option = {
-            url: "/car/deleteModel?modelId="+data.modelId,
+            url: "/car/deleteModel?modelId="+modelId,
             label: "ลบรุ่นรถ",
-            content: "คุณต้องการลบ "+data.modelName+" ใช่หรือไม่",
-            gotoUrl: "admin/car/model/"+data.brandId
+            content: "คุณต้องการลบ "+modelName+" ใช่หรือไม่",
+            gotoUrl: "admin/car/model/"+brandId
         }
         fnDelete(option);
-    } );
+    }
 
     $("#btn-search").click(function(){
         table.ajax.reload();
     })
     
+    function updateStatusModel(modelId,status,brandId){
+        $.post(base_url+"api/Car/changeStatusModel",{
+            "modelId": modelId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/car/model/"+brandId);
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
+
 </script>
 
 </body>

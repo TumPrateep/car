@@ -31,7 +31,9 @@ CREATE TABLE `brand` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` int(11) NOT NULL,
+  `activeflag` int(11) DEFAULT NULL,
   PRIMARY KEY (`brandId`),
+  UNIQUE KEY `brandName_UNIQUE` (`brandName`),
   KEY `fk_brand_users1_idx` (`create_by`),
   KEY `fk_brand_users2_idx` (`update_by`),
   CONSTRAINT `id` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -45,7 +47,7 @@ CREATE TABLE `brand` (
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES (1,'Isuzu.png','ISUZU',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(2,'Toyota.png','TOYOTA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(3,'Mitsubishi.png','MITSUBISHI',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(4,'Nissan.png','NISSAN',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(5,'Chevrolet.png','CHEVROLET',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(6,'Ford.png','FORD',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(7,'Mazda.png','MAZDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(8,'Honda.png','HONDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1);
+INSERT INTO `brand` VALUES (1,'Isuzu.png','ISUZU',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,NULL),(2,'Toyota.png','TOYOTA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,NULL),(3,'Mitsubishi.png','MITSUBISHI',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,NULL),(4,'Nissan.png','NISSAN',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,NULL),(5,'Chevrolet.png','CHEVROLET',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,NULL),(6,'Ford.png','FORD',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,NULL),(7,'Mazda.png','MAZDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,NULL),(8,'Honda.png','HONDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,NULL);
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,6 +68,11 @@ CREATE TABLE `car_accessories` (
   `create_by` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `firstname` varchar(45) DEFAULT NULL,
+  `lastname` varchar(45) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
+  `idcard` varchar(45) DEFAULT NULL,
+  `postCode` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`car_accessoriesId`),
   KEY `fk_car_accessories_users1_idx` (`userId`),
   KEY `fk_car_accessories_users2_idx` (`create_by`),
@@ -115,7 +122,7 @@ CREATE TABLE `car_profile` (
   CONSTRAINT `fk_car_profile_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_car_profile_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_car_profile_users3` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +131,7 @@ CREATE TABLE `car_profile` (
 
 LOCK TABLES `car_profile` WRITE;
 /*!40000 ALTER TABLE `car_profile` DISABLE KEYS */;
-INSERT INTO `car_profile` VALUES (1,'a',NULL,NULL,NULL,5,'2018-05-25 13:58:45',NULL,5,NULL,1,'a','11','a','a');
+INSERT INTO `car_profile` VALUES (2,'12','b26d372124aa23507b787c1c37d9f2c7.png','d5e22bc3cba987795116979e597b013c.png','b365cc96b9685f9db5fe9c102743bc93.png',9,'2018-05-31 16:05:53',NULL,9,NULL,1,'12','12','1','21');
 /*!40000 ALTER TABLE `car_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,6 +203,10 @@ CREATE TABLE `garage` (
   `option4` int(11) DEFAULT NULL,
   `option_outher` varchar(255) DEFAULT NULL,
   `garagePicture` varchar(255) DEFAULT NULL,
+  `firstname` varchar(45) DEFAULT NULL,
+  `lastname` varchar(45) DEFAULT NULL,
+  `idcard` varchar(45) DEFAULT NULL,
+  `addressGarage` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`garageId`,`garageMaster`),
   KEY `fk_garage_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_garage_district1_idx` (`districtId`),
@@ -237,6 +248,7 @@ CREATE TABLE `model` (
   `status` int(11) NOT NULL,
   `yearStart` int(11) NOT NULL,
   `yearEnd` int(11) DEFAULT NULL,
+  `activeflag` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`modelId`),
   KEY `fk_model_brand1_idx` (`brandId`),
   KEY `fk_model_users1_idx` (`create_by`),
@@ -253,7 +265,7 @@ CREATE TABLE `model` (
 
 LOCK TABLES `model` WRITE;
 /*!40000 ALTER TABLE `model` DISABLE KEYS */;
-INSERT INTO `model` VALUES (1,'TFR 4x2, DRAGON EYE',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1989,0),(2,'TFR RODEO 4x4',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1992,0),(3,'D-MAX 4X2',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2011),(4,'D-MAX 4X4,MU7,HILANDER (4x2 ยกสูง)',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2011),(5,'ALL New D-Max 4x2',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,0),(6,'ALL New D-Max 4x4,V-Cross',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,0),(7,'ALL New D-Max HILANDER (4x2 ยกสูง)',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,0),(8,'MU-X',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2014,0),(9,'HIACE PH50, YH50',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1983,0),(10,'HIACE LH112 (รถตู้หัวจรวด)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1992,2004),(11,'COMMUTER(รถตู้)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2005,0),(12,'HILUX MIGHTY-X 4x2',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1983,1988),(13,'HILUX MIGHTY-X LN90(C-CAB)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1990,1997),(14,'HILUX TIGER- B-CAB, D-CAB 4x2 (4ประตู)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2003),(15,'HILUX TIGER- C-CAB 4x2 ',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2003),(16,'HILUX TIGER- TIGER 4x4, PRERUNNER (4x2 ยกสูง),SPORT RIDER',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2003),(17,'HILUX VIGO- VIGO 4x2',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2004,2014),(18,'HILUX VIGO- VIGO 4x4, PRERUNNER (4x2ยกสูง)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2004,2014),(19,'FORTUNER',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2004,2014),(20,'AVANZA F601,F602',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2004,2009),(21,'AVANZA 1.5L',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,0),(22,'INNOVA TGN40 2.0L, KUN40 2.5L',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2004,2015),(23,'SOLUNA AL50 (ABS)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,2002),(24,'SOLUNA VIOS NCP42',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2006),(25,'SOLUNA VIOS TURBO',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2006),(26,'SOLUNA VIOS NEW VIOS',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2012),(27,'SOLUNA VIOS ALL NEW VIOS',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2013,0),(28,'YARIS- NCP91',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2012),(29,'YARIS- NCP13#',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2009,2012),(30,'YARIS- ALL NEW YARIS',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2013,0),(31,'COROLLA ALTIS,LIMO',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2001,2007),(32,'COROLLA ALTIS',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2008,2013),(33,'COROLLA ALTIS',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2014,0),(34,'CAMRY SXV20',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1992,2002),(35,'CAMRY ACV30',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2006),(36,'CAMRY ACV40',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2011),(37,'CAMRY ACV40 HYBRID',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2009,0),(38,'CAMRY ACV50',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,0),(39,'L200,L200D(AERO BODY)',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1979,2005),(40,'L200,L200D(CYCLONE), STRADA 4x2',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1979,2005),(41,'STRADA 4x4',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1979,2005),(42,'TRITON 4x2',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2013),(43,'TRITON 4x4, TRITON PLUS(4x2ยกสูง)',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2005,2006),(44,'TRITON 4x2',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2014,0),(45,'TRITON 4x4 (ABS)',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2013),(46,'PAJERO SPORT',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2008,2015),(47,'MIRAGE',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,0),(48,'ATTRAGE',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2013,0),(49,'LANCER CK2A 1.6L (ท้ายเบนซ์)',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,1999),(50,'LANCER CK5A 1.8L (ท้ายเบนซ์)',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,1999),(51,'CEDIA CS3A1.6L',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2001,2003),(52,'CHAMP II, CHAMP III',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1989,0),(53,'BIG-M 4x2',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1968,1985),(54,'FRONTIER 4x2',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2002),(55,'FRONTIER 4x4',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2002),(56,'NAVARA SINGLE CAB 4x2',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2013),(57,'NAVARA 4x4,KING CAB 4x2,DOUBLE CAB4x2, CALIBRE(4x2ยกสูง)',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2013),(58,'MARCH',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2010,0),(59,'ALMERA',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,0),(60,'TIDA',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,0),(61,'SYLPHY',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,0),(62,'X-TRAIL',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2014,0),(63,'COLORADO 4x2',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2011),(64,'COLORADO 4x4,COLORADO Z71(4x2ยกสูง)',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2011),(65,'COLORADO 4x2',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,2015),(66,'COLORADO 4x4,COLORADO Z71(4x2ยกสูง)',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,2015),(67,'COLORADO 4x2',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2015,0),(68,'COLORADO 4x4,COLORADO Z71(4x2ยกสูง)',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2015,0),(69,'CAPTIVA 4x2',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2011),(70,'CAPTIVA 4x4',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2011),(71,'AVEO 1.4L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2012),(72,'CRUZE 1.6L 1.8L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2008,2011),(73,'CRUZE 2.0L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2008,2011),(74,'OPTRA 1.6L 1.8L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2003,2007),(75,'APTRA 1.6L 1.8L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2008,2011),(76,'SONIC 1.4L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2013,2015),(77,'TRAIL BLAZER',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,0),(78,'ZAFIRA',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2000,2001),(79,'RANGER 4x2',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,2006),(80,'RANGER 4x4',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,2006),(81,'J97MU(4x2)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2011),(82,'J97MU(4x4)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2011),(83,'ALL NEW RANGER 4x2',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,0),(84,'ALL NEW RANGER 4x4, HI-LANDER(4x2ยกสูง)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,0),(85,'EVEREST J90F, J90U (4x4)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2003,2006),(86,'EVEREST J97MU(4x4),J90U(4x4)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2007),(87,'EVEREST J90F, J90(4x4)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2015),(88,'LASER BJ2WD 1.3/1.6/1.8/2.0',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2000),(89,'FIESTA B299',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,0),(90,'MAGNUM2005DI',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1990,0),(91,'FIGHTER J97A/C 4x2',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2006),(92,'FIGHTER J97A/C 4x4',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2006),(93,'MAZDA 2 ',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2010,2013),(94,'BT50 4x2',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2011),(95,'BT50 4x4',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2011),(96,'ALL NEW BT50 PRO 4x2',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,0),(97,'ALL NEW BT50 PRO 4x4, HI-RACER(4x2ยกสูง)',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,0),(98,'CIVIC 1.5EX เตารีด, CR-X, SPORT CIVIC',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1992,1995),(99,'CIVIC EX ตาโต',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,1999),(100,'CIVIC FD',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2013),(101,'CITY TYPE Z (ไม่มี ABS)',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,2002),(102,'CITY TYPE Z (มี ABS)',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,2002),(103,'CITY GD',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2003,2008),(104,'CITY ZX',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2005,2008),(105,'CITY GE',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2009,2013),(106,'JAZZ GD',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2003,2006),(107,'JAZZ GD',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2008),(108,'JAZZ GE',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2009,2013),(109,'BRIO',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,0);
+INSERT INTO `model` VALUES (1,'TFR 4x2, DRAGON EYE',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1989,NULL,NULL),(2,'TFR RODEO 4x4',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1992,NULL,NULL),(3,'D-MAX 4X2',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2011,NULL),(4,'D-MAX 4X4,MU7,HILANDER (4x2 ยกสูง)',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2011,NULL),(5,'ALL New D-Max 4x2',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,NULL,NULL),(6,'ALL New D-Max 4x4,V-Cross',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,NULL,NULL),(7,'ALL New D-Max HILANDER (4x2 ยกสูง)',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,NULL,NULL),(8,'MU-X',1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2014,NULL,NULL),(9,'HIACE PH50, YH50',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1983,NULL,NULL),(10,'HIACE LH112 (รถตู้หัวจรวด)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1992,2004,NULL),(11,'COMMUTER(รถตู้)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2005,NULL,NULL),(12,'HILUX MIGHTY-X 4x2',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1983,1988,NULL),(13,'HILUX MIGHTY-X LN90(C-CAB)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1990,1997,NULL),(14,'HILUX TIGER- B-CAB, D-CAB 4x2 (4ประตู)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2003,NULL),(15,'HILUX TIGER- C-CAB 4x2 ',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2003,NULL),(16,'HILUX TIGER- TIGER 4x4, PRERUNNER (4x2 ยกสูง),SPORT RIDER',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2003,NULL),(17,'HILUX VIGO- VIGO 4x2',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2004,2014,NULL),(18,'HILUX VIGO- VIGO 4x4, PRERUNNER (4x2ยกสูง)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2004,2014,NULL),(19,'FORTUNER',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2004,2014,NULL),(20,'AVANZA F601,F602',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2004,2009,NULL),(21,'AVANZA 1.5L',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,NULL,NULL),(22,'INNOVA TGN40 2.0L, KUN40 2.5L',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2004,2015,NULL),(23,'SOLUNA AL50 (ABS)',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,2002,NULL),(24,'SOLUNA VIOS NCP42',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2006,NULL),(25,'SOLUNA VIOS TURBO',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2006,NULL),(26,'SOLUNA VIOS NEW VIOS',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2012,NULL),(27,'SOLUNA VIOS ALL NEW VIOS',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2013,NULL,NULL),(28,'YARIS- NCP91',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2012,NULL),(29,'YARIS- NCP13#',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2009,2012,NULL),(30,'YARIS- ALL NEW YARIS',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2013,NULL,NULL),(31,'COROLLA ALTIS,LIMO',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2001,2007,NULL),(32,'COROLLA ALTIS',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2008,2013,NULL),(33,'COROLLA ALTIS',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2014,NULL,NULL),(34,'CAMRY SXV20',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1992,2002,NULL),(35,'CAMRY ACV30',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2006,NULL),(36,'CAMRY ACV40',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2011,NULL),(37,'CAMRY ACV40 HYBRID',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2009,NULL,NULL),(38,'CAMRY ACV50',2,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,NULL,NULL),(39,'L200,L200D(AERO BODY)',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1979,2005,NULL),(40,'L200,L200D(CYCLONE), STRADA 4x2',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1979,2005,NULL),(41,'STRADA 4x4',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1979,2005,NULL),(42,'TRITON 4x2',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2013,NULL),(43,'TRITON 4x4, TRITON PLUS(4x2ยกสูง)',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2005,2006,NULL),(44,'TRITON 4x2',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2014,NULL,NULL),(45,'TRITON 4x4 (ABS)',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2013,NULL),(46,'PAJERO SPORT',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2008,2015,NULL),(47,'MIRAGE',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,NULL,NULL),(48,'ATTRAGE',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2013,NULL,NULL),(49,'LANCER CK2A 1.6L (ท้ายเบนซ์)',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,1999,NULL),(50,'LANCER CK5A 1.8L (ท้ายเบนซ์)',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,1999,NULL),(51,'CEDIA CS3A1.6L',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2001,2003,NULL),(52,'CHAMP II, CHAMP III',3,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1989,NULL,NULL),(53,'BIG-M 4x2',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1968,1985,NULL),(54,'FRONTIER 4x2',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2002,NULL),(55,'FRONTIER 4x4',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2002,NULL),(56,'NAVARA SINGLE CAB 4x2',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2013,NULL),(57,'NAVARA 4x4,KING CAB 4x2,DOUBLE CAB4x2, CALIBRE(4x2ยกสูง)',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2013,NULL),(58,'MARCH',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2010,NULL,NULL),(59,'ALMERA',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,NULL,NULL),(60,'TIDA',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,NULL,NULL),(61,'SYLPHY',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,NULL,NULL),(62,'X-TRAIL',4,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2014,NULL,NULL),(63,'COLORADO 4x2',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2011,NULL),(64,'COLORADO 4x4,COLORADO Z71(4x2ยกสูง)',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2002,2011,NULL),(65,'COLORADO 4x2',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,2015,NULL),(66,'COLORADO 4x4,COLORADO Z71(4x2ยกสูง)',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,2015,NULL),(67,'COLORADO 4x2',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2015,NULL,NULL),(68,'COLORADO 4x4,COLORADO Z71(4x2ยกสูง)',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2015,NULL,NULL),(69,'CAPTIVA 4x2',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2011,NULL),(70,'CAPTIVA 4x4',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2011,NULL),(71,'AVEO 1.4L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2012,NULL),(72,'CRUZE 1.6L 1.8L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2008,2011,NULL),(73,'CRUZE 2.0L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2008,2011,NULL),(74,'OPTRA 1.6L 1.8L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2003,2007,NULL),(75,'APTRA 1.6L 1.8L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2008,2011,NULL),(76,'SONIC 1.4L',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2013,2015,NULL),(77,'TRAIL BLAZER',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,NULL,NULL),(78,'ZAFIRA',5,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2000,2001,NULL),(79,'RANGER 4x2',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,2006,NULL),(80,'RANGER 4x4',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,2006,NULL),(81,'J97MU(4x2)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2011,NULL),(82,'J97MU(4x4)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2011,NULL),(83,'ALL NEW RANGER 4x2',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,NULL,NULL),(84,'ALL NEW RANGER 4x4, HI-LANDER(4x2ยกสูง)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,NULL,NULL),(85,'EVEREST J90F, J90U (4x4)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2003,2006,NULL),(86,'EVEREST J97MU(4x4),J90U(4x4)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2007,NULL),(87,'EVEREST J90F, J90(4x4)',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2007,2015,NULL),(88,'LASER BJ2WD 1.3/1.6/1.8/2.0',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2000,NULL),(89,'FIESTA B299',6,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,NULL,NULL),(90,'MAGNUM2005DI',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1990,NULL,NULL),(91,'FIGHTER J97A/C 4x2',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2006,NULL),(92,'FIGHTER J97A/C 4x4',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1998,2006,NULL),(93,'MAZDA 2 ',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2010,2013,NULL),(94,'BT50 4x2',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2011,NULL),(95,'BT50 4x4',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2011,NULL),(96,'ALL NEW BT50 PRO 4x2',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,NULL,NULL),(97,'ALL NEW BT50 PRO 4x4, HI-RACER(4x2ยกสูง)',7,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2012,NULL,NULL),(98,'CIVIC 1.5EX เตารีด, CR-X, SPORT CIVIC',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1992,1995,NULL),(99,'CIVIC EX ตาโต',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,1999,NULL),(100,'CIVIC FD',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2013,NULL),(101,'CITY TYPE Z (ไม่มี ABS)',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,2002,NULL),(102,'CITY TYPE Z (มี ABS)',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,1996,2002,NULL),(103,'CITY GD',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2003,2008,NULL),(104,'CITY ZX',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2005,2008,NULL),(105,'CITY GE',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2009,2013,NULL),(106,'JAZZ GD',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2003,2006,NULL),(107,'JAZZ GD',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2006,2008,NULL),(108,'JAZZ GE',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2009,2013,NULL),(109,'BRIO',8,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,1,2011,NULL,NULL);
 /*!40000 ALTER TABLE `model` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,6 +303,31 @@ INSERT INTO `province` VALUES (1,'กรุงเทพมหานคร',1,1,'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `provinceforcar`
+--
+
+DROP TABLE IF EXISTS `provinceforcar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `provinceforcar` (
+  `provinceforcarId` int(11) NOT NULL,
+  `provinceforcarName` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`provinceforcarId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `provinceforcar`
+--
+
+LOCK TABLES `provinceforcar` WRITE;
+/*!40000 ALTER TABLE `provinceforcar` DISABLE KEYS */;
+INSERT INTO `provinceforcar` VALUES (1,'กรุงเทพมหานคร','1'),(2,'สมุทรปราการ','1'),(3,'นนทบุรี','1'),(4,'ปทุมธานี','1'),(5,'พระนครศรีอยุธยา','1'),(6,'อ่างทอง','1'),(7,'ลพบุรี','1'),(8,'สิงห์บุรี','1'),(9,'ชัยนาท','1'),(10,'สระบุรี','1'),(11,'ชลบุรี','1'),(12,'ระยอง','1'),(13,'จันทบุรี','1'),(14,'ตราด','1'),(15,'ฉะเชิงเทรา','1'),(16,'ปราจีนบุรี','1'),(17,'นครนายก','1'),(18,'สระแก้ว','1'),(19,'นครราชสีมา','1'),(20,'บุรีรัมย์','1'),(21,'สุรินทร์','1'),(22,'ศรีสะเกษ','1'),(23,'อุบลราชธานี','1'),(24,'ยโสธร','1'),(25,'ชัยภูมิ','1'),(26,'อำนาจเจริญ','1'),(27,'หนองบัวลำภู','1'),(28,'ขอนแก่น','1'),(29,'อุดรธานี','1'),(30,'เลย','1'),(31,'หนองคาย','1'),(32,'มหาสารคาม','1'),(33,'ร้อยเอ็ด','1'),(34,'กาฬสินธุ์','1'),(35,'สกลนคร','1'),(36,'นครพนม','1'),(37,'มุกดาหาร','1'),(38,'เชียงใหม่','1'),(39,'ลำพูน','1'),(40,'ลำปาง','1'),(41,'อุตรดิตถ์','1'),(42,'แพร่','1'),(43,'น่าน','1'),(44,'พะเยา','1'),(45,'เชียงราย','1'),(46,'แม่ฮ่องสอน','1'),(47,'นครสวรรค์','1'),(48,'อุทัยธานี','1'),(49,'กำแพงเพชร','1'),(50,'ตาก','1'),(51,'สุโขทัย','1'),(52,'พิษณุโลก','1'),(53,'พิจิตร','1'),(54,'เพชรบูรณ์','1'),(55,'ราชบุรี','1'),(56,'กาญจนบุรี','1'),(57,'สุพรรณบุรี','1'),(58,'นครปฐม','1'),(59,'สมุทรสาคร','1'),(60,'สมุทรสงคราม','1'),(61,'เพชรบุรี','1'),(62,'ประจวบคีรีขันธ์','1'),(63,'นครศรีธรรมราช','1'),(64,'กระบี่','1'),(65,'พังงา','1'),(66,'ภูเก็ต','1'),(67,'สุราษฎร์ธานี','1'),(68,'ระนอง','1'),(69,'ชุมพร','1'),(70,'สงขลา','1'),(71,'สตูล','1'),(72,'ตรัง','1'),(73,'พัทลุง','1'),(74,'ปัตตานี','1'),(75,'ยะลา','1'),(76,'นราธิวาส','1'),(77,'บึงกาฬ','1'),(78,'เบตง','1');
+/*!40000 ALTER TABLE `provinceforcar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `rim`
 --
 
@@ -305,13 +342,12 @@ CREATE TABLE `rim` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `rimcol` varchar(45) NOT NULL,
   PRIMARY KEY (`rimId`),
   KEY `fk_rim_users1_idx` (`create_by`),
   KEY `fk_rim_users2_idx` (`update_by`),
   CONSTRAINT `fk_rim_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_rim_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,7 +356,7 @@ CREATE TABLE `rim` (
 
 LOCK TABLES `rim` WRITE;
 /*!40000 ALTER TABLE `rim` DISABLE KEYS */;
-INSERT INTO `rim` VALUES (1,'1',1,1,NULL,NULL,'1',''),(2,'222',1,1,NULL,NULL,'1','');
+INSERT INTO `rim` VALUES (1,'13',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(2,'14',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(3,'15 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(4,'16 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(5,'17 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(6,'18 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(7,'19 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(8,'20 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(9,'21 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(10,'22 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1');
 /*!40000 ALTER TABLE `rim` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -433,6 +469,81 @@ INSERT INTO `subdistrict` VALUES (1,'พระบรมมหาราชวั�
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tire_brand`
+--
+
+DROP TABLE IF EXISTS `tire_brand`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tire_brand` (
+  `tire_brandId` int(11) NOT NULL AUTO_INCREMENT,
+  `tire_brandName` varchar(45) DEFAULT NULL,
+  `tire_brandPicture` varchar(45) DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`tire_brandId`),
+  KEY `fk_trie_brand_users1_idx` (`create_by`),
+  KEY `fk_trie_brand_users2_idx` (`update_by`),
+  CONSTRAINT `fk_trie_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tire_brand`
+--
+
+LOCK TABLES `tire_brand` WRITE;
+/*!40000 ALTER TABLE `tire_brand` DISABLE KEYS */;
+INSERT INTO `tire_brand` VALUES (1,'MICHELIN\r ','MICHELIN\r.png',1,1,NULL,NULL,'1');
+/*!40000 ALTER TABLE `tire_brand` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tire_data`
+--
+
+DROP TABLE IF EXISTS `tire_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tire_data` (
+  `tire_dataId` int(11) NOT NULL AUTO_INCREMENT,
+  `rimId` int(11) NOT NULL,
+  `tire_sizeId` int(11) NOT NULL,
+  `tire_brandId` int(11) NOT NULL,
+  `tire_modelId` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`tire_dataId`),
+  KEY `fk_trie_data_rim1_idx` (`rimId`),
+  KEY `fk_trie_data_trie_size1_idx` (`tire_sizeId`),
+  KEY `fk_trie_data_trie_brand1_idx` (`tire_brandId`),
+  KEY `fk_trie_data_tire_model1_idx` (`tire_modelId`),
+  KEY `fk_trie_data_users1_idx` (`create_by`),
+  KEY `fk_trie_data_users2_idx` (`update_by`),
+  CONSTRAINT `fk_trie_data_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_data_tire_model1` FOREIGN KEY (`tire_modelId`) REFERENCES `tire_model` (`tire_modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_data_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trie_data_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tire_data`
+--
+
+LOCK TABLES `tire_data` WRITE;
+/*!40000 ALTER TABLE `tire_data` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tire_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tire_model`
 --
 
@@ -442,20 +553,20 @@ DROP TABLE IF EXISTS `tire_model`;
 CREATE TABLE `tire_model` (
   `tire_modelId` int(11) NOT NULL AUTO_INCREMENT,
   `tire_modelName` varchar(45) DEFAULT NULL,
-  `trie_brandId` int(11) DEFAULT NULL,
+  `tire_brandId` int(11) DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) NOT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`tire_modelId`),
-  KEY `fk_tire_model_trie_brand1_idx` (`trie_brandId`),
+  KEY `fk_tire_model_trie_brand1_idx` (`tire_brandId`),
   KEY `fk_tire_model_users1_idx` (`create_by`),
   KEY `fk_tire_model_users2_idx` (`update_by`),
-  CONSTRAINT `fk_tire_model_trie_brand1` FOREIGN KEY (`trie_brandId`) REFERENCES `trie_brand` (`trie_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_model_trie_brand1` FOREIGN KEY (`tire_brandId`) REFERENCES `tire_brand` (`tire_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_model_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_model_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -464,118 +575,44 @@ CREATE TABLE `tire_model` (
 
 LOCK TABLES `tire_model` WRITE;
 /*!40000 ALTER TABLE `tire_model` DISABLE KEYS */;
+INSERT INTO `tire_model` VALUES (1,'XCD2',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(2,'AGILIS',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(3,'CROSS TERRAIN',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(4,'LTX Force',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(5,'LATTITUDE TOUR',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(6,'LATTITUDE TOUR HP',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(7,'LATTITUDE CROSS',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(8,'PRIMACY SUV',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(9,'ENERGY XM1',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(10,'ENERGY XM2',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(11,'PILOT SPORT3',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(12,'PILOT SPORT3 ZP',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(13,'PILOT SPORT4',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(14,'PRIMACY LC',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(15,'PRIACY3 ZP',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(16,'PRIMACY3 ST',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1');
 /*!40000 ALTER TABLE `tire_model` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `trie_brand`
+-- Table structure for table `tire_size`
 --
 
-DROP TABLE IF EXISTS `trie_brand`;
+DROP TABLE IF EXISTS `tire_size`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `trie_brand` (
-  `trie_brandId` int(11) NOT NULL AUTO_INCREMENT,
-  `trie_brandName` varchar(45) DEFAULT NULL,
-  `trie_brandPicture` varchar(45) DEFAULT NULL,
-  `create_by` int(11) DEFAULT NULL,
-  `update_by` int(11) DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`trie_brandId`),
-  KEY `fk_trie_brand_users1_idx` (`create_by`),
-  KEY `fk_trie_brand_users2_idx` (`update_by`),
-  CONSTRAINT `fk_trie_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `trie_brand`
---
-
-LOCK TABLES `trie_brand` WRITE;
-/*!40000 ALTER TABLE `trie_brand` DISABLE KEYS */;
-/*!40000 ALTER TABLE `trie_brand` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `trie_data`
---
-
-DROP TABLE IF EXISTS `trie_data`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `trie_data` (
-  `trie_dataId` int(11) NOT NULL AUTO_INCREMENT,
-  `rimId` int(11) NOT NULL,
-  `trie_sizeId` int(11) NOT NULL,
-  `trie_brandId` int(11) NOT NULL,
-  `tire_modelId` int(11) NOT NULL,
-  `create_by` int(11) DEFAULT NULL,
-  `update_by` int(11) DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`trie_dataId`),
-  KEY `fk_trie_data_rim1_idx` (`rimId`),
-  KEY `fk_trie_data_trie_size1_idx` (`trie_sizeId`),
-  KEY `fk_trie_data_trie_brand1_idx` (`trie_brandId`),
-  KEY `fk_trie_data_tire_model1_idx` (`tire_modelId`),
-  KEY `fk_trie_data_users1_idx` (`create_by`),
-  KEY `fk_trie_data_users2_idx` (`update_by`),
-  CONSTRAINT `fk_trie_data_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_data_tire_model1` FOREIGN KEY (`tire_modelId`) REFERENCES `tire_model` (`tire_modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_data_trie_brand1` FOREIGN KEY (`trie_brandId`) REFERENCES `trie_brand` (`trie_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_data_trie_size1` FOREIGN KEY (`trie_sizeId`) REFERENCES `trie_size` (`trie_sizeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_data_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trie_data_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `trie_data`
---
-
-LOCK TABLES `trie_data` WRITE;
-/*!40000 ALTER TABLE `trie_data` DISABLE KEYS */;
-/*!40000 ALTER TABLE `trie_data` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `trie_size`
---
-
-DROP TABLE IF EXISTS `trie_size`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `trie_size` (
-  `trie_sizeId` int(11) NOT NULL AUTO_INCREMENT,
-  `trie_size` varchar(45) DEFAULT NULL,
+CREATE TABLE `tire_size` (
+  `tire_sizeId` int(11) NOT NULL AUTO_INCREMENT,
+  `tire_size` varchar(45) DEFAULT NULL,
   `rimId` int(11) NOT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`trie_sizeId`),
+  PRIMARY KEY (`tire_sizeId`),
   KEY `fk_trie_size_rim1_idx` (`rimId`),
   KEY `fk_trie_size_users1_idx` (`create_by`),
   KEY `fk_trie_size_users2_idx` (`update_by`),
   CONSTRAINT `fk_trie_size_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_trie_size_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_trie_size_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `trie_size`
+-- Dumping data for table `tire_size`
 --
 
-LOCK TABLES `trie_size` WRITE;
-/*!40000 ALTER TABLE `trie_size` DISABLE KEYS */;
-/*!40000 ALTER TABLE `trie_size` ENABLE KEYS */;
+LOCK TABLES `tire_size` WRITE;
+/*!40000 ALTER TABLE `tire_size` DISABLE KEYS */;
+INSERT INTO `tire_size` VALUES (1,'175/70R13',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(2,'185/70R13',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(3,'195R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(4,'165/65R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(5,'175/65R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(6,'185/70R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(7,'185/65R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(8,'185/60R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(9,'195/60R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(10,'195/70R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(11,'205/75R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(12,'215/75R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(13,'225/75R14',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(14,'195R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(15,'175/65R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(16,'185/55R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(17,'185/60R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(18,'185/65R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(19,'195/50R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(20,'195/55R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(21,'195/60R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(22,'195/65R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(23,'205/60R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(24,'205/65R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(25,'205/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(26,'215/65R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(27,'215/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(28,'225/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(29,'225/75R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(30,'235/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(31,'235/75R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(32,'255/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(33,'265/70R15',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(34,'185/55R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(35,'195/50R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(36,'195/55R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(37,'195/60R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(38,'195/75R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(39,'205/60R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(40,'205/65R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(41,'205/50R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(42,'205/55R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(43,'215/55R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(44,'215/60R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(45,'215/65R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(46,'215/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(47,'215/75R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(48,'225/50R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(49,'225/55R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(50,'225/60R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(51,'225/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(52,'235/60R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(53,'235/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(54,'245/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(55,'265/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(56,'275/70R16',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(57,'205/40R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(58,'205/45R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(59,'205/50R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(60,'205/55R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(61,'215/45R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(62,'215/50R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(63,'215/55R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(64,'215/60R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(65,'225/45R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(66,'225/50R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(67,'225/55R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(68,'225/60R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(69,'225/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(70,'235/45R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(71,'235/55R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(72,'235/60R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(73,'235/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(74,'245/40R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(75,'245/45R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(76,'245/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(77,'255/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(78,'265/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(79,'275/65R17',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(80,'215/45R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(81,'225/40R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(82,'225/45R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(83,'225/60R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(84,'235/40R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(85,'235/45R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(86,'235/50R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(87,'235/55R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(88,'235/60R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(89,'245/40R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(90,'245/45R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(91,'245/50R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(92,'255/35R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(93,'255/40R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(94,'255/45R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(95,'255/55R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(96,'255/60R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(97,'265/35R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(98,'265/60R18',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(99,'245/40R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(100,'245/45R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(101,'255/35R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(102,'255/50R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(103,'275/40R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1'),(104,'275/35R19',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1');
+/*!40000 ALTER TABLE `tire_size` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -589,29 +626,28 @@ CREATE TABLE `user_profile` (
   `user_profile` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(45) NOT NULL,
   `lastname` varchar(45) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` varchar(45) NOT NULL,
   `phone1` varchar(45) DEFAULT NULL,
   `phone2` varchar(45) DEFAULT NULL,
   `provinceId` int(11) NOT NULL,
   `districtId` int(11) NOT NULL,
   `subdistrictId` int(11) NOT NULL,
-  `create_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
-  `userId` int(11) NOT NULL,
+  `userId` int(11) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
-  `titleName` text NOT NULL,
+  `titleName` text,
+  `update_at` datetime DEFAULT NULL,
   PRIMARY KEY (`user_profile`),
   KEY `fk_user_profile_province1_idx` (`provinceId`),
   KEY `fk_user_profile_district1_idx` (`districtId`),
   KEY `fk_user_profile_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_user_profile_users1_idx` (`create_by`),
-  KEY `fk_user_profile_users3_idx` (`userId`),
   CONSTRAINT `fk_user_profile_district1` FOREIGN KEY (`districtId`) REFERENCES `district` (`districtId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_province1` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_subdistrict1` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_profile_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_profile_users3` FOREIGN KEY (`userId`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_user_profile_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -620,7 +656,7 @@ CREATE TABLE `user_profile` (
 
 LOCK TABLES `user_profile` WRITE;
 /*!40000 ALTER TABLE `user_profile` DISABLE KEYS */;
-INSERT INTO `user_profile` VALUES (1,'as','as',1,'','as',58,584,7736,5,'2018-05-25 13:58:45',5,'as','');
+INSERT INTO `user_profile` VALUES (1,'admin','admin','1',NULL,NULL,63,843,710,1,NULL,1,NULL,NULL,NULL),(2,'12','12','1','','122222222222222222',58,813,7343,9,'2018-05-31 16:05:53',9,'21','นาย',NULL);
 /*!40000 ALTER TABLE `user_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -643,12 +679,14 @@ CREATE TABLE `users` (
   `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `activeflag` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
   KEY `fk_users_users1_idx` (`create_by`),
   KEY `fk_users_users2_idx` (`update_by`),
   CONSTRAINT `fk_users_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -657,7 +695,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1),(3,'nnnn','$2y$10$AF2p2j3eG6EA7Qpg9cjWAeLHKtHlvXORKWbG6PxESbAiQVW.DvELy',NULL,'nar@gmail.com','45456546',NULL,NULL,NULL,NULL,NULL),(4,'5454','4554','3','445@gmail.com','45456456456',NULL,NULL,1,1,1),(5,'nnn','$2y$10$8NagaB3Kjeat0omA4NqcjeWE9G4411lahp34c85ZqWiBoaAus3puu','4','nana@gmail.com','2646542',NULL,NULL,NULL,NULL,NULL),(6,'aaa','$2y$10$RBxtD.UFGsb5oCuChJm7helVbXiHj/k6UT4KiV5dY6kSteDlHhcw6',NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL),(12,'','$2y$10$adCdDAjUNzL1798Z/CES7OfmmFeLb0SOkRXftm/89lyzg1NsocQKG',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(13,'yodev','$2y$10$a3izxfMOjI.8elJ8mB0clufdRtFpK62A7aE3DT9UFzWYfuuZR2LjO',NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL),(14,'12','$2y$10$3BH5bQVQcwbEqcBxi9OdWOepSIekndwQIvYr7PetTGop.0BAgegOy',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(15,'zzzz','$2y$10$jiC.n00V.A209UoDzIKfnOK8.oaArciaMNHr3Erm1uyGQpcjk8wKe',NULL,NULL,'111111111',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(9,'natza9301','$2y$10$9Tphrpm9Yuc79zGaoaZ3o.hkYpP8FK32dM4l3dOB4/hyYpDV/x4pa','4',NULL,'222222222222222',NULL,NULL,NULL,NULL,1,NULL),(10,'natza9302','$2y$10$K6XcC8Qhgu0wgRfi052mH.aeEDqiTlCyF3STnjndP2Llj8B6gt90y',NULL,NULL,'000000000000000',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -674,4 +712,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-30 13:15:45
+-- Dump completed on 2018-06-01 15:40:49

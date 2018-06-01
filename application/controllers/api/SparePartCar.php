@@ -13,9 +13,8 @@ class SparePartCar extends BD_Controller {
     function searchSpares_post(){
         $columns = array( 
             0 => null,
-            1 => 'spares_brandName'
-            
-            
+            1 => 'spares_brandName',
+            2 => 'status',   
         );
 
         $limit = $this->post('length');
@@ -49,6 +48,7 @@ class SparePartCar extends BD_Controller {
                 $nestedData['spares_brandId'] = $post->spares_brandId;
                 $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
                 $nestedData['spares_brandName'] = $post->spares_brandName;
+                $nestedData['status'] = $post->status;
 
                 $data[] = $nestedData;
 
@@ -72,7 +72,7 @@ class SparePartCar extends BD_Controller {
         
         $this->load->model("Sparesbrand");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->Sparesbrand->getBrandforTF($spares_brandName,$spares_undercarriageId);
+        $isCheck = $this->Sparesbrand->isGetBrand($spares_brandName,$spares_undercarriageId);
 
         if($isCheck){
             $data = array(
@@ -84,15 +84,13 @@ class SparePartCar extends BD_Controller {
                 'create_by' => $userId,
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
-                
             );
             $result = $this->Sparesbrand->insertBrand($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
+            }else{
                 $output["status"] = false;
                 $output["message"] = REST_Controller::MSG_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -143,12 +141,12 @@ class SparePartCar extends BD_Controller {
 
 
     function deleteSpareBrand_get(){
-        $sparesbrandId = $this->get('sparesbrandId');
+        $spares_brandId = $this->get('spares_brandId');
 
         $this->load->model("Sparesbrand");
-        $sparBrand = $this->SpaSparesbrandre->getSpareBrandbyId($sparesbrandId);
+        $sparBrand = $this->Sparesbrand->getSpareBrandbyId($spares_brandId);
         if($sparBrand != null){
-            $isDelete = $this->Sparesbrand->delete($sparesbrandId);
+            $isDelete = $this->Sparesbrand->delete($spares_brandId);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -189,7 +187,27 @@ class SparePartCar extends BD_Controller {
     }
 
 
-
+    function changeStatus_post(){
+        $spares_brandId = $this->post("spares_brandId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status
+        );
+        $this->load->model("Sparesbrand");
+        $result = $this->Sparesbrand->updateStatus($spares_brandId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
 
     }

@@ -31,23 +31,25 @@
                     data.brandName = $("#table-search").val()
                 }
             },
+            "order": [[ 2, "asc" ]],
             "columns": [
                 null,
                 null,
-                { "data": "brandName" }
+                { "data": "brandName" },
+                null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,1,3]
+                    "targets": [0,1,4]
                 },{
-                    "targets": 3,
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/car/model/"+data.brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
                             +'<a href="'+base_url+"admin/car/updateBrand/"+data.brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteBrand('+data.brandId+',\''+data.brandName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -65,31 +67,63 @@
                         var imageHtml = '<img src="'+ path +'" class="rounded" width="100px">';
                         return imageHtml;
                     }
+                },{
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.brandId+','+data.status+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
+                    }
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,3]},
+                {"className": "dt-center", "targets": [0,1,4,3]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 1 },
-                { "width": "20%", "targets": 3 }
+                { "width": "20%", "targets": 4 },
+                { "width": "10%", "targets": 3 }
             ]	 
 
     });
 
-    $('#brand-table tbody').on( 'click', 'button.delete', function () {
-        var data = table.row( $(this).parents('tr') ).data();
+    function deleteBrand(brandId,brandName){
         var option = {
-            url: "/car/deleteBrand?brandId="+data.brandId,
+            url: "/car/deleteBrand?brandId="+brandId,
             label: "ลบยี่ห้อรถ",
-            content: "คุณต้องการลบ "+data.brandName+" ใช่หรือไม่",
+            content: "คุณต้องการลบ "+brandName+" ใช่หรือไม่",
             gotoUrl: "admin/car"
         }
         fnDelete(option);
-    } );
+    }
 
     $("#btn-search").click(function(){
         table.ajax.reload();
     })
+
+    function updateStatus(brandId,status){
+        $.post(base_url+"api/Car/changeStatus",{
+            "brandId": brandId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/car");
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
+
 </script>
 
 </body>

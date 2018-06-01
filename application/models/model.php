@@ -129,4 +129,10 @@ class Model extends CI_Model{
         return true;
     }
 
+    function updateStatus($modelId,$data){
+        $this->db->where('modelId',$modelId);
+        $result = $this->db->update('model', $data);
+        return $result; 
+    }
+
 }

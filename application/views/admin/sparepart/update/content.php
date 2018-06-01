@@ -29,7 +29,7 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label>ชื่อยี่ห้ออะไหล่</label>
+                            <label>ชื่อยี่ห้ออะไหล่</label> <span class="error">*</span>
                             <input type="text" class="form-control" placeholder="ชื่อยี่ห้ออะไหล่" id="spares_brandName" name="spares_brandName" value="">
                           </div>
                         </div>

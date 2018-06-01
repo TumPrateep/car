@@ -29,15 +29,15 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.search = $("#table-search").val()
-                   
                 }
             },
+            "order": [[ 1, "asc" ]],
             "columns": [
                 null,
                 { "data": "username" },
                 { "data": "phone" },
-                { "data": "email" },
-                { "data": "category" },
+                null,
+                null,
                 null,
                 null
             ],
@@ -45,22 +45,51 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5,6]
+                    "targets": [0,6]
+                },{
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.category != null){
+                            return data.category;
+                        }else{
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }
+                    }
+                },{
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.email != null){
+                            return data.email;
+                        }else{
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }
+                    }
                 },{
                     "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                           +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
+                           +'<button type="button" class="delete btn btn-danger" onclick="deleteUser('+data.id+',\''+data.username+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<label class="switch">'
-                        +'<input type="checkbox" '+'checked'+'>'
-                        +'<span class="slider round"></span>'
-                        +'</label>';
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.id+','+data.status+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
                     }
                 },
                 {
@@ -79,21 +108,35 @@
 
     });
 
-    $('#user-table tbody').on( 'click', 'button.delete', function () {
-        var data = table.row( $(this).parents('tr') ).data();
-        
+    function deleteUser(id,username){
         var option = {
-            url: "/UserManagement/delete?id="+data.id,
+            url: "/UserManagement/delete?id="+id,
             label: "ลบข้อมูลผู้ใช้งาน",
-            content: "คุณต้องการลบ "+data.username+" ใช่หรือไม่",
+            content: "คุณต้องการลบ "+username+" ใช่หรือไม่",
             gotoUrl: "admin/usermanagement"
         }
         fnDelete(option);
-    } );
+    }
+   
 
     $("#btn-search").click(function(){
         table.ajax.reload();
     })
+
+    function updateStatus(id,status){
+        $.post(base_url+"api/UserManagement/changeStatus",{
+            "id": id,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/usermanagement");
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
+
+
 </script>
 
 </body>

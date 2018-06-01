@@ -10,7 +10,7 @@
         <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link text-white" href="<?=base_url("admin/car") ?>">
             <i class="fa fa-fw fa-car"></i>
-            <span class="nav-link-text">ยี่ห้อรถ</span>
+            <span class="nav-link-text">การจัดการยี่ห้อ/รุ่นรถ</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
@@ -28,14 +28,17 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Components</span>
+            <span class="nav-link-text">เมนูอะไหล่</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a class="text-white" href="navbar.html">Navbar</a>
+              <a class="text-white" href="Suspension.html">อะไหล่ช่วงล่าง</a>
             </li>
             <li>
-              <a class="text-white" href="cards.html">Cards</a>
+              <a class="text-white" href="EngineOil.html">น้ำมันเครื่อง</a>
+            </li>
+            <li>
+              <a class="text-white" href="rubber.html">ยาง</a>
             </li>
           </ul>
         </li>
