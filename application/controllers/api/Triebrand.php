@@ -36,16 +36,16 @@ class Triebrand extends BD_Controller {
 		{
             $imageDetailArray = $this->upload->data();
             $image =  $imageDetailArray['file_name'];
-            $trie_brandName = $this->post("trie_brandName");
-            $isDublicte = $this->triebrands->checktriebrands($trie_brandName);
+            $trie_brandName = $this->post("tire_brandName");
+            $isDublicte = $this->triebrands->checktriebrands($tire_brandName);
             if($isDublicte){
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
                 $data = array(
-                    "trie_brandId"=> null,
-                    "trie_brandName"=> $trie_brandName,
-                    "trie_brandPicture"=> $trie_brandPicture,
+                    "tire_brandId"=> null,
+                    "tire_brandName"=> $tire_brandName,
+                    "tire__brandPicture"=> $tire__brandPicture,
                     "status"=> 1,
                     "create_at" => date('Y-m-d H:i:s',time()),
                     "create_by" => $userId,
