@@ -12,7 +12,7 @@ class Triebrand extends BD_Controller {
     }
 
     function createBrand_post(){
-        $config['upload_path'] = 'public/image/triebrand/';
+        $config['upload_path'] = 'public/image/tirebrand/';
         $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
         $config['max_width']  = '1024';
