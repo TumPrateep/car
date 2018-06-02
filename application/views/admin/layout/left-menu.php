@@ -31,14 +31,27 @@
                 <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
               </a>
             </li>
+
             <li>
               <a class="text-white" href="">น้ำมันเครื่อง</a>
             </li>
+
             <li>
-              <a class="nav-link text-white" href="<?=base_url("admin/tires") ?>">
-                <i class="fa fa fa-wrench"></i>
-                <span class="nav-link-text">ยางรถ</span>
-              </a>
+              <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti2">ยางรถ</a>
+              <ul class="sidenav-third-level collapse" id="collapseMulti2">
+                <li>
+                  <a class="nav-link text-white" href="<?=base_url("admin/tires") ?>">
+                    <i class="fa fa fa-wrench"></i>
+                    <span class="nav-link-text">ขอบยางรถยนตร์</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="nav-link text-white" href="<?=base_url("admin/tires/tiresbrand/") ?>">
+                    <i class="fa fa fa-wrench"></i>
+                    <span class="nav-link-text">ยี่ห้อยางรถยนตร์</span>
+                  </a>
+                </li>
+              </ul>
             </li>
             
           </ul>
@@ -69,12 +82,6 @@
             <span class="nav-link-text">Menu Levels</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseMulti">
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
             <li>
               <a href="#">Second Level Item</a>
             </li>
