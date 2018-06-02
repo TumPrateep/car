@@ -113,4 +113,12 @@ class trieSizes extends CI_Model{
         return $query->num_rows();
     }
 
+    function getiresizeById($trie_sizeId){
+        return $this->db->where('trie_sizeId',$trie_sizeId)->get("trie_size")->row();
+    }
+
+    function delete($trie_sizeId){
+        return $this->db->delete('trie_size', array('trie_sizeId' => $trie_sizeId));
+    }
+
 }

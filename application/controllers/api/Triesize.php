@@ -146,6 +146,24 @@ class Triesize extends BD_Controller {
         $this->set_response($json_data);
     }
 
+    function deletetriesize_get(){
+        $trie_sizeId = $this->get('trie_sizeId');
+        $this->load->model("trieSizes");
+        $tire = $this->trieSizes->getiresizeById($trie_sizeId);
+        if($tire != null){
+            $isDelete = $this->trieSizes->delete($trie_sizeId);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
     
 
 }
