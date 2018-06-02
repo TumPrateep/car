@@ -18,4 +18,11 @@ class triebrands extends CI_Model{
 		return $this->db->insert('tire_brand', $data);
     }
 
+    function getirebrandById($trie_brandId){
+        return $this->db->where('trie_brandId',$trie_brandId)->get("trie_brand")->row();
+    }
+
+    function delete($trie_brandId){
+        return $this->db->delete('trie_brand', array('trie_brandId' => $trie_brandId));
+    }
 }

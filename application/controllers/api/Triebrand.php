@@ -8,7 +8,7 @@ class Triebrand extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        //$this->auth();
     }
 
     function createBrand_post(){
@@ -64,5 +64,23 @@ class Triebrand extends BD_Controller {
 		}
     }
 
+    function deletetriebrand_get(){
+        $trie_brandId = $this->get('trie_brandId');
+        $this->load->model("triebrands");
+        $tire = $this->triebrands->getirebrandById($trie_brandId);
+        if($tire != null){
+            $isDelete = $this->triebrands->delete($trie_brandId);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
 }
