@@ -95,7 +95,7 @@ class Triemodel extends BD_Controller {
 
 
         $this->load->model("Triemodels");
-        $isCheck = $this->Triemodels->get_tiremodel($trie_brandId,$tire_modelName);
+        $isCheck = $this->Triemodels->get_tiremodel($tire_brandId,$tire_modelName);
 
         if($isCheck){
             $data = array(

@@ -522,7 +522,7 @@ class Car extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
 
