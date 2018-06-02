@@ -1,5 +1,17 @@
 <script>
-
+  $("#spares").validate({
+            rules: {
+                tire_brandName: {
+                    required: true
+                },
+            },
+            messages: {
+                tire_brandName: {
+                    required: "กรุณากรอกรุ่นยาง"
+                }
+            },
+        });
+  
     
 </script>
 
