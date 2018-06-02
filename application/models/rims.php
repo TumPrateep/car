@@ -103,4 +103,10 @@ class rims extends CI_Model{
         $result = $this->db->update('rim', $data);
         return $result;
     }
+
+    function updateStatus($rimId,$data){
+        $this->db->where('rimId',$rimId);
+        $result = $this->db->update('rim', $data);
+        return $result; 
+    }
 }

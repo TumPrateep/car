@@ -12,7 +12,7 @@ class Triebrand extends BD_Controller {
     }
 
     function createBrand_post(){
-        $config['upload_path'] = 'public/image/triebrand/';
+        $config['upload_path'] = 'public/image/tirebrand/';
         $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
         $config['max_width']  = '1024';
@@ -64,5 +64,23 @@ class Triebrand extends BD_Controller {
 		}
     }
 
+    function deletetriebrand_get(){
+        $trie_brandId = $this->get('trie_brandId');
+        $this->load->model("triebrands");
+        $tire = $this->triebrands->getirebrandById($trie_brandId);
+        if($tire != null){
+            $isDelete = $this->triebrands->delete($trie_brandId);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
 }
