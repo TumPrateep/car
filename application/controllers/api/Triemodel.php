@@ -89,19 +89,19 @@ class Triemodel extends BD_Controller {
     function createTireModel_post(){
 
         $tire_modelName = $this->post("tire_modelName");
-        $trie_brandId = $this->post("trie_brandId");
+        $tire_brandId = $this->post("tire_brandId");
         
         $userId = $this->session->userdata['logged_in']['id'];
 
 
         $this->load->model("Triemodels");
-        $isCheck = $this->Triemodels->get_Tiremodel($trie_brandId,$tire_modelName);
+        $isCheck = $this->Triemodels->get_tiremodel($trie_brandId,$tire_modelName);
 
         if($isCheck){
             $data = array(
                 'tire_modelId' => null,
                 'tire_modelName' => $tire_modelName,
-                'trie_brandId' => $trie_brandId,
+                'tire_brandId' => $tire_brandId,
                 'create_by' => $userId,
                 'update_by' => null,
                 'create_at' => date('Y-m-d H:i:s',time()),

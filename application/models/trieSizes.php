@@ -121,4 +121,23 @@ class trieSizes extends CI_Model{
         return $this->db->delete('trie_size', array('trie_sizeId' => $trie_sizeId));
     }
 
+    function insert_Tiremodel($data){
+        $result = $this->db->insert('tire_model', $data);
+        return $result;
+    }
+
+
+    function get_model($brandId,$modelName){
+        $this->db->select("modelName");
+        $this->db->from("model");
+        $this->db->where('modelName', $modelName);
+        $this->db->where('brandId', $brandId);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+
 }
