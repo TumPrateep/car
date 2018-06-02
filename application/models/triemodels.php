@@ -16,4 +16,23 @@ class Triemodels extends CI_Model {
         return $this->db->delete('tire_model', array('tire_modelId' => $tire_modelId));
     }
 
+    function wherenotTireModelid($tire_modelId,$tire_modelName,$tire_brandId){
+        $this->db->select("tire_modelName");
+        $this->db->from("triemodels");
+        $this->db->where('tire_modelName', $tire_modelName);
+        $this->db->where('tire_modelId', $tire_modelId);
+        $this->db->where_not_in('tire_brandId', $tire_brandId);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }    
+    function updateTireModel($data){
+        $this->db->where('tire_modelId',$data['tire_modelId']);
+        $result = $this->db->update('tire_modelId', $data);
+        return $result;
+    }
+     
 }
