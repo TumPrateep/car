@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires") ?>">การจัดการขอบยางรถยนตร์</a>
+          <a href="<?=base_url("admin/tires") ?>">การจัดการยี่ห้อยางรถยนตร์</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>

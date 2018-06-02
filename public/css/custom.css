@@ -141,9 +141,9 @@
      padding-left: 32.5em !important;
     }
   }
-  @media only screen and (max-width: 415px) {
+  @media only screen and (max-width: 412px) {
     a.right{
-     padding-left: 10em !important;
+     padding-left: 7em !important;
     }
   }
   @media only screen and (max-width: 375px) {
@@ -153,18 +153,18 @@
   }
   @media only screen and (max-width: 361px) {
     a.right{
-     padding-left: 7em !important;
+     padding-left: 3.8em !important;
     }
   }
   @media only screen and (max-width: 321px) {
     a.right{
-     padding-left: 4.5em !important;
+     padding-left: 2.5em !important;
      /*display: inherit !important;*/
     }
   }
 
   a.right{
-    padding-left: 53.5em;
+    padding-left: 50em;
     /*display: none;*/
   }
   .input-group.float-right{
