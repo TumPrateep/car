@@ -35,4 +35,21 @@ class Triemodels extends CI_Model {
         return $result;
     }
      
+    function insert_Tiremodel($data){
+        $result = $this->db->insert('tire_model', $data);
+        return $result;
+    }
+
+    function get_tiremodel($tire_brandId,$tire_modelName){
+        $this->db->select("tire_modelName");
+        $this->db->from("tire_model");
+        $this->db->where('tire_modelName', $tire_modelName);
+        $this->db->where('tire_brandId', $tire_brandId);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
 }
