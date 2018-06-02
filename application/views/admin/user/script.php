@@ -28,7 +28,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.rimName = $("#table-search").val()
+                    data.search = $("#table-search").val()
                 }
             },
             "order": [[ 1, "asc" ]],
