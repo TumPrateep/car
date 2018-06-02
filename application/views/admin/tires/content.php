@@ -14,10 +14,10 @@
 
         <div class="input-group input-group-sm" >
           <span id="brandPicture"></span>
-          <h3 class="car-img" id="brandName"></h3>
+          <h3 class="car-img" id="rimName"></h3>
         </div>
         <div class="input-group input-group-sm float-right" >
-          <a href="<?=base_url("admin/car/createModel/$brandId") ?>"><button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button></a>
+          <a href="<?=base_url("admin/rimId/createRim/$rimId") ?>"><button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button></a>
           <input type="text" name="table_search" id="table-search" class="form-control float-right" placeholder="ค้นหา">
           <div class="input-group-append">
             <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-search"></i></button>
@@ -25,14 +25,13 @@
         </div>
     </div>
 
-    <input type="hidden" id="brandId" value="<?=$brandId ?>">
+    <input type="hidden" id="rimId" value="<?=$rimId ?>">
   
     <div class="table-responsive">
-      <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="tires-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
-          <th>ชื่อรุ่น</th>
-          <th>ปีที่ผลิต</th>
+          <th>ขนาดยาง</th>
           <th>สถานะ</th>
           <th></th>
         </thead>	

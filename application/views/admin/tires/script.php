@@ -8,7 +8,8 @@ function deleterim(rimId,rimName){
         }
         fnDelete(option);
     }
-    var table = $('#tries-table').DataTable({
+
+    var table = $('#tires-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -33,12 +34,11 @@ function deleterim(rimId,rimName){
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/Rim/searchrim",
+                "url": base_url+"api/rim/searchrim",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.search = $("#table-search").val()
-                    data.rimId = $("#rimId").val()
+                    data.rimName = $("#table-search").val()
                 }
             },
             "order": [[ 1, "asc" ]],
@@ -46,56 +46,61 @@ function deleterim(rimId,rimName){
                 null,
                 { "data": "rimName" },
                 null,
-                null    
+                null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
                     "targets": [0,3]
-                }
-            ,{
+                },{
                     "targets": 3,
                     "data": null,
-                    // "render": function ( data, type, full, meta ) {
-                    //     return '<a href="'+base_url+"admin/car/updateModel/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                    //         +'<button type="button" class="delete btn btn-danger" onclick="deleteModel('+data.modelId+',\''+data.modelName+'\',\''+data.brandId+'\')"><i class="fa fa-trash"></i></button>';
-                    // }
-                }
-                ,{
+                    "render": function ( data, type, full, meta ) {
+                        return '<a href="'+base_url+"admin//model/"+data.brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"admin/Rim/updaterim/"+data.rimId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteRim('+data.rimId+',\''+data.rimName+'\')"><i class="fa fa-trash"></i></button>';
+                    }
+                },
+                {
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
-                }
-                ,{
+                },{
                     "targets": 2,
                     "data": null,
-                    // "render": function ( data, type, full, meta ) {
-                    //     var switchVal = "true";
-                    //     var active = " active";
-                    //     if(data.status == null){
-                    //         return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
-                    //     }else if(data.status != "1"){
-                    //         switchVal = "false";
-                    //         active = "";
-                    //     }
-                    //     return '<div>'
-                    //     +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.rimId+','+data.status+')">'
-                    //     +'<div class="handle"></div>'
-                    //     +'</button>'
-                    //     +'</div>';
-                    // }
+                    "render": function ( data, type, full, meta ) {
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.rimId+','+data.status+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
+                    }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [1]},
-                {"className": "dt-center", "targets": [0,1,2,3,4]},
+                {"className": "dt-head-center", "targets": [2]},
+                {"className": "dt-center", "targets": [0,1,2,3]},
                 { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 2 }
+                { "width": "20%", "targets": 1 },
+                { "width": "20%", "targets": 2 },
+                { "width": "10%", "targets": 3 }
             ]	 
 
     });
+    $("#btn-search").click(function(){
+        table.ajax.reload();
+    })
+    
 
 </script>
 

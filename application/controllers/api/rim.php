@@ -74,7 +74,8 @@ class Rim extends BD_Controller {
     function searchrim_post(){
         $columns = array( 
             0 => null,
-            1 => 'rimName'   
+            1 => 'rimName',
+            2 => 'status'  
         );
 
         $limit = $this->post('length');
@@ -107,6 +108,7 @@ class Rim extends BD_Controller {
 
                 $nestedData['rimId'] = $post->rimId;
                 $nestedData['rimName'] = $post->rimName;
+                $nestedData['status'] = $post->status;
 
                 $data[] = $nestedData;
 
