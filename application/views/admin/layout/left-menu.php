@@ -19,12 +19,6 @@
             <span class="nav-link-text">เพิ่มผู้ใช้งาน</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link text-white" href="<?=base_url("admin/sparepartcar") ?>">
-            <i class="fa fa fa-wrench"></i>
-            <span class="nav-link-text">อะไหล่</span>
-          </a>
-        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
@@ -32,14 +26,21 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a class="text-white" href="Suspension.html">อะไหล่ช่วงล่าง</a>
+              <a class="nav-link text-white" href="<?=base_url("admin/sparepartcar") ?>">
+                <i class="fa fa fa-wrench"></i>
+                <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
+              </a>
             </li>
             <li>
-              <a class="text-white" href="EngineOil.html">น้ำมันเครื่อง</a>
+              <a class="text-white" href="">น้ำมันเครื่อง</a>
             </li>
             <li>
-              <a class="text-white" href="rubber.html">ยาง</a>
+              <a class="nav-link text-white" href="<?=base_url("admin/tires") ?>">
+                <i class="fa fa fa-wrench"></i>
+                <span class="nav-link-text">ยางรถ</span>
+              </a>
             </li>
+            
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
