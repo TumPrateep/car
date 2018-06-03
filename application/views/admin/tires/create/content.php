@@ -3,12 +3,9 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-      <a href="<?=base_url("admin/sparepartcar") ?>">รายการอะไหล่</a>
+      <a href="<?=base_url("admin/tires") ?>">การจัดการขอบยางรถยนตร์</a>
       </li>
-      <li class="breadcrumb-item">
-      <a href="<?=base_url("admin/sparepartcar/sparepart/$spares_undercarriageId") ?>">ยี่ห้ออะไหล่</a>
-      </li>
-      <li class="breadcrumb-item active">เพิ่มยี่ห้ออะไหล่</li>
+      <li class="breadcrumb-item active">เพิ่มข้อมูลขอบยาง</li>
     </ol>
     <!-- Icon Cards-->
     <section class="content">
@@ -27,7 +24,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label>ชื่อยี่ห้ออะไหล่</label> <span class="error">*</span>
+                          <label>ชื่อขอบยาง</label> <span class="error">*</span>
                           <input type="text" class="form-control" placeholder="ชื่อขอบยาง" name="rimName" id="rimName">
                         </div>
                       </div>
