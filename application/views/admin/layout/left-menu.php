@@ -33,7 +33,7 @@
             </li>
 
             <li>
-              <a class="text-white" href="">น้ำมันเครื่อง</a>
+              <a class="text-white" href=""><i class="fa fa-tint"></i> น้ำมันเครื่อง</a>
             </li>
 
             <li>
@@ -42,13 +42,13 @@
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
                 <li>
                   <a class="nav-link text-white" href="<?=base_url("admin/tires") ?>">
-                    <i class="fa fa fa-wrench"></i>
+                    <i class="fa fa-circle-o"></i>
                     <span class="nav-link-text">ขอบยางรถยนตร์</span>
                   </a>
                 </li>
                 <li>
                   <a class="nav-link text-white" href="<?=base_url("admin/tires/tiresbrand/") ?>">
-                    <i class="fa fa fa-wrench"></i>
+                    <i class="fa fa-futbol-o"></i>
                     <span class="nav-link-text">ยี่ห้อยางรถยนตร์</span>
                   </a>
                 </li>
