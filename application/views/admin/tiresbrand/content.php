@@ -14,7 +14,7 @@
 
         <div class="input-group input-group-sm" >
           <span id="brandPicture"></span>
-          <h3 class="car-img" id="brandName"></h3>
+          <h3 class="car-img" id="tirebrandName"></h3>
         </div>
         <div class="input-group input-group-sm float-right" >
           <a href="<?=base_url("admin/tires/createModel/") ?>"><button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button></a>
@@ -25,10 +25,10 @@
         </div>
     </div>
 
-    <input type="hidden" id="tiresbrandId" value="<?=$tiresbrandId ?>">
+    <input type="hidden" id="tire_brandId" value="<?=$tire_brandId ?>">
   
     <div class="table-responsive">
-      <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
           <th>รูปยี่ห้อ</th>
