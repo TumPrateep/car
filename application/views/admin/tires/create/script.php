@@ -25,7 +25,7 @@
             var data = $("#submit").serialize();
             $.post(base_url+"api/Rim/createRim",data,
             function(data){
-                var rimId = $("#rimId").val();
+                var rimName = $("#rimName").val();
                 if(data.message == 200){
                     showMessage(data.message,"admin/Tires");
                 }else{
