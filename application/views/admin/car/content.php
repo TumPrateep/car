@@ -18,7 +18,7 @@
       <form>
         <!-- <div class="input-group input-group-sm float-right"> -->
         <div class="input-group float-right">
-          <input type="text" name="table_search" id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้อรถ">
+          <input type="text" name="car_search" id="car-search" class="form-control float-right" placeholder="ชื่อยี่ห้อรถ">
           <div class="input-group-append">
             <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-car"></i></button>
           </div>

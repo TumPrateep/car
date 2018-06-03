@@ -38,4 +38,34 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/tiresmodel/script");
     }
+
+    public function createtiresmodel(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/tiresmodel/create/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/tiresmodel/create/script");
+    }
+
+    public function updatetiresmodel(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/tiresmodel/update/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/tiresmodel/update/script");
+    }
+
+    public function tiresize(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/sizetires/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/sizetires/script");
+    }
 }

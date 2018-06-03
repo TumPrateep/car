@@ -27,7 +27,7 @@
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
               <a class="nav-link text-white" href="<?=base_url("admin/sparepartcar") ?>">
-                <i class="fa fa fa-wrench"></i>
+                <i class="fa fa-cog"></i>
                 <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
               </a>
             </li>
@@ -37,7 +37,8 @@
             </li>
 
             <li>
-              <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti2">ยางรถ</a>
+              <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti2">
+              <i class="fa fa-life-ring"></i> ยางรถ</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
                 <li>
                   <a class="nav-link text-white" href="<?=base_url("admin/tires") ?>">
