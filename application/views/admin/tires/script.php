@@ -88,8 +88,7 @@ function deleterim(rimId,rimName){
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,2,3]},
+                {"className": "dt-center", "targets": [0,1,2]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 1 },
                 { "width": "20%", "targets": 2 },
