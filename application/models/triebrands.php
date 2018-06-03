@@ -44,4 +44,62 @@ class triebrands extends CI_Model{
         return $result;
     }
 
+    function allTirebrand_count()
+    {   
+        $query = $this
+                ->db
+                ->get('tire_brand');
+    
+        return $query->num_rows();  
+                                                                                                                                                                                                
+    }
+    
+    function allTirebrand($limit,$start,$col,$dir)
+    {   
+       $query = $this
+                ->db
+                ->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('tire_brand');
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
+
+    function tirebrand_search($limit,$start,$search,$col,$dir)
+    {
+        $query = $this
+                ->db
+                ->like('tire_brandName',$search)
+                ->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('tire_brand');
+        
+       
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    function tirebrand_search_count($search)
+    {
+        $query = $this
+                ->db
+                ->like('tire_brandName',$search)
+                ->get('tire_brand');
+    
+        return $query->num_rows();
+    } 
 }

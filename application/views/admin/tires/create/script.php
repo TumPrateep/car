@@ -1,54 +1,88 @@
 <script>
-    $("#create-rim").submit(function(){
-        createrim();
+$("#submit").validate({
+        rules: {
+            rimName: {
+                required: true
+            },
+        },
+        messages: {
+            rimName: {
+                required: "กรุณากรอกขนาดยาง"
+            }
+        },
     });
+    
+    $("#submit").submit(function(){
+        createRim();
+    })
 
-    function createrim(){
+
+    function createRim(){
         event.preventDefault();
-        var isValid = $("#create-rim").valid();
+        var isValid = $("#submit").valid();
+        
         if(isValid){
-            var myform = document.getElementById("create-rim");
-            var formData = new FormData(myform);
-            $.ajax({
-                url: base_url+"api/Rim/createRim",
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                success: function (data) {
-                    if(data.message == 200){
-                        showMessage(data.message,"admin/Tires");
-                    }else{
-                        showMessage(data.message);
-                    }
+            var data = $("#submit").serialize();
+            $.post(base_url+"api/Rim/createRim",data,
+            function(data){
+                if(data.message == 200){
+                    showMessage(data.message,"admin/Tires");
+                }else{
+                    showMessage(data.message);
                 }
             });
+            
         }
     }
+    
+    
 
-    $("#submit").submit(function(){
-            createrim();
-        })
+</script>
 
-        $("#submit").validate({
-            rules: {
-                rimName: {
+
+</body>
+</html> 
+
+<!-- <script>
+    $("#createsparesBrand").validate({
+        rules: {
+            spares_brandName: {
                 required: true
-                }
             },
-            messages: {
-                rimName: {
-                required: "กรุณากรอกขนาดขอบยาง"
-                }
-            },
-        });
+        },
+        messages: {
+            spares_brandName: {
+                required: "กรุณากรอกยี่ห้ออะไหล่"
+            }
+        },
+    });
+    
+    $("#createsparesBrand").submit(function(){
+        createSpares();
+    })
 
+
+    function createSpares(){
+        event.preventDefault();
+        var isValid = $("#createsparesBrand").valid();
         
+        if(isValid){
+            var data = $("#createsparesBrand").serialize();
+            $.post(base_url+"api/SparePartCar/createSpareBrand",data,
+            function(data){
+                var spares_undercarriageId = $("#spares_undercarriageId").val();
+                if(data.message == 200){
+                    showMessage(data.message,"admin/sparepartcar/sparepart/"+spares_undercarriageId);
+                }else{
+                    showMessage(data.message);
+                }
+            });
+            
+        }
+    }
+    
 
-
-
-   
 </script>
 
 </body>
-</html>
+</html> -->

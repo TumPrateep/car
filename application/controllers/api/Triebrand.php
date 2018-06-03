@@ -128,4 +128,60 @@ class Triebrand extends BD_Controller {
 		
     }
 
+
+    function searchTirebrand_post(){
+        $columns = array( 
+            0 => null,
+            1 => null, 
+            2 =>'tire_brandName',
+            3 =>'status'
+        );
+
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+
+        $this->load->model("triebrands");
+        $totalData = $this->triebrands->allTirebrand_count();
+
+        $totalFiltered = $totalData; 
+
+        if(empty($this->post('tire_brandName')))
+        {            
+            $posts = $this->triebrands->allTirebrand($limit,$start,$order,$dir);
+        }
+        else {
+            $search = $this->post('tire_brandName'); 
+
+            $posts =  $this->triebrands->tirebrand_search($limit,$start,$search,$order,$dir);
+
+            $totalFiltered = $this->triebrands->tirebrand_search_count($search);
+        }
+
+        $data = array();
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+
+                $nestedData['tire_brandId'] = $post->tire_brandId;
+                $nestedData['tire_brandName'] = $post->tire_brandName;
+                $nestedData['tire_brandPicture'] = $post->tire_brandPicture;
+                $nestedData['status'] = $post->status;
+
+                $data[] = $nestedData;
+
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+
+        $this->set_response($json_data);
+    }
 }
