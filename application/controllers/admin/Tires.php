@@ -37,7 +37,6 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/tiresbrand/script");
-		}
     }
 
 		public function tiresmodel($tire_brandId){
