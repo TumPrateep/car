@@ -49,7 +49,7 @@
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/Tires/tiresmodel/"+data.tire_brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
                             +'<a href="'+base_url+"admin/car/updateBrand/"+data.brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteBrand('+data.brandId+',\''+data.brandName+'\')"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteTireBand('+data.tire_brandId+',\''+data.tire_brandName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -97,15 +97,16 @@
 
     });
 
-    function deleteBrand(brandId,brandName){
+    function deleteTireBand(tire_brandId,tire_brandName){
         var option = {
-            url: "/car/deleteBrand?brandId="+brandId,
-            label: "ลบยี่ห้อรถ",
-            content: "คุณต้องการลบ "+brandName+" ใช่หรือไม่",
-            gotoUrl: "admin/car"
+            url: "/Triebrand/deletetriebrand?tire_brandId="+tire_brandId,
+            label: "ลบยี่ห้อยางรถยนต์",
+            content: "คุณต้องการลบ "+tire_brandName+" ใช่หรือไม่",
+            gotoUrl: "admin/tires/tiresbrand"
         }
         fnDelete(option);
     }
+    
 
     $("#btn-search").click(function(){
         table.ajax.reload();
