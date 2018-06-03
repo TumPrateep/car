@@ -29,6 +29,18 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/tires/create/script");
 	}
 
+	public function updaterim(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/tires/update/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/tires/update/script");
+	}
+
+		
+
     public function tiresbrand(){
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
