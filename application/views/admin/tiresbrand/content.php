@@ -31,6 +31,7 @@
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
+          <th>รูปยี่ห้อ</th>
           <th>ชื่อยี่ห้อ</th>
           <th>สถานะ</th>
           <th></th>
