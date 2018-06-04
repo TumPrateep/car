@@ -12,17 +12,17 @@ class Triesize extends BD_Controller {
 
     function createtrieSize_post(){
 
-        $trie_size = $this->post("trie_size");
+        $trie_size = $this->post("tire_size");
         $rimId = $this->post("rimId");
         
         $this->load->model("trieSizes");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->trieSizes->gettrie_sizeforrim($trie_size,$rimId);
+        $isCheck = $this->trieSizes->gettrie_sizeforrim($tire_size,$rimId);
 
         if($isCheck){
             $data = array(
-                'trie_sizeId' => null,
-                'trie_size' => $trie_size,
+                'tire_sizeId' => null,
+                'tire_size' => $tire_size,
                 'status' => 1,
                 'rimId' => $rimId,
                 'create_at' => date('Y-m-d H:i:s',time()),
@@ -53,18 +53,18 @@ class Triesize extends BD_Controller {
 
     function updatetriesize_post(){
 
-        $trie_sizeId = $this->post('trie_sizeId');
-        $trie_size = $this->post('trie_size');
+        $trie_sizeId = $this->post('tire_sizeId');
+        $trie_size = $this->post('tire_size');
         $rimId = $this->post('rimId');
         
         $this->load->model("trieSizes");
 
-        $result = $this->trieSizes->wherenotTriesize($trie_sizeId,$trie_size,$rimId);
+        $result = $this->trieSizes->wherenotTriesize($tire_sizeId,$tire_size,$rimId);
 
         if($result){
             $data = array(
-                'trie_sizeId' => $trie_sizeId,
-                'trie_size' => $trie_size,
+                'tire_sizeId' => $tire_sizeId,
+                'tire_size' => $tire_size,
                 'status' => 1,
                 'rimId' => $rimId,
                 'create_at' => date('Y-m-d H:i:s',time()),
@@ -92,8 +92,9 @@ class Triesize extends BD_Controller {
     function searchTriesize_post(){
         $columns = array( 
             0 => null,
-            1 => 'trie_size'
-            
+            1 => 'tire_size',
+            2 => 'status'
+             
             
         );
 
@@ -108,12 +109,12 @@ class Triesize extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('trie_size'))  || empty($this->post('rimId')))
+        if(empty($this->post('tire_size'))  || empty($this->post('rimId')))
         {            
             $posts = $this->trieSizes->allTriesize($limit,$start,$order,$dir, $rimId);
         }
         else {
-            $search = $this->post('trie_size'); 
+            $search = $this->post('tire_size'); 
 
             $posts =  $this->trieSizes->trie_size_search($limit,$start,$search,$col,$dir,$rimId);
 
@@ -127,9 +128,11 @@ class Triesize extends BD_Controller {
         {
             foreach ($posts as $post)
             {
-                $nestedData['trie_sizeId'] = $post->trie_sizeId;
-                $nestedData['trie_size'] = $post->trie_size;
+                $nestedData['tire_sizeId'] = $post->tire_sizeId;
+                $nestedData['tire_size'] = $post->tire_size;
                 $nestedData['rimId'] = $post->rimId;
+                $nestedData['status'] = $post->status;
+
 
                 $data[] = $nestedData;
 
@@ -147,11 +150,11 @@ class Triesize extends BD_Controller {
     }
 
     function deletetriesize_get(){
-        $trie_sizeId = $this->get('trie_sizeId');
+        $trie_sizeId = $this->get('tire_sizeId');
         $this->load->model("trieSizes");
-        $tire = $this->trieSizes->getiresizeById($trie_sizeId);
+        $tire = $this->trieSizes->getiresizeById($tire_sizeId);
         if($tire != null){
-            $isDelete = $this->trieSizes->delete($trie_sizeId);
+            $isDelete = $this->trieSizes->delete($tire_sizeId);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);

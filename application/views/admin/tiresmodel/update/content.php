@@ -31,7 +31,7 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>ชื่อรุ่นยางรถยนต์</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ชื่อรุ่นยางรถยนต์" id="tire_modelId" name="tire_modelId" value="">
+                            <input type="text" class="form-control" placeholder="ชื่อรุ่นยางรถยนต์" id="tire_modelName" name="tire_modelName" value="">
                           </div>
                         </div>
                       </div>

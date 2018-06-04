@@ -15,9 +15,10 @@
         
       </ol>
 
-      <!-- Example DataTables Card-->
-      <div class="table-responsive">
-      <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
+    <input type="hidden" id="rimId" name="rimId" value="<?=$rimId ?>">
+  
+    <div class="table-responsive">
+      <table class="table table-bordered" id="tiresize-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
           <th>ขนาดยาง</th>
