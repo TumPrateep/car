@@ -30,7 +30,7 @@ class Tires extends CI_Controller {
 	}
 
 	public function updaterim($rimId){
-		$data["rimId"] = $rimId;
+		$data['rimId'] = $rimId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
