@@ -22,8 +22,8 @@ class triebrands extends CI_Model{
         return $this->db->where('tire_brandId',$tire_brandId)->get("tire_brand")->row();
     }
 
-    function delete($trie_brandId){
-        return $this->db->delete('tire_brand', array('trie_brandId' => $tire_brandId));
+    function delete($tire_brandId){
+        return $this->db->delete('tire_brand', array('tire_brandId' => $tire_brandId));
     }
 
     function wherenot($tire_brandId,$tire_brandName){

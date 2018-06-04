@@ -48,7 +48,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/Tires/tiresmodel/"+data.tire_brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"admin/car/updateBrand/"+data.brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"admin/Tires/updatetiresbrand/"+data.tire_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteTireBand('+data.tire_brandId+',\''+data.tire_brandName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },

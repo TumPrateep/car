@@ -24,7 +24,7 @@
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form id="submit">
-                    <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
+                    <input type="hidden" id="tire_brandId" name="tire_brandId" value="<?=$tire_brandId ?>">
                     <input type="hidden" id="modelId" name="modelId" value="<?=$modelId ?>">
                     <div class="card-body black bg-light">
                       <div class="row">
