@@ -18,21 +18,15 @@
     
     $("#submit").validate({
         rules: {
-            modelName: {
+            tire_modelId: {
             required: true
             },
-            yearStart: {
-            required: true
-            } 
-        },
+        },  
         messages: {
-            modelName: {
+            tire_modelId: {
             required: "กรุณากรอกชื่อรุ่นรถ"
             },
-            yearStart: {
-            required: "กรุณากรอกปีที่เริ่ม"
-            }
-        },
+        }  
     });
 
 
@@ -51,7 +45,7 @@
                 function(data){
                     var tire_brandId = $("#tire_brandId").val();
                     if(data.message == 200){
-                        showMessage(data.message,"admin/Tires/updatetiresmodel/"+brandId);
+                        showMessage(data.message,"admin/Tires/updatetiresmodel/"+tire_brandId);
                     }else{
                     showMessage(data.message);
                     }
