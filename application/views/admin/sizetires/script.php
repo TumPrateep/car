@@ -50,7 +50,7 @@ var table = $('#tiresize-table').DataTable({
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/SparePartCar/updatespare/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareBrand('+data.spares_brandId+',\''+data.spares_brandName+'\',\''+data.spares_undercarriageId+'\')"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletetrie_size('+data.tire_sizeId+',\''+data.tire_size+'\',\''+data.rimId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -90,6 +90,16 @@ var table = $('#tiresize-table').DataTable({
     $("#btn-search").click(function(){
         table.ajax.reload();
     })
+
+    function deletetrie_size(tire_sizeId,tire_size,rimId){
+        var option = {
+            url: "/Triesize/deletetriesize?tire_sizeId="+tire_sizeId,
+            label: "ลบขอบยาง",
+            content: "คุณต้องการลบ "+tire_size+" ใช่หรือไม่",
+            gotoUrl: "admin/Tires/tiresize/"+rimId
+        }
+        fnDelete(option);
+    }
 
 </script>
 

@@ -54,9 +54,8 @@
           <th>ลำดับ</th>
           <th><i class="fa fa-address-book"></i>  ชื่อผู้ใช้งาน</th>
           <th>เบอร์โทรศัพท์</th>
-          <th>อีเมล</th>
           <th><i class="fa fa-users">  ประเภทผู้ใช้งาน</th>
-          <th><i class="fa fa-user-circle"></i>  สถานะผู้ใช้งาน</th>
+          <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	
       </table>

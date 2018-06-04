@@ -7,17 +7,18 @@ class Triesize extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
 
     function createtrieSize_post(){
 
-        $trie_size = $this->post("tire_size");
+        $tire_size = $this->post("tire_size");
         $rimId = $this->post("rimId");
         
         $this->load->model("trieSizes");
         $userId = $this->session->userdata['logged_in']['id'];
         $isCheck = $this->trieSizes->gettrie_sizeforrim($tire_size,$rimId);
+        
 
         if($isCheck){
             $data = array(
@@ -150,7 +151,7 @@ class Triesize extends BD_Controller {
     }
 
     function deletetriesize_get(){
-        $trie_sizeId = $this->get('tire_sizeId');
+        $tire_sizeId = $this->get('tire_sizeId');
         $this->load->model("trieSizes");
         $tire = $this->trieSizes->getiresizeById($tire_sizeId);
         if($tire != null){

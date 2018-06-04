@@ -4,8 +4,8 @@ class trieSizes extends CI_Model{
 
     function checktrie_size($tire__sizeName) {
         $this->db->select("*");
-        $this->db->from("tire__size");
-        $this->db->where('tire__sizeName',$tire__sizeName);
+        $this->db->from("tire_size");
+        $this->db->where('tire_sizeName',$tire_sizeName);
         $result = $this->db->count_all_results();
 
         if($result > 0){
@@ -15,14 +15,14 @@ class trieSizes extends CI_Model{
 
     }
     function inserttrie_size($data){
-        $result = $this->db->insert('tire__size', $data);
+        $result = $this->db->insert('tire_size', $data);
         return $result;
     }
 
-    function gettrie_sizeforrim($tire__size,$rimId){
-        $this->db->select("tire__size");
-        $this->db->from("tire__size");
-        $this->db->where('tire__size', $trie_size);
+    function gettrie_sizeforrim($tire_size,$rimId){
+        $this->db->select("tire_size");
+        $this->db->from("tire_size");
+        $this->db->where('tire_size', $tire_size);
         $this->db->where('rimId' , $rimId);
         $result = $this->db->count_all_results();
 
@@ -31,10 +31,11 @@ class trieSizes extends CI_Model{
         }
         return true;
     }
-     function wherenotTriesize($tire__sizeId,$tire__size,$rimId){
-        $this->db->select("tire__size");
-        $this->db->from("tire__size");
-        $this->db->where('tire__size', $trie_size);
+   
+     function wherenotTriesize($tire_sizeId,$tire_size,$rimId){
+        $this->db->select("tire_size");
+        $this->db->from("tire_size");
+        $this->db->where('tire_size', $trie_size);
         $this->db->where('rimId', $rimId);
         $this->db->where_not_in('rimId', $rimId);
         $result = $this->db->count_all_results();
@@ -46,8 +47,8 @@ class trieSizes extends CI_Model{
     }
 
     function updateTriesize($data){
-        $this->db->where('tire__sizeId',$data['trie_sizeId']);
-        $result = $this->db->update('tire__size', $data);
+        $this->db->where('tire_sizeId',$data['trie_sizeId']);
+        $result = $this->db->update('tire_size', $data);
         return $result;
     }
 
@@ -113,12 +114,12 @@ class trieSizes extends CI_Model{
         return $query->num_rows();
     }
 
-    function getiresizeById($trie_sizeId){
-        return $this->db->where('trie_sizeId',$trie_sizeId)->get("trie_size")->row();
+    function getiresizeById($tire_sizeId){
+        return $this->db->where('tire_sizeId',$tire_sizeId)->get("tire_size")->row();
     }
 
-    function delete($trie_sizeId){
-        return $this->db->delete('trie_size', array('trie_sizeId' => $trie_sizeId));
+    function delete($tire_sizeId){
+        return $this->db->delete('tire_size', array('tire_sizeId' => $tire_sizeId));
     }
 
     function insert_Tiremodel($data){

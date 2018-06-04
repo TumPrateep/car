@@ -45,7 +45,7 @@
             $.post(base_url+"api/Rim/updaterim",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/SparePartCar/sparepart/"+spares_undercarriageId);
+                    showMessage(data.message,"admin/Tires/");
                 }else{
                     showMessage(data.message);
                 }
