@@ -57,7 +57,7 @@ function deleterim(rimId,rimName){
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin//model/"+data.brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/Tires/tiresize/"+data.rimId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
                             +'<a href="'+base_url+"admin/Tires/updaterim/"+data.rimId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleterim('+data.rimId+',\''+data.rimName+'\')"><i class="fa fa-trash"></i></button>';
                     }

@@ -15,7 +15,7 @@
             <div class="card text-white bg-success">
                 <div class="card-header">
 
-                  <h3 class="card-title"><i class="fa fa fa-wrench"></i>แก้ไขข้อมูลขอบยาง</h3>
+                <h3 class="card-title"><i class="fa fa fa-wrench"></i>แก้ไขข้อมูลขอบยาง</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -26,7 +26,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label>ชื่อขอบยาง</label> <span class="error">*</span>
-                          <input type="text" class="form-control" placeholder="ชื่อขอบยาง" name="rimName" id="rimName">
+                          <input type="text" class="form-control" placeholder="ชื่อขอบยาง" name="rimName" id="rimName" value="">
                         </div>
                       </div>
                     </div>
@@ -35,7 +35,7 @@
                       <button type="submit" class="btn btn-primary">บันทึก</button>
                     </div>
                   </div>
-                </form>
+                  </form>
                   <!-- /.card-body -->
                
               </div>

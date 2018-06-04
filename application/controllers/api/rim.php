@@ -9,7 +9,7 @@ class Rim extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
 
     }
 
@@ -158,6 +158,31 @@ class Rim extends BD_Controller {
         }
         else{
             $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function getRim_post(){
+
+        $rimId = $this->post('rimId');
+        $this->load->model("rims");
+        $isCheck = $this->rims->checkrim($rimId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->rims->getrimById($rimId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
