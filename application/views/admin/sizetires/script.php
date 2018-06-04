@@ -29,7 +29,8 @@ var table = $('#tiresize-table').DataTable({
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.rimName = $("#table-search").val()
+                    data.tire_size = $("#table-search").val(),
+                    data.rimId = $("#rimId").val()
                 }
             },
             "order": [[ 1, "asc" ]],
@@ -48,9 +49,8 @@ var table = $('#tiresize-table').DataTable({
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return 
-                            +'<a href="'+base_url+"admin/Triesize/updatetriesize/"+data.tire_sizeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleterim('+data.tire_sizeId+',\''+data.tire_size+'\')"><i class="fa fa-trash"></i></button>';
+                        return '<a href="'+base_url+"admin/SparePartCar/updatespare/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareBrand('+data.spares_brandId+',\''+data.spares_brandName+'\',\''+data.spares_undercarriageId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
