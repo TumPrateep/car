@@ -5,7 +5,7 @@
         <li class="breadcrumb-item">
           <a href="<?=base_url("admin/tires") ?>">ขอบยาง</a>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tiresize/$tire_sizeId") ?>">ขนาดยาง</a>
+          <a href="<?=base_url("admin/Tires/tiresize/$rimId") ?>">ขนาดยาง</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
 
