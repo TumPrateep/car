@@ -22,8 +22,8 @@
                   <form id="update-tiresbrand" enctype="multipart/form-data" >
                   <div class="card-body black bg-light">
                       <div class="form-group">
-                        <label>ชื่อยี่ห้อยางรถยนตร์</label> <span class="error">*</span>
-                        <input type="text" class="form-control" placeholder="ชื่อยี่ห้อยางรถยนตร์" name="tiresbrandName">
+                        <label>ชื่อยี่ห้อยางรถยนต์</label> <span class="error">*</span>
+                        <input type="text" class="form-control" placeholder="ชื่อยี่ห้อยางรถยนต์" name="tirebrandName">
                       </div>
                         <div class="form-group"> 
                           <input id="brandPicture" name ="tiresbrandPicture" class="file" type="file">

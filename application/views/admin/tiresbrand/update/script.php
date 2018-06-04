@@ -1,16 +1,28 @@
 <script>
-  $("#submit").validate({
+    $("#update-tiresbrand").validate({
             rules: {
-                tire_brandName: {
+                tirebrandName: {
                     required: true
                 },
             },
             messages: {
-                tire_brandName: {
-                    required: "กรุณากรอกรุ่นยาง"
+                tirebrandName: {
+                    required: "กรุณากรอกยี่ห้อยางรถยนต์"
                 }
-            },
+            }
         });
+    
+    $("#update-tiresbrand").submit(function(){
+        createTirebrand();
+    });
+        
+    function createTirebrand(){
+        event.preventDefault();
+        var isValid = $("#update-tiresbrand").valid();
+        if(isValid){
+
+        }
+    }
   
     
 </script>
