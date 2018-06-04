@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <input type="hidden" id="tire_sizeId" value="<?=$tire_sizeId ?>">
+    <input type="hidden" id="rimId" name="rimId" value="<?=$rimId ?>">
   
     <div class="table-responsive">
       <table class="table table-bordered" id="tiresize-table" width="100%" cellspacing="0">
