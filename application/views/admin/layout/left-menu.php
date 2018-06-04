@@ -16,7 +16,7 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/usermanagement") ?>">
             <i class="fa fa-user-plus"></i>
-            <span class="nav-link-text">เพิ่มผู้ใช้งาน</span>
+            <span class="nav-link-text">การจัดการผู้ใช้งาน</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">

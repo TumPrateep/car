@@ -1,5 +1,5 @@
 <script>
-  $("#spares").validate({
+  $("#submit").validate({
             rules: {
                 tire_brandName: {
                     required: true
