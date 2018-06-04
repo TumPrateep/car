@@ -38,16 +38,15 @@
                 { "data": "phone" },
                 null,
                 null,
-                null,
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,6]
+                    "targets": [0,5]
                 },{
-                    "targets": 4,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         if(data.category != null){
@@ -57,24 +56,16 @@
                         }
                     }
                 },{
-                    "targets": 3,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        if(data.email != null){
-                            return data.email;
-                        }else{
-                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
-                        }
-                    }
-                },{
-                    "targets": 6,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                           +'<button type="button" class="delete btn btn-danger" onclick="deleteUser('+data.id+',\''+data.username+'\')"><i class="fa fa-trash"></i></button>';
-                    }
-                },{
                     "targets": 5,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) { 
+                        return '<a href="#"><button type="button" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
+                            + '<a href="'+base_url+"admin/usermanagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
+                            + '<a href="'+base_url+"admin/usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            + '<button type="button" class="delete btn btn-danger" onclick="deleteUser('+data.id+',\''+data.username+'\')"><i class="fa fa-trash"></i></button>';
+                    }
+                },{
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -100,8 +91,8 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [1,2,3,4]},
-                {"className": "dt-center", "targets": [0,5,6]},
+                {"className": "dt-head-center", "targets": [1,2,3]},
+                {"className": "dt-center", "targets": [0,4,5]},
                 { "width": "3%", "targets": 0 },
                 { "width": "20%", "targets": 3 }
             ]	 

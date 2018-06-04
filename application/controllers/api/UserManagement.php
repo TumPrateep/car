@@ -15,9 +15,8 @@ class UserManagement extends BD_Controller {
             0 => null,
             1 =>'username', 
             2 =>'phone',
-            3 =>'email',
-            4 =>'category',
-            5 =>'status' 
+            3 =>'category',
+            4 =>'status' 
         );
 
         $limit = $this->post('length');
@@ -151,8 +150,11 @@ class UserManagement extends BD_Controller {
         $phone1 = $this->post("phone1");
         $phone2 = $this->post("phone2");
         $titleName = $this->post("titleName");
+        $userId = $this->post("userId");
 
-        $userId = $this->session->userdata['logged_in']['id'];
+        if($userId == null){
+            $userId = $this->session->userdata['logged_in']['id'];
+        }
 
         $this->load->model("Profile");
     
@@ -347,10 +349,12 @@ class UserManagement extends BD_Controller {
 
         $result = $this->Profile->saveProfileRoleUser($role, $userId, $profileData, $roleData);
         if($result){
-            $sess_array = array(
-                'id' => $userId,
-                'role' => $role
-            );
+            if($userId == null){
+                $sess_array = array(
+                    'id' => $userId,
+                    'role' => $role
+                );
+            }
             $this->session->set_userdata('logged_in', $sess_array);
             $output["message"] = REST_Controller::MSG_SUCCESS;
         }else{
