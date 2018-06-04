@@ -55,12 +55,12 @@ class trieSizes extends CI_Model{
     {   
         
         $this->db->where("rimId", $rimId);
-        $query = $this->db->get('trie_size');
+        $query = $this->db->get('tire_size');
     
         return $query->num_rows();  
 
     }
-
+    
     function allTriesize($limit,$start,$col,$dir,$rimId)
     {   
         $this->db->where("rimId", $rimId);
@@ -68,7 +68,7 @@ class trieSizes extends CI_Model{
                  ->db
                  ->limit($limit,$start)
                  ->order_by($col,$dir)
-                 ->get('trie_size');
+                 ->get('tire_size');
          
          if($query->num_rows()>0)
          {
@@ -86,10 +86,10 @@ class trieSizes extends CI_Model{
         $this->db->where("rimId", $rimId);
         $query = $this
                 ->db
-                ->like('tire__size',$search)
+                ->like('tire_size',$search)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
-                ->get('tire__size');
+                ->get('tire_size');
         
        
         if($query->num_rows()>0)
@@ -107,8 +107,8 @@ class trieSizes extends CI_Model{
         $this->db->where("rimId", $rimId);
         $query = $this
                 ->db
-                ->like('tire__size',$search)
-                ->get('tire__size');
+                ->like('tire_size',$search)
+                ->get('tire_size');
     
         return $query->num_rows();
     }
@@ -127,17 +127,6 @@ class trieSizes extends CI_Model{
     }
 
 
-    function get_model($brandId,$modelName){
-        $this->db->select("modelName");
-        $this->db->from("model");
-        $this->db->where('modelName', $modelName);
-        $this->db->where('brandId', $brandId);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return false;
-        }
-        return true;
-    }
+    
 
 }

@@ -21,7 +21,7 @@
       <form>
         <!-- <div class="input-group input-group-sm float-right"> -->
         <div class="input-group float-right">
-          <input type="text" name="spareparts_search" id="spareparts-search" class="form-control float-right" placeholder="ชื่อรายการอะไล่">
+          <input type="text" name="spareparts_search" id="spareparts-search" class="form-control float-right" placeholder="ชื่อรายการอะไหล่">
           <div class="input-group-append">
             <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-cog"></i></button>
           </div>

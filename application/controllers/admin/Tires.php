@@ -29,6 +29,19 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/tires/create/script");
 	}
 
+	public function updaterim($rimId){
+		$data['rimId'] = $rimId;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/tires/update/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/tires/update/script");
+	}
+
+		
+
     public function tiresbrand(){
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
@@ -59,8 +72,8 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/tiresbrand/update/script");
 	}
     
-	public function tiresmodel($tire_brandId){
-		$data['tire_brandId'] = $tire_brandId;
+	public function tiresmodel($rimId){
+		$data['$rimId'] = $rimId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
@@ -90,11 +103,13 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/tiresmodel/update/script");
     }
 
-    public function tiresize(){
+
+    public function tiresize($rimId){
+    	$data['rimId'] = $rimId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/sizetires/content");
+		$this->load->view("admin/sizetires/content", $data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/sizetires/script");
