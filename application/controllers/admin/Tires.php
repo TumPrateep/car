@@ -30,7 +30,7 @@ class Tires extends CI_Controller {
 	}
 
 	public function updaterim($rimId){
-		$data["rimId"] = $rimId;
+		$data['rimId'] = $rimId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
@@ -103,8 +103,9 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/tiresmodel/update/script");
     }
 
-    public function tiresize($tire_sizeId){
-			$data['tire_sizeId'] = $tire_sizeId;
+
+    public function tiresize($rimId){
+    	$data['rimId'] = $rimId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");

@@ -3,7 +3,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires") ?>">การจัดการยี่ห้อยางรถยนตร์</a>
+          <a href="<?=base_url("admin/tires/tiresbrand/") ?>">การจัดการยี่ห้อยางรถยนตร์</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="<?=base_url("admin/tires/tiresmodel/") ?>">รุ่นยางรถยนตร์</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
@@ -31,7 +34,7 @@
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
-          <th>ชื่อยี่ห้อ</th>
+          <th>ชื่อรุ่นยางรถยนตร์</th>
           <th>สถานะ</th>
           <th></th>
         </thead>	
