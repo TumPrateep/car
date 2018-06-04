@@ -4,10 +4,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires") ?>">การจัดการยี่ห้อ</a>
+          <a href="<?=base_url("admin/car") ?>">การจัดการยี่ห้อ</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/updatetiresmodel/$tire_modelId") ?>">รุ่นยางรถยนต์</a>
+          <a href="<?=base_url("admin/car/model/$brandId") ?>">รุ่นรถ</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขข้อมูล</li>
       </ol>
@@ -19,19 +19,31 @@
               <div class="card text-white bg-success">
                   <div class="card-header">
 
-                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เเก้ไขข้อมูลรุ่นยางรถยนต์</h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เเก้ไขข้อมูลรุ่น</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form id="submit">
-                    <input type="hidden" id="tire_brandId" name="tire_brandId" value="<?=$tire_brandId ?>">
-                    <input type="hidden" id="tire_modelId" name="tire_modelId" value="<?=$tire_modelId ?>">
+                    <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
+                    <input type="hidden" id="modelId" name="modelId" value="<?=$modelId ?>">
                     <div class="card-body black bg-light">
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label>ชื่อรุ่นยางรถยนต์</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ชื่อรุ่นยางรถยนต์" id="tire_modelName" name="tire_modelName" value="">
+                            <label>ชื่อรุ่น</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ" id="modelName" name="modelName" value="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>ปีที่ผลิต</label> <span class="error">*</span> <label id="yearStart-error" class="error" for="yearStart"></label>
+                            <div class="form-inline">
+                              <select class="form-control col-md-5" name="yearStart" id="yearStart"></select>
+                              <label class="col-md-2">ถึง</label>
+                              <select class="form-control col-md-5" name="yearEnd" id="yearEnd"></select>
+                            </div>
                           </div>
                         </div>
                       </div>

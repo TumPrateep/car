@@ -65,11 +65,11 @@ class Triebrand extends BD_Controller {
     }
 
     function deletetriebrand_get(){
-        $trie_brandId = $this->get('trie_brandId');
+        $tire_brandId = $this->get('tire_brandId');
         $this->load->model("triebrands");
-        $tire = $this->triebrands->getirebrandById($trie_brandId);
+        $tire = $this->triebrands->getirebrandById($tire_brandId);
         if($tire != null){
-            $isDelete = $this->triebrands->delete($trie_brandId);
+            $isDelete = $this->triebrands->delete($tire_brandId);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
