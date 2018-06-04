@@ -9,7 +9,7 @@
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
 
-        <a href="<?=base_url("admin/Tires/createtiresize") ?>" class="right">
+        <a href="<?=base_url("admin/Tires/createtiresize/$rimId") ?>" class="right">
             <button class="btn btn-primary" ><i class="fa fa-plus"> สร้าง</i></button>
         </a>
         

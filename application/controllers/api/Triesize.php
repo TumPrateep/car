@@ -12,12 +12,13 @@ class Triesize extends BD_Controller {
 
     function createtrieSize_post(){
 
-        $trie_size = $this->post("tire_size");
+        $tire_size = $this->post("tire_size");
         $rimId = $this->post("rimId");
         
         $this->load->model("trieSizes");
         $userId = $this->session->userdata['logged_in']['id'];
         $isCheck = $this->trieSizes->gettrie_sizeforrim($tire_size,$rimId);
+        
 
         if($isCheck){
             $data = array(
