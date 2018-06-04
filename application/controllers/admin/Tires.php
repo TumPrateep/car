@@ -102,7 +102,8 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/tiresmodel/update/script");
     }
 
-    public function tiresize(){
+    public function tiresize($brandId){
+    	$data['brandId'] = $brandId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
