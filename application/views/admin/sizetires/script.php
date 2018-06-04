@@ -85,7 +85,11 @@ var table = $('#tiresize-table').DataTable({
                 { "width": "20%", "targets": 2 },
                 { "width": "10%", "targets": 3 }
             ]	 
-        });
+
+    });
+    $("#btn-search").click(function(){
+        table.ajax.reload();
+    })
 
 </script>
 
