@@ -28,7 +28,7 @@
     <input type="hidden" id="tire_sizeId" value="<?=$tire_sizeId ?>">
   
     <div class="table-responsive">
-      <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="tiresize-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
           <th>ชื่อยี่ห้อ</th>

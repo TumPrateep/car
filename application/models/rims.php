@@ -5,14 +5,17 @@ class rims extends CI_Model{
     function delete($rimId){
         return $this->db->delete('rim', array('rimId' => $rimId));
     }
-
-    function getrimbyId($rimId){
+    function getrimById($rimId){
+        $this->db->select("rimId,rimName");
         return $this->db->where('rimId',$rimId)->get("rim")->row();
     }
 
     function insert_rim($data){
 		return $this->db->insert('rim', $data);
     }
+    
+
+    
     function checkrim($rimName) {
         $this->db->select("*");
         $this->db->from("rim");
