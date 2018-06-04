@@ -31,7 +31,7 @@
       <table class="table table-bordered" id="tires-table" width="100%" cellspacing="0">
         <thead>
           <th>ลำดับ</th>
-          <th>ขนาดยาง</th>
+          <th>ขอบยาง</th>
           <th>สถานะ</th>
           <th></th>
         </thead>	
