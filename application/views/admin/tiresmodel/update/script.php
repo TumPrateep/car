@@ -18,12 +18,12 @@
     
     $("#submit").validate({
         rules: {
-            tire_modelId: {
+            tire_modelName: {
             required: true
             },
         },  
         messages: {
-            tire_modelId: {
+            tire_modelName: {
             required: "กรุณากรอกชื่อรุ่นรถ"
             },
         }  
