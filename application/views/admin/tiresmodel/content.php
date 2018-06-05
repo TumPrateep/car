@@ -11,9 +11,7 @@
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
       <!-- Example DataTables Card-->
-
     <div class="card-tools one">
-
       <form>
         <!-- <div class="input-group input-group-sm float-right"> -->
         <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtiresmodel/") ?>">
@@ -39,9 +37,9 @@
         </div>
       </form>
     </div>
+    
+    <input type="hidden" id="tiresbrandId" value="<?=$tiresbrandId?>">
 
-    <input type="hidden" id="tire_brandId" value="<?=$tire_brandId ?>">
-  
     <div class="table-responsive">
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
