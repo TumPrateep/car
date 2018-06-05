@@ -4,10 +4,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car") ?>">การจัดการยี่ห้อ</a>
+          <a href="<?=base_url("admin/tires/tiresbrand") ?>">ยี่ห้อยาง</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires/tiresmodel/$tire_brandId") ?>">รุ่นยางรถยนต์</a>
+          <a href="<?=base_url("admin/tires/updatetiresbrand/$tire_brandId") ?>">รุ่นยางรถยนต์</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขข้อมูล</li>
       </ol>
@@ -19,11 +19,11 @@
               <div class="card text-white bg-success">
                   <div class="card-header">
 
-                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เเก้ไขข้อมูลยี่ห้อยางรถยนต์</h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เเก้ไขข้อมูลยี่ห้อยาง</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form id="submit">
+                  <form id="update-tiresbrand">
                   <input type="hidden" id="tire_brandId" name="tire_brandId" value="<?=$tire_brandId?>">
                     <div class="card-body black bg-light">
                       <div class="row">

@@ -49,7 +49,7 @@ var table = $('#tiresize-table').DataTable({
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/SparePartCar/updatespare/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/Tires/updatetiresize/"+data.rimId+"/"+data.tire_sizeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deletetrie_size('+data.tire_sizeId+',\''+data.tire_size+'\',\''+data.rimId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
