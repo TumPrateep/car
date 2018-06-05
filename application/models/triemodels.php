@@ -52,4 +52,63 @@ class Triemodels extends CI_Model {
         }
         return true;
     }
+
+    function allTireModel_count($tire_brandId)
+    {   
+        $this->db->where("tire_brandId", $tire_brandId);
+        $query = $this->db->get('tire_model');
+    
+        return $query->num_rows();  
+
+    }
+
+     function allTireModel($limit,$start,$col,$dir,$tire_brandId)
+    {   
+       $this->db->where("tire_brandId", $tire_brandId);
+       $query = $this
+                ->db
+                ->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('tire_model');
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
+
+    function tireModel_search($limit,$start,$search,$col,$dir,$tire_brandId)
+    {
+        $query = $this
+                ->db
+                ->like('tire_modelName',$search)
+                ->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('tire_model');
+        
+       
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    function tireModel_search_count($search)
+    {
+        $query = $this
+                ->db
+                ->like('tire_modelName',$search)
+                ->get('tire_model');
+    
+        return $query->num_rows();
+    } 
 }

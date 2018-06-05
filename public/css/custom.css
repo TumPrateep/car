@@ -173,6 +173,12 @@
     height: 42px;
   }
 
+  .btn.create{
+    height: 38px;
+    width: 90px;
+    padding-top: 0.55em;
+  }
+
   .ui.secondary.inverted.pointing.menu{
     border-width: 2px !important;
     border-color: rgba(34, 36, 38, 0);

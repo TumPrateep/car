@@ -126,8 +126,62 @@ class Triemodel extends BD_Controller {
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
-
-
     }
 
+     
+    function searchTireModel_post(){
+        $columns = array( 
+            0 =>null, 
+            1 =>'tire_modelName',
+            2 => 'status'
+        );
+
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $tire_brandId = $this->post('tire_brandId');
+
+        $this->load->model("Triemodels");
+        $totalData = $this->Triemodels->allTireModel_count();
+
+        $totalFiltered = $totalData; 
+
+        if(empty($this->post('tire_modelName')))
+        {            
+            $posts = $this->Triemodels->allTireModel($limit,$start,$order,$dir,$tire_brandId);
+        }
+        else {
+            $search = $this->post('tire_modelName'); 
+
+            $posts =  $this->Triemodels->tirebrand_search($limit,$start,$search,$order,$dir,$tire_brandId);
+
+            $totalFiltered = $this->Triemodels->tirebrand_search_count($search);
+        }
+
+        $data = array();
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+
+                $nestedData['tire_brandId'] = $post->tire_brandId;
+                $nestedData['tire_modelId'] = $post->tire_modelId;
+                $nestedData['tire_modelName'] = $post->tire_modelName;
+                $nestedData['status'] = $post->status;
+
+                $data[] = $nestedData;
+
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+
+        $this->set_response($json_data);
+    }
 }
