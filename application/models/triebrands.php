@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 //ยี่ห้อยาง นะ
-class triebrands extends CI_Model{
+class Triebrands extends CI_Model{
 
     function checktriebrands($tire_brandName) {
         $this->db->select("*");
@@ -102,4 +102,15 @@ class triebrands extends CI_Model{
     
         return $query->num_rows();
     } 
+
+    function checkTireBrandforget($tire_brandId){
+        $this->db->select("tire_brandId");
+        $this->db->from("tire_brand");
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
+        }
+        return false;
+    }
 }

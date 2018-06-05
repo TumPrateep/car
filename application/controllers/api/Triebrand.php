@@ -184,4 +184,29 @@ class Triebrand extends BD_Controller {
 
         $this->set_response($json_data);
     }
+
+    function getTireBrandforupdate_post(){
+
+        $tire_brandId = $this->post('tire_brandId');
+        $this->load->model("Triebrands");
+        $isCheck = $this->Triebrands->checkTireBrandforget($tire_brandId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->Triebrands->getirebrandById($tire_brandId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 }
