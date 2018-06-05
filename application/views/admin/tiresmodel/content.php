@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires/tiresbrand/") ?>">การจัดการยี่ห้อยาง</a>
+          <a href="<?=base_url("admin/tires/tiresbrand/") ?>">ยี่ห้อยาง</a>
         </li>
         <li class="breadcrumb-item">
           <a href="<?=base_url("admin/tires/tiresmodel/") ?>">รุ่นยาง</a>
@@ -14,8 +14,8 @@
     <div class="card-tools one">
       <form>
         <!-- <div class="input-group input-group-sm float-right"> -->
-        <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtiresmodel/") ?>">
-          <i class="fa fa-plus">สร้าง</i>
+        <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtiresmodel/$tire_brandId") ?>">
+          <i class="fa fa-plus">  สร้าง</i>
         </a>
 
         <div class="input-group float-right">

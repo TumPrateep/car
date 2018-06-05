@@ -13,18 +13,14 @@
       <!-- Example DataTables Card-->
 
       <input type="hidden" id="spares_undercarriageId" value="<?=$spares_undercarriageId ?>">
-        
-    <div class="card-tools">
-        <div class="input-group input-group-sm float-right" >
-          <a href="<?=base_url("admin/sparepartcar/createspare/$spares_undercarriageId") ?>">
-            <button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button>
-          </a>
-        </div>
-    </div>
 
     <div class="card-tools one">
       <form>
         <!-- <div class="input-group input-group-sm float-right"> -->
+        <a class="btn btn-primary create" href="<?=base_url("admin/sparepartcar/createspare/$spares_undercarriageId") ?>">
+          <i class="fa fa-plus">  สร้าง</i>
+        </a>
+
         <div class="input-group float-right">
           <input type="text" name="spareparts_search" id="spareparts-search" class="form-control float-right" placeholder="ชื่อยี่ห้ออะไหล่">
           <div class="input-group-append">
