@@ -23,10 +23,10 @@
                   <div class="card-body black bg-light">
                       <div class="form-group">
                         <label>ชื่อยี่ห้อยางรถยนตร์</label> <span class="error">*</span>
-                        <input type="text" class="form-control" placeholder="ชื่อยี่ห้อยางรถยนตร์" name="tiresbrandName">
+                        <input type="text" class="form-control" placeholder="ชื่อยี่ห้อยางรถยนตร์" name="tire_brandName">
                       </div>
                         <div class="form-group"> 
-                          <input id="brandPicture" name ="tiresbrandPicture" class="file" type="file">
+                          <input id="tire_brandPicture" name ="tire_brandPicture" class="file" type="file">
                         </div>
                       <div class="form-group"> 
                         <button type="submit" class="btn btn-primary">บันทึก</button>
