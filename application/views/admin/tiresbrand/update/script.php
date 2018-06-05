@@ -1,4 +1,43 @@
 <script>
+
+    var tire_brandId = $("#tire_brandId").val();
+    var picture = "";
+
+    $.post(base_url+"api/Triebrand/getTireBrandforupdate",{
+        "tire_brandId": tire_brandId,
+    },function(data){
+        if(data.message!=200){
+            showMessage(data.message,"admin/tires/tiresbrand/");
+        }
+
+        if(data.message == 200){
+            result = data.data;
+            $("#tire_brandName").val(result.tire_brandName);
+            picture = result.tire_brandPicture;
+
+            $("#tire_brandPicture").fileinput({
+                theme: 'fa',
+                showUpload: false,
+                showCancel: false,
+                showCaption: false,
+                maxFileCount: 1,
+                browseClass: "btn btn-primary btn-lg",
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                overwriteInitial: false,
+                initialPreviewAsData: true,
+                allowedFileExtensions: ['jpg'],
+                
+                initialPreview: [
+                    base_url+"public/image/tire_brand/"+picture
+                ],
+                initialPreviewConfig: [
+                    {caption: base_url+"public/image/tire_brand/"+picture , size: 576237, width: "120px", url: "/site/file-delete", key: 1} 
+                ],
+            });
+        }
+        
+    });
+
     $("#update-tiresbrand").validate({
             rules: {
                 tire_brandName: {
@@ -11,58 +50,7 @@
                 }
             }
         });
-    
-        $("#tire_brandPicture").fileinput({
-        theme: 'fa',
-        showUpload: false,
-        showCancel: false,
-        showCaption: false,
-        browseClass: "btn btn-primary btn-lg",
-        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-        overwriteInitial: false,
-        initialPreviewAsData: true,
-        allowedFileExtensions: ['jpg'],
-        
-        initialPreview: [
-          
-    
-        ],
-        initialPreviewConfig: [
-           
-        ]
-    });
 
-    $("#update-tiresbrand").submit(function(){
-        createTirebrand();
-    });
-        
-    function createTirebrand(){
-        event.preventDefault();
-        var isValid = $("#update-tiresbrand").valid();
-        if(isValid){
-
-        }
-    }
-
-   
-
-
-    var tire_brandId = $("#tire_brandId").val();
-
-    $.post(base_url+"api/Triebrand/getTireBrandforupdate",{
-        "tire_brandId": tire_brandId,
-        
-    },function(data){
-        if(data.message!=200){
-            showMessage(data.message,"admin/tires/tiresbrand/");
-        }
-
-        if(data.message == 200){
-            result = data.data;
-            $("#tire_brandName").val(result.tire_brandName);
-        }
-        
-    });
 
 
     $("#submit").submit(function(){
