@@ -1,13 +1,13 @@
 <script>
- $("#createTireModel").validate({
+ $("#submit").validate({
         rules: {
-            tire_modelName: {
+            tire_size: {
                 required: true
             },
         },
         messages: {
-            tire_modelName: {
-                required: "กรุณากรอกยี่ห้อยาง"
+            tire_size: {
+                required: "กรุณากรอกขนาดยาง"
             }
         },
     });

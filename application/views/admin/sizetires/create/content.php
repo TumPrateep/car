@@ -4,10 +4,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car") ?>">การจัดการยี่ห้อ</a>
+          <a href="<?=base_url("admin/car") ?>">ขอบยาง</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car/model/$brandId") ?>">รุ่นรถ</a>
+          <a href="<?=base_url("admin/car/model/$brandId") ?>">ขนาดยาง</a>
         </li>
         <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
       </ol>
@@ -19,7 +19,7 @@
               <div class="card text-white bg-success">
                   <div class="card-header">
 
-                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เพิ่มข้อมูลรุ่น</h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เพิ่มข้อมูลขนาดยาง</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -29,7 +29,7 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label>ชื่อรุ่น</label> <span class="error">*</span>
+                            <label>ขนาดยาง</label> <span class="error">*</span>
                             <input type="text" class="form-control" placeholder="ขนาดยาง" name="tire_size">
                           </div>
                         </div>
