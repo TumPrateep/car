@@ -20,7 +20,7 @@
           <h3 class="car-img" id="brandName"></h3>
         </div>
         <div class="input-group input-group-sm float-right" >
-          <a href="<?=base_url("admin/tires/createtiresmodel/") ?>"><button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button></a>
+          <a href="<?=base_url("admin/tires/createtiresmodel/$tire_brandId") ?>"><button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button></a>
           <input type="text" name="table_search" id="table-search" class="form-control float-right" placeholder="ค้นหา">
           <div class="input-group-append">
             <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-search"></i></button>
@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <input type="hidden" id="tiresbrandId" value="<?=$tiresbrandId ?>">
+    <input type="hidden" id="tiresbrandId" value="<?=$tiresbrandId?>">
   
     <div class="table-responsive">
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
