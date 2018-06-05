@@ -9,20 +9,31 @@
       </ol>
 
       <!-- Example DataTables Card-->
-        
-    <div class="card-tools">
+    <div class="card-tools one">
+      <form>
+        <!-- <div class="input-group input-group-sm float-right"> -->
+        <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtiresbrand/") ?>">
+          <i class="fa fa-plus">  สร้าง</i>
+        </a>
 
-        <div class="input-group input-group-sm" >
-          <span id="brandPicture"></span>
-          <h3 class="car-img" id="tirebrandName"></h3>
-        </div>
-        <div class="input-group input-group-sm float-right" >
-          <a href="<?=base_url("admin/tires/createtiresbrand/") ?>"><button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button></a>
-          <input type="text" name="table_search" id="table-search" class="form-control float-right" placeholder="ค้นหา">
+        <div class="input-group float-right">
+          <input type="text" name="car_search" id="car-search" class="form-control float-right" placeholder="ชื่อยี่ห้อยางรถ">
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-search"></i></button>
+            <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-futbol-o"></i></button>
+          </div>
+          <select class="form-control" name="status" id="status" ><option>สถานะ</option></select>
+          <div class="input-group-append">
+            <button type="submit" id="btn-search" class="btn btn-info">
+              <i class="fa fa-user-circle"></i>
+            </button>
+          </div>
+          <div class="input-group-append">
+            <button type="submit" id="btn-search" class="btn btn-success">
+              <i class="fa fa-search"></i>  ค้นหา
+            </button>
           </div>
         </div>
+      </form>
     </div>
 
     <input type="hidden" id="tire_brandId" value="<?=$tire_brandId ?>">
@@ -30,10 +41,10 @@
     <div class="table-responsive">
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
-          <th>ลำดับ</th>
-          <th>รูปยี่ห้อ</th>
-          <th>ชื่อยี่ห้อยางรถยนต์</th>
-          <th>สถานะ</th>
+          <th><i class="fa fa-sort"></i>  ลำดับ</th>
+          <th><i class="fa fa-picture-o"></i>  รูปยี่ห้อ</th>
+          <th><i class="fa fa-futbol-o"></i>  ชื่อยี่ห้อยางรถ</th>
+          <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	
       </table>

@@ -1,25 +1,25 @@
 <script>
       $("#create-tiresbrand").validate({
         rules: {
-            tiresbrandName: {
+            tire_brandName: {
                 required: true
             },
-            tiresbrandPicture: {
+            tire_brandPicture: {
                 
             }
         },
         messages: {
-            tiresbrandName: {
+            tire_brandName: {
                 required: "กรุณากรอกยี่ห้อยางรถยนตร์ "
             },
-            tiresbrandPicture: {
+            tire_brandPicture: {
                 required: "กรุณาใส่รูปยี่ห้อยางรถยนตร์",
                 extension: "กรุณาใส่รูปภาพที่นามสกุล .jpg"
             }
         },
     });
 
-    $("#brandPicture").fileinput({
+    $("#tire_brandPicture").fileinput({
         language: "th",
         theme: 'fa',
         allowedFileExtensions: ['jpg'],
@@ -35,24 +35,24 @@
 });
 
     $("#create-tiresbrand").submit(function(){
-        createtiresbrand();
+        createBrand();
     });
 
-    function createtiresbrand(){
+    function createBrand(){
         event.preventDefault();
         var isValid = $("#create-tiresbrand").valid();
         if(isValid){
-            var myform = document.getirebrandById("create-tiresbrand");
+            var myform = document.getElementById("create-tiresbrand");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/tires/createtiresbrand",
+                url: base_url+"api/Triebrand/createBrand",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/tires");
+                        showMessage(data.message,"admin/tires/tiresbrand");
                     }else{
                         showMessage(data.message);
                     }

@@ -1,12 +1,12 @@
 <script>
     $("#update-tiresbrand").validate({
             rules: {
-                tirebrandName: {
+                tire_brandName: {
                     required: true
                 },
             },
             messages: {
-                tirebrandName: {
+                tire_brandName: {
                     required: "กรุณากรอกยี่ห้อยางรถยนต์"
                 }
             }

@@ -12,7 +12,7 @@ class Triebrand extends BD_Controller {
     }
 
     function createBrand_post(){
-        $config['upload_path'] = 'public/image/tirebrand/';
+        $config['upload_path'] = 'public/image/tire_brand/';
         $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
         $config['max_width']  = '1024';
@@ -25,7 +25,7 @@ class Triebrand extends BD_Controller {
         $this->load->model("triebrands");
         $userId = $this->session->userdata['logged_in']['id'];
 
-		if ( ! $this->upload->do_upload("trie_brandPicture"))
+		if ( ! $this->upload->do_upload("tire_brandPicture"))
 		{
             $error = array('error' => $this->upload->display_errors());
             $output["message"] = REST_Controller::MSG_ERROR;
@@ -36,7 +36,7 @@ class Triebrand extends BD_Controller {
 		{
             $imageDetailArray = $this->upload->data();
             $image =  $imageDetailArray['file_name'];
-            $trie_brandName = $this->post("tire_brandName");
+            $tire_brandName = $this->post("tire_brandName");
             $isDublicte = $this->triebrands->checktriebrands($tire_brandName);
             if($isDublicte){
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
@@ -45,14 +45,14 @@ class Triebrand extends BD_Controller {
                 $data = array(
                     "tire_brandId"=> null,
                     "tire_brandName"=> $tire_brandName,
-                    "tire__brandPicture"=> $tire__brandPicture,
+                    "tire_brandPicture"=> $image,
                     "status"=> 1,
                     "create_at" => date('Y-m-d H:i:s',time()),
                     "create_by" => $userId,
                     'update_at' => null,
                     'update_by' => null
                 );
-                $isResult = $this->Brand->insert_triebrands($data);
+                $isResult = $this->triebrands->insert_triebrands($data);
                 if($isResult){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);

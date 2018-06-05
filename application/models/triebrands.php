@@ -5,14 +5,25 @@ class Triebrands extends CI_Model{
     function checktriebrands($tire_brandName) {
         $this->db->select("*");
         $this->db->from("tire_brand");
-        $this->db->where('tire_brandName',$tire_brandName);
+        $this->db->where("tire_brandName",$tire_brandName);
         $result = $this->db->count_all_results();
 
         if($result > 0){
-            return false;
+            return true;
         }
-        return true;
+        return false;
 
+    }
+    function checkBrand($name){
+        $this->db->select("tire_brandName");
+        $this->db->from("tire_brand");
+        $this->db->where("tire_brandName", $name);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
+        }
+        return false;
     }
     function insert_triebrands($data){
 		return $this->db->insert('tire_brand', $data);
