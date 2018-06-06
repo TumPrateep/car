@@ -479,13 +479,18 @@ class UserManagement extends BD_Controller {
     }
 
     function getUserData($role, $userId){
+        $this->load->model("User");
+        $this->load->model("Garage");
+        $this->load->model("Caraccessories");
         $data = null;
         if($role == 4){
             $data = $this->User->getCar_profileById($userId);
         }else if($role == 3){
-            $data = null;
+            // อู่
+            $data = $this->Garage->getGarageFromGarageByUserId($userId);
         }else if($role == 2){
-            $data = null;
+            // ร้านอะไหล่
+            $data = $this->Caraccessories->getCarAccessoriesFromCarAccessoriesByUserId($userId);
         }else{
             $data = null;
         }
