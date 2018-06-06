@@ -458,9 +458,12 @@ class UserManagement extends BD_Controller {
 
         if($isCheck){
             $output["status"] = true;
-            $result = $this->User->getuserprofileById($userId);
-            if($result != null){
-                $output["data"] = $result;
+            $user = $this->User->getUser($userId);
+            if($user != null){
+                $result = $this->User->getuserprofileById($userId);
+                $output["profile"] = $result;
+                $output["role"] = $user->category;
+                $output["other"] = $this->getUserData((int)$user->category, $userId);
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
@@ -473,6 +476,25 @@ class UserManagement extends BD_Controller {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+    }
+
+    function getUserData($role, $userId){
+        $this->load->model("User");
+        $this->load->model("Garage");
+        $this->load->model("Caraccessories");
+        $data = null;
+        if($role == 4){
+            $data = $this->User->getCar_profileById($userId);
+        }else if($role == 3){
+            // อู่
+            $data = $this->Garage->getGarageFromGarageByUserId($userId);
+        }else if($role == 2){
+            // ร้านอะไหล่
+            $data = $this->Caraccessories->getCarAccessoriesFromCarAccessoriesByUserId($userId);
+        }else{
+            $data = null;
+        }
+        return $data;
     }
 
     function getuserprofile2_post(){

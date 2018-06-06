@@ -60,7 +60,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) { 
                         return '<a href="#"><button type="button" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
-                            + '<a href="'+base_url+"admin/usermanagement/editrole/"+data.id+',\''+data.category'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
+                            + '<a href="'+base_url+"admin/usermanagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
                             + '<a href="'+base_url+"admin/usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             + '<button type="button" class="delete btn btn-danger" onclick="deleteUser('+data.id+',\''+data.username+'\')"><i class="fa fa-trash"></i></button>';
                     }
