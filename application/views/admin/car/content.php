@@ -5,28 +5,29 @@
         <li class="breadcrumb-item">
           <a href="<?=base_url("admin/car") ?>">การจัดการยี่ห้อ</a>
         </li>
-        <li class="breadcrumb-item active">ค้นหา</li>
-
-        <a href="<?=base_url("admin/car/createBrand") ?>" class="right">
-            <button class="btn btn-primary" ><i class="fa fa-plus"> สร้าง</i></button>
-        </a>
-        
+        <li class="breadcrumb-item active">ค้นหา</li>        
       </ol>
 
       <!-- Example DataTables Card-->
     <div class="card-tools one">
-      <form>
+      <form id="form-search">
+        <a class="btn btn-primary create" href="<?=base_url("admin/car/createBrand") ?>">
+          <i class="fa fa-plus">  สร้าง</i>
+        </a>
         <!-- <div class="input-group input-group-sm float-right"> -->
         <div class="input-group float-right">
-          <input type="text" name="car_search" id="car-search" class="form-control float-right" placeholder="ชื่อยี่ห้อรถ">
+          <input name="car_search" id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้อรถ">
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-car"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
           </div>
 
-          <select class="form-control" name="status" id="status" ><option>สถานะ</option></select>
+          <select class="form-control" name="status" id="status" >
+            <option>สถานะ</option>
+            <option>เปิด</option>
+            <option>ปิด</option>
+          </select>
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-info">
-              <i class="fa fa-user-circle"></i>
+            <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i>
             </button>
           </div>
           <div class="input-group-append">

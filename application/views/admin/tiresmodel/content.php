@@ -10,14 +10,14 @@
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
-      <!-- Example DataTables Card-->
+      
     <div class="card-tools one">
         <!-- <div class="input-group input-group-sm" >
           <span id="tire_brandPicture"></span>
           <h3 class="car-img" id="tire_brandName"></h3>
         </div> -->
-      <form id="#form-search">
-        <!-- <div class="input-group input-group-sm float-right"> -->
+      <form id="form-search">
+        
         <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtiresmodel/$tire_brandId") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
@@ -25,7 +25,7 @@
         <div class="input-group float-right">
           <input id="table-search" class="form-control float-right" placeholder="ชื่อรุ่นยางรถ">
           <div class="input-group-append">
-            <button class="btn btn-info"><i class="fa fa-eercast"></i></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-eercast"></i></i></button>
           </div>
           <select class="form-control" >
             <option>สถานะ</option>
@@ -33,7 +33,7 @@
             <option>ปิด</option>
           </select>
           <div class="input-group-append">
-            <button class="btn btn-info"><i class="fa fa-user-circle"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i></button>
           </div>
           <div class="input-group-append">
             <button type="submit" class="btn btn-success">
