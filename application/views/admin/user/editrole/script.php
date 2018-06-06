@@ -684,6 +684,59 @@
 
           }
         }
+        var userId = $("#userId").val();
+        var category = $("#category").val();
+
+        $.post(base_url+"api/UserManagement/getuserprofile",{
+            "userId": userId,
+            "category": category
+        },function(data){
+            if(data.message!=200){
+                showMessage(data.message,"admin/usermanagement");
+            }
+
+            if(data.message == 200){
+                result = data.data;
+                $("#firstname").val(result.firstname);
+                $("#lastname").val(result.lastname);
+                $("#phone1").val(result.phone1);
+                $("#phone2").val(result.phone2);
+                $("#provinceId").val(result.provinceId);
+                $("#districtId").val(result.districtId);
+                $("#subdistrictId").val(result.subdistrictId);
+                $("#address").val(result.address);
+                $("#titleName").val(result.titleName);
+            }
+            
+        });
+
+        
+        
+
+        $.post(base_url+"api/UserManagement/getuserprofile3",{
+            "category": category,
+            "userId": userId
+
+        },function(data){
+            if(data.message!=200){
+                showMessage(data.message,"admin/usermanagement");
+            }
+
+            if(data.message == 200){
+                result = data.data;
+                $("#mileage").val(result.mileage);
+                $("#pictureFront").val(result.pictureFront);
+                $("#pictureBack").val(result.pictureBack);
+                $("#circlePlate").val(result.circlePlate);
+                $("#province_plate").val(result.province_plate);
+                $("#character_plate").val(result.character_plate);
+                $("#number_plate").val(result.number_plate);
+                $("#color").val(result.color);
+               
+            }
+            
+        });
+    
 </script>
 
 </body>

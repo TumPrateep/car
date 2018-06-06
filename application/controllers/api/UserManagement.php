@@ -449,5 +449,85 @@ class UserManagement extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function getuserprofile_post(){
+
+        $userId = $this->post('userId');
+        $this->load->model("User");
+        $isCheck = $this->User->checkUserid($userId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->User->getuserprofileById($userId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function getuserprofile2_post(){
+
+        $category = $this->post('category');
+        $this->load->model("User");
+        $isCheck = $this->User->checkUserid($userId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->User->getuserprofileById($userId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function getuserprofile3_post(){
+        $category = $this->post('category');
+        switch( $category){
+            case "4" :  
+                $userId = $this->post('userId');
+                $this->load->model("User");
+                $isCheck = $this->User->checkCar_profile($userId);
+
+                if($isCheck){
+                    $output["status"] = true;
+                    $result = $this->User->getCar_profileById($userId);
+                    if($result != null){
+                        $output["data"] = $result;
+                        $output["message"] = REST_Controller::MSG_SUCCESS;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }else{
+                        $output["status"] = false;
+                        $output["message"] = REST_Controller::MSG_BE_DELETED;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }
+                }else{
+                    $output["status"] = false;
+                    $output["message"] = REST_Controller::MSG_BE_DELETED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                };break;
+            }
+        
+        }
+
         
 }
