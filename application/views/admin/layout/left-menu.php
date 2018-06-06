@@ -1,7 +1,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html"><i class="fa fa-codiepie"></i> CarJaidee</a>
+    <a class="navbar-brand" href="<?=base_url("admin");?>"><i class="fa fa-codiepie"></i> CarJaidee</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

@@ -58,8 +58,12 @@
                 var data = $("#submit").serialize();
                 $.post(base_url+"api/car/createModel",data,
                 function(data){
-                    var brandId = $("#brandId").val();
-                    showMessage(data.message,"admin/car/model/"+brandId);
+                    if(data.message == 200){
+                        var brandId = $("#brandId").val();
+                        showMessage(data.message,"admin/car/model/"+brandId);
+                    }else{
+                        showMessage(data.message);
+                    }
                 });
                 
             }

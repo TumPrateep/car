@@ -245,7 +245,8 @@ class UserManagement extends BD_Controller {
                 'firstname' => $firstnameGarage,
                 'lastname' => $lastnameGarage,
                 'idcard' => $idcardGarage,
-                'addressGarage' => $addressGarage
+                'addressGarage' => $addressGarage,
+                'userId' => $userId
             );
         }else if($role == 2){
             $car_accessoriesName = $this->post("car_accessoriesName");
@@ -423,7 +424,7 @@ class UserManagement extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
 
         $result = $this->User->wherenotUser($id,$username);
-
+        
         if($result){
             $data = array(
                 'id' => $id,
@@ -550,6 +551,5 @@ class UserManagement extends BD_Controller {
             }
         
         }
-
         
 }
