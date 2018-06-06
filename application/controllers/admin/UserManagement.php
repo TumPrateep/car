@@ -51,4 +51,15 @@ class UserManagement extends CI_Controller {
 		$this->load->view("admin/layoutwizard/foot");	
 		$this->load->view("admin/user/editrole/script");
 	}
+
+	public function view($userId){
+		$data['userId'] = $userId;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/user/view/content", $data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/user/view/script");
+	}
 }
