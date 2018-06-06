@@ -21,7 +21,7 @@
         </div>
         <div class="input-group float-right" >
           <a href="<?=base_url("admin/car/createModel/$brandId") ?>">
-            <button class="btn btn-success"><i class="fa fa-plus">สร้าง</i></button>
+            <button class="btn btn-success"><i class="fa fa-plus"> สร้าง</i></button>
           </a>
         </div>
     </div>
@@ -62,7 +62,7 @@
     <div class="table-responsive">
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
-          <th>ลำดับ</th>
+          <th><i class="fa fa-sort"></i>  ลำดับ</th>
           <th><i class="fa fa-car"></i>  ชื่อรุ่น</th>
           <th><i class="fa fa-calendar-check-o"></i>  ปีที่ผลิต</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
