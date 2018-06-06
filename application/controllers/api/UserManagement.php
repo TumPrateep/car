@@ -498,6 +498,5 @@ class UserManagement extends BD_Controller {
         return $data;
     }
 
-
         
 }
