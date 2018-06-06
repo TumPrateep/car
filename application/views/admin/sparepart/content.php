@@ -46,7 +46,7 @@
     <div class="table-responsive">
       <table class="table table-bordered" id="spares_brand-table" width="100%" cellspacing="0">
         <thead>
-          <th>ลำดับ</th>
+          <th><i class="fa fa-sort"></i>ลำดับ</th>
           <th><i class="fa fa-cog">  ชื่อยี่ห้ออะไหล่</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
