@@ -450,7 +450,7 @@ class UserManagement extends BD_Controller {
         }
     }
 
-    function getuserprofile_post(){
+    function getusers_post(){
 
         $userId = $this->post('userId');
         $this->load->model("User");
@@ -484,7 +484,7 @@ class UserManagement extends BD_Controller {
         $this->load->model("Caraccessories");
         $data = null;
         if($role == 4){
-            $data = $this->User->getCar_profileById($userId);
+            $data = $this->User->getdataCar_profileById($userId);
         }else if($role == 3){
             // อู่
             $data = $this->Garage->getGarageFromGarageByUserId($userId);
@@ -497,17 +497,20 @@ class UserManagement extends BD_Controller {
         return $data;
     }
 
-    function getuserprofile2_post(){
+    function getCarProfile_post(){
 
-        $category = $this->post('category');
+        $userId = $this->post('userId');
         $this->load->model("User");
         $isCheck = $this->User->checkUserid($userId);
 
         if($isCheck){
             $output["status"] = true;
-            $result = $this->User->getuserprofileById($userId);
-            if($result != null){
-                $output["data"] = $result;
+            $user = $this->User->getUser($userId);
+            if($user != null){
+                $result = $this->User->getdataCar_profileById($userId);
+                $output["profile"] = $result;
+                $output["role"] = $user->category;
+                $output["other"] = $this->getUserData((int)$user->category, $userId);
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
@@ -522,34 +525,36 @@ class UserManagement extends BD_Controller {
         }
     }
 
-    function getuserprofile3_post(){
-        $category = $this->post('category');
-        switch( $category){
-            case "4" :  
-                $userId = $this->post('userId');
-                $this->load->model("User");
-                $isCheck = $this->User->checkCar_profile($userId);
+    function getCarAccessories_post(){
 
-                if($isCheck){
-                    $output["status"] = true;
-                    $result = $this->User->getCar_profileById($userId);
-                    if($result != null){
-                        $output["data"] = $result;
-                        $output["message"] = REST_Controller::MSG_SUCCESS;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }else{
-                        $output["status"] = false;
-                        $output["message"] = REST_Controller::MSG_BE_DELETED;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }
-                }else{
-                    $output["status"] = false;
-                    $output["message"] = REST_Controller::MSG_BE_DELETED;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                };break;
+        $userId = $this->post('userId');
+        $this->load->model("User");
+        $isCheck = $this->User->checkUserid($userId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $user = $this->User->getUser($userId);
+            if($user != null){
+                $this->load->model("Caraccessories");
+                $result = $this->Caraccessories->getCarAccessoriesFromCarAccessoriesByUserId($userId);
+                $output["profile"] = $result;
+                $output["role"] = $user->category;
+                $output["other"] = $this->getUserData((int)$user->category, $userId);
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }
+    }
+
+    
 
         
 }

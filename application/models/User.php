@@ -197,11 +197,13 @@ class User extends CI_Model{
         }
         return false;
     }
-    function getCar_profileById($userId){
+    
+    function getdataCar_profileById($userId){
         $this->db->select("mileage,pictureFront,pictureBack,circlePlate,province_plate,character_plate,number_plate,color");
         return $this->db->where('userId',$userId)->get("car_profile")->row();
     }
 
+    
     
 
     
