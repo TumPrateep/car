@@ -76,6 +76,7 @@ class Triemodel extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
+                $output["status"] = false;
                 $output["message"] = REST_Controller::MSG_ERROR;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
@@ -131,8 +132,8 @@ class Triemodel extends BD_Controller {
      
     function searchTireModel_post(){
         $columns = array( 
-            0 =>null, 
-            1 =>'tire_modelName',
+            0 => null, 
+            1 => 'tire_modelName',
             2 => 'status'
         );
 
@@ -140,23 +141,23 @@ class Triemodel extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $tire_brandId = $this->post('tire_brandId');
 
+        $tire_brandId = $this->post('tire_brandId');
         $this->load->model("Triemodels");
-        $totalData = $this->Triemodels->allTireModel_count();
+        $totalData = $this->Triemodels->allTireModel_count($tire_brandId);
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('tire_modelName')))
+        if(empty($this->post('tire_modelName')) || empty($this->post('tire_brandId')) )
         {            
             $posts = $this->Triemodels->allTireModel($limit,$start,$order,$dir,$tire_brandId);
         }
         else {
             $search = $this->post('tire_modelName'); 
 
-            $posts =  $this->Triemodels->tirebrand_search($limit,$start,$search,$order,$dir,$tire_brandId);
+            $posts =  $this->Triemodels->tireModel_search($limit,$start,$search,$order,$dir,$tire_brandId);
 
-            $totalFiltered = $this->Triemodels->tirebrand_search_count($search);
+            $totalFiltered = $this->Triemodels->tireModel_search_count($search,$tire_brandId);
         }
 
         $data = array();
@@ -165,9 +166,9 @@ class Triemodel extends BD_Controller {
             foreach ($posts as $post)
             {
 
-                $nestedData['tire_brandId'] = $post->tire_brandId;
                 $nestedData['tire_modelId'] = $post->tire_modelId;
                 $nestedData['tire_modelName'] = $post->tire_modelName;
+                $nestedData['tire_brandId'] = $post->tire_brandId;
                 $nestedData['status'] = $post->status;
 
                 $data[] = $nestedData;
