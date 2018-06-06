@@ -30,9 +30,9 @@
     <div class="table-responsive">
       <table class="table table-bordered" id="tires-table" width="100%" cellspacing="0">
         <thead>
-          <th>ลำดับ</th>
-          <th>ขอบยาง</th>
-          <th>สถานะ</th>
+          <th><i class="fa fa-sort"></i> ลำดับ</th>
+          <th><i class="fa fa-futbol-o"></i> ขอบยาง</th>
+          <th><i class="fa fa-user-circle"></i> สถานะ</th>
           <th></th>
         </thead>	
       </table>
