@@ -126,10 +126,10 @@ class User extends CI_Model{
     }
 
 
-    function checkUserid($users_id){
-        $this->db->select("users_id");
+    function checkUserid($userId){
+        $this->db->select("userId");
         $this->db->from("user_profile");
-        $this->db->where('users_id', $users_id);
+        $this->db->where('userId', $userId);
         
         $result = $this->db->count_all_results();
 
@@ -174,5 +174,36 @@ class User extends CI_Model{
         $result = $this->db->update('users', $data);
         return $result; 
     }
+
+    function getuserprofile($use_profile){
+        $this->db->select("firstname,lastname,phone1,phone2,provinceId,districtId,subdistrictId,address,titleName");
+        return $this->db->where('user_profile',$user_profile)->get("user_profile")->row();
+    }
+
+    function getuserprofileById($userId){
+        $this->db->select("firstname,lastname,phone1,phone2,provinceId,districtId,subdistrictId,address,titleName");
+        return $this->db->where('userId',$userId)->get("user_profile")->row();
+    }
+
+    function checkCar_profile($userId){
+        $this->db->select("userId");
+        $this->db->from("car_profile");
+        $this->db->where('userId', $userId);
+        
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
+        }
+        return false;
+    }
+    function getCar_profileById($userId){
+        $this->db->select("mileage,pictureFront,pictureBack,circlePlate,province_plate,character_plate,number_plate,color");
+        return $this->db->where('userId',$userId)->get("car_profile")->row();
+    }
+
+    
+
+    
 
 }

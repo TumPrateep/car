@@ -10,6 +10,7 @@
 
       <!-- Example DataTables Card-->
       <input type="hidden" name="userId" id="userId" value="<?=$userId ?>" />
+      <input type="hidden" name="category" id="category" value="<?=$category ?>" />
       <section class="content">
           <div class="container-fluid">
             <div class="row">
@@ -32,6 +33,7 @@
 
                             <div id="content" style="min-height:30px !important">
                                   <div id="step-1">
+                                  
                                       <h4>ข้อมูลส่วนตัว</h4>
                                       <div id="form-step-0" role="form" data-toggle="validator">
                                           <form id="form-1">
@@ -103,6 +105,8 @@
                                   </div>
 
                                   <div id="step-3">
+                                  <input type="hidden" name="userId" id="userId" value="<?=$userId ?>" />
+                                  <input type="hidden" name="category" id="category" value="<?=$category ?>" />
                                       <div id="form-step-2" role="form" data-toggle="validator">
                                       <div id="role-4" style="display:none">  
                                         <h5>ข้อมูลรถ</h5><label><h6>ทะเบียนรถ</h6></label><span class="error">*</span>
