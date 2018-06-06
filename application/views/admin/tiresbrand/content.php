@@ -10,27 +10,26 @@
 
       <!-- Example DataTables Card-->
     <div class="card-tools one">
-      <form>
-        <!-- <div class="input-group input-group-sm float-right"> -->
+      <form id="form-search">
         <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtiresbrand/") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
 
         <div class="input-group float-right">
-          <input type="text" name="car_search" id="car-search" class="form-control float-right" placeholder="ชื่อยี่ห้อยางรถ">
+          <input id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้อยางรถ">
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-futbol-o"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-futbol-o"></i></button>
           </div>
-          <select class="form-control" name="status" id="status" ><option>สถานะ</option></select>
+          <select class="form-control" >
+            <option>สถานะ</option>
+            <option>เปิด</option>
+            <option>ปิด</option>
+          </select>
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-info">
-              <i class="fa fa-user-circle"></i>
-            </button>
+            <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i></button>
           </div>
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-success">
-              <i class="fa fa-search"></i>  ค้นหา
-            </button>
+            <button type="submit" id="btn-search" class="btn btn-success"><i class="fa fa-search"></i>  ค้นหา</button>
           </div>
         </div>
       </form>

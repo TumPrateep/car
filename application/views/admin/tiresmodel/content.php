@@ -6,7 +6,7 @@
           <a href="<?=base_url("admin/Tires/tiresbrand/") ?>">ยี่ห้อยาง</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tiresmodel/") ?>">รุ่นยาง</a>
+          <a href="<?=base_url("admin/Tires/tiresmodel/$tire_brandId") ?>">รุ่นยาง</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
@@ -36,9 +36,7 @@
             <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i></button>
           </div>
           <div class="input-group-append">
-            <button type="submit" class="btn btn-success">
-              <i class="fa fa-search"></i>  ค้นหา
-            </button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-search"></i>  ค้นหา</button>
           </div>
         </div>
       </form>
