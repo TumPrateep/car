@@ -343,7 +343,7 @@
             }
         });
 
-        $('#smartwizard').smartWizard("reset");
+        // $('#smartwizard').smartWizard("reset");
         
 
         $("#form-1").validate({
@@ -688,15 +688,14 @@
         var category = $("#category").val();
 
         $.post(base_url+"api/UserManagement/getuserprofile",{
-            "userId": userId,
-            "category": category
+            "userId": userId
         },function(data){
             if(data.message!=200){
                 showMessage(data.message,"admin/usermanagement");
             }
 
             if(data.message == 200){
-                result = data.data;
+                result = data.profile;
                 $("#firstname").val(result.firstname);
                 $("#lastname").val(result.lastname);
                 $("#phone1").val(result.phone1);
@@ -713,29 +712,29 @@
         
         
 
-        $.post(base_url+"api/UserManagement/getuserprofile3",{
-            "category": category,
-            "userId": userId
+        // $.post(base_url+"api/UserManagement/getuserprofile3",{
+        //     "category": category,
+        //     "userId": userId
 
-        },function(data){
-            if(data.message!=200){
-                showMessage(data.message,"admin/usermanagement");
-            }
+        // },function(data){
+        //     if(data.message!=200){
+        //         showMessage(data.message,"admin/usermanagement");
+        //     }
 
-            if(data.message == 200){
-                result = data.data;
-                $("#mileage").val(result.mileage);
-                $("#pictureFront").val(result.pictureFront);
-                $("#pictureBack").val(result.pictureBack);
-                $("#circlePlate").val(result.circlePlate);
-                $("#province_plate").val(result.province_plate);
-                $("#character_plate").val(result.character_plate);
-                $("#number_plate").val(result.number_plate);
-                $("#color").val(result.color);
+        //     if(data.message == 200){
+        //         result = data.data;
+        //         $("#mileage").val(result.mileage);
+        //         $("#pictureFront").val(result.pictureFront);
+        //         $("#pictureBack").val(result.pictureBack);
+        //         $("#circlePlate").val(result.circlePlate);
+        //         $("#province_plate").val(result.province_plate);
+        //         $("#character_plate").val(result.character_plate);
+        //         $("#number_plate").val(result.number_plate);
+        //         $("#color").val(result.color);
                
-            }
+        //     }
             
-        });
+        // });
     
 </script>
 
