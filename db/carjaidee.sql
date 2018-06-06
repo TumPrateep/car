@@ -122,7 +122,7 @@ CREATE TABLE `car_profile` (
   CONSTRAINT `fk_car_profile_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_car_profile_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_car_profile_users3` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +131,7 @@ CREATE TABLE `car_profile` (
 
 LOCK TABLES `car_profile` WRITE;
 /*!40000 ALTER TABLE `car_profile` DISABLE KEYS */;
-INSERT INTO `car_profile` VALUES (2,'12','b26d372124aa23507b787c1c37d9f2c7.png','d5e22bc3cba987795116979e597b013c.png','b365cc96b9685f9db5fe9c102743bc93.png',9,'2018-05-31 16:05:53',NULL,9,NULL,1,'12','12','1','21');
+INSERT INTO `car_profile` VALUES (2,'12','b26d372124aa23507b787c1c37d9f2c7.png','d5e22bc3cba987795116979e597b013c.png','b365cc96b9685f9db5fe9c102743bc93.png',9,'2018-05-31 16:05:53',NULL,9,NULL,1,'12','12','1','21'),(3,'123','abe56bc1edd66f20a8863b3d6a867701.jpg','4fed0e990c729a801fc667a373feb3e2.jpg','4f60e7e0342c81cffcfcfd3b8e1f649a.jpg',13,'2018-06-05 12:07:56',NULL,13,NULL,1,'123','123','34','123'),(4,'1',NULL,NULL,NULL,14,'2018-06-05 12:13:22',NULL,14,NULL,1,'1111','11111','34','11111');
 /*!40000 ALTER TABLE `car_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,17 +207,20 @@ CREATE TABLE `garage` (
   `lastname` varchar(45) DEFAULT NULL,
   `idcard` varchar(45) DEFAULT NULL,
   `addressGarage` varchar(45) DEFAULT NULL,
+  `userId` int(11) NOT NULL,
   PRIMARY KEY (`garageId`,`garageMaster`),
   KEY `fk_garage_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_garage_district1_idx` (`districtId`),
   KEY `fk_garage_province1_idx` (`province_provinceId`),
   KEY `fk_garage_users1_idx` (`create_by`),
   KEY `fk_garage_users2_idx` (`update_by`),
+  KEY `userId_idx` (`userId`),
   CONSTRAINT `fk_garage_district1` FOREIGN KEY (`districtId`) REFERENCES `district` (`districtId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_garage_province1` FOREIGN KEY (`province_provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_garage_subdistrict1` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_garage_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_garage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_garage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -347,7 +350,7 @@ CREATE TABLE `rim` (
   KEY `fk_rim_users2_idx` (`update_by`),
   CONSTRAINT `fk_rim_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_rim_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -416,7 +419,7 @@ CREATE TABLE `spares_undercarriage` (
   KEY `fk_spares_undercarriage_users2_idx` (`update_by`),
   CONSTRAINT `fk_spares_undercarriage_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_undercarriage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -425,7 +428,7 @@ CREATE TABLE `spares_undercarriage` (
 
 LOCK TABLES `spares_undercarriage` WRITE;
 /*!40000 ALTER TABLE `spares_undercarriage` DISABLE KEYS */;
-INSERT INTO `spares_undercarriage` VALUES (1,'ลูกปืนล้อหน้า','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'ลูกปืนล้อหลัง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'ผ้าเบรคหน้า','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'ผ้าเบรคหลัง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'โช้คอัพหน้า','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'โช้คอัพหลัง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'ชุดประกอบ','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'ปีกนกล่างหน้าซ้าย (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'ปีกนกล่างหน้าขวา (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,'ปีกนกบนหน้าซ้าย (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,'ปีกนกบนหน้าขวา (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,'คานหลังซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,'คานหลังขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,'ลูกหมากปีกนกบนซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,'ลูกหมากปีกนกบนขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,'ลูกหมากปีกนกล่างซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(17,'ลูกหมากปีกนกล่างขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(18,'ลูกหมากคันชักนอกซ้าย (สั้น)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(19,'ลูกหมากคันชักนอกขวา(สั้น)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(20,'ลูกหมากคันชักในซ้าย (ยาว)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(21,'ลูกหมากคันชักในขวา (ยาว)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(22,'คันส่งกลาง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(23,'กล้องยา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(24,'ขาไก่กระปุกพวงมาลัย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(25,'ลูกหมากแร็คซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(26,'ลูกหมากแร็คขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(27,'ลูกหมากกันโคลงหน้าซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(28,'ลูกหมากกันโคลงหน้าขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(29,'ยางแท่งเครื่อง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(30,'ยางเพลากลาง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(31,'สายพานไทมิ่ง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(32,'ครัช (แผ่น หวี ลูกปืน)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(33,'อื่นๆ.....(ให้เพิ่มเอง)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `spares_undercarriage` VALUES (1,'ลูกปืนล้อหน้า','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'ลูกปืนล้อหลัง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'ผ้าเบรคหน้า','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'ผ้าเบรคหลัง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'โช้คอัพหน้า','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'โช้คอัพหลัง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'ชุดประกอบ','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'ปีกนกล่างหน้าซ้าย (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'ปีกนกล่างหน้าขวา (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,'ปีกนกบนหน้าซ้าย (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,'ปีกนกบนหน้าขวา (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,'คานหลังซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,'คานหลังขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,'ลูกหมากปีกนกบนซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,'ลูกหมากปีกนกบนขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,'ลูกหมากปีกนกล่างซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(17,'ลูกหมากปีกนกล่างขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(18,'ลูกหมากคันชักนอกซ้าย (สั้น)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(19,'ลูกหมากคันชักนอกขวา(สั้น)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(20,'ลูกหมากคันชักในซ้าย (ยาว)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(21,'ลูกหมากคันชักในขวา (ยาว)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(22,'คันส่งกลาง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(23,'กล้องยา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(24,'ขาไก่กระปุกพวงมาลัย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(25,'ลูกหมากแร็คซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(26,'ลูกหมากแร็คขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(27,'ลูกหมากกันโคลงหน้าซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(28,'ลูกหมากกันโคลงหน้าขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(29,'ยางแท่งเครื่อง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(30,'ยางเพลากลาง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(31,'สายพานไทมิ่ง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(32,'ครัช (แผ่น หวี ลูกปืน)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(33,'อื่นๆ.....(ให้เพิ่มเอง)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(34,'ฟกทรื','1',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `spares_undercarriage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -485,6 +488,7 @@ CREATE TABLE `tire_brand` (
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`tire_brandId`),
+  UNIQUE KEY `tire_brandId_UNIQUE` (`tire_brandId`),
   KEY `fk_trie_brand_users1_idx` (`create_by`),
   KEY `fk_trie_brand_users2_idx` (`update_by`),
   CONSTRAINT `fk_trie_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -647,7 +651,7 @@ CREATE TABLE `user_profile` (
   CONSTRAINT `fk_user_profile_province1` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_subdistrict1` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -656,7 +660,7 @@ CREATE TABLE `user_profile` (
 
 LOCK TABLES `user_profile` WRITE;
 /*!40000 ALTER TABLE `user_profile` DISABLE KEYS */;
-INSERT INTO `user_profile` VALUES (1,'admin','admin','1',NULL,NULL,63,843,710,1,NULL,1,NULL,NULL,NULL),(2,'12','12','1','','122222222222222222',58,813,7343,9,'2018-05-31 16:05:53',9,'21','นาย',NULL);
+INSERT INTO `user_profile` VALUES (1,'admin','admin','1',NULL,NULL,63,843,710,1,NULL,1,NULL,NULL,NULL),(2,'12','12','1','','122222222222222222',58,813,7343,9,'2018-05-31 16:05:53',9,'21','นาย',NULL),(3,'dasf','dsaf','1','','0142312312',17,204,1669,13,'2018-06-05 12:07:55',13,'dsfa','นาย',NULL),(4,'111111','1111111111','1','','1111111111111',58,811,7317,14,'2018-06-05 12:13:22',14,'1111111','นาย',NULL);
 /*!40000 ALTER TABLE `user_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -686,7 +690,7 @@ CREATE TABLE `users` (
   KEY `fk_users_users2_idx` (`update_by`),
   CONSTRAINT `fk_users_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -695,7 +699,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(9,'natza9301','$2y$10$9Tphrpm9Yuc79zGaoaZ3o.hkYpP8FK32dM4l3dOB4/hyYpDV/x4pa','4',NULL,'222222222222222',NULL,NULL,NULL,NULL,1,NULL),(10,'natza9302','$2y$10$K6XcC8Qhgu0wgRfi052mH.aeEDqiTlCyF3STnjndP2Llj8B6gt90y',NULL,NULL,'000000000000000',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe','1','admin@admin','0812587469',NULL,NULL,1,1,1,NULL),(9,'natza9301','$2y$10$9Tphrpm9Yuc79zGaoaZ3o.hkYpP8FK32dM4l3dOB4/hyYpDV/x4pa','4',NULL,'222222222222222',NULL,NULL,NULL,NULL,1,NULL),(13,'aaaaa','$2y$10$/4dW2hO0e5z4mW5Wzf7J5.ZHes1uSe/S.tE/83YWVPJ2G5m/sxVhC','4',NULL,'00000000000000000',NULL,NULL,NULL,NULL,1,NULL),(14,'hellowold','$2y$10$DLuPc8pTbv/U2xY5WTExnencqKep7YFD0s4y5BZFVNi7fXexCBfpO','4',NULL,'0000000000',NULL,NULL,NULL,NULL,1,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -712,4 +716,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-02 16:11:41
+-- Dump completed on 2018-06-06 13:48:27
