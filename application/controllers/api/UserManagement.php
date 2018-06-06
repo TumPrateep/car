@@ -423,7 +423,7 @@ class UserManagement extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
 
         $result = $this->User->wherenotUser($id,$username);
-
+        
         if($result){
             $data = array(
                 'id' => $id,
