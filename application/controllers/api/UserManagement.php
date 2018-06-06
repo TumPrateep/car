@@ -192,9 +192,9 @@ class UserManagement extends BD_Controller {
             $option4 = $this->post("option4");
             $option_outher = $this->post("other");
             $garageAddress = $this->post("garageAddress");
-            $provinceId = $this->post("provinceId");
-            $districtId = $this->post("districtId");
-            $subdistrictId = $this->post("subdistrictId");
+            $gprovinceId = $this->post("garage-provinceId");
+            $gdistrictId = $this->post("garage-districtId");
+            $gsubdistrictId = $this->post("garage-subdistrictId");
             $garagePicture = $this->post("garagePicture");
             $firstnameGarage = $this->post("firstnameGarage");
             $lastnameGarage = $this->post("lastnameGarage");
@@ -221,9 +221,9 @@ class UserManagement extends BD_Controller {
                 'garageId' => null,
                 'garageName' => $garageName,
                 'businessRegistration' => $businessRegistration,
-                'province_provinceId' => $provinceId, 
-                'districtId' => $districtId,
-                'subdistrictId' => $subdistrictId,
+                'province_provinceId' => $gprovinceId, 
+                'districtId' => $gdistrictId,
+                'subdistrictId' => $gsubdistrictId,
                 'garageAddress' => $garageAddress,
                 'postCode'=> $postCode,
                 'latitude' => $latitude,
@@ -424,7 +424,7 @@ class UserManagement extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
 
         $result = $this->User->wherenotUser($id,$username);
-        
+
         if($result){
             $data = array(
                 'id' => $id,
@@ -451,7 +451,7 @@ class UserManagement extends BD_Controller {
         }
     }
 
-    function getuserprofile_post(){
+    function getusers_post(){
 
         $userId = $this->post('userId');
         $this->load->model("User");
@@ -485,7 +485,7 @@ class UserManagement extends BD_Controller {
         $this->load->model("Caraccessories");
         $data = null;
         if($role == 4){
-            $data = $this->User->getCar_profileById($userId);
+            $data = $this->User->getdataCar_profileById($userId);
         }else if($role == 3){
             // อู่
             $data = $this->Garage->getGarageFromGarageByUserId($userId);
@@ -498,58 +498,6 @@ class UserManagement extends BD_Controller {
         return $data;
     }
 
-    function getuserprofile2_post(){
 
-        $category = $this->post('category');
-        $this->load->model("User");
-        $isCheck = $this->User->checkUserid($userId);
-
-        if($isCheck){
-            $output["status"] = true;
-            $result = $this->User->getuserprofileById($userId);
-            if($result != null){
-                $output["data"] = $result;
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-    }
-
-    function getuserprofile3_post(){
-        $category = $this->post('category');
-        switch( $category){
-            case "4" :  
-                $userId = $this->post('userId');
-                $this->load->model("User");
-                $isCheck = $this->User->checkCar_profile($userId);
-
-                if($isCheck){
-                    $output["status"] = true;
-                    $result = $this->User->getCar_profileById($userId);
-                    if($result != null){
-                        $output["data"] = $result;
-                        $output["message"] = REST_Controller::MSG_SUCCESS;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }else{
-                        $output["status"] = false;
-                        $output["message"] = REST_Controller::MSG_BE_DELETED;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }
-                }else{
-                    $output["status"] = false;
-                    $output["message"] = REST_Controller::MSG_BE_DELETED;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                };break;
-            }
-        
-        }
         
 }

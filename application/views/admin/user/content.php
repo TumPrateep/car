@@ -19,22 +19,22 @@
     </div>
 
     <div class="card-tools one">
-      <form>
+      <form id="form-search">
         <!-- <div class="input-group input-group-sm float-right"> -->
         <div class="input-group float-right">
-          <input type="text" name="nameuser_search" id="nameuser-search" class="form-control float-right" placeholder="ชื่อผู้ใช้งาน">
+          <input type="text" name="table-search" id="table-search" class="form-control float-right" placeholder="ชื่อผู้ใช้งาน">
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-address-book"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-address-book"></i></button>
           </div>
 
           <input type="text" name="typeuser_search" id="typeuser-search" class="form-control float-right" placeholder="ประเภทผู้ใช้งาน">
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-users"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-users"></i></button>
           </div>
 
           <select class="form-control" name="status" id="status" ><option>สถานะ</option></select>
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-info">
+            <button class="btn btn-info inactive">
               <i class="fa fa-user-circle"></i>
             </button>
           </div>
