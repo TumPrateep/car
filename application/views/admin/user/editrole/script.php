@@ -706,65 +706,63 @@
                 $("#districtId").val(profile.districtId);
                 $("#subdistrictId").val(profile.subdistrictId);
                 $("#address").val(profile.address);
-                
+        
 
                 var roleData = data.role;
+                var other = data.other;
                 $("#role").val(roleData);
+                if(roleData == 4){
+                    $("#mileage").val(other.mileage);
+                    $("#pictureFront").val(other.pictureFront);
+                    $("#pictureBack").val(other.pictureBack);
+                    $("#circlePlate").val(other.circlePlate);
+                    $("#province_plate").val(other.province_plate);
+                    $("#character_plate").val(other.character_plate);
+                    $("#number_plate").val(other.number_plate);
+                    $("#color").val(other.color);
+                }
+                else if(roleData == 3 ){
+                    $("#comment").val(other.comment);
+                    $("#businessRegistration").val(other.businessRegistration);
+                    $("#garageName").val(other.garageName);
+                    $("#garageAddress").val(other.garageAddress);
+                    $("#postCode").val(other.postCode);
+                    $("#latitude").val(other.latitude);
+                    $("#longtitude").val(other.longtitude);
+                    $("#garageMaster").val(other.garageMaster);
+                    $("#subdistrictId").val(other.subdistrictId);
+                    $("#districtId").val(other.districtId);
+                    $("#province_provinceId").val(other.province_provinceId);
+                    $("#option1").val(other.option1);
+                    $("#option2").val(other.option2);
+                    $("#option3").val(other.option3);
+                    $("#option4").val(other.option4);
+                    $("#option_outher").val(other.option_outher);
+                    $("#garagePicture").val(other.garagePicture);
+                    $("#firstname").val(other.firstname);
+                    $("#lastname").val(other.lastname);
+                    $("#idcard").val(other.idcard);
+                    $("#addressGarage").val(other.addressGarage);
+                }
+                else if(roleData == 2){
+                    $("#car_accessoriesName").val(profile.car_accessoriesName);
+                    $("#businessRegistration").val(profile.businessRegistration);
+                    $("#firstname").val(profile.firstname);
+                    $("#lastname").val(profile.lastname);
+                    $("#address").val(profile.address);
+                    $("#idcard").val(profile.idcard);
+                    $("#postCode").val(profile.postCode);
+
+                }
+                
+                
+                
 
             }
             
         });
         
 
-        $.post(base_url+"api/UserManagement/getCarProfile",{
-            "userId": userId,
-        },function(data){
-            if(data.message!=200){
-                showMessage(data.message,"admin/usermanagement");
-            }
-
-            if(data.message == 200){
-                var profile = data.profile;
-
-                $("#mileage").val(profile.mileage);
-                $("#pictureFront").val(profile.pictureFront);
-                $("#pictureBack").val(profile.pictureBack);
-                $("#circlePlate").val(profile.circlePlate);
-                $("#province_plate").val(profile.province_plate);
-                $("#character_plate").val(profile.character_plate);
-                $("#number_plate").val(profile.number_plate);
-                $("#color").val(profile.color);
-            }
-            
-        });
-
-        $.post(base_url+"api/UserManagement/getCarAccessories",{
-            "userId": userId,
-        },function(data){
-            if(data.message!=200){
-                showMessage(data.message,"admin/usermanagement");
-            }
-
-            if(data.message == 200){
-                var profile = data.profile;
-
-                $("#car_accessoriesName").val(profile.car_accessoriesName);
-                $("#businessRegistration").val(profile.businessRegistration);
-                $("#firstname").val(profile.firstname);
-                $("#lastname").val(profile.lastname);
-                $("#address").val(profile.address);
-                $("#idcard").val(profile.idcard);
-                $("#postCode").val(profile.postCode);
-              
-            }
-            
-        });
-
-        
-        
-        
-        
-    
 </script>
 
 </body>
