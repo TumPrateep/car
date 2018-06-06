@@ -550,6 +550,5 @@ class UserManagement extends BD_Controller {
             }
         
         }
-
         
 }

@@ -51,14 +51,17 @@
     function updateUser(){
         event.preventDefault();
         var isValid = $("#group").valid();
-        
+        var data = $("#group").serialize();
         if(isValid){
-            // var data = $("#group").serialize();
-            // $.post(base_url+"api/UserManagement/create",data,
-            // function(data){
-            //     var username = $("#username").val();
-            //     showMessage(data.message,"admin/usermanagement");
-            // });
+            var data = $("#group").serialize();
+            $.post(base_url+"api/UserManagement/updateUser",data,
+            function(data){
+                if(data.message == 200){
+                    showMessage(data.message,"admin/usermanagement");
+                }else{
+                    showMessage(data.message);
+                }
+            });
             
         }
     }
