@@ -687,7 +687,7 @@
         var userId = $("#userId").val();
         var category = $("#category").val();
 
-        $.post(base_url+"api/UserManagement/getuserprofile",{
+        $.post(base_url+"api/UserManagement/getusers",{
             "userId": userId
         },function(data){
             if(data.message!=200){
@@ -696,6 +696,7 @@
 
             if(data.message == 200){
                 var profile = data.profile;
+
                 $("#titleName").val(profile.titleName);
                 $("#firstname").val(profile.firstname);
                 $("#lastname").val(profile.lastname);
@@ -705,7 +706,7 @@
                 $("#districtId").val(profile.districtId);
                 $("#subdistrictId").val(profile.subdistrictId);
                 $("#address").val(profile.address);
-                $("#titleName").val(profile.titleName);
+                
 
                 var roleData = data.role;
                 $("#role").val(roleData);
@@ -713,33 +714,56 @@
             }
             
         });
-
-        
         
 
-        // $.post(base_url+"api/UserManagement/getuserprofile3",{
-        //     "category": category,
-        //     "userId": userId
+        $.post(base_url+"api/UserManagement/getCarProfile",{
+            "userId": userId,
+        },function(data){
+            if(data.message!=200){
+                showMessage(data.message,"admin/usermanagement");
+            }
 
-        // },function(data){
-        //     if(data.message!=200){
-        //         showMessage(data.message,"admin/usermanagement");
-        //     }
+            if(data.message == 200){
+                var profile = data.profile;
 
-        //     if(data.message == 200){
-        //         result = data.data;
-        //         $("#mileage").val(result.mileage);
-        //         $("#pictureFront").val(result.pictureFront);
-        //         $("#pictureBack").val(result.pictureBack);
-        //         $("#circlePlate").val(result.circlePlate);
-        //         $("#province_plate").val(result.province_plate);
-        //         $("#character_plate").val(result.character_plate);
-        //         $("#number_plate").val(result.number_plate);
-        //         $("#color").val(result.color);
-               
-        //     }
+                $("#mileage").val(profile.mileage);
+                $("#pictureFront").val(profile.pictureFront);
+                $("#pictureBack").val(profile.pictureBack);
+                $("#circlePlate").val(profile.circlePlate);
+                $("#province_plate").val(profile.province_plate);
+                $("#character_plate").val(profile.character_plate);
+                $("#number_plate").val(profile.number_plate);
+                $("#color").val(profile.color);
+            }
             
-        // });
+        });
+
+        $.post(base_url+"api/UserManagement/getCarAccessories",{
+            "userId": userId,
+        },function(data){
+            if(data.message!=200){
+                showMessage(data.message,"admin/usermanagement");
+            }
+
+            if(data.message == 200){
+                var profile = data.profile;
+
+                $("#car_accessoriesName").val(profile.car_accessoriesName);
+                $("#businessRegistration").val(profile.businessRegistration);
+                $("#firstname").val(profile.firstname);
+                $("#lastname").val(profile.lastname);
+                $("#address").val(profile.address);
+                $("#idcard").val(profile.idcard);
+                $("#postCode").val(profile.postCode);
+              
+            }
+            
+        });
+
+        
+        
+        
+        
     
 </script>
 

@@ -765,9 +765,9 @@
               formData.append("garageName", $("#garageName").val());
               formData.append("businessRegistration", $("#businessRegistration").val());
               formData.append("garageAddress", $("#addressGarage").val());
-              formData.append("provinceId", $("#garage-provinceId").val());
-              formData.append("districtId", $("#garage-districtId").val());
-              formData.append("subdistrictId", $("#garage-subdistrictId").val());
+              formData.append("garage-provinceId", $("#garage-provinceId").val());
+              formData.append("garage-districtId", $("#garage-districtId").val());
+              formData.append("garage-subdistrictId", $("#garage-subdistrictId").val());
               formData.append("postCode", $("#zipCode").val());
               formData.append("latitude", $("#latitude").val());
               formData.append("longtitude", $("#longtitude").val());
