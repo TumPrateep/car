@@ -317,3 +317,8 @@
   .gray{
     color: gray;
   }
+
+  .inactive{
+    pointer-events: none;
+    cursor: none;
+  }

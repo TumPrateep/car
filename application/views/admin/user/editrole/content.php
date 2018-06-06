@@ -10,6 +10,7 @@
 
       <!-- Example DataTables Card-->
       <input type="hidden" name="userId" id="userId" value="<?=$userId ?>" />
+      <input type="hidden" name="category" id="category" value="<?=$category ?>" />
       <section class="content">
           <div class="container-fluid">
             <div class="row">
@@ -32,13 +33,14 @@
 
                             <div id="content" style="min-height:30px !important">
                                   <div id="step-1">
+                                  
                                       <h4>ข้อมูลส่วนตัว</h4>
                                       <div id="form-step-0" role="form" data-toggle="validator">
                                           <form id="form-1">
                                             <div class="form-row">
                                               <div class="form-group col-md-2">
                                                 <label>คำนำหน้า</label><span class="error">*</span>
-                                                <select class="form-control" name="titleName">
+                                                <select class="form-control" name="titleName" id="titleName">
                                                   <option value="">คำนำหน้า</option>
                                                   <option value="นาย">นาย</option>
                                                   <option value="นาง">นาง</option>
@@ -103,6 +105,8 @@
                                   </div>
 
                                   <div id="step-3">
+                                  <input type="hidden" name="userId" id="userId" value="<?=$userId ?>" />
+                                  <input type="hidden" name="category" id="category" value="<?=$category ?>" />
                                       <div id="form-step-2" role="form" data-toggle="validator">
                                       <div id="role-4" style="display:none">  
                                         <h5>ข้อมูลรถ</h5><label><h6>ทะเบียนรถ</h6></label><span class="error">*</span>
@@ -110,15 +114,15 @@
                                             <div class="form-row">
                                               <div class="form-group col-md-4">
                                                 <label>ตัวอักษรนำหน้า</label><span class="error">*</span>
-                                                <input type="text" name="characterPlate" id="characterPlate" class="form-control" placeholder="ตัวอักษรนำหน้า">
+                                                <input type="text" name="characterPlate" id="character_plate" class="form-control" placeholder="ตัวอักษรนำหน้า">
                                               </div>
                                               <div class="form-group col-md-4">
                                                 <label>ตัวเลข</label><span class="error">*</span>
-                                                <input type="text" name="numberPlate" id="numberPlate" class="form-control" placeholder="ตัวเลข">
+                                                <input type="text" name="numberPlate" id="number_plate" class="form-control" placeholder="ตัวเลข">
                                               </div>
                                               <div class="form-group col-md-4">
                                                 <label>จังหวัด</label><span class="error">*</span>
-                                                <select class="form-control" name="provincePlate" id="provincePlate"c lass="form-control" placeholder="จังหวัด"></select>
+                                                <select class="form-control" name="provincePlate" id="province_plate"c lass="form-control" placeholder="จังหวัด"></select>
                                                 
                                               </div>
                                             </div>
@@ -129,23 +133,23 @@
                                               </div>
                                               <div class="form-group col-md-6">
                                                 <label>สีของรถ</label><span class="error">*</span>
-                                                <input type="text" name="colorCar" id="colorCar" class="form-control" placeholder="สีของรถ">
+                                                <input type="text" name="colorCar" id="color" class="form-control" placeholder="สีของรถ">
                                               </div>
                                             </div>
                                             <div class="form-row">
                                               <div class="form-group col-md-4">
                                                 <label>รูปด้านหน้ารถ </label>
-                                                <input type="file" class="form-control-file" name="frontPicture" id="frontPicture">
+                                                <input type="file" class="form-control-file" name="pictureFront" id="frontPicture">
                                                 <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                                               </div>
                                               <div class="form-group col-md-4">
                                                 <label>รูปด้านหลังรถ </label>
-                                                <input type="file" class="form-control-file" name="backPicture" id="backPicture">
+                                                <input type="file" class="form-control-file" name="pictureBack" id="backPicture">
                                                 <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                                               </div>
                                               <div class="form-group col-md-4">
                                                 <label>รูปป้ายวงกลม </label>
-                                                <input type="file" class="form-control-file" name="circlesignPicture" id="circlesignPicture">
+                                                <input type="file" class="form-control-file" name="circlePlate" id="circlesignPicture">
                                                 <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
                                               </div>
                                             </div>

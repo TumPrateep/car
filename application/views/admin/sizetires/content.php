@@ -20,8 +20,8 @@
     <div class="table-responsive">
       <table class="table table-bordered" id="tiresize-table" width="100%" cellspacing="0">
         <thead>
-          <th>ลำดับ</th>
-          <th>ขนาดยาง</th>
+          <th><i class="fa fa-sort"></i>  ลำดับ</th>
+          <th><i class="fa fa-futbol-o"></i>  ขนาดยาง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	

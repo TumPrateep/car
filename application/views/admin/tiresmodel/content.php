@@ -3,15 +3,21 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires/tiresbrand/") ?>">ยี่ห้อยาง</a>
+          <a href="<?=base_url("admin/Tires/tiresbrand/") ?>">ยี่ห้อยาง</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires/tiresmodel/") ?>">รุ่นยาง</a>
+          <a href="<?=base_url("admin/Tires/tiresmodel/") ?>">รุ่นยาง</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
       <!-- Example DataTables Card-->
     <div class="card-tools one">
+
+        <div class="input-group input-group-sm" >
+          <span id="tire_brandPicture"></span>
+          <h3 class="car-img" id="tire_brandName"></h3>
+        </div>
+
       <form>
         <!-- <div class="input-group input-group-sm float-right"> -->
         <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtiresmodel/$tire_brandId") ?>">
@@ -38,7 +44,7 @@
       </form>
     </div>
     
-    <input type="hidden" id="tiresbrandId" value="<?=$tiresbrandId?>">
+    <input type="hidden" id="tire_brandId" value="<?=$tire_brandId?>">
 
     <div class="table-responsive">
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
