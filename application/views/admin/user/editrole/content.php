@@ -273,23 +273,23 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                   <label>ชื่อ</label><span class="error">*</span>
-                                                  <input type="text" name="sparepart-firstname" id="sparepart-firstname" class="form-control" placeholder="ชื่อ">
+                                                  <input type="text" name="sparepart-firstname" id="firstname" class="form-control" placeholder="ชื่อ">
                                                 </div>
                                               <div class="form-group col-md-6">
                                                   <label>นามสกุล</label><span class="error">*</span>
-                                                  <input type="text" name="sparepart-lastname" id="sparepart-lastname" class="form-control" placeholder="นามสกุล">
+                                                  <input type="text" name="sparepart-lastname" id="lastname" class="form-control" placeholder="นามสกุล">
                                                 </div>
                                             </div>
                                             <div class=form-row>
                                                 <div class="form-group col-md-12">
                                                   <label>เลขบัตรประชาชน</label><span class="error">*</span>
-                                                  <input type="text" name="sparepart-idcard" id="sparepart-idcard" class="form-control" placeholder="เลขบัตรประชาชน" rows="3"></textarea>
+                                                  <input type="text" name="sparepart-idcard" id="idcard" class="form-control" placeholder="เลขบัตรประชาชน" rows="3"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                   <label>ที่อยู่</label><span class="error">*</span>
-                                                  <textarea class="form-control" name="sparepart-address" id="sparepart-address" placeholder="ที่อยู่" rows="3"></textarea>
+                                                  <textarea class="form-control" name="sparepart-address" id="address" placeholder="ที่อยู่" rows="3"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -309,7 +309,7 @@
                                             <div class="form-row">
                                               <div class="form-group col-md-4">
                                                 <label>รหัสไปรษณีย์</label><span class="error">*</span>
-                                                <input type="text" class="form-control" name="sparepart-zipCode" id="sparepart-zipCode" placeholder="รหัสไปรษณีย์">
+                                                <input type="text" class="form-control" name="sparepart-zipCode" id="postCode" placeholder="รหัสไปรษณีย์">
                                               </div>
                                             </div>
                                           </form>
