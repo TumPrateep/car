@@ -245,7 +245,8 @@ class UserManagement extends BD_Controller {
                 'firstname' => $firstnameGarage,
                 'lastname' => $lastnameGarage,
                 'idcard' => $idcardGarage,
-                'addressGarage' => $addressGarage
+                'addressGarage' => $addressGarage,
+                'userId' => $userId
             );
         }else if($role == 2){
             $car_accessoriesName = $this->post("car_accessoriesName");
@@ -423,7 +424,7 @@ class UserManagement extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
 
         $result = $this->User->wherenotUser($id,$username);
-
+        
         if($result){
             $data = array(
                 'id' => $id,
@@ -552,9 +553,12 @@ class UserManagement extends BD_Controller {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+<<<<<<< HEAD
     }
 
     
 
+=======
+>>>>>>> 5ff41500306e95cc98b627e7745ba14e1cf6ea79
         
 }

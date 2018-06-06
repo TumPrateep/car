@@ -7,7 +7,7 @@
           <a href="<?=base_url("admin/tires") ?>">ขอบยาง</a>
         <li class="breadcrumb-item">
           <a href="<?=base_url("admin/Tires/tiresize/$rimId") ?>">ขนาดยาง</a>
-        <li class="breadcrumb-item active">เเก้ไขขอมูลขอบยาง</li>
+        <li class="breadcrumb-item active">เเก้ไขขอมูลขนาดยาง</li>
       </ol>
       <!-- Icon Cards-->
       <section class="content">
@@ -17,7 +17,7 @@
               <div class="card text-white bg-success">
                   <div class="card-header">
 
-                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เเก้ไขข้อมูลขอบยาง</h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เเก้ไขข้อมูลขนาดยาง</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->

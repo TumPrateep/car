@@ -47,7 +47,7 @@
                     if(data.message == 200){
                         showMessage(data.message,"admin/Tires/updatetiresmodel/"+tire_brandId);
                     }else{
-                    showMessage(data.message);
+                        showMessage(data.message);
                     }
                 });
                 

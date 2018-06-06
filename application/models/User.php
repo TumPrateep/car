@@ -160,7 +160,7 @@ class User extends CI_Model{
     function wherenotUser($id,$username){
         $this->db->select("username");
         $this->db->from("users");
-        $this->db->where('id', $id);
+        $this->db->where('username', $username);
         $this->db->where_not_in('id', $id);
         $result = $this->db->count_all_results();
 
