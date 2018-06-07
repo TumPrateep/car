@@ -11,40 +11,38 @@
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
 
-      <!-- Example DataTables Card-->
-        
+      <!-- Example DataTables Card-->      
     <div class="card-tools">
-
-        <div class="input-group input-group-sm" >
-          <span id="brandPicture"></span>
-          <h3 class="car-img" id="brandName"></h3>
-        </div>
-        <div class="input-group float-right" >
-          <a href="<?=base_url("admin/car/createModel/$brandId") ?>">
-            <button class="btn btn-success"><i class="fa fa-plus"> สร้าง</i></button>
-          </a>
-        </div>
+      <div class="input-group input-group-sm" >
+        <span id="brandPicture"></span>
+        <h3 class="car-img" id="brandName"></h3>
+      </div>
     </div>
 
     <div class="card-tools one">
-      <form>
-        <!-- <div class="input-group input-group-sm float-right"> -->
+      <form id="form-search">
+        <a class="btn btn-primary create" href="<?=base_url("admin/car/createModel/$brandId") ?>">
+          <i class="fa fa-plus">  สร้าง</i>
+        </a>
+
         <div class="input-group float-right">
-          <input type="text" name="model_search" id="model-search" class="form-control float-right" placeholder="ชื่อรุ่นรถ">
+          <input id="table-search" class="form-control float-right" placeholder="ชื่อรุ่นรถ">
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-car"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
           </div>
 
-          <input type="text" name="year_search" id="year-search" class="form-control float-right" placeholder="ปีที่ผลิต">
+          <input id="table-search" class="form-control float-right" placeholder="ปีที่ผลิต">
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-info"><i class="fa fa-calendar-check-o"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-calendar-check-o"></i></button>
           </div>
 
-          <select class="form-control" name="status" id="status" ><option>สถานะ</option></select>
+          <select class="form-control" name="status" id="status" >
+            <option>สถานะ</option>
+            <option>เปิด</option>
+            <option>ปิด</option>
+          </select>
           <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-info">
-              <i class="fa fa-user-circle"></i>
-            </button>
+            <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i></button>
           </div>
 
           <div class="input-group-append">

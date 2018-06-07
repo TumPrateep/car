@@ -108,9 +108,11 @@
     }
     
 
-    $("#btn-search").click(function(){
+    $("#form-search").submit(function(){
+        event.preventDefault();
         table.ajax.reload();
     })
+
 
     function updateStatus(brandId,status){
         $.post(base_url+"api/Car/changeStatus",{

@@ -93,7 +93,7 @@
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [1,2,3]},
                 {"className": "dt-center", "targets": [0,4,5]},
-                { "width": "3%", "targets": 0 },
+                { "width": "8%", "targets": 0 },
                 { "width": "20%", "targets": 3 }
             ]	 
 

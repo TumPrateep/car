@@ -18,7 +18,7 @@ class Triemodels extends CI_Model {
 
     function wherenotTireModelid($tire_modelId,$tire_modelName){
         $this->db->select("tire_modelName");
-        $this->db->from("tire_model");
+        $this->db->from("triemodels");
         $this->db->where('tire_modelName', $tire_modelName);
         $this->db->where_not_in('tire_modelId', $tire_modelId);
         $result = $this->db->count_all_results();
@@ -30,7 +30,7 @@ class Triemodels extends CI_Model {
     }    
     function updateTireModel($data){
         $this->db->where('tire_modelId',$data['tire_modelId']);
-        $result = $this->db->update('tire_model', $data);
+        $result = $this->db->update('tire_modelId', $data);
         return $result;
     }
      
