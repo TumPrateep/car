@@ -95,11 +95,13 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/tiresmodel/create/script");
     }
 
-    public function updatetiresmodel(){
+    public function updatetiresmodel($tire_brandId, $tire_modelId){
+		$data['tire_modelId'] = $tire_modelId;
+		$data['tire_brandId'] = $tire_brandId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/tiresmodel/update/content");
+		$this->load->view("admin/tiresmodel/update/content",$data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/tiresmodel/update/script");

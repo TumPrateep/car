@@ -7,7 +7,7 @@
           <a href="<?=base_url("admin/tires/tiresbrand/") ?>">ยี่ห้อยาง</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tiresmodel/$tire_brandId") ?>">รุ่นยาง</a>
+          <a href="<?=base_url("admin/Tires/tiresmodel/$tire_brandId/$tire_modelId") ?>">รุ่นยาง</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขข้อมูล</li>
       </ol>
@@ -24,6 +24,7 @@
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form id="submit">
+                    <input type="hidden" id="tire_modelId" name="tire_modelId" value="<?=$tire_modelId?>">
                     <input type="hidden" id="tire_brandId" name="tire_brandId" value="<?=$tire_brandId?>">
                     <div class="card-body black bg-light">
                       <div class="row">
