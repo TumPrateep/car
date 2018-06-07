@@ -12,6 +12,7 @@
 
     <div class="card-tools one">
       <form id="form-search">
+        <span class="left"></span>
         <a class="btn btn-primary create" href="<?=base_url("admin/usermanagement/createUser") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
@@ -21,7 +22,13 @@
             <button class="btn btn-info inactive"><i class="fa fa-address-book"></i></button>
           </div>
 
-          <input type="text" name="typeuser_search" id="typeuser-search" class="form-control float-right" placeholder="ประเภทผู้ใช้งาน">
+          <select class="form-control" name="status" id="typeuser-search" >
+            <option>ประเภทผู้ใช้งาน</option>
+            <option>ผู้ดูเเลระบบ</option>
+            <option>ผู้ใช้งาน</option>
+            <option>อู่รถ</option>
+            <option>ร้านอะไหล่</option>
+          </select>
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-users"></i></button>
           </div>

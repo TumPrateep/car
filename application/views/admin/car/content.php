@@ -11,6 +11,7 @@
       <!-- Example DataTables Card-->
     <div class="card-tools one">
       <form id="form-search">
+        <span class="left"></span>
         <a class="btn btn-primary create" href="<?=base_url("admin/car/createBrand") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
