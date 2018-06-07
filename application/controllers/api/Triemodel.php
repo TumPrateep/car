@@ -33,7 +33,7 @@ class Triemodel extends BD_Controller {
         $tire_modelId = $this->post('tire_modelId');
         $tire_modelName = $this->post('tire_modelName');
         $tire_brandId = $this->post('tire_brandId');
-        
+      
         $this->load->model("triemodels");
 
         $result = $this->triemodels->wherenotTireModelid($tire_modelId,$tire_modelName,$tire_brandId);
@@ -42,8 +42,9 @@ class Triemodel extends BD_Controller {
             $data = array(
                 'tire_modelId' => $tire_modelId,
                 'tire_modelName' => $tire_modelName,
-                'status' => 1,
-                'tire_brandId' => $tire_brandId
+                'tire_brandId' => $tire_brandId,
+                
+                'status' => 1
             );
             $result = $this->triemodels->updateTireModel($data);
             $output["status"] = $result;
@@ -64,27 +65,26 @@ class Triemodel extends BD_Controller {
     function getireById_post(){
 
         $tire_modelId = $this->post('tire_modelId');
-
+        $tire_brandId = $this->post('tire_brandId');
         $this->load->model("triemodels");
-        $isCheck = $this->triemodels->checktireModelId($tire_modelId);
-
-        if($isCheck){
-            $output["status"] = true;
-            $result = $this->sparesModel->getModelbyId($tire_modelId);
-            if($result != null){
-                $output["data"] = $result;
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_ERROR;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+        // $isCheck = $this->triemodels->checksparestriemodels($tire_modelId,$tire_brandId);
+        $this->set_response($isCheck, REST_Controller::HTTP_OK);
+        // if($isCheck){
+        //     $output["status"] = true;
+        $result = $this->triemodels->geTireModelNameFromTireModelBytireId($tire_modelId);
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_ERROR;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+        // }else{
+        //     $output["status"] = false;
+        //     $output["message"] = REST_Controller::MSG_ERROR;
+        //     $this->set_response($output, REST_Controller::HTTP_OK);
+        // }
     }
 
     function createTireModel_post(){

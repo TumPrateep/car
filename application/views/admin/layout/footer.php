@@ -41,7 +41,7 @@
           <div class="modal-body" id="content-delete"><i class="fa fa-trash-o"></i>Delete</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-            <a class="btn btn-primary" href="#" id="btn-delete-modal">ลบ</a>
+            <button class="btn btn-primary" id="btn-delete-modal">ลบ</button>
           </div>
         </div>
       </div>

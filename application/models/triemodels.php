@@ -16,12 +16,11 @@ class Triemodels extends CI_Model {
         return $this->db->delete('tire_model', array('tire_modelId' => $tire_modelId));
     }
 
-    function wherenotTireModelid($tire_modelId,$tire_modelName,$tire_brandId){
+    function wherenotTireModelid($tire_modelId,$tire_modelName){
         $this->db->select("tire_modelName");
         $this->db->from("triemodels");
         $this->db->where('tire_modelName', $tire_modelName);
-        $this->db->where('tire_modelId', $tire_modelId);
-        $this->db->where_not_in('tire_brandId', $tire_brandId);
+        $this->db->where_not_in('tire_modelId', $tire_modelId);
         $result = $this->db->count_all_results();
 
         if($result > 0){
@@ -113,4 +112,24 @@ class Triemodels extends CI_Model {
     
         return $query->num_rows();
     } 
+    function checksparestriemodels($tire_modelId,$tire_brandId) {
+        $this->db->select("tire_brandId");
+        $this->db->from("tire_model");
+        $this->db->where('tire_modelId',$tire_modelId);
+        $this->db->where('tire_brandId',$tire_brandId);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+
+    }
+
+    function geTireModelNameFromTireModelBytireId($tire_modelId){
+        $this->db->select('tire_modelName');
+        $this->db->where('tire_modelId',$tire_modelId);
+        $result = $this->db->get('tire_model')->row();
+        return $result;
+    }
 }
