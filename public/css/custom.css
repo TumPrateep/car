@@ -326,8 +326,7 @@
     pointer-events: none;
     cursor: none;
   }
-
-  .delete{
+  .wizard-delete{
     display: none !important;
   }
   .bg-white{
