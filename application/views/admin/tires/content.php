@@ -12,6 +12,7 @@
 
     <div class="card-tools one">
       <form id="form-search">
+        <span class="left"></span>
         <a class="btn btn-primary create" href="<?=base_url("admin/Tires/createrim") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>

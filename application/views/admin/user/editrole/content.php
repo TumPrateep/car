@@ -22,7 +22,7 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     
-                      <div class="card-body black bg-light">
+                      <div class="card-body black bg-white">
                         <!-- SmartWizard html -->
                         <div id="smartwizard">
                             <ul>

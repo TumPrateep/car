@@ -17,7 +17,7 @@
           <h3 class="car-img" id="tire_brandName"></h3>
         </div> -->
       <form id="form-search">
-        
+        <span class="left"></span>
         <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtiresmodel/$tire_brandId") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>

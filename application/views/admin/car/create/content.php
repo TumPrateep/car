@@ -14,7 +14,7 @@
             <div class="col-md-10">
               <div class="card text-white bg-success">
                   <div class="card-header">
-                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เพิ่มข้อมูลยี่ห้อรถ</h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i> เพิ่มข้อมูลยี่ห้อรถ</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->

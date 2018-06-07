@@ -179,6 +179,10 @@
     padding-top: 0.55em;
   }
 
+  .left{
+    padding-left: 1em;
+  }
+
   .ui.secondary.inverted.pointing.menu{
     border-width: 2px !important;
     border-color: rgba(34, 36, 38, 0);
@@ -321,4 +325,8 @@
   .inactive{
     pointer-events: none;
     cursor: none;
+  }
+
+  .bg-white{
+    background-color: #ffffff  !important;
   }
