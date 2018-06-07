@@ -5,7 +5,8 @@
                 required: true
             },
             phone: {
-                required: true
+                required: true,
+                minlength:9
             },
             email: {
                 email: true
@@ -16,7 +17,8 @@
                 required: "กรุณากรอกชื่อผู้ใช้งาน"
             },
             phone: {
-                required: "กรุณากรอกเบอร์โทรศัพท์"
+                required: "กรุณากรอกเบอร์โทรศัพท์",
+                minlength:"กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว"
             },
             email: {
                 email: "กรุณากรอกอีเมลให้ถูกต้อง"
