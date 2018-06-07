@@ -25,7 +25,7 @@
         <div class="input-group float-right">
           <input id="table-search" class="form-control float-right" placeholder="ชื่อรุ่นยางรถ">
           <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-eercast"></i></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-eercast"></i></button>
           </div>
           <select class="form-control" >
             <option>สถานะ</option>
