@@ -179,7 +179,7 @@
     padding-top: 0.55em;
   }
 
-  .left{
+  span.left{
     padding-left: 1em;
   }
 
@@ -326,8 +326,7 @@
     pointer-events: none;
     cursor: none;
   }
-
-  .delete{
+  .wizard-delete{
     display: none !important;
   }
   .bg-white{

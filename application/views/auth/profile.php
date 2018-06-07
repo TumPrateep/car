@@ -834,7 +834,7 @@
           show_label: true
         });
         // Toolbar extra buttons
-        var btnFinish = $('<button class="delete"></button>').text('เสร็จสิ้น')
+        var btnFinish = $('<button class="wizard-delete"></button>').text('เสร็จสิ้น')
                 .addClass('btn btn-info btn-finish')
                 .on('click', function(){
                   finish();
@@ -959,9 +959,9 @@
             // Enable finish button only on last step
             if(stepNumber == 2){
                 showRole();
-                $('.btn-finish').removeClass('delete');
+                $('.btn-finish').removeClass('wizard-delete');
             }else{
-                $('.btn-finish').addClass('delete');
+                $('.btn-finish').addClass('wizard-delete');
             }
         });
 
