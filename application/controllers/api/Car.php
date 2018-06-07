@@ -107,7 +107,7 @@ class Car extends BD_Controller {
         $yearStart = $this->post("yearStart");
         $yearEnd = $this->post("yearEnd");
 
-        if($yearEnd == 1){
+        if($yearEnd == 0){
             $yearEnd = null;
         }
 
