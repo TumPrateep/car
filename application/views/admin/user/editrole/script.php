@@ -712,6 +712,21 @@
                 var other = data.other;
                 $("#role").val(roleData);
                 if(roleData == 4){
+
+                    var provincePlateDropdown = $("#provincePlate");
+                    provincePlateDropdown.append('<option value="">เลือกจังหวัด</option>');
+
+                    function loadProvince1(){
+                    $.post(base_url+"api/location/getProvinceforcar",{},
+                        function(data){
+                        var province_plate = data.data;
+                        $.each(province_plate, function( index, value ) {
+                            provincePlateDropdown.append('<option value="'+value.provinceforcarId+'">'+value.provinceforcarName+'</option>');
+                        });
+                        }
+                    );
+                    }
+                    loadProvince1();
                     $("#mileage").val(other.mileage);
                     $("#pictureFront").val(other.pictureFront);
                     $("#pictureBack").val(other.pictureBack);
@@ -726,32 +741,36 @@
                     $("#businessRegistration").val(other.businessRegistration);
                     $("#garageName").val(other.garageName);
                     $("#garageAddress").val(other.garageAddress);
-                    $("#postCode").val(other.postCode);
+                    $("#zipCode").val(other.postCode);
                     $("#latitude").val(other.latitude);
                     $("#longtitude").val(other.longtitude);
                     $("#garageMaster").val(other.garageMaster);
-                    $("#subdistrictId").val(other.subdistrictId);
-                    $("#districtId").val(other.districtId);
-                    $("#province_provinceId").val(other.province_provinceId);
-                    $("#option1").val(other.option1);
-                    $("#option2").val(other.option2);
-                    $("#option3").val(other.option3);
-                    $("#option4").val(other.option4);
-                    $("#option_outher").val(other.option_outher);
+                    $("#garage-subdistrictId").val(other.subdistrictId);
+                    $("#garage-districtId").val(other.districtId);
+                    $("#garage-provinceId").val(other.province_provinceId);
+                    $("#box1").val(other.option1);
+                    $("#box2").val(other.option2);
+                    $("#box3").val(other.option3);
+                    $("#box4").val(other.option4);
+                    $("#other").val(other.option_outher);
                     $("#garagePicture").val(other.garagePicture);
-                    $("#firstname").val(other.firstname);
-                    $("#lastname").val(other.lastname);
-                    $("#idcard").val(other.idcard);
+                    $("#firstnameGarage").val(other.firstname);
+                    $("#lastnameGarage").val(other.lastname);
+                    $("#idcardGarage").val(other.idcard);
                     $("#addressGarage").val(other.addressGarage);
                 }
                 else if(roleData == 2){
-                    $("#car_accessoriesName").val(profile.car_accessoriesName);
-                    $("#businessRegistration").val(profile.businessRegistration);
-                    $("#firstname").val(profile.firstname);
-                    $("#lastname").val(profile.lastname);
-                    $("#address").val(profile.address);
-                    $("#idcard").val(profile.idcard);
-                    $("#postCode").val(profile.postCode);
+                    $("#car_accessoriesName").val(other.car_accessoriesName);
+                    $("#businessRegistrationAccessories").val(other.businessRegistration);
+                    $("#sparepart-firstname").val(other.firstname);
+                    $("#sparepart-lastname").val(other.lastname);
+                    $("#sparepart-address").val(other.address);
+                    $("#sparepart-idcard").val(other.idcard);
+                    $("#sparepart-provinceId").val(other.postCode);
+                    $("#sparepart-districtId").val(other.postCode);
+                    $("#sparepart-subdistrictId").val(other.postCode);
+                    $("#sparepart-zipCode").val(other.postCode);
+                    $("#sparepart-postCode").val(other.postCode);
 
                 }
                 
