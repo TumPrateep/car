@@ -61,12 +61,17 @@ function deleterim(rimId,rimName){
                             +'<a href="'+base_url+"admin/Tires/updaterim/"+data.rimId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleterim('+data.rimId+',\''+data.rimName+'\')"><i class="fa fa-trash"></i></button>';
                     }
-                },
-                {
+                },{
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
+                    }
+                },{
+                    "targets": 1,
+                    "data": "rimName",
+                    "render": function ( data, type, full, meta ) {
+                        return  data +' นิ้ว';
                     }
                 },{
                     "targets": 2,

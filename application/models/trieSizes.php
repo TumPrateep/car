@@ -32,12 +32,12 @@ class trieSizes extends CI_Model{
         return true;
     }
    
-     function wherenotTriesize($tire_sizeId,$tire_size,$rimId){
+    function wherenotTriesize($tire_sizeId,$tire_size,$rimId){
         $this->db->select("tire_size");
         $this->db->from("tire_size");
-        $this->db->where('tire_size', $trie_size);
+        $this->db->where('tire_size', $tire_size);
         $this->db->where('rimId', $rimId);
-        $this->db->where_not_in('rimId', $rimId);
+        $this->db->where_not_in('tire_sizeId', $tire_sizeId);
         $result = $this->db->count_all_results();
 
         if($result > 0){
@@ -45,9 +45,10 @@ class trieSizes extends CI_Model{
         }
         return true;
     }
+    
 
-    function updateTriesize($data){
-        $this->db->where('tire_sizeId',$data['trie_sizeId']);
+    function updateTriesizes($data){
+        $this->db->where('tire_sizeId',$data['tire_sizeId']);
         $result = $this->db->update('tire_size', $data);
         return $result;
     }

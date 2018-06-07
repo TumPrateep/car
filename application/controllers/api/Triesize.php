@@ -54,10 +54,10 @@ class Triesize extends BD_Controller {
 
     function updatetriesize_post(){
 
-        $trie_sizeId = $this->post('tire_sizeId');
-        $trie_size = $this->post('tire_size');
+        $tire_sizeId = $this->post('tire_sizeId');
+        $tire_size = $this->post('tire_size');
         $rimId = $this->post('rimId');
-        
+        $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("trieSizes");
 
         $result = $this->trieSizes->wherenotTriesize($tire_sizeId,$tire_size,$rimId);
@@ -73,7 +73,7 @@ class Triesize extends BD_Controller {
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );
-            $result = $this->trieSizes->updateTriesize($data);
+            $result = $this->trieSizes->updateTriesizes($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
