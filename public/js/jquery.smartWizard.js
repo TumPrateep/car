@@ -481,14 +481,14 @@
             // Previous/Next Button enable/disable based on step
             if (!this.options.cycleSteps) {
                 if (0 >= idx) {
-                    $('.sw-btn-prev', this.main).addClass("disabled");
+                    $('.sw-btn-prev', this.main).addClass("delete");
                 } else {
-                    $('.sw-btn-prev', this.main).removeClass("disabled");
+                    $('.sw-btn-prev', this.main).removeClass("delete");
                 }
                 if (this.steps.length - 1 <= idx) {
-                    $('.sw-btn-next', this.main).addClass("disabled");
+                    $('.sw-btn-next', this.main).addClass("delete");
                 } else {
-                    $('.sw-btn-next', this.main).removeClass("disabled");
+                    $('.sw-btn-next', this.main).removeClass("delete");
                 }
             }
             return true;

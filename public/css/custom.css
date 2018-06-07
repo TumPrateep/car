@@ -322,3 +322,7 @@
     pointer-events: none;
     cursor: none;
   }
+
+  .delete{
+    display: none !important;
+  }

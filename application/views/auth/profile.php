@@ -9,8 +9,8 @@
 
   <!-- Site Properties -->
   <title>Homepage - Semantic</title>
-  <link rel="stylesheet" type="text/css" href="<?=base_url("public/css/semantic.min.css"); ?>">
   <link rel="stylesheet" type="text/css" href="<?=base_url("public/css/custom.css"); ?>">
+  <link rel="stylesheet" type="text/css" href="<?=base_url("public/css/semantic.min.css"); ?>">
   <link href="<?=base_url("/public/vendor/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="<?=base_url("public/css/smart_wizard.css"); ?>">
   <link rel="stylesheet" type="text/css" href="<?=base_url("public/css/smart_wizard_theme_dots.css"); ?>">
@@ -834,7 +834,7 @@
           show_label: true
         });
         // Toolbar extra buttons
-        var btnFinish = $('<button disabled></button>').text('เสร็จสิ้น')
+        var btnFinish = $('<button class="delete"></button>').text('เสร็จสิ้น')
                 .addClass('btn btn-info btn-finish')
                 .on('click', function(){
                   finish();
@@ -959,9 +959,9 @@
             // Enable finish button only on last step
             if(stepNumber == 2){
                 showRole();
-                $('.btn-finish').prop('disabled', false);
+                $('.btn-finish').removeClass('delete');
             }else{
-                $('.btn-finish').prop('disabled', true);
+                $('.btn-finish').addClass('delete');
             }
         });
 
