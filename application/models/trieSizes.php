@@ -128,6 +128,12 @@ class trieSizes extends CI_Model{
         return $result;
     }
 
+    function geTiresizeFromTiresizeBytireId($tire_sizeId){
+        $this->db->select('tire_size');
+        $this->db->where('tire_sizeId',$tire_sizeId);
+        $result = $this->db->get('tire_size')->row();
+        return $result;
+    }
 
     
 
