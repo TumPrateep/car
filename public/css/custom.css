@@ -327,6 +327,9 @@
     cursor: none;
   }
 
+  .delete{
+    display: none !important;
+  }
   .bg-white{
     background-color: #ffffff  !important;
   }
