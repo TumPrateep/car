@@ -34,6 +34,9 @@
 
         provinceDropdown.change(function() {
             var provinceforcarId = $(this).val();
+            profileProvince = "";
+            profileDistrict = "";
+            profileSubDistrict = "";
             loadDistrict(provinceforcarId);
         });
 
@@ -56,10 +59,6 @@
             );
         }
 
-        provinceDropdown.change(function() {
-            var provinceId = $(this).val();
-            loadDistrict(provinceId);
-        });
 
         function loadDistrict(provinceId) {
             districtDropdown.html("");
@@ -481,6 +480,7 @@
                 loadGarageProvince();
             } else if (role == '4') {
                 $("#role-4").show();
+                setProvincePlate();
             } else {
                 $("#role-1").show();
             }
@@ -524,6 +524,9 @@
 
         garageProvinceDropdown.change(function() {
             var provinceId = $(this).val();
+            garageProvince = "";
+            garageDistrict = "";
+            garageSubDistrict = "";
             loadGarageDistrict(provinceId);
         });
 
@@ -610,6 +613,9 @@
 
         sparepartProvinceDropdown.change(function() {
             var provinceId = $(this).val();
+            sparepartProvince = "";
+            sparepartDistrict = "";
+            sparepartSubDistrict = "";
             loadSparepartDistrict(provinceId);
         });
 
