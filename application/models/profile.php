@@ -11,11 +11,11 @@ class Profile extends CI_Model{
             }
             $this->saveProfile($userId, $profileData);
             if($role == 3){
-                $this->saveRoleGarage($roleData);
+                $this->saveRoleGarage($roleData, $userId);
             }else if($role == 2){
-                $this->saveRoleCarAccessories($roleData);
+                $this->saveRoleCarAccessories($roleData, $userId);
             }else if($role == 4){
-                $this->saveRoleUser($roleData);
+                $this->saveRoleUser($roleData, $userId);
             }
 
             if ($this->db->trans_status() === FALSE){
@@ -27,16 +27,52 @@ class Profile extends CI_Model{
             }
     }
 
-    function saveRoleUser($data){
-        return $this->db->insert('car_profile', $data);
+    function saveRoleUser($data, $userId){
+        $result = $this->db->where("userId", $userId)->get("car_profile")->row();     
+        if($result != null){
+            $data["create_at"] = $result->create_at;
+            $data["create_by"] = $result->create_by;
+            $data["update_by"] = $this->session->userdata['logged_in']['id'];
+            $data["update_at"] = date('Y-m-d H:i:s',time());
+            $this->db->set($data);
+            $this->db->where('car_profileId', $result->car_profileId);
+            return $this->db->update('car_profile');
+        }else{
+            return $this->db->insert('car_profile', $data);
+        }
+        
     }
 
-    function saveRoleGarage($data){
-        return $this->db->insert('garage', $data);
+    function saveRoleGarage($data, $userId){
+        $result = $this->db->where("userId", $userId)->get("garage")->row();     
+        if($result != null){
+            $data["create_at"] = $result->create_at;
+            $data["create_by"] = $result->create_by;
+            $data["update_by"] = $this->session->userdata['logged_in']['id'];
+            $data["update_at"] = date('Y-m-d H:i:s',time());
+            $this->db->set($data);
+            $this->db->where('garageId', $result->garageId);
+            return $this->db->update('garage');
+        }else{
+            return $this->db->insert('garage', $data);
+        }
+        
     }
 
-    function saveRoleCarAccessories($data){
-        return $this->db->insert('car_accessories', $data);
+    function saveRoleCarAccessories($data, $userId){
+        $result = $this->db->where("userId", $userId)->get("car_accessories")->row();     
+        if($result != null){
+            $data["create_at"] = $result->create_at;
+            $data["create_by"] = $result->create_by;
+            $data["update_by"] = $this->session->userdata['logged_in']['id'];
+            $data["update_at"] = date('Y-m-d H:i:s',time());
+            $this->db->set($data);
+            $this->db->where('car_accessoriesId', $result->car_accessoriesId);
+            return $this->db->update('car_accessories');
+        }else{
+            return $this->db->insert('car_accessories', $data);
+        }
+        
     }
 
     function saveProfile($userId, $data){
@@ -46,7 +82,7 @@ class Profile extends CI_Model{
     function getProfileByUserId($userId){
         $this->db->where("userId", $userId);
         $this->db->where("status", 1);        
-        return $this->db->get('user_profile');
+        return $this->db->get('user_profile')->row();
     }
 
     function updateProfileById($profileId){
@@ -57,7 +93,7 @@ class Profile extends CI_Model{
 
     function editRole($role, $userId){
         $status = 2;
-        if($role == 4){
+        if($role == 4 || $role == 1){
             $status = 1;
         }
         $this->db->set('category', $role);
@@ -68,6 +104,12 @@ class Profile extends CI_Model{
 
     function findUserProfileById($userId){
         $this->db->where("userId", $userId);    
+        return $this->db->get('user_profile')->row();
+    }
+
+    function findUserProfileByIdAndStatusActive($userId){
+        $this->db->where("userId", $userId);
+        $this->db->where("status", 1);    
         return $this->db->get('user_profile')->row();
     }
 

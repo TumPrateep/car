@@ -187,11 +187,11 @@ class UserManagement extends BD_Controller {
             $option2 = $this->post("option2");
             $option3 = $this->post("option3");
             $option4 = $this->post("option4");
-            $option_outher = $this->post("other");
+            $option_outher = $this->post("option_other");
             $garageAddress = $this->post("garageAddress");
-            $gprovinceId = $this->post("garage-provinceId");
-            $gdistrictId = $this->post("garage-districtId");
-            $gsubdistrictId = $this->post("garage-subdistrictId");
+            $gprovinceId = $this->post("garageProvinceId");
+            $gdistrictId = $this->post("garageDistrictId");
+            $gsubdistrictId = $this->post("garageSubdistrictId");
             $garagePicture = $this->post("garagePicture");
             $firstnameGarage = $this->post("firstnameGarage");
             $lastnameGarage = $this->post("lastnameGarage");
@@ -215,10 +215,9 @@ class UserManagement extends BD_Controller {
             }
 
             $roleData = array(
-                'garageId' => null,
                 'garageName' => $garageName,
                 'businessRegistration' => $businessRegistration,
-                'province_provinceId' => $gprovinceId, 
+                'provinceId' => $gprovinceId, 
                 'districtId' => $gdistrictId,
                 'subdistrictId' => $gsubdistrictId,
                 'garageAddress' => $garageAddress,
@@ -253,10 +252,11 @@ class UserManagement extends BD_Controller {
             $sparepart_idcard = $this->post("sparepart-idcard");
             $sparepart_address = $this->post("sparepart-address");
             $sparepart_postCode = $this->post("sparepart-postCode");
-            
+            $sparepart_provinceId = $this->post("sparepart-provinceId");
+            $sparepart_districtId = $this->post("sparepart-districtId");
+            $sparepart_subdistrictId = $this->post("sparepart-subdistrictId");
 
             $roleData = array(
-                'car_accessoriesId' => null,
                 'car_accessoriesName' => $car_accessoriesName,
                 'businessRegistration' => $businessRegistrationAccessories,
                 'userId' => $userId,
@@ -269,7 +269,10 @@ class UserManagement extends BD_Controller {
                 'lastname' => $sparepart_lastname,
                 'idcard' => $sparepart_idcard,
                 'address' => $sparepart_address,
-                'postCode' => $sparepart_postCode
+                'postCode' => $sparepart_postCode,
+                'provinceId' => $sparepart_provinceId,
+                'districtId' => $sparepart_districtId,
+                'subdistrictId' => $sparepart_subdistrictId,
             );
         }else if($role == 4){
             $path = "public/image/profile/$userId";
@@ -325,7 +328,6 @@ class UserManagement extends BD_Controller {
                 }
             }
             $roleData = array(
-                "car_profileId" => null,
                 "mileage" => $mileage,
                 "pictureFront" => $pictureFrontName,
                 "pictureBack" => $pictureBackName,
@@ -452,28 +454,22 @@ class UserManagement extends BD_Controller {
 
         $userId = $this->post('userId');
         $this->load->model("User");
-        $isCheck = $this->User->checkUserid($userId);
-
-        if($isCheck){
-            $output["status"] = true;
-            $user = $this->User->getUser($userId);
-            if($user != null){
-                $result = $this->User->getuserprofileById($userId);
-                $output["profile"] = $result;
-                $output["role"] = $user->category;
-                $output["other"] = $this->getUserData((int)$user->category, $userId);
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+        $this->load->model("Profile");
+        
+        $user = $this->User->getUser($userId);
+        if($user != null){
+            $result = $this->Profile->findUserProfileByIdAndStatusActive($userId);
+            $output["profile"] = $result;
+            $output["role"] = $user->category;
+            $output["other"] = $this->getUserData((int)$user->category, $userId);
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $output["status"] = false;
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+
     }
 
     function getUserData($role, $userId){

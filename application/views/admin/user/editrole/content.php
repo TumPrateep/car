@@ -114,15 +114,15 @@
                                             <div class="form-row">
                                               <div class="form-group col-md-4">
                                                 <label>ตัวอักษรนำหน้า</label><span class="error">*</span>
-                                                <input type="text" name="characterPlate" id="character_plate" class="form-control" placeholder="ตัวอักษรนำหน้า">
+                                                <input type="text" name="characterPlate" id="characterPlate" class="form-control" placeholder="ตัวอักษรนำหน้า">
                                               </div>
                                               <div class="form-group col-md-4">
                                                 <label>ตัวเลข</label><span class="error">*</span>
-                                                <input type="text" name="numberPlate" id="number_plate" class="form-control" placeholder="ตัวเลข">
+                                                <input type="text" name="numberPlate" id="numberPlate" class="form-control" placeholder="ตัวเลข">
                                               </div>
                                               <div class="form-group col-md-4">
                                                 <label>จังหวัด</label><span class="error">*</span>
-                                                <select class="form-control" name="provincePlate" id="province_plate"  class="form-control" placeholder="จังหวัด"></select>
+                                                <select class="form-control" name="provincePlate" id="provincePlate"  class="form-control" placeholder="จังหวัด"></select>
                                               </div>
                                             </div>
                                             <div class="form-row">
@@ -132,7 +132,7 @@
                                               </div>
                                               <div class="form-group col-md-6">
                                                 <label>สีของรถ</label><span class="error">*</span>
-                                                <input type="text" name="colorCar" id="color" class="form-control" placeholder="สีของรถ">
+                                                <input type="text" name="colorCar" id="colorCar" class="form-control" placeholder="สีของรถ">
                                               </div>
                                             </div>
                                             <div class="form-row">

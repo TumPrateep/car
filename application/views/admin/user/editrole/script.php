@@ -7,6 +7,10 @@
         var garageProvince = "";
         var garageDistrict = "";
         var garageSubDistrict = "";
+        
+        var sparepartProvince = "";
+        var sparepartDistrict = "";
+        var sparepartSubDistrict = "";
 
         var provinceDropdown = $("#provinceId");
         provinceDropdown.append('<option value="">เลือกจังหวัด</option>');
@@ -18,7 +22,14 @@
         subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
         
         function onLoad(){
-          loadProvince();
+            loadProvince();
+            $("#role").imagepicker({
+                show_label: true,
+                initialized: function(imagePicker){
+                    $("#role").data('4');
+                } 
+            });
+            // setProvincePlate();
         }
 
         provinceDropdown.change(function() {
@@ -583,8 +594,16 @@
                 function(data) {
                     var province = data.data;
                     $.each(province, function(index, value) {
-                        sparepartProvinceDropdown.append('<option value="' + value.provinceId + '">' + value.provinceName + '</option>');
+                        if(value.provinceId == sparepartProvince){
+                            sparepartProvinceDropdown.append('<option value="' + value.provinceId + '" selected>' + value.provinceName + '</option>');    
+                        }else{
+                            sparepartProvinceDropdown.append('<option value="' + value.provinceId + '">' + value.provinceName + '</option>');                            
+                        }
                     });
+
+                    if(province != null){
+                        loadSparepartDistrict(sparepartProvince);
+                    }
                 }
             );
         }
@@ -606,8 +625,16 @@
                 function(data) {
                     var district = data.data;
                     $.each(district, function(index, value) {
-                        sparepartDistrictDropdown.append('<option value="' + value.districtId + '">' + value.districtName + '</option>');
+                        if(value.districtId == sparepartDistrict){
+                            sparepartDistrictDropdown.append('<option value="' + value.districtId + '" selected>' + value.districtName + '</option>');                            
+                        }else{
+                            sparepartDistrictDropdown.append('<option value="' + value.districtId + '">' + value.districtName + '</option>');                   
+                        }
                     });
+
+                    if(sparepartDistrict != null){
+                        loadSparepartSubdistrict(sparepartDistrict);
+                    }
                 }
             );
 
@@ -628,7 +655,11 @@
                 function(data) {
                     var subDistrict = data.data;
                     $.each(subDistrict, function(index, value) {
-                        sparepartSubdistrictDropdown.append('<option value="' + value.subdistrictId + '">' + value.subdistrictName + '</option>');
+                        if(value.subdistrictId == sparepartSubDistrict){
+                            sparepartSubdistrictDropdown.append('<option value="' + value.subdistrictId + '" selected>' + value.subdistrictName + '</option>');   
+                        }else{
+                            sparepartSubdistrictDropdown.append('<option value="' + value.subdistrictId + '">' + value.subdistrictName + '</option>');                               
+                        }
                     });
                 }
             );
@@ -654,9 +685,9 @@
                     formData.append("garageName", $("#garageName").val());
                     formData.append("businessRegistration", $("#businessRegistration").val());
                     formData.append("garageAddress", $("#addressGarage").val());
-                    formData.append("provinceId", $("#garage-provinceId").val());
-                    formData.append("districtId", $("#garage-districtId").val());
-                    formData.append("subdistrictId", $("#garage-subdistrictId").val());
+                    formData.append("garageProvinceId", $("#garage-provinceId").val());
+                    formData.append("garageDistrictId", $("#garage-districtId").val());
+                    formData.append("garageSubdistrictId", $("#garage-subdistrictId").val());
                     formData.append("postCode", $("#zipCode").val());
                     formData.append("latitude", $("#latitude").val());
                     formData.append("longtitude", $("#longtitude").val());
@@ -679,6 +710,7 @@
                     formData.append("lastnameGarage", $("#lastnameGarage").val());
                     formData.append("idcardGarage", $("#idcardGarage").val());
                     formData.append("addressGarage", $("#addressGarage").val());
+      
                 } else if (role == "2") { //ร้านค้าอะไหล่
                     formData.append("car_accessoriesName", $("#car_accessoriesName").val());
                     formData.append("businessRegistrationAccessories", $("#businessRegistrationAccessories").val());
@@ -689,7 +721,7 @@
                     formData.append("sparepart-provinceId", $("#sparepart-provinceId").val());
                     formData.append("sparepart-districtId", $("#sparepart-districtId").val());
                     formData.append("sparepart-subdistrictId", $("#sparepart-subdistrictId").val());
-                    formData.append("sparepart-postCode", $("#sparepart-zipCode").val());
+                    formData.append("sparepart-postCode", $("#sparepart-postCode").val());
                 } else if (role == "4") {
                     formData.append("frontPicture", $("#frontPicture")[0].files[0]);
                     formData.append("backPicture", $("#backPicture")[0].files[0]);
@@ -719,8 +751,8 @@
             }
         }
 
-        function setProvincePlate(province){
-            var provincePlateDropdown = $("#province_plate");
+        function setProvincePlate(province=null){
+            var provincePlateDropdown = $("#provincePlate");
             provincePlateDropdown.append('<option value="">เลือกจังหวัด</option>');
             
             $.post(base_url + "api/location/getProvinceforcar", {},
@@ -749,6 +781,11 @@
 
             if (data.message == 200) {
                 var profile = data.profile;
+
+                if(profile == null){
+                    onLoad();
+                    return false;
+                }
                 
                 $("#titleName").val(profile.titleName);
                 $("#firstname").val(profile.firstname);
@@ -781,12 +818,12 @@
                     $("#pictureFront").val(other.pictureFront);
                     $("#pictureBack").val(other.pictureBack);
                     $("#circlePlate").val(other.circlePlate);
-                    $("#character_plate").val(other.character_plate);
-                    $("#number_plate").val(other.number_plate);
-                    $("#color").val(other.color);
+                    $("#characterPlate").val(other.character_plate);
+                    $("#numberPlate").val(other.number_plate);
+                    $("#colorCar").val(other.color);
                 } else if (roleData == 3) {
 
-                    garageProvince = other.province_provinceId;
+                    garageProvince = other.provinceId;
                     garageDistrict = other.districtId;
                     garageSubDistrict = other.subdistrictId;
 
@@ -823,16 +860,22 @@
                     $("#lastnameGarage").val(other.lastname);
                     $("#idcardGarage").val(other.idcard);
                     $("#addressGarage").val(other.addressGarage);
+                    $("#other").val(other.option_outher);
                 } else if (roleData == 2) {
+
+                    sparepartProvince = other.provinceId;
+                    sparepartDistrict = other.districtId;
+                    sparepartSubDistrict = other.subdistrictId;
+
                     $("#car_accessoriesName").val(other.car_accessoriesName);
                     $("#businessRegistrationAccessories").val(other.businessRegistration);
                     $("#sparepart-firstname").val(other.firstname);
                     $("#sparepart-lastname").val(other.lastname);
                     $("#sparepart-address").val(other.address);
                     $("#sparepart-idcard").val(other.idcard);
-                    $("#sparepart-provinceId").val(other.postCode);
-                    $("#sparepart-districtId").val(other.postCode);
-                    $("#sparepart-subdistrictId").val(other.postCode);
+                    // $("#sparepart-provinceId").val(other.postCode);
+                    // $("#sparepart-districtId").val(other.postCode);
+                    // $("#sparepart-subdistrictId").val(other.postCode);
                     $("#sparepart-zipCode").val(other.postCode);
                     $("#sparepart-postCode").val(other.postCode);
 
