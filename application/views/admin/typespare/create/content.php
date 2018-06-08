@@ -15,7 +15,7 @@
               <div class="card text-white bg-success">
                   <div class="card-header">
 
-                    <h3 class="card-title"><i class="fa fa fa-wrench"></i>เพิ่มรายการอะไหล่</h3>
+                    <h3 class="card-title"><i class="fa fa fa-wrench"></i> เพิ่มรายการอะไหล่</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
