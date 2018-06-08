@@ -15,7 +15,7 @@
               <div class="col-md-10">
                 <div class="card text-white bg-success">
                     <div class="card-header">
-                      <h3 class="card-title"><i class="fa fa-user-circle-o" ></i>เเก้ไขข้อมูลผู้ใช้งาน</h3>
+                      <h3 class="card-title"><i class="fa fa-user-circle-o" ></i> เเก้ไขข้อมูลผู้ใช้งาน</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
