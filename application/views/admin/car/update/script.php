@@ -42,7 +42,7 @@
         previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
         overwriteInitial: false,
         initialPreviewAsData: true,
-        allowedFileExtensions: ['jpg'],
+        allowedFileExtensions: ['jpg' , 'png'],
         
         initialPreview: [
           

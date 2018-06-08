@@ -14,24 +14,25 @@
             result = data.data;
             $("#tire_brandName").val(result.tire_brandName);
             picture = result.tire_brandPicture;
+            
 
-            $("#tire_brandPicture").fileinput({
+             $("#tire_brandPicture").fileinput({
                 theme: 'fa',
                 showUpload: false,
                 showCancel: false,
                 showCaption: false,
-                maxFileCount: 1,
                 browseClass: "btn btn-primary btn-lg",
                 previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
                 overwriteInitial: false,
                 initialPreviewAsData: true,
-                allowedFileExtensions: ['jpg'],
+                allowedFileExtensions: ['jpg' , 'png'],
                 
                 initialPreview: [
-                    base_url+"public/image/tire_brand/"+picture
+                    base_url+"public/image/brand/"+tire_brandPicture
+            
                 ],
                 initialPreviewConfig: [
-                    {caption: base_url+"public/image/tire_brand/"+picture , size: 576237, width: "120px", url: "/site/file-delete", key: 1} 
+                    {caption: base_url+"public/image/brand/"+tire_brandPicture , size: 576237, width: "120px", url: "/site/file-delete", key: 1} 
                 ],
             });
         }
@@ -39,17 +40,20 @@
     });
 
     $("#update-tiresbrand").validate({
-            rules: {
-                tire_brandName: {
-                    required: true
-                },
+        rules: {
+            tire_brandName: {
+            required: true
             },
-            messages: {
-                tire_brandName: {
-                    required: "กรุณากรอกยี่ห้อยางรถยนต์"
-                }
+        },
+        messages: {
+            tire_brandName: {
+            required: "กรุณากรอกยี่ห้อยางรถยนต์"
             }
-        });
+        },
+    });
+
+
+   
 
 
 

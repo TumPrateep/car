@@ -27,7 +27,7 @@
                         <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName" id="brandName" value="">
                       </div>
                       <div class="form-group">
-                          <label>Preview File Icon</label>
+                          <!-- <label>Preview File Icon</label> -->
                           <input id="brandPicture" type="file" multiple name="brandPicture">
                         
                       </div>

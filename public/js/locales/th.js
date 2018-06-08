@@ -74,7 +74,7 @@
             uploadBatch: 'batch file upload',
             uploadExtra: 'form data upload'
         },
-        dropZoneTitle: 'Drag & drop ไฟล์ตรงนี้ &hellip;',
+        dropZoneTitle: 'ลากและวาง ไฟล์ตรงนี้ &hellip;',
         dropZoneClickTitle: '<br>(or click to select {files})',
         fileActionSettings: {
             removeTitle: 'ลบไฟล์',
