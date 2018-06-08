@@ -151,10 +151,7 @@ class UserManagement extends BD_Controller {
         $phone2 = $this->post("phone2");
         $titleName = $this->post("titleName");
         $userId = $this->post("userId");
-
-        if($userId == null){
-            $userId = $this->session->userdata['logged_in']['id'];
-        }
+        $currentUser = $this->session->userdata['logged_in']['id'];
 
         $this->load->model("Profile");
     
@@ -170,7 +167,7 @@ class UserManagement extends BD_Controller {
             'provinceId' => $provinceId, 
             'districtId' => $districtId,
             'subdistrictId' => $subdistrictId,
-            'create_by' => $userId,
+            'create_by' => $currentUser,
             'create_at' => date('Y-m-d H:i:s',time()),
             'userId' => $userId
         );
@@ -236,7 +233,7 @@ class UserManagement extends BD_Controller {
                 'option_outher' => $option_outher,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'update_at' => null,
-                'create_by' => $userId,
+                'create_by' => $currentUser,
                 'update_by' => null,
                 'status' => 1,
                 'garageMaster' => $userId,
@@ -264,7 +261,7 @@ class UserManagement extends BD_Controller {
                 'businessRegistration' => $businessRegistrationAccessories,
                 'userId' => $userId,
                 'create_at' => date('Y-m-d H:i:s',time()),
-                'create_by' => $userId,
+                'create_by' => $currentUser,
                 'update_at' => null,
                 'update_by' => null,
                 'status' => 1,
@@ -334,7 +331,7 @@ class UserManagement extends BD_Controller {
                 "pictureBack" => $pictureBackName,
                 "circlePlate" => $circlePlateName,
                 "create_at" => date('Y-m-d H:i:s',time()),
-                "create_by" => $userId,
+                "create_by" => $currentUser,
                 "userId" => $userId,
                 "update_at" => null,
                 "update_by" => null,
@@ -350,12 +347,12 @@ class UserManagement extends BD_Controller {
 
         $result = $this->Profile->saveProfileRoleUser($role, $userId, $profileData, $roleData);
         if($result){
-            if($userId == null){
-                $sess_array = array(
-                    'id' => $userId,
-                    'role' => $role
-                );
-            }
+            $this->load->model("User");
+            $userData = $this->User->getuserById($currentUser);
+            $sess_array = array(
+                'id' => $currentUser,
+                'role' => $userData->category
+            );
             $this->session->set_userdata('logged_in', $sess_array);
             $output["message"] = REST_Controller::MSG_SUCCESS;
         }else{

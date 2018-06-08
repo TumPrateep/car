@@ -94,7 +94,7 @@
                                         <form id="form-2">
                                           <div class="form-group text-center">
                                             <select id="role" class="image-picker show-html" name="role">
-                                              <option data-img-src="<?=base_url("public/image/role/4.jpg");?>" value="4" selected>ผู้ใช้งาน</option>
+                                              <option data-img-src="<?=base_url("public/image/role/4.jpg");?>" value="4">ผู้ใช้งาน</option>
                                               <option data-img-src="<?=base_url("public/image/role/3.jpg");?>" value="3">อู่</option>
                                               <option data-img-src="<?=base_url("public/image/role/2.jpg");?>" value="2">ร้านอะไหล่</option>
                                               <option data-img-src="<?=base_url("public/image/role/1.jpg");?>" value="1">ผู้ดูแลระบบ</option>
@@ -122,8 +122,7 @@
                                               </div>
                                               <div class="form-group col-md-4">
                                                 <label>จังหวัด</label><span class="error">*</span>
-                                                <select class="form-control" name="provincePlate" id="province_plate"c lass="form-control" placeholder="จังหวัด"></select>
-                                                
+                                                <select class="form-control" name="provincePlate" id="province_plate"  class="form-control" placeholder="จังหวัด"></select>
                                               </div>
                                             </div>
                                             <div class="form-row">
@@ -311,6 +310,16 @@
                                                 <label>รหัสไปรษณีย์</label><span class="error">*</span>
                                                 <input type="text" class="form-control" name="sparepart-zipCode" id="sparepart-postCode" placeholder="รหัสไปรษณีย์">
                                               </div>
+                                            </div>
+                                          </form>
+                                        </div>
+
+                                        <div id="role-1" style="display:none">
+                                          <h5>ยืนยันการสร้าง</h5>
+                                          <form id="form-role-1">
+                                            <div class="form-check">
+                                              <input type="checkbox" class="form-check-input" name="verified" id="verified">
+                                              <label class="form-check-label" for="exampleCheck1">ยืนยันการสร้างผู้ดูแลระบบ <label id="verified-error" class="error" for="verified"></label></label>
                                             </div>
                                           </form>
                                         </div>
