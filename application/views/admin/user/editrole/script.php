@@ -1,8 +1,12 @@
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
+        var profileProvince = "";
+        var profileDistrict = "";
+        var profileSubDistrict = "";
 
-        var provincePlateDropdown = $("#provincePlate");
-        provincePlateDropdown.append('<option value="">เลือกจังหวัด</option>');
+        var garageProvince = "";
+        var garageDistrict = "";
+        var garageSubDistrict = "";
 
         var provinceDropdown = $("#provinceId");
         provinceDropdown.append('<option value="">เลือกจังหวัด</option>');
@@ -12,158 +16,159 @@
 
         var subdistrictDropdown = $('#subdistrictId');
         subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
-
+        
         function onLoad(){
-            loadProvince();
-        }
-        function onLoadprovinceforcar(){
-            loadProvince1();
+          loadProvince();
         }
 
-        onLoad();
-        onLoadprovinceforcar();
-
-        function loadProvince1(){
-        $.post(base_url+"api/location/getProvinceforcar",{},
-            function(data){
-            var provinceforcar = data.data;
-            $.each(provinceforcar, function( index, value ) {
-                provincePlateDropdown.append('<option value="'+value.provinceforcarId+'">'+value.provinceforcarName+'</option>');
-            });
-            }
-        );
-        }
-
-        provinceDropdown.change(function(){
-        var provinceforcarId = $(this).val();
-        loadDistrict(provinceforcarId);
+        provinceDropdown.change(function() {
+            var provinceforcarId = $(this).val();
+            loadDistrict(provinceforcarId);
         });
 
-        function loadProvince(){
-            $.post(base_url+"api/location/getProvince",{},
-                function(data){
-                var province = data.data;
-                $.each(province, function( index, value ) {
-                    provinceDropdown.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
-                });
+        function loadProvince() {
+            $.post(base_url + "api/location/getProvince", {},
+                function(data) {
+                    var province = data.data;
+                    $.each(province, function(index, value) {
+                        if (value.provinceId == profileProvince) {
+                            provinceDropdown.append('<option value="' + value.provinceId + '" selected>' + value.provinceName + '</option>');
+                        } else {
+                            provinceDropdown.append('<option value="' + value.provinceId + '">' + value.provinceName + '</option>');
+                        }
+                    });
+
+                    if (provinceDropdown.val() != "") {
+                        loadDistrict(provinceDropdown.val());
+                    }
                 }
             );
         }
 
-        provinceDropdown.change(function(){
+        provinceDropdown.change(function() {
             var provinceId = $(this).val();
             loadDistrict(provinceId);
         });
 
-        function loadDistrict(provinceId){
+        function loadDistrict(provinceId) {
             districtDropdown.html("");
             districtDropdown.append('<option value="">เลือกอำเภอ</option>');
             subdistrictDropdown.html("");
             subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url+"api/location/getDistrict",{
+            $.post(base_url + "api/location/getDistrict", {
                 provinceId: provinceId
-            },function(data){
+            }, function(data) {
                 var district = data.data;
-                $.each(district, function( index, value ) {
-                    districtDropdown.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+                $.each(district, function(index, value) {
+                    if (value.districtId == profileDistrict) {
+                        districtDropdown.append('<option value="' + value.districtId + '" selected>' + value.districtName + '</option>');
+                    }else{
+                        districtDropdown.append('<option value="' + value.districtId + '">' + value.districtName + '</option>');
+                    }
                 });
+
+                if (districtDropdown.val() != "") {
+                    loadSubdistrict(districtDropdown.val());
                 }
-            );
+            });
         }
 
-        districtDropdown.change(function(){
+        districtDropdown.change(function() {
             var districtId = $(this).val();
             loadSubdistrict(districtId);
         });
 
-        function loadSubdistrict(districtId){
-        subdistrictDropdown.html("");
-        subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
-        
-        $.post(base_url+"api/location/getSubdistrict",{
-            districtId: districtId
-        },function(data){
-            var subDistrict = data.data;
-            $.each(subDistrict, function( index, value ) {
-                subdistrictDropdown.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+        function loadSubdistrict(districtId) {
+            subdistrictDropdown.html("");
+            subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+            $.post(base_url + "api/location/getSubdistrict", {
+                districtId: districtId
+            }, function(data) {
+                var subDistrict = data.data;
+                $.each(subDistrict, function(index, value) {
+                    if (value.subdistrictId == profileSubDistrict) {
+                        subdistrictDropdown.append('<option value="' + value.subdistrictId + '" selected>' + value.subdistrictName + '</option>');
+                    }else{
+                        subdistrictDropdown.append('<option value="' + value.subdistrictId + '">' + value.subdistrictName + '</option>');                        
+                    }
+                });
             });
-            }
-        );
 
         }
         jQuery.validator.addMethod("numberPlate", function(value, element) {
-            return this.optional( element ) || /^[0-9]*$/.test( value );
+            return this.optional(element) || /^[0-9]*$/.test(value);
         }, 'กรุณากรอกตัวเลขเท่านั้น');
-        
+
 
         jQuery.validator.addMethod("mileage", function(value, element) {
-            return this.optional( element ) || /^[0-9]*$/.test( value );
+            return this.optional(element) || /^[0-9]*$/.test(value);
         }, 'กรุณากรอกตัวเลขเท่านั้น');
 
         jQuery.validator.addMethod("zipCode", function(value, element) {
-            return this.optional( element ) || /^[0-9]*$/.test( value );
+            return this.optional(element) || /^[0-9]*$/.test(value);
         }, 'กรุณากรอกตัวเลขเท่านั้น');
         $("#form-role-4").validate({
-        rules:{
-            licensePlate: {
-            required: true
+            rules: {
+                licensePlate: {
+                    required: true
+                },
+                mileage: {
+                    required: true,
+                    mileage: true
+                },
+                colorCar: {
+                    required: true
+                },
+                characterPlate: {
+                    required: true
+                },
+                numberPlate: {
+                    required: true,
+                    numberPlate: true
+                },
+                provincePlate: {
+                    required: true
+                }
+                // ,
+                // frontPicture:{
+                //   required: true
+                // },
+                // backPicture:{
+                //   required: true
+                // },
+                // circlesignPicture:{
+                //   required: true
+                // }
             },
-            mileage: {
-            required: true,
-            mileage:true
-            },
-            colorCar: {
-            required: true
-            },
-            characterPlate: {
-            required: true
-            },
-            numberPlate: {
-            required: true,
-            numberPlate:true
-            },
-            provincePlate: {
-            required: true
+            messages: {
+                licensePlate: {
+                    required: "กรุณากรอกทะเบียนรถ"
+                },
+                mileage: {
+                    required: "กรุณากรอกจำนวนเลขไมล์"
+                },
+                colorCar: {
+                    required: "กรุณากรอกสีของรถ"
+                },
+                characterPlate: {
+                    required: "กรุณากรอกตัวอักษรนำหน้า"
+                },
+                numberPlate: {
+                    required: "กรุณากรอกตัวเลข"
+                },
+                provincePlate: {
+                    required: "กรุณากรอกจังหวัด"
+                }
             }
-            // ,
-            // frontPicture:{
-            //   required: true
-            // },
-            // backPicture:{
-            //   required: true
-            // },
-            // circlesignPicture:{
-            //   required: true
-            // }
-        },
-        messages:{
-            licensePlate: {
-            required: "กรุณากรอกทะเบียนรถ"
-            },
-            mileage: {
-            required: "กรุณากรอกจำนวนเลขไมล์"
-            },
-            colorCar: {
-            required: "กรุณากรอกสีของรถ"
-            },
-            characterPlate: {
-            required: "กรุณากรอกตัวอักษรนำหน้า"
-            },
-            numberPlate: {
-            required: "กรุณากรอกตัวเลข"
-            },
-            provincePlate: {
-            required: "กรุณากรอกจังหวัด"
-            }
-        }
         });
 
         function checkID(id) {
-            if(id.length != 13) return false;
-            for(i=0, sum=0; i < 12; i++)
-                sum += parseFloat(id.charAt(i))*(13-i);
-            if((11-sum%11)%10!=parseFloat(id.charAt(12)))
+            if (id.length != 13) return false;
+            for (i = 0, sum = 0; i < 12; i++)
+                sum += parseFloat(id.charAt(i)) * (13 - i);
+            if ((11 - sum % 11) % 10 != parseFloat(id.charAt(12)))
                 return false;
             return true;
         }
@@ -173,163 +178,174 @@
         }, 'กรุณากรอกเลขบัตรประชาชนให้ถูกต้อง');
 
         $("#form-role-3").validate({
-        rules:{
-            garageName:{
-                required: true
+            rules: {
+                garageName: {
+                    required: true
+                },
+                businessRegistration: {
+                    required: true
+                },
+                firstnameGarage: {
+                    required: true
+                },
+                lastnameGarage: {
+                    required: true
+                },
+                idcardGarage: {
+                    required: true,
+                    pid: true
+                },
+                addressGarage: {
+                    required: true
+                },
+                "garage-provinceId": {
+                    required: true
+                },
+                "garage-districtId": {
+                    required: true
+                },
+                "garage-subdistrictId": {
+                    required: true
+                },
+                "zipCode": {
+                    required: true,
+                    zipCode: true
+                }
             },
-            businessRegistration:{
-                required: true
-            },
-            firstnameGarage:{
-                required: true
-            },
-            lastnameGarage:{
-                required: true
-            },
-            idcardGarage:{
-                required: true,
-            pid: true
-            },
-            addressGarage:{
-                required: true
-            },
-            "garage-provinceId":{
-                required: true
-            },
-            "garage-districtId":{
-                required: true
-            },
-            "garage-subdistrictId":{
-                required: true
-            },
-            "zipCode":{
-                required: true,
-                zipCode :true 
+            messages: {
+                garageName: {
+                    required: "กรุณากรอกชื่ออู่"
+                },
+                businessRegistration: {
+                    required: "กรุณากรอกหมายเลขทะเบียนการค้า"
+                },
+                firstnameGarage: {
+                    required: "กรุณากรอกชื่อ"
+                },
+                lastnameGarage: {
+                    required: "กรุณากรอกนามสกุล"
+                },
+                idcardGarage: {
+                    required: "กรุณากรอกเลขบัตรประชาชน"
+                },
+                addressGarage: {
+                    required: "กรุณากรอกที่อยู่"
+                },
+                "garage-provinceId": {
+                    required: "กรุณาเลือกจังหวัด"
+                },
+                "garage-districtId": {
+                    required: "กรุณาเลือกอำเภอ"
+                },
+                "garage-subdistrictId": {
+                    required: "กรุณาเลือกตำบล"
+                },
+                zipCode: {
+                    required: "กรุณากรอกรหัสไปรษณีย์"
+                }
             }
-        },
-        messages:{
-            garageName:{
-                required: "กรุณากรอกชื่ออู่"
-            },
-            businessRegistration:{
-                required: "กรุณากรอกหมายเลขทะเบียนการค้า"
-            },
-            firstnameGarage:{
-                required: "กรุณากรอกชื่อ"
-            },
-            lastnameGarage:{
-                required: "กรุณากรอกนามสกุล"
-            },
-            idcardGarage:{
-                required: "กรุณากรอกเลขบัตรประชาชน"
-            }, 
-            addressGarage:{
-                required: "กรุณากรอกที่อยู่"
-            },
-            "garage-provinceId":{
-                required: "กรุณาเลือกจังหวัด"
-            },
-            "garage-districtId":{
-                required: "กรุณาเลือกอำเภอ"
-            },
-            "garage-subdistrictId":{
-                required: "กรุณาเลือกตำบล"
-            },
-                zipCode:{
-                required: "กรุณากรอกรหัสไปรษณีย์"
-            }
-        }
         });
 
         $("#form-role-2").validate({
-        rules:{
-            car_accessoriesName:{
-                required: true
+            rules: {
+                car_accessoriesName: {
+                    required: true
+                },
+                businessRegistration: {
+                    required: true
+                },
+                "sparepart-firstname": {
+                    required: true
+                },
+                "sparepart-lastname": {
+                    required: true
+                },
+                "sparepart-idcard": {
+                    required: true,
+                    pid: true
+                },
+                "sparepart-address": {
+                    required: true
+                },
+                "sparepart-provinceId": {
+                    required: true
+                },
+                "sparepart-districtId": {
+                    required: true
+                },
+                "sparepart-subdistrictId": {
+                    required: true
+                },
+                "sparepart-zipCode": {
+                    required: true,
+                    zipCode: true
+                }
             },
-            businessRegistration:{
-                required: true
-            },
-            "sparepart-firstname":{
-                required: true
-            },
-            "sparepart-lastname":{
-                required: true
-            },
-            "sparepart-idcard":{
-                required: true,
-                pid: true
-            },
-            "sparepart-address":{
-                required: true
-            },
-            "sparepart-provinceId":{
-                required: true
-            },
-            "sparepart-districtId":{
-                required: true
-            },
-            "sparepart-subdistrictId":{
-                required: true
-            },
-            "sparepart-zipCode":{
-                required: true,
-                zipCode :true 
-            } 
-        },
-        messages:{
-            car_accessoriesName:{
-                required: "กรุณากรอกชื่ออู่"
-            },
-            businessRegistration:{
-                required: "กรุณากรอกหมายเลขทะเบียนการค้า"
-            },
-            "sparepart-firstname":{
-                required: "กรุณากรอกชื่อ"
-            },
-            "sparepart-lastname":{
-                required: "กรุณากรอกนามสกุล"
-            },
-            "sparepart-idcard":{
-                required: "กรุณากรอกเลขบัตรประชาชน"
-            }, 
-            "sparepart-address":{
-                required: "กรุณากรอกที่อยู่"
-            },
-            "sparepart-provinceId":{
-                required: "กรุณาเลือกจังหวัด"
-            },
-            "sparepart-districtId":{
-                required: "กรุณาเลือกอำเภอ"
-            },
-            "sparepart-subdistrictId":{
-                required: "กรุณาเลือกตำบล"
-            },
-            "sparepart-zipCode":{
-                required: "กรุณากรอกรหัสไปรษณีย์"
+            messages: {
+                car_accessoriesName: {
+                    required: "กรุณากรอกชื่ออู่"
+                },
+                businessRegistration: {
+                    required: "กรุณากรอกหมายเลขทะเบียนการค้า"
+                },
+                "sparepart-firstname": {
+                    required: "กรุณากรอกชื่อ"
+                },
+                "sparepart-lastname": {
+                    required: "กรุณากรอกนามสกุล"
+                },
+                "sparepart-idcard": {
+                    required: "กรุณากรอกเลขบัตรประชาชน"
+                },
+                "sparepart-address": {
+                    required: "กรุณากรอกที่อยู่"
+                },
+                "sparepart-provinceId": {
+                    required: "กรุณาเลือกจังหวัด"
+                },
+                "sparepart-districtId": {
+                    required: "กรุณาเลือกอำเภอ"
+                },
+                "sparepart-subdistrictId": {
+                    required: "กรุณาเลือกตำบล"
+                },
+                "sparepart-zipCode": {
+                    required: "กรุณากรอกรหัสไปรษณีย์"
+                }
             }
-        }
         });
 
-        $("#role").imagepicker({
-            show_label: true
+         $("#form-role-1").validate({
+            rules: {
+                verified: {
+                    required: true
+                }
+            },
+            messages: {
+                verified: {
+                    required: "กรุณากดยืนยัน"
+                }
+            }
         });
+
         // Toolbar extra buttons
-        var btnFinish = $('<button disabled></button>').text('เสร็จสิ้น')
-                .addClass('btn btn-info btn-finish')
-                .on('click', function(){
+        var btnFinish = $('<button class="wizard-delete"></button>').text('เสร็จสิ้น')
+            .addClass('btn btn-info btn-finish')
+            .on('click', function() {
                 finish();
-                });
+            });
         var btnCancel = $('<button></button>').text('ยกเลิก')
-                .addClass('btn btn-danger')
-                .on('click', function(){ 
-                window.location.assign(base_url+"Auth/logout");
-                });
+            .addClass('btn btn-danger')
+            .on('click', function() {
+                window.location.assign(base_url + "admin/usermanagement");
+            });
 
         $('#smartwizard').smartWizard({
             selected: 0,
             theme: 'dots',
-            transitionEffect:'fade',
+            transitionEffect: 'fade',
             // showStepURLhash: true,
+            enableAllSteps: true,
             toolbarSettings: {
                 // toolbarPosition: 'both',
                 toolbarButtonPosition: 'end',
@@ -343,81 +359,80 @@
             }
         });
 
-        // $('#smartwizard').smartWizard("reset");
-        
+        $('#smartwizard').smartWizard("reset");
 
         $("#form-1").validate({
-        rules:{
-            titleName:{
-                required: true
+            rules: {
+                titleName: {
+                    required: true
+                },
+                firstname: {
+                    required: true
+                },
+                lastname: {
+                    required: true
+                },
+                address: {
+                    required: true
+                },
+                provinceId: {
+                    required: true
+                },
+                districtId: {
+                    required: true
+                },
+                subdistrictId: {
+                    required: true
+                },
+                phone1: {
+                    minlength: 9
+                },
+                phone2: {
+                    required: true,
+                    minlength: 9
+                }
             },
-            firstname: {
-                required: true
-            },
-            lastname: {
-                required: true
-            },
-            address:{
-                required: true
-            },
-            provinceId:{
-                required: true
-            },
-            districtId: {
-                required: true
-            },
-            subdistrictId: {
-                required: true
-            },
-            phone1: {
-                minlength: 9
-            },
-            phone2: {
-                required: true,
-                minlength: 9
+            messages: {
+                titleName: {
+                    required: "กรุณาเลือกคำนำหน้า"
+                },
+                firstname: {
+                    required: "กรุณากรอกชื่อ"
+                },
+                lastname: {
+                    required: "กรุณากรอกนามสกุล"
+                },
+                address: {
+                    required: "กรุณากรอกที่อยู่"
+                },
+                provinceId: {
+                    required: "กรุณาเลือกจังหวัด"
+                },
+                districtId: {
+                    required: "กรุณาเลือกอำเภอ"
+                },
+                subdistrictId: {
+                    required: "กรุณาเลือกตำบล"
+                },
+                phone1: {
+                    minlength: "กรุณากรอกตัวเลขอย่างน้อย 9 ตัว"
+                },
+                phone2: {
+                    required: "กรุณากรอกเบอร์โทรที่สามารถติดต่อได้",
+                    minlength: "กรุณากรอกตัวเลขอย่างน้อย 9 ตัว"
+                }
             }
-        },
-        messages:{
-            titleName:{
-                required: "กรุณาเลือกคำนำหน้า"
-            },
-            firstname: {
-                required: "กรุณากรอกชื่อ"
-            },
-            lastname: {
-                required: "กรุณากรอกนามสกุล"
-            },
-            address:{
-                required: "กรุณากรอกที่อยู่"
-            },
-            provinceId:{
-                required: "กรุณาเลือกจังหวัด"
-            },
-            districtId: {
-                required: "กรุณาเลือกอำเภอ"
-            },
-            subdistrictId: {
-                required: "กรุณาเลือกตำบล"
-            },
-            phone1: {
-                minlength:"กรุณากรอกตัวเลขอย่างน้อย 9 ตัว"
-            },
-            phone2: {
-                required: "กรุณากรอกเบอร์โทรที่สามารถติดต่อได้",
-                minlength:"กรุณากรอกตัวเลขอย่างน้อย 9 ตัว"
-            }
-        }
         });
 
         $("#form-2").validate({
-            rules:{
+            rules: {
                 role: {
-                required: true
+                    required: true
                 }
             },
-            messages:{
+            messages: {
                 role: {
-                required: "กรุณาเลือกประเภทผู้ใช้งาน"
+                    required: "กรุณาเลือกประเภทผู้ใช้งาน"
                 }
             }
         });
@@ -426,8 +441,8 @@
             var elmForm = $("#form-step-" + stepNumber);
             // stepDirection === 'forward' :- this condition allows to do the form validation
             // only on forward navigation, that makes easy navigation on backwards still do the validation when going next
-            if(stepDirection === 'forward' && elmForm){ 
-                var id = "#form-"+(stepNumber+1);
+            if (stepDirection === 'forward' && elmForm) {
+                var id = "#form-" + (stepNumber + 1);
                 var isValid = $(id).valid();
                 return isValid;
             }
@@ -436,38 +451,37 @@
 
         $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
             // Enable finish button only on last step
-            if(stepNumber == 2){
+            if (stepNumber == 2) {
                 showRole();
-                $('.btn-finish').prop('disabled', false);
-            }else{
-                $('.btn-finish').prop('disabled', true);
+                $('.btn-finish').removeClass('wizard-delete');
+            } else {
+                $('.btn-finish').addClass('wizard-delete');
             }
         });
 
-        function showRole(){
+        function showRole() {
             var role = $("#role").val();
             clear();
-            if(role == '2'){
+            if (role == '2') {
                 $("#role-2").show();
                 loadSparepartProvince();
-            }else if(role == '3'){
+            } else if (role == '3') {
                 $("#role-3").show();
                 loadGarageProvince();
-            }else if(role == '4'){
+            } else if (role == '4') {
                 $("#role-4").show();
-            }else{
+            } else {
                 $("#role-1").show();
             }
-        // $("#content").css("min-height", "138px");
+            // $("#content").css("min-height", "138px");
         }
 
-        function clear(role){
+        function clear(role) {
             $("#role-4").hide();
             $("#role-3").hide();
             $("#role-2").hide();
             $("#role-1").hide();
         }
-        });
 
         var garageProvinceDropdown = $("#garage-provinceId");
         garageProvinceDropdown.append('<option value="">เลือกจังหวัด</option>');
@@ -478,60 +492,80 @@
         var garageSubdistrictDropdown = $('#garage-subdistrictId');
         garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-        function loadGarageProvince(){
-        $.post(base_url+"api/location/getProvince",{},
-        function(data){
-        var province = data.data;
-        $.each(province, function( index, value ) {
-            garageProvinceDropdown.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
-        });
-        }
-        );
-        }
+        function loadGarageProvince() {
+            $.post(base_url + "api/location/getProvince", {},
+                function(data) {
+                    var province = data.data;
+                    $.each(province, function(index, value) {
+                        if(value.provinceId == garageProvince){
+                            garageProvinceDropdown.append('<option value="' + value.provinceId + '" selected>' + value.provinceName + '</option>');
+                        }else{
+                            garageProvinceDropdown.append('<option value="' + value.provinceId + '">' + value.provinceName + '</option>');                            
+                        }
+                    });
 
-        garageProvinceDropdown.change(function(){
-        var provinceId = $(this).val();
-        loadGarageDistrict(provinceId);
-        });
-
-        function loadGarageDistrict(provinceId){
-        garageDistrictDropdown.html("");
-        garageDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
-        garageSubdistrictDropdown.html("");
-        garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
-
-        $.post(base_url+"api/location/getDistrict",{
-        provinceId: provinceId
-        },
-        function(data){
-        var district = data.data;
-        $.each(district, function( index, value ) {
-            garageDistrictDropdown.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
-        });
-        }
-        );
-
+                    if(garageProvince != null){
+                        loadGarageDistrict(garageProvince);
+                    }
+                }
+            );
         }
 
-        garageDistrictDropdown.change(function(){
-        var districtId = $(this).val();
-        loadGarageSubdistrict(districtId);
+        garageProvinceDropdown.change(function() {
+            var provinceId = $(this).val();
+            loadGarageDistrict(provinceId);
         });
 
-        function loadGarageSubdistrict(districtId){
-        garageSubdistrictDropdown.html("");
-        garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+        function loadGarageDistrict(provinceId) {
+            garageDistrictDropdown.html("");
+            garageDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
+            garageSubdistrictDropdown.html("");
+            garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-        $.post(base_url+"api/location/getSubdistrict",{
-        districtId: districtId
-        },
-        function(data){
-        var subDistrict = data.data;
-        $.each(subDistrict, function( index, value ) {
-            garageSubdistrictDropdown.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
-        });
+            $.post(base_url + "api/location/getDistrict", {
+                    provinceId: provinceId
+                },
+                function(data) {
+                    var district = data.data;
+                    $.each(district, function(index, value) {
+                        if(value.districtId == garageDistrict){
+                            garageDistrictDropdown.append('<option value="' + value.districtId + '" selected>' + value.districtName + '</option>');                            
+                        }else{
+                            garageDistrictDropdown.append('<option value="' + value.districtId + '">' + value.districtName + '</option>');                            
+                        }
+                    });
+
+                    if(garageDistrict != null){
+                        loadGarageSubdistrict(garageDistrict);
+                    }
+                }
+            );
+
         }
-        );
+
+        garageDistrictDropdown.change(function() {
+            var districtId = $(this).val();
+            loadGarageSubdistrict(districtId);
+        });
+
+        function loadGarageSubdistrict(districtId) {
+            garageSubdistrictDropdown.html("");
+            garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+            $.post(base_url + "api/location/getSubdistrict", {
+                    districtId: districtId
+                },
+                function(data) {
+                    var subDistrict = data.data;
+                    $.each(subDistrict, function(index, value) {
+                        if(value.subdistrictId == garageSubDistrict){
+                            garageSubdistrictDropdown.append('<option value="' + value.subdistrictId + '" selected>' + value.subdistrictName + '</option>');
+                        }else{
+                            garageSubdistrictDropdown.append('<option value="' + value.subdistrictId + '">' + value.subdistrictName + '</option>');
+                        }
+                    });
+                }
+            );
 
         }
 
@@ -544,159 +578,178 @@
         var sparepartSubdistrictDropdown = $('#sparepart-subdistrictId');
         sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-        function loadSparepartProvince(){
-        $.post(base_url+"api/location/getProvince",{},
-        function(data){
-        var province = data.data;
-        $.each(province, function( index, value ) {
-            sparepartProvinceDropdown.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
-        });
-        }
-        );
-        }
-
-        sparepartProvinceDropdown.change(function(){
-        var provinceId = $(this).val();
-        loadSparepartDistrict(provinceId);
-        });
-
-        function loadSparepartDistrict(provinceId){
-        sparepartDistrictDropdown.html("");
-        sparepartDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
-        sparepartSubdistrictDropdown.html("");
-        sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
-
-        $.post(base_url+"api/location/getDistrict",{
-        provinceId: provinceId
-        },
-        function(data){
-        var district = data.data;
-        $.each(district, function( index, value ) {
-            sparepartDistrictDropdown.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
-        });
-        }
-        );
-
-        }
-
-        sparepartDistrictDropdown.change(function(){
-        var districtId = $(this).val();
-        loadSparepartSubdistrict(districtId);
-        });
-
-        function loadSparepartSubdistrict(districtId){
-        sparepartSubdistrictDropdown.html("");
-        sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
-
-        $.post(base_url+"api/location/getSubdistrict",{
-        districtId: districtId
-        },
-        function(data){
-        var subDistrict = data.data;
-        $.each(subDistrict, function( index, value ) {
-            sparepartSubdistrictDropdown.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
-        });
-        }
-        );
-
-        }
-
-    function finish(){
-          var role = $("#role").val();
-          var id = "#form-role-"+role;
-          var isValid = $(id).valid();
-          var userId = $("#userId").val();
-          if(isValid){
-            var formData = new FormData();
-            formData.append("role",role);
-            formData.append("userId", userId);
-            
-            var profileData = $("#form-1").serializeArray();
-            $.each(profileData, function( index, value ) {
-              formData.append(value.name, value.value);
-            });
-
-            if(role == "3"){ //อู่
-              formData.append("garageName", $("#garageName").val());
-              formData.append("businessRegistration", $("#businessRegistration").val());
-              formData.append("garageAddress", $("#addressGarage").val());
-              formData.append("provinceId", $("#garage-provinceId").val());
-              formData.append("districtId", $("#garage-districtId").val());
-              formData.append("subdistrictId", $("#garage-subdistrictId").val());
-              formData.append("postCode", $("#zipCode").val());
-              formData.append("latitude", $("#latitude").val());
-              formData.append("longtitude", $("#longtitude").val());
-              formData.append("comment", $("#comment").val());
-              var isCheckBox1 = $("#box1").is(':checked');
-              var isCheckBox2 = $("#box2").is(':checked');
-              var isCheckBox3 = $("#box3").is(':checked');
-              var isCheckBox4 = $("#box4").is(':checked');
-              var checkBox1 = (isCheckBox1)?1:2;
-              var checkBox2 = (isCheckBox2)?1:2;
-              var checkBox3 = (isCheckBox3)?1:2;
-              var checkBox4 = (isCheckBox4)?1:2;
-              formData.append("option1", checkBox1);
-              formData.append("option2", checkBox2);
-              formData.append("option3", checkBox3);
-              formData.append("option4", checkBox4);
-              formData.append("option_other", $("#other").val());
-              formData.append("garagePicture", $("#garagePicture")[0].files[0]);
-              formData.append("firstnameGarage", $("#firstnameGarage").val());  
-              formData.append("lastnameGarage", $("#lastnameGarage").val());  
-              formData.append("idcardGarage", $("#idcardGarage").val());  
-              formData.append("addressGarage", $("#addressGarage").val());                                 
-            }else if(role == "2"){ //ร้านค้าอะไหล่
-              formData.append("car_accessoriesName", $("#car_accessoriesName").val());
-              formData.append("businessRegistrationAccessories", $("#businessRegistrationAccessories").val());
-              formData.append("sparepart-firstname", $("#sparepart-firstname").val());  
-              formData.append("sparepart-lastname", $("#sparepart-lastname").val());  
-              formData.append("sparepart-idcard", $("#sparepart-idcard").val());  
-              formData.append("sparepart-address", $("#sparepart-address").val());
-              formData.append("sparepart-provinceId", $("#sparepart-provinceId").val());
-              formData.append("sparepart-districtId", $("#sparepart-districtId").val());
-              formData.append("sparepart-subdistrictId", $("#sparepart-subdistrictId").val());
-              formData.append("sparepart-postCode", $("#sparepart-zipCode").val());
-            }else if(role == "4"){
-              formData.append("frontPicture", $("#frontPicture")[0].files[0]);
-              formData.append("backPicture", $("#backPicture")[0].files[0]);
-              formData.append("circlesignPicture", $("#circlesignPicture")[0].files[0]);
-              formData.append("characterPlate", $("#characterPlate").val());
-              formData.append("numberPlate", $("#numberPlate").val());
-              formData.append("provincePlate", $("#provincePlate").val());
-              formData.append("mileage", $("#mileage").val());
-              formData.append("colorCar", $("#colorCar").val());
-            }
-
-            $.ajax({
-                url: base_url+"api/UserManagement/userTypeAndData",
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                success: function (data) {
-                    if(data.message == 200){
-                        showMessage(data.message,"admin/usermanagement");
-                    }else{
-                        showMessage(data.message);
-                    }
+        function loadSparepartProvince() {
+            $.post(base_url + "api/location/getProvince", {},
+                function(data) {
+                    var province = data.data;
+                    $.each(province, function(index, value) {
+                        sparepartProvinceDropdown.append('<option value="' + value.provinceId + '">' + value.provinceName + '</option>');
+                    });
                 }
-            });
-
-          }
+            );
         }
+
+        sparepartProvinceDropdown.change(function() {
+            var provinceId = $(this).val();
+            loadSparepartDistrict(provinceId);
+        });
+
+        function loadSparepartDistrict(provinceId) {
+            sparepartDistrictDropdown.html("");
+            sparepartDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
+            sparepartSubdistrictDropdown.html("");
+            sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+            $.post(base_url + "api/location/getDistrict", {
+                    provinceId: provinceId
+                },
+                function(data) {
+                    var district = data.data;
+                    $.each(district, function(index, value) {
+                        sparepartDistrictDropdown.append('<option value="' + value.districtId + '">' + value.districtName + '</option>');
+                    });
+                }
+            );
+
+        }
+
+        sparepartDistrictDropdown.change(function() {
+            var districtId = $(this).val();
+            loadSparepartSubdistrict(districtId);
+        });
+
+        function loadSparepartSubdistrict(districtId) {
+            sparepartSubdistrictDropdown.html("");
+            sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+            $.post(base_url + "api/location/getSubdistrict", {
+                    districtId: districtId
+                },
+                function(data) {
+                    var subDistrict = data.data;
+                    $.each(subDistrict, function(index, value) {
+                        sparepartSubdistrictDropdown.append('<option value="' + value.subdistrictId + '">' + value.subdistrictName + '</option>');
+                    });
+                }
+            );
+
+        }
+
+        function finish() {
+            var role = $("#role").val();
+            var id = "#form-role-" + role;
+            var isValid = $(id).valid();
+            var userId = $("#userId").val();
+            if (isValid) {
+                var formData = new FormData();
+                formData.append("role", role);
+                formData.append("userId", userId);
+
+                var profileData = $("#form-1").serializeArray();
+                $.each(profileData, function(index, value) {
+                    formData.append(value.name, value.value);
+                });
+
+                if (role == "3") { //อู่
+                    formData.append("garageName", $("#garageName").val());
+                    formData.append("businessRegistration", $("#businessRegistration").val());
+                    formData.append("garageAddress", $("#addressGarage").val());
+                    formData.append("provinceId", $("#garage-provinceId").val());
+                    formData.append("districtId", $("#garage-districtId").val());
+                    formData.append("subdistrictId", $("#garage-subdistrictId").val());
+                    formData.append("postCode", $("#zipCode").val());
+                    formData.append("latitude", $("#latitude").val());
+                    formData.append("longtitude", $("#longtitude").val());
+                    formData.append("comment", $("#comment").val());
+                    var isCheckBox1 = $("#box1").is(':checked');
+                    var isCheckBox2 = $("#box2").is(':checked');
+                    var isCheckBox3 = $("#box3").is(':checked');
+                    var isCheckBox4 = $("#box4").is(':checked');
+                    var checkBox1 = (isCheckBox1) ? 1 : 2;
+                    var checkBox2 = (isCheckBox2) ? 1 : 2;
+                    var checkBox3 = (isCheckBox3) ? 1 : 2;
+                    var checkBox4 = (isCheckBox4) ? 1 : 2;
+                    formData.append("option1", checkBox1);
+                    formData.append("option2", checkBox2);
+                    formData.append("option3", checkBox3);
+                    formData.append("option4", checkBox4);
+                    formData.append("option_other", $("#other").val());
+                    formData.append("garagePicture", $("#garagePicture")[0].files[0]);
+                    formData.append("firstnameGarage", $("#firstnameGarage").val());
+                    formData.append("lastnameGarage", $("#lastnameGarage").val());
+                    formData.append("idcardGarage", $("#idcardGarage").val());
+                    formData.append("addressGarage", $("#addressGarage").val());
+                } else if (role == "2") { //ร้านค้าอะไหล่
+                    formData.append("car_accessoriesName", $("#car_accessoriesName").val());
+                    formData.append("businessRegistrationAccessories", $("#businessRegistrationAccessories").val());
+                    formData.append("sparepart-firstname", $("#sparepart-firstname").val());
+                    formData.append("sparepart-lastname", $("#sparepart-lastname").val());
+                    formData.append("sparepart-idcard", $("#sparepart-idcard").val());
+                    formData.append("sparepart-address", $("#sparepart-address").val());
+                    formData.append("sparepart-provinceId", $("#sparepart-provinceId").val());
+                    formData.append("sparepart-districtId", $("#sparepart-districtId").val());
+                    formData.append("sparepart-subdistrictId", $("#sparepart-subdistrictId").val());
+                    formData.append("sparepart-postCode", $("#sparepart-zipCode").val());
+                } else if (role == "4") {
+                    formData.append("frontPicture", $("#frontPicture")[0].files[0]);
+                    formData.append("backPicture", $("#backPicture")[0].files[0]);
+                    formData.append("circlesignPicture", $("#circlesignPicture")[0].files[0]);
+                    formData.append("characterPlate", $("#characterPlate").val());
+                    formData.append("numberPlate", $("#numberPlate").val());
+                    formData.append("provincePlate", $("#provincePlate").val());
+                    formData.append("mileage", $("#mileage").val());
+                    formData.append("colorCar", $("#colorCar").val());
+                }
+
+                $.ajax({
+                    url: base_url + "api/UserManagement/userTypeAndData",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    success: function(data) {
+                        if (data.message == 200) {
+                            showMessage(data.message, "admin/usermanagement");
+                        } else {
+                            showMessage(data.message);
+                        }
+                    }
+                });
+
+            }
+        }
+
+        function setProvincePlate(province){
+            var provincePlateDropdown = $("#province_plate");
+            provincePlateDropdown.append('<option value="">เลือกจังหวัด</option>');
+            
+            $.post(base_url + "api/location/getProvinceforcar", {},
+                function(data) {
+                    var provinceforcar = data.data;
+                    $.each(provinceforcar, function(index, value) {
+                        if(province == value.provinceforcarId){
+                            provincePlateDropdown.append('<option value="' + value.provinceforcarId + '" selected>' + value.provinceforcarName + '</option>');   
+                        }else{
+                            provincePlateDropdown.append('<option value="' + value.provinceforcarId + '">' + value.provinceforcarName + '</option>');                               
+                        }
+                    });
+                }
+            );
+        }
+
         var userId = $("#userId").val();
         var category = $("#category").val();
 
-        $.post(base_url+"api/UserManagement/getusers",{
+        $.post(base_url + "api/UserManagement/getusers", {
             "userId": userId
-        },function(data){
-            if(data.message!=200){
-                showMessage(data.message,"admin/usermanagement");
+        }, function(data) {
+            if (data.message != 200) {
+                showMessage(data.message, "admin/usermanagement");
             }
 
-            if(data.message == 200){
+            if (data.message == 200) {
                 var profile = data.profile;
-
+                
                 $("#titleName").val(profile.titleName);
                 $("#firstname").val(profile.firstname);
                 $("#lastname").val(profile.lastname);
@@ -706,37 +759,37 @@
                 $("#districtId").val(profile.districtId);
                 $("#subdistrictId").val(profile.subdistrictId);
                 $("#address").val(profile.address);
-        
 
+                profileProvince = profile.provinceId;
+                profileDistrict = profile.districtId;
+                profileSubDistrict = profile.subdistrictId;
+                onLoad();
                 var roleData = data.role;
+                $("#role option[value="+roleData+"]").attr('selected','selected');
+                $("#role").imagepicker({
+                    show_label: true,
+                    initialized: function(imagePicker){
+                        $("#role").data('1');
+                    } 
+                });
+
                 var other = data.other;
                 $("#role").val(roleData);
-                if(roleData == 4){
-
-                    var provincePlateDropdown = $("#provincePlate");
-                    provincePlateDropdown.append('<option value="">เลือกจังหวัด</option>');
-
-                    function loadProvince1(){
-                    $.post(base_url+"api/location/getProvinceforcar",{},
-                        function(data){
-                        var province_plate = data.data;
-                        $.each(province_plate, function( index, value ) {
-                            provincePlateDropdown.append('<option value="'+value.provinceforcarId+'">'+value.provinceforcarName+'</option>');
-                        });
-                        }
-                    );
-                    }
-                    loadProvince1();
+                if (roleData == 4) {
+                    setProvincePlate(other.province_plate);
                     $("#mileage").val(other.mileage);
                     $("#pictureFront").val(other.pictureFront);
                     $("#pictureBack").val(other.pictureBack);
                     $("#circlePlate").val(other.circlePlate);
-                    $("#province_plate").val(other.province_plate);
                     $("#character_plate").val(other.character_plate);
                     $("#number_plate").val(other.number_plate);
                     $("#color").val(other.color);
-                }
-                else if(roleData == 3 ){
+                } else if (roleData == 3) {
+
+                    garageProvince = other.province_provinceId;
+                    garageDistrict = other.districtId;
+                    garageSubDistrict = other.subdistrictId;
+
                     $("#comment").val(other.comment);
                     $("#businessRegistration").val(other.businessRegistration);
                     $("#garageName").val(other.garageName);
@@ -745,21 +798,32 @@
                     $("#latitude").val(other.latitude);
                     $("#longtitude").val(other.longtitude);
                     $("#garageMaster").val(other.garageMaster);
-                    $("#garage-subdistrictId").val(other.subdistrictId);
-                    $("#garage-districtId").val(other.districtId);
-                    $("#garage-provinceId").val(other.province_provinceId);
-                    $("#box1").val(other.option1);
-                    $("#box2").val(other.option2);
-                    $("#box3").val(other.option3);
-                    $("#box4").val(other.option4);
+                    // $("#garage-subdistrictId").val(other.subdistrictId);
+                    // $("#garage-districtId").val(other.districtId);
+                    // $("#garage-provinceId").val(other.province_provinceId);
+                    if(other.option1 != "2"){
+                        $("#box1").prop('checked', true);
+                    }
+
+                    if(other.option2 != "2"){
+                        $("#box2").prop('checked', true);
+                    }
+
+                    if(other.option3 != "2"){
+                        $("#box3").prop('checked', true);
+                    }
+
+                    if(other.option4 != "2"){
+                        $("#box4").prop('checked', true);
+                    }
+
                     $("#other").val(other.option_outher);
                     $("#garagePicture").val(other.garagePicture);
                     $("#firstnameGarage").val(other.firstname);
                     $("#lastnameGarage").val(other.lastname);
                     $("#idcardGarage").val(other.idcard);
                     $("#addressGarage").val(other.addressGarage);
-                }
-                else if(roleData == 2){
+                } else if (roleData == 2) {
                     $("#car_accessoriesName").val(other.car_accessoriesName);
                     $("#businessRegistrationAccessories").val(other.businessRegistration);
                     $("#sparepart-firstname").val(other.firstname);
@@ -773,16 +837,13 @@
                     $("#sparepart-postCode").val(other.postCode);
 
                 }
-                
-                
-                
 
             }
-            
+
         });
-        
 
+    });
+   
 </script>
-
 </body>
 </html>
