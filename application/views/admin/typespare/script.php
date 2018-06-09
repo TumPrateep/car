@@ -40,7 +40,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,2]
+                    "targets": [0,3]
                 },{
                     "targets": 2,
                     "data": null,
