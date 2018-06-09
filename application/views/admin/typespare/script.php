@@ -30,6 +30,7 @@
                     data.spares_undercarriageName = $("#table-search").val();
                 }
             },
+            "order": [[ 2, "asc" ]],
             "columns": [
                 null,
                 { "data": "spares_undercarriageName" },

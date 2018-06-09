@@ -31,6 +31,7 @@
                     data.spares_undercarriageId = $("#spares_undercarriageId").val()
                   }
             },
+            "order": [[ 1, "asc" ]],
             "columns": [
                 null,
                 { "data": "spares_brandName" },
