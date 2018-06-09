@@ -347,9 +347,11 @@ class Car extends BD_Controller {
         $modelId = $this->post('modelId');
         $modelName = $this->post('modelName');
         $brandId = $this->post('brandId');
+        $yearStart = $this->post('yearStart');
+        $yearEnd = $this->post('yearEnd');
         $this->load->model("Model");
         
-        if($yearEnd == 1){
+        if($yearEnd == 0){
             $yearEnd = null;
         }
         
@@ -360,6 +362,8 @@ class Car extends BD_Controller {
                 'modelId' => $modelId,
                 'modelName' => $modelName,
                 'brandId' => $brandId,
+                'yearStart' => $yearStart,
+                'yearEnd' => $yearEnd,
                 'status' => 1
             );
             $result = $this->Model->update($data);
