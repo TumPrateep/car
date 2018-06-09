@@ -41,6 +41,7 @@
         browseClass: "btn btn-primary btn-lg",
         previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
         overwriteInitial: false,
+        maxFileSize: 300,
         initialPreviewAsData: true,
         allowedFileExtensions: ['jpg' , 'png'],
         
