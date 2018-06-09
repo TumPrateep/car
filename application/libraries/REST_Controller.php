@@ -646,6 +646,19 @@ abstract class REST_Controller extends CI_Controller {
         }
     }
 
+    public function DateThai($strDate)
+	{
+		$strYear = date("Y",strtotime($strDate));
+		$strMonth= date("n",strtotime($strDate));
+		$strDay= date("j",strtotime($strDate));
+		$strHour= date("H",strtotime($strDate));
+		$strMinute= date("i",strtotime($strDate));
+		$strSeconds= date("s",strtotime($strDate));
+		$strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+		$strMonthThai=$strMonthCut[$strMonth];
+		return "$strDay $strMonthThai $strYear, $strHour:$strMinute";
+	}
+
     /**
      * Checks to see if we have everything we need to run this library.
      *

@@ -113,4 +113,10 @@ class Profile extends CI_Model{
         return $this->db->get('user_profile')->row();
     }
 
+    function findViewUserProfileByIdAndStatusActive($userId){
+        $this->db->where("userId", $userId);
+        $this->db->where("status", 1);    
+        return $this->db->get('user_profile')->row();
+    }
+
 }
