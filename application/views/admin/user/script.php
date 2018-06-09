@@ -28,7 +28,9 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.search = $("#table-search").val()
+                    data.search = $("#table-search").val(),
+                    data.typeUser = $("#typeuser").val(),
+                    data.status = $("#status").val()
                 }
             },
             "order": [[ 1, "asc" ]],
