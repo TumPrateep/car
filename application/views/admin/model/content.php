@@ -13,7 +13,7 @@
 
       <!-- Example DataTables Card-->      
     <div class="card-tools">
-      <div class="input-group input-group-sm" >
+      <div class="img-resize" >
         <span id="brandPicture"></span>
         <h3 class="car-img" id="brandName"></h3>
       </div>

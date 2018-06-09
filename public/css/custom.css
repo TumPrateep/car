@@ -332,3 +332,14 @@
   .bg-white{
     background-color: #ffffff  !important;
   }
+  div.img-resize img {
+    width: 200px;
+    height: auto;
+  }
+  
+  div.img-resize {
+    width: 200px;
+    height: 112px;
+    overflow: hidden;
+    text-align: center;
+  }
