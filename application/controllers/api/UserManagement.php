@@ -455,10 +455,16 @@ class UserManagement extends BD_Controller {
         $userId = $this->post('userId');
         $this->load->model("User");
         $this->load->model("Profile");
+        $this->load->model("Location");
         
         $user = $this->User->getUser($userId);
         if($user != null){
             $result = $this->Profile->findUserProfileByIdAndStatusActive($userId);
+            $result->provinceName = $this->Location->getProvinceNameByProvinceId($result->provinceId);
+            $result->districtName = $this->Location->getDistrictNameByDistrictId($result->districtId);
+            $result->subdistrictName = $this->Location->getSubDistrictBySubDistrictId($result->subdistrictId);
+            $result->create_at = REST_Controller::DateThai($result->create_at);
+            // $result->create_at = date_format($date,"d/m/Y H:i:s");
             $output["profile"] = $result;
             $output["role"] = $user->category;
             $output["other"] = $this->getUserData((int)$user->category, $userId);
@@ -476,20 +482,27 @@ class UserManagement extends BD_Controller {
         $this->load->model("User");
         $this->load->model("Garage");
         $this->load->model("Caraccessories");
+        $this->load->model("Location");
         $data = null;
         if($role == 4){
             $data = $this->User->getdataCar_profileById($userId);
+            $data->provincePlateName = $this->Location->getProvinceNamePlateByProvinceId($data->province_plate);
         }else if($role == 3){
             // อู่
             $data = $this->Garage->getGarageFromGarageByUserId($userId);
+            $data->provinceName = $this->Location->getProvinceNameByProvinceId($data->provinceId);
+            $data->districtName = $this->Location->getDistrictNameByDistrictId($data->districtId);
+            $data->subdistrictName = $this->Location->getSubDistrictBySubDistrictId($data->subdistrictId);
         }else if($role == 2){
             // ร้านอะไหล่
             $data = $this->Caraccessories->getCarAccessoriesFromCarAccessoriesByUserId($userId);
+            $data->provinceName = $this->Location->getProvinceNameByProvinceId($data->provinceId);
+            $data->districtName = $this->Location->getDistrictNameByDistrictId($data->districtId);
+            $data->subdistrictName = $this->Location->getSubDistrictBySubDistrictId($data->subdistrictId);
         }else{
             $data = null;
         }
         return $data;
     }
-
-        
+     
 }
