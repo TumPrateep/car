@@ -32,19 +32,25 @@ class User extends CI_Model{
         
     }
    
-    function user_search($limit,$start,$search,$col,$dir,$id)
-    {
-        $this->db->where("id", $id);
-        $query = $this
-                ->db
-                ->like('username',$search)
-                ->or_like('email',$search)
-                ->or_like('phone',$search)
-                ->limit($limit,$start)
+    function user_search($limit,$start,$search, $userType, $status ,$col,$dir)
+    { 
+        $this->db->group_start();
+        $this->db->like('username',$search)
+                ->or_like('phone',$search);
+        $this->db->group_end();
+
+        if($userType != null){
+            $this->db->where('category', $userType);
+        }
+
+        if($status != null){
+            $this->db->where('status', $status);
+        }
+
+        $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('users');
         
-       
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -55,13 +61,15 @@ class User extends CI_Model{
         }
     }
 
-    function user_search_count($search)
+    function user_search_count($search, $userType, $status)
     {
         $query = $this
                 ->db
                 ->like('username',$search)
                 ->or_like('email',$search)
                 ->or_like('phone',$search)
+                ->where('category', $userType)
+                ->where('status', $status)
                 ->get('users');
     
         return $query->num_rows();

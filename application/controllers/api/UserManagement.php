@@ -29,16 +29,18 @@ class UserManagement extends BD_Controller {
 
         $totalFiltered = $totalData; 
         
-        if(empty($this->post('search')))
+        if(empty($this->post('search')) && empty($this->post('typeUser')) && empty($this->post('status')) )
         {            
             $posts = $this->User->allUser($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('search'); 
+            $userType = $this->post('typeUser');
+            $status = $this->post('status');
 
-            $posts =  $this->User->user_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->User->user_search($limit,$start,$search, $userType, $status, $order,$dir);
 
-            $totalFiltered = $this->User->user_search_count($search);
+            $totalFiltered = $this->User->user_search_count($search, $userType, $status);
         }
 
         $data = array();
