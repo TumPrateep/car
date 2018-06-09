@@ -102,6 +102,13 @@ class sparesUndercarriages extends CI_Model{
                 return $result;
             }
 
+        
+        function updateStatus($spares_undercarriageId,$data){
+            $this->db->where('spares_undercarriageId',$spares_undercarriageId);
+            $result = $this->db->update('spares_undercarriage', $data);
+            return $result; 
+        }
+
        
     
    

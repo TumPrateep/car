@@ -21,7 +21,7 @@
             <button type="submit" id="btn-search" class="btn btn-info inactive"><i class="fa fa-cog"></i></button>
           </div>
 
-          <select class="form-control" >
+          <select class="form-control" name="status" id="status" >
             <option>สถานะ</option>
             <option>เปิด</option>
             <option>ปิด</option>
@@ -36,7 +36,7 @@
       </form>
     </div>
 
-    <input type="hidden" id="brandId" value="<?=$id ?>">
+    <input type="hidden" id="spares_undercarriageId" value="<?=$spares_undercarriageId ?>">
     <div class="table-responsive">
       <table class="table table-bordered" id="spares_undercarriage-table" width="100%" cellspacing="0">
         <thead>

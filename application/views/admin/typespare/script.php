@@ -54,7 +54,7 @@
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.brandId+','+data.status+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.spares_undercarriageId+','+data.status+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
@@ -99,6 +99,20 @@
         event.preventDefault();
         table.ajax.reload();
     })
+
+    
+    function updateStatus(spares_undercarriageId,status){
+        $.post(base_url+"api/SpareUndercarriage/changeStatus",{
+            "spares_undercarriageId": spares_undercarriageId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/sparepartcar");
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
 
 </script>
 
