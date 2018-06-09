@@ -28,7 +28,9 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.search = $("#table-search").val()
+                    data.search = $("#table-search").val(),
+                    data.typeUser = $("#typeuser").val(),
+                    data.status = $("#status").val()
                 }
             },
             "order": [[ 1, "asc" ]],
@@ -58,7 +60,17 @@
                 },{
                     "targets": 5,
                     "data": null,
-                    "render": function ( data, type, full, meta ) { 
+                    "render": function ( data, type, full, meta ) {
+                        if(data.category == null){
+                            return '<a href="'+base_url+"admin/usermanagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
+                            + '<a href="'+base_url+"admin/usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            + '<button type="button" class="delete btn btn-danger" onclick="deleteUser('+data.id+',\''+data.username+'\')"><i class="fa fa-trash"></i></button>';
+                        }
+
+                        if(data.username == "admin"){
+                            return '<small><i class="gray">ห้ามแก้ไข</i></small>';
+                        }
+
                         return '<a href="'+base_url+"admin/usermanagement/view/"+data.id+'"><button type="button" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
                             + '<a href="'+base_url+"admin/usermanagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
                             + '<a href="'+base_url+"admin/usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -68,6 +80,9 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
+                        if(data.username == "admin"){
+                            return '<small><i class="gray">ห้ามแก้ไข</i></small>';
+                        }
                         var switchVal = "true";
                         var active = " active";
                         if(data.status == null){
@@ -94,7 +109,8 @@
                 {"className": "dt-head-center", "targets": [1,2,3]},
                 {"className": "dt-center", "targets": [0,4,5]},
                 { "width": "8%", "targets": 0 },
-                { "width": "20%", "targets": 3 }
+                { "width": "20%", "targets": 3 },
+                { "width": "22%", "targets": 5 }
             ]	 
 
     });

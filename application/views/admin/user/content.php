@@ -22,21 +22,21 @@
             <button class="btn btn-info inactive"><i class="fa fa-address-book"></i></button>
           </div>
 
-          <select class="form-control" name="status" id="typeuser-search" >
-            <option>ประเภทผู้ใช้งาน</option>
-            <option>ผู้ดูเเลระบบ</option>
-            <option>ผู้ใช้งาน</option>
-            <option>อู่รถ</option>
-            <option>ร้านอะไหล่</option>
+          <select class="form-control" name="status" id="typeuser" >
+            <option value>ประเภทผู้ใช้งาน</option>
+            <option value="1">ผู้ดูเเลระบบ</option>
+            <option value="4">ผู้ใช้งาน</option>
+            <option value="3">อู่รถ</option>
+            <option value="2">ร้านอะไหล่</option>
           </select>
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-users"></i></button>
           </div>
 
           <select class="form-control" name="status" id="status" >
-            <option>สถานะ</option>
-            <option>เปิด</option>
-            <option>ปิด</option>
+            <option value>สถานะ</option>
+            <option value="1">เปิด</option>
+            <option value="2">ปิด</option>
           </select>
           <div class="input-group-append">
             <button class="btn btn-info inactive">
