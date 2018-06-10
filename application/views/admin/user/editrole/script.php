@@ -471,6 +471,9 @@
 
         function showRole() {
             var role = $("#role").val();
+            if(role == null){
+                role = '4';
+            }
             clear();
             if (role == '2') {
                 $("#role-2").show();

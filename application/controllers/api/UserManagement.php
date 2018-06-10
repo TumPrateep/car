@@ -237,7 +237,6 @@ class UserManagement extends BD_Controller {
                 'create_by' => $currentUser,
                 'update_by' => null,
                 'status' => 1,
-                'garageMaster' => $userId,
                 'garagePicture' => $garagePictureName,
                 'approve' => 2,
                 'firstname' => $firstnameGarage,
