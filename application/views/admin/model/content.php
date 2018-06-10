@@ -32,15 +32,15 @@
             <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
           </div>
 
-          <input id="table-search" class="form-control float-right" placeholder="ปีที่ผลิต">
+          <input class="form-control float-right" id="year" placeholder="ปีที่ผลิต">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-calendar-check-o"></i></button>
           </div>
 
           <select class="form-control" name="status" id="status" >
-            <option>สถานะ</option>
-            <option>เปิด</option>
-            <option>ปิด</option>
+            <option value>สถานะ</option>
+            <option value="1">เปิด</option>
+            <option value="2">ปิด</option>
           </select>
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i></button>

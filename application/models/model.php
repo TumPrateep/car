@@ -31,20 +31,29 @@ class Model extends CI_Model{
         
     }
    
-    function model_search($limit,$start,$search,$col,$dir,$brandId)
+    function model_search($limit,$start,$search, $year, $status ,$col,$dir,$brandId)
     {
-        $query = $this
-                ->db
-                ->where("(`modelName` LIKE '%".$search."%' or  `yearStart` LIKE '%".$search."%' or `yearEnd` LIKE '%".$search."%') and `brandId` = ".$brandId,null,false)
-                // ->like('modelName',$search)
-                // ->or_like('yearStart',$search)
-                // ->or_like('yearEnd',$search)
-                // ->where("brandId", $brandId)
+        $this->db->like('modelName',$search);
+
+        if($year != null){
+            $this->db->group_start();
+            $this->db->group_start();
+                $this->db->where('yearStart <=' ,$year)
+                ->where('yearEnd >=' ,$year);
+            $this->db->group_end();
+                $this->db->or_where('yearStart' ,$year);
+            $this->db->group_end();
+        }
+
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+
+        $query = $this->db->where("brandId", $brandId)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('model');
         
-       
         if($query->num_rows()>0)
         {
             return $query->result();  

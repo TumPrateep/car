@@ -47,8 +47,10 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.search = $("#table-search").val()
-                    data.brandId = $("#brandId").val()
+                    data.search = $("#table-search").val();
+                    data.brandId = $("#brandId").val();
+                    data.status = $("#status").val();
+                    data.year = $("#year").val();
                 }
             },
             "order": [[ 1, "asc" ]],
