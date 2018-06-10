@@ -34,24 +34,14 @@
         
     // });
     $("#brandPicture").fileinput({
+        language: "th",
         theme: 'fa',
-        showUpload: false,
-        showCancel: false,
-        showCaption: false,
-        browseClass: "btn btn-primary btn-lg",
-        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        allowedFileExtensions: ['jpg' , 'png'],
         overwriteInitial: false,
         maxFileSize: 300,
-        initialPreviewAsData: true,
-        allowedFileExtensions: ['jpg' , 'png'],
-        
-        initialPreview: [
-          
-    
-        ],
-        initialPreviewConfig: [
-           
-        ]
+        required: true,
+        showCancel: false,
+        showUpload: false
     });
 
 $("#update-brand").validate({
