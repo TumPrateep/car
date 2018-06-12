@@ -186,5 +186,26 @@ class Triesize extends BD_Controller {
         }
        
     }
+    function changeStatus_post(){
+        $tire_sizeId = $this->post("tire_sizeId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status
+        );
+        $this->load->model("trieSizes");
+        $result = $this->trieSizes->updateStatus($tire_sizeId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
 }

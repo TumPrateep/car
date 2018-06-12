@@ -134,6 +134,11 @@ class trieSizes extends CI_Model{
         $result = $this->db->get('tire_size')->row();
         return $result;
     }
+    function updateStatus($tire_sizeId,$data){
+        $this->db->where('tire_sizeId',$tire_sizeId);
+        $result = $this->db->update('tire_size', $data);
+        return $result; 
+    }
 
     
 
