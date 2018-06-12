@@ -106,7 +106,7 @@ class UserManagement extends BD_Controller {
         $password = password_hash("password", PASSWORD_BCRYPT);
 
         $this->load->model("User");
-        $isCheck = $this->User->checkUser($username);
+        $isCheck = $this->User->checkUser($username,$phone);
         if($isCheck){
             $data = array(
                 'id' => null,
@@ -127,7 +127,7 @@ class UserManagement extends BD_Controller {
         }
         else{
             $output["status"] = false;
-            $output["data"] = "username ซ้ำ";
+            $output["data"] = "username หรือ เบอร์โทรศัพท์ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }

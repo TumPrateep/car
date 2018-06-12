@@ -79,10 +79,11 @@ class User extends CI_Model{
 		return $this->db->insert('users', $data);
     }
     
-    function checkUser($username){
+    function checkUser($username,$phone){
         $this->db->select("username");
         $this->db->from("users");
         $this->db->where("username", $username);
+        $this->db->or_where("phone",$phone);
         $result = $this->db->count_all_results();
 
         if($result > 0){
@@ -90,6 +91,7 @@ class User extends CI_Model{
         }
         return true;
     }
+    
     
     function check_User($id){
         $this->db->where('id',$id);
