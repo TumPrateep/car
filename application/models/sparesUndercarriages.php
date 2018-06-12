@@ -31,16 +31,18 @@ class sparesUndercarriages extends CI_Model{
 
         
     }
-    function sparesUndercarriage_search($limit,$start,$search,$col,$dir)
+    function sparesUndercarriage_search($limit,$start,$search,$col,$dir,$status)
     {
-        $query = $this
-                ->db
-                ->like('spares_undercarriageName',$search)
-                ->limit($limit,$start)
+
+        $this->db->like('spares_undercarriageName',$search);
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+
+        $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('spares_undercarriage');
         
-       
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -50,11 +52,12 @@ class sparesUndercarriages extends CI_Model{
             return null;
         }
     }
-    function sparesUndercarriage_search_count($search)
+    function sparesUndercarriage_search_count($search,$status)
     {
         $query = $this
                 ->db
                 ->like('spares_undercarriageName',$search)
+                ->where('status',$status)
                 ->get('spares_undercarriage');
     
         return $query->num_rows();

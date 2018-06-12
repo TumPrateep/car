@@ -27,7 +27,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_undercarriageName = $("#table-search").val();
+                    data.spares_undercarriageName = $("#table-search").val(),
+                    data.status = $("#status").val()
                 }
             },
             "order": [[ 2, "asc" ]],
