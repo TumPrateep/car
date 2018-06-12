@@ -473,6 +473,7 @@ class Car extends BD_Controller {
             $brandName = $this->post("brandName");
             $isDublicte = $this->Brand->checkBrand($brandName);
             if($isDublicte){
+                unlink($config['upload_path'].$image);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
@@ -491,6 +492,7 @@ class Car extends BD_Controller {
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }else{
+                    unlink($config['upload_path'].$image);
                     $output["message"] = REST_Controller::MSG_NOT_CREATE;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
@@ -537,11 +539,13 @@ class Car extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
+                unlink($config['upload_path'].$image);
                 $output["message"] = REST_Controller::MSG_NOT_UPDATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
 
         }else{
+            unlink($config['upload_path'].$image);
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
