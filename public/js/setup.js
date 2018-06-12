@@ -52,7 +52,7 @@ function showMessage(message, url=null){
         }else if(message == 1002){
             warningContent.html("แก้ไขไม่สำเร็จ");
         }else if(message == 3001 || message == 3002){
-            warningContent.html("ชื่อถูกใช้งานแล้ว");
+            warningContent.html("ชื่อหรือถูกใช้งานแล้ว");
         }else{
             warningContent.html("เกิดข้อผิดพลาด");
         }

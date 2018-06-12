@@ -29,6 +29,7 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.brandName = $("#table-search").val()
+                    data.status = $("#status").val()
                 }
             },
             "order": [[ 2, "asc" ]],

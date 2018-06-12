@@ -36,11 +36,12 @@ class Brand extends CI_Model {
         
     }
    
-    function brand_search($limit,$start,$search,$col,$dir)
+    function brand_search($limit,$start,$brandName,$col,$dir,$status)
     {
         $query = $this
                 ->db
-                ->like('brandName',$search)
+                ->like('brandName',$brandName)
+                ->or_like('status',$status)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('brand');
@@ -56,11 +57,12 @@ class Brand extends CI_Model {
         }
     }
 
-    function brand_search_count($search)
+    function brand_search_count($brandName,$status)
     {
         $query = $this
                 ->db
-                ->like('brandName',$search)
+                ->like('brandName',$brandName)
+                ->or_like('status',$status)
                 ->get('brand');
     
         return $query->num_rows();
