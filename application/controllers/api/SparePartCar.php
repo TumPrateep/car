@@ -28,16 +28,17 @@ class SparePartCar extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('spares_brandName'))  || empty($this->post('spares_undercarriageId')))
+        if(empty($this->post('spares_brandName'))  && empty($this->post('status')))
         {            
             $posts = $this->Sparesbrand->allSpares_brand($limit,$start,$order,$dir, $spares_undercarriageId);
         }
         else {
             $search = $this->post('spares_brandName'); 
+            $status = $this->post('status'); 
 
-            $posts =  $this->Sparesbrand->spares_brand_search($limit,$start,$search,$order,$dir, $spares_undercarriageId);
+            $posts =  $this->Sparesbrand->spares_brand_search($limit,$start,$search,$order,$dir, $spares_undercarriageId, $status);
 
-            $totalFiltered = $this->Sparesbrand->spares_brand_search_count($search, $spares_undercarriageId);
+            $totalFiltered = $this->Sparesbrand->spares_brand_search_count($search, $spares_undercarriageId, $status);
         }
 
         $data = array();

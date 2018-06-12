@@ -33,17 +33,17 @@ class Sparesbrand extends CI_Model{
         
     }
    
-    function spares_brand_search($limit,$start,$search,$col,$dir,$spares_undercarriageId)
+    function spares_brand_search($limit,$start,$search,$col,$dir,$spares_undercarriageId,$status)
     {
-        $this->db->where("spares_undercarriageId", $spares_undercarriageId);
-        $query = $this
-                ->db
-                ->like('spares_brandName',$search)
+        $this->db->like('spares_brandName',$search);
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+        $query = $this->db->where("spares_undercarriageId", $spares_undercarriageId)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('spares_brand');
         
-       
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -52,14 +52,16 @@ class Sparesbrand extends CI_Model{
         {
             return null;
         }
+        
     }
 
-    function spares_brand_search_count($search, $spares_undercarriageId)
+    function spares_brand_search_count($search, $spares_undercarriageId,$status)
     {
         $this->db->where("spares_undercarriageId", $spares_undercarriageId);
         $query = $this
                 ->db
                 ->like('spares_brandName',$search)
+                ->where('status',$status)
                 ->get('spares_brand');
     
         return $query->num_rows();
