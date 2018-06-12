@@ -124,7 +124,7 @@
                 showMessage(data.message);
             }
         });
-    }
+    } 
 
 </script>
 

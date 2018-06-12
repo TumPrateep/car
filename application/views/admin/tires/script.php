@@ -106,6 +106,19 @@ function deleterim(rimId,rimName){
         event.preventDefault();
         table.ajax.reload();
     })
+
+    function updateStatus(rimId,status){
+        $.post(base_url+"api/rim/changeStatus",{
+            "rimId": rimId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/Tires");
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
     
 
 </script>

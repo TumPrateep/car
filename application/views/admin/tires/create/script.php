@@ -4,11 +4,24 @@ $("#submit").validate({
             rimName: {
                 required: true
             },
+            rimSeries: {
+                required: true
+            },
+            wheels: {
+                required: true
+            }
         },
         messages: {
             rimName: {
-                required: "กรุณากรอกขนาดยาง"
+                required: "กรุณากรอกหน้ายาง"
+            },
+            rimSeries: {
+                required: "กรุณากรอกซีรี่ย์ยาง"
+            },
+            wheels: {
+                required: "กรุณากรอกกะทะล้อ"
             }
+
         },
     });
     

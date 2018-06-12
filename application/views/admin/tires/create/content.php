@@ -15,7 +15,7 @@
             <div class="card text-white bg-success">
                 <div class="card-header">
 
-                  <h3 class="card-title"><i class="fa fa fa-wrench"></i>เพิ่มข้อมูลขอบยาง</h3>
+                  <h3 class="card-title"><i class="fa fa fa-wrench"></i> เพิ่มข้อมูลขอบยาง</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -24,9 +24,18 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label>ชื่อขอบยาง</label> <span class="error">*</span>
-                          <input type="text" class="form-control" placeholder="ชื่อขอบยาง" name="rimName" id="rimName">
-                        </div>
+                          <label>หน้ายาง</label> <span class="error">*</span>
+                          <input type="text" class="form-control" placeholder="หน้ายาง" name="rimName" id="rimName">
+                        </div>  
+                          <div class="form-group">
+                            <label>ซีรี่ย์ยาง</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="ซีรี่ย์ยาง" name="rimSeries" id="rimSeries">
+                          </div>
+                          <div class="form-group">
+                            <label>ขนาดกะทะล้อ</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="ขนาดกะทะล้อ" name="wheels" id="wheels">
+                          </div>
+                        
                       </div>
                     </div>
                     
