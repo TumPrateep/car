@@ -22,16 +22,17 @@ class SpareUndercarriage extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('spares_undercarriageName')))
+        if(empty($this->post('spares_undercarriageName'))&& empty($this->post('status')))
         {            
             $posts = $this->sparesUndercarriages->allsparesUndercarriage($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('spares_undercarriageName'); 
+            $status = $this->post('status');
 
-            $posts =  $this->sparesUndercarriages->sparesUndercarriage_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->sparesUndercarriages->sparesUndercarriage_search($limit,$start,$search,$order,$dir,$status);
 
-            $totalFiltered = $this->sparesUndercarriages->sparesUndercarriage_search_count($search);
+            $totalFiltered = $this->sparesUndercarriages->sparesUndercarriage_search_count($search,$status);
         }
 
         $data = array();

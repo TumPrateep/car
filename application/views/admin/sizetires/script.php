@@ -72,7 +72,7 @@ var table = $('#tiresize-table').DataTable({
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.rimId+','+data.status+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.tire_sizeId+','+data.status+','+data.rimId+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
@@ -101,6 +101,19 @@ var table = $('#tiresize-table').DataTable({
             gotoUrl: "admin/Tires/tiresize/"+rimId
         }
         fnDelete(option);
+    }
+
+    function updateStatus(tire_sizeId,status,rimId){
+        $.post(base_url+"api/Triesize/changeStatus",{
+            "tire_sizeId": tire_sizeId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/Tires/tiresize/"+rimId);
+            }else{
+                showMessage(data.message);
+            }
+        });
     }
 
 </script>

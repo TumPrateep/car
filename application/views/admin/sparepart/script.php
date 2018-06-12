@@ -28,7 +28,8 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.spares_brandName= $("#table-search").val(),
-                    data.spares_undercarriageId = $("#spares_undercarriageId").val()
+                    data.spares_undercarriageId = $("#spares_undercarriageId").val(),
+                    data.status = $("#status").val()
                   }
             },
             "order": [[ 1, "asc" ]],
