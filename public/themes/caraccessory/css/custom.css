@@ -1,0 +1,8 @@
+.search-header{
+    padding: 15px;
+    border: 0 solid #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);
+    margin-left: 0;
+    margin-right: 0;
+}

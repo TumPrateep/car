@@ -10,10 +10,11 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <title>CarJaidee</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url("/public/themes/caraccessory/css/lib/bootstrap/bootstrap.min.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/themes/caraccessory/css/style.css") ?>" rel="stylesheet">
+    <link href="<?=base_url("/public/themes/caraccessory/css/custom.css") ?>" rel="stylesheet">
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
