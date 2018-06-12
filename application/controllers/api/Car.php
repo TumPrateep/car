@@ -28,16 +28,17 @@ class Car extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('brandName')))
+        if(empty($this->post('brandName'))&& empty($this->post('status')))
         {            
             $posts = $this->Brand->allBrand($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('brandName'); 
+            $status = $this->post('status'); 
 
-            $posts =  $this->Brand->brand_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->Brand->brand_search($limit,$start,$search,$order,$dir,$status);
 
-            $totalFiltered = $this->Brand->brand_search_count($search);
+            $totalFiltered = $this->Brand->brand_search_count($search,$status);
         }
 
         $data = array();

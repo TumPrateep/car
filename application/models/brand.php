@@ -36,17 +36,18 @@ class Brand extends CI_Model {
         
     }
    
-    function brand_search($limit,$start,$brandName,$col,$dir,$status)
+    
+    function brand_search($limit,$start,$search,$col,$dir,$status)
     {
-        $query = $this
-                ->db
-                ->like('brandName',$brandName)
-                ->or_like('status',$status)
-                ->limit($limit,$start)
+        $this->db->like('brandName',$search);
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+
+        $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('brand');
         
-       
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -57,12 +58,12 @@ class Brand extends CI_Model {
         }
     }
 
-    function brand_search_count($brandName,$status)
+    function brand_search_count($search,$status)
     {
         $query = $this
                 ->db
-                ->like('brandName',$brandName)
-                ->or_like('status',$status)
+                ->like('brandName',$search)
+                ->where('status', $status)
                 ->get('brand');
     
         return $query->num_rows();
