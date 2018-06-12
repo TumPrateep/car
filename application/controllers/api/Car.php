@@ -534,8 +534,10 @@ class Car extends BD_Controller {
                 "brandName"=> $brandName,
                 "status"=> 1
             );
+            $oldData = $this->Brand->getBrandById($brandId);
             $isResult = $this->Brand->update($data);
             if($isResult){
+                unlink($config['upload_path'].$oldData->brandPicture);
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
