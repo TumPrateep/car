@@ -110,16 +110,17 @@ class Triesize extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('tire_size'))  || empty($this->post('rimId')))
+        if(empty($this->post('tire_size'))  && empty($this->post('status')))
         {            
             $posts = $this->trieSizes->allTriesize($limit,$start,$order,$dir, $rimId);
         }
         else {
             $search = $this->post('tire_size'); 
+            $status = $this->post('status'); 
 
-            $posts =  $this->trieSizes->trie_size_search($limit,$start,$search,$col,$dir,$rimId);
+            $posts =  $this->trieSizes->trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status);
 
-            $totalFiltered = $this->trieSizes->trie_size_search_count($search, $rimId);
+            $totalFiltered = $this->trieSizes->trie_size_search_count($search, $rimId,$status);
             
            
         }

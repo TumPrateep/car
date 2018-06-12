@@ -30,7 +30,8 @@ var table = $('#tiresize-table').DataTable({
                 "type": "POST",
                 "data": function ( data ) {
                     data.tire_size = $("#table-search").val(),
-                    data.rimId = $("#rimId").val()
+                    data.rimId = $("#rimId").val(),
+                    data.status = $("#status").val()
                 }
             },
             "order": [[ 1, "asc" ]],
