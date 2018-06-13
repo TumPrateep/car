@@ -6,3 +6,23 @@
     margin-left: 0;
     margin-right: 0;
 }
+
+.table .table{
+    background-color: #eaeaea00;
+}
+
+.table > div{
+    padding: 0px
+}
+
+.table-bordered{
+    border: 0px;
+}
+
+.sorting_asc{
+    display: none;
+}
+
+.table-bordered td, .table-bordered th {
+    border: 0px solid #ffffff !important;
+}
