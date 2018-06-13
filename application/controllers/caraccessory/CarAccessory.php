@@ -16,6 +16,7 @@ class CarAccessory extends CI_Controller {
 		$this->load->view("caraccessory/layout/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
-    }
+	}
+	
 
 }
