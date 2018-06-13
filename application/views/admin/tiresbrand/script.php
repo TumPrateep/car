@@ -28,7 +28,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.tire_brandName = $("#table-search").val()
+                    data.tire_brandName = $("#table-search").val(),
+                    data.status = $("#status").val()
                 }
             },
             "order": [[ 2, "asc" ]],

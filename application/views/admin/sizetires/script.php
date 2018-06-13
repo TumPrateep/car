@@ -1,5 +1,4 @@
 <script>
-
 var table = $('#tiresize-table').DataTable({
         "language": {
                 "aria": {
@@ -30,7 +29,8 @@ var table = $('#tiresize-table').DataTable({
                 "type": "POST",
                 "data": function ( data ) {
                     data.tire_size = $("#table-search").val(),
-                    data.rimId = $("#rimId").val()
+                    data.rimId = $("#rimId").val(),
+                    data.status = $("#status").val()
                 }
             },
             "order": [[ 1, "asc" ]],
@@ -85,14 +85,11 @@ var table = $('#tiresize-table').DataTable({
                 { "width": "20%", "targets": 2 },
                 { "width": "10%", "targets": 3 }
             ]	 
-
     });
-
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
-
     function deletetrie_size(tire_sizeId,tire_size,rimId){
         var option = {
             url: "/Triesize/deletetriesize?tire_sizeId="+tire_sizeId,
@@ -102,11 +99,11 @@ var table = $('#tiresize-table').DataTable({
         }
         fnDelete(option);
     }
-
     function updateStatus(tire_sizeId,status,rimId){
         $.post(base_url+"api/Triesize/changeStatus",{
             "tire_sizeId": tire_sizeId,
-            "status": status
+            "status": status,
+            "rimId": rimId
         },function(data){
             if(data.message == 200){
                 showMessage(data.message,"admin/Tires/tiresize/"+rimId);
@@ -115,7 +112,6 @@ var table = $('#tiresize-table').DataTable({
             }
         });
     }
-
 </script>
 
 </body>
