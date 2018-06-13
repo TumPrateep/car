@@ -107,7 +107,8 @@ var table = $('#tiresize-table').DataTable({
     function updateStatus(tire_sizeId,status,rimId){
         $.post(base_url+"api/Triesize/changeStatus",{
             "tire_sizeId": tire_sizeId,
-            "status": status
+            "status": status,
+            "rimId": rimId
         },function(data){
             if(data.message == 200){
                 showMessage(data.message,"admin/Tires/tiresize/"+rimId);

@@ -90,10 +90,11 @@ class trieSizes extends CI_Model{
             $this->db->where("status", $status);
         }
 
-        $query = $this->db->limit($limit,$start)
-                ->order_by($col,$dir)
-                ->get('tire_size');
-        
+        $query = $this->db->where("rimId", $rimId)
+        ->limit($limit,$start)
+        ->order_by($col,$dir)
+        ->get('tire_size');
+
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -112,6 +113,7 @@ class trieSizes extends CI_Model{
                 ->db
                 ->like('tire_size',$search)
                 ->where('status',$status)
+                ->or_where('rimId',$rimId)
                 ->get('tire_size');
     
         return $query->num_rows();
