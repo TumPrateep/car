@@ -9,7 +9,7 @@ class Spareundercarries extends CI_Controller {
 		$this->load->view("lib");
 	}
 	
-	public function spareUndercarriage()
+	public function index()
 	{
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
