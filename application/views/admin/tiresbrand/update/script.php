@@ -37,7 +37,7 @@
         },
         messages: {
             tire_brandName: {
-            required: "กรุณากรอกยี่ห้อยางรถยนต์"
+            required: "กรุณากรอกยี่ห้อยางรถยนต"
             }
         },
     });
