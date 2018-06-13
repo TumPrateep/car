@@ -6,7 +6,7 @@
             <h3 class="text-primary">อะไหล่ช่วงล่าง</h3> </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/car/spareUndercarriage"); ?>">อะไหล่ช่วงล่าง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Spareundercarries/spareUndercarriage"); ?>">อะไหล่ช่วงล่าง</a></li>
                 <li class="breadcrumb-item active">ค้นหา</li>
             </ol>
         </div>
