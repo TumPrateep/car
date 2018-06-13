@@ -84,11 +84,11 @@ class Triebrand extends BD_Controller {
     }
 
     function updateTireBrand_post(){
-        $config['upload_path'] = 'public/image/brand/';
+        $config['upload_path'] = 'public/image/tire_brand/';
         $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
-        $config['max_width']  = '1024';
-        $config['max_height']  = '768';
+        // $config['max_width']  = '1024';
+        // $config['max_height']  = '768';
         $config['overwrite'] = TRUE;
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
@@ -96,10 +96,17 @@ class Triebrand extends BD_Controller {
         $this->load->library('upload', $config);
         $this->load->model("triebrands");
 
-        $userId = $this->session->userdata['logged_in']['id'];
-        
-        $imageDetailArray = $this->upload->data();
-        $image =  $imageDetailArray['file_name'];
+        $image =  "";
+        if ( ! $this->upload->do_upload("tire_brandPicture")){
+            $error = array('error' => $this->upload->display_errors());
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $output["data"] = $error;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $imageDetailArray = $this->upload->data();
+            $image =  $imageDetailArray['file_name'];
+        }   
+                
         $tire_brandName = $this->post("tire_brandName");
         $tire_brandId = $this->post("tire_brandId");
         $isDublicte = $this->triebrands->wherenot($tire_brandId,$tire_brandName);
@@ -107,21 +114,23 @@ class Triebrand extends BD_Controller {
             $data = array(
                 "tire_brandId"=> $tire_brandId,
                 "tire_brandName"=> $tire_brandName,
-                "tire_brandPicture"=> $tire_brandPicture,
-                "status"=> 1,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId
+                "tire_brandPicture"=> $image,
+                "status"=> 1
             );
+            $oldData = $this->triebrands->getirebrandById($tire_brandId);
             $isResult = $this->triebrands->update($data);
             if($isResult){
+                unlink($config['upload_path'].$oldData->tire_brandPicture);
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
+                unlink($config['upload_path'].$image);
                 $output["message"] = REST_Controller::MSG_NOT_UPDATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
 
         }else{
+            unlink($config['upload_path'].$image);
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
@@ -205,6 +214,49 @@ class Triebrand extends BD_Controller {
             }
         }else{
             $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+    function changeStatus_post(){
+        $tire_brandId = $this->post("tire_brandId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status
+        );
+        $this->load->model("Triebrands");
+        $result = $this->Triebrands->updateStatus($tire_brandId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function changeStatusModel_post(){
+        $tire_modelId = $this->post("tire_modelId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status
+        );
+        $this->load->model("Triemodels");
+        $result = $this->Triemodels->updateTireModel($tire_modelId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }

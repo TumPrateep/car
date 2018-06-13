@@ -115,12 +115,12 @@
 
 
     function updateStatus(brandId,status){
-        $.post(base_url+"api/Car/changeStatus",{
+        $.post(base_url+"api/Triebrand/changeStatus",{
             "brandId": brandId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/car");
+                showMessage(data.message,"admin/Tires");
             }else{
                 showMessage(data.message);
             }
