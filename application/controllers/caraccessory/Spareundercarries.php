@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class CarAccessory extends CI_Controller {
+class Spareundercarries extends CI_Controller {
 
 	function __construct()
     {
@@ -9,14 +9,19 @@ class CarAccessory extends CI_Controller {
 		$this->load->view("lib");
 	}
 	
-	function index(){
+	public function spareUndercarriage()
+	{
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/layout/content");
+		$this->load->view("caraccessory/spareUndercarriage/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
 	}
 	
 
 }
+
+
+
+

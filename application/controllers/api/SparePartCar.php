@@ -111,7 +111,7 @@ class SparePartCar extends BD_Controller {
         $spares_brandId = $this->post('spares_brandId');
         $spares_brandName = $this->post('spares_brandName');
         $spares_undercarriageId = $this->post('spares_undercarriageId');
-        
+        $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("Sparesbrand");
 
         $result = $this->Sparesbrand->wherenotBrand($spares_brandId,$spares_brandName,$spares_undercarriageId);

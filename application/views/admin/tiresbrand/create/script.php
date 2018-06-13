@@ -22,7 +22,7 @@
     $("#tire_brandPicture").fileinput({
         language: "th",
         theme: 'fa',
-        allowedFileExtensions: ['jpg'],
+        allowedFileExtensions: ['jpg' , 'png'],
         overwriteInitial: false,
         maxFileSize: 300,
         required: true,

@@ -1,7 +1,5 @@
 <script>
-
     // var tire_brandId = $("#tire_brandId").val();
-
     // $.post(base_url+"api/Triebrand/????????",{
     //     "tire_brandId": tire_brandId
     // },function(data){
@@ -44,7 +42,8 @@
                     "type": "POST",
                     "data": function ( data ) {
                         data.tire_modelName = $("#table-search").val(),
-                        data.tire_brandId = $("#tire_brandId").val()
+                        data.tire_brandId = $("#tire_brandId").val(),
+                        data.status = $("#status").val()
                     }
                 },
                 "order": [[ 1, "asc" ]],
@@ -86,7 +85,7 @@
                                 active = "";
                             }
                             return '<div>'
-                            +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.rimId+','+data.status+')">'
+                            +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.tire_brandId+','+data.status+','+data.tire_modelId+')">'
                             +'<div class="handle"></div>'
                             +'</button>'
                             +'</div>';
@@ -99,11 +98,7 @@
                     { "width": "20%", "targets": 2 },
                     { "width": "10%", "targets": 3 }
                 ]    
-
         });
-
-
-
     function deletetriemodel(tire_modelId,tire_modelName,tire_brandId){
         var option = {
             url: "/Triemodel/deletetriemodel?tire_modelId="+tire_modelId,
@@ -113,14 +108,23 @@
         }
         fnDelete(option);
     }
-
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
-
+    function updateStatus(tire_modelId,status,tire_brandId){
+        $.post(base_url+"api/Triemodel/changeStatus",{
+            "tire_modelId": tire_brandId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/Tires/tiresmodel/"+tire_modelId);
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
     
-
 </script>
 
 </body>

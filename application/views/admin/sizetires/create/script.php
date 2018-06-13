@@ -4,10 +4,22 @@
             tire_size: {
                 required: true
             },
+            tireSeries: {
+                required: true
+            },
+            rim: {
+                required: true
+            }
         },
         messages: {
             tire_size: {
                 required: "กรุณากรอกขนาดยาง"
+            },
+            tireSeries: {
+                required: "กรุณากรอกซีรี่ย์ยาง"
+            },
+            rim: {
+                required: "กรุณากรอกขนาดกะทะล้อ"
             }
         },
     });

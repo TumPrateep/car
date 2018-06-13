@@ -3,7 +3,8 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">ยี่ห้อรถ</h3> </div>
+            <h3 class="text-primary">ยี่ห้อรถ</h3>  
+        </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/car"); ?>">ยี่ห้อรถ</a></li>
@@ -16,7 +17,9 @@
     <div class="container-fluid">
         <div class="row bg-white p-30 search-header">
             <div class="col-md-6">
-                 <button type="button" class="btn btn-info m-b-10 m-l-5"><i class="fa fa-plus">  สร้าง</i></button>
+                <a href="<?=base_url("caraccessory/car/createcar") ?>">
+                    <button type="button" class="btn btn-info m-b-10 m-l-5" >Create</button>
+                </a>     
             </div>
             <div class="col-md-6">
                 <div class="input-group input-group-default">

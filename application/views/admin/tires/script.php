@@ -8,7 +8,6 @@ function deleterim(rimId,rimName){
         }
         fnDelete(option);
     }
-
     var table = $('#tires-table').DataTable({
         "language": {
                 "aria": {
@@ -38,7 +37,8 @@ function deleterim(rimId,rimName){
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.rimName = $("#table-search").val()
+                    data.rimName = $("#table-search").val(),
+                    data.status = $("#status").val()
                 }
             },
             "order": [[ 1, "asc" ]],
@@ -99,15 +99,24 @@ function deleterim(rimId,rimName){
                 { "width": "20%", "targets": 2 },
                 { "width": "10%", "targets": 3 }
             ]	 
-
     });
-
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
+    function updateStatus(rimId,status){
+        $.post(base_url+"api/rim/changeStatus",{
+            "rimId": rimId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/Tires");
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
     
-
 </script>
 
 </body>
