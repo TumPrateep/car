@@ -63,7 +63,7 @@ class SpareUndercarriage extends BD_Controller {
     function createspareUndercarriage_post(){
 
         $spares_undercarriageName = $this->post("spares_undercarriageName");
-        
+        $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("sparesUndercarriages");
         $isCheck = $this->sparesUndercarriages->checksparesUndercarriage($spares_undercarriageName);
 
@@ -117,7 +117,7 @@ class SpareUndercarriage extends BD_Controller {
 
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_undercarriageName = $this->post('spares_undercarriageName');
-        
+        $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("sparesUndercarriages");
 
         $result = $this->sparesUndercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
