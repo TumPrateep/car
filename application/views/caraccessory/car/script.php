@@ -30,7 +30,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    // data.rimName = $("#table-search").val()
+                    data.brandName = $("#brand-search").val()
                 }
             },
             "columns": [
@@ -61,6 +61,11 @@
                 }
             ]
     });
+
+    $("#btn-search").click(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
 </script>
 
 </body>

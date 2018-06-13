@@ -23,8 +23,8 @@
             </div>
             <div class="col-md-6">
                 <div class="input-group input-group-default">
-                    <input type="text" placeholder="ค้นหา" name="Search" class="form-control">
-                    <span class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="ti-search"></i></button></span>
+                    <input type="text" placeholder="ค้นหา" name="Search" id="brand-search" class="form-control">
+                    <span class="input-group-btn"><button class="btn btn-primary" id="btn-search"><i class="ti-search"></i></button></span>
                 </div>
             </div>
         </div>
