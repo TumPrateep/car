@@ -81,9 +81,13 @@ class Triemodels extends CI_Model {
         
     }
 
-    function tireModel_search($limit,$start,$search,$col,$dir,$tire_brandId)
+    function tireModel_search($limit,$start,$search,$col,$dir,$tire_brandId,$status)
     {
         $this->db->where("tire_brandId", $tire_brandId);
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+
         $query = $this
                 ->db
                 ->like('tire_modelName',$search)
@@ -102,12 +106,14 @@ class Triemodels extends CI_Model {
         }
     }
 
-    function tireModel_search_count($search,$tire_brandId)
+    function tireModel_search_count($search,$tire_brandI,$status)
     {
         $this->db->where("tire_brandId", $tire_brandId);
         $query = $this
                 ->db
                 ->like('tire_modelName',$search)
+                ->where('status',$status)
+                ->or_where('tire_brandId',$tirebrandId)
                 ->get('tire_model');
     
         return $query->num_rows();
@@ -131,5 +137,10 @@ class Triemodels extends CI_Model {
         $this->db->where('tire_modelId',$tire_modelId);
         $result = $this->db->get('tire_model')->row();
         return $result;
+    }
+    function updateStatus($tire_modelId,$data){
+        $this->db->where('tire_modelId',$tire_modelId);
+        $result = $this->db->update('tire_model', $data);
+        return $result; 
     }
 }

@@ -44,7 +44,8 @@
                     "type": "POST",
                     "data": function ( data ) {
                         data.tire_modelName = $("#table-search").val(),
-                        data.tire_brandId = $("#tire_brandId").val()
+                        data.tire_brandId = $("#tire_brandId").val(),
+                        data.status = $("#status").val()
                     }
                 },
                 "order": [[ 1, "asc" ]],
@@ -86,7 +87,7 @@
                                 active = "";
                             }
                             return '<div>'
-                            +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.rimId+','+data.status+')">'
+                            +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.tire_brandId+','+data.status+','+data.tire_modelId+')">'
                             +'<div class="handle"></div>'
                             +'</button>'
                             +'</div>';
@@ -118,6 +119,19 @@
         event.preventDefault();
         table.ajax.reload();
     })
+
+    function updateStatus(tire_modelId,status,tire_brandId){
+        $.post(base_url+"api/Triemodel/changeStatus",{
+            "tire_modelId": tire_brandId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/Tires/tiresmodel/"+tire_modelId);
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
 
     
 

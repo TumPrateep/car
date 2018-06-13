@@ -38,8 +38,7 @@ function deleterim(rimId,rimName){
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.rimName = $("#table-search").val(),
-                    data.status = $("#status").val()
+                    data.rimName = $("#table-search").val()
                 }
             },
             "order": [[ 1, "asc" ]],
@@ -107,19 +106,6 @@ function deleterim(rimId,rimName){
         event.preventDefault();
         table.ajax.reload();
     })
-
-    function updateStatus(rimId,status){
-        $.post(base_url+"api/rim/changeStatus",{
-            "rimId": rimId,
-            "status": status
-        },function(data){
-            if(data.message == 200){
-                showMessage(data.message,"admin/Tires");
-            }else{
-                showMessage(data.message);
-            }
-        });
-    }
     
 
 </script>

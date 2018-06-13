@@ -14,30 +14,20 @@
             result = data.data;
             $("#tire_brandName").val(result.tire_brandName);
             picture = result.tire_brandPicture;
-            
-
-             $("#tire_brandPicture").fileinput({
-                theme: 'fa',
-                showUpload: false,
-                showCancel: false,
-                showCaption: false,
-                browseClass: "btn btn-primary btn-lg",
-                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-                overwriteInitial: false,
-                initialPreviewAsData: true,
-                allowedFileExtensions: ['jpg' , 'png'],
-                
-                initialPreview: [
-                    base_url+"public/image/brand/"+tire_brandPicture
-            
-                ],
-                initialPreviewConfig: [
-                    {caption: base_url+"public/image/brand/"+tire_brandPicture , size: 576237, width: "120px", url: "/site/file-delete", key: 1} 
-                ],
-            });
         }
         
-    });
+    });      
+
+             $("#tire_brandPicture").fileinput({
+                language: "th",
+                theme: 'fa',
+                allowedFileExtensions: ['jpg' , 'png'],
+                overwriteInitial: false,
+                maxFileSize: 300,
+                required: true,
+                showCancel: false,
+                showUpload: false
+            });
 
     $("#update-tiresbrand").validate({
         rules: {
@@ -47,7 +37,7 @@
         },
         messages: {
             tire_brandName: {
-            required: "กรุณากรอกยี่ห้อยางรถยนต์"
+            required: "กรุณากรอกยี่ห้อยางรถยนต"
             }
         },
     });
@@ -57,14 +47,14 @@
 
 
 
-    $("#submit").submit(function(){
+    $("#update-tiresbrand").submit(function(){
         updateTireBrand();
     })
     function updateTireBrand(){
         event.preventDefault();
-        var isValid = $("#submit").valid();
+        var isValid = $("#update-tiresbrand").valid();
         if(isValid){
-            var myform = document.getElementById("submit");
+            var myform = document.getElementById("update-tiresbrand");
             var formData = new FormData(myform);
             $.ajax({
                 url: base_url+"api/Triebrand/updateTireBrand",
@@ -74,7 +64,7 @@
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/tires/tiresbrand/");
+                        showMessage(data.message,"admin/tires/tiresbrand");
                     }else{
                         showMessage(data.message);
                     }

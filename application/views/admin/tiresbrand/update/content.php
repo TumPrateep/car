@@ -35,7 +35,7 @@
                         </div>
                       </div>
                       <div class="form-group"> 
-                          <input id="tire_brandPicture" name ="tire_brandPicture" class="file" type="file">
+                          <input id="tire_brandPicture" type="file" multiple name="tire_brandPicture">
                       </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary ">บันทึก</button>
