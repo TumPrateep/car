@@ -1,7 +1,5 @@
 <script>
-
     // var tire_brandId = $("#tire_brandId").val();
-
     // $.post(base_url+"api/Triebrand/????????",{
     //     "tire_brandId": tire_brandId
     // },function(data){
@@ -100,11 +98,7 @@
                     { "width": "20%", "targets": 2 },
                     { "width": "10%", "targets": 3 }
                 ]    
-
         });
-
-
-
     function deletetriemodel(tire_modelId,tire_modelName,tire_brandId){
         var option = {
             url: "/Triemodel/deletetriemodel?tire_modelId="+tire_modelId,
@@ -114,12 +108,10 @@
         }
         fnDelete(option);
     }
-
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
-
     function updateStatus(tire_modelId,status,tire_brandId){
         $.post(base_url+"api/Triemodel/changeStatus",{
             "tire_modelId": tire_brandId,
@@ -132,9 +124,7 @@
             }
         });
     }
-
     
-
 </script>
 
 </body>
