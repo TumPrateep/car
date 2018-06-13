@@ -1,5 +1,4 @@
 <script>
-
 var table = $('#tiresize-table').DataTable({
         "language": {
                 "aria": {
@@ -86,14 +85,11 @@ var table = $('#tiresize-table').DataTable({
                 { "width": "20%", "targets": 2 },
                 { "width": "10%", "targets": 3 }
             ]	 
-
     });
-
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
-
     function deletetrie_size(tire_sizeId,tire_size,rimId){
         var option = {
             url: "/Triesize/deletetriesize?tire_sizeId="+tire_sizeId,
@@ -103,7 +99,6 @@ var table = $('#tiresize-table').DataTable({
         }
         fnDelete(option);
     }
-
     function updateStatus(tire_sizeId,status,rimId){
         $.post(base_url+"api/Triesize/changeStatus",{
             "tire_sizeId": tire_sizeId,
@@ -117,7 +112,6 @@ var table = $('#tiresize-table').DataTable({
             }
         });
     }
-
 </script>
 
 </body>

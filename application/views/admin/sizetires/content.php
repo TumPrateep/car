@@ -22,7 +22,7 @@
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-arrows"></i></button>
           </div>
-          <select class="form-control" name="status"  id="status">
+          <select class="form-control" id="status"  name="status">
             <option value>สถานะ</option>
             <option value=1>เปิด</option>
             <option value=2>ปิด</option>

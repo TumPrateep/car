@@ -18,7 +18,7 @@ class Car extends CI_Controller {
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
 	}
-
+	
 	public function createcar()
 	{
 		$this->load->view("caraccessory/layout/head");
@@ -30,3 +30,4 @@ class Car extends CI_Controller {
 	}
 
 }
+

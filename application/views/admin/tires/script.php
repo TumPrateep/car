@@ -8,7 +8,6 @@ function deleterim(rimId,rimName){
         }
         fnDelete(option);
     }
-
     var table = $('#tires-table').DataTable({
         "language": {
                 "aria": {
@@ -100,14 +99,11 @@ function deleterim(rimId,rimName){
                 { "width": "20%", "targets": 2 },
                 { "width": "10%", "targets": 3 }
             ]	 
-
     });
-
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
-
     function updateStatus(rimId,status){
         $.post(base_url+"api/rim/changeStatus",{
             "rimId": rimId,
@@ -121,7 +117,6 @@ function deleterim(rimId,rimName){
         });
     }
     
-
 </script>
 
 </body>

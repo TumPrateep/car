@@ -22,8 +22,8 @@
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-circle-o"></i></button>
           </div>
-          <select class="form-control" name="status" id="status" >
-            <option value>สถานะ</option>
+          <select class="form-control" id="status" name="status" >
+            <option value >สถานะ</option>
             <option value=1>เปิด</option>
             <option value=2>ปิด</option>
           </select>
