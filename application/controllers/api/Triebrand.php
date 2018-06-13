@@ -77,11 +77,11 @@ class Triebrand extends BD_Controller {
         }
     }
     function updateTireBrand_post(){
-        $config['upload_path'] = 'public/image/brand/';
+        $config['upload_path'] = 'public/image/tire_brand/';
         $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
-        $config['max_width']  = '1024';
-        $config['max_height']  = '768';
+        // $config['max_width']  = '1024';
+        // $config['max_height']  = '768';
         $config['overwrite'] = TRUE;
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
@@ -89,29 +89,41 @@ class Triebrand extends BD_Controller {
         $this->load->model("triebrands");
         $userId = $this->session->userdata['logged_in']['id'];
         
-        $imageDetailArray = $this->upload->data();
-        $image =  $imageDetailArray['file_name'];
+
+        $image =  "";
+        if ( ! $this->upload->do_upload("tire_brandPicture")){
+            $error = array('error' => $this->upload->display_errors());
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $output["data"] = $error;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $imageDetailArray = $this->upload->data();
+            $image =  $imageDetailArray['file_name'];
+        }   
+
         $tire_brandName = $this->post("tire_brandName");
         $tire_brandId = $this->post("tire_brandId");
         $isDublicte = $this->triebrands->wherenot($tire_brandId,$tire_brandName);
         if($isDublicte){
             $data = array(
-                "tire_brandId"=> $tire_brandId,
                 "tire_brandName"=> $tire_brandName,
-                "tire_brandPicture"=> $tire_brandPicture,
-                "status"=> 1,
+                "tire_brandPicture"=> $image,
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );
-            $isResult = $this->triebrands->update($data);
+            $oldData = $this->triebrands->getirebrandById($tire_brandId);
+            $isResult = $this->triebrands->update($data, $tire_brandId);
             if($isResult){
+                unlink($config['upload_path'].$oldData->tire_brandPicture);
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
+                unlink($config['upload_path'].$image);
                 $output["message"] = REST_Controller::MSG_NOT_UPDATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }else{
+            unlink($config['upload_path'].$image);
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
