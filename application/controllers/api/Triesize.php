@@ -10,6 +10,8 @@ class Triesize extends BD_Controller {
     function createtrieSize_post(){
         $tire_size = $this->post("tire_size");
         $rimId = $this->post("rimId");
+        $rim = $this->post('rim');
+        $tire_series = $this->post('tire_series');
         
         $this->load->model("trieSizes");
         $userId = $this->session->userdata['logged_in']['id'];
@@ -19,6 +21,8 @@ class Triesize extends BD_Controller {
             $data = array(
                 'tire_sizeId' => null,
                 'tire_size' => $tire_size,
+                'tire_series' => $tire_series,
+                'rim' => $rim,
                 'status' => 1,
                 'rimId' => $rimId,
                 'create_at' => date('Y-m-d H:i:s',time()),

@@ -98,6 +98,8 @@ class trieSizes extends CI_Model{
         $query = $this
                 ->db
                 ->like('tire_size',$search)
+                ->or_like('tire_series',$search)
+                ->or_like('rim',$search)
                 ->where('status',$status)
                 ->or_where('rimId',$rimId)
                 ->get('tire_size');

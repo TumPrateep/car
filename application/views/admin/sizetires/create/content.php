@@ -32,7 +32,7 @@
                           </div>  
                           <div class="col">
                             <label>ซีรี่ย์ยาง</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ซีรี่ย์ยาง" name="tireSeries" id="tireSeries">
+                            <input type="text" class="form-control" placeholder="ซีรี่ย์ยาง" name="tire_series" id="tire_series">
                           </div>
                           <div class="col">
                             <label>ขนาดกะทะล้อ</label> <span class="error">*</span>
