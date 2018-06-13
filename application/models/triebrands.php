@@ -41,8 +41,8 @@ class Triebrands extends CI_Model{
         }
         return true;
     }
-    function update($data){
-        $this->db->where('tire_brandId',$data['tire_brandId']);
+    function update($data, $tire_brandId){
+        $this->db->where('tire_brandId',$tire_brandId);
         $result = $this->db->update('tire_brand', $data);
         return $result;
     }
