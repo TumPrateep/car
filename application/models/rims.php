@@ -58,16 +58,17 @@ class rims extends CI_Model{
         
     }
 
-    function rim_search($limit,$start,$search,$col,$dir)
+    function rim_search($limit,$start,$search,$col,$dir,$status)
     {
-        $query = $this
-                ->db
-                ->like('rimName',$search)
-                ->limit($limit,$start)
+        $this->db->like('rimName',$search);
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+
+        $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('rim');
         
-       
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -76,13 +77,15 @@ class rims extends CI_Model{
         {
             return null;
         }
+        
     }
 
-    function rim_search_count($search)
+    function rim_search_count($search,$status)
     {
         $query = $this
                 ->db
                 ->like('rimName',$search)
+                ->where('status',$status)
                 ->get('rim');
     
         return $query->num_rows();

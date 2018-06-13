@@ -38,7 +38,8 @@ function deleterim(rimId,rimName){
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.rimName = $("#table-search").val()
+                    data.rimName = $("#table-search").val(),
+                    data.status = $("#status").val()
                 }
             },
             "order": [[ 1, "asc" ]],

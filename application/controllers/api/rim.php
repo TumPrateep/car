@@ -88,16 +88,17 @@ class Rim extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('rimName')))
+        if(empty($this->post('rimName'))&& empty($this->post('status')))
         {            
             $posts = $this->rims->allrim($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('rimName'); 
+            $status = $this->post('status');
 
-            $posts =  $this->rims->rim_search($limit,$start,$search,$order,$dir);
+            $posts =  $this->rims->rim_search($limit,$start,$search,$order,$dir,$status);
 
-            $totalFiltered = $this->rims->rim_search_count($search);
+            $totalFiltered = $this->rims->rim_search_count($search,$status);
         }
 
         $data = array();
