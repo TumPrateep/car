@@ -6,7 +6,7 @@
           <a href="<?=base_url("admin/car") ?>">ขอบยาง</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car/model/$brandId") ?>">ขนาดยาง</a>
+          <a href="<?=base_url("admin/car/sizetires/$brandId") ?>">ขนาดยาง</a>
         </li>
         <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
       </ol>
