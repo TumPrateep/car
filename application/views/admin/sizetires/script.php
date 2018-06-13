@@ -30,8 +30,7 @@ var table = $('#tiresize-table').DataTable({
                 "type": "POST",
                 "data": function ( data ) {
                     data.tire_size = $("#table-search").val(),
-                    data.rimId = $("#rimId").val(),
-                    data.status = $("#status").val()
+                    data.rimId = $("#rimId").val()
                 }
             },
             "order": [[ 1, "asc" ]],
@@ -107,8 +106,7 @@ var table = $('#tiresize-table').DataTable({
     function updateStatus(tire_sizeId,status,rimId){
         $.post(base_url+"api/Triesize/changeStatus",{
             "tire_sizeId": tire_sizeId,
-            "status": status,
-            "rimId": rimId
+            "status": status
         },function(data){
             if(data.message == 200){
                 showMessage(data.message,"admin/Tires/tiresize/"+rimId);

@@ -88,17 +88,16 @@ class Rim extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('rimName'))&& empty($this->post('status')))
+        if(empty($this->post('rimName')))
         {            
             $posts = $this->rims->allrim($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('rimName'); 
-            $status = $this->post('status');
 
-            $posts =  $this->rims->rim_search($limit,$start,$search,$order,$dir,$status);
+            $posts =  $this->rims->rim_search($limit,$start,$search,$order,$dir);
 
-            $totalFiltered = $this->rims->rim_search_count($search,$status);
+            $totalFiltered = $this->rims->rim_search_count($search);
         }
 
         $data = array();
@@ -178,28 +177,4 @@ class Rim extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-
-
-    function changeStatus_post(){
-        $rimId = $this->post("rimId");
-        $status = $this->post("status");
-        if($status == 1){
-            $status = 2;
-        }else{
-            $status = 1;
-        }
-        $data = array(
-            'status' => $status
-        );
-        $this->load->model("rims");
-        $result = $this->rims->updateStatus($rimId,$data);
-        if($result){
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-
-    }     
 }

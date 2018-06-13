@@ -28,8 +28,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.tire_brandName = $("#table-search").val(),
-                    data.status = $("#status").val()
+                    data.tire_brandName = $("#table-search").val()
                 }
             },
             "order": [[ 2, "asc" ]],
@@ -115,13 +114,13 @@
     })
 
 
-    function updateStatus(tire_brandId,status){
+    function updateStatus(brandId,status){
         $.post(base_url+"api/Triebrand/changeStatus",{
-            "tire_brandId": tire_brandId,
+            "brandId": brandId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/tires/tiresbrand/");
+                showMessage(data.message,"admin/Tires");
             }else{
                 showMessage(data.message);
             }

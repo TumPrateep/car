@@ -145,17 +145,16 @@ class Triemodel extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('tire_modelName'))  && empty($this->post('status')) )
+        if(empty($this->post('tire_modelName')) || empty($this->post('tire_brandId')) )
         {            
             $posts = $this->Triemodels->allTireModel($limit,$start,$order,$dir,$tire_brandId);
         }
         else {
-            $search = $this->post('tire_modelName');
-            $status = $this->post('status'); 
+            $search = $this->post('tire_modelName'); 
 
-            $posts =  $this->Triemodels->tireModel_search($limit,$start,$search,$order,$dir,$tire_brandId,$status);
+            $posts =  $this->Triemodels->tireModel_search($limit,$start,$search,$order,$dir,$tire_brandId);
 
-            $totalFiltered = $this->Triemodels->tireModel_search_count($search,$tire_brandId,$status);
+            $totalFiltered = $this->Triemodels->tireModel_search_count($search,$tire_brandId);
         }
 
         $data = array();
@@ -182,27 +181,5 @@ class Triemodel extends BD_Controller {
         );
 
         $this->set_response($json_data);
-    }
-
-    function changeStatus_post(){
-        $tire_modelId = $this->post("tire_modelId");
-        $status = $this->post("status");
-        if($status == 1){
-            $status = 2;
-        }else{
-            $status = 1;
-        }
-        $data = array(
-            'status' => $status
-        );
-        $this->load->model("Triemodels");
-        $result = $this->Triemodels->updateStatus($tire_modelId,$data);
-        if($result){
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
     }
 }

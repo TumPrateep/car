@@ -83,18 +83,17 @@ class trieSizes extends CI_Model{
         
     }
 
-    function trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status)
+    function trie_size_search($limit,$start,$search,$col,$dir,$rimId)
     {
-        $this->db->like('tire_size',$search);
-        if($status != null){
-            $this->db->where("status", $status);
-        }
-
-        $query = $this->db->where("rimId", $rimId)
-        ->limit($limit,$start)
-        ->order_by($col,$dir)
-        ->get('tire_size');
-
+        $this->db->where("rimId", $rimId);
+        $query = $this
+                ->db
+                ->like('tire_size',$search)
+                ->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('tire_size');
+        
+       
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -103,17 +102,14 @@ class trieSizes extends CI_Model{
         {
             return null;
         }
-        
     }
 
-    function trie_size_search_count($search, $rimId,$status)
+    function trie_size_search_count($search, $rimId)
     {
         $this->db->where("rimId", $rimId);
         $query = $this
                 ->db
                 ->like('tire_size',$search)
-                ->where('status',$status)
-                ->or_where('rimId',$rimId)
                 ->get('tire_size');
     
         return $query->num_rows();
