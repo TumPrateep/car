@@ -1,5 +1,6 @@
 <?php
 //ยี่ห้อยาง นะ
+//fix
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
