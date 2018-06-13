@@ -95,9 +95,7 @@
                 { "width": "20%", "targets": 4 },
                 { "width": "12%", "targets": 3 }
             ]	 
-
     });
-
     function deleteTireBand(tire_brandId,tire_brandName){
         var option = {
             url: "/Triebrand/deletetriebrand?tire_brandId="+tire_brandId,
@@ -108,26 +106,22 @@
         fnDelete(option);
     }
     
-
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
-
-
-    function updateStatus(brandId,status){
+    function updateStatus(tire_brandId,status){
         $.post(base_url+"api/Triebrand/changeStatus",{
-            "brandId": brandId,
+            "tire_brandId": tire_brandId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Tires");
+                showMessage(data.message,"admin/tires/tiresbrand/");
             }else{
                 showMessage(data.message);
             }
         });
     }
-
 </script>
 
 </body>
