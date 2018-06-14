@@ -45,3 +45,18 @@
     border-top-color: #00d0ff;
     border-top-width: 3px;
 }
+
+.filter-gray{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    pointer-events: none;
+}
+
+.lamp{
+    color: #00d0ff;
+    font-size: 14px;
+}
+
+.card-height{
+    min-height:224px !important;
+}
