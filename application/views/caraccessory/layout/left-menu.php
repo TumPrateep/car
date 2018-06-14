@@ -15,7 +15,7 @@
                                 <li class="active"> <a class="has-arrow" href="#" aria-expanded="true">ยางรถ</a>
                                     <ul aria-expanded="true" class="collapse in" style="">
                                         <li><a href="<?=base_url("caraccessory/TireRim"); ?>">ขอบ/ขนาดยาง</a></li>
-                                        <li><a href="#">ยี่ห้อ/รุ่นยาง</a></li>
+                                        <li><a href="<?=base_url("caraccessory/TireBrand"); ?>">ยี่ห้อ/รุ่นยาง</a></li>
                                     </ul>
                                 </li>
                             </ul>
