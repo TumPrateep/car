@@ -10,7 +10,7 @@
                         <li><a href="<?=base_url("caraccessory/car"); ?>"><i class="fa fa-tachometer"></i><span class="hide-menu">การจัดการยี่ห้อ/รุ่นรถ</span></a></li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">ข้อมูลอะไหล่ </span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?=base_url("caraccessory/car/spareUndercarriage"); ?>">อะไหล่ช่วงล่าง </a></li>
+                                <li><a href="<?=base_url("caraccessory/Spareundercarries/"); ?>">อะไหล่ช่วงล่าง </a></li>
                                 <li><a href="<?=base_url("caraccessory/lubricator"); ?>">น้ำมันเครื่อง </a></li>
                                 <li class="active"> <a class="has-arrow" href="#" aria-expanded="true">ยางรถ</a>
                                     <ul aria-expanded="true" class="collapse in" style="">

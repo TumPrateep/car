@@ -1,5 +1,4 @@
 <script>
-
 var table = $('#tiresize-table').DataTable({
         "language": {
                 "aria": {
