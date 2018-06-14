@@ -4,7 +4,7 @@
             tire_size: {
                 required: true
             },
-            tireSeries: {
+            tire_series: {
                 required: true
             },
             rim: {
@@ -15,7 +15,7 @@
             tire_size: {
                 required: "กรุณากรอกขนาดยาง"
             },
-            tireSeries: {
+            tire_series: {
                 required: "กรุณากรอกซีรี่ย์ยาง"
             },
             rim: {
