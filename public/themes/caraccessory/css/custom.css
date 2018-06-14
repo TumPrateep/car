@@ -40,3 +40,8 @@
 .input-group > .select2-container--bootstrap .input-group-btn .btn {
   width: 80% !important;
 }
+
+.card-header{
+    border-top-color: #00d0ff;
+    border-top-width: 3px;
+}
