@@ -72,16 +72,24 @@
 
     $("#1").select2({
         ajax: {
-            url: base_url,
+            url: base_url+"apiCaraccessories/Tirebrand/getAllTireBrand",
             dataType: 'json',
             delay: 250,
-            data: function (params) {
+            method: "post",
+            data: function (term, page) {
                 return {
-                    q: params.term, // search term
-                    page: params.page
+                    term: term, // search term
+                    page: 10
                 };
             },
-        }
+            processResults: function (data, page) {
+                return {
+                    results: data.items
+                };
+            },
+            cache: true
+          },
+          escapeMarkup: function (markup) { return markup; }
     });
 
 </script>
