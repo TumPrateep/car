@@ -23,29 +23,27 @@
             </div>
             <div class="col-md-2">
                 <div class="input-group input-group-default">
+                    <select class="form-control" id="1"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group input-group-default">
                     <select class="form-control">
-                        <option>1</option>
+                        <option>รุ่นยาง</option>
                     </select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="input-group input-group-default">
                     <select class="form-control">
-                        <option>1</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="input-group input-group-default">
-                    <select class="form-control">
-                        <option>1</option>
+                        <option>ขอบยาง</option>
                     </select>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="input-group input-group-default">
                     <select class="form-control">
-                        <option>1</option>
+                        <option>ขนาดยาง</option>
                     </select>
                     <span class="input-group-btn"><button class="btn btn-primary" id="btn-search"><i class="ti-search"></i></button></span>
                 </div>

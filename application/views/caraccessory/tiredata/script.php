@@ -67,6 +67,23 @@
         event.preventDefault();
         table.ajax.reload();
     })
+
+    $.fn.select2.defaults.set( "theme", "bootstrap" );
+
+    $("#1").select2({
+        ajax: {
+            url: base_url,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term, // search term
+                    page: params.page
+                };
+            },
+        }
+    });
+
 </script>
 
 </body>
