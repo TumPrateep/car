@@ -81,7 +81,7 @@
             data: function (term, page) {
                 return {
                     term: term.term, // search term
-                    page: 10
+                    page: 20
                 };
             },
             processResults: function (data, page) {
@@ -92,6 +92,10 @@
             }
         },
         escapeMarkup: function (markup) { return markup; }
+    });
+
+    $("#tireBrand").change(function(){
+        $("#tireModel").val(null).trigger('change');
     });
 
     $("#tireModel").select2({
@@ -105,8 +109,61 @@
             data: function (term, page) {
                 return {
                     term: term.term, // search term
-                    page: 10,
+                    page: 20,
                     tireBrandId: $("#tireBrand").val()
+                };
+            },
+            processResults: function (data, page) {
+                console.log(data);
+                return {
+                    results: data.items
+                };
+            }
+        },
+        escapeMarkup: function (markup) { return markup; }
+    });
+
+    $("#tireRim").select2({
+        placeholder: "ขอบยาง",
+        ajax: {
+            url: base_url+"apiCaraccessories/Tirerim/getAllTireRim",
+            dataType: 'json',
+            delay: 250,
+            cache: true,
+            method: "post",
+            data: function (term, page) {
+                return {
+                    term: term.term, // search term
+                    page: 20
+                };
+            },
+            processResults: function (data, page) {
+                console.log(data);
+                return {
+                    results: data.items
+                };
+            }
+        },
+        escapeMarkup: function (markup) { return markup; }
+    });
+
+    $("#tireRim").change(function(){
+        $("#tireSize").val(null).trigger('change');
+    });
+
+    $("#tireSize").select2({
+        placeholder: "ขนาดยาง",
+        ajax: {
+            url: base_url+"apiCaraccessories/Triesize/getAllTireSize",
+            dataType: 'json',
+            delay: 250,
+            cache: true,
+            method: "post",
+            data: function (term, page) {
+                return {
+                    term: term.term, // search term
+                    page: 20,
+                    tireRimId: $("#tireRim").val()
                 };
             },
             processResults: function (data, page) {

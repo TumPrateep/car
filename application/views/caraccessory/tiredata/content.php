@@ -33,16 +33,12 @@
             </div>
             <div class="col-md-2">
                 <div class="input-group input-group-default">
-                    <select class="form-control">
-                        <option>ขอบยาง</option>
-                    </select>
+                    <select class="form-control" id="tireRim"></select>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="input-group input-group-default">
-                    <select class="form-control">
-                        <option>ขนาดยาง</option>
-                    </select>
+                <div class="input-group input-group-default fixe-size">
+                    <select class="form-control" id="tireSize"></select>
                     <span class="input-group-btn"><button class="btn btn-primary" id="btn-search"><i class="ti-search"></i></button></span>
                 </div>
             </div>

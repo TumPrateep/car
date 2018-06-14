@@ -26,3 +26,17 @@
 .table-bordered td, .table-bordered th {
     border: 0px solid #ffffff !important;
 }
+
+.input-group.input-group-default.fixe-size{
+    display: -webkit-box;
+}
+
+.fixe-size>select>span.select2{
+    width: 100%;
+}
+
+.input-group.fixe-size > .select2-container--bootstrap,
+.input-group > .select2-container--bootstrap .input-group-btn,
+.input-group > .select2-container--bootstrap .input-group-btn .btn {
+  width: 80% !important;
+}

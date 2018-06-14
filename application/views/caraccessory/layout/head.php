@@ -13,6 +13,7 @@
     <title>CarJaidee</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url("/public/themes/caraccessory/css/lib/bootstrap/bootstrap.min.css") ?>" rel="stylesheet">
+    <link href="<?=base_url("/public/themes/caraccessory/css/lib/dropzone/dropzone.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/themes/caraccessory/css/style.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/themes/caraccessory/css/custom.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.css") ?>" rel="stylesheet">

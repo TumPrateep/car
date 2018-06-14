@@ -60,4 +60,24 @@ class TireRim extends BD_Controller {
         $this->set_response($json_data);
     }
 
+    function getAllTireRim_post(){
+        $q = $this->post("term");
+        $page = $this->post("page");
+        $this->load->model("Tirerims");
+        $listTireRim = $this->Tirerims->getAllTireRimByName($q, $page);
+        $output["items"] = [];
+        $nestedData = [];
+        if($listTireRim != null){
+            foreach ($listTireRim as $row) {
+                $nestedData[] =  array(
+                    "id" => $row->rimId,
+                    "text" => $row->rimName
+                );
+            }
+        }
+        $output["items"] = $nestedData;
+        $output["q"] = $q;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
 }

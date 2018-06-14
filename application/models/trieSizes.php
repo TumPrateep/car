@@ -128,4 +128,13 @@ class trieSizes extends CI_Model{
         return $result; 
     }
     
+    function getAllTireSizeByName($q, $limit, $tireRimId){
+        $this->db->select("CONCAT(CONCAT(tire_size, '/', tire_series),'/', rim) AS tire_sizeName", FALSE);
+        $this->db->select('tire_sizeId');
+        $this->db->where('rimId',$tireRimId);
+        if($q != null && $q != ""){
+            $this->db->where("CONCAT(CONCAT(tire_size, '/', tire_series),'/', rim) LIKE '%".$q."%'", NULL, FALSE);
+        }       
+        return $this->db->limit($limit, 0)->get("tire_size")->result();
+    }
 }
