@@ -3,11 +3,11 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">รายการอะไหล่</h3>  
+            <h3 class="text-primary">รายการขอบยาง</h3>  
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Spareundercarries"); ?>">รายการอะไหล่</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireRim"); ?>">รายการขอบยาง</a></li>
                 <li class="breadcrumb-item active">ค้นหา</li>
             </ol>
         </div>
@@ -17,8 +17,8 @@
     <div class="container-fluid">
         <div class="row bg-white p-30 search-header">
             <div class="col-md-6">
-                <a href="<?=base_url("caraccessory/Spareundercarries/createspareUndercarriage") ?>">
-                    <button type="button" class="btn btn-info m-b-10 m-l-5" >เพิ่มรายการอะไหล่</button>
+                <a href="<?=base_url("caraccessory/car/createcar") ?>">
+                    <button type="button" class="btn btn-info m-b-10 m-l-5" >Create</button>
                 </a>     
             </div>
             <div class="col-md-6">

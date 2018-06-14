@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Lubricator extends CI_Controller {
+class TireRim extends CI_Controller {
 
 	function __construct()
     {
@@ -9,15 +9,20 @@ class Lubricator extends CI_Controller {
 		$this->load->view("lib");
 	}
 	
-	function index(){
+	public function index()
+	{
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/lubricator/content");
+		$this->load->view("caraccessory/TireRim/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
-		$this->load->view("caraccessory/lubricator/script");
-    }
-    	
+		$this->load->view("caraccessory/TireRim/script");
+	}
+	
 
 }
+
+
+
+

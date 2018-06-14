@@ -17,7 +17,7 @@
               <div class="card text-white bg-success">
                   <div class="card-header">
 
-                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i>เเก้ไขข้อมูลขนาดยาง</h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i> เเก้ไขข้อมูลขนาดยาง</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -25,14 +25,20 @@
                     <input type="hidden" id="rimId" name="rimId" value="<?=$rimId ?>">
                     <input type="hidden" id="tire_sizeId" name="tire_sizeId" value="<?=$tire_sizeId ?>">
                     <div class="card-body black bg-light">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label>ระบุขนาดยาง</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ระบุขนาดยาง" id="tire_size" name="tire_size" value="">
+                    <div class="form-row">
+                          <div class="col">
+                            <label>หน้ายาง</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="หน้ายาง" name="tire_size" id="tire_size">
+                          </div>  
+                          <div class="col">
+                            <label>ซีรี่ย์ยาง</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="ซีรี่ย์ยาง" name="tire_series" id="tire_series">
                           </div>
-                        </div>
-                      </div>
+                          <div class="col">
+                            <label>ขนาดกะทะล้อ</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="ขนาดกะทะล้อ" name="rim" id="rim">
+                          </div>
+                      </div><br>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary ">บันทึก</button>
                       </div>

@@ -27,11 +27,11 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/CarSpareUndercarriage/searchspareUndercarriage",
+                "url": base_url+"apiCaraccessories/TireBrand/searchTirebrand",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_undercarriageName = $("#brand-search").val()
+                    data.tire_brandName = $("#brand-search").val()
                 }
             },
             "columns": [
@@ -47,9 +47,9 @@
                         $.each(data, function( index, value ) {
                             html += '<div class="col-md-3">'
                                  + '<div class="card">'
-                                //  + '<img class="card-img-top" src="'+base_url+'public/image/brand/'+value.brandPic+'" alt="Card image cap">'
+                                 + '<img class="card-img-top" src="'+base_url+'public/image/tire_brand/'+value.tire_brandPicture+'" alt="Card image cap">'
                                  + '<div class="card-body text-center">'
-                                 + '<h5 class="card-title">'+value.spares_undercarriageName+'</h5>'
+                                 + '<h5 class="card-title">'+value.tire_brandName+'</h5>'
                                  + '<a href="#" class="btn btn-primary">Go somewhere</a>'
                                  + '</div>'
                                  + '</div>'

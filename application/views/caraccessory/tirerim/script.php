@@ -27,11 +27,11 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/CarSpareUndercarriage/searchspareUndercarriage",
+                "url": base_url+"apiCaraccessories/TireRim/searchrim",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_undercarriageName = $("#brand-search").val()
+                    data.rimName = $("#brand-search").val()
                 }
             },
             "columns": [
@@ -49,7 +49,7 @@
                                  + '<div class="card">'
                                 //  + '<img class="card-img-top" src="'+base_url+'public/image/brand/'+value.brandPic+'" alt="Card image cap">'
                                  + '<div class="card-body text-center">'
-                                 + '<h5 class="card-title">'+value.spares_undercarriageName+'</h5>'
+                                 + '<h5 class="card-title">'+value.rimName+'</h5>'
                                  + '<a href="#" class="btn btn-primary">Go somewhere</a>'
                                  + '</div>'
                                  + '</div>'

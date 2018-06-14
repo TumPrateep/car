@@ -60,6 +60,8 @@ class Triesize extends BD_Controller {
             $data = array(
                 'tire_sizeId' => $tire_sizeId,
                 'tire_size' => $tire_size,
+                'tire_series' => $tire_series,
+                'rim' => $rim,
                 'status' => 1,
                 'rimId' => $rimId,
                 'create_at' => date('Y-m-d H:i:s',time()),
@@ -154,6 +156,7 @@ class Triesize extends BD_Controller {
         $tire_sizeId = $this->post('tire_sizeId');
         $rimId = $this->post('rimId');
         $this->load->model("trieSizes");
+       
         $this->set_response($isCheck, REST_Controller::HTTP_OK);
         $result = $this->trieSizes->geTiresizeFromTiresizeBytireId($tire_sizeId);
         if($result != null){
