@@ -72,4 +72,37 @@ class CarSpareUndercarriage extends BD_Controller {
         $this->set_response($json_data);
     }
 
+    function createspareUndercarriage_post(){
+
+        $spares_undercarriageName = $this->post("spares_undercarriageName");
+        $userId = $this->session->userdata['logged_in']['id'];
+        $this->load->model("sparesUndercarriages");
+        $isCheck = $this->sparesUndercarriages->checksparesUndercarriage($spares_undercarriageName);
+
+        if($isCheck){
+            $data = array(
+                'spares_undercarriageId' => null,
+                'spares_undercarriageName' => $spares_undercarriageName,
+                'status' => 1
+            );
+            $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+        
+        else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
 }
