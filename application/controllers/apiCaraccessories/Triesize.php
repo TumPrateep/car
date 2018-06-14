@@ -1,27 +1,26 @@
 <?php
-//ยี่ห้อยาง นะ
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Tiremodel extends BD_Controller {
+class Triesize extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
-
-    function getAllTireModel_post(){
+    
+    function getAllTireSize_post(){
         $q = $this->post("term");
         $page = $this->post("page");
-        $tireBrandId = $this->post("tireBrandId");
-        $this->load->model("Triemodels");
-        $listTireModel = $this->Triemodels->getAllTireModelByName($q, $page, $tireBrandId);
+        $tireRimId = $this->post("tireRimId");
+        $this->load->model("trieSizes");
+        $listTireSize = $this->trieSizes->getAllTireSizeByName($q, $page, $tireRimId);
         $output["items"] = [];
         $nestedData = [];
-        if($listTireModel != null){
-            foreach ($listTireModel as $row) {
+        if($listTireSize != null){
+            foreach ($listTireSize as $row) {
                 $nestedData[] =  array(
-                    "id" => $row->tire_modelId,
-                    "text" => $row->tire_modelName
+                    "id" => $row->tire_sizeId,
+                    "text" => $row->tire_sizeName
                 );
             }
         }
