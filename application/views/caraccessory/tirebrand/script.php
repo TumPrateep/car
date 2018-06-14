@@ -27,11 +27,11 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"api/CarAccessory/search",
+                "url": base_url+"apiCaraccessories/TireBrand/searchTirebrand",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.brandName = $("#brand-search").val()
+                    data.tire_brandName = $("#brand-search").val()
                 }
             },
             "columns": [
@@ -47,9 +47,9 @@
                         $.each(data, function( index, value ) {
                             html += '<div class="col-md-3">'
                                  + '<div class="card">'
-                                 + '<img class="card-img-top" src="'+base_url+'public/image/brand/'+value.brandPic+'" alt="Card image cap">'
+                                 + '<img class="card-img-top" src="'+base_url+'public/image/tire_brand/'+value.tire_brandPicture+'" alt="Card image cap">'
                                  + '<div class="card-body text-center">'
-                                 + '<h5 class="card-title">'+value.brandName+'</h5>'
+                                 + '<h5 class="card-title">'+value.tire_brandName+'</h5>'
                                  + '<a href="#" class="btn btn-primary">Go somewhere</a>'
                                  + '</div>'
                                  + '</div>'
@@ -67,31 +67,6 @@
         event.preventDefault();
         table.ajax.reload();
     })
-
-    $.fn.select2.defaults.set( "theme", "bootstrap" );
-
-    $("#1").select2({
-        ajax: {
-            url: base_url+"apiCaraccessories/Tirebrand/getAllTireBrand",
-            dataType: 'json',
-            delay: 250,
-            method: "post",
-            data: function (term, page) {
-                return {
-                    term: term, // search term
-                    page: 10
-                };
-            },
-            processResults: function (data, page) {
-                return {
-                    results: data.items
-                };
-            },
-            cache: true
-          },
-          escapeMarkup: function (markup) { return markup; }
-    });
-
 </script>
 
 </body>

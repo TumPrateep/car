@@ -11,4 +11,7 @@
 
     <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
     <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
+
+    <script src="<?=base_url("/public/js/select2.full.js") ?>"></script>
+    <script src="<?=base_url("/public/js/setup.js") ?>"></script>
     
