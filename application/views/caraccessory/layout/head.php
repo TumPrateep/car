@@ -17,6 +17,8 @@
     <link href="<?=base_url("/public/themes/caraccessory/css/custom.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.css") ?>" rel="stylesheet">
     
+    <link href="<?=base_url("/public/css/select2-bootstrap.css") ?>" rel="stylesheet">
+    <link href="<?=base_url("/public/css/select2.min.css") ?>" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>

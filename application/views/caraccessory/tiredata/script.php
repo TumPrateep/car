@@ -67,6 +67,31 @@
         event.preventDefault();
         table.ajax.reload();
     })
+
+    $.fn.select2.defaults.set( "theme", "bootstrap" );
+
+    $("#1").select2({
+        ajax: {
+            url: base_url+"apiCaraccessories/Tirebrand/getAllTireBrand",
+            dataType: 'json',
+            delay: 250,
+            method: "post",
+            data: function (term, page) {
+                return {
+                    term: term, // search term
+                    page: 10
+                };
+            },
+            processResults: function (data, page) {
+                return {
+                    results: data.items
+                };
+            },
+            cache: true
+          },
+          escapeMarkup: function (markup) { return markup; }
+    });
+
 </script>
 
 </body>
