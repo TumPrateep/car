@@ -31,8 +31,8 @@ Page wrapper  -->
                             </div>           
                         </div>
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                            <button type="button" class="btn btn-inverse">Cancel</button>
+                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> ตกลง</button>
+                            <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                         </div>
                 </div>
             </div>
