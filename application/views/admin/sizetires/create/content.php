@@ -3,10 +3,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car") ?>">ขอบยาง</a>
+          <a href="<?=base_url("admin/tires") ?>">ขอบยาง</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car/sizetires/$brandId") ?>">ขนาดยาง</a>
+          <a href="<?=base_url("admin/tires/tiresize/$rimId/$tire_sizeId") ?>">ขนาดยาง</a>
         </li>
         <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
       </ol>
