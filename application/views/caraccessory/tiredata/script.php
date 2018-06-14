@@ -70,26 +70,53 @@
 
     $.fn.select2.defaults.set( "theme", "bootstrap" );
 
-    $("#1").select2({
+    $("#tireBrand").select2({
+        placeholder: "ยี่ห้อยาง",
         ajax: {
             url: base_url+"apiCaraccessories/Tirebrand/getAllTireBrand",
             dataType: 'json',
             delay: 250,
+            cache: true,
             method: "post",
             data: function (term, page) {
                 return {
-                    term: term, // search term
+                    term: term.term, // search term
                     page: 10
                 };
             },
             processResults: function (data, page) {
+                console.log(data);
                 return {
                     results: data.items
                 };
+            }
+        },
+        escapeMarkup: function (markup) { return markup; }
+    });
+
+    $("#tireModel").select2({
+        placeholder: "รุ่นยาง",
+        ajax: {
+            url: base_url+"apiCaraccessories/Tiremodel/getAllTireModel",
+            dataType: 'json',
+            delay: 250,
+            cache: true,
+            method: "post",
+            data: function (term, page) {
+                return {
+                    term: term.term, // search term
+                    page: 10,
+                    tireBrandId: $("#tireBrand").val()
+                };
             },
-            cache: true
-          },
-          escapeMarkup: function (markup) { return markup; }
+            processResults: function (data, page) {
+                console.log(data);
+                return {
+                    results: data.items
+                };
+            }
+        },
+        escapeMarkup: function (markup) { return markup; }
     });
 
 </script>

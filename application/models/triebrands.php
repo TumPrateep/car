@@ -116,5 +116,12 @@ class Triebrands extends CI_Model{
         $result = $this->db->update('tire_brand', $data);
         return $result; 
     }
+
+    function getAllTireBrandByName($q, $limit){
+        if($q != null && $q != ""){
+            $this->db->like('tire_brandName',$q); 
+        }       
+        return $this->db->limit($limit, 0)->get("tire_brand")->result();
+    }
     
 }

@@ -4260,10 +4260,10 @@ S2.define('select2/i18n/en',[],function () {
       return message;
     },
     noResults: function () {
-      return 'No results found';
+      return 'ไม่พบผลลัพธ์';
     },
     searching: function () {
-      return 'Searching…';
+      return 'กำลังค้นหา...';
     }
   };
 });

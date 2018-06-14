@@ -23,14 +23,12 @@
             </div>
             <div class="col-md-2">
                 <div class="input-group input-group-default">
-                    <select class="form-control" id="1"></select>
+                    <select class="form-control" id="tireBrand"></select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="input-group input-group-default">
-                    <select class="form-control">
-                        <option>รุ่นยาง</option>
-                    </select>
+                    <select class="form-control" id="tireModel"></select>
                 </div>
             </div>
             <div class="col-md-2">

@@ -291,7 +291,7 @@
 }
 
 .select2-container--bootstrap .select2-selection--single .select2-selection__arrow b {
-  border-color: #999 transparent transparent transparent;
+  border-color: #495057 transparent transparent transparent;
   border-style: solid;
   border-width: 4px 4px 0 4px;
   height: 0;
@@ -309,7 +309,8 @@
 }
 
 .select2-container--bootstrap .select2-selection--single .select2-selection__placeholder {
-  color: #999;
+  color: #495057;
+  font-size: 1rem;
 }
 
 .select2-container--bootstrap .select2-selection--multiple {
