@@ -16,6 +16,7 @@ class Lubricator extends CI_Controller {
 		$this->load->view("caraccessory/lubricator/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
+		$this->load->view("caraccessory/lubricator/script");
     }
     	
 
