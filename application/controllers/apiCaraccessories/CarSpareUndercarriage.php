@@ -83,7 +83,7 @@ class CarSpareUndercarriage extends BD_Controller {
             $data = array(
                 'spares_undercarriageId' => null,
                 'spares_undercarriageName' => $spares_undercarriageName,
-                'status' => 1
+                'status' => 2
             );
             $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
             $output["status"] = $result;
