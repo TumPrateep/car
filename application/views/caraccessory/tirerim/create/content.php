@@ -12,7 +12,7 @@ Page wrapper  -->
             </ol>
         </div>
     </div>
-   
+    <form id="submit">
     <div class="container-fluid">   
       <div class="row">
         <div class="col-12">
@@ -25,14 +25,14 @@ Page wrapper  -->
                                  <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="control-label">ชื่อขอบยาง</label><span class="error">*</span>
-                                        <input type="text" id="firstName" class="form-control" placeholder="ชื่อขอบยาง" name="rimName" id="rimName">
+                                        <input type="text" class="form-control" placeholder="ชื่อขอบยาง" name="rimName" id="rimName">
                                     </div>
                                 </div>       
                             </div>           
                         </div>
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                            <button type="button" class="btn btn-inverse">Cancel</button>
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> บันทึก</button>
+                            <button type="button" class="btn btn-inverse">ยกเลิก</button>
                         </div>
                 </div>
             </div>

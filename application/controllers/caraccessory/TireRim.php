@@ -28,6 +28,7 @@ class TireRim extends CI_Controller {
 		$this->load->view("caraccessory/TireRim/create/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
+		$this->load->view("caraccessory/TireRim/create/script");
 	}
 	
 
