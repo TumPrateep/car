@@ -14,39 +14,33 @@
     </div>
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
-
-    <div class="container-fluid">   
-        <div class="row">
-            <div class="col-12">
-                <div class="card card-outline-success">
-
-                    <div class="card-header">
-                        <h4 class="m-b-0 text-white">เพิ่มรายการอะไหล่</h4>
-                    </div>
-                    <div class="card-body">
-                        <form action="#">
-                            <div class="form-body">
-                                <h3 class="card-title m-t-15">รายละเอียด</h3>
-                                <hr>
-                                <div class="row p-t-20">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">ชื่ออะไหล่</label>
-                                            <input type="text" id="firstName" class="form-control" placeholder="ชื่ออะไหล่">
-                                        </div>       
+    <section class="content">
+        <div class="container-fluid">     
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card card-header">
+                        <div class="card-title">
+                            <h4>เพิ่มรายการอะไหล่</h4>
+                        </div>
+                        <form id="submit">
+                            <!-- <input type="hidden" id="spares_undercarriageId" name="spares_undercarriageId" value="<?=$spares_undercarriageId ?>"> -->
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <div class="form-group col-md-6">
+                                        <label>ชื่อรายการอะไหล่</label><span class="error">*</span>
+                                        <input type="text" class="form-control" placeholder="ชื่อรายการอะไหล่" name="spares_undercarriageName">
                                     </div>
-                                       
                                 </div>
-
-                                <div class="form-actions">
-                                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                    <button type="button" class="btn btn-inverse">Cancel</button>
-                                </div>
-                            </div>
-                        </form>   
+                                    <div class="form-group">
+                                          <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                                          <a> <button type="button" class="btn btn-inverse">ยกเลิก</button> </a>
+                                    </div>
+                            </div> 
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>   
-    </div>
+        </div>
+    </section>
+</div>
     <!-- End Container fluid  -->

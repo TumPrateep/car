@@ -80,4 +80,38 @@ class TireRim extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
+    function createRim_post(){
+        $rimName = $this->post("rimName");
+        $this->load->model("rims");
+        $userId = $this->session->userdata['logged_in']['id'];
+        $isCheck = $this->rims->checkrim($rimName);
+        if($isCheck){
+            $data = array(
+                'rimId' => null,
+                'rimName' => $rimName,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'update_at' => null,
+                'update_by' => null,
+                'status' => 2
+            );
+            $result = $this->rims->insert_rim($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+        else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
 }

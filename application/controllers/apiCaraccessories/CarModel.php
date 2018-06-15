@@ -2,39 +2,41 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CarSpareUndercarriage extends BD_Controller {
+class CarModel extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
         //$this->auth();
     }
-    function searchspareUndercarriage_post(){
+    function searchModel_post(){
         $columns = array( 
-            0 => null
+            0 =>null
         );
-            
+
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
+        $brandId = $this->post('brandId');
 
-        $this->load->model("sparesUndercarriages");
-        $totalData = $this->sparesUndercarriages->allsparesUndercarriages_count();
+        $this->load->model("Model");
+        $totalData = $this->Model->allModel_count($brandId);
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('spares_undercarriageName')))
+        if(empty($this->post('search'))&& empty($this->post('year')))
         {            
-            $posts = $this->sparesUndercarriages->allsparesUndercarriage($limit,$start,$order,$dir);
+            $posts = $this->Model->allModel($limit,$start,$order,$dir,$brandId);
         }
         else {
-            $search = $this->post('spares_undercarriageName'); 
-            $status = 2; 
+            $search = $this->post('search');
+            $year = $this->post('year');
+            $status = 1;
 
-            $posts =  $this->sparesUndercarriages->sparesUndercarriage_search($limit,$start,$search,$order,$dir,$status);
+            $posts =  $this->Model->model_search($limit,$start,$search, $year, $status ,$order,$dir,$brandId);
 
-            $totalFiltered = $this->sparesUndercarriages->sparesUndercarriage_search_count($search,$status);
+            $totalFiltered = $this->Model->model_search_count($search, $year, $status, $brandId);
         }
 
         $data = array();
@@ -45,11 +47,12 @@ class CarSpareUndercarriage extends BD_Controller {
             foreach ($posts as $post)
             {
 
-                $nestedData[$count]['spares_undercarriageId'] = $post->spares_undercarriageId;
-                $nestedData[$count]['spares_undercarriageName'] = $post->spares_undercarriageName;
+                $nestedData[$count]['brandId'] = $post->brandId;
+                $nestedData[$count]['modelId'] = $post->modelId;
+                $nestedData[$count]['modelName'] = $post->modelName;
+                $nestedData[$count]['yearStart'] = $post->yearStart;
+                $nestedData[$count]['yearEnd'] = $post->yearEnd;
                 $nestedData[$count]['status'] = $post->status;
-
-                
                 $data[$index] = $nestedData;
                 if($count >= 3){
                     $count = -1;
@@ -58,7 +61,7 @@ class CarSpareUndercarriage extends BD_Controller {
                 }
                 
                 $count++;
-                
+
             }
         }
 
@@ -72,20 +75,36 @@ class CarSpareUndercarriage extends BD_Controller {
         $this->set_response($json_data);
     }
 
-    function createspareUndercarriage_post(){
+    function createModel_post(){
 
-        $spares_undercarriageName = $this->post("spares_undercarriageName");
+        $modelName = $this->post("modelName");
+        $brandId = $this->post("brandId");
+        $yearStart = $this->post("yearStart");
+        $yearEnd = $this->post("yearEnd");
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("sparesUndercarriages");
-        $isCheck = $this->sparesUndercarriages->checksparesUndercarriage($spares_undercarriageName);
+
+        if($yearEnd == 0){
+            $yearEnd = null;
+        }
+
+
+        $this->load->model("Model");
+        $isCheck = $this->Model->get_model($brandId,$modelName);
 
         if($isCheck){
             $data = array(
-                'spares_undercarriageId' => null,
-                'spares_undercarriageName' => $spares_undercarriageName,
-                'status' => 2
+                'modelId' => null,
+                'modelName' => $modelName,
+                'brandId' => $brandId,
+                'yearStart' => $yearStart,
+                'yearEnd' => $yearEnd,
+                'status' => 2,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'update_at' => null,
+                'update_by' => null
             );
-            $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
+            $result = $this->Model->insert_model($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -96,13 +115,14 @@ class CarSpareUndercarriage extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
+
         }
-        
         else{
             $output["status"] = false;
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
-    }
 
+
+    }
 }

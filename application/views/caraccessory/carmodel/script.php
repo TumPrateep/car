@@ -1,5 +1,5 @@
 <script>
-    var table = $('#brand-table').DataTable({
+    var table = $('#model-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -27,11 +27,13 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/CarAccessory/search",
+                "url": base_url+"apiCaraccessories/CarModel/searchModel",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.brandName = $("#brand-search").val()
+                    data.brandId = $("#brandId").val(),
+                    data.search = $("#table-search").val()
+                    
                 }
             },
             "columns": [
@@ -43,21 +45,32 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '<div class="row">';
-
                         $.each(data, function( index, value ) {
+                            $yearBenull=value.yearStart;
+                            $yearBenotnull=value.yearStart+" - "+value.yearEnd;
+                            $showyear=null;
+                            if(value.yearEnd != null){
+                                $showyear=$yearBenotnull;
+                            }
+                            else{
+                                $showyear=$yearBenull;
+                            }
                             var gray = (value.status == '2')?" filter-gray ":"";
                             html += '<div class="col-lg-3 '+gray+'">'
-                                 + '<div class="card card-header-height">'
-                                 + '<span class="card-subtitle text-right card-margin"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
-                                 + '<img class="card-img-top" src="'+base_url+'public/image/brand/'+value.brandPic+'" alt="Card image cap">'
-                                 + '<div class="card-body text-center">'
-                                 + '<h5 class="card-title">'+value.brandName+'</h5>'
-                                //  + '<a href="'+base_url+"caraccessory/car/index1/"+value.brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                                 + '<a href="'+base_url+"caraccessory/CarModelAccessory/index1/"+value.brandId+'" class="btn btn-primary">Go somewhere</a>'
+                                 + '<div class="card card-height">'
+                                 + '<span class="card-subtitle mb-2">ยี่ห้อ <i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
+                                //  + '<img class="card-img-top" src="'+base_url+'public/image/tire_brand/'+value.tire_brandPicture+'" alt="Card image cap">'
+                                 + '<div class="card-body text-center card-body-height">'
+                                 + '<h5 class="card-title">'+value.modelName+'</h5>'
+                                 + '<h6 class="card-subtitle mb-2">'+ $showyear+'</h6>'
+                                //  + '<a href="'+base_url+"admin/caraccessory/CarModelAccessory/"+value.brandId+'" class="btn btn-primary">Go somewhere</a>'
+                                 + '</div>'
+                                 + '<div class="card-body text-center card-bottom">'
+                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> ลบ</button>'
                                  + '</div>'
                                  + '</div>'
                                  + '</div>';
-                                 
                         });
 
                         html += '</div>';

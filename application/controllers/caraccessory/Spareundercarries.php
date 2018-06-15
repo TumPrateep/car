@@ -26,9 +26,10 @@ class Spareundercarries extends CI_Controller {
 		$this->load->view("caraccessory/spareUndercarriage/create/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
+		$this->load->view("caraccessory/spareUndercarriage/create/script");
+		
 	}
 	
-
 }
 
 

@@ -9,6 +9,7 @@
 
     <script src="<?=base_url("/public/themes/caraccessory/js/scripts.js") ?>"></script>
 
+    <script src="<?= base_url() ?>public/js/jquery.validate.min.js"></script>
     <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
     <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
 

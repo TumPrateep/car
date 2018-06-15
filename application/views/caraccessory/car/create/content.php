@@ -50,7 +50,11 @@ Page wrapper  -->
                                     <button type="button" class="btn btn-inverse">Cancel</button>
                                 </div>
                             </div>
+<<<<<<< HEAD
                         <!-- </form>  -->  
+=======
+                        <!-- </form>    -->
+>>>>>>> 9ff969eb6fdcd03b0fe125a084cc24fae3240d2d
 
                         <!-- <h4 class="card-title">Dropzone</h4>
                         <h6 class="card-subtitle">For multiple file upload put class <code>.dropzone</code> to form.</h6>
