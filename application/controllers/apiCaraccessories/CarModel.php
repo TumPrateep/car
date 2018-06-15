@@ -74,4 +74,55 @@ class CarModel extends BD_Controller {
 
         $this->set_response($json_data);
     }
+
+    function createModel_post(){
+
+        $modelName = $this->post("modelName");
+        $brandId = $this->post("brandId");
+        $yearStart = $this->post("yearStart");
+        $yearEnd = $this->post("yearEnd");
+        $userId = $this->session->userdata['logged_in']['id'];
+
+        if($yearEnd == 0){
+            $yearEnd = null;
+        }
+
+
+        $this->load->model("Model");
+        $isCheck = $this->Model->get_model($brandId,$modelName);
+
+        if($isCheck){
+            $data = array(
+                'modelId' => null,
+                'modelName' => $modelName,
+                'brandId' => $brandId,
+                'yearStart' => $yearStart,
+                'yearEnd' => $yearEnd,
+                'status' => 2,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'update_at' => null,
+                'update_by' => null
+            );
+            $result = $this->Model->insert_model($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+
+        }
+        else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+
+
+    }
 }

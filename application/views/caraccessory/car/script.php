@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"api/CarAccessory/search",
+                "url": base_url+"apiCaraccessories/CarAccessory/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
