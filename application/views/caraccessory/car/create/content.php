@@ -16,11 +16,9 @@ Page wrapper  -->
     <div class="container-fluid">   
         <div class="row">
             <div class="col-12">
-                <div class="card card-outline-success">
+                <div class="card card-header-height">
 
-                    <div class="card-header">
-                        <h4 class="m-b-0 text-white">เพิ่มยี่ห้อรถ</h4>
-                    </div>
+                    <div class="card-title"></div>
                     <div class="card-body">
                         <!-- <form action="#"> -->
                             <div class="form-body">
