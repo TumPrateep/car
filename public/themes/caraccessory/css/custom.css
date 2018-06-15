@@ -95,7 +95,7 @@ label.error{
 }
 
 .card-bottom{
-    display: contents;
+    /* display: contents; */
 }
 
 .card-button{

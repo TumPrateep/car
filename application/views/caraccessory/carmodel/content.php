@@ -17,7 +17,7 @@
     <div class="container-fluid">
         <div class="row bg-white p-30 search-header">
             <div class="col-md-6">
-                <a href="<?=base_url("caraccessory/car/createcar") ?>">
+                <a href="<?=base_url("caraccessory/CarModelAccessory/createModelCar/$brandId") ?>">
                     <button type="button" class="btn btn-info m-b-10 m-l-5" >Create</button>
                 </a>     
             </div>
