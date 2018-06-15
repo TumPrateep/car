@@ -60,3 +60,15 @@
 .card-height{
     min-height:224px !important;
 }
+
+input.error, textarea.error, select.error { 
+    border: 1px solid red !important; 
+}
+
+.error{
+    color: red !important;
+}
+
+label.error{
+    font-size: 14px;
+}
