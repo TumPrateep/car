@@ -85,6 +85,11 @@ label.error{
     border-top: solid #9cea48;
 }
 
+.card-header-blue{
+    padding-top: 1px;
+    border-top: solid #1affff;
+}
+
 .card-margin{
     margin-bottom: 1px !important;
 }

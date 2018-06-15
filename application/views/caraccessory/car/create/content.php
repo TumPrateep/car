@@ -16,20 +16,17 @@ Page wrapper  -->
     <div class="container-fluid">   
         <div class="row">
             <div class="col-12">
-                <div class="card card-header-height">
+                <div class="card card-header-blue">
 
                     <div class="card-title"></div>
                     <div class="card-body">
                         <!-- <form action="#"> -->
                             <div class="form-body">
-                                <h3 class="card-title m-t-15">รายละเอียด</h3>
-                                <hr>
                                 <div class="row p-t-20">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">ชื่อยี่ห้อรถ</label>
                                             <input type="text" id="firstName" class="form-control" placeholder="ชื่อยี่ห้อรถ">
-                                            <small class="form-control-feedback"> This is inline help </small> </div>
                                         </div>       
                                     </div>
                                        
