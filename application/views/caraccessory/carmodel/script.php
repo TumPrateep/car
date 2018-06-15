@@ -56,15 +56,17 @@
                                 $showyear=$yearBenull;
                             }
                             var gray = (value.status == '2')?" filter-gray ":"";
-                            html += '<div class="col-md-3 '+gray+'">'
+                            html += '<div class="col-lg-3 '+gray+'">'
                                  + '<div class="card card-height">'
                                  + '<span class="card-subtitle mb-2">ยี่ห้อ <i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
                                 //  + '<img class="card-img-top" src="'+base_url+'public/image/tire_brand/'+value.tire_brandPicture+'" alt="Card image cap">'
-                                 + '<div class="card-body text-center">'
+                                 + '<div class="card-body text-center card-body-height">'
                                  + '<h5 class="card-title">'+value.modelName+'</h5>'
                                  + '<h6 class="card-subtitle mb-2">'+ $showyear+'</h6>'
                                 //  + '<a href="'+base_url+"admin/caraccessory/CarModelAccessory/"+value.brandId+'" class="btn btn-primary">Go somewhere</a>'
-                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> แก้ไข</button> '
+                                 + '</div>'
+                                 + '<div class="card-body text-center card-bottom">'
+                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> ลบ</button>'
                                  + '</div>'
                                  + '</div>'

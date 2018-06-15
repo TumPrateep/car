@@ -46,9 +46,9 @@
 
                         $.each(data, function( index, value ) {
                             var gray = (value.status == '2')?" filter-gray ":"";
-                            html += '<div class="col-md-3 '+gray+'">'
-                                 + '<div class="card">'
-                                 + '<span class="card-subtitle text-right"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
+                            html += '<div class="col-lg-3 '+gray+'">'
+                                 + '<div class="card card-header-height">'
+                                 + '<span class="card-subtitle text-right card-margin"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
                                  + '<img class="card-img-top" src="'+base_url+'public/image/brand/'+value.brandPic+'" alt="Card image cap">'
                                  + '<div class="card-body text-center">'
                                  + '<h5 class="card-title">'+value.brandName+'</h5>'
