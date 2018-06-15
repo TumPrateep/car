@@ -22,7 +22,7 @@ Page wrapper  -->
                         <h4 class="m-b-0 text-white">เพิ่มยี่ห้อรถ</h4>
                     </div>
                     <div class="card-body">
-                        <form action="#">
+                        <!-- <form action="#"> -->
                             <div class="form-body">
                                 <h3 class="card-title m-t-15">รายละเอียด</h3>
                                 <hr>
@@ -38,9 +38,9 @@ Page wrapper  -->
                                     <h3 class="box-title m-t-40">รูปภาพ</h3>
                                     <hr>
                                     
-                                    <div class="dropzone">
+                                    <form class="dropzone">
                                         <div class="fallback"><input name="file" type="file" multiple /></div>
-                                    </div>  
+                                    </form>  
                                     <h6 class="card-subtitle">เพิ่ม <code>รูปภาพ</code> ที่นี้</h6>
                                            
                                 </div>
@@ -50,7 +50,7 @@ Page wrapper  -->
                                     <button type="button" class="btn btn-inverse">Cancel</button>
                                 </div>
                             </div>
-                        </form>   
+                        <!-- </form>  -->  
 
                         <!-- <h4 class="card-title">Dropzone</h4>
                         <h6 class="card-subtitle">For multiple file upload put class <code>.dropzone</code> to form.</h6>
