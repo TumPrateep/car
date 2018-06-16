@@ -18,7 +18,7 @@
     <input type="hidden" id="tire_brandId" name="tire_brandId" value="<?=$tire_brandId ?>">
         <div class="row bg-white p-30 search-header">
             <div class="col-md-6">
-                <a href="<?=base_url("caraccessory/tirerim/createtirerim") ?>">
+            <a href="<?=base_url("caraccessory/TireModel/createTrieModel/$tire_brandId") ?>">
                     <button type="button" class="btn btn-info m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>     
