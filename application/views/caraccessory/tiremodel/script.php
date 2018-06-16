@@ -1,5 +1,5 @@
 <script>
-    var table = $('#brand-table').DataTable({
+    var table = $('#model-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -27,11 +27,12 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/TireBrand/searchTirebrand",
+                "url": base_url+"apiCaraccessories/Tiremodel/searchTireModel",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.tire_brandName = $("#brand-search").val()
+                    data.tire_brandId = $("#tire_brandId").val() ,
+                    data.tire_modelName = $("#tire_modelName").val()     
                 }
             },
             "columns": [
@@ -43,20 +44,16 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '<div class="row">';
-
                         $.each(data, function( index, value ) {
+                        
                             var gray = (value.status == '2')?" filter-gray ":"";
-                            html += '<div class="col-md-3 '+gray+'">'
-                                 + '<div class="card card-header-height">'
-                                 + '<span class="card-subtitle text-right card-margin"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                 
-                                 + '<img class="card-img-top" src="'+base_url+'public/image/tire_brand/'+value.tire_brandPicture+'" alt="Card image cap">'
-                                 + '<div class="card-body text-center">'
-                                 + '<h5 class="card-title">'+value.tire_brandName+'</h5>'
+                            html += '<div class="col-lg-3 '+gray+'">'
+                                 + '<div class="card card-height">'
+                                 + '<span class="card-subtitle mb-2">รุ่นยาง <i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
+                                 + '<div class="card-body text-center card-body-height">'
+                                 + '<h5 class="card-title">'+value.tire_modelName+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<a href="'+base_url+"caraccessory/TireModel/index1/"+value.tire_brandId+'">'
-                                 + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
-                                 + '</a>'
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> ลบ</button>'
                                  + '</div>'

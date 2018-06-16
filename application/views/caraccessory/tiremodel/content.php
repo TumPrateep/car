@@ -15,6 +15,7 @@
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
     <div class="container-fluid">
+    <input type="hidden" id="tire_brandId" name="tire_brandId" value="<?=$tire_brandId ?>">
         <div class="row bg-white p-30 search-header">
             <div class="col-md-6">
                 <a href="<?=base_url("caraccessory/tirerim/createtirerim") ?>">
@@ -24,14 +25,14 @@
             </div>
             <div class="col-md-6">
                 <div class="input-group input-group-default">
-                    <input type="text" placeholder="ค้นหา" name="Search" id="brand-search" class="form-control">
+                    <input type="text" placeholder="ค้นหา" name="search" id="tire_modelName" class="form-control">
                     <span class="input-group-btn"><button class="btn btn-primary" id="btn-search"><i class="ti-search"></i></button></span>
                 </div>
             </div>
         </div>
         
         <div class="table">
-            <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
                 <thead>
                     <th></th>
                 </thead>	
