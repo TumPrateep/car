@@ -27,6 +27,7 @@ Page wrapper  -->
                                         <div class="form-group">
                                             <label class="control-label">ชื่อยี่ห้อรถ</label>
                                             <input type="text" id="firstName" class="form-control" placeholder="ชื่อยี่ห้อรถ">
+                                         </div>
                                         </div>       
                                     </div>
                                        
