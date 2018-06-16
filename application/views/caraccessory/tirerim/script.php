@@ -45,12 +45,17 @@
                         var html = '<div class="row">';
 
                         $.each(data, function( index, value ) {
-                            html += '<div class="col-md-3">'
-                                 + '<div class="card">'
-                                //  + '<img class="card-img-top" src="'+base_url+'public/image/brand/'+value.brandPic+'" alt="Card image cap">'
+                            var gray = (value.status == '2')?" filter-gray ":"";
+                            html += '<div class="col-md-3 '+gray+'">'
+                                 + '<div class="card card-header-height">'
+                                 + '<span class="card-subtitle text-right card-margin"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
                                  + '<div class="card-body text-center">'
-                                 + '<h5 class="card-title">'+value.rimName+'</h5>'
-                                 + '<a href="#" class="btn btn-primary">Go somewhere</a>'
+                                 + '<h5 class="card-title">'+value.rimName+' นิ้ว</h5>'
+                                 + '</div>'
+                                 + '<div class="card-body text-center card-bottom">'
+                                 + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
+                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> ลบ</button>'
                                  + '</div>'
                                  + '</div>'
                                  + '</div>';
