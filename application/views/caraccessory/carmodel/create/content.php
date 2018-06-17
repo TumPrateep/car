@@ -23,7 +23,7 @@ Page wrapper  -->
                 </div> 
                         <div class="form-body"> <br>
                             <div class="row p-t-20">
-                                 <div class="col-md-12">
+                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">ชื่อรุ่นรถ</label><span class="error">*</span>
                                         <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ" name="modelName" id="modelName">
@@ -32,7 +32,7 @@ Page wrapper  -->
                             </div>           
                         </div>
                         <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                           <div class="form-group">
                             <label>ปีที่ผลิต</label> <span class="error">*</span> <label id="yearStart-error" class="error" for="yearStart"></label>
                             <div class="form-inline">
