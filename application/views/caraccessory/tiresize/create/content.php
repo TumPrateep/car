@@ -18,15 +18,15 @@ Page wrapper  -->
         <div class="col-12">
             <div class="card card-outline-success">
                 <div class="card-header">
-                    <h4 class="m-b-0 text-white"><i class="fa fa-fw fa-car"></i> เพิ่มข้อมูลขนาดยาง </h4>
+                    <h4 class="m-b-0 text-white"><i class="fa fa-fw fa-car"></i> เพิ่มข้อมูลขนาดยาง</h4>
                 </div> 
                     <input type="hidden" id="rimId" name="rimId" value="<?=$rimId ?>">
                         <div class="form-body"> <br>
                             <div class="row p-t-20">
                                 <div class="col-md-12">
                                 <div class="col">
-                                    <label>หน้ายาง</label> <span class="error">*</span>
-                                    <input type="text" class="form-control" placeholder="หน้ายาง" name="tire_size" id="tire_size">
+                                    <label>ขนาดยาง</label> <span class="error">*</span>
+                                    <input type="text" class="form-control" placeholder="ขนาดยาง" name="tire_size" id="tire_size">
                                 </div>  
                                 <div class="col">
                                     <label>ซีรี่ย์ยาง</label> <span class="error">*</span>
@@ -43,6 +43,7 @@ Page wrapper  -->
                             <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
                             <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                         </div>
+                    </form>
                 </div>
               
             </div>
