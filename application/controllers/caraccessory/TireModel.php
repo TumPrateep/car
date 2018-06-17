@@ -9,7 +9,7 @@ class TireModel extends CI_Controller {
 		$this->load->view("lib");
 	}
 	
-	public function index1($tire_brandId)
+	public function index($tire_brandId)
 	{
 		$data['tire_brandId'] = $tire_brandId;
 		$this->load->view("caraccessory/layout/head");
@@ -20,6 +20,7 @@ class TireModel extends CI_Controller {
 		$this->load->view("caraccessory/layout/foot");
 		$this->load->view("caraccessory/tiremodel/script");
 	}
+	
 	public function createTrieModel($tire_brandId)
 	{
 		$data['tire_brandId'] = $tire_brandId;

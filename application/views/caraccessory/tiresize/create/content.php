@@ -1,4 +1,4 @@
-Page wrapper  -->
+<!-- Page wrapper  -->
 <div class="page-wrapper">
     <!-- Bread crumb -->
     <div class="row page-titles">
@@ -7,8 +7,9 @@ Page wrapper  -->
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireSize/index/$rimId"); ?>">รายการขนาดยาง</a></li>
-                <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireRim"); ?>">ขอบยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireSize/index/$tire_rimId"); ?>">ขนาดยาง</a></li>
+                <li class="breadcrumb-item active">เพิ่มข้อมูลขนาดยาง</li>
             </ol>
         </div>
     </div>
@@ -16,35 +17,41 @@ Page wrapper  -->
     <div class="container-fluid">   
       <div class="row">
         <div class="col-12">
-            <div class="card card-outline-success">
-                <div class="card-header">
-                    <h4 class="m-b-0 text-white"><i class="fa fa-fw fa-car"></i> เพิ่มข้อมูลขนาดยาง</h4>
-                </div><br> 
-                    <input type="hidden" id="rimId" name="rimId" value="<?=$rimId ?>">
-                        <div class="form-row">
-                            <div class="col">
+            <div class="card card-header-blue">
+                <input type="hidden" id="rimId" name="rimId" value="<?=$tire_rimId ?>">
+                <div class="card-title"></div>
+                
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
                                 <label>ขนาดยาง</label> <span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ขนาดยาง" name="tire_size" id="tire_size">
-                            </div>  
-                            <div class="col">
-                                <label>ซีรี่ย์ยาง</label> <span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ซีรี่ย์ยาง" name="tire_series" id="tire_series">
+                                <input type="text" class="form-control input-default " name="tire_size" placeholder="ขนาดยาง">
                             </div>
-                            <div class="col">
-                                <label>ขนาดกะทะล้อ</label> <span class="error">*</span>
-                                <input type="text" class="form-control" placeholder="ขนาดกะทะล้อ" name="rim" id="rim">
-                            </div>
-                        </div><br>     
-                          
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                            <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                         </div>
-                    </form>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>ขนาดยาง</label> <span class="error">*</span>
+                                <input type="text" class="form-control input-default" placeholder="ซีรี่ย์ยาง" name="tire_series" id="tire_series">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>ขนาดยาง</label> <span class="error">*</span>
+                                <input type="text" class="form-control input-default" placeholder="ขนาดกะทะล้อ" name="rim" id="rim">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                    <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                 </div>
 
             </div>
         </div>
+        </div>
     </div>
-</div>
+    </form>
 <!-- End Container fluid 

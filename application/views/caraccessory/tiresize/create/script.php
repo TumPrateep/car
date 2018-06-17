@@ -29,12 +29,12 @@
     })
 
     function createTireSize(){
-            event.preventDefault();
+        event.preventDefault();
         var isValid = $("#submit").valid();
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/TireSize/createTireSize",data,
+            $.post(base_url+"apiCaraccessories/TireSize/createtrieSize",data,
             function(data){
                 var rimId = $("#rimId").val();
                 if(data.message == 200){

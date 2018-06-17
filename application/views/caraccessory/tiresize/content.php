@@ -3,11 +3,12 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">รายการขนาดยางยาง</h3>  
+            <h3 class="text-primary">ขนาดยาง</h3>  
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireSize/index/$rimId"); ?>">รายการขนาดยางยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireRim"); ?>">ขอบยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireSize/index/$rimId"); ?>">ขนาดยาง</a></li>
                 <li class="breadcrumb-item active">ค้นหา</li>
             </ol>
         </div>
@@ -18,7 +19,7 @@
     <input type="hidden" id="rimId" name="rimId" value="<?=$rimId ?>">
         <div class="row bg-white p-30 search-header">
             <div class="col-md-6">
-            <a href="<?=base_url("caraccessory/TireSize/createTrieSize/$rimId") ?>">
+                <a href="<?=base_url("caraccessory/TireSize/createTireSize/$rimId") ?>">
                     <button type="button" class="btn btn-info m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>     

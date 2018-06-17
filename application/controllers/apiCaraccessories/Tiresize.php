@@ -36,7 +36,7 @@ class Tiresize extends BD_Controller {
         
         $this->load->model("trieSizes");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->trieSizes->gettrie_sizeforrim($tire_size,$rimId);
+        $isCheck = $this->trieSizes->isDuplicate($tire_size, $tire_series, $rim, $rimId);
         
         if($isCheck){
             $data = array(
@@ -88,8 +88,7 @@ class Tiresize extends BD_Controller {
             $posts = $this->trieSizes->allTriesize($limit,$start,$order,$dir, $rimId);
         }
         else {
-            $search = $this->post('tire_size'); 
-            $status = 1;
+            $search = $this->post('tire_size');
             $rimId = $this->post('rimId'); 
             $posts =  $this->trieSizes->trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status);
             $totalFiltered = $this->trieSizes->trie_size_search_count($search, $rimId,$status);
