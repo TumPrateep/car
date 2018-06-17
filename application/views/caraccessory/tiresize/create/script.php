@@ -24,7 +24,28 @@
         },
     });
     
-    
+    $("#submit").submit(function(){
+        createTireSize();
+    })
+
+    function createTireSize(){
+            event.preventDefault();
+        var isValid = $("#submit").valid();
+        
+        if(isValid){
+            var data = $("#submit").serialize();
+            $.post(base_url+"apiCaraccessories/TireSize/createTireSize",data,
+            function(data){
+                var rimId = $("#rimId").val();
+                if(data.message == 200){
+                    showMessage(data.message,"caraccessory/TireSize/index/"+rimId);
+                }else{
+                    showMessage(data.message,);
+                }
+            });
+            
+        }
+    }
     
    
 </script>

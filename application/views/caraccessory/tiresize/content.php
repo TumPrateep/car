@@ -18,7 +18,7 @@
     <input type="hidden" id="rimId" name="rimId" value="<?=$rimId ?>">
         <div class="row bg-white p-30 search-header">
             <div class="col-md-6">
-            <a href="<?=base_url("caraccessory/TireModel/createTrieModel/$tire_brandId") ?>">
+            <a href="<?=base_url("caraccessory/TireSize/createTrieSize/$rimId") ?>">
                     <button type="button" class="btn btn-info m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>     

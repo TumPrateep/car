@@ -1,13 +1,25 @@
 <script>
  $("#submit").validate({
         rules: {
-            tire_modelName: {
+            tire_size: {
+                required: true
+            },
+            tire_series: {
+                required: true
+            },
+            rim: {
                 required: true
             }
         },
         messages: {
-            tire_modelName: {
-                required: "กรุณากรอกรุ่นยาง"
+            tire_size: {
+                required: "กรุณากรอกขนาดยาง"
+            },
+            tire_series: {
+                required: "กรุณากรอกซีรี่ย์ยาง"
+            },
+            rim: {
+                required: "กรุณากรอกขนาดกะทะล้อ"
             }
         },
     });
