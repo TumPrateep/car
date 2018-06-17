@@ -45,7 +45,7 @@
             $.post(base_url+"api/spareUndercarriage/updatesparesUndercarriage",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/SparePartCar/sparepart/"+spares_undercarriageId);
+                    showMessage(data.message,"admin/sparepartcar");
                 }else{
                     showMessage(data.message);
                 }
