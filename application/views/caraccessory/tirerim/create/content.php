@@ -13,7 +13,8 @@ Page wrapper  -->
         </div>
     </div>
    
-    <div class="container-fluid">     
+    <div class="container-fluid">  
+    <form id="submit">   
         <div class="row">
             <div class="col-lg-12">
                 <div class="card card-header">
@@ -25,10 +26,10 @@ Page wrapper  -->
                             <form>
                                 <div class="form-group col-md-6">
                                     <label>ชื่อขอบยาง</label>
-                                    <input type="email" class="form-control" placeholder="ชื่อขอบยาง">
+                                    <input type="text" class="form-control" placeholder="ชื่อขอบยาง" name="rimName" id="rimName">
                                 </div>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                <button type="submit" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
+                                <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                             </form>
                         </div>
                     </div>

@@ -7,7 +7,7 @@ $("#submit").validate({
         },
         messages: {
             rimName: {
-                required: "กรุณากรอกขนาดยาง"
+                required: "กรุณากรอกขอบยาง"
             }
         },
     });
