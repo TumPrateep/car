@@ -20,6 +20,18 @@ class TireSize extends CI_Controller {
 		$this->load->view("caraccessory/layout/foot");
 		$this->load->view("caraccessory/tiresize/script");
 	}
+
+	public function createTrieSize($rimId)
+	{
+        $data['rimId'] = $rimId;
+		$this->load->view("caraccessory/layout/head");
+		$this->load->view("caraccessory/layout/header");
+		$this->load->view("caraccessory/layout/left-menu");
+		$this->load->view("caraccessory/tiresize/create/content",$data);
+		$this->load->view("caraccessory/layout/footer");
+		$this->load->view("caraccessory/layout/foot");
+		
+	}
 	
 	public function createTireSize($tire_rimId,$tire_sizeId)
 	{
