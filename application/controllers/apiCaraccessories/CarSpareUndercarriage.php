@@ -30,7 +30,7 @@ class CarSpareUndercarriage extends BD_Controller {
         }
         else {
             $search = $this->post('spares_undercarriageName'); 
-            $status = 1; 
+            $status = 2; 
 
             $posts =  $this->sparesUndercarriages->sparesUndercarriage_search($limit,$start,$search,$order,$dir,$status);
 

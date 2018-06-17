@@ -14,28 +14,33 @@
     </div>
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
-
-    <div class="container-fluid">     
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card card-header">
-                    <div class="card-title">
-                        <h4>เพิ่มรายการอะไหล่</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="basic-form">
-                            <form>
-                                <div class="form-group col-md-6">
-                                    <label>ชื่อรายการอะไหล่</label>
-                                    <input type="email" class="form-control" placeholder="ชื่อรายการอะไหล่">
-                                </div>
-                                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                <button type="submit" class="btn btn-inverse">ยกเลิก</button>
-                            </form>
+    <section class="content">
+        <div class="container-fluid">     
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card card-header">
+                        <div class="card-title">
+                            <h4>เพิ่มรายการอะไหล่</h4>
                         </div>
+                        <form id="submit">
+                            <!-- <input type="hidden" id="spares_undercarriageId" name="spares_undercarriageId" value="<?=$spares_undercarriageId ?>"> -->
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <div class="form-group col-md-6">
+                                        <label>ชื่อรายการอะไหล่</label><span class="error">*</span>
+                                        <input type="text" class="form-control" placeholder="ชื่อรายการอะไหล่" name="spares_undercarriageName">
+                                    </div>
+                                </div>
+                                    <div class="form-group">
+                                          <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                                          <a> <button type="button" class="btn btn-inverse">ยกเลิก</button> </a>
+                                    </div>
+                            </div> 
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+</div>
     <!-- End Container fluid  -->

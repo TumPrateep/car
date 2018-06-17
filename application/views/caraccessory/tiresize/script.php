@@ -1,5 +1,5 @@
 <script>
-    var table = $('#brand-table').DataTable({
+    var table = $('#tiresize-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -27,11 +27,12 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/CarAccessory/search",
+                "url": base_url+"apiCaraccessories/Tiresize/searchTiresize",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.brandName = $("#brand-search").val()
+                    data.tire_size = $("#tire_size").val(),
+                    data.rimId = $("#rimId").val()
                 }
             },
             "columns": [
@@ -46,23 +47,20 @@
 
                         $.each(data, function( index, value ) {
                             var gray = (value.status == '2')?" filter-gray ":"";
-                            html += '<div class="col-lg-3 '+gray+'">'
+                            html += '<div class="col-md-3 '+gray+'">'
                                  + '<div class="card card-header-height">'
                                  + '<span class="card-subtitle text-right card-margin"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
-                                 + '<img class="card-img-top" src="'+base_url+'public/image/brand/'+value.brandPic+'" alt="Card image cap">'
                                  + '<div class="card-body text-center">'
-                                 + '<h5 class="card-title">'+value.brandName+'</h5>'
+                                 + '<h5 class="card-title">'+value.tire_size+'/'+value.tire_series+'/'+value.rim+' </h5>'
+                                //  + '<h5 class="card-title">'+value.tire_series+' </h5>'
+                                //  + '<h5 class="card-title">'+value.rim+' </h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<a href="'+base_url+"caraccessory/CarModelAccessory/index1/"+value.brandId+'">'
-                                 + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
-                                 + '</a>'
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> ลบ</button>'
                                  + '</div>'
                                  + '</div>'
                                  + '</div>';
-                                 
                         });
 
                         html += '</div>';

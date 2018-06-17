@@ -1,27 +1,26 @@
 <?php
-//ยี่ห้อยาง นะ
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Tiremodel extends BD_Controller {
+class Tiresize extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
         // $this->auth();
     }
-
-    function getAllTireModel_post(){
+    
+    function getAllTireSize_post(){
         $q = $this->post("term");
         $page = $this->post("page");
-        $tireBrandId = $this->post("tireBrandId");
-        $this->load->model("Triemodels");
-        $listTireModel = $this->Triemodels->getAllTireModelByName($q, $page, $tireBrandId);
+        $tireRimId = $this->post("tireRimId");
+        $this->load->model("trieSizes");
+        $listTireSize = $this->trieSizes->getAllTireSizeByName($q, $page, $tireRimId);
         $output["items"] = [];
         $nestedData = [];
-        if($listTireModel != null){
-            foreach ($listTireModel as $row) {
+        if($listTireSize != null){
+            foreach ($listTireSize as $row) {
                 $nestedData[] =  array(
-                    "id" => $row->tire_modelId,
-                    "text" => $row->tire_modelName
+                    "id" => $row->tire_sizeId,
+                    "text" => $row->tire_sizeName
                 );
             }
         }
@@ -29,26 +28,31 @@ class Tiremodel extends BD_Controller {
         $output["q"] = $q;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
-
-    function createTireModel_post(){
-        $tire_modelName = $this->post("tire_modelName");
-        $tire_brandId = $this->post("tire_brandId");
+    function createtrieSize_post(){
+        $tire_size = $this->post("tire_size");
+        $rimId = $this->post("rimId");
+        $rim = $this->post('rim');
+        $tire_series = $this->post('tire_series');
         
+        $this->load->model("trieSizes");
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("Triemodels");
-        $isCheck = $this->Triemodels->get_tiremodel($tire_brandId,$tire_modelName);
+        $isCheck = $this->trieSizes->gettrie_sizeforrim($tire_size,$rimId);
+        
         if($isCheck){
             $data = array(
-                'tire_modelId' => null,
-                'tire_modelName' => $tire_modelName,
-                'tire_brandId' => $tire_brandId,
-                'create_by' => $userId,
-                'update_by' => null,
+                'tire_sizeId' => null,
+                'tire_size' => $tire_size,
+                'tire_series' => $tire_series,
+                'rim' => $rim,
+                'status' => 2,
+                'rimId' => $rimId,
                 'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
                 'update_at' => null,
-                'status' => 2
+                'update_by' => null
+                
             );
-            $result = $this->Triemodels->insert_Tiremodel($data);
+            $result = $this->trieSizes->inserttrie_size($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -67,30 +71,30 @@ class Tiremodel extends BD_Controller {
         }
     }
 
-    function searchTireModel_post(){
+    function searchTiresize_post(){
         $columns = array( 
-            0 => null
-            
+            0 => null    
         );
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $tire_brandId = $this->post('tire_brandId');
-
-        $this->load->model("Triemodels");
-        $totalData = $this->Triemodels->allTireModel_count($tire_brandId);
-
+        $rimId = $this->post("rimId");
+        $this->load->model("trieSizes");
+        $totalData = $this->trieSizes->alltrieSize_count($rimId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('tire_modelName')))
+        if(empty($this->post('tire_size')) &&empty($this->post('rimId')))
         {            
-            $posts = $this->Triemodels->allTireModel($limit,$start,$order,$dir,$tire_brandId);
+            $posts = $this->trieSizes->allTriesize($limit,$start,$order,$dir, $rimId);
         }
         else {
-            $search = $this->post('tire_modelName');
-            $status = 1; 
-            $posts =  $this->Triemodels->tireModel_search($limit,$start,$search,$order,$dir,$tire_brandId,$status);
-            $totalFiltered = $this->Triemodels->tireModel_search_count($search,$tire_brandId,$status);
+            $search = $this->post('tire_size'); 
+            $status = 1;
+            $rimId = $this->post('rimId'); 
+            $posts =  $this->trieSizes->trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status);
+            $totalFiltered = $this->trieSizes->trie_size_search_count($search, $rimId,$status);
+            
+           
         }
         $data = array();
         $index = 0;
@@ -99,9 +103,10 @@ class Tiremodel extends BD_Controller {
         {
             foreach ($posts as $post)
             {
-                $nestedData[$count]['tire_modelId'] = $post->tire_modelId;
-                $nestedData[$count]['tire_modelName'] = $post->tire_modelName;
-                $nestedData[$count]['tire_brandId'] = $post->tire_brandId;
+                $nestedData[$count]['tire_sizeId'] = $post->tire_sizeId;
+                $nestedData[$count]['tire_size'] = $post->tire_size;
+                $nestedData[$count]['tire_series'] = $post->tire_series;
+                $nestedData[$count]['rim'] = $post->rim;
                 $nestedData[$count]['status'] = $post->status;
                 $data[$index] = $nestedData;
                 if($count >= 3){
@@ -121,5 +126,4 @@ class Tiremodel extends BD_Controller {
         );
         $this->set_response($json_data);
     }
-    
 }

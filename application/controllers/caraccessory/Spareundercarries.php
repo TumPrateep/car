@@ -19,15 +19,15 @@ class Spareundercarries extends CI_Controller {
 		$this->load->view("caraccessory/layout/foot");
 		$this->load->view("caraccessory/spareUndercarriage/script");
 	}
-	public function createspareUndercarriage($spares_undercarriageId){
-		$data['spares_undercarriageId'] = $spares_undercarriageId;
+	public function createspareUndercarriage(){
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/spareUndercarriage/create/content",$data);
+		$this->load->view("caraccessory/spareUndercarriage/create/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
-		$this->load->view("caraccessory/spareUndercarriage/script");
+		$this->load->view("caraccessory/spareUndercarriage/create/script");
+		
 	}
 	
 }
