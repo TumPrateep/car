@@ -23,7 +23,7 @@ Page wrapper  -->
                 <input type="hidden" id="tire_brandId" name="tire_brandId" value="<?=$tire_brandId ?>">
                         <div class="form-body"> <br>
                             <div class="row p-t-20">
-                                 <div class="col-md-12">
+                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">ชื่อรุ่นยาง</label><span class="error">*</span>
                                         <input type="text" class="form-control" placeholder="ชื่อรุ่นยาง" name="tire_modelName" id="tire_modelName">
