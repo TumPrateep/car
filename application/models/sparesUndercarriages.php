@@ -111,9 +111,31 @@ class sparesUndercarriages extends CI_Model{
             $result = $this->db->update('spares_undercarriage', $data);
             return $result; 
         }
+        function checkUserIdFromSpareUnderCarriages($userId){
+            $this->db->select("*");
+            $this->db->from("spares_undercarriage");
+            $this->db->where('create_by', $userId);
+            $result = $this->db->count_all_results();
+    
+            if($result > 0){
+                return false;
+            }
+            return true;
+        }
+        function checkStatusFromSpareUnderCarriages($spares_undercarriageId,$status,$userId){
+           
+            $this->db->from("spares_undercarriage");
+            $this->db->where('status', $status);
+            $this->db->where('create_by', $userId);
+            $this->db->where('spares_undercarriageId', $spares_undercarriageId);
+            $result = $this->db->count_all_results();
+    
+            if($result > 0){
+                return true;
+            }
+            return false;
+        }
 
        
-    
-   
 
 }
