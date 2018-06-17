@@ -47,4 +47,59 @@ class SpareBrand extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+    function searchSpares_post(){
+        $columns = array( 
+            0 => null,
+            1 => 'spares_brandName',
+            2 => 'status',   
+        );
+
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+
+        $spares_undercarriageId = $this->post("spares_undercarriageId");
+        $this->load->model("Sparesbrand");
+        $totalData = $this->Sparesbrand->allSpares_brand_count($spares_undercarriageId);
+
+        $totalFiltered = $totalData; 
+
+        if(empty($this->post('spares_brandName'))  && empty($this->post('status')))
+        {            
+            $posts = $this->Sparesbrand->allSpares_brand($limit,$start,$order,$dir, $spares_undercarriageId);
+        }
+        else {
+            $search = $this->post('spares_brandName'); 
+            $status = $this->post('status'); 
+
+            $posts =  $this->Sparesbrand->spares_brand_search($limit,$start,$search,$order,$dir, $spares_undercarriageId, $status);
+
+            $totalFiltered = $this->Sparesbrand->spares_brand_search_count($search, $spares_undercarriageId, $status);
+        }
+
+        $data = array();
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+                $nestedData['spares_brandId'] = $post->spares_brandId;
+                $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
+                $nestedData['spares_brandName'] = $post->spares_brandName;
+                $nestedData['status'] = $post->status;
+
+                $data[] = $nestedData;
+
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+
+        $this->set_response($json_data);
+    }
 }
