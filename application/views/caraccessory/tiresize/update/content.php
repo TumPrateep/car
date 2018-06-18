@@ -3,13 +3,13 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary"> เพิ่มข้อมูลขนาดยาง</h3> 
+            <h3 class="text-primary"> เเก้ไขข้อมูลขนาดยาง</h3> 
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireRim"); ?>">ขอบยาง</a></li>
                 <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireSize/index/$tire_rimId"); ?>">ขนาดยาง</a></li>
-                <li class="breadcrumb-item active">เพิ่มข้อมูลขนาดยาง</li>
+                <li class="breadcrumb-item active">แก้ไขข้อมูลขนาดยาง</li>
             </ol>
         </div>
     </div>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>ซีรี่ย์ยาง</label> <span class="error">*</span>
+                                <label>ซีรี่ยาง</label> <span class="error">*</span>
                                 <input type="text" class="form-control input-default" placeholder="ซีรี่ย์ยาง" name="tire_series" id="tire_series">
                             </div>
                         </div>
