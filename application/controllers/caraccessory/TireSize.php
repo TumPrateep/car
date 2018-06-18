@@ -33,9 +33,10 @@ class TireSize extends CI_Controller {
 		$this->load->view("caraccessory/tiresize/create/script");
 	}
 
-	public function updateTireSize($tire_rimId)
+	public function updateTireSize($tire_rimId,$tire_sizeId)
 	{
 		$data['tire_rimId'] = $tire_rimId;
+		$data['tire_sizeId'] = $tire_sizeId;
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
