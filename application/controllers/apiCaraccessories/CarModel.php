@@ -147,5 +147,19 @@ class CarModel extends BD_Controller {
         }
     }
 
+    function getModel_post(){
+        $modelId = $this->post('modelId');
+        $this->load->model("model");
+        $modeldata = $this->model->getmodelById($modelId);
+        if($modeldata != null){
+            $output["data"] = $modeldata;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
     
 }
