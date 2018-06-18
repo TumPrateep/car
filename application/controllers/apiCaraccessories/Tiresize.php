@@ -150,4 +150,21 @@ class Tiresize extends BD_Controller {
             }
         }
     }
+    function getiresize_post(){
+        $tire_sizeId = $this->post('tire_sizeId');
+        $rimId = $this->post('rimId');
+        $this->load->model("trieSizes");
+       
+        $this->set_response($isCheck, REST_Controller::HTTP_OK);
+        $result = $this->trieSizes->geTiresizeFromTiresizeBytireId($tire_sizeId);
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+       
+    }
 }
