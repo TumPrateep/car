@@ -68,6 +68,7 @@ class SpareBrand extends BD_Controller {
             }else{
                 $output["message"] = REST_Controller::MSG_BE_DELETED;
                 $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+           }
+       }
     }
 }
