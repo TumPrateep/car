@@ -27,8 +27,8 @@ class Triesize extends BD_Controller {
                 'rimId' => $rimId,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId
+                'update_at' => null,
+                'update_by' => null
                 
             );
             $result = $this->trieSizes->inserttrie_size($data);
@@ -53,6 +53,8 @@ class Triesize extends BD_Controller {
         $tire_sizeId = $this->post('tire_sizeId');
         $tire_size = $this->post('tire_size');
         $rimId = $this->post('rimId');
+        $rim = $this->post('rim');
+        $tire_series = $this->post('tire_series');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("trieSizes");
         $result = $this->trieSizes->wherenotTriesize($tire_sizeId,$tire_size,$rimId);
@@ -64,8 +66,8 @@ class Triesize extends BD_Controller {
                 'rim' => $rim,
                 'status' => 1,
                 'rimId' => $rimId,
-                'create_at' => date('Y-m-d H:i:s',time()),
-                'create_by' => $userId,
+                'create_at' => null,
+                'create_by' => null,
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );
