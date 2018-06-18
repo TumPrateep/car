@@ -1,5 +1,5 @@
 <script>
-    var table = $('#brand-table').DataTable({
+    var table = $('#tiresize-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -27,11 +27,12 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/TireRim/searchrim",
+                "url": base_url+"apiCaraccessories/Tiresize/searchTiresize",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.rimName = $("#brand-search").val()
+                    data.tire_size = $("#tire_size").val(),
+                    data.rimId = $("#rimId").val()
                 }
             },
             "columns": [
@@ -50,12 +51,11 @@
                                  + '<div class="card card-header-height">'
                                  + '<span class="card-subtitle text-right card-margin"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
                                  + '<div class="card-body text-center">'
-                                 + '<h5 class="card-title">'+value.rimName+' นิ้ว</h5>'
+                                 + '<h5 class="card-title">'+value.tire_size+'/'+value.tire_series+'/'+value.rim+' </h5>'
+                                //  + '<h5 class="card-title">'+value.tire_series+' </h5>'
+                                //  + '<h5 class="card-title">'+value.rim+' </h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<a href="'+base_url+"caraccessory/TireSize/index/"+value.rimId+'">'
-                                 + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
-                                 + '</a>'
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> ลบ</button>'
                                  + '</div>'

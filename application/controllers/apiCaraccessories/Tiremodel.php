@@ -6,7 +6,7 @@ class Tiremodel extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
 
     function getAllTireModel_post(){
@@ -66,4 +66,60 @@ class Tiremodel extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function searchTireModel_post(){
+        $columns = array( 
+            0 => null
+            
+        );
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $tire_brandId = $this->post('tire_brandId');
+
+        $this->load->model("Triemodels");
+        $totalData = $this->Triemodels->allTireModel_count($tire_brandId);
+
+        $totalFiltered = $totalData; 
+        if(empty($this->post('tire_modelName')))
+        {            
+            $posts = $this->Triemodels->allTireModel($limit,$start,$order,$dir,$tire_brandId);
+        }
+        else {
+            $search = $this->post('tire_modelName');
+            $status = 1; 
+            $posts =  $this->Triemodels->tireModel_search($limit,$start,$search,$order,$dir,$tire_brandId,$status);
+            $totalFiltered = $this->Triemodels->tireModel_search_count($search,$tire_brandId,$status);
+        }
+        $data = array();
+        $index = 0;
+        $count = 0;
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+                $nestedData[$count]['tire_modelId'] = $post->tire_modelId;
+                $nestedData[$count]['tire_modelName'] = $post->tire_modelName;
+                $nestedData[$count]['tire_brandId'] = $post->tire_brandId;
+                $nestedData[$count]['status'] = $post->status;
+                $data[$index] = $nestedData;
+                if($count >= 3){
+                    $count = -1;
+                    $index++;
+                    $nestedData = [];
+                }
+                
+                $count++;
+            }
+        }
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+        $this->set_response($json_data);
+    }
+    
 }

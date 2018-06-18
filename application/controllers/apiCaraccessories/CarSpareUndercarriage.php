@@ -83,7 +83,11 @@ class CarSpareUndercarriage extends BD_Controller {
             $data = array(
                 'spares_undercarriageId' => null,
                 'spares_undercarriageName' => $spares_undercarriageName,
-                'status' => 2
+                'status' => 2,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'update_at' => null,
+                'update_by' => null
             );
             $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
             $output["status"] = $result;
@@ -103,6 +107,30 @@ class CarSpareUndercarriage extends BD_Controller {
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+    }
+
+    function deletespareUndercarriage_get(){
+        $spares_undercarriageId = $this->get('spares_undercarriageId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $status = 2;
+        $this->load->model("sparesUndercarriages");
+        $spares_undercarriage = $this->sparesUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
+        if($spares_undercarriage != null){
+            $isCheckStatus =$this->sparesUndercarriages->checkStatusFromSpareUnderCarriages($spares_undercarriageId,$status,$userId);
+            if($isCheckStatus ){
+                $isDelete = $this->sparesUndercarriages->delete($spares_undercarriageId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        } 
     }
 
 }

@@ -40,7 +40,7 @@
                           </div>
                       </div><br>
                       <div class="form-group">
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <button type="submit" class="btn btn-primary"> บันทึก</button>
                       </div>
                     </div>
                   </form>

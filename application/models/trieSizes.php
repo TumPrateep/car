@@ -25,6 +25,22 @@ class trieSizes extends CI_Model{
         }
         return true;
     }
+
+    function isDuplicate($tire_size, $tire_series, $rim, $rimId, $tire_sizeId){
+        if($tire_sizeId != null){
+            $this->db->where('tire_sizeId', $tire_sizeId);
+        }
+        $this->db->where('rimId', $rimId);
+        $this->db->where('tire_size', $tire_size);
+        $this->db->where('tire_series', $tire_series);
+        $this->db->where('rim', $rim);
+        $this->db->from('tire_size');
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
    
     function wherenotTriesize($tire_sizeId,$tire_size,$rimId){
         $this->db->select("tire_size");

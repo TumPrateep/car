@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Triesize extends BD_Controller {
+class Tiresize extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
@@ -36,7 +36,7 @@ class Triesize extends BD_Controller {
         
         $this->load->model("trieSizes");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->trieSizes->gettrie_sizeforrim($tire_size,$rimId);
+        $isCheck = $this->trieSizes->isDuplicate($tire_size, $tire_series, $rim, $rimId);
         
         if($isCheck){
             $data = array(
@@ -69,5 +69,60 @@ class Triesize extends BD_Controller {
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+    }
+
+    function searchTiresize_post(){
+        $columns = array( 
+            0 => null    
+        );
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $rimId = $this->post("rimId");
+        $this->load->model("trieSizes");
+        $totalData = $this->trieSizes->alltrieSize_count($rimId);
+        $totalFiltered = $totalData; 
+        if(empty($this->post('tire_size')) &&empty($this->post('rimId')))
+        {            
+            $posts = $this->trieSizes->allTriesize($limit,$start,$order,$dir, $rimId);
+        }
+        else {
+            $search = $this->post('tire_size');
+            $rimId = $this->post('rimId'); 
+            $posts =  $this->trieSizes->trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status);
+            $totalFiltered = $this->trieSizes->trie_size_search_count($search, $rimId,$status);
+            
+           
+        }
+        $data = array();
+        $index = 0;
+        $count = 0;
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+                $nestedData[$count]['tire_sizeId'] = $post->tire_sizeId;
+                $nestedData[$count]['tire_size'] = $post->tire_size;
+                $nestedData[$count]['tire_series'] = $post->tire_series;
+                $nestedData[$count]['rim'] = $post->rim;
+                $nestedData[$count]['status'] = $post->status;
+                $data[$index] = $nestedData;
+                if($count >= 3){
+                    $count = -1;
+                    $index++;
+                    $nestedData = [];
+                }
+                
+                $count++;
+            }
+        }
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+        $this->set_response($json_data);
     }
 }
