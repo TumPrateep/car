@@ -122,7 +122,30 @@ class CarModel extends BD_Controller {
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
-
-
     }
+    function deleteModel_get(){
+        $modelId = $this->get('modelId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $status = 2;
+        $this->load->model("Model");
+        $model = $this->Model->getmodel($modelId);
+        if($model != null){
+            $isCheckStatus =$this->Model->checkStatusFromModelCar($modelId,$status,$userId);
+            if($isCheckStatus ){
+            $isDelete = $this->Model->delete($modelId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+    }
+
+    
 }

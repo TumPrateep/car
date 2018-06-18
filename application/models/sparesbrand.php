@@ -140,5 +140,17 @@ class Sparesbrand extends CI_Model{
         return $result; 
     }
 
+    function checkStatusFromSpareBrand($spares_brandId,$status,$userId){
+        $this->db->from('spares_brand');
+        $this->db->where('spares_brandId',$spares_brandId);
+        $this->db->where('status',$status);
+        $this->db->where('create_by',$userId);
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return true;
+        }
+        return flase;
+    }
+
 
 }

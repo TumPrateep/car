@@ -144,4 +144,17 @@ class Model extends CI_Model{
         return $result; 
     }
 
+    function checkStatusFromModelCar($modelId,$status,$userId){
+        $this->db->from('model');
+        $this->db->where('modelId',$modelId);
+        $this->db->where('status',$status);
+        $this->db->where('create_by',$userId);
+        $resule = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
+        }
+        return false ;
+    }
+
 }
