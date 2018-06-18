@@ -130,7 +130,7 @@ class CarModel extends BD_Controller {
         $this->load->model("Model");
         $model = $this->Model->getmodel($modelId);
         if($model != null){
-            $isCheckStatus =$this->rims->checkStatusFromRim($rimId,$status,$userId);
+            $isCheckStatus =$this->rims->checkStatusFromModelCar($modelId,$status,$userId);
             if($isCheckStatus ){
             $isDelete = $this->Model->delete($modelId);
                 if($isDelete){
