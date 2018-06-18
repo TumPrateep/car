@@ -124,16 +124,17 @@ class TireRim extends BD_Controller {
             $isCheckStatus =$this->rims->checkStatusFromRim($rimId,$status,$userId);
             if($isCheckStatus ){
             $isDelete = $this->rims->delete($rimId);
-            if($isDelete){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_USED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
         }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
+            }
         }
     }
 
