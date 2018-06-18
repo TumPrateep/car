@@ -80,4 +80,18 @@ class Tirebrand extends BD_Controller {
         );
         $this->set_response($json_data);
     }
+
+    function getTirebrand_post(){
+        $tire_brandId = $this->post('tire_brandId');
+        $this->load->model("triebrands");
+        $Tirebranddata = $this->triebrands->getTirebrandById($tire_brandId);
+        if($Tirebranddata != null){
+            $output["data"] = $Tirebranddata;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 }
