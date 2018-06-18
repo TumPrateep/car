@@ -99,7 +99,7 @@ class rims extends CI_Model{
         $result = $this->db->update('rim', $data);
         return $result; 
     }
-    checkStatusFromRim($rimId,$status,$userId){
+    function checkStatusFromRim($rimId,$status,$userId){
         $this->db->from('rim');
         $this->db->where('rimId',$rimId);
         $this->db->where('status',$status);

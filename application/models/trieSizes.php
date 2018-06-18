@@ -153,4 +153,16 @@ class trieSizes extends CI_Model{
         }       
         return $this->db->limit($limit, 0)->get("tire_size")->result();
     }
+    
+    function checkStatusFromTireSize($tire_sizeId,$status,$userId){
+        $this->db->from('tire_size');
+        $this->db->where('tire_sizeId',$tire_sizeId);
+        $this->db->where('status',$status);
+        $this->db->where('create_by',$uesrId);
+        $result = $this->db->count_all_result();
+        if($result > 0 ){
+            return true ;
+        }
+        return false;
+    }
 }

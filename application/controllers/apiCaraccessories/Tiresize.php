@@ -125,4 +125,29 @@ class Tiresize extends BD_Controller {
         );
         $this->set_response($json_data);
     }
+    function deletetriesize_get(){
+        $tire_sizeId = $this->get('tire_sizeId');
+        $tire_series = $this->get('tire_series');
+        $rim = $this->get('rim');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $status = 2;
+        $this->load->model("trieSizes");
+        $tire = $this->trieSizes->getiresizeById($tire_sizeId);
+        if($tire != null){
+            $isCheckStatus =$this->trieSizes->checkStatusFromTireSize($tire_sizeId,$status,$userId);
+            if($isCheckStatus ){
+                $isDelete = $this->trieSizes->delete($tire_sizeId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+    }
 }

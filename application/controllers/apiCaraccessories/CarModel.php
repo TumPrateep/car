@@ -130,7 +130,7 @@ class CarModel extends BD_Controller {
         $this->load->model("Model");
         $model = $this->Model->getmodel($modelId);
         if($model != null){
-            $isCheckStatus =$this->rims->checkStatusFromModelCar($modelId,$status,$userId);
+            $isCheckStatus =$this->Model->checkStatusFromModelCar($modelId,$status,$userId);
             if($isCheckStatus ){
             $isDelete = $this->Model->delete($modelId);
                 if($isDelete){
@@ -140,9 +140,9 @@ class CarModel extends BD_Controller {
                     $output["message"] = REST_Controller::MSG_BE_USED;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }
     }

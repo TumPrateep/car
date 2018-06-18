@@ -153,4 +153,16 @@ class Brand extends CI_Model {
         return $result; 
     }
 
+    function checkStatusFromBrand($brandId,$status,$userId){
+        $this->db->from('brand');
+        $this->db->where('brandId',$brandId);
+        $this->db->where('status',$status);
+        $this->db->where('create_by'$userId);
+        $result = $this->db->count_all_result();
+        if($result){
+            return true;
+        }
+        return false;
+    }
+
 }
