@@ -137,5 +137,18 @@ class TireRim extends BD_Controller {
             }
         }
     }
+    function getRim_post(){
+        $rimId = $this->post('rimId');
+        $this->load->model("rims");
+        $rimdata = $this->rims->getrimById($rimId);
+        if($rimdata != null){
+            $output["data"] = $rimdata;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
 }
