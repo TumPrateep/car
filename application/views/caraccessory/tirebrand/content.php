@@ -17,7 +17,7 @@
     <div class="container-fluid">
         <div class="row bg-white p-30 search-header">
             <div class="col-md-6">
-                <a href="<?=base_url("caraccessory/car/createcar") ?>">
+                <a href="<?=base_url("caraccessory/tirebrand/createtirebrand") ?>">
                     <button type="button" class="btn btn-info m-b-10 m-l-5" ><i class="fa fa-plus"></i> สร้าง</button>
                 </a>     
             </div>
