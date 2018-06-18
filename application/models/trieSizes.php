@@ -159,7 +159,7 @@ class trieSizes extends CI_Model{
         $this->db->where('tire_sizeId',$tire_sizeId);
         $this->db->where('status',$status);
         $this->db->where('create_by',$uesrId);
-        $result = $this->db->count_all_result();
+        $result = $this->db->count_all_results();
         if($result > 0 ){
             return true ;
         }

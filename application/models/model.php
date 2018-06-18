@@ -149,7 +149,7 @@ class Model extends CI_Model{
         $this->db->where('modelId',$modelId);
         $this->db->where('status',$status);
         $this->db->where('create_by',$userId);
-        $resule = $this->db->count_all_result();
+        $resule = $this->db->count_all_results();
 
         if($result > 0){
             return true;

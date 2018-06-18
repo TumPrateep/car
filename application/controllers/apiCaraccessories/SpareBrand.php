@@ -47,4 +47,27 @@ class SpareBrand extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function deleteSpareBrand_get(){
+        $spares_brandId = $this->get('spares_brandId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $status = 2;
+        $this->load->model("Sparesbrand");
+        $sparBrand = $this->Sparesbrand->getSpareBrandbyId($spares_brandId);
+        if($sparBrand != null){
+            $isCheckStatus =$this->Sparesbrand->checkStatusFromSpareBrand($spares_brandId,$status,$userId);
+            if($isCheckStatus ){
+            $isDelete = $this->Sparesbrand->delete($spares_brandId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+    }
 }
