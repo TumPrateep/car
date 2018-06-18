@@ -108,7 +108,25 @@ label.error{
     margin-bottom: 2px;
 }
 
+.inline{
+    display: -webkit-inline-box;
+}
+
+.btn-md {
+    padding: 12px 40px;
+    font-size: 16px;
+}
+
+.div-right{
+    text-align: right;
+}
+
 @media (max-width: 767px) {
+    .btn-create{
+        display: -webkit-box;
+        width: 100%;
+    }
+    
     .card-header-height{
         text-align: -webkit-right;
         padding-top: 10px;
@@ -121,6 +139,10 @@ label.error{
 
     .card-bottom{
         display: grid;
+    }
+
+    .card-button{
+        width: 100%;
     }
 
   }
