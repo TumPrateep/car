@@ -121,5 +121,23 @@ class Tiremodel extends BD_Controller {
         );
         $this->set_response($json_data);
     }
+
+    function getTireModel_post(){
+        $tire_modelId = $this->post('tire_modelId');
+        $tire_brandId = $this->post('tire_brandId');
+        $this->load->model("triemodels");
+        
+        $this->set_response($isCheck, REST_Controller::HTTP_OK);
+        
+        $result = $this->triemodels->geTireModelNameFromTireModelBytireId($tire_modelId,$tire_brandId);
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
     
 }

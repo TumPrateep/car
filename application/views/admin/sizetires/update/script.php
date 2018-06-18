@@ -36,6 +36,9 @@
         }else{
             result = data.data;
             $("#tire_size").val(result.tire_size);
+            $("#tire_series").val(result.tire_series);
+            $("#rim").val(result.rim);
+
         }
         
     });
