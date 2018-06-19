@@ -56,8 +56,8 @@
                                 //  + '<h5 class="card-title">'+value.rim+' </h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<a href="'+base_url+"caraccessory/tiresize/updatetiresize/"+value.rimId+"/"+value.tire_sizeId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button></a> '
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> ลบ</button>'
+                                 + '<a href="'+base_url+"caraccessory/tiresize/updatetiresize/"+value.rimId+"/"+value.tire_sizeId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button></a> '
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
                                  + '</div>'
                                  + '</div>'
                                  + '</div>';
