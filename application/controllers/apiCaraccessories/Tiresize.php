@@ -102,6 +102,7 @@ class Tiresize extends BD_Controller {
         {
             foreach ($posts as $post)
             {
+                $nestedData[$count]['rimId'] = $post->rimId;
                 $nestedData[$count]['tire_sizeId'] = $post->tire_sizeId;
                 $nestedData[$count]['tire_size'] = $post->tire_size;
                 $nestedData[$count]['tire_series'] = $post->tire_series;
@@ -129,8 +130,9 @@ class Tiresize extends BD_Controller {
     }
     function deletetriesize_get(){
         $tire_sizeId = $this->get('tire_sizeId');
-        $tire_series = $this->get('tire_series');
-        $rim = $this->get('rim');
+        // $tire_series = $this->get('tire_series');
+        // $rim = $this->get('rim');
+        $rimId = $this->get('rimId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
         $this->load->model("trieSizes");
@@ -153,7 +155,7 @@ class Tiresize extends BD_Controller {
         }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
-       }
+        } 
     }
     function getiresize_post(){
         $tire_sizeId = $this->post('tire_sizeId');
