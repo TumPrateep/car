@@ -50,8 +50,9 @@
                                 //  + '<img class="card-img-top" src="'+base_url+'public/image/brand/'+value.brandPic+'" alt="Card image cap">'
                                  + '<div class="card-body text-center">'
                                  + '<h5 class="card-title">'+value.spares_undercarriageName+'</h5>'
-                                 + '<a href="#" class="btn btn-primary">Go somewhere</a>'
-                                 + '</div>'
+                                //  + '<a href="Spareundercarries/SpareBrand" class="btn btn-primary">Go somewhere</a>'
+                                + '<a href="'+base_url+"caraccessory/SpareBrand/index1/"+value.spares_undercarriageId+'" class="btn btn-primary">Go somewhere</a>'
+                                + '</div>'
                                  + '</div>'
                                  + '</div>';
                         });
