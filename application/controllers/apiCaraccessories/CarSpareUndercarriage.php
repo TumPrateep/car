@@ -137,4 +137,18 @@ class CarSpareUndercarriage extends BD_Controller {
         } 
     }
 
+    function getspareUndercarriage_post(){
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $this->load->model("sparesUndercarriages");
+        $spares_undercarriage = $this->sparesUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
+            if($spares_undercarriage != null){
+                $output["data"] = $spares_undercarriage;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+    }
+
 }
