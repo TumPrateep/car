@@ -1,8 +1,9 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+﻿-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: carjaidee
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.1.30-MariaDB
+DROP DATABASE `carjaidee`;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +32,7 @@ CREATE TABLE `brand` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` int(11) NOT NULL,
-  `activeFlag` int(11) NOT NULL,
+  `activeFlag` int(11) NOT NULL DEFAULT '2',
   PRIMARY KEY (`brandId`),
   UNIQUE KEY `brandName_UNIQUE` (`brandName`),
   KEY `fk_brand_users1_idx` (`create_by`),
@@ -262,7 +263,7 @@ CREATE TABLE `model` (
   `status` int(11) NOT NULL,
   `yearStart` int(11) NOT NULL,
   `yearEnd` int(11) DEFAULT NULL,
-  `activeFlag` int(11) NOT NULL,
+  `activeFlag` int(11) NOT NULL DEFAULT '2',
   PRIMARY KEY (`modelId`),
   KEY `fk_model_brand1_idx` (`brandId`),
   KEY `fk_model_users1_idx` (`create_by`),
@@ -356,7 +357,7 @@ CREATE TABLE `rim` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `activeFlag` int(11) NOT NULL,
+  `activeFlag` int(11) NOT NULL DEFAULT '2',
   PRIMARY KEY (`rimId`),
   KEY `fk_rim_users1_idx` (`create_by`),
   KEY `fk_rim_users2_idx` (`update_by`),
@@ -393,7 +394,7 @@ CREATE TABLE `spares_brand` (
   `update_by` int(11) DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
-  `activeFlag` int(11) NOT NULL,
+  `activeFlag` int(11) NOT NULL DEFAULT '2',
   PRIMARY KEY (`spares_brandId`),
   KEY `fk_spares_brand_spares_undercarriage1_idx` (`spares_undercarriageId`),
   KEY `fk_spares_brand_users1_idx` (`create_by`),
@@ -429,7 +430,7 @@ CREATE TABLE `spares_undercarriage` (
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `activeFlag` int(11) NOT NULL,
+  `activeFlag` int(11) NOT NULL DEFAULT '2',
   PRIMARY KEY (`spares_undercarriageId`),
   KEY `fk_spares_undercarriage_users1_idx` (`create_by`),
   KEY `fk_spares_undercarriage_users2_idx` (`update_by`),
@@ -504,7 +505,7 @@ CREATE TABLE `tire_brand` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `activeFlag` int(11) NOT NULL,
+  `activeFlag` int(11) NOT NULL DEFAULT '2',
   PRIMARY KEY (`tire_brandId`),
   UNIQUE KEY `tire_brandId_UNIQUE` (`tire_brandId`),
   KEY `fk_trie_brand_users1_idx` (`create_by`),
@@ -545,7 +546,7 @@ CREATE TABLE `tire_data` (
   `tire_picture` varchar(255) DEFAULT NULL,
   `car_accessoriesId` int(11) DEFAULT NULL,
   `create_byaccessories` int(11) DEFAULT NULL,
-  `activeFlag` int(11) NOT NULL,
+  `activeFlag` int(11) NOT NULL DEFAULT '2',
   PRIMARY KEY (`tire_dataId`),
   KEY `fk_trie_data_rim1_idx` (`rimId`),
   KEY `fk_trie_data_trie_size1_idx` (`tire_sizeId`),
@@ -587,7 +588,7 @@ CREATE TABLE `tire_model` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `activeFlag` int(11) NOT NULL,
+  `activeFlag` int(11) NOT NULL DEFAULT '2',
   PRIMARY KEY (`tire_modelId`),
   KEY `fk_tire_model_trie_brand1_idx` (`tire_brandId`),
   KEY `fk_tire_model_users1_idx` (`create_by`),
@@ -661,7 +662,7 @@ CREATE TABLE `tire_size` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `activeFlag` int(11) NOT NULL,
+  `activeFlag` int(11) NOT NULL DEFAULT '2',
   PRIMARY KEY (`tire_sizeId`),
   KEY `fk_trie_size_rim1_idx` (`rimId`),
   KEY `fk_trie_size_users1_idx` (`create_by`),
@@ -780,4 +781,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-20 14:54:03
+-- Dump completed on 2018-06-20 15:03:17
