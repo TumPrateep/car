@@ -67,7 +67,7 @@
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> '
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletecarModel(\''+value.modelId+'\',\''+value.modelName+'\',\''+value.brandId+'\')"><i class="ti-trash"></i> ลบ</button>'
                                  + '</div>'
                                  + '</div>'
                                  + '</div>';
@@ -84,6 +84,17 @@
         event.preventDefault();
         table.ajax.reload();
     })
+
+    function deletecarModel(modelId, modelName,brandId){
+        var option = {
+            url: "/CarModel/deleteModel?modelId="+modelId,
+            label: "ลบรุ่นรถ",
+            content: "คุณต้องการลบ "+modelName+" ใช่หรือไม่",
+            gotoUrl: "caraccessory/CarModelAccessory/index1/"+brandId
+            
+        }
+        fnDelete(option);
+    }
 </script>
 
 </body>
