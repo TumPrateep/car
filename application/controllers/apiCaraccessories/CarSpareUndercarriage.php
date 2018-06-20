@@ -44,12 +44,12 @@ class CarSpareUndercarriage extends BD_Controller {
         {
             foreach ($posts as $post)
             {
-
                 $nestedData[$count]['spares_undercarriageId'] = $post->spares_undercarriageId;
                 $nestedData[$count]['spares_undercarriageName'] = $post->spares_undercarriageName;
                 $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['create_by'] = $post->create_by;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
 
-                
                 $data[$index] = $nestedData;
                 if($count >= 3){
                     $count = -1;
@@ -84,6 +84,7 @@ class CarSpareUndercarriage extends BD_Controller {
                 'spares_undercarriageId' => null,
                 'spares_undercarriageName' => $spares_undercarriageName,
                 'status' => 2,
+                'activeFlag' => 2,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
                 'update_at' => null,
@@ -127,9 +128,12 @@ class CarSpareUndercarriage extends BD_Controller {
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
             }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
         } 
     }
 
