@@ -50,6 +50,7 @@ class CarAccessory extends BD_Controller {
                 $nestedData[$count]['brandPic'] = $post->brandPicture;
                 $nestedData[$count]['brandName'] = $post->brandName;
                 $nestedData[$count]['status'] = $post->status;
+                $nestedData['activeFlag'] = $post->activeFlag;
                 
                 $data[$index] = $nestedData;
                 if($count >= 3){
@@ -146,10 +147,13 @@ class CarAccessory extends BD_Controller {
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
             }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+       }
    }
 
    function getBrand_post(){

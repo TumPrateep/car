@@ -87,7 +87,8 @@ class SpareBrand extends BD_Controller {
                 $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
                 $nestedData['spares_brandName'] = $post->spares_brandName;
                 $nestedData['status'] = $post->status;
-
+                $nestedData['activeFlag'] = $post->activeFlag;
+                
                 $data[] = $nestedData;
 
             }
@@ -121,10 +122,13 @@ class SpareBrand extends BD_Controller {
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
             }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
                 $this->set_response($output, REST_Controller::HTTP_OK);
            }
-       }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
     }
 
     function getSpareBrand_post(){

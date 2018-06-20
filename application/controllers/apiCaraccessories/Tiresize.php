@@ -145,10 +145,13 @@ class Tiresize extends BD_Controller {
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
             }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+       }
     }
     function getiresize_post(){
         $tire_sizeId = $this->post('tire_sizeId');
