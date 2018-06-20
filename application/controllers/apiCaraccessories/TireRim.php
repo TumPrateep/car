@@ -113,5 +113,42 @@ class TireRim extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+    
+    function deleteRim_get(){
+        $rimId = $this->get('rimId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $status = 2;
+        $this->load->model("rims");
+        $rim = $this->rims->getrimbyId($rimId);
+        if($rim != null){
+            $isCheckStatus =$this->rims->checkStatusFromRim($rimId,$status,$userId);
+            if($isCheckStatus ){
+            $isDelete = $this->rims->delete($rimId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+    }
+    function getRim_post(){
+        $rimId = $this->post('rimId');
+        $this->load->model("rims");
+        $rimdata = $this->rims->getrimById($rimId);
+        if($rimdata != null){
+            $output["data"] = $rimdata;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
 }

@@ -25,6 +25,22 @@ class trieSizes extends CI_Model{
         }
         return true;
     }
+
+    function isDuplicate($tire_size, $tire_series, $rim, $rimId, $tire_sizeId){
+        if($tire_sizeId != null){
+            $this->db->where('tire_sizeId', $tire_sizeId);
+        }
+        $this->db->where('rimId', $rimId);
+        $this->db->where('tire_size', $tire_size);
+        $this->db->where('tire_series', $tire_series);
+        $this->db->where('rim', $rim);
+        $this->db->from('tire_size');
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
    
     function wherenotTriesize($tire_sizeId,$tire_size,$rimId){
         $this->db->select("tire_size");
@@ -118,6 +134,8 @@ class trieSizes extends CI_Model{
     }
     function geTiresizeFromTiresizeBytireId($tire_sizeId){
         $this->db->select('tire_size');
+        $this->db->select('tire_series');
+        $this->db->select('rim');
         $this->db->where('tire_sizeId',$tire_sizeId);
         $result = $this->db->get('tire_size')->row();
         return $result;
@@ -136,5 +154,17 @@ class trieSizes extends CI_Model{
             $this->db->where("CONCAT(CONCAT(tire_size, '/', tire_series),'/', rim) LIKE '%".$q."%'", NULL, FALSE);
         }       
         return $this->db->limit($limit, 0)->get("tire_size")->result();
+    }
+    
+    function checkStatusFromTireSize($tire_sizeId,$status,$userId){
+        $this->db->from('tire_size');
+        $this->db->where('tire_sizeId',$tire_sizeId);
+        $this->db->where('status',$status);
+        $this->db->where('create_by',$uesrId);
+        $result = $this->db->count_all_results();
+        if($result > 0 ){
+            return true ;
+        }
+        return false;
     }
 }

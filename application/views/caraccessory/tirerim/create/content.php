@@ -1,4 +1,4 @@
-Page wrapper  -->
+<!-- Page wrapper  -->
 <div class="page-wrapper">
     <!-- Bread crumb -->
     <div class="row page-titles">
@@ -12,31 +12,29 @@ Page wrapper  -->
             </ol>
         </div>
     </div>
-    <form id="submit">
-    <div class="container-fluid">   
-      <div class="row">
-        <div class="col-12">
-            <div class="card card-outline-success">
-                <div class="card-header">
-                    <h4 class="m-b-0 text-white"><i class="fa fa-fw fa-car"></i> เพิ่มข้อมูลขอบยาง </h4>
-                </div> 
-                        <div class="form-body"> <br>
-                            <div class="row p-t-20">
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label">ชื่อขอบยาง</label><span class="error">*</span>
-                                        <input type="text" class="form-control" placeholder="ชื่อขอบยาง" name="rimName" id="rimName">
-                                    </div>
-                                </div>       
-                            </div>           
+   
+    <div class="container-fluid">  
+    <form id="submit">   
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-header">
+                    <div class="card-title">
+                        <h4><i class="fa fa-fw fa-car"></i> เพิ่มข้อมูลขอบยาง</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            <form>
+                                <div class="form-group col-md-6">
+                                    <label>ชื่อขอบยาง</label>
+                                    <input type="text" class="form-control" placeholder="ชื่อขอบยาง" name="rimName" id="rimName">
+                                </div>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                                <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
+                            </form>
                         </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> บันทึก</button>
-                            <button type="button" class="btn btn-inverse">ยกเลิก</button>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>   
-</div>
-<!-- End Container fluid 
+    </div>
+<!-- End Container fluid -->

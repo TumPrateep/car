@@ -45,12 +45,20 @@
                         var html = '<div class="row">';
 
                         $.each(data, function( index, value ) {
-                            html += '<div class="col-md-3">'
-                                 + '<div class="card">'
+                            var gray = (value.status == '2')?" filter-gray ":"";
+                            html += '<div class="col-md-3 '+gray+'">'
+                                 + '<div class="card card-header-height">'
+                                 + '<span class="card-subtitle text-right card-margin"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                 
                                  + '<img class="card-img-top" src="'+base_url+'public/image/tire_brand/'+value.tire_brandPicture+'" alt="Card image cap">'
                                  + '<div class="card-body text-center">'
                                  + '<h5 class="card-title">'+value.tire_brandName+'</h5>'
-                                 + '<a href="#" class="btn btn-primary">Go somewhere</a>'
+                                 + '</div>'
+                                 + '<div class="card-body text-center card-bottom">'
+                                 + '<a href="'+base_url+"caraccessory/TireModel/index1/"+value.tire_brandId+'">'
+                                 + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
+                                 + '</a>'
+                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> '
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
                                  + '</div>'
                                  + '</div>'
                                  + '</div>';

@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <title>CarJaidee</title>
     <!-- Bootstrap Core CSS -->
+    <link href="<?=base_url("/public/vendor/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/themes/caraccessory/css/lib/bootstrap/bootstrap.min.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/themes/caraccessory/css/lib/dropzone/dropzone.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/themes/caraccessory/css/style.css") ?>" rel="stylesheet">

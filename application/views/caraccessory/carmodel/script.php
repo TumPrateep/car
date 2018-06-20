@@ -66,8 +66,8 @@
                                 //  + '<a href="'+base_url+"admin/caraccessory/CarModelAccessory/"+value.brandId+'" class="btn btn-primary">Go somewhere</a>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> ลบ</button>'
+                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> '
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
                                  + '</div>'
                                  + '</div>'
                                  + '</div>';
