@@ -40,7 +40,7 @@ class TireRim extends BD_Controller {
                 $nestedData[$count]['rimId'] = $post->rimId;
                 $nestedData[$count]['rimName'] = $post->rimName;
                 $nestedData[$count]['status'] = $post->status;
-                $nestedData['activeFlag'] = $post->activeFlag;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 $data[$index] = $nestedData;
                 if($count >= 3){
                     $count = -1;
@@ -134,7 +134,7 @@ class TireRim extends BD_Controller {
                 }
         }else{
             $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
-            $this->set_response($output, REST_Controller::HTTP_OK);
+                $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
