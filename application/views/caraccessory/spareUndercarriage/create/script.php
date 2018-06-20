@@ -26,7 +26,7 @@
             $.post(base_url+"apiCaraccessories/CarSpareUndercarriage/createspareUndercarriage",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/Sparepartcar");
+                    showMessage(data.message,"caraccessory/Spareundercarries");
                 }else{
                     showMessage(data.message);
                 }
