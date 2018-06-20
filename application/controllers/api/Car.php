@@ -114,7 +114,7 @@ class Car extends BD_Controller {
 
 
         $this->load->model("Model");
-        $isCheck = $this->Model->get_model($brandId,$modelName);
+        $isCheck = $this->Model->get_model($brandId,$modelName,$yearStart,$yearEnd);
 
         if($isCheck){
             $data = array(
@@ -123,7 +123,8 @@ class Car extends BD_Controller {
                 'brandId' => $brandId,
                 'yearStart' => $yearStart,
                 'yearEnd' => $yearEnd,
-                'status' => 1
+                'status' => 1,
+                'activeFlag' => 1
             );
             $result = $this->Model->insert_model($data);
             $output["status"] = $result;
@@ -356,7 +357,7 @@ class Car extends BD_Controller {
             $yearEnd = null;
         }
         
-        $result = $this->Model->wherenot($modelId,$modelName,$brandId);
+        $result = $this->Model->wherenot($modelId,$modelName, $yearStart, $brandId);
 
         if($result){
             $data = array(
