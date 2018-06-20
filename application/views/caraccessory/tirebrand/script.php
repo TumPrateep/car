@@ -57,7 +57,7 @@
                                  + '<a href="'+base_url+"caraccessory/TireModel/index/"+value.tire_brandId+'">'
                                  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '</a>'
-                                 + '<a href="'+base_url+"caraccessory/tirebrand/updatetirebrand/"'">'
+                                //  + '<a href="'+base_url+"caraccessory/tirebrand/updatetirebrand/"'">'
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> '
                                  + '</a>'
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
