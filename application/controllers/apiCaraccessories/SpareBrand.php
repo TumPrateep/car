@@ -126,4 +126,18 @@ class SpareBrand extends BD_Controller {
            }
        }
     }
+
+    function getSpareBrand_post(){
+        $spares_brandId = $this->post('spares_brandId');
+        $this->load->model("Sparesbrand");
+        $sparBrand = $this->Sparesbrand->getSpareBrandbyId($spares_brandId);
+            if($sparBrand != null){
+                $output["data"] = $sparBrand;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+    }
 }
