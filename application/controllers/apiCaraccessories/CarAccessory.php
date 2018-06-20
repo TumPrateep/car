@@ -50,7 +50,7 @@ class CarAccessory extends BD_Controller {
                 $nestedData[$count]['brandPic'] = $post->brandPicture;
                 $nestedData[$count]['brandName'] = $post->brandName;
                 $nestedData[$count]['status'] = $post->status;
-                $nestedData['activeFlag'] = $post->activeFlag;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 
                 $data[$index] = $nestedData;
                 if($count >= 3){
