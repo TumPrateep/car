@@ -17,5 +17,5 @@
     <script src="<?=base_url("/public/themes/caraccessory/js/lib/dropzone/dropzone.js") ?>"></script>
 
     <script src="<?=base_url("/public/js/select2.full.js") ?>"></script>
-    <script src="<?=base_url("/public/js/setup.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/caraccessory/js/setup.js") ?>"></script>
     

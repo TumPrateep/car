@@ -184,7 +184,7 @@
           $.post(base_url+"api/auth/login",data,
             function(data){
               localStorage.token = data.token;
-              localStorage.id = data.id;
+              localStorage.userId = data.userId;
               window.location.assign(base_url+"role");
             }
           )

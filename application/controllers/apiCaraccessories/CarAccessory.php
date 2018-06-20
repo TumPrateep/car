@@ -152,4 +152,18 @@ class CarAccessory extends BD_Controller {
         }
    }
 
+   function getBrand_post(){
+    $brandId = $this->post('brandId');
+    $this->load->model("Brand");
+    $brand = $this->Brand->getBrandById($brandId);
+        if($brand != null){
+            $output["data"] = $brand;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
 }
