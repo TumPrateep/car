@@ -54,7 +54,7 @@
                                  + '<h5 class="card-title">'+value.tire_brandName+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<a href="'+base_url+"caraccessory/TireModel/index1/"+value.tire_brandId+'">'
+                                 + '<a href="'+base_url+"caraccessory/TireModel/index/"+value.tire_brandId+'">'
                                  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '</a>'
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> '

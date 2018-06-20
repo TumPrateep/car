@@ -13,7 +13,7 @@
         },
         messages: {
             tire_size: {
-                required: "กรุณากรอกขนาดยาง"
+                required: "กรุณากรอกหน้ายาง"
             },
             tire_series: {
                 required: "กรุณากรอกซีรี่ย์ยาง"

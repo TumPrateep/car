@@ -49,11 +49,17 @@ $("#update-brand").validate({
             brandName: {
             required: true
             },
+            brandPicture :{
+            required: true   
+            },
         },
         messages: {
             brandName: {
             required: "กรุณากรอกยี่ห้อรถ"
-            }
+            },
+            brandPicture :{
+            required: ""   
+            },
         },
     });
 

@@ -30,6 +30,8 @@ abstract class REST_Controller extends CI_Controller {
     const MSG_CREATE_DUPLICATE = 3001;
     const MSG_UPDATE_DUPLICATE = 3002;
 
+    const MSG_UNAUTHORIZATION = 6001;
+
     const MSG_LOGIN_FAIL = 2001;
 
     const MSG_ERROR = 404;

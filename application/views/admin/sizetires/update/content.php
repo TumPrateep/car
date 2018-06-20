@@ -28,15 +28,15 @@
                     <div class="form-row">
                           <div class="col">
                             <label>หน้ายาง</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="หน้ายาง" name="tire_size" id="tire_size">
+                            <input type="text" class="form-control" placeholder="หน้ายาง เช่น 205" name="tire_size" id="tire_size">
                           </div>  
                           <div class="col">
                             <label>ซีรี่ย์ยาง</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ซีรี่ย์ยาง" name="tire_series" id="tire_series">
+                            <input type="text" class="form-control" placeholder="ซีรี่ย์ยาง เช่น 55" name="tire_series" id="tire_series">
                           </div>
                           <div class="col">
                             <label>ขนาดกะทะล้อ</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ขนาดกะทะล้อ" name="rim" id="rim">
+                            <input type="text" class="form-control" placeholder="ขนาดกะทะล้อ เช่น R17" name="rim" id="rim">
                           </div>
                       </div><br>
                       <div class="form-group">
