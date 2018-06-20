@@ -53,6 +53,8 @@
                                  + '<h5 class="card-title">'+value.spares_undercarriageName+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
+                                 + '<a href="'+base_url+"caraccessory/SpareBrand/index1/"+value.spares_brandId+'">'
+                                 + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> '
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
