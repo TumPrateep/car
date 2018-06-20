@@ -1,5 +1,5 @@
 <script>
-    var table = $('#brand-table').DataTable({
+    var table = $('#model-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -27,11 +27,13 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/CarSpareUndercarriage/searchspareUndercarriage",
+                "url": base_url+"apiCaraccessories/SpareBrand/searchSpares",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_undercarriageName = $("#brand-search").val()
+                    data.spares_undercarriageId = $("#spares_undercarriageId").val(),
+                    data.search = $("#table-search").val()
+                    
                 }
             },
             "columns": [
@@ -43,32 +45,21 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '<div class="row">';
-
                         $.each(data, function( index, value ) {
-                            var gray = "";
-                            var isShow = false;
-
-                            if(value.status == '2'){
-                                var gray = " filter-gray ";
-                                if(value.create_by == userId && value.activeFlag == 2){
-                                    isShow = true;
-                                }
-                            }
-
-                            html += '<div class="col-lg-3 ">'
-                                 + '<div class="card card-header-height">'
-                                 + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
+                            var gray = (value.status == '2')?" filter-gray ":"";
+                            html += '<div class="col-lg-3 '+gray+'">'
+                                 + '<div class="card card-height">'
+                                 + '<span class="card-subtitle mb-2">ยี่ห้อ <i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
+                                //  + '<img class="card-img-top" src="'+base_url+'public/image/tire_brand/'+value.tire_brandPicture+'" alt="Card image cap">'
                                  + '<div class="card-body text-center card-body-height">'
-                                 + '<h5 class="card-title">'+value.spares_undercarriageName+'</h5>'
+                                 + '<h5 class="card-title">'+value.spares_brandName+'</h5>'
+                                //  + '<h6 class="card-subtitle mb-2">'+ $showyear+'</h6>'
+                                //  + '<a href="'+base_url+"admin/caraccessory/CarModelAccessory/"+value.brandId+'" class="btn btn-primary">Go somewhere</a>'
                                  + '</div>'
-                                 + '<div class="card-body text-center card-bottom">';
-                            if(isShow){
-                                html += '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
-                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> '
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteModel(\''+value.spares_undercarriageId+'\',\''+value.spares_undercarriageName+'\')"><i class="ti-trash"></i> ลบ</button>';
-                            }
-                                 
-                            html += '</div>'
+                                 + '<div class="card-body text-center card-bottom">'
+                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> ลบ</button>'
+                                 + '</div>'
                                  + '</div>'
                                  + '</div>';
                         });
@@ -79,16 +70,6 @@
                 }
             ]
     });
-
-    function deleteModel(spares_undercarriageId, spares_undercarriageName){
-        var option = {
-            url: "/carspareundercarriage/deletespareUndercarriage?spares_undercarriageId="+spares_undercarriageId,
-            label: "ลบอะไหล่ช่วงล่าง",
-            content: "คุณต้องการลบ "+spares_undercarriageName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/Spareundercarries"
-        }
-        fnDelete(option);
-    }
 
     $("#btn-search").click(function(){
         event.preventDefault();

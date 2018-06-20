@@ -34,7 +34,7 @@ class Auth extends BD_Controller {
             $token['iat'] = $date->getTimestamp();
             $token['exp'] = $date->getTimestamp() + 60*60*5; //To here is to generate token
             $output['token'] = JWT::encode($token,$kunci ); //This is the output token
-            $output['userid'] = $val->id;
+            $output['userId'] = $val->id;
             $this->load->model("Profile");
             $profile = $this->Profile->findUserProfileById($val->id);
             $sess_array = array(

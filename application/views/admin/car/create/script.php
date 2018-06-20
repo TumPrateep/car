@@ -5,16 +5,16 @@
                 required: true
             },
             brandPicture: {
+                required: true
                 
-            }
+            } 
         },
         messages: {
             brandName: {
                 required: "กรุณากรอกยี่ห้อรถ"
             },
             brandPicture: {
-                required: "กรุณาใส่รูปยี่ห้อรถ",
-                extension: "กรุณาใส่รูปภาพที่นามสกุล .jpg"
+                required: ""
             }
         },
     });

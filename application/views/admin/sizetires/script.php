@@ -36,7 +36,7 @@ var table = $('#tiresize-table').DataTable({
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "tire_size" },
+                null,
                 null,
                 null
             ],
@@ -45,6 +45,12 @@ var table = $('#tiresize-table').DataTable({
                     "searchable": false,
                     "orderable": false,
                     "targets": [0,3]
+                },{
+                    "targets": 1,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return data.tire_size+"/"+data.tire_series+"/"+data.rim;
+                    }
                 },{
                     "targets": 3,
                     "data": null,

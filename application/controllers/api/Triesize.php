@@ -91,9 +91,7 @@ class Triesize extends BD_Controller {
         $columns = array( 
             0 => null,
             1 => 'tire_size',
-            2 => 'status'
-             
-            
+            2 => 'status'      
         );
         $limit = $this->post('length');
         $start = $this->post('start');
@@ -103,18 +101,15 @@ class Triesize extends BD_Controller {
         $this->load->model("trieSizes");
         $totalData = $this->trieSizes->alltrieSize_count($rimId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('tire_size'))  && empty($this->post('status'))&& empty($this->post('rimId')))
+        if(empty($this->post('tire_size')) && empty($this->post('status')))
         {            
             $posts = $this->trieSizes->allTriesize($limit,$start,$order,$dir, $rimId);
         }
         else {
             $search = $this->post('tire_size'); 
             $status = $this->post('status'); 
-            $rimId = $this->post('rimId'); 
             $posts =  $this->trieSizes->trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status);
             $totalFiltered = $this->trieSizes->trie_size_search_count($search, $rimId,$status);
-            
-           
         }
         $data = array();
         if(!empty($posts))
@@ -123,6 +118,8 @@ class Triesize extends BD_Controller {
             {
                 $nestedData['tire_sizeId'] = $post->tire_sizeId;
                 $nestedData['tire_size'] = $post->tire_size;
+                $nestedData['tire_series'] = $post->tire_series;
+                $nestedData['rim'] = $post->rim;
                 $nestedData['rimId'] = $post->rimId;
                 $nestedData['status'] = $post->status;
                 $data[] = $nestedData;

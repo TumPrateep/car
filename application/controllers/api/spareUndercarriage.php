@@ -71,7 +71,8 @@ class SpareUndercarriage extends BD_Controller {
             $data = array(
                 'spares_undercarriageId' => null,
                 'spares_undercarriageName' => $spares_undercarriageName,
-                'status' => 1
+                'status' => 1,
+                'activeFlag' => 1
             );
             $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
             $output["status"] = $result;
@@ -175,13 +176,15 @@ class SpareUndercarriage extends BD_Controller {
     function changeStatus_post(){
         $spares_undercarriageId = $this->post("spares_undercarriageId");
         $status = $this->post("status");
+        $userId = $this->session->userdata['logged_in']['id'];
         if($status == 1){
             $status = 2;
         }else{
             $status = 1;
         }
         $data = array(
-            'status' => $status
+            'status' => $status,
+            'activeFlag' => 1
         );
         $this->load->model("sparesUndercarriages");
         $result = $this->sparesUndercarriages->updateStatus($spares_undercarriageId,$data);
