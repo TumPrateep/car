@@ -9,9 +9,9 @@ class SpareBrand extends CI_Controller {
 		$this->load->view("lib");
 	}
 	
-	public function index1($spares_brandId)
+	public function index($spares_undercarriageId)
 	{
-		$data['spares_brandId']=$spares_brandId;
+		$data['spares_undercarriageId']=$spares_undercarriageId;
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");

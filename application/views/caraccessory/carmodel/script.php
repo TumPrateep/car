@@ -38,13 +38,14 @@
             },
             "columns": [
                 null
-            ],
-            "columnDefs": [
+            ],"columnDefs": [
                 {
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '<div class="row">';
+
+                        
                         $.each(data, function( index, value ) {
                             $yearBenull=value.yearStart;
                             $yearBenotnull=value.yearStart+" - "+value.yearEnd;
@@ -55,22 +56,37 @@
                             else{
                                 $showyear=$yearBenull;
                             }
-                            var gray = (value.status == '2')?" filter-gray ":"";
-                            html += '<div class="col-lg-3 '+gray+'">'
-                                 + '<div class="card card-height">'
-                                 + '<span class="card-subtitle mb-2">ยี่ห้อ <i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
-                                //  + '<img class="card-img-top" src="'+base_url+'public/image/tire_brand/'+value.tire_brandPicture+'" alt="Card image cap">'
-                                 + '<div class="card-body text-center card-body-height">'
+
+                            var gray = "";
+                            var isShow = false;
+
+                            if(value.status == '2'){
+                                var gray = " filter-gray ";
+                                if(value.create_by == userId && value.activeFlag == 2){
+                                    isShow = true;
+                                }
+                            }
+                           
+                            html += '<div class="col-lg-3 ">'
+                                 + '<div class="card card-header-height">'
+                                 + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
+                                 + '<div class="card-body text-center">'
                                  + '<h5 class="card-title">'+value.modelName+'</h5>'
                                  + '<h6 class="card-subtitle mb-2">'+ $showyear+'</h6>'
-                                //  + '<a href="'+base_url+"admin/caraccessory/CarModelAccessory/"+value.brandId+'" class="btn btn-primary">Go somewhere</a>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<a href="'+base_url+"caraccessory/CarModelAccessory/updatemodelcar/"+value.brandId+'/'+value.modelId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletecarModel(\''+value.modelId+'\',\''+value.modelName+'\',\''+value.brandId+'\')"><i class="ti-trash"></i> ลบ</button>'
-                                 + '</div>'
+                                
+                                
+                            
+                            if(isShow){
+                                html += '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
+                                + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletecarModel(\''+value.modelId+'\',\''+value.modelName+'\',\''+value.brandId+'\')"><i class="ti-trash"></i> ลบ</button>'
+                             }
+
+                                html += '</div>'
                                  + '</div>'
                                  + '</div>';
+  
                         });
 
                         html += '</div>';
@@ -79,6 +95,8 @@
                 }
             ]
     });
+
+            
 
     $("#btn-search").click(function(){
         event.preventDefault();
