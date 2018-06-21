@@ -62,6 +62,8 @@ class Tirebrand extends BD_Controller {
                 $nestedData[$count]['tire_brandName'] = $post->tire_brandName;
                 $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
                 $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['create_by'] = $post->create_by;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 $data[$index] = $nestedData;
                 if($count >= 3){
                     $count = -1;

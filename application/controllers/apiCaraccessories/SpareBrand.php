@@ -83,11 +83,12 @@ class SpareBrand extends BD_Controller {
         {
             foreach ($posts as $post)
             {
-                $nestedData['spares_brandId'] = $post->spares_brandId;
-                $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
-                $nestedData['spares_brandName'] = $post->spares_brandName;
-                $nestedData['status'] = $post->status;
-                $nestedData['activeFlag'] = $post->activeFlag;
+                $nestedData[$count]['spares_brandId'] = $post->spares_brandId;
+                $nestedData[$count]['spares_undercarriageId'] = $post->spares_undercarriageId;
+                $nestedData[$count]['spares_brandName'] = $post->spares_brandName;
+                $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
+                $nestedData[$count]['create_by'] = $post->create_by;
                 
                 $data[] = $nestedData;
 

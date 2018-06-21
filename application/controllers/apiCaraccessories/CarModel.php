@@ -54,6 +54,7 @@ class CarModel extends BD_Controller {
                 $nestedData[$count]['yearEnd'] = $post->yearEnd;
                 $nestedData[$count]['status'] = $post->status;
                 $nestedData[$count]['activeFlag'] = $post->status;
+                $nestedData[$count]['create_by'] = $post->create_by;
                 $data[$index] = $nestedData;
                 if($count >= 3){
                     $count = -1;
