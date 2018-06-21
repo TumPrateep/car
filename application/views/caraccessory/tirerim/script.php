@@ -59,7 +59,7 @@
                                  + '<div class="card card-header-height">'
                                  + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
                                  + '<div class="card-body text-center card-body-height">'
-                                 + '<h5 class="card-title">'+value.rimName+'</h5>'
+                                 + '<h5 class="card-title">'+value.rimName+" นิ้ว"+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
                                  + '<a href="'+base_url+"caraccessory/TireSize/index/"+value.rimId+'">'
