@@ -49,9 +49,7 @@ class SpareBrand extends BD_Controller {
     }
     function searchSpares_post(){
         $columns = array( 
-            0 => null,
-            1 => 'spares_brandName',
-            2 => 'status',   
+            0 => null  
         );
 
         $limit = $this->post('length');
@@ -77,10 +75,11 @@ class SpareBrand extends BD_Controller {
 
             $totalFiltered = $this->Sparesbrand->spares_brand_search_count($search, $spares_undercarriageId, $status);
         }
-
-        $data = array();
+        $data = array();        
         if(!empty($posts))
         {
+            $index = 0;
+            $count = 0;
             foreach ($posts as $post)
             {
                 $nestedData[$count]['spares_brandId'] = $post->spares_brandId;
@@ -88,10 +87,14 @@ class SpareBrand extends BD_Controller {
                 $nestedData[$count]['spares_brandName'] = $post->spares_brandName;
                 $nestedData[$count]['status'] = $post->status;
                 $nestedData[$count]['activeFlag'] = $post->activeFlag;
-                $nestedData[$count]['create_by'] = $post->create_by;
+                $data[$index] = $nestedData;
+                if($count >= 3){
+                    $count = -1;
+                    $index++;
+                    $nestedData = [];
+                }
                 
-                $data[] = $nestedData;
-
+                $count++;
             }
         }
 
