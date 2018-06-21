@@ -47,7 +47,7 @@
             <div class="col-lg-4">
                 <div class="input-group input-group-flat">
                     <label class="col-lg-3 col-form-label">จัดเรียง: </label>
-                    <select class="form-control input-default">
+                    <select class="form-control input-default" name="column" id="column">
                         <option value="1" selected>เรียงลำดับจาก ก-ฮ</option>
                         <option value="2">เรียงลำดับจาก ฮ-ก</option>
                         <option value="3">เรียงลำดับจาก สถานะ</option>
