@@ -44,8 +44,7 @@ class Triebrand extends BD_Controller {
                     "status"=> 1,
                     "create_at" => date('Y-m-d H:i:s',time()),
                     "create_by" => $userId,
-                    'update_at' => null,
-                    'update_by' => null
+                    "activeFlag" => 1
                 );
                 $isResult = $this->triebrands->insert_triebrands($data);
                 if($isResult){
@@ -89,7 +88,6 @@ class Triebrand extends BD_Controller {
         $this->load->model("triebrands");
         $userId = $this->session->userdata['logged_in']['id'];
         
-
         $image =  "";
         if ( ! $this->upload->do_upload("tire_brandPicture")){
             $error = array('error' => $this->upload->display_errors());
@@ -109,7 +107,8 @@ class Triebrand extends BD_Controller {
                 "tire_brandName"=> $tire_brandName,
                 "tire_brandPicture"=> $image,
                 'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId
+                'update_by' => $userId,
+                "activeFlag" => 1
             );
             $oldData = $this->triebrands->getirebrandById($tire_brandId);
             $isResult = $this->triebrands->update($data, $tire_brandId);
@@ -204,7 +203,8 @@ class Triebrand extends BD_Controller {
             $status = 1;
         }
         $data = array(
-            'status' => $status
+            'status' => $status,
+            'activeFlag' => 1
         );
         $this->load->model("Triebrands");
         $result = $this->Triebrands->updateStatus($tire_brandId,$data);

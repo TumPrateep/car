@@ -30,15 +30,15 @@ class Rim extends BD_Controller {
         $rimName = $this->post("rimName");
         $this->load->model("rims");
         $isCheck = $this->rims->checkrim($rimName);
+        $userId = $this->session->userdata['logged_in']['id'];
         if($isCheck){
             $data = array(
                 'rimId' => null,
                 'rimName' => $rimName,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId,
-                'status' => 1
+                'status' => 1,
+                'activeFlag' => 1
             );
             $result = $this->rims->insert_rim($data);
             $output["status"] = $result;
@@ -103,18 +103,17 @@ class Rim extends BD_Controller {
     function updaterim_post(){
         $rimId = $this->post('rimId');
         $rimName = $this->post('rimName');
-        
+        $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("rims");
         $result = $this->rims->wherenotrim($rimId,$rimName);
         if($result){
             $data = array(
                 'rimId' => $rimId,
                 'rimName' => $rimName,
-                'create_at' => date('Y-m-d H:i:s',time()),
-                'create_by' => $userId,
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId,
-                'status' => 1
+                'status' => 1,
+                'activeFlag' => 1
             );
             $result = $this->rims->updaterim($data);
             $output["status"] = $result;
@@ -155,7 +154,8 @@ class Rim extends BD_Controller {
             $status = 1;
         }
         $data = array(
-            'status' => $status
+            'status' => $status,
+            'activeFlag' => 1
         );
         $this->load->model("rims");
         $result = $this->rims->updateStatus($rimId,$data);

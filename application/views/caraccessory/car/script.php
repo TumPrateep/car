@@ -67,10 +67,13 @@
                                  + '<a href="'+base_url+"caraccessory/CarModelAccessory/index1/"+value.brandId+'">'
                                  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '</a>'
+
                                 
                             
                             if(isShow){
-                                html += '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
+                                html += '<a href="'+base_url+"caraccessory/car/updatecar/"+value.brandId+'">'
+                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
+                                 + '</a>'
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteBrand(\''+value.brandId+'\',\''+value.brandId+'\')"><i class="ti-trash"></i> ลบ</button>';   
                              }
 

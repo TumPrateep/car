@@ -23,11 +23,11 @@ $("#submit").validate({
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/TireRim/updatetrieRim",data,
+            $.post(base_url+"apiCaraccessories/TireRim/updaterim",data,
             function(data){
                 var rimId = $("#rimId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/TireRim/index/"+rimId);
+                    showMessage(data.message,"caraccessory/TireRim/");
                 }else{
                     showMessage(data.message,);
                 }
