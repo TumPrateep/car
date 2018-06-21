@@ -62,6 +62,7 @@
                                  + '<h5 class="card-title">'+value.spares_undercarriageName+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
+                                 + '<a href="'+base_url+"caraccessory/SpareBrand/index/"+value.spares_undercarriageId+'">'
                                  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> ';
                             
                             if(isShow){
