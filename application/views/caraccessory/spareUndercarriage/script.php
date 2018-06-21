@@ -1,5 +1,5 @@
 <script>
-    var table = $('#brand-table').DataTable({
+    var table = $('#model-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -31,7 +31,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_undercarriageName = $("#brand-search").val()
+                    data.spares_undercarriageName = $("#searchbrand-search").val()
                 }
             },
             "columns": [

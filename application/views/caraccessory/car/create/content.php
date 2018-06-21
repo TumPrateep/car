@@ -3,7 +3,7 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">ยี่ห้อรถ</h3> 
+            <h3 class="text-primary">เพิ่มยี่ห้อรถ</h3> 
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
@@ -43,8 +43,8 @@
                                 </div>       
 
                                 <div class="form-actions">
-                                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                    <button type="button" class="btn btn-inverse">Cancel</button>
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                                    <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                 </div>
                             </div>
                         </form>

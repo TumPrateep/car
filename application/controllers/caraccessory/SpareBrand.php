@@ -22,7 +22,7 @@ class SpareBrand extends CI_Controller {
 	}
 	public function createSpareBrand($spares_undercarriageId)
 	{
-		$data['spares_undercarriageId']=$spares_undercarriageId;
+		$data['spares_undercarriageId'] = $spares_undercarriageId;
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
@@ -30,5 +30,16 @@ class SpareBrand extends CI_Controller {
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
 		$this->load->view("caraccessory/SpareBrand/create/script");
+	}
+	public function updateTireSize($spares_undercarriageId)
+	{
+		$data['spares_undercarriageId'] = $spares_undercarriageId;
+		$this->load->view("caraccessory/layout/head");
+		$this->load->view("caraccessory/layout/header");
+		$this->load->view("caraccessory/layout/left-menu");
+		$this->load->view("caraccessory/SpareBrand/update/content",$data);
+		$this->load->view("caraccessory/layout/footer");
+		$this->load->view("caraccessory/layout/foot");
+		$this->load->view("caraccessory/SpareBrand/update/script");
 	}
 }

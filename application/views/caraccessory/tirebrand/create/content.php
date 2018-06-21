@@ -44,7 +44,7 @@ Page wrapper  -->
                                 </div>
 
                                 <div class="form-actions">
-                                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> บันทึก</button>
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
                                     <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                 </div>
                             </div>

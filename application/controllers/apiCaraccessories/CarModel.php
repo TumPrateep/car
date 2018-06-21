@@ -53,7 +53,7 @@ class CarModel extends BD_Controller {
                 $nestedData[$count]['yearStart'] = $post->yearStart;
                 $nestedData[$count]['yearEnd'] = $post->yearEnd;
                 $nestedData[$count]['status'] = $post->status;
-                $nestedData[$count]['activeFlag'] = $post->status;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 $nestedData[$count]['create_by'] = $post->create_by;
                 $data[$index] = $nestedData;
                 if($count >= 3){
@@ -104,7 +104,8 @@ class CarModel extends BD_Controller {
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
                 'update_at' => null,
-                'update_by' => null
+                'update_by' => null,
+                'activeFlag' => 2
             );
             $result = $this->Model->insert_model($data);
             $output["status"] = $result;
@@ -143,7 +144,7 @@ class CarModel extends BD_Controller {
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
             }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }else{
