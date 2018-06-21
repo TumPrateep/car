@@ -31,9 +31,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_undercarriageId = $("#spares_undercarriageId").val(),
-                    data.search = $("#table-search").val()
-                    
+                    data.spares_brandName = $("#spares_brandName").val(),
+                    data.spares_undercarriageId = $("#spares_undercarriageId").val()
                 }
             },
             "columns": [
@@ -45,20 +44,20 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '<div class="row">';
+
                         $.each(data, function( index, value ) {
                             var gray = (value.status == '2')?" filter-gray ":"";
-                            html += '<div class="col-lg-3 '+gray+'">'
-                                 + '<div class="card card-height">'
-                                 + '<span class="card-subtitle mb-2">ยี่ห้อ <i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
-                                //  + '<img class="card-img-top" src="'+base_url+'public/image/tire_brand/'+value.tire_brandPicture+'" alt="Card image cap">'
-                                 + '<div class="card-body text-center card-body-height">'
-                                 + '<h5 class="card-title">'+value.spares_brandName+'</h5>'
-                                //  + '<h6 class="card-subtitle mb-2">'+ $showyear+'</h6>'
-                                //  + '<a href="'+base_url+"admin/caraccessory/CarModelAccessory/"+value.brandId+'" class="btn btn-primary">Go somewhere</a>'
+                            html += '<div class="col-md-3 '+gray+'">'
+                                 + '<div class="card card-header-height">'
+                                 + '<span class="card-subtitle text-right card-margin"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
+                                 + '<div class="card-body text-center">'
+                                 + '<h5 class="card-title">'+value.spares_brandName+' </h5>'
+                                //  + '<h5 class="card-title">'+value.tire_series+' </h5>'
+                                //  + '<h5 class="card-title">'+value.rim+' </h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> ลบ</button>'
+                                 + '<a href="'+base_url+"caraccessory/tiresize/updatetiresize/"+value.spares_brandId+"/"+value.spares_undercarriageId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button></a> '
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
                                  + '</div>'
                                  + '</div>'
                                  + '</div>';
