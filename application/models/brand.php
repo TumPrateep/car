@@ -158,6 +158,7 @@ class Brand extends CI_Model {
         $this->db->where('brandId',$brandId);
         $this->db->where('status',$status);
         $this->db->where('create_by',$userId);
+        $this->db->where('activeFlag',2);
         $result = $this->db->count_all_results();
         if($result > 0){
             return true;

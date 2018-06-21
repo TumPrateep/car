@@ -205,6 +205,7 @@ class Model extends CI_Model{
         $this->db->where('modelId',$modelId);
         $this->db->where('status',$status);
         $this->db->where('create_by',$userId);
+        $this->db->where('activeFlag',2);
         $resule = $this->db->count_all_results();
 
         if($result > 0){
