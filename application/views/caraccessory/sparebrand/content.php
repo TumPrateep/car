@@ -20,7 +20,7 @@
         
         <div class="row p-30">
             <div class="col-lg-4 div-right">
-                <a href="<?=base_url("caraccessory/SpareBrand/index/$spares_undercarriageId") ?>">
+                <a href="<?=base_url("caraccessory/SpareBrand/createSpareBrand/$spares_undercarriageId") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>
