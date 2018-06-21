@@ -36,8 +36,7 @@
             },
             "columns": [
                 null
-            ],
-            "columnDefs": [
+            ],"columnDefs": [
                 {
                     "targets": 0,
                     "data": null,
@@ -45,8 +44,17 @@
                         var html = '<div class="row">';
 
                         $.each(data, function( index, value ) {
-                            var gray = (value.status == '2')?" filter-gray ":"";
-                            html += '<div class="col-md-3 '+gray+'">'
+                            var gray = "";
+                            var isShow = false;
+
+                            if(value.status == '2'){
+                                var gray = " filter-gray ";
+                                if(value.create_by == userId && value.activeFlag == 2){
+                                    isShow = true;
+                                }
+                            }
+
+                            html += '<div class="col-lg-3 ">'
                                  + '<div class="card card-header-height">'
                                  + '<span class="card-subtitle text-right card-margin"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                 
                                  + '<img class="card-img-top" src="'+base_url+'public/image/tire_brand/'+value.tire_brandPicture+'" alt="Card image cap">'
@@ -57,11 +65,16 @@
                                  + '<a href="'+base_url+"caraccessory/TireModel/index/"+value.tire_brandId+'">'
                                  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '</a>'
-                                 + '<a href="'+base_url+"caraccessory/tirebrand/updatetirebrand/"+value.tire_brandId+'">'
-                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> '
-                                 + '</a>'
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
-                                 + '</div>'
+
+                                //  + '<a href="'+base_url+"caraccessory/tirebrand/updatetirebrand/"+value.tire_brandId+'">'
+                                  
+                            if(isShow){
+                                html += '<a href="'+base_url+"caraccessory/tirerim/updatetirerim/"+value.rimId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
+                            }
+                                 
+                            html += '</div>'
+
                                  + '</div>'
                                  + '</div>';
                         });
@@ -72,6 +85,7 @@
                 }
             ]
     });
+           
 
     $("#btn-search").click(function(){
         event.preventDefault();

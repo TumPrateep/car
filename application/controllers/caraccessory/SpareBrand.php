@@ -9,7 +9,7 @@ class SpareBrand extends CI_Controller {
 		$this->load->view("lib");
 	}
 	
-	public function index1($spares_undercarriageId)
+	public function index($spares_undercarriageId)
 	{
 		$data['spares_undercarriageId']=$spares_undercarriageId;
 		$this->load->view("caraccessory/layout/head");

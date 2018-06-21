@@ -3,12 +3,12 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary"> เพิ่มข้อมูลรุ่นรถ</h3> 
+            <h3 class="text-primary"> แก้ไขข้อมูลรุ่นรถ</h3> 
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/CarModelAccessory/index1/$brandId"); ?>">รายการรุ่นรถ</a></li>
-                <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
+                <li class="breadcrumb-item active">แก้ไขข้อมูล</li>
             </ol>
         </div>
     </div>
@@ -19,11 +19,11 @@
             <div class="col-lg-12">
                 <div class="card card-header">
                     <div class="card-title">
-                        <h4><i class="fa fa-fw fa-car"></i> เพิ่มข้อมูลรุ่นรถ</h4>
+                        <h4><i class="fa fa-fw fa-car"></i> แก้ไขข้อมูลรุ่นรถ</h4>
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
+                            <form>
                                 <div class="form-group">
                                     <label class="control-label">ชื่อรุ่นรถ</label><span class="error">*</span>
                                     <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ" name="modelName" id="modelName">

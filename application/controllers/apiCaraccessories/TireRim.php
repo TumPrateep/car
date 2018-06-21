@@ -40,6 +40,8 @@ class TireRim extends BD_Controller {
                 $nestedData[$count]['rimId'] = $post->rimId;
                 $nestedData[$count]['rimName'] = $post->rimName;
                 $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
+                $nestedData[$count]['create_by'] = $post->create_by;
                 $data[$index] = $nestedData;
                 if($count >= 3){
                     $count = -1;
@@ -132,10 +134,13 @@ class TireRim extends BD_Controller {
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
         }else{
+            $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }
+       }
     }
     function getRim_post(){
         $rimId = $this->post('rimId');
@@ -149,6 +154,48 @@ class TireRim extends BD_Controller {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+    }
+
+    function updaterim_post(){
+        $rimId = $this->post('rimId');
+        $rimName = $this->post('rimName');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $status = 2;
+        
+        $this->load->model("rims");
+        $result = $this->rims->wherenotrim($rimId,$rimName);
+        if($result){
+            $data = array(
+                'rimId' => $rimId,
+                'rimName' => $rimName,
+                'create_at' => null,
+                'create_by' => null,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId,
+                'status' => 2,
+                'activeFlag' => 2,
+            );
+            $isCheckStatus =$this->rims->checkStatusFromRim($rimId,$status,$userId);
+            if($isCheckStatus ){
+                $result = $this->rims->updaterim($data);
+                $output["status"] = $result;
+                    if($result){
+                        $output["message"] = REST_Controller::MSG_SUCCESS;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }else{
+                        $output["status"] = false;
+                        $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }
+            }else{
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+
     }
 
 }

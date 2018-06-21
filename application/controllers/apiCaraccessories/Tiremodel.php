@@ -103,6 +103,8 @@ class Tiremodel extends BD_Controller {
                 $nestedData[$count]['tire_modelName'] = $post->tire_modelName;
                 $nestedData[$count]['tire_brandId'] = $post->tire_brandId;
                 $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
+                $nestedData[$count]['create_by'] = $post->create_by;
                 $data[$index] = $nestedData;
                 if($count >= 3){
                     $count = -1;
@@ -138,6 +140,33 @@ class Tiremodel extends BD_Controller {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+    }
+
+    function deleteTireModel_get(){
+        $tire_modelId = $this->get('tire_modelId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $status = 2;
+        $this->load->model("triemodels");
+        $tireModel = $this->triemodels->geTireModelNameFromTireModelBytireId($tire_modelId,$tire_brandId);
+        if($tireModel != null){
+            $isCheckStatus =$this->triemodels->checksparestriemodels($tire_modelId,$tire_brandId);
+            if($isCheckStatus ){
+                $isDelete = $this->triemodels->delete($tire_modelId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        } 
     }
     
 }

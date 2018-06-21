@@ -83,13 +83,41 @@ class Model extends CI_Model{
         return $result;
     }
     
-    function get_model($brandId,$modelName){
+    function get_model($brandId,$modelName,$yearStart,$yearEnd){
         $this->db->select("modelName");
         $this->db->from("model");
         $this->db->where('modelName', $modelName);
         $this->db->where('brandId', $brandId);
-        $result = $this->db->count_all_results();
+        $this->db->group_start();
+            if($yearEnd != null){
+                $this->db->group_start();
+                    $this->db->group_start();
+                        $this->db->where('yearStart <=' ,$yearStart)
+                        ->where('yearEnd >=' ,$yearStart);
+                    $this->db->group_end();
 
+                    $this->db->or_group_start()
+                        ->where('yearStart <=' ,$yearEnd)
+                        ->where('yearEnd >=' ,$yearEnd);
+                    $this->db->group_end();
+                $this->db->group_end();
+
+                $this->db->or_group_start();
+                    $this->db->where('yearStart >=' ,$yearStart)
+                    ->where('yearEnd <=' ,$yearEnd);
+                $this->db->group_end();
+
+            }else{
+                $this->db->or_group_start();
+                    $this->db->where('yearStart <=' ,$yearStart)
+                    ->where('yearEnd >=' ,$yearStart);
+                $this->db->group_end();
+
+                $this->db->or_where('yearStart' ,$yearStart);
+            }
+        $this->db->group_end();
+        $result = $this->db->count_all_results();
+        
         if($result > 0){
             return false;
         }
@@ -124,11 +152,39 @@ class Model extends CI_Model{
         return $result;
     }
 
-    function wherenot($modelId,$modelName,$brandId){
+    function wherenot($modelId,$modelName,$yearStart,$brandId){
         $this->db->select("modelName");
         $this->db->from("model");
         $this->db->where('modelName', $modelName);
         $this->db->where('brandId', $brandId);
+        $this->db->group_start();
+            if($yearEnd != null){
+                $this->db->group_start();
+                    $this->db->group_start();
+                        $this->db->where('yearStart <=' ,$yearStart)
+                        ->where('yearEnd >=' ,$yearStart);
+                    $this->db->group_end();
+
+                    $this->db->or_group_start()
+                        ->where('yearStart <=' ,$yearEnd)
+                        ->where('yearEnd >=' ,$yearEnd);
+                    $this->db->group_end();
+                $this->db->group_end();
+
+                $this->db->or_group_start();
+                    $this->db->where('yearStart >=' ,$yearStart)
+                    ->where('yearEnd <=' ,$yearEnd);
+                $this->db->group_end();
+
+            }else{
+                $this->db->or_group_start();
+                    $this->db->where('yearStart <=' ,$yearStart)
+                    ->where('yearEnd >=' ,$yearStart);
+                $this->db->group_end();
+
+                $this->db->or_where('yearStart' ,$yearStart);
+            }
+        $this->db->group_end();
         $this->db->where_not_in('modelId', $modelId);
         $result = $this->db->count_all_results();
 
@@ -149,6 +205,7 @@ class Model extends CI_Model{
         $this->db->where('modelId',$modelId);
         $this->db->where('status',$status);
         $this->db->where('create_by',$userId);
+        $this->db->where('activeFlag',2);
         $resule = $this->db->count_all_results();
 
         if($result > 0){

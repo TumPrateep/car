@@ -62,6 +62,8 @@ class Tirebrand extends BD_Controller {
                 $nestedData[$count]['tire_brandName'] = $post->tire_brandName;
                 $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
                 $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['create_by'] = $post->create_by;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 $data[$index] = $nestedData;
                 if($count >= 3){
                     $count = -1;
@@ -93,5 +95,32 @@ class Tirebrand extends BD_Controller {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+    }
+    
+    function deleteTireBrand_get(){
+        $tire_brandId = $this->get('tire_brandId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $status = 2;
+        $this->load->model("Triebrands");
+        $tireBrand = $this->Tirebrands->getirebrandById($tire_brandId);
+        if($tireBrand != null){
+            $isCheckStatus =$this->Tirebrands->checkStatusFromTireBrand($tire_brandId,$status,$userId);
+            if($isCheckStatus ){
+                $isDelete = $this->Tirebrands->delete($tire_brandId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        } 
     }
 }

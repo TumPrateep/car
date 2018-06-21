@@ -107,6 +107,7 @@ class Car extends BD_Controller {
         $brandId = $this->post("brandId");
         $yearStart = $this->post("yearStart");
         $yearEnd = $this->post("yearEnd");
+        $userId = $this->session->userdata['logged_in']['id'];
 
         if($yearEnd == 0){
             $yearEnd = null;
@@ -114,7 +115,7 @@ class Car extends BD_Controller {
 
 
         $this->load->model("Model");
-        $isCheck = $this->Model->get_model($brandId,$modelName);
+        $isCheck = $this->Model->get_model($brandId,$modelName,$yearStart,$yearEnd);
 
         if($isCheck){
             $data = array(
@@ -123,7 +124,10 @@ class Car extends BD_Controller {
                 'brandId' => $brandId,
                 'yearStart' => $yearStart,
                 'yearEnd' => $yearEnd,
-                'status' => 1
+                'status' => 1,
+                'activeFlag' => 1,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId
             );
             $result = $this->Model->insert_model($data);
             $output["status"] = $result;
@@ -351,12 +355,13 @@ class Car extends BD_Controller {
         $yearStart = $this->post('yearStart');
         $yearEnd = $this->post('yearEnd');
         $this->load->model("Model");
+        $userId = $this->session->userdata['logged_in']['id'];
         
         if($yearEnd == 0){
             $yearEnd = null;
         }
         
-        $result = $this->Model->wherenot($modelId,$modelName,$brandId);
+        $result = $this->Model->wherenot($modelId,$modelName, $yearStart, $brandId);
 
         if($result){
             $data = array(
@@ -365,7 +370,9 @@ class Car extends BD_Controller {
                 'brandId' => $brandId,
                 'yearStart' => $yearStart,
                 'yearEnd' => $yearEnd,
-                'status' => 1
+                'status' => 1,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId
             );
             $result = $this->Model->update($data);
             $output["status"] = $result;
@@ -486,7 +493,8 @@ class Car extends BD_Controller {
                     "create_at" => date('Y-m-d H:i:s',time()),
                     "create_by" => $userId,
                     'update_at' => null,
-                    'update_by' => null
+                    'update_by' => null,
+                    "activeFlag" => 1
                 );
                 $isResult = $this->Brand->insert_brand($data);
                 if($isResult){
@@ -511,6 +519,7 @@ class Car extends BD_Controller {
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
 
+        $userId = $this->session->userdata['logged_in']['id'];
         $this->load->library('upload', $config);
         $this->load->model("Brand");
 
@@ -533,7 +542,9 @@ class Car extends BD_Controller {
                 "brandId"=> $brandId,
                 "brandPicture"=> $image,
                 "brandName"=> $brandName,
-                "status"=> 1
+                "status"=> 1,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId
             );
             $oldData = $this->Brand->getBrandById($brandId);
             $isResult = $this->Brand->update($data);
@@ -589,7 +600,8 @@ class Car extends BD_Controller {
             $status = 1;
         }
         $data = array(
-            'status' => $status
+            'status' => $status,
+            'activeFlag' => 1
         );
         $this->load->model("Brand");
         $result = $this->Brand->updateStatus($brandId,$data);
@@ -611,7 +623,8 @@ class Car extends BD_Controller {
             $status = 1;
         }
         $data = array(
-            'status' => $status
+            'status' => $status,
+            'activeFlag' => 1
         );
         $this->load->model("Model");
         $result = $this->Model->updateStatus($modelId,$data);

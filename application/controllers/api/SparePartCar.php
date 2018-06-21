@@ -83,8 +83,7 @@ class SparePartCar extends BD_Controller {
                 'spares_undercarriageId' => $spares_undercarriageId,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId
+                'activeFlag' => 1
             );
             $result = $this->Sparesbrand->insertBrand($data);
             $output["status"] = $result;
@@ -113,6 +112,7 @@ class SparePartCar extends BD_Controller {
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("Sparesbrand");
+        $userId = $this->session->userdata['logged_in']['id'];
 
         $result = $this->Sparesbrand->wherenotBrand($spares_brandId,$spares_brandName,$spares_undercarriageId);
 
@@ -121,7 +121,9 @@ class SparePartCar extends BD_Controller {
                 'spares_brandId' => $spares_brandId,
                 'spares_brandName' => $spares_brandName,
                 'status' => 1,
-                'spares_undercarriageId' => $spares_undercarriageId
+                'spares_undercarriageId' => $spares_undercarriageId,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId
             );
             $result = $this->Sparesbrand->updateBrand($data);
             $output["status"] = $result;
@@ -197,7 +199,8 @@ class SparePartCar extends BD_Controller {
             $status = 1;
         }
         $data = array(
-            'status' => $status
+            'status' => $status,
+            'activeFlag' => 1
         );
         $this->load->model("Sparesbrand");
         $result = $this->Sparesbrand->updateStatus($spares_brandId,$data);

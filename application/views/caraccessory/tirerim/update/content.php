@@ -14,7 +14,8 @@
     </div>
    
     <div class="container-fluid">  
-    <form id="submit">   
+    <form id="submit">  
+    <input type="hidden" id="rimId" name="rimId" value="<?=$rimId ?>"> 
         <div class="row">
             <div class="col-lg-12">
                 <div class="card card-header">
@@ -37,4 +38,4 @@
             </div>
         </div>
     </div>
-<!-- End Container fluid 
+<!-- End Container fluid -->

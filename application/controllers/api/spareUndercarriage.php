@@ -72,7 +72,9 @@ class SpareUndercarriage extends BD_Controller {
                 'spares_undercarriageId' => null,
                 'spares_undercarriageName' => $spares_undercarriageName,
                 'status' => 1,
-                'activeFlag' => 1
+                'activeFlag' => 1,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId
             );
             $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
             $output["status"] = $result;
@@ -127,7 +129,9 @@ class SpareUndercarriage extends BD_Controller {
             $data = array(
                 'spares_undercarriageId' => $spares_undercarriageId,
                 'spares_undercarriageName' => $spares_undercarriageName,
-                'status' => 1
+                'status' => 1,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId
             );
             $result = $this->sparesUndercarriages->updatesparesUndercarriage($data);
             $output["status"] = $result;

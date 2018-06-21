@@ -128,6 +128,7 @@ class sparesUndercarriages extends CI_Model{
             $this->db->where('status', $status);
             $this->db->where('create_by', $userId);
             $this->db->where('spares_undercarriageId', $spares_undercarriageId);
+            $this->db->where('activeFlag',2);
             $result = $this->db->count_all_results();
     
             if($result > 0){
