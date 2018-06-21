@@ -44,19 +44,31 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '<div class="row">';
+
                         $.each(data, function( index, value ) {
-                        
-                            var gray = (value.status == '2')?" filter-gray ":"";
-                            html += '<div class="col-lg-3 '+gray+'">'
-                                 + '<div class="card card-height">'
-                                 + '<span class="card-subtitle mb-2">รุ่นยาง <i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
+                            var gray = "";
+                            var isShow = false;
+
+                            if(value.status == '2'){
+                                var gray = " filter-gray ";
+                                if(value.create_by == userId && value.activeFlag == 2){
+                                    isShow = true;
+                                }
+                            }
+
+                            html += '<div class="col-lg-3 ">'
+                                 + '<div class="card card-header-height">'
+                                 + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
                                  + '<div class="card-body text-center card-body-height">'
                                  + '<h5 class="card-title">'+value.tire_modelName+'</h5>'
-                                 + '</div>'
-                                 + '<div class="card-body text-center card-bottom">'
-                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-user"></i> แก้ไข</button> '
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-user"></i> ลบ</button>'
-                                 + '</div>'
+                                
+                            
+                            if(isShow){
+                                html += '<a href="'+base_url+"caraccessory/tirerim/updatetirerim/"+value.rimId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
+                            }
+                                 
+                            html += '</div>'
                                  + '</div>'
                                  + '</div>';
                         });
@@ -67,6 +79,7 @@
                 }
             ]
     });
+            
 
     $("#btn-search").click(function(){
         event.preventDefault();
