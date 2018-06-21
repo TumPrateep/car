@@ -24,9 +24,10 @@
                         <form id="submit">
                             <div class="card-body">
                                 <div class="basic-form">
+                                <input type="hidden" id="spares_undercarriageId" name="spares_undercarriageId" value="<?=$spares_undercarriageId ?>">
                                     <div class="form-group col-md-6">
                                         <label>ชื่อรายการยี่ห้ออะไหล่</label><span class="error">*</span>
-                                        <input type="text" class="form-control" placeholder="ชื่อรายยี่ห้อการอะไหล่" name="spares_brandName">
+                                        <input type="text" class="form-control" placeholder="ชื่อรายยี่ห้อการอะไหล่" name="spares_brandName" id="spares_brandName">
                                     </div>
                                 </div>
                                     <div class="form-group">
