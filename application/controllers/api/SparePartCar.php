@@ -83,7 +83,7 @@ class SparePartCar extends BD_Controller {
                 'spares_undercarriageId' => $spares_undercarriageId,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
-                'active_flag' => 1
+                'activeFlag' => 1
             );
             $result = $this->Sparesbrand->insertBrand($data);
             $output["status"] = $result;
