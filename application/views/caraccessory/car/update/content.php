@@ -3,69 +3,59 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">ยี่ห้อรถ</h3> </div>
+            <h3 class="text-primary">เเก้ไขยี่ห้อรถ</h3> </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/car"); ?>">ยี่ห้อรถ</a></li>
-                <li class="breadcrumb-item active">ค้นหา</li>
+                <li class="breadcrumb-item active">เเก้ไข</li>
             </ol>
         </div>
     </div>
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
-    <div class="container-fluid">
-        <div class="row bg-white p-30 search-header">
-            <div class="col-md-6">
-                 <button type="button" class="btn btn-info m-b-10 m-l-5">Create</button>
-            </div>
-            <div class="col-md-6">
-                <div class="input-group input-group-default">
-                    <input type="text" placeholder="Search Default" name="Search" class="form-control">
-                    <span class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="ti-search"></i></button></span>
-                </div>
-            </div>
-        </div>
+    <div class="container-fluid">   
         <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <img class="card-img-top" src="<?=base_url("public/image/empty.svg"); ?>" alt="Card image cap">
+            <div class="col-12">
+                <div class="card card-header-blue">
+
+                    <div class="card-title"></div>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <!-- <form action="#"> -->
+                            <div class="form-body">
+                                <div class="row p-t-20">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">ชื่อยี่ห้อรถ</label>
+                                            <input type="text" id="firstName" class="form-control" placeholder="ชื่อยี่ห้อรถ">
+                                         </div>
+                                        </div>       
+                                    </div>
+                                       
+                                    <h3 class="box-title m-t-40">รูปภาพ</h3>
+                                    <hr>
+                                    
+                                    <form class="dropzone">
+                                        <div class="fallback"><input name="file" type="file" multiple /></div>
+                                    </form>  
+                                    <h6 class="card-subtitle">เพิ่ม <code>รูปภาพ</code> ที่นี้</h6>
+                                           
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                                    <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
+                                </div>
+                            </div>
+                        <!-- </form>    -->
+
+                        <!-- <h4 class="card-title">Dropzone</h4>
+                        <h6 class="card-subtitle">For multiple file upload put class <code>.dropzone</code> to form.</h6>
+                        <form action="#" class="dropzone">
+                            <div class="fallback"><input name="file" type="file" multiple /></div>
+                        </form> -->
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img class="card-img-top" src="<?=base_url("public/image/empty.svg"); ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img class="card-img-top" src="<?=base_url("public/image/empty.svg"); ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <img class="card-img-top" src="<?=base_url("public/image/empty.svg"); ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>   
     </div>
     <!-- End Container fluid  -->
