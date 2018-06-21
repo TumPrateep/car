@@ -54,25 +54,32 @@
                                     isShow = true;
                                 }
                             }
-
+                        
                             html += '<div class="col-lg-3 ">'
                                  + '<div class="card card-header-height">'
-                                 + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
-                                 + '<div class="card-body text-center card-body-height">'
+                                 + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
+                                //  + '<img class="card-img-top" src="'+base_url+'public/image/brand/'+value.brandPic+'" alt="Card image cap">'
+                                 + '<div class="card-body text-center">'
                                  + '<h5 class="card-title">'+value.spares_undercarriageName+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
                                  + '<a href="'+base_url+"caraccessory/SpareBrand/index/"+value.spares_undercarriageId+'">'
-                                 + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> ';
+                                 + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
+                                 + '</a>'
+
+                                
                             
                             if(isShow){
-                                html += '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> '
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteModel(\''+value.spares_undercarriageId+'\',\''+value.spares_undercarriageName+'\')"><i class="ti-trash"></i> ลบ</button>';
-                            }
-                                 
-                            html += '</div>'
+                                // html += '<a href="'+base_url+"caraccessory/CarSpareUndercarriage/updatecar/"+value.spares_undercarriageId+'">'
+                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
+                                 + '</a>'
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteBrand(\''+value.spares_undercarriageId+'\',\''+value.spares_undercarriageName+'\')"><i class="ti-trash"></i> ลบ</button>';   
+                             }
+
+                                html += '</div>'
                                  + '</div>'
                                  + '</div>';
+  
                         });
 
                         html += '</div>';
@@ -81,6 +88,7 @@
                 }
             ]
     });
+
 
     function deleteModel(spares_undercarriageId, spares_undercarriageName){
         var option = {
