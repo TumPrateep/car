@@ -27,9 +27,7 @@ class Triesize extends BD_Controller {
                 'rimId' => $rimId,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
-                'update_at' => null,
-                'update_by' => null
-                
+                'activeFlag' => 1
             );
             $result = $this->trieSizes->inserttrie_size($data);
             $output["status"] = $result;
@@ -66,10 +64,9 @@ class Triesize extends BD_Controller {
                 'rim' => $rim,
                 'status' => 1,
                 'rimId' => $rimId,
-                'create_at' => null,
-                'create_by' => null,
                 'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId
+                'update_by' => $userId,
+                'activeFlag' => 1
             );
             $result = $this->trieSizes->updateTriesizes($data);
             $output["status"] = $result;
@@ -177,7 +174,8 @@ class Triesize extends BD_Controller {
             $status = 1;
         }
         $data = array(
-            'status' => $status
+            'status' => $status,
+            'activeFlag' => 1
         );
         $this->load->model("trieSizes");
         $result = $this->trieSizes->updateStatus($tire_sizeId,$data);

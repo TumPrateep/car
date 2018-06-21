@@ -21,7 +21,7 @@
         "tire_modelId" : tire_modelId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/Tires/tiresmodel/"+tire_brandId+"/"+tire_modelId);
+            showMessage(data.message,"admin/Tires/tiresmodel/"+tire_brandId);
         }else{
             result = data.data;
             $("#tire_modelName").val(result.tire_modelName);

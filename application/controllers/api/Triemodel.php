@@ -29,13 +29,17 @@ class Triemodel extends BD_Controller {
         $tire_modelId = $this->post('tire_modelId');
         $tire_modelName = $this->post('tire_modelName');
         $tire_brandId = $this->post('tire_brandId');
-      
+        $userId = $this->session->userdata['logged_in']['id'];
+
         $this->load->model("Triemodels");
         $result = $this->Triemodels->wherenotTireModelid($tire_modelId,$tire_modelName);
         if($result){
             $data = array(
                 'tire_modelName' => $tire_modelName,
-                'status' => 1
+                'status' => 1,
+                'activeFlag' => 1,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId
             );
             $result = $this->Triemodels->updateTireModel($data, $tire_modelId);
             $output["status"] = $result;
@@ -57,7 +61,7 @@ class Triemodel extends BD_Controller {
         $tire_brandId = $this->post('tire_brandId');
         $this->load->model("triemodels");
         // $isCheck = $this->triemodels->checksparestriemodels($tire_modelId,$tire_brandId);
-        $this->set_response($isCheck, REST_Controller::HTTP_OK);
+        // $this->set_response($isCheck, REST_Controller::HTTP_OK);
         // if($isCheck){
         //     $output["status"] = true;
         $result = $this->triemodels->geTireModelNameFromTireModelBytireId($tire_modelId);
@@ -88,10 +92,9 @@ class Triemodel extends BD_Controller {
                 'tire_modelName' => $tire_modelName,
                 'tire_brandId' => $tire_brandId,
                 'create_by' => $userId,
-                'update_by' => null,
                 'create_at' => date('Y-m-d H:i:s',time()),
-                'update_at' => null,
-                'status' => 1
+                'status' => 1,
+                'activeFlag' => 1
             );
             $result = $this->Triemodels->insert_Tiremodel($data);
             $output["status"] = $result;
@@ -165,7 +168,8 @@ class Triemodel extends BD_Controller {
             $status = 1;
         }
         $data = array(
-            'status' => $status
+            'status' => $status,
+            'activeFlag' => 1
         );
         $this->load->model("Triemodels");
         $result = $this->Triemodels->updateStatus($tire_modelId,$data);
