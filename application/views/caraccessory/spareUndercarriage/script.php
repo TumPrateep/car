@@ -84,10 +84,10 @@
 
     function deleteModel(spares_undercarriageId, spares_undercarriageName){
         var option = {
-            url: "/carspareundercarriage/deletespareUndercarriage?spares_undercarriageId="+spares_undercarriageId,
+            url: "/CarSpareUndercarriage/deletespareUndercarriage?spares_undercarriageId="+spares_undercarriageId,
             label: "ลบอะไหล่ช่วงล่าง",
             content: "คุณต้องการลบ "+spares_undercarriageName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/Spareundercarries"
+            gotoUrl: "caraccessory/spareUndercarriage"
         }
         fnDelete(option);
     }
