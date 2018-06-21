@@ -90,7 +90,7 @@ class CarModel extends BD_Controller {
 
 
         $this->load->model("Model");
-        $isCheck = $this->Model->get_model($brandId,$modelName);
+        $isCheck = $this->Model->get_model($brandId,$modelName,$yearStart,$yearEnd);
 
         if($isCheck){
             $data = array(

@@ -23,7 +23,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form>
+                            <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
                                 <div class="form-group">
                                     <label class="control-label">ชื่อรุ่นรถ</label><span class="error">*</span>
                                     <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ" name="modelName" id="modelName">

@@ -107,6 +107,7 @@ class Car extends BD_Controller {
         $brandId = $this->post("brandId");
         $yearStart = $this->post("yearStart");
         $yearEnd = $this->post("yearEnd");
+        $userId = $this->session->userdata['logged_in']['id'];
 
         if($yearEnd == 0){
             $yearEnd = null;
@@ -124,7 +125,9 @@ class Car extends BD_Controller {
                 'yearStart' => $yearStart,
                 'yearEnd' => $yearEnd,
                 'status' => 1,
-                'activeFlag' => 1
+                'activeFlag' => 1,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId
             );
             $result = $this->Model->insert_model($data);
             $output["status"] = $result;

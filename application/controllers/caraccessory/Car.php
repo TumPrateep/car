@@ -28,6 +28,7 @@ class Car extends CI_Controller {
 		$this->load->view("caraccessory/car/create/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
+		$this->load->view("caraccessory/car/create/script");
 	}
 	public function index1($brandId)
 	{

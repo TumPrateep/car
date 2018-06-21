@@ -51,6 +51,7 @@ class CarAccessory extends BD_Controller {
                 $nestedData[$count]['brandName'] = $post->brandName;
                 $nestedData[$count]['status'] = $post->status;
                 $nestedData[$count]['activeFlag'] = $post->activeFlag;
+                $nestedData[$count]['create_by'] = $post->create_by;
                 
                 $data[$index] = $nestedData;
                 if($count >= 3){
@@ -114,7 +115,8 @@ class CarAccessory extends BD_Controller {
                     "create_at" => date('Y-m-d H:i:s',time()),
                     "create_by" => $userId,
                     'update_at' => null,
-                    'update_by' => null
+                    'update_by' => null,
+                    "activeFlag" => 2
                 );
                 $isResult = $this->Brand->insert_brand($data);
                 if($isResult){

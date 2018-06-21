@@ -45,10 +45,20 @@
                         var html = '<div class="row">';
 
                         $.each(data, function( index, value ) {
-                            var gray = (value.status == '2')?" filter-gray ":"";
-                            html += '<div class="col-lg-3 '+gray+'">'
+
+                            var gray = "";
+                            var isShow = false;
+
+                            if(value.status == '2'){
+                                var gray = " filter-gray ";
+                                if(value.create_by == userId && value.activeFlag == 2){
+                                    isShow = true;
+                                }
+                            }
+                           
+                            html += '<div class="col-lg-3 ">'
                                  + '<div class="card card-header-height">'
-                                 + '<span class="card-subtitle text-right card-margin"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
+                                 + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'
                                  + '<img class="card-img-top" src="'+base_url+'public/image/brand/'+value.brandPic+'" alt="Card image cap">'
                                  + '<div class="card-body text-center">'
                                  + '<h5 class="card-title">'+value.brandName+'</h5>'
@@ -57,12 +67,17 @@
                                  + '<a href="'+base_url+"caraccessory/CarModelAccessory/index1/"+value.brandId+'">'
                                  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '</a>'
-                                 + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> '
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
-                                 + '</div>'
+                                
+                            
+                            if(isShow){
+                                html += '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteBrand(\''+value.brandId+'\',\''+value.brandId+'\')"><i class="ti-trash"></i> ลบ</button>';   
+                             }
+
+                                html += '</div>'
                                  + '</div>'
                                  + '</div>';
-                                 
+  
                         });
 
                         html += '</div>';
@@ -73,6 +88,22 @@
     });
 
     $("#btn-search").click(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+
+    function deleteBrand(brandId,brandName){
+        var option = {
+            url: "/CarAccessory/deleteBrand?brandId="+brandId,
+            label: "ลบยี่ห้อรถ",
+            content: "คุณต้องการลบ "+brandName+" ใช่หรือไม่",
+            gotoUrl: "caraccessory/Car"
+        }
+        fnDelete(option);
+    }
+
+
+    $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
