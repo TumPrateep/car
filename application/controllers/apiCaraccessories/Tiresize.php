@@ -48,8 +48,7 @@ class Tiresize extends BD_Controller {
                 'rimId' => $rimId,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
-                'update_at' => null,
-                'update_by' => null
+                'activeFlag' => 2
                 
             );
             $result = $this->trieSizes->inserttrie_size($data);

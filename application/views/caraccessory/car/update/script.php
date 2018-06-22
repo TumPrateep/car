@@ -1,21 +1,21 @@
 <script> 
 
-    // var brandId = $("#brandId").val();
+    var brandId = $("#brandId").val();
 
-    // $.post(base_url+"apiCaraccessories/Caraccessories/getBrandforupdate",{
-    //     "brandId": brandId,
+    $.post(base_url+"apiCaraccessories/Caraccessories/",{
+        "brandId": brandId,
         
-    // },function(data){
-    //     if(data.message!=200){
-    //         showMessage(data.message,"admin/car/car");
-    //     }
+    },function(data){
+        if(data.message!=200){
+            showMessage(data.message,"admin/car/car");
+        }
 
-    //     if(data.message == 200){
-    //         result = data.data;
-    //         $("#brandName").val(result.brandName);
-    //     }
+        if(data.message == 200){
+            result = data.data;
+            $("#brandName").val(result.brandName);
+        }
         
-    // });
+    });
     
     // var brandId = $("#brandId").val();
 
@@ -64,33 +64,33 @@ $("#update-brand").validate({
     });
 
 
-    // $("#update-brand").submit(function(){
-    //     updateBrand();
-    // })
+    $("#update-brand").submit(function(){
+        updatecar();
+    })
 
 
-    // function updateBrand(){
-    //     event.preventDefault();
-    //     var isValid = $("#update-brand").valid();
-    //     if(isValid){
-    //         var myform = document.getElementById("update-brand");
-    //         var formData = new FormData(myform);
-    //         $.ajax({
-    //             url: base_url+"api/car/updateBrand",
-    //             data: formData,
-    //             processData: false,
-    //             contentType: false,
-    //             type: 'POST',
-    //             success: function (data) {
-    //                 if(data.message == 200){
-    //                     showMessage(data.message,"admin/car");
-    //                 }else{
-    //                     showMessage(data.message);
-    //                 }
-    //             }
-    //         });
-    //     }
-    // }
+    function updatecar(){
+        event.preventDefault();
+        var isValid = $("#update-brand").valid();
+        if(isValid){
+            var myform = document.getElementById("update-brand");
+            var formData = new FormData(myform);
+            $.ajax({
+                url: base_url+"apicaraccessories/caraccessories/updatecar",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (data) {
+                    if(data.message == 200){
+                        showMessage(data.message,"caraccessory/car");
+                    }else{
+                        showMessage(data.message);
+                    }
+                }
+            });
+        }
+    }
     
 </script>
 
