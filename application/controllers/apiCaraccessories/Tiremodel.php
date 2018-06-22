@@ -46,7 +46,8 @@ class Tiremodel extends BD_Controller {
                 'update_by' => null,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'update_at' => null,
-                'status' => 2
+                'status' => 2,
+                'activeFlag' => 2
             );
             $result = $this->Triemodels->insert_Tiremodel($data);
             $output["status"] = $result;
