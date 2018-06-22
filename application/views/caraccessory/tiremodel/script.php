@@ -1,4 +1,6 @@
 <script>
+    var tire_modelName = $("#tire_modelName").val();
+    var tire_brandId = $("#tire_brandId").val();
     var table = $('#model-table').DataTable({
         "language": {
                 "aria": {
@@ -65,7 +67,7 @@
                             
                             if(isShow){
                                 html += '<a href="'+base_url+"caraccessory/tirerim/updatetirerim/"+value.rimId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
+                                + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteTireModel(\''+value.tire_brandId+'\',\''+value.tire_modelId+'\',\''+value.tire_modelName+'\')"><i class="ti-trash"></i> ลบ</button>'
                             }
                                  
                             html += '</div>'
@@ -85,6 +87,17 @@
         event.preventDefault();
         table.ajax.reload();
     })
+
+    function deleteTireModel(tire_brandId, tire_modelId,tire_modelName){
+        var option = {
+            url: "/Tiremodel/deleteTireModel?tire_modelId="+tire_modelId,
+            label: "ลบรุ่นยาง",
+            content: "คุณต้องการลบ "+tire_modelName+" ใช่หรือไม่",
+            gotoUrl: "caraccessory/TireModel/index/"+tire_brandId
+            
+        }
+        fnDelete(option);
+    }
 </script>
 
 </body>

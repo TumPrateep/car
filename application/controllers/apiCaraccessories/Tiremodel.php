@@ -144,14 +144,14 @@ class Tiremodel extends BD_Controller {
 
     function deleteTireModel_get(){
         $tire_modelId = $this->get('tire_modelId');
+        $this->load->model("Triemodels");
+        $tire = $this->Triemodels->getireById($tire_modelId);
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("triemodels");
-        $tireModel = $this->triemodels->geTireModelNameFromTireModelBytireId($tire_modelId,$tire_brandId);
-        if($tireModel != null){
-            $isCheckStatus =$this->triemodels->checksparestriemodels($tire_modelId,$tire_brandId);
+        if($tire != null){
+            $isCheckStatus =$this->Triemodels->checkStatusFromTireModel($tire_modelId,$status,$userId);
             if($isCheckStatus ){
-                $isDelete = $this->triemodels->delete($tire_modelId);
+                $isDelete = $this->Triemodels->delete($tire_modelId);
                 if($isDelete){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
@@ -159,14 +159,53 @@ class Tiremodel extends BD_Controller {
                     $output["message"] = REST_Controller::MSG_BE_USED;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
-            }else{
-                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+        }else{
+            $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
-        } 
+       }
     }
+    // function updateTireModel_post(){
+    //     $tire_modelId = $this->post('tire_modelId');
+    //     $tire_modelName = $this->post('tire_modelName');
+    //     $tire_brandId = $this->post('tire_brandId');
+    //     $userId = $this->session->userdata['logged_in']['id'];
+    //     $status = 2;
+        
+    //     $this->load->model("Triemodels");
+    //     $result = $this->Triemodels->wherenotTireModelid($tire_modelId,$tire_modelName);
+    //     if($result){
+    //         $data = array(
+    //             'tire_modelName' => $tire_modelName,
+    //             'update_at' => date('Y-m-d H:i:s',time()),
+    //             'update_by' => $userId
+    //             'status' => 2,
+    //             'activeFlag' => 2,
+    //         );
+    //         $isCheckStatus =$this->triemodels->checksparestriemodels($tire_modelId,$tire_brandId);
+    //         if($isCheckStatus ){
+    //             $result = $this->Triemodels->updateTireModel($data, $tire_modelId);
+    //             $output["status"] = $result;
+    //                 if($result){
+    //                     $output["message"] = REST_Controller::MSG_SUCCESS;
+    //                     $this->set_response($output, REST_Controller::HTTP_OK);
+    //                 }else{
+    //                     $output["status"] = false;
+    //                     $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+    //                     $this->set_response($output, REST_Controller::HTTP_OK);
+    //                 }
+    //         }else{
+    //             $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+    //             $this->set_response($output, REST_Controller::HTTP_OK);
+    //         }
+    //     }else{
+    //         $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+    //         $this->set_response($output, REST_Controller::HTTP_OK);
+    //     }
+
+    // }
     
 }

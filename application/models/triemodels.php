@@ -134,4 +134,17 @@ class Triemodels extends CI_Model {
         }       
         return $this->db->limit($limit, 0)->get("tire_model")->result();
     }
+
+    function checkStatusFromTireModel($tire_modelId,$status,$userId){
+        $this->db->from('tire_model');
+        $this->db->where('tire_modelId',$tire_modelId);
+        $this->db->where('status',$status);
+        $this->db->where('create_by',$userId);
+        $this->db->where('activeFlag',2);
+        $result = $this->db->count_all_results();
+        if($result > 0 ){
+            return true ;
+        }
+        return false;
+    }
 }
