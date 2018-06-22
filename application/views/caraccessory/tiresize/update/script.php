@@ -23,6 +23,7 @@
             }
         },
     });
+   
     
     $("#submit").submit(function(){
         updateTireSize();
@@ -36,7 +37,7 @@
             var data = $("#submit").serialize();
             $.post(base_url+"apiCaraccessories/TireSize/updatetrieSize",data,
             function(data){
-                var rimId = $("#rimId").val();
+                //var rimId = $("#rimId").val();
                 if(data.message == 200){
                     showMessage(data.message,"caraccessory/TireSize/index/"+rimId);
                 }else{
