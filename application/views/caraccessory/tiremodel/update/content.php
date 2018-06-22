@@ -21,6 +21,7 @@
                     <h4 class="m-b-0 text-white"><i class="fa fa-fw fa-car"></i> แก้ไขข้อมูลรุ่นยาง </h4>
                 </div> 
                 <input type="hidden" id="tire_brandId" name="tire_brandId" value="<?=$tire_brandId ?>">
+                <input type="hidden" id="tire_modelId" name="tire_modelId" value="<?=$tire_modelId ?>">
                         <div class="form-body"> <br>
                             <div class="row p-t-20">
                                  <div class="col-md-6">
