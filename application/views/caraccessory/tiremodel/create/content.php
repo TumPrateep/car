@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireModel/index1/$tire_brandId"); ?>">รายการรุ่นยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireModel/index/$tire_brandId"); ?>">รุ่นยาง</a></li>
                 <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
             </ol>
         </div>
