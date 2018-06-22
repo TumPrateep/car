@@ -31,7 +31,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.rimName = $("#brand-search").val()
+                    data.rimName = $("#brand-search").val(),
+                    data.column = $("#column").val()
                 }
             },
             "columns": [
@@ -98,6 +99,14 @@
         }
         fnDelete(option);
     }
+    $("#form-search").submit(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+
+    $("#column").change(function(){
+        table.ajax.reload();
+    })
 </script>
 
 </body>

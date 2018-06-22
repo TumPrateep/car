@@ -71,13 +71,20 @@ class Tiresize extends BD_Controller {
     }
 
     function searchTiresize_post(){
-        $columns = array( 
-            0 => null    
-        );
+        $column = "tire_size";
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
+
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $columns[$this->post('order')[0]['column']];
-        $dir = $this->post('order')[0]['dir'];
+        $order = $column;
+        $dir = $sort;
         $rimId = $this->post("rimId");
         $this->load->model("trieSizes");
         $totalData = $this->trieSizes->alltrieSize_count($rimId);
