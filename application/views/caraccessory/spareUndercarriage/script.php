@@ -70,7 +70,7 @@
                                 
                             
                             if(isShow){
-                                // html += '<a href="'+base_url+"caraccessory/CarSpareUndercarriage/updatecar/"+value.spares_undercarriageId+'">'
+                                html += '<a href="'+base_url+"caraccessory/CarSpareUndercarriage/updatecar/"+value.spares_undercarriageId+'">'
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
                                  + '</a>'
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteBrand(\''+value.spares_undercarriageId+'\',\''+value.spares_undercarriageName+'\')"><i class="ti-trash"></i> ลบ</button>';   
