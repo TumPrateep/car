@@ -1,17 +1,16 @@
 <script>
- $("#submit").validate({
-        rules: {
-            tire_modelName: {
+        $("#submit").validate({
+            rules: {
+                tire_modelName: {
                 required: true
-            },
-            
-        },
-        messages: {
-            tire_modelName: {
-                required: "กรุณากรอกรุ่นยาง"
-            },
-           
-    });
+                },
+            },  
+            messages: {
+                tire_modelName: {
+                required: "กรุณากรอกชื่อรุ่นรถ"
+                },
+            }  
+        });
     
     $("#submit").submit(function(){
         updateTireModel();
