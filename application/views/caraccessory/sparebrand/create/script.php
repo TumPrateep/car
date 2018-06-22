@@ -26,7 +26,7 @@
             $.post(base_url+"apiCaraccessories/SpareBrand/createSpareBrand",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/SpareBrand/index"+spares_undercarriageId);
+                    showMessage(data.message,"caraccessory/SpareBrand/index/"+spares_undercarriageId);
                 }else{
                     showMessage(data.message);
                 }

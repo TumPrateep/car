@@ -92,6 +92,7 @@ class SpareBrand extends BD_Controller {
                 $nestedData[$count]['spares_undercarriageId'] = $post->spares_undercarriageId;
                 $nestedData[$count]['spares_brandName'] = $post->spares_brandName;
                 $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['create_by'] = $post->create_by;
                 $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 $data[$index] = $nestedData;
                 if($count >= 3){
