@@ -32,7 +32,8 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.tire_size = $("#tire_size").val(),
-                    data.rimId = $("#rimId").val()
+                    data.rimId = $("#rimId").val(),
+                    data.column = $("#column").val()
                 }
             },
             "columns": [
@@ -66,7 +67,7 @@
                                  
                             
                             if(isShow){
-                                html += '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> '
+                                html +=   '<a href="'+base_url+"caraccessory/tiresize/updatetiresize/"+value.tire_sizeId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button></a> '
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteTireSize(\''+value.tire_sizeId+'\',\''+value.tire_size+'\',\''+value.tire_series+'\',\''+value.rim+'\',\''+value.rimId+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  
@@ -95,6 +96,15 @@
 
     $("#btn-search").click(function(){
         event.preventDefault();
+        table.ajax.reload();
+    })
+
+    $("#form-search").submit(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+
+    $("#column").change(function(){
         table.ajax.reload();
     })
 </script>

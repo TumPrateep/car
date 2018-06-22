@@ -10,13 +10,20 @@ class TireRim extends BD_Controller {
         $this->auth();
     }
     function searchrim_post(){
-        $columns = array( 
-            0 => null 
-        );
+        $column = "rimName";
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
+
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $columns[$this->post('order')[0]['column']];
-        $dir = $this->post('order')[0]['dir'];
+        $order = $column;
+        $dir = $sort;
         $this->load->model("rims");
         $totalData = $this->rims->allrim_count();
         $totalFiltered = $totalData; 
