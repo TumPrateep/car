@@ -32,6 +32,19 @@ class TireModel extends CI_Controller {
 		$this->load->view("caraccessory/layout/foot");
 		$this->load->view("caraccessory/tiremodel/create/script");
 	}
+
+	public function updateTrieModel($tire_brandId,$tire_modelId)
+	{
+		$data['tire_brandId'] = $tire_brandId;
+		$data['tire_modelId'] = $tire_modelId;
+		$this->load->view("caraccessory/layout/head");
+		$this->load->view("caraccessory/layout/header");
+		$this->load->view("caraccessory/layout/left-menu");
+		$this->load->view("caraccessory/tiremodel/update/content",$data);
+		$this->load->view("caraccessory/layout/footer");
+		$this->load->view("caraccessory/layout/foot");
+		$this->load->view("caraccessory/tiremodel/update/script");
+	}
 	
 
 }
