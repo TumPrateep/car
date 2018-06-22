@@ -90,7 +90,7 @@
             url: "/CarSpareUndercarriage/deletespareUndercarriage?spares_undercarriageId="+spares_undercarriageId,
             label: "ลบอะไหล่ช่วงล่าง",
             content: "คุณต้องการลบ "+spares_undercarriageName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/spareUndercarriage"
+            gotoUrl: "caraccessory/Spareundercarries"
         }
         fnDelete(option);
     }
