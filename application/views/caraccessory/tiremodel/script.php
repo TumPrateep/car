@@ -66,7 +66,7 @@
                                 
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/tirerim/updatetirerim/"+value.rimId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                html += '<a href="'+base_url+"caraccessory/tiremodel/updateTrieModel/"+value.tire_brandId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteTireModel(\''+value.tire_brandId+'\',\''+value.tire_modelId+'\',\''+value.tire_modelName+'\')"><i class="ti-trash"></i> ลบ</button>'
                             }
                                  

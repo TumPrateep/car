@@ -1,4 +1,4 @@
-Page wrapper  -->
+<-- Page wrapper  -->
 <div class="page-wrapper">
     <!-- Bread crumb -->
     <div class="row page-titles">
@@ -40,4 +40,3 @@ Page wrapper  -->
         </div>
     </div>   
 </div>
-<!-- End Container fluid 
