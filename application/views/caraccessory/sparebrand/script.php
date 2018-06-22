@@ -31,8 +31,9 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_brandName = $("#spares_brandName").val(),
-                    data.spares_undercarriageId = $("#spares_undercarriageId").val()
+                    data.spares_brandName = $("#spares_search").val(),
+                    data.spares_undercarriageId = $("#spares_undercarriageId").val(),
+                    data.column = $("#column").val()
                 }
             },
             "columns": [
@@ -72,6 +73,15 @@
 
     $("#btn-search").click(function(){
         event.preventDefault();
+        table.ajax.reload();
+    })
+
+     $("#form-search").submit(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+   
+    $("#column").change(function(){
         table.ajax.reload();
     })
 </script>

@@ -32,7 +32,8 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.brandId = $("#brandId").val(),
-                    data.search = $("#table-search").val()
+                    data.search = $("#table-search").val(),
+                    data.column = $("#column").val()
                     
                 }
             },
@@ -113,6 +114,14 @@
         }
         fnDelete(option);
     }
+    $("#form-search").submit(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+
+    $("#column").change(function(){
+        table.ajax.reload();
+    })
 </script>
 
 </body>

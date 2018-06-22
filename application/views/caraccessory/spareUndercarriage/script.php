@@ -31,7 +31,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_undercarriageName = $("#searchbrand-search").val()
+                    data.spares_undercarriageName = $("#searchbrand-search").val(),
+                    data.column = $("#column").val()
                 }
             },
             "columns": [
@@ -97,6 +98,10 @@
 
     $("#btn-search").click(function(){
         event.preventDefault();
+        table.ajax.reload();
+    })
+    
+    $("#column").change(function(){
         table.ajax.reload();
     })
 </script>

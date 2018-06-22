@@ -10,14 +10,20 @@ class CarModel extends BD_Controller {
         $this->auth();
     }
     function searchModel_post(){
-        $columns = array( 
-            0 =>null
-        );
+        $column = "modelName";
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
 
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $columns[$this->post('order')[0]['column']];
-        $dir = $this->post('order')[0]['dir'];
+        $order = $column;
+        $dir = $sort;
         $brandId = $this->post('brandId');
 
         $this->load->model("Model");
