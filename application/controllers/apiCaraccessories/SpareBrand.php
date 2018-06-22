@@ -27,7 +27,8 @@ class SpareBrand extends BD_Controller {
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
                 'update_at' => null,
-                'update_by' => null
+                'update_by' => null,
+                "activeFlag" => 2
             );
             $result = $this->Sparesbrand->insertBrand($data);
             $output["status"] = $result;
