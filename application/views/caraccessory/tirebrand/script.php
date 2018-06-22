@@ -31,7 +31,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.tire_brandName = $("#brand-search").val()
+                    data.tire_brandName = $("#brand-search").val(),
+                    data.column = $("#column").val()
                 }
             },
             "columns": [
@@ -89,6 +90,15 @@
 
     $("#btn-search").click(function(){
         event.preventDefault();
+        table.ajax.reload();
+    })
+
+    $("#form-search").submit(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+
+    $("#column").change(function(){
         table.ajax.reload();
     })
 </script>
