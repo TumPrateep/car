@@ -148,4 +148,40 @@ class SpareBrand extends BD_Controller {
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
     }
+    function updateSpareBrand_post(){
+
+        $spares_brandId = $this->post('spares_brandId');
+        $spares_brandName = $this->post('spares_brandName');
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $this->load->model("Sparesbrand");
+        $userId = $this->session->userdata['logged_in']['id'];
+
+        $result = $this->Sparesbrand->wherenotBrand($spares_brandId,$spares_brandName,$spares_undercarriageId);
+
+        if($result){
+            $data = array(
+                'spares_brandId' => $spares_brandId,
+                'spares_brandName' => $spares_brandName,
+                'status' => 2,
+                'spares_undercarriageId' => $spares_undercarriageId,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId
+            );
+            $result = $this->Sparesbrand->updateBrand($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 }

@@ -174,4 +174,50 @@ class Tiresize extends BD_Controller {
         }
        
     }
+    function updatetriesize_post(){
+        $tire_sizeId = $this->post('tire_sizeId');
+        $tire_size = $this->post('tire_size');
+        $rimId = $this->post('rimId');
+        $rim = $this->post('rim');
+        $tire_series = $this->post('tire_series');
+        $userId = $this->session->userdata['logged_in']['id'];
+        
+        $this->load->model("rims");
+        $this->load->model("trieSizes");
+        $result = $this->trieSizes->wherenotTriesize($tire_sizeId,$tire_size,$rimId);
+        if($result){
+            $data = array(
+                'tire_sizeId' => $tire_sizeId,
+                'tire_size' => $tire_size,
+                'tire_series' => $tire_series,
+                'rim' => $rim,
+                'status' => 1,
+                'rimId' => $rimId,
+                'create_at' => null,
+                'create_by' => null,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId
+        );
+            $isCheckStatus =$this->trieSizes->checkStatusFromTireSize($tire_sizeId,$status,$userId);
+            if($isCheckStatus ){
+                $result = $this->trieSizes->updateTriesizes($data);
+                $output["status"] = $result;
+                    if($result){
+                        $output["message"] = REST_Controller::MSG_SUCCESS;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }else{
+                        $output["status"] = false;
+                        $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }
+            }else{
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+
+    }
 }

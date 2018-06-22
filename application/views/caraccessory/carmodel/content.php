@@ -28,8 +28,8 @@ Page wrapper  -->
             <div class="col-lg-4">
                 <div class="input-group input-group-flat">
                     <label class="col-lg-3 col-form-label">ยี่ห้อ: </label>
-                    <input type="text" class="form-control input-default" placeholder="ค้นหา...">
-                    <span class="input-group-btn"><button class="btn btn-success" type="submit"><i class="ti-search"></i></button></span>
+                    <input type="text" class="form-control input-default"id="table-search" placeholder="ค้นหา...">
+                    <span class="input-group-btn"><button class="btn btn-success" type="submit" id="btn-search"><i class="ti-search"></i></button></span>
                 </div>
             </div>
             <div class="col-lg-4">

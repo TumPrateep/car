@@ -79,7 +79,7 @@
                                 
                             
                             if(isShow){
-                                html += '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
+                                html +=  '<a href="'+base_url+"caraccessory/CarModelAccessory/updateModelCar/"+value.brandId+'/'+value.modelId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>' 
                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletecarModel(\''+value.modelId+'\',\''+value.modelName+'\',\''+value.brandId+'\')"><i class="ti-trash"></i> ลบ</button>'
                              }
 
