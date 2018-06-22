@@ -31,9 +31,10 @@ class CarModelAccessory extends CI_Controller {
 		$this->load->view("caraccessory/layout/foot");
 		$this->load->view("caraccessory/carmodel/create/script");
 	}
-	public function updateModelCar($brandId)
+	public function updateModelCar($brandId,$modelId)
 	{
-		$data['brandId']=$brandId;
+		$data['modelId'] = $modelId;
+		$data['brandId'] = $brandId;
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
