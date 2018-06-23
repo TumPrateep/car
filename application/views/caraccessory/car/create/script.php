@@ -4,17 +4,17 @@
             brandName: {
                 required: true
             },
-            brandPicture: {
-                
+            tempImage: {
+                required: true
             }
         },
         messages: {
             brandName: {
                 required: "กรุณากรอกยี่ห้อรถ"
             },
-            brandPicture: {
+            tempImage: {
                 required: "กรุณาใส่รูปยี่ห้อรถ",
-                extension: "กรุณาใส่รูปภาพที่นามสกุล .jpg"
+                // extension: "กรุณาใส่รูปภาพที่นามสกุล .jpg"
             }
         },
     });
@@ -29,6 +29,8 @@
         var isValid = $("#submit").valid();
         
         if(isValid){
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
             var myform = document.getElementById("submit");
             var formData = new FormData(myform);
             $.ajax({
@@ -48,6 +50,17 @@
             
         }
     }
+
+    $('.image-editor').cropit({
+        allowDragNDrop: false,
+        width: 200,
+        height: 122,
+        type: 'image/jpeg'
+        // imageBackground: true,
+        // imageState: {
+        //     src: 'http://lorempixel.com/500/400/' // renders an image by default
+        // }
+    });
 </script>
 
 

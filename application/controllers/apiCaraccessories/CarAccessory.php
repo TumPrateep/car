@@ -83,29 +83,35 @@ class CarAccessory extends BD_Controller {
 
     function createBrand_post(){
         $config['upload_path'] = 'public/image/brand/';
-        $config['allowed_types'] = 'gif|jpg|png';
+        // $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
-        $config['max_width']  = '1024';
-        $config['max_height']  = '768';
-        $config['overwrite'] = TRUE;
-        $config['encrypt_name'] = TRUE;
-        $config['remove_spaces'] = TRUE;
+        // $config['max_width']  = '1024';
+        // $config['max_height']  = '768';
+        // $config['overwrite'] = TRUE;
+        // $config['encrypt_name'] = TRUE;
+        // $config['remove_spaces'] = TRUE;
 
-        $this->load->library('upload', $config);
+        // $this->load->library('upload', $config);
         $this->load->model("Brand");
         $userId = $this->session->userdata['logged_in']['id'];
 
-		if ( ! $this->upload->do_upload("brandPicture"))
-		{
-            $error = array('error' => $this->upload->display_errors());
+        $img = $this->post('brandPicture');
+        $img = str_replace('data:image/png;base64,', '', $img);
+	    $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+
+        $imageName = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName;
+        $success = file_put_contents($file, $data);
+        
+		if (!$success){
+            // $error = array('error' => $this->upload->display_errors());
             $output["message"] = REST_Controller::MSG_ERROR;
-            $output["data"] = $error;
+            // $output["data"] = $error;
 			$this->set_response($output, REST_Controller::HTTP_OK);
-		}
-		else
-		{
-            $imageDetailArray = $this->upload->data();
-            $image =  $imageDetailArray['file_name'];
+		}else{
+        //     $imageDetailArray = $this->upload->data();
+            $image =  $imageName;
             $brandName = $this->post("brandName");
             $isDublicte = $this->Brand->checkBrand($brandName);
             if($isDublicte){
