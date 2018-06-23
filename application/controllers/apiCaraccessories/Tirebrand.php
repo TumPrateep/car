@@ -6,7 +6,7 @@ class Tirebrand extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
 
     function getAllTireBrand_post(){
@@ -105,14 +105,14 @@ class Tirebrand extends BD_Controller {
     
     function deleteTireBrand_get(){
         $tire_brandId = $this->get('tire_brandId');
+        $this->load->model("triebrands");
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("Triebrands");
-        $tireBrand = $this->Tirebrands->getirebrandById($tire_brandId);
-        if($tireBrand != null){
-            $isCheckStatus =$this->Tirebrands->checkStatusFromTireBrand($tire_brandId,$status,$userId);
+        $tire = $this->triebrands->getirebrandById($tire_brandId);
+        if($tire != null){
+            $isCheckStatus =$this->triebrands->checkStatusFromTireBrand($tire_brandId,$status,$userId);
             if($isCheckStatus ){
-                $isDelete = $this->Tirebrands->delete($tire_brandId);
+                $isDelete = $this->triebrands->delete($tire_brandId);
                 if($isDelete){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
