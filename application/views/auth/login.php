@@ -113,7 +113,7 @@
           <form class="ui large form" id="form-login">
             <div class="ui error message"></div>
               <div class="ui stacked segment">
-                <div class="ui red message text-left hide" id="error-message">ชื่อหรือรหัสผ่านไม่ถูกต้อง</div>
+                <div class="ui red message text-left hide" id="error-message"><span id="message"></span></div>
                   <div class="field">
                         <div class="ui left icon input"><i class="user icon"></i>
                             <input type="username" name="username" id="username" placeholder="ชื่อผู้ใช้งาน">
@@ -183,14 +183,26 @@
           var data = $("#form-login").serialize();
           $.post(base_url+"api/auth/login",data,
             function(data){
-              localStorage.token = data.token;
-              localStorage.userId = data.userId;
-              window.location.assign(base_url+"role");
+              var message = data.message;
+              if(message == "2001"){
+                localStorage.token = data.token;
+                localStorage.userId = data.userId;
+                window.location = base_url+"role";
+              }else if(message == "2002"){
+                $("#message").html("ไม่พบชื่อผู้ใช้งาน <a href='"+base_url+"/auth/register"+"'>ลงทะเบียน</a>");
+                $("#error-message").show();
+              }else if(message == "2003"){
+                $("#message").html("ชื่อผู้ใช้งานถูกปิดใช้งาน");
+                $("#error-message").show();
+              }else{
+                $("#message").html("ชื่อหรือรหัสผ่านไม่ถูกต้อง");
+                $("#error-message").show();
+              }
             }
           )
-          .fail(function() {
-            $("#error-message").show();
-          })
+          // .fail(function() {
+          //   $("#error-message").show();
+          // })
         }
       
       }
