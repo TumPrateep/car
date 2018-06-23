@@ -40,7 +40,7 @@
             if(isValid){
                 var data = $("#submit").serialize();
                 
-                $.post(base_url+"apiCaraccessories/CarAccessory/getBrandforupdate",data,
+                $.post(base_url+"apiCaraccessories/CarAccessory/updateBrand",data,
                 function(data){
                     
                     if(data.message == 200){
