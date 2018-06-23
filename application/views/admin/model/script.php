@@ -11,6 +11,8 @@
             var path = pathImage + "brand/"+result.brandPicture;
             var imageHtml = '<img src="'+ path +'" class="float-left">';
             $("#brandPicture").html(imageHtml);
+        }else{
+            showMessage(data.message,"admin/car");
         }
         
     });
