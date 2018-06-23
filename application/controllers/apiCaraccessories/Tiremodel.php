@@ -69,14 +69,20 @@ class Tiremodel extends BD_Controller {
     }
 
     function searchTireModel_post(){
-        $columns = array( 
-            0 => null
-            
-        );
+        $column = "tire_modelName";
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
+
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $columns[$this->post('order')[0]['column']];
-        $dir = $this->post('order')[0]['dir'];
+        $order = $column;
+        $dir = $sort;
         $tire_brandId = $this->post('tire_brandId');
 
         $this->load->model("Triemodels");
