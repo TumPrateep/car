@@ -89,7 +89,7 @@ class Tiresize extends BD_Controller {
         $this->load->model("trieSizes");
         $totalData = $this->trieSizes->alltrieSize_count($rimId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('tire_size')) &&empty($this->post('rimId')))
+        if(empty($this->post('tire_size')))
         {            
             $posts = $this->trieSizes->allTriesize($limit,$start,$order,$dir, $rimId);
         }
