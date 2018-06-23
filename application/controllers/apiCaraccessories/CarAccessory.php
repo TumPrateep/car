@@ -243,7 +243,6 @@ class CarAccessory extends BD_Controller {
                 "brandId"=> $brandId,
                 "brandPicture"=> $image,
                 "brandName"=> $brandName,
-                "status"=> 2,
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId,
                 'activeFlag' => 2 

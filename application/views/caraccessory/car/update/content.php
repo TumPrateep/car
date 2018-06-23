@@ -36,9 +36,10 @@
                                     <h3 class="box-title m-t-40">รูปภาพ</h3>
                                     <hr>
                                     
-                                    <form class="dropzone">
-                                        <div class="fallback"><input name="file" type="file" multiple name="brandPicture" id="brandPicture" /></div>
-                                    </form>  
+                                    
+                                        <div class="fallback"><input type="file" multiple name="brandPicture" id="brandPicture" /></div>
+                                    
+                                
                                     <h6 class="card-subtitle">เพิ่ม <code>รูปภาพ</code> ที่นี้</h6>
                                            
                                 </div>
