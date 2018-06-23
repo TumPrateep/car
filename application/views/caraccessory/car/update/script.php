@@ -87,9 +87,9 @@ $("#submit").validate({
         })
     
 
-    $("#submit").submit(function(){
-        updatecar();
-    })
+        $("#submit").submit(function(){
+            updatecar();
+        })
 
 
     function updatecar(){
