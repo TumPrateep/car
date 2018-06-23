@@ -1,96 +1,57 @@
-<script> 
-
-    var brandId = $("#brandId").val();
-
-    $.post(base_url+"api/car/getBrandforupdate",{
-        "brandId": brandId,
-        
-    },function(data){
-        if(data.message!=200){
-            showMessage(data.message,"caraccessory/car");
-        }
-
-        if(data.message == 200){
-            result = data.data;
-            $("#brandName").val(result.brandName);
-        }
-        
-    });
+<script>
+        var brandId = $("#brandId").val();
     
-    // var brandId = $("#brandId").val();
-
-    // $.post(base_url+"api/car/getBrandforupdate",{
-    //     "brandPicture": brandPicture,
+        $.post(base_url+"api/car/getbrand",{
+            "brandId": $("#brandId").val()
+        },function(data){
+            if(data.message!=200){
+                showMessage(data.message,"admin/car/brand/"+brandId);
+            }
+    
+            if(data.message == 200){
+                result = data.data;
+                $("#tire_brandName").val(result.tire_brandName);
+            }
+            
+        });
         
-    // },function(data){
-    //     if(data.message!=200){
-    //         showMessage(data.message,"car/car");
-    //     }
-
-    //     if(data.message == 200){
-    //         result = data.data;
-    //         $("#brandName").val(result.brandName);
-    //     }
-        
-    // });
-    $("#brandPicture").fileinput({
-        language: "th",
-        theme: 'fa',
-        allowedFileExtensions: ['jpg' , 'png'],
-        overwriteInitial: false,
-        maxFileSize: 300,
-        required: true,
-        showCancel: false,
-        showUpload: false
-    });
-
-$("#update-brand").validate({
-        rules: {
-            brandName: {
-            required: true
+        $("#submit").validate({
+            rules: {
+                brandName: {
+                    required: true
+                },
             },
-            brandPicture :{
-            required: true   
+            messages: {
+                brandName: {
+                    required: "กรุณากรอกชื่อยี่ห้อรถ"
+                },
             },
-        },
-        messages: {
-            brandName: {
-            required: "กรุณากรอกยี่ห้อรถ"
-            },
-            brandPicture :{
-            required: ""   
-            },
-        },
-    });
+        });
+    
+    
+        $("#submit").submit(function(){
+            updatebrand();
+        })
 
-
-    $("#update-brand").submit(function(){
-        updatecar();
-    })
-
-
-    function updatecar(){
-        event.preventDefault();
-        var isValid = $("#update-brand").valid();
-        if(isValid){
-            var myform = document.getElementById("update-brand");
-            var formData = new FormData(myform);
-            $.ajax({
-                url: base_url+"apicaraccessories/caraccessories/updatecar",
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                success: function (data) {
+        function updatebrand(){
+            event.preventDefault();
+            var isValid = $("#submit").valid();
+            
+            if(isValid){
+                var data = $("#submit").serialize();
+                
+                $.post(base_url+"apiCaraccessories/CarAccessory/getBrandforupdate",data,
+                function(data){
+                    
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/car");
+                        showMessage(data.message,"caraccessory/Car");
                     }else{
                         showMessage(data.message);
                     }
-                }
-            });
+                });
+                
+            }
         }
-    }
     
 </script>
 
