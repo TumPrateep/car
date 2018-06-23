@@ -34,7 +34,8 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.tire_brandId = $("#tire_brandId").val() ,
-                    data.tire_modelName = $("#tire_modelName").val()     
+                    data.tire_modelName = $("#tire_modelName").val(),
+                    data.column = $("#column").val()     
                 }
             },
             "columns": [
@@ -98,6 +99,15 @@
         }
         fnDelete(option);
     }
+
+    $("#form-search").submit(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+   
+    $("#column").change(function(){
+        table.ajax.reload();
+    })
 </script>
 
 </body>

@@ -32,7 +32,10 @@ abstract class REST_Controller extends CI_Controller {
 
     const MSG_UNAUTHORIZATION = 6001;
 
-    const MSG_LOGIN_FAIL = 2001;
+    const MSG_LOGIN_OK = 2001;
+    const MSG_LOGIN_NOT_HAVE = 2002;
+    const MSG_LOGIN_LOCK = 2003;
+    const MSG_LOGIN_PASSWORD_WRONG = 2004;
 
     const MSG_ERROR = 404;
 
