@@ -65,7 +65,7 @@ function showMessage(message, url=null){
 
 $("#success-modal, #warning-modal, #danger-modal").on('hidden.bs.modal', function () {
     if(modalUrl != null){
-        window.location.assign(base_url+modalUrl);
+        window.location = base_url+modalUrl;
     }
 });
 
