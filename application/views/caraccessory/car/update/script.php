@@ -2,12 +2,12 @@
 
     var brandId = $("#brandId").val();
 
-    $.post(base_url+"apiCaraccessories/Caraccessories/",{
+    $.post(base_url+"api/car/getBrandforupdate",{
         "brandId": brandId,
         
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/car/car");
+            showMessage(data.message,"caraccessory/car");
         }
 
         if(data.message == 200){

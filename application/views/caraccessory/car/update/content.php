@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-header-blue">
-
+                <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
                     <div class="card-title"></div>
                     <div class="card-body">
                         <!-- <form action="#"> -->
