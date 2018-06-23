@@ -31,8 +31,10 @@
                                     </div>
                                 </div>
                                     <div class="form-group">
-                                          <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                          <a> <button type="button" class="btn btn-inverse">ยกเลิก</button> </a>
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                                        <a href="<?=base_url("caraccessory/SpareBrand/index/$spares_undercarriageId"); ?>">
+                                        <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
+                                        </a>
                                     </div>
                             </div> 
                         </form>
