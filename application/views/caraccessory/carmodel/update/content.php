@@ -15,6 +15,8 @@
   
     <div class="container-fluid">  
     <form id="submit">   
+    <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
+    <input type="hidden" id="modelId" name="modelId" value="<?=$modelId ?>">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card card-header">

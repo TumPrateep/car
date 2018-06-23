@@ -7,17 +7,23 @@ class CarModel extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        //$this->auth();
+        $this->auth();
     }
     function searchModel_post(){
-        $columns = array( 
-            0 =>null
-        );
+        $column = "modelName";
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
 
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $columns[$this->post('order')[0]['column']];
-        $dir = $this->post('order')[0]['dir'];
+        $order = $column;
+        $dir = $sort;
         $brandId = $this->post('brandId');
 
         $this->load->model("Model");
@@ -167,5 +173,57 @@ class CarModel extends BD_Controller {
         }
     }
 
+    function updateCarModel_post(){
+        $modelId = $this->post('modelId');
+        $modelName = $this->post('modelName');
+        $brandId = $this->post('brandId');
+        $yearStart = $this->post('yearStart');
+        $yearEnd = $this->post('yearEnd');
+        $this->load->model("Model");
+        $userId = $this->session->userdata['logged_in']['id'];
+        $status = 2;
+        
+        if($yearEnd == 0){
+            $yearEnd = null;
+        }
+        
+        $result = $this->Model->wherenot($modelId,$modelName, $yearStart, $brandId);
+
+        if($result){
+            $data = array(
+                'modelId' => $modelId,
+                'modelName' => $modelName,
+                'brandId' => $brandId,
+                'yearStart' => $yearStart,
+                'yearEnd' => $yearEnd,
+                'status' => 2,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId,
+                'activeFlag'=> 2
+        );
+            $isCheckStatus =$this->Model->checkStatusFromModelCar($modelId,$status,$userId);
+            if($isCheckStatus ){
+                $result = $this->Model->update($data);
+                $output["status"] = $result;
+                    if($result){
+                        $output["message"] = REST_Controller::MSG_SUCCESS;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }else{
+                        $output["status"] = false;
+                        $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }
+            }else{
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+
+    }
+    
     
 }
+

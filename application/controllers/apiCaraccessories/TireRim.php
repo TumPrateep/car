@@ -7,16 +7,23 @@ class TireRim extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        //$this->auth();
+        $this->auth();
     }
     function searchrim_post(){
-        $columns = array( 
-            0 => null 
-        );
+        $column = "rimName";
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
+
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $columns[$this->post('order')[0]['column']];
-        $dir = $this->post('order')[0]['dir'];
+        $order = $column;
+        $dir = $sort;
         $this->load->model("rims");
         $totalData = $this->rims->allrim_count();
         $totalFiltered = $totalData; 
@@ -95,7 +102,8 @@ class TireRim extends BD_Controller {
                 'create_by' => $userId,
                 'update_at' => null,
                 'update_by' => null,
-                'status' => 2
+                'status' => 2,
+                'activeFlag' => 2
             );
             $result = $this->rims->insert_rim($data);
             $output["status"] = $result;
@@ -168,8 +176,6 @@ class TireRim extends BD_Controller {
             $data = array(
                 'rimId' => $rimId,
                 'rimName' => $rimName,
-                'create_at' => null,
-                'create_by' => null,
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId,
                 'status' => 2,

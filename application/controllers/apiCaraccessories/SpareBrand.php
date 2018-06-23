@@ -27,7 +27,8 @@ class SpareBrand extends BD_Controller {
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
                 'update_at' => null,
-                'update_by' => null
+                'update_by' => null,
+                "activeFlag" => 2
             );
             $result = $this->Sparesbrand->insertBrand($data);
             $output["status"] = $result;
@@ -48,14 +49,20 @@ class SpareBrand extends BD_Controller {
         }
     }
     function searchSpares_post(){
-        $columns = array( 
-            0 => null  
-        );
+        $column = "spares_brandName";
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
 
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $columns[$this->post('order')[0]['column']];
-        $dir = $this->post('order')[0]['dir'];
+        $order = $column;
+        $dir = $sort;
 
         $spares_undercarriageId = $this->post("spares_undercarriageId");
         $this->load->model("Sparesbrand");
@@ -86,6 +93,7 @@ class SpareBrand extends BD_Controller {
                 $nestedData[$count]['spares_undercarriageId'] = $post->spares_undercarriageId;
                 $nestedData[$count]['spares_brandName'] = $post->spares_brandName;
                 $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['create_by'] = $post->create_by;
                 $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 $data[$index] = $nestedData;
                 if($count >= 3){
@@ -147,5 +155,41 @@ class SpareBrand extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_BE_DELETED;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
+    }
+    function updateSpareBrand_post(){
+
+        $spares_brandId = $this->post('spares_brandId');
+        $spares_brandName = $this->post('spares_brandName');
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $this->load->model("Sparesbrand");
+        $userId = $this->session->userdata['logged_in']['id'];
+
+        $result = $this->Sparesbrand->wherenotBrand($spares_brandId,$spares_brandName,$spares_undercarriageId);
+
+        if($result){
+            $data = array(
+                'spares_brandId' => $spares_brandId,
+                'spares_brandName' => $spares_brandName,
+                'status' => 2,
+                'spares_undercarriageId' => $spares_undercarriageId,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId
+            );
+            $result = $this->Sparesbrand->updateBrand($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
     }
 }

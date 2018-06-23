@@ -31,7 +31,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.rimName = $("#brand-search").val()
+                    data.rimName = $("#brand-search").val(),
+                    data.column = $("#column").val()
                 }
             },
             "columns": [
@@ -68,7 +69,7 @@
                             
                             if(isShow){
                                 html += '<a href="'+base_url+"caraccessory/tirerim/updatetirerim/"+value.rimId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
+                                + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteTirerim(\''+value.rimId+'\',\''+value.rimName+'\')"><i class="ti-trash"></i> ลบ</button>'
                             }
                                  
                             html += '</div>'
@@ -85,6 +86,25 @@
 
     $("#btn-search").click(function(){
         event.preventDefault();
+        table.ajax.reload();
+    })
+
+    function deleteTirerim(rimId, rimName){
+        var option = {
+            url: "/TireRim/deleteRim?rimId="+rimId,
+            label: "ลบขอบยาง",
+            content: "คุณต้องการลบ "+rimName+" ใช่หรือไม่",
+            gotoUrl: "caraccessory/tirerim"
+            
+        }
+        fnDelete(option);
+    }
+    $("#form-search").submit(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+
+    $("#column").change(function(){
         table.ajax.reload();
     })
 </script>

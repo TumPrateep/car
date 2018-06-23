@@ -37,8 +37,9 @@
             $.post(base_url+"apiCaraccessories/Tiremodel/createTireModel",data,
             function(data){
                 var tire_modelName = $("#tire_modelName").val();
+                var tire_brandId = $("#tire_brandId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/TireModel/index1/"+value.tire_brandId);
+                    showMessage(data.message,"caraccessory/TireModel/index/"+tire_brandId);
                 }else{
                     showMessage(data.message,);
                 }

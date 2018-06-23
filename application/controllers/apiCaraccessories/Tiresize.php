@@ -48,8 +48,7 @@ class Tiresize extends BD_Controller {
                 'rimId' => $rimId,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
-                'update_at' => null,
-                'update_by' => null
+                'activeFlag' => 2
                 
             );
             $result = $this->trieSizes->inserttrie_size($data);
@@ -72,13 +71,20 @@ class Tiresize extends BD_Controller {
     }
 
     function searchTiresize_post(){
-        $columns = array( 
-            0 => null    
-        );
+        $column = "tire_size";
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
+
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $columns[$this->post('order')[0]['column']];
-        $dir = $this->post('order')[0]['dir'];
+        $order = $column;
+        $dir = $sort;
         $rimId = $this->post("rimId");
         $this->load->model("trieSizes");
         $totalData = $this->trieSizes->alltrieSize_count($rimId);
@@ -191,12 +197,11 @@ class Tiresize extends BD_Controller {
                 'tire_size' => $tire_size,
                 'tire_series' => $tire_series,
                 'rim' => $rim,
-                'status' => 1,
+                'status' => 2,
                 'rimId' => $rimId,
-                'create_at' => null,
-                'create_by' => null,
                 'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId
+                'update_by' => $userId,
+                'activeFlag' => 2
         );
             $isCheckStatus =$this->trieSizes->checkStatusFromTireSize($tire_sizeId,$status,$userId);
             if($isCheckStatus ){
