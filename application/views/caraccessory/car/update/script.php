@@ -1,16 +1,16 @@
 <script>
         var brandId = $("#brandId").val();
     
-        $.post(base_url+"api/car/getbrand",{
+        $.post(base_url+"api/car/getBrand",{
             "brandId": $("#brandId").val()
         },function(data){
             if(data.message!=200){
-                showMessage(data.message,"admin/car/brand/"+brandId);
+                showMessage(data.message,"caraccessory/car/"+brandId);
             }
     
             if(data.message == 200){
                 result = data.data;
-                $("#tire_brandName").val(result.tire_brandName);
+                $("#brandName").val(result.brandName); 
             }
             
         });
@@ -25,15 +25,15 @@
                 brandName: {
                     required: "กรุณากรอกชื่อยี่ห้อรถ"
                 },
-            },
+            }
         });
     
     
         $("#submit").submit(function(){
-            updatebrand();
+            updateBrand();
         })
 
-        function updatebrand(){
+        function updateBrand(){
             event.preventDefault();
             var isValid = $("#submit").valid();
             

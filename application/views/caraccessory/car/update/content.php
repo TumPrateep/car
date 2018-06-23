@@ -13,7 +13,9 @@
     </div>
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
-    <div class="container-fluid">   
+    
+    <div class="container-fluid">  
+    <form id="submit">  
         <div class="row">
             <div class="col-12">
                 <div class="card card-header-blue">
@@ -26,7 +28,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">ชื่อยี่ห้อรถ</label><span class="error">*</span>
-                                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName" id="brandName" value="">
+                                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName" id="brandName" value="brandName">
                                          </div>
                                         </div>       
                                     </div>
@@ -35,7 +37,7 @@
                                     <hr>
                                     
                                     <form class="dropzone">
-                                        <div class="fallback"><input name="file" type="file" multiple name="brandPicture" /></div>
+                                        <div class="fallback"><input name="file" type="file" multiple name="brandPicture" id="brandPicture" /></div>
                                     </form>  
                                     <h6 class="card-subtitle">เพิ่ม <code>รูปภาพ</code> ที่นี้</h6>
                                            
