@@ -8,7 +8,7 @@
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireRim"); ?>">ขอบยาง</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireSize/index/1"); ?>">ขนาดยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireSize/index/$tire_rimId"); ?>">ขนาดยาง</a></li>
                 <li class="breadcrumb-item active">แก้ไขข้อมูลขนาดยาง</li>
             </ol>
         </div>
@@ -47,7 +47,9 @@
                     
                 <div class="form-actions">
                     <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                    <a href="<?=base_url("caraccessory/TireSize/index/$tire_rimId"); ?>">
                     <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
+                    </a>
                 </div>
 
             </div>
