@@ -28,7 +28,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">ชื่อยี่ห้อยาง</label>
-                                            <input type="text" id="firstName" class="form-control" placeholder="ชื่อยี่ห้อยาง">
+                                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้อยาง" id="brandName" name="brandName">
                                          </div>
                                         </div>       
                                     </div>
@@ -37,7 +37,7 @@
                                     <hr>
                                     
                                     <form class="dropzone">
-                                        <div class="fallback"><input name="file" type="file" multiple /></div>
+                                        <div class="fallback"><input name="file" type="file" multiple ="tire_brandPicture" /></div>
                                     </form>  
                                     <h6 class="card-subtitle">เพิ่ม <code>รูปภาพ</code> ที่นี้</h6>
                                            
