@@ -28,7 +28,7 @@
                     if(data.message == 200){
                         showMessage(data.message,"admin/Tires/tiresmodel/"+tire_brandId);
                     }else{
-                        showMessage(data.message);
+                        showMessage(data.message,"admin/Tires/tiresmodel/"+tire_brandId);
                     }
                 });
                 

@@ -116,7 +116,7 @@
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/tires/tiresbrand/");
+                showMessage(data.message,"admin/tires/tiresbrand/"+tire_brandId);
             }else{
                 showMessage(data.message);
             }

@@ -54,7 +54,7 @@
                     if(data.message == 200){
                         showMessage(data.message,"admin/tires/tiresbrand");
                     }else{
-                        showMessage(data.message);
+                        showMessage(data.message,"admin/tires/tiresbrand");
                     }
                 }
             });
