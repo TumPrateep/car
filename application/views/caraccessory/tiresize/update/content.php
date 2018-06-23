@@ -19,6 +19,7 @@
         <div class="col-12">
             <div class="card card-header-blue">
                 <input type="hidden" id="rimId" name="rimId" value="<?=$tire_rimId ?>">
+                <input type="hidden" id="tire_sizeId" name="tire_sizeId" value="<?=$tire_sizeId ?>">
                 <div class="card-title"></div>
                 
                 <div class="card-body">
@@ -26,7 +27,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>ขนาดยาง</label> <span class="error">*</span>
-                                <input type="text" class="form-control input-default " name="tire_size" placeholder="ขนาดยาง">
+                                <input type="text" class="form-control input-default " name="tire_size" id="tire_size" placeholder="ขนาดยาง">
                             </div>
                         </div>
                         <div class="col-md-4">
