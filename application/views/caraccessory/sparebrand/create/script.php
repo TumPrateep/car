@@ -25,8 +25,10 @@
             var data = $("#submit").serialize();
             $.post(base_url+"apiCaraccessories/SpareBrand/createSpareBrand",data,
             function(data){
+                var spares_brandName = $("#spares_brandName").val();
+                var spares_undercarriageId = $("#spares_undercarriageId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/SpareBrand/index"+spares_undercarriageId);
+                    showMessage(data.message,"caraccessory/SpareBrand/index/"+spares_undercarriageId);
                 }else{
                     showMessage(data.message);
                 }

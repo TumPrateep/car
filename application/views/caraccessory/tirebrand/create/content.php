@@ -1,4 +1,4 @@
-Page wrapper  -->
+<!--Page wrapper  -->
 <div class="page-wrapper">
     <!-- Bread crumb -->
     <div class="row page-titles">
@@ -28,24 +28,26 @@ Page wrapper  -->
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">ชื่อยี่ห้อยาง</label>
-                                            <input type="text" id="firstName" class="form-control" placeholder="ชื่อยี่ห้อยาง">
+                                            <input type="text" id="firstName" class="form-control" placeholder="ชื่อยี่ห้อยาง" id="tire_brandName" name ="tire_brandName">
                                          </div>
                                         </div>       
                                     </div>
                                        
-                                    <h3 class="box-title m-t-40">รูปภาพ</h3>
-                                    <hr>
-                                    
-                                    <form class="dropzone">
-                                        <div class="fallback"><input name="file" type="file" multiple /></div>
-                                    </form>  
-                                    <h6 class="card-subtitle">เพิ่ม <code>รูปภาพ</code> ที่นี้</h6>
-                                           
-                                </div>
+                                    <div class="row p-t-20">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">ชื่อยี่ห้อยาง</label>
+                                            <input name="tire_brandPicture" type="file" multiple />
+                                         </div>
+                                        </div>       
+                                    </div>
+                                </div>       
 
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                                    <a href="<?=base_url("caraccessory/TireBrand"); ?>">
                                     <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
+                                    </a>
                                 </div>
                             </div>
                     </div>
@@ -54,4 +56,4 @@ Page wrapper  -->
         </div>   
     </div>
 </div>
-<!-- End Container fluid 
+<!-- End Container fluid >>

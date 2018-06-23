@@ -83,29 +83,35 @@ class CarAccessory extends BD_Controller {
 
     function createBrand_post(){
         $config['upload_path'] = 'public/image/brand/';
-        $config['allowed_types'] = 'gif|jpg|png';
+        // $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
-        $config['max_width']  = '1024';
-        $config['max_height']  = '768';
-        $config['overwrite'] = TRUE;
-        $config['encrypt_name'] = TRUE;
-        $config['remove_spaces'] = TRUE;
+        // $config['max_width']  = '1024';
+        // $config['max_height']  = '768';
+        // $config['overwrite'] = TRUE;
+        // $config['encrypt_name'] = TRUE;
+        // $config['remove_spaces'] = TRUE;
 
-        $this->load->library('upload', $config);
+        // $this->load->library('upload', $config);
         $this->load->model("Brand");
         $userId = $this->session->userdata['logged_in']['id'];
 
-		if ( ! $this->upload->do_upload("brandPicture"))
-		{
-            $error = array('error' => $this->upload->display_errors());
+        $img = $this->post('brandPicture');
+        $img = str_replace('data:image/png;base64,', '', $img);
+	    $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+
+        $imageName = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName;
+        $success = file_put_contents($file, $data);
+        
+		if (!$success){
+            // $error = array('error' => $this->upload->display_errors());
             $output["message"] = REST_Controller::MSG_ERROR;
-            $output["data"] = $error;
+            // $output["data"] = $error;
 			$this->set_response($output, REST_Controller::HTTP_OK);
-		}
-		else
-		{
-            $imageDetailArray = $this->upload->data();
-            $image =  $imageDetailArray['file_name'];
+		}else{
+        //     $imageDetailArray = $this->upload->data();
+            $image =  $imageName;
             $brandName = $this->post("brandName");
             $isDublicte = $this->Brand->checkBrand($brandName);
             if($isDublicte){
@@ -177,5 +183,96 @@ class CarAccessory extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function getBrandforupdate_post(){
+
+        $brandId = $this->post('brandId');
+        $this->load->model("Brand");
+        $isCheck = $this->Brand->checkBrandforget($brandId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->Brand->getBrandById($brandId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function updateBrand_post(){
+        $config['upload_path'] = 'public/image/brand/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        // $config['max_size'] = '100';
+        // $config['max_width']  = '1024';
+        // $config['max_height']  = '768';
+        $config['overwrite'] = TRUE;
+        $config['encrypt_name'] = TRUE;
+        $config['remove_spaces'] = TRUE;
+
+        $userId = $this->session->userdata['logged_in']['id'];
+        $this->load->library('upload', $config);
+        $this->load->model("Brand");
+
+        $image =  "";
+        if ( ! $this->upload->do_upload("brandPicture")){
+            $error = array('error' => $this->upload->display_errors());
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $output["data"] = $error;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $imageDetailArray = $this->upload->data();
+            $image =  $imageDetailArray['file_name'];
+        }   
+        
+        $brandName = $this->post("brandName");
+        $brandId = $this->post("brandId");
+        $status = 2;
+        $isDublicte = $this->Brand->wherenot($brandId,$brandName);
+        if($isDublicte){
+            $data = array(
+                "brandId"=> $brandId,
+                "brandPicture"=> $image,
+                "brandName"=> $brandName,
+                "status"=> 2,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId,
+                'activeFlag' => 2 
+            );
+            $isCheckStatus =$this->Brand->checkStatusFromBrand($brandId,$status,$userId);
+            if($isCheckStatus ){
+                $oldData = $this->Brand->getBrandById($brandId);
+                $isResult = $this->Brand->update($data);
+                if($isResult){
+                    unlink($config['upload_path'].$oldData->brandPicture);
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    unlink($config['upload_path'].$image);
+                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+
+            }else{
+                unlink($config['upload_path'].$image);
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }else{
+        unlink($config['upload_path'].$image);
+        $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+        $this->set_response($output, REST_Controller::HTTP_OK);	
+    }
+}
+
 
 }

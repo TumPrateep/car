@@ -27,7 +27,8 @@ class SpareBrand extends BD_Controller {
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
                 'update_at' => null,
-                'update_by' => null
+                'update_by' => null,
+                "activeFlag" => 2
             );
             $result = $this->Sparesbrand->insertBrand($data);
             $output["status"] = $result;
@@ -92,6 +93,7 @@ class SpareBrand extends BD_Controller {
                 $nestedData[$count]['spares_undercarriageId'] = $post->spares_undercarriageId;
                 $nestedData[$count]['spares_brandName'] = $post->spares_brandName;
                 $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['create_by'] = $post->create_by;
                 $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 $data[$index] = $nestedData;
                 if($count >= 3){

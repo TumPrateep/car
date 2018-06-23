@@ -13,51 +13,6 @@ Page wrapper  -->
     </div>
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
-    
-    <!-- <div class="container-fluid">   
-        <div class="row">
-            <div class="col-12">
-                <div class="card card-header-blue">
-
-                    <div class="card-title"></div>
-                    <div class="card-body">
-                        <form id="submit">
-                            <div class="form-body">
-                                <div class="row p-t-20">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">ชื่อยี่ห้อรถ</label><span class="error">*</span>
-                                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName" id="brandName" value="">
-                                         </div>
-                                    </div>       
-                                </div>
-                                       
-                                <div class="row p-t-20">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">ชื่อยี่ห้อรถ</label>
-                                            <input name="brandPicture" type="file" multiple />
-                                        </div>
-                                    </div>       
-                                </div>
-                           
-                                    <h6 class="card-subtitle">เพิ่ม <code>รูปภาพ</code> ที่นี้</h6>
-                                           
-                                </div>
-
-                                <div class="form-actions">
-                                    <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                    <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
-                                </div>
-                            </div>
-                        </form>   
-
-                        
-                    </div>
-                </div>
-            </div>
-        </div>   
-    </div> -->
 
     <div class="container-fluid">   
         <div class="row">

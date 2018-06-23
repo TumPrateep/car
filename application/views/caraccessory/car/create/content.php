@@ -23,7 +23,7 @@
                         <form id="submit">
                             <div class="form-body">
                                 <div class="row p-t-20">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">ชื่อยี่ห้อรถ</label>
                                             <input type="text" id="brandName" class="form-control" name="brandName" placeholder="ชื่อยี่ห้อรถ">
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row p-t-20">
+                                <!-- <div class="row p-t-20">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">ชื่อยี่ห้อรถ</label>
@@ -40,11 +40,32 @@
                                          </div>
                                         </div>       
                                     </div>
-                                </div>       
+                                </div>   -->
 
-                                <div class="form-actions">
-                                    <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                    <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
+                                <div class="row p-t-20">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                        <label class="control-label">รูปยี่ห้อรถ</label>
+                                            <div class="image-editor">
+                                                <input type="file" class="cropit-image-input" name="tempImage" required>
+                                                <div class="cropit-preview"></div>
+                                                <div class="image-size-label">
+                                                ปรับขนาด
+                                                </div>
+                                                <input type="range" class="cropit-image-zoom-input">
+                                                <input type="hidden" name="brandPicture" class="hidden-image-data" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>     
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-12 card-grid">
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                                        <a href="<?=base_url("caraccessory/car"); ?>">
+                                        <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </form>

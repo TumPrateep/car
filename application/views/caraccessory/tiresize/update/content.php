@@ -8,7 +8,7 @@
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireRim"); ?>">ขอบยาง</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireSize/index/1"); ?>">ขนาดยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireSize/index/$tire_rimId"); ?>">ขนาดยาง</a></li>
                 <li class="breadcrumb-item active">แก้ไขข้อมูลขนาดยาง</li>
             </ol>
         </div>
@@ -19,6 +19,7 @@
         <div class="col-12">
             <div class="card card-header-blue">
                 <input type="hidden" id="rimId" name="rimId" value="<?=$tire_rimId ?>">
+                <input type="hidden" id="tire_sizeId" name="tire_sizeId" value="<?=$tire_sizeId ?>">
                 <div class="card-title"></div>
                 
                 <div class="card-body">
@@ -26,7 +27,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>ขนาดยาง</label> <span class="error">*</span>
-                                <input type="text" class="form-control input-default " name="tire_size" placeholder="ขนาดยาง">
+                                <input type="text" class="form-control input-default " name="tire_size" id="tire_size" placeholder="ขนาดยาง">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -46,7 +47,9 @@
                     
                 <div class="form-actions">
                     <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                    <a href="<?=base_url("caraccessory/TireSize/index/$tire_rimId"); ?>">
                     <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
+                    </a>
                 </div>
 
             </div>

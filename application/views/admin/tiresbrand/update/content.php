@@ -6,9 +6,6 @@
         <li class="breadcrumb-item">
           <a href="<?=base_url("admin/tires/tiresbrand") ?>">ยี่ห้อยาง</a>
         </li>
-        <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires/updatetiresbrand/$tire_brandId") ?>">รุ่นยางรถยนต์</a>
-        </li>
         <li class="breadcrumb-item active">เเก้ไขข้อมูล</li>
       </ol>
       <!-- Icon Cards-->

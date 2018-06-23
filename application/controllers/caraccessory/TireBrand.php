@@ -28,7 +28,7 @@ class TireBrand extends CI_Controller {
 		$this->load->view("caraccessory/tirebrand/create/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
-		$this->load->view("caraccessory/tirebrand/update/script");
+		$this->load->view("caraccessory/tirebrand/create/script");
 	}
 
 	public function updatetirebrand()
@@ -41,6 +41,8 @@ class TireBrand extends CI_Controller {
 		$this->load->view("caraccessory/layout/foot");
 		$this->load->view("caraccessory/tirebrand/update/script");
 	}
+
+	
 	
 
 }

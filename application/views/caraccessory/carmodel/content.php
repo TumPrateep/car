@@ -8,6 +8,7 @@ Page wrapper  -->
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/car"); ?>">ยี่ห้อรถ</a></li>
                 <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/CarModelAccessory/index1/$brandId"); ?>">รุ่นรถ</a></li>
                 <li class="breadcrumb-item active">เเก้ไข</li>
             </ol>
@@ -29,7 +30,7 @@ Page wrapper  -->
                 <div class="input-group input-group-flat">
                     <label class="col-lg-3 col-form-label">ยี่ห้อ: </label>
                     <input type="text" class="form-control input-default"id="table-search" placeholder="ค้นหา...">
-                    <span class="input-group-btn"><button class="btn btn-success" type="submit" id="btn-search"><i class="ti-search"></i></button></span>
+                    <span class="input-group-btn"><button class="btn btn-success" type="button" id="btn-search"><i class="ti-search"></i></button></span>
                 </div>
             </div>
             <div class="col-lg-4">

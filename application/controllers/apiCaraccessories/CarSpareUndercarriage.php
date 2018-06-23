@@ -93,6 +93,7 @@ class CarSpareUndercarriage extends BD_Controller {
                 'activeFlag' => 2,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
+                'activeFlag' => 2
                 
             );
             $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);

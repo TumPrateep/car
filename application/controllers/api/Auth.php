@@ -23,9 +23,18 @@ class Auth extends BD_Controller {
         $p = $this->post('password'); //Pasword Posted
         // $q = array('username' => $u); //For where query condition
         $kunci = $this->config->item('thekey');
-        $invalidLogin = ['status' => 'Invalid Login']; //Respon if login invalid
+        // $invalidLogin = ['status' => 'Invalid Login']; //Respon if login invalid
         $val = $this->M_main->get_user($u)->row(); //Model to get single data row from database base on username
-        if($this->M_main->get_user($u)->num_rows() == 0){$this->response($invalidLogin, REST_Controller::HTTP_NOT_FOUND);}
+
+        if($this->M_main->get_user($u)->num_rows() == 0){
+            $invalidLogin['message'] = REST_Controller::MSG_LOGIN_NOT_HAVE;
+            $this->response($invalidLogin, REST_Controller::HTTP_OK);
+        }else{
+            if($val->status == 2){
+                $invalidLogin['message'] = REST_Controller::MSG_LOGIN_LOCK;
+                $this->response($invalidLogin, REST_Controller::HTTP_OK);
+            }
+        }
 		$match = $val->password;   //Get password for user from database
         if(password_verify($p, $match)){  //Condition if password matched
         	$token['id'] = $val->id;  //From here
@@ -33,7 +42,7 @@ class Auth extends BD_Controller {
             $date = new DateTime();
             $token['iat'] = $date->getTimestamp();
             $token['exp'] = $date->getTimestamp() + 60*60*5; //To here is to generate token
-            $output['token'] = JWT::encode($token,$kunci ); //This is the output token
+            $output['token'] = JWT::encode($token,$kunci); //This is the output token
             $output['userId'] = $val->id;
             $this->load->model("Profile");
             $profile = $this->Profile->findUserProfileById($val->id);
@@ -44,10 +53,13 @@ class Auth extends BD_Controller {
                 'name' => $profile->firstname." ".$profile->lastname
             );
             $this->session->set_userdata('logged_in', $sess_array);
+
+            $output['message'] = REST_Controller::MSG_LOGIN_OK;
             $this->set_response($output, REST_Controller::HTTP_OK); //This is the respon if success
         }
         else {
-            $this->set_response($invalidLogin, REST_Controller::HTTP_NOT_FOUND); //This is the respon if failed
+            $invalidLogin['message'] = REST_Controller::MSG_LOGIN_PASSWORD_WRONG;
+            $this->set_response($invalidLogin, REST_Controller::HTTP_OK); //This is the respon if failed
         }
     }
 

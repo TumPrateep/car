@@ -23,6 +23,25 @@
             }
         },
     });
+    var rimId = $("#rimId").val();
+    var tire_sizeId = $("#tire_sizeId").val();
+
+    $.post(base_url+"api/Triesize/getiresizeById",{
+        "rimId": rimId,
+        "tire_sizeId" : tire_sizeId
+    },function(data){
+        if(data.message!=200){
+            showMessage(data.message,"caraccessory/TireSize/index/"+rimId);
+        }else{
+            result = data.data;
+            $("#tire_size").val(result.tire_size);
+            $("#tire_series").val(result.tire_series);
+            $("#rim").val(result.rim);
+
+        }
+        
+    });
+   
     
     $("#submit").submit(function(){
         updateTireSize();
@@ -36,7 +55,7 @@
             var data = $("#submit").serialize();
             $.post(base_url+"apiCaraccessories/TireSize/updatetrieSize",data,
             function(data){
-                var rimId = $("#rimId").val();
+                //var rimId = $("#rimId").val();
                 if(data.message == 200){
                     showMessage(data.message,"caraccessory/TireSize/index/"+rimId);
                 }else{

@@ -31,7 +31,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.tire_brandName = $("#brand-search").val()
+                    data.tire_brandName = $("#brand-search").val(),
+                    data.column = $("#column").val()
                 }
             },
             "columns": [
@@ -69,8 +70,8 @@
                                 //  + '<a href="'+base_url+"caraccessory/tirebrand/updatetirebrand/"+value.tire_brandId+'">'
                                   
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/tiremodel/updatetiremodel/"+value.tire_brandId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5"><i class="ti-trash"></i> ลบ</button>'
+                                html += '<a href="'+base_url+"caraccessory/tirebrand/updatetirebrand/"+value.tire_brandId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteTireBrand(\''+value.tire_brandId+'\',\''+value.tire_brandName+'\')"><i class="ti-trash"></i> ลบ</button>'
                             }
                                  
                             html += '</div>'
@@ -91,6 +92,17 @@
         event.preventDefault();
         table.ajax.reload();
     })
+
+    function deleteTireBrand(tire_brandId, tire_brandName){
+        var option = {
+            url: "/Tirebrand/deleteTireBrand?tire_brandId="+tire_brandId,
+            label: "ลบยี่ห้อยาง",
+            content: "คุณต้องการลบ "+tire_brandName+" ใช่หรือไม่",
+            gotoUrl: "caraccessory/TireBrand"
+            
+        }
+        fnDelete(option);
+    }
 </script>
 
 </body>

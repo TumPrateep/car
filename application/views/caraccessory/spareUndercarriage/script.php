@@ -101,6 +101,11 @@
         table.ajax.reload();
     })
     
+    $("#form-search").submit(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+   
     $("#column").change(function(){
         table.ajax.reload();
     })

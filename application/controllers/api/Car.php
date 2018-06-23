@@ -171,7 +171,7 @@ class Car extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('search')) && empty($this->post('brandId')) && empty($this->post('year')) && empty($this->post('status')) )
+        if(empty($this->post('search')) && empty($this->post('year')) && empty($this->post('status')) )
         {            
             $posts = $this->Model->allModel($limit,$start,$order,$dir,$brandId);
         }
