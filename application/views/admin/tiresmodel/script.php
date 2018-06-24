@@ -1,17 +1,12 @@
 <script>
-    // var tire_brandId = $("#tire_brandId").val();
-    // $.post(base_url+"api/Triebrand/????????",{
-    //     "tire_brandId": tire_brandId
-    // },function(data){
-    //     if(data.message == 200){
-    //         result = data.data;
-    //         $("#tire_brandName").html(result.tire_brandName);
-    //         var path = pathImage + "Triebrands/"+result.tire_brandPicture;
-    //         var imageHtml = '<img src="'+ path +'" class="float-left">';
-    //         $("#tire_brandPicture").html(imageHtml);
-    //     }_
-        
-    // });
+    var tire_brandId = $("#tire_brandId").val();
+    $.post(base_url+"api/Triebrand/getTireBrandforupdate",{
+        "tire_brandId": tire_brandId
+    },function(data){
+        if(data.message != 200){
+            showMessage(data.message,"admin/tires/tiresbrand");
+        }
+    });
     var table = $('#model-table').DataTable({
             "language": {
                     "aria": {

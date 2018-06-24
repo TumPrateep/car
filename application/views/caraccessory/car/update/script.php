@@ -1,20 +1,4 @@
 <script>
-        var brandId = $("#brandId").val();
-    
-        $.post(base_url+"api/car/getBrand",{
-            "brandId": $("#brandId").val()
-        },function(data){
-            if(data.message!=200){
-                showMessage(data.message,"caraccessory/car/"+brandId);
-            }
-    
-            if(data.message == 200){
-                result = data.data;
-                $("#brandName").val(result.brandName); 
-            }
-            
-        });
-        
         $("#submit").validate({
             rules: {
                 brandName: {
@@ -27,6 +11,22 @@
                 },
             }
         });
+
+        var brandId = $("#brandId").val();
+    
+        // $.post(base_url+"api/car/getBrand",{
+        //     "brandId": $("#brandId").val()
+        // },function(data){
+        //     if(data.message!=200){
+        //         showMessage(data.message,"caraccessory/car/");
+        //     }
+    
+        //     if(data.message == 200){
+        //         result = data.data;
+        //         $("#brandName").val(result.brandName); 
+        //     }
+            
+        // });
     
     
         $("#submit").submit(function(){
@@ -40,7 +40,7 @@
             if(isValid){
                 var data = $("#submit").serialize();
                 
-                $.post(base_url+"apiCaraccessories/CarAccessory/updateBrand",data,
+                $.post(base_url+"apiCaraccessories/CarAccessory/getBrandforupdate",data,
                 function(data){
                     
                     if(data.message == 200){

@@ -1,5 +1,15 @@
 <script>
-var table = $('#tiresize-table').DataTable({
+    var rimId = $("#rimId").val();
+
+    $.post(base_url+"api/Rim/getRim",{
+        "rimId" : rimId
+    },function(data){
+        if(data.message!=200){
+            showMessage(data.message,"admin/Tires");
+        }
+    });
+
+    var table = $('#tiresize-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",

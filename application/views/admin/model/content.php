@@ -32,7 +32,7 @@
             <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
           </div>
 
-          <input class="form-control float-right" id="year" placeholder="ปีที่ผลิต">
+          <input type="number" class="form-control float-right" id="year" placeholder="ปีที่ผลิต">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-calendar-check-o"></i></button>
           </div>
