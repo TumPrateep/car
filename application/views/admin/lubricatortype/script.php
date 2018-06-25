@@ -81,11 +81,11 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,4]},
+                // {"className": "dt-head-center", "targets": []},
+                {"className": "dt-center", "targets": [0,1,2,3,4]},
                 { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 1 },
-                { "width": "20%", "targets": 4 },
+                { "width": "30%", "targets": 1 },
+                { "width": "25%", "targets": 4 },
                 { "width": "12%", "targets": 3 }
             ]	 
     });

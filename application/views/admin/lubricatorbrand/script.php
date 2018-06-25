@@ -87,10 +87,10 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,4,3]},
+                {"className": "dt-head-center", "targets": []},
+                {"className": "dt-center", "targets": [0,1,2,4,3]},
                 { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 1 },
+                { "width": "25%", "targets": 1 },
                 { "width": "20%", "targets": 4 },
                 { "width": "12%", "targets": 3 }
             ]	 
