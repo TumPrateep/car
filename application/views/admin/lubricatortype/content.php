@@ -45,7 +45,6 @@
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-picture-o"></i> รูปประเภทน้ำมันเครื่อง</th>
           <th><i class="fa fa-tint"></i>  ชื่อประเภทน้ำมันเครื่อง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
