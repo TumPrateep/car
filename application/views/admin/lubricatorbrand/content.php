@@ -16,7 +16,7 @@
         </a>
         <!-- <div class="input-group input-group-sm float-right"> -->
         <div class="input-group float-right">
-          <input name="car_search" id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้อน้ำมันเครื่อง">
+          <input name="lubricator_brandName" id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้อน้ำมันเครื่อง">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
           </div>
