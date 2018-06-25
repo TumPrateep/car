@@ -22,7 +22,7 @@ class Lubricatorbrand extends BD_Controller {
             $this->load->model("Lubricatorbrands");
             $totalData = $this->Lubricatorbrands->allLubricatorbrand_count();
             $totalFiltered = $totalData; 
-            if(empty($this->post('tire_brandName')) && empty($this->post('status')))
+            if(empty($this->post('lubricator_brandName')) && empty($this->post('status')))
             {            
                 $posts = $this->Lubricatorbrands->allLubricatorbrand($limit,$start,$order,$dir);
             }
@@ -53,5 +53,27 @@ class Lubricatorbrand extends BD_Controller {
             $this->set_response($json_data);
         }
         
+        function changeStatus_post(){
+            $lubricator_brandId = $this->post("lubricator_brandId");
+            $status = $this->post("status");
+            if($status == 1){
+                $status = 2;
+            }else{
+                $status = 1;
+            }
+            $data = array(
+                'status' => $status,
+                'activeFlag' => 1
+            );
+            $this->load->model("Lubricatorbrands");
+            $result = $this->Lubricatorbrands->updateStatus($lubricator_brandId,$data);
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
 
     }
