@@ -64,21 +64,6 @@ class LubricatorTypes extends CI_Model{
         $result = $this->db->update('lubricator_type', $data);
         return $result; 
     }
-    function ChecklubricatorTypes($lubricator_typeName){
-        $this->db->select("lubricator_typeName");
-        $this->db->from("lubricator_type");
-        $this->db->where('lubricator_typeName',$lubricator_typeName);
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return false;
-        }
-        return true;
-    }
-
-    function  insert_lubricatorType($data){
-        return $this->db->insert('lubricator_type', $data);
-
-    }
 
  
 }
