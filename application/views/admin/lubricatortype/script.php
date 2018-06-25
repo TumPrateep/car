@@ -32,7 +32,7 @@
                     data.status = $("#status").val()
                 }
             },
-            "order": [[ 2, "asc" ]],
+            "order": [[ 1, "asc" ]],
             "columns": [
                 null,
                 { "data": "lubricator_typeName" },
@@ -43,7 +43,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,1,4]
+                    "targets": [0,4,3]
                 },{
                     "targets": 4,
                     "data": null,
@@ -82,7 +82,7 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,4,3]},
+                {"className": "dt-center", "targets": [0,1,4]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 1 },
                 { "width": "20%", "targets": 4 },
