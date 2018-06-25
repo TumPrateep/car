@@ -381,7 +381,7 @@ CREATE TABLE `lubricator_number` (
   `update_at` datetime DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '2',
   `activeFlag` int(11) NOT NULL DEFAULT '2',
-  `lubricator_km` int(11) DEFAULT NULL,
+  `lubricator_typegear` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`lubricator_numberId`),
   KEY `fk_lubricator_number_lubricator_type1_idx` (`lubricator_typeId`),
   KEY `fk_lubricator_number_users1_idx` (`create_by`),
@@ -398,6 +398,7 @@ CREATE TABLE `lubricator_number` (
 
 LOCK TABLES `lubricator_number` WRITE;
 /*!40000 ALTER TABLE `lubricator_number` DISABLE KEYS */;
+INSERT INTO `lubricator_number` VALUES (1,'5W/40',1,1,1,NULL,NULL,1,1,NULL),(2,'0W/30',2,1,1,NULL,NULL,1,1,NULL),(3,'5W/30',2,1,1,NULL,NULL,1,1,NULL),(4,'0W/20',2,1,1,NULL,NULL,1,1,NULL),(5,'10W/30',3,1,1,NULL,NULL,1,1,NULL),(6,'15W40',4,1,1,NULL,NULL,1,1,NULL),(7,'20W50',4,1,1,NULL,NULL,1,1,NULL),(8,'5W/30',2,1,1,NULL,NULL,1,1,NULL),(9,'10W/30',2,1,1,NULL,NULL,1,1,NULL),(10,'10W/30',3,1,1,NULL,NULL,1,1,NULL),(11,'15W/40',3,1,1,NULL,NULL,1,1,NULL),(12,'10W30',4,1,1,NULL,NULL,1,1,NULL),(13,'15W40',4,1,1,NULL,NULL,1,1,NULL),(14,'20W50',4,1,1,NULL,NULL,1,1,NULL),(15,'75W85  GL5',NULL,1,1,NULL,NULL,1,1,'1'),(16,'80W90  GL5',NULL,1,1,NULL,NULL,1,1,'1'),(17,'85W140 GL5',NULL,1,1,NULL,NULL,1,1,'1'),(18,'ATF DEXRON 3',NULL,1,1,NULL,NULL,1,1,'2'),(19,'ATF DEXRON 6',NULL,1,1,NULL,NULL,1,1,'2'),(20,'CVTF',NULL,1,1,NULL,NULL,1,1,'2');
 /*!40000 ALTER TABLE `lubricator_number` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,7 +420,6 @@ CREATE TABLE `lubricator_type` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   PRIMARY KEY (`lubricator_typeId`),
-  UNIQUE KEY `lubricator_typeName_UNIQUE` (`lubricator_typeName`),
   KEY `fk_lubricator_type_users1_idx` (`create_by`),
   KEY `fk_lubricator_type_users2_idx` (`update_by`),
   CONSTRAINT `fk_lubricator_type_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -433,6 +433,7 @@ CREATE TABLE `lubricator_type` (
 
 LOCK TABLES `lubricator_type` WRITE;
 /*!40000 ALTER TABLE `lubricator_type` DISABLE KEYS */;
+INSERT INTO `lubricator_type` VALUES (1,'ZIC X9 ',15000,1,1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'ZIC X7',15000,1,1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'ZIC X5',10000,1,1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'ZIC X3',5000,1,1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `lubricator_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -972,4 +973,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-25 10:37:50
+-- Dump completed on 2018-06-25 13:21:01
