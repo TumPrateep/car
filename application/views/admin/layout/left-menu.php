@@ -33,13 +33,28 @@
             </li>
 
             <li>
-              <a class="text-white" href=""><i class="fa fa-tint"></i> น้ำมันเครื่อง</a>
+              <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti2">
+              <i class="fa fa-tint"></i> น้ำมันเครื่อง</a>
+              <ul class="sidenav-third-level collapse" id="collapseMulti2">
+                <li>
+                  <a class="nav-link text-white" href="<?=base_url("admin/lubricatortype") ?>">
+                    <!-- <i class="fa fa-circle-o"></i> -->
+                    <span class="nav-link-text">ประเภทน้ำมันเครื่อง</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="nav-link text-white" href="<?=base_url("admin/lubricatorbrand/") ?>">
+                    <!-- <i class="fa fa-futbol-o"></i> -->
+                    <span class="nav-link-text">ยี่ห้อน้ำมันเครื่อง</span>
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <li>
-              <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti2">
+              <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti3">
               <i class="fa fa-life-ring"></i> ยางรถ</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
+              <ul class="sidenav-third-level collapse" id="collapseMulti3">
                 <li>
                   <a class="nav-link text-white" href="<?=base_url("admin/tires") ?>">
                     <i class="fa fa-circle-o"></i>
