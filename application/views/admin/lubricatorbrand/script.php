@@ -48,7 +48,8 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/LubricatorBrand/updatelubricatorbrand/"+data.lubricator_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/lubricator/"+data.lubricatorId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"admin/LubricatorBrand/updatelubricatorbrand/"+data.lubricator_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteTireBand('+data.lubricator_brandId+',\''+data.lubricator_brandName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -87,10 +88,10 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,4,3]},
+                {"className": "dt-head-center", "targets": []},
+                {"className": "dt-center", "targets": [0,1,2,4,3]},
                 { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 1 },
+                { "width": "25%", "targets": 1 },
                 { "width": "20%", "targets": 4 },
                 { "width": "12%", "targets": 3 }
             ]	 
