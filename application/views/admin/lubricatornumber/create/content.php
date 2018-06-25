@@ -22,7 +22,7 @@
                   <div class="card-body black bg-light">
                       <div class="form-group">
                         <label>ชื่อเบอร์น้ำมันเครื่อง</label> <span class="error">*</span>
-                        <input type="text" class="form-control" placeholder="ชื่อเบอร์น้ำมันเครื่อง" name="tire_brandName">
+                        <input type="text" class="form-control" placeholder="ชื่อเบอร์น้ำมันเครื่อง" name="lubricator_number" id="lubricator_number">
                       </div>
                       <div class="form-group"> 
                         <button type="submit" class="btn btn-primary">บันทึก</button>
