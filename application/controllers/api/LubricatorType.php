@@ -1,16 +1,12 @@
 <?php
-<<<<<<< HEAD
-=======
 //ยี่ห้อยาง นะ
->>>>>>> f62d2156c77f5583b22170becf5c3b37c6dec270
 defined('BASEPATH') OR exit('No direct script access allowed');
 class LubricatorType extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
-<<<<<<< HEAD
-        // $this->auth();
+        $this->auth();
     }
     function createtrieSize_post(){
         $lubricator_typeName = $this->post("lubricator_typeName");
@@ -48,11 +44,7 @@ class LubricatorType extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-    
-}
-=======
-        $this->auth();
-    }
+   
     function searchLubricatorType_post(){
             $columns = array( 
                 0 => null,
@@ -119,7 +111,5 @@ class LubricatorType extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_BE_DELETED;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }
-
-    }
->>>>>>> f62d2156c77f5583b22170becf5c3b37c6dec270
+        }    
+}
