@@ -16,7 +16,7 @@
         </a>
         <!-- <div class="input-group input-group-sm float-right"> -->
         <div class="input-group float-right">
-          <input name="car_search" id="table-search" class="form-control float-right" placeholder="">
+          <input name="car_search" id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้อน้ำมันเครื่อง">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
           </div>
@@ -41,14 +41,14 @@
     </div>
 
     
-    <!-- <div class="table-responsive">
+    <div class="table-responsive">
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
           <th><i class="fa fa-picture-o"></i> รูปยี่ห้อรถ</th>
-          <th><i class="fa fa-car"></i>  ชื่อยี่ห้อรถ</th>
+          <th><i class="fa fa-tint"></i>  ชื่อยี่ห้อน้ำมันเครื่อง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	
-      </table> -->
+      </table>
     </div>
