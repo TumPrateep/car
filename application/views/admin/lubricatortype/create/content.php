@@ -4,7 +4,7 @@
       <li class="breadcrumb-item">
         <a href="<?=base_url("admin/lubricatortype") ?>">ประเภทน้ำมันเครื่อง</a>
       </li>
-      <li class="breadcrumb-item active">เพิ่มข้อมูลประเภทน้ำมันเครื่อง</li>
+      <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
     </ol>
     <!-- Icon Cards-->
     <section class="content">
@@ -25,6 +25,10 @@
                         <div class="form-group">
                           <label>ชื่อประเภทน้ำมันเครื่อง</label> <span class="error">*</span>
                           <input type="text" class="form-control" placeholder="ชื่อประเภทน้ำมันเครื่อง" name="lubricatortype" id="lubricatortype">
+                        </div>
+                        <div class="form-group">
+                          <label>ระยะทาง</label> <span class="error">*</span>
+                          <input type="number" class="form-control" placeholder="ระยะทาง" name="lubricatorroad" id="lubricatorroad">
                         </div>
                       </div>
                     </div>
