@@ -18,7 +18,7 @@
         <div class="input-group float-right">
           <input name="car_search" id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้อน้ำมันเครื่อง">
           <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-tint"></i></button>
           </div>
 
           <select class="form-control" name="status" id="status" >
