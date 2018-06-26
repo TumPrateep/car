@@ -76,4 +76,39 @@ class Lubricator extends BD_Controller {
         }
     }
 
+    function createlubricator_post(){
+        $lubricatorName = $this->post("lubricatorName");
+        
+        $this->load->model("lubricator");
+        $userId = $this->session->userdata['logged_in']['id'];
+        $isCheck = $this->lubricator->Checklubricator($lubricatorName);
+        
+        if($isCheck){
+            $data = array(
+                'lubricatorId' => null,
+                'lubricatorName' => $lubricatorName,  
+                'status' => 1,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'activeFlag' => 1
+            );
+            $result = $this->lubricator->insert_lubricator($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+        else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
 }
