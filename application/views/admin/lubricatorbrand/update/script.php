@@ -11,6 +11,20 @@
             },
         },
     });
+    var lubricator_brandId = $("#lubricator_brandId").val();
+    $.post(base_url+"api/Lubricatorbrand/getLubricatorbrandsById",{
+        "lubricator_brandId": lubricator_brandId
+    },function(data){
+        if(data.message!=200){
+            showMessage(data.message,"lubricator_brandId");
+        }else{
+            result = data.data;
+            $("#lubricator_brandName").val(result.lubricator_brandName);
+           
+
+        }
+        
+    });
 
     // $("#update-lubricatorbrand").submit(function(){
     //     updateBrand();

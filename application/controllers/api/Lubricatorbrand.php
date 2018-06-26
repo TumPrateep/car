@@ -149,6 +149,23 @@ class Lubricatorbrand extends BD_Controller {
             }
         }
 
+        function getLubricatorbrandsById_post(){
+            $lubricator_brandId = $this->post('lubricator_brandId');
+            $this->load->model("lubricatorbrands");
+           
+            $this->set_response($isCheck, REST_Controller::HTTP_OK);
+            $result = $this->lubricatorbrands->geTubricatorbrandFromId($lubricator_brandId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+           
+        }
+
         
 
     }

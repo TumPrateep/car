@@ -87,5 +87,11 @@ class Lubricatorbrands extends CI_Model{
     function delete($lubricator_brandId){
         return $this->db->delete('lubricator_brand', array('lubricator_brandId' => $lubricator_brandId));
     }
+    function geTubricatorbrandFromId($lubricator_brandId){
+        $this->db->select('lubricator_brandName,lubricator_brandPicture,lubricator_brandId');
+        $this->db->where('lubricator_brandId',$lubricator_brandId);
+        $result = $this->db->get('lubricator_brand')->row();
+        return $result;
+    }
  
 }
