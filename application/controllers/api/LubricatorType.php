@@ -1,5 +1,5 @@
 <?php
-//ยี่ห้อยาง นะ
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 class LubricatorType extends BD_Controller {
     function __construct()
@@ -163,4 +163,25 @@ class LubricatorType extends BD_Controller {
             }
            
         }
+
+        function deleteLubricatorType_get(){
+            $lubricator_typeId = $this->get('lubricator_typeId');
+    
+            $this->load->model("LubricatorTypes");
+            $lubricator_type = $this->LubricatorTypes->getLubricatorTypes($lubricator_typeId);
+            if($lubricator_type != null){
+                $isDelete = $this->LubricatorTypes->delete($lubricator_typeId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+    
 }
