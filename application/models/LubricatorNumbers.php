@@ -65,5 +65,12 @@ class LubricatorNumbers extends CI_Model{
         return $result; 
     }
 
+    function getLubricatorNumber($lubricator_numberId){
+        return $this->db->where('lubricator_numberId',$lubricator_numberId)->get("lubricator_number")->row();
+    }
+    
+    function delete($lubricator_numberId){
+        return $this->db->delete('lubricator_number', array('lubricator_numberId' => $lubricator_numberId));
+    }
  
 }
