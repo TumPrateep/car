@@ -252,7 +252,7 @@ DROP TABLE IF EXISTS `lubricator`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lubricator` (
-  `lubricatorId` int(11) NOT NULL,
+  `lubricatorId` int(11) NOT NULL AUTO_INCREMENT,
   `lubricatorName` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lubricator_brandId` int(11) NOT NULL,
   `lubricator_numberId` int(11) NOT NULL,
@@ -260,8 +260,8 @@ CREATE TABLE `lubricator` (
   `activeFlag` int(11) NOT NULL DEFAULT '2',
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`lubricatorId`),
   KEY `fk_lubricator_lubricator_brand1_idx` (`lubricator_brandId`),
   KEY `fk_lubricator_lubricator_number1_idx` (`lubricator_numberId`),
@@ -291,13 +291,13 @@ DROP TABLE IF EXISTS `lubricator_brand`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lubricator_brand` (
-  `lubricator_brandId` int(11) NOT NULL,
+  `lubricator_brandId` int(11) NOT NULL AUTO_INCREMENT,
   `lubricator_brandName` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '2',
   `activeFlag` int(11) NOT NULL DEFAULT '2',
   `lubricator_brandPicture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   PRIMARY KEY (`lubricator_brandId`),
@@ -306,7 +306,7 @@ CREATE TABLE `lubricator_brand` (
   KEY `fk_lubricator_brand_users2_idx` (`update_by`),
   CONSTRAINT `fk_lubricator_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -315,7 +315,7 @@ CREATE TABLE `lubricator_brand` (
 
 LOCK TABLES `lubricator_brand` WRITE;
 /*!40000 ALTER TABLE `lubricator_brand` DISABLE KEYS */;
-INSERT INTO `lubricator_brand` VALUES (1,'Castrol',1,1,'castrol.jpg',1,1,NULL,NULL);
+INSERT INTO `lubricator_brand` VALUES (1,'Castrol',1,1,'castrol.jpg',1,1,NULL,NULL),(2,'ZICX9',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'ZICX7',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'ZICX5',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'ZICX3',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,'Castrol11',1,1,'27da8ef742f38e2eb759a58bb8a8c5d3.png',1,NULL,'2018-06-26 10:37:58',NULL);
 /*!40000 ALTER TABLE `lubricator_brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,7 +327,7 @@ DROP TABLE IF EXISTS `lubricator_data`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lubricator_data` (
-  `lubricator_dataId` int(11) NOT NULL,
+  `lubricator_dataId` int(11) NOT NULL AUTO_INCREMENT,
   `brandId` int(11) NOT NULL,
   `modelId` int(11) NOT NULL,
   `lubricator_liter` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -372,16 +372,16 @@ DROP TABLE IF EXISTS `lubricator_number`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lubricator_number` (
-  `lubricator_numberId` int(11) NOT NULL,
+  `lubricator_numberId` int(11) NOT NULL AUTO_INCREMENT,
   `lubricator_number` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lubricator_typeId` int(11) DEFAULT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT '2',
-  `activeFlag` int(11) NOT NULL DEFAULT '2',
-  `lubricator_km` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT '2',
+  `activeFlag` int(11) DEFAULT '2',
+  `lubricator_gear` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`lubricator_numberId`),
   KEY `fk_lubricator_number_lubricator_type1_idx` (`lubricator_typeId`),
   KEY `fk_lubricator_number_users1_idx` (`create_by`),
@@ -389,7 +389,7 @@ CREATE TABLE `lubricator_number` (
   CONSTRAINT `fk_lubricator_number_lubricator_type1` FOREIGN KEY (`lubricator_typeId`) REFERENCES `lubricator_type` (`lubricator_typeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_number_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_number_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -398,6 +398,7 @@ CREATE TABLE `lubricator_number` (
 
 LOCK TABLES `lubricator_number` WRITE;
 /*!40000 ALTER TABLE `lubricator_number` DISABLE KEYS */;
+INSERT INTO `lubricator_number` VALUES (1,'SAE 5W30   สังเคราะห์แท้ 15,000 กิโลเมตร',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(2,'SAE 5W40   สังเคราะห์แท้ 15,000 กิโลเมตร',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(3,'SAE 10W30 กึ่งสังเคราะห์ 10,000 กิโลเมตร',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(4,'SAE 0W20',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(5,'API GL-4 SAE 75W90 ',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'1'),(6,'SAE 10W30 HONDA MTF',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'1'),(7,'ATF WS (2.5L)',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'1'),(8,'ATF CVT FE',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(9,'ATF Type T-IV',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(10,'ATF WS',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(11,'ATF CVT FE',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(13,'ATF WS',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(14,'ATF Z1, ATF DW1',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(15,'ATF DPSF',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(17,'ATF 5AT DCI',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(18,'CVTF',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2');
 /*!40000 ALTER TABLE `lubricator_number` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,13 +410,13 @@ DROP TABLE IF EXISTS `lubricator_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lubricator_type` (
-  `lubricator_typeId` int(11) NOT NULL,
+  `lubricator_typeId` int(11) NOT NULL AUTO_INCREMENT,
   `lubricator_typeName` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lubricator_typeSize` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '2',
   `activeFlag` int(11) NOT NULL DEFAULT '2',
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   PRIMARY KEY (`lubricator_typeId`),
@@ -424,7 +425,7 @@ CREATE TABLE `lubricator_type` (
   KEY `fk_lubricator_type_users2_idx` (`update_by`),
   CONSTRAINT `fk_lubricator_type_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_type_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -433,6 +434,7 @@ CREATE TABLE `lubricator_type` (
 
 LOCK TABLES `lubricator_type` WRITE;
 /*!40000 ALTER TABLE `lubricator_type` DISABLE KEYS */;
+INSERT INTO `lubricator_type` VALUES (1,'น้ำมันเครื่อง สังเคาระห์แท้',15000,1,1,1,NULL,NULL,NULL),(2,'น้ำมันเครื่อง กึ่งสังเคราะห์',10000,1,1,1,NULL,NULL,NULL),(3,'น้ำมันเครื่อง ทั่วไป',5000,1,1,1,NULL,NULL,NULL),(4,'น้ำมันเกียร์ธรรมดา',40000,1,1,1,NULL,NULL,NULL),(5,'น้ำมันเกียร์ออโต้',40000,1,1,1,NULL,NULL,NULL),(6,'น้ำมันเกียร์ออโต้ CVTF',40000,1,1,1,NULL,NULL,NULL),(8,'testประเภทน้ำมันเครื่องsss',100,1,1,1,NULL,'2018-06-26 11:10:03',NULL),(9,'testประเภทน้ำมันเครื่องas',123,1,1,1,NULL,'2018-06-26 11:21:59',NULL);
 /*!40000 ALTER TABLE `lubricator_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -556,7 +558,7 @@ CREATE TABLE `rim` (
   KEY `activeFlag_idx1` (`create_by`,`update_by`),
   CONSTRAINT `fk_rim_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_rim_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -565,7 +567,7 @@ CREATE TABLE `rim` (
 
 LOCK TABLES `rim` WRITE;
 /*!40000 ALTER TABLE `rim` DISABLE KEYS */;
-INSERT INTO `rim` VALUES (1,'13',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(2,'14',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(3,'15 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(4,'16 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(5,'17 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(6,'18 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(7,'19 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(8,'20 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(9,'21 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(10,'22 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(11,'ยางไซต์ยักษ์มาก\n\n',NULL,NULL,'2018-06-15 09:45:13','2018-06-15 09:45:13','2',1),(12,'ยางไซต์ยักษ์มาก1\n\n',NULL,NULL,'2018-06-15 09:48:50','2018-06-15 09:48:50','2',1),(13,'R1957',8,NULL,'2018-06-15 11:24:36',NULL,'2',1),(14,'Test with YoDev',8,1,'2018-06-15 11:47:49','2018-06-23 16:05:44','1',1),(15,'tEst01',8,NULL,'2018-06-15 15:47:07',NULL,'2',1),(16,'ATestSubject01',8,NULL,'2018-06-16 16:19:23',NULL,'2',1),(17,'car/caraccessory/TireRim',NULL,8,NULL,'2018-06-21 11:24:19','2',2),(23,'ยางไซต์ยักษ์มาก1 นิ้ว',NULL,8,NULL,'2018-06-21 21:41:53','2',2),(24,'Test with YoDev1',8,1,'2018-06-23 07:29:53','2018-06-23 16:05:56','1',1);
+INSERT INTO `rim` VALUES (1,'13',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(2,'14',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(3,'15 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(4,'16 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(5,'17 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(6,'18 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(7,'19 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(8,'20 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(9,'21 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(10,'22 ',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(11,'ยางไซต์ยักษ์มาก\n\n',NULL,NULL,'2018-06-15 09:45:13','2018-06-15 09:45:13','2',1),(12,'ยางไซต์ยักษ์มาก1\n\n',NULL,NULL,'2018-06-15 09:48:50','2018-06-15 09:48:50','2',1),(13,'R1957',8,NULL,'2018-06-15 11:24:36',NULL,'2',1),(14,'Test with YoDev',8,1,'2018-06-15 11:47:49','2018-06-23 16:05:44','1',1),(15,'tEst01',8,NULL,'2018-06-15 15:47:07',NULL,'2',1),(16,'ATestSubject01',8,NULL,'2018-06-16 16:19:23',NULL,'2',1),(17,'car/caraccessory/TireRim',NULL,8,NULL,'2018-06-21 11:24:19','2',2),(23,'ยางไซต์ยักษ์มาก1 นิ้ว',NULL,8,NULL,'2018-06-21 21:41:53','2',2),(24,'Test with YoDev1',8,1,'2018-06-23 07:29:53','2018-06-23 16:05:56','1',1),(25,NULL,NULL,NULL,'2018-06-25 14:11:27',NULL,'1',1);
 /*!40000 ALTER TABLE `rim` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -972,4 +974,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-25 10:37:50
+-- Dump completed on 2018-06-26 11:25:18

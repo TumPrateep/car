@@ -2,7 +2,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/lubricatorbrand") ?>">ยี่ห้อน้ำมันเครื่อง</a>
+          <a href="<?=base_url("admin/lubricatornumber") ?>">เบอร์น้ำมันเครื่อง</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>        
       </ol>
@@ -11,12 +11,12 @@
     <div class="card-tools one">
       <form id="form-search">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/lubricatorbrand/createlubricatorbrand") ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/lubricatornumber/createlubricatornumber") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
         <!-- <div class="input-group input-group-sm float-right"> -->
         <div class="input-group float-right">
-          <input name="lubricator_brandName" id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้อน้ำมันเครื่อง">
+          <input name="car_search" id="table-search" class="form-control float-right" placeholder="เบอร์น้ำมันเครื่อง">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-tint"></i></button>
           </div>
@@ -34,7 +34,7 @@
             <button type="submit" id="btn-search" class="btn btn-success">
               <i class="fa fa-search"></i>  ค้นหา
             </button>
-          </div>
+          </div>`
 
         </div>
       </form>
@@ -45,8 +45,7 @@
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-picture-o"></i> รูปยี่ห้อรถ</th>
-          <th><i class="fa fa-tint"></i>  ชื่อยี่ห้อน้ำมันเครื่อง</th>
+          <th><i class="fa fa-tint"></i>  ชื่อเบอร์น้ำมันเครื่อง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	

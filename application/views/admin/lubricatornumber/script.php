@@ -24,32 +24,31 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/LubricatorType/searchLubricatorType",
+                "url": base_url+"api/LubricatorNumber/searchLubricatorNumber",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.lubricator_typeName = $("#table-search").val(),
+                    data.lubricator_number = $("#table-search").val(),
                     data.status = $("#status").val()
                 }
             },
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "lubricator_typeName" },
-                { "data": "lubricator_typeSize" },
+                { "data": "lubricator_number" },
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,4,3]
+                    "targets": [0,2]
                 },{
-                    "targets": 4,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/LubricatorType/updatelubricatortype/"+data.lubricator_typeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricatorType('+data.lubricator_typeId+',\''+data.lubricator_typeName+'\')"><i class="fa fa-trash"></i></button>';
+                        return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricatorNumber('+data.lubricator_numberId+',\''+data.lubricator_number+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -60,9 +59,9 @@
                     }
                 },
                 {
-                   
+                    
                 },{
-                    "targets": 3,
+                    "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -74,19 +73,19 @@
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.lubricator_typeId+','+data.status+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.lubricator_numberId+','+data.status+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                // {"className": "dt-head-center", "targets": []},
-                {"className": "dt-center", "targets": [0,1,2,3,4]},
+                {"className": "dt-head-center", "targets": []},
+                {"className": "dt-center", "targets": [0,1,2,3]},
                 { "width": "10%", "targets": 0 },
-                { "width": "30%", "targets": 1 },
-                { "width": "25%", "targets": 4 },
-                { "width": "12%", "targets": 3 }
+                { "width": "25%", "targets": 1 },
+                { "width": "10%", "targets": 2 },
+                { "width": "15%", "targets": 3 }
             ]	 
     });
    
@@ -95,30 +94,30 @@
         table.ajax.reload();
     })
 
-     function updateStatus(lubricator_typeId,status){
-        $.post(base_url+"api/LubricatorType/changeStatus",{
-            "lubricator_typeId": lubricator_typeId,
+     function updateStatus(lubricator_numberId,status){
+        $.post(base_url+"api/LubricatorNumber/changeStatus",{
+            "lubricator_numberId": lubricator_numberId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/lubricatortype");
+                showMessage(data.message,"admin/lubricatornumber/");
             }else{
                 showMessage(data.message);
             }
         });
     }
-   
-    function deleteLubricatorType(lubricator_typeId,lubricator_typeName){
+
+     function deleteLubricatorNumber(lubricator_numberId,lubricator_number){
         var option = {
-            url: "/LubricatorType/deleteLubricatorType?lubricator_typeId="+lubricator_typeId,
+            url: "/LubricatorNumber/deleteLubricatorNumber?lubricator_numberId="+lubricator_numberId,
             label: "ลบประเภทน้ำมัน",
-            content: "คุณต้องการลบ "+lubricator_typeName+" ใช่หรือไม่",
-            gotoUrl: "admin/lubricatortype"
+            content: "คุณต้องการลบ "+lubricator_number+" ใช่หรือไม่",
+            gotoUrl: "admin/lubricatornumber"
         }
         fnDelete(option);
     }
 
-
+   
 </script>
 
 </body>

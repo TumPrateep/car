@@ -16,7 +16,7 @@
         </a>
         <!-- <div class="input-group input-group-sm float-right"> -->
         <div class="input-group float-right">
-          <input name="car_search" id="table-search" class="form-control float-right" placeholder="ประเภทน้ำมันเครื่อง">
+          <input name="lubricator_typeName" id="table-search" class="form-control float-right" placeholder="ประเภทน้ำมันเครื่อง">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-tint"></i></button>
           </div>
@@ -45,8 +45,8 @@
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-picture-o"></i> รูปประเภทน้ำมันเครื่อง</th>
           <th><i class="fa fa-tint"></i>  ชื่อประเภทน้ำมันเครื่อง</th>
+          <th><i class="fa fa-road"></i>  ระยะทาง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	
