@@ -84,6 +84,9 @@ class Lubricatorbrands extends CI_Model{
         $this->db->select("lubricator_brandId,lubricator_brandName");
         return $this->db->where('lubricator_brandId',$lubricator_brandId)->get("lubricator_brand")->row();
     }
+    function getBrandById($lubricator_brandId){
+        return $this->db->where('lubricator_brandId',$lubricator_brandId)->get("lubricator_brand")->row();
+    }
     function delete($lubricator_brandId){
         return $this->db->delete('lubricator_brand', array('lubricator_brandId' => $lubricator_brandId));
     }
@@ -91,6 +94,23 @@ class Lubricatorbrands extends CI_Model{
         $this->db->select('lubricator_brandName,lubricator_brandPicture,lubricator_brandId');
         $this->db->where('lubricator_brandId',$lubricator_brandId);
         $result = $this->db->get('lubricator_brand')->row();
+        return $result;
+    }
+
+    function checklubricatorbrandforUpdate($lubricator_brandId,$lubricator_brandName){
+        $this->db->select("lubricator_brandName");
+        $this->db->from("lubricator_brand");
+        $this->db->where('lubricator_brandName', $lubricator_brandName);
+        $this->db->where_not_in('lubricator_brandId', $lubricator_brandId);
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+    function update($data){
+        $this->db->where('lubricator_brandId',$data['lubricator_brandId']);
+        $result = $this->db->update('lubricator_brand', $data);
         return $result;
     }
  
