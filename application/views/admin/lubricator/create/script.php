@@ -13,32 +13,28 @@
     });
 
 
-    // $("#create-lubricator").submit(function(){
-    //     createBrand();
-    // });
+     $("#submit").submit(function(){
+        createLubricator();
+    })
 
-    // function createBrand(){
-    //     event.preventDefault();
-    //     var isValid = $("#create-brand").valid();
-    //     if(isValid){
-    //         var myform = document.getElementById("create-brand");
-    //         var formData = new FormData(myform);
-    //         $.ajax({
-    //             url: base_url+"api/car/createBrand",
-    //             data: formData,
-    //             processData: false,
-    //             contentType: false,
-    //             type: 'POST',
-    //             success: function (data) {
-    //                 if(data.message == 200){
-    //                     showMessage(data.message,"admin/car");
-    //                 }else{
-    //                     showMessage(data.message);
-    //                 }
-    //             }
-    //         });
-    //     }
-    // }
+    function createLubricator(){
+        event.preventDefault();
+        var isValid = $("#submit").valid();
+        
+        if(isValid){
+            var data = $("#submit").serialize();
+            $.post(base_url+"api/Lubricator/createlubricator/",data,
+            function(data){
+                var lubricatorId = $("#lubricatorId").val();
+                if(data.message == 200){
+                    showMessage(data.message,"admin/lubricator",+lubricatorId);
+                }else{
+                    showMessage(data.message,);
+                }
+            });
+            
+        }
+    }
 </script>
 
 </body>

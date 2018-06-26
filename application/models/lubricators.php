@@ -64,6 +64,22 @@ class Lubricators extends CI_Model{
         $result = $this->db->update('lubricator', $data);
         return $result; 
     }
+
+    function Checklubricator($lubricatorName){
+        $this->db->select("lubricatorName");
+        $this->db->from("lubricator");
+        $this->db->where('lubricatorName',$lubricatorName);
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+
+    function  insert_lubricator($data){
+        return $this->db->insert('lubricator', $data);
+
+    }
     
 
  
