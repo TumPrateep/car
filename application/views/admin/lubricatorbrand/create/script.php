@@ -9,7 +9,11 @@
             } 
         },
         messages: {
+<<<<<<< HEAD
             lubricator_brandPicture: {
+=======
+            lubricator_brandName: {
+>>>>>>> edd73ffc3728a663f6a934861c949a85bc4bad33
                 required: "กรุณากรอกยี่ห้อน้ำมันเครื่อง"
             },
             brandPicture: {
@@ -18,6 +22,7 @@
         },
     });
 
+<<<<<<< HEAD
     // $("#lubricator_brandPicture").fileinput({
     //     language: "th",
     //     theme: 'fa',
@@ -27,6 +32,17 @@
     //     required: true,
     //     showCancel: false,
     //     showUpload: false,
+=======
+    $("#lubricator_brandPicture").fileinput({
+        language: "th",
+        theme: 'fa',
+        allowedFileExtensions: ['jpg' , 'png'],
+        overwriteInitial: false,
+        maxFileSize: 300,
+        required: true,
+        showCancel: false,
+        showUpload: false,
+>>>>>>> edd73ffc3728a663f6a934861c949a85bc4bad33
                 
         
         // MaxFileHeight :300,

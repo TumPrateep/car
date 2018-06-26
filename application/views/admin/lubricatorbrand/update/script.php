@@ -1,12 +1,12 @@
 <script>
       $("#update-lubricatorbrand").validate({
         rules: {
-            lubricatorbrandName: {
+            lubricator_brandName: {
                 required: true
             },
         },
         messages: {
-            lubricatorbrandName: {
+            lubricator_brandName: {
                 required: "กรุณากรอกยี่ห้อน้ำมันเครื่อง"
             },
         },
