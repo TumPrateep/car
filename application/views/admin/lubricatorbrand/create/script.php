@@ -1,7 +1,7 @@
-<script>
+<script> 
       $("#create-lubricatorbrand").validate({
         rules: {
-            lubricatorbrandName: {
+            lubricator_brandName: {
                 required: true
             },
             brandPicture: {
@@ -9,7 +9,7 @@
             } 
         },
         messages: {
-            lubricatorbrandName: {
+            lubricator_brandPicture: {
                 required: "กรุณากรอกยี่ห้อน้ำมันเครื่อง"
             },
             brandPicture: {
@@ -18,15 +18,15 @@
         },
     });
 
-    $("#brandPicture").fileinput({
-        language: "th",
-        theme: 'fa',
-        allowedFileExtensions: ['jpg' , 'png'],
-        overwriteInitial: false,
-        maxFileSize: 300,
-        required: true,
-        showCancel: false,
-        showUpload: false,
+    // $("#lubricator_brandPicture").fileinput({
+    //     language: "th",
+    //     theme: 'fa',
+    //     allowedFileExtensions: ['jpg' , 'png'],
+    //     overwriteInitial: false,
+    //     maxFileSize: 300,
+    //     required: true,
+    //     showCancel: false,
+    //     showUpload: false,
                 
         
         // MaxFileHeight :300,
@@ -34,34 +34,34 @@
 
         
         
-});
+// });
 
-    // $("#create-lubricatorbrandsbrand").submit(function(){
-    //     createBrand();
-    // });
+    $("#create-lubricatorbrand").submit(function(){
+        createlubricatorbrandsbrand();
+    });
 
-    // function createBrand(){
-    //     event.preventDefault();
-    //     var isValid = $("#create-brand").valid();
-    //     if(isValid){
-    //         var myform = document.getElementById("create-brand");
-    //         var formData = new FormData(myform);
-    //         $.ajax({
-    //             url: base_url+"api/car/createBrand",
-    //             data: formData,
-    //             processData: false,
-    //             contentType: false,
-    //             type: 'POST',
-    //             success: function (data) {
-    //                 if(data.message == 200){
-    //                     showMessage(data.message,"admin/car");
-    //                 }else{
-    //                     showMessage(data.message);
-    //                 }
-    //             }
-    //         });
-    //     }
-    // }
+    function createlubricatorbrandsbrand(){
+        event.preventDefault();
+        var isValid = $("#create-lubricatorbrand").valid();
+        if(isValid){
+            var myform = document.getElementById("create-lubricatorbrand");
+            var formData = new FormData(myform);
+            $.ajax({
+                url: base_url+"api/Lubricatorbrand/createLubricatorbrands",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (data) {
+                    if(data.message == 200){
+                        showMessage(data.message,"admin/lubricatorbrand");
+                    }else{
+                        showMessage(data.message);
+                    }
+                }
+            });
+        }
+    }
 </script>
 
 </body>

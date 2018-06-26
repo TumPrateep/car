@@ -65,5 +65,20 @@ class Lubricatorbrands extends CI_Model{
         return $result; 
     }
 
+    function checklubricatorbrand($lubricator_brandName){
+        $this->db->select("lubricator_brandName");
+        $this->db->from("lubricator_brand");
+        $this->db->where("lubricator_brandName", $lubricator_brandName);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
+        }
+        return false;
+    }
+    function insert_lubricatorbrand($data){
+		return $this->db->insert('lubricator_brand', $data);
+    }
+
  
 }
