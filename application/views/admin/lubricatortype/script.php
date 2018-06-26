@@ -48,8 +48,8 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/lubricatortype/updatelubricatortype/"+data.lubricator_typeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricatorType('+data.lubricator_typeId+',\''+data.lubricator_typeName+'\')"><i class="fa fa-trash"></i></button>';
+                        return '<a href="'+base_url+"admin/LubricatorType/updatelubricatortype/"+data.lubricator_typeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteTireBand('+data.lubricator_brandId+',\''+data.lubricator_brandName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {

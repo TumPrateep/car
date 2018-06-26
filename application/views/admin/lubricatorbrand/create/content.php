@@ -18,7 +18,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form id="update-tiresbrand">
+                  <form id="create-lubricatorbrand">
                   <input type="hidden" id="lubricator_brandId" name="lubricator_brandId" value="<?=$lubricator_brandId?>">
                     <div class="card-body black bg-light">
                       <div class="row">
@@ -30,7 +30,7 @@
                         </div>
                       </div>
                       <div class="form-group"> 
-                          <input id="tire_brandPicture" name ="tire_brandPicture" class="file" type="file">
+                          <input id="lubricatorbrand_Picture" name ="lubricatorbrand_Picture" class="file" type="file">
                       </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary ">บันทึก</button>

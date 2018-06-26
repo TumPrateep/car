@@ -6,7 +6,7 @@ class LubricatorType extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
     function createtrieSize_post(){
         $lubricator_typeName = $this->post("lubricator_typeName");
@@ -112,4 +112,55 @@ class LubricatorType extends BD_Controller {
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }    
+
+        function updateLubricatorType_post(){
+            $lubricator_typeId = $this->post("lubricator_typeId");
+            $lubricator_typeName = $this->post("lubricator_typeName");
+            $lubricator_typeSize = $this->post("lubricator_typeSize");
+            $this->load->model("lubricatorTypes");
+            $userId = $this->session->userdata['logged_in']['id'];
+            $result = $this->lubricatorTypes->wherenotlubricatorType($lubricator_typeId,$lubricator_typeName);
+            if($result){
+                $data = array(
+                    'lubricator_typeId' => $lubricator_typeId,
+                    'lubricator_typeName' => $lubricator_typeName,
+                    'lubricator_typeSize' => $lubricator_typeSize,  
+                    'status' => 1,
+                    'update_at' => date('Y-m-d H:i:s',time()),
+                    'update_by' => $userId,
+                    'activeFlag' => 1
+                );
+                $result = $this->lubricatorTypes->updatelubricatorType($data);
+                $output["status"] = $result;
+                if($result){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+                else{
+                    $output["status"] = false;
+                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+
+        function getLubricatorType_post(){
+            $lubricator_typeId = $this->post('lubricator_typeId');
+            $this->load->model("lubricatorTypes");
+           
+            $this->set_response($isCheck, REST_Controller::HTTP_OK);
+            $result = $this->lubricatorTypes->getlubricatorTypeById($lubricator_typeId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+           
+        }
 }

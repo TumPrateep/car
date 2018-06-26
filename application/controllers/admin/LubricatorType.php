@@ -32,12 +32,13 @@ class LubricatorType extends CI_Controller {
 		$this->load->view("admin/lubricatortype/create/script");
 	}
 
-	public function updatelubricatortype()
+	public function updatelubricatortype($lubricator_typeId)
 	{
+		$data['lubricator_typeId'] = $lubricator_typeId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/lubricatortype/update/content");
+		$this->load->view("admin/lubricatortype/update/content",$data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/lubricatortype/update/script");
