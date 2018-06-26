@@ -2,7 +2,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/lubricatorbrand") ?>">น้ำมันเครื่อง</a>
+          <a href="<?=base_url("admin/lubricatorbrand") ?>">ยี่ห้อน้ำมันเครื่อง</a>
         </li>
         <li class="breadcrumb-item">
           <a href="<?=base_url("admin/lubricator") ?>">น้ำมันเครื่อง</a>
@@ -19,7 +19,7 @@
         </a>
         <!-- <div class="input-group input-group-sm float-right"> -->
         <div class="input-group float-right">
-          <input name="lubricator_brandName" id="table-search" class="form-control float-right" placeholder="ชื่อน้ำมันเครื่อง">
+          <input name="lubricatorName" id="table-search" class="form-control float-right" placeholder="ชื่อน้ำมันเครื่อง">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-tint"></i></button>
           </div>
@@ -43,9 +43,10 @@
       </form>
     </div>
 
-    
+    <input type="hidden" id="lubricator_brandId" value="<?=$lubricator_brandId ?>">
+
     <div class="table-responsive">
-      <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
           <th><i class="fa fa-tint"></i>  ชื่อน้ำมันเครื่อง</th>

@@ -1,29 +1,30 @@
 <script>
-      $("#create-lubricatornumber").validate({
+      $("#update-lubricator").validate({
         rules: {
-            lubricator_number: {
+            lubricator_name: {
                 required: true
             },
         },
         messages: {
-            lubricator_number: {
-                required: "กรุณากรอกเบอร์น้ำมันเครื่อง"
+            lubricator_name: {
+                required: "กรุณากรอกน้ำมันเครื่อง"
             },
         },
     });
 
-    // $("#create-lubricatornumber").submit(function(){
-    //     createlubricatornumber();
+
+    // $("#update-lubricator").submit(function(){
+    //     updateBrand();
     // });
 
-    // function createlubricatornumber(){
+    // function updateBrand(){
     //     event.preventDefault();
-    //     var isValid = $("#create-lubricatornumber").valid();
+    //     var isValid = $("#update-brand").valid();
     //     if(isValid){
-    //         var myform = document.getElementById("create-lubricatornumber");
+    //         var myform = document.getElementById("update-brand");
     //         var formData = new FormData(myform);
     //         $.ajax({
-    //             url: base_url+"api/car/createBrand",
+    //             url: base_url+"api/car/updateBrand",
     //             data: formData,
     //             processData: false,
     //             contentType: false,

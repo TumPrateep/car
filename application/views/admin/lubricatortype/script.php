@@ -108,6 +108,17 @@
         });
     }
    
+    function deleteLubricatorType(lubricator_typeId,lubricator_typeName){
+        var option = {
+            url: "/car/deleteModel?lubricator_typeId="+lubricator_typeId,
+            label: "ลบประเภทน้ำมัน",
+            content: "คุณต้องการลบ "+lubricator_typeName+" ใช่หรือไม่",
+            gotoUrl: "admin/lubricatortype"
+        }
+        fnDelete(option);
+    }
+
+
 </script>
 
 </body>

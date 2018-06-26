@@ -18,7 +18,7 @@
                   <!-- /.card-header -->
                   <!-- form start -->
 
-                  <form id="create-tiresbrand" enctype="multipart/form-data" >
+                  <form id="create-lubricatornumber" enctype="multipart/form-data" >
                   <div class="card-body black bg-light">
                       <div class="form-group">
                         <label>ชื่อเบอร์น้ำมันเครื่อง</label> <span class="error">*</span>
