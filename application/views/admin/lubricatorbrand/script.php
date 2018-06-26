@@ -50,7 +50,7 @@
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/Lubricator/index/"+data.lubricatorId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
                             +'<a href="'+base_url+"admin/LubricatorBrand/updatelubricatorbrand/"+data.lubricator_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteTireBand('+data.lubricator_brandId+',\''+data.lubricator_brandName+'\')"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricatorbrand('+data.lubricator_brandId+',\''+data.lubricator_brandName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -114,6 +114,16 @@
             }
         });
     }
+    function deleteLubricatorbrand(lubricator_brandId,lubricator_brandName){
+        var option = {
+            url: "/Lubricatorbrand/deleteLubricatorbrands?lubricator_brandId="+lubricator_brandId,
+            label: "ลบยี่ห้อน้ำมันเครื่อง",
+            content: "คุณต้องการลบ "+lubricator_brandName+" ใช่หรือไม่",
+            gotoUrl: "admin/lubricatorbrand"
+        }
+        fnDelete(option);
+    }
+
    
 </script>
 

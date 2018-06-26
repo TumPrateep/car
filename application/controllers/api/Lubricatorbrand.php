@@ -130,4 +130,25 @@ class Lubricatorbrand extends BD_Controller {
             }
         }
 
+        function deleteLubricatorbrands_get(){
+            $lubricator_brandId = $this->get('lubricator_brandId');
+            $this->load->model("lubricatorbrands");
+            $lubricator_brandName = $this->lubricatorbrands->getlubricatorById($lubricator_brandId);
+            if($lubricator_brandName != null){
+                $isDelete = $this->lubricatorbrands->delete($lubricator_brandId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+
+        
+
     }
