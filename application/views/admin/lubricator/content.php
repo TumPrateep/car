@@ -50,6 +50,9 @@
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
           <th><i class="fa fa-tint"></i>  ชื่อน้ำมันเครื่อง</th>
+          <th><i class="fa fa-tint"></i>  เบอร์น้ำมันเครื่อง</th>
+          <th><i class="fa fa-tint"></i>  ประเภทน้ำมันเครื่อง</th>
+          <th><i class="fa fa-tint"></i>  น้ำมันเกียร์</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	
