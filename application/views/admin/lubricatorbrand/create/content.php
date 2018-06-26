@@ -25,12 +25,12 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>ชื่อยี่ห้อน้ำมันเครื่่อง</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้อน้ำมันเครื่อง" id="lubricatorbrandName" name="lubricatorbrandName" value="">
+                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้อน้ำมันเครื่อง" id="lubricator_brandName" name="lubricator_brandName" value="">
                           </div>
                         </div>
                       </div>
                       <div class="form-group"> 
-                          <input id="lubricatorbrand_Picture" name ="lubricatorbrand_Picture" class="file" type="file">
+                          <input id="lubricator_brandPicture" name ="lubricator_brandPicture" class="file" type="file">
                       </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary ">บันทึก</button>

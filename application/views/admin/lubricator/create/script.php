@@ -1,12 +1,12 @@
 <script>
       $("#create-lubricator").validate({
         rules: {
-            lubricator_name: {
+            lubricatorName: {
                 required: true
             },
         },
         messages: {
-            lubricator_name: {
+            lubricatorName: {
                 required: "กรุณากรอกน้ำมันเครื่อง"
             },
         },

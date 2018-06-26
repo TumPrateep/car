@@ -1,7 +1,7 @@
 <script>
       $("#create-lubricatorbrand").validate({
         rules: {
-            lubricatorbrandName: {
+            lubricator_brandName: {
                 required: true
             },
             brandPicture: {
@@ -9,7 +9,7 @@
             } 
         },
         messages: {
-            lubricatorbrandName: {
+            lubricator_brandName: {
                 required: "กรุณากรอกยี่ห้อน้ำมันเครื่อง"
             },
             brandPicture: {
@@ -18,7 +18,7 @@
         },
     });
 
-    $("#brandPicture").fileinput({
+    $("#lubricator_brandPicture").fileinput({
         language: "th",
         theme: 'fa',
         allowedFileExtensions: ['jpg' , 'png'],
