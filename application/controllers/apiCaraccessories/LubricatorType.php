@@ -15,7 +15,7 @@ class LubricatorType extends BD_Controller {
         $lubricator_typeSize = $this->post("lubricator_typeSize");
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("lubricatorTypes");
-        $isCheck = $this->lubricatorTypes->checklubricatorTypes($lubricator_typeName);
+        $isCheck = $this->lubricatorTypes->checklubricatorType($lubricator_typeName);
 
         if($isCheck){
             $data = array(
@@ -29,7 +29,7 @@ class LubricatorType extends BD_Controller {
                 
                 
             );
-            // $result = $this->lubricatorTypes->insert_lubricatorType($data);
+            $result = $this->lubricatorTypes->insert_lubricatorType($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;

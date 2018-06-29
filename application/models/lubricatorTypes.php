@@ -65,25 +65,10 @@ class LubricatorTypes extends CI_Model{
         return $result; 
     }
 
-    function getAllLubricatorTypes(){
-        $this->db->select("lubricator_typeId,lubricator_typeName");
-        $result = $this->db->get("lubricator_type")->result();
-        return $result;
+    function insert_lubricatorType($data){
+		return $this->db->insert('lubricator_type', $data);
     }
-    
-    // function ChecklubricatorTypes($lubricator_typeId,$status,$userId){
-    //     $this->db->from('lubricator_type');
-    //     $this->db->where('lubricator_typeId',$lubricator_typeId);
-    //     $this->db->where('status',$status);
-    //     $this->db->where('create_by',$userId);
-    //     $this->db->where('activeFlag',2);
-    //     $result = $this->db->count_all_results();
-    //     if($result > 0 ){
-    //         return true ;
-    //     }
-    //     return false;
-    // }
-    function checklubricatorTypes($lubricator_typeName) {
+    function checklubricatorType($lubricator_typeName) {
         $this->db->select("*");
         $this->db->from("lubricator_type");
         $this->db->where('lubricator_typeName',$lubricator_typeName);

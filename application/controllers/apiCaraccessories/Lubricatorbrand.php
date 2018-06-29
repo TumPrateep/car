@@ -60,7 +60,6 @@ class Lubricatorbrand extends BD_Controller {
 		}
     }
 
-<<<<<<< HEAD
 
     function updateLubricatorbrands_post(){
         $config['upload_path'] = 'public/image/lubricator_brand/';
@@ -153,7 +152,6 @@ class Lubricatorbrand extends BD_Controller {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
        }
-=======
     function searchLubricatorbrand_post(){
         $column = "lubricator_brandName";
         $sort = "asc";
@@ -221,7 +219,6 @@ class Lubricatorbrand extends BD_Controller {
         );
 
         $this->set_response($json_data);
->>>>>>> 93c6a81a3484e02159f5217712e7e70bfffa6cc7
     }
 }
 
