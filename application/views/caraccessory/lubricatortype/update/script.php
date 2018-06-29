@@ -1,5 +1,20 @@
 <script>
-    $("#submit").validate({
+     var lubricator_typeId = $("#lubricator_typeId").val();
+    $.post(base_url+"api/LubricatorType/getLubricatorType",{
+        "lubricator_typeId": lubricator_typeId,
+    },function(data){
+        if(data.message!=200){
+            showMessage(data.message,"caraccessory/lubricatortype");
+        }else{
+            result = data.data;
+            $("#lubricator_typeName").val(result.lubricator_typeName);
+            $("#lubricator_typeSize").val(result.lubricator_typeSize);
+
+
+        }
+        
+    });
+ $("#submit").validate({
         rules: {
             lubricator_typeName: {
                 required: true
@@ -17,6 +32,32 @@
             }
         },
     });
+    
+    // $("#submit").submit(function(){
+    //     updateLubricatorType();
+    // })
+
+    // function updateLubricatorType(){
+    //     event.preventDefault();
+    //     var isValid = $("#submit").valid();
+        
+    //     if(isValid){
+    //         var data = $("#submit").serialize();
+    //         $.post(base_url+"api/LubricatorType/updateLubricatorType",data,
+    //         function(data){
+    //             var lubricator_typeId = $("#lubricator_typeId").val();
+    //             if(data.message == 200){
+    //                 showMessage(data.message,"admin/lubricatortype");
+    //             }else{
+    //                 showMessage(data.message,);
+    //             }
+    //         });
+            
+    //     }
+    // }
+    
+    
+   
 </script>
 
 </body>

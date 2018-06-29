@@ -7,7 +7,7 @@ class Lubricatorbrand extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
 
     function createLubricatorbrand_post(){
@@ -152,6 +152,7 @@ class Lubricatorbrand extends BD_Controller {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
        }
+    }
     function searchLubricatorbrand_post(){
         $column = "lubricator_brandName";
         $sort = "asc";
