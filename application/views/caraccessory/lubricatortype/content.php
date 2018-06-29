@@ -18,7 +18,7 @@
 
         <div class="row p-30">
             <div class="col-lg-4 div-right">
-                <a href="<?=base_url("caraccessory/lubricatortype/createLubricatortype/") ?>">
+                <a href="<?=base_url("caraccessory/lubricatortype/createlubricatortype/") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>
@@ -33,7 +33,7 @@
             <div class="col-lg-4">
                 <div class="input-group input-group-flat">
                     <label class="col-lg-3 col-form-label">จัดเรียง: </label>
-                    <select class="form-control input-default">
+                    <select class="form-control input-default" name="column" id="column">
                         <option value="1" selected>เรียงลำดับจาก ก-ฮ</option>
                         <option value="2">เรียงลำดับจาก ฮ-ก</option>
                         <option value="3">เรียงลำดับจาก สถานะ</option>
@@ -43,7 +43,7 @@
         </div>
         
         <div class="table">
-            <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="lubricatortype-table" width="100%" cellspacing="0">
                 <thead>
                     <th></th>
                 </thead>	
