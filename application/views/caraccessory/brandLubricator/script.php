@@ -96,6 +96,16 @@
         table.ajax.reload();
     })
 
+    function deleteBrand(lubricator_brandId,lubricator_brandName){
+        var option = {
+            url: "/Lubricatorbrand/deletelubricator_brand?lubricator_brandId="+lubricator_brandId,
+            label: "ลบยี่ห้อรถ",
+            content: "คุณต้องการลบ "+lubricator_brandName+" ใช่หรือไม่",
+            gotoUrl: "caraccessory/brandLubricator"
+        }
+        fnDelete(option);
+    }
+
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();

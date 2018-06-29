@@ -33,7 +33,11 @@ class BrandLubricator extends CI_Controller {
 
 	public function updateBrandLubricator($lubricator_brandId)
 	{
+<<<<<<< HEAD
 		$data['lubricator_brandId'] = $lubricator_brandId;
+=======
+		$data['lubricator_brandId']=$lubricator_brandId;
+>>>>>>> 51c7fa6eb3b31dc3f9e0d919856c9da713115c51
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
