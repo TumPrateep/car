@@ -19,21 +19,23 @@ class lubricatortype extends CI_Controller {
 		$this->load->view("caraccessory/lubricatortype/script");
     }
 
-    function createlubricatortype(){
+    function createlubricatortype($lubricator_typeId){
+			$data['lubricator_typeId'] = $lubricator_typeId;
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/Lubricatortype/create/content");
+		$this->load->view("caraccessory/lubricatortype/create/content",$data);
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
-		$this->load->view("caraccessory/Lubricatortype/create/script");
+		$this->load->view("caraccessory/lubricatortype/create/script");
     }
 
-    function updatelubricatortype(){
+    function updatelubricatortype($lubricator_typeId){
+			$data['lubricator_typeId'] = $lubricator_typeId;
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/lubricatortype/update/content");
+		$this->load->view("caraccessory/lubricatortype/update/content",$data);
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
 		$this->load->view("caraccessory/lubricatortype/update/script");

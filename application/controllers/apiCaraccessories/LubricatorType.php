@@ -7,7 +7,7 @@ class LubricatorType extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
     function createLubricatorType_post(){
 
@@ -15,7 +15,7 @@ class LubricatorType extends BD_Controller {
         $lubricator_typeSize = $this->post("lubricator_typeSize");
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("lubricatorTypes");
-        $isCheck = $this->lubricatorTypes->ChecklubricatorTypes($lubricator_typeName);
+        $isCheck = $this->lubricatorTypes->checklubricatorTypes($lubricator_typeName);
 
         if($isCheck){
             $data = array(
@@ -29,7 +29,7 @@ class LubricatorType extends BD_Controller {
                 
                 
             );
-            $result = $this->lubricatorTypes->insert_lubricatorType($data);
+            // $result = $this->lubricatorTypes->insert_lubricatorType($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -40,15 +40,14 @@ class LubricatorType extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }
-        
-        else{
+        }else{
             $output["status"] = false;
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+            }
     }
-
+    
+    
     
     function searchLubricatorType_post(){
         $column = "lubricator_typeName";
@@ -70,7 +69,7 @@ class LubricatorType extends BD_Controller {
         $totalData = $this->LubricatorTypes->allLubricatorTypes_count();
 
         $totalFiltered = $totalData; 
-
+    
         if(empty($this->post('lubricator_typeName')))
         {            
             $posts = $this->LubricatorTypes->allLubricatorTypes($limit,$start,$order,$dir);
@@ -90,10 +89,13 @@ class LubricatorType extends BD_Controller {
             foreach ($posts as $post)
             {
                 
-                $nestedData['lubricator_typeId'] = $post->lubricator_typeId;
-                $nestedData['lubricator_typeSize'] = $post->lubricator_typeSize;
-                $nestedData['lubricator_typeName'] = $post->lubricator_typeName;
-                $nestedData['status'] = $post->status;
+                $nestedData[$count]['lubricator_typeId'] = $post->lubricator_typeId;
+                $nestedData[$count]['lubricator_typeSize'] = $post->lubricator_typeSize;
+                $nestedData[$count]['lubricator_typeName'] = $post->lubricator_typeName;
+                $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
+                $nestedData[$count]['create_by'] = $post->create_by;
+                
 
                 $data[$index] = $nestedData;
                 if($count >= 3){
