@@ -11,6 +11,47 @@
             },
         },
     });
+    var lubricator_brandId = $("#lubricator_brandId").val();
+    $.post(base_url+"api/Lubricatorbrand/getLubricatorbrandsById",{
+        "lubricator_brandId": lubricator_brandId
+    },function(data){
+        if(data.message!=200){
+            showMessage(data.message,"caraccessory/brandLubricator");
+        }else{
+            result = data.data;
+            $("#lubricator_brandName").val(result.lubricator_brandName);
+           
+
+        }
+        
+    });
+
+    // $("#update-lubricatorbrand").submit(function(){
+    //     updatelubricator_brand();
+    // });
+
+    // function updatelubricator_brand(){
+    //     event.preventDefault();
+    //     var isValid = $("#update-lubricatorbrand").valid();
+    //     if(isValid){
+    //         var myform = document.getElementById("update-lubricatorbrand");
+    //         var formData = new FormData(myform);
+    //         $.ajax({
+    //             url: base_url+"api/Lubricatorbrand/updateLubricatorbrands",
+    //             data: formData,
+    //             processData: false,
+    //             contentType: false,
+    //             type: 'POST',
+    //             success: function (data) {
+    //                 if(data.message == 200){
+    //                     showMessage(data.message,"admin/lubricatorbrand");
+    //                 }else{
+    //                     showMessage(data.message);
+    //                 }
+    //             }
+    //         });
+    //     }
+    // }
 </script>
 
 </body>

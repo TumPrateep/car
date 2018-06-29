@@ -23,6 +23,7 @@
                     <div class="card-title"></div>
                     <div class="card-body">
                         <form id="update-lubricatorbrand">
+                        <input type="hidden" id="lubricator_brandId" name="lubricator_brandId" value="<?=$lubricator_brandId ?>">
                             <div class="form-body">
                                 <div class="row p-t-20">
                                     <div class="col-md-6">
