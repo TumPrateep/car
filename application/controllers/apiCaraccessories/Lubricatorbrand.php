@@ -169,7 +169,6 @@ class Lubricatorbrand extends BD_Controller {
         $order = $column;
         $dir = $sort;
 
-        // $lubricator_brandId = $this->post("lubricator_brandId");
         $this->load->model("Lubricatorbrands");
         $totalData = $this->Lubricatorbrands->allLubricatorbrand_count();
 
@@ -185,15 +184,17 @@ class Lubricatorbrand extends BD_Controller {
 
             $posts =  $this->Lubricatorbrands->lubricatorbrand_search($limit,$start,$search,$order,$dir,$status);
 
-            $totalFiltered = $this->Sparesbrand->lubricatorbrand_search_count($search,$status);
+            $totalFiltered = $this->Lubricatorbrands->lubricatorbrand_search_count($search,$status);
         }
-        $data = array();        
+
+        $data = array();
         if(!empty($posts))
         {
             $index = 0;
             $count = 0;
             foreach ($posts as $post)
             {
+                
                 $nestedData[$count]['lubricator_brandId'] = $post->lubricator_brandId;
                 $nestedData[$count]['lubricator_brandPicture'] = $post->lubricator_brandPicture;
                 $nestedData[$count]['lubricator_brandName'] = $post->lubricator_brandName;
@@ -206,9 +207,10 @@ class Lubricatorbrand extends BD_Controller {
                     $count = -1;
                     $index++;
                     $nestedData = [];
-                }   
+                }
                 
                 $count++;
+
             }
         }
 
