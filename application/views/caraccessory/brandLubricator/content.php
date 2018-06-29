@@ -26,7 +26,7 @@
             <div class="col-lg-4">
                 <div class="input-group input-group-flat">
                     <label class="col-lg-3 col-form-label">ยี่ห้อ: </label>
-                    <input type="text" class="form-control input-default" id="searchbrand-search" placeholder="ค้นหา...">
+                    <input type="text" class="form-control input-default" id="brand-search" placeholder="ค้นหา...">
                     <span class="input-group-btn"><button class="btn btn-success" type="button" id="btn-search"><i class="ti-search" ></i></button></span>
                 </div>
             </div>
