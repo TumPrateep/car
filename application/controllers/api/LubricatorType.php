@@ -183,5 +183,13 @@ class LubricatorType extends BD_Controller {
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }
+
+        function getAllLubricatorType_post(){
+            $this->load->model("lubricatorTypes");
+            $this->set_response($isCheck, REST_Controller::HTTP_OK);
+            $result = $this->lubricatorTypes->getAllLubricatorTypes();
+            $output["data"] = $result;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
     
 }
