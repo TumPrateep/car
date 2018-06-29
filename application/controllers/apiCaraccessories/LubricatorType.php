@@ -118,5 +118,32 @@ class LubricatorType extends BD_Controller {
 
         $this->set_response($json_data);
     }
+
+    function deleteLubricatorTypes_get(){
+        $lubricator_typeId = $this->get('lubricator_typeId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $status = 2;
+        $this->load->model("LubricatorTypes");
+        $lubricator_type = $this->LubricatorTypes->getLubricatorTypes($lubricator_typeId);
+        if($lubricator_type != null){
+            $isCheckStatus =$this->LubricatorTypes->checklubricatorType($lubricator_typeId,$status,$userId);
+            if($isCheckStatus ){
+            $isDelete = $this->LubricatorTypes->delete($lubricator_typeId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+        }else{
+            $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+       }
+    }
 }
 

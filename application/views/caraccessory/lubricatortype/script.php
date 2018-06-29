@@ -91,7 +91,7 @@
 
     function deletelubricator_type(lubricator_typeId, lubricator_typeName){
         var option = {
-            url: "/TireRim/deleteRim?lubricator_typeId="+lubricator_typeId,
+            url: "/LubricatorType/deleteLubricatorTypes?lubricator_typeId="+lubricator_typeId,
             label: "ลบประเภทน้ำมันเครื่อง",
             content: "คุณต้องการลบ "+lubricator_typeName+" ใช่หรือไม่",
             gotoUrl: "caraccessory/lubricatortype"

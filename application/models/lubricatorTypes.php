@@ -78,4 +78,11 @@ class LubricatorTypes extends CI_Model{
         }
         return true;
     }
+    function delete($lubricator_typeId){
+        return $this->db->delete('lubricator_type', array('lubricator_typeId' => $lubricator_typeId));
+    }
+    function getLubricatorTypes($lubricator_typeId){
+        $this->db->select("lubricator_typeId,lubricator_typeName");
+        return $this->db->where('lubricator_typeId',$lubricator_typeId)->get("lubricator_type")->row();
+    }
 }
