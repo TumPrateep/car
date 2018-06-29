@@ -73,4 +73,26 @@ class LubricatorNumbers extends CI_Model{
         return $this->db->delete('lubricator_number', array('lubricator_numberId' => $lubricator_numberId));
     }
  
+    }
+    function wherenotLubricatorNumber($lubricator_numberId,$lubricator_number){
+        $this->db->select("lubricator_number");
+        $this->db->from("lubricator_number");
+        $this->db->where('lubricator_number', $lubricator_number);
+        $this->db->where_not_in('lubricator_numberId', $lubricator_numberId);
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+    function updateLubricatorNumber($data){
+        $this->db->where('lubricator_numberId',$data['lubricator_numberId']);
+        $result = $this->db->update('lubricator_number', $data);
+        return $result;
+    }
+    function getlubricatorTypeById($lubricator_numberId){
+        $this->db->select("lubricator_numberId,lubricator_number");
+        return $this->db->where('lubricator_numberId',$lubricator_numberId)->get("lubricator_number")->row();
+    }
+
 }
