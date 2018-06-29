@@ -75,7 +75,7 @@
                                 html += '<a href="'+base_url+"caraccessory/BrandLubricator/updateBrandLubricator/"+value.lubricator_brandId+'">'
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
                                  + '</a>'
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteBrand(\''+value.lubricator_brandId+'\',\''+value.lubricator_brandName+'\')"><i class="ti-trash"></i> ลบ</button>';   
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletelubricator_brand(\''+value.lubricator_brandId+'\',\''+value.lubricator_brandName+'\')"><i class="ti-trash"></i> ลบ</button>';   
                              }
 
                                 html += '</div>'
@@ -96,9 +96,9 @@
         table.ajax.reload();
     })
 
-    function deleteBrand(lubricator_brandId,lubricator_brandName){
+    function deletelubricator_brand(lubricator_brandId,lubricator_brandName){
         var option = {
-            url: "/Lubricatorbrand/deletelubricator_brand?lubricator_brandId="+lubricator_brandId,
+            url: "/Lubricatorbrand/deletelubricatorbrand?lubricator_brandId="+lubricator_brandId,
             label: "ลบยี่ห้อรถ",
             content: "คุณต้องการลบ "+lubricator_brandName+" ใช่หรือไม่",
             gotoUrl: "caraccessory/brandLubricator"

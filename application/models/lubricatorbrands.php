@@ -84,9 +84,7 @@ class Lubricatorbrands extends CI_Model{
         $this->db->select("lubricator_brandId,lubricator_brandName");
         return $this->db->where('lubricator_brandId',$lubricator_brandId)->get("lubricator_brand")->row();
     }
-    function getBrandById($lubricator_brandId){
-        return $this->db->where('lubricator_brandId',$lubricator_brandId)->get("lubricator_brand")->row();
-    }
+    
     function delete($lubricator_brandId){
         return $this->db->delete('lubricator_brand', array('lubricator_brandId' => $lubricator_brandId));
     }
@@ -120,9 +118,23 @@ class Lubricatorbrands extends CI_Model{
         $this->db->where('status',$status);
         $this->db->where('create_by',$userId);
         $this->db->where('activeFlag',2);
+
         $result = $this->db->count_all_results();
         if($result > 0 ){
             return true ;
+        }
+        return false;
+    }
+
+    function checkStatusFromBrand($lubricator_brandId,$status,$userId){
+        $this->db->from('lubricator_brand');
+        $this->db->where('lubricator_brandId',$lubricator_brandId);
+        $this->db->where('status',$status);
+        $this->db->where('create_by',$userId);
+        $this->db->where('activeFlag',2);
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return true;
         }
         return false;
     }
