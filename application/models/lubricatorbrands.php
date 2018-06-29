@@ -113,5 +113,18 @@ class Lubricatorbrands extends CI_Model{
         $result = $this->db->update('lubricator_brand', $data);
         return $result;
     }
+
+    function checkStatusFromlubricatorbrand($lubricator_brandId,$status,$userId){
+        $this->db->from('lubricator_brand');
+        $this->db->where('lubricator_brandId',$lubricator_brandId);
+        $this->db->where('status',$status);
+        $this->db->where('create_by',$userId);
+        $this->db->where('activeFlag',2);
+        $result = $this->db->count_all_results();
+        if($result >0){
+            return true;
+        }
+        return false ;
+    }
  
 }
