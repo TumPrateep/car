@@ -88,7 +88,7 @@ class Lubricatorbrand extends BD_Controller {
         }
         else {
             $search = $this->post('lubricator_brandName'); 
-            $status = $this->post('status'); 
+            $status = 1; 
 
             $posts =  $this->Lubricatorbrands->lubricatorbrand_search($limit,$start,$search,$order,$dir,$status);
 

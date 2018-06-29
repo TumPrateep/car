@@ -31,7 +31,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.lubricator_brandName = $("#brand-search").val(),
+                    data.lubricator_brandName = $("#lubricatorbrandName-search").val(),
                     data.column = $("#column").val()
                 }
             },
@@ -65,14 +65,14 @@
                                  + '<h5 class="card-title">'+value.lubricator_brandName+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                //  + '<a href="'+base_url+"caraccessory/CarModelAccessory/index/"+value.lubricator_brandId+'">'
+                                 + '<a href="'+base_url+"caraccessory/BrandLubricator/index/"+value.lubricator_brandId+'">'
                                  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '</a>'
 
                                 
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/BrandLubricator/updateBrandLubricator/"+value.lubricator_brandId+'">'
+                                html += '<a href="'+base_url+"caraccessory/lubricatortype/updatelubricatortype/"+value.lubricator_brandId+'">'
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
                                  + '</a>'
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteBrand(\''+value.lubricator_brandId+'\',\''+value.lubricator_brandName+'\')"><i class="ti-trash"></i> ลบ</button>';   
@@ -95,9 +95,6 @@
         event.preventDefault();
         table.ajax.reload();
     })
-
-    
-
 
     $("#form-search").submit(function(){
         event.preventDefault();
