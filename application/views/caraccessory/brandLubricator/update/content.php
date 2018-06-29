@@ -22,7 +22,7 @@
 
                     <div class="card-title"></div>
                     <div class="card-body">
-                        <form id="submit">
+                        <form id="update-lubricatorbrand">
                             <div class="form-body">
                                 <div class="row p-t-20">
                                     <div class="col-md-6">
