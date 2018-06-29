@@ -1,5 +1,5 @@
 <script>
-    var table = $('#model-table').DataTable({
+    var table = $('#brand-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
