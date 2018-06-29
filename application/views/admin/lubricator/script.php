@@ -58,15 +58,18 @@
             "columns": [
                 null,
                 { "data": "lubricatorName" },
-                null
+                null,
+                null,
+                null,
+                null,
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,2]
+                    "targets": [0,5]
                 },{
-                    "targets": 3,
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/Lubricator/updatelubricator/"+data.lubricatorId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -83,7 +86,7 @@
                 {
                     
                 },{
-                    "targets": 2,
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -103,7 +106,7 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": []},
-                {"className": "dt-center", "targets": [0,1,2,3]},
+                {"className": "dt-center", "targets": [0,1,2,3,5,6]},
                 { "width": "10%", "targets": 0 },
                 { "width": "25%", "targets": 1 },
                 { "width": "10%", "targets": 2 },
