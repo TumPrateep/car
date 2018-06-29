@@ -21,13 +21,13 @@
 
                     <div class="card-title"></div>
                     <div class="card-body">
-                        <form id="submit">
+                        <form id="create-lubricatorbrand">
                             <div class="form-body">
                                 <div class="row p-t-20">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">ชื่อยี่ห้อน้ำมันเครื่อง</label><span class="error">*</span>
-                                            <input type="text" id="lubricator_brandName" class="form-control" name="lubricator_brandName" placeholder="ชื่อยี่ห้อน้ำมันเครื่อง">
+                                            <input type="text" id="lubricator_brandName" class="form-control" name="lubricator_brandName" id="lubricator_brandName" placeholder="ชื่อยี่ห้อน้ำมันเครื่อง">
                                          </div>
                                         </div>       
                                     </div>
