@@ -60,6 +60,7 @@ class Lubricatorbrand extends BD_Controller {
 		}
     }
 
+<<<<<<< HEAD
 
     function updateLubricatorbrands_post(){
         $config['upload_path'] = 'public/image/lubricator_brand/';
@@ -152,9 +153,82 @@ class Lubricatorbrand extends BD_Controller {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
        }
+=======
+    function searchLubricatorbrand_post(){
+        $column = "lubricator_brandName";
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
+
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $column;
+        $dir = $sort;
+
+        // $lubricator_brandId = $this->post("lubricator_brandId");
+        $this->load->model("Lubricatorbrands");
+        $totalData = $this->Lubricatorbrands->allLubricatorbrand_count();
+
+        $totalFiltered = $totalData; 
+
+        if(empty($this->post('lubricator_brandName')))
+        {            
+            $posts = $this->Lubricatorbrands->allLubricatorbrand($limit,$start,$order,$dir);
+        }
+        else {
+            $search = $this->post('lubricator_brandName'); 
+            $status = 1; 
+
+            $posts =  $this->Lubricatorbrands->lubricatorbrand_search($limit,$start,$search,$order,$dir,$status);
+
+            $totalFiltered = $this->Sparesbrand->lubricatorbrand_search_count($search,$status);
+        }
+        $data = array();        
+        if(!empty($posts))
+        {
+            $index = 0;
+            $count = 0;
+            foreach ($posts as $post)
+            {
+                $nestedData[$count]['lubricator_brandId'] = $post->lubricator_brandId;
+                $nestedData[$count]['lubricator_brandPicture'] = $post->lubricator_brandPicture;
+                $nestedData[$count]['lubricator_brandName'] = $post->lubricator_brandName;
+                $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
+                $nestedData[$count]['create_by'] = $post->create_by;
+                
+                $data[$index] = $nestedData;
+                if($count >= 3){
+                    $count = -1;
+                    $index++;
+                    $nestedData = [];
+                }   
+                
+                $count++;
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+
+        $this->set_response($json_data);
+>>>>>>> 93c6a81a3484e02159f5217712e7e70bfffa6cc7
     }
 }
 
 
 
 
+
+           
+           
+           
