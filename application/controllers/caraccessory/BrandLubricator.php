@@ -1,43 +1,45 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Lubricator extends CI_Controller {
+class BrandLubricator extends CI_Controller {
 
 	function __construct()
     {
         // Construct the parent class
 		parent::__construct();
 		$this->load->view("lib");
+    }
+	
+	public function index()
+	{
+		$this->load->view("caraccessory/layout/head");
+		$this->load->view("caraccessory/layout/header");
+		$this->load->view("caraccessory/layout/left-menu");
+		$this->load->view("caraccessory/brandLubricator/content");
+		$this->load->view("caraccessory/layout/footer");
+		$this->load->view("caraccessory/layout/foot");
+		$this->load->view("caraccessory/brandLubricator/script");
 	}
 	
-	function index(){
+	public function createBrandLubricator()
+	{
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/lubricator/content");
+		$this->load->view("caraccessory/brandLubricator/create/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
-		$this->load->view("caraccessory/lubricator/script");
-    }
+		$this->load->view("caraccessory/brandLubricator/create/script");
+	}
 
-    function createLubricator(){
+	public function updateBrandLubricator()
+	{
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/lubricator/create/content");
+		$this->load->view("caraccessory/brandLubricator/update/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
-		$this->load->view("caraccessory/lubricator/create/script");
-    }
-
-    function updateLubricator(){
-		$this->load->view("caraccessory/layout/head");
-		$this->load->view("caraccessory/layout/header");
-		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/lubricator/update/content");
-		$this->load->view("caraccessory/layout/footer");
-		$this->load->view("caraccessory/layout/foot");
-		$this->load->view("caraccessory/lubricator/update/script");
-    }
-    	
+		$this->load->view("caraccessory/brandLubricator/update/script");
+	}
 
 }

@@ -15,8 +15,8 @@
                                 <li class="active"> <a class="has-arrow" href="#" aria-expanded="true">น้ำมันเครื่อง </a>
                                     <ul aria-expanded="true" class="collapse in" style="">
                                         <li><a href="<?=base_url("caraccessory/lubricator"); ?>">ประเภทน้ำมันเครื่อง</a></li>
-                                        <li><a href="#">เบอร์น้ำมันเครื่อง</a></li>
-                                        <li><a href="#">ยี่ห้อน้ำมันเครื่อง</a></li>
+                                        <li><a href="<?=base_url("caraccessory/numberLubricator"); ?>">เบอร์น้ำมันเครื่อง</a></li>
+                                        <li><a href="<?=base_url("caraccessory/brandLubricator"); ?>">ยี่ห้อน้ำมันเครื่อง</a></li>
                                     </ul>
                                 </li>
                                 <li class="active"> <a class="has-arrow" href="#" aria-expanded="true">ยางรถ</a>
