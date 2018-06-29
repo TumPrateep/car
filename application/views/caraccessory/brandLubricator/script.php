@@ -72,7 +72,7 @@
                                 
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/lubricatortype/updatelubricatortype/"+value.lubricator_brandId+'">'
+                                html += '<a href="'+base_url+"caraccessory/BrandLubricator/updateBrandLubricator/"+value.lubricator_brandId+'">'
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
                                  + '</a>'
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteBrand(\''+value.lubricator_brandId+'\',\''+value.lubricator_brandName+'\')"><i class="ti-trash"></i> ลบ</button>';   

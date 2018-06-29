@@ -121,10 +121,11 @@ class Lubricatorbrands extends CI_Model{
         $this->db->where('create_by',$userId);
         $this->db->where('activeFlag',2);
         $result = $this->db->count_all_results();
-        if($result >0){
-            return true;
+        if($result > 0 ){
+            return true ;
         }
-        return false ;
+        return false;
     }
+    
  
 }
