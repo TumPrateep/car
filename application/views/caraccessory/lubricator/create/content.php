@@ -3,11 +3,11 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">เพิ่มประเภทน้ำมันเครื่อง</h3>  
+            <h3 class="text-primary">เพิ่มน้ำมันเครื่อง</h3>  
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/lubricator"); ?>">ประเภทน้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/lubricator"); ?>">น้ำมันเครื่อง</a></li>
                 <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
             </ol>
         </div>
