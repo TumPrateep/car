@@ -3,51 +3,66 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">น้ำมันเครื่อง</h3>  
+            <h3 class="text-primary">เบอร์น้ำมันเครื่อง</h3>  
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Spareundercarries"); ?>">น้ำมันเครื่อง</a></li>
-                <li class="breadcrumb-item active">ค้นหา</li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/numberlubricator"); ?>">เบอร์น้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
             </ol>
         </div>
     </div>
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
     <div class="container-fluid">
-
-        <div class="row p-30">
-            <div class="col-lg-4 div-right">
-                <a href="<?=base_url("caraccessory/Spareundercarries/createspareUndercarriage") ?>">
-                    <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
-                    <i class="fa fa-plus"> สร้าง</i></button>
-                </a>
-            </div>
-            <div class="col-lg-4">
-                <div class="input-group input-group-flat">
-                    <label class="col-lg-3 col-form-label">ยี่ห้อ: </label>
-                    <input type="text" class="form-control input-default" id="searchbrand-search" placeholder="ค้นหา...">
-                    <span class="input-group-btn"><button class="btn btn-success" type="button" id="btn-search"><i class="ti-search" ></i></button></span>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="input-group input-group-flat">
-                    <label class="col-lg-3 col-form-label">จัดเรียง: </label>
-                    <select class="form-control input-default">
-                        <option value="1" selected>เรียงลำดับจาก ก-ฮ</option>
-                        <option value="2">เรียงลำดับจาก ฮ-ก</option>
-                        <option value="3">เรียงลำดับจาก สถานะ</option>
-                    </select>
+    <div class="container-fluid">
+        <form id="submit">   
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-header">
+                    <div class="card-title">
+                        <h4> เพิ่มข้อมูเบอร์น้ำมันเครื่อง</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>ชื่อเบอร์น้ำมันเครื่อง</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="ชื่อเบอร์น้ำมันเครื่อง" name="lubricator_number" id="lubricator_number">
+                          </div>
+                        </div>
+                      </div>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>ชนิดน้ำมันเครื่อง</label>
+                                    <select class="form-control" name="lubricator_gear" id="lubricator_gear">
+                                    <option value="1">น้ำมันเครื่อง</option>
+                                    <option value="2">น้ำมันเกียร์ธรรมดา</option>
+                                    <option value="3">น้ำมันเกียร์ออโต</option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>ประเภทน้ำมันเครื่อง</label> <span class="error">*</span>
+                                    <select class="form-control" id="lubricator_typeId" name="lubricator_typeId">
+                                    <option value="">ประเภทน้ำมันเครื่อง</option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                                <a href="#">
+                                <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
+                                </a>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="table">
-            <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
-                <thead>
-                    <th></th>
-                </thead>	
-            </table>
-        </div>
     </div>
     <!-- End Container fluid  -->
