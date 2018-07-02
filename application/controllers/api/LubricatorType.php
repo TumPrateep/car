@@ -14,7 +14,7 @@ class LubricatorType extends BD_Controller {
         
         $this->load->model("lubricatorTypes");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->lubricatorTypes->ChecklubricatorTypes($lubricator_typeName);
+        $isCheck = $this->lubricatorTypes->checklubricatorType($lubricator_typeName);
         
         if($isCheck){
             $data = array(
