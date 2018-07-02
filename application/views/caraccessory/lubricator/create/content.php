@@ -29,15 +29,15 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">ชื่อน้ำมันเครื่อง</label><span class="error">*</span>
-                                        <input type="text" class="form-control" placeholder="ชื่อน้ำมันเครื่อง" name="lubricator_typeName" id="lubricator_typeName">
+                                        <input type="text" class="form-control" placeholder="ชื่อน้ำมันเครื่อง" name="lubricator_Name" id="lubricator_Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group input-group-flat">
                                     <div class="col">
                                         <label>เบอร์น้ำมันเครื่อง: </label>
-                                        <select class="form-control input-default" name="column" id="column">
-                                            <option value="1" selected></option>
+                                        <select class="form-control input-default" name="lubricator_Number" id="lubricator_Number">
+                                            <option value="1"></option>
                                             <option value="2"> </option>
                                             <option value="3"></option>
                                         </select>
@@ -48,7 +48,7 @@
                                     <div class="input-group input-group-flat">
                                     <div class="col">
                                         <label>ประเภทน้ำมันเครื่อง: </label>
-                                        <select class="form-control input-default" name="column" id="column">
+                                        <select class="form-control input-default" name="lubricator_type" id="lubricator_type">
                                             <option value="1" selected></option>
                                             <option value="2"></option>
                                             <option value="3"></option>
