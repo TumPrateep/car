@@ -12,10 +12,9 @@ class LubricatorNumber extends BD_Controller {
             $columns = array( 
                 0 => null,
                 1 =>'lubricator_number',
-                2 => ,
-                3 => ,
-                4 => ,
-                5 =>'status'
+                2 => 'lubricator_gear',
+                3 => 'lubricator_typeId',
+                4 =>'status'
             );
             $limit = $this->post('length');
             $start = $this->post('start');
@@ -41,7 +40,8 @@ class LubricatorNumber extends BD_Controller {
                 {
                     $nestedData['lubricator_numberId'] = $post->lubricator_numberId;
                     $nestedData['lubricator_number'] = $post->lubricator_number;
-                    // $nestedData['lubricator_typeId'] = $post->lubricator_typeId;
+                    $nestedData['lubricator_typeName'] = $post->lubricator_typeName;
+                    $nestedData['lubricator_gear'] = $post->lubricator_gear;
                     $nestedData['status'] = $post->status;
                     $data[] = $nestedData;
                 }
@@ -52,6 +52,7 @@ class LubricatorNumber extends BD_Controller {
                 "recordsFiltered" => intval($totalFiltered), 
                 "data"            => $data   
             );
+            
             $this->set_response($json_data);
         }
         

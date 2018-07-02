@@ -36,15 +36,29 @@
             "columns": [
                 null,
                 { "data": "lubricator_number" },
+                null,
+                null,
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,2]
+                    "targets": [0,4]
+                },{
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return (data.lubricator_gear == "" || data.lubricator_gear == null)?"<small><i class='gray'>ไม่พบข้อมูล</i></small>":lubricatorLib[data.lubricator_gear];
+                    }
                 },{
                     "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return (data.lubricator_typeName == "" || data.lubricator_typeName == null)?"<small><i class='gray'>ไม่พบข้อมูล</i></small>":data.lubricator_typeName;
+                    }
+                },{
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -61,7 +75,7 @@
                 {
                     
                 },{
-                    "targets": 2,
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -80,12 +94,12 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": []},
-                {"className": "dt-center", "targets": [0,1,2,3]},
+                {"className": "dt-head-center", "targets": [1]},
+                {"className": "dt-center", "targets": [0,2,3,4,5]},
                 { "width": "10%", "targets": 0 },
-                { "width": "25%", "targets": 1 },
-                { "width": "10%", "targets": 2 },
-                { "width": "15%", "targets": 3 }
+                // { "width": "25%", "targets": 1 },
+                // { "width": "10%", "targets": 2 },
+                // { "width": "15%", "targets": 3 }
             ]	 
     });
    
