@@ -103,4 +103,24 @@ class LubricatorNumbers extends CI_Model {
         return $this->db->where('lubricator_numberId',$lubricator_numberId)->get("lubricator_number")->row();
     }
 
+    function checkLubricatorNumber($lubricatorNumber, $lubricatorGear, $lubricatorNumberId){
+        $this->db->where("lubricator_number", $lubricatorNumber);
+        $this->db->where("lubricator_gear", $lubricatorGear);
+
+        if($lubricatorNumberId != null){
+            $this->db->where("lubricator_numberId", $lubricatorNumberId);
+        }
+
+        $result = $this->db->from("lubricator_number")->count_all_results();
+        if($result > 0){
+            return false;
+        }
+
+        return true;
+    }
+
+    function  insertLubricatorNumber($data){
+        return $this->db->insert('lubricator_number', $data);
+    }
+
 }

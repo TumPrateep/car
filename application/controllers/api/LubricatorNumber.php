@@ -99,22 +99,26 @@ class LubricatorNumber extends BD_Controller {
             }
         }
 
-            function updateLubricatorType_post(){
-            $lubricator_numberId = $this->post("lubricator_numberId");
-            $lubricator_number = $this->post("lubricator_number");
+        function createLubricatorNumber_post(){
+            $lubricatorNumber = $this->post("lubricator_number");
+            $lubricatorGear = $this->post("lubricator_gear");
+            $lubricatorTypeId = $this->post("lubricator_typeId");
+            
             $this->load->model("LubricatorNumbers");
             $userId = $this->session->userdata['logged_in']['id'];
-            $result = $this->LubricatorNumbers->wherenotLubricatorNumber($lubricator_numberId,$lubricator_number);
-            if($result){
+            $isCheck = $this->LubricatorNumbers->checkLubricatorNumber($lubricatorNumber, $lubricatorGear, null);
+            
+            if($isCheck){
                 $data = array(
-                    'lubricator_numberId' => $lubricator_numberId,
-                    'lubricator_number' => $lubricator_number,
+                    'lubricator_number' => $lubricatorNumber, 
+                    'lubricator_typeId' => $lubricatorTypeId,
+                    'lubricator_gear' => $lubricatorGear, 
                     'status' => 1,
-                    'update_at' => date('Y-m-d H:i:s',time()),
-                    'update_by' => $userId,
+                    'create_at' => date('Y-m-d H:i:s',time()),
+                    'create_by' => $userId,
                     'activeFlag' => 1
                 );
-                $result = $this->LubricatorNumbers->updateLubricatorNumber($data);
+                $result = $this->LubricatorNumbers->insertLubricatorNumber($data);
                 $output["status"] = $result;
                 if($result){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -122,12 +126,15 @@ class LubricatorNumber extends BD_Controller {
                 }
                 else{
                     $output["status"] = false;
-                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                    $output["message"] = REST_Controller::MSG_NOT_CREATE;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
-            }else{
-                $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            }
+            else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }
-    }
+        
+}
