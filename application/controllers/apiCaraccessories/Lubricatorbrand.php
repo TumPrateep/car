@@ -127,32 +127,7 @@ class Lubricatorbrand extends BD_Controller {
         }       
     }
 
-    // function deletelubricatorbrand_get(){
-        // $ubricator_brandId = $this->get('lubricator_brandId');
-        // $userId = $this->session->userdata['logged_in']['id'];
-        // $status = 2;
-        // $this->load->model("Lubricatorbrands");
-        // $lubricator_brandId =$this->Lubricatorbrands->getBrandById($lubricator_brandId);
-    //     if($lubricator_brandId != null){
-    //         $isCheckStatus = $this->Lubricatorbrands->checkStatusFromBrand($lubricator_brandId,$status,$userId);
-    //         if($isCheckStatus ){
-    //             $isDelete = $this->Lubricatorbrands->delete($lubricator_brandId);
-    //             if($isDelete){
-    //                 $output["message"] = REST_Controller::MSG_SUCCESS;
-    //                 $this->set_response($output, REST_Controller::HTTP_OK);
-    //             }else{
-    //                 $output["message"] = REST_Controller::MSG_BE_USED;
-    //                 $this->set_response($output, REST_Controller::HTTP_OK);
-    //             }
-    //         }else{
-    //             $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
-    //                 $this->set_response($output, REST_Controller::HTTP_OK);
-    //             }
-    //     }else{
-    //         $output["message"] = REST_Controller::MSG_BE_DELETED;
-    //         $this->set_response($output, REST_Controller::HTTP_OK);
-    //    }
-    // }
+    
     function deletelubricatorbrand_get(){
         $lubricator_brandId = $this->get('lubricator_brandId');
         $userId = $this->session->userdata['logged_in']['id'];
