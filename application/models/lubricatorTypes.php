@@ -102,4 +102,20 @@ class LubricatorTypes extends CI_Model{
         $this->db->select("lubricator_typeId,lubricator_typeName,lubricator_typeSize");
         return $this->db->where('lubricator_typeId',$lubricator_typeId)->get("lubricator_type")->row();
     }
+    function wherenotlubricatorType($lubricator_typeId,$lubricator_typeName){
+        $this->db->select("lubricator_typeName");
+        $this->db->from("lubricator_type");
+        $this->db->where('lubricator_typeName', $lubricator_typeName);
+        $this->db->where_not_in('lubricator_typeId', $lubricator_typeId);
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+    function updatelubricatorType($data){
+        $this->db->where('lubricator_typeId',$data['lubricator_typeId']);
+        $result = $this->db->update('lubricator_typeName', $data);
+        return $result;
+    }
 }
