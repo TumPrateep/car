@@ -24,7 +24,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <!-- <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>"> -->   
+                            <input type="hidden" id="lubricator_typeId" name="lubricator_typeId" value="<?=$lubricator_typeId ?>">   
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

@@ -128,14 +128,13 @@ class Lubricatorbrand extends BD_Controller {
     }
 
     // function deletelubricatorbrand_get(){
-    //     $lubricator_brandId = $this->get('lubricator_brandId');
-    //     $userId = $this->session->userdata['logged_in']['id'];
-    //     $status = 2;
-    //     $this->load->model("Lubricatorbrands");
-    //     $lubricator_brandId =$this->Lubricatorbrands->getBrandById($lubricator_brandId);
-    //     $isCheckStatus = $this->Lubricatorbrands->checkStatusFromlubricatorbrand($lubricator_brandId,$status,$userId);
+        // $ubricator_brandId = $this->get('lubricator_brandId');
+        // $userId = $this->session->userdata['logged_in']['id'];
+        // $status = 2;
+        // $this->load->model("Lubricatorbrands");
+        // $lubricator_brandId =$this->Lubricatorbrands->getBrandById($lubricator_brandId);
     //     if($lubricator_brandId != null){
-    //         $isCheckStatus = $this->Lubricatorbrands->checkStatusFromlubricatorbrand($lubricator_brandId,$status,$userId);
+    //         $isCheckStatus = $this->Lubricatorbrands->checkStatusFromBrand($lubricator_brandId,$status,$userId);
     //         if($isCheckStatus ){
     //             $isDelete = $this->Lubricatorbrands->delete($lubricator_brandId);
     //             if($isDelete){
@@ -159,8 +158,8 @@ class Lubricatorbrand extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
         $this->load->model("Lubricatorbrands");
-        $lubricator_brandId =$this->Lubricatorbrands->getlubricatorById($lubricator_brandId);
-        if($lubricator_brandId != null){
+        $lubricator_brand =$this->Lubricatorbrands->getlubricatorById($lubricator_brandId);
+        if($lubricator_brand != null){
             $isCheckStatus = $this->Lubricatorbrands->checkStatusFromBrand($lubricator_brandId,$status,$userId);
             if($isCheckStatus ){
             $isDelete = $this->Lubricatorbrands->delete($lubricator_brandId);
