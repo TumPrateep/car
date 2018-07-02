@@ -100,9 +100,9 @@ class Lubricatorbrand extends BD_Controller {
                 'update_by' => $userId,
                 "activeFlag" => 2
             );
-            $isCheckStatus =$this->Lubricatorbrands->checkStatusFromlubricatorbrand($lubricator_brandId,$status,$userId);
+            $isCheckStatus = $this->Lubricatorbrands->checkStatusFromBrand($lubricator_brandId,$status,$userId);
             if($isCheckStatus){
-                $oldData = $this->Lubricatorbrands->getBrandById($lubricator_brandId);
+                $oldData = $this->Lubricatorbrands->getlubricatorById($lubricator_brandId);
             $isResult = $this->Lubricatorbrands->update($data);
                     if($isResult){
                         unlink($config['upload_path'].$oldData->brandPicture);
