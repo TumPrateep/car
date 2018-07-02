@@ -18,49 +18,63 @@
         if(gearType != "1"){
             lubricatorTypeId.prop('disabled', 'disabled');
             lubricatorTypeId.val("");
+            lubricatorTypeId.removeClass('error');
+            $("#create-lubricatornumber").valid();
         }else{
             lubricatorTypeId.prop('disabled', false);
         }
     });
-    //   $("#create-lubricatornumber").validate({
-    //     rules: {
-    //         lubricator_number: {
-    //             required: true
-    //         },
-    //     },
-    //     messages: {
-    //         lubricator_number: {
-    //             required: "กรุณากรอกเบอร์น้ำมันเครื่อง"
-    //         },
-    //     },
-    // });
 
-    // $("#create-lubricatornumber").submit(function(){
-    //     createlubricatornumber();
-    // });
+    jQuery.validator.addMethod("hasGear", function(value, element) {
+        var gearType = lubricatorGear.val();
+        if(gearType != "1"){
+            return true;
+        }else{
+            if(value != ""){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }, 'กรุณาเลือกประเภทน้ำมันเครื่อง');
 
-    // function createlubricatornumber(){
-    //     event.preventDefault();
-    //     var isValid = $("#create-lubricatornumber").valid();
-    //     if(isValid){
-    //         var myform = document.getElementById("create-lubricatornumber");
-    //         var formData = new FormData(myform);
-    //         $.ajax({
-    //             url: base_url+"api/car/createBrand",
-    //             data: formData,
-    //             processData: false,
-    //             contentType: false,
-    //             type: 'POST',
-    //             success: function (data) {
-    //                 if(data.message == 200){
-    //                     showMessage(data.message,"admin/car");
-    //                 }else{
-    //                     showMessage(data.message);
-    //                 }
-    //             }
-    //         });
-    //     }
-    // }
+    $("#create-lubricatornumber").validate({
+        rules: {
+            lubricator_number: {
+                required: true
+            },
+            lubricator_typeId: {
+                hasGear: true
+            },
+        },
+        messages: {
+            lubricator_number: {
+                required: "กรุณากรอกเบอร์น้ำมันเครื่อง"
+            },
+        },
+    });
+
+    $("#create-lubricatornumber").submit(function(){
+        createlubricatornumber();
+    });
+
+    function createlubricatornumber(){
+        event.preventDefault();
+        var isValid = $("#create-lubricatornumber").valid();
+        
+        if(isValid){
+            var data = $("#create-lubricatornumber").serialize();
+            $.post(base_url+"api/LubricatorNumber/createLubricatorNumber",data,
+            function(data){
+                if(data.message == 200){
+                    showMessage(data.message,"admin/lubricatornumber");
+                }else{
+                    showMessage(data.message,);
+                }
+            });
+            
+        }
+    }
 </script>
 
 </body>
