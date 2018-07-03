@@ -9,11 +9,13 @@ class Lubricator extends CI_Controller {
 		$this->load->view("lib");
 	}
 	
-	function index(){
+	function index($lubricator_brandId)
+	{
+		$data['lubricator_brandId']=$lubricator_brandId;
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/lubricator/content");
+		$this->load->view("caraccessory/lubricator/content"$date);
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
 		$this->load->view("caraccessory/lubricator/script");
