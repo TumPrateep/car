@@ -44,7 +44,7 @@ class Lubricatornumber extends BD_Controller {
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         } 
-}
+
 
     function searchLubricatornumber_post(){
         // $column = "lubricator_number";
