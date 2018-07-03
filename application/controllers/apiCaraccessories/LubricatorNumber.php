@@ -2,18 +2,13 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-<<<<<<< HEAD
-class LubricatorNumber extends BD_Controller {
-=======
 class Lubricatornumber extends BD_Controller {
->>>>>>> 1085832e23cabfae265bd2928f00d0f4c4acb06a
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
         // $this->auth();
     }
-<<<<<<< HEAD
     public function createLubricatorNumber_Post(){
         $lubricator_number = $this->post('lubricator_number');
         $lubricator_typeId = $this->post('lubricator_typeId');
@@ -50,7 +45,6 @@ class Lubricatornumber extends BD_Controller {
             }
         } 
 }
-=======
 
     function searchLubricatornumber_post(){
         // $column = "lubricator_number";
@@ -132,4 +126,3 @@ class Lubricatornumber extends BD_Controller {
 
 
 }
->>>>>>> 1085832e23cabfae265bd2928f00d0f4c4acb06a
