@@ -65,13 +65,12 @@
                                 // + '<h5 class="card-title">'+value.lubricator_gear+'</h5>'
                                 + '</div>'
                                 + '<div class="card-body text-center card-bottom">'
-                                // + '<a href="'+base_url+"caraccessory/SpareBrand/index/"+value.spares_undercarriageId+'">'
                                 + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                 + '</a>'
                             
                             if(isShow){
-                            //     html += '<a href="'+base_url+"caraccessory/Spareundercarries/updatespareUndercarriage/"+value.spares_undercarriageId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                            //      + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteModel(\''+value.spares_undercarriageId+'\',\''+value.spares_undercarriageName+'\')"><i class="ti-trash"></i> ลบ</button>';
+                                html += '<a href="'+base_url+"caraccessory/NumberLubricator/updatelubricatorNumber/"+value.lubricator_typeId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteModel(\''+value.lubricator_typeId+'\',\''+value.lubricator_number+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  
                             html += '</div>'
