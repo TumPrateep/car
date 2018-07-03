@@ -73,12 +73,12 @@ class Lubricatornumber extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('lubricator_number')) && empty($this->post('status')))
+        if(empty($this->post('lubricator_number')) && empty($this->post('lubricator_gear')))
         {            
             $posts = $this->LubricatorNumbers->allLubricatorNumbers($limit,$start,$order,$dir);
         }
         else {
-            $search = $this->post('lubricator_number'); 
+            $search = $this->post('lubricator_number');
             $status = 2; 
 
             $posts =  $this->LubricatorNumbers->lubricatorNumber_search($limit,$start,$search,$order,$dir,$status);
