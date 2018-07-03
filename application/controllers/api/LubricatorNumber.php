@@ -187,5 +187,16 @@ class LubricatorNumber extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
+            
+        }
+
+        function getAllLubricatorNumber_post(){
+            $this->load->model("LubricatorNumbers");
+            $lubricator_gear = $this->post("lubricator_gear");
+            $status = 1;
+            $lubricator_numberId = $this->post("lubricator_numberId");
+            $result = $this->LubricatorNumbers->getAllLubricatorNumberByStatus($status, $lubricator_numberId, $lubricator_gear);
+            $output["data"] = $result;
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }
 }

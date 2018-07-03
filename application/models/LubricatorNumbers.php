@@ -155,4 +155,17 @@ class LubricatorNumbers extends CI_Model {
         return $this->db->where('lubricator_numberId',$lubricator_numberId)->get("lubricator_number")->row();
     }
 
+    function getAllLubricatorNumberByStatus($status, $lubricator_numberId, $lubricator_gear){
+        $this->db->select("lubricator_numberId,lubricator_number,lubricator_gear");
+        $this->db->where("status", $status);
+        $this->db->where("lubricator_gear", $lubricator_gear);
+        if($lubricator_numberId != null){
+            $this->db->or_where("lubricator_numberId", $lubricator_numberId);
+        }
+        $this->db->order_by("lubricator_gear", "asc");
+        $this->db->order_by("lubricator_number", "asc"); 
+        $result = $this->db->get("lubricator_number");
+        return $result->result();
+    }
+
 }
