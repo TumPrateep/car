@@ -108,7 +108,7 @@ class LubricatorNumbers extends CI_Model {
         $this->db->where("lubricator_gear", $lubricatorGear);
 
         if($lubricatorNumberId != null){
-            $this->db->where("lubricator_numberId", $lubricatorNumberId);
+            $this->db->where_not_in("lubricator_numberId", $lubricatorNumberId);
         }
 
         $result = $this->db->from("lubricator_number")->count_all_results();
@@ -148,6 +148,11 @@ class LubricatorNumbers extends CI_Model {
         }
 
         return true;
+    }
+
+    function getlubricatorNumberById($lubricator_numberId){
+        $this->db->select("lubricator_numberId,lubricator_number,lubricator_typeId,	lubricator_gear");
+        return $this->db->where('lubricator_numberId',$lubricator_numberId)->get("lubricator_number")->row();
     }
 
 }

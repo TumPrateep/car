@@ -136,5 +136,56 @@ class LubricatorNumber extends BD_Controller {
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }
+
+        function getLubricatorNumber_post(){
+            $lubricator_numberId = $this->post('lubricator_numberId');
+            $this->load->model("LubricatorNumbers");
+            $data = $this->LubricatorNumbers->getlubricatorNumberById($lubricator_numberId);
+            if($data != null){
+                $output["data"] = $data;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
         
+        function updateLubricatorNumber_post(){
+            $lubricatorNumberId = $this->post("lubricator_numberId");
+            $lubricatorNumber = $this->post("lubricator_number");
+            $lubricatorGear = $this->post("lubricator_gear");
+            $lubricatorTypeId = $this->post("lubricator_typeId");
+            
+            $this->load->model("LubricatorNumbers");
+            $userId = $this->session->userdata['logged_in']['id'];
+            $isCheck = $this->LubricatorNumbers->checkLubricatorNumber($lubricatorNumber, $lubricatorGear, $lubricatorNumberId);
+            
+            if($isCheck){
+                $data = array(
+                    'lubricator_numberId' => $lubricatorNumberId,
+                    'lubricator_number' => $lubricatorNumber, 
+                    'lubricator_typeId' => $lubricatorTypeId,
+                    'lubricator_gear' => $lubricatorGear, 
+                    'update_at' => date('Y-m-d H:i:s',time()),
+                    'update_by' => $userId,
+                    'activeFlag' => 1
+                );
+                $result = $this->LubricatorNumbers->updateLubricatorNumber($data);
+                $output["status"] = $result;
+                if($result){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+                else{
+                    $output["status"] = false;
+                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
 }
