@@ -136,12 +136,11 @@ class Lubricatornumber extends BD_Controller {
                 'lubricator_number' => $lubricator_number, 
                 'lubricator_typeId' => $lubricator_typeId,
                 'lubricator_gear' => $lubricator_gear, 
-                'status' => 2,
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId,
                 'activeFlag' => 2
             );
-            $isCheckStatus = $this->LubricatorNumbers->CheckStatus($lubricator_numberId,$userId);
+            $isCheckStatus = $this->LubricatorNumbers->CheckStatus($lubricator_numberId,$userId,$status);
             if($isCheckStatus){
                 $result = $this->LubricatorNumbers->updateLubricatorNumber($data);
                     if($result){
@@ -160,6 +159,37 @@ class Lubricatornumber extends BD_Controller {
             $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+    }
+    function delete_get(){
+        $lubricator_number = $this->post('lubricator_number');
+        $lubricator_numberId = $this->post('lubricator_numberId');
+        $status = $this->post('status');
+        $activeFlag = $this->post('activeFlag');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $this->load->model("LubricatorNumbers");
+        $isCheck = $this->LubricatorNumbers->checkLubricatorNumberCarAcc($lubricator_number, $lubricator_typeId,null);
+        ($isCheck){
+            $isCheckStatus = $this->LubricatorNumbers->CheckStatus($lubricator_numberId,$userId,$status);
+            if($isCheckStatus){
+                $isDelete = $this->sparesUndercarriages->delete($spares_undercarriageId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+        
+
     }
 
 
