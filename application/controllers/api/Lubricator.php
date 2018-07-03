@@ -9,27 +9,30 @@ class Lubricator extends BD_Controller {
         $this->auth();
     }
     function searchLubricator_post(){
+        $lubricator_brandId = $this->post('lubricator_brandId');
         $columns = array( 
             0 => null,
             1 =>'lubricatorName',
-            2 =>'status'
+            2 =>'lubricator_numberId',
+            3 =>'lubricator_gear',
+            4 =>'status'
         );
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $this->load->model("Lubricators");
-        $totalData = $this->Lubricators->allLubricators_count();
+        $totalData = $this->Lubricators->allLubricators_count($lubricator_brandId);
         $totalFiltered = $totalData; 
         if(empty($this->post('lubricatorName')) && empty($this->post('status')))
         {            
-            $posts = $this->Lubricators->allLubricators($limit,$start,$order,$dir);
+            $posts = $this->Lubricators->allLubricators($limit,$start,$order,$dir,$lubricator_brandId);
         }
         else {
             $search = $this->post('lubricatorName');
             $status = $this->post('status');
-            $posts =  $this->Lubricators->Lubricator_search($limit,$start,$search,$order,$dir,$status);
-            $totalFiltered = $this->Lubricators->Lubricator_search_count($search,$status);
+            $posts =  $this->Lubricators->Lubricator_search($limit,$start,$search,$order,$dir,$status,$lubricator_brandId);
+            $totalFiltered = $this->Lubricators->Lubricator_search_count($search,$status,$lubricator_brandId);
         }
         $data = array();
         if(!empty($posts))

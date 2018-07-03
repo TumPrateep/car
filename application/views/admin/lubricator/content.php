@@ -14,7 +14,7 @@
     <div class="card-tools one">
       <form id="form-search">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/lubricator/createlubricator") ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/lubricator/createlubricator/$lubricator_brandId") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
         <!-- <div class="input-group input-group-sm float-right"> -->
@@ -49,10 +49,9 @@
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-tint"></i>  ชื่อน้ำมันเครื่อง</th>
+          <th><i class="fa fa-tint"></i>  ชื่อรุ่นน้ำมันเครื่อง</th>
           <th><i class="fa fa-tint"></i>  เบอร์น้ำมันเครื่อง</th>
-          <th><i class="fa fa-tint"></i>  ประเภทน้ำมันเครื่อง</th>
-          <th><i class="fa fa-tint"></i>  น้ำมันเกียร์</th>
+          <th><i class="fa fa-tint"></i>  ชนิดน้ำมันเครื่อง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	
