@@ -9,12 +9,11 @@
             result = data.data;
             $("#lubricator_typeName").val(result.lubricator_typeName);
             $("#lubricator_typeSize").val(result.lubricator_typeSize);
-
-
         }
         
     });
- $("#submit").validate({
+    
+    $("#submit").validate({
         rules: {
             lubricator_typeName: {
                 required: true
