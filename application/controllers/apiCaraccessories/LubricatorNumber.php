@@ -15,7 +15,7 @@ class Lubricatornumber extends BD_Controller {
         $lubricator_gear   = $this->post('lubricator_gear');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("LubricatorNumbers");
-        $isCheck = $this->LubricatorNumbers->checkLubricatorNumber($lubricatorNumber, $lubricatorGear, $lubricatorNumberId);
+        $isCheck = $this->LubricatorNumbers->checkLubricatorNumberCarAcc($lubricator_number, $lubricator_typeId,null);
        if($isCheck){
             $data = array(
                 'lubricator_numberId' =>null,

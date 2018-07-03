@@ -134,6 +134,20 @@ class LubricatorNumbers extends CI_Model {
         }
         return false;
     }
-    
+    function checkLubricatorNumberCarAcc($lubricator_number, $lubricator_gear, $lubricator_numberId){
+        $this->db->where("lubricator_number", $lubricator_number);
+        $this->db->where("lubricator_gear", $lubricator_gear);
+
+        if($lubricatorNumberId != null){
+            $this->db->where("lubricator_numberId", $lubricator_numberId);
+        }
+
+        $result = $this->db->from("lubricator_number")->count_all_results();
+        if($result > 0){
+            return false;
+        }
+
+        return true;
+    }
 
 }
