@@ -123,6 +123,45 @@ class Lubricatornumber extends BD_Controller {
         $this->set_response($json_data);
     }
 
+    public function updateLubricatorNumber_post(){
+        $lubricator_number = $this->post('lubricator_number');
+        $lubricator_typeId = $this->post('lubricator_typeId');
+        $lubricator_gear   = $this->post('lubricator_gear');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $this->load->model("LubricatorNumbers");
+        $isCheck = $this->LubricatorNumbers->wherenotLubricatorNumber($lubricator_numberId,$lubricator_number);
+       if($isCheck){
+            $data = array(
+                'lubricator_numberId' =>null,
+                'lubricator_number' => $lubricator_number, 
+                'lubricator_typeId' => $lubricator_typeId,
+                'lubricator_gear' => $lubricator_gear, 
+                'status' => 2,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId,
+                'activeFlag' => 2
+            );
+            $isCheckStatus = $this->LubricatorNumbers->CheckStatus($lubricator_numberId,$userId);
+            if($isCheckStatus){
+                $result = $this->LubricatorNumbers->updateLubricatorNumber($data);
+                    if($result){
+                        $output["message"] = REST_Controller::MSG_SUCCESS;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }else{
+                        $output["status"] = false;
+                        $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }
+            }else{
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
 
 
 }
