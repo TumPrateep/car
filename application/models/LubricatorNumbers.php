@@ -122,5 +122,6 @@ class LubricatorNumbers extends CI_Model {
     function  insertLubricatorNumber($data){
         return $this->db->insert('lubricator_number', $data);
     }
+    
 
 }
