@@ -124,7 +124,7 @@ class LubricatorType extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
         $this->load->model("LubricatorTypes");
-        $lubricator_type = $this->LubricatorTypes->getlubricatorById($lubricator_typeId);
+        $lubricator_type = $this->LubricatorTypes->getlubricatorTypeById($lubricator_typeId);
         if($lubricator_type != null){
             $isCheckStatus =$this->LubricatorTypes->checkStatusFromLubricatorTypes($lubricator_typeId,$status,$userId);
             if($isCheckStatus ){
@@ -145,7 +145,42 @@ class LubricatorType extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
        }
     }
-
+    function updateLubricatorType_post(){
+        $lubricator_typeId = $this->post('lubricator_typeId');
+        $lubricator_typeName = $this->post("lubricator_typeName");
+        $lubricator_typeSize = $this->post("lubricator_typeSize");
+        $userId = $this->session->userdata['logged_in']['id'];
+        $this->load->model("LubricatorTypes");
+        $isCheck = $this->lubricatorTypes->checklubricator($lubricator_typeName,$lubricator_typeId);
+        if($isCheck){
+            $data = array(
+                'lubricator_typeId' => null,
+                'lubricator_typeName'=>$lubricator_typeName,
+                'lubricator_typeSize' => $lubricator_typeSize,
+                'update_by' =>$userId,
+                'update_at' =>date('Y-m-d H:i:s',time()),
+                'activeFlag' =>2
+            );
+            $isCheckStatus = $this->lubricatorTypes->checkStatusFromLubricatorTypes($lubricator_typeId,$status,$userId);
+            if($isCheckStatus){
+                $result = $this->lubricatorTypes->update($data);
+                if($result){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["status"] = false;
+                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
     
 }
 

@@ -37,8 +37,8 @@ CREATE TABLE `brand` (
   KEY `fk_brand_users1_idx` (`create_by`),
   KEY `fk_brand_users2_idx` (`update_by`),
   KEY `activeFlag_idx` (`activeFlag`),
-  CONSTRAINT `id` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `update_by` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `id` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `update_by` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,9 +85,9 @@ CREATE TABLE `car_accessories` (
   KEY `subdistrictId_idx` (`subdistrictId`),
   KEY `districtId_idx` (`districtId`),
   CONSTRAINT `districtId` FOREIGN KEY (`districtId`) REFERENCES `district` (`districtId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_car_accessories_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_car_accessories_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_car_accessories_users3` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_car_accessories_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_car_accessories_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_car_accessories_users3` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `provinceId` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `subdistrictId` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -130,9 +130,9 @@ CREATE TABLE `car_profile` (
   KEY `fk_car_profile_users1_idx` (`userId`),
   KEY `fk_car_profile_users2_idx` (`create_by`),
   KEY `fk_car_profile_users3_idx` (`update_by`),
-  CONSTRAINT `fk_car_profile_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_car_profile_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_car_profile_users3` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_car_profile_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_car_profile_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_car_profile_users3` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -228,8 +228,8 @@ CREATE TABLE `garage` (
   CONSTRAINT `fk_garage_district1` FOREIGN KEY (`districtId`) REFERENCES `district` (`districtId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_garage_province1` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_garage_subdistrict1` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_garage_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_garage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_garage_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_garage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -271,7 +271,7 @@ CREATE TABLE `lubricator` (
   CONSTRAINT `fk_lubricator_lubricator_number1` FOREIGN KEY (`lubricator_numberId`) REFERENCES `lubricator_number` (`lubricator_numberId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,6 +280,7 @@ CREATE TABLE `lubricator` (
 
 LOCK TABLES `lubricator` WRITE;
 /*!40000 ALTER TABLE `lubricator` DISABLE KEYS */;
+INSERT INTO `lubricator` VALUES (1,'X3',1,23,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(2,'x9000',1,22,1,1,NULL,NULL,1,1);
 /*!40000 ALTER TABLE `lubricator` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -306,7 +307,7 @@ CREATE TABLE `lubricator_brand` (
   KEY `fk_lubricator_brand_users2_idx` (`update_by`),
   CONSTRAINT `fk_lubricator_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -315,7 +316,7 @@ CREATE TABLE `lubricator_brand` (
 
 LOCK TABLES `lubricator_brand` WRITE;
 /*!40000 ALTER TABLE `lubricator_brand` DISABLE KEYS */;
-INSERT INTO `lubricator_brand` VALUES (2,'ZICX9',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'ZICX7',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'ZICX5',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'ZICX3',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `lubricator_brand` VALUES (1,'ZIC',1,1,'1',1,1,NULL,NULL),(2,'ZICX9',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'ZICX7',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'ZICX5',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'ZICX3',1,1,'1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,'ascasasd',2,2,'f878d6d70c05a8fb454dd8c4e08667fb.jpg',8,NULL,'2018-07-03 14:22:57',NULL);
 /*!40000 ALTER TABLE `lubricator_brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -389,7 +390,7 @@ CREATE TABLE `lubricator_number` (
   CONSTRAINT `fk_lubricator_number_lubricator_type1` FOREIGN KEY (`lubricator_typeId`) REFERENCES `lubricator_type` (`lubricator_typeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_number_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_number_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -398,7 +399,7 @@ CREATE TABLE `lubricator_number` (
 
 LOCK TABLES `lubricator_number` WRITE;
 /*!40000 ALTER TABLE `lubricator_number` DISABLE KEYS */;
-INSERT INTO `lubricator_number` VALUES (1,'SAE 5W30   สังเคราะห์แท้ 15,000 กิโลเมตร',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(2,'SAE 5W40   สังเคราะห์แท้ 15,000 กิโลเมตร',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(3,'SAE 10W30 กึ่งสังเคราะห์ 10,000 กิโลเมตร',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(4,'SAE 0W20',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(5,'API GL-4 SAE 75W90 ',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(6,'SAE 10W30 HONDA MTF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(7,'ATF WS (2.5L)',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(8,'ATF CVT FE',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(9,'ATF Type T-IV',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(10,'ATF WS',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(11,'ATF CVT FE',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(13,'ATF WS',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(14,'ATF Z1, ATF DW1',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(15,'ATF DPSF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(17,'ATF 5AT DCI',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(18,'CVTF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3');
+INSERT INTO `lubricator_number` VALUES (1,'SAE 5W30   ',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(2,'SAE 5W40   ',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(3,'SAE 10W30 ',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(4,'SAE 0W20',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,''),(5,'API GL-4 SAE 75W90 ',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(6,'SAE 10W30 HONDA MTF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(7,'ATF WS (2.5L)',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(8,'ATF CVT FE',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(9,'ATF Type T-IV',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(10,'ATF WS',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(11,'ATF CVT FE',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(13,'ATF WS',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(14,'ATF Z1, ATF DW1',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(15,'ATF DPSF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(17,'ATF 5AT DCI',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(18,'CVTF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(19,'0W40',1,1,1,NULL,NULL,1,1,NULL),(20,'0W30',1,1,1,NULL,NULL,1,1,NULL),(21,'10W30',1,1,1,NULL,NULL,1,1,NULL),(22,'15W40',1,1,1,NULL,NULL,1,1,NULL),(23,'20W50',1,1,1,NULL,NULL,1,1,NULL);
 /*!40000 ALTER TABLE `lubricator_number` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,7 +426,7 @@ CREATE TABLE `lubricator_type` (
   KEY `fk_lubricator_type_users2_idx` (`update_by`),
   CONSTRAINT `fk_lubricator_type_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_type_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -462,8 +463,8 @@ CREATE TABLE `model` (
   KEY `fk_model_users1_idx` (`create_by`),
   KEY `fk_model_users2_idx` (`update_by`),
   CONSTRAINT `fk_model_brand1` FOREIGN KEY (`brandId`) REFERENCES `brand` (`brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_model_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_model_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_model_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_model_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -495,8 +496,8 @@ CREATE TABLE `province` (
   PRIMARY KEY (`provinceId`),
   KEY `fk_province_users1_idx` (`create_by`),
   KEY `fk_province_users2_idx` (`update_by`),
-  CONSTRAINT `fk_province_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_province_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_province_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_province_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -593,8 +594,8 @@ CREATE TABLE `spares_brand` (
   KEY `fk_spares_brand_users1_idx` (`create_by`),
   KEY `fk_spares_brand_users2_idx` (`update_by`),
   CONSTRAINT `fk_spares_brand_spares_undercarriage1` FOREIGN KEY (`spares_undercarriageId`) REFERENCES `spares_undercarriage` (`spares_undercarriageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_spares_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_spares_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_spares_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_spares_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -628,8 +629,8 @@ CREATE TABLE `spares_undercarriage` (
   KEY `fk_spares_undercarriage_users1_idx` (`create_by`),
   KEY `fk_spares_undercarriage_users2_idx` (`update_by`),
   KEY `activeFlag_idx` (`activeFlag`),
-  CONSTRAINT `fk_spares_undercarriage_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_spares_undercarriage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_spares_undercarriage_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_spares_undercarriage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -974,4 +975,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-02 11:19:53
+-- Dump completed on 2018-07-03 16:01:31

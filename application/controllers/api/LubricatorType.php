@@ -14,7 +14,7 @@ class LubricatorType extends BD_Controller {
         
         $this->load->model("lubricatorTypes");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->lubricatorTypes->ChecklubricatorTypes($lubricator_typeName);
+        $isCheck = $this->lubricatorTypes->checklubricatorType($lubricator_typeName);
         
         if($isCheck){
             $data = array(
@@ -186,7 +186,6 @@ class LubricatorType extends BD_Controller {
 
         function getAllLubricatorType_post(){
             $this->load->model("lubricatorTypes");
-            $this->set_response($isCheck, REST_Controller::HTTP_OK);
             $result = $this->lubricatorTypes->getAllLubricatorTypes();
             $output["data"] = $result;
             $this->set_response($output, REST_Controller::HTTP_OK);

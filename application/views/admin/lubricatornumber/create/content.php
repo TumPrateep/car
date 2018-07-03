@@ -18,7 +18,7 @@
                   <!-- /.card-header -->
                   <!-- form start -->
 
-                  <form id="create-lubricatornumber" enctype="multipart/form-data" >
+                  <form id="create-lubricatornumber" >
                     <div class="card-body black bg-light">
                       <div class="row">
                         <div class="col-md-12">

@@ -49,7 +49,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link text-white" href="<?=base_url("admin/lubricatorbrand") ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/lubricator") ?>">
                     <!-- <i class="fa fa-futbol-o"></i> -->
                     <span class="nav-link-text">ยี่ห้อน้ำมันเครื่อง</span>
                   </a>

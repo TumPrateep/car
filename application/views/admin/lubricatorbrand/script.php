@@ -48,8 +48,8 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Lubricator/index/"+data.lubricatorId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"admin/LubricatorBrand/updatelubricatorbrand/"+data.lubricator_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/lubricator/lubricators/"+data.lubricator_brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"admin/lubricator/updatelubricatorbrand/"+data.lubricator_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricatorbrand('+data.lubricator_brandId+',\''+data.lubricator_brandName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -108,7 +108,7 @@
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/lubricatorbrand/");
+                showMessage(data.message,"admin/lubricator/");
             }else{
                 showMessage(data.message);
             }
@@ -119,7 +119,7 @@
             url: "/Lubricatorbrand/deleteLubricatorbrands?lubricator_brandId="+lubricator_brandId,
             label: "ลบยี่ห้อน้ำมันเครื่อง",
             content: "คุณต้องการลบ "+lubricator_brandName+" ใช่หรือไม่",
-            gotoUrl: "admin/lubricatorbrand"
+            gotoUrl: "admin/lubricator"
         }
         fnDelete(option);
     }
