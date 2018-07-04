@@ -1,44 +1,71 @@
 <script>
-      $("#update-lubricator").validate({
+       $("#update-lubricator").validate({
         rules: {
-            lubricator_Name: {
+            lubricatorName: {
                 required: true
             },
+            lubricator_number:{
+                required: true
+            }
         },
         messages: {
-            lubricator_Name: {
+            lubricatorName: {
                 required: "กรุณากรอกน้ำมันเครื่อง"
             },
+            lubricator_number:{
+                required: "กรุณาเลือกเบอร์น้ำมันเครื่อง"
+            }
         },
     });
 
+    var lubricator_brandId = $("#lubricator_brandId").val();
+    var lubricator_number = $("#lubricator_number");
+    var lubricator_gear = $("#lubricator_gear");
 
-    // $("#update-lubricator").submit(function(){
-    //     updateBrand();
-    // });
+     init();
 
-    // function updateBrand(){
-    //     event.preventDefault();
-    //     var isValid = $("#update-brand").valid();
-    //     if(isValid){
-    //         var myform = document.getElementById("update-brand");
-    //         var formData = new FormData(myform);
-    //         $.ajax({
-    //             url: base_url+"api/car/updateBrand",
-    //             data: formData,
-    //             processData: false,
-    //             contentType: false,
-    //             type: 'POST',
-    //             success: function (data) {
-    //                 if(data.message == 200){
-    //                     showMessage(data.message,"admin/car");
-    //                 }else{
-    //                     showMessage(data.message);
-    //                 }
-    //             }
-    //         });
-    //     }
-    // }
+    function init(){
+        lubricator_number.html('<option value="">เลือกเบอร์น้ำมันเครื่อง</option>');
+        $.post(base_url+"api/LubricatorNumber/getAllLubricatorNumber",{
+            lubricator_gear: lubricator_gear.val()
+        },function(result){
+                var data = result.data;
+                if(data != null){
+                    $.each( data, function( key, value ) {
+                        lubricator_number.append('<option value="' + value.lubricator_numberId + '">' + value.lubricator_number + '</option>');
+                    });
+                }
+            }
+        );
+    }
+
+     lubricator_gear.change(function(){
+        $("#lubricator_brandId").val("");
+        init();
+    });
+
+    $("#update-lubricator").submit(function(){
+        updateLubricator();
+    })
+
+    function updateLubricator(){
+        event.preventDefault();
+        var isValid = $("#update-lubricator").valid();
+        
+        if(isValid){
+            var data = $("#update-lubricator").serialize();
+            $.post(base_url+"api/Lubricator/updatelubricator/",data,
+            function(data){
+                var lubricator_brandId = $("#lubricator_brandId").val();
+                if(data.message == 200){
+                    showMessage(data.message,"admin/lubricator/lubricators",+lubricator_brandId);
+                }else{
+                    showMessage(data.message,);
+                }
+            });
+            
+        }
+    }
 </script>
 
 </body>
