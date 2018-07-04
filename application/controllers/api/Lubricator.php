@@ -83,7 +83,6 @@ class Lubricator extends BD_Controller {
         $lubricatorName = $this->post("lubricatorName");
         $lubricator_brandId = $this->post("lubricator_brandId");
         $lubricator_numberId = $this->post("lubricator_number");
-        $lubricator_gear = $this->post("lubricator_gear");
 
         $this->load->model("lubricators");
         $userId = $this->session->userdata['logged_in']['id'];
