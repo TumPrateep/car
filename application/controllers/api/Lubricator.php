@@ -6,7 +6,7 @@ class Lubricator extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
     function searchLubricator_post(){
         $lubricator_brandId = $this->post('lubricator_brandId');
@@ -81,21 +81,25 @@ class Lubricator extends BD_Controller {
 
     function createlubricator_post(){
         $lubricatorName = $this->post("lubricatorName");
-        
-        $this->load->model("lubricator");
+        $lubricator_brandId = $this->post("lubricator_brandId");
+        $lubricator_numberId = $this->post("lubricator_number");
+
+        $this->load->model("lubricators");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->lubricator->Checklubricator($lubricatorName);
+        $isCheck = $this->lubricators->Checklubricator($lubricatorName);
         
         if($isCheck){
             $data = array(
                 'lubricatorId' => null,
                 'lubricatorName' => $lubricatorName,  
+                'lubricator_brandId' =>$lubricator_brandId,
+                'lubricator_numberId' =>$lubricator_numberId,
                 'status' => 1,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
                 'activeFlag' => 1
             );
-            $result = $this->lubricator->insert_lubricator($data);
+            $result = $this->lubricators->insert_lubricator($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -110,6 +114,40 @@ class Lubricator extends BD_Controller {
         else{
             $output["status"] = false;
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+    public function update_post(){
+        $lubricatorId = $this->post('lubricatorId');
+        $lubricatorName = $this->post("lubricatorName");
+        $lubricator_brandId = $this->post("lubricator_brandId");
+        $lubricator_numberId = $this->post("lubricator_numberId");
+        $this->load->model("lubricators");
+        $userId = $this->session->userdata['logged_in']['id'];
+        $isCheck = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId);
+        if($isCheck){
+            $data = array(
+                'lubricatorId' => $lubricatorId,
+                'lubricatorName' => $lubricatorName,
+                'lubricator_brandId' => $lubricator_brandId,
+                'lubricator_numberId' => $lubricator_numberId,
+                'update_by' => $userId,
+                'status' => 1,
+                'activeFlag' => 1,
+                'update_at' => date('Y-m-d H:i:s',time())
+            );
+            $result = $this->lubricators->update($data);
+            $output["status"] = $result;
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }

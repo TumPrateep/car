@@ -65,14 +65,12 @@
                                  + '<h5 class="card-title">'+value.lubricator_brandName+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<a href="'+base_url+"caraccessory/Lubricator/index/"+value.lubricator_brandId+'">'
-                                 + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
-                                 + '</a>'
+                                 + '<a href="'+base_url+"caraccessory/lubricator/lubricators/"+data.lubricator_brandId+'"><button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> </a> '
 
                                 
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/BrandLubricator/updateBrandLubricator/"+value.lubricator_brandId+'">'
+                                html += '<a href="'+base_url+"caraccessory/Lubricator/updateLubricatorBrand/"+value.lubricator_brandId+'">'
                                  + '<button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> ' 
                                  + '</a>'
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletelubricator_brand(\''+value.lubricator_brandId+'\',\''+value.lubricator_brandName+'\')"><i class="ti-trash"></i> ลบ</button>';   
@@ -101,7 +99,7 @@
             url: "/Lubricatorbrand/deletelubricatorbrand?lubricator_brandId="+lubricator_brandId,
             label: "ลบยี่ห้อรถ",
             content: "คุณต้องการลบ "+lubricator_brandName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/brandLubricator"
+            gotoUrl: "caraccessory/Lubricator"
         }
         fnDelete(option);
     }

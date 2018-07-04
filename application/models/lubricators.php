@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class Lubricators extends CI_Model{
+class lubricators extends CI_Model{
     
     function allLubricators_count($lubricator_brandId)
     {   
@@ -60,6 +60,10 @@ class Lubricators extends CI_Model{
         $result = $this->db->update('lubricator', $data);
         return $result; 
     }
+    function update($data){
+        $this->db->where('lubricatorId',$lubricatorId);
+        return $this->db->update('lubricator', $data);
+    }
 
     function Checklubricator($lubricatorName){
         $this->db->select("lubricatorName");
@@ -76,7 +80,35 @@ class Lubricators extends CI_Model{
         return $this->db->insert('lubricator', $data);
 
     }
-    
-
- 
+    function checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId){   
+        $this->db->from("lubricator");
+        $this->db->where('lubricatorName',$lubricatorName);
+        $this->db->where('lubricator_brandId',$lubricator_brandId);
+        $this->db->where_not_in('lubricatorId',$lubricatorId);
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+    function checkBeforeDelete($lubricatorId,$lubricatorName,$lubricator_brandId){
+        return $this->db->where('lubricatorId',$lubricatorId)->get("lubricator")->row();
+    } 
+    function checkStatusforUpdate($lubricatorId,$userId,$status){
+        $this->db->from("lubricator");
+        $this->db->where('lubricatorId',$lubricatorId);
+        $this->db->where('lubricatorName',$lubricatorName);
+        $this->db->where('lubricator_brandId',$lubricator_brandId);
+        $this->db->where('status',$status);
+        $this->db->where('active',2);
+        $this->db->where('create_by',$userId);
+        $result = $this->db->count_all_results();
+        if($result){
+            return true;
+        }
+        return false;
+    }
+    function delete($lubricatorId){
+        return $this->db->delete('lubricator', array('lubricatorId' => $lubricatorId));
+    }
 }
