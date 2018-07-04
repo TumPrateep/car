@@ -47,13 +47,13 @@ class Lubricatornumber extends BD_Controller {
 
 
     function searchLubricatornumber_post(){
-        // $column = "lubricator_number";
-        $columns = array( 
-            0 =>'lubricator_number',
-            1 => 'lubricator_gear',
-            2 => 'lubricator_typeId',
-            3 =>'status'
-        );
+        $column = "lubricator_number";
+        // $columns = array( 
+        //     0 =>'lubricator_number',
+        //     1 => 'lubricator_gear',
+        //     2 => 'lubricator_typeId',
+        //     3 =>'status'
+        // );
         $sort = "asc";
         if($this->post('column') == 3){
             $column = "status";
@@ -73,13 +73,14 @@ class Lubricatornumber extends BD_Controller {
 
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('lubricator_number')) && empty($this->post('lubricator_gear')))
+        if(empty($this->post('lubricator_number')))
         {            
             $posts = $this->LubricatorNumbers->allLubricatorNumbers($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('lubricator_number');
-            $status = 2; 
+            // $status = 2; 
+            $status = $this->post('status'); 
 
             $posts =  $this->LubricatorNumbers->lubricatorNumber_search($limit,$start,$search,$order,$dir,$status);
 

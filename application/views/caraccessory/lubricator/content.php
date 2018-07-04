@@ -7,7 +7,8 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Lubricator"); ?>">น้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/brandLubricator"); ?>">ยี่ห้อน้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Lubricator/$lubricator_brandId"); ?>">น้ำมันเครื่อง</a></li>                
                 <li class="breadcrumb-item active">ค้นหา</li>
             </ol>
         </div>
@@ -18,7 +19,7 @@
 
         <div class="row p-30">
             <div class="col-lg-3 div-right">
-                <a href="<?=base_url("caraccessory/lubricator/createlubricator/") ?>">
+                <a href="<?=base_url("caraccessory/lubricator/createlubricator/$lubricator_brandId") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>
@@ -43,7 +44,7 @@
         </div>
         
         <div class="table">
-            <table class="table table-bordered" id="lubricatortype-table" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
                 <thead>
                     <th></th>
                 </thead>	
