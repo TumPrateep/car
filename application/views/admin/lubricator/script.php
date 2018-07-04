@@ -34,68 +34,75 @@
                     data.status = $("#status").val()
                 }
             },
-            // "order": [[ 1, "asc" ]],
-            // "columns": [
-            //     null,
-            //     { "data": "lubricatorName" },
-            //     null,
-            //     null,
-            //     null
-            // ],
+            "order": [[ 1, "asc" ]],
+            "columns": [
+                null,
+                { "data": "lubricatorName" },
+                { "data": "lubricator_number" },
+                null,
+                null,
+                null
+            ],
             "columnDefs": [
-                // {
-                //     "searchable": false,
-                //     "orderable": false,
-                //     "targets": [0,5]
-                // },{
-                //     "targets": 6,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         return '<a href="'+base_url+"admin/Lubricator/updatelubricator/"+data.lubricatorId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                //             +'<button type="button" class="delete btn btn-danger" onclick="deleteTireBand('+data.lubricatorId+',\''+data.lubricatorName+'\')"><i class="fa fa-trash"></i></button>';
-                //     }
-                // },
-                // {
-                //     "targets": 0,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         return meta.row + 1;
-                //     }
-                // },
-                // {
-                    
-                // },{
-                //     "targets": 5,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         var switchVal = "true";
-                //         var active = " active";
-                //         if(data.status == null){
-                //             return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
-                //         }else if(data.status != "1"){
-                //             switchVal = "false";
-                //             active = "";
-                //         }
-                //         return '<div>'
-                //         +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.lubricatorId+','+data.status+','+data.lubricator_brandId+')">'
-                //         +'<div class="handle"></div>'
-                //         +'</button>'
-                //         +'</div>';
-                //     }
-                // },
+                {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": [0,5]
+                },
+                {
+                    "targets": 5,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return '<a href="'+base_url+"admin/Lubricator/updatelubricator/"+data.lubricator_brandId+'/'+data.lubricatorId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteTireBand('+data.lubricatorId+',\''+data.lubricatorName+'\')"><i class="fa fa-trash"></i></button>';
+                    }
+                },
+                {
+                    "targets": 0,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return meta.row + 1;
+                    }
+                },
+                {
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return (data.lubricator_gear == "" || data.lubricator_gear == null)?"<small><i class='gray'>ไม่พบข้อมูล</i></small>":lubricatorLib[data.lubricator_gear];
+                    }
+                },
+                {
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.lubricatorId+','+data.status+','+data.lubricator_brandId+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
+                    }
+                },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": []},
-                {"className": "dt-center", "targets": [0,1,2,3,5]},
+                {"className": "dt-head-center", "targets": [1]},
+                {"className": "dt-center", "targets": [0,2,3,4,5]},
                 { "width": "10%", "targets": 0 },
                 { "width": "12%", "targets": 4 },
                 { "width": "15%", "targets": 5 }
             ]	 
     });
    
-    // $("#form-search").submit(function(){
-    //     event.preventDefault();
-    //     table.ajax.reload();
-    // })
+    $("#form-search").submit(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
 
     //  function updateStatus(lubricatorId,status){
     //     $.post(base_url+"api/Lubricator/changeStatus",{
