@@ -7,7 +7,8 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Lubricator"); ?>">น้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Lubricator"); ?>">ยี่ห้อน้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Lubricator/Lubricators"); ?>">น้ำมันเครื่อง</a></li>
                 <li class="breadcrumb-item active">ค้นหา</li>
             </ol>
         </div>
