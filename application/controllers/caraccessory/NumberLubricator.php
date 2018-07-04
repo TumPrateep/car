@@ -36,10 +36,10 @@ class NumberLubricator extends CI_Controller {
 	$this->load->view("caraccessory/layout/head");
 	$this->load->view("caraccessory/layout/header");
 	$this->load->view("caraccessory/layout/left-menu");
-	$this->load->view("caraccessory/lubricatortype/update/content",$data);
+	$this->load->view("caraccessory/numberLubricator/update/content",$data);
 	$this->load->view("caraccessory/layout/footer");
 	$this->load->view("caraccessory/layout/foot");
-	$this->load->view("caraccessory/lubricatortype/update/script");
+	$this->load->view("caraccessory/numberLubricator/update/script");
 }
 	
 
