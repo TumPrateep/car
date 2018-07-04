@@ -52,19 +52,19 @@
         event.preventDefault();
         var isValid = $("#create-lubricator").valid();
         
-        // if(isValid){
-        //     var data = $("#submit").serialize();
-        //     $.post(base_url+"api/Lubricator/createlubricator/",data,
-        //     function(data){
-        //         var lubricatorId = $("#lubricatorId").val();
-        //         if(data.message == 200){
-        //             showMessage(data.message,"admin/lubricator",+lubricatorId);
-        //         }else{
-        //             showMessage(data.message,);
-        //         }
-        //     });
+        if(isValid){
+            var data = $("#create-lubricator").serialize();
+            $.post(base_url+"api/Lubricator/createlubricator/",data,
+            function(data){
+                var lubricator_brandId = $("#lubricator_brandId").val();
+                if(data.message == 200){
+                    showMessage(data.message,"admin/lubricator/lubricators",+lubricator_brandId);
+                }else{
+                    showMessage(data.message,);
+                }
+            });
             
-        // }
+        }
     }
 </script>
 
