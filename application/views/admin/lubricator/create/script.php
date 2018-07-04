@@ -18,7 +18,7 @@
         },
     });
 
-    var lubricator_brandId = $("#lubricator_brandId").val();
+    
     var lubricator_number = $("#lubricator_number");
     var lubricator_gear = $("#lubricator_gear");
 
@@ -40,7 +40,7 @@
     }
 
     lubricator_gear.change(function(){
-        $("#lubricator_brandId").val("");
+        var lubricator_brandId = $("#lubricator_brandId").val();
         init();
     });
 

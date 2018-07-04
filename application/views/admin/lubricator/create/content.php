@@ -22,9 +22,8 @@
                   <!-- form start -->
 
                   <form id="create-lubricator" >
-                  <input type="hidden" name="lubricator_brandId" id="lubricator_brandId" value="<?=$lubricator_brandId ?>">
                   <div class="card-body black bg-light">
-                      
+                  <input type="hidden" name="lubricator_brandId" id="lubricator_brandId" value="<?=$lubricator_brandId ?>">
                       <div class="row">
                           <div class="col-md-4 form-group">
                             <label>ชื่อรุ่นน้ำมันเครื่อง</label> <span class="error">*</span>

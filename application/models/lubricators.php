@@ -60,6 +60,10 @@ class lubricators extends CI_Model{
         $result = $this->db->update('lubricator', $data);
         return $result; 
     }
+    function update($data){
+        $this->db->where('lubricatorId',$lubricatorId);
+        return $this->db->update('lubricator', $data);
+    }
 
     function Checklubricator($lubricatorName){
         $this->db->select("lubricatorName");
@@ -75,6 +79,19 @@ class lubricators extends CI_Model{
     function  insert_lubricator($data){
         return $this->db->insert('lubricator', $data);
 
+    }
+    function checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId){
+        // $this->db->select("lubricatorName");
+        $this->db->from("lubricator");
+        $this->db->where('lubricatorName',$lubricatorName);
+        // $this->db->where('lubricatorId',$lubricatorId);
+        $this->db->where('lubricator_brandId',$lubricator_brandId);
+        $this->db->where_not_in('lubricatorId',$lubricatorId);
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return false;
+        }
+        return true;
     }
     
 
