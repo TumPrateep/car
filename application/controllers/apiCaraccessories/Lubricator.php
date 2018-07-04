@@ -81,10 +81,34 @@ class Lubricator extends BD_Controller {
     //     $this->set_response($json_data);
     }
 
-
-
-
-
-
+    public function delete_get(){
+        $lubricator_numberId = $this->post('lubricator_numberId');
+        $lubricatorName = $this->post('lubricatorName'); 
+        $lubricatorId = $this->post('lubricatorId'); 
+        $lubricator_brandId = $this->post('lubricator_brandId'); 
+        $this->load->model("lubricators");
+        $status = $this->post('status');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $isCheck = $this->lubricators->checkBeforeDelete($lubricator_numberId,$lubricator_brandId,$lubricatorName);
+        if($isCheck){
+            $isCheckStatus = $this->lubricators->checkStatusforUpdate($lubricator_numberId,$userId,$status);
+            if($isCheckStatus){
+                $isDelete = $this->lubricators->delete($lubricatorId);
+                if($isDelete){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
 }

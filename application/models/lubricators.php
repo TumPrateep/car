@@ -80,11 +80,9 @@ class lubricators extends CI_Model{
         return $this->db->insert('lubricator', $data);
 
     }
-    function checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId){
-        // $this->db->select("lubricatorName");
+    function checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId){   
         $this->db->from("lubricator");
         $this->db->where('lubricatorName',$lubricatorName);
-        // $this->db->where('lubricatorId',$lubricatorId);
         $this->db->where('lubricator_brandId',$lubricator_brandId);
         $this->db->where_not_in('lubricatorId',$lubricatorId);
         $result = $this->db->count_all_results();
@@ -93,7 +91,24 @@ class lubricators extends CI_Model{
         }
         return true;
     }
-    
-
- 
+    function checkBeforeDelete($lubricatorId,$lubricatorName,$lubricator_brandId){
+        return $this->db->where('lubricatorId',$lubricatorId)->get("lubricator")->row();
+    } 
+    function checkStatusforUpdate($lubricatorId,$userId,$status){
+        $this->db->from("lubricator");
+        $this->db->where('lubricatorId',$lubricatorId);
+        $this->db->where('lubricatorName',$lubricatorName);
+        $this->db->where('lubricator_brandId',$lubricator_brandId);
+        $this->db->where('status',$status);
+        $this->db->where('active',2);
+        $this->db->where('create_by',$userId);
+        $result = $this->db->count_all_results();
+        if($result){
+            return true;
+        }
+        return false;
+    }
+    function delete($lubricatorId){
+        return $this->db->delete('lubricator', array('lubricatorId' => $lubricatorId));
+    }
 }
