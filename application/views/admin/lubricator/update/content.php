@@ -23,9 +23,25 @@
 
                   <form id="update-lubricator" enctype="multipart/form-data" >
                   <div class="card-body black bg-light">
-                      <div class="form-group">
-                        <label>ชื่อน้ำมันเครื่อง</label> <span class="error">*</span>
-                        <input type="text" class="form-control" placeholder="ชื่อน้ำมันเครื่อง" name="lubricator_Name" id="lubricator_Name">
+                  <div class="row">
+                          <div class="col-md-4 form-group">
+                            <label>ชื่อรุ่นน้ำมันเครื่อง</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="ชื่อรุ่นน้ำมันเครื่อง" name="lubricatorName" id="lubricatorName">
+                          </div>
+                          <div class="col-md-4 form-group">
+                              <label>ชนิดน้ำมันเครื่อง</label>
+                              <select class="form-control" name="lubricator_gear" id="lubricator_gear">
+                                <option value="1">น้ำมันเครื่อง</option>
+                                <option value="2">น้ำมันเกียร์ธรรมดา</option>
+                                <option value="3">น้ำมันเกียร์ออโต</option>
+                              </select>
+                          </div>
+                          <div class="col-md-4 form-group">
+                              <label>เบอร์น้ำมันเครื่อง</label> <span class="error">*</span>
+                              <select class="form-control input-default" name="lubricator_number" id="lubricator_number">
+                                  <option value="">เลือกเบอร์น้ำมันเครื่อง</option>
+                              </select>
+                          </div>
                       </div>
                       <div class="form-group"> 
                         <button type="submit" class="btn btn-primary">บันทึก</button>
