@@ -11,10 +11,13 @@ class lubricators extends CI_Model{
     
     function allLubricators($limit,$start,$col,$dir,$lubricator_brandId)
     {  
+        $this->db->select('lubricator.lubricatorId,lubricator.lubricatorName,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_number'); 
+        $this->db->from('lubricator');
+        $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
         $this->db->where("lubricator_brandId", $lubricator_brandId);
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
-                ->get('lubricator');
+                ->get();
         
         if($query->num_rows()>0)
         {
@@ -28,14 +31,17 @@ class lubricators extends CI_Model{
     }
     function Lubricator_search($limit,$start,$search,$col,$dir,$status,$lubricator_brandId)
     {
-        $this->db->where("lubricator_brandId", $lubricator_brandId);
-        $this->db->like('lubricatorName',$search);
+        $this->db->select('lubricator.lubricatorId,lubricator.lubricatorName,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_number'); 
+        $this->db->from('lubricator');
+        $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
+        $this->db->where("lubricator.lubricator_brandId", $lubricator_brandId);
+        $this->db->like('lubricator.lubricatorName',$search);
         if($status != null){
-            $this->db->where("status", $status);
+            $this->db->where("lubricator.status", $status);
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
-                ->get('lubricator');       
+                ->get();       
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -48,9 +54,12 @@ class lubricators extends CI_Model{
     function Lubricator_search_count($search,$status,$lubricator_brandId)
     {
         $this->db->where("lubricator_brandId", $lubricator_brandId);
-        $query = $this->db->like('lubricatorName',$search)
-                ->where('status',$status)
-                ->get('lubricator');
+        $this->db->like('lubricatorName',$search);
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+               
+        $query = $this->db->get('lubricator');
     
         return $query->num_rows();
     } 

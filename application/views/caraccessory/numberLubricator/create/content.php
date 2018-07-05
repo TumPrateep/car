@@ -14,7 +14,7 @@
     </div>
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
-    <div class="container-fluid">
+    
     <div class="container-fluid">
         <form id="submit">   
         <div class="row">
