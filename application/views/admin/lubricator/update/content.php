@@ -2,10 +2,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/lubricatorbrand") ?>">ยี่ห้อน้ำมันเครื่อง</a>
+          <a href="<?=base_url("admin/lubricator") ?>">ยี่ห้อน้ำมันเครื่อง</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/lubricator") ?>">น้ำมันเครื่อง</a>
+          <a href="<?=base_url("admin/lubricator/lubricators/$lubricator_brandId") ?>">น้ำมันเครื่อง</a>
         </li>
         <li class="breadcrumb-item active">แก้ไขข้อมูล</li>
       </ol>
@@ -22,6 +22,8 @@
                   <!-- form start -->
 
                   <form id="update-lubricator" enctype="multipart/form-data" >
+                  <input type="hidden" name="lubricatorId" id="lubricatorId" value="<?=$lubricatorId ?>" >
+                  <input type="hidden" name="lubricator_brandId" id="lubricator_brandId" value="<?=$lubricator_brandId ?>" >
                   <div class="card-body black bg-light">
                   <div class="row">
                           <div class="col-md-4 form-group">

@@ -66,8 +66,9 @@ class Lubricator extends CI_Controller {
 		$this->load->view("admin/lubricator/create/script");
 	}
 
-	public function updatelubricator($lubricatorId){
+	public function updatelubricator($lubricator_brandId,$lubricatorId){
 		$data["lubricatorId"] = $lubricatorId;
+		$data["lubricator_brandId"] = $lubricator_brandId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");

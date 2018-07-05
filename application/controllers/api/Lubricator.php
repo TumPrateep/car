@@ -85,10 +85,11 @@ class Lubricator extends BD_Controller {
         $lubricatorName = $this->post("lubricatorName");
         $lubricator_brandId = $this->post("lubricator_brandId");
         $lubricator_numberId = $this->post("lubricator_number");
+        $lubricator_gear = $this->post("lubricator_gear");
 
         $this->load->model("lubricators");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->lubricators->Checklubricator($lubricatorName);
+        $isCheck = $this->lubricators->Checklubricator($lubricatorName, $lubricator_brandId, $lubricator_gear);
         
         if($isCheck){
             $data = array(
@@ -123,19 +124,17 @@ class Lubricator extends BD_Controller {
         $lubricatorId = $this->post('lubricatorId');
         $lubricatorName = $this->post("lubricatorName");
         $lubricator_brandId = $this->post("lubricator_brandId");
-        $lubricator_numberId = $this->post("lubricator_numberId");
+        $lubricator_numberId = $this->post("lubricator_number");
+        $lubricator_gear = $this->post("lubricator_gear");
         $this->load->model("lubricators");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId);
+        $isCheck = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear);
         if($isCheck){
             $data = array(
                 'lubricatorId' => $lubricatorId,
                 'lubricatorName' => $lubricatorName,
-                'lubricator_brandId' => $lubricator_brandId,
                 'lubricator_numberId' => $lubricator_numberId,
                 'update_by' => $userId,
-                'status' => 1,
-                'activeFlag' => 1,
                 'update_at' => date('Y-m-d H:i:s',time())
             );
             $result = $this->lubricators->update($data);
@@ -177,26 +176,15 @@ class Lubricator extends BD_Controller {
     function getlubricator_post(){
 
         $lubricatorId = $this->post('lubricatorId');
-        $lubricator_brandId = $this->post('lubricator_brandId');
-        $lubricatorName = $this->post('lubricatorName');
 
         $this->load->model("lubricators");
-        $isCheck = $this->lubricators->checkbeforeupdate($lubricatorId,$lubricator_brandId,$lubricatorName);
-
-        if($isCheck){
-            $output["status"] = true;
-            $result = $this->lubricators->getlubricatorbyId($lubricatorId);
-            if($result != null){
-                $output["data"] = $result;
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_ERROR;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+        $result = $this->lubricators->getlubricatorbyId($lubricatorId);
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_ERROR;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }

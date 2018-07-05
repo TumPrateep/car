@@ -70,14 +70,17 @@ class lubricators extends CI_Model{
         return $result; 
     }
     function update($data){
-        $this->db->where('lubricatorId',$lubricatorId);
+        $this->db->where('lubricatorId',$data["lubricatorId"]);
         return $this->db->update('lubricator', $data);
     }
 
-    function Checklubricator($lubricatorName){
-        $this->db->select("lubricatorName");
-        $this->db->from("lubricator");
-        $this->db->where('lubricatorName',$lubricatorName);
+    function Checklubricator($lubricatorName, $lubricator_brandId, $lubricator_gear){
+        $this->db->select('lubricator.lubricatorId,lubricator.lubricatorName,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_numberId'); 
+        $this->db->from('lubricator');
+        $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
+        $this->db->where('lubricator.lubricatorName',$lubricatorName);
+        $this->db->where('lubricator.lubricator_brandId',$lubricator_brandId);
+        $this->db->where('lubricator_number.lubricator_gear',$lubricator_gear);
         $result = $this->db->count_all_results();
         if($result > 0){
             return false;
@@ -89,10 +92,13 @@ class lubricators extends CI_Model{
         return $this->db->insert('lubricator', $data);
 
     }
-    function checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId){   
-        $this->db->from("lubricator");
-        $this->db->where('lubricatorName',$lubricatorName);
-        $this->db->where('lubricator_brandId',$lubricator_brandId);
+    function checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear){   
+        $this->db->select('lubricator.lubricatorId,lubricator.lubricatorName,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_numberId'); 
+        $this->db->from('lubricator');
+        $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
+        $this->db->where('lubricator.lubricatorName',$lubricatorName);
+        $this->db->where('lubricator.lubricator_brandId',$lubricator_brandId);
+        $this->db->where('lubricator_number.lubricator_gear',$lubricator_gear);
         $this->db->where_not_in('lubricatorId',$lubricatorId);
         $result = $this->db->count_all_results();
         if($result > 0){
@@ -123,8 +129,11 @@ class lubricators extends CI_Model{
     }
 
     function getlubricatorbyId($lubricatorId){
+        $this->db->select('lubricator.lubricatorId,lubricator.lubricatorName,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_numberId'); 
+        $this->db->from('lubricator');
+        $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
         $this->db->where('lubricatorId',$lubricatorId);
-        $result = $this->db->get('lubricator')->row();
+        $result = $this->db->get()->row();
         return $result;
     }
 
