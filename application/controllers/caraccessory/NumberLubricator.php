@@ -31,8 +31,8 @@ class NumberLubricator extends CI_Controller {
 		$this->load->view("caraccessory/numberLubricator/create/script");
 	}
 
-	public function updatelubricatorNumber($lubricator_typeId){
-		$data['lubricator_typeId'] = $lubricator_typeId;
+	public function updatelubricatorNumber($lubricator_numberId){
+		$data['lubricator_numberId'] = $lubricator_numberId;
 	$this->load->view("caraccessory/layout/head");
 	$this->load->view("caraccessory/layout/header");
 	$this->load->view("caraccessory/layout/left-menu");

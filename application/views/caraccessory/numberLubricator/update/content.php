@@ -15,7 +15,8 @@
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
     <div class="container-fluid">
-        <form id="submit">   
+        <form id="submit"> 
+        <input type="hidden" id="lubricator_numberId" name="lubricator_numberId" value="<?=$lubricator_numberId ?>">     
         <div class="row">
             <div class="col-lg-12">
                 <div class="card card-header">

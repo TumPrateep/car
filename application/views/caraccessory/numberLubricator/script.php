@@ -69,7 +69,7 @@
                                 + '</a>'
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/NumberLubricator/updatelubricatorNumber/"+value.lubricator_typeId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                html += '<a href="'+base_url+"caraccessory/NumberLubricator/updatelubricatorNumber/"+value.lubricator_numberId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteModel(\''+value.lubricator_typeId+'\',\''+value.lubricator_number+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  
