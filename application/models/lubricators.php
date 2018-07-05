@@ -121,4 +121,11 @@ class lubricators extends CI_Model{
     function delete($lubricatorId){
         return $this->db->delete('lubricator', array('lubricatorId' => $lubricatorId));
     }
+
+    function getlubricatorbyId($lubricatorId){
+        $this->db->where('lubricatorId',$lubricatorId);
+        $result = $this->db->get('lubricator')->row();
+        return $result;
+    }
+
 }

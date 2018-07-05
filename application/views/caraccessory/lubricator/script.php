@@ -31,7 +31,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.lubricatorName = $("#searchbrand-search").val(),
+                    data.lubricatorName = $("#lubricator-search").val(),
+                    data.lubricator_brandId = $("#lubricator_brandId").val(),
                     data.column = $("#column").val()
                 }
             },
@@ -57,19 +58,19 @@
                             }
                         
                             html += '<div class="col-lg-3 ">'
-                                + '<div class="card card-header-height">'
-                                + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
-                                + '<div class="card-body text-center card-body-height">'
-                                + '<h5 class="card-title">'+value.lubricatorName+'</h5>'
-                                + '<h5 class="card-title">'+value.lubricator_number+'</h5>'
-                                + '<h5 class="card-title">'+value.lubricator_gear+'</h5>'
-                                + '</div>'
-                                + '<div class="card-body text-center card-bottom">'
-                                + '</a>'
+                                 + '<div class="card card-header-height">'
+                                 + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
+                                 + '<div class="card-body text-center card-body-height">'
+                                 + '<h5 class="card-title">'+value.lubricatorName+'</h5>'
+                                 + '<h5 class="card-title">'+value.lubricator_number+'</h5>'
+                                 + '<h5 class="card-title">'+lubricatorLib[value.lubricator_gear]+'</h5>'
+
+                                 + '</div>'
+                                 + '<div class="card-body text-center card-bottom">'
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/Spareundercarries/updatespareUndercarriage/"+value.spares_undercarriageId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteModel(\''+value.spares_undercarriageId+'\',\''+value.spares_undercarriageName+'\')"><i class="ti-trash"></i> ลบ</button>';
+                                html += '<a href="'+base_url+"caraccessory/Lubricator/updatelubricator/"+value.lubricatorId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteModel('+data.lubricatorId+',\''+data.lubricatorName+'\',\''+data.lubricator_brandId+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  
                             html += '</div>'
@@ -85,13 +86,13 @@
             ]
     });
 
-
-    function deleteModel(spares_undercarriageId, spares_undercarriageName){
+  
+  function deleteLubricator(lubricatorId,lubricatorName,lubricator_brandId){
         var option = {
-            url: "/CarSpareUndercarriage/deletespareUndercarriage?spares_undercarriageId="+spares_undercarriageId,
-            label: "ลบอะไหล่ช่วงล่าง",
-            content: "คุณต้องการลบ "+spares_undercarriageName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/Spareundercarries"
+            url: "/Lubricator/delete?lubricatorId="+lubricatorId,
+            label: "ลบประเภทน้ำมัน",
+            content: "คุณต้องการลบ "+lubricatorName+" ใช่หรือไม่",
+            gotoUrl: "admin/lubricator/lubricators/"+lubricator_brandId
         }
         fnDelete(option);
     }
