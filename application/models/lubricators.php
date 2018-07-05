@@ -100,8 +100,9 @@ class lubricators extends CI_Model{
         }
         return true;
     }
-    function checkBeforeDelete($lubricatorId,$lubricatorName,$lubricator_brandId){
+    function checkBeforeDelete($lubricatorId){
         return $this->db->where('lubricatorId',$lubricatorId)->get("lubricator")->row();
+        
     } 
     function checkStatusforUpdate($lubricatorId,$userId,$status,$lubricator_brandId,$lubricatorName){
         $this->db->from("lubricator");
