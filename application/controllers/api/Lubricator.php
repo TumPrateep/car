@@ -119,7 +119,7 @@ class Lubricator extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-    public function update_post(){
+    public function updatelubricator_post(){
         $lubricatorId = $this->post('lubricatorId');
         $lubricatorName = $this->post("lubricatorName");
         $lubricator_brandId = $this->post("lubricator_brandId");
