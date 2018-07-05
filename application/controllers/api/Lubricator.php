@@ -156,9 +156,9 @@ class Lubricator extends BD_Controller {
 
     
     public function delete_get(){
-        $lubricatorId = $this->post('lubricatorId'); 
+        $lubricatorId = $this->get('lubricatorId');
         $this->load->model("lubricators");
-        $lubricator = $this->lubricators->checkBeforeDelete($lubricatorId);
+        $lubricator = $this->lubricators->getlubricatorById($lubricatorId);
         if($lubricator != null){
             $isDelete = $this->lubricators->delete($lubricatorId);
             if($isDelete){
