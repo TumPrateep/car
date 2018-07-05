@@ -31,7 +31,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.lubricatorName = $("#searchbrand-search").val(),
+                    data.lubricatorName = $("#lubricator-search").val(),
+                    data.lubricator_brandId = $("#lubricator_brandId").val(),
                     data.column = $("#column").val()
                 }
             },
@@ -57,15 +58,15 @@
                             }
                         
                             html += '<div class="col-lg-3 ">'
-                                + '<div class="card card-header-height">'
-                                + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
-                                + '<div class="card-body text-center card-body-height">'
-                                + '<h5 class="card-title">'+value.lubricatorName+'</h5>'
-                                + '<h5 class="card-title">'+value.lubricator_number+'</h5>'
-                                + '<h5 class="card-title">'+value.lubricator_gear+'</h5>'
-                                + '</div>'
-                                + '<div class="card-body text-center card-bottom">'
-                                + '</a>'
+                                 + '<div class="card card-header-height">'
+                                 + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
+                                 + '<div class="card-body text-center card-body-height">'
+                                 + '<h5 class="card-title">'+value.lubricatorName+'</h5>'
+                                 + '<h5 class="card-title">'+value.lubricator_number+'</h5>'
+                                 + '<h5 class="card-title">'+lubricatorLib[value.lubricator_gear]+'</h5>'
+
+                                 + '</div>'
+                                 + '<div class="card-body text-center card-bottom">'
                             
                             if(isShow){
                                 html += '<a href="'+base_url+"caraccessory/Lubricator/updatelubricator/"+value.lubricatorId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
