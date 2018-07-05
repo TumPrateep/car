@@ -94,13 +94,13 @@ class lubricators extends CI_Model{
     function checkBeforeDelete($lubricatorId,$lubricatorName,$lubricator_brandId){
         return $this->db->where('lubricatorId',$lubricatorId)->get("lubricator")->row();
     } 
-    function checkStatusforUpdate($lubricatorId,$userId,$status){
+    function checkStatusforUpdate($lubricatorId,$userId,$status,$lubricator_brandId,$lubricatorName){
         $this->db->from("lubricator");
         $this->db->where('lubricatorId',$lubricatorId);
         $this->db->where('lubricatorName',$lubricatorName);
         $this->db->where('lubricator_brandId',$lubricator_brandId);
         $this->db->where('status',$status);
-        $this->db->where('active',2);
+        $this->db->where('activeFlag',2);
         $this->db->where('create_by',$userId);
         $result = $this->db->count_all_results();
         if($result){
