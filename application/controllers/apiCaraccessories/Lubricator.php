@@ -87,7 +87,7 @@ class Lubricator extends BD_Controller {
         $lubricatorId = $this->post('lubricatorId'); 
         $lubricator_brandId = $this->post('lubricator_brandId'); 
         $this->load->model("lubricators");
-        $status = $this->post('status');
+        $status = 2;
         $userId = $this->session->userdata['logged_in']['id'];
         $isCheck = $this->lubricators->checkBeforeDelete($lubricator_numberId,$lubricator_brandId,$lubricatorName);
         if($isCheck){
@@ -115,7 +115,7 @@ class Lubricator extends BD_Controller {
         $lubricatorName = $this->post("lubricatorName");
         $lubricator_brandId = $this->post("lubricator_brandId");
         $lubricator_numberId = $this->post("lubricator_numberId");
-        $status = $this->post("status");
+        $status = 2;
         $this->load->model("lubricators");
         $userId = $this->session->userdata['logged_in']['id'];
         $isCheck = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId);
