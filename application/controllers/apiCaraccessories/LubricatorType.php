@@ -149,21 +149,22 @@ class LubricatorType extends BD_Controller {
         $lubricator_typeId = $this->post('lubricator_typeId');
         $lubricator_typeName = $this->post("lubricator_typeName");
         $lubricator_typeSize = $this->post("lubricator_typeSize");
+        $status = 2;
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("LubricatorTypes");
-        $isCheck = $this->lubricatorTypes->checklubricator($lubricator_typeName,$lubricator_typeId);
+        $isCheck = $this->LubricatorTypes->checklubricator($lubricator_typeName,$lubricator_typeId);
         if($isCheck){
             $data = array(
-                'lubricator_typeId' => null,
+                'lubricator_typeId' => $lubricator_typeId,
                 'lubricator_typeName'=>$lubricator_typeName,
                 'lubricator_typeSize' => $lubricator_typeSize,
                 'update_by' =>$userId,
                 'update_at' =>date('Y-m-d H:i:s',time()),
                 'activeFlag' =>2
             );
-            $isCheckStatus = $this->lubricatorTypes->checkStatusFromLubricatorTypes($lubricator_typeId,$status,$userId);
+            $isCheckStatus = $this->LubricatorTypes->checkStatusFromLubricatorTypes($lubricator_typeId,$status,$userId);
             if($isCheckStatus){
-                $result = $this->lubricatorTypes->update($data);
+                $result = $this->LubricatorTypes->update($data);
                 if($result){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);

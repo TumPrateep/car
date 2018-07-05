@@ -66,7 +66,7 @@ class LubricatorTypes extends CI_Model{
     }
     function update($data){
         $this->db->where('lubricator_typeId',$data['lubricator_typeId']);
-        $result = $this->db->update('lubricator_typeId', $data);
+        $result = $this->db->update('lubricator_type', $data);
         return $result;
     }
 
@@ -133,7 +133,7 @@ class LubricatorTypes extends CI_Model{
         $this->db->where('lubricator_typeId',$lubricator_typeId);
         $this->db->where('lubricator_typeName',$lubricator_typeName);
         $result = $this->db->count_all_results();
-        if($result){
+        if($result > 0){
             return false;
         }
             return true;

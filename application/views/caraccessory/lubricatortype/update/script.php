@@ -33,28 +33,28 @@
         },
     });
     
-    // $("#submit").submit(function(){
-    //     updateLubricatorType();
-    // })
+    $("#submit").submit(function(){
+        updateLubricatorType();
+    })
 
-    // function updateLubricatorType(){
-    //     event.preventDefault();
-    //     var isValid = $("#submit").valid();
+    function updateLubricatorType(){
+        event.preventDefault();
+        var isValid = $("#submit").valid();
         
-    //     if(isValid){
-    //         var data = $("#submit").serialize();
-    //         $.post(base_url+"api/LubricatorType/updateLubricatorType",data,
-    //         function(data){
-    //             var lubricator_typeId = $("#lubricator_typeId").val();
-    //             if(data.message == 200){
-    //                 showMessage(data.message,"admin/lubricatortype");
-    //             }else{
-    //                 showMessage(data.message,);
-    //             }
-    //         });
+        if(isValid){
+            var data = $("#submit").serialize();
+            $.post(base_url+"apiCaraccessories/LubricatorType/updateLubricatorType",data,
+            function(data){
+                var lubricator_typeId = $("#lubricator_typeId").val();
+                if(data.message == 200){
+                    showMessage(data.message,"caraccessory/lubricatortype");
+                }else{
+                    showMessage(data.message,);
+                }
+            });
             
-    //     }
-    // }
+        }
+    }
     
     
    
