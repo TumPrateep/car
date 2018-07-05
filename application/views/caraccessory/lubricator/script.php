@@ -68,7 +68,7 @@
                                 + '</a>'
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/Spareundercarries/updatespareUndercarriage/"+value.spares_undercarriageId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                html += '<a href="'+base_url+"caraccessory/Lubricator/updatelubricator/"+value.lubricatorId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteModel('+data.lubricatorId+',\''+data.lubricatorName+'\',\''+data.lubricator_brandId+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  
