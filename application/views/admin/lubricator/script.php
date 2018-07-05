@@ -54,7 +54,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/Lubricator/updatelubricator/"+data.lubricator_brandId+'/'+data.lubricatorId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteTireBand('+data.lubricatorId+',\''+data.lubricatorName+'\')"><i class="fa fa-trash"></i></button>';
+                        +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricator('+data.lubricatorId+',\''+data.lubricatorName+'\',\''+data.lubricator_brandId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -116,6 +116,17 @@
     //         }
     //     });
     // }
+
+      function deleteLubricator(lubricatorId,lubricatorName,lubricator_brandId){
+        var option = {
+            url: "/Lubricator/delete?lubricatorId="+lubricatorId,
+            label: "ลบประเภทน้ำมัน",
+            content: "คุณต้องการลบ "+lubricatorName+" ใช่หรือไม่",
+            gotoUrl: "admin/lubricator/lubricators/"+lubricator_brandId
+        }
+        fnDelete(option);
+    }
+
  
    
 </script>

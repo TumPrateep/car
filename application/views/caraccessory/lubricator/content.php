@@ -27,7 +27,7 @@
             <div class="col-lg-5">
                 <div class="input-group input-group-flat">
                     <label class="col-lg-4 col-form-label">น้ำมันเครื่อง: </label>
-                    <input type="text" class="form-control input-default" id="searchbrand-search" placeholder="ค้นหา...">
+                    <input type="text" class="form-control input-default" id="lubricator-search" placeholder="ค้นหา...">
                     <span class="input-group-btn"><button class="btn btn-success" type="button" id="btn-search"><i class="ti-search" ></i></button></span>
                 </div>
             </div>
@@ -44,7 +44,7 @@
         </div>
         
         <div class="table">
-            <table class="table table-bordered" id="lubricatortype-table" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
                 <thead>
                     <th></th>
                 </thead>	
