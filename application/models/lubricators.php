@@ -106,15 +106,10 @@ class lubricators extends CI_Model{
         }
         return true;
     }
-    function checkBeforeDelete($lubricatorId){
-        return $this->db->where('lubricatorId',$lubricatorId)->get("lubricator")->row();
-        
-    } 
-    function checkStatusforUpdate($lubricatorId,$userId,$status,$lubricator_brandId,$lubricatorName){
+    
+    function checkStatusforUpdate($lubricatorId,$userId,$status){
         $this->db->from("lubricator");
         $this->db->where('lubricatorId',$lubricatorId);
-        $this->db->where('lubricatorName',$lubricatorName);
-        $this->db->where('lubricator_brandId',$lubricator_brandId);
         $this->db->where('status',$status);
         $this->db->where('activeFlag',2);
         $this->db->where('create_by',$userId);
@@ -124,6 +119,8 @@ class lubricators extends CI_Model{
         }
         return false;
     }
+    
+
     function delete($lubricatorId){
         return $this->db->delete('lubricator', array('lubricatorId' => $lubricatorId));
     }

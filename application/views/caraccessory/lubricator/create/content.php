@@ -15,7 +15,7 @@
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
     <div class="container-fluid">
-        <form id="submit">   
+        <form id="create-lubricator">   
         <div class="row">
             <div class="col-lg-12">
                 <div class="card card-header">
@@ -36,7 +36,7 @@
                                     <div class="input-group input-group-flat">
                                     <div class="col">
                                         <label>เบอร์น้ำมันเครื่อง: </label>
-                                        <select class="form-control input-default" name="lubricator_Number" id="lubricator_Number">
+                                        <select class="form-control input-default" name="lubricator_Number" id="lubricator_number">
                                             <option value="1"></option>
                                             <option value="2"> </option>
                                             <option value="3"></option>
@@ -48,7 +48,7 @@
                                     <div class="input-group input-group-flat">
                                     <div class="col">
                                         <label>ประเภทน้ำมันเครื่อง: </label>
-                                        <select class="form-control input-default" name="lubricator_type" id="lubricator_type">
+                                        <select class="form-control input-default" name="lubricator_gear" id="lubricator_gear">
                                             <option value="1" selected></option>
                                             <option value="2"></option>
                                             <option value="3"></option>
