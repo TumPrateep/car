@@ -1,30 +1,24 @@
 <script>
-    $("#create-lubricator").validate({
+      $("#create-lubricator").validate({
         rules: {
-            lubricator_Name: {
+            lubricatorName: {
                 required: true
             },
-            lubricator_Number: {
-                required: true
-            },
-            lubricator_gear: {
+            lubricator_number:{
                 required: true
             }
         },
         messages: {
-            lubricator_Name: {
+            lubricatorName: {
                 required: "กรุณากรอกน้ำมันเครื่อง"
             },
-            lubricator_Number: {
+            lubricator_number:{
                 required: "กรุณาเลือกเบอร์น้ำมันเครื่อง"
-                
-            },
-            lubricator_gear: {
-                required: "กรุณาเลือกประเภทน้ำมันเครื่อง"
             }
         },
     });
 
+    
     var lubricator_number = $("#lubricator_number");
     var lubricator_gear = $("#lubricator_gear");
 
@@ -60,11 +54,11 @@
         
         if(isValid){
             var data = $("#create-lubricator").serialize();
-            $.post(base_url+"apiCaraccessories/Lubricator/createlubricator/",data,
+            $.post(base_url+"api/Lubricator/createlubricator/",data,
             function(data){
                 var lubricator_brandId = $("#lubricator_brandId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/lubricator/lubricators/"+lubricator_brandId);
+                    showMessage(data.message,"caraccesory/lubricator/lubricators/"+lubricator_brandId);
                 }else{
                     showMessage(data.message,);
                 }
@@ -72,11 +66,7 @@
             
         }
     }
-
-
 </script>
-
-
 
 </body>
 </html>
