@@ -129,7 +129,7 @@ class LubricatorTypes extends CI_Model{
         return $result;
     }
     function checklubricator($lubricator_typeName,$lubricator_typeId){
-        $this->db->from('lubricator_type');
+        $this->db->from("lubricator_type");
         $this->db->where('lubricator_typeId',$lubricator_typeId);
         $this->db->where('lubricator_typeName',$lubricator_typeName);
         $result = $this->db->count_all_results();
