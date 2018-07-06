@@ -113,15 +113,15 @@ class Lubricator extends BD_Controller {
         $lubricatorName = $this->post("lubricatorName");
         $lubricator_brandId = $this->post("lubricator_brandId");
         $lubricator_numberId = $this->post("lubricator_numberId");
+        $lubricator_gear = $this->post("lubricator_gear");
         $status = 2;
         $this->load->model("lubricators");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId);
+        $isCheck = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear);
         if($isCheck){
             $data = array(
                 'lubricatorId' => $lubricatorId,
                 'lubricatorName' => $lubricatorName,
-                'lubricator_brandId' => $lubricator_brandId,
                 'lubricator_numberId' => $lubricator_numberId,
                 'status' => 2,
                 'activeFlag' => 2,
@@ -154,10 +154,11 @@ class Lubricator extends BD_Controller {
         $lubricatorName = $this->post("lubricatorName");
         $lubricator_brandId = $this->post("lubricator_brandId");
         $lubricator_numberId = $this->post("lubricator_number");
+        $lubricator_gear = $this->post("lubricator_gear");
 
         $this->load->model("lubricators");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->lubricators->Checklubricator($lubricatorName);
+        $isCheck = $this->lubricators->Checklubricator($lubricatorName,$lubricator_brandId,$lubricator_gear);
         
         if($isCheck){
             $data = array(
