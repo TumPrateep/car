@@ -104,18 +104,18 @@
         table.ajax.reload();
     })
 
-    //  function updateStatus(lubricatorId,status){
-    //     $.post(base_url+"api/Lubricator/changeStatus",{
-    //         "lubricatorId": lubricatorId,
-    //         "status": status
-    //     },function(data){
-    //         if(data.message == 200){
-    //             showMessage(data.message,"admin/Lubricator/index");
-    //         }else{
-    //             showMessage(data.message);
-    //         }
-    //     });
-    // }
+     function updateStatus(lubricatorId,status,lubricator_brandId){
+        $.post(base_url+"api/Lubricator/changeStatus",{
+            "lubricatorId": lubricatorId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/lubricator/lubricators/"+lubricator_brandId);
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
 
       function deleteLubricator(lubricatorId,lubricatorName,lubricator_brandId){
         var option = {

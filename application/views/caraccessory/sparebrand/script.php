@@ -68,7 +68,7 @@
                             
                             if(isShow){
                                 html += '<a href="'+base_url+"caraccessory/SpareBrand/updateSpareBrand/"+value.spares_undercarriageId+"/"+value.spares_brandId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button></a> '
-                                + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletesparebrand(\''+value.spares_brandId+'\',\''+value.spares_brandName+'\')"><i class="ti-trash"></i> ลบ</button>';
+                                + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletesparebrand(\''+value.spares_brandId+'\',\''+value.spares_brandName+'\',\''+value.spares_undercarriageId+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  
                             html += '</div>'
@@ -98,12 +98,12 @@
         table.ajax.reload();
     })
 
-    function deletesparebrand(spares_brandId, spares_brandName){
+    function deletesparebrand(spares_brandId, spares_brandName, spares_undercarriageId){
         var option = {
             url: "/SpareBrand/deleteSpareBrand?spares_brandId="+spares_brandId,
             label: "ลบอะไหล่ช่วงล่าง",
             content: "คุณต้องการลบ "+spares_brandName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/sparebrand"
+            gotoUrl: "/caraccessory/SpareBrand/index/"+spares_undercarriageId
         }
         fnDelete(option);
     }
