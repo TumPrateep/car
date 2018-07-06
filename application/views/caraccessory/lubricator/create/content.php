@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/lubricator/lubricators"); ?>">น้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/lubricator/lubricators/$lubricator_brandId"); ?>">น้ำมันเครื่อง</a></li>
                 <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
             </ol>
         </div>
@@ -33,28 +33,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="input-group input-group-flat">
-                                    <div class="col">
-                                        <label>เบอร์น้ำมันเครื่อง </label>
-                                        <select class="form-control input-default" name="lubricatorNumber" id="lubricatornumber">
-                                            <option value="1"></option>
-                                            <option value="2"> </option>
-                                            <option value="3"></option>
+                                    <label>ชนิดน้ำมันเครื่อง</label>
+                                        <select class="form-control" name="lubricator_gear" id="lubricator_gear">
+                                            <option value="1">น้ำมันเครื่อง</option>
+                                            <option value="2">น้ำมันเกียร์ธรรมดา</option>
+                                            <option value="3">น้ำมันเกียร์ออโต</option>
                                         </select>
-                                    </div>
-                                    </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="input-group input-group-flat">
-                                    <div class="col">
-                                        <label>ประเภทน้ำมันเครื่อง </label><span class="error">*</span>
-                                        <select class="form-control input-default" name="lubricatorgear" id="lubricatorgear">
-                                            <option value="1" selected></option>
-                                            <option value="2"></option>
-                                            <option value="3"></option>
+                                    <label>เบอร์น้ำมันเครื่อง</label> <span class="error">*</span>
+                                        <select class="form-control input-default" name="lubricator_number" id="lubricator_number">
+                                            <option value="">เลือกเบอร์น้ำมันเครื่อง</option>
                                         </select>
-                                    </div>
-                                    </div>
                                 </div>
                             </div><br>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
