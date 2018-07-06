@@ -54,11 +54,11 @@
         
         if(isValid){
             var data = $("#create-lubricator").serialize();
-            $.post(base_url+"api/Lubricator/createlubricator/",data,
+            $.post(base_url+"apiCaraccessories/Lubricator/createlubricator/",data,
             function(data){
                 var lubricator_brandId = $("#lubricator_brandId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccesory/lubricator/lubricators/"+lubricator_brandId);
+                    showMessage(data.message,"caraccessory/lubricator/lubricators/"+lubricator_brandId);
                 }else{
                     showMessage(data.message,);
                 }
