@@ -112,7 +112,7 @@ class Lubricator extends BD_Controller {
         $lubricatorId = $this->post('lubricatorId');
         $lubricatorName = $this->post("lubricatorName");
         $lubricator_brandId = $this->post("lubricator_brandId");
-        $lubricator_numberId = $this->post("lubricator_numberId");
+        $lubricator_numberId = $this->post("lubricator_number");
         $lubricator_gear = $this->post("lubricator_gear");
         $status = 2;
         $this->load->model("lubricators");
@@ -123,13 +123,12 @@ class Lubricator extends BD_Controller {
                 'lubricatorId' => $lubricatorId,
                 'lubricatorName' => $lubricatorName,
                 'lubricator_numberId' => $lubricator_numberId,
-                'status' => 2,
-                'activeFlag' => 2,
                 'update_by' => $userId,
-                'update_at' =>date('Y-m-d H:i:s',time())
-
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'status' => 2,
+                'activeFlag' => 2
             );
-            $isCheckStatus = $this->lubricators->checkStatusforUpdate($lubricatorId,$userId,$status,$lubricator_brandId,$lubricatorName);
+            $isCheckStatus = $this->lubricators->checkStatusforUpdate($lubricatorId,$userId,$status);
             if($isCheckStatus){
                 $isUpdate = $this->lubricators->update($data);
                 $output["status"] = $isUpdate;
@@ -145,7 +144,8 @@ class Lubricator extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }else{
+        }
+        else{
             $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }       

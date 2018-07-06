@@ -18,7 +18,6 @@
         },
     });
 
-    
     var lubricator_number = $("#lubricator_number");
     var lubricator_gear = $("#lubricator_gear");
 
@@ -54,9 +53,10 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/Lubricator/updatelubricator/",data,
+            $.post(base_url+"apiCaraccessories/Lubricator/update/",data,
             function(data){
                 var lubricator_brandId = $("#lubricator_brandId").val();
+                var lubricatorId = $("#lubricatorId").val();
                 if(data.message == 200){
                     showMessage(data.message,"caraccessory/lubricator/lubricators/"+lubricator_brandId);
                 }else{
