@@ -37,7 +37,7 @@ class Lubricator extends BD_Controller {
             $posts = $this->lubricators->allLubricators($limit,$start,$order,$dir,$lubricator_brandId);
         }
         else {
-            $lubricatorName = $this->post('lubricatorName');
+            $search = $this->post('lubricatorName');
             $status = $this->post('status');
             $posts =  $this->lubricators->Lubricator_search($limit,$start,$search,$col,$dir,$status,$lubricator_brandId);
             $totalFiltered = $this->lubricators->Lubricator_search_count($search,$status,$lubricator_brandId);
