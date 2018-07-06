@@ -60,11 +60,14 @@
                             html += '<div class="col-lg-3 ">'
                                  + '<div class="card card-header-height">'
                                  + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
-                                 + '<div class="card-body text-center card-body-height">'
+                                 + '<div class="card-body text-center">'
                                  + '<h5 class="card-title">'+value.lubricatorName+'</h5>'
-                                 + '<h5 class="card-title">'+value.lubricator_number+'</h5>'
-                                 + '<h5 class="card-title">'+lubricatorLib[value.lubricator_gear]+'</h5>'
-
+                                 + '</div>'
+                                 + '<div class="card-body">'
+                                 + '<small>เบอร์น้ำมันเครื่อง</small> '
+                                 + '<h5>'+value.lubricator_number+'</h5>'
+                                 + '<small>ชนิดน้ำมันเครื่อง</small> '
+                                 + '<h5>'+lubricatorLib[value.lubricator_gear]+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
                             
