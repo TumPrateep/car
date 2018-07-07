@@ -29,18 +29,23 @@
                                     <label class="control-label">ชื่อรุ่นรถ</label><span class="error">*</span>
                                     <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ" name="modelName" id="modelName">
                                 </div>
-                            <div class="row">
-                            <div class="col-md-6">
-                            <div class="form-group">
-                                <label>ปีที่ผลิต</label> <span class="error">*</span> <label id="yearStart-error" class="error" for="yearStart"></label>
-                                <div class="form-inline">
-                                    <select class="form-control col-md-5" name="yearStart" id="yearStart"></select>
-                                    <label class="col-md-2">ถึง</label>
-                                    <select class="form-control col-md-5" name="yearEnd" id="yearEnd"></select>
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="form-group">
+                                            <label>ปีที่ผลิต</label> <span class="error">*</span> <label id="yearStart-error" class="error" for="yearStart"></label>
+                                            <div class="">
+                                                <select class="form-control" name="yearStart" id="yearStart"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 to-year">
+                                        <label>ถึง</label>
+                                    </div>
+                                    <div class="col-lg-5 to-year">
+                                        <select class="form-control" name="yearEnd" id="yearEnd"></select>
+                                    </div>
+
                                 </div>
-                            </div>
-                            </div>
-                            </div>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
                                 <a href="<?=base_url("caraccessory/CarModelAccessory/index1/$brandId"); ?>">
                                 <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
