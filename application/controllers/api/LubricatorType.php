@@ -130,7 +130,7 @@ class LubricatorType extends BD_Controller {
                     'update_by' => $userId,
                     'activeFlag' => 1
                 );
-                $result = $this->lubricatorTypes->updatelubricatorType($data);
+                $result = $this->lubricatorTypes->update($data);
                 $output["status"] = $result;
                 if($result){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
