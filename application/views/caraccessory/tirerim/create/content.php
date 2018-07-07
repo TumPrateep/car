@@ -28,10 +28,14 @@
                                     <label>ชื่อขอบยาง</label>
                                     <input type="text" class="form-control" placeholder="ชื่อขอบยาง" name="rimName" id="rimName">
                                 </div>
-                                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                <a href="<?=base_url("caraccessory/TireRim"); ?>">
-                                <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
-                                </a>
+                                <div class="row p-t-20">
+                                    <div class="col-md-12 card-grid">
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                                        <a href="<?=base_url("caraccessory/TireRim"); ?>">
+                                        <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
+                                        </a>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
