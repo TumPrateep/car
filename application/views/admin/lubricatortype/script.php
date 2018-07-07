@@ -43,7 +43,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,4,3]
+                    "targets": [0,4]
                 },{
                     "targets": 4,
                     "data": null,
