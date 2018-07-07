@@ -37,7 +37,7 @@ class CarAccessory extends BD_Controller {
         }
         else {
             $search = $this->post('brandName'); 
-            $status = 1; 
+            $status = null; 
 
             $posts =  $this->Brand->brand_search($limit,$start,$search,$order,$dir,$status);
 

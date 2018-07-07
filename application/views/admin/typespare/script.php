@@ -31,7 +31,7 @@
                     data.status = $("#status").val()
                 }
             },
-            "order": [[ 2, "asc" ]],
+            "order": [[ 1, "asc" ]],
             "columns": [
                 null,
                 { "data": "spares_undercarriageName" },

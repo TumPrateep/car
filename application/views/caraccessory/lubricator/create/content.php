@@ -24,7 +24,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <!-- <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>"> -->   
+                            <input type="hidden" id="lubricator_brandId" name="lubricator_brandId" value="<?=$lubricator_brandId ?>">   
                             <div class="row">
                                 <div class="form-group col-md-4">
                                         <label class="control-label">ชื่อรุ่นน้ำมันเครื่อง</label><span class="error">*</span>
@@ -46,7 +46,7 @@
                                 </div>
                             </div><br>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                <a href="#">
+                                <a href="<?=base_url("caraccessory/lubricator/lubricators/$lubricator_brandId"); ?>">
                                 <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                 </a>
                             </form>
