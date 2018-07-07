@@ -61,10 +61,10 @@
                                  + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
                                  + '<div class="card-body text-center card-body-height">'
                                  + '<h5 class="card-title">'+value.lubricator_typeName+'</h5>'
+                                 + '<small>ระยะทาง</small> '
+                                 + '<h5 class="card-title">'+value.lubricator_typeSize+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                //  + '<a href="'+base_url+"caraccessory/TireSize/index/"+value.rimId+'">'
-                                //  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '</a>'
                             
                             if(isShow){
