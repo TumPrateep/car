@@ -9,7 +9,7 @@ class LubricatorNumbers extends CI_Model {
 
     function allLubricatorNumbers($limit,$start,$col,$dir)
     {  
-        $this->db->select('lubricator_number.lubricator_numberId,lubricator_number.lubricator_number, lubricator_number.lubricator_gear, lubricator_type.lubricator_typeName as lubricator_typeName, lubricator_number.lubricator_typeId, lubricator_number.status, lubricator_number.activeFlag, lubricator_number.create_by'); 
+        $this->db->select('lubricator_number.lubricator_numberId,lubricator_number.lubricator_number, lubricator_number.lubricator_gear, lubricator_type.lubricator_typeName as lubricator_typeName, lubricator_number.lubricator_typeId, lubricator_number.status, lubricator_number.activeFlag, lubricator_number.create_by, lubricator_type.lubricator_typeSize'); 
         $this->db->from('lubricator_number');
         $this->db->join('lubricator_type', 'lubricator_number.lubricator_typeId = lubricator_type.lubricator_typeId' , 'left');
         $query = $this
@@ -30,7 +30,7 @@ class LubricatorNumbers extends CI_Model {
 
     function lubricatorNumber_search($limit,$start,$search,$col,$dir,$status)
     {
-        $this->db->select('lubricator_number.lubricator_numberId,lubricator_number.lubricator_number, lubricator_number.lubricator_gear, lubricator_type.lubricator_typeName as lubricator_typeName, lubricator_number.lubricator_typeId, lubricator_number.status, lubricator_number.activeFlag, lubricator_number.create_by'); 
+        $this->db->select('lubricator_number.lubricator_numberId,lubricator_number.lubricator_number, lubricator_number.lubricator_gear, lubricator_type.lubricator_typeName as lubricator_typeName, lubricator_number.lubricator_typeId, lubricator_number.status, lubricator_number.activeFlag, lubricator_number.create_by, lubricator_type.lubricator_typeSize'); 
         $this->db->from('lubricator_number');
         $this->db->join('lubricator_type', 'lubricator_number.lubricator_typeId = lubricator_type.lubricator_typeId' , 'left');
         
@@ -53,7 +53,7 @@ class LubricatorNumbers extends CI_Model {
 
     function lubricatorNumber_search_count($search,$status)
     {
-        $this->db->select('lubricator_number.lubricator_numberId,lubricator_number.lubricator_number, lubricator_number.lubricator_gear, lubricator_type.lubricator_typeName as lubricator_typeName, lubricator_number.lubricator_typeId, lubricator_number.status'); 
+        $this->db->select('lubricator_number.lubricator_numberId,lubricator_number.lubricator_number, lubricator_number.lubricator_gear, lubricator_type.lubricator_typeName as lubricator_typeName, lubricator_number.lubricator_typeId, lubricator_number.status, lubricator_number.activeFlag, lubricator_number.create_by, lubricator_type.lubricator_typeSize'); 
         $this->db->from('lubricator_number');
         $this->db->join('lubricator_type', 'lubricator_number.lubricator_typeId = lubricator_type.lubricator_typeId' , 'left');
         
