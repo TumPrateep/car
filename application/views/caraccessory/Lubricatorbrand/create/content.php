@@ -37,13 +37,13 @@
                                         <div class="form-group">
                                         <label class="control-label">รูปยี่ห้อน้ำมันเครื่อง</label>
                                             <div class="image-editor">
-                                                <input type="file" class="cropit-image-input" name="lubricator_brandPicture" required>
+                                                <input type="file" class="cropit-image-input"  required>
                                                 <div class="cropit-preview"></div>
                                                 <div class="image-size-label">
                                                 ปรับขนาด
                                                 </div>
                                                 <input type="range" class="cropit-image-zoom-input">
-                                                <input type="hidden" name="brandPicture" class="hidden-image-data" />
+                                                <input type="hidden" name="lubricator_brandPicture" class="hidden-image-data" />
                                             </div>
                                         </div>
                                     </div>
