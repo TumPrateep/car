@@ -30,12 +30,14 @@
                                         <input type="text" class="form-control" placeholder="ชื่อรายยี่ห้อการอะไหล่" name="spares_brandName" id="spares_brandName">
                                     </div>
                                 </div>
-                                    <div class="form-group">
+                                <div class="row p-t-20">
+                                    <div class="col-md-12 card-grid">
                                         <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
                                         <a href="<?=base_url("caraccessory/SpareBrand/index/$spares_undercarriageId"); ?>">
                                         <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                         </a>
                                     </div>
+                                </div>
                             </div> 
                         </form>
                     </div>
