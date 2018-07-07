@@ -123,7 +123,7 @@ class LubricatorNumbers extends CI_Model {
         return $this->db->insert('lubricator_number', $data);
     }
     function CheckStatus($lubricator_numberId,$userId,$status){
-        $this->db->from('lubricator_number');
+        $this->db->from("lubricator_number");
         $this->db->where('lubricator_numberId',$lubricator_numberId);
         $this->db->where('create_by',$userId);
         $this->db->where('status',$status);

@@ -164,7 +164,7 @@ class Lubricatornumber extends BD_Controller {
     public function delete_get(){
         $lubricator_number = $this->post('lubricator_number');
         $lubricator_numberId = $this->post('lubricator_numberId');
-        $status = $this->post('status');
+        $status = 2 ;
         $activeFlag = $this->post('activeFlag');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("LubricatorNumbers");
@@ -172,7 +172,7 @@ class Lubricatornumber extends BD_Controller {
         if($isCheck){
             $isCheckStatus = $this->LubricatorNumbers->CheckStatus($lubricator_numberId,$userId,$status);
             if($isCheckStatus){
-                $isDelete = $this->sparesUndercarriages->delete($spares_undercarriageId);
+                $isDelete = $this->LubricatorNumbers->delete($lubricator_numberId);
                 if($isDelete){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
