@@ -153,6 +153,19 @@ label.error{
     .card-grid > a > button {
         width: 100%;
     }
+
+    .to-year{
+        padding-top: 0px !important;
+        text-align: left !important;
+    }
+
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .to-year{
+        padding-top: 0px !important;
+        text-align: left !important;
+    }
   }
 
   .cropit-preview {
@@ -184,4 +197,9 @@ label.error{
     white-space: nowrap;
     text-overflow: ellipsis;
     word-wrap: break-word;
+  }
+
+  .to-year{
+    padding-top: 32px;
+    text-align: center;
   }
