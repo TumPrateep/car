@@ -48,7 +48,7 @@
                                 </div>
                             </div><br>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                <a href="#">
+                                <a href="<?=base_url("caraccessory/lubricator/lubricators/$lubricator_brandId"); ?>">
                                 <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                 </a>
                             </form>
