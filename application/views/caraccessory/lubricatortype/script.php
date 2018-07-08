@@ -56,16 +56,21 @@
                                 }
                             }
 
+
                             html += '<div class="col-lg-3 ">'
-                                 + '<div class="card card-header-height">'
-                                 + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
-                                 + '<div class="card-body text-center card-body-height">'
-                                 + '<h5 class="card-title">'+value.lubricator_typeName+'</h5>'
-                                 + '<small>ระยะทาง</small> '
-                                 + '<h5 class="card-title">'+value.lubricator_typeSize+'</h5>'
-                                 + '</div>'
-                                 + '<div class="card-body text-center card-bottom">'
-                                 + '</a>'
+                                + '<div class="card card-header-height">'
+                                + '<span class="card-subtitle text-right card-margin '+gray+'"><i class="fa fa-circle lamp"></i> '+statusNameLib[value.status]+'</span>'                                
+                                + '<div class="card-body text-center">'
+                                + '<h5 class="card-title">'+value.lubricator_typeName+'</h5>'
+                                + '</div>'
+                                + '<div class="card-body">'
+                                + '<small>ระยะทาง</small> '
+                                + '<h5 class="card-title">'+value.lubricator_typeSize+'  กิโลเมตร</h5>'
+                                + '</div>'
+                                + '<div class="card-body text-center card-bottom">'
+                                + '</a>'
+
+                            
                             
                             if(isShow){
                                 html += '<a href="'+base_url+"caraccessory/lubricatortype/updatelubricatortype/"+value.lubricator_typeId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'

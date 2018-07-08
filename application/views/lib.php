@@ -19,4 +19,12 @@
         "น้ำมันเกียร์ธรรมดา",
         "น้ำมันเกียร์ออโต"
     ];
+
+    function nullOrVal(value){
+        if(value == null){
+            return "-"
+        }else{
+            return value;
+        }
+    }
 </script>
