@@ -1,4 +1,5 @@
 <script>
+var lubricator_brandId = $("#lubricator_brandId");
  $("#update-lubricatorbrand").validate({
         rules: {
             lubricator_brandName: {

@@ -1,4 +1,5 @@
 <script>
+var lubricator_brandId = $("#lubricator_brandId");
  $("#create-lubricatorbrand").validate({
         rules: {
             lubricator_brandName: {
@@ -37,6 +38,7 @@
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
+                    var lubricator_brandId = $("#lubricator_brandId");
                     if(data.message == 200){
                         showMessage(data.message,"caraccessory/Lubricator");
                     }else{
