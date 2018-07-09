@@ -48,7 +48,7 @@ CREATE TABLE `brand` (
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES (1,'Isuzu.png','ISUZU',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',2,1),(2,'Toyota.png','TOYOTA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',2,1),(3,'Mitsubishi.png','MITSUBISHI',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(4,'Nissan.png','NISSAN',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(5,'Chevrolet.png','CHEVROLET',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(6,'Ford.png','FORD',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(7,'Mazda.png','MAZDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(8,'Honda.png','HONDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(9,'','CHEVROLET1225',8,8,'2018-06-23 07:35:48','2018-06-23 16:48:42',2,2);
+INSERT INTO `brand` VALUES (1,'Isuzu.png','ISUZU',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',2,1),(2,'Toyota.png','TOYOTA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',2,1),(3,'Mitsubishi.png','MITSUBISHI',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(4,'Nissan.png','NISSAN',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(5,'Chevrolet.png','CHEVROLET',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(6,'Ford.png','FORD',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(7,'Mazda.png','MAZDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(8,'Honda.png','HONDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(9,'','CHEVROLET1225',8,8,'2018-06-23 07:35:48','2018-06-23 16:48:42',1,1);
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,7 +271,7 @@ CREATE TABLE `lubricator` (
   CONSTRAINT `fk_lubricator_lubricator_number1` FOREIGN KEY (`lubricator_numberId`) REFERENCES `lubricator_number` (`lubricator_numberId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,7 +280,7 @@ CREATE TABLE `lubricator` (
 
 LOCK TABLES `lubricator` WRITE;
 /*!40000 ALTER TABLE `lubricator` DISABLE KEYS */;
-INSERT INTO `lubricator` VALUES (1,'X3',1,23,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(2,'x9000',1,22,1,1,NULL,NULL,1,1),(3,'X7FE',1,20,1,1,NULL,NULL,1,1),(4,'X9',1,1,1,1,NULL,NULL,1,1),(5,'X7',1,4,1,1,NULL,NULL,1,1),(6,'X5',1,21,1,1,NULL,NULL,1,1),(7,'X3',1,22,1,1,NULL,NULL,1,1),(10,'ATF3',1,24,1,1,NULL,NULL,1,1),(12,'CVTFMULTI',1,24,1,1,NULL,NULL,1,1),(13,'GEARFF',1,26,1,1,NULL,NULL,1,1),(14,'SUPERA',1,25,1,1,NULL,NULL,1,1),(15,'SUSTINA',6,4,1,1,NULL,NULL,1,1),(16,'SUSTINA',6,27,1,1,NULL,NULL,1,1),(17,'SUSTINA',6,1,1,1,NULL,NULL,1,1),(18,'SUSTINA',6,2,1,1,NULL,NULL,1,1),(19,'PREMIUM-SUPER',6,2,1,1,NULL,NULL,1,1),(20,'TOP-RECING',6,28,1,1,NULL,NULL,1,1),(21,'ECO-RECING',6,22,1,1,NULL,NULL,1,1),(22,'COMMONRAIL-PLUS',6,1,1,1,NULL,NULL,1,1),(23,'TURBO-COMMONRAIL',6,2,1,1,NULL,NULL,1,1),(24,'ULTRA-PLUS',6,22,1,1,NULL,NULL,1,1),(25,'ENERGY-PLUS',6,23,1,1,NULL,NULL,1,1),(26,'ECO-PLUS',6,19,1,1,NULL,NULL,1,1),(27,'ATF-MUTI',6,24,1,1,NULL,NULL,1,1),(28,'SUSTINA-CVT-FLUID',6,24,1,1,NULL,NULL,1,1),(29,'GEAR-OIL-GL-5',6,29,1,1,NULL,NULL,1,1),(31,'test',1,19,1,1,'2018-07-05 11:46:48',NULL,1,NULL),(32,'test2',1,29,2,2,'2018-07-05 15:53:10','2018-07-06 11:12:27',8,8),(33,'ATF',1,6,2,2,'2018-07-06 11:54:13',NULL,8,NULL);
+INSERT INTO `lubricator` VALUES (1,'X3',1,23,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(2,'x9000',1,22,1,1,NULL,NULL,1,1),(3,'X7FE',1,20,1,1,NULL,NULL,1,1),(4,'X9',1,1,1,1,NULL,NULL,1,1),(5,'X7',1,4,1,1,NULL,NULL,1,1),(6,'X5',1,21,1,1,NULL,NULL,1,1),(7,'X3',1,22,1,1,NULL,NULL,1,1),(10,'ATF3',1,24,1,1,NULL,NULL,1,1),(12,'CVTFMULTI',1,24,1,1,NULL,NULL,1,1),(13,'GEARFF',1,26,1,1,NULL,NULL,1,1),(14,'SUPERA',1,25,1,1,NULL,NULL,1,1),(15,'SUSTINA',6,4,1,1,NULL,NULL,1,1),(16,'SUSTINA',6,27,1,1,NULL,NULL,1,1),(17,'SUSTINA',6,1,1,1,NULL,NULL,1,1),(18,'SUSTINA',6,2,1,1,NULL,NULL,1,1),(19,'PREMIUM-SUPER',6,2,1,1,NULL,NULL,1,1),(20,'TOP-RECING',6,28,1,1,NULL,NULL,1,1),(21,'ECO-RECING',6,22,1,1,NULL,NULL,1,1),(22,'COMMONRAIL-PLUS',6,1,1,1,NULL,NULL,1,1),(23,'TURBO-COMMONRAIL',6,2,1,1,NULL,NULL,1,1),(24,'ULTRA-PLUS',6,22,1,1,NULL,NULL,1,1),(25,'ENERGY-PLUS',6,23,1,1,NULL,NULL,1,1),(26,'ECO-PLUS',6,19,1,1,NULL,NULL,1,1),(27,'ATF-MUTI',6,24,1,1,NULL,NULL,1,1),(28,'SUSTINA-CVT-FLUID',6,24,1,1,NULL,NULL,1,1),(29,'GEAR-OIL-GL-5',6,29,1,1,NULL,NULL,1,1),(31,'test',1,19,1,1,'2018-07-05 11:46:48',NULL,1,NULL),(32,'test2',1,29,2,2,'2018-07-05 15:53:10','2018-07-06 11:12:27',8,8),(33,'ATF',1,19,2,2,'2018-07-06 11:54:13','2018-07-07 14:59:05',8,8),(34,'X3x',1,11,2,2,'2018-07-07 15:01:59',NULL,8,NULL);
 /*!40000 ALTER TABLE `lubricator` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -316,7 +316,7 @@ CREATE TABLE `lubricator_brand` (
 
 LOCK TABLES `lubricator_brand` WRITE;
 /*!40000 ALTER TABLE `lubricator_brand` DISABLE KEYS */;
-INSERT INTO `lubricator_brand` VALUES (1,'ZIC',1,1,'1',1,1,NULL,NULL),(6,'ENEOS',1,1,'1',1,1,NULL,NULL);
+INSERT INTO `lubricator_brand` VALUES (1,'ZIC',1,1,'1',1,1,NULL,NULL),(2,'1',2,2,'5639b5a45c02d1b78c48fe8b98da35d9.jpg',8,8,NULL,'2018-07-07 16:23:47'),(6,'ENEOS',1,1,'1',1,1,NULL,NULL);
 /*!40000 ALTER TABLE `lubricator_brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -390,7 +390,7 @@ CREATE TABLE `lubricator_number` (
   CONSTRAINT `fk_lubricator_number_lubricator_type1` FOREIGN KEY (`lubricator_typeId`) REFERENCES `lubricator_type` (`lubricator_typeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_number_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_number_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -399,7 +399,7 @@ CREATE TABLE `lubricator_number` (
 
 LOCK TABLES `lubricator_number` WRITE;
 /*!40000 ALTER TABLE `lubricator_number` DISABLE KEYS */;
-INSERT INTO `lubricator_number` VALUES (1,'SAE 5W30   ',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'1'),(2,'SAE 5W40   ',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'1'),(3,'SAE 10W30 ',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'1'),(4,'SAE 0W20',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'1'),(5,'API GL-4 SAE 75W90 ',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(6,'SAE 10W30 HONDA MTF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(7,'ATF WS (2.5L)',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(8,'ATF CVT FE',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(9,'ATF Type T-IV',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(10,'ATF WS',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(11,'ATF CVT FE',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(13,'ATF WS',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(14,'ATF Z1, ATF DW1',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(15,'ATF DPSF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(17,'ATF 5AT DCI',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(18,'CVTF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(19,'0W40',1,1,1,NULL,NULL,1,1,'1'),(20,'0W30',1,1,1,NULL,NULL,1,1,'1'),(21,'10W30',2,1,1,NULL,NULL,1,1,'1'),(22,'15W40',3,1,1,NULL,NULL,1,1,'1'),(23,'20W50',3,1,1,NULL,NULL,1,1,'1'),(24,'UNKNOW',NULL,1,1,NULL,NULL,1,1,'1'),(25,'UNKNOW2',NULL,1,1,NULL,NULL,1,1,'2'),(26,'75W85',NULL,1,1,NULL,NULL,1,1,'2'),(27,'0W50',1,1,1,NULL,NULL,1,1,'1'),(28,'10W40',2,1,1,NULL,NULL,1,1,'1'),(29,'90',NULL,1,1,NULL,NULL,1,1,'1'),(31,'test01',4,8,NULL,'2018-07-06 12:06:08',NULL,2,2,'1');
+INSERT INTO `lubricator_number` VALUES (1,'SAE 5W30   ',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'1'),(2,'SAE 5W40   ',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'1'),(3,'SAE 10W30 ',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'1'),(4,'SAE 0W20',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'1'),(5,'API GL-4 SAE 75W90 ',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(6,'SAE 10W30 HONDA MTF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'2'),(7,'ATF WS (2.5L)',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(8,'ATF CVT FE',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(9,'ATF Type T-IV',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(10,'ATF WS',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(11,'ATF CVT FE',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(13,'ATF WS',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(14,'ATF Z1, ATF DW1',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(15,'ATF DPSF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(17,'ATF 5AT DCI',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(18,'CVTF',NULL,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1,'3'),(19,'0W40',1,1,1,NULL,NULL,1,1,'1'),(20,'0W30',1,1,1,NULL,NULL,1,1,'1'),(21,'10W30',2,1,1,NULL,NULL,1,1,'1'),(22,'15W40',3,1,1,NULL,NULL,1,1,'1'),(23,'20W50',3,1,1,NULL,NULL,1,1,'1'),(24,'UNKNOW',NULL,1,1,NULL,NULL,1,1,'1'),(25,'UNKNOW2',NULL,1,1,NULL,NULL,1,1,'2'),(26,'75W85',NULL,1,1,NULL,NULL,1,1,'2'),(27,'0W50',1,1,1,NULL,NULL,1,1,'1'),(28,'10W40',2,1,1,NULL,NULL,1,1,'1'),(29,'90',NULL,1,1,NULL,NULL,1,1,'1'),(32,'test01',4,1,NULL,'2018-07-07 14:00:07',NULL,1,1,'1');
 /*!40000 ALTER TABLE `lubricator_number` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -435,7 +435,7 @@ CREATE TABLE `lubricator_type` (
 
 LOCK TABLES `lubricator_type` WRITE;
 /*!40000 ALTER TABLE `lubricator_type` DISABLE KEYS */;
-INSERT INTO `lubricator_type` VALUES (1,'สังเคาระห์แท้',15000,1,1,1,NULL,NULL,NULL),(2,'กึ่งสังเคราะห์',10000,1,1,1,NULL,NULL,NULL),(3,'ทั่วไป',5000,1,1,1,NULL,NULL,NULL),(4,'กึ่งสังเคราะห์1',50000,2,2,8,8,'2018-07-05 10:43:15','2018-07-06 11:23:51');
+INSERT INTO `lubricator_type` VALUES (1,'สังเคาระห์แท้',15000,1,1,1,NULL,NULL,NULL),(2,'กึ่งสังเคราะห์',10000,1,1,1,NULL,NULL,NULL),(3,'ทั่วไป',5000,1,1,1,NULL,NULL,NULL),(4,'กึ่งสังเคราะห์156',50000,1,1,8,1,'2018-07-05 10:43:15','2018-07-07 14:08:20');
 /*!40000 ALTER TABLE `lubricator_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -596,7 +596,7 @@ CREATE TABLE `spares_brand` (
   CONSTRAINT `fk_spares_brand_spares_undercarriage1` FOREIGN KEY (`spares_undercarriageId`) REFERENCES `spares_undercarriage` (`spares_undercarriageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -605,7 +605,7 @@ CREATE TABLE `spares_brand` (
 
 LOCK TABLES `spares_brand` WRITE;
 /*!40000 ALTER TABLE `spares_brand` DISABLE KEYS */;
-INSERT INTO `spares_brand` VALUES (1,'TRW','1',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(2,'TRW','1',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(3,'TRW','1',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(4,'TRW','1',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(5,'TRW','1',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(6,'TRW','1',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(7,'TRW','1',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(8,'TRW','1',8,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(9,'TRW','1',9,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(10,'TRW','1',10,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(11,'TRW','1',11,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(12,'TRW','1',12,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(13,'TRW','1',13,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(14,'TRW','1',14,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(15,'TRW','1',15,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(16,'TRW','1',16,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(17,'TRW','1',17,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(18,'TRW','1',18,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(19,'TRW','1',19,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(20,'TRW','1',20,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(21,'TRW','1',21,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(22,'TRW','1',22,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(23,'TRW','1',23,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(24,'TRW','1',24,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(25,'TRW','1',25,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(26,'TRW','1',26,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(27,'TRW','1',27,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(28,'TRW','1',28,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(29,'TRW','1',29,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(30,'TRW','1',30,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(31,'TRW','1',31,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(32,'TRW','1',32,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(33,'TRW','1',33,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(34,'KBY','1',3,1,1,'2018-06-10 14:33:39','2018-06-10 14:33:39',1),(35,'ATestSubject\n\n','2',33,NULL,NULL,NULL,'2018-06-15 10:19:36',1),(36,'yuiuyi','2',40,8,NULL,NULL,'2018-06-22 12:07:21',2),(37,'123','2',40,8,NULL,NULL,'2018-06-22 12:09:47',2),(38,'1212','2',40,8,NULL,NULL,'2018-06-22 12:11:49',2),(39,'TestYodev99','2',41,8,8,'2018-06-22 15:21:46','2018-06-22 14:38:56',2),(40,'TestYodev099','2',41,8,8,'2018-06-22 15:31:34','2018-06-22 14:40:19',2),(41,'TestYodev99','2',40,8,8,'2018-06-22 15:03:20','2018-06-22 14:41:10',2),(42,'TRW','2',41,8,8,'2018-06-22 15:23:39','2018-06-22 14:41:34',2),(43,'admin','2',41,8,NULL,NULL,'2018-06-22 16:53:00',2),(44,'sssssssssssss','2',41,8,NULL,NULL,'2018-06-22 16:55:43',2);
+INSERT INTO `spares_brand` VALUES (1,'TRW','1',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(2,'TRW','1',2,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(3,'TRW','1',3,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(4,'TRW','1',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(5,'TRW','1',5,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(6,'TRW','1',6,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(7,'TRW','1',7,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(8,'TRW','1',8,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(9,'TRW','1',9,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(10,'TRW','1',10,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(11,'TRW','1',11,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(12,'TRW','1',12,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(13,'TRW','1',13,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(14,'TRW','1',14,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(15,'TRW','1',15,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(16,'TRW','1',16,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(17,'TRW','1',17,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(18,'TRW','1',18,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(19,'TRW','1',19,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(20,'TRW','1',20,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(21,'TRW','1',21,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(22,'TRW','1',22,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(23,'TRW','1',23,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(24,'TRW','1',24,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(25,'TRW','1',25,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(26,'TRW','1',26,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(27,'TRW','1',27,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(28,'TRW','1',28,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(29,'TRW','1',29,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(30,'TRW','1',30,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(31,'TRW','1',31,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(32,'TRW','1',32,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(33,'TRW','1',33,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(34,'KBY','1',3,1,1,'2018-06-10 14:33:39','2018-06-10 14:33:39',1),(35,'ATestSubject\n\n','2',33,NULL,NULL,NULL,'2018-06-15 10:19:36',1),(36,'yuiuyi','2',40,8,NULL,NULL,'2018-06-22 12:07:21',2),(37,'123','2',40,8,NULL,NULL,'2018-06-22 12:09:47',2),(38,'1212','2',40,8,NULL,NULL,'2018-06-22 12:11:49',2),(40,'TestYodev099','2',41,8,8,'2018-06-22 15:31:34','2018-06-22 14:40:19',1),(41,'TestYodev99','2',40,8,8,'2018-06-22 15:03:20','2018-06-22 14:41:10',2),(43,'admin','1',41,8,NULL,NULL,'2018-06-22 16:53:00',1),(46,'admin1 ','1',41,8,NULL,NULL,'2018-07-07 14:40:28',1);
 /*!40000 ALTER TABLE `spares_brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -720,6 +720,43 @@ INSERT INTO `tire_brand` VALUES (1,'MICHELIN\r ','MICHELIN\r.png',1,1,NULL,NULL,
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tire_change`
+--
+
+DROP TABLE IF EXISTS `tire_change`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tire_change` (
+  `tire_changeId` int(11) NOT NULL,
+  `tire_front` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `tire_black` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `rimId` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
+  PRIMARY KEY (`tire_changeId`),
+  KEY `fk_tire_change_rim1_idx` (`rimId`),
+  KEY `fk_tire_change_users1_idx` (`create_by`),
+  KEY `fk_tire_change_users2_idx` (`update_by`),
+  CONSTRAINT `fk_tire_change_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_change_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_change_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tire_change`
+--
+
+LOCK TABLES `tire_change` WRITE;
+/*!40000 ALTER TABLE `tire_change` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tire_change` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tire_data`
 --
 
@@ -767,6 +804,50 @@ LOCK TABLES `tire_data` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tire_matching`
+--
+
+DROP TABLE IF EXISTS `tire_matching`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tire_matching` (
+  `tire_matchingId` int(11) NOT NULL,
+  `rimId` int(11) NOT NULL,
+  `brandId` int(11) NOT NULL,
+  `modelId` int(11) NOT NULL,
+  `tire_sizeId` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `activeFlage` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
+  PRIMARY KEY (`tire_matchingId`),
+  KEY `fk_tire_matching_rim1_idx` (`rimId`),
+  KEY `fk_tire_matching_brand1_idx` (`brandId`),
+  KEY `fk_tire_matching_model1_idx` (`modelId`),
+  KEY `fk_tire_matching_tire_size1_idx` (`tire_sizeId`),
+  KEY `fk_tire_matching_users1_idx` (`create_by`),
+  KEY `fk_tire_matching_users2_idx` (`update_by`),
+  CONSTRAINT `fk_tire_matching_brand1` FOREIGN KEY (`brandId`) REFERENCES `brand` (`brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_matching_model1` FOREIGN KEY (`modelId`) REFERENCES `model` (`modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_matching_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_matching_trie_size1` FOREIGN KEY (`tire_sizeId`) REFERENCES `tire_size` (`tire_sizeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_matching_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_matching_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tire_matching`
+--
+
+LOCK TABLES `tire_matching` WRITE;
+/*!40000 ALTER TABLE `tire_matching` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tire_matching` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tire_model`
 --
 
@@ -802,6 +883,46 @@ LOCK TABLES `tire_model` WRITE;
 /*!40000 ALTER TABLE `tire_model` DISABLE KEYS */;
 INSERT INTO `tire_model` VALUES (1,'XCD2',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(2,'AGILIS',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(3,'CROSS TERRAIN',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(4,'LTX Force',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(5,'LATTITUDE TOUR',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(6,'LATTITUDE TOUR HP',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(7,'LATTITUDE CROSS',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(8,'PRIMACY SUV',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(9,'ENERGY XM1',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(10,'ENERGY XM2',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(11,'PILOT SPORT3',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(12,'PILOT SPORT3 ZP',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(13,'PILOT SPORT4',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(14,'PRIMACY LC',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(15,'PRIACY3 ZP',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(16,'PRIMACY3 ST',1,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00','1',1),(19,'dfssssssssssss',1,8,NULL,'2018-06-22 11:37:54',NULL,'2',2),(20,'dfssssssssssssaaaaa',1,8,NULL,'2018-06-22 11:37:58',NULL,'2',2),(22,'2',1,8,NULL,'2018-06-22 11:38:45',NULL,'2',2),(23,'233333333',1,8,NULL,'2018-06-22 11:39:30',NULL,'2',2),(24,'fgdg',1,8,NULL,'2018-06-22 11:40:06',NULL,'2',2),(31,'21ฟฟ',2,8,8,'2018-06-22 12:14:24','2018-06-22 14:32:17','2',2),(32,'11111111111',2,8,NULL,'2018-06-22 15:37:51',NULL,'2',2);
 /*!40000 ALTER TABLE `tire_model` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tire_need`
+--
+
+DROP TABLE IF EXISTS `tire_need`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tire_need` (
+  `tire_needId` int(11) NOT NULL,
+  `tire_front` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `tire_black` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `create_at` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `update_at` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `activeFlag` int(11) NOT NULL DEFAULT '2',
+  `rimId` int(11) NOT NULL,
+  `garageId` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`tire_needId`),
+  KEY `fk_tire_need_rim1_idx` (`rimId`),
+  KEY `fk_tire_need_garage1_idx` (`garageId`),
+  KEY `fk_tire_need_users1_idx` (`create_by`),
+  KEY `fk_tire_need_users2_idx` (`update_by`),
+  CONSTRAINT `fk_tire_need_garage1` FOREIGN KEY (`garageId`) REFERENCES `garage` (`garageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_need_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_need_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tire_need_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tire_need`
+--
+
+LOCK TABLES `tire_need` WRITE;
+/*!40000 ALTER TABLE `tire_need` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tire_need` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -975,4 +1096,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-07 13:54:47
+-- Dump completed on 2018-07-09 10:58:22
