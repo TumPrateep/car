@@ -40,6 +40,12 @@ class tirechanges extends CI_Model{
     function delete($tire_changeId){
         return $this->db->delete('tire_change', array('tire_changeId' => $tire_changeId));
     }
+    function getallTire($tire_changeId){
+        $this->db->select("tire_front,tire_back,rimId");
+        $this->db->where('tire_changeId',$tire_changeId);
+        $result = $this->db->get('tire_change')->row();
+        return $result;
+    }
 
    
 }
