@@ -1,0 +1,102 @@
+<?php
+//ยี่ห้อยาง นะ
+defined('BASEPATH') OR exit('No direct script access allowed');
+class TireMatching extends BD_Controller {
+    function __construct()
+    {
+        // Construct the parent class
+        parent::__construct();
+        $this->auth();
+    }
+    
+    function searchTirematching_post(){
+        $columns = array( 
+            0 => null,
+            1 => 'brandName', 
+            2 => 'modelName',
+            3 => 'tire_size',
+            4 => 'status'
+        );
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $this->load->model("TireMatch");
+        $totalData = $this->TireMatch->allTirematching_count();
+        $totalFiltered = $totalData; 
+        $search = $this->post('modelName');
+        if(empty($this->post('modelName')) && empty($this->post('status')))
+        {            
+            $posts = $this->TireMatch->allTirematching($limit,$start,$order,$dir);
+        }
+        else {
+            $search = $this->post('modelName');
+            $status = $this->post('status');
+            $posts =  $this->TireMatch->tirematching_search($limit,$start,$search,$order,$dir,$status);
+            $totalFiltered = $this->TireMatch->tirematching_search_count($search,$status);
+        }
+        $data = array();
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+                $nestedData['brandName'] = $post->brandName;
+                $nestedData['modelName'] = $post->modelName;
+                $nestedData['tire_size'] = $post->tire_size;
+                $nestedData['status'] = $post->status;
+                $data[] = $nestedData;
+            }
+        }
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+        $this->set_response($json_data);
+    }
+    function getTireBrandforupdate_post(){
+        $tire_brandId = $this->post('tire_brandId');
+        $this->load->model("Triebrands");
+        $isCheck = $this->Triebrands->checkTireBrandforget($tire_brandId);
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->Triebrands->getirebrandById($tire_brandId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+    function changeStatus_post(){
+        $tire_brandId = $this->post("tire_brandId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status,
+            'activeFlag' => 1
+        );
+        $this->load->model("Triebrands");
+        $result = $this->Triebrands->updateStatus($tire_brandId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+}
