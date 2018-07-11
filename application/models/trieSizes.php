@@ -176,4 +176,11 @@ class trieSizes extends CI_Model{
         }
         return false;
     }
+
+    function getAllTireSizeByrimId($rimId){
+        $this->db->select('tire_sizeId,concat(tire_size,"/",tire_series,rim) as tiresize');
+        $this->db->where("rimId", $rimId);
+        $query = $this->db->get("tire_size");
+        return $query->result();
+    }
 }

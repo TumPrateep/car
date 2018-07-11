@@ -130,6 +130,10 @@
       height: 42px;
     }
 
+    .wide-button {
+      width: 100% !important;
+    }
+
   }
   @media only screen and (max-width: 1025px) {
     a.right{

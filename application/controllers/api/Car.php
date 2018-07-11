@@ -637,4 +637,19 @@ class Car extends BD_Controller {
         }
     }
 
+    function getAllBrand_get(){
+        $this->load->model("Brand");
+        $result = $this->Brand->getAllBrand();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllModel_get(){
+        $brandId = $this->get("brandId");
+        $this->load->model("Model");
+        $result = $this->Model->getAllModelByBrandId($brandId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
 }

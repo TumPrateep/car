@@ -111,4 +111,10 @@ class rims extends CI_Model{
         }
         return false ;
     }
+
+    function getAllRims(){
+        $this->db->select("rimId,rimName");
+        $query = $this->db->get("rim");
+        return $query->result();
+    }
 }
