@@ -8,10 +8,10 @@ class TireChange extends BD_Controller {
         parent::__construct();
         // $this->auth();
     }
-    public function create_post(){
+    public function createtirechange_post(){
         $tire_front = $this->post('tire_front');
         $tire_back = $this->post('tire_back');
-        $rimId = $this->post('rimId');
+        $rimId = $this->post('tire_rimId');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model('tirechanges');
         $isDuplicate = $this->tirechanges->checkDuplicate($tire_front,$tire_back,$rimId);
