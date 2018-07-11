@@ -96,6 +96,15 @@
         event.preventDefault();
         table.ajax.reload();
     })
+    function deleteTireMatcing(tire_matchingId){
+        var option = {
+            url: "/TireMatching/delete?tire_matchingId="+tire_matchingId,
+            label: "ลบขนาดยางตามยี่ห้อ",
+            content: "คุณต้องการลบขนาดยางตามยี่ห้อ ใช่หรือไม่",
+            gotoUrl: "admin/tires/tiresmatching"
+        }
+        fnDelete(option);
+    }
 </script>
 
 </body>
