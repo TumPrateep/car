@@ -3,22 +3,21 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">ราคาเปลี่ยนยาง</h3>  
+            <h3 class="text-primary">ความต้องการราคาเปลี่ยนยาง</h3>  
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Tireneed"); ?>">ราคาเปลี่ยนยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Tireneed"); ?>">ความต้องการราคาเปลี่ยนยาง</a></li>
             </ol>
         </div>
     </div>
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
     <div class="container-fluid">
-    <input type="hidden" id="rimId" name="rimId" value="<?=$rimId ?>">
-        
+            
         <div class="row p-30">
             <div class="col-lg-4 div-right">
-                <a href="<?=base_url("caraccessory/TireSize/createTireSize/$rimId") ?>">
+                <a href="<?=base_url("caraccessory/tireneed/createtireneed") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>
