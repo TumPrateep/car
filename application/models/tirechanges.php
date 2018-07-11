@@ -47,5 +47,72 @@ class tirechanges extends CI_Model{
         return $result;
     }
 
+    function allTirechanges($limit,$start,$col,$dir){
+        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.status ');
+        $this->db->from('tire_change');
+        $this->db->join('rim', 'tire_change.rimId = rim.rimId');
+
+        $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
+
+    function allTirechanges_count(){  
+        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName ');
+        $this->db->from('tire_change');
+        $this->db->join('rim', 'tire_change.rimId = rim.rimId');
+
+        $query = $this->db->get();
+    
+        return $query->num_rows();  
+                                                                                                                                                                                                
+    }
+    
+    function tirechanges_search($limit,$start,$search,$col,$dir,$status){
+        
+        $$this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName ');
+        $this->db->from('tire_change');
+        $this->db->join('rim', 'tire_change.rimId = rim.rimId');
+
+        $this->db->like('rim.rimName',$search);
+        if($status != null){
+            $this->db->where("tire_change.status", $status);
+        }
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get();       
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    function tirechanges_search_count($search,$status){
+       
+        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName ');
+        $this->db->from('tire_change');
+        $this->db->join('rim', 'tire_change.rimId = rim.rimId');
+        $this->db->like('rim.rimName',$search);
+        if($status != null){
+            $this->db->where("tire_change.status", $status);
+        }
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get();
+    
+        return $query->num_rows();
+    } 
    
 }

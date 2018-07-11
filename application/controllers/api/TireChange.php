@@ -108,4 +108,51 @@ class TireChange extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function searchTireChange_post(){
+        $columns = array( 
+            0 => null,
+            1 => 'tire_front', 
+            2 => 'tire_back',
+            3 => 'rimId',
+            4 => 'status'
+        );
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $this->load->model("tirechanges");
+        $totalData = $this->tirechanges->allTirechanges_count();
+        $totalFiltered = $totalData; 
+        $search = $this->post('rimId');
+        if(empty($this->post('rimId')) && empty($this->post('status')))
+        {            
+            $posts = $this->tirechanges->allTirechanges($limit,$start,$order,$dir);
+        }
+        else {
+            $search = $this->post('rimId');
+            $status = $this->post('status');
+            $posts =  $this->tirechanges->tirechanges_search($limit,$start,$search,$order,$dir,$status);
+            $totalFiltered = $this->tirechanges->tirechanges_search_count($search,$status);
+        }
+        $data = array();
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+                $nestedData['tire_front'] = $post->tire_front;
+                $nestedData['tire_back'] = $post->tire_back;
+                $nestedData['rimName'] = $post->rimName;
+                $nestedData['status'] = $post->status;
+                $data[] = $nestedData;
+            }
+        }
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+        $this->set_response($json_data);
+    }
 }
