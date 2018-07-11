@@ -161,4 +161,34 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/tiresmatching/create/script");
 	}
+	
+	public function tirechange(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/tirechange/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/tirechange/script");
+	}
+
+	public function createtirechange(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/tirechange/create/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/tirechange/create/script");
+	}
+
+	public function updatetirechange(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/tirechange/update/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/tirechange/update/script");
+	}
 }
