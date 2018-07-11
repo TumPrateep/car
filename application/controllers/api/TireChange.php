@@ -14,7 +14,7 @@ class TireChange extends BD_Controller {
         $rimId = $this->post('tire_rimId');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model('tirechanges');
-        $isDuplicate = $this->tirechanges->checkDuplicate($tire_front,$tire_back,$rimId);
+        $isDuplicate = $this->tirechanges->checkDuplicate($rimId);
         if($isDuplicate){
             $data = array(
                 'tire_changeId' => null,
@@ -49,7 +49,7 @@ class TireChange extends BD_Controller {
         $tire_changeId = $this->post('tire_changeId');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model('tirechanges');
-        $isDuplicate = $this->tirechanges->checkDuplicateById($tire_changeId,$tire_front,$tire_back,$rimId);
+        $isDuplicate = $this->tirechanges->checkDuplicateById($tire_changeId,$rimId);
         if($isDuplicate){
             $data = array(
                 'tire_changeId' => $tire_changeId,
