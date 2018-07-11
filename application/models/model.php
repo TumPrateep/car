@@ -213,5 +213,11 @@ class Model extends CI_Model{
         return false;
     }
     
+    function getAllModelByBrandId($brandId){
+        $this->db->select("modelId,modelName");
+        $this->db->where("brandId", $brandId);
+        $query = $this->db->get("model");
+        return $query->result();
+    }
 
 }

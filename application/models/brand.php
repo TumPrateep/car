@@ -166,4 +166,10 @@ class Brand extends CI_Model {
         return false;
     }
 
+    function getAllBrand(){
+        $this->db->select("brandId,brandName");
+        $query = $this->db->get("brand");
+        return $query->result();
+    }
+
 }
