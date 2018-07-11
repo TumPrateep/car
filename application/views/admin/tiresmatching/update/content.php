@@ -19,7 +19,8 @@
                   <!-- /.card-header -->
                   <!-- form start -->
 
-                  <form id="create-tiresmatching">
+                  <form id="update-tiresmatching">
+                    <input type="hidden" name="tire_matchingId" id="tire_matchingId" value="<?=$tire_matchingId ?>">
                     <div class="card-body black bg-light">
                       <div class="row">
                         <div class="col-md-6">
