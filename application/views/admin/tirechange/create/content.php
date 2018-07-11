@@ -3,9 +3,9 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/tires/tirechange") ?>">ราคาเปลี่ยนยางนอก</a>
+        <a href="<?=base_url("admin/tires/tirechange") ?>">ราคาเปลี่ยนยาง</a>
       </li>
-      <li class="breadcrumb-item active">เพิ่มข้อมูลราคาเปลี่ยนยางนอก</li>
+      <li class="breadcrumb-item active">เพิ่มข้อมูลราคาเปลี่ยนยาง</li>
     </ol>
     <!-- Icon Cards-->
     <section class="content">
@@ -15,7 +15,7 @@
             <div class="card text-white bg-success">
                 <div class="card-header">
 
-                  <h3 class="card-title"><i class="fa fa fa-wrench"></i> เพิ่มข้อมูลราคาเปลี่ยนยางนอก</h3>
+                  <h3 class="card-title"><i class="fa fa fa-wrench"></i> เพิ่มข้อมูลราคาเปลี่ยนยาง</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
