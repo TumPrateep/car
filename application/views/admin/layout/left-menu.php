@@ -82,7 +82,7 @@
                 <li>
                   <a class="nav-link text-white" href="<?=base_url("admin/tires/tirechange/") ?>">
                     <i class="fa fa-futbol-o"></i>
-                    <span class="nav-link-text">ราคาเปลี่ยนยางนอก</span>
+                    <span class="nav-link-text">ราคาเปลี่ยนยาง</span>
                   </a>
                 </li>
               </ul>
