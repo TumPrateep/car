@@ -137,7 +137,6 @@ class TireMatching extends BD_Controller {
         }
     }
 
-<<<<<<< HEAD
     function update_post(){
         $tire_matchingId = $this->post('tire_matchingId');
         $rimId = $this->post('rimId');
@@ -175,7 +174,6 @@ class TireMatching extends BD_Controller {
         }
     }
     
-=======
     function getTireMatching_get(){
         $tire_matchingId = $this->get('tire_matchingId');
         $this->load->model("TireMatch");
@@ -189,5 +187,4 @@ class TireMatching extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
->>>>>>> dc5bd376631ddad6d3cdd19a821af49aa4d7bd79
 }
