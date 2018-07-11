@@ -187,4 +187,23 @@ class TireMatching extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function delete_get(){
+        $tire_matchingId = $this->get('tire_matchingId');
+        $this->load->model("TireMatch");
+        $isCheck = $this->TireMatch->checkTireMatching($tire_matchingId);
+        if($isCheck != null){
+            $isDelete = $this->TireMatch->delete($tire_matchingId);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 }
