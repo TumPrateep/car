@@ -13,7 +13,7 @@
     <div class="card-tools one">
       <form id="form-search">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/Tires/searchTireChange") ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/Tires/createTireChange") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
 
@@ -45,20 +45,11 @@
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
           <th><i class="fa fa-futbol-o"></i>  ล้อหน้า</th>
           <th><i class="fa fa-futbol-o"></i>  ล้อหลัง</th>
-          <th><i class="fa fa-futbol-o"></i>  ขอบยาง</th>
+          <th><i class="fa fa-circle-o"></i>  ขอบยาง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	
       </table>
     </div>
 
-    <!-- <div class="table-responsive">
-      <table class="table table-bordered" id="tires-table" width="100%" cellspacing="0">
-        <thead>
-          <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-circle-o"></i> ขอบยาง</th>
-          <th><i class="fa fa-user-circle"></i> สถานะ</th>
-          <th></th>
-        </thead>	
-      </table>
-    </div> -->
+  

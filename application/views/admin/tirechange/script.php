@@ -58,8 +58,8 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Tires/updatetiresmatching/"+''+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteTireMatcing("'+''+'")"><i class="fa fa-trash"></i></button>';
+                        return '<a href="'+base_url+'admin/Tires/updatetirechange/'+data.tire_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletetirechange('+data.tire_changeId+',\''+data.tire_front+'\',\''+data.tire_back+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -92,10 +92,22 @@
             ]	 
     });
 
+    function deletetirechange(tire_changeId){
+        var option = {
+            url: "/Tirechange/deletetirechange?tire_changeId="+tire_changeId,
+            label: "ลบราคาเปลี่ยนยางนอก",
+            content: "คุณต้องการลบข้อมูลนี้ ใช่หรือไม่",
+            gotoUrl: "admin/Tires/tirechange/"
+        }
+        fnDelete(option);
+    }
+
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
+
+    
 </script>
 
 </body>

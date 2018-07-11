@@ -44,6 +44,7 @@ class TireMatching extends BD_Controller {
                 $nestedData['modelName'] = $post->modelName;
                 $nestedData['tire_size'] = $post->tire_size;
                 $nestedData['status'] = $post->status;
+                $nestedData['tire_matchingId'] = $post->tire_matchingId;
                 $data[] = $nestedData;
             }
         }
@@ -139,7 +140,7 @@ class TireMatching extends BD_Controller {
 
     function update_post(){
         $tire_matchingId = $this->post('tire_matchingId');
-        $rimId = $this->post('rimId');
+        $rimId = $this->post('tire_rimId');
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
         $tire_sizeId = $this->post('tire_sizeId');

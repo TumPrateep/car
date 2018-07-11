@@ -76,7 +76,7 @@ class TireChange extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-    public function delete_get(){
+    public function deletetirechange_get(){
         $tire_changeId = $this->get('tire_changeId');
         $this->load->model('tirechanges');
         $checkData = $this->tirechanges->checkData($tire_changeId);
@@ -114,7 +114,7 @@ class TireChange extends BD_Controller {
             0 => null,
             1 => 'tire_front', 
             2 => 'tire_back',
-            3 => 'rimId',
+            3 => 'rimName',
             4 => 'status'
         );
         $limit = $this->post('length');
@@ -124,13 +124,13 @@ class TireChange extends BD_Controller {
         $this->load->model("tirechanges");
         $totalData = $this->tirechanges->allTirechanges_count();
         $totalFiltered = $totalData; 
-        $search = $this->post('rimId');
-        if(empty($this->post('rimId')) && empty($this->post('status')))
+        $search = $this->post('rimName');
+        if(empty($this->post('rimName')) && empty($this->post('status')))
         {            
             $posts = $this->tirechanges->allTirechanges($limit,$start,$order,$dir);
         }
         else {
-            $search = $this->post('rimId');
+            $search = $this->post('rimName');
             $status = $this->post('status');
             $posts =  $this->tirechanges->tirechanges_search($limit,$start,$search,$order,$dir,$status);
             $totalFiltered = $this->tirechanges->tirechanges_search_count($search,$status);
@@ -140,6 +140,7 @@ class TireChange extends BD_Controller {
         {
             foreach ($posts as $post)
             {
+                $nestedData['tire_changeId'] = $post->tire_changeId;
                 $nestedData['tire_front'] = $post->tire_front;
                 $nestedData['tire_back'] = $post->tire_back;
                 $nestedData['rimName'] = $post->rimName;

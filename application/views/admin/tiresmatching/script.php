@@ -58,8 +58,8 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Tires/updatetiresmatching/"+''+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteTireMatcing("'+''+'")"><i class="fa fa-trash"></i></button>';
+                        return '<a href="'+base_url+"admin/Tires/updatetiresmatching/"+data.tire_matchingId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteTireMatcing("'+data.tire_matchingId+'")"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -96,6 +96,15 @@
         event.preventDefault();
         table.ajax.reload();
     })
+    function deleteTireMatcing(tire_matchingId){
+        var option = {
+            url: "/TireMatching/delete?tire_matchingId="+tire_matchingId,
+            label: "ลบขนาดยางตามยี่ห้อ",
+            content: "คุณต้องการลบขนาดยางตามยี่ห้อ ใช่หรือไม่",
+            gotoUrl: "admin/tires/tiresmatching"
+        }
+        fnDelete(option);
+    }
 </script>
 
 </body>
