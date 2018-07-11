@@ -7,7 +7,7 @@
             tire_back: {
                 required: true
             },
-            rimId: {
+            tire_rimId: {
                 required: true
             }
         },
@@ -18,8 +18,8 @@
             tire_back: {
                 required: "กรุณากรอกราคายางล้อหลัง"
             },
-            rimId: {
-                required: "กรุณากรอกขอบยาง"
+            tire_rimId: {
+                required: "กรุณาเลือกขอบยาง"
             }
         },
     });
@@ -28,17 +28,30 @@
         createtirechange();
     })
 
+    var tire_rim = $("#tire_rimId");
+
+    getRim();
+
+    function getRim(rimId = null){
+        $.get(base_url+"api/Rim/getAllRims",{},
+            function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>');
+                });
+            }
+        );
+    }
+
     function createtirechange(){
         event.preventDefault();
         var isValid = $("#submit").valid();
-        
         if(isValid){
             var data = $("#submit").serialize();
             $.post(base_url+"api/tirechange/createtirechange",data,
             function(data){
-                var rimId = $("#rimId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/tirechange/"+rimId);
+                    showMessage(data.message,"admin/Tires/tirechange/");
                 }else{
                     showMessage(data.message,);
                 }

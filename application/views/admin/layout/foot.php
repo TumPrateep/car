@@ -27,6 +27,14 @@
 
     <script src="<?=base_url("/public/locales/th.js") ?>"></script>
     
-    
+    <script>
+        $(document).ready(function(){
+          $("li.active").closest( "ul" ).addClass(" show");
+          
+          if($('sidenav-second-level li').hasClass('active') || $('.sidenav-third-level li').hasClass('active')){
+            $(".sidenav-second-level").addClass(" show")
+          }
+        });
+    </script>
 
    

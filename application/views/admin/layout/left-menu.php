@@ -7,13 +7,13 @@
     </button>
     <div class="collapse navbar-collapse " id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav bg-green " id="exampleAccordion" >
-        <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <li class="nav-item <?= activate_menu('car'); ?>" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link text-white" href="<?=base_url("admin/car") ?>">
             <i class="fa fa-fw fa-car"></i>
             <span class="nav-link-text">การจัดการยี่ห้อ/รุ่นรถ</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+        <li class="nav-item <?= activate_menu('usermanagement'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/usermanagement") ?>">
             <i class="fa fa-user-plus"></i>
             <span class="nav-link-text">การจัดการผู้ใช้งาน</span>
@@ -25,7 +25,7 @@
             <span class="nav-link-text">เมนูอะไหล่</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
+            <li class="<?= activate_menu('sparepartcar'); ?>">
               <a class="nav-link text-white" href="<?=base_url("admin/sparepartcar") ?>">
                 <i class="fa fa-cog"></i>
                 <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
@@ -36,19 +36,19 @@
               <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti2">
               <i class="fa fa-tint"></i> น้ำมันเครื่อง</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                <li>
+                <li class="<?= activate_menu('lubricatortype'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricatortype") ?>">
                     <!-- <i class="fa fa-circle-o"></i> -->
                     <span class="nav-link-text">ประเภทน้ำมันเครื่อง</span>
                   </a>
                 </li>
-                <li>
+                <li class="<?= activate_menu('lubricatornumber'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricatornumber") ?>">
                     <!-- <i class="fa fa-futbol-o"></i> -->
                     <span class="nav-link-text">เบอร์น้ำมันเครื่อง</span>
                   </a>
                 </li>
-                <li>
+                <li class="<?= activate_menu('lubricator'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricator") ?>">
                     <!-- <i class="fa fa-futbol-o"></i> -->
                     <span class="nav-link-text">ยี่ห้อน้ำมันเครื่อง</span>
@@ -61,25 +61,25 @@
               <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti3">
               <i class="fa fa-life-ring"></i> ยางรถ</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti3">
-                <li>
+                <li class="<?= activate_menu('tires'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/tires") ?>">
                     <i class="fa fa-circle-o"></i>
                     <span class="nav-link-text">ขอบยางรถยนต์</span>
                   </a>
                 </li>
-                <li>
+                <li class="<?= activate_menu('tires/tiresbrand/'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/tires/tiresbrand/") ?>">
                     <i class="fa fa-futbol-o"></i>
                     <span class="nav-link-text">ยี่ห้อยางรถยนต์</span>
                   </a>
                 </li>
-                <li>
+                <li class="<?= activate_menu('tires/tiresmatching/'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/tires/tiresmatching/") ?>">
                     <i class="fa fa-futbol-o"></i>
                     <span class="nav-link-text">ขนาดยางตามยี่ห้อ</span>
                   </a>
                 </li>
-                <li>
+                <li class="<?= activate_menu('tires/tirechange/'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/tires/tirechange/") ?>">
                     <i class="fa fa-futbol-o"></i>
                     <span class="nav-link-text">ราคาเปลี่ยนยาง</span>
