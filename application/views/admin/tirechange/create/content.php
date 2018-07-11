@@ -34,6 +34,7 @@
                             <label>ชื่อขอบยาง</label> <span class="error">*</span>
                             <select class="form-control" name="rimId" id="rimId">
                                 <option value="">กรุณาเลือกขอบยาง</option>
+                                <option value="1">12R</option>
                             </select>
 
                       </div>
