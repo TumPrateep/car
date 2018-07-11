@@ -23,4 +23,27 @@
             }
         },
     });
+    var tire_changeId = $("#tire_changeId").val();
+    $("#submit").submit(function(){
+        updatetireChang();
+    })
+
+
+    function updatetireChang(){
+        event.preventDefault();
+        var isValid = $("#submit").valid();
+
+        if(isValid){
+            var data = $("#submit").serialize();
+            $.post(base_url+"api/TireChange/update",data,
+            function(data){
+                if(data.message == 200){
+                    showMessage(data.message,"admin/tires/tirechange");
+                }else{
+                    showMessage(data.message);
+                }
+            });
+            
+        }
+    }
 </script>
