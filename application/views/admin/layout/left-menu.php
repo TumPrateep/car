@@ -73,6 +73,12 @@
                     <span class="nav-link-text">ยี่ห้อยางรถยนต์</span>
                   </a>
                 </li>
+                <li>
+                  <a class="nav-link text-white" href="<?=base_url("admin/tires/tiresmatching/") ?>">
+                    <i class="fa fa-futbol-o"></i>
+                    <span class="nav-link-text">ขนาดยางตามยี่ห้อ</span>
+                  </a>
+                </li>
               </ul>
             </li>
             
