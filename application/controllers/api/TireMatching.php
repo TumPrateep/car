@@ -6,7 +6,7 @@ class TireMatching extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
     
     function searchTirematching_post(){
@@ -97,6 +97,43 @@ class TireMatching extends BD_Controller {
         }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    public function create_post(){
+        $rimId = $this->post('rimId');
+        $brandId = $this->post('brandId');
+        $modelId = $this->post('modelId');
+        $tire_sizeId = $this->post('tire_sizeId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $this->load->model('TireMatch');
+        $checkDuplicate = $this->TireMatch->checkduplicate($rimId,$brandId,$modelId,$tire_sizeId);
+        if($checkDuplicate){
+            $data = array(
+                'tire_matchingId' => null,
+                'rimId' => $rimId,
+                'brandId' => $brandId,
+                'modelId' => $modelId,
+                'tire_sizeId' => $tire_sizeId,
+                "status" => 1,
+                "create_at" => date('Y-m-d H:i:s',time()),
+                "create_by" => $userId,
+                "activeFlag" => 1
+            );
+            $result = $this->TireMatch->insert($data);
+            if($result){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+
         }
     }
 }

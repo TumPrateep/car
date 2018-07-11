@@ -75,5 +75,28 @@ class TireMatch extends CI_Model{
     
         return $query->num_rows();
     } 
+
+    function checkduplicate($rimId,$brandId,$modelId,$tire_sizeId){
+        // $this->db->select('tire_matching.rimId,tire_matching.brandId,tire_matching.modelId,concat(tire_size.tire_size,"/",tire_size.tire_series,tire_size.rim) as tire_size');
+        $this->db->from('tire_matching');
+        $this->db->join('model', 'tire_matching.modelId = model.modelId');
+        $this->db->join('brand', 'model.brandId = brand.brandId');
+        $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_matching.tire_sizeId');
+        $this->db->where('tire_matching.brandId',$brandId);
+        $this->db->where('tire_matching.rimId',$rimId);
+        $this->db->where('tire_matching.modelId',$modelId);
+        $this->db->where('tire_matching.tire_sizeId',$tire_sizeId);
+        
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function insert($data){
+        return $this->db->insert('tire_matching',$data);
+    }
     
 }
