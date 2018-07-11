@@ -79,6 +79,12 @@
                     <span class="nav-link-text">ขนาดยางตามยี่ห้อ</span>
                   </a>
                 </li>
+                <li>
+                  <a class="nav-link text-white" href="<?=base_url("admin/tires/tirechange/") ?>">
+                    <i class="fa fa-futbol-o"></i>
+                    <span class="nav-link-text">ราคาเปลี่ยนยางนอก</span>
+                  </a>
+                </li>
               </ul>
             </li>
             

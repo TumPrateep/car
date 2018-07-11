@@ -23,4 +23,27 @@
             }
         },
     });
+
+    $("#submit").submit(function(){
+        createtirechange();
+    })
+
+    function createtirechange(){
+        event.preventDefault();
+        var isValid = $("#submit").valid();
+        
+        if(isValid){
+            var data = $("#submit").serialize();
+            $.post(base_url+"api/tirechange/createtirechange",data,
+            function(data){
+                var rimId = $("#rimId").val();
+                if(data.message == 200){
+                    showMessage(data.message,"admin/Tires/tirechange/"+rimId);
+                }else{
+                    showMessage(data.message,);
+                }
+            });
+            
+        }
+    }
 </script>
