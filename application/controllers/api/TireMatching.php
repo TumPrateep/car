@@ -101,7 +101,7 @@ class TireMatching extends BD_Controller {
     }
 
     public function create_post(){
-        $rimId = $this->post('rimId');
+        $rimId = $this->post('tire_rimId');
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
         $tire_sizeId = $this->post('tire_sizeId');
