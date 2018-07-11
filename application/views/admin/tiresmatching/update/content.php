@@ -5,7 +5,7 @@
         <li class="breadcrumb-item">
           <a href="<?=base_url("admin/tires/tiresmatching") ?>">ขนาดยางตามยี่ห้อรถ</a>
         </li>
-        <li class="breadcrumb-item active">เพิ่มข้อมูลขนาดยางตามยี่ห้อรถ</li>
+        <li class="breadcrumb-item active">แก้ไขข้อมูลขนาดยางตามยี่ห้อรถ</li>
       </ol>
       <!-- Icon Cards-->
       <section class="content">
@@ -14,7 +14,7 @@
             <div class="col-md-10">
               <div class="card text-white bg-success">
                   <div class="card-header">
-                    <h3 class="card-title"><i class="fa fa-futbol-o"></i>  เพิ่มข้อมูลขนาดยางตามยี่ห้อรถ</h3>
+                    <h3 class="card-title"><i class="fa fa-futbol-o"></i>  แก้ไขข้อมูลขนาดยางตามยี่ห้อรถ</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
