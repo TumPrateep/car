@@ -123,4 +123,10 @@ class TireMatch extends CI_Model{
         return $result;
     }
     
+    function getTireMatchingbyId($tire_matchingId){
+        $this->db->select('tire_matchingId,brandId,modelId,rimId,tire_sizeId');
+        $this->db->where('tire_matchingId',$tire_matchingId);
+        $result = $this->db->get('tire_matching')->row();
+        return $result;
+    }
 }

@@ -101,7 +101,7 @@ class TireMatching extends BD_Controller {
     }
 
     public function create_post(){
-        $rimId = $this->post('rimId');
+        $rimId = $this->post('tire_rimId');
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
         $tire_sizeId = $this->post('tire_sizeId');
@@ -137,6 +137,7 @@ class TireMatching extends BD_Controller {
         }
     }
 
+<<<<<<< HEAD
     function update_post(){
         $tire_matchingId = $this->post('tire_matchingId');
         $rimId = $this->post('rimId');
@@ -174,4 +175,19 @@ class TireMatching extends BD_Controller {
         }
     }
     
+=======
+    function getTireMatching_get(){
+        $tire_matchingId = $this->get('tire_matchingId');
+        $this->load->model("TireMatch");
+        $result = $this->TireMatch->getTireMatchingbyId($tire_matchingId);
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+>>>>>>> dc5bd376631ddad6d3cdd19a821af49aa4d7bd79
 }
