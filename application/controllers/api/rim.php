@@ -167,4 +167,11 @@ class Rim extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }     
+
+    function getAllRims_get(){
+        $this->load->model("rims");
+        $result = $this->rims->getAllRims();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 }

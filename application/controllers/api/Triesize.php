@@ -187,4 +187,12 @@ class Triesize extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function getAllTireSize_get(){
+        $tire_rimId = $this->get("tire_rimId");
+        $this->load->model("trieSizes");
+        $result = $this->trieSizes->getAllTireSizeByrimId($tire_rimId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 }
