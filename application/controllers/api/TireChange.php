@@ -76,7 +76,7 @@ class TireChange extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-    public function delete_get(){
+    public function deletetirechange_get(){
         $tire_changeId = $this->get('tire_changeId');
         $this->load->model('tirechanges');
         $checkData = $this->tirechanges->checkData($tire_changeId);
@@ -140,6 +140,7 @@ class TireChange extends BD_Controller {
         {
             foreach ($posts as $post)
             {
+                $nestedData['tire_changeId'] = $post->tire_changeId;
                 $nestedData['tire_front'] = $post->tire_front;
                 $nestedData['tire_back'] = $post->tire_back;
                 $nestedData['rimName'] = $post->rimName;

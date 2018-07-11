@@ -48,7 +48,7 @@ class tirechanges extends CI_Model{
     }
 
     function allTirechanges($limit,$start,$col,$dir){
-        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.status ');
+        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.status, tire_change.tire_changeId, tire_change.status ');
         $this->db->from('tire_change');
         $this->db->join('rim', 'tire_change.rimId = rim.rimId');
 
@@ -66,7 +66,7 @@ class tirechanges extends CI_Model{
     }
 
     function allTirechanges_count(){  
-        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.status ');
+        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.tire_changeId, tire_change.status ');
         $this->db->from('tire_change');
         $this->db->join('rim', 'tire_change.rimId = rim.rimId');
 
@@ -78,7 +78,7 @@ class tirechanges extends CI_Model{
     
     function tirechanges_search($limit,$start,$search,$col,$dir,$status){
         
-        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.status ');
+        $$this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.tire_changeId, tire_change.status ');
         $this->db->from('tire_change');
         $this->db->join('rim', 'tire_change.rimId = rim.rimId');
 
@@ -101,7 +101,7 @@ class tirechanges extends CI_Model{
 
     function tirechanges_search_count($search,$status){
        
-        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.status ');
+        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.status, tire_change.tire_changeId ');
         $this->db->from('tire_change');
         $this->db->join('rim', 'tire_change.rimId = rim.rimId');
         
