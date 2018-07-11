@@ -161,7 +161,6 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/tiresmatching/create/script");
 	}
-<<<<<<< HEAD
 
 	public function updatetiresmatching($tire_matchingId){
 		$data['tire_matchingId'] = $tire_matchingId;		
@@ -172,7 +171,7 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/tiresmatching/update/script");
-=======
+	}
 	
 	public function tirechange(){
 		$this->load->view("admin/layout/head");
@@ -202,6 +201,5 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/tirechange/update/script");
->>>>>>> 21c601b1443a3de8fbf12b3c9e4bb94826249333
 	}
 }
