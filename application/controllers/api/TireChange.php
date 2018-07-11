@@ -23,7 +23,8 @@ class TireChange extends BD_Controller {
                 'rimId' => $rimId,
                 'create_by' => $userId,
                 'create_at' => date('Y-m-d H:i:s',time()),
-                'status' => 1
+                'status' => 1,
+                'activeFlag' => 1
             );
             $result = $this->tirechanges->insert($data);
             if($result){
@@ -57,7 +58,8 @@ class TireChange extends BD_Controller {
                 'rimId' => $rimId,
                 'update_by' => $userId,
                 'update_at' => date('Y-m-d H:i:s',time()),
-                'status' => 1
+                'status' => 1 ,
+                'activeFlag' => 1
             );
             $result = $this->tirechanges->update($data);
             $output["status"] = $result;
