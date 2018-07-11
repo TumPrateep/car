@@ -193,11 +193,12 @@ class Tires extends CI_Controller {
 		$this->load->view("admin/tirechange/create/script");
 	}
 
-	public function updatetirechange(){
+	public function updatetirechange($tire_changeId){
+		$data['tire_changeId'] = $tire_changeId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/tirechange/update/content");
+		$this->load->view("admin/tirechange/update/content",$data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/tirechange/update/script");
