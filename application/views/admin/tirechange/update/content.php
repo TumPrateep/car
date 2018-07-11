@@ -3,9 +3,9 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/tires/tirechange") ?>">ราคาเปลี่ยนยางนอก</a>
+        <a href="<?=base_url("admin/tires/tirechange") ?>">ราคาเปลี่ยนยาง</a>
       </li>
-      <li class="breadcrumb-item active">แก้ไขราคาเปลี่ยนยางนอก</li>
+      <li class="breadcrumb-item active">แก้ไขราคาเปลี่ยนยาง</li>
     </ol>
     <!-- Icon Cards-->
     <section class="content">
@@ -15,7 +15,7 @@
             <div class="card text-white bg-success">
                 <div class="card-header">
 
-                  <h3 class="card-title"><i class="fa fa fa-wrench"></i> แก้ไขราคาเปลี่ยนยางนอก</h3>
+                  <h3 class="card-title"><i class="fa fa fa-wrench"></i> แก้ไขราคาเปลี่ยนยาง</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -24,18 +24,17 @@
                     <div class="form-group row">
                       <div class="col-md-4">
                           <label>ราคายางล้อหน้า</label> <span class="error">*</span>
-                          <input type="text" class="form-control" placeholder="กรุณากรอกราคายางล้อหน้า" name="tire_front" id="tire_front">
+                          <input type="number" class="form-control" placeholder="กรุณากรอกราคายางล้อหน้า" name="tire_front" id="tire_front">
                       </div>
                       <div class="col-md-4">
                           <label>ราคายางล้อหลัง</label> <span class="error">*</span>
-                          <input type="text" class="form-control" placeholder="กรุณากรอกราคายางล้อหลัง" name="tire_back" id="tire_back">
+                          <input type="number" class="form-control" placeholder="กรุณากรอกราคายางล้อหลัง" name="tire_back" id="tire_back">
                       </div>
                       <div class="col-md-4">
                             <label>ชื่อขอบยาง</label> <span class="error">*</span>
                             <select class="form-control" name="rimId" id="rimId">
                                 <option value="">กรุณาเลือกขอบยาง</option>
                             </select>
-
                       </div>
                     </div>
                     

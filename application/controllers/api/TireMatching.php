@@ -137,6 +137,43 @@ class TireMatching extends BD_Controller {
         }
     }
 
+    function update_post(){
+        $tire_matchingId = $this->post('tire_matchingId');
+        $rimId = $this->post('rimId');
+        $brandId = $this->post('brandId');
+        $modelId = $this->post('modelId');
+        $tire_sizeId = $this->post('tire_sizeId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $this->load->model('TireMatch');
+        $checkDuplicate = $this->TireMatch->checkduplicateSameId($rimId,$brandId,$modelId,$tire_sizeId,$tire_matchingId);
+        if($checkDuplicate){
+            $data = array(
+                'tire_matchingId' => $tire_matchingId,
+                'rimId' => $rimId,
+                'brandId' => $brandId,
+                'modelId' => $modelId,
+                'tire_sizeId' => $tire_sizeId,
+                "status" => 1,
+                "update_at" => date('Y-m-d H:i:s',time()),
+                "update_by" => $userId,
+                "activeFlag" => 1
+            );
+            $isUpdate = $this->TireMatch->update($data,$tire_matchingId);
+            $output["status"] = $isUpdate;
+            if($isUpdate){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+    
     function getTireMatching_get(){
         $tire_matchingId = $this->get('tire_matchingId');
         $this->load->model("TireMatch");
@@ -145,6 +182,25 @@ class TireMatching extends BD_Controller {
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function delete_get(){
+        $tire_matchingId = $this->get('tire_matchingId');
+        $this->load->model("TireMatch");
+        $isCheck = $this->TireMatch->checkTireMatching($tire_matchingId);
+        if($isCheck != null){
+            $isDelete = $this->TireMatch->delete($tire_matchingId);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
         }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
