@@ -50,9 +50,8 @@
             var data = $("#submit").serialize();
             $.post(base_url+"api/tirechange/createtirechange",data,
             function(data){
-                var rimId = $("#rimId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/tirechange/"+rimId);
+                    showMessage(data.message,"admin/Tires/tirechange/");
                 }else{
                     showMessage(data.message,);
                 }
