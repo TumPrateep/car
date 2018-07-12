@@ -1,11 +1,10 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
 class tirechanges extends CI_Model{
-    function checkDuplicate($tire_front,$tire_back,$rimId){
+    function checkDuplicate($rimId){
         $this->db->from("tire_change");
-        $this->db->where('tire_front',$tire_front);
-        $this->db->where('tire_back',$tire_back);
-        $this->db->where('rimId',$rimId);
+        $this->db->join('rim','tire_change.rimId = rim.rimId');
+        $this->db->where('tire_change.rimId',$rimId);
         $result = $this->db->count_all_results();
         if($result > 0){
             return false;
@@ -15,14 +14,13 @@ class tirechanges extends CI_Model{
     function insert($data){
         return $this->db->insert('tire_change',$data);
     }
-    function checkDuplicateById($tire_changeId,$tire_front,$tire_back,$rimId){
-        $this->db->select("tire_front,tire_back,rimId");
+    function checkDuplicateById($tire_changeId,$rimId){
+        $this->db->select("tire_change.tire_front,tire_change.tire_back,tire_change.rimId");
         $this->db->from("tire_change");
-        $this->db->where('tire_front',$tire_front);
-        $this->db->where('tire_back',$tire_back);
-        $this->db->where('rimId',$rimId);
-        $this->db->where_not_in('tire_changeId');
-        $result = $this ->db->count_all_results();
+        $this->db->join('rim','tire_change.rimId = rim.rimId');
+        $this->db->where('tire_change.rimId',$rimId);
+        $this->db->where_not_in('tire_change.tire_changeId',$tire_changeId);
+        $result = $this ->db->count_all_results();   
         if($result > 0){
             return false;
         }else
