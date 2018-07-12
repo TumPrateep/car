@@ -41,6 +41,11 @@ class TireData extends BD_Controller {
         $tire_brandId = $this->post('tire_brandId');
         $tire_modelId = $this->post('tire_modelId');
         $car_accessoriesId = $this->post('car_accessoriesId');
+        $price = $this->post('price');
+        $warranty = $this->post('warrnty');
+        $warranty_year = $this->post('warranty_year');
+        $warranty_distance = $this->post('warranty_distance');
+        $can_change = $this->post('can_change');
         $userId = $this->session->userdata['logged_in']['id'];
         $config['upload_path'] = 'public/image/tirebranddata/';
         // $config['allowed_types'] = 'gif|jpg|png';
@@ -112,6 +117,11 @@ class TireData extends BD_Controller {
         $tire_brandId = $this->post('tire_brandId');
         $tire_modelId = $this->post('tire_modelId');
         $car_accessoriesId = $this->post('car_accessoriesId');
+        $price = $this->post('price');
+        $warranty = $this->post('warrnty');
+        $warranty_year = $this->post('warranty_year');
+        $warranty_distance = $this->post('warranty_distance');
+        $can_change = $this->post('can_change');
         $userId = $this->session->userdata['logged_in']['id'];
         $config['upload_path'] = 'public/image/tirebranddata/';
         // $config['allowed_types'] = 'gif|jpg|png';
