@@ -36,6 +36,8 @@
             "columns": [
                 null,
                 { "data": "lubricator_typeName" },
+                { "data": "api" },
+                { "data": "capacity" },
                 { "data": "lubricator_typeSize" },
                 null
             ],
@@ -43,9 +45,9 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,4]
+                    "targets": [0,6]
                 },{
-                    "targets": 4,
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/LubricatorType/updatelubricatortype/"+data.lubricator_typeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -62,7 +64,7 @@
                 {
                    
                 },{
-                    "targets": 3,
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -82,11 +84,12 @@
                 },
                 { "orderable": false, "targets": 0 },
                 // {"className": "dt-head-center", "targets": []},
-                {"className": "dt-center", "targets": [0,1,2,3,4]},
+                {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
                 { "width": "10%", "targets": 0 },
-                { "width": "30%", "targets": 1 },
-                { "width": "25%", "targets": 4 },
-                { "width": "12%", "targets": 3 }
+                { "width": "25%", "targets": 1 },
+                { "width": "15%", "targets": 4 },
+                { "width": "13%", "targets": 3 },
+               
             ]	 
     });
    
