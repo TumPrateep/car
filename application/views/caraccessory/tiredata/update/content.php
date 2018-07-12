@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <label class="control-label">รุ่นยาง</label><span class="error">*</span>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control input-group-default" id="tire_modelId" name="tire_modelId">
+                                            <select class="form-control" id="tire_modelId" name="tire_modelId">
                                                 <option value="">เลือกรุ่นยาง</option>
                                             </select>
                                         </div>
