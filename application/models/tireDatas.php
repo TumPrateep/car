@@ -43,7 +43,7 @@ class TireDatas extends CI_Model{
         $this->db->select('tire_data.tire_brandId,tire_data.tire_modelId,tire_data.rimId,tire_data.car_accessoriesId,concat(tire_size.tire_size,"/",tire_size.tire_series,tire_size.rim) as tire_size');
         $this->db->from('tire_data');
         $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId  ');
-        $this->db->join('tire_modelId','tire_model.tire_modelId = tire_data.tire_modelId = ');
+        $this->db->join('tire_modelId','tire_model.tire_modelId = tire_data.tire_modelId ');
         $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');
         $this->db->join('rim','rim.rimId = tire_data.rimId');
         $this->db->join('car_accessories','car_accessoriesId.car_accessoriesId = tire_data.car_accessoriesId');
