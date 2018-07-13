@@ -181,12 +181,4 @@ class Triemodel extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-
-    function getAllTireModel_get(){
-        $tire_brandId = $this->get("tire_brandId");
-        $this->load->model("tirebrand");
-        $result = $this->tirebrand->getAllTireSizeByrimId($tire_brandId);
-        $output["data"] = $result;
-        $this->set_response($output, REST_Controller::HTTP_OK);
-    }
 }
