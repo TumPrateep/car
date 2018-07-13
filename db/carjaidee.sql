@@ -744,7 +744,7 @@ CREATE TABLE `tire_change` (
   CONSTRAINT `create_by` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_change_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_change_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -753,6 +753,7 @@ CREATE TABLE `tire_change` (
 
 LOCK TABLES `tire_change` WRITE;
 /*!40000 ALTER TABLE `tire_change` DISABLE KEYS */;
+INSERT INTO `tire_change` VALUES (6,'300','500',1,1,NULL,'2018-07-11 16:02:29','2018-07-11 16:23:43','1','1'),(7,'500','500',1,1,NULL,'2018-07-11 16:02:46','2018-07-11 16:15:52','1','1');
 /*!40000 ALTER TABLE `tire_change` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -769,15 +770,19 @@ CREATE TABLE `tire_data` (
   `tire_sizeId` int(11) NOT NULL,
   `tire_brandId` int(11) NOT NULL,
   `tire_modelId` int(11) NOT NULL,
-  `create_by` int(11) DEFAULT NULL,
+  `create_by` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
   `tire_picture` varchar(255) DEFAULT NULL,
   `car_accessoriesId` int(11) DEFAULT NULL,
-  `create_byaccessories` int(11) DEFAULT NULL,
   `activeFlag` int(11) NOT NULL DEFAULT '2',
+  `price` double DEFAULT NULL,
+  `warranty_year` int(11) DEFAULT NULL,
+  `warranty_distance` double DEFAULT NULL,
+  `can_change` int(11) DEFAULT NULL,
+  `warranty` int(11) DEFAULT NULL,
   PRIMARY KEY (`tire_dataId`),
   KEY `fk_trie_data_rim1_idx` (`rimId`),
   KEY `fk_trie_data_trie_size1_idx` (`tire_sizeId`),
@@ -785,8 +790,6 @@ CREATE TABLE `tire_data` (
   KEY `fk_trie_data_tire_model1_idx` (`tire_modelId`),
   KEY `fk_trie_data_users1_idx` (`create_by`),
   KEY `fk_trie_data_users2_idx` (`update_by`),
-  KEY `create_byaccessories_idx` (`create_byaccessories`),
-  CONSTRAINT `create_byaccessories` FOREIGN KEY (`create_byaccessories`) REFERENCES `car_accessories` (`car_accessoriesId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_trie_data_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_trie_data_tire_model1` FOREIGN KEY (`tire_modelId`) REFERENCES `tire_model` (`tire_modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_trie_data_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -816,7 +819,7 @@ CREATE TABLE `tire_matching` (
   `brandId` int(11) NOT NULL,
   `modelId` int(11) NOT NULL,
   `tire_sizeId` int(11) NOT NULL,
-  `create_by` int(11) NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
@@ -835,7 +838,7 @@ CREATE TABLE `tire_matching` (
   CONSTRAINT `fk_tire_matching_trie_size1` FOREIGN KEY (`tire_sizeId`) REFERENCES `tire_size` (`tire_sizeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_matching_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_matching_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1096,4 +1099,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-11 11:58:18
+-- Dump completed on 2018-07-12 10:31:01

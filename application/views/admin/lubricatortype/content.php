@@ -46,6 +46,8 @@
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
           <th><i class="fa fa-tint"></i>  ชื่อประเภทน้ำมันเครื่อง</th>
+          <th><i class="fa fa-tint"></i>  API</th>
+          <th><i class="fa fa-tint"></i>  ความจุ</th>
           <th><i class="fa fa-road"></i>  ระยะทาง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>

@@ -85,7 +85,7 @@
                 <button type="button" class="btn-create btn btn-gray btn-md m-b-10 m-l-5">
                     <i class="ti-search"> ค้นหา</i>
                 </button>
-                <a href="<?=base_url("caraccessory/car/createcar") ?>">
+                <a href="<?=base_url("caraccessory/tiredata/createtiredata") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>

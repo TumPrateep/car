@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">ขนาดขอบยาง</label><span class="error">*</span>
+                                        <label class="control-label">อู่</label><span class="error">*</span>
                                         <div class="input-group input-group-default">
                                             <select class="form-control" id="tireBrand"></select>
                                         </div>
