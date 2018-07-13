@@ -77,4 +77,71 @@ class TireDatas extends CI_Model{
         $result = $this->db->get('tire_data')->row();
         return $result;
     }
+    function allTire_count(){
+       $query = $this
+                ->db
+                ->get('tire_data');
+    
+        return $query->num_rows();
+    }
+    function allTire($limit,$start,$col,$dir)
+    {   
+       $query = $this
+                ->db
+                ->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('tire_data');
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
+    function tireData_search($limit,$start,$order,$dir,$status,$rimId,$tire_sizeId,$tire_brandId,$tire_modelId,$warranty_distance,$warranty_year,$can_change){
+        $this->db->like('rimId',$rimId);
+        $this->db->like('tire_sizeId',$tire_sizeId);
+        $this->db->like('tire_brandId',$tire_brandId);
+        $this->db->like('tire_modelId',$tire_modelId);
+        $this->db->like('warranty_distance',$warranty_distance);
+        $this->db->like('warranty_year',$warranty_year);
+        $this->db->like('can_change',$can_change);
+
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('tire_data');
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    } 
+    function  TireDatas_search_count($rimId,$tire_sizeId,$tire_brandId,$tire_modelId,$warranty_distance,$warranty_year,$status,$can_change){
+        $query = $this
+                ->db
+                ->like('rimId',$rimId)
+                ->like('tire_sizeId',$tire_sizeId)
+                ->like('tire_brandId',$tire_brandId)
+                ->like('tire_modelId',$tire_modelId)
+                ->like('warranty_distance',$warranty_distance)
+                ->like('warranty_year',$warranty_year)
+                ->like('can_change',$can_change)
+                ->where('status', $status)
+                ->get('tire_data');
+    
+        return $query->num_rows();
+    }
+    
 }

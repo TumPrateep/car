@@ -178,6 +178,7 @@ class TireData extends BD_Controller {
                     $result = $this->TireDatas->update($data);
                     $output["status"] = $result;
                     if($result){
+                        unlink($config['upload_path'].$oldData->tire_picture);
                         $output["message"] = REST_Controller::MSG_SUCCESS;
                         $this->set_response($output, REST_Controller::HTTP_OK);
                     }else{
@@ -199,17 +200,100 @@ class TireData extends BD_Controller {
         }
     }
     function getModel_post(){
-        +        $tire_dataId = $this->post('tire_dataId');
-        +        $this->load->model("TireDatas");
-        +        $tire_data = $this->TireDatas->gettire_dataById($tire_dataId);
-        +        if($tire_data != null){
-        +            $output["data"] = $tire_data;
-        +            $output["message"] = REST_Controller::MSG_SUCCESS;
-        +            $this->set_response($output, REST_Controller::HTTP_OK);
-        +        }else{
-        +            $output["message"] = REST_Controller::MSG_BE_DELETED;
-        +            $this->set_response($output, REST_Controller::HTTP_OK);
-        +        }
-             }
+        $tire_dataId = $this->post('tire_dataId');
+        $this->load->model("TireDatas");
+        $tire_data = $this->TireDatas->gettire_dataById($tire_dataId);
+        if($tire_data != null){
+            $output["data"] = $tire_data;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+    function search_post(){
+        $column = "tire_brandId";
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
+
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $column;
+        $dir = $sort;
+
+        $this->load->model('TireDatas');
+        $totalData = $this->TireDatas->allTire_count();
+        $totalFiltered = $totalData; 
+        if(empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('can_change')) &&empty($this->post('price')))
+        {            
+            $posts = $this->TireDatas->allTires($limit,$start,$order,$dir);
+        }
+        else {
+            // $search = $this->post('brandName'); 
+            $rimId = $this->post('rimId');
+            $tire_sizeId = $this->post('tire_sizedId');
+            $tire_brandId = $this->post('tire_brandId');
+            $tire_modelId = $this->post('tire_modelId');
+            $warranty_distance = $this->post('warranty_distance');
+            $warranty_year = $this->post('warranty_year');
+            $can_change =$this->post('can_change');
+
+            $status = null; 
+
+            $posts =  $this->TireDatas->tireData_search($limit,$start,$order,$dir,$status,$rimId,$tire_sizeId,$tire_brandId,$tire_modelId,$warranty_distance,$warranty_year,$can_change);
+
+            $totalFiltered = $this->TireDatas->TireDatas_search_count($rimId,$tire_sizeId,$tire_brandId,$tire_modelId,$warranty_distance,$warranty_year,$status,$can_change);
+        }
+
+        $data = array();
+        if(!empty($posts))
+        {
+            $index = 0;
+            $count = 0;
+            foreach ($posts as $post)
+            {
+                
+                $nestedData[$count]['tire_dataId'] = $post->tire_dataId;
+                $nestedData[$count]['rimId'] = $post->rimId;
+                $nestedData[$count]['tire_sizeId'] = $post->tire_sizeId;
+                $nestedData[$count]['tire_modelId'] = $post->tire_modelId;
+                $nestedData[$count]['tire_brandId'] = $post->tire_brandId;
+                $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['price'] = $post->price;
+                $nestedData[$count]['warranty_year'] = $post->warranty_year;
+                $nestedData[$count]['can_change'] = $post->can_change;
+                $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
+                $nestedData[$count]['create_by'] = $post->create_by;
+                
+                $data[$index] = $nestedData;
+                if($count >= 3){
+                    $count = -1;
+                    $index++;
+                    $nestedData = [];
+                }
+                
+                $count++;
+
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+
+        $this->set_response($json_data);
+
+    }
 
 }
