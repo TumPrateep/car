@@ -56,7 +56,7 @@
                                         <label class="control-label">ขนาดยาง</label><span class="error">*</span> <label id="tire_sizeId-error" class="error" for="tire_sizeId"></label>
                                         <div class="input-group input-group-default">
                                             <select class="form-control" id="tire_sizeId" name="tire_sizeId">
-                                            <option value="">เลือกขนาด</option>
+                                            <option value="">เลือกขนาดยาง</option>
                                             </select>
                                         </div>
                                     </div>
@@ -126,13 +126,13 @@
                                         <div class="form-group">
                                         <label class="control-label">รูปล้อ</label>
                                             <div class="image-editor">
-                                                <input type="file" class="cropit-image-input" name="tempImage"  required>
+                                                <input type="file" class="cropit-image-input" name="tempImage">
                                                 <div class="cropit-preview"></div>
                                                 <div class="image-size-label">
                                                 ปรับขนาด
                                                 </div>
                                                 <input type="range" class="cropit-image-zoom-input">
-                                                <input type="hidden" name="tire_picture	" class="hidden-image-data" />
+                                                <input type="hidden" name="tire_picture" class="hidden-image-data" />
                                             </div>
                                         </div>
                                     </div>

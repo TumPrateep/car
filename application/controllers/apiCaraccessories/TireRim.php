@@ -204,7 +204,7 @@ class TireRim extends BD_Controller {
 
     }
 
-    function getAllTireRim_get(){
+    function getAllTireRims_get(){
         $this->load->model("rims");
         $result = $this->rims->getAllRims();
         $output["data"] = $result;
