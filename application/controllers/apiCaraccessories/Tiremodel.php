@@ -217,8 +217,8 @@ class Tiremodel extends BD_Controller {
 
     function getAllTireModel_get(){
         $tire_brandId = $this->get("tire_brandId");
-        $this->load->model("tirebrand");
-        $result = $this->tirebrand->getAllTireSizeByrimId($tire_brandId);
+        $this->load->model("Triemodels");
+        $result = $this->Triemodels->getAllTireModelByTireBrandId($tire_brandId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }

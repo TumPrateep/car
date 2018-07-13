@@ -251,4 +251,11 @@ class Tirebrand extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function getAllTireBrand_get(){
+        $this->load->model("Triebrands");
+        $result = $this->Triebrands->getAllTriebrands();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 }

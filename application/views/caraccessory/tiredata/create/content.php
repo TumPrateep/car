@@ -13,7 +13,7 @@
             </ol>
         </div>
     </div>
-    <form id="submit">
+    <form id="create-tiredata">
     <div class="container-fluid">   
         <div class="row">
             <div class="col-12">
@@ -21,84 +21,102 @@
                     <input type="hidden" id="tire_dataId" name="tire_dataId" value="<?=$tire_dataId ?>">
                         <div class="form-body"> <br>
                             <div class="row p-t-20">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="control-label">ยี่ห้อยาง</label><span class="error">*</span> <label id="tire_brandId-error" class="error" for="tire_brandId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="tire_brandId" name="tire_brandId"></select>
+                                            <select class="form-control" id="tire_brandId" name="tire_brandId">
+                                                <option value="">เลือกยี่ห้อยาง</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="control-label">รุ่นยาง</label><span class="error">*</span> <label id="tire_modelId-error" class="error" for="tire_modelId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="tire_modelId" name="tire_modelId"></select>
+                                            <select class="form-control" id="tire_modelId" name="tire_modelId">
+                                            <option value="">เลือกรุ่นยาง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label">ขอบยาง</label><span class="error">*</span> <label id="rimId-error" class="error" for="rimId"></label>
+                                        <div class="input-group input-group-default">
+                                            <select class="form-control" id="rimId" name="rimId">
+                                            <option value="">เลือกขอบยาง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label">ขนาดยาง</label><span class="error">*</span> <label id="tire_sizeId-error" class="error" for="tire_sizeId"></label>
+                                        <div class="input-group input-group-default">
+                                            <select class="form-control" id="tire_sizeId" name="tire_sizeId">
+                                            <option value="">เลือกขนาด</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>      
                             </div>       
                             
                             <div class="row p-t-20">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">ขอบยาง</label><span class="error">*</span> <label id="rimId-error" class="error" for="rimId"></label>
-                                        <div class="input-group input-group-default">
-                                            <select class="form-control" id="rimId" name="rimId"></select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">ขนาดยาง</label><span class="error">*</span> <label id="tire_sizeId-error" class="error" for="tire_sizeId"></label>
-                                        <div class="input-group input-group-default">
-                                            <select class="form-control" id="tire_sizeId" name="tire_sizeId"></select>
-                                        </div>
-                                    </div>
-                                </div>      
-                            </div>
-                            <div class="row p-t-20">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">ร้านอะไหล่</label><span class="error">*</span> <label id="car_accessoriesId-error" class="error" for="car_accessoriesId"></label>
-                                        <div class="input-group input-group-default">
-                                            <select class="form-control" id="car_accessoriesId" name="car_accessoriesId"></select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="control-label">ราคา</label><span class="error">*</span> <label id="price-error" class="error" for="price"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="price" name="price"></select>
+                                            <input type="number" class="form-control" id="price" name="price" placeholder="ราคา">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="control-label">Fitted or Mail order</label><span class="error">*</span>
+                                        <div class="input-group input-group-default">
+                                            <select class="form-control" id="can_change" name="can_change">
+                                                <option value="1">Fitted</option>
+                                                <option value="2">Mail order</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row p-t-20">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="control-label">การประกัน(ปี)</label><span class="error">*</span> <label id="warranty_year-error" class="error" for="warranty_year"></label>
+                                        <label class="control-label">การรับประกัน-ปี</label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="warranty_year" name="warranty_year"></select>
+                                            <select class="form-control" id="warranty_year" name="warranty_year">
+                                                <option value="">เลือกการรับประกัน-ปี</option>
+                                                <option value="1">1 ปี</option>
+                                                <option value="2">2 ปี</option>
+                                                <option value="3">3 ปี</option>
+                                                <option value="4">4 ปี</option>
+                                                <option value="5">5 ปี</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="control-label">การประกัน(ระยะทาง)</label><span class="error">*</span> <label id="warranty_distance-error" class="error" for="warranty_distance"></label>
+                                        <label class="control-label">เงื่อนไข</label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="warranty_distance" name="warranty_distance"></select>
+                                            <select class="form-control" name="warranty" id="warranty">
+                                                <option value="">เลือกเงื่อนไข</option>
+                                                <option value="1">และ</option>
+                                                <option value="2">หรือ</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row p-t-20">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="control-label">Fitted or Mail order</label><span class="error">*</span> <label id="can_change-error" class="error" for="can_change"></label>
+                                        <label class="control-label">การรับประกัน-ระยะทาง (กิโลเมตร)</label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="can_change" name="can_change"></select>
+                                            <input type="number" class="form-control" id="warranty_distance" name="warranty_distance" placeholder="ระยะทาง (กิโลเมตร)">
                                         </div>
                                     </div>
                                 </div>

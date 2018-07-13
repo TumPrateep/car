@@ -139,4 +139,9 @@ class Triebrands extends CI_Model{
         return false;
     }
     
+    function getAllTriebrands(){
+        $this->db->select("tire_brandId,tire_brandName");
+        $query = $this->db->get("tire_brand");
+        return $query->result();
+    }
 }
