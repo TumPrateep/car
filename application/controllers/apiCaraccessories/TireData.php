@@ -198,5 +198,18 @@ class TireData extends BD_Controller {
             }
         }
     }
+    function getModel_post(){
+        +        $tire_dataId = $this->post('tire_dataId');
+        +        $this->load->model("TireDatas");
+        +        $tire_data = $this->TireDatas->gettire_dataById($tire_dataId);
+        +        if($tire_data != null){
+        +            $output["data"] = $tire_data;
+        +            $output["message"] = REST_Controller::MSG_SUCCESS;
+        +            $this->set_response($output, REST_Controller::HTTP_OK);
+        +        }else{
+        +            $output["message"] = REST_Controller::MSG_BE_DELETED;
+        +            $this->set_response($output, REST_Controller::HTTP_OK);
+        +        }
+             }
 
 }
