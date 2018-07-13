@@ -61,7 +61,24 @@
         var isValid = $("#create-tiredata").valid();
         
         if(isValid){
-
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
+            var myform = document.getElementById("create-tiredata");
+            var formData = new FormData(myform);
+            $.ajax({
+                url: base_url+"apiCaraccessories/TireData/create",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (data) {
+                    if(data.message == 200){
+                        showMessage(data.message,"caraccessory/tiredata");
+                    }else{
+                        showMessage(data.message);
+                    }
+                }
+            });
         }
     }
     
@@ -78,9 +95,12 @@
 
     var tireBrand = $("#tire_brandId");
     var tireModel = $("#tire_modelId");
+    var tire_rim = $("#rimId");
+    var tire_size = $("#tire_sizeId");
 
     function init(){
         getTireBrand();
+        getRim();
     }
     
     init();
@@ -109,6 +129,33 @@
             }
         );
     });
+
+    tire_rim.change(function(){
+        var tire_rimId = tire_rim.val();
+        tire_size.html('<option value="">เลือกขนาดยาง</option>');
+        $.get(base_url+"apiCaraccessories/Tiresize/getAllTireSize",{
+            tire_rimId: tire_rimId
+        },function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    tire_size.append('<option value="' + value.tire_sizeId + '">' + value.tiresize + '</option>');
+                });
+            }
+        );
+    });
+
+    function getRim(rimId = null){
+        $.get(base_url+"apiCaraccessories/TireRim/getAllTireRims",{},
+            function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>');
+                });
+            }
+        );
+    }
+
+
 
 </script>
 

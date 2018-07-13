@@ -24,26 +24,32 @@ class TireDatas extends CI_Model{
         return $this->db->delete('tire_data',array('tire_dataId' => $tire_dataId));
     }
     function checkduplicated($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId){
-        $this->db->select('tire_data.tire_brandId,tire_data.tire_modelId,tire_data.rimId,tire_data.car_accessoriesId,concat(tire_size.tire_size,"/",tire_size.tire_series,tire_size.rim) as tire_size');
+        $this->db->select('tire_data.tire_brandId');
         $this->db->from('tire_data');
         $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
+<<<<<<< HEAD
         $this->db->join('tire_modelId','tire_model.tire_modelId = tire_data.tire_modelId');
+=======
+        $this->db->join('tire_model','tire_model.tire_modelId = tire_data.tire_modelId');
+>>>>>>> 84b7b973c7f6eea6ae4a7a0380b4320304893b26
         $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');
         $this->db->join('rim','rim.rimId = tire_data.rimId');
-        $this->db->join('car_accessories','car_accessoriesId.car_accessoriesId = tire_data.car_accessoriesId');
+        $this->db->join('car_accessories','car_accessories.car_accessoriesId = tire_data.car_accessoriesId');
         $this->db->where('tire_data.tire_brandId',$tire_brandId);
-        $this->db->whrer('tire_data.tire_modelId',$tire_modelId);
+        $this->db->where('tire_data.tire_modelId',$tire_modelId);
         $this->db->where('tire_data.tire_sizeId',$tire_sizeId);
         $this->db->where('tire_data.rimId',$tire_rimId);
         $this->db->where('tire_data.car_accessoriesId',$car_accessoriesId);
         $result = $this->db->count_all_results();
-        if($result){
-            return true;
-        }else
+    
+        if($result > 0){
             return false;
+        }else{
+            return true;
+        }
     }
     function insert($data){
-        $this->db->insert('tire_data',$data);
+        return $this->db->insert('tire_data',$data);
     }
 
     function checkduplicatedUpdate($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId){

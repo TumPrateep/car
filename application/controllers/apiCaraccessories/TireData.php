@@ -40,13 +40,13 @@ class TireData extends BD_Controller {
         $tire_sizeId = $this->post('tire_sizeId');
         $tire_brandId = $this->post('tire_brandId');
         $tire_modelId = $this->post('tire_modelId');
-        $car_accessoriesId = $this->post('car_accessoriesId');
         $price = $this->post('price');
-        $warranty = $this->post('warrnty');
+        $warranty = $this->post('warranty');
         $warranty_year = $this->post('warranty_year');
         $warranty_distance = $this->post('warranty_distance');
         $can_change = $this->post('can_change');
         $userId = $this->session->userdata['logged_in']['id'];
+        $car_accessoriesId = $userId;
         $config['upload_path'] = 'public/image/tirebranddata/';
 
         // $config['allowed_types'] = 'gif|jpg|png';
@@ -59,7 +59,7 @@ class TireData extends BD_Controller {
         // $this->load->library('upload', $config);
 
         $this->load->model("TireDatas");
-        $userId = $this->session->userdata['logged_in']['id'];
+        // $userId = $this->session->userdata['logged_in']['id'];
         $img = $this->post('tire_picture');
         $img = str_replace('data:image/png;base64,', '', $img);
 	    $img = str_replace(' ', '+', $img);
@@ -74,8 +74,7 @@ class TireData extends BD_Controller {
 		}else{
         
             $image =  $imageName;
-            $tire_picture = $this->post('tire_picture');
-            $isDuplicated = $this->Tiredatas->checkduplicated($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
+            $isDuplicated = $this->TireDatas->checkduplicated($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
             if($isDuplicated){
                 $data = array(
                     'tire_dataId' => null,
@@ -96,7 +95,7 @@ class TireData extends BD_Controller {
                     'warranty' => $warranty,
                     'can_change' =>$can_change
                 );
-                $result = $this->Tiredatas->insert($data);
+                $result = $this->TireDatas->insert($data);
                 if($result){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
