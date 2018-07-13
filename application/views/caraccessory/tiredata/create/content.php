@@ -23,17 +23,17 @@
                             <div class="row p-t-20">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">ยี่ห้อยาง</label><span class="error">*</span>
+                                        <label class="control-label">ยี่ห้อยาง</label><span class="error">*</span> <label id="tire_brandId-error" class="error" for="tire_brandId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="tire_brandId"></select>
+                                            <select class="form-control" id="tire_brandId" name="tire_brandId"></select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">รุ่นยาง</label><span class="error">*</span>
+                                        <label class="control-label">รุ่นยาง</label><span class="error">*</span> <label id="tire_modelId-error" class="error" for="tire_modelId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="tire_modelId"></select>
+                                            <select class="form-control" id="tire_modelId" name="tire_modelId"></select>
                                         </div>
                                     </div>
                                 </div>      
@@ -42,17 +42,17 @@
                             <div class="row p-t-20">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">ขอบยาง</label><span class="error">*</span>
+                                        <label class="control-label">ขอบยาง</label><span class="error">*</span> <label id="rimId-error" class="error" for="rimId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="rimId"></select>
+                                            <select class="form-control" id="rimId" name="rimId"></select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">ขนาดยาง</label><span class="error">*</span>
+                                        <label class="control-label">ขนาดยาง</label><span class="error">*</span> <label id="tire_sizeId-error" class="error" for="tire_sizeId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="tire_sizeId"></select>
+                                            <select class="form-control" id="tire_sizeId" name="tire_sizeId"></select>
                                         </div>
                                     </div>
                                 </div>      
@@ -60,35 +60,17 @@
                             <div class="row p-t-20">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">ร้านอะไหล่</label><span class="error">*</span>
+                                        <label class="control-label">ร้านอะไหล่</label><span class="error">*</span> <label id="car_accessoriesId-error" class="error" for="car_accessoriesId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="car_accessoriesId"></select>
+                                            <select class="form-control" id="car_accessoriesId" name="car_accessoriesId"></select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">ราคา</label><span class="error">*</span>
+                                        <label class="control-label">ราคา</label><span class="error">*</span> <label id="price-error" class="error" for="price"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="car_accessoriesId"></select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row p-t-20">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">การประกัน(ปี)</label><span class="error">*</span>
-                                        <div class="input-group input-group-default">
-                                            <select class="form-control" id="car_accessoriesId"></select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">การประกัน(ระยะทาง)</label><span class="error">*</span>
-                                        <div class="input-group input-group-default">
-                                            <select class="form-control" id="car_accessoriesId"></select>
+                                            <select class="form-control" id="price" name="price"></select>
                                         </div>
                                     </div>
                                 </div>
@@ -96,9 +78,27 @@
                             <div class="row p-t-20">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">Fitted or Mail order</label><span class="error">*</span>
+                                        <label class="control-label">การประกัน(ปี)</label><span class="error">*</span> <label id="warranty_year-error" class="error" for="warranty_year"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="car_accessoriesId"></select>
+                                            <select class="form-control" id="warranty_year" name="warranty_year"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">การประกัน(ระยะทาง)</label><span class="error">*</span> <label id="warranty_distance-error" class="error" for="warranty_distance"></label>
+                                        <div class="input-group input-group-default">
+                                            <select class="form-control" id="warranty_distance" name="warranty_distance"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Fitted or Mail order</label><span class="error">*</span> <label id="can_change-error" class="error" for="can_change"></label>
+                                        <div class="input-group input-group-default">
+                                            <select class="form-control" id="can_change" name="can_change"></select>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                                         <div class="form-group">
                                         <label class="control-label">รูปล้อ</label>
                                             <div class="image-editor">
-                                                <input type="file" class="cropit-image-input"  required>
+                                                <input type="file" class="cropit-image-input" name="tempImage"  required>
                                                 <div class="cropit-preview"></div>
                                                 <div class="image-size-label">
                                                 ปรับขนาด
@@ -134,6 +134,7 @@
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
+    </form>   
 </div>
 <!-- End Container fluid  -->
