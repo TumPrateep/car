@@ -163,6 +163,11 @@ label.error{
         padding-top: 10px;
     }
 
+    .button-p-helf{
+        width: 100% !important;
+        margin-top: 2px !important;
+    }
+
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
@@ -210,4 +215,19 @@ label.error{
   .to-year{
     padding-top: 32px;
     text-align: center;
+  }
+
+  .button-p-helf{
+      width: 49%;
+      margin-top: 20px;
+  }
+
+  .slider.slider-horizontal {
+    width: 50%;
+    height: 20px;
+  }
+
+  .btn-gray{
+    background-color: #6cc9ff;
+    color: white;
   }
