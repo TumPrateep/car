@@ -148,9 +148,7 @@ class TireData extends BD_Controller {
             // $output["data"] = $error;
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
-        //     $imageDetailArray = $this->upload->data();
             $image =  $imageName;
-            $tire_picture = $this->post('tire_picture');
             $isDuplicated = $this->Tiredatas->checkduplicatedUpdate($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
             if($isDuplicated){
                 $data = array(
