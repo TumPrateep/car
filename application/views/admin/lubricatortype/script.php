@@ -32,7 +32,7 @@
                     data.status = $("#status").val()
                 }
             },
-            "order": [[ 1, "asc" ]],
+            "order": [[ 2, "asc" ]],
             "columns": [
                 null,
                 { "data": "lubricator_typeName" },
