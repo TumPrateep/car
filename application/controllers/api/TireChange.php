@@ -124,7 +124,6 @@ class TireChange extends BD_Controller {
         $this->load->model("tirechanges");
         $totalData = $this->tirechanges->allTirechanges_count();
         $totalFiltered = $totalData; 
-        $search = $this->post('rimName');
         if(empty($this->post('rimName')) && empty($this->post('status')))
         {            
             $posts = $this->tirechanges->allTirechanges($limit,$start,$order,$dir);
@@ -156,4 +155,27 @@ class TireChange extends BD_Controller {
         );
         $this->set_response($json_data);
     }
+
+    function changeStatus_post(){
+        $tire_changeId = $this->post('tire_changeId');
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status,
+            'activeFlag' => 1
+        );
+        $this->load->model("tirechanges");
+        $result = $this->tirechanges->updateStatus($tire_changeId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }   
 }

@@ -79,7 +79,7 @@ class TireMatching extends BD_Controller {
         }
     }
     function changeStatus_post(){
-        $tire_brandId = $this->post("tire_brandId");
+        $tire_matchingId = $this->post("tire_matchingId");
         $status = $this->post("status");
         if($status == 1){
             $status = 2;
@@ -90,8 +90,8 @@ class TireMatching extends BD_Controller {
             'status' => $status,
             'activeFlag' => 1
         );
-        $this->load->model("Triebrands");
-        $result = $this->Triebrands->updateStatus($tire_brandId,$data);
+        $this->load->model("TireMatch");
+        $result = $this->TireMatch->updateStatus($tire_matchingId,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);
@@ -207,4 +207,5 @@ class TireMatching extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+    
 }

@@ -76,7 +76,7 @@ class tirechanges extends CI_Model{
     
     function tirechanges_search($limit,$start,$search,$col,$dir,$status){
         
-        $$this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.tire_changeId, tire_change.status ');
+        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.tire_changeId, tire_change.status');
         $this->db->from('tire_change');
         $this->db->join('rim', 'tire_change.rimId = rim.rimId');
 
@@ -86,7 +86,8 @@ class tirechanges extends CI_Model{
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
-                ->get();       
+                ->get();
+                
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -113,5 +114,11 @@ class tirechanges extends CI_Model{
     
         return $query->num_rows();
     } 
-   
+    
+    function updateStatus($tire_changeId, $data){
+        $this->db->where('tire_changeId',$tire_changeId);
+        $result = $this->db->update('tire_change', $data);
+        
+        return $result; 
+    }
 }

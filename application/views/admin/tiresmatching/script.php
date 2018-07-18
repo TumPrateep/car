@@ -75,7 +75,7 @@
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.tire_brandId+','+data.status+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.tire_matchingId+','+data.status+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
@@ -104,6 +104,19 @@
             gotoUrl: "admin/tires/tiresmatching"
         }
         fnDelete(option);
+    }
+
+    function updateStatus(tire_matchingId,status){
+        $.post(base_url+"api/TireMatching/changeStatus",{
+            "tire_matchingId": tire_matchingId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/tires/tiresmatching/");
+            }else{
+                showMessage(data.message);
+            }
+        });
     }
 </script>
 

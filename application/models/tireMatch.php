@@ -139,4 +139,11 @@ class TireMatch extends CI_Model{
     function delete($tire_matchingId){
         return $this->db->delete('tire_matching', array('tire_matchingId' => $tire_matchingId));
     }
+
+    function updateStatus($tire_matchingId, $data){
+        $this->db->where('tire_matchingId',$tire_matchingId);
+        $result = $this->db->update('tire_matching', $data);
+        
+        return $result; 
+    }
 }

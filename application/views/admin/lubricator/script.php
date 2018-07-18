@@ -104,7 +104,7 @@
         table.ajax.reload();
     })
 
-     function updateStatus(lubricatorId,status,lubricator_brandId){
+    function updateStatus(lubricatorId,status,lubricator_brandId){
         $.post(base_url+"api/Lubricator/changeStatus",{
             "lubricatorId": lubricatorId,
             "status": status

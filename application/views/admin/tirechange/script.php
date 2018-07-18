@@ -107,7 +107,18 @@
         table.ajax.reload();
     })
 
-    
+    function updateStatus(tire_changeId,status){
+        $.post(base_url+"api/TireChange/changeStatus",{
+            "tire_changeId": tire_changeId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/tires/tirechange/");
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
 </script>
 
 </body>
