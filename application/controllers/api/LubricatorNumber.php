@@ -12,9 +12,8 @@ class LubricatorNumber extends BD_Controller {
             $columns = array( 
                 0 => null,
                 1 =>'lubricator_number',
-                2 => 'lubricator_gear',
-                3 => 'lubricator_typeId',
-                4 =>'status'
+                2 => 'lubricator_typeId,lubricator_gear',
+                3 =>'status'
             );
             $limit = $this->post('length');
             $start = $this->post('start');
