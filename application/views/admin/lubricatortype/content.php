@@ -18,7 +18,7 @@
         <div class="input-group float-right">
           <input name="lubricator_typeName" id="table-search" class="form-control float-right" placeholder="ประเภทน้ำมันเครื่อง">
           <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-tint"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-tachometer"></i></button>
           </div>
 
           <select class="form-control" name="status" id="status" >
@@ -45,9 +45,9 @@
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-tint"></i>  ชื่อประเภทน้ำมันเครื่อง</th>
+          <th><i class="fa fa-tachometer"></i>  ชื่อประเภทน้ำมันเครื่อง</th>
           <th><i class="fa fa-tint"></i>  API</th>
-          <th><i class="fa fa-tint"></i>  ความจุ</th>
+          <th><i class="fa fa-bitbucket"></i>  ความจุ</th>
           <th><i class="fa fa-road"></i>  ระยะทาง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>

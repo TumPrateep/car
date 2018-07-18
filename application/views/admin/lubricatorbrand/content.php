@@ -18,7 +18,7 @@
         <div class="input-group float-right">
           <input name="lubricator_brandName" id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้อน้ำมันเครื่อง">
           <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-tint"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-rebel"></i></button>
           </div>
 
           <select class="form-control" name="status" id="status" >
@@ -46,7 +46,7 @@
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
           <th><i class="fa fa-picture-o"></i> รูปยี่ห้อรถ</th>
-          <th><i class="fa fa-tint"></i>  ชื่อยี่ห้อน้ำมันเครื่อง</th>
+          <th><i class="fa fa-rebel"></i>  ชื่อยี่ห้อน้ำมันเครื่อง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	

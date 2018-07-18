@@ -18,7 +18,7 @@
         <div class="input-group float-right">
           <input name="car_search" id="table-search" class="form-control float-right" placeholder="เบอร์น้ำมันเครื่อง">
           <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-tint"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-safari"></i></button>
           </div>
 
           <select class="form-control" name="status" id="status" >
@@ -45,8 +45,8 @@
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-tint"></i>  ชื่อเบอร์น้ำมันเครื่อง</th>
-          <th><i class="fa fa-tint"></i>  ประเภทน้ำมันเครื่อง</th>
+          <th><i class="fa fa-safari"></i>  ชื่อเบอร์น้ำมันเครื่อง</th>
+          <th><i class="fa fa-tachometer"></i>  ประเภทน้ำมันเครื่อง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	

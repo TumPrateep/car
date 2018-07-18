@@ -38,19 +38,19 @@
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
                 <li class="<?= activate_menu('lubricatortype'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricatortype") ?>">
-                    <!-- <i class="fa fa-circle-o"></i> -->
+                    <i class="fa fa-tachometer"></i>
                     <span class="nav-link-text">ประเภทน้ำมันเครื่อง</span>
                   </a>
                 </li>
                 <li class="<?= activate_menu('lubricatornumber'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricatornumber") ?>">
-                    <!-- <i class="fa fa-futbol-o"></i> -->
+                    <i class="fa fa-safari"></i>
                     <span class="nav-link-text">เบอร์น้ำมันเครื่อง</span>
                   </a>
                 </li>
                 <li class="<?= activate_menu('lubricator'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricator") ?>">
-                    <!-- <i class="fa fa-futbol-o"></i> -->
+                    <i class="fa fa-rebel"></i>
                     <span class="nav-link-text">ยี่ห้อน้ำมันเครื่อง</span>
                   </a>
                 </li>
