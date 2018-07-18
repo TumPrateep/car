@@ -20,6 +20,7 @@
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form id="submit">
+                  <input type="hidden" name="tire_changeId" id="tire_changeId" value="<?=$tire_changeId?>">
                   <div class="card-body black bg-light">
                     <div class="form-group row">
                       <div class="col-md-4">

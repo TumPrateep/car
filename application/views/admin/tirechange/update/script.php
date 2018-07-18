@@ -46,4 +46,27 @@
             
         }
     }
+
+    $.get(base_url+"api/TireChange/getTireChange",{
+        "tire_changeId": tire_changeId
+    },function(data){
+        var tireChange = data.data;
+        getRim(tireChange.rimId);
+        $("#tire_front").val(tireChange.tire_front);
+        $("#tire_back").val(tireChange.tire_back);
+    });
+
+    var tire_rim = $("#rimId");
+
+    function getRim(rimId = null){
+        $.get(base_url+"api/Rim/getAllRims",{},
+            function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>');
+                });
+                tire_rim.val(rimId);
+            }
+        );
+    }
 </script>

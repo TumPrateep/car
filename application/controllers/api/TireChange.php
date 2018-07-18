@@ -177,5 +177,21 @@ class TireChange extends BD_Controller {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
-    }   
+    }  
+    
+    function getTireChange_get(){
+        $tire_changeId = $this->get('tire_changeId');
+        $this->load->model("tirechanges");
+
+        $result = $this->tirechanges->getTireChangeById($tire_changeId);
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+
+    }
 }

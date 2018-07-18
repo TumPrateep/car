@@ -121,4 +121,12 @@ class tirechanges extends CI_Model{
         
         return $result; 
     }
+
+    function getTireChangeById($tire_changeId){
+        $this->db->select("tire_changeId,tire_front,tire_back,rimId");
+        $this->db->where('tire_changeId',$tire_changeId);
+        $result = $this->db->get("tire_change")->row();
+    
+        return $result;
+    }
 }
