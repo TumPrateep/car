@@ -19,7 +19,7 @@
         <div class="input-group float-right">
           <input id="table-search" class="form-control float-right" placeholder="รุ่นรถ">
           <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-futbol-o"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-automobile"></i></button>
           </div>
           <select class="form-control" name ="status" id="status" >
             <option value >สถานะ</option>
@@ -40,9 +40,9 @@
       <table class="table table-bordered" id="matching-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
-          <th><i class="fa fa-futbol-o"></i>  ยี่ห้อรถ</th>
-          <th><i class="fa fa-futbol-o"></i>  รุ่นรถ</th>
-          <th><i class="fa fa-futbol-o"></i>  ขนาดยางรถ</th>
+          <th><i class="fa fa-get-pocket"></i>  ยี่ห้อรถ</th>
+          <th><i class="fa fa-automobile"></i>  รุ่นรถ</th>
+          <th><i class="fa fa-arrows-h"></i>  ขนาดยางรถ</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	
