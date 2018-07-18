@@ -85,10 +85,10 @@
                 { "orderable": false, "targets": 0 },
                 // {"className": "dt-head-center", "targets": []},
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
-                { "width": "10%", "targets": 0 },
+                { "width": "8%", "targets": 0 },
                 { "width": "25%", "targets": 1 },
-                { "width": "15%", "targets": 4 },
-                { "width": "13%", "targets": 3 },
+                { "width": "17%", "targets": 2 },
+                { "width": "13%", "targets": [4,3] },
                
             ]	 
     });
