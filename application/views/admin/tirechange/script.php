@@ -45,7 +45,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0]
+                    "targets": [0,5]
                 },
                 {
                     "targets": 0,
