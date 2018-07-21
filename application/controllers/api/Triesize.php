@@ -15,7 +15,7 @@ class Triesize extends BD_Controller {
         
         $this->load->model("trieSizes");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->trieSizes->gettrie_sizeforrim($tire_size,$rimId);
+        $isCheck = $this->trieSizes->gettrie_sizeforrim($tire_size,$rimId,$tire_series,$rim);
         
         if($isCheck){
             $data = array(
