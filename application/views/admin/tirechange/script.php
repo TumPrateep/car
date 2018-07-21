@@ -46,15 +46,19 @@
                     "searchable": false,
                     "orderable": false,
                     "targets": [0,5]
-                },
-                {
+                },{
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
-                },
-                {
+                },{
+                    "targets": 3,
+                    "data": "rimName",
+                    "render": function ( data, type, full, meta ) {
+                        return  data +' นิ้ว';
+                    }
+                },{
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
