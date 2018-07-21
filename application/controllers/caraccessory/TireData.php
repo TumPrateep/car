@@ -30,8 +30,9 @@ class TireData extends CI_Controller {
 		$this->load->view("caraccessory/TireData/create/script");
 	}
 
-	public function updatetiredata()
+	public function updatetiredata($tire_dataId)
 	{
+		$data['tire_dataId'] = $tire_dataId;
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");

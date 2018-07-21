@@ -168,6 +168,10 @@ label.error{
         margin-top: 2px !important;
     }
 
+    .mt-20{
+        margin-top: -5px !important;
+    }
+
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
@@ -230,4 +234,16 @@ label.error{
   .btn-gray{
     background-color: #6cc9ff;
     color: white;
+  }
+
+  .pt-20{
+    padding-top: 20px;
+  }
+
+  .ml-8{
+      margin-left: 8px;
+  }
+
+  .mt-20{
+      margin-top: -20px;
   }

@@ -3,7 +3,7 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <span class="text-primary">ยี่ห้อรถ</span>
+            <span class="text-primary">ข้อมูลยาง</span>
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
@@ -15,84 +15,105 @@
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
     <div class="container-fluid">
-        <div class="row p-30">
-            <div class="col-lg-1 text-right"></div>
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label class="control-label">ชื่อยี่ห้อรถ</label>
-                    <select class="form-control input-default">
-                        <option value="">ยี่ห้อยาง</option>
-                    </select>
+        <form id="search">
+            <div class="card" style="display:none;" id="search-form">
+                <div class="card-body text-right">
+                    <button type="button" id="search-hide" class="btn btn-dark btn-outline btn-sm m-b-10 m-l-5">
+                        <i class="fa fa-eye-slash" aria-hidden="true"></i> 
+                        ซ่อน
+                    </button>
                 </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label class="control-label">ชื่อยี่ห้อรถ</label>
-                    <select class="form-control input-default">
-                        <option value="">ยี่ห้อยาง</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="form-group">
-                    <label class="control-label">ชื่อยี่ห้อรถ</label>
-                    <select class="form-control input-default">
-                        <option value="">ยี่ห้อยาง</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="form-group">
-                    <label class="control-label">ชื่อยี่ห้อรถ</label>
-                    <select class="form-control input-default">
-                        <option value="">ยี่ห้อยาง</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="row p30">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-5">
-                <div class="form-group">
-                    <label class="control-label">ช่วงราคา</label>
-                    <div class="input-default">
-                        <span id="start"></span> <input type="text" id="test"> <span id="end"></span>
+                <div class="row p-30">
+                    <div class="col-lg-1 text-right"></div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label class="control-label">ยี่ห้อยาง</label>
+                            <select class="form-control input-default" name="tire_brandId" id="tire_brandId">
+                                <option value="">เลือกยี่ห้อยาง</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label class="control-label">รุ่นยาง</label>
+                            <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                                <option value="">เลือกรุ่นยาง</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label class="control-label">ขอบยาง</label>
+                            <select class="form-control input-default" name="rimId" id="rimId">
+                                <option value="">เลือกขอบยาง</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label class="control-label">ขนาดยาง</label>
+                            <select class="form-control input-default" name="tire_sizeId" id="tire_sizeId">
+                                <option value="">เลือกขนาดยาง</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="form-group">
-                    <label class="control-label">filled or Oreder</label>
-                    <select class="form-control input-default">
-                        <option value="">ยี่ห้อยาง</option>
-                    </select>
+                <div class="row p30">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <label class="control-label">ช่วงราคา</label>
+                            <div class="input-default">
+                                <span id="start"></span> <input type="text" name="price" id="price"> <span id="end"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label class="control-label">filled or Order</label>
+                            <select class="form-control input-default" name="can_change" id="can_change">
+                                <option value="">filled or Order</option>
+                                <option value="1">filled</option>
+                                <option value="2">Order</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label class="control-label">จัดเรียง: </label>
+                            <select class="form-control input-default" name="sort" id="sort">
+                                <option value="1" selected>เรียงลำดับจาก ก-ฮ</option>
+                                <option value="2">เรียงลำดับจาก ฮ-ก</option>
+                                <option value="3">เรียงลำดับจาก สถานะ</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label class="control-label">จัดเรียง: </label>
-                    <select class="form-control input-default" name="column" id="column">
-                        <option value="1" selected>เรียงลำดับจาก ก-ฮ</option>
-                        <option value="2">เรียงลำดับจาก ฮ-ก</option>
-                        <option value="3">เรียงลำดับจาก สถานะ</option>
-                    </select>
+
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <button type="button" id="btn-search" class="btn-create btn btn-gray btn-md m-b-10 m-l-5">
+                            <i class="ti-search"> ค้นหา</i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </form>  
+        </div> 
 
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <button type="button" class="btn-create btn btn-gray btn-md m-b-10 m-l-5">
-                    <i class="ti-search"> ค้นหา</i>
-                </button>
+            <div class="col-lg-12 pt-20 ml-8">
                 <a href="<?=base_url("caraccessory/tiredata/createtiredata") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>
+
+                <button class="btn-create btn btn-gray btn-md m-b-10 m-l-5" id="show-search">
+                    <i class="ti-search"> ค้นหา</i>
+                </button>
             </div>
-        </div>  
+        </div>
         
-        <div class="table">
+        <div class="table mt-20">
             <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
                 <thead>
                     <th></th>
