@@ -32,12 +32,10 @@
                     data.status = $("#status").val()
                 }
             },
-            "order": [[ 2, "asc" ]],
+            "order": [[ 1, "asc" ]],
             "columns": [
                 null,
                 { "data": "lubricator_typeName" },
-                { "data": "api" },
-                { "data": "capacity" },
                 { "data": "lubricator_typeSize" },
                 null
             ],
@@ -45,9 +43,9 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,6]
+                    "targets": [0]
                 },{
-                    "targets": 6,
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/LubricatorType/updatelubricatortype/"+data.lubricator_typeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -64,7 +62,7 @@
                 {
                    
                 },{
-                    "targets": 5,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -83,12 +81,10 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                // {"className": "dt-head-center", "targets": []},
-                {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
+                {"className": "dt-center", "targets": [0,1,2,3,4]},
                 { "width": "8%", "targets": 0 },
-                { "width": "25%", "targets": 1 },
-                { "width": "17%", "targets": 2 },
-                { "width": "13%", "targets": [4,3] },
+                { "width": "20%", "targets": [1,2] },
+                { "width": "12%", "targets": [4,3] },
                
             ]	 
     });
