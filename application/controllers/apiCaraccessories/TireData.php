@@ -14,20 +14,16 @@ class TireData extends BD_Controller {
         $tire = $this->TireDatas->getireById($tire_dataId);
         $userId = $this->session->userdata['logged_in']['id'];
         if($tire != null){
-            $isCheck = $this->TireDatas->checkstatus($tire_dataId,$userId);
-            if($isCheck > 0){
-                $isDelete = $this->TireDatas->delete($tire_dataId);
-                if($isDelete){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $output["message"] = REST_Controller::MSG_BE_USED;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
+        
+            $isDelete = $this->TireDatas->delete($tire_dataId);
+            if($isDelete){
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
-                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $output["message"] = REST_Controller::MSG_BE_USED;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
+           
         }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
