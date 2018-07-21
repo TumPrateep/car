@@ -161,16 +161,25 @@
         var isValid = $("#update-tiredata").valid();
         
         if(isValid){
-            var data = $("#update-tiredata").serialize();
-            $.post(base_url+"apiCaraccessories/TireData/update",data,
-            function(data){
-                if(data.message == 200){
-                    showMessage(data.message,"caraccessory/tiredata");
-                }else{
-                    showMessage(data.message);
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
+            var myform = document.getElementById("update-tiredata");
+            var formData = new FormData(myform);
+            
+            $.ajax({
+                url: base_url+"apiCaraccessories/TireData/update",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (data) {
+                    if(data.message == 200){
+                        showMessage(data.message,"caraccessory/tiredata");
+                    }else{
+                        showMessage(data.message);
+                    }
                 }
             });
-            
         }
     }
 </script>
