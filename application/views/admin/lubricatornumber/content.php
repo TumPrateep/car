@@ -45,7 +45,7 @@
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-safari"></i>  ชื่อเบอร์น้ำมันเครื่อง</th>
+          <th><i class="fa fa-safari"></i>  ชื่อเบอร์น้ำมันเครื่อง(SAE)</th>
           <th><i class="fa fa-tachometer"></i>  ประเภทน้ำมันเครื่อง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
