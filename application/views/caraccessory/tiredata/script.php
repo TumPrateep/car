@@ -22,44 +22,64 @@
             "responsive": true,
             "bLengthChange": false,
             "searching": false,
-            // "processing": true,
-            // "serverSide": true,
-            // "orderable": false,
-            // "pageLength": 12,
-            // "ajax":{
-            //     "url": base_url+"api/CarAccessory/search",
-            //     "dataType": "json",
-            //     "type": "POST",
-            //     "data": function ( data ) {
-            //         data.brandName = $("#brand-search").val()
-            //     }
-            // },
+            "processing": true,
+            "serverSide": true,
+            "orderable": false,
+            "pageLength": 10,
+            "ajax":{
+                "url": base_url+"apiCaraccessories/TireData/search",
+                "dataType": "json",
+                "type": "POST",
+                "data": function ( data ) {
+                    // data.brandName = $("#brand-search").val()
+                }
+            },
             "columns": [
                 null
             ],
             "columnDefs": [
-                // {
-                //     "targets": 0,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         var html = '<div class="row">';
+                {
+                    "targets": 0,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var html = '<div class="row">';
 
-                //         $.each(data, function( index, value ) {
-                //             html += '<div class="col-md-3">'
-                //                  + '<div class="card">'
-                //                  + '<img class="card-img-top" src="'+base_url+'public/image/brand/'+value.brandPic+'" alt="Card image cap">'
-                //                  + '<div class="card-body text-center">'
-                //                  + '<h5 class="card-title">'+value.brandName+'</h5>'
-                //                  + '<a href="#" class="btn btn-primary">Go somewhere</a>'
-                //                  + '</div>'
-                //                  + '</div>'
-                //                  + '</div>';
-                //         });
+                        $.each(data, function( index, value ) {
 
-                //         html += '</div>';
-                //         return html;
-                //     }
-                // }
+                            html += '<div class="col-lg-12">'
+                                    + '<div class="card card-header-height">'
+                                        + '<span class="card-subtitle text-right card-margin ">'
+                                            + '<i class="fa fa-circle lamp"></i> เปิดใช้งาน'
+                                        + '</span>'
+                                        + '<div class="card-body">'
+                                            + '<div class="row">'
+                                                + '<div class="col-lg-3">'
+                                                    + '<img class="card-img-top" src="'+picturePath+"tirebranddata/"+value.tire_picture+'" alt="Card image cap">'
+                                                + '</div>'
+                                                + '<div class="col-lg-5 text-left">'
+                                                    + '<h3>'+value.tire_modelName+'/'+value.tire_brandName+' '+value.tire_size+'</h3>'
+                                                    + 'ยี่ห้อยาง: '+value.tire_brandName+'</br>'
+                                                    + 'รุ่นยาง: '+value.tire_modelName+'</br>'
+                                                    + 'ขอบยาง: '+value.rimName+' นิ้ว</br>'
+                                                    + 'ขนาดยาง: '+value.tire_size
+                                                + '</div>'
+                                                + '<div class="col-lg-4 text-left">'
+                                                    + '<h2>'+currency(value.price, { useVedic: true }).format()+' บาทต่อเส้น</h2>'
+                                                    + '<h4>รับประกัน '+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</h4>'
+                                                    + '<h4>'+mailOrFitted(value.can_change)+'</h4>'
+                                                    + '<a href="'+base_url+"caraccessory/TireData/updatetiredata/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                                    + '<a href="#"><button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-trash"></i> ลบ</button> </a>'
+                                                + '</div>'
+                                            + '</div>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>'
+                        });
+
+                        html += '</div>';
+                        return html;
+                    }
+                }
             ]
     });
 
@@ -68,7 +88,7 @@
         table.ajax.reload();
     })
 
-    $("#test").slider({
+    $("#price").slider({
         range: true,
         min: 0,
         max: 10000,
@@ -191,6 +211,16 @@
     //     },
     //     escapeMarkup: function (markup) { return markup; }
     // });
+
+    $("#show-search").click(function(){
+        $(this).hide(100);
+        $("#search-form").slideDown();
+    });
+
+    $("#search-hide").click(function(){
+        $("#search-form").slideUp();
+        $("#show-search").show(100);
+    });
 
 </script>
 

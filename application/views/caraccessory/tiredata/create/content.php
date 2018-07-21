@@ -7,8 +7,7 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("/caraccessory/TireData"); ?>">ราคาเปลี่ยนยาง</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireData/index/$tire_dataId"); ?>">ความต้องการราคาเปลี่ยนยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/tiredata"); ?>">ข้อมูลยาง</a></li>
                 <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
             </ol>
         </div>

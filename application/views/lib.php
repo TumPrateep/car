@@ -1,5 +1,6 @@
 <script>
     var base_url = "<?=base_url() ?>";
+    var picturePath = base_url+"public/image/"
     var roleNameLib = [
         "",
         "ผู้ดูแลระบบ",
@@ -27,4 +28,31 @@
             return value;
         }
     }
+
+    function warranty(warranty, warranty_year, warranty_distance){
+        var strWarranty = "";
+
+        if(warranty_year != 0){
+            strWarranty += warranty_year+" ปี ";
+        }
+
+        if(warranty != 0){
+            strWarranty += (warranty == 1)? "และ ":"หรือ ";
+        }
+
+        if(warranty_distance != 0){
+            strWarranty += warranty_distance+" km";
+        }
+
+        return strWarranty;
+    }
+
+    function mailOrFitted(can_change){
+        if(can_change == 1){
+            return "Fitted";
+        }else{
+            return "Mail order";
+        }
+    }
+
 </script>

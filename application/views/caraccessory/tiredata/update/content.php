@@ -7,13 +7,12 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("/caraccessory/TireData"); ?>">ราคาเปลี่ยนยาง</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireData/index/$tire_dataId"); ?>">ความต้องการราคาเปลี่ยนยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/tiredata"); ?>">ข้อมูลยาง</a></li>
                 <li class="breadcrumb-item active">แก้ไขข้อมูล</li>
             </ol>
         </div>
     </div>
-    <form id="submit">
+    <form id="update-tiredata">
     <div class="container-fluid">   
         <div class="row">
             <div class="col-12">
@@ -45,7 +44,9 @@
                                     <div class="form-group">
                                         <label class="control-label">ขอบยาง</label><span class="error">*</span> <label id="rimId-error" class="error" for="rimId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="rimId" name="rimId"></select>
+                                            <select class="form-control" id="rimId" name="rimId">
+                                            <option value="">เลือกขอบยาง</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -53,7 +54,9 @@
                                     <div class="form-group">
                                         <label class="control-label">ขนาดยาง</label><span class="error">*</span> <label id="tire_sizeId-error" class="error" for="tire_sizeId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="tire_sizeId" name="tire_sizeId"></select>
+                                            <select class="form-control" id="tire_sizeId" name="tire_sizeId">
+                                                <option value="">เลือกขนาดยาง</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>           
@@ -122,13 +125,13 @@
                                         <div class="form-group">
                                         <label class="control-label">รูปล้อ</label>
                                             <div class="image-editor">
-                                                <input type="file" class="cropit-image-input" >
+                                                <input type="file" class="cropit-image-input">
                                                 <div class="cropit-preview"></div>
                                                 <div class="image-size-label">
                                                 ปรับขนาด
                                                 </div>
                                                 <input type="range" class="cropit-image-zoom-input">
-                                                <input type="hidden" name="tire_picture	" class="hidden-image-data" />
+                                                <input type="hidden" name="tire_picture" id="tire_picture" class="hidden-image-data" />
                                             </div>
                                         </div>
                                     </div>
@@ -143,8 +146,8 @@
                                 </a>
                             </div>
                         </div>
-                                
-                        </div>
+                    </form>            
+                    </div>
                 </div>
             </div>
         </div>
