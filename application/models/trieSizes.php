@@ -14,10 +14,12 @@ class trieSizes extends CI_Model{
         $result = $this->db->insert('tire_size', $data);
         return $result;
     }
-    function gettrie_sizeforrim($tire_size,$rimId){
-        $this->db->select("tire_size");
+    function gettrie_sizeforrim($tire_size,$rimId,$tire_series,$rim){
+        // $this->db->select("tire_size");
         $this->db->from("tire_size");
         $this->db->where('tire_size', $tire_size);
+        $this->db->where('tire_series', $tire_series);
+        $this->db->where('rim', $rim);
         $this->db->where('rimId' , $rimId);
         $result = $this->db->count_all_results();
         if($result > 0){
