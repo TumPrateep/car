@@ -31,7 +31,13 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    // data.brandName = $("#brand-search").val()
+                    data.tire_brandId = $("#tire_brandId").val();
+                    data.tire_modelId = $("#tire_modelId").val();
+                    data.rimId = $("#rimId").val();
+                    data.tire_sizeId = $("#tire_sizeId").val();
+                    data.price = $("#price").val();
+                    data.can_change = $("#can_change").val();
+                    data.sort = $("#sort").val();
                 }
             },
             "columns": [
@@ -104,113 +110,67 @@
         },
     });
 
-    // $.fn.select2.defaults.set( "theme", "bootstrap" );
+    var tireBrand = $("#tire_brandId");
+    var tireModel = $("#tire_modelId");
+    var tire_rim = $("#rimId");
+    var tire_size = $("#tire_sizeId");
 
-    // $("#tireBrand").select2({
-    //     placeholder: "ยี่ห้อยาง",
-    //     ajax: {
-    //         url: base_url+"apiCaraccessories/Tirebrand/getAllTireBrand",
-    //         dataType: 'json',
-    //         delay: 250,
-    //         cache: true,
-    //         method: "post",
-    //         data: function (term, page) {
-    //             return {
-    //                 term: term.term, // search term
-    //                 page: 20
-    //             };
-    //         },
-    //         processResults: function (data, page) {
-    //             console.log(data);
-    //             return {
-    //                 results: data.items
-    //             };
-    //         }
-    //     },
-    //     escapeMarkup: function (markup) { return markup; }
-    // });
+    function init(){
+        getTireBrand();
+        getRim();
+    }
+    
+    init();
 
-    // $("#tireBrand").change(function(){
-    //     $("#tireModel").val(null).trigger('change');
-    // });
+    function getTireBrand(brandId = null){
+        $.get(base_url+"apiCaraccessories/Tirebrand/getAllTireBrand",{},
+            function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    tireBrand.append('<option value="' + value.tire_brandId + '">' + value.tire_brandName + '</option>');
+                });
+            }
+        );
+    }
 
-    // $("#tireModel").select2({
-    //     placeholder: "รุ่นยาง",
-    //     ajax: {
-    //         url: base_url+"apiCaraccessories/Tiremodel/getAllTireModel",
-    //         dataType: 'json',
-    //         delay: 250,
-    //         cache: true,
-    //         method: "post",
-    //         data: function (term, page) {
-    //             return {
-    //                 term: term.term, // search term
-    //                 page: 20,
-    //                 tireBrandId: $("#tireBrand").val()
-    //             };
-    //         },
-    //         processResults: function (data, page) {
-    //             console.log(data);
-    //             return {
-    //                 results: data.items
-    //             };
-    //         }
-    //     },
-    //     escapeMarkup: function (markup) { return markup; }
-    // });
+    tireBrand.change(function(){
+        var tireBrandId = tireBrand.val();
+        tireModel.html('<option value="">เลือกรุ่นยาง</option>');
+        $.get(base_url+"apiCaraccessories/Tiremodel/getAllTireModel",{
+            tire_brandId: tireBrandId
+        },function(data){
+                var tireModelData = data.data;
+                $.each( tireModelData, function( key, value ) {
+                    tireModel.append('<option value="' + value.tire_modelId + '">' + value.tire_modelName + '</option>');
+                });
+            }
+        );
+    });
 
-    // $("#tireRim").select2({
-    //     placeholder: "ขอบยาง",
-    //     ajax: {
-    //         url: base_url+"apiCaraccessories/Tirerim/getAllTireRim",
-    //         dataType: 'json',
-    //         delay: 250,
-    //         cache: true,
-    //         method: "post",
-    //         data: function (term, page) {
-    //             return {
-    //                 term: term.term, // search term
-    //                 page: 20
-    //             };
-    //         },
-    //         processResults: function (data, page) {
-    //             console.log(data);
-    //             return {
-    //                 results: data.items
-    //             };
-    //         }
-    //     },
-    //     escapeMarkup: function (markup) { return markup; }
-    // });
+    tire_rim.change(function(){
+        var tire_rimId = tire_rim.val();
+        tire_size.html('<option value="">เลือกขนาดยาง</option>');
+        $.get(base_url+"apiCaraccessories/Tiresize/getAllTireSize",{
+            tire_rimId: tire_rimId
+        },function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    tire_size.append('<option value="' + value.tire_sizeId + '">' + value.tiresize + '</option>');
+                });
+            }
+        );
+    });
 
-    // $("#tireRim").change(function(){
-    //     $("#tireSize").val(null).trigger('change');
-    // });
-
-    // $("#tireSize").select2({
-    //     placeholder: "ขนาดยาง",
-    //     ajax: {
-    //         url: base_url+"apiCaraccessories/Triesize/getAllTireSize",
-    //         dataType: 'json',
-    //         delay: 250,
-    //         cache: true,
-    //         method: "post",
-    //         data: function (term, page) {
-    //             return {
-    //                 term: term.term, // search term
-    //                 page: 20,
-    //                 tireRimId: $("#tireRim").val()
-    //             };
-    //         },
-    //         processResults: function (data, page) {
-    //             console.log(data);
-    //             return {
-    //                 results: data.items
-    //             };
-    //         }
-    //     },
-    //     escapeMarkup: function (markup) { return markup; }
-    // });
+    function getRim(rimId = null){
+        $.get(base_url+"apiCaraccessories/TireRim/getAllTireRims",{},
+            function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>');
+                });
+            }
+        );
+    }
 
     $("#show-search").click(function(){
         $(this).hide(100);

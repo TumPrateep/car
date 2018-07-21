@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label class="control-label">ยี่ห้อยาง</label>
                             <select class="form-control input-default" name="tire_brandId" id="tire_brandId">
-                                <option value="">ยี่ห้อยาง</option>
+                                <option value="">เลือกยี่ห้อยาง</option>
                             </select>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <label class="control-label">รุ่นยาง</label>
                             <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                                <option value="">รุ่นยาง</option>
+                                <option value="">เลือกรุ่นยาง</option>
                             </select>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                         <div class="form-group">
                             <label class="control-label">ขอบยาง</label>
                             <select class="form-control input-default" name="rimId" id="rimId">
-                                <option value="">ขอบยาง</option>
+                                <option value="">เลือกขอบยาง</option>
                             </select>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <label class="control-label">ขนาดยาง</label>
                             <select class="form-control input-default" name="tire_sizeId" id="tire_sizeId">
-                                <option value="">ขนาดยาง</option>
+                                <option value="">เลือกขนาดยาง</option>
                             </select>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
 
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <button type="button" class="btn-create btn btn-gray btn-md m-b-10 m-l-5">
+                        <button type="button" id="btn-search" class="btn-create btn btn-gray btn-md m-b-10 m-l-5">
                             <i class="ti-search"> ค้นหา</i>
                         </button>
                     </div>

@@ -231,26 +231,23 @@ class TireData extends BD_Controller {
         $this->load->model('TireDatas');
         $totalData = $this->TireDatas->allTire_count();
         $totalFiltered = $totalData; 
-        if(empty($this->post('rimName')) && empty($this->post('tire_size')) && empty($this->post('tire_brandName')) && empty($this->post('tire_modelName')) && empty($this->post('can_change')) &&empty($this->post('price')))
+        if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')))
         {            
             $posts = $this->TireDatas->allTires($limit,$start,$order,$dir);
         }
         else {
             // $search = $this->post('brandName'); 
-            $rimName = $this->post('rimName');
-            $tire_size = $this->post('tire_sized');
-            $tire_brandName = $this->post('tire_brandName');
-            $tire_modelName = $this->post('tire_modelName');
-            $warranty_distance = $this->post('warranty_distance');
-            $warranty_year = $this->post('warranty_year');
-            $can_change =$this->post('can_change');
+            $tire_brandId = $this->post('tire_brandId');
+            $tire_modelId = $this->post('tire_modelId');
+            $rimId = $this->post('rimId');
+            $tire_sizeId = $this->post('tire_sizeId');
             $price = $this->post('price');
-
+            $can_change = $this->post('can_change');
+            
             $status = null; 
+            $posts =  $this->TireDatas->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change);
 
-            $posts =  $this->TireDatas->tireData_search($limit,$start,$order,$dir,$status,$rimName,$tire_size,$tire_brandName,$tire_modelName,$warranty_distance,$warranty_year,$can_change,$price);
-
-            $totalFiltered = $this->TireDatas->TireDatas_search_count($rimName,$tire_size,$tire_brandName,$tire_modelName,$warranty_distance,$warranty_year,$status,$can_change,$price);
+            $totalFiltered = $this->TireDatas->TireDatas_search_count($tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change);
         }
 
         $data = array();
