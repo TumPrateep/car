@@ -72,10 +72,13 @@ class TireData extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
-        
             $image =  $imageName;
             $isDuplicated = $this->TireDatas->checkduplicated($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
             if($isDuplicated){
+                unlink($file);
+                $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
                 $data = array(
                     'tire_dataId' => null,
                     'tire_brandId' => $tire_brandId,
@@ -100,7 +103,7 @@ class TireData extends BD_Controller {
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }else{
-                    unlink($config['upload_path'].$image);
+                    unlink($file);
                     $output["message"] = REST_Controller::MSG_NOT_CREATE;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }   
@@ -114,13 +117,13 @@ class TireData extends BD_Controller {
         $tire_sizeId = $this->post('tire_sizeId');
         $tire_brandId = $this->post('tire_brandId');
         $tire_modelId = $this->post('tire_modelId');
-        $car_accessoriesId = $this->post('car_accessoriesId');
         $price = $this->post('price');
         $warranty = $this->post('warrnty');
         $warranty_year = $this->post('warranty_year');
         $warranty_distance = $this->post('warranty_distance');
         $can_change = $this->post('can_change');
         $userId = $this->session->userdata['logged_in']['id'];
+        $car_accessoriesId = $userId;
         $config['upload_path'] = 'public/image/tirebranddata/';
         // $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
@@ -130,27 +133,30 @@ class TireData extends BD_Controller {
         // $config['encrypt_name'] = TRUE;
         // $config['remove_spaces'] = TRUE;
         // $this->load->library('upload', $config);
+
         $this->load->model("TireDatas");
         $userId = $this->session->userdata['logged_in']['id'];
 
         $img = $this->post('tire_picture');
-        $img = str_replace('data:image/png;base64,', '', $img);
-	    $img = str_replace(' ', '+', $img);
-        $data = base64_decode($img);
+        $success = true;
+        if(!empty($img)){
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
 
-        $imageName = uniqid().'.png';
-        $file = $config['upload_path']. '/'. $imageName;
-        $success = file_put_contents($file, $data);
+            $imageName = uniqid().'.png';
+            $file = $config['upload_path']. '/'. $imageName;
+            $success = file_put_contents($file, $data);
+        }
         
 		if (!$success){
-            // $error = array('error' => $this->upload->display_errors());
+            unlink($file);
             $output["message"] = REST_Controller::MSG_ERROR;
-            // $output["data"] = $error;
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $isDuplicated = $this->Tiredatas->checkduplicatedUpdate($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
-            if($isDuplicated){
+            $isDuplicated = $this->TireDatas->checkduplicatedUpdate($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
+            if(!$isDuplicated){
                 $data = array(
                     'tire_dataId' => $tire_dataId,
                     'tire_brandId' => $tire_brandId,
@@ -158,7 +164,6 @@ class TireData extends BD_Controller {
                     'tire_sizeId' => $tire_sizeId,
                     'rimId' => $rimId,
                     'car_accessoriesId' => $car_accessoriesId,
-                    'tire_picture' => $image,
                     'status' => 2,
                     'activeFlag' => 2,
                     'update_by' => $userId,
@@ -170,34 +175,32 @@ class TireData extends BD_Controller {
                     'warranty' => $warranty,
                     'can_change' =>$can_change
                 );
-                $isCheckStatus = $this->TireDatas->checkstatus($tire_dataId,$userId);
-                if($isCheckStatus){
-                    $result = $this->TireDatas->update($data);
-                    $output["status"] = $result;
-                    if($result){
-                        unlink($config['upload_path'].$oldData->tire_picture);
-                        $output["message"] = REST_Controller::MSG_SUCCESS;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }else{
-                        unlink($config['upload_path'].$image);
-                        $output["status"] = false;
-                        $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }
+                if(!empty($img)){
+                    $data["tire_picture"] = $image;
+                }
+                
+                $result = $this->TireDatas->update($data, $tire_dataId);
+                if($result){
+                    unlink($config['upload_path'].$oldData->tire_picture);
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
                 }else{
                     unlink($config['upload_path'].$image);
-                    $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                    $output["status"] = false;
+                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
+                
             }else{
-                unlink($config['upload_path'].$image);
+                unlink($file);
                 $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         }
     }
-    function getModel_post(){
-        $tire_dataId = $this->post('tire_dataId');
+
+    function getTireData_get(){
+        $tire_dataId = $this->get('tire_dataId');
         $this->load->model("TireDatas");
         $tire_data = $this->TireDatas->gettire_dataById($tire_dataId);
         if($tire_data != null){
@@ -270,9 +273,11 @@ class TireData extends BD_Controller {
                 $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
                 $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 $nestedData[$count]['create_by'] = $post->create_by;
+                $nestedData[$count]['warranty'] = $post->warranty;
+                $nestedData[$count]['tire_picture'] = $post->tire_picture;
                 
                 $data[$index] = $nestedData;
-                if($count >= 3){
+                if($count >= 0){
                     $count = -1;
                     $index++;
                     $nestedData = [];
