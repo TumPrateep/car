@@ -52,6 +52,16 @@
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
+                },{ "targets": 1,
+                    "data": "tire_front",
+                    "render": function ( data, type, full, meta ) {
+                        return currency(data, { useVedic: true }).format();
+                    }             
+                },{ "targets": 2,
+                    "data": "tire_back",
+                    "render": function ( data, type, full, meta ) {
+                        return currency(data, { useVedic: true }).format();
+                    }             
                 },{
                     "targets": 3,
                     "data": "rimName",
