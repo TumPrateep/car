@@ -37,9 +37,11 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
+                null,
                 { "data": "lubricatorName" },
                 { "data": "lubricator_number" },
-                null,
+                { "data": "api" },
+                { "data": "capacity" },
                 null,
                 null
             ],
@@ -47,32 +49,37 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5]
+                    "targets": [0,5,6,7,1,4]
+                },{
+                    "targets": 5,
+                    "data": "capacity",
+                    "render": function ( data, type, full, meta ) {
+                        return  data +' ลิตร';
+                    }
                 },
                 {
-                    "targets": 5,
+                    "targets": 7,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/Lubricator/updatelubricator/"+data.lubricator_brandId+'/'+data.lubricatorId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                         +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricator('+data.lubricatorId+',\''+data.lubricatorName+'\',\''+data.lubricator_brandId+'\')"><i class="fa fa-trash"></i></button>';
                     }
-                },
-                {
+                },{
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
-                },
-                {
-                    "targets": 3,
+                },{
+                    "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return (data.lubricator_gear == "" || data.lubricator_gear == null)?"<small><i class='gray'>ไม่พบข้อมูล</i></small>":lubricatorLib[data.lubricator_gear];
+                        var path = pathImage + "lubricator_brand/"+data.lubricator_picture;
+                        var imageHtml = '<img src="'+ path +'" class="rounded" width="100px">';
+                        return imageHtml;
                     }
-                },
-                {
-                    "targets": 4,
+                },{
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -92,10 +99,13 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [1]},
-                {"className": "dt-center", "targets": [0,2,3,4,5]},
-                { "width": "10%", "targets": 0 },
-                { "width": "12%", "targets": 4 },
-                { "width": "15%", "targets": 5 }
+                {"className": "dt-center", "targets": [0,1,2,3,4,5,]},
+                { "width": "9%", "targets": 0 },
+                { "width": "10%", "targets": 4 },
+                { "width": "12%", "targets": 2 },
+                // { "width": "17%", "targets": 8 },
+                { "width": "12%", "targets": 6 },
+                { "width": "9%", "targets": 5 }
             ]	 
     });
    

@@ -49,9 +49,11 @@
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
+          <th><i class="fa fa-tint"></i>  รูปน้ำมันเครื่อง</th>
           <th><i class="fa fa-tint"></i>  ชื่อรุ่นน้ำมันเครื่อง</th>
           <th><i class="fa fa-tint"></i>  เบอร์น้ำมันเครื่อง</th>
-          <th><i class="fa fa-tint"></i>  ชนิดน้ำมันเครื่อง</th>
+          <th><i class="fa fa-tint"></i>  API</th>
+          <th><i class="fa fa-tint"></i>  ความจุ</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	
