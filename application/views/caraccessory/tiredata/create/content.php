@@ -141,7 +141,7 @@
                         <div class="row p-t-20">
                             <div class="col-md-12 card-grid">
                                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> บันทึก</button>
-                                <a href="<?=base_url("caraccessory/TireModel/index/$tire_dataId"); ?>">
+                                <a href="<?=base_url("caraccessory/TireData/$tire_dataId"); ?>">
                                 <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                 </a>
                             </div>
