@@ -77,7 +77,8 @@ class LubricatorNumbers extends CI_Model {
     }
 
     function delete($lubricator_numberId){
-        return $this->db->delete('lubricator_number', array('lubricator_numberId' => $lubricator_numberId));
+        $this->db->where("lubricator_numberId",$lubricator_numberId );
+        return $this->db->delete('lubricator_number');
     }
 
     function wherenotLubricatorNumber($lubricator_numberId,$lubricator_number){
