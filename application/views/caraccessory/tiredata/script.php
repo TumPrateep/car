@@ -74,7 +74,7 @@
                                                     + '<h4>รับประกัน '+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</h4>'
                                                     + '<h4>'+mailOrFitted(value.can_change)+'</h4>'
                                                     + '<a href="'+base_url+"caraccessory/TireData/updatetiredata/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                                    + '<a href="#"><button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-trash"></i> ลบ</button> </a>'
+                                                    + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.tire_dataId+'\', \''+value.tire_modelName+'/'+value.tire_brandName+' '+value.tire_size+'\')"><i class="ti-trash"></i> ลบ</button>'
                                                 + '</div>'
                                             + '</div>'
                                         + '</div>'
@@ -181,6 +181,16 @@
         $("#search-form").slideUp();
         $("#show-search").show(100);
     });
+
+    function deletetiredata(tire_dataId,data_name){
+        var option = {
+            url: "/tiredata/delete?tire_dataId="+tire_dataId,
+            label: "ลบข้อมูลยาง",
+            content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
+            gotoUrl: "caraccessory/tiredata"
+        }
+        fnDelete(option);
+    }
 
 </script>
 
