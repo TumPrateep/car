@@ -74,7 +74,7 @@
                     "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        var path = pathImage + "lubricator_brand/"+data.lubricator_picture;
+                        var path = pathImage + "lubricator_picture/"+data.lubricator_picture;
                         var imageHtml = '<img src="'+ path +'" class="rounded" width="100px">';
                         return imageHtml;
                     }
