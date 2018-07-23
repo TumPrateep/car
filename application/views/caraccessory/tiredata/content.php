@@ -133,7 +133,7 @@
                                                     <img class="card-img-top" src="http://localhost/car/public/image/tire/tire.jpg" alt="Card image cap">
                                                 </div>
                                                 <div class="col-lg-5 text-left">
-                                                    <h3>รุ่นยาง/ยี่ห้อยาง ขนาดยาง</h3>
+                                                    <h3>ยี่ห้อยาง/รุ่นยาง ขนาดยาง</h3>
                                                     ยี่ห้อยาง: aaaaaaaaaaa</br>
                                                     รุ่นยาง: aaaaaaaaaaa</br>
                                                     ขอบยาง: aaaaaaaaaaa</br>
