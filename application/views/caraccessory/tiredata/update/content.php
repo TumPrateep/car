@@ -73,11 +73,11 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="control-label">Fitted or Mail order</label><span class="error">*</span>
+                                        <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label><span class="error">*</span>
                                         <div class="input-group input-group-default">
                                             <select class="form-control" id="can_change" name="can_change">
-                                                <option value="1">Fitted</option>
-                                                <option value="2">Mail order</option>
+                                                <option value="1">เปลี่ยนทันที</option>
+                                                <option value="2">สั่งจอง</option>
                                             </select>
                                         </div>
                                     </div>

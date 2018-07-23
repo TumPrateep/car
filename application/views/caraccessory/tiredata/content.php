@@ -68,13 +68,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <div class="form-group">
-                            <label class="control-label">filled or Order</label>
+                            <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
                             <select class="form-control input-default" name="can_change" id="can_change">
-                                <option value="">filled or Order</option>
-                                <option value="1">filled</option>
-                                <option value="2">Order</option>
+                                <option value="">สั่งจองหรือเปลี่ยนทันที</option>
+                                <option value="1">ปลี่ยนทันที</option>
+                                <option value="2">สั่งจอง</option>
                             </select>
                         </div>
                     </div>

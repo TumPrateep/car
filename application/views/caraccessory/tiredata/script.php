@@ -70,7 +70,7 @@
                                                     + 'ขนาดยาง: '+value.tire_size
                                                 + '</div>'
                                                 + '<div class="col-lg-4 text-left">'
-                                                    + '<h2>'+currency(value.price, { useVedic: true }).format()+' บาทต่อเส้น</h2>'
+                                                    + '<h2>'+currency(value.price, { useVedic: true }).format()+' บาท/เส้น</h2>'
                                                     + '<h4>รับประกัน '+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</h4>'
                                                     + '<h4>'+mailOrFitted(value.can_change)+'</h4>'
                                                     + '<a href="'+base_url+"caraccessory/TireData/updatetiredata/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'

@@ -49,9 +49,9 @@
 
     function mailOrFitted(can_change){
         if(can_change == 1){
-            return "Fitted";
+            return "เปลี่ยนทันที";
         }else{
-            return "Mail order";
+            return "สั่งจอง";
         }
     }
 
