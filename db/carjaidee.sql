@@ -494,10 +494,10 @@ CREATE TABLE `modelofcar` (
   `brandId` int(11) NOT NULL,
   `modelId` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `status` varchar(45) COLLATE utf16_unicode_ci NOT NULL,
   `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
   PRIMARY KEY (`modelofcarId`),
   KEY `fk_modelofcar_brand1_idx` (`brandId`),
@@ -1143,4 +1143,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-24 11:41:32
+-- Dump completed on 2018-07-24 12:16:30
