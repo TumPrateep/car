@@ -63,7 +63,7 @@
                                                     + '<img class="card-img-top" src="'+picturePath+"tirebranddata/"+value.tire_picture+'" alt="Card image cap">'
                                                 + '</div>'
                                                 + '<div class="col-lg-5 text-left">'
-                                                    + '<h3>'+value.tire_modelName+'/'+value.tire_brandName+' '+value.tire_size+'</h3>'
+                                                    + '<h3>'+value.tire_brandName+'/'+value.tire_modelName+' '+value.tire_size+'</h3>'
                                                     + 'ยี่ห้อยาง: '+value.tire_brandName+'</br>'
                                                     + 'รุ่นยาง: '+value.tire_modelName+'</br>'
                                                     + 'ขอบยาง: '+value.rimName+' นิ้ว</br>'
