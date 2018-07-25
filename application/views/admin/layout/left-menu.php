@@ -90,6 +90,13 @@
             
           </ul>
         </li>
+
+         <li class="nav-item <?= activate_menu('admin/garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link text-white" href="<?=base_url("admin/garages") ?>">
+            <i class="fa fa-user-plus"></i>
+            <span class="nav-link-text">ที่ตั้งอู่</span>
+          </a>
+        </li>
         
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="#">
