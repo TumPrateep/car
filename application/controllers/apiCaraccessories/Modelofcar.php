@@ -2,12 +2,12 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SpareBrand extends BD_Controller {
+class Modelofcar extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
     }
     function create_post(){
         $brandId = $this->post('brandId');
@@ -44,6 +44,7 @@ class SpareBrand extends BD_Controller {
     }
     function delete_get(){
         $modelofcarId = $this->get('modelofcarId');
+        $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("modelofcars");
         $isCheck = $this->modelofcars->Check($modelofcarId);
         if($isCheck){
@@ -60,8 +61,7 @@ class SpareBrand extends BD_Controller {
             }else{
                 $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
                 $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            
+            }            
         }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
