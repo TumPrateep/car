@@ -9,12 +9,18 @@
       </ol>
 
       <div class="row">
-        <div class="col-md-6"></div>
-        <div class="col-md-6">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
           <div class="input-group">
             <input name="car_search" id="table-search" class="form-control" placeholder="ชื่ออู่">
             <div class="input-group-append">
               <button class="btn btn-info inactive"><i class="fa fa-map-marker"></i></button>
+            </div>
+            <select class="form-control" name="province" id="province">
+              <option value="">เลือกจังหวัด</option>
+            </select>
+            <div class="input-group-append">
+              <button class="btn btn-info inactive"><i class="fa fa-map-o"></i></button>
             </div>
 
             <div class="input-group-append">
