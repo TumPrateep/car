@@ -42,4 +42,29 @@ class SpareBrand extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+    function delete_get(){
+        $modelofcarId = $this->get('modelofcarId');
+        $this->load->model("modelofcars");
+        $isCheck = $this->modelofcars->Check($modelofcarId);
+        if($isCheck){
+            $Checkpermistion = $this->modelofcars->Checkpermistion($userId,$modelofcarId);
+            if($Checkpermistion){
+                $result = $this->modelofcars->delete($modelofcarId);
+                if($result){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["message"] = REST_Controller::MSG_BE_USED;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+            
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 }
