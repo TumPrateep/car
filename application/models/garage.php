@@ -36,4 +36,13 @@ class Garage extends CI_Model {
         return $query->row();
     }
 
+    function getGarageByGarageId($garageId){
+        $this->db->select("garageId,comment,businessRegistration,garageName,garageAddress,postCode,latitude,longtitude,approve,subdistrictId,districtId,provinceId,
+                           option1,option2,option3,option4,option_outher,garagePicture,firstname,lastname,idcard,addressGarage,userId");
+        $this->db->from("garage");
+        $this->db->where("garageId" ,$garageId);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
 }
