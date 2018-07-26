@@ -22,4 +22,10 @@ class Location extends CI_Model{
         return $this->db->get('provinceforcar')->row("provinceforcarName");
     }
 
+    function getProvinceByProvinceId($provinceId){
+        $this->db->select("provinceName,latitude,longtitude");
+        $this->db->where("provinceId", $provinceId);    
+        return $this->db->get('province')->row();
+    }
+
 }
