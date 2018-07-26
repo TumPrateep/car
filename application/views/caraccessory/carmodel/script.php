@@ -76,6 +76,9 @@
                                  + '<h6 class="card-subtitle mb-2">'+ $showyear+'</h6>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
+                                 + '<a href="'+base_url+"caraccessory/Modelofcar/index/"+value.brandId+'/'+value.modelId+'">'
+                                 + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
+                                 + '</a>'
                                 
                                 
                             

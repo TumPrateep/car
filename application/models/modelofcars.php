@@ -48,11 +48,12 @@ class modelofcars extends CI_Model{
     function Checkpermistion($userId,$modelofcarId){
         $this->db->from('modelofcar');
         $this->db->where('modelofcarId',$modelofcarId);
+        $this->db->where('create_by',$userId);
         $this->db->where('status',2);
         $this->db->where('activeFlag',2);
         $result = $this->db->count_all_results();
         if($result > 0 ){
-            return true ;
+            return true;
         }
             return false;
     }
