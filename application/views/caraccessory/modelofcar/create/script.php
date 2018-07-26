@@ -27,7 +27,7 @@
             function(data){
                 var modelofcarName = $("#modelofcarName").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/Modelofcar/index/$brandId/$modelId");
+                    showMessage(data.message,"caraccessory/Modelofcar/index/"+brandId+'/'+modelId);
                 }else{
                     showMessage(data.message);
                 }

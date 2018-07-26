@@ -25,9 +25,9 @@
                         <form id="submit">
                             <div class="card-body">
                                 <div class="basic-form">
-                                <input type="hidden" id="" name="modelofcarId" value="<?=$modelofcarId ?>">
-                                <input type="hidden" id="" name="brandId" value="<?=$brandId ?>">
-                                <input type="hidden" id="" name="modelId" value="<?=$modelId ?>">
+                                <input type="hidden" id="modelofcarId" name="modelofcarId" value="<?=$modelofcarId ?>">
+                                <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
+                                <input type="hidden" id="modelId" name="modelId" value="<?=$modelId ?>">
                                     <div class="form-group col-md-6">
                                         <label>ชื่อของรุ่นรถ</label><span class="error">*</span>
                                         <input type="text" class="form-control" placeholder="ชื่อของรุ่นรถ" name="modelofcarName" id="modelofcarName">
