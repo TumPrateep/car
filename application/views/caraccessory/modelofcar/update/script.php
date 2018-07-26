@@ -13,17 +13,17 @@
     });
     
     $("#submit").submit(function(){
-        modelofcar_create();
+        modelofcar_update();
     })
 
 
-    function modelofcar_create(){
+    function modelofcar_update(){
         event.preventDefault();
         var isValid = $("#submit").valid();
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/Modelofcar/create",data,
+            $.post(base_url+"apiCaraccessories/Modelofcar/update",data,
             function(data){
                 var modelofcarName = $("#modelofcarName").val();
                 if(data.message == 200){
