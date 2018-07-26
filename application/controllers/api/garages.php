@@ -34,19 +34,4 @@ class Garages extends BD_Controller {
         }
     }
 
-    function getgarage_post(){
-        $garageId = $this->post('garageId');
-
-        $this->load->model("garage");
-        $result = $this->garage->getGaragebyGarageId($garageId);
-        if($result != null){
-            $output["data"] = $result;
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-    }
-
 }
