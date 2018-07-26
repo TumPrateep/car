@@ -12,5 +12,5 @@ class Garage extends CI_Controller {
     function index(){
         echo "อู่";
     }
-
+z
 }

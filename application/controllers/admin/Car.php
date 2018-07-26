@@ -86,5 +86,29 @@ class Car extends CI_Controller {
 		$this->load->view("admin/model/update/script");
 	}
 	
-	
+	public function carmodel($brandId, $modelId)
+	{
+		$data["brandId"] = $brandId;
+		$data["modelId"] = $modelId;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/carmodel/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/carmodel/script");
+	}
+
+	function createCarModel($brandId, $modelId){
+		$data["brandId"] = $brandId;
+		$data["modelId"] = $modelId;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/carmodel/create/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/carmodel/create/script");
+	}
+
 }

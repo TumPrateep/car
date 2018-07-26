@@ -20,4 +20,16 @@ class Garages extends CI_Controller {
 		$this->load->view("admin/garages/script");
 	}
 
+	public function update($garageId)
+	{
+		$data['garageId']=$garageId;		
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/garages/update/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");
+		$this->load->view("admin/garages/update/script");
+	}
+
 }
