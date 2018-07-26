@@ -8,6 +8,9 @@
         <li class="breadcrumb-item">
           <a href="<?=base_url("admin/car/model/$brandId") ?>">รุ่นรถ</a>
         </li>
+        <li class="breadcrumb-item">
+          <a href="<?=base_url("admin/car/model/modelofcar/$modelId") ?>">โมเดลรถ</a>
+        </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
 
