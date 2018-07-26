@@ -9,35 +9,32 @@
           <a href="<?=base_url("admin/car/model/$brandId") ?>">รุ่นรถ</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car/model/modelofcar/$modelId") ?>">โมเดลรถ</a>
+          <a href="<?=base_url("admin/car/carmodel/$brandId/$modelId") ?>">โมเดลรถ</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
 
       <!-- Example DataTables Card-->      
-    <div class="card-tools">
+    <!-- <div class="card-tools">
       <div class="img-resize" >
         <span id="brandPicture"></span>
         <h3 class="car-img" id="brandName"></h3>
       </div>
-    </div>
+    </div> -->
 
     <div class="card-tools one">
       <form id="form-search">
+        <input type="hidden" name="brandId" value="<?=$brandId ?>">
+        <input type="hidden" name="modelId" value="<?=$modelId ?>">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/car/createModel/$brandId") ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/car/createCarModel/$brandId/$modelId") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
 
         <div class="input-group float-right">
-          <input id="table-search" class="form-control float-right" placeholder="ชื่อรุ่นรถ">
+          <input id="table-search" class="form-control float-right" placeholder="ชื่อโมเดลรถ">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
-          </div>
-
-          <input type="number" class="form-control float-right" id="year" placeholder="ปีที่ผลิต">
-          <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-calendar-check-o"></i></button>
           </div>
 
           <select class="form-control" name="status" id="status" >
