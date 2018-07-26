@@ -1,4 +1,5 @@
 <script>
+
     $("#submit").validate({
         rules: {
             modelofcarName: {
@@ -10,6 +11,25 @@
                 required: "กรุณากรอกชื่อของรุ่นรถ"
             }
         },
+    });
+    var modelofcarId = $("#modelofcarId").val();
+    var brandId = $("#brandId").val();
+    var modelId = $("#modelId").val();
+    var modelofcarName = $("#modelofcarName").val();
+    $.post(base_url+"apiCaraccessories/Modelofcar/getallmodelofcar",{
+        "modelofcarId": modelofcarId,
+        "modelId" : modelId,
+        "brandId" : brandId
+    },function(data){
+            if(data.message!=200){
+                // showMessage(data.message,"caraccessory/Modelofcar/index/"+brandId+'/'+modelId);
+                $("#modelofcarName").val(result.modelofcarName);
+            }
+             if(data.message == 200){
+                result = data.data;
+                $("#modelofcarName").val(result.modelofcarName);
+        }
+        
     });
     
     $("#submit").submit(function(){
@@ -25,9 +45,8 @@
             var data = $("#submit").serialize();
             $.post(base_url+"apiCaraccessories/Modelofcar/update",data,
             function(data){
-                var modelofcarName = $("#modelofcarName").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/Modelofcar/index/$brandId/$modelId");
+                    showMessage(data.message,"caraccessory/Modelofcar/index/"+brandId+'/'+modelId);
                 }else{
                     showMessage(data.message);
                 }
