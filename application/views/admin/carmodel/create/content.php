@@ -34,7 +34,7 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>ชื่อโมเดล</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ชื่อโมเดล" name="carModelName">
+                            <input type="text" class="form-control" placeholder="ชื่อโมเดล" name="modelofcarName">
                           </div>
                         </div>
                       </div>
