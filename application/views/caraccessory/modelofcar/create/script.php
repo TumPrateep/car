@@ -26,6 +26,8 @@
             $.post(base_url+"apiCaraccessories/Modelofcar/create",data,
             function(data){
                 var modelofcarName = $("#modelofcarName").val();
+                var modelId = $("#modelId").val();
+                var brandId = $("#brandId").val();
                 if(data.message == 200){
                     showMessage(data.message,"caraccessory/Modelofcar/index/"+brandId+'/'+modelId);
                 }else{
