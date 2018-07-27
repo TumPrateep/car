@@ -172,6 +172,11 @@ label.error{
         margin-top: -5px !important;
     }
 
+    .icon-right{
+        float: none !important;
+        padding-bottom: 10px;
+    }
+
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
@@ -182,6 +187,11 @@ label.error{
 
     .p-t-20{
         padding-top: 10px;
+    }
+
+    .button-p-helf {
+        width: 100% !important;
+        margin-top: 2px !important;
     }
   }
 
@@ -222,7 +232,7 @@ label.error{
   }
 
   .button-p-helf{
-      width: 49%;
+      width: 48%;
       margin-top: 20px;
   }
 
@@ -246,4 +256,15 @@ label.error{
 
   .mt-20{
       margin-top: -20px;
+  }
+
+  .icon-left{
+    width: 65%;
+    float: left;
+  }
+
+  .icon-right{
+    width: 25%;
+    float: right;
+    padding-top: 50px;
   }
