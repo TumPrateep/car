@@ -268,9 +268,10 @@ class TireData extends BD_Controller {
                 $nestedData[$count]['create_by'] = $post->create_by;
                 $nestedData[$count]['warranty'] = $post->warranty;
                 $nestedData[$count]['tire_picture'] = $post->tire_picture;
+                $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
                 
                 $data[$index] = $nestedData;
-                if($count >= 0){
+                if($count >= 2){
                     $count = -1;
                     $index++;
                     $nestedData = [];

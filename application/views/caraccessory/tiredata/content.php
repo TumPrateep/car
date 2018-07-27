@@ -122,33 +122,38 @@
                     <tr role="row" class="odd">
                         <td class="sorting_1">
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-4">
                                     <div class="card card-header-height">
-                                        <span class="card-subtitle text-right card-margin ">
-                                            <i class="fa fa-circle lamp"></i> เปิดใช้งาน
-                                        </span>
+
                                         <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <img class="card-img-top" src="http://localhost/car/public/image/tire/tire.jpg" alt="Card image cap">
-                                                </div>
-                                                <div class="col-lg-5 text-left">
-                                                    <h3>ยี่ห้อยาง/รุ่นยาง ขนาดยาง</h3>
-                                                    ยี่ห้อยาง: aaaaaaaaaaa</br>
-                                                    รุ่นยาง: aaaaaaaaaaa</br>
-                                                    ขอบยาง: aaaaaaaaaaa</br>
-                                                    ขนาดยาง: aaaaaaaaaaa
-                                                </div>
-                                                <div class="col-lg-4 text-left">
-                                                    <h2>xxx,xxx บาทต่อเส้น</h2>
-                                                    <h4>รับประกัน</h4>
-                                                    <h4>Mail Order/Fitted</h4>
-                                                    <a href="#"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>
-                                                    <a href="#"><button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-trash"></i> ลบ</button> </a>
-                                                </div>
+                                            <div class="icon-left">
+                                                <img class="card-img-top" src="http://localhost/car/public/image/tire_brand/1991f5f7d21e5f4a613089261a791b41.JPG">
+                                                <img class="card-img-top" src="http://localhost/car/public/image/tire/tire.jpg">
+                                            </div>
+                                            <div class="icon-right">
+                                                <img class="card-img-top" src="http://localhost/car/public/image/icon/Wet-Grip-Tyre-Label.png">
+                                                <img class="card-img-top" src="http://localhost/car/public/image/icon/External-noise-Tyre-Label.png">
+                                                <img class="card-img-top" src="http://localhost/car/public/image/icon/Fuel-efficiency-Tyre-Label.png">
                                             </div>
                                         </div>
-                                        <!-- <div class="card-body text-center card-bottom"></div> -->
+
+                                        <div class="card-body">
+                                            <div class="text-center">
+                                                <h3>ยี่ห้อยาง/รุ่นยาง ขนาดยาง</h3>
+                                            </div>
+                                            <div class="text-left">
+                                                <span>Mail Order/Fitted</span><br>
+                                                <span>รับประกัน</span>
+                                            </div>
+                                            <div class="text-center">
+                                                <h2>xxx,xxx บาทต่อเส้น</h2>
+                                            </div>
+                                            <div>
+                                                <a href="#"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>
+                                                <a href="#"><button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-trash"></i> ลบ</button> </a>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
