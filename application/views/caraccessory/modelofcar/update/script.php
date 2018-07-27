@@ -19,16 +19,15 @@
     $.post(base_url+"apiCaraccessories/Modelofcar/getallmodelofcar",{
         "modelofcarId": modelofcarId,
         "modelId" : modelId,
-        "brandId" : brandId
+        "brandId" : brandId,
     },function(data){
             if(data.message!=200){
-                // showMessage(data.message,"caraccessory/Modelofcar/index/"+brandId+'/'+modelId);
-                $("#modelofcarName").val(result.modelofcarName);
+                showMessage(data.message,"caraccessory/Modelofcar/index/"+brandId+'/'+modelId);
             }
              if(data.message == 200){
                 result = data.data;
                 $("#modelofcarName").val(result.modelofcarName);
-        }
+            }
         
     });
     
