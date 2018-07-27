@@ -18,7 +18,8 @@
                   <!-- /.card-header -->
                   <!-- form start -->
                     <div class="card-body black bg-light">
-                        <form id="update-garages">  
+                        <form id="update-garages">
+                            <input type="hidden" name="garageId" id="garageId" value="<?=$garageId ?>">  
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>ชื่ออู่</label><span class="error">*</span>

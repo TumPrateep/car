@@ -25,7 +25,7 @@
             "processing": true,
             "serverSide": true,
             "orderable": false,
-            "pageLength": 10,
+            "pageLength": 12,
             "ajax":{
                 "url": base_url+"apiCaraccessories/TireData/search",
                 "dataType": "json",
@@ -52,34 +52,36 @@
 
                         $.each(data, function( index, value ) {
 
-                            html += '<div class="col-lg-12">'
-                                    + '<div class="card card-header-height">'
-                                        + '<span class="card-subtitle text-right card-margin ">'
-                                            + '<i class="fa fa-circle lamp"></i> เปิดใช้งาน'
-                                        + '</span>'
-                                        + '<div class="card-body">'
-                                            + '<div class="row">'
-                                                + '<div class="col-lg-3">'
-                                                    + '<img class="card-img-top" src="'+picturePath+"tirebranddata/"+value.tire_picture+'" alt="Card image cap">'
-                                                + '</div>'
-                                                + '<div class="col-lg-5 text-left">'
-                                                    + '<h3>'+value.tire_brandName+'/'+value.tire_modelName+' '+value.tire_size+'</h3>'
-                                                    + 'ยี่ห้อยาง: '+value.tire_brandName+'</br>'
-                                                    + 'รุ่นยาง: '+value.tire_modelName+'</br>'
-                                                    + 'ขอบยาง: '+value.rimName+' นิ้ว</br>'
-                                                    + 'ขนาดยาง: '+value.tire_size
-                                                + '</div>'
-                                                + '<div class="col-lg-4 text-left">'
-                                                    + '<h2>'+currency(value.price, { useVedic: true }).format()+' บาท/เส้น</h2>'
-                                                    + '<h4>รับประกัน '+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</h4>'
-                                                    + '<h4>'+mailOrFitted(value.can_change)+'</h4>'
-                                                    + '<a href="'+base_url+"caraccessory/TireData/updatetiredata/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                                    + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.tire_dataId+'\', \''+value.tire_modelName+'/'+value.tire_brandName+' '+value.tire_size+'\')"><i class="ti-trash"></i> ลบ</button>'
-                                                + '</div>'
-                                            + '</div>'
+                            html += '<div class="col-lg-4" col-md-8>'
+                                 + '<div class="card card-header-height">'
+                                    + '<div class="card-body">'
+                                        + '<div class="icon-left">'
+                                            + '<img class="card-img-top" src="'+picturePath+"tire_brand/"+value.tire_brandPicture+'">'
+                                            + '<img class="card-img-top" src="'+picturePath+"tirebranddata/"+value.tire_picture+'">'
+                                        + '</div>'
+                                        + '<div class="icon-right">'
+                                            + '<img class="card-img-top" src="http://localhost/car/public/image/icon/Wet-Grip-Tyre-Label.png">'
+                                            + '<img class="card-img-top" src="http://localhost/car/public/image/icon/External-noise-Tyre-Label.png">'
+                                            + '<img class="card-img-top" src="http://localhost/car/public/image/icon/Fuel-efficiency-Tyre-Label.png">'
+                                        + '</div>'
+                                    + '</div>'
+                                    + '<div class="card-body">'
+                                        + '<div class="text-center">'
+                                            + '<h4>'+value.tire_brandName+'/'+value.tire_modelName+' <br/>'+value.tire_size+' <small>'+mailOrFitted(value.can_change)+'</small></h4>'
+                                        + '</div>'
+                                        + '<div class="text-center">'
+                                            + '<span>รับประกัน '+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span>'
+                                        + '</div>'
+                                        + '<div class="text-center">'
+                                            + '<h2>'+currency(value.price, { useVedic: true }).format()+' บาท/เส้น</h2>'
+                                        + '</div>'
+                                        + '<div class="text-center">'
+                                            + '<a href="'+base_url+"caraccessory/TireData/updatetiredata/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                            + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.tire_dataId+'\', \''+value.tire_modelName+'/'+value.tire_brandName+' '+value.tire_size+'\')"><i class="ti-trash"></i> ลบ</button>'
                                         + '</div>'
                                     + '</div>'
                                 + '</div>'
+                            + '</div>';
                         });
 
                         html += '</div>';

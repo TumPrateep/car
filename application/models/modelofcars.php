@@ -111,4 +111,10 @@ class modelofcars extends CI_Model{
     
         return $query->num_rows();
     }
+
+    function updateStatus($modelofcarId,$data){
+        $this->db->where('modelofcarId',$modelofcarId);
+        $result = $this->db->update('modelofcar', $data);
+        return $result; 
+    }
 }

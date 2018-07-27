@@ -92,7 +92,7 @@
         </li>
 
          <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link text-white" href="<?=base_url("garages") ?>">
+          <a class="nav-link text-white" href="<?=base_url("admin/garages") ?>">
             <i class="fa fa-map-o" aria-hidden="true"></i>
             <span class="nav-link-text">ที่ตั้งอู่</span>
           </a>

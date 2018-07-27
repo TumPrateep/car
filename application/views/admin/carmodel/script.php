@@ -24,6 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
+<<<<<<< HEAD
                 "url": base_url+"api/Modelofcar/search",
                 "dataType": "json",
                 "type": "POST",
@@ -32,14 +33,28 @@
                     data.brandId = $("#brandId").val(),
                     data.modelId = $("#modelId").val(),
                     data.status = $("#status").val()
+=======
+                "url": base_url+"api/Modelofcar/searchModelofcar",
+                "dataType": "json",
+                "type": "POST",
+                "data": function ( data ) {
+                    data.modelofcarName = $("#table-search").val();
+                    data.brandId = $("#brandId").val();
+                    data.status = $("#status").val();
+                    data.year = $("#year").val();
+>>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
                 }
             },
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
                 { "data": "modelofcarName" },
+<<<<<<< HEAD
                 { "data": "bodyCode" },
                 { "data": "machineCode" },
+=======
+                null,
+>>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
                 null,
                 null
             ],
@@ -47,6 +62,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
+<<<<<<< HEAD
                     "targets": [0,4,5]
                 },{
                     "targets": 5,
@@ -55,6 +71,24 @@
                         return '<a href="'+base_url+"admin/car/model/"+data.brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
                             +'<a href="'+base_url+"admin/car/updateBrand/"+data.brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteBrand('+data.brandId+',\''+data.brandName+'\')"><i class="fa fa-trash"></i></button>';
+=======
+                    "targets": [0,4]
+                },{
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.yearEnd != null){
+                            return data.yearStart+' - '+data.yearEnd;
+                        }
+                        return data.yearStart;
+                    }
+                },{
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return '<a href="'+base_url+"admin/car/updatecarModel/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletecarModel('+data.modelId+',\''+data.modelName+'\',\''+data.brandId+'\',\''+data.modelofcarId+'\')"><i class="fa fa-trash"></i></button>';
+>>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
                     }
                 },
                 {
@@ -64,7 +98,11 @@
                         return meta.row + 1;
                     }
                 },{
+<<<<<<< HEAD
                     "targets": 4,
+=======
+                    "targets": 3,
+>>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -76,13 +114,18 @@
                             active = "";
                         }
                         return '<div>'
+<<<<<<< HEAD
                         +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.brandId+','+data.status+')">'
+=======
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="changeStatusModelofcar('+data.modelofcarId+','+data.modelId+','+data.status+','+data.brandId+')">'
+>>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
                     }
                 },
                 { "orderable": false, "targets": 0 },
+<<<<<<< HEAD
                 {"className": "dt-head-center", "targets": [2]},
                 {"className": "dt-center", "targets": [0,1,2,3,4,5]},
                 { "width": "10%", "targets": 0 },
@@ -90,10 +133,17 @@
                 { "width": "15%", "targets": 2 },
                 { "width": "20%", "targets": 4 },
                 { "width": "15%", "targets": 3 }
+=======
+                {"className": "dt-head-center", "targets": [1]},
+                {"className": "dt-center", "targets": [0,1,2,3,4]},
+                { "width": "10%", "targets": 0 },
+                { "width": "20%", "targets": 2 }
+>>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
             ]	 
 
     });
 
+<<<<<<< HEAD
     // function deleteBrand(brandId,brandName){
     //     var option = {
     //         url: "/car/deleteBrand?brandId="+brandId,
@@ -105,10 +155,14 @@
     // }
 
     $("#form-search").submit(function(){
+=======
+         $("#form-search").submit(function(){
+>>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
         event.preventDefault();
         table.ajax.reload();
     })
 
+<<<<<<< HEAD
     // function updateStatus(brandId,status){
     //     $.post(base_url+"api/Car/changeStatus",{
     //         "brandId": brandId,
@@ -121,6 +175,22 @@
     //         }
     //     });
     // }
+=======
+    function changeStatusModelofcar(modelofcarId,modelId,status,brandId){
+        $.post(base_url+"api/Modelofcar/changeStatusModelofcar",{
+            "modelofcarId": modelofcarId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/car/carmodel/"+brandId+"/"+modelId);
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
+
+ 
+>>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
 
 </script>
 
