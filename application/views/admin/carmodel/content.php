@@ -62,8 +62,9 @@
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
-          <th><i class="fa fa-car"></i>  ชื่อรุ่น</th>
-          <th><i class="fa fa-calendar-check-o"></i>  ปีที่ผลิต</th>
+          <th><i class="fa fa-car"></i>  ชื่อรุ่นรถ</th>
+          <th><i class="fa fa-calendar-check-o"></i>  รหัสตัวถัง</th>
+          <th><i class="fa fa-calendar-check-o"></i>  รหัสเครื่องยนตร์</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	

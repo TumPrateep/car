@@ -84,7 +84,7 @@ class modelofcars extends CI_Model{
                 return null;
             }
     }
-    function modelofcar_search($limit,$start,$search,$order,$dir, $modelofcarId, $status){
+    function modelofcar_search($limit,$start,$search,$order,$dir,$modelofcarId,$status){
         $this->db->like('modelofcarName',$search);
         if($status != null){
             $this->db->where("status", $status);
@@ -102,7 +102,7 @@ class modelofcars extends CI_Model{
             return null;
         }
     }
-    function modelofcar_search_count($search, $modelofcarId, $status){
+    function modelofcar_search_count($search,$modelofcarId,$status){
         $query = $this
                 ->db
                 ->like('modelofcarName',$search)

@@ -1,5 +1,5 @@
 <?php
-// ขอบยาง นะ 
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Modelofcar extends BD_Controller {
     function __construct()
@@ -103,6 +103,55 @@ class Modelofcar extends BD_Controller {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
+    }
+
+    function search_post(){
+        $columns = array( 
+            0 => null,
+            1 => 'modelofcarName',
+            2 => 'bodyCode',
+            3 => 'machineCode',
+            4 => 'status'  
+        );
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $this->load->model("modelofcars");
+        $totalData = $this->modelofcars->all_modelofcar_count($modelofcarId);
+        $totalFiltered = $totalData; 
+        if(empty($this->post('modelofcarName'))&& empty($this->post('status')))
+        {            
+            $posts = $this->modelofcars->allmodelofcars($limit,$start,$order,$dir);
+        }
+        else {
+            $search = $this->post('modelofcarName'); 
+            $status = $this->post('status');
+            $posts =  $this->modelofcars->modelofcar_search($limit,$start,$search,$order,$dir,$status);
+            $totalFiltered = $this->modelofcars->modelofcar_search_count($search,$status);
+        }
+        $data = array();
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+                $nestedData['modelofcarId'] = $post->modelofcarId;
+                $nestedData['modelofcarName'] = $post->modelofcarName;
+                $nestedData['brandId'] = $post->brandId;
+                $nestedData['modelId'] = $post->modelId;
+                $nestedData['machineCode'] = $post->machineCode;
+                $nestedData['bodyCode'] = $post->bodyCode;
+                $nestedData['status'] = $post->status;
+                $data[] = $nestedData;
+            }
+        }
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+        $this->set_response($json_data);
     }
 
 }
