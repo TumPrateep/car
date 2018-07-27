@@ -14,6 +14,7 @@
         }
         
     });
+    
 function checkID(id) {
             if(id.length != 13) return false;
             for(i=0, sum=0; i < 12; i++)
