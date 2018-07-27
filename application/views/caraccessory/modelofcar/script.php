@@ -99,16 +99,16 @@
     $("#column").change(function(){
         table.ajax.reload();
     })
-    function deletemodelofcar(modelofcarId,modelofcarName,brandId,modelId){
-        var option = {
-            url: "/Modelofcar/delete?modelofcarId="+modelofcarId,
-            label: "ลบชื่อรุ่นรถ",
-            content: "คุณต้องการลบ "+modelofcarName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/Modelofcar/index/"+brandId+'/'+modelId
+    // function deletemodelofcar(modelofcarId,modelofcarName,brandId,modelId){
+    //     var option = {
+    //         url: "/Modelofcar/delete?modelofcarId="+modelofcarId,
+    //         label: "ลบชื่อรุ่นรถ",
+    //         content: "คุณต้องการลบ "+modelofcarName+" ใช่หรือไม่",
+    //         gotoUrl: "caraccessory/Modelofcar/index/"+brandId+'/'+modelId
             
-        }
-        fnDelete(option);
-    }
+    //     }
+    //     fnDelete(option);
+    // }
     
 </script>
 

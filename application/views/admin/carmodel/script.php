@@ -98,11 +98,7 @@
                         return meta.row + 1;
                     }
                 },{
-<<<<<<< HEAD
                     "targets": 4,
-=======
-                    "targets": 3,
->>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -114,18 +110,13 @@
                             active = "";
                         }
                         return '<div>'
-<<<<<<< HEAD
                         +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.brandId+','+data.status+')">'
-=======
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="changeStatusModelofcar('+data.modelofcarId+','+data.modelId+','+data.status+','+data.brandId+')">'
->>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
                     }
                 },
                 { "orderable": false, "targets": 0 },
-<<<<<<< HEAD
                 {"className": "dt-head-center", "targets": [2]},
                 {"className": "dt-center", "targets": [0,1,2,3,4,5]},
                 { "width": "10%", "targets": 0 },
@@ -133,17 +124,10 @@
                 { "width": "15%", "targets": 2 },
                 { "width": "20%", "targets": 4 },
                 { "width": "15%", "targets": 3 }
-=======
-                {"className": "dt-head-center", "targets": [1]},
-                {"className": "dt-center", "targets": [0,1,2,3,4]},
-                { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 2 }
->>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
             ]	 
 
     });
 
-<<<<<<< HEAD
     // function deleteBrand(brandId,brandName){
     //     var option = {
     //         url: "/car/deleteBrand?brandId="+brandId,
@@ -155,14 +139,10 @@
     // }
 
     $("#form-search").submit(function(){
-=======
-         $("#form-search").submit(function(){
->>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
         event.preventDefault();
         table.ajax.reload();
     })
 
-<<<<<<< HEAD
     // function updateStatus(brandId,status){
     //     $.post(base_url+"api/Car/changeStatus",{
     //         "brandId": brandId,
@@ -175,22 +155,6 @@
     //         }
     //     });
     // }
-=======
-    function changeStatusModelofcar(modelofcarId,modelId,status,brandId){
-        $.post(base_url+"api/Modelofcar/changeStatusModelofcar",{
-            "modelofcarId": modelofcarId,
-            "status": status
-        },function(data){
-            if(data.message == 200){
-                showMessage(data.message,"admin/car/carmodel/"+brandId+"/"+modelId);
-            }else{
-                showMessage(data.message);
-            }
-        });
-    }
-
- 
->>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
 
 </script>
 

@@ -105,7 +105,6 @@ class Modelofcar extends BD_Controller {
         }
     }
 
-<<<<<<< HEAD
     function search_post(){
         $columns = array( 
             0 => null,
@@ -134,102 +133,25 @@ class Modelofcar extends BD_Controller {
         $data = array();
         if(!empty($posts))
         {
-=======
-    function searchModelofcar_post(){
-        $columns = array( 
-            0 =>null, 
-            1 =>'modelofcarName',
-            2 => 'yearStart',
-            3 => 'status'
-        );
-
-        $limit = $this->post('length');
-        $start = $this->post('start');
-        $order = $column;
-        $dir = $sort;
-
-        $modelofcarId = $this->post("modelofcarId");
-        $this->load->model("modelofcars");
-        $totalData = $this->modelofcars->all_modelofcar_count($modelofcarId);
-
-        $totalFiltered = $totalData; 
-
-        if(empty($this->post('modelofcarName'))  && empty($this->post('status')))
-        {            
-            $posts = $this->modelofcars->allmodelofcars($limit,$start,$order,$dir, $modelofcarId);
-        }
-        else {
-            $search = $this->post('modelofcarName');
-            $status = $this->post('status'); 
-
-            $posts =  $this->modelofcars->modelofcar_search($limit,$start,$search,$order,$dir, $modelofcarId, $status);
-
-            $totalFiltered = $this->modelofcars->modelofcar_search_count($search, $modelofcarId, $status);
-        }
-        $data = array();        
-        if(!empty($posts))
-        {
-            $index = 0;
-            $count = 0;
->>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
             foreach ($posts as $post)
             {
                 $nestedData['modelofcarId'] = $post->modelofcarId;
                 $nestedData['modelofcarName'] = $post->modelofcarName;
                 $nestedData['brandId'] = $post->brandId;
                 $nestedData['modelId'] = $post->modelId;
-<<<<<<< HEAD
                 $nestedData['machineCode'] = $post->machineCode;
                 $nestedData['bodyCode'] = $post->bodyCode;
-=======
-                $nestedData['yearStart'] = $post->yearStart;
-                $nestedData['yearEnd'] = $post->yearEnd;
->>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
                 $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
             }
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
         $json_data = array(
             "draw"            => intval($this->post('draw')),  
             "recordsTotal"    => intval($totalData),  
             "recordsFiltered" => intval($totalFiltered), 
             "data"            => $data   
         );
-<<<<<<< HEAD
         $this->set_response($json_data);
     }
 
-=======
-
-        $this->set_response($json_data);
-    }
-
-    function changeStatusModelofcar_post(){
-        $modelofcarId = $this->post("modelofcarId");
-        $status = $this->post("status");
-        if($status == 1){
-            $status = 2;
-        }else{
-            $status = 1;
-        }
-        $data = array(
-            'status' => $status,
-            'activeFlag' => 1
-        );
-        $this->load->model("modelofcars");
-        $result = $this->modelofcars->updateStatus($modelofcarId,$data);
-        if($result){
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-    }
-
->>>>>>> 4117c2abfba7e5e1e51a59c63f9b20bde389046e
 }
