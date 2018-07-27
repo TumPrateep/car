@@ -62,4 +62,53 @@ class modelofcars extends CI_Model{
         return $this->db->where('modelofcarId',$modelofcarId)->get("modelofcar")->row();
         
     }
+    function all_modelofcar_count($modelofcarId){
+        $query = $this
+                ->db
+                ->get('modelofcar');
+    
+        return $query->num_rows();  
+    }
+    function allmodelofcars($limit,$start,$order,$dir, $modelofcarId){
+        $query = $this
+            ->db
+            ->limit($limit,$start)
+            ->order_by($col,$dir)
+            ->get('modelofcar');
+            if($query->num_rows()>0)
+            {
+                return $query->result(); 
+            }
+            else
+            {
+                return null;
+            }
+    }
+    function modelofcar_search($limit,$start,$search,$order,$dir, $modelofcarId, $status){
+        $this->db->like('modelofcarName',$search);
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('modelofcar');
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    }
+    function modelofcar_search_count($search, $modelofcarId, $status){
+        $query = $this
+                ->db
+                ->like('modelofcarName',$search)
+                ->where('status',$status)
+                ->get('modelofcar');
+    
+        return $query->num_rows();
+    }
 }
