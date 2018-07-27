@@ -11,6 +11,8 @@ class Modelofcar extends BD_Controller {
     public function create_post(){
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
+        $machineCode = $this->post('$machineCode');
+        $bodyCode = $this->post('$machineCode');
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("modelofcars");
@@ -22,6 +24,8 @@ class Modelofcar extends BD_Controller {
                 'brandId' => $brandId,
                 'modelId' => $modelId,
                 'create_by' => $userId,
+                'machineCode' => $machineCode,
+                'bodyCode' => $bodyCode,
                 'create_at' =>date('Y-m-d H:i:s',time()),
                 'status' => 1,
                 'activeFlag' => 1
@@ -45,6 +49,8 @@ class Modelofcar extends BD_Controller {
     public function update_post(){
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
+        $machineCode = $this->post('$machineCode');
+        $bodyCode = $this->post('$machineCode');
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
         $modelofcarId = $this->post('modelofcarId');
@@ -58,6 +64,8 @@ class Modelofcar extends BD_Controller {
                 'modelofcarName' => $modelofcarName,
                 'status' => 1,
                 'activeFlag' => 1,
+                'machineCode' => $machineCode,
+                'bodyCode' => $bodyCode,
                 'update_by' => $userId,
                 'update_at' =>date('Y-m-d H:i:s',time())
             );
