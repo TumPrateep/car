@@ -57,4 +57,9 @@ class modelofcars extends CI_Model{
         }
             return false;
     }
+    function getAllmodelofcar($modelofcarId){
+        $this->db->select('modelofcarName');
+        return $this->db->where('modelofcarId',$modelofcarId)->get("modelofcar")->row();
+        
+    }
 }
