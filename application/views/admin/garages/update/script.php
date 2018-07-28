@@ -1,5 +1,7 @@
 <script>
 
+     loadGarageProvince();
+     
     var garageId = $("#garageId").val();
     $.post(base_url+"api/Garages/getgarage",{
         "garageId": garageId
@@ -9,11 +11,47 @@
         }
         if(data.message == 200){
             result = data.data;
-            $("#garageName").val(result.garageName);
+
+            garageProvince = result.provinceId;
+            garageDistrict = result.districtId;
+            garageSubDistrict = result.subdistrictId;
             
+            $("#comment").val(result.comment);
+            $("#businessRegistration").val(result.businessRegistration);
+            $("#garageName").val(result.garageName);
+            $("#garageAddress").val(result.garageAddress);
+            $("#zipCode").val(result.postCode);
+            $("#latitude").val(result.latitude);
+            $("#longtitude").val(result.longtitude);
+            $("#garageMaster").val(result.garageMaster);
+                if(result.option1 != "2"){
+                    $("#box1").prop('checked', true);
+                }
+
+                if(result.option2 != "2"){
+                    $("#box2").prop('checked', true);
+                }
+
+                if(result.option3 != "2"){
+                    $("#box3").prop('checked', true);
+                }
+
+                if(result.option4 != "2"){
+                    $("#box4").prop('checked', true);
+                }
+
+            $("#result").val(result.option_outher);
+            $("#garagePicture").val(result.garagePicture);
+            $("#firstnameGarage").val(result.firstname);
+            $("#lastnameGarage").val(result.lastname);
+            $("#idcardGarage").val(result.idcard);
+            $("#addressGarage").val(result.addressGarage);
+            $("#result").val(result.option_outher);
         }
         
     });
+
+    
     
 function checkID(id) {
             if(id.length != 13) return false;
@@ -96,8 +134,42 @@ $("#update-garages").validate({
                 }
             }
         });
-        
-        
+        var garageProvinceDropdown = $("#garage-provinceId");
+        garageProvinceDropdown.append('<option value="">เลือกจังหวัด</option>');
+
+        var garageDistrictDropdown = $('#garage-districtId');
+        garageDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
+
+        var garageSubdistrictDropdown = $('#garage-subdistrictId');
+        garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+        function loadGarageProvince() {
+            $.post(base_url + "api/location/getProvince", {},
+                function(data) {
+                    var province = data.data;
+                    $.each(province, function(index, value) {
+                        if(value.provinceId == garageProvince){
+                            garageProvinceDropdown.append('<option value="' + value.provinceId + '" selected>' + value.provinceName + '</option>');
+                        }else{
+                            garageProvinceDropdown.append('<option value="' + value.provinceId + '">' + value.provinceName + '</option>');                            
+                        }
+                    });
+
+                    if(garageProvince != null){
+                        loadGarageDistrict(garageProvince);
+                    }
+                }
+            );
+        }
+
+         garageProvinceDropdown.change(function() {
+            var provinceId = $(this).val();
+            garageProvince = "";
+            garageDistrict = "";
+            garageSubDistrict = "";
+            loadGarageDistrict(provinceId);
+        });
+
         function updategarage(){
             event.preventDefault();
             var isValid = $("#update-garages").valid();
