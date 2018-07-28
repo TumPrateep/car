@@ -118,7 +118,7 @@ class Modelofcar extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $this->load->model("modelofcars");
-        $totalData = $this->modelofcars->all_modelofcar_count($modelofcarId);
+        $totalData = $this->modelofcars->all_modelofcar_count();
         $totalFiltered = $totalData; 
         if(empty($this->post('modelofcarName'))&& empty($this->post('status')))
         {            
