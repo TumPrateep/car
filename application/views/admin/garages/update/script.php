@@ -1,8 +1,12 @@
 <script>
 
-     loadGarageProvince();
-     
+    var garageProvince
+    var garageDistrict
+    var garageSubDistrict
     var garageId = $("#garageId").val();
+    loadGarageProvince();
+
+    
     $.post(base_url+"api/Garages/getgarage",{
         "garageId": garageId
     },function(data){
@@ -50,8 +54,95 @@
         }
         
     });
-
     
+    var garageProvinceDropdown = $("#garage-provinceId");
+    garageProvinceDropdown.append('<option value="">เลือกจังหวัด</option>');
+
+    var garageDistrictDropdown = $('#garage-districtId');
+    garageDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
+
+    var garageSubdistrictDropdown = $('#garage-subdistrictId');
+    garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+        function loadGarageProvince() {
+            $.post(base_url + "api/location/getProvince", {},
+                function(data) {
+                    var province = data.data;
+                    $.each(province, function(index, value) {
+                        if(value.provinceId == garageProvince){
+                            garageProvinceDropdown.append('<option value="' + value.provinceId + '" selected>' + value.provinceName + '</option>');
+                        }else{
+                            garageProvinceDropdown.append('<option value="' + value.provinceId + '">' + value.provinceName + '</option>');                            
+                        }
+                    });
+
+                    if(garageProvince != null){
+                        loadGarageDistrict(garageProvince);
+                    }
+                }
+            );
+        }
+
+         garageProvinceDropdown.change(function() {
+            var provinceId = $(this).val();
+            garageProvince = "";
+            garageDistrict = "";
+            garageSubDistrict = "";
+            loadGarageDistrict(provinceId);
+        });
+
+        function loadGarageDistrict(provinceId) {
+            garageDistrictDropdown.html("");
+            garageDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
+            garageSubdistrictDropdown.html("");
+            garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+            $.post(base_url + "api/location/getDistrict", {
+                    provinceId: provinceId
+                },
+                function(data) {
+                    var district = data.data;
+                    $.each(district, function(index, value) {
+                        if(value.districtId == garageDistrict){
+                            garageDistrictDropdown.append('<option value="' + value.districtId + '" selected>' + value.districtName + '</option>');                            
+                        }else{
+                            garageDistrictDropdown.append('<option value="' + value.districtId + '">' + value.districtName + '</option>');                            
+                        }
+                    });
+
+                    if(garageDistrict != null){
+                        loadGarageSubdistrict(garageDistrict);
+                    }
+                }
+            );
+
+        }
+
+        garageDistrictDropdown.change(function() {
+            var districtId = $(this).val();
+            loadGarageSubdistrict(districtId);
+        });
+
+        function loadGarageSubdistrict(districtId) {
+            garageSubdistrictDropdown.html("");
+            garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+            $.post(base_url + "api/location/getSubdistrict", {
+                    districtId: districtId
+                },
+                function(data) {
+                    var subDistrict = data.data;
+                    $.each(subDistrict, function(index, value) {
+                        if(value.subdistrictId == garageSubDistrict){
+                            garageSubdistrictDropdown.append('<option value="' + value.subdistrictId + '" selected>' + value.subdistrictName + '</option>');
+                        }else{
+                            garageSubdistrictDropdown.append('<option value="' + value.subdistrictId + '">' + value.subdistrictName + '</option>');
+                        }
+                    });
+                }
+            );
+
+        }
     
 function checkID(id) {
             if(id.length != 13) return false;
@@ -134,48 +225,18 @@ $("#update-garages").validate({
                 }
             }
         });
-        var garageProvinceDropdown = $("#garage-provinceId");
-        garageProvinceDropdown.append('<option value="">เลือกจังหวัด</option>');
-
-        var garageDistrictDropdown = $('#garage-districtId');
-        garageDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
-
-        var garageSubdistrictDropdown = $('#garage-subdistrictId');
-        garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
-
-        function loadGarageProvince() {
-            $.post(base_url + "api/location/getProvince", {},
-                function(data) {
-                    var province = data.data;
-                    $.each(province, function(index, value) {
-                        if(value.provinceId == garageProvince){
-                            garageProvinceDropdown.append('<option value="' + value.provinceId + '" selected>' + value.provinceName + '</option>');
-                        }else{
-                            garageProvinceDropdown.append('<option value="' + value.provinceId + '">' + value.provinceName + '</option>');                            
-                        }
-                    });
-
-                    if(garageProvince != null){
-                        loadGarageDistrict(garageProvince);
-                    }
-                }
-            );
-        }
-
-         garageProvinceDropdown.change(function() {
-            var provinceId = $(this).val();
-            garageProvince = "";
-            garageDistrict = "";
-            garageSubDistrict = "";
-            loadGarageDistrict(provinceId);
-        });
+        
+        
+    $("#update-garages").submit(function(){
+        updategarage();
+    })
 
         function updategarage(){
             event.preventDefault();
             var isValid = $("#update-garages").valid();
             if(isValid){
                 var data = $("#update-garages").serialize();
-                $.post(base_url+"api/garages/update",data,
+                $.post(base_url+"api/Garages/update",data,
                 function(data){
                     if(data.message == 200){
                         showMessage(data.message,"admin/garages");
