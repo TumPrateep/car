@@ -189,7 +189,8 @@
                     required: true
                 },
                 "zipCode": {
-                    required: true
+                    required: true,
+                    minlength:5
                 }
             },
             messages: {
@@ -221,7 +222,8 @@
                     required: "กรุณาเลือกตำบล"
                 },
                 zipCode: {
-                    required: "กรุณากรอกรหัสไปรษณีย์"
+                    required: "กรุณากรอกรหัสไปรษณีย์",
+                    minlength: "กรุณากรอกรหัสไปรษณีย์ให้ถูกต้อง"
                 }
             }
         });
