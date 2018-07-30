@@ -4,7 +4,6 @@
     var garageDistrict
     var garageSubDistrict
     var garageId = $("#garageId").val();
-    loadGarageProvince();
 
     
     $.post(base_url+"api/Garages/getgarage",{
@@ -19,6 +18,8 @@
             garageProvince = result.provinceId;
             garageDistrict = result.districtId;
             garageSubDistrict = result.subdistrictId;
+
+            loadGarageProvince();
             
             $("#comment").val(result.comment);
             $("#businessRegistration").val(result.businessRegistration);
@@ -144,7 +145,7 @@
 
         }
     
-function checkID(id) {
+        function checkID(id) {
             if(id.length != 13) return false;
             for(i=0, sum=0; i < 12; i++)
                 sum += parseFloat(id.charAt(i))*(13-i);
@@ -157,7 +158,7 @@ function checkID(id) {
           return checkID(value);
         }, 'กรุณากรอกเลขที่บัตรประชาชนให้ถูกต้อง');
         
-$("#update-garages").validate({
+        $("#update-garages").validate({
             rules: {
                 garageName: {
                     required: true
@@ -188,8 +189,7 @@ $("#update-garages").validate({
                     required: true
                 },
                 "zipCode": {
-                    required: true,
-                    zipCode: true
+                    required: true
                 }
             },
             messages: {
@@ -227,9 +227,9 @@ $("#update-garages").validate({
         });
         
         
-    $("#update-garages").submit(function(){
-        updategarage();
-    })
+        $("#update-garages").submit(function(){
+            updategarage();
+        })
 
         function updategarage(){
             event.preventDefault();
