@@ -111,8 +111,9 @@ class Car extends CI_Controller {
 		$this->load->view("admin/carmodel/create/script");
 	}
 
-	public function updateCarmodel($brandId,$modelId)
+	public function updateCarmodel($brandId,$modelId,$modelofcarId)
 	{
+		$data["modelofcarId"] = $modelofcarId;
 		$data["brandId"] = $brandId;
 		$data["modelId"] = $modelId;
 		$this->load->view("admin/layout/head");
