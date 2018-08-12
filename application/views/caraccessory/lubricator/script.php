@@ -73,7 +73,7 @@
                             
                             if(isShow){
                                 html += '<a href="'+base_url+"caraccessory/Lubricator/updatelubricator/"+value.lubricatorId+'/'+value.lubricator_brandId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteModel('+data.lubricatorId+',\''+data.lubricatorName+'\',\''+data.lubricator_brandId+'\')"><i class="ti-trash"></i> ลบ</button>';
+                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteLubricator('+value.lubricatorId+',\''+value.lubricatorName+'\',\''+value.lubricator_brandId+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  
                             html += '</div>'
@@ -95,7 +95,7 @@
             url: "/Lubricator/delete?lubricatorId="+lubricatorId,
             label: "ลบประเภทน้ำมัน",
             content: "คุณต้องการลบ "+lubricatorName+" ใช่หรือไม่",
-            gotoUrl: "admin/lubricator/lubricators/"+lubricator_brandId
+            gotoUrl: "caraccessory/lubricator/lubricators/"+lubricator_brandId
         }
         fnDelete(option);
     }
