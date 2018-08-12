@@ -14,8 +14,6 @@ $("#submit").validate({
 $("#submit").submit(function(){
         createModelcar();
     })
-
-
     function createModelcar(){
         event.preventDefault();
         var isValid = $("#submit").valid();
