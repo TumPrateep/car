@@ -57,6 +57,7 @@
     </div>
 
     <input type="hidden" id="brandId" value="<?=$brandId ?>">
+    <input type="hidden" id="modelId" value="<?=$modelId ?>">
   
     <div class="table-responsive">
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
