@@ -43,6 +43,7 @@
           <th><i class="fa fa-get-pocket"></i>  ยี่ห้อรถ</th>
           <th><i class="fa fa-automobile"></i>  รุ่นรถ</th>
           <th><i class="fa fa-arrows-h"></i>  ขนาดยางรถ</th>
+          <th><i class="fa fa-automobile"></i>  โมเดลรถ</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	

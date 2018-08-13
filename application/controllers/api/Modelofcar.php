@@ -11,8 +11,8 @@ class Modelofcar extends BD_Controller {
     public function create_post(){
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
-        $machineCode = $this->post('$machineCode');
-        $bodyCode = $this->post('$machineCode');
+        $machineCode = $this->post('machineCode');
+        $bodyCode = $this->post('bodyCode');
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("modelofcars");
@@ -49,8 +49,8 @@ class Modelofcar extends BD_Controller {
     public function update_post(){
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
-        $machineCode = $this->post('$machineCode');
-        $bodyCode = $this->post('$machineCode');
+        $machineCode = $this->post('machineCode');
+        $bodyCode = $this->post('bodyCode');
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
         $modelofcarId = $this->post('modelofcarId');
@@ -62,7 +62,6 @@ class Modelofcar extends BD_Controller {
                 'brandId' => $brandId,
                 'modelId' => $modelId,
                 'modelofcarName' => $modelofcarName,
-                'status' => 1,
                 'activeFlag' => 1,
                 'machineCode' => $machineCode,
                 'bodyCode' => $bodyCode,
@@ -113,22 +112,24 @@ class Modelofcar extends BD_Controller {
             3 => 'machineCode',
             4 => 'status'  
         );
+        $brandId = $this->post("brandId");
+        $modelId = $this->post("modelId");
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $this->load->model("modelofcars");
-        $totalData = $this->modelofcars->all_modelofcar_count();
+        $totalData = $this->modelofcars->all_modelofcar_count($brandId,$modelId);
         $totalFiltered = $totalData; 
         if(empty($this->post('modelofcarName'))&& empty($this->post('status')))
         {            
-            $posts = $this->modelofcars->allmodelofcars($limit,$start,$order,$dir);
+            $posts = $this->modelofcars->allmodelofcars($limit,$start,$order,$dir,$brandId,$modelId);
         }
         else {
             $search = $this->post('modelofcarName'); 
             $status = $this->post('status');
-            $posts =  $this->modelofcars->modelofcar_search($limit,$start,$search,$order,$dir,$status);
-            $totalFiltered = $this->modelofcars->modelofcar_search_count($search,$status);
+            $posts =  $this->modelofcars->modelofcar_search($limit,$start,$search,$order,$dir,$status,$brandId,$modelId);
+            $totalFiltered = $this->modelofcars->modelofcar_search_count($search,$status,$brandId,$modelId);
         }
         $data = array();
         if(!empty($posts))
@@ -152,6 +153,60 @@ class Modelofcar extends BD_Controller {
             "data"            => $data   
         );
         $this->set_response($json_data);
+    }
+
+    function getAllmodelofcar_get(){
+        $this->load->model("modelofcars");
+        $result = $this->modelofcars->getmodelofcar();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+    function changeStatus_post(){
+        $modelofcarId = $this->post("modelofcarId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status,
+            'activeFlag' => 1
+        );
+        $this->load->model("modelofcars");
+        $result = $this->modelofcars->updateStatus($modelofcarId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function getCarOfModel_post(){
+        $modelofcarId = $this->post('modelofcarId');
+
+        $this->load->model("modelofcars");
+        $isCheck = $this->modelofcars->Check($modelofcarId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->modelofcars->getCarOfModel($modelofcarId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
     }
 
 }

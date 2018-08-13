@@ -39,6 +39,14 @@
                             </select>
                           </div>
                         </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>โมเดลรถ</label> <span class="error">*</span> <label id="modelofcarId-error" class="error" for="modelofcarId"></label>
+                            <select class="form-control" name="modelofcarId" id="modelofcarId">
+                              <option value="">เลือกโมเดลรถ</option>
+                            </select>
+                          </div>
+                        </div>
                       </div>
                       <div class="row">
                         <div class="col-md-6">

@@ -56,7 +56,17 @@
                             </select>
                           </div>
                         </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>โมเดลรถ</label> <span class="error">*</span> <label id="brandId-error" class="error" for="brandId"></label>
+                            <select class="form-control" name="modelofcarId" id="modelofcarId">
+                              <option value="">เลือกโมเดลรถ</option>
+                            </select>
+                          </div>
+                        </div>
                       </div>
+                      
+                      
                       <div class="form-group"> 
                         <button type="submit" class="btn btn-primary wide-button">บันทึก</button>
                       </div>
