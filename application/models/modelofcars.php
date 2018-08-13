@@ -132,8 +132,10 @@ class modelofcars extends CI_Model{
         return $this->db->where('modelofcarId',$modelofcarId)->get("modelofcar")->row();
     }
     
-    function getmodelofcar(){
+    function getmodelofcar($modelId){
         $this->db->select("modelofcarId,modelofcarName");
+        $this->db->where("modelId", $modelId);
+        $this->db->order_by('modelofcarName', 'ASC');
         $query = $this->db->get("modelofcar");
         return $query->result();
     }
