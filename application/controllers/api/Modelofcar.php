@@ -112,22 +112,24 @@ class Modelofcar extends BD_Controller {
             3 => 'machineCode',
             4 => 'status'  
         );
+        $brandId = $this->post("brandId");
+        $modelId = $this->post("modelId");
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $this->load->model("modelofcars");
-        $totalData = $this->modelofcars->all_modelofcar_count();
+        $totalData = $this->modelofcars->all_modelofcar_count($brandId,$modelId);
         $totalFiltered = $totalData; 
         if(empty($this->post('modelofcarName'))&& empty($this->post('status')))
         {            
-            $posts = $this->modelofcars->allmodelofcars($limit,$start,$order,$dir);
+            $posts = $this->modelofcars->allmodelofcars($limit,$start,$order,$dir,$brandId,$modelId);
         }
         else {
             $search = $this->post('modelofcarName'); 
             $status = $this->post('status');
-            $posts =  $this->modelofcars->modelofcar_search($limit,$start,$search,$order,$dir,$status);
-            $totalFiltered = $this->modelofcars->modelofcar_search_count($search,$status);
+            $posts =  $this->modelofcars->modelofcar_search($limit,$start,$search,$order,$dir,$status,$brandId,$modelId);
+            $totalFiltered = $this->modelofcars->modelofcar_search_count($search,$status,$brandId,$modelId);
         }
         $data = array();
         if(!empty($posts))

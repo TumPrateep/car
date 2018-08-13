@@ -64,14 +64,18 @@ class modelofcars extends CI_Model{
         return $this->db->where('modelofcarId',$modelofcarId)->get("modelofcar")->row();
         
     }
-    function all_modelofcar_count(){
+    function all_modelofcar_count($brandId,$modelId){
+        $this->db->where("brandId", $brandId);
+        $this->db->where("modelId", $modelId);
         $query = $this
                 ->db
                 ->get('modelofcar');
     
         return $query->num_rows();  
     }
-    function allmodelofcars($limit,$start,$col,$dir){
+    function allmodelofcars($limit,$start,$col,$dir,$brandId,$modelId){
+        $this->db->where("brandId", $brandId);
+        $this->db->where("modelId", $modelId);
         $query = $this->db->limit($limit,$start)
             ->order_by($col,$dir)
             ->get('modelofcar');
@@ -85,7 +89,9 @@ class modelofcars extends CI_Model{
                 return null;
             }
     }
-    function modelofcar_search($limit,$start,$search,$col,$dir,$status){
+    function modelofcar_search($limit,$start,$search,$col,$dir,$status,$brandId,$modelId){
+        $this->db->where("brandId", $brandId);
+        $this->db->where("modelId", $modelId);
         $this->db->like('modelofcarName',$search);
         if($status != null){
             $this->db->where("status",$status);
@@ -103,7 +109,9 @@ class modelofcars extends CI_Model{
             return null;
         }
     }
-    function modelofcar_search_count($search,$modelofcarId,$status){
+    function modelofcar_search_count($search,$modelofcarId,$status,$brandId,$modelId){
+        $this->db->where("brandId", $brandId);
+        $this->db->where("modelId", $modelId);
         $query = $this
                 ->db
                 ->like('modelofcarName',$search)
