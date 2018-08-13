@@ -106,9 +106,10 @@ class TireMatching extends BD_Controller {
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
         $tire_sizeId = $this->post('tire_sizeId');
+        $modelofcarId = $this->post('tire_modelofcarId');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model('TireMatch');
-        $checkDuplicate = $this->TireMatch->checkduplicate($rimId,$brandId,$modelId,$tire_sizeId);
+        $checkDuplicate = $this->TireMatch->checkduplicate($rimId,$brandId,$modelId,$tire_sizeId,$modelofcarId);
         if($checkDuplicate){
             $data = array(
                 'tire_matchingId' => null,
@@ -116,6 +117,7 @@ class TireMatching extends BD_Controller {
                 'brandId' => $brandId,
                 'modelId' => $modelId,
                 'tire_sizeId' => $tire_sizeId,
+                'modelofcarId' => $modelofcarId,
                 "status" => 1,
                 "create_at" => date('Y-m-d H:i:s',time()),
                 "create_by" => $userId,

@@ -76,15 +76,17 @@ class TireMatch extends CI_Model{
         return $query->num_rows();
     } 
 
-    function checkduplicate($rimId,$brandId,$modelId,$tire_sizeId){
-        $this->db->select('tire_matching.rimId,tire_matching.brandId,tire_matching.modelId,concat(tire_size.tire_size,"/",tire_size.tire_series,tire_size.rim) as tire_size');
+    function checkduplicate($rimId,$brandId,$modelId,$tire_sizeId,$modelofcarId){
+        $this->db->select('tire_matching.rimId,tire_matching.brandId,tire_matching.modelId,tire_matching.modelofcarId,concat(tire_size.tire_size,"/",tire_size.tire_series,tire_size.rim) as tire_size');
         $this->db->from('tire_matching');
-        $this->db->join('model', 'tire_matching.modelId = model.modelId');
-        $this->db->join('brand', 'model.brandId = brand.brandId');
+        $this->db->join('model', 'model.modelId = tire_matching.modelId');
+        $this->db->join('brand', 'brand.brandId = tire_matching.brandId');
+        $this->db->join('modelofcarId', 'modelofcarId = tire_matching.modelofcarId')
         $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_matching.tire_sizeId');
         $this->db->where('tire_matching.brandId',$brandId);
         $this->db->where('tire_matching.rimId',$rimId);
         $this->db->where('tire_matching.modelId',$modelId);
+        $this->db->where('tire_macthing.modelofcarId',$modelofcarId);
         $this->db->where('tire_matching.tire_sizeId',$tire_sizeId);
         
         $result = $this->db->count_all_results();

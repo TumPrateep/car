@@ -38,6 +38,7 @@
     var model = $("#modelId");
     var tire_rim = $("#tire_rimId");
     var tire_size = $("#tire_sizeId");
+    var modelofcar = $("#modelofcarId");
 
     function init(){
         getBrand();
@@ -64,6 +65,19 @@
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
                     model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
+                });
+            }
+        );
+    });
+
+    model.change(function(){
+        modelofcar.html('<option value="">เลือกโมเดลรถ</option>');
+        $.get(base_url+"api/Modelofcar/getAllmodelofcar",{
+            modelId: model.val()
+        },function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    modelofcar.append('<option value="' + value.modelofcarId + '">' + value.modelofcarName + '</option>');
                 });
             }
         );
