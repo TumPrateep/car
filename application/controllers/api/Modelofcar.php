@@ -11,8 +11,8 @@ class Modelofcar extends BD_Controller {
     public function create_post(){
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
-        $machineCode = $this->post('$machineCode');
-        $bodyCode = $this->post('$machineCode');
+        $machineCode = $this->post('machineCode');
+        $bodyCode = $this->post('bodyCode');
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("modelofcars");
