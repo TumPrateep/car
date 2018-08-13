@@ -4,10 +4,22 @@ $("#submit").validate({
         modelofcarName: {
             required: true
         },
+        bodyCode: {
+            required: true
+        },
+        machineCode: {
+            required: true
+        }
     },
     messages: {
         modelofcarName: {
             required: "กรุณากรอกชื่อรุ่นรถ"
+        },
+        bodyCode: {
+            required: "กรุณากรอกรหัสตัวถัง"
+        },
+        machineCode: {
+            required: "กรุณากรอกรหัสเครื่องยนต์"
         }
     }
 });

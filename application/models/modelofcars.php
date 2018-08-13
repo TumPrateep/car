@@ -37,10 +37,12 @@ class modelofcars extends CI_Model{
         $this->db->from('modelofcar');
         $this->db->where('modelofcarId',$modelofcarId);
         $result = $this->db->count_all_results();
+       
         if($result > 0){
             return true;
-        }
+        }else{
             return false;
+        }
     }
     function delete($modelofcarId){
         return $this->db->delete('modelofcar',array('modelofcarId' => $modelofcarId));

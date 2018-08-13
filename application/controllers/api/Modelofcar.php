@@ -11,8 +11,8 @@ class Modelofcar extends BD_Controller {
     public function create_post(){
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
-        $machineCode = $this->post('$machineCode');
-        $bodyCode = $this->post('$machineCode');
+        $machineCode = $this->post('machineCode');
+        $bodyCode = $this->post('bodyCode');
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model("modelofcars");
@@ -159,6 +159,28 @@ class Modelofcar extends BD_Controller {
         $result = $this->modelofcars->getmodelofcar();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+    function changeStatus_post(){
+        $modelofcarId = $this->post("modelofcarId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status,
+            'activeFlag' => 1
+        );
+        $this->load->model("modelofcars");
+        $result = $this->modelofcars->updateStatus($modelofcarId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
     }
 
 }

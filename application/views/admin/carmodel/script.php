@@ -52,9 +52,8 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/car/createCarModel/"+data.brandId+'/'+data.modelId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"admin/car/updateCarmodel/"+data.brandId+'/'+data.modelId+'/'+data.modelofcarId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteBrand('+data.brandId+',\''+data.brandName+'\')"><i class="fa fa-trash"></i></button>';
+                        return '<a href="'+base_url+"admin/car/updateCarmodel/"+data.brandId+'/'+data.modelId+'/'+data.modelofcarId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteCarModel('+data.modelofcarId+',\''+data.modelofcarName+'\',\''+data.brandId+'\',\''+data.modelId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -76,7 +75,7 @@
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.brandId+','+data.status+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.modelofcarId+',\''+data.status+'\',\''+data.brandId+'\',\''+data.modelId+'\')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
@@ -94,33 +93,33 @@
 
     });
 
-    // function deleteBrand(brandId,brandName){
-    //     var option = {
-    //         url: "/car/deleteBrand?brandId="+brandId,
-    //         label: "ลบยี่ห้อรถ",
-    //         content: "คุณต้องการลบ "+brandName+" ใช่หรือไม่",
-    //         gotoUrl: "admin/car"
-    //     }
-    //     fnDelete(option);
-    // }
+    function deleteCarModel(modelofcarId,modelofcarName,brandId,modelId){
+        var option = {
+            url: "/modelofcar/delete?modelofcarId="+modelofcarId,
+            label: "ลบโมเดลรถ",
+            content: "คุณต้องการลบ "+modelofcarName+" ใช่หรือไม่",
+            gotoUrl: "admin/car/carmodel/"+brandId+"/"+modelId
+        }
+        fnDelete(option);
+    }
 
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
 
-    // function updateStatus(brandId,status){
-    //     $.post(base_url+"api/Car/changeStatus",{
-    //         "brandId": brandId,
-    //         "status": status
-    //     },function(data){
-    //         if(data.message == 200){
-    //             showMessage(data.message,"admin/car");
-    //         }else{
-    //             showMessage(data.message);
-    //         }
-    //     });
-    // }
+    function updateStatus(modelofcarId,status,brandId,modelId){
+        $.post(base_url+"api/modelofcar/changeStatus",{
+            "modelofcarId": modelofcarId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/car/carmodel/"+brandId+"/"+modelId);
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
 
 </script>
 
