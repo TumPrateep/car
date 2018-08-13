@@ -621,6 +621,48 @@ INSERT INTO `rim` VALUES (1,'13',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `spare_undercarriagedata`
+--
+
+DROP TABLE IF EXISTS `spare_undercarriagedata`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `spare_undercarriagedata` (
+  `spare_undercarriageDataId` int(11) NOT NULL AUTO_INCREMENT,
+  `spares_brandId` int(11) NOT NULL,
+  `spares_undercarriageId` int(11) NOT NULL,
+  `update_at` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `create_at` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `status` varchar(45) COLLATE utf16_unicode_ci NOT NULL,
+  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
+  `create_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `price` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `warranty_year` int(11) DEFAULT NULL,
+  `warranty_distance` int(11) DEFAULT NULL,
+  `warranty` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`spare_undercarriageDataId`),
+  KEY `fk_spare_undercarriageData_spares_brand1_idx` (`spares_brandId`),
+  KEY `fk_spare_undercarriageData_spares_undercarriage1_idx` (`spares_undercarriageId`),
+  KEY `fk_spare_undercarriageData_users1_idx` (`create_by`),
+  KEY `fk_spare_undercarriageData_users2_idx` (`update_by`),
+  CONSTRAINT `fk_spare_undercarriageData_spares_brand1` FOREIGN KEY (`spares_brandId`) REFERENCES `spares_brand` (`spares_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_spare_undercarriageData_spares_undercarriage1` FOREIGN KEY (`spares_undercarriageId`) REFERENCES `spares_undercarriage` (`spares_undercarriageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_spare_undercarriageData_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_spare_undercarriageData_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `spare_undercarriagedata`
+--
+
+LOCK TABLES `spare_undercarriagedata` WRITE;
+/*!40000 ALTER TABLE `spare_undercarriagedata` DISABLE KEYS */;
+/*!40000 ALTER TABLE `spare_undercarriagedata` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `spares_brand`
 --
 
@@ -875,6 +917,7 @@ CREATE TABLE `tire_matching` (
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
   `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
+  `modelofcarId` int(11) DEFAULT NULL,
   PRIMARY KEY (`tire_matchingId`),
   KEY `fk_tire_matching_rim1_idx` (`rimId`),
   KEY `fk_tire_matching_brand1_idx` (`brandId`),
@@ -882,13 +925,15 @@ CREATE TABLE `tire_matching` (
   KEY `fk_tire_matching_tire_size1_idx` (`tire_sizeId`),
   KEY `fk_tire_matching_users1_idx` (`create_by`),
   KEY `fk_tire_matching_users2_idx` (`update_by`),
+  KEY `modelofcarId_idx` (`modelofcarId`),
   CONSTRAINT `fk_tire_matching_brand1` FOREIGN KEY (`brandId`) REFERENCES `brand` (`brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_matching_model1` FOREIGN KEY (`modelId`) REFERENCES `model` (`modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_matching_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_matching_trie_size1` FOREIGN KEY (`tire_sizeId`) REFERENCES `tire_size` (`tire_sizeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_matching_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tire_matching_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+  CONSTRAINT `fk_tire_matching_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `modelofcarId` FOREIGN KEY (`modelofcarId`) REFERENCES `modelofcar` (`modelofcarId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -897,6 +942,7 @@ CREATE TABLE `tire_matching` (
 
 LOCK TABLES `tire_matching` WRITE;
 /*!40000 ALTER TABLE `tire_matching` DISABLE KEYS */;
+INSERT INTO `tire_matching` VALUES (1,1,1,2,1,1,NULL,'0000-00-00 00:00:00',NULL,'1','1',3);
 /*!40000 ALTER TABLE `tire_matching` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1149,4 +1195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-13 14:45:00
+-- Dump completed on 2018-08-13 17:00:43
