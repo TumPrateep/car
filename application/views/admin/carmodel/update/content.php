@@ -32,10 +32,22 @@
                     <input type="hidden" id="modelofcarId" name="modelofcarId" value="<?=$modelofcarId ?>">
                     <div class="card-body black bg-light">
                       <div class="row">
-                        <div class="col-md-12">
+                      <div class="col-md-4">
                           <div class="form-group">
                             <label>ชื่อโมเดล</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ชื่อโมเดล" name="modelofcarName">
+                            <input type="text" class="form-control" placeholder="ชื่อโมเดล" name="modelofcarName" id="modelofcarName">
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label>รหัสตัวถัง</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="รหัสตัวถัง" name="bodyCode" id="bodyCode">
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label>รหัสเครื่องยนต์</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="รหัสเครื่องยนต์" name="machineCode" id="machineCode">
                           </div>
                         </div>
                       </div>
