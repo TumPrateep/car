@@ -154,4 +154,27 @@ class Modelofcar extends BD_Controller {
         $this->set_response($json_data);
     }
 
+    function changeStatus_post(){
+        $modelofcarId = $this->post("modelofcarId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status' => $status,
+            'activeFlag' => 1
+        );
+        $this->load->model("modelofcars");
+        $result = $this->modelofcars->updateStatus($modelofcarId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
 }
