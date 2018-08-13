@@ -28,7 +28,12 @@
                             </ul>
                         </li>
                         <li class="nav-label">ส่วนของร้านอะไหล่</li>
-                        <li><a href="#"><i class="fa fa-tachometer"></i><span class="hide-menu">ข้อมูลอะไหล่ช่วงล่าง</span></a></li>
+                        <li>
+                            <a href="<?=base_url("caraccessory/SpareundercarriesData"); ?>">
+                                <i class="fa fa-tachometer"></i>
+                                <span class="hide-menu">ข้อมูลอะไหล่ช่วงล่าง</span>
+                            </a>
+                        </li>
                         <li><a href="#"><i class="fa fa-tachometer"></i><span class="hide-menu">ข้อมูลน้ำมันเครื่อง</span></a></li>
                         <li>
                             <a href="<?=base_url("caraccessory/tiredata"); ?>">
