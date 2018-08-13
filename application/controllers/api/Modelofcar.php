@@ -154,4 +154,11 @@ class Modelofcar extends BD_Controller {
         $this->set_response($json_data);
     }
 
+    function getAllmodelofcar_get(){
+        $this->load->model("modelofcars");
+        $result = $this->modelofcars->getmodelofcar();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
 }
