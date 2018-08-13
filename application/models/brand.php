@@ -168,6 +168,7 @@ class Brand extends CI_Model {
 
     function getAllBrand(){
         $this->db->select("brandId,brandName");
+        $this->db->order_by('brandName', 'ASC');
         $query = $this->db->get("brand");
         return $query->result();
     }

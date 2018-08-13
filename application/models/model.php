@@ -216,6 +216,7 @@ class Model extends CI_Model{
     function getAllModelByBrandId($brandId){
         $this->db->select("modelId,modelName");
         $this->db->where("brandId", $brandId);
+        $this->db->order_by('modelName', 'ASC');
         $query = $this->db->get("model");
         return $query->result();
     }
