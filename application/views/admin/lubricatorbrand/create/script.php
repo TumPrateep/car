@@ -37,17 +37,17 @@
 // });
 
     $("#create-lubricatorbrand").submit(function(){
-        createlubricatorbrandsbrand();
+        createLubricatorbrands();
     });
 
-    function createlubricatorbrandsbrand(){
+    function createLubricatorbrands(){
         event.preventDefault();
         var isValid = $("#create-lubricatorbrand").valid();
         if(isValid){
             var myform = document.getElementById("create-lubricatorbrand");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/lubricator/createLubricatorbrands",
+                url: base_url+"api/lubricatorbrand/createLubricatorbrands",
                 data: formData,
                 processData: false,
                 contentType: false,
