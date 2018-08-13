@@ -1,17 +1,46 @@
 <script>
-$("#submit").validate({
-    rules: {
-        modelofcarName: {
-            required: true
-        },
-    },
-    messages: {
-        modelofcarName: {
-            required: "กรุณากรอกชื่อรุ่นรถ"
+
+    var modelofcarId = $("#modelofcarId").val();
+
+    $.post(base_url+"api/Modelofcar/getCarOfModel",{
+        "modelofcarId": modelofcarId,
+    },function(data){
+        if(data.message!=200){
+            showMessage(data.message,"admin/car");
+        }else{
+            result = data.data;
+            $("#modelofcarName").val(result.modelofcarName);
+            $("#bodyCode").val(result.bodyCode);
+            $("#machineCode").val(result.machineCode);
         }
-    }
-});
-$("#submit").submit(function(){
+    });
+
+    $("#submit").validate({
+        rules: {
+            modelofcarName: {
+                required: true
+            },
+            bodyCode: {
+                required: true
+            },
+            machineCode: {
+                required: true
+            }
+        },
+        messages: {
+            modelofcarName: {
+                required: "กรุณากรอกชื่อรุ่นรถ"
+            },
+            bodyCode: {
+                required: "กรุณากรอกรหัสตัวถัง"
+            },
+            machineCode: {
+                required: "กรุณากรอกรหัสเครื่องยนต์"
+            }
+        }
+    });
+
+    $("#submit").submit(function(){
         updateCarmodel();
     })
 

@@ -49,8 +49,8 @@ class Modelofcar extends BD_Controller {
     public function update_post(){
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
-        $machineCode = $this->post('$machineCode');
-        $bodyCode = $this->post('$machineCode');
+        $machineCode = $this->post('machineCode');
+        $bodyCode = $this->post('bodyCode');
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
         $modelofcarId = $this->post('modelofcarId');
@@ -62,7 +62,6 @@ class Modelofcar extends BD_Controller {
                 'brandId' => $brandId,
                 'modelId' => $modelId,
                 'modelofcarName' => $modelofcarName,
-                'status' => 1,
                 'activeFlag' => 1,
                 'machineCode' => $machineCode,
                 'bodyCode' => $bodyCode,
@@ -172,6 +171,31 @@ class Modelofcar extends BD_Controller {
             $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function getCarOfModel_post(){
+        $modelofcarId = $this->post('modelofcarId');
+
+        $this->load->model("modelofcars");
+        $isCheck = $this->modelofcars->Check($modelofcarId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->modelofcars->getCarOfModel($modelofcarId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }

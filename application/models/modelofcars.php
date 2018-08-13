@@ -118,4 +118,9 @@ class modelofcars extends CI_Model{
         $result = $this->db->update('modelofcar', $data);
         return $result; 
     }
+
+    function getCarOfModel($modelofcarId){
+        $this->db->select("modelofcarId, modelofcarName, machineCode, bodyCode");
+        return $this->db->where('modelofcarId',$modelofcarId)->get("modelofcar")->row();
+    }
 }
