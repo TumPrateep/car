@@ -38,14 +38,14 @@
                 { "data": "brandName" },
                 { "data": "modelName" },
                 { "data": "tire_size" },
-                null,
+                { "data": "modelofcarName" },
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5]
+                    "targets": [0,6]
                 },
                 {
                     "targets": 0,
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "targets": 5,
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/Tires/updatetiresmatching/"+data.tire_matchingId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -63,7 +63,7 @@
                     }
                 },
                 {
-                    "targets": 4,
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -85,9 +85,9 @@
                 {"className": "dt-head-center", "targets": [2]},
                 {"className": "dt-center", "targets": [0,1,4,3,5]},
                 { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 1 },
-                { "width": "20%", "targets": 2 },
-                { "width": "20%", "targets": 3 },
+                { "width": "17%", "targets": 1 },
+                { "width": "17%", "targets": 2 },
+                { "width": "17%", "targets": 3 },
                 { "width": "12%", "targets": 4 }
             ]	 
     });
