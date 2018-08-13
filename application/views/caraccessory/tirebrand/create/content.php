@@ -36,12 +36,20 @@
                                     <div class="row p-t-20">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="control-label">ชื่อยี่ห้อยาง</label>
-                                            <input name="tire_brandPicture" type="file" multiple />
-                                         </div>
-                                        </div>       
+                                        <label class="control-label">รูปยี่ห้อยาง</label>
+                                            <div class="image-editor">
+                                                <input type="file" class="cropit-image-input" name="tempImage" required>
+                                                <div class="cropit-preview"></div>
+                                                <div class="image-size-label">
+                                                ปรับขนาด
+                                                </div>
+                                                <input type="range" class="cropit-image-zoom-input">
+                                                <input type="hidden" name="tire_brandPicture" class="hidden-image-data" />
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>       
+                                </div>     
+                                           
 
                                 <div class="row p-t-20">
                                     <div class="col-md-12 card-grid">
