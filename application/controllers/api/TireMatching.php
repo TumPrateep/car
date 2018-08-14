@@ -45,6 +45,7 @@ class TireMatching extends BD_Controller {
                 $nestedData['tire_size'] = $post->tire_size;
                 $nestedData['status'] = $post->status;
                 $nestedData['tire_matchingId'] = $post->tire_matchingId;
+                $nestedData['modelofcarName'] = $post->modelofcarName;
                 $data[] = $nestedData;
             }
         }

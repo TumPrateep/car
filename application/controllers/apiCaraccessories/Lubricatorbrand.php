@@ -222,6 +222,13 @@ class Lubricatorbrand extends BD_Controller {
 
         $this->set_response($json_data);
     }
+
+    function getAllLubricatorBrand_get(){
+        $this->load->model("Lubricatorbrands");
+        $result = $this->Lubricatorbrands->getAllLubricatorBrand();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 }
 
 
