@@ -84,5 +84,45 @@ class SpareundercarriageData extends BD_Controller {
 
         $this->set_response($json_data);
     }
+    function createSpareData_post(){
+        $spares_brandId = $this->post('spares_brandId');
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $price = $this->post('price');
+        $warranty = $this->post('warranty');
+        $warranty_year = $this->post('warranty_year');
+        $warranty_distance = $this->post('warranty_distance');
+        $this->load->model('spare_undercarriageDatas');
+        $checknotDuplicate = $this->spare_undercarriageDatas->checknotDuplicated($spares_brandId,$spares_undercarriageId);
+        if($checknotDuplicate){
+           $data = array(
+            'spares_undercarriageDataId' => null,
+            'spares_brandId' => $spares_brandId,
+            'spares_undercarriageId' =>$spares_undercarriageId,
+            'status' => 2,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'create_by' => $userId,
+            "activeFlag" => 2,
+            'price' => $price,
+            'warranty' => $warranty,
+            'warranty_year' => $warranty_year,
+            'warranty_distance' => $warranty_distance
+           );
+        $result = $this->spare_undercarriageDatas->insert($data);
+        $output["status"] = $result;
+           if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+           }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_NOT_CREATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+           }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
     
 }
