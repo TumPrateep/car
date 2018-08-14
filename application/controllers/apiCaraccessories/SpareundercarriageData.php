@@ -170,5 +170,31 @@ class SpareundercarriageData extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-    
+    function delete_get(){
+        $spares_undercarriageDataId = $this->db->post('spares_undercarriageDataId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $spares_brandId = $this->post('spares_brandId');
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $this->load->model('spare_undercarriageDatas');
+        $spareUndercarriage = $this->spare_undercarriageDatas->checkValue($spares_undercarriageDataId,$spares_brandId,$spares_undercarriageDataId);
+        if($spareUndercarriage){
+            $checkStatus = $this->spare_undercarriageDatas->checkStatus($userId,$spares_undercarriageDataId);
+                if($checkStatus){
+                    $isDelete = $this->spare_undercarriageDatas->delete($spares_undercarriageDataId);
+                    if($isDelete){
+                        $output["message"] = REST_Controller::MSG_SUCCESS;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }else{
+                        $output["message"] = REST_Controller::MSG_BE_USED;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }
+                }else{
+                    $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 }

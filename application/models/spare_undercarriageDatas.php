@@ -93,7 +93,8 @@ class spare_undercarriageDatas extends CI_Model{
         $this->db->from('spares_undercarriageData');
         $this->db->where('spares_undercarriageData.create_by',$userId);
         $this->db->where('spares_undercarriageData.spares_undercarriageDataId',$spares_undercarriageDataId);
-        $this->db->where('spares_undercarriageData.status',$status);
+        $this->db->where('spares_undercarriageData.status',2);
+        $this->db->where('spares_undercarriageData.activeFlag',2);
         $result = $this->db->count_all_results();
         if($result > 0){
             return false;
@@ -104,5 +105,17 @@ class spare_undercarriageDatas extends CI_Model{
         $this->db->where('spares_undercarriageDataId',$spares_undercarriageDataId);
         $result = $this->db-update('spares_undercarriageData',$data);
         return $result;
+    }
+    function checkValue($spares_undercarriageDataId,$spares_brandId,$spares_undercarriageDataId){
+        $this->db->from('spares_undercarriageData');
+        $this->db->where('spares_undercarriageData.spares_brandId',$spares_brandId);
+        $this->db->where('spares_undercarriageData.spares_undercarriageId',$spares_undercarriageId);
+        $this->db->where('spares_undercarriageData.spares_undercarriageDataId',$spares_undercarriageDataId);
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return false;
+        }
+            return true;
+
     }
 }
