@@ -21,9 +21,16 @@
         "น้ำมันเกียร์ออโต"
     ];
 
+    var lubricatorClass = [
+        "",
+        "secondary",
+        "info",
+        "success"
+    ];
+
     function nullOrVal(value){
         if(value == null){
-            return "-"
+            return '<span>-</span>';
         }else{
             return value;
         }

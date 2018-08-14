@@ -64,7 +64,7 @@
                                 + '</div>'
                                 + '<div class="card-body text-left">'
                                 + '<small>ชนิดน้ำมันเครื่อง</small> '
-                                + '<h5 class="card-title">'+lubricatorLib[value.lubricator_gear]+'</h5>'
+                                + '<h5 class="card-title"><span class="badge badge-pill badge-'+lubricatorClass[value.lubricator_gear]+'">'+lubricatorLib[value.lubricator_gear]+'</span></h5>'
                                 + '<small>ประเภทน้ำมันเครื่อง</small> '
                                 + '<h5 class="card-title">'+nullOrVal(value.lubricator_typeName)+'</h5>'
                                 + '<small>ระยะทาง</small> '
