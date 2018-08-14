@@ -124,5 +124,51 @@ class SpareundercarriageData extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+    function update_post(){
+        $spares_undercarriageDataId = $this->db->post('spares_undercarriageDataId');
+        $spares_brandId = $this->post('spares_brandId');
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $price = $this->post('price');
+        $warranty = $this->post('warranty');
+        $warranty_year = $this->post('warranty_year');
+        $warranty_distance = $this->post('warranty_distance');
+        $this->load->model('spare_undercarriageDatas');
+        $checknotDuplicate = $this->spare_undercarriageDatas->checknotDuplicatedforUpdate($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId);
+        if($checknotDuplicate){
+            $checkStatus = $this->spare_undercarriageDatas->checkStatus($userId,$spares_undercarriageDataId);
+            if($checkStatus){
+                $data = array(
+                    'spares_undercarriageDataId' => $spares_undercarriageDataId,
+                    'spares_brandId' => $spares_brandId,
+                    'spares_undercarriageId' =>$spares_undercarriageId,
+                    'status' => 2,
+                    'update_at' => date('Y-m-d H:i:s',time()),
+                    'update_by' => $userId,
+                    "activeFlag" => 2,
+                    'price' => $price,
+                    'warranty' => $warranty,
+                    'warranty_year' => $warranty_year,
+                    'warranty_distance' => $warranty_distance
+                );
+                $result = $this->spare_undercarriageDatas->update($data);
+                $output["status"] = $result;
+                if($result){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    $output["status"] = false;
+                        $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }else{
+                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
     
 }
