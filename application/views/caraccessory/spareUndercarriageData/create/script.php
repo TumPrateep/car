@@ -51,7 +51,7 @@
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/tiredata");
+                        showMessage(data.message,"caraccessory/SpareundercarriesData");
                     }else{
                         showMessage(data.message);
                     }
