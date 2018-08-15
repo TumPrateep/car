@@ -423,6 +423,7 @@ CREATE TABLE `lubricator_type` (
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
+  `lubricator_typePicture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`lubricator_typeId`),
   UNIQUE KEY `lubricator_typeName_UNIQUE` (`lubricator_typeName`),
   KEY `fk_lubricator_type_users1_idx` (`create_by`),
@@ -438,7 +439,7 @@ CREATE TABLE `lubricator_type` (
 
 LOCK TABLES `lubricator_type` WRITE;
 /*!40000 ALTER TABLE `lubricator_type` DISABLE KEYS */;
-INSERT INTO `lubricator_type` VALUES (1,'สังเคาระห์แท้',15000,1,1,1,NULL,NULL,NULL),(2,'กึ่งสังเคราะห์',10000,1,1,1,NULL,NULL,NULL),(3,'ทั่วไป',5000,1,1,1,NULL,NULL,NULL);
+INSERT INTO `lubricator_type` VALUES (1,'สังเคาระห์แท้',15000,1,1,1,NULL,NULL,NULL,NULL),(2,'กึ่งสังเคราะห์',10000,1,1,1,NULL,NULL,NULL,NULL),(3,'ทั่วไป',5000,1,1,1,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `lubricator_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -621,48 +622,6 @@ INSERT INTO `rim` VALUES (1,'13',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'
 UNLOCK TABLES;
 
 --
--- Table structure for table `spare_undercarriagedata`
---
-
-DROP TABLE IF EXISTS `spare_undercarriagedata`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `spare_undercarriagedata` (
-  `spare_undercarriageDataId` int(11) NOT NULL AUTO_INCREMENT,
-  `spares_brandId` int(11) NOT NULL,
-  `spares_undercarriageId` int(11) NOT NULL,
-  `update_at` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `create_at` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `status` varchar(45) COLLATE utf16_unicode_ci NOT NULL,
-  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) DEFAULT NULL,
-  `price` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `warranty_year` int(11) DEFAULT NULL,
-  `warranty_distance` int(11) DEFAULT NULL,
-  `warranty` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`spare_undercarriageDataId`),
-  KEY `fk_spare_undercarriageData_spares_brand1_idx` (`spares_brandId`),
-  KEY `fk_spare_undercarriageData_spares_undercarriage1_idx` (`spares_undercarriageId`),
-  KEY `fk_spare_undercarriageData_users1_idx` (`create_by`),
-  KEY `fk_spare_undercarriageData_users2_idx` (`update_by`),
-  CONSTRAINT `fk_spare_undercarriageData_spares_brand1` FOREIGN KEY (`spares_brandId`) REFERENCES `spares_brand` (`spares_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_spare_undercarriageData_spares_undercarriage1` FOREIGN KEY (`spares_undercarriageId`) REFERENCES `spares_undercarriage` (`spares_undercarriageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_spare_undercarriageData_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_spare_undercarriageData_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `spare_undercarriagedata`
---
-
-LOCK TABLES `spare_undercarriagedata` WRITE;
-/*!40000 ALTER TABLE `spare_undercarriagedata` DISABLE KEYS */;
-/*!40000 ALTER TABLE `spare_undercarriagedata` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `spares_brand`
 --
 
@@ -732,6 +691,50 @@ LOCK TABLES `spares_undercarriage` WRITE;
 /*!40000 ALTER TABLE `spares_undercarriage` DISABLE KEYS */;
 INSERT INTO `spares_undercarriage` VALUES (1,'ลูกปืนล้อหน้า','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(2,'ลูกปืนล้อหลัง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(3,'ผ้าเบรคหน้า','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(4,'ผ้าเบรคหลัง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(5,'โช้คอัพหน้า','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(6,'โช้คอัพหลัง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(7,'ชุดประกอบ','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(8,'ปีกนกล่างหน้าซ้าย (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(9,'ปีกนกล่างหน้าขวา (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(10,'ปีกนกบนหน้าซ้าย (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(11,'ปีกนกบนหน้าขวา (ไม่มีลูกหมาก)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(12,'คานหลังซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(13,'คานหลังขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(14,'ลูกหมากปีกนกบนซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(15,'ลูกหมากปีกนกบนขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(16,'ลูกหมากปีกนกล่างซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(17,'ลูกหมากปีกนกล่างขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(18,'ลูกหมากคันชักนอกซ้าย (สั้น)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(19,'ลูกหมากคันชักนอกขวา(สั้น)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(20,'ลูกหมากคันชักในซ้าย (ยาว)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(21,'ลูกหมากคันชักในขวา (ยาว)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(22,'คันส่งกลาง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(23,'กล้องยา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(24,'ขาไก่กระปุกพวงมาลัย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(25,'ลูกหมากแร็คซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(26,'ลูกหมากแร็คขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(27,'ลูกหมากกันโคลงหน้าซ้าย','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(28,'ลูกหมากกันโคลงหน้าขวา','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(29,'ยางแท่งเครื่อง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(30,'ยางเพลากลาง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(31,'สายพานไทมิ่ง','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1),(32,'ครัช (แผ่น หวี ลูกปืน)','1',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1);
 /*!40000 ALTER TABLE `spares_undercarriage` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `spares_undercarriagedata`
+--
+
+DROP TABLE IF EXISTS `spares_undercarriagedata`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `spares_undercarriagedata` (
+  `spares_undercarriageDataId` int(11) NOT NULL AUTO_INCREMENT,
+  `spares_undercarriageId` int(11) NOT NULL,
+  `spares_brandId` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` int(11) NOT NULL,
+  `activeFlag` int(11) DEFAULT '2',
+  `warranty` int(11) DEFAULT NULL,
+  `warranty_distance` double DEFAULT NULL,
+  `warranty_year` int(11) DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `spares_undercarriageDataPicture` varchar(255) COLLATE utf16_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`spares_undercarriageDataId`),
+  KEY `fk_spares_undercarriageData_spares_undercarriage1_idx` (`spares_undercarriageId`),
+  KEY `fk_spares_undercarriageData_spares_brand1_idx` (`spares_brandId`),
+  KEY `fk_spares_undercarriageData_users1_idx` (`create_by`),
+  KEY `fk_spares_undercarriageData_users2_idx` (`update_by`),
+  CONSTRAINT `fk_spares_undercarriageData_spares_brand1` FOREIGN KEY (`spares_brandId`) REFERENCES `spares_brand` (`spares_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_spares_undercarriageData_spares_undercarriage1` FOREIGN KEY (`spares_undercarriageId`) REFERENCES `spares_undercarriage` (`spares_undercarriageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_spares_undercarriageData_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_spares_undercarriageData_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `spares_undercarriagedata`
+--
+
+LOCK TABLES `spares_undercarriagedata` WRITE;
+/*!40000 ALTER TABLE `spares_undercarriagedata` DISABLE KEYS */;
+INSERT INTO `spares_undercarriagedata` VALUES (1,1,1,1,NULL,NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `spares_undercarriagedata` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1195,4 +1198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-13 17:00:43
+-- Dump completed on 2018-08-15 11:39:55
