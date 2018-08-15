@@ -70,10 +70,12 @@ class spare_undercarriageDatas extends CI_Model{
         $this->db->where('spares_undercarriageData.spares_brandId',$spares_brandId);
         $this->db->where('spares_undercarriageData.spares_undercarriageId',$spares_undercarriageId);
         $result = $this->db->count_all_results();
+        // echo $this->db->last_query();
+        // exit();
         if($result > 0){
-            return false;
-        }
             return true;
+        }
+            return false;
     }
     function insert($data){
        return $this->db->insert('spares_undercarriageData',$data);
@@ -85,9 +87,9 @@ class spare_undercarriageDatas extends CI_Model{
         $this->db->where('spares_undercarriageData.spares_undercarriageDataId',$spares_undercarriageDataId);
         $result = $this->db->count_all_results();
         if($result > 0){
-            return false;
-        }
             return true;
+        }
+            return false;
     }
     function checkStatus($userId,$spares_undercarriageDataId){
         $this->db->from('spares_undercarriageData');

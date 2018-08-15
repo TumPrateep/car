@@ -96,5 +96,5 @@ $db['default'] = array(
 );
 
 
-$db['default']['db_debug'] = true;
+$db['default']['db_debug'] = false;
 
