@@ -25,35 +25,19 @@
                 </div>
                 <div class="row p-30">
                     <div class="col-lg-1 text-right"></div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-5">
                         <div class="form-group">
-                            <label class="control-label">ยี่ห้อยาง</label>
-                            <select class="form-control input-default" name="tire_brandId" id="tire_brandId">
-                                <option value="">เลือกยี่ห้อยาง</option>
+                            <label class="control-label">อะไหล่ช่วงล่าง</label>
+                            <select class="form-control input-default" name="spares_undercarriageId" id="spares_undercarriageId">
+                                <option value="">เลือกอะไหล่ช่วงล่าง</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-6">
                         <div class="form-group">
-                            <label class="control-label">รุ่นยาง</label>
-                            <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                                <option value="">เลือกรุ่นยาง</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label class="control-label">ขอบยาง</label>
-                            <select class="form-control input-default" name="rimId" id="rimId">
-                                <option value="">เลือกขอบยาง</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label class="control-label">ขนาดยาง</label>
-                            <select class="form-control input-default" name="tire_sizeId" id="tire_sizeId">
-                                <option value="">เลือกขนาดยาง</option>
+                            <label class="control-label">ยี่ห้ออะไหล่ช่วงล่าง</label>
+                            <select class="form-control input-default" name="spares_brandId" id="spares_brandId">
+                                <option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>
                             </select>
                         </div>
                     </div>
@@ -114,7 +98,7 @@
         </div>
         
         <div class="table mt-20">
-            <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="spareUndercarries-table" width="100%" cellspacing="0">
                 <thead>
                     <th></th>
                 </thead>
