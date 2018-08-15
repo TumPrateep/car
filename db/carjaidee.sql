@@ -332,10 +332,7 @@ DROP TABLE IF EXISTS `lubricator_data`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lubricator_data` (
   `lubricator_dataId` int(11) NOT NULL AUTO_INCREMENT,
-  `brandId` int(11) NOT NULL,
-  `modelId` int(11) NOT NULL,
   `lubricator_liter` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lubricator_numberId` int(11) NOT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '2',
@@ -343,19 +340,20 @@ CREATE TABLE `lubricator_data` (
   `create_by` int(11) NOT NULL,
   `update_by` int(11) NOT NULL,
   `lubricatorId` int(11) NOT NULL,
+  `lubricator_brandId` int(11) DEFAULT NULL,
+  `warranty` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `warranty_distance` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `warranty_year` int(11) DEFAULT NULL,
+  `price` double DEFAULT NULL,
   PRIMARY KEY (`lubricator_dataId`),
-  KEY `fk_lubricator_data_brand1_idx` (`brandId`),
-  KEY `fk_lubricator_data_model1_idx` (`modelId`),
-  KEY `fk_lubricator_data_lubricator_number1_idx` (`lubricator_numberId`),
   KEY `fk_lubricator_data_users1_idx` (`create_by`),
   KEY `fk_lubricator_data_users2_idx` (`update_by`),
   KEY `fk_lubricator_data_lubricator1_idx` (`lubricatorId`),
-  CONSTRAINT `fk_lubricator_data_brand1` FOREIGN KEY (`brandId`) REFERENCES `brand` (`brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `lubricator_brandId_idx` (`lubricator_brandId`),
   CONSTRAINT `fk_lubricator_data_lubricator1` FOREIGN KEY (`lubricatorId`) REFERENCES `lubricator` (`lubricatorId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_lubricator_data_lubricator_number1` FOREIGN KEY (`lubricator_numberId`) REFERENCES `lubricator_number` (`lubricator_numberId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_lubricator_data_model1` FOREIGN KEY (`modelId`) REFERENCES `model` (`modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_data_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_lubricator_data_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_lubricator_data_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `lubricator_brandId` FOREIGN KEY (`lubricator_brandId`) REFERENCES `lubricator_brand` (`lubricator_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1198,4 +1196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-15 11:39:55
+-- Dump completed on 2018-08-15 11:54:05
