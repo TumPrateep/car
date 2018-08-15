@@ -22,10 +22,27 @@ class spare_undercarriageDatas extends CI_Model{
             {
                 return null;
             }
+           
+        
+                // $this->db->select('spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_brand.spares_brandId,spares_undercarriage.spares_undercarriageId,spares_undercarriageData.price');
+                // $this->db->from('spares_undercarriagedata');
+                // $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarraigeData.spares_brandId');
+                // $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriageData.spares_undercarriageId');
+                // $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
+                // if($query->num_rows()>0)
+                // {
+                //     return $query->result(); 
+                // }
+                // else
+                // {
+                //     return null;
+                // }
     }
+
     function SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price){
         $price = explode(",",$price);
-        $this->db->select('spares_brand.spares_brandId,spares_undercarriage.spares_undercarriageId,spares_undercarriageData.price');
+        $this->db->from('spares_undercarriagedata');
+        $this->db->select('spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_brand.spares_brandId,spares_undercarriage.spares_undercarriageId,spares_undercarriageData.price');
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarraigeData.spares_brandId');
         $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriageData.spares_undercarriageId');
         $this->db->like('spares_undercarriageData.spares_brandId',$spares_brandId);
@@ -50,7 +67,8 @@ class spare_undercarriageDatas extends CI_Model{
     }
     function SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price){
         $price = explode(",",$price);
-        $this->db->select('spares_brand.spares_brandId,spares_undercarriage.spares_undercarriageId,spares_undercarriageData.price');
+        $this->db->from('spares_undercarriagedata');
+        $this->db->select('spares_undercarriageData.spares_brandName,spares_undercarriageData.spares_undercarriageName,spares_brand.spares_brandId,spares_undercarriage.spares_undercarriageId,spares_undercarriageData.price');
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarraigeData.spares_brandId');
         $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriageData.spare_undercarriageId');
         $this->db->like('spares_undercarriageData.spares_brandId',$spares_brandId);

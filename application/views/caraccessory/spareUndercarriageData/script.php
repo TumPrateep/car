@@ -32,6 +32,8 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.spares_brandId = $("#spares_brandId").val();
+                    data.spares_undercarriagedateId =$("#spares_undercarriagedateId").val();
+                    data.spares_undercarriageId= $("#spares_undercarriagedateId").val();
                     // data.tire_modelId = $("#tire_modelId").val();
                     // data.rimId = $("#rimId").val();
                     // data.tire_sizeId = $("#tire_sizeId").val();
@@ -77,7 +79,7 @@
                                         + '</div>'
                                         + '<div class="text-center">'
                                             + '<a href="'+base_url+"caraccessory/TireData/updatetiredata/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                            + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.tire_dataId+'\', \''+value.tire_modelName+'/'+value.tire_brandName+' '+value.tire_size+'\')"><i class="ti-trash"></i> ลบ</button>'
+                                            + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.spares_undercarriagedateId+'\',\''+value.spares_brandName+'\',\''+value.spares_undercarriageId+'\')"><i class="ti-trash"></i> ลบ</button>'
                                         + '</div>'
                                     + '</div>'
                                 + '</div>'
@@ -184,10 +186,10 @@
         $("#show-search").show(100);
     });
 
-    function deletetiredata(tire_dataId,data_name){
+    function deletetiredata(spares_undercarriagedateId,spares_brandId,spares_undercarriageId){
         var option = {
-            url: "/tiredata/delete?tire_dataId="+tire_dataId,
-            label: "ลบข้อมูลยาง",
+            url: "/SpareundercarriageData/delete?spares_undercarriagedateId="+spares_undercarriagedateId,
+            label: "ลบข้อมอะไหล่",
             content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
             gotoUrl: "caraccessory/tiredata"
         }
