@@ -198,4 +198,10 @@ class CarSpareUndercarriage extends BD_Controller {
 
     }
 
+    function getAllSpareundercarriage_get(){
+        $this->load->model("sparesUndercarriages");
+        $result = $this->sparesUndercarriages->getAllSpareundercarriage();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 }

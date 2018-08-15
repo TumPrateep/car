@@ -192,4 +192,12 @@ class SpareBrand extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function getAllSpareBrand_get(){
+        $spares_undercarriageId = $this->get("spares_undercarriageId");
+        $this->load->model("Sparesbrand");
+        $result = $this->Sparesbrand->getAllSpareBrand($spares_undercarriageId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 }

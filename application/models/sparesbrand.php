@@ -153,5 +153,10 @@ class Sparesbrand extends CI_Model{
         return false;
     }
 
+    function getAllSpareBrand($spares_undercarriageId){
+        $this->db->where("spares_undercarriageId", $spares_undercarriageId);
+        $query = $this->db->get("spares_brand");
+        return $query->result();
+    }
 
 }
