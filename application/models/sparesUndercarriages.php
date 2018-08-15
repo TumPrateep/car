@@ -137,6 +137,11 @@ class sparesUndercarriages extends CI_Model{
             return false;
         }
 
-       
+       function getAllSpareundercarriage(){
+            $this->db->select("spares_undercarriageId,spares_undercarriageName");
+            $this->db->order_by("spares_undercarriageName","ASC");
+            $query = $this->db->get("spares_undercarriage");
+            return $query->result();
+       }
 
 }
