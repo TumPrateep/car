@@ -113,4 +113,159 @@ class LubricatorData extends BD_Controller {
     }
 
 
+    
+    public function create_post(){
+        $lubricatorId = $this->post('lubricatorId');
+        $lubricator_liter = $this->post('lubricator_liter');
+        $lubricator_brandId = $this->post('lubricator_brandId');
+        $price = $this->post('price');
+        $warranty_year = $this->post('warranty_year');
+        $warranty = $this->post('warranty');
+        $warranty_distance = $this->post('warranty_distance');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $car_accessoriesId = $userId;
+        $config['upload_path'] = 'public/image/lubricatordata/';
+
+        // $config['allowed_types'] = 'gif|jpg|png';
+        // $config['max_size'] = '100';
+        // $config['max_width']  = '1024';
+        // $config['max_height']  = '768';
+        // $config['overwrite'] = TRUE;
+        // $config['encrypt_name'] = TRUE;
+        // $config['remove_spaces'] = TRUE;
+        // $this->load->library('upload', $config);
+
+        $this->load->model("lubricatordatas");
+        // $userId = $this->session->userdata['logged_in']['id'];
+        $img = $this->post('lubricator_dataPicture');
+        $img = str_replace('data:image/png;base64,', '', $img);
+	    $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $imageName = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName;
+        $success = file_put_contents($file, $data);
+        
+		if (!$success){
+            $output["message"] = REST_Controller::MSG_ERROR;
+			$this->set_response($output, REST_Controller::HTTP_OK);
+		}else{
+            $image =  $imageName;
+            $isDuplicated = $this->lubricatordatas->checkduplicated($lubricator_brandId,$lubricatorId);
+            if($isDuplicated){
+                unlink($file);
+                $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $data = array(
+                    'lubricator_dataId' => null,
+                    'lubricator_brandId' => $lubricator_brandId,
+                    'lubricator_liter' => $lubricator_liter,
+                    'lubricatorId' => $lubricatorId,
+                    'lubricator_dataPicture' => $image,
+                    'status' => 1,
+                    'activeFlag' => 1,
+                    'create_by' => $userId,
+                    'create_at'=>date('Y-m-d H:i:s',time()),
+                    'price' => $price,
+                    'warranty' => $warranty,
+                    'warranty_year' => $warranty_year,
+                    'warranty_distance' => $warranty_distance
+                );
+                $result = $this->lubricatordatas->insert($data);
+                if($result){
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    unlink($file);
+                    $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+            }
+        }
+    }   
+
+    public function update_post(){
+        $lubricator_dataId = $this->post('lubricator_dataId');
+        $lubricatorId = $this->post('lubricatorId');
+        $lubricator_liter = $this->post('lubricator_liter');
+        $lubricator_brandId = $this->post('lubricator_brandId');
+        $price = $this->post('price');
+        $warranty_year = $this->post('warranty_year');
+        $warranty = $this->post('warranty');
+        $warranty_distance = $this->post('warranty_distance');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $config['upload_path'] = 'public/image/tirebranddata/';
+        // $config['allowed_types'] = 'gif|jpg|png';
+        // $config['max_size'] = '100';
+        // $config['max_width']  = '1024';
+        // $config['max_height']  = '768';
+        // $config['overwrite'] = TRUE;
+        // $config['encrypt_name'] = TRUE;
+        // $config['remove_spaces'] = TRUE;
+        // $this->load->library('upload', $config);
+
+        $this->load->model("lubricatordatas");
+        $userId = $this->session->userdata['logged_in']['id'];
+
+        $img = $this->post('lubricator_dataPicture');
+        $success = true;
+        if(!empty($img)){
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
+
+            $imageName = uniqid().'.png';
+            $file = $config['upload_path']. '/'. $imageName;
+            $success = file_put_contents($file, $data);
+        }
+        
+        if (!$success){
+            unlink($file);
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $image =  $imageName;
+            $isDuplicated = $this->lubricatordatas->checkduplicatedUpdate($lubricator_brandId,$lubricatorId,$lubricator_dataId);
+            if(!$isDuplicated){
+                $data = array(
+                    'lubricator_dataId' => null,
+                    'lubricator_brandId' => $lubricator_brandId,
+                    'lubricator_liter' => $lubricator_liter,
+                    'lubricatorId' => $lubricatorId,
+                    'lubricator_dataPicture' => $image,
+                    'status' => 1,
+                    'activeFlag' => 1,
+                    'update_by' => $userId,
+                    'update_at'=>date('Y-m-d H:i:s',time()),
+                    'price' => $price,
+                    'warranty' => $warranty,
+                    'warranty_year' => $warranty_year,
+                    'warranty_distance' => $warranty_distance
+                );
+                if(!empty($img)){
+                    $data["lubricator_dataPicture"] = $image;
+                }
+                
+                $result = $this->lubricatordatas->update($data, $lubricator_dataId);
+                if($result){
+                    unlink($config['upload_path'].$oldData->lubricator_dataPicture);
+                    $output["message"] = REST_Controller::MSG_SUCCESS;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }else{
+                    unlink($config['upload_path'].$image);
+                    $output["status"] = false;
+                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                }
+                
+            }else{
+                unlink($file);
+                $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }
+    }
+
 }
+
+
