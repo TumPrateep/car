@@ -148,7 +148,7 @@
                                                 <span>ระยะทาง xxxx</span>
                                             </div>
                                             <div class="text-center">
-                                            <span>รับประกัน 2 ปี</span>
+                                                <span>รับประกัน 2 ปี</span>
                                                 <span>หรือ</span>
                                                 <span>รับประกัน 1000 กม.</span>
                                             </div>
