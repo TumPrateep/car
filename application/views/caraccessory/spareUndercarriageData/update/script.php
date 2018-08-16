@@ -44,7 +44,7 @@
             var myform = document.getElementById("create-sparesUndercarriageData");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"apiCaraccessories/SpareundercarriageData/createSpareData",
+                url: base_url+"apiCaraccessories/SpareundercarriageData/update",
                 data: formData,
                 processData: false,
                 contentType: false,
@@ -70,7 +70,7 @@
         //     src: 'http://lorempixel.com/500/400/' // renders an image by default
         // }
     });
-
+    var spares_undercarriageDataId = $("#spares_undercarriageDataId");
     var spares_undercarriage = $("#spares_undercarriageId");
     var spares_brand = $("#spares_brandId");
 
