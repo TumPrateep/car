@@ -32,7 +32,7 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.spares_brandId = $("#spares_brandId").val();
-                    data.spares_undercarriagedateId =$("#spares_undercarriagedateId").val();
+                    data.spares_undercarriageDateId =$("#spares_undercarriageDateId").val();
                     data.spares_undercarriageId= $("#spares_undercarriagedateId").val();
                     // data.tire_modelId = $("#tire_modelId").val();
                     // data.rimId = $("#rimId").val();
@@ -69,7 +69,7 @@
                                     // + '</div>'
                                     + '<div class="card-body">'
                                         + '<div class="text-center">'
-                                            + '<h4>'+value.spares_brandName+'/'+value.tire_modelName+' <br/>'+value.tire_size+' <small>'+mailOrFitted(value.can_change)+'</small></h4>'
+                                            + '<h4>'+value.spares_brandName+'/'+value.spares_undercarriageDateId+' <br/>'+value.tire_size+' <small>'+mailOrFitted(value.can_change)+'</small></h4>'
                                         + '</div>'
                                         + '<div class="text-center">'
                                             + '<span>รับประกัน '+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span>'
@@ -78,7 +78,7 @@
                                             + '<h2>'+currency(value.price, { useVedic: true }).format()+' บาท/เส้น</h2>'
                                         + '</div>'
                                         + '<div class="text-center">'
-                                            + '<a href="'+base_url+"caraccessory/TireData/updatetiredata/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                            + '<a href="'+base_url+"caraccessory/SpareundercarriesData/updateSpareundercarriesData/"+value.spares_undercarriageDateId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                             + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.spares_undercarriagedateId+'\',\''+value.spares_brandName+'\',\''+value.spares_undercarriageId+'\')"><i class="ti-trash"></i> ลบ</button>'
                                         + '</div>'
                                     + '</div>'
