@@ -27,10 +27,11 @@ class SpareundercarriageData extends BD_Controller {
 
         $this->load->model('spare_undercarriageDatas');
         $totalData = $this->spare_undercarriageDatas->allSpareData_count();
-        $totalFiltered = $totalData; 
+        $totalFiltered = $totalData;
+        $userId = $this->session->userdata['logged_in']['id'];
         if(empty($this->post('spares_brandId')) && empty($this->post('spares_undercarriageId'))  && empty($this->post('price')) )
         {            
-            $posts = $this->spare_undercarriageDatas->allSpareData($limit,$start,$order,$dir);
+            $posts = $this->spare_undercarriageDatas->allSpareData($limit,$start,$order,$dir,$userId);
         }
         else {
             
