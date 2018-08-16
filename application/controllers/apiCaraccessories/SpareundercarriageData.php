@@ -63,6 +63,7 @@ class SpareundercarriageData extends BD_Controller {
                 $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 $nestedData[$count]['create_by'] = $post->create_by;
                 $nestedData[$count]['warranty'] = $post->warranty;
+                $nestedData[$count]['spares_undercarriageDataPicture'] = $post->spares_undercarriageDataPicture;
                 
                 $data[$index] = $nestedData;
                 if($count >= 2){
