@@ -63,6 +63,7 @@ class SpareundercarriageData extends BD_Controller {
                 $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 $nestedData[$count]['create_by'] = $post->create_by;
                 $nestedData[$count]['warranty'] = $post->warranty;
+                $nestedData[$count]['spares_undercarriageDataPicture'] = $post->spares_undercarriageDataPicture;
                 
                 $data[$index] = $nestedData;
                 if($count >= 2){
@@ -249,6 +250,26 @@ class SpareundercarriageData extends BD_Controller {
                         $output["message"] = REST_Controller::MSG_BE_USED;
                         $this->set_response($output, REST_Controller::HTTP_OK);
                     }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function getSpareUndercarriageData_get(){
+        $spares_undercarriageDataId = $this->get('spares_undercarriageDataId');
+        $this->load->model("spare_undercarriageDatas");
+        $isCheck = $this->spare_undercarriageDatas->checkSpareUndercarriageData($spares_undercarriageDataId);
+        if($isCheck){
+            $result = $this->spare_undercarriageDatas->getSpareUndercarriageDataById($spares_undercarriageDataId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
         }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
