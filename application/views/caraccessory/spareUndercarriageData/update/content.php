@@ -14,7 +14,7 @@
     </div>
    
     <div class="container-fluid">   
-        <form id="create-sparesUndercarriageData">
+        <form id="update-sparesUndercarriageData">
         <input type="hidden" name="spares_undercarriageDataId" id="spares_undercarriageDataId" value="<?=$spares_undercarriageDateId?>">
         <div class="container-fluid">   
             <div class="row">

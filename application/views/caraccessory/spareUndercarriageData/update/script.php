@@ -1,5 +1,5 @@
 <script>
-   $("#create-sparesUndercarriageData").validate({
+   $("#update-sparesUndercarriageData").validate({
         rules: {
             spares_undercarriageId: {
                 required: true
@@ -23,36 +23,6 @@
             }
         },
     });
-
-    // $("#create-sparesUndercarriageData").submit(function(){
-    //     tiredata();
-    // })
-
-    // function tiredata(){
-    //     event.preventDefault();
-    //     var isValid = $("#create-sparesUndercarriageData").valid();
-        
-    //     if(isValid){
-    //         var imageData = $('.image-editor').cropit('export');
-    //         $('.hidden-image-data').val(imageData);
-    //         var myform = document.getElementById("create-sparesUndercarriageData");
-    //         var formData = new FormData(myform);
-    //         $.ajax({
-    //             url: base_url+"apiCaraccessories/SpareundercarriageData/update",
-    //             data: formData,
-    //             processData: false,
-    //             contentType: false,
-    //             type: 'POST',
-    //             success: function (data) {
-    //                 if(data.message == 200){
-    //                     showMessage(data.message,"caraccessory/SpareundercarriesData");
-    //                 }else{
-    //                     showMessage(data.message);
-    //                 }
-    //             }
-    //         });
-    //     }
-    // }
     
     
     var spares_undercarriageDataId = $("#spares_undercarriageDataId");
@@ -130,6 +100,37 @@
         var spares_undercarriageId = spares_undercarriage.val();
         getSpareBrand(spares_undercarriageId);
     });
+
+    $("#update-sparesUndercarriageData").submit(function(){
+        updatesparesUndercarriageData();
+    })
+
+    function updatesparesUndercarriageData(){
+        event.preventDefault();
+        var isValid = $("#update-sparesUndercarriageData").valid();
+        
+        if(isValid){
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
+            var myform = document.getElementById("update-sparesUndercarriageData");
+            var formData = new FormData(myform);
+            
+            $.ajax({
+                url: base_url+"apiCaraccessories/SpareundercarriageData/update",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (data) {
+                    if(data.message == 200){
+                        showMessage(data.message,"caraccessory/SpareundercarriesData");
+                    }else{
+                        showMessage(data.message);
+                    }
+                }
+            });
+        }
+    }
 
     
 
