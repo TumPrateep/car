@@ -437,7 +437,10 @@ CREATE TABLE `lubricator_type` (
 
 LOCK TABLES `lubricator_type` WRITE;
 /*!40000 ALTER TABLE `lubricator_type` DISABLE KEYS */;
-INSERT INTO `lubricator_type` VALUES (1,'สังเคาระห์แท้',15000,1,1,1,NULL,NULL,NULL,NULL),(2,'กึ่งสังเคราะห์',10000,1,1,1,NULL,NULL,NULL,NULL),(3,'ทั่วไป',5000,1,1,1,NULL,NULL,NULL,NULL);
+INSERT INTO `lubricator_type` (`lubricator_typeId`, `lubricator_typeName`, `lubricator_typeSize`, `status`, `activeFlag`, `create_by`, `update_by`, `create_at`, `update_at`, `lubricator_typePicture`) VALUES
+(1, 'สังเคาระห์แท้', 15000, 1, 1, 1, 1, NULL, '2018-08-16 15:26:39', '5b75353fd34c9.png'),
+(2, 'กึ่งสังเคราะห์', 10000, 1, 1, 1, 1, NULL, '2018-08-16 15:25:59', '5b753517c47f7.png'),
+(3, 'ทั่วไป', 5000, 1, 1, 1, 1, NULL, '2018-08-16 15:25:39', '5b753503e9b38.png');
 /*!40000 ALTER TABLE `lubricator_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
