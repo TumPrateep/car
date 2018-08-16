@@ -45,6 +45,7 @@
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
+          <th><i class="fa fa-sort"></i> รูป</th>
           <th><i class="fa fa-tachometer"></i>  ชื่อประเภทน้ำมันเครื่อง</th>
           <th><i class="fa fa-road"></i>  ระยะทาง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>

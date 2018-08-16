@@ -19,25 +19,44 @@
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form id="submit">
-                  <input type="hidden" id="lubricator_typeId" name="lubricator_typeId" value="<?=$lubricator_typeId?>">
-                    <div class="card-body black bg-light">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label>ชื่อประเภทน้ำมันเครื่่อง</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ชื่อประเภทน้ำมันเครื่อง" id="lubricator_typeName" name="lubricator_typeName" value="">
+                    <input type="hidden" id="lubricator_typeId" name="lubricator_typeId" value="<?=$lubricator_typeId?>">
+                      <div class="card-body black bg-light">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>ชื่อประเภทน้ำมันเครื่่อง</label> <span class="error">*</span>
+                              <input type="text" class="form-control" placeholder="ชื่อประเภทน้ำมันเครื่อง" id="lubricator_typeName" name="lubricator_typeName" value="">
+                            </div>
                           </div>
-                          <div class="form-group">
-                            <label>ระยะทาง</label> <span class="error">*</span>
-                            <input type="number" class="form-control" placeholder="ระยะทาง" name="lubricator_typeSize" id="lubricator_typeSize">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>ระยะทาง</label> <span class="error">*</span>
+                              <input type="number" class="form-control" placeholder="ระยะทาง" name="lubricator_typeSize" id="lubricator_typeSize">
+                            </div>
+                          </div>
                         </div>
+
+                        <div class="row p-t-20">
+                          <div class="col-md-12">
+                              <div class="form-group">
+                                  <label class="control-label">รูปประเภทน้ำมันเครื่อง</label>
+                                  <div class="image-editor">
+                                      <input type="file" class="cropit-image-input" name="tempImage">
+                                      <div class="cropit-preview"></div>
+                                          <div class="image-size-label">
+                                              ปรับขนาด
+                                          </div>
+                                      <input type="range" class="cropit-image-zoom-input">
+                                      <input type="hidden" name="lubricatorType_picture" class="hidden-image-data" />
+                                  </div>
+                              </div>
+                          </div>
+                        </div>   
+                      
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary ">บันทึก</button>
                         </div>
                       </div>
-                     
-                      <div class="form-group">
-                        <button type="submit" class="btn btn-primary ">บันทึก</button>
-                      </div>
-                    </div>
                     </form>
                     <!-- /.card-body -->
                  
