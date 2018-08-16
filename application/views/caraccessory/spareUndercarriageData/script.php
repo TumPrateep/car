@@ -79,7 +79,7 @@
                                             + '<h2>'+currency(value.price, { useVedic: true }).format()+' บาท/ชิ้น</h2>'
                                         + '</div>'
                                         + '<div class="text-center">'
-                                            + '<a href="'+base_url+"caraccessory/SpareundercarriesData/updateSpareundercarriesData/"+value.spares_undercarriageDateId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                            + '<a href="'+base_url+"caraccessory/SpareundercarriesData/updateSpareundercarriesData/"+value.spares_undercarriageDataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                             + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.spares_undercarriagedateId+'\',\''+value.spares_brandName+'\',\''+value.spares_undercarriageId+'\')"><i class="ti-trash"></i> ลบ</button>'
                                         + '</div>'
                                     + '</div>'

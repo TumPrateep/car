@@ -15,6 +15,7 @@
    
     <div class="container-fluid">   
         <form id="create-sparesUndercarriageData">
+        <input type="hidden" name="spares_undercarriageDataId" id="spares_undercarriageDataId" value="<?=$spares_undercarriageDateId?>">
         <div class="container-fluid">   
             <div class="row">
                 <div class="col-12">
@@ -23,7 +24,6 @@
                                 <div class="row p-t-20">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                        <input type="hidden" id="spares_undercarriageDataId" name="spares_undercarriageDataId" value="<?=$spares_undercarriageDataId ?>">
                                             <label class="control-label">อะไหล่ช่วงล่าง</label><span class="error">*</span> <label id="spares_undercarriageId-error" class="error" for="spares_undercarriageId"></label>
                                             <div class="input-group input-group-default">
                                                 <select class="form-control" id="spares_undercarriageId" name="spares_undercarriageId">

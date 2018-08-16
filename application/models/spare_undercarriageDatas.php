@@ -128,4 +128,24 @@ class spare_undercarriageDatas extends CI_Model{
             return true;
 
     }
+
+    function checkSpareUndercarriageData($spares_undercarriageDataId) {
+        $this->db->from("spares_undercarriageData");
+        $this->db->where('spares_undercarriageDataId',$spares_undercarriageDataId);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    function getSpareUndercarriageDataById($spares_undercarriageDataId){
+        $this->db->select("price,spares_brandId,spares_undercarriageDataId,spares_undercarriageDataPicture,spares_undercarriageId,status,warranty,warranty_distance,warranty_year");
+        $this->db->where('spares_undercarriageDataId',$spares_undercarriageDataId);
+        $result = $this->db->get('spares_undercarriageData')->row();
+        return $result;
+    }
 }
