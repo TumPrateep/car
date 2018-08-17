@@ -131,10 +131,10 @@ class SpareundercarriageData extends BD_Controller {
                 'spares_undercarriageDataId' => null,
                 'spares_brandId' => $spares_brandId,
                 'spares_undercarriageId' =>$spares_undercarriageId,
-                'status' => 2,
+                'status' => 1,
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId,
-                "activeFlag" => 2,
+                "activeFlag" => 1,
                 'price' => $price,
                 'warranty' => $warranty,
                 'warranty_year' => $warranty_year,
@@ -235,21 +235,19 @@ class SpareundercarriageData extends BD_Controller {
     }
 }
     function delete_get(){
-        $spares_undercarriageDataId = $this->db->post('spares_undercarriageDataId');
+        $spares_undercarriageDataId = $this->db->get('spares_undercarriageDataId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $spares_brandId = $this->post('spares_brandId');
-        $spares_undercarriageId = $this->post('spares_undercarriageId');
         $this->load->model('spare_undercarriageDatas');
-        $spareUndercarriage = $this->spare_undercarriageDatas->checkValue($spares_undercarriageDataId,$spares_brandId,$spares_undercarriageDataId);
+        $spareUndercarriage = $this->spare_undercarriageDatas->checkValue($spares_undercarriageDataId);
         if($spareUndercarriage){
-                    $isDelete = $this->spare_undercarriageDatas->delete($spares_undercarriageDataId);
-                    if($isDelete){
-                        $output["message"] = REST_Controller::MSG_SUCCESS;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }else{
-                        $output["message"] = REST_Controller::MSG_BE_USED;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }
+            $isDelete = $this->spare_undercarriageDatas->delete($spares_undercarriageDataId);
+        //     if($isDelete){
+        //         $output["message"] = REST_Controller::MSG_SUCCESS;
+        //         $this->set_response($output, REST_Controller::HTTP_OK);
+        //     }else{
+        //         $output["message"] = REST_Controller::MSG_BE_USED;
+        //         $this->set_response($output, REST_Controller::HTTP_OK);
+        //     }
         }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);

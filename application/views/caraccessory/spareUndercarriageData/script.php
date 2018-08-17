@@ -80,7 +80,7 @@
                                         + '</div>'
                                         + '<div class="text-center">'
                                             + '<a href="'+base_url+"caraccessory/SpareundercarriesData/updateSpareundercarriesData/"+value.spares_undercarriageDataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                            + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.spares_undercarriagedateId+'\',\''+value.spares_brandName+'\',\''+value.spares_undercarriageId+'\')"><i class="ti-trash"></i> ลบ</button>'
+                                            + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.spares_undercarriageDataId+'\',\''+value.spares_brandName+'/'+value.spares_undercarriageName+'\')"><i class="ti-trash"></i> ลบ</button>'
                                         + '</div>'
                                     + '</div>'
                                 + '</div>'
@@ -187,9 +187,9 @@
         $("#show-search").show(100);
     });
 
-    function deletetiredata(spares_undercarriagedateId,spares_brandId,spares_undercarriageId){
+    function deletetiredata(spares_undercarriageDataId,data_name){
         var option = {
-            url: "/SpareundercarriageData/delete?spares_undercarriagedateId="+spares_undercarriagedateId,
+            url: "/SpareundercarriageData/delete?spares_undercarriageDataId="+spares_undercarriageDataId,
             label: "ลบข้อมอะไหล่",
             content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
             gotoUrl: "caraccessory/tiredata"
