@@ -43,20 +43,20 @@
             $('.hidden-image-data').val(imageData);
             var myform = document.getElementById("create-lubricatordata");
             var formData = new FormData(myform);
-            // $.ajax({
-            //     url: base_url+"apiCaraccessories/TireData/create",
-            //     data: formData,
-            //     processData: false,
-            //     contentType: false,
-            //     type: 'POST',
-            //     success: function (data) {
-            //         if(data.message == 200){
-            //             showMessage(data.message,"caraccessory/tiredata");
-            //         }else{
-            //             showMessage(data.message);
-            //         }
-            //     }
-            // });
+            $.ajax({
+                url: base_url+"apiCaraccessories/LubricatorData/create",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (data) {
+                    if(data.message == 200){
+                        showMessage(data.message,"caraccessory/lubricatordata");
+                    }else{
+                        showMessage(data.message);
+                    }
+                }
+            });
         }
     }
     

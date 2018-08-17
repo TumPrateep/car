@@ -88,19 +88,19 @@
                             <div class="form-row"> 
                                 <div class="form-group">
                                     <div class="form-check panding">
-                                        <input class="form-check-input" type="checkbox" id="box1">
+                                        <input class="form-check-input" type="checkbox" name="option1" id="box1">
                                         <label class="form-check-label">Wifi</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="box2">
+                                        <input class="form-check-input" type="checkbox" name="option2" id="box2">
                                         <label class="form-check-label">ห้องพัก-เเอร์</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="box3">
+                                        <input class="form-check-input" type="checkbox" name="option3" id="box3">
                                         <label class="form-check-label">ห้องพักพัดลม</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="box4">
+                                        <input class="form-check-input" type="checkbox"name="option4"  id="box4">
                                         <label class="form-check-label">ที่นั่งรอ-พัดลม</label>
                                     </div>
                                 </div>
@@ -109,10 +109,19 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-4">
-                                <label>รูปภาพของอู่ </label>
-                                <input type="file" class="form-control-file" name="garagePicture" id="garagePicture">
-                                <small id="fileHelp" class="form-text text-muted">เลือกรูปภาพที่นามสกุล .jpg</small>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">รูปภาพอู่</label>
+                                        <div class="image-editor">
+                                            <input type="file" class="cropit-image-input" name="tempImage">
+                                            <div class="cropit-preview"></div>
+                                                <div class="image-size-label">
+                                                    ปรับขนาด
+                                                </div>
+                                            <input type="range" class="cropit-image-zoom-input">
+                                            <input type="hidden" name="garage_picture" class="hidden-image-data" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group"> 

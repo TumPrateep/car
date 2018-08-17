@@ -29,11 +29,12 @@ class SpareundercarriesData extends CI_Controller {
 		$this->load->view("caraccessory/spareUndercarriageData/create/script");
 		
 	}
-	public function updateSpareundercarriesData(){
+	public function updateSpareundercarriesData($spares_undercarriageDateId){
+		$data['spares_undercarriageDateId'] = $spares_undercarriageDateId;
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/spareUndercarriageData/update/content");
+		$this->load->view("caraccessory/spareUndercarriageData/update/content",$data);
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
 		$this->load->view("caraccessory/spareUndercarriageData/update/script");

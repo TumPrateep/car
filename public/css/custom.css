@@ -377,3 +377,6 @@
   overflow-y: scroll
 }
 
+.cropit-preview-image-container{
+  border: 1px solid rgba(0,0,0,.125);
+}

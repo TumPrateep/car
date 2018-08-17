@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/spareundercarriesdata"); ?>">อะไหล่ช่วงล่าง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/spareundercarriesdata"); ?>">ข้อมูลอะไหล่ช่วงล่าง</a></li>
                 <li class="breadcrumb-item active">เพิ่มข้อมูลอะไหล่ช่วงล่าง</li>
             </ol>
         </div>
@@ -99,7 +99,7 @@
                                                         ปรับขนาด
                                                     </div>
                                                 <input type="range" class="cropit-image-zoom-input">
-                                                <input type="hidden" name="lubricator_picture" class="hidden-image-data" />
+                                                <input type="hidden" name="spares_undercarriageDataPicture" id="spares_undercarriageDataPicture" class="hidden-image-data" />
                                             </div>
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                             <div class="row p-t-20">
                                 <div class="col-md-12 card-grid">
                                     <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> บันทึก</button>
-                                    <a href="<?=base_url("caraccessory/TireData/$tire_dataId"); ?>">
+                                    <a href="<?=base_url("caraccessory/spareundercarriesdata"); ?>">
                                     <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                     </a>
                                 </div>

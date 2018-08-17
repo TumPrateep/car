@@ -31,27 +31,48 @@
             $("#garageMaster").val(result.garageMaster);
                 if(result.option1 != "2"){
                     $("#box1").prop('checked', true);
+                    $("#box1").val(1);
+                }else{
+                    $("#box1").val(2);
                 }
 
                 if(result.option2 != "2"){
                     $("#box2").prop('checked', true);
+                    $("#box2").val(1);
+                }else{
+                    $("#box2").val(2);
                 }
 
                 if(result.option3 != "2"){
                     $("#box3").prop('checked', true);
+                    $("#box3").val(1);
+                }else{
+                    $("#box3").val(2);
                 }
 
                 if(result.option4 != "2"){
                     $("#box4").prop('checked', true);
+                    $("#box4").val(1);
+                }else{
+                    $("#box4").val(2);
                 }
 
             $("#result").val(result.option_outher);
-            $("#garagePicture").val(result.garagePicture);
             $("#firstnameGarage").val(result.firstname);
             $("#lastnameGarage").val(result.lastname);
             $("#idcardGarage").val(result.idcard);
             $("#addressGarage").val(result.addressGarage);
             $("#result").val(result.option_outher);
+
+            $('.image-editor').cropit({
+                allowDragNDrop: false,
+                width: 300,
+                height: 200,
+                type: 'image',
+                imageState: {
+                    src: picturePath+"garage/"+localStorage.userId+"/"+result.garagePicture
+                }
+            });
         }
         
     });
@@ -237,13 +258,23 @@
             event.preventDefault();
             var isValid = $("#update-garages").valid();
             if(isValid){
-                var data = $("#update-garages").serialize();
-                $.post(base_url+"api/Garages/update",data,
-                function(data){
-                    if(data.message == 200){
-                        showMessage(data.message,"admin/garages");
-                    }else{
-                        showMessage(data.message,);
+                var imageData = $('.image-editor').cropit('export');
+                $('.hidden-image-data').val(imageData);
+                var myform = document.getElementById("update-garages");
+                var formData = new FormData(myform);
+                
+                $.ajax({
+                    url: base_url+"api/Garages/update",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    success: function (data) {
+                        if(data.message == 200){
+                            showMessage(data.message,"admin/garages");
+                        }else{
+                            showMessage(data.message);
+                        }
                     }
                 });
             }

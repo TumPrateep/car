@@ -21,17 +21,36 @@
                 <form id="submit">
                   <div class="card-body black bg-light">
                     <div class="row">
-                      <div class="col-md-12">
+                      <div class="col-md-6">
                         <div class="form-group">
                           <label>ชื่อประเภทน้ำมันเครื่อง</label> <span class="error">*</span>
                           <input type="text" class="form-control" placeholder="ชื่อประเภทน้ำมันเครื่อง" name="lubricator_typeName" id="lubricator_typeName">
                         </div>
+                      </div>
+                      <div class="col-md-6">
                         <div class="form-group">
                           <label>ระยะทาง</label> <span class="error">*</span>
                           <input type="number" class="form-control" placeholder="ระยะทาง" name="lubricator_typeSize" id="lubricator_typeSize">
                         </div>
                       </div>
                     </div>
+
+                    <div class="row p-t-20">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">รูปประเภทน้ำมันเครื่อง</label>
+                                <div class="image-editor">
+                                    <input type="file" class="cropit-image-input" name="tempImage">
+                                    <div class="cropit-preview"></div>
+                                        <div class="image-size-label">
+                                            ปรับขนาด
+                                        </div>
+                                    <input type="range" class="cropit-image-zoom-input">
+                                    <input type="hidden" name="lubricatorType_picture" class="hidden-image-data" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
                     
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary">บันทึก</button>
