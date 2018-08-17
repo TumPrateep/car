@@ -261,6 +261,25 @@ class LubricatorData extends BD_Controller {
             }
         }
     }
+    function getlubricator_dataId_get(){
+        $lubricator_dataId = $this->get('lubricator_dataId');
+        $this->load->model("lubricatordatas");
+        $isCheck = $this->lubricatordatas->checklubricator_dataId($lubricator_dataId);
+        if($isCheck){
+            $result = $this->lubricatordatas->getlubricator_dataIdById($lubricator_dataId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 
 }
 
