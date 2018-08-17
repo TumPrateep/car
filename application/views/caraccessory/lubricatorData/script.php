@@ -104,7 +104,7 @@
             url: "/LubricatorData/delete?lubricator_dataId="+lubricator_dataId,
             label: "ลบข้อมูลน้ำมันเครื่อง",
             content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
-            gotoUrl: "/caraccessory/SpareundercarriesData"
+            gotoUrl: "/caraccessory/lubricatordata"
         }
         fnDelete(option);
     }
