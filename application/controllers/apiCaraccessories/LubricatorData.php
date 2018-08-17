@@ -51,21 +51,20 @@ class LubricatorData extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $totalData = $this->lubricatordatas->allLubricatordata_count($userId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('lubricator_typeId')) && empty($this->post('lubricator_brandId')) && empty($this->post('lubricatorId')) && empty($this->post('lubricator_numberId')) && empty($this->post('price')))
+        if(empty($this->post('lubricatorId')) && empty($this->post('lubricator_brandId')) && empty($this->post('lubricator_gear')) && empty($this->post('price')))
         {            
             $posts = $this->lubricatordatas->allLubricatordatas($limit,$start,$order,$dir,$userId);
         }else{
 
-            $lubricator_typeId = $this->post('lubricator_typeId');
-            $lubricator_brandId = $this->post('lubricator_brandId');
             $lubricatorId = $this->post('lubricatorId');
-            $lubricator_numberId = $this->post('lubricator_numberId');
+            $lubricator_brandId = $this->post('lubricator_brandId');
+            $lubricator_gear = $this->post('lubricator_gear');
             $price = $this->post('price');
             
             $status = null; 
-            $posts =  $this->lubricatordatas->LubricatorDatas_search($limit,$start,$order,$dir,$status,$lubricator_typeId, $lubricator_brandId, $lubricatorId, $lubricator_numberId, $price);
+            $posts =  $this->lubricatordatas->LubricatorDatas_search($limit,$start,$order,$dir,$status,$lubricatorId, $lubricator_brandId, $lubricator_gear, $price, $userId);
 
-            $totalFiltered = $this->lubricatordatas->LubricatorDatas_search_count($lubricator_typeId, $lubricator_brandId, $lubricatorId, $lubricator_numberId, $price);
+            $totalFiltered = $this->lubricatordatas->LubricatorDatas_search_count($lubricatorId, $lubricator_brandId, $lubricator_gear, $price, $userId);
         }
 
         $data = array();

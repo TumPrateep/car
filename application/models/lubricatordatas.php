@@ -41,22 +41,22 @@ class lubricatordatas extends CI_Model{
         }
          
      }
-     function LubricatorDatas_search($limit,$start,$order,$dir,$status, $lubricator_typeId, $lubricator_brandId, $lubricatorId, $lubricator_numberId, $price, $userId){
-         
-         $price = explode(",",$price);
-         $this->db->select('lubricator_data.lubricator_dataId, lubricator_type.lubricator_typeName, lubricator_brand.lubricator_brandName, lubricator.lubricatorName, lubricator_number.lubricator_number, concat(lubricator_brand.lubricator_brandName,"/",lubricator.lubricatorName) as lubricator, lubricator_data.status, lubricator_data.price, lubricator_data.warranty_year, lubricator_data.warranty_distance, lubricator_data.activeFlag, lubricator_data.create_by, lubricator_data.warranty, lubricator.lubricator_picture, lubricator.lubricatorId');
-         $this->db->from('lubricator_data');
-         $this->db->join('lubricator','lubricator.lubricatorId = lubricator_data.lubricatorId');
+     
+     function LubricatorDatas_search($limit,$start,$order,$dir,$status,$lubricatorId, $lubricator_brandId, $lubricator_gear, $price, $userId){
+
+        $price = explode(",",$price);
+        $this->db->select('lubricator_data.lubricator_dataId, lubricator.capacity, lubricator_type.lubricator_typeName, lubricator_brand.lubricator_brandName, lubricator.lubricatorName, lubricator_number.lubricator_number, lubricator_number.lubricator_gear, concat(lubricator_brand.lubricator_brandName,"/",lubricator.lubricatorName) as lubricator, lubricator_data.status, lubricator_data.price, lubricator_data.warranty_year, lubricator_data.warranty_distance, lubricator_data.create_by, lubricator_data.warranty, lubricator_type.lubricator_typePicture, lubricator_type.lubricator_typeSize, lubricator_data.lubricator_dataPicture, lubricator.capacity');
+        $this->db->from('lubricator_data');
+        $this->db->join('lubricator','lubricator.lubricatorId = lubricator_data.lubricatorId');
         $this->db->join('lubricator_brand','lubricator_brand.lubricator_brandId = lubricator.lubricator_brandId');
-        $this->db->join('lubricator_number', 'lubricator_number.lubricator_numberId = lubricator_brand.lubricator_numberId');
-        $this->db->join('lubricator_type','lubricator_type.lubricator_typeId = lubricator_number.lubricator_typeId');
-         $this->db->like('lubricator_number.lubricator_number',$lubricator_number);
-         $this->db->like('lubricator_data.lubricatorId',$lubricator);
-         $this->db->like('lubricator_data.lubricator_brandId',$lubricator_brandId);
-         $this->db->like('lubricator_data.lubricator_typeId',$lubricator_typeId);
-         $this->db->like('lubricator_data.lubricatorId',$lubricatorId);
-         $this->db->where('lubricator_data.price >=',$price[0]);
-         $this->db->where('lubricator_data.price <=',$price[1]);
+        $this->db->join('lubricator_number', 'lubricator_number.lubricator_numberId = lubricator.lubricator_numberId');
+        $this->db->join('lubricator_type','lubricator_type.lubricator_typeId = lubricator_number.lubricator_typeId', 'left');
+        
+        $this->db->like('lubricator_brand.lubricator_brandId',$lubricator_brandId);
+        $this->db->like('lubricator_data.lubricatorId',$lubricatorId);
+        $this->db->like('lubricator_number.lubricator_gear',$lubricator_gear);
+        $this->db->where('lubricator_data.price >=',$price[0]);
+        $this->db->where('lubricator_data.price <=',$price[1]);
 
         $this->db->where("lubricator_data.create_by", $userId);
 
@@ -77,27 +77,23 @@ class lubricatordatas extends CI_Model{
              return null;
          }
      } 
-     function LubricatorDatas_search_count($lubricator_typeId, $lubricator_brandId, $lubricatorId, $lubricator_numberId, $price, $userId){
+     function LubricatorDatas_search_count($lubricatorId, $lubricator_brandId, $lubricator_gear, $price, $userId){
          $price = explode(",",$price);
-         $this->db->select('lubricator_data.lubricator_dataId, lubricator_type.lubricator_typeName, lubricator_brand.lubricator_brandName, lubricator.lubricatorName, lubricator_number.lubricator_number, concat(lubricator_brand.lubricator_brandName,"/",lubricator.lubricatorName) as lubricator, lubricator_data.status, lubricator_data.price, lubricator_data.warranty_year, lubricator_data.warranty_distance, lubricator_data.activeFlag, lubricator_data.create_by, lubricator_data.warranty, lubricator.lubricator_picture, lubricator.lubricatorId');
+         $this->db->select('lubricator_data.lubricator_dataId, lubricator.capacity, lubricator_type.lubricator_typeName, lubricator_brand.lubricator_brandName, lubricator.lubricatorName, lubricator_number.lubricator_number, lubricator_number.lubricator_gear, concat(lubricator_brand.lubricator_brandName,"/",lubricator.lubricatorName) as lubricator, lubricator_data.status, lubricator_data.price, lubricator_data.warranty_year, lubricator_data.warranty_distance, lubricator_data.create_by, lubricator_data.warranty, lubricator_type.lubricator_typePicture, lubricator_type.lubricator_typeSize, lubricator_data.lubricator_dataPicture, lubricator.capacity');
          $this->db->from('lubricator_data');
          $this->db->join('lubricator','lubricator.lubricatorId = lubricator_data.lubricatorId');
-        $this->db->join('lubricator_brand','lubricator_brand.lubricator_brandId = lubricator.lubricator_brandId');
-        $this->db->join('lubricator_number', 'lubricator_number.lubricator_numberId = lubricator_brand.lubricator_numberId');
-        $this->db->join('lubricator_type','lubricator_type.lubricator_typeId = lubricator_number.lubricator_typeId');
-         $this->db->like('lubricator_number.lubricator_number',$lubricator_number);
-         $this->db->like('lubricator_data.lubricatorId',$lubricator);
-         $this->db->like('lubricator_data.lubricator_brandId',$lubricator_brandId);
-         $this->db->like('lubricator_data.lubricator_typeId',$lubricator_typeId);
+         $this->db->join('lubricator_brand','lubricator_brand.lubricator_brandId = lubricator.lubricator_brandId');
+         $this->db->join('lubricator_number', 'lubricator_number.lubricator_numberId = lubricator.lubricator_numberId');
+         $this->db->join('lubricator_type','lubricator_type.lubricator_typeId = lubricator_number.lubricator_typeId', 'left');
+         
+         $this->db->like('lubricator_brand.lubricator_brandId',$lubricator_brandId);
          $this->db->like('lubricator_data.lubricatorId',$lubricatorId);
+         $this->db->like('lubricator_number.lubricator_gear',$lubricator_gear);
          $this->db->where('lubricator_data.price >=',$price[0]);
          $this->db->where('lubricator_data.price <=',$price[1]);
 
          $this->db->where("lubricator_data.create_by", $userId);
          
-         if($status != null){
-             $this->db->where("lubricator_data.status", $status);
-         }
          $query = $this->db->limit($limit,$start)
                  ->order_by($col,$dir)
                  ->get();

@@ -25,38 +25,39 @@
                 </div>
                 <div class="row p-30">
                     <div class="col-lg-1 text-right"></div>
-                    <div class="col-lg-3">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <label class="control-label">ยี่ห้อยาง</label>
-                            <select class="form-control input-default" name="tire_brandId" id="tire_brandId">
-                                <option value="">เลือกยี่ห้อยาง</option>
-                            </select>
+                            <label class="control-label">ชนิดน้ำมันเครื่อง</label>
+                            <div class="input-group input-group-default">
+                                <select class="form-control valid" name="lubricator_gear" id="lubricator_gear">
+                                    <option value="">เลือกชนิดน้ำมันเครื่อง</option>
+                                    <option value="1">น้ำมันเครื่อง</option>
+                                    <option value="2">น้ำมันเกียร์ธรรมดา</option>
+                                    <option value="3">น้ำมันเกียร์ออโต</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">ยี่ห้อน้ำมันเครื่อง</label>
+                            <div class="input-group input-group-default">
+                                <select class="form-control" id="lubricator_brandId" name="lubricator_brandId">
+                                    <option value="">เลือกยี่ห้อน้ำมันเครื่อง</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <label class="control-label">รุ่นยาง</label>
-                            <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                                <option value="">เลือกรุ่นยาง</option>
-                            </select>
+                            <label class="control-label">รุ่นน้ำมันเครื่อง</label>
+                            <div class="input-group input-group-default">
+                                <select class="form-control" id="lubricatorId" name="lubricatorId">
+                                <option value="">เลือกรุ่นน้ำมันเครื่อง</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label class="control-label">ขอบยาง</label>
-                            <select class="form-control input-default" name="rimId" id="rimId">
-                                <option value="">เลือกขอบยาง</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label class="control-label">ขนาดยาง</label>
-                            <select class="form-control input-default" name="tire_sizeId" id="tire_sizeId">
-                                <option value="">เลือกขนาดยาง</option>
-                            </select>
-                        </div>
-                    </div>
+                    </div>   
                 </div>
                 <div class="row p30">
                     <div class="col-lg-1"></div>
