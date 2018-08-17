@@ -74,7 +74,7 @@
                                             + '<span>รับประกัน 1000 กม.</span>'
                                         + '</div>'
                                         + '<div class="text-center">'
-                                            + '<a href="'+base_url+"caraccessory/TireData/updatetiredata/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                            + '<a href="'+base_url+"caraccessory/lubricatordata/update/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                             + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.tire_dataId+'\', \''+value.tire_modelName+'/'+value.tire_brandName+' '+value.tire_size+'\')"><i class="ti-trash"></i> ลบ</button>'
                                         + '</div>'
                                     + '</div>'
