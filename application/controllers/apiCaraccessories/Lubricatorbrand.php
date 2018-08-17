@@ -130,12 +130,14 @@ class Lubricatorbrand extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
         $this->load->model("Lubricatorbrands");
-        $lubricator_brand =$this->Lubricatorbrands->getlubricatorById($lubricator_brandId);
-        if($lubricator_brand != null){
+        $oldData =$this->Lubricatorbrands->getlubricatorById($lubricator_brandId);
+        if($oldData != null){
             $isCheckStatus = $this->Lubricatorbrands->checkStatusFromBrand($lubricator_brandId,$status,$userId);
             if($isCheckStatus ){
-            $isDelete = $this->Lubricatorbrands->delete($lubricator_brandId);
+                $isDelete = $this->Lubricatorbrands->delete($lubricator_brandId);
                 if($isDelete){
+                    $config['upload_path'] = 'public/image/lubricator_brand/';
+                    unlink($config['upload_path'].$oldData->lubricator_brandPicture); 
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }else{

@@ -81,7 +81,7 @@ class Lubricatorbrands extends CI_Model{
     }
 
     function getlubricatorById($lubricator_brandId){
-        $this->db->select("lubricator_brandId,lubricator_brandName");
+        $this->db->select("lubricator_brandId,lubricator_brandName,lubricator_brandPicture");
         return $this->db->where('lubricator_brandId',$lubricator_brandId)->get("lubricator_brand")->row();
     }
     
