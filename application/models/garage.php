@@ -45,4 +45,22 @@ class Garage extends CI_Model {
         return $query->row();
     }
 
+    function update($data){
+        $this->db->where('garageId',$data['garageId']);
+        $result = $this->db->update('garage', $data);
+        return $result;
+    }
+
+    function checkDuplicate($garageId, $businessRegistration){
+        $this->db->from('garage');
+        $this->db->where("businessRegistration", $businessRegistration);
+        $this->db->where_not_in("garageId", $garageId);
+        $result = $this->db->count_all_results();
+        if($result > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
