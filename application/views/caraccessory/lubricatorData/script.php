@@ -55,7 +55,7 @@
                             html += '<div class="col-lg-4" col-md-8>'
                                  + '<div class="card card-header-height">'
                                  + '<div class="text-center">'
-                                 	+ '<h1>ประเภทยี่ห้อน้ำมันเครื่อง</h1>'
+                                 	+ '<h2>ประเภทยี่ห้อน้ำมันเครื่อง</h2>'
                                  + '</div>'
                                     + '<div class="card-body">'
                                         + '<img class="card-img-top" src="http://localhost/car/public/image/tire/tire.jpg">'
