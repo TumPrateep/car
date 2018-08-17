@@ -105,14 +105,8 @@ class lubricatordatas extends CI_Model{
      }
 
      function checkduplicated($lubricator_brandId){
-        // $this->db->select('tire_data.tire_brandId');
         $this->db->from('lubricator_data');
-        // $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
-        // $this->db->join('tire_model','tire_model.tire_modelId = tire_data.tire_modelId');
-        // $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');
-        // $this->db->join('rim','rim.rimId = tire_data.rimId');
-        // $this->db->join('car_accessories','car_accessories.car_accessoriesId = tire_data.car_accessoriesId');
-        $this->db->where('lubricator_data.lubricator_brandId',$lubricator_brandId);
+        $this->db->where('lubricator_data.lubricatorId',$lubricatorId);
         $result = $this->db->count_all_results();
       
         if($result > 0){
