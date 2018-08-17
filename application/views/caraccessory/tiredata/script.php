@@ -70,7 +70,7 @@
                                             + '<h4>'+value.tire_brandName+'/'+value.tire_modelName+' <br/>'+value.tire_size+' <small>'+mailOrFitted(value.can_change)+'</small></h4>'
                                         + '</div>'
                                         + '<div class="text-center">'
-                                            + '<span>รับประกัน '+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span>'
+                                            + '<span>'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span>'
                                         + '</div>'
                                         + '<div class="text-center">'
                                             + '<h2>'+currency(value.price, { useVedic: true }).format()+' บาท/เส้น</h2>'
