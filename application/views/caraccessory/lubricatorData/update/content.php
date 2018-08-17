@@ -3,11 +3,12 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">เเก้ไขยี่ห้อรถ</h3> </div>
+            <h3 class="text-primary">เเก้ไขข้อมูลน้ำมันเครื่อง</h3> 
+        </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/car"); ?>">ยี่ห้อรถ</a></li>
-                <li class="breadcrumb-item active">เเก้ไข</li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/lubricatordata"); ?>">ยี่ห้อรถ</a></li>
+                <li class="breadcrumb-item active">เเก้ไขข้อมูลน้ำมันเครื่อง</li>
             </ol>
         </div>
     </div>

@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </form>  
-        </div>  
+        </div>   -->
 
             <div class="row">
                 <div class="col-lg-12 pt-20 ml-8">
@@ -112,7 +112,7 @@
                     </button>
                 </div>
             </div>
-             -->
+            
         <div class="table mt-20">
             <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
                 <thead>
