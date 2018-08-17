@@ -141,10 +141,10 @@
 
                                         <div class="card-body">
                                             <div class="text-center">
-                                                <h3>ยี่ห้อน้ำมันเครื่อง/รุ่นน้ำมันเครื่อง</h3>
+                                                <h3>ชนิดน้ำมันเครื่อง/รุ่นน้ำมันเครื่อง</h3>
                                             </div>
                                             <div class="text-center">
-                                                <span>ชนิดน้ำมันเครื่อง </span>
+                                                <span>ประเภทน้ำมันเครื่อง </span>
                                                 <span>ระยะทาง xxxx</span>
                                             </div>
                                             <div class="text-center">
