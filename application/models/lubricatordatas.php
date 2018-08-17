@@ -115,7 +115,7 @@ class lubricatordatas extends CI_Model{
         return $this->db->insert('lubricator_data',$data);
     }
 
-    function checkduplicatedUpdate($lubricator_brandId,$lubricatorId,$lubricator_dataId){
+    function checkduplicatedUpdate($lubricator_brandId,$lubricator_dataId){
         // $this->db->select('tire_data.tire_brandId,tire_data.tire_modelId,tire_data.rimId,tire_data.car_accessoriesId,concat(tire_size.tire_size,"/",tire_size.tire_series,tire_size.rim) as tire_size');
         $this->db->from('lubricator_data');
         // $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
@@ -123,7 +123,6 @@ class lubricatordatas extends CI_Model{
         // $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');
         // $this->db->join('rim','rim.rimId = tire_data.rimId');
         // $this->db->join('car_accessories','car_accessoriesId.car_accessoriesId = tire_data.car_accessoriesId');
-        $this->db->where('lubricator_data.lubricator_brandId',$lubricator_brandId);
         $this->db->where('lubricator_data.lubricatorId',$lubricatorId);
         $this->db->where_not_in('lubricator_data.lubricator_dataId',$lubricator_dataId);
         $result = $this->db->count_all_results();
@@ -133,7 +132,7 @@ class lubricatordatas extends CI_Model{
         }else
             return false;
     }
-    function update($data,$lubricator_data){
+    function update($data,$lubricator_dataId){
         $this->db->where('lubricator_dataId',$lubricator_dataId);
         return $this->db->update('lubricator_data',$data);
     }
@@ -151,7 +150,7 @@ class lubricatordatas extends CI_Model{
     }
 
     function getlubricator_dataIdById($lubricator_dataId){
-        $this->db->select("price,lubricator_brandId,lubricator_dataId,lubricator_dataPicture,lubricatorId,status,warranty,warranty_distance,warranty_year");
+        // $this->db->select("price,lubricator_brandId,lubricator_dataId,lubricator_dataPicture,lubricatorId,status,warranty,warranty_distance,warranty_year");
         $this->db->where('lubricator_dataId',$lubricator_dataId);
         $result = $this->db->get('lubricator_data')->row();
         return $result;
