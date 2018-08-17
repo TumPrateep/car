@@ -154,6 +154,8 @@ class CarAccessory extends BD_Controller {
             if($isCheckStatus ){
             $isDelete = $this->Brand->delete($brandId);
                 if($isDelete){
+                    $config['upload_path'] = 'public/image/brand/';
+                    unlink($config['upload_path'].$brand->brandPicture);
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }else{

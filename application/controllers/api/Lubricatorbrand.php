@@ -191,10 +191,12 @@ class Lubricatorbrand extends BD_Controller {
         function deleteLubricatorbrands_get(){
             $lubricator_brandId = $this->get('lubricator_brandId');
             $this->load->model("lubricatorbrands");
-            $lubricator_brandName = $this->lubricatorbrands->getlubricatorById($lubricator_brandId);
-            if($lubricator_brandName != null){
+            $oldData = $this->lubricatorbrands->getlubricatorById($lubricator_brandId);
+            if($oldData != null){
                 $isDelete = $this->lubricatorbrands->delete($lubricator_brandId);
                 if($isDelete){
+                    $config['upload_path'] = 'public/image/lubricator_brand/';
+                    unlink($config['upload_path'].$oldData->lubricator_brandPicture);                    
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }else{
