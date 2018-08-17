@@ -15,7 +15,7 @@
     <!-- Container fluid  -->
     <!-- End Container fluid  -->
     <!-- <div class="container-fluid" -->
-        <!-- <form id="search">
+        <form id="search">
             <div class="card" style="display:none;" id="search-form">
                 <div class="card-body text-right">
                     <button type="button" id="search-hide" class="btn btn-dark btn-outline btn-sm m-b-10 m-l-5">
@@ -98,11 +98,11 @@
                     </div>
                 </div>
             </form>  
-        </div>   -->
+        </div>  
 
             <div class="row">
                 <div class="col-lg-12 pt-20 ml-8">
-                    <a href="<?=base_url("caraccessory/tiredata/createtiredata") ?>">
+                    <a href="<?=base_url("caraccessory/LubricatorData/create") ?>">
                         <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                         <i class="fa fa-plus"> สร้าง</i></button>
                     </a>
