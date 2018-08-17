@@ -75,7 +75,7 @@
                                         + '</div>'
                                         + '<div class="text-center">'
                                             + '<a href="'+base_url+"caraccessory/lubricatordata/update/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                            + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.tire_dataId+'\', \''+value.tire_modelName+'/'+value.tire_brandName+' '+value.tire_size+'\')"><i class="ti-trash"></i> ลบ</button>'
+                                            + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.lubricator_dataId+'\', \''+value.tire_modelName+'/'+value.tire_brandName+'\')"><i class="ti-trash"></i> ลบ</button>'
                                         + '</div>'
                                     + '</div>'
                                 + '</div>'
@@ -88,6 +88,25 @@
                 }
             ]
     });
+    $("#show-search").click(function(){
+        $(this).hide(100);
+        $("#search-form").slideDown();
+    });
+
+    $("#search-hide").click(function(){
+        $("#search-form").slideUp();
+        $("#show-search").show(100);
+    });
+
+    function deletetiredata(lubricator_dataId,data_name){
+        var option = {
+            url: "/LubricatorData/delete?lubricator_dataId="+lubricator_dataId,
+            label: "ลบข้อมูลน้ำมันเครื่อง",
+            content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
+            gotoUrl: "/caraccessory/SpareundercarriesData"
+        }
+        fnDelete(option);
+    }
 
 </script>
 
