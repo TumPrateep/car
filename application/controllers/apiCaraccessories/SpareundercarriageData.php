@@ -40,9 +40,9 @@ class SpareundercarriageData extends BD_Controller {
             $price = $this->post('price');
             
             $status = null; 
-            $posts =  $this->spare_undercarriageDatas->SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price);
+            $posts =  $this->spare_undercarriageDatas->SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price, $userId);
 
-            $totalFiltered = $this->spare_undercarriageDatas->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price);
+            $totalFiltered = $this->spare_undercarriageDatas->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price, $userId);
         }
 
         $data = array();
