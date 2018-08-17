@@ -151,7 +151,7 @@ class LubricatorData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $isDuplicated = $this->lubricatordatas->checkduplicated($lubricator_brandId);
+            $isDuplicated = $this->lubricatordatas->checkduplicated($lubricatorId);
             if($isDuplicated){
                 unlink($file);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
