@@ -332,29 +332,26 @@ DROP TABLE IF EXISTS `lubricator_data`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lubricator_data` (
   `lubricator_dataId` int(11) NOT NULL AUTO_INCREMENT,
-  `lubricator_liter` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '2',
   `activeFlag` int(11) NOT NULL DEFAULT '2',
   `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
-  `lubricatorId` int(11) NOT NULL,
-  `lubricator_brandId` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `lubricator_brandId` int(11) NOT NULL,
   `warranty` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `warranty_distance` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `warranty_year` int(11) DEFAULT NULL,
   `price` double DEFAULT NULL,
+  `lubricator_dataPicture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`lubricator_dataId`),
   KEY `fk_lubricator_data_users1_idx` (`create_by`),
   KEY `fk_lubricator_data_users2_idx` (`update_by`),
-  KEY `fk_lubricator_data_lubricator1_idx` (`lubricatorId`),
   KEY `lubricator_brandId_idx` (`lubricator_brandId`),
-  CONSTRAINT `fk_lubricator_data_lubricator1` FOREIGN KEY (`lubricatorId`) REFERENCES `lubricator` (`lubricatorId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_data_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_data_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `lubricator_brandId` FOREIGN KEY (`lubricator_brandId`) REFERENCES `lubricator_brand` (`lubricator_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -437,10 +434,7 @@ CREATE TABLE `lubricator_type` (
 
 LOCK TABLES `lubricator_type` WRITE;
 /*!40000 ALTER TABLE `lubricator_type` DISABLE KEYS */;
-INSERT INTO `lubricator_type` (`lubricator_typeId`, `lubricator_typeName`, `lubricator_typeSize`, `status`, `activeFlag`, `create_by`, `update_by`, `create_at`, `update_at`, `lubricator_typePicture`) VALUES
-(1, 'สังเคาระห์แท้', 15000, 1, 1, 1, 1, NULL, '2018-08-16 15:26:39', '5b75353fd34c9.png'),
-(2, 'กึ่งสังเคราะห์', 10000, 1, 1, 1, 1, NULL, '2018-08-16 15:25:59', '5b753517c47f7.png'),
-(3, 'ทั่วไป', 5000, 1, 1, 1, 1, NULL, '2018-08-16 15:25:39', '5b753503e9b38.png');
+INSERT INTO `lubricator_type` VALUES (1,'สังเคาระห์แท้',15000,1,1,1,NULL,NULL,NULL,NULL),(2,'กึ่งสังเคราะห์',10000,1,1,1,NULL,NULL,NULL,NULL),(3,'ทั่วไป',5000,1,1,1,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `lubricator_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -725,7 +719,7 @@ CREATE TABLE `spares_undercarriagedata` (
   CONSTRAINT `fk_spares_undercarriageData_spares_undercarriage1` FOREIGN KEY (`spares_undercarriageId`) REFERENCES `spares_undercarriage` (`spares_undercarriageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_undercarriageData_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_undercarriageData_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -734,7 +728,7 @@ CREATE TABLE `spares_undercarriagedata` (
 
 LOCK TABLES `spares_undercarriagedata` WRITE;
 /*!40000 ALTER TABLE `spares_undercarriagedata` DISABLE KEYS */;
-INSERT INTO `spares_undercarriagedata` VALUES (1,1,1,1,NULL,NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `spares_undercarriagedata` VALUES (4,12,12,8,8,'2018-08-16 16:58:20','2018-08-17 11:01:27',2,2,1,50,3,22222222222,'5b764897b50ac.png'),(5,22,22,8,NULL,'2018-08-16 16:59:34',NULL,1,1,0,0,0,11111,'5b754b06c693c.png'),(6,32,32,8,NULL,'2018-08-17 11:36:30',NULL,1,1,0,0,0,999,'5b7650ce93cd2.png');
 /*!40000 ALTER TABLE `spares_undercarriagedata` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -889,7 +883,7 @@ CREATE TABLE `tire_data` (
   CONSTRAINT `fk_trie_data_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_trie_data_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tire_brandId` FOREIGN KEY (`tire_brandId`) REFERENCES `tire_brand` (`tire_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1199,4 +1193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-15 11:54:05
+-- Dump completed on 2018-08-17 12:03:39

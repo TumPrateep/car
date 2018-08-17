@@ -123,7 +123,6 @@ class LubricatorData extends BD_Controller {
         $warranty = $this->post('warranty');
         $warranty_distance = $this->post('warranty_distance');
         $userId = $this->session->userdata['logged_in']['id'];
-        $car_accessoriesId = $userId;
         $config['upload_path'] = 'public/image/lubricatordata/';
 
         // $config['allowed_types'] = 'gif|jpg|png';
