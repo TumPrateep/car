@@ -50,89 +50,103 @@ class Garages extends BD_Controller {
     }
 
     function update_post(){
-        $config['allowed_types'] = 'gif|jpg|png';
-        // $config['max_size'] = '100';
-        $config['overwrite'] = TRUE;
-        $config['encrypt_name'] = TRUE;
-        $config['remove_spaces'] = TRUE;
+        
         $userId = $this->session->userdata['logged_in']['id'];
         $path = 'public/image/garage/'.$userId;
         mkdir($path);
         $config['upload_path'] = $path;
 
-        $garageName = $this->post("garageName");
-        $businessRegistration = $this->post("businessRegistration");
-        $postCode = $this->post("postCode");
-        $latitude = $this->post("latitude");
-        $longtitude = $this->post("longtitude");
-        $comment = $this->post("comment");
-        $option1 = $this->post("option1");
-        $option2 = $this->post("option2");
-        $option3 = $this->post("option3");
-        $option4 = $this->post("option4");
-        $option_outher = $this->post("option_other");
-        $garageAddress = $this->post("garageAddress");
-        $gprovinceId = $this->post("garageProvinceId");
-        $gdistrictId = $this->post("garageDistrictId");
-        $gsubdistrictId = $this->post("garageSubdistrictId");
-        $garagePicture = $this->post("garagePicture");
-        $firstnameGarage = $this->post("firstnameGarage");
-        $lastnameGarage = $this->post("lastnameGarage");
-        $idcardGarage = $this->post("idcardGarage");
-        $addressGarage = $this->post("addressGarage");
+        $img = $this->post('garage_picture');
+        $success = true;
+        $imageName = "";
+        $file = "";
+        if(!empty($img)){
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
 
-        $garagePictureName = null;
-
-        $this->load->library('upload', $config);
-
-        if($garagePicture != "undefined"){
-            if ( ! $this->upload->do_upload("garagePicture")){
-                $error = array('error' => $this->upload->display_errors());
-                $output["message"] = REST_Controller::MSG_ERROR;
-                $output["data"] = $error;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $imageDetailArray = $this->upload->data();
-                $garagePictureName =  $imageDetailArray['file_name'];
-
-                $roleData = array(
-                    'garageName' => $garageName,
-                    'businessRegistration' => $businessRegistration,
-                    'provinceId' => $gprovinceId, 
-                    'districtId' => $gdistrictId,
-                    'subdistrictId' => $gsubdistrictId,
-                    'garageAddress' => $garageAddress,
-                    'postCode'=> $postCode,
-                    'latitude' => $latitude,
-                    'longtitude' => $longtitude,
-                    'comment' => $comment,
-                    'option1' => $option1,
-                    'option2' => $option2,
-                    'option3' => $option3,
-                    'option4' => $option4,
-                    'option_outher' => $option_outher,
-                    'update_at' => date('Y-m-d H:i:s',time()),
-                    'update_by' => $userId,
-                    'garagePicture' => $garagePictureName,
-                    'firstname' => $firstnameGarage,
-                    'lastname' => $lastnameGarage,
-                    'idcard' => $idcardGarage,
-                    'addressGarage' => $addressGarage
-                );
-                $result = $this->LubricatorNumbers->updateLubricatorNumber($data);
-                $output["status"] = $result;
-                if($result){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-                else{
-                    $output["status"] = false;
-                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }      
+            $imageName = uniqid().'.png';
+            $file = $config['upload_path']. '/'. $imageName;
+            $success = file_put_contents($file, $data);
         }
 
+        if (!$success){
+            unlink($file);
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $garageId = $this->post("garageId");
+            $garageName = $this->post("garageName");
+            $businessRegistration = $this->post("businessRegistration");
+            $postCode = $this->post("zipCode");
+            $latitude = $this->post("latitude");
+            $longtitude = $this->post("longtitude");
+            $comment = $this->post("comment");
+            $option1 = $this->post("option1");
+            $option2 = $this->post("option2");
+            $option3 = $this->post("option3");
+            $option4 = $this->post("option4");
+            $option_outher = $this->post("option_other");
+            $garageAddress = $this->post("garageAddress");
+            $gprovinceId = $this->post("garage-provinceId");
+            $gdistrictId = $this->post("garage-districtId");
+            $gsubdistrictId = $this->post("garage-subdistrictId");
+            $firstnameGarage = $this->post("firstnameGarage");
+            $lastnameGarage = $this->post("lastnameGarage");
+            $idcardGarage = $this->post("idcardGarage");
+            $addressGarage = $this->post("addressGarage");
+
+            $data = array(
+                'garageId' => $garageId,
+                'garageName' => $garageName,
+                'businessRegistration' => $businessRegistration,
+                'provinceId' => $gprovinceId, 
+                'districtId' => $gdistrictId,
+                'subdistrictId' => $gsubdistrictId,
+                'garageAddress' => $addressGarage,
+                'postCode'=> $postCode,
+                'latitude' => $latitude,
+                'longtitude' => $longtitude,
+                'comment' => $comment,
+                'option1' => $option1,
+                'option2' => $option2,
+                'option3' => $option3,
+                'option4' => $option4,
+                'option_outher' => $option_outher,
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId,
+                'garagePicture' => $imageName,
+                'firstname' => $firstnameGarage,
+                'lastname' => $lastnameGarage,
+                'idcard' => $idcardGarage,
+                'addressGarage' => $addressGarage
+            );
+
+            $oldData = $this->Garage->getGarageByGarageId($garageId);
+            if($oldData != null){
+                $isDuplicate = $this->Garage->checkDuplicate($garageId, $businessRegistration);
+                if(!$isDuplicate){
+                    $result = $this->Garage->update($data);
+                    if($result){
+                        unlink($config['upload_path']. '/'. $oldData->garagePicture);
+                        $output["message"] = REST_Controller::MSG_SUCCESS;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }else{
+                        unlink($file);
+                        $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                        $this->set_response($output, REST_Controller::HTTP_OK);
+                    }   
+                }else{
+                    unlink($file);
+                    $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                } 
+            }else{
+                unlink($file);
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            } 
+        }
     }
 
 }
