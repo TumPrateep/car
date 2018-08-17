@@ -27,17 +27,17 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/TireData/search",
+                "url": base_url+"apiCaraccessories/LubricatorData/searchLubricatordata",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.tire_brandId = $("#tire_brandId").val();
-                    data.tire_modelId = $("#tire_modelId").val();
-                    data.rimId = $("#rimId").val();
-                    data.tire_sizeId = $("#tire_sizeId").val();
-                    data.price = $("#price").val();
-                    data.can_change = $("#can_change").val();
-                    data.sort = $("#sort").val();
+                    // data.tire_brandId = $("#tire_brandId").val();
+                    // data.tire_modelId = $("#tire_modelId").val();
+                    // data.rimId = $("#rimId").val();
+                    // data.tire_sizeId = $("#tire_sizeId").val();
+                    // data.price = $("#price").val();
+                    // data.can_change = $("#can_change").val();
+                    // data.sort = $("#sort").val();
                 }
             },
             "columns": [
@@ -54,24 +54,25 @@
 
                             html += '<div class="col-lg-4" col-md-8>'
                                  + '<div class="card card-header-height">'
-                                 + '<div class="text-center">'
-                                 	+ '<h2>ชนิดยี่ห้อน้ำมันเครื่อง</h2>'
+                                 + '<div class="text-right mg-15">'
+                                 	+ '<h3><span class="badge badge-pill badge-'+lubricatorClass[value.lubricator_gear]+'">'+lubricatorLib[value.lubricator_gear];
+                                    if(value.lubricator_typeName != null){
+                                        html += value.lubricator_typeName;
+                                    }
+                                    html += '</span></h3>'
                                  + '</div>'
-                                    + '<div class="card-body">'
-                                        + '<img class="card-img-top" src="http://localhost/car/public/image/tire/tire.jpg">'
+                                    + '<div class="card-body text-center">'
+                                        + '<img class="card-img-top img-80-p" src="'+picturePath+'lubricatordata/'+value.lubricator_dataPicture+'">'
                                     + '</div>'
                                     + '<div class="card-body">'
                                         + '<div class="text-center">'
-                                            + '<h3>ยี่ห้อน้ำมันเครื่อง/รุ่นน้ำมันเครื่อง</h3>'
+                                            + '<h3>'+value.lubricator_brandName+'/'+value.lubricatorName+'</h3>'
                                         + '</div>'
                                         + '<div class="text-center">'
-                                            + '<span>ประเภทน้ำมันเครื่อง </span>'
-                                            + '<span>ระยะทาง xxxx</span>'
+                                            + '<span>ระยะทาง '+currency(value.lubricator_typeSize, { useVedic: true }).format()+' กม.</span>'
                                         + '</div>'
                                         + '<div class="text-center">'
-                                            + '<span>รับประกัน 2 ปี</span>'
-                                            + '<span>หรือ</span>'
-                                            + '<span>รับประกัน 1000 กม.</span>'
+                                            + '<span>รับประกัน '+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span>'
                                         + '</div>'
                                         + '<div class="text-center">'
                                             + '<a href="'+base_url+"caraccessory/lubricatordata/update/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'

@@ -48,13 +48,13 @@ class LubricatorData extends BD_Controller {
         $dir = $sort;
 
         $this->load->model('lubricatordatas');
-        $totalData = $this->lubricatordatas->allLubricatordata_count();
+        $userId = $this->session->userdata['logged_in']['id'];
+        $totalData = $this->lubricatordatas->allLubricatordata_count($userId);
         $totalFiltered = $totalData; 
         if(empty($this->post('lubricator_typeId')) && empty($this->post('lubricator_brandId')) && empty($this->post('lubricatorId')) && empty($this->post('lubricator_numberId')) && empty($this->post('price')))
         {            
-            $posts = $this->lubricatordatas->allLubricatordatas($limit,$start,$order,$dir);
-        }
-        else {
+            $posts = $this->lubricatordatas->allLubricatordatas($limit,$start,$order,$dir,$userId);
+        }else{
 
             $lubricator_typeId = $this->post('lubricator_typeId');
             $lubricator_brandId = $this->post('lubricator_brandId');
@@ -88,7 +88,9 @@ class LubricatorData extends BD_Controller {
                 $nestedData[$count]['activeFlag'] = $post->activeFlag;
                 $nestedData[$count]['create_by'] = $post->create_by;
                 $nestedData[$count]['warranty'] = $post->warranty;
-                $nestedData[$count]['lubricator_picture'] = $post->lubricator_picture;
+                $nestedData[$count]['lubricator_dataPicture'] = $post->lubricator_dataPicture;
+                $nestedData[$count]['lubricator_gear'] = $post->lubricator_gear;
+                $nestedData[$count]['lubricator_typeSize'] = $post->lubricator_typeSize;
                 
                 $data[$index] = $nestedData;
                 if($count >= 2){
@@ -121,6 +123,7 @@ class LubricatorData extends BD_Controller {
         $warranty_year = $this->post('warranty_year');
         $warranty = $this->post('warranty');
         $warranty_distance = $this->post('warranty_distance');
+        $lubricatorId = $this->post('lubricatorId');
         $userId = $this->session->userdata['logged_in']['id'];
         $config['upload_path'] = 'public/image/lubricatordata/';
 
@@ -165,7 +168,8 @@ class LubricatorData extends BD_Controller {
                     'price' => $price,
                     'warranty' => $warranty,
                     'warranty_year' => $warranty_year,
-                    'warranty_distance' => $warranty_distance
+                    'warranty_distance' => $warranty_distance,
+                    'lubricatorId' => $lubricatorId
                 );
                 $result = $this->lubricatordatas->insert($data);
                 if($result){
