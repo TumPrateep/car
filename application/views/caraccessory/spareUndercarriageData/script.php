@@ -31,15 +31,15 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    // data.spares_brandId = $("#spares_brandId").val();
-                    // data.spares_undercarriageDateId =$("#spares_undercarriageDateId").val();
+                    data.spares_brandId = $("#spares_brandId").val();
+                    data.spares_undercarriageDateId =$("#spares_undercarriageDateId").val();
                     // data.spares_undercarriageId= $("#spares_undercarriagedateId").val();
                     // data.tire_modelId = $("#tire_modelId").val();
                     // data.rimId = $("#rimId").val();
                     // data.tire_sizeId = $("#tire_sizeId").val();
-                    // data.price = $("#price").val();
+                    data.price = $("#price").val();
                     // data.can_change = $("#can_change").val();
-                    // data.sort = $("#sort").val();
+                    data.sort = $("#sort").val();
                 }
             },
             "columns": [
@@ -115,67 +115,38 @@
         },
     });
 
-    // var tireBrand = $("#tire_brandId");
-    // var tireModel = $("#tire_modelId");
-    // var tire_rim = $("#rimId");
-    // var tire_size = $("#tire_sizeId");
+    var spares_undercarriage = $("#spares_undercarriageId");
+    var spares_brand = $("#spares_brandId");
 
-    // function init(){
-    //     getTireBrand();
-    //     getRim();
-    // }
-    
-    // init();
+    init();
 
-    // function getTireBrand(brandId = null){
-    //     $.get(base_url+"apiCaraccessories/Tirebrand/getAllTireBrand",{},
-    //         function(data){
-    //             var brandData = data.data;
-    //             $.each( brandData, function( key, value ) {
-    //                 tireBrand.append('<option value="' + value.tire_brandId + '">' + value.tire_brandName + '</option>');
-    //             });
-    //         }
-    //     );
-    // }
+    function init(){
+        getSparesUndercarriage();
+    }
 
-    // tireBrand.change(function(){
-    //     var tireBrandId = tireBrand.val();
-    //     tireModel.html('<option value="">เลือกรุ่นยาง</option>');
-    //     $.get(base_url+"apiCaraccessories/Tiremodel/getAllTireModel",{
-    //         tire_brandId: tireBrandId
-    //     },function(data){
-    //             var tireModelData = data.data;
-    //             $.each( tireModelData, function( key, value ) {
-    //                 tireModel.append('<option value="' + value.tire_modelId + '">' + value.tire_modelName + '</option>');
-    //             });
-    //         }
-    //     );
-    // });
+    function getSparesUndercarriage(){
+        $.get(base_url+"apiCaraccessories/CarSpareUndercarriage/getAllSpareundercarriage",{},
+            function(data){
+                var sparesUndercarriageData = data.data;
+                $.each(sparesUndercarriageData, function( key, value ) {
+                    spares_undercarriage.append('<option value="' + value.spares_undercarriageId + '">' + value.spares_undercarriageName + '</option>');
+                });
+            }
+        );
+    }
 
-    // tire_rim.change(function(){
-    //     var tire_rimId = tire_rim.val();
-    //     tire_size.html('<option value="">เลือกขนาดยาง</option>');
-    //     $.get(base_url+"apiCaraccessories/Tiresize/getAllTireSize",{
-    //         tire_rimId: tire_rimId
-    //     },function(data){
-    //             var brandData = data.data;
-    //             $.each( brandData, function( key, value ) {
-    //                 tire_size.append('<option value="' + value.tire_sizeId + '">' + value.tiresize + '</option>');
-    //             });
-    //         }
-    //     );
-    // });
-
-    // function getRim(rimId = null){
-    //     $.get(base_url+"apiCaraccessories/TireRim/getAllTireRims",{},
-    //         function(data){
-    //             var brandData = data.data;
-    //             $.each( brandData, function( key, value ) {
-    //                 tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>');
-    //             });
-    //         }
-    //     );
-    // }
+    spares_undercarriage.change(function(){
+        spares_brand.html('<option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>');
+        $.get(base_url+"apiCaraccessories/SpareBrand/getAllSpareBrand",{
+            spares_undercarriageId: $(this).val()
+        },function(data){
+                var sparesBrandData = data.data;
+                $.each( sparesBrandData, function( key, value ) {
+                    spares_brand.append('<option value="' + value.spares_brandId + '">' + value.spares_brandName + '</option>');
+                });
+            }
+        );
+    });
 
     $("#show-search").click(function(){
         $(this).hide(100);

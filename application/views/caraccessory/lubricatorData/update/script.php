@@ -99,6 +99,31 @@
 //             });
 //         }
 //     }
+function getSparesUndercarriageData(){
+        $.get(base_url+"apiCaraccessories/LubricatorData/getlubricator_dataId",{
+            "lubricator_dataId":lubricator_dataId.val()
+        },function(data){
+                var lubricator_data = data.data;
+                $("#price").val(sparesUndercarriageData.price);
+                $("#warranty_year").val(sparesUndercarriageData.warranty_year);
+                $("#warranty").val(sparesUndercarriageData.warranty);
+                $("#warranty_distance").val(sparesUndercarriageData.warranty_distance);
+
+                $('.image-editor').cropit({
+                    allowDragNDrop: false,
+                    width: 200,
+                    height: 200,
+                    type: 'image',
+                    imageBackground: true,
+                    imageState: {
+                        src: picturePath+"spareundercarriage/"+sparesUndercarriageData.spares_undercarriageDataPicture
+                    }
+                });
+
+                getSparesUndercarriage(sparesUndercarriageData.spares_undercarriageId, sparesUndercarriageData.spares_brandId);
+            }
+        );
+    }
 var lubricator_brand = $("#lubricator_brandId");
     var lubricator = $("#lubricatorId");
 
