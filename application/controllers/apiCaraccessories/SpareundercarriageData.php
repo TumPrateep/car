@@ -193,8 +193,6 @@ class SpareundercarriageData extends BD_Controller {
             $image =  $imageName;
             $checknotDuplicate = $this->spare_undercarriageDatas->checknotDuplicatedforUpdate($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId);
             if($checknotDuplicate){
-                $checkStatus = $this->spare_undercarriageDatas->checkStatus($userId,$spares_undercarriageDataId);
-                if($checkStatus){
                     $data = array(
                         'spares_undercarriageDataId' => $spares_undercarriageDataId,
                         'spares_brandId' => $spares_brandId,
@@ -221,11 +219,7 @@ class SpareundercarriageData extends BD_Controller {
                     $output["message"] = REST_Controller::MSG_NOT_UPDATE;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }
-            }else{
-                unlink($file);
-                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+            
         }
         else{
             unlink($file);
