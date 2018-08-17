@@ -30,6 +30,6 @@ class LubricatorData extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-
+    
 
 }
