@@ -14,7 +14,7 @@
     </div>
     <!-- Container fluid  -->
     <!-- End Container fluid  -->
-    <!-- <div class="container-fluid" -->
+    <div class="container-fluid">
         <form id="search">
             <div class="card" style="display:none;" id="search-form">
                 <div class="card-body text-right">
