@@ -142,7 +142,7 @@ class lubricatordatas extends CI_Model{
         return $this->db->update('lubricator_data',$data);
     }
     function checklubricator_dataId($lubricator_dataId) {
-        $this->db->from('lubricator_data;');
+        $this->db->from('lubricator_data');
         $this->db->where('lubricator_dataId',$lubricator_dataId);
         $result = $this->db->count_all_results();
 
@@ -157,7 +157,7 @@ class lubricatordatas extends CI_Model{
     function getlubricator_dataIdById($lubricator_dataId){
         $this->db->select("price,lubricator_brandId,lubricator_dataId,lubricator_dataPicture,lubricatorId,status,warranty,warranty_distance,warranty_year");
         $this->db->where('lubricator_dataId',$lubricator_dataId);
-        $result = $this->db->get('lubricator_data;')->row();
+        $result = $this->db->get('lubricator_data')->row();
         return $result;
     }
 
