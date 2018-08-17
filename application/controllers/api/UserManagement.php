@@ -350,13 +350,15 @@ class UserManagement extends BD_Controller {
 
         $result = $this->Profile->saveProfileRoleUser($role, $userId, $profileData, $roleData);
         if($result){
-            $this->load->model("User");
-            $userData = $this->User->getuserById($currentUser);
-            $sess_array = array(
-                'id' => $currentUser,
-                'role' => $userData->category
-            );
-            $this->session->set_userdata('logged_in', $sess_array);
+            // $this->load->model("User");
+            // $userData = $this->User->getuserById($currentUser);
+            // $sess_array = array(
+            //     'id' => $currentUser,
+            //     'username' => $userData->username,
+            //     'role' => (int)$userData->category,
+            //     'name' => $userData->firstname." ".$userData->lastname
+            // );
+            // $this->session->set_userdata('logged_in', $sess_array);
             $output["message"] = REST_Controller::MSG_SUCCESS;
         }else{
             $output["message"] = REST_Controller::MSG_ERROR;

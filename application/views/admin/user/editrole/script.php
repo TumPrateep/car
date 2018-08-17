@@ -677,6 +677,9 @@
 
         function finish() {
             var role = $("#role").val();
+            if(role == null){
+                role = "4";
+            }
             var id = "#form-role-" + role;
             var isValid = $(id).valid();
             var userId = $("#userId").val();
