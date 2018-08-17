@@ -51,6 +51,12 @@
             strWarranty += warranty_distance+" km";
         }
 
+        if(strWarranty == ""){
+            strWarranty = "ไม่รับประกัน";
+        }else{
+            strWarranty = "รับประกัน "+strWarranty;
+        }
+
         return strWarranty;
     }
 

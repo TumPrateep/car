@@ -65,14 +65,11 @@
         width: 200,
         height: 200,
         type: 'image/jpeg'
-        // imageBackground: true,
-        // imageState: {
-        //     src: 'http://lorempixel.com/500/400/' // renders an image by default
-        // }
     });
 
     var lubricator_brand = $("#lubricator_brandId");
     var lubricator = $("#lubricatorId");
+    var lubricator_gear = $("#lubricator_gear");
 
     init();
 
@@ -91,10 +88,16 @@
         );
     }
 
+    lubricator_gear.change(function(){
+        lubricator_brand.val(null);
+        lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
+    });
+
     lubricator_brand.change(function(){
         lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
         $.get(base_url+"apiCaraccessories/Lubricator/getAllLubricator",{
-            lubricator_brandId: $(this).val()
+            lubricator_brandId: $(this).val(),
+            lubricator_gear: lubricator_gear.val()
         },function(data){
                 var lubricatorData = data.data;
                 $.each( lubricatorData, function( key, value ) {

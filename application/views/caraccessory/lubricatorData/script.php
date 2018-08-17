@@ -72,7 +72,7 @@
                                             + '<span>ระยะทาง '+currency(value.lubricator_typeSize, { useVedic: true }).format()+' กม.</span>'
                                         + '</div>'
                                         + '<div class="text-center">'
-                                            + '<span>รับประกัน '+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span>'
+                                            + '<span>'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span>'
                                         + '</div>'
                                         + '<div class="text-center">'
                                             + '<a href="'+base_url+"caraccessory/lubricatordata/update/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'

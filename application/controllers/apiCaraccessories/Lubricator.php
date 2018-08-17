@@ -192,8 +192,9 @@ class Lubricator extends BD_Controller {
 
     function getAllLubricator_get(){
         $lubricator_brandId = $this->get("lubricator_brandId");
+        $lubricator_gear = $this->get("lubricator_gear");
         $this->load->model("lubricators");
-        $result = $this->lubricators->getAllLubricator($lubricator_brandId);
+        $result = $this->lubricators->getAllLubricator($lubricator_brandId, $lubricator_gear);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
