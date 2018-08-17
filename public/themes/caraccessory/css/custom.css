@@ -268,3 +268,11 @@ label.error{
     float: right;
     padding-top: 50px;
   }
+
+  .mg-15{
+      margin-top: 15px;
+  }
+
+  .text-ht-10{
+    margin-top: 10px;
+  }

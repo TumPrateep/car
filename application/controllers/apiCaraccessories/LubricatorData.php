@@ -30,9 +30,7 @@ class LubricatorData extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-<<<<<<< HEAD
-    
-=======
+
     function searchLubricatordata_post(){
         $column = "lubricator_dataId";
         $sort = "asc";
@@ -118,8 +116,6 @@ class LubricatorData extends BD_Controller {
 
     
     public function create_post(){
-        $lubricatorId = $this->post('lubricatorId');
-        $lubricator_liter = $this->post('lubricator_liter');
         $lubricator_brandId = $this->post('lubricator_brandId');
         $price = $this->post('price');
         $warranty_year = $this->post('warranty_year');
@@ -152,7 +148,7 @@ class LubricatorData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $isDuplicated = $this->lubricatordatas->checkduplicated($lubricator_brandId,$lubricatorId);
+            $isDuplicated = $this->lubricatordatas->checkduplicated($lubricator_brandId);
             if($isDuplicated){
                 unlink($file);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
@@ -161,8 +157,6 @@ class LubricatorData extends BD_Controller {
                 $data = array(
                     'lubricator_dataId' => null,
                     'lubricator_brandId' => $lubricator_brandId,
-                    'lubricator_liter' => $lubricator_liter,
-                    'lubricatorId' => $lubricatorId,
                     'lubricator_dataPicture' => $image,
                     'status' => 1,
                     'activeFlag' => 1,
@@ -188,8 +182,6 @@ class LubricatorData extends BD_Controller {
 
     public function update_post(){
         $lubricator_dataId = $this->post('lubricator_dataId');
-        $lubricatorId = $this->post('lubricatorId');
-        $lubricator_liter = $this->post('lubricator_liter');
         $lubricator_brandId = $this->post('lubricator_brandId');
         $price = $this->post('price');
         $warranty_year = $this->post('warranty_year');
@@ -227,13 +219,11 @@ class LubricatorData extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $image =  $imageName;
-            $isDuplicated = $this->lubricatordatas->checkduplicatedUpdate($lubricator_brandId,$lubricatorId,$lubricator_dataId);
+            $isDuplicated = $this->lubricatordatas->checkduplicatedUpdate($lubricator_brandId,$lubricator_dataId);
             if(!$isDuplicated){
                 $data = array(
                     'lubricator_dataId' => null,
                     'lubricator_brandId' => $lubricator_brandId,
-                    'lubricator_liter' => $lubricator_liter,
-                    'lubricatorId' => $lubricatorId,
                     'lubricator_dataPicture' => $image,
                     'status' => 1,
                     'activeFlag' => 1,
@@ -270,5 +260,4 @@ class LubricatorData extends BD_Controller {
 
 }
 
->>>>>>> d6193d6f093d2e5377263a5a3539af7a0b13ae67
 
