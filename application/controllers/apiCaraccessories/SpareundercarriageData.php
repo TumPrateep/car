@@ -235,19 +235,21 @@ class SpareundercarriageData extends BD_Controller {
     }
 }
     function delete_get(){
-        $spares_undercarriageDataId = $this->db->get('spares_undercarriageDataId');
+        $spares_undercarriageDataId = $this->get('spares_undercarriageDataId');
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->model('spare_undercarriageDatas');
-        $spareUndercarriage = $this->spare_undercarriageDatas->checkValue($spares_undercarriageDataId);
-        if($spareUndercarriage){
+        $spareUndercarriage = $this->spare_undercarriageDatas->getspares_undercarriageDataById($spares_undercarriageDataId);
+        if($spareUndercarriage !=null){
             $isDelete = $this->spare_undercarriageDatas->delete($spares_undercarriageDataId);
-        //     if($isDelete){
-        //         $output["message"] = REST_Controller::MSG_SUCCESS;
-        //         $this->set_response($output, REST_Controller::HTTP_OK);
-        //     }else{
-        //         $output["message"] = REST_Controller::MSG_BE_USED;
-        //         $this->set_response($output, REST_Controller::HTTP_OK);
-        //     }
+            if($isDelete){
+                $config['upload_path'] = 'public/image/spareundercarriage/';
+                unlink($config['upload_path'].$spareUndercarriage->spares_undercarriageDataPicture);
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["message"] = REST_Controller::MSG_BE_USED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
         }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);

@@ -192,7 +192,7 @@
             url: "/SpareundercarriageData/delete?spares_undercarriageDataId="+spares_undercarriageDataId,
             label: "ลบข้อมอะไหล่",
             content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
-            gotoUrl: "caraccessory/tiredata"
+            gotoUrl: "/caraccessory/SpareundercarriesData"
         }
         fnDelete(option);
     }
