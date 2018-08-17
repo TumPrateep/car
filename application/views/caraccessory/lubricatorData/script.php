@@ -66,7 +66,7 @@
                                     + '</div>'
                                     + '<div class="card-body">'
                                         + '<div class="text-center">'
-                                            + '<h3>'+value.lubricator_brandName+'/'+value.lubricatorName+'</h3>'
+                                            + '<h3>'+value.lubricator_brandName+'/'+value.lubricatorName+'<br> '+value.capacity+' ลิตร</h3>'
                                         + '</div>'
                                         + '<div class="text-center">'
                                             + '<span>ระยะทาง '+currency(value.lubricator_typeSize, { useVedic: true }).format()+' กม.</span>'
