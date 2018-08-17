@@ -99,7 +99,38 @@
 //             });
 //         }
 //     }
-    
+var lubricator_brand = $("#lubricator_brandId");
+    var lubricator = $("#lubricatorId");
+
+    init();
+
+    function init(){
+        getLubracatorBrand();
+    }
+
+    function getLubracatorBrand(){
+        $.get(base_url+"apiCaraccessories/Lubricatorbrand/getAllLubricatorBrand",{},
+            function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    lubricator_brand.append('<option value="' + value.lubricator_brandId + '">' + value.lubricator_brandName + '</option>');
+                });
+            }
+        );
+    }
+
+    lubricator_brand.change(function(){
+        lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
+        $.get(base_url+"apiCaraccessories/Lubricator/getAllLubricator",{
+            lubricator_brandId: $(this).val()
+        },function(data){
+                var lubricatorData = data.data;
+                $.each( lubricatorData, function( key, value ) {
+                    lubricator.append('<option value="' + value.lubricatorId + '">' + value.lubricatorName + " " + value.capacity + " ลิตร " + value.lubricator_number + '</option>');
+                });
+            }
+        );
+    });
 </script>
 
 </body>
