@@ -132,6 +132,8 @@ class Lubricator extends BD_Controller {
         $lubricator_brandId = $this->post("lubricator_brandId");
         $lubricator_numberId = $this->post("lubricator_number");
         $lubricator_gear = $this->post("lubricator_gear");
+        $api = $this->post('api');
+        $capacity = $this->post('capacity');
         $this->load->model("lubricators");
         $userId = $this->session->userdata['logged_in']['id'];
         $isCheck = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear);
@@ -141,7 +143,10 @@ class Lubricator extends BD_Controller {
                 'lubricatorName' => $lubricatorName,
                 'lubricator_numberId' => $lubricator_numberId,
                 'update_by' => $userId,
-                'update_at' => date('Y-m-d H:i:s',time())
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'capacity' => $capacity,
+                'api' => $api,
+                'activeFlag' => 1
             );
             $result = $this->lubricators->update($data);
             $output["status"] = $result;
