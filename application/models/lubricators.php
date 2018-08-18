@@ -126,7 +126,7 @@ class lubricators extends CI_Model{
     }
 
     function getlubricatorbyId($lubricatorId){
-        $this->db->select('lubricator.lubricatorId,lubricator.lubricatorName,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_numberId'); 
+        $this->db->select('lubricator.lubricatorId,lubricator.lubricatorName,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_numberId,lubricator.api,lubricator.capacity'); 
         $this->db->from('lubricator');
         $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
         $this->db->where('lubricatorId',$lubricatorId);

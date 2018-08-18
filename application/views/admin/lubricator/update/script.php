@@ -61,7 +61,7 @@
 
     function getLubricator(){
         $.post(base_url+"api/Lubricator/getlubricator",{
-            "lubricatorId": lubricatorId
+            "lubricatorId": lubricatorId,
         },function(result){
             var data = result.data;
             $("#lubricatorName").val(data.lubricatorName);
@@ -75,6 +75,23 @@
         getLubricatorNumber();
     });
 
+    $.post(base_url+"api/Lubricator/getlubricator",{
+        "lubricatorId": $("#lubricatorId").val()
+        // "capacity" : $("$capacity").val()
+    },function(data){
+        if(data.message!=200){
+            showMessage(data.message,"admin/car/model/"+brandId);
+        }
+
+        if(data.message == 200){
+            result = data.data;
+            $("#api").val(result.api);
+            $("#capacity").val(result.capacity);
+            
+            
+        }
+        
+    });
     $("#update-lubricator").submit(function(){
         updateLubricator();
     })
