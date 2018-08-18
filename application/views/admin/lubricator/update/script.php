@@ -6,6 +6,12 @@
             },
             lubricator_number:{
                 required: true
+            },
+            api:{
+                required: true
+            },
+            capacity:{
+                required: true
             }
         },
         messages: {
@@ -14,6 +20,12 @@
             },
             lubricator_number:{
                 required: "กรุณาเลือกเบอร์น้ำมันเครื่อง"
+            },
+            api:{
+                required: "เลือกAPIน้ำมันเครื่อง"
+            },
+            capacity:{
+                required: "เลือกความจุน้ำมันเครื่อง"
             }
         },
     });

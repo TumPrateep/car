@@ -44,6 +44,18 @@
                                   <option value="">เลือกเบอร์น้ำมันเครื่อง</option>
                               </select>
                           </div>
+                          <div class="col-md-4 form-group">
+                              <label>API</label> <span class="error">*</span>
+                              <select class="form-control input-default" name="api" id="api">
+                                  <option value="">เลือกAPIน้ำมันเครื่อง</option>
+                              </select>
+                          </div>
+                          <div class="col-md-4 form-group">
+                              <label>ความจุน้ำมันเครื่อง</label> <span class="error">*</span>
+                              <select class="form-control input-default" name="capacity" id="capacity">
+                                  <option value="">เลือกความจุน้ำมันเครื่อง</option>
+                              </select>
+                          </div>
                       </div>
                       <div class="form-group"> 
                         <button type="submit" class="btn btn-primary">บันทึก</button>
