@@ -1,10 +1,16 @@
 <script>
-      $("#create-lubricator").validate({
+     $("#create-lubricator").validate({
         rules: {
             lubricatorName: {
                 required: true
             },
             lubricator_number:{
+                required: true
+            },
+            api:{
+                required: true
+            },
+            capacity:{
                 required: true
             }
         },
@@ -14,6 +20,12 @@
             },
             lubricator_number:{
                 required: "กรุณาเลือกเบอร์น้ำมันเครื่อง"
+            },
+            api:{
+                required: "กรุณาใส่APIของน้ำมันเครื่อง"
+            },
+            capacity:{
+                required: "กรุณากรอกความจุของน้ำมันเครื่อง"
             }
         },
     });
