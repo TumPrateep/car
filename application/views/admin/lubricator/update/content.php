@@ -45,7 +45,7 @@
                               </select>
                           </div>
                           <div class="col-md-4 form-group">
-                              <label>API</label>
+                              <label>APIน้ำมันเครื่อง</label>
                               <input type="text" class="form-control" placeholder="APIน้ำมันเครื่อง" name="api" id="api">
                               </select>
                           </div>
