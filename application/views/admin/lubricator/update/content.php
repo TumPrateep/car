@@ -45,15 +45,13 @@
                               </select>
                           </div>
                           <div class="col-md-4 form-group">
-                              <label>API</label> <span class="error">*</span>
-                              <select class="form-control input-default" name="api" id="api">
-                                  <option value="">เลือกAPIน้ำมันเครื่อง</option>
+                              <label>API</label>
+                              <input type="text" class="form-control" placeholder="APIน้ำมันเครื่อง" name="api" id="api">
                               </select>
                           </div>
                           <div class="col-md-4 form-group">
-                              <label>ความจุน้ำมันเครื่อง</label> <span class="error">*</span>
-                              <select class="form-control input-default" name="capacity" id="capacity">
-                                  <option value="">เลือกความจุน้ำมันเครื่อง</option>
+                              <label>ความจุน้ำมันเครื่อง</label>
+                              <input type="text" class="form-control" placeholder="เลือกความจุน้ำมันเครื่อง" name="capacity" id="capacity">
                               </select>
                           </div>
                       </div>
