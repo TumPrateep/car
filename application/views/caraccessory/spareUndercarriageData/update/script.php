@@ -46,7 +46,6 @@
                     width: 200,
                     height: 200,
                     type: 'image',
-                    imageBackground: true,
                     imageState: {
                         src: picturePath+"spareundercarriage/"+sparesUndercarriageData.spares_undercarriageDataPicture
                     }
