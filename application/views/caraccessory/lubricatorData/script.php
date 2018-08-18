@@ -74,7 +74,7 @@
                                             + '<span>'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span>'
                                         + '</div>'
                                         + '<div class="text-center">'
-                                            + '<h2>'+currency(value.price, { useVedic: true }).format()+' บาท/เส้น</h2>'
+                                            + '<h2>'+currency(value.price, { useVedic: true }).format()+' บาท/ชิ้น</h2>'
                                         + '</div>'
                                         + '<div class="text-center">'
                                             + '<a href="'+base_url+"caraccessory/lubricatordata/update/"+value.lubricator_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
