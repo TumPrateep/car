@@ -85,12 +85,12 @@ class TireMatch extends CI_Model{
         $this->db->from('tire_matching');
         $this->db->join('model', 'model.modelId = tire_matching.modelId');
         $this->db->join('brand', 'brand.brandId = tire_matching.brandId');
-        $this->db->join('modelofcarId', 'modelofcarId = tire_matching.modelofcarId');
+        $this->db->join('modelofcar', 'modelofcar.modelofcarId = tire_matching.modelofcarId');
         $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_matching.tire_sizeId');
         $this->db->where('tire_matching.brandId',$brandId);
         $this->db->where('tire_matching.rimId',$rimId);
         $this->db->where('tire_matching.modelId',$modelId);
-        $this->db->where('tire_macthing.modelofcarId',$modelofcarId);
+        $this->db->where('tire_matching.modelofcarId',$modelofcarId);
         $this->db->where('tire_matching.tire_sizeId',$tire_sizeId);
         
         $result = $this->db->count_all_results();
