@@ -43,6 +43,14 @@
                                   <option value="">เลือกเบอร์น้ำมันเครื่อง</option>
                               </select>
                           </div>
+                          <div class="col-md-4 form-group">
+                            <label>API</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="API" name="api" id="api">
+                          </div>
+                          <div class="col-md-4 form-group">
+                            <label>ความจุ</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="ความจุ" name="capacity" id="capacity">
+                          </div>
                       </div>
                       <div class="row">
                         <div class="col-md-12">
