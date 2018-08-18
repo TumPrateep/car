@@ -191,8 +191,9 @@ class LubricatorData extends BD_Controller {
         $warranty_year = $this->post('warranty_year');
         $warranty = $this->post('warranty');
         $warranty_distance = $this->post('warranty_distance');
+        $lubricatorId = $this->post('lubricatorId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $config['upload_path'] = 'public/image/tirebranddata/';
+        $config['upload_path'] = 'public/image/lubricatordata/';
         // $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
         // $config['max_width']  = '1024';
@@ -223,7 +224,7 @@ class LubricatorData extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $image =  $imageName;
-            $isDuplicated = $this->lubricatordatas->checkduplicatedUpdate($lubricator_brandId,$lubricator_dataId);
+            $isDuplicated = $this->lubricatordatas->checkduplicatedUpdate($lubricator_dataId,$lubricatorId);
             if(!$isDuplicated){
                 $data = array(
                     'lubricator_dataId' => null,
@@ -236,7 +237,8 @@ class LubricatorData extends BD_Controller {
                     'price' => $price,
                     'warranty' => $warranty,
                     'warranty_year' => $warranty_year,
-                    'warranty_distance' => $warranty_distance
+                    'warranty_distance' => $warranty_distance,
+                    'lubricatorId' => $lubricatorId
                 );
                 if(!empty($img)){
                     $data["lubricator_dataPicture"] = $image;
@@ -261,7 +263,7 @@ class LubricatorData extends BD_Controller {
             }
         }
     }
-    function getlubricator_dataId_get(){
+    function getlubricatordata_get(){
         $lubricator_dataId = $this->get('lubricator_dataId');
         $this->load->model("lubricatordatas");
         $isCheck = $this->lubricatordatas->checklubricator_dataId($lubricator_dataId);
