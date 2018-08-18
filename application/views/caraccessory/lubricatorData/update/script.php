@@ -9,9 +9,6 @@
             },
             price: {
                 required: true
-            },
-            tempImage: {
-                required: true
             }
         },
         messages: {
@@ -23,9 +20,6 @@
             },
             price: {
                 required: "กรุณากรอกราคา"
-            },
-            tempImage: {
-                required: ""
             }
         },
     });
@@ -112,36 +106,36 @@
    
 
         
-//     $("#update-lubricatordata").submit(function(){
-//         updateTireData();
-//     })
+    $("#update-lubricatordata").submit(function(){
+        updateLubricatorData();
+    })
 
-// //     function updateLubricatorData(){
-// //         event.preventDefault();
-// //         var isValid = $("#update-lubricatordata").valid();
+    function updateLubricatorData(){
+        event.preventDefault();
+        var isValid = $("#update-lubricatordata").valid();
         
-// //         if(isValid){
-// //             var imageData = $('.image-editor').cropit('export');
-// //             $('.hidden-image-data').val(imageData);
-// //             var myform = document.getElementById("update-lubricatordata");
-// //             var formData = new FormData(myform);
+        if(isValid){
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
+            var myform = document.getElementById("update-lubricatordata");
+            var formData = new FormData(myform);
             
-// //             $.ajax({
-// //                 url: base_url+"apiCaraccessories/Lubricatordata/update",
-// //                 data: formData,
-// //                 processData: false,
-// //                 contentType: false,
-// //                 type: 'POST',
-// //                 success: function (data) {
-// //                     if(data.message == 200){
-// //                         showMessage(data.message,"caraccessory/lubricatordata");
-// //                     }else{
-// //                         showMessage(data.message);
-// //                     }
-// //                 }
-// //             });
-// //         }
-// //     }
+            $.ajax({
+                url: base_url+"apiCaraccessories/Lubricatordata/update",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (data) {
+                    if(data.message == 200){
+                        showMessage(data.message,"caraccessory/lubricatordata");
+                    }else{
+                        showMessage(data.message);
+                    }
+                }
+            });
+        }
+    }
 
 </script>
 

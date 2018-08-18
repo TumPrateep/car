@@ -100,8 +100,9 @@ class lubricatordatas extends CI_Model{
          return $query->num_rows();   
      }
 
-     function checkduplicated($lubricator_brandId){
+     function checkduplicated($lubricatorId,$lubricator_brandId){
         $this->db->from('lubricator_data');
+        $this->db->where('lubricator_data.lubricator_brandId',$lubricator_brandId);
         $this->db->where('lubricator_data.lubricatorId',$lubricatorId);
         $result = $this->db->count_all_results();
       
@@ -115,7 +116,7 @@ class lubricatordatas extends CI_Model{
         return $this->db->insert('lubricator_data',$data);
     }
 
-    function checkduplicatedUpdate($lubricator_brandId,$lubricator_dataId){
+    function checkduplicatedUpdate($lubricatorId,$lubricator_brandId,$lubricator_dataId){
         // $this->db->select('tire_data.tire_brandId,tire_data.tire_modelId,tire_data.rimId,tire_data.car_accessoriesId,concat(tire_size.tire_size,"/",tire_size.tire_series,tire_size.rim) as tire_size');
         $this->db->from('lubricator_data');
         // $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
@@ -123,6 +124,7 @@ class lubricatordatas extends CI_Model{
         // $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');
         // $this->db->join('rim','rim.rimId = tire_data.rimId');
         // $this->db->join('car_accessories','car_accessoriesId.car_accessoriesId = tire_data.car_accessoriesId');
+        $this->db->where('lubricator_data.lubricator_brandId',$lubricator_brandId);
         $this->db->where('lubricator_data.lubricatorId',$lubricatorId);
         $this->db->where_not_in('lubricator_data.lubricator_dataId',$lubricator_dataId);
         $result = $this->db->count_all_results();
