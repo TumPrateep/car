@@ -150,9 +150,12 @@ class lubricatordatas extends CI_Model{
     }
 
     function getlubricator_dataIdById($lubricator_dataId){
-        $this->db->select("price,lubricator_brandId,lubricator_dataId,lubricator_dataPicture,lubricatorId,status,warranty,warranty_distance,warranty_year");
-        $this->db->where('lubricator_dataId',$lubricator_dataId);
-        $result = $this->db->get('lubricator_data')->row();
+        $this->db->select("lubricator_data.price,lubricator_data.lubricator_brandId,lubricator_data.lubricator_dataId,lubricator_data.lubricator_dataPicture,lubricator_data.lubricatorId,lubricator_data.status,lubricator_data.warranty,lubricator_data.warranty_distance,lubricator_data.warranty_year,lubricator_number.lubricator_gear");
+        $this->db->from("lubricator_data");
+        $this->db->join('lubricator','lubricator.lubricatorId = lubricator_data.lubricatorId');
+        $this->db->join('lubricator_number', 'lubricator_number.lubricator_numberId = lubricator.lubricator_numberId');
+        $this->db->where("lubricator_data.lubricator_dataId", $lubricator_dataId);
+        $result = $this->db->get()->row();
         return $result;
     }
 

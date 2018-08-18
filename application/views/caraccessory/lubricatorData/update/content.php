@@ -72,7 +72,7 @@
                                             <label class="control-label">การรับประกัน-ปี</label>
                                             <div class="input-group input-group-default">
                                                 <select class="form-control" id="warranty_year" name="warranty_year">
-                                                    <option value="">เลือกการรับประกัน-ปี</option>
+                                                    <option value="0">เลือกการรับประกัน-ปี</option>
                                                     <option value="1">1 ปี</option>
                                                     <option value="2">2 ปี</option>
                                                     <option value="3">3 ปี</option>
