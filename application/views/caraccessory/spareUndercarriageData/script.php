@@ -32,7 +32,7 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.spares_brandId = $("#spares_brandId").val();
-                    data.spares_undercarriageDateId =$("#spares_undercarriageDateId").val();
+                    data.spares_undercarriageId =$("#spares_undercarriageId").val();
                     // data.spares_undercarriageId= $("#spares_undercarriagedateId").val();
                     // data.tire_modelId = $("#tire_modelId").val();
                     // data.rimId = $("#rimId").val();

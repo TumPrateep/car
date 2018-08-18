@@ -25,7 +25,7 @@ class spare_undercarriageDatas extends CI_Model{
         }
     }
 
-    function SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price){
+    function SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price, $userId){
         $price = explode(",",$price);
         $this->db->select('spares_undercarriageData.spares_undercarriageDataId,spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_undercarriageData.price,spares_undercarriageData.warranty,spares_undercarriageData.warranty_distance,spares_undercarriageData.warranty_year,spares_undercarriageData.spares_undercarriageDataPicture');
         $this->db->from('spares_undercarriagedata');
@@ -42,7 +42,7 @@ class spare_undercarriageDatas extends CI_Model{
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($order,$dir)
-                ->get('spares_undercarriagedata');
+                ->get();
         
         if($query->num_rows()>0)
         {
@@ -53,7 +53,7 @@ class spare_undercarriageDatas extends CI_Model{
             return null;
         }
     }
-    function SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price){
+    function SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price, $userId){
         $price = explode(",",$price);
         $this->db->select('spares_undercarriageData.spares_undercarriageDataId,spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_undercarriageData.price,spares_undercarriageData.warranty,spares_undercarriageData.warranty_distance,spares_undercarriageData.warranty_year,spares_undercarriageData.spares_undercarriageDataPicture');
         $this->db->from('spares_undercarriagedata');
