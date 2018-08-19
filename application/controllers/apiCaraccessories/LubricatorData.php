@@ -227,7 +227,7 @@ class LubricatorData extends BD_Controller {
             $isDuplicated = $this->lubricatordatas->checkduplicatedUpdate($lubricatorId,$lubricator_brandId,$lubricator_dataId);
             if(!$isDuplicated){
                 $data = array(
-                    'lubricator_dataId' => null,
+                    'lubricator_dataId' => $lubricator_dataId,
                     'lubricator_brandId' => $lubricator_brandId,
                     'lubricator_dataPicture' => $image,
                     'status' => 1,
