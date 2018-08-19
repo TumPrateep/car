@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class spare_undercarriageDatas extends CI_Model{
+class Spare_undercarriagedatas extends CI_Model{
     function allSpareData_count(){
         $query = $this
                 ->db

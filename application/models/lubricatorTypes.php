@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class LubricatorTypes extends CI_Model{
+class Lubricatortypes extends CI_Model{
     
     function allLubricatorTypes_count()
     {   

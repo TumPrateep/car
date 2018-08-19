@@ -1,5 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
-class trieSizes extends CI_Model{
+
+class Triesizes extends CI_Model{
     function checktrie_size($tire__sizeName) {
         $this->db->select("*");
         $this->db->from("tire_size");

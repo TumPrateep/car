@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class modelofcars extends CI_Model{
+class Modelofcars extends CI_Model{
     function checkduplicate($modelofcarName,$modelId,$brandId){
         $this->db->from('modelofcar');
         $this->db->where('modelofcarName',$modelofcarName);

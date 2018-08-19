@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class LubricatorNumbers extends CI_Model {
+class Lubricatornumbers extends CI_Model {
 
     function allLubricatorNumbers_count(){   
         $query = $this->db->get('lubricator_number');

@@ -41,7 +41,7 @@
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/car");
+                        showMessage(data.message,"caraccessory/Car");
                     }else{
                         showMessage(data.message);
                     }

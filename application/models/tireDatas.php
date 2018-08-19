@@ -1,5 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
-class TireDatas extends CI_Model{
+
+class Tiredatas extends CI_Model{
     function getirebyId($tire_dataId){
         $this->db->select('*');
         $this->db->where('tire_dataId',$tire_dataId);
