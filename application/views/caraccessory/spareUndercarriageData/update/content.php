@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/spareundercarriesdata"); ?>">ข้อมูลอะไหล่ช่วงล่าง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Spareundercarriesdata"); ?>">ข้อมูลอะไหล่ช่วงล่าง</a></li>
                 <li class="breadcrumb-item active">แก้ไขข้อมูลอะไหล่ช่วงล่าง</li>
             </ol>
         </div>
@@ -110,7 +110,7 @@
                             <div class="row p-t-20">
                                 <div class="col-md-12 card-grid">
                                     <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> บันทึก</button>
-                                    <a href="<?=base_url("caraccessory/spareundercarriesdata"); ?>">
+                                    <a href="<?=base_url("caraccessory/Spareundercarriesdata"); ?>">
                                     <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                     </a>
                                 </div>

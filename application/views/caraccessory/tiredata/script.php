@@ -189,7 +189,7 @@
             url: "/tiredata/delete?tire_dataId="+tire_dataId,
             label: "ลบข้อมูลยาง",
             content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
-            gotoUrl: "caraccessory/tiredata"
+            gotoUrl: "caraccessory/Tiredata"
         }
         fnDelete(option);
     }

@@ -51,7 +51,7 @@
         "tire_dataId": tire_dataId
     },function(data){
         if(data.message != 200){
-            showMessage(data.message,"caraccessory/tiredata");
+            showMessage(data.message,"caraccessory/Tiredata");
         }else{
             result = data.data;
             console.log(result);
@@ -174,7 +174,7 @@
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/tiredata");
+                        showMessage(data.message,"caraccessory/Tiredata");
                     }else{
                         showMessage(data.message);
                     }
