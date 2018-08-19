@@ -4,7 +4,7 @@
         "lubricator_typeId": lubricator_typeId,
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"caraccessory/lubricatortype");
+            showMessage(data.message,"caraccessory/Lubricatortype");
         }else{
             result = data.data;
             $("#lubricator_typeName").val(result.lubricator_typeName);
@@ -47,7 +47,7 @@
             function(data){
                 var lubricator_typeId = $("#lubricator_typeId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/lubricatortype");
+                    showMessage(data.message,"caraccessory/Lubricatortype");
                 }else{
                     showMessage(data.message,);
                 }

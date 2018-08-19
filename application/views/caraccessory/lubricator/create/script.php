@@ -58,7 +58,7 @@
             function(data){
                 var lubricator_brandId = $("#lubricator_brandId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/lubricator/lubricators/"+lubricator_brandId);
+                    showMessage(data.message,"caraccessory/Lubricator/lubricators/"+lubricator_brandId);
                 }else{
                     showMessage(data.message,);
                 }

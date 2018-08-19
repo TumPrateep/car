@@ -77,7 +77,7 @@
                                             + '<h2>'+currency(value.price, { useVedic: true }).format()+' บาท/ชิ้น</h2>'
                                         + '</div>'
                                         + '<div class="text-center">'
-                                            + '<a href="'+base_url+"caraccessory/lubricatordata/update/"+value.lubricator_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                            + '<a href="'+base_url+"caraccessory/Lubricatordata/update/"+value.lubricator_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                             + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.lubricator_dataId+'\', \''+value.lubricator_brandName+'/'+value.lubricatorName+'\')"><i class="ti-trash"></i> ลบ</button>'
                                         + '</div>'
                                     + '</div>'
@@ -112,7 +112,7 @@
             url: "/LubricatorData/delete?lubricator_dataId="+lubricator_dataId,
             label: "ลบข้อมูลน้ำมันเครื่อง",
             content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
-            gotoUrl: "/caraccessory/lubricatordata"
+            gotoUrl: "/caraccessory/Lubricatordata"
         }
         fnDelete(option);
     }

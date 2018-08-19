@@ -20,7 +20,7 @@
     <input type="hidden" id="lubricator_brandId" value="<?=$lubricator_brandId ?>">
         <div class="row p-30">
             <div class="col-lg-3 div-right">
-                <a href="<?=base_url("caraccessory/lubricator/createlubricator/$lubricator_brandId") ?>">
+                <a href="<?=base_url("caraccessory/Lubricator/createlubricator/$lubricator_brandId") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>
