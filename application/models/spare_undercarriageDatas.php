@@ -73,10 +73,11 @@ class spare_undercarriageDatas extends CI_Model{
                 ->get();
         return $query->num_rows();   
     }
-    function checknotDuplicated($spares_brandId,$spares_undercarriageId){
+    function checknotDuplicated($spares_brandId,$spares_undercarriageId,$userId){
         $this->db->from('spares_undercarriageData');
         $this->db->where('spares_undercarriageData.spares_brandId',$spares_brandId);
         $this->db->where('spares_undercarriageData.spares_undercarriageId',$spares_undercarriageId);
+        $this->db->where('spares_undercarriageData.create_by',$userId);
         $result = $this->db->count_all_results();
         // echo $this->db->last_query();
         // exit();

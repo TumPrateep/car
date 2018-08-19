@@ -121,7 +121,7 @@ class SpareundercarriageData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $image =  $imageName;
-            $checknotDuplicate = $this->spare_undercarriageDatas->checknotDuplicated($spares_brandId,$spares_undercarriageId);
+            $checknotDuplicate = $this->spare_undercarriageDatas->checknotDuplicated($spares_brandId,$spares_undercarriageId,$userId);
             if($checknotDuplicate){
                 unlink($file);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
