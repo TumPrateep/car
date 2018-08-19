@@ -34,7 +34,7 @@
         "lubricator_dataId": lubricator_dataId
     },function(data){
         if(data.message != 200){
-            showMessage(data.message,"caraccessory/lubricatordata");
+            showMessage(data.message,"caraccessory/Lubricatordata");
         }else{
             result = data.data;
             // console.log(result);

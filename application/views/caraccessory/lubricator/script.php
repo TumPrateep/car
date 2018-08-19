@@ -93,7 +93,7 @@
             url: "/Lubricator/delete?lubricatorId="+lubricatorId,
             label: "ลบประเภทน้ำมัน",
             content: "คุณต้องการลบ "+lubricatorName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/lubricator/lubricators/"+lubricator_brandId
+            gotoUrl: "caraccessory/Lubricator/lubricators/"+lubricator_brandId
         }
         fnDelete(option);
     }

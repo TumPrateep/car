@@ -51,7 +51,7 @@
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/lubricatordata");
+                        showMessage(data.message,"caraccessory/Lubricatordata");
                     }else{
                         showMessage(data.message);
                     }

@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/lubricatortype"); ?>">ประเภทน้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Lubricatortype"); ?>">ประเภทน้ำมันเครื่อง</a></li>
                 <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
             </ol>
         </div>

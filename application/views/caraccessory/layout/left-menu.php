@@ -11,7 +11,7 @@
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">ข้อมูลอะไหล่ </span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?=base_url("caraccessory/Spareundercarries"); ?>">อะไหล่ช่วงล่าง </a></li>
-                                <!-- <li><a href="<?=base_url("caraccessory/lubricator"); ?>">น้ำมันเครื่อง </a></li> -->
+                                <!-- <li><a href="<?=base_url("caraccessory/Lubricator"); ?>">น้ำมันเครื่อง </a></li> -->
                                 <li class="active"> <a class="has-arrow" href="#" aria-expanded="true">น้ำมันเครื่อง </a>
                                     <ul aria-expanded="true" class="collapse in" style="">
                                         <!-- <li><a href="<?=base_url("caraccessory/LubricatorType"); ?>">ประเภทน้ำมันเครื่อง</a></li> -->
@@ -41,7 +41,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?=base_url("caraccessory/tireneed"); ?>">
+                            <a href="<?=base_url("caraccessory/Tireneed"); ?>">
                                 <i class="fa fa-tachometer"></i><span class="hide-menu">ราคาเปลี่ยนยาง</span>
                             </a>
                         </li>

@@ -96,7 +96,7 @@
             url: "/Lubricatornumber/delete?lubricator_numberId="+lubricator_numberId,
             label: "ลบยี่ห้อยาง",
             content: "คุณต้องการลบ "+lubricator_number+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/numberLubricator"
+            gotoUrl: "caraccessory/NumberLubricator"
             
         }
         fnDelete(option);

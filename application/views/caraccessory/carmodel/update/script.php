@@ -2,11 +2,11 @@
         var modelId = $("#modelId").val();
         var brandId = $("#brandId").val();
     
-        $.post(base_url+"api/car/getModel",{
+        $.post(base_url+"api/Car/getModel",{
             "modelId": $("#modelId").val()
         },function(data){
             if(data.message!=200){
-                showMessage(data.message,"admin/car/model/"+brandId);
+                showMessage(data.message,"admin/Car/model/"+brandId);
             }
     
             if(data.message == 200){

@@ -6,7 +6,7 @@
             <h3 class="text-primary">เเก้ไขยี่ห้อรถ</h3> </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/car"); ?>">ยี่ห้อรถ</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Car"); ?>">ยี่ห้อรถ</a></li>
                 <li class="breadcrumb-item active">เเก้ไข</li>
             </ol>
         </div>

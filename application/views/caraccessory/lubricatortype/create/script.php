@@ -32,7 +32,7 @@
             function(data){
                 var lubricator_typeId = $("#lubricator_typeId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/lubricatortype");
+                    showMessage(data.message,"caraccessory/Lubricatortype");
                 }else{
                     showMessage(data.message,);
                 }
