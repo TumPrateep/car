@@ -4,7 +4,7 @@
         "tire_brandId": tire_brandId
     },function(data){
         if(data.message != 200){
-            showMessage(data.message,"admin/tires/tiresbrand");
+            showMessage(data.message,"admin/Tires/tiresbrand");
         }
     });
     var table = $('#model-table').DataTable({

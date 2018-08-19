@@ -8,22 +8,22 @@ class Garages extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         $this->auth();
-        $this->load->model("Garage");
-        $this->load->model("Location");
+        $this->load->model("garage");
+        $this->load->model("location");
     }
 
     function search_post(){
         $provinceId = $this->post("provinceId");
         $garageName = $this->post("garageName");
-        $json["province"] = $this->Location->getProvinceByProvinceId($provinceId);
-        $json["garage"] = $this->Garage->listGarageSearchByGarageNameAndProvinceId($garageName, $provinceId);
+        $json["province"] = $this->location->getProvinceByProvinceId($provinceId);
+        $json["garage"] = $this->garage->listGarageSearchByGarageNameAndProvinceId($garageName, $provinceId);
         $this->set_response($json);
     }
 
     function getViewGarage_get(){
         $garageId = $this->get("garageId");
 
-        $result = $this->Garage->getViewGarageByGarageId($garageId);
+        $result = $this->garage->getViewGarageByGarageId($garageId);
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -122,11 +122,11 @@ class Garages extends BD_Controller {
                 'addressGarage' => $addressGarage
             );
 
-            $oldData = $this->Garage->getGarageByGarageId($garageId);
+            $oldData = $this->garage->getGarageByGarageId($garageId);
             if($oldData != null){
-                $isDuplicate = $this->Garage->checkDuplicate($garageId, $businessRegistration);
+                $isDuplicate = $this->garage->checkDuplicate($garageId, $businessRegistration);
                 if(!$isDuplicate){
-                    $result = $this->Garage->update($data);
+                    $result = $this->garage->update($data);
                     if($result){
                         unlink($config['upload_path']. '/'. $oldData->garagePicture);
                         $output["message"] = REST_Controller::MSG_SUCCESS;

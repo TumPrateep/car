@@ -25,22 +25,22 @@ class CarSpareUndercarriage extends BD_Controller {
         $order = $column;
         $dir = $sort;
 
-        $this->load->model("sparesUndercarriages");
-        $totalData = $this->sparesUndercarriages->allsparesUndercarriages_count();
+        $this->load->model("sparesundercarriages");
+        $totalData = $this->sparesundercarriages->allsparesUndercarriages_count();
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('spares_undercarriageName')))
         {            
-            $posts = $this->sparesUndercarriages->allsparesUndercarriage($limit,$start,$order,$dir);
+            $posts = $this->sparesundercarriages->allsparesUndercarriage($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('spares_undercarriageName'); 
             $status = 2; 
 
-            $posts =  $this->sparesUndercarriages->sparesUndercarriage_search($limit,$start,$search,$order,$dir,$status);
+            $posts =  $this->sparesundercarriages->sparesUndercarriage_search($limit,$start,$search,$order,$dir,$status);
 
-            $totalFiltered = $this->sparesUndercarriages->sparesUndercarriage_search_count($search,$status);
+            $totalFiltered = $this->sparesundercarriages->sparesUndercarriage_search_count($search,$status);
         }
 
         $data = array();
@@ -82,8 +82,8 @@ class CarSpareUndercarriage extends BD_Controller {
 
         $spares_undercarriageName = $this->post("spares_undercarriageName");
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("sparesUndercarriages");
-        $isCheck = $this->sparesUndercarriages->checksparesUndercarriage($spares_undercarriageName);
+        $this->load->model("sparesundercarriages");
+        $isCheck = $this->sparesundercarriages->checksparesUndercarriage($spares_undercarriageName);
 
         if($isCheck){
             $data = array(
@@ -96,7 +96,7 @@ class CarSpareUndercarriage extends BD_Controller {
                 'activeFlag' => 2
                 
             );
-            $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
+            $result = $this->sparesundercarriages->insertsparesUndercarriage($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -120,12 +120,12 @@ class CarSpareUndercarriage extends BD_Controller {
         $spares_undercarriageId = $this->get('spares_undercarriageId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("sparesUndercarriages");
-        $spares_undercarriage = $this->sparesUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
+        $this->load->model("sparesundercarriages");
+        $spares_undercarriage = $this->sparesundercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
         if($spares_undercarriage != null){
-            $isCheckStatus =$this->sparesUndercarriages->checkStatusFromSpareUnderCarriages($spares_undercarriageId,$status,$userId);
+            $isCheckStatus =$this->sparesundercarriages->checkStatusFromSpareUnderCarriages($spares_undercarriageId,$status,$userId);
             if($isCheckStatus ){
-                $isDelete = $this->sparesUndercarriages->delete($spares_undercarriageId);
+                $isDelete = $this->sparesundercarriages->delete($spares_undercarriageId);
                 if($isDelete){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
@@ -145,8 +145,8 @@ class CarSpareUndercarriage extends BD_Controller {
 
     function getspareUndercarriage_post(){
         $spares_undercarriageId = $this->post('spares_undercarriageId');
-        $this->load->model("sparesUndercarriages");
-        $spares_undercarriage = $this->sparesUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
+        $this->load->model("sparesundercarriages");
+        $spares_undercarriage = $this->sparesundercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
             if($spares_undercarriage != null){
                 $output["data"] = $spares_undercarriage;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -161,11 +161,11 @@ class CarSpareUndercarriage extends BD_Controller {
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_undercarriageName = $this->post('spares_undercarriageName');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("sparesUndercarriages");
+        $this->load->model("sparesundercarriages");
         $status = 2 ;
         
         
-        $result = $this->sparesUndercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
+        $result = $this->sparesundercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
         if($result){
             $data = array(
                 'spares_undercarriageId' => $spares_undercarriageId,
@@ -175,9 +175,9 @@ class CarSpareUndercarriage extends BD_Controller {
                 'update_by' => $userId,
                 'activeFlag' => 2
         );
-            $isCheckStatus =$this->sparesUndercarriages->checkStatusFromSpareUnderCarriages($spares_undercarriageId,$status,$userId);
+            $isCheckStatus =$this->sparesundercarriages->checkStatusFromSpareUnderCarriages($spares_undercarriageId,$status,$userId);
             if($isCheckStatus ){
-                $result = $this->sparesUndercarriages->updatesparesUndercarriage($data);
+                $result = $this->sparesundercarriages->updatesparesUndercarriage($data);
                 $output["status"] = $result;
                     if($result){
                         $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -199,8 +199,8 @@ class CarSpareUndercarriage extends BD_Controller {
     }
 
     function getAllSpareundercarriage_get(){
-        $this->load->model("sparesUndercarriages");
-        $result = $this->sparesUndercarriages->getAllSpareundercarriage();
+        $this->load->model("sparesundercarriages");
+        $result = $this->sparesundercarriages->getAllSpareundercarriage();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }

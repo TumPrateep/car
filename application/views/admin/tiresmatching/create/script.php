@@ -118,7 +118,7 @@
             $.post(base_url+"api/TireMatching/create",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/tires/tiresmatching");
+                    showMessage(data.message,"admin/Tires/tiresmatching");
                 }else{
                     showMessage(data.message,);
                 }

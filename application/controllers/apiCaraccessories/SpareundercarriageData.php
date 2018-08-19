@@ -25,13 +25,13 @@ class SpareundercarriageData extends BD_Controller {
         $order = $column;
         $dir = $sort;
 
-        $this->load->model('spare_undercarriageDatas');
-        $totalData = $this->spare_undercarriageDatas->allSpareData_count();
+        $this->load->model('spare_undercarriagedatas');
+        $totalData = $this->spare_undercarriagedatas->allSpareData_count();
         $totalFiltered = $totalData;
         $userId = $this->session->userdata['logged_in']['id'];
         if(empty($this->post('spares_brandId')) && empty($this->post('spares_undercarriageId'))  && empty($this->post('price')) )
         {            
-            $posts = $this->spare_undercarriageDatas->allSpareData($limit,$start,$order,$dir,$userId);
+            $posts = $this->spare_undercarriagedatas->allSpareData($limit,$start,$order,$dir,$userId);
         }
         else {
             
@@ -40,9 +40,9 @@ class SpareundercarriageData extends BD_Controller {
             $price = $this->post('price');
             
             $status = null; 
-            $posts =  $this->spare_undercarriageDatas->SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price, $userId);
+            $posts =  $this->spare_undercarriagedatas->SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price, $userId);
 
-            $totalFiltered = $this->spare_undercarriageDatas->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price, $userId);
+            $totalFiltered = $this->spare_undercarriagedatas->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price, $userId);
         }
 
         $data = array();
@@ -94,7 +94,7 @@ class SpareundercarriageData extends BD_Controller {
         $warranty = $this->post('warranty');
         $warranty_year = $this->post('warranty_year');
         $warranty_distance = $this->post('warranty_distance');
-        $this->load->model('spare_undercarriageDatas');
+        $this->load->model('spare_undercarriagedatas');
         $config['upload_path'] = 'public/image/spareundercarriage/';
 
         // $config['allowed_types'] = 'gif|jpg|png';
@@ -121,7 +121,7 @@ class SpareundercarriageData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $image =  $imageName;
-            $checknotDuplicate = $this->spare_undercarriageDatas->checknotDuplicated($spares_brandId,$spares_undercarriageId,$userId);
+            $checknotDuplicate = $this->spare_undercarriagedatas->checknotDuplicated($spares_brandId,$spares_undercarriageId,$userId);
             if($checknotDuplicate){
                 unlink($file);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
@@ -141,7 +141,7 @@ class SpareundercarriageData extends BD_Controller {
                 'warranty_distance' => $warranty_distance,
                 'spares_undercarriageDataPicture' => $image
                 );
-                $result = $this->spare_undercarriageDatas->insert($data);
+                $result = $this->spare_undercarriagedatas->insert($data);
                 $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -163,7 +163,7 @@ class SpareundercarriageData extends BD_Controller {
         $warranty = $this->post('warranty');
         $warranty_year = $this->post('warranty_year');
         $warranty_distance = $this->post('warranty_distance');
-        $this->load->model('spare_undercarriageDatas');
+        $this->load->model('spare_undercarriagedatas');
         $config['upload_path'] = 'public/image/spareundercarriage/';
         // $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
@@ -191,7 +191,7 @@ class SpareundercarriageData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $checknotDuplicate = $this->spare_undercarriageDatas->checknotDuplicatedforUpdate($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId);
+            $checknotDuplicate = $this->spare_undercarriagedatas->checknotDuplicatedforUpdate($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId);
             if($checknotDuplicate){
                     $data = array(
                         'spares_undercarriageDataId' => $spares_undercarriageDataId,
@@ -207,7 +207,7 @@ class SpareundercarriageData extends BD_Controller {
                         'warranty_distance' => $warranty_distance,
                         'spares_undercarriageDataPicture' => $image
                     );
-                $result = $this->spare_undercarriageDatas->update($data);
+                $result = $this->spare_undercarriagedatas->update($data);
                 $output["status"] = $result;
                 if($result){
                     unlink($config['upload_path'].$oldData->spares_undercarriageDataPicture);
@@ -231,10 +231,10 @@ class SpareundercarriageData extends BD_Controller {
     function delete_get(){
         $spares_undercarriageDataId = $this->get('spares_undercarriageDataId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model('spare_undercarriageDatas');
-        $spareUndercarriage = $this->spare_undercarriageDatas->getspares_undercarriageDataById($spares_undercarriageDataId);
+        $this->load->model('spare_undercarriagedatas');
+        $spareUndercarriage = $this->spare_undercarriagedatas->getspares_undercarriageDataById($spares_undercarriageDataId);
         if($spareUndercarriage !=null){
-            $isDelete = $this->spare_undercarriageDatas->delete($spares_undercarriageDataId);
+            $isDelete = $this->spare_undercarriagedatas->delete($spares_undercarriageDataId);
             if($isDelete){
                 $config['upload_path'] = 'public/image/spareundercarriage/';
                 unlink($config['upload_path'].$spareUndercarriage->spares_undercarriageDataPicture);
@@ -252,10 +252,10 @@ class SpareundercarriageData extends BD_Controller {
 
     function getSpareUndercarriageData_get(){
         $spares_undercarriageDataId = $this->get('spares_undercarriageDataId');
-        $this->load->model("spare_undercarriageDatas");
-        $isCheck = $this->spare_undercarriageDatas->checkSpareUndercarriageData($spares_undercarriageDataId);
+        $this->load->model("spare_undercarriagedatas");
+        $isCheck = $this->spare_undercarriagedatas->checkSpareUndercarriageData($spares_undercarriageDataId);
         if($isCheck){
-            $result = $this->spare_undercarriageDatas->getSpareUndercarriageDataById($spares_undercarriageDataId);
+            $result = $this->spare_undercarriagedatas->getSpareUndercarriageDataById($spares_undercarriageDataId);
             if($result != null){
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;

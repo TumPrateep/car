@@ -21,18 +21,18 @@ class Lubricator extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $this->load->model("Lubricators");
-        $totalData = $this->Lubricators->allLubricators_count($lubricator_brandId);
+        $this->load->model("lubricators");
+        $totalData = $this->lubricators->allLubricators_count($lubricator_brandId);
         $totalFiltered = $totalData; 
         if(empty($this->post('lubricatorName')) && empty($this->post('status')))
         {            
-            $posts = $this->Lubricators->allLubricators($limit,$start,$order,$dir,$lubricator_brandId);
+            $posts = $this->lubricators->allLubricators($limit,$start,$order,$dir,$lubricator_brandId);
         }
         else {
             $search = $this->post('lubricatorName');
             $status = $this->post('status');
-            $posts =  $this->Lubricators->Lubricator_search($limit,$start,$search,$order,$dir,$status,$lubricator_brandId);
-            $totalFiltered = $this->Lubricators->Lubricator_search_count($search,$status,$lubricator_brandId);
+            $posts =  $this->lubricators->Lubricator_search($limit,$start,$search,$order,$dir,$status,$lubricator_brandId);
+            $totalFiltered = $this->lubricators->Lubricator_search_count($search,$status,$lubricator_brandId);
         }
         $data = array();
         if(!empty($posts))
@@ -73,8 +73,8 @@ class Lubricator extends BD_Controller {
             'status' => $status,
             'activeFlag' => 1
         );
-        $this->load->model("Lubricators");
-        $result = $this->Lubricators->updateStatus($lubricatorId,$data);
+        $this->load->model("lubricators");
+        $result = $this->lubricators->updateStatus($lubricatorId,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);

@@ -26,22 +26,22 @@ class CarAccessory extends BD_Controller {
         $order = $column;
         $dir = $sort;
 
-        $this->load->model("Brand");
-        $totalData = $this->Brand->allBrand_count();
+        $this->load->model("brand");
+        $totalData = $this->brand->allBrand_count();
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('brandName')))
         {            
-            $posts = $this->Brand->allBrand($limit,$start,$order,$dir);
+            $posts = $this->brand->allBrand($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('brandName'); 
             $status = null; 
 
-            $posts =  $this->Brand->brand_search($limit,$start,$search,$order,$dir,$status);
+            $posts =  $this->brand->brand_search($limit,$start,$search,$order,$dir,$status);
 
-            $totalFiltered = $this->Brand->brand_search_count($search,$status);
+            $totalFiltered = $this->brand->brand_search_count($search,$status);
         }
 
         $data = array();
@@ -92,7 +92,7 @@ class CarAccessory extends BD_Controller {
         // $config['remove_spaces'] = TRUE;
 
         // $this->load->library('upload', $config);
-        $this->load->model("Brand");
+        $this->load->model("brand");
         $userId = $this->session->userdata['logged_in']['id'];
 
         $img = $this->post('brandPicture');
@@ -113,7 +113,7 @@ class CarAccessory extends BD_Controller {
         //     $imageDetailArray = $this->upload->data();
             $image =  $imageName;
             $brandName = $this->post("brandName");
-            $isDublicte = $this->Brand->checkBrand($brandName);
+            $isDublicte = $this->brand->checkBrand($brandName);
             if($isDublicte){
                 unlink($config['upload_path'].$image);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
@@ -130,7 +130,7 @@ class CarAccessory extends BD_Controller {
                     'update_by' => null,
                     "activeFlag" => 2
                 );
-                $isResult = $this->Brand->insert_brand($data);
+                $isResult = $this->brand->insert_brand($data);
                 if($isResult){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
@@ -147,12 +147,12 @@ class CarAccessory extends BD_Controller {
         $brandId = $this->get('brandId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("Brand");
-        $brand = $this->Brand->getBrandById($brandId);
+        $this->load->model("brand");
+        $brand = $this->brand->getBrandById($brandId);
         if($brand != null){
-            $isCheckStatus =$this->Brand->checkStatusFromBrand($brandId,$status,$userId);
+            $isCheckStatus =$this->brand->checkStatusFromBrand($brandId,$status,$userId);
             if($isCheckStatus ){
-            $isDelete = $this->Brand->delete($brandId);
+            $isDelete = $this->brand->delete($brandId);
                 if($isDelete){
                     $config['upload_path'] = 'public/image/brand/';
                     unlink($config['upload_path'].$brand->brandPicture);
@@ -174,8 +174,8 @@ class CarAccessory extends BD_Controller {
 
    function getBrand_post(){
     $brandId = $this->post('brandId');
-    $this->load->model("Brand");
-    $brand = $this->Brand->getBrandById($brandId);
+    $this->load->model("brand");
+    $brand = $this->brand->getBrandById($brandId);
         if($brand != null){
             $output["data"] = $brand;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -189,12 +189,12 @@ class CarAccessory extends BD_Controller {
     function getBrandforupdate_post(){
 
         $brandId = $this->post('brandId');
-        $this->load->model("Brand");
-        $isCheck = $this->Brand->checkBrandforget($brandId);
+        $this->load->model("brand");
+        $isCheck = $this->brand->checkBrandforget($brandId);
 
         if($isCheck){
             $output["status"] = true;
-            $result = $this->Brand->getBrandById($brandId);
+            $result = $this->brand->getBrandById($brandId);
             if($result != null){
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -223,7 +223,7 @@ class CarAccessory extends BD_Controller {
 
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->library('upload', $config);
-        $this->load->model("Brand");
+        $this->load->model("brand");
 
         $image =  "";
         if ( ! $this->upload->do_upload("brandPicture")){
@@ -239,7 +239,7 @@ class CarAccessory extends BD_Controller {
         $brandName = $this->post("brandName");
         $brandId = $this->post("brandId");
         $status = 2;
-        $isDublicte = $this->Brand->wherenot($brandId,$brandName);
+        $isDublicte = $this->brand->wherenot($brandId,$brandName);
         if($isDublicte){
             $data = array(
                 "brandId"=> $brandId,
@@ -249,10 +249,10 @@ class CarAccessory extends BD_Controller {
                 'update_by' => $userId,
                 'activeFlag' => 2 
             );
-            $isCheckStatus =$this->Brand->checkStatusFromBrand($brandId,$status,$userId);
+            $isCheckStatus =$this->brand->checkStatusFromBrand($brandId,$status,$userId);
             if($isCheckStatus ){
-                $oldData = $this->Brand->getBrandById($brandId);
-                $isResult = $this->Brand->update($data);
+                $oldData = $this->brand->getBrandById($brandId);
+                $isResult = $this->brand->update($data);
                 if($isResult){
                     unlink($config['upload_path'].$oldData->brandPicture);
                     $output["message"] = REST_Controller::MSG_SUCCESS;

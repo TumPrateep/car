@@ -15,9 +15,9 @@ class Location extends BD_Controller {
 
         $districtId = $this->post("districtId");
 
-        $this->load->model("LocationModel");
+        $this->load->model("locationModel");
         $output["status"] = true;
-        $result = $this->LocationModel->getSubdistrict($districtId);
+        $result = $this->locationModel->getSubdistrict($districtId);
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -33,9 +33,9 @@ class Location extends BD_Controller {
 
         $provinceId = $this->post("provinceId");
 
-        $this->load->model("LocationModel");
+        $this->load->model("locationModel");
         $output["status"] = true;
-        $result = $this->LocationModel->getDistrict($provinceId);
+        $result = $this->locationModel->getDistrict($provinceId);
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -49,9 +49,9 @@ class Location extends BD_Controller {
 
     function getProvince_post(){
 
-        $this->load->model("LocationModel");
+        $this->load->model("locationModel");
         $output["status"] = true;
-        $result = $this->LocationModel->getProvince();
+        $result = $this->locationModel->getProvince();
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -65,9 +65,9 @@ class Location extends BD_Controller {
 
     function getProvinceforcar_post(){
 
-        $this->load->model("LocationModel");
+        $this->load->model("locationModel");
         $output["status"] = true;
-        $result = $this->LocationModel->getProvincecar();
+        $result = $this->locationModel->getProvincecar();
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;

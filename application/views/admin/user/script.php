@@ -62,8 +62,8 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         if(data.category == null){
-                            return '<a href="'+base_url+"admin/usermanagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
-                            + '<a href="'+base_url+"admin/usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            return '<a href="'+base_url+"admin/UserManagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
+                            + '<a href="'+base_url+"admin/UserManagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             + '<button type="button" class="delete btn btn-danger" onclick="deleteUser('+data.id+',\''+data.username+'\')"><i class="fa fa-trash"></i></button>';
                         }
 
@@ -71,9 +71,9 @@
                             return '<small><i class="gray">ห้ามแก้ไข</i></small>';
                         }
 
-                        return '<a href="'+base_url+"admin/usermanagement/view/"+data.id+'"><button type="button" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
-                            + '<a href="'+base_url+"admin/usermanagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
-                            + '<a href="'+base_url+"admin/usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/UserManagement/view/"+data.id+'"><button type="button" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
+                            + '<a href="'+base_url+"admin/UserManagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
+                            + '<a href="'+base_url+"admin/UserManagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             + '<button type="button" class="delete btn btn-danger" onclick="deleteUser('+data.id+',\''+data.username+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{
@@ -120,7 +120,7 @@
             url: "/UserManagement/delete?id="+id,
             label: "ลบข้อมูลผู้ใช้งาน",
             content: "คุณต้องการลบ "+username+" ใช่หรือไม่",
-            gotoUrl: "admin/usermanagement"
+            gotoUrl: "admin/UserManagement"
         }
         fnDelete(option);
     }
@@ -137,7 +137,7 @@
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/usermanagement");
+                showMessage(data.message,"admin/UserManagement");
             }else{
                 showMessage(data.message);
             }

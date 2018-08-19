@@ -23,22 +23,22 @@ class Car extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
-        $this->load->model("Brand");
-        $totalData = $this->Brand->allBrand_count();
+        $this->load->model("brand");
+        $totalData = $this->brand->allBrand_count();
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('brandName'))&& empty($this->post('status')))
         {            
-            $posts = $this->Brand->allBrand($limit,$start,$order,$dir);
+            $posts = $this->brand->allBrand($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('brandName'); 
             $status = $this->post('status'); 
 
-            $posts =  $this->Brand->brand_search($limit,$start,$search,$order,$dir,$status);
+            $posts =  $this->brand->brand_search($limit,$start,$search,$order,$dir,$status);
 
-            $totalFiltered = $this->Brand->brand_search_count($search,$status);
+            $totalFiltered = $this->brand->brand_search_count($search,$status);
         }
 
         $data = array();
@@ -80,7 +80,7 @@ class Car extends BD_Controller {
             'status' => 1
         );
 
-        $this->load->model("Year");
+        $this->load->model("year");
         $isCheck = $this->Year->year_search($data);
         if($isCheck){
             $result = $this->Year->insert_year($data);
@@ -114,7 +114,7 @@ class Car extends BD_Controller {
         }
 
 
-        $this->load->model("Model");
+        $this->load->model("model");
         $isCheck = $this->Model->get_model($brandId,$modelName,$yearStart,$yearEnd);
 
         if($isCheck){
@@ -166,23 +166,23 @@ class Car extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
         $brandId = $this->post('brandId');
 
-        $this->load->model("Model");
-        $totalData = $this->Model->allModel_count($brandId);
+        $this->load->model("model");
+        $totalData = $this->model->allModel_count($brandId);
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('search')) && empty($this->post('year')) && empty($this->post('status')) )
         {            
-            $posts = $this->Model->allModel($limit,$start,$order,$dir,$brandId);
+            $posts = $this->model->allModel($limit,$start,$order,$dir,$brandId);
         }
         else {
             $search = $this->post('search');
             $year = $this->post('year');
             $status = $this->post('status');
 
-            $posts =  $this->Model->model_search($limit,$start,$search, $year, $status ,$order,$dir,$brandId);
+            $posts =  $this->model->model_search($limit,$start,$search, $year, $status ,$order,$dir,$brandId);
 
-            $totalFiltered = $this->Model->model_search_count($search, $year, $status, $brandId);
+            $totalFiltered = $this->model->model_search_count($search, $year, $status, $brandId);
         }
 
         $data = array();
@@ -216,10 +216,10 @@ class Car extends BD_Controller {
     function getBrand_post(){
 
         $brandId = $this->post('brandId');
-        $this->load->model("Brand");
+        $this->load->model("brand");
 
         $output["status"] = true;
-        $result = $this->Brand->getBrandById($brandId);
+        $result = $this->brand->getBrandById($brandId);
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -244,21 +244,21 @@ class Car extends BD_Controller {
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
     
-        $this->load->model("Year");
-        $totalData = $this->Year->allYear_count($brandId,$modelId);
+        $this->load->model("year");
+        $totalData = $this->year->allYear_count($brandId,$modelId);
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('year')) || empty($this->post('brandId')) || empty($this->post('modelId')))
         {            
-            $posts = $this->Year->allYear($limit,$start,$order,$dir,$brandId,$modelId);
+            $posts = $this->year->allYear($limit,$start,$order,$dir,$brandId,$modelId);
         }
         else {
             $search = $this->post('year'); 
 
-            $posts =  $this->Year->year_search($limit,$start,$search,$order,$dir,$brandId,$modelId);
+            $posts =  $this->year->year_search($limit,$start,$search,$order,$dir,$brandId,$modelId);
 
-            $totalFiltered = $this->Year->year_search_count($search,$brandId,$modelId);
+            $totalFiltered = $this->year->year_search_count($search,$brandId,$modelId);
         }
 
         $data = array();
@@ -290,10 +290,10 @@ class Car extends BD_Controller {
     
     function deleteBrand_get(){
         $brandId = $this->get('brandId');
-        $this->load->model("Brand");
-        $brand = $this->Brand->getBrandById($brandId);
+        $this->load->model("brand");
+        $brand = $this->brand->getBrandById($brandId);
         if($brand != null){
-            $isDelete = $this->Brand->delete($brandId);
+            $isDelete = $this->brand->delete($brandId);
             if($isDelete){
                 $config['upload_path'] = 'public/image/brand/';
                 unlink($config['upload_path'].$brand->brandPicture);
@@ -312,10 +312,10 @@ class Car extends BD_Controller {
     function deleteYear_get(){
         $id = $this->get('id');
 
-        $this->load->model("Year");
-        $year = $this->Year->getyear($id);
+        $this->load->model("year");
+        $year = $this->year->getyear($id);
         if($year != null){
-            $isDelete = $this->Year->delete($id);
+            $isDelete = $this->year->delete($id);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -332,10 +332,10 @@ class Car extends BD_Controller {
     function deleteModel_get(){
         $modelId = $this->get('modelId');
 
-        $this->load->model("Model");
-        $model = $this->Model->getmodel($modelId);
+        $this->load->model("model");
+        $model = $this->model->getmodel($modelId);
         if($model != null){
-            $isDelete = $this->Model->delete($modelId);
+            $isDelete = $this->model->delete($modelId);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -356,14 +356,14 @@ class Car extends BD_Controller {
         $brandId = $this->post('brandId');
         $yearStart = $this->post('yearStart');
         $yearEnd = $this->post('yearEnd');
-        $this->load->model("Model");
+        $this->load->model("model");
         $userId = $this->session->userdata['logged_in']['id'];
         
         if($yearEnd == 0){
             $yearEnd = null;
         }
         
-        $result = $this->Model->wherenot($modelId,$modelName, $yearStart, $brandId);
+        $result = $this->model->wherenot($modelId,$modelName, $yearStart, $brandId);
 
         if($result){
             $data = array(
@@ -376,7 +376,7 @@ class Car extends BD_Controller {
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );
-            $result = $this->Model->update($data);
+            $result = $this->model->update($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -399,9 +399,9 @@ class Car extends BD_Controller {
         $modelId = $this->post('modelId');
         $year = $this->post('year');
         $id = $this->post('id');
-        $this->load->model("Year");
+        $this->load->model("year");
 
-        $result = $this->Year->wherenot($brandId,$modelId,$id,$year);
+        $result = $this->year->wherenot($brandId,$modelId,$id,$year);
 
         if($result){
             $data = array(
@@ -411,7 +411,7 @@ class Car extends BD_Controller {
                 'id' => $id,
                 'status' => 1
             );
-            $result = $this->Year->update($data);
+            $result = $this->year->update($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -431,12 +431,12 @@ class Car extends BD_Controller {
     function getModel_post(){
 
         $modelId = $this->post('modelId');
-        $this->load->model("Model");
-        $isCheck = $this->Model->get_modelbyId($modelId);
+        $this->load->model("model");
+        $isCheck = $this->model->get_modelbyId($modelId);
 
         if($isCheck){
             $output["status"] = true;
-            $result = $this->Model->getmodel($modelId);
+            $result = $this->model->getmodel($modelId);
             if($result != null){
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -466,7 +466,7 @@ class Car extends BD_Controller {
         $config['remove_spaces'] = TRUE;
 
         $this->load->library('upload', $config);
-        $this->load->model("Brand");
+        $this->load->model("brand");
         $userId = $this->session->userdata['logged_in']['id'];
 
 		if ( ! $this->upload->do_upload("brandPicture"))
@@ -481,7 +481,7 @@ class Car extends BD_Controller {
             $imageDetailArray = $this->upload->data();
             $image =  $imageDetailArray['file_name'];
             $brandName = $this->post("brandName");
-            $isDublicte = $this->Brand->checkBrand($brandName);
+            $isDublicte = $this->brand->checkBrand($brandName);
             if($isDublicte){
                 unlink($config['upload_path'].$image);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
@@ -498,7 +498,7 @@ class Car extends BD_Controller {
                     'update_by' => null,
                     "activeFlag" => 1
                 );
-                $isResult = $this->Brand->insert_brand($data);
+                $isResult = $this->brand->insert_brand($data);
                 if($isResult){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
@@ -523,7 +523,7 @@ class Car extends BD_Controller {
 
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->library('upload', $config);
-        $this->load->model("Brand");
+        $this->load->model("brand");
 
         $image =  "";
         if ( ! $this->upload->do_upload("brandPicture")){
@@ -538,7 +538,7 @@ class Car extends BD_Controller {
         
         $brandName = $this->post("brandName");
         $brandId = $this->post("brandId");
-        $isDublicte = $this->Brand->wherenot($brandId,$brandName);
+        $isDublicte = $this->brand->wherenot($brandId,$brandName);
         if($isDublicte){
             $data = array(
                 "brandId"=> $brandId,
@@ -548,8 +548,8 @@ class Car extends BD_Controller {
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );
-            $oldData = $this->Brand->getBrandById($brandId);
-            $isResult = $this->Brand->update($data);
+            $oldData = $this->brand->getBrandById($brandId);
+            $isResult = $this->brand->update($data);
             if($isResult){
                 unlink($config['upload_path'].$oldData->brandPicture);
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -571,12 +571,12 @@ class Car extends BD_Controller {
     function getBrandforupdate_post(){
 
         $brandId = $this->post('brandId');
-        $this->load->model("Brand");
-        $isCheck = $this->Brand->checkBrandforget($brandId);
+        $this->load->model("brand");
+        $isCheck = $this->brand->checkBrandforget($brandId);
 
         if($isCheck){
-            $output["status"] = true;
-            $result = $this->Brand->getBrandById($brandId);
+            $output["status"]= true;
+            $result = $this->brand->getBrandById($brandId);
             if($result != null){
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -605,8 +605,8 @@ class Car extends BD_Controller {
             'status' => $status,
             'activeFlag' => 1
         );
-        $this->load->model("Brand");
-        $result = $this->Brand->updateStatus($brandId,$data);
+        $this->load->model("brand");
+        $result = $this->brand->updateStatus($brandId,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);
@@ -628,8 +628,8 @@ class Car extends BD_Controller {
             'status' => $status,
             'activeFlag' => 1
         );
-        $this->load->model("Model");
-        $result = $this->Model->updateStatus($modelId,$data);
+        $this->load->model("model");
+        $result = $this->model->updateStatus($modelId,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);
@@ -640,16 +640,16 @@ class Car extends BD_Controller {
     }
 
     function getAllBrand_get(){
-        $this->load->model("Brand");
-        $result = $this->Brand->getAllBrand();
+        $this->load->model("brand");
+        $result = $this->brand->getAllBrand();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
     function getAllModel_get(){
         $brandId = $this->get("brandId");
-        $this->load->model("Model");
-        $result = $this->Model->getAllModelByBrandId($brandId);
+        $this->load->model("model");
+        $result = $this->model->getAllModelByBrandId($brandId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
