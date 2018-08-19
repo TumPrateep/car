@@ -233,4 +233,5 @@ class Tiresize extends BD_Controller {
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
+    
 }
