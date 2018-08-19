@@ -7,7 +7,7 @@
             "userId": userId
         }, function(data) {
             if (data.message != 200) {
-                showMessage(data.message, "admin/usermanagement");
+                showMessage(data.message, "admin/UserManagement");
             }else{
                 $("#avatar").attr("src", base_url+"public/image/role/"+data.role+".jpg");
                 $("#role-name").text(roleNameLib[data.role]);

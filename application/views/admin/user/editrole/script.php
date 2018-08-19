@@ -539,7 +539,7 @@
             garageSubdistrictDropdown.html("");
             garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url + "api/location/getDistrict", {
+            $.post(base_url + "api/Location/getDistrict", {
                     provinceId: provinceId
                 },
                 function(data) {
@@ -569,7 +569,7 @@
             garageSubdistrictDropdown.html("");
             garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url + "api/location/getSubdistrict", {
+            $.post(base_url + "api/Location/getSubdistrict", {
                     districtId: districtId
                 },
                 function(data) {
@@ -596,7 +596,7 @@
         sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
         function loadSparepartProvince() {
-            $.post(base_url + "api/location/getProvince", {},
+            $.post(base_url + "api/Location/getProvince", {},
                 function(data) {
                     var province = data.data;
                     $.each(province, function(index, value) {
@@ -628,7 +628,7 @@
             sparepartSubdistrictDropdown.html("");
             sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url + "api/location/getDistrict", {
+            $.post(base_url + "api/Location/getDistrict", {
                     provinceId: provinceId
                 },
                 function(data) {
@@ -658,7 +658,7 @@
             sparepartSubdistrictDropdown.html("");
             sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url + "api/location/getSubdistrict", {
+            $.post(base_url + "api/Location/getSubdistrict", {
                     districtId: districtId
                 },
                 function(data) {
@@ -753,7 +753,7 @@
                     type: 'POST',
                     success: function(data) {
                         if (data.message == 200) {
-                            showMessage(data.message, "admin/usermanagement");
+                            showMessage(data.message, "admin/UserManagement");
                         } else {
                             showMessage(data.message);
                         }
@@ -767,7 +767,7 @@
             var provincePlateDropdown = $("#provincePlate");
             provincePlateDropdown.append('<option value="">เลือกจังหวัด</option>');
             
-            $.post(base_url + "api/location/getProvinceforcar", {},
+            $.post(base_url + "api/Location/getProvinceforcar", {},
                 function(data) {
                     var provinceforcar = data.data;
                     $.each(provinceforcar, function(index, value) {
@@ -788,7 +788,7 @@
             "userId": userId
         }, function(data) {
             if (data.message != 200) {
-                showMessage(data.message, "admin/usermanagement");
+                showMessage(data.message, "admin/UserManagement");
             }
 
             if (data.message == 200) {

@@ -48,7 +48,7 @@
         var isValid = $("#submit").valid();
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/tirechange/createtirechange",data,
+            $.post(base_url+"api/TireChange/createtirechange",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"admin/Tires/tirechange/");

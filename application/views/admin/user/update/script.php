@@ -34,7 +34,7 @@
         "id": id
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/usermanagement");
+            showMessage(data.message,"admin/UserManagement");
         }
 
         if(data.message == 200){
@@ -59,7 +59,7 @@
             $.post(base_url+"api/UserManagement/updateUser",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/usermanagement");
+                    showMessage(data.message,"admin/UserManagement");
                 }else{
                     showMessage(data.message);
                 }

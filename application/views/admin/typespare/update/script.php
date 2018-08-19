@@ -42,10 +42,10 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/spareUndercarriage/updatesparesUndercarriage",data,
+            $.post(base_url+"api/SpareUndercarriage/updatesparesUndercarriage",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/sparepartcar");
+                    showMessage(data.message,"admin/SparePartCar");
                 }else{
                     showMessage(data.message);
                 }
