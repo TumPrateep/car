@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class Sparesnndercarriages extends CI_Model{
+class Sparesundercarriages extends CI_Model{
 
     function allsparesUndercarriages_count()
     {   

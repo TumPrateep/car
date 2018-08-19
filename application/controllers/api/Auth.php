@@ -45,7 +45,7 @@ class Auth extends BD_Controller {
             $output['token'] = JWT::encode($token,$kunci); //This is the output token
             $output['userId'] = $val->id;
             $this->load->model("profile");
-            $profile = $this->Profile->findUserProfileById($val->id);
+            $profile = $this->profile->findUserProfileById($val->id);
             $sess_array = array(
                 'id' => $val->id,
                 'username' => $val->username,

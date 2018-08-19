@@ -462,7 +462,7 @@ class UserManagement extends BD_Controller {
         
         $user = $this->user->getUser($userId);
         if($user != null){
-            $result = $this->Profile->findUserProfileByIdAndStatusActive($userId);
+            $result = $this->profile->findUserProfileByIdAndStatusActive($userId);
             $result->provinceName = $this->location->getProvinceNameByProvinceId($result->provinceId);
             $result->districtName = $this->location->getDistrictNameByDistrictId($result->districtId);
             $result->subdistrictName = $this->location->getSubDistrictBySubDistrictId($result->subdistrictId);
@@ -492,13 +492,13 @@ class UserManagement extends BD_Controller {
             $data->provincePlateName = $this->location->getProvinceNamePlateByProvinceId($data->province_plate);
         }else if($role == 3){
             // อู่
-            $data = $this->Garage->getGarageFromGarageByUserId($userId);
+            $data = $this->garage->getGarageFromGarageByUserId($userId);
             $data->provinceName = $this->location->getProvinceNameByProvinceId($data->provinceId);
             $data->districtName = $this->location->getDistrictNameByDistrictId($data->districtId);
             $data->subdistrictName = $this->location->getSubDistrictBySubDistrictId($data->subdistrictId);
         }else if($role == 2){
             // ร้านอะไหล่
-            $data = $this->Caraccessories->getCarAccessoriesFromCarAccessoriesByUserId($userId);
+            $data = $this->caraccessories->getCarAccessoriesFromCarAccessoriesByUserId($userId);
             $data->provinceName = $this->location->getProvinceNameByProvinceId($data->provinceId);
             $data->districtName = $this->location->getDistrictNameByDistrictId($data->districtId);
             $data->subdistrictName = $this->location->getSubDistrictBySubDistrictId($data->subdistrictId);
