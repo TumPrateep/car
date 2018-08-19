@@ -14,8 +14,8 @@ class LubricatorType extends BD_Controller {
         $lubricator_typeName = $this->post("lubricator_typeName");
         $lubricator_typeSize = $this->post("lubricator_typeSize");
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("lubricatorTypes");
-        $isCheck = $this->lubricatorTypes->checklubricatorType($lubricator_typeName);
+        $this->load->model("lubricatortypes");
+        $isCheck = $this->lubricatortypes->checklubricatorType($lubricator_typeName);
 
         if($isCheck){
             $data = array(
@@ -29,7 +29,7 @@ class LubricatorType extends BD_Controller {
                 
                 
             );
-            $result = $this->lubricatorTypes->insert_lubricatorType($data);
+            $result = $this->lubricatortypes->insert_lubricatorType($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -65,20 +65,20 @@ class LubricatorType extends BD_Controller {
         $order = $column;
         $dir = $sort;
 
-        $this->load->model("LubricatorTypes");
-        $totalData = $this->LubricatorTypes->allLubricatorTypes_count();
+        $this->load->model("lubricatortypes");
+        $totalData = $this->lubricatortypes->allLubricatorTypes_count();
 
         $totalFiltered = $totalData; 
     
         if(empty($this->post('lubricator_typeName')))
         {            
-            $posts = $this->LubricatorTypes->allLubricatorTypes($limit,$start,$order,$dir);
+            $posts = $this->lubricatortypes->allLubricatorTypes($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('lubricator_typeName');
             $status = 1; 
-            $posts =  $this->LubricatorTypes->lubricatorTypes_search($limit,$start,$search,$order,$dir,$status);
-            $totalFiltered = $this->LubricatorTypes->lubricatorTypes_search_count($search,$status);
+            $posts =  $this->lubricatortypes->lubricatorTypes_search($limit,$start,$search,$order,$dir,$status);
+            $totalFiltered = $this->lubricatortypes->lubricatorTypes_search_count($search,$status);
         }
 
         $data = array();
@@ -123,12 +123,12 @@ class LubricatorType extends BD_Controller {
         $lubricator_typeId = $this->get('lubricator_typeId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("LubricatorTypes");
-        $lubricator_type = $this->LubricatorTypes->getlubricatorTypeById($lubricator_typeId);
+        $this->load->model("lubricatortypes");
+        $lubricator_type = $this->lubricatortypes->getlubricatorTypeById($lubricator_typeId);
         if($lubricator_type != null){
-            $isCheckStatus =$this->LubricatorTypes->checkStatusFromLubricatorTypes($lubricator_typeId,$status,$userId);
+            $isCheckStatus =$this->lubricatortypes->checkStatusFromLubricatorTypes($lubricator_typeId,$status,$userId);
             if($isCheckStatus ){
-            $isDelete = $this->LubricatorTypes->delete($lubricator_typeId);
+            $isDelete = $this->lubricatortypes->delete($lubricator_typeId);
                 if($isDelete){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
@@ -151,8 +151,8 @@ class LubricatorType extends BD_Controller {
         $lubricator_typeSize = $this->post("lubricator_typeSize");
         $status = 2;
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("LubricatorTypes");
-        $isCheck = $this->LubricatorTypes->checklubricatorType($lubricator_typeName);
+        $this->load->model("lubricatortypes");
+        $isCheck = $this->lubricatortypes->checklubricatorType($lubricator_typeName);
         if($isCheck){
             $data = array(
                 'lubricator_typeId' => $lubricator_typeId,
@@ -162,9 +162,9 @@ class LubricatorType extends BD_Controller {
                 'update_at' =>date('Y-m-d H:i:s',time()),
                 'activeFlag' =>2
             );
-            $isCheckStatus = $this->LubricatorTypes->checkStatusFromLubricatorTypes($lubricator_typeId,$status,$userId);
+            $isCheckStatus = $this->lubricatortypes->checkStatusFromLubricatorTypes($lubricator_typeId,$status,$userId);
             if($isCheckStatus){
-                $result = $this->LubricatorTypes->update($data);
+                $result = $this->lubricatortypes->update($data);
                 if($result){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);

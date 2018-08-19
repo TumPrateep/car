@@ -72,8 +72,8 @@ class TireRim extends BD_Controller {
     function getAllTireRim_post(){
         $q = $this->post("term");
         $page = $this->post("page");
-        $this->load->model("Tirerims");
-        $listTireRim = $this->Tirerims->getAllTireRimByName($q, $page);
+        $this->load->model("tirerims");
+        $listTireRim = $this->tirerims->getAllTireRimByName($q, $page);
         $output["items"] = [];
         $nestedData = [];
         if($listTireRim != null){

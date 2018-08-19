@@ -12,8 +12,8 @@ class Tirebrand extends BD_Controller {
     function getAllTireBrand_post(){
         $q = $this->post("term");
         $page = $this->post("page");
-        $this->load->model("Triebrands");
-        $listTireBrand = $this->Triebrands->getAllTireBrandByName($q, $page);
+        $this->load->model("triebrands");
+        $listTireBrand = $this->triebrands->getAllTireBrandByName($q, $page);
         $output["items"] = [];
         $nestedData = [];
         if($listTireBrand != null){
@@ -231,11 +231,11 @@ class Tirebrand extends BD_Controller {
     
     function getTireBrandforupdate_post(){
         $tire_brandId = $this->post('tire_brandId');
-        $this->load->model("Triebrands");
-        $isCheck = $this->Triebrands->checkTireBrandforget($tire_brandId);
+        $this->load->model("triebrands");
+        $isCheck = $this->triebrands->checkTireBrandforget($tire_brandId);
         if($isCheck){
             $output["status"] = true;
-            $result = $this->Triebrands->getirebrandById($tire_brandId);
+            $result = $this->triebrands->getirebrandById($tire_brandId);
             if($result != null){
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -253,8 +253,8 @@ class Tirebrand extends BD_Controller {
     }
 
     function getAllTireBrand_get(){
-        $this->load->model("Triebrands");
-        $result = $this->Triebrands->getAllTriebrands();
+        $this->load->model("triebrands");
+        $result = $this->triebrands->getAllTriebrands();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
