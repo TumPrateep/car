@@ -18,4 +18,9 @@ if(!function_exists('active_link')) {
     }
     return $result;
   }
+
+  function now_user(){
+    $CI =& get_instance();
+    return $CI->session->userdata['logged_in']['name'];
+  }
 }?>

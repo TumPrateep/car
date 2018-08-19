@@ -14,8 +14,8 @@
                                 <!-- <li><a href="<?=base_url("caraccessory/lubricator"); ?>">น้ำมันเครื่อง </a></li> -->
                                 <li class="active"> <a class="has-arrow" href="#" aria-expanded="true">น้ำมันเครื่อง </a>
                                     <ul aria-expanded="true" class="collapse in" style="">
-                                        <!-- <li><a href="<?=base_url("caraccessory/lubricatortype"); ?>">ประเภทน้ำมันเครื่อง</a></li> -->
-                                        <li><a href="<?=base_url("caraccessory/numberLubricator"); ?>">เบอร์น้ำมันเครื่อง</a></li>
+                                        <!-- <li><a href="<?=base_url("caraccessory/LubricatorType"); ?>">ประเภทน้ำมันเครื่อง</a></li> -->
+                                        <li><a href="<?=base_url("caraccessory/NumberLubricator"); ?>">เบอร์น้ำมันเครื่อง</a></li>
                                         <li><a href="<?=base_url("caraccessory/Lubricator"); ?>">ยี่ห้อน้ำมันเครื่อง</a></li>
                                     </ul>
                                 </li>
@@ -30,12 +30,13 @@
                         <li class="nav-label">ส่วนของร้านอะไหล่</li>
                         <li>
                             <a href="<?=base_url("caraccessory/SpareundercarriesData"); ?>">
-                                <i class="fa fa-tachometer"></i><span class="hide-menu">ข้อมูลอะไหล่ช่วงล่าง</span>
+                                <i class="fa fa-tachometer"></i>
+                                <span class="hide-menu">ข้อมูลอะไหล่ช่วงล่าง</span>
                             </a>
                         </li>
-                        <li><a href="<?=base_url("caraccessory/lubricatordata"); ?>"><i class="fa fa-tachometer"></i><span class="hide-menu">ข้อมูลน้ำมันเครื่อง</span></a></li>
+                        <li><a href="<?=base_url("caraccessory/LubricatorData"); ?>"><i class="fa fa-tachometer"></i><span class="hide-menu">ข้อมูลน้ำมันเครื่อง</span></a></li>
                         <li>
-                            <a href="<?=base_url("caraccessory/tiredata"); ?>">
+                            <a href="<?=base_url("caraccessory/TireData"); ?>">
                                 <i class="fa fa-tachometer"></i><span class="hide-menu">ข้อมูลยาง</span>
                             </a>
                         </li>

@@ -2,7 +2,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/lubricatortype") ?>">ประเภทน้ำมันเครื่อง</a>
+          <a href="<?=base_url("admin/LubricatorType") ?>">ประเภทน้ำมันเครื่อง</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขข้อมูล</li>
       </ol>

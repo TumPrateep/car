@@ -95,7 +95,7 @@
 
     function deleteCarModel(modelofcarId,modelofcarName,brandId,modelId){
         var option = {
-            url: "/modelofcar/delete?modelofcarId="+modelofcarId,
+            url: "/Modelofcar/delete?modelofcarId="+modelofcarId,
             label: "ลบโมเดลรถ",
             content: "คุณต้องการลบ "+modelofcarName+" ใช่หรือไม่",
             gotoUrl: "admin/car/carmodel/"+brandId+"/"+modelId
@@ -109,7 +109,7 @@
     })
 
     function updateStatus(modelofcarId,status,brandId,modelId){
-        $.post(base_url+"api/modelofcar/changeStatus",{
+        $.post(base_url+"api/Modelofcar/changeStatus",{
             "modelofcarId": modelofcarId,
             "status": status
         },function(data){

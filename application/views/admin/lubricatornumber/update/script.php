@@ -4,7 +4,7 @@
     var lubricator_numberId = $("#lubricator_numberId").val();
     var lubricatorNumber = $("#lubricator_number");
 
-    $.post(base_url+"api/lubricatortype/getAllLubricatorType",{},
+    $.post(base_url+"api/LubricatorType/getAllLubricatorType",{},
         function(result){
             var data = result.data;
             if(data != null){
@@ -21,7 +21,7 @@
             "lubricator_numberId": lubricator_numberId,
         },function(data){
             if(data.message!=200){
-                showMessage(data.message,"admin/lubricatortype");
+                showMessage(data.message,"admin/LubricatorType");
             }else{
                 result = data.data;
                 lubricatorNumber.val(result.lubricator_number);
@@ -89,7 +89,7 @@
             $.post(base_url+"api/LubricatorNumber/updateLubricatorNumber",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/lubricatornumber");
+                    showMessage(data.message,"admin/LubricatorNumber");
                 }else{
                     showMessage(data.message,);
                 }

@@ -27,15 +27,8 @@
         maxFileSize: 300,
         required: true,
         showCancel: false,
-        showUpload: false,
-                
-        
-        // MaxFileHeight :300,
-        // MaxFileWidth : 300
-
-        
-        
-});
+        showUpload: false
+    });
 
     $("#create-brand").submit(function(){
         createBrand();
