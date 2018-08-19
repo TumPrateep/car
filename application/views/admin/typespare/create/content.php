@@ -20,7 +20,6 @@
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form id="submit">
-                    <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
                     <div class="card-body black bg-light">
                       <div class="row">
                         <div class="col-md-12">

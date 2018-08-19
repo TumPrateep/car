@@ -18,22 +18,22 @@ class SpareUndercarriage extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
-        $this->load->model("sparesUndercarriages");
-        $totalData = $this->sparesUndercarriages->allsparesUndercarriages_count();
+        $this->load->model("sparesundercarriages");
+        $totalData = $this->sparesundercarriages->allsparesUndercarriages_count();
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('spares_undercarriageName'))&& empty($this->post('status')))
         {            
-            $posts = $this->sparesUndercarriages->allsparesUndercarriage($limit,$start,$order,$dir);
+            $posts = $this->sparesundercarriages->allsparesUndercarriage($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('spares_undercarriageName'); 
             $status = $this->post('status');
 
-            $posts =  $this->sparesUndercarriages->sparesUndercarriage_search($limit,$start,$search,$order,$dir,$status);
+            $posts =  $this->sparesundercarriages->sparesUndercarriage_search($limit,$start,$search,$order,$dir,$status);
 
-            $totalFiltered = $this->sparesUndercarriages->sparesUndercarriage_search_count($search,$status);
+            $totalFiltered = $this->sparesundercarriages->sparesUndercarriage_search_count($search,$status);
         }
 
         $data = array();
@@ -65,8 +65,8 @@ class SpareUndercarriage extends BD_Controller {
 
         $spares_undercarriageName = $this->post("spares_undercarriageName");
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("sparesUndercarriages");
-        $isCheck = $this->sparesUndercarriages->checksparesUndercarriage($spares_undercarriageName);
+        $this->load->model("sparesundercarriages");
+        $isCheck = $this->sparesundercarriages->checksparesUndercarriage($spares_undercarriageName);
 
         if($isCheck){
             $data = array(
@@ -77,7 +77,7 @@ class SpareUndercarriage extends BD_Controller {
                 'create_at' => date('Y-m-d H:i:s',time()),
                 'create_by' => $userId
             );
-            $result = $this->sparesUndercarriages->insertsparesUndercarriage($data);
+            $result = $this->sparesundercarriages->insertsparesUndercarriage($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -99,10 +99,10 @@ class SpareUndercarriage extends BD_Controller {
     function deletespareUndercarriage_get(){
         $spares_undercarriageId = $this->get('spares_undercarriageId');
 
-        $this->load->model("sparesUndercarriages");
-        $spares_undercarriage = $this->sparesUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
+        $this->load->model("sparesundercarriages");
+        $spares_undercarriage = $this->sparesundercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
         if($spares_undercarriage != null){
-            $isDelete = $this->sparesUndercarriages->delete($spares_undercarriageId);
+            $isDelete = $this->sparesundercarriages->delete($spares_undercarriageId);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -122,9 +122,9 @@ class SpareUndercarriage extends BD_Controller {
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_undercarriageName = $this->post('spares_undercarriageName');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("sparesUndercarriages");
+        $this->load->model("sparesundercarriages");
 
-        $result = $this->sparesUndercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
+        $result = $this->sparesundercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
 
         if($result){
             $data = array(
@@ -134,7 +134,7 @@ class SpareUndercarriage extends BD_Controller {
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );
-            $result = $this->sparesUndercarriages->updatesparesUndercarriage($data);
+            $result = $this->sparesundercarriages->updatesparesUndercarriage($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -157,12 +157,12 @@ class SpareUndercarriage extends BD_Controller {
 
         $spares_undercarriageId = $this->post('spares_undercarriageId');
 
-        $this->load->model("sparesUndercarriages");
-        $isCheck = $this->sparesUndercarriages->checksparesUndercarriage($spares_undercarriageId);
+        $this->load->model("sparesundercarriages");
+        $isCheck = $this->sparesundercarriages->checksparesUndercarriage($spares_undercarriageId);
 
         if($isCheck){
             $output["status"] = true;
-            $result = $this->sparesUndercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
+            $result = $this->sparesundercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
             if($result != null){
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -191,8 +191,8 @@ class SpareUndercarriage extends BD_Controller {
             'status' => $status,
             'activeFlag' => 1
         );
-        $this->load->model("sparesUndercarriages");
-        $result = $this->sparesUndercarriages->updateStatus($spares_undercarriageId,$data);
+        $this->load->model("sparesundercarriages");
+        $result = $this->sparesundercarriages->updateStatus($spares_undercarriageId,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);
@@ -202,6 +202,4 @@ class SpareUndercarriage extends BD_Controller {
         }
     }
 
-    
-
-    }
+}

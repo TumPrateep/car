@@ -36,7 +36,6 @@
       </form>
     </div>
 
-    <input type="hidden" id="spares_undercarriageId" value="<?=$spares_undercarriageId ?>">
     <div class="table-responsive">
       <table class="table table-bordered" id="spares_undercarriage-table" width="100%" cellspacing="0">
         <thead>

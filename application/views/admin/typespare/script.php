@@ -23,7 +23,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/spareUndercarriage/searchspareUndercarriage",
+                "url": base_url+"api/SpareUndercarriage/searchspareUndercarriage",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
