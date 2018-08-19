@@ -72,7 +72,7 @@ class LubricatorType extends BD_Controller {
             $start = $this->post('start');
             $order = $columns[$this->post('order')[0]['column']];
             $dir = $this->post('order')[0]['dir'];
-            $this->load->model("lubricatorTypes");
+            $this->load->model("lubricatortypes");
             $totalData = $this->lubricatortypes->allLubricatorTypes_count();
             $totalFiltered = $totalData; 
             if(empty($this->post('lubricator_typeName')) && empty($this->post('status')))
