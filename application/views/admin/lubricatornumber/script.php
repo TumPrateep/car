@@ -107,7 +107,7 @@
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/lubricatornumber/");
+                showMessage(data.message,"admin/LubricatorNumber/");
             }else{
                 showMessage(data.message);
             }
@@ -119,7 +119,7 @@
             url: "/LubricatorNumber/deleteLubricatorNumber?lubricator_numberId="+lubricator_numberId,
             label: "ลบประเภทน้ำมัน",
             content: "คุณต้องการลบ "+lubricator_number+" ใช่หรือไม่",
-            gotoUrl: "admin/lubricatornumber"
+            gotoUrl: "admin/LubricatorNumber"
         }
         fnDelete(option);
     }

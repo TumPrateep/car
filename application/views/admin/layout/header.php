@@ -1,5 +1,5 @@
 <?php 
-  $name = $this->session->userdata['logged_in']['name'];
+  $name = now_user();
 ?>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
