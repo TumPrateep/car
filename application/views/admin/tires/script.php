@@ -33,7 +33,7 @@ function deleterim(rimId,rimName){
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/rim/searchrim",
+                "url": base_url+"api/Rim/searchrim",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {

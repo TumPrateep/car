@@ -23,10 +23,10 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/spareundercarriage/createspareUndercarriage",data,
+            $.post(base_url+"api/SpareUndercarriage/createspareUndercarriage",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/sparepartcar");
+                    showMessage(data.message,"admin/SparePartCar");
                 }else{
                     showMessage(data.message);
                 }

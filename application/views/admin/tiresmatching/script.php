@@ -101,7 +101,7 @@
             url: "/TireMatching/delete?tire_matchingId="+tire_matchingId,
             label: "ลบขนาดยางตามยี่ห้อ",
             content: "คุณต้องการลบขนาดยางตามยี่ห้อ ใช่หรือไม่",
-            gotoUrl: "admin/tires/tiresmatching"
+            gotoUrl: "admin/Tires/tiresmatching"
         }
         fnDelete(option);
     }
@@ -112,7 +112,7 @@
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/tires/tiresmatching/");
+                showMessage(data.message,"admin/Tires/tiresmatching/");
             }else{
                 showMessage(data.message);
             }

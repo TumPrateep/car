@@ -1,5 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
-class TireMatch extends CI_Model{
+
+class Tirematch extends CI_Model{
     
     function allTirematching_count(){  
         $this->db->select('tire_matching.tire_matchingId, tire_matching.status, brand.brandName, model.modelName, concat(tire_size.tire_size,"/",tire_size.tire_series,tire_size.rim) as tire_size, modelofcar.modelofcarName');

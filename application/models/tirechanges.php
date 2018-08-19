@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class tirechanges extends CI_Model{
+class Tirechanges extends CI_Model{
     function checkDuplicate($rimId){
         $this->db->from("tire_change");
         $this->db->join('rim','tire_change.rimId = rim.rimId');

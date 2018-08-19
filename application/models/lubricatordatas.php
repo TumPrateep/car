@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class lubricatordatas extends CI_Model{
+class Lubricatordatas extends CI_Model{
 
     function getlubricatorbyId($lubricator_dataId){
         $this->db->where('lubricator_dataId',$lubricator_dataId);
