@@ -10,12 +10,12 @@ class TireData extends BD_Controller {
     }
     public function delete_get(){
         $tire_dataId = $this->get('tire_dataId');
-        $this->load->model("TireDatas");
-        $tire = $this->TireDatas->getireById($tire_dataId);
+        $this->load->model("tiredatas");
+        $tire = $this->tiredatas->getireById($tire_dataId);
         $userId = $this->session->userdata['logged_in']['id'];
         if($tire != null){
         
-            $isDelete = $this->TireDatas->delete($tire_dataId);
+            $isDelete = $this->tiredatas->delete($tire_dataId);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -54,7 +54,7 @@ class TireData extends BD_Controller {
         // $config['remove_spaces'] = TRUE;
         // $this->load->library('upload', $config);
 
-        $this->load->model("TireDatas");
+        $this->load->model("tiredatas");
         // $userId = $this->session->userdata['logged_in']['id'];
         $img = $this->post('tire_picture');
         $img = str_replace('data:image/png;base64,', '', $img);
@@ -69,7 +69,7 @@ class TireData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $isDuplicated = $this->TireDatas->checkduplicated($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
+            $isDuplicated = $this->tiredatas->checkduplicated($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
             if($isDuplicated){
                 unlink($file);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
@@ -94,7 +94,7 @@ class TireData extends BD_Controller {
                     'warranty' => $warranty,
                     'can_change' =>$can_change
                 );
-                $result = $this->TireDatas->insert($data);
+                $result = $this->tiredatas->insert($data);
                 if($result){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
@@ -130,7 +130,7 @@ class TireData extends BD_Controller {
         // $config['remove_spaces'] = TRUE;
         // $this->load->library('upload', $config);
 
-        $this->load->model("TireDatas");
+        $this->load->model("tiredatas");
         $userId = $this->session->userdata['logged_in']['id'];
 
         $img = $this->post('tire_picture');
@@ -151,7 +151,7 @@ class TireData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $isDuplicated = $this->TireDatas->checkduplicatedUpdate($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
+            $isDuplicated = $this->tiredatas->checkduplicatedUpdate($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
             if(!$isDuplicated){
                 $data = array(
                     'tire_dataId' => $tire_dataId,
@@ -175,7 +175,7 @@ class TireData extends BD_Controller {
                     $data["tire_picture"] = $image;
                 }
                 
-                $result = $this->TireDatas->update($data, $tire_dataId);
+                $result = $this->tiredatas->update($data, $tire_dataId);
                 if($result){
                     unlink($config['upload_path'].$oldData->tire_picture);
                     $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -197,8 +197,8 @@ class TireData extends BD_Controller {
 
     function getTireData_get(){
         $tire_dataId = $this->get('tire_dataId');
-        $this->load->model("TireDatas");
-        $tire_data = $this->TireDatas->gettire_dataById($tire_dataId);
+        $this->load->model("tiredatas");
+        $tire_data = $this->tiredatas->gettire_dataById($tire_dataId);
         if($tire_data != null){
             $output["data"] = $tire_data;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -224,12 +224,12 @@ class TireData extends BD_Controller {
         $order = $column;
         $dir = $sort;
 
-        $this->load->model('TireDatas');
-        $totalData = $this->TireDatas->allTire_count();
+        $this->load->model('tiredatas');
+        $totalData = $this->tiredatas->allTire_count();
         $totalFiltered = $totalData; 
         if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')))
         {            
-            $posts = $this->TireDatas->allTires($limit,$start,$order,$dir);
+            $posts = $this->tiredatas->allTires($limit,$start,$order,$dir);
         }
         else {
             // $search = $this->post('brandName'); 
@@ -241,9 +241,9 @@ class TireData extends BD_Controller {
             $can_change = $this->post('can_change');
             
             $status = null; 
-            $posts =  $this->TireDatas->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change);
+            $posts =  $this->tiredatas->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change);
 
-            $totalFiltered = $this->TireDatas->TireDatas_search_count($tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change);
+            $totalFiltered = $this->tiredatas->TireDatas_search_count($tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change);
         }
 
         $data = array();

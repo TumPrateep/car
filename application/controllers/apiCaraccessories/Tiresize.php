@@ -12,8 +12,8 @@ class Tiresize extends BD_Controller {
         $q = $this->post("term");
         $page = $this->post("page");
         $tireRimId = $this->post("tireRimId");
-        $this->load->model("trieSizes");
-        $listTireSize = $this->trieSizes->getAllTireSizeByName($q, $page, $tireRimId);
+        $this->load->model("triesizes");
+        $listTireSize = $this->triesizes->getAllTireSizeByName($q, $page, $tireRimId);
         $output["items"] = [];
         $nestedData = [];
         if($listTireSize != null){
@@ -34,9 +34,9 @@ class Tiresize extends BD_Controller {
         $rim = $this->post('rim');
         $tire_series = $this->post('tire_series');
         
-        $this->load->model("trieSizes");
+        $this->load->model("triesizes");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->trieSizes->isDuplicate($tire_size, $tire_series, $rim, $rimId);
+        $isCheck = $this->triesizes->isDuplicate($tire_size, $tire_series, $rim, $rimId);
         
         if($isCheck){
             $data = array(
@@ -51,7 +51,7 @@ class Tiresize extends BD_Controller {
                 'activeFlag' => 2
                 
             );
-            $result = $this->trieSizes->inserttrie_size($data);
+            $result = $this->triesizes->inserttrie_size($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -86,18 +86,18 @@ class Tiresize extends BD_Controller {
         $order = $column;
         $dir = $sort;
         $rimId = $this->post("rimId");
-        $this->load->model("trieSizes");
-        $totalData = $this->trieSizes->alltrieSize_count($rimId);
+        $this->load->model("triesizes");
+        $totalData = $this->triesizes->alltrieSize_count($rimId);
         $totalFiltered = $totalData; 
         if(empty($this->post('tire_size')))
         {            
-            $posts = $this->trieSizes->allTriesize($limit,$start,$order,$dir, $rimId);
+            $posts = $this->triesizes->allTriesize($limit,$start,$order,$dir, $rimId);
         }
         else {
             $search = $this->post('tire_size');
             $rimId = $this->post('rimId'); 
-            $posts =  $this->trieSizes->trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status);
-            $totalFiltered = $this->trieSizes->trie_size_search_count($search, $rimId,$status);
+            $posts =  $this->triesizes->trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status);
+            $totalFiltered = $this->triesizes->trie_size_search_count($search, $rimId,$status);
             
            
         }
@@ -141,12 +141,12 @@ class Tiresize extends BD_Controller {
         $rimId = $this->get('rimId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("trieSizes");
-        $tire = $this->trieSizes->getiresizeById($tire_sizeId);
+        $this->load->model("triesizes");
+        $tire = $this->triesizes->getiresizeById($tire_sizeId);
         if($tire != null){
-            $isCheckStatus =$this->trieSizes->checkStatusFromTireSize($tire_sizeId,$status,$userId);
+            $isCheckStatus =$this->triesizes->checkStatusFromTireSize($tire_sizeId,$status,$userId);
             if($isCheckStatus ){
-                $isDelete = $this->trieSizes->delete($tire_sizeId);
+                $isDelete = $this->triesizes->delete($tire_sizeId);
                 if($isDelete){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
@@ -166,10 +166,10 @@ class Tiresize extends BD_Controller {
     function getiresize_post(){
         $tire_sizeId = $this->post('tire_sizeId');
         $rimId = $this->post('rimId');
-        $this->load->model("trieSizes");
+        $this->load->model("triesizes");
        
         $this->set_response($isCheck, REST_Controller::HTTP_OK);
-        $result = $this->trieSizes->geTiresizeFromTiresizeBytireId($tire_sizeId);
+        $result = $this->triesizes->geTiresizeFromTiresizeBytireId($tire_sizeId);
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -189,8 +189,8 @@ class Tiresize extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         
         $this->load->model("rims");
-        $this->load->model("trieSizes");
-        $result = $this->trieSizes->wherenotTriesize($tire_sizeId,$tire_size,$rimId);
+        $this->load->model("triesizes");
+        $result = $this->triesizes->wherenotTriesize($tire_sizeId,$tire_size,$rimId);
         if($result){
             $data = array(
                 'tire_sizeId' => $tire_sizeId,
@@ -203,9 +203,9 @@ class Tiresize extends BD_Controller {
                 'update_by' => $userId,
                 'activeFlag' => 2
         );
-            $isCheckStatus =$this->trieSizes->checkStatusFromTireSize($tire_sizeId,$status,$userId);
+            $isCheckStatus =$this->triesizes->checkStatusFromTireSize($tire_sizeId,$status,$userId);
             if($isCheckStatus ){
-                $result = $this->trieSizes->updateTriesizes($data);
+                $result = $this->triesizes->updateTriesizes($data);
                 $output["status"] = $result;
                     if($result){
                         $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -228,8 +228,8 @@ class Tiresize extends BD_Controller {
 
     function getAllTireSize_get(){
         $tire_rimId = $this->get("tire_rimId");
-        $this->load->model("trieSizes");
-        $result = $this->trieSizes->getAllTireSizeByrimId($tire_rimId);
+        $this->load->model("triesizes");
+        $result = $this->triesizes->getAllTireSizeByrimId($tire_rimId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }

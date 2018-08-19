@@ -26,23 +26,23 @@ class CarModel extends BD_Controller {
         $dir = $sort;
         $brandId = $this->post('brandId');
 
-        $this->load->model("Model");
-        $totalData = $this->Model->allModel_count($brandId);
+        $this->load->model("model");
+        $totalData = $this->model->allModel_count($brandId);
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('search'))&& empty($this->post('year')))
         {            
-            $posts = $this->Model->allModel($limit,$start,$order,$dir,$brandId);
+            $posts = $this->model->allModel($limit,$start,$order,$dir,$brandId);
         }
         else {
             $search = $this->post('search');
             $year = $this->post('year');
             $status = 1;
 
-            $posts =  $this->Model->model_search($limit,$start,$search, $year, $status ,$order,$dir,$brandId);
+            $posts =  $this->model->model_search($limit,$start,$search, $year, $status ,$order,$dir,$brandId);
 
-            $totalFiltered = $this->Model->model_search_count($search, $year, $status, $brandId);
+            $totalFiltered = $this->model->model_search_count($search, $year, $status, $brandId);
         }
 
         $data = array();
@@ -96,8 +96,8 @@ class CarModel extends BD_Controller {
         }
 
 
-        $this->load->model("Model");
-        $isCheck = $this->Model->get_model($brandId,$modelName,$yearStart,$yearEnd);
+        $this->load->model("model");
+        $isCheck = $this->model->get_model($brandId,$modelName,$yearStart,$yearEnd);
 
         if($isCheck){
             $data = array(
@@ -113,7 +113,7 @@ class CarModel extends BD_Controller {
                 'update_by' => null,
                 'activeFlag' => 2
             );
-            $result = $this->Model->insert_model($data);
+            $result = $this->model->insert_model($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -136,12 +136,12 @@ class CarModel extends BD_Controller {
         $modelId = $this->get('modelId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("Model");
-        $model = $this->Model->getmodel($modelId);
+        $this->load->model("model");
+        $model = $this->model->getmodel($modelId);
         if($model != null){
-            $isCheckStatus =$this->Model->checkStatusFromModelCar($modelId,$status,$userId);
+            $isCheckStatus =$this->model->checkStatusFromModelCar($modelId,$status,$userId);
             if($isCheckStatus ){
-            $isDelete = $this->Model->delete($modelId);
+            $isDelete = $this->model->delete($modelId);
                 if($isDelete){
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
@@ -179,7 +179,7 @@ class CarModel extends BD_Controller {
         $brandId = $this->post('brandId');
         $yearStart = $this->post('yearStart');
         $yearEnd = $this->post('yearEnd');
-        $this->load->model("Model");
+        $this->load->model("model");
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
         
@@ -187,7 +187,7 @@ class CarModel extends BD_Controller {
             $yearEnd = null;
         }
         
-        $result = $this->Model->wherenot($modelId,$modelName, $yearStart, $brandId);
+        $result = $this->model->wherenot($modelId,$modelName, $yearStart, $brandId);
 
         if($result){
             $data = array(
@@ -201,9 +201,9 @@ class CarModel extends BD_Controller {
                 'update_by' => $userId,
                 'activeFlag'=> 2
         );
-            $isCheckStatus =$this->Model->checkStatusFromModelCar($modelId,$status,$userId);
+            $isCheckStatus =$this->model->checkStatusFromModelCar($modelId,$status,$userId);
             if($isCheckStatus ){
-                $result = $this->Model->update($data);
+                $result = $this->model->update($data);
                 $output["status"] = $result;
                     if($result){
                         $output["message"] = REST_Controller::MSG_SUCCESS;
