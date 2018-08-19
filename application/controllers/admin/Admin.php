@@ -19,22 +19,6 @@ class Admin extends CI_Controller {
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/layout/script");
 	}
-
-	public function car()
-	{
-		$this->load->view("admin/brandcar/head");
-		$this->load->view("admin/brandcar/left-menu");
-		$this->load->view("admin/brandcar/header");
-		$this->load->view("admin/brandcar/content");
-		$this->load->view("admin/brandcar/footer");
-		$this->load->view("admin/brandcar/foot");	
-		$this->load->view("admin/brandcar/script");
-	}
-
-	public function test()
-	{
-		$this->load->view("auth/register");
-	}
 }
 
 /* End of file welcome.php */
