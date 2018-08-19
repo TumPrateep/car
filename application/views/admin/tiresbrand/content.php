@@ -36,7 +36,7 @@
       </form>
     </div>
 
-    <input type="hidden" id="tire_brandId" value="<?=$tire_brandId ?>">
+    
   
     <div class="table-responsive">
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">

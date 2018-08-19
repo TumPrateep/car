@@ -37,7 +37,7 @@
       </form>
     </div>
 
-    <input type="hidden" id="rimId" value="<?=$rimId ?>">
+    
   
     <div class="table-responsive">
       <table class="table table-bordered" id="tires-table" width="100%" cellspacing="0">
