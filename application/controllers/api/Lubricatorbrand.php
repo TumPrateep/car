@@ -19,18 +19,18 @@ class Lubricatorbrand extends BD_Controller {
             $start = $this->post('start');
             $order = $columns[$this->post('order')[0]['column']];
             $dir = $this->post('order')[0]['dir'];
-            $this->load->model("Lubricatorbrands");
-            $totalData = $this->Lubricatorbrands->allLubricatorbrand_count();
+            $this->load->model("lubricatorbrands");
+            $totalData = $this->lubricatorbrands->allLubricatorbrand_count();
             $totalFiltered = $totalData; 
             if(empty($this->post('lubricator_brandName')) && empty($this->post('status')))
             {            
-                $posts = $this->Lubricatorbrands->allLubricatorbrand($limit,$start,$order,$dir);
+                $posts = $this->lubricatorbrands->allLubricatorbrand($limit,$start,$order,$dir);
             }
             else {
                 $search = $this->post('lubricator_brandName');
                 $status = $this->post('status');
-                $posts =  $this->Lubricatorbrands->lubricatorbrand_search($limit,$start,$search,$order,$dir,$status);
-                $totalFiltered = $this->Lubricatorbrands->lubricatorbrand_search_count($search,$status);
+                $posts =  $this->lubricatorbrands->lubricatorbrand_search($limit,$start,$search,$order,$dir,$status);
+                $totalFiltered = $this->lubricatorbrands->lubricatorbrand_search_count($search,$status);
             }
             $data = array();
             if(!empty($posts))
@@ -65,8 +65,8 @@ class Lubricatorbrand extends BD_Controller {
                 'status' => $status,
                 'activeFlag' => 1
             );
-            $this->load->model("Lubricatorbrands");
-            $result = $this->Lubricatorbrands->updateStatus($lubricator_brandId,$data);
+            $this->load->model("lubricatorbrands");
+            $result = $this->lubricatorbrands->updateStatus($lubricator_brandId,$data);
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -87,7 +87,7 @@ class Lubricatorbrand extends BD_Controller {
             $config['remove_spaces'] = TRUE;
     
             $this->load->library('upload', $config);
-            $this->load->model("Lubricatorbrands");
+            $this->load->model("lubricatorbrands");
             $userId = $this->session->userdata['logged_in']['id'];
     
             if ( ! $this->upload->do_upload("lubricator_brandPicture"))
@@ -102,7 +102,7 @@ class Lubricatorbrand extends BD_Controller {
                 $imageDetailArray = $this->upload->data();
                 $image =  $imageDetailArray['file_name'];
                 $lubricator_brandName = $this->post("lubricator_brandName");
-                $isDublicte = $this->Lubricatorbrands->checklubricatorbrand($lubricator_brandName);
+                $isDublicte = $this->lubricatorbrands->checklubricatorbrand($lubricator_brandName);
                 if($isDublicte){
                     unlink($config['upload_path'].$image);
                     $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
@@ -117,7 +117,7 @@ class Lubricatorbrand extends BD_Controller {
                         "create_by" => $userId,
                         "activeFlag" => 1
                     );
-                    $isResult = $this->Lubricatorbrands->insert_lubricatorbrand($data);
+                    $isResult = $this->lubricatorbrands->insert_lubricatorbrand($data);
                     if($isResult){
                         $output["message"] = REST_Controller::MSG_SUCCESS;
                         $this->set_response($output, REST_Controller::HTTP_OK);
@@ -142,7 +142,7 @@ class Lubricatorbrand extends BD_Controller {
     
             $userId = $this->session->userdata['logged_in']['id'];
             $this->load->library('upload', $config);
-            $this->load->model("Lubricatorbrands");
+            $this->load->model("lubricatorbrands");
     
             $image =  "";
             if ( ! $this->upload->do_upload("lubricator_brandPicture")){
@@ -157,7 +157,7 @@ class Lubricatorbrand extends BD_Controller {
             
             $lubricator_brandName = $this->post("lubricator_brandName");
             $lubricator_brandId = $this->post("lubricator_brandId");
-            $isDublicte = $this->Lubricatorbrands->checklubricatorbrandforUpdate($lubricator_brandId,$lubricator_brandName);
+            $isDublicte = $this->lubricatorbrands->checklubricatorbrandforUpdate($lubricator_brandId,$lubricator_brandName);
             if($isDublicte){
                 $data = array(
                     "lubricator_brandId"=> $lubricator_brandId,
@@ -168,8 +168,8 @@ class Lubricatorbrand extends BD_Controller {
                     'update_by' => $userId,
                     "activeFlag" => 1
                 );
-                $oldData = $this->Lubricatorbrands->getlubricatorById($lubricator_brandId);
-                $isResult = $this->Lubricatorbrands->update($data);
+                $oldData = $this->lubricatorbrands->getlubricatorById($lubricator_brandId);
+                $isResult = $this->lubricatorbrands->update($data);
                 if($isResult){
                     unlink($config['upload_path'].$oldData->brandPicture);
                     $output["message"] = REST_Controller::MSG_SUCCESS;
