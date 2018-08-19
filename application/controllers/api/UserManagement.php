@@ -24,23 +24,23 @@ class UserManagement extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
-        $this->load->model("User");
-        $totalData = $this->User->allUser_count();
+        $this->load->model("user");
+        $totalData = $this->user->allUser_count();
 
         $totalFiltered = $totalData; 
         
         if(empty($this->post('search')) && empty($this->post('typeUser')) && empty($this->post('status')) )
         {            
-            $posts = $this->User->allUser($limit,$start,$order,$dir);
+            $posts = $this->user->allUser($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('search'); 
             $userType = $this->post('typeUser');
             $status = $this->post('status');
 
-            $posts =  $this->User->user_search($limit,$start,$search, $userType, $status, $order,$dir);
+            $posts =  $this->user->user_search($limit,$start,$search, $userType, $status, $order,$dir);
 
-            $totalFiltered = $this->User->user_search_count($search, $userType, $status);
+            $totalFiltered = $this->user->user_search_count($search, $userType, $status);
         }
 
         $data = array();
@@ -80,10 +80,10 @@ class UserManagement extends BD_Controller {
     function delete_get(){
         $id = $this->get('id');
         
-        $this->load->model("User");
-        $user = $this->User->getUser($id);
+        $this->load->model("user");
+        $user = $this->user->getUser($id);
         if($user != null){
-            $isDelete = $this->User->delete($id);
+            $isDelete = $this->user->delete($id);
             if($isDelete){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -105,8 +105,8 @@ class UserManagement extends BD_Controller {
         $phone = $this->post('phoneNumber');
         $password = password_hash("password", PASSWORD_BCRYPT);
 
-        $this->load->model("User");
-        $isCheck = $this->User->checkUser($username,$phone);
+        $this->load->model("user");
+        $isCheck = $this->user->checkUser($username,$phone);
         if($isCheck){
             $data = array(
                 'id' => null,
@@ -116,7 +116,7 @@ class UserManagement extends BD_Controller {
                 'password' => $password, 
                 'category' => null
             );
-            $result = $this->User->insert_user($data);
+            $result = $this->user->insert_user($data);
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -155,7 +155,7 @@ class UserManagement extends BD_Controller {
         $userId = $this->post("userId");
         $currentUser = $this->session->userdata['logged_in']['id'];
 
-        $this->load->model("Profile");
+        $this->load->model("profile");
     
         $profileData = array(
             'user_profile' => null,
@@ -348,7 +348,7 @@ class UserManagement extends BD_Controller {
             $roleData = null;
         }
 
-        $result = $this->Profile->saveProfileRoleUser($role, $userId, $profileData, $roleData);
+        $result = $this->profile->saveProfileRoleUser($role, $userId, $profileData, $roleData);
         if($result){
             // $this->load->model("User");
             // $userData = $this->User->getuserById($currentUser);
@@ -379,8 +379,8 @@ class UserManagement extends BD_Controller {
         $data = array(
             'status' => $status
         );
-        $this->load->model("User");
-        $result = $this->User->updateStatus($id,$data);
+        $this->load->model("user");
+        $result = $this->user->updateStatus($id,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);
@@ -392,12 +392,12 @@ class UserManagement extends BD_Controller {
     function getuser_post(){
 
         $id = $this->post('id');
-        $this->load->model("User");
-        $isCheck = $this->User->checkuser($id);
+        $this->load->model("user");
+        $isCheck = $this->user->checkuser($id);
 
         if($isCheck){
             $output["status"] = true;
-            $result = $this->User->getuserById($id);
+            $result = $this->user->getuserById($id);
             if($result != null){
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -421,11 +421,11 @@ class UserManagement extends BD_Controller {
         $phone = $this->post('phone');
         $email = $this->post('email');
         
-        $this->load->model("User");
+        $this->load->model("user");
 
         $userId = $this->session->userdata['logged_in']['id'];
 
-        $result = $this->User->wherenotUser($id,$username);
+        $result = $this->user->wherenotUser($id,$username);
 
         if($result){
             $data = array(
@@ -436,7 +436,7 @@ class UserManagement extends BD_Controller {
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );
-            $result = $this->User->updateUser($data);
+            $result = $this->user->updateUser($data);
             $output["status"] = $result;
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -456,16 +456,16 @@ class UserManagement extends BD_Controller {
     function getusers_post(){
 
         $userId = $this->post('userId');
-        $this->load->model("User");
-        $this->load->model("Profile");
-        $this->load->model("Location");
+        $this->load->model("user");
+        $this->load->model("profile");
+        $this->load->model("location");
         
-        $user = $this->User->getUser($userId);
+        $user = $this->user->getUser($userId);
         if($user != null){
             $result = $this->Profile->findUserProfileByIdAndStatusActive($userId);
-            $result->provinceName = $this->Location->getProvinceNameByProvinceId($result->provinceId);
-            $result->districtName = $this->Location->getDistrictNameByDistrictId($result->districtId);
-            $result->subdistrictName = $this->Location->getSubDistrictBySubDistrictId($result->subdistrictId);
+            $result->provinceName = $this->location->getProvinceNameByProvinceId($result->provinceId);
+            $result->districtName = $this->location->getDistrictNameByDistrictId($result->districtId);
+            $result->subdistrictName = $this->location->getSubDistrictBySubDistrictId($result->subdistrictId);
             $result->create_at = REST_Controller::DateThai($result->create_at);
             // $result->create_at = date_format($date,"d/m/Y H:i:s");
             $output["profile"] = $result;
@@ -482,26 +482,26 @@ class UserManagement extends BD_Controller {
     }
 
     function getUserData($role, $userId){
-        $this->load->model("User");
-        $this->load->model("Garage");
-        $this->load->model("Caraccessories");
-        $this->load->model("Location");
+        $this->load->model("user");
+        $this->load->model("garage");
+        $this->load->model("caraccessories");
+        $this->load->model("location");
         $data = null;
         if($role == 4){
-            $data = $this->User->getdataCar_profileById($userId);
-            $data->provincePlateName = $this->Location->getProvinceNamePlateByProvinceId($data->province_plate);
+            $data = $this->user->getdataCar_profileById($userId);
+            $data->provincePlateName = $this->location->getProvinceNamePlateByProvinceId($data->province_plate);
         }else if($role == 3){
             // อู่
             $data = $this->Garage->getGarageFromGarageByUserId($userId);
-            $data->provinceName = $this->Location->getProvinceNameByProvinceId($data->provinceId);
-            $data->districtName = $this->Location->getDistrictNameByDistrictId($data->districtId);
-            $data->subdistrictName = $this->Location->getSubDistrictBySubDistrictId($data->subdistrictId);
+            $data->provinceName = $this->location->getProvinceNameByProvinceId($data->provinceId);
+            $data->districtName = $this->location->getDistrictNameByDistrictId($data->districtId);
+            $data->subdistrictName = $this->location->getSubDistrictBySubDistrictId($data->subdistrictId);
         }else if($role == 2){
             // ร้านอะไหล่
             $data = $this->Caraccessories->getCarAccessoriesFromCarAccessoriesByUserId($userId);
-            $data->provinceName = $this->Location->getProvinceNameByProvinceId($data->provinceId);
-            $data->districtName = $this->Location->getDistrictNameByDistrictId($data->districtId);
-            $data->subdistrictName = $this->Location->getSubDistrictBySubDistrictId($data->subdistrictId);
+            $data->provinceName = $this->location->getProvinceNameByProvinceId($data->provinceId);
+            $data->districtName = $this->location->getDistrictNameByDistrictId($data->districtId);
+            $data->subdistrictName = $this->location->getSubDistrictBySubDistrictId($data->subdistrictId);
         }else{
             $data = null;
         }

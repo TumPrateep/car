@@ -19,8 +19,8 @@ class Register extends BD_Controller {
         $password = $this->post('password');
         $p = password_hash($password, PASSWORD_BCRYPT);
 
-        $this->load->model("User");
-        $isCheck = $this->User->checkUser($username);
+        $this->load->model("user");
+        $isCheck = $this->user->checkUser($username);
         if($isCheck){
             $data = array(
                 'id' => null,
@@ -30,7 +30,7 @@ class Register extends BD_Controller {
                 'password' => $p, 
                 'category' => null
             );
-            $result = $this->User->insert_user($data);
+            $result = $this->user->insert_user($data);
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);

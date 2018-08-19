@@ -17,22 +17,6 @@
         
     });
     
-    // var brandId = $("#brandId").val();
-
-    // $.post(base_url+"api/car/getBrandforupdate",{
-    //     "brandPicture": brandPicture,
-        
-    // },function(data){
-    //     if(data.message!=200){
-    //         showMessage(data.message,"car/car");
-    //     }
-
-    //     if(data.message == 200){
-    //         result = data.data;
-    //         $("#brandName").val(result.brandName);
-    //     }
-        
-    // });
     $("#brandPicture").fileinput({
         language: "th",
         theme: 'fa',
@@ -44,7 +28,7 @@
         showUpload: false
     });
 
-$("#update-brand").validate({
+    $("#update-brand").validate({
         rules: {
             brandName: {
             required: true

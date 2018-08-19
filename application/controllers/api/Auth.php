@@ -14,7 +14,7 @@ class Auth extends BD_Controller {
         $this->methods['users_get']['limit'] = 500; // 500 requests per hour per user/key
         $this->methods['users_post']['limit'] = 100; // 100 requests per hour per user/key
         $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
-        $this->load->model('M_main');
+        $this->load->model('m_main');
     }
     
     public function login_post()
@@ -24,9 +24,9 @@ class Auth extends BD_Controller {
         // $q = array('username' => $u); //For where query condition
         $kunci = $this->config->item('thekey');
         // $invalidLogin = ['status' => 'Invalid Login']; //Respon if login invalid
-        $val = $this->M_main->get_user($u)->row(); //Model to get single data row from database base on username
+        $val = $this->m_main->get_user($u)->row(); //Model to get single data row from database base on username
 
-        if($this->M_main->get_user($u)->num_rows() == 0){
+        if($this->m_main->get_user($u)->num_rows() == 0){
             $invalidLogin['message'] = REST_Controller::MSG_LOGIN_NOT_HAVE;
             $this->response($invalidLogin, REST_Controller::HTTP_OK);
         }else{
@@ -44,7 +44,7 @@ class Auth extends BD_Controller {
             $token['exp'] = $date->getTimestamp() + 60*60*5; //To here is to generate token
             $output['token'] = JWT::encode($token,$kunci); //This is the output token
             $output['userId'] = $val->id;
-            $this->load->model("Profile");
+            $this->load->model("profile");
             $profile = $this->Profile->findUserProfileById($val->id);
             $sess_array = array(
                 'id' => $val->id,

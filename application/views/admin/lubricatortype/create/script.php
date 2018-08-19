@@ -53,7 +53,7 @@
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/lubricatortype");
+                        showMessage(data.message,"admin/LubricatorType");
                     }else{
                         showMessage(data.message);
                     }

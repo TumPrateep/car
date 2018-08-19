@@ -108,7 +108,7 @@
 
     function deletetirechange(tire_changeId){
         var option = {
-            url: "/Tirechange/deletetirechange?tire_changeId="+tire_changeId,
+            url: "/TireChange/deletetirechange?tire_changeId="+tire_changeId,
             label: "ลบราคาเปลี่ยนยางนอก",
             content: "คุณต้องการลบข้อมูลนี้ ใช่หรือไม่",
             gotoUrl: "admin/Tires/tirechange/"
@@ -127,7 +127,7 @@
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/tires/tirechange/");
+                showMessage(data.message,"admin/Tires/tirechange/");
             }else{
                 showMessage(data.message);
             }

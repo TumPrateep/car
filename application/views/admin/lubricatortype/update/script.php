@@ -4,7 +4,7 @@
         "lubricator_typeId": lubricator_typeId,
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/lubricatortype");
+            showMessage(data.message,"admin/LubricatorType");
         }else{
             result = data.data;
             $("#lubricator_typeName").val(result.lubricator_typeName);
@@ -67,7 +67,7 @@
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/lubricatortype");
+                        showMessage(data.message,"admin/LubricatorType");
                     }else{
                         showMessage(data.message);
                     }
