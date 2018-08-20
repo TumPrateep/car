@@ -192,8 +192,6 @@ class LubricatorType extends BD_Controller {
 
         function getLubricatorType_post(){
             $lubricator_typeId = $this->post('lubricator_typeId');
-           
-            $this->set_response($isCheck, REST_Controller::HTTP_OK);
             $result = $this->lubricatortypes->getlubricatorTypeById($lubricator_typeId);
             if($result != null){
                 $output["data"] = $result;

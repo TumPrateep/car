@@ -168,7 +168,7 @@ class Lubricatorbrand extends BD_Controller {
                 $oldData = $this->lubricatorbrands->getlubricatorById($lubricator_brandId);
                 $isResult = $this->lubricatorbrands->update($data);
                 if($isResult){
-                    unlink($config['upload_path'].$oldData->brandPicture);
+                    unlink($config['upload_path'].$oldData->lubricator_brandPicture);
                     $output["message"] = REST_Controller::MSG_SUCCESS;
                     $this->set_response($output, REST_Controller::HTTP_OK);
                 }else{
@@ -207,8 +207,6 @@ class Lubricatorbrand extends BD_Controller {
 
         function getLubricatorbrandsById_post(){
             $lubricator_brandId = $this->post('lubricator_brandId');
-           
-            $this->set_response($isCheck, REST_Controller::HTTP_OK);
             $result = $this->lubricatorbrands->geTubricatorbrandFromId($lubricator_brandId);
             if($result != null){
                 $output["data"] = $result;

@@ -34,8 +34,6 @@ class Triemodel extends BD_Controller {
         if($result){
             $data = array(
                 'tire_modelName' => $tire_modelName,
-                'status' => 1,
-                'activeFlag' => 1,
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );

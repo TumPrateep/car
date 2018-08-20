@@ -57,9 +57,7 @@ class TireChange extends BD_Controller {
                 'tire_back' => $tire_back,
                 'rimId' => $rimId,
                 'update_by' => $userId,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'status' => 1 ,
-                'activeFlag' => 1
+                'update_at' => date('Y-m-d H:i:s',time())
             );
             $result = $this->tirechanges->update($data);
             $output["status"] = $result;

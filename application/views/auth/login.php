@@ -71,8 +71,8 @@
     <a class="item">นัดหมาย</a>
     <a class="item">คลังอะไหล่</a>
     <a class="item">ข้อมูลส่วนตัว</a>
-    <a class="item" href="<?=base_url("/auth/register") ?>">สมัครใช้งาน</a>
-    <a class="item" href="<?=base_url("/auth/login") ?>">ลงชื่อเข้าใช้</a>
+    <a class="item" href="<?=base_url("/Auth/register") ?>">สมัครใช้งาน</a>
+    <a class="item" href="<?=base_url("/Auth/login") ?>">ลงชื่อเข้าใช้</a>
   </div>
 
   <div id="top-menu" class="pusher">
@@ -94,8 +94,8 @@
             <!-- <img class="ui avatar image" src="assert/images/square-image.png"> -->
             <!-- <span>Username</span> -->
             <a class="blue ui head-logo"><i class="black car icon"></i>CarJaidee.com</a>
-            <a class="ui red button head-button " href="<?=base_url("/auth/register") ?>">สมัครใช้งาน</a>
-            <a class="ui primary button head-button" href="<?=base_url("/auth/login") ?>">ลงชื่อเข้าใช้</a>
+            <a class="ui red button head-button " href="<?=base_url("/Auth/register") ?>">สมัครใช้งาน</a>
+            <a class="ui primary button head-button" href="<?=base_url("/Auth/login") ?>">ลงชื่อเข้าใช้</a>
           </div>
         </div>
       </div>
@@ -181,7 +181,7 @@
         if(isValid){
           $("#error-message").hide();
           var data = $("#form-login").serialize();
-          $.post(base_url+"api/auth/login",data,
+          $.post(base_url+"api/Auth/login",data,
             function(data){
               var message = data.message;
               if(message == "2001"){
@@ -189,7 +189,7 @@
                 localStorage.userId = data.userId;
                 window.location = base_url+"role";
               }else if(message == "2002"){
-                $("#message").html("ไม่พบชื่อผู้ใช้งาน <a href='"+base_url+"/auth/register"+"'>ลงทะเบียน</a>");
+                $("#message").html("ไม่พบชื่อผู้ใช้งาน <a href='"+base_url+"/Auth/register"+"'>ลงทะเบียน</a>");
                 $("#error-message").show();
               }else if(message == "2003"){
                 $("#message").html("ชื่อผู้ใช้งานถูกปิดใช้งาน");

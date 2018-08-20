@@ -109,7 +109,7 @@ class Modelofcars extends CI_Model{
             return null;
         }
     }
-    function modelofcar_search_count($search,$modelofcarId,$status,$brandId,$modelId){
+    function modelofcar_search_count($search,$status,$brandId,$modelId){
         $this->db->where("brandId", $brandId);
         $this->db->where("modelId", $modelId);
         $query = $this

@@ -388,7 +388,7 @@ class UserManagement extends BD_Controller {
     function getuser_post(){
 
         $id = $this->post('id');
-        $isCheck = $this->user->checkuser($id);
+        $isCheck = $this->user->check_User($id);
 
         if($isCheck){
             $output["status"] = true;

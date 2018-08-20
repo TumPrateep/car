@@ -356,7 +356,7 @@ class Car extends BD_Controller {
             $yearEnd = null;
         }
         
-        $result = $this->model->wherenot($modelId,$modelName, $yearStart, $brandId);
+        $result = $this->model->wherenot($modelId,$modelName, $yearStart, $yearEnd, $brandId);
 
         if($result){
             $data = array(

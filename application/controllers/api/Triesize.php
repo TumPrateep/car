@@ -98,11 +98,10 @@ class Triesize extends BD_Controller {
         if(empty($this->post('tire_size')) && empty($this->post('status')))
         {            
             $posts = $this->triesizes->allTriesize($limit,$start,$order,$dir, $rimId);
-        }
-        else {
+        }else{
             $search = $this->post('tire_size'); 
             $status = $this->post('status'); 
-            $posts =  $this->triesizes->trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status);
+            $posts =  $this->triesizes->trie_size_search($limit,$start,$search,$order,$dir,$rimId,$status);
             $totalFiltered = $this->triesizes->trie_size_search_count($search, $rimId,$status);
         }
         $data = array();
@@ -147,9 +146,7 @@ class Triesize extends BD_Controller {
     function getiresizeById_post(){
         $tire_sizeId = $this->post('tire_sizeId');
         $rimId = $this->post('rimId');
-        $this->load->model("trieSizes");
        
-        $this->set_response($isCheck, REST_Controller::HTTP_OK);
         $result = $this->triesizes->geTiresizeFromTiresizeBytireId($tire_sizeId);
         if($result != null){
             $output["data"] = $result;

@@ -92,14 +92,13 @@ class Triemodels extends CI_Model {
             return null;
         }
     }
-    function tireModel_search_count($search,$tire_brandI,$status)
+    function tireModel_search_count($search,$tire_brandId,$status)
     {
         $this->db->where("tire_brandId", $tire_brandId);
         $query = $this
                 ->db
                 ->like('tire_modelName',$search)
                 ->where('status',$status)
-                ->or_where('tire_brandId',$tirebrandId)
                 ->get('tire_model');
     
         return $query->num_rows();
