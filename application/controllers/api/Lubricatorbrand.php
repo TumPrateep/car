@@ -6,7 +6,8 @@ class Lubricatorbrand extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("lubricatorbrands");
     }
     function searchLubricatorbrand_post(){
             $columns = array( 
@@ -19,14 +20,12 @@ class Lubricatorbrand extends BD_Controller {
             $start = $this->post('start');
             $order = $columns[$this->post('order')[0]['column']];
             $dir = $this->post('order')[0]['dir'];
-            $this->load->model("lubricatorbrands");
+            
             $totalData = $this->lubricatorbrands->allLubricatorbrand_count();
             $totalFiltered = $totalData; 
-            if(empty($this->post('lubricator_brandName')) && empty($this->post('status')))
-            {            
+            if(empty($this->post('lubricator_brandName')) && empty($this->post('status'))){            
                 $posts = $this->lubricatorbrands->allLubricatorbrand($limit,$start,$order,$dir);
-            }
-            else {
+            }else{
                 $search = $this->post('lubricator_brandName');
                 $status = $this->post('status');
                 $posts =  $this->lubricatorbrands->lubricatorbrand_search($limit,$start,$search,$order,$dir,$status);
@@ -65,7 +64,7 @@ class Lubricatorbrand extends BD_Controller {
                 'status' => $status,
                 'activeFlag' => 1
             );
-            $this->load->model("lubricatorbrands");
+            
             $result = $this->lubricatorbrands->updateStatus($lubricator_brandId,$data);
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -87,7 +86,6 @@ class Lubricatorbrand extends BD_Controller {
             $config['remove_spaces'] = TRUE;
     
             $this->load->library('upload', $config);
-            $this->load->model("lubricatorbrands");
             $userId = $this->session->userdata['logged_in']['id'];
     
             if ( ! $this->upload->do_upload("lubricator_brandPicture"))
@@ -142,7 +140,6 @@ class Lubricatorbrand extends BD_Controller {
     
             $userId = $this->session->userdata['logged_in']['id'];
             $this->load->library('upload', $config);
-            $this->load->model("lubricatorbrands");
     
             $image =  "";
             if ( ! $this->upload->do_upload("lubricator_brandPicture")){
@@ -190,7 +187,6 @@ class Lubricatorbrand extends BD_Controller {
 
         function deleteLubricatorbrands_get(){
             $lubricator_brandId = $this->get('lubricator_brandId');
-            $this->load->model("lubricatorbrands");
             $oldData = $this->lubricatorbrands->getlubricatorById($lubricator_brandId);
             if($oldData != null){
                 $isDelete = $this->lubricatorbrands->delete($lubricator_brandId);
@@ -211,7 +207,6 @@ class Lubricatorbrand extends BD_Controller {
 
         function getLubricatorbrandsById_post(){
             $lubricator_brandId = $this->post('lubricator_brandId');
-            $this->load->model("lubricatorbrands");
            
             $this->set_response($isCheck, REST_Controller::HTTP_OK);
             $result = $this->lubricatorbrands->geTubricatorbrandFromId($lubricator_brandId);
@@ -226,6 +221,4 @@ class Lubricatorbrand extends BD_Controller {
            
         }
 
-        
-
-    }
+}

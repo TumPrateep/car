@@ -7,6 +7,7 @@ class Triebrand extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         $this->auth();
+        $this->load->model("triebrands");
     }
     function createBrand_post(){
         $config['upload_path'] = 'public/image/tire_brand/';
@@ -18,7 +19,7 @@ class Triebrand extends BD_Controller {
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
         $this->load->library('upload', $config);
-        $this->load->model("triebrands");
+        
         $userId = $this->session->userdata['logged_in']['id'];
 		if ( ! $this->upload->do_upload("tire_brandPicture"))
 		{
@@ -59,7 +60,6 @@ class Triebrand extends BD_Controller {
     }
     function deletetriebrand_get(){
         $tire_brandId = $this->get('tire_brandId');
-        $this->load->model("triebrands");
         $tire = $this->triebrands->getirebrandById($tire_brandId);
         if($tire != null){
             $isDelete = $this->triebrands->delete($tire_brandId);
@@ -85,7 +85,6 @@ class Triebrand extends BD_Controller {
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
         $this->load->library('upload', $config);
-        $this->load->model("triebrands");
         $userId = $this->session->userdata['logged_in']['id'];
         
         $image =  "";
@@ -139,7 +138,6 @@ class Triebrand extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $this->load->model("triebrands");
         $totalData = $this->triebrands->allTirebrand_count();
         $totalFiltered = $totalData; 
         if(empty($this->post('tire_brandName')) && empty($this->post('status')))
@@ -174,7 +172,6 @@ class Triebrand extends BD_Controller {
     }
     function getTireBrandforupdate_post(){
         $tire_brandId = $this->post('tire_brandId');
-        $this->load->model("triebrands");
         $isCheck = $this->triebrands->checkTireBrandforget($tire_brandId);
         if($isCheck){
             $output["status"] = true;
@@ -206,7 +203,6 @@ class Triebrand extends BD_Controller {
             'status' => $status,
             'activeFlag' => 1
         );
-        $this->load->model("triebrands");
         $result = $this->triebrands->updateStatus($tire_brandId,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;

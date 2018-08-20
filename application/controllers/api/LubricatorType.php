@@ -6,7 +6,8 @@ class LubricatorType extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("lubricatortypes");
     }
     function createtrieSize_post(){
         $lubricator_typeName = $this->post("lubricator_typeName");
@@ -27,7 +28,6 @@ class LubricatorType extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
-            $this->load->model("lubricatortypes");
             $userId = $this->session->userdata['logged_in']['id'];
             $isCheck = $this->lubricatortypes->checklubricatorType($lubricator_typeName);
             
@@ -72,7 +72,6 @@ class LubricatorType extends BD_Controller {
             $start = $this->post('start');
             $order = $columns[$this->post('order')[0]['column']];
             $dir = $this->post('order')[0]['dir'];
-            $this->load->model("lubricatortypes");
             $totalData = $this->lubricatortypes->allLubricatorTypes_count();
             $totalFiltered = $totalData; 
             if(empty($this->post('lubricator_typeName')) && empty($this->post('status')))
@@ -119,7 +118,7 @@ class LubricatorType extends BD_Controller {
                 'status' => $status,
                 'activeFlag' => 1
             );
-            $this->load->model("lubricatorTypes");
+
             $result = $this->lubricatortypes->updateStatus($lubricator_typeId,$data);
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -156,7 +155,7 @@ class LubricatorType extends BD_Controller {
                 $lubricator_typeId = $this->post("lubricator_typeId");
                 $lubricator_typeName = $this->post("lubricator_typeName");
                 $lubricator_typeSize = $this->post("lubricator_typeSize");
-                $this->load->model("lubricatorTypes");
+
                 $userId = $this->session->userdata['logged_in']['id'];
                 $result = $this->lubricatortypes->wherenotlubricatorType($lubricator_typeId,$lubricator_typeName);
                 if($result){
@@ -193,7 +192,6 @@ class LubricatorType extends BD_Controller {
 
         function getLubricatorType_post(){
             $lubricator_typeId = $this->post('lubricator_typeId');
-            $this->load->model("lubricatorTypes");
            
             $this->set_response($isCheck, REST_Controller::HTTP_OK);
             $result = $this->lubricatortypes->getlubricatorTypeById($lubricator_typeId);
@@ -211,7 +209,6 @@ class LubricatorType extends BD_Controller {
         function deleteLubricatorType_get(){
             $lubricator_typeId = $this->get('lubricator_typeId');
     
-            $this->load->model("lubricatorTypes");
             $lubricator_type = $this->lubricatortypes->getLubricatorTypes($lubricator_typeId);
             if($lubricator_type != null){
                 $isDelete = $this->lubricatortypes->delete($lubricator_typeId);
@@ -229,7 +226,6 @@ class LubricatorType extends BD_Controller {
         }
 
         function getAllLubricatorType_post(){
-            $this->load->model("lubricatorTypes");
             $result = $this->lubricatortypes->getAllLubricatorTypes();
             $output["data"] = $result;
             $this->set_response($output, REST_Controller::HTTP_OK);

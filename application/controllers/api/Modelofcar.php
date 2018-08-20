@@ -6,7 +6,8 @@ class Modelofcar extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("modelofcars");
     }
     public function create_post(){
         $brandId = $this->post('brandId');
@@ -15,7 +16,7 @@ class Modelofcar extends BD_Controller {
         $bodyCode = $this->post('bodyCode');
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("modelofcars");
+        
         $isCheck = $this->modelofcars->checkduplicate($modelofcarName,$modelId,$brandId);
         if($isCheck){
             $data = array(
@@ -54,7 +55,7 @@ class Modelofcar extends BD_Controller {
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
         $modelofcarId = $this->post('modelofcarId');
-        $this->load->model("modelofcars");
+
         $isCheck = $this->modelofcars->checkduplicateforupdate($modelofcarName,$modelId,$brandId,$modelofcarId);
         if($isCheck){
             $data = array(
@@ -87,7 +88,6 @@ class Modelofcar extends BD_Controller {
 
     function delete_get(){
         $modelofcarId = $this->get('modelofcarId');
-        $this->load->model("modelofcars");
         $isCheck = $this->modelofcars->Check($modelofcarId);
         if($isCheck){
             $result = $this->modelofcars->delete($modelofcarId);
@@ -118,7 +118,6 @@ class Modelofcar extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $this->load->model("modelofcars");
         $totalData = $this->modelofcars->all_modelofcar_count($brandId,$modelId);
         $totalFiltered = $totalData; 
         if(empty($this->post('modelofcarName'))&& empty($this->post('status')))
@@ -156,7 +155,6 @@ class Modelofcar extends BD_Controller {
     }
 
     function getAllmodelofcar_get(){
-        $this->load->model("modelofcars");
         $modelId = $this->get("modelId");
         $result = $this->modelofcars->getmodelofcar($modelId);
         $output["data"] = $result;
@@ -174,7 +172,6 @@ class Modelofcar extends BD_Controller {
             'status' => $status,
             'activeFlag' => 1
         );
-        $this->load->model("modelofcars");
         $result = $this->modelofcars->updateStatus($modelofcarId,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -187,10 +184,7 @@ class Modelofcar extends BD_Controller {
 
     function getCarOfModel_post(){
         $modelofcarId = $this->post('modelofcarId');
-
-        $this->load->model("modelofcars");
         $isCheck = $this->modelofcars->Check($modelofcarId);
-
         if($isCheck){
             $output["status"] = true;
             $result = $this->modelofcars->getCarOfModel($modelofcarId);
