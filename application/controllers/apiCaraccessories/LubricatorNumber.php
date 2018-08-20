@@ -7,14 +7,14 @@ class Lubricatornumber extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("lubricatornumbers");
     }
     public function createLubricatorNumber_Post(){
         $lubricator_number = $this->post('lubricator_number');
         $lubricator_typeId = $this->post('lubricator_typeId');
         $lubricator_gear   = $this->post('lubricator_gear');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("lubricatornumbers");
         $isCheck = $this->lubricatornumbers->checkLubricatorNumberCarAcc($lubricator_number, $lubricator_typeId,null);
        if($isCheck){
             $data = array(
@@ -67,8 +67,7 @@ class Lubricatornumber extends BD_Controller {
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
-
-        $this->load->model("lubricatornumbers");
+        
         $totalData = $this->lubricatornumbers->allLubricatorNumbers_count();
 
         $totalFiltered = $totalData; 
@@ -130,7 +129,6 @@ class Lubricatornumber extends BD_Controller {
         $lubricator_typeId = $this->post('lubricator_typeId');
         $lubricator_gear   = $this->post('lubricator_gear');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("lubricatornumbers");
         $isCheck = $this->lubricatornumbers->wherenotLubricatorNumber($lubricator_numberId,$lubricator_number);
        if($isCheck){
             $data = array(
@@ -168,7 +166,6 @@ class Lubricatornumber extends BD_Controller {
         $status = 2 ;
         $activeFlag = $this->post('activeFlag');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("lubricatornumbers");
         $isCheck = $this->lubricatornumbers->checkLubricatorNumberCarAcc($lubricator_number, $lubricator_typeId,null);
         if($isCheck){
             $isCheckStatus = $this->lubricatornumbers->CheckStatus($lubricator_numberId,$userId,$status);

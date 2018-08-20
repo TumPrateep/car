@@ -7,14 +7,13 @@ class LubricatorData extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("lubricatordatas");
     }
 
     function delete_get(){
 
         $lubricator_dataId = $this->get('lubricator_dataId');
-
-        $this->load->model("lubricatordatas");
         $lubricator = $this->lubricatordatas->getlubricatorbyId($lubricator_dataId);
         if($lubricator                 != null){
             $isDelete = $this->lubricatordatas->delete($lubricator_dataId);
@@ -47,7 +46,6 @@ class LubricatorData extends BD_Controller {
         $order = $column;
         $dir = $sort;
 
-        $this->load->model('lubricatordatas');
         $userId = $this->session->userdata['logged_in']['id'];
         $totalData = $this->lubricatordatas->allLubricatordata_count($userId);
         $totalFiltered = $totalData; 
@@ -115,8 +113,6 @@ class LubricatorData extends BD_Controller {
 
     }
 
-
-    
     public function create_post(){
         $lubricator_brandId = $this->post('lubricator_brandId');
         $price = $this->post('price');
@@ -135,8 +131,6 @@ class LubricatorData extends BD_Controller {
         // $config['encrypt_name'] = TRUE;
         // $config['remove_spaces'] = TRUE;
         // $this->load->library('upload', $config);
-
-        $this->load->model("lubricatordatas");
         // $userId = $this->session->userdata['logged_in']['id'];
         $img = $this->post('lubricator_dataPicture');
         $img = str_replace('data:image/png;base64,', '', $img);
@@ -203,7 +197,6 @@ class LubricatorData extends BD_Controller {
         // $config['remove_spaces'] = TRUE;
         // $this->load->library('upload', $config);
 
-        $this->load->model("lubricatordatas");
         $userId = $this->session->userdata['logged_in']['id'];
 
         $img = $this->post('lubricator_dataPicture');
@@ -265,7 +258,6 @@ class LubricatorData extends BD_Controller {
     }
     function getlubricatordata_get(){
         $lubricator_dataId = $this->get('lubricator_dataId');
-        $this->load->model("lubricatordatas");
         $isCheck = $this->lubricatordatas->checklubricator_dataId($lubricator_dataId);
         if($isCheck){
             $result = $this->lubricatordatas->getlubricator_dataIdById($lubricator_dataId);

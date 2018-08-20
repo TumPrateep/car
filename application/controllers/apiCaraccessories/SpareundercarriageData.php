@@ -7,7 +7,8 @@ class SpareundercarriageData extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        //$this->auth();
+        $this->auth();
+        $this->load->model("spare_undercarriagedatas");
     }
     public function search_post(){
         $column = "spares_undercarriageDataId";
@@ -25,7 +26,7 @@ class SpareundercarriageData extends BD_Controller {
         $order = $column;
         $dir = $sort;
 
-        $this->load->model('spare_undercarriagedatas');
+        
         $totalData = $this->spare_undercarriagedatas->allSpareData_count();
         $totalFiltered = $totalData;
         $userId = $this->session->userdata['logged_in']['id'];
@@ -94,7 +95,7 @@ class SpareundercarriageData extends BD_Controller {
         $warranty = $this->post('warranty');
         $warranty_year = $this->post('warranty_year');
         $warranty_distance = $this->post('warranty_distance');
-        $this->load->model('spare_undercarriagedatas');
+        
         $config['upload_path'] = 'public/image/spareundercarriage/';
 
         // $config['allowed_types'] = 'gif|jpg|png';
@@ -163,7 +164,7 @@ class SpareundercarriageData extends BD_Controller {
         $warranty = $this->post('warranty');
         $warranty_year = $this->post('warranty_year');
         $warranty_distance = $this->post('warranty_distance');
-        $this->load->model('spare_undercarriagedatas');
+        
         $config['upload_path'] = 'public/image/spareundercarriage/';
         // $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
@@ -231,7 +232,7 @@ class SpareundercarriageData extends BD_Controller {
     function delete_get(){
         $spares_undercarriageDataId = $this->get('spares_undercarriageDataId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model('spare_undercarriagedatas');
+        
         $spareUndercarriage = $this->spare_undercarriagedatas->getspares_undercarriageDataById($spares_undercarriageDataId);
         if($spareUndercarriage !=null){
             $isDelete = $this->spare_undercarriagedatas->delete($spares_undercarriageDataId);
@@ -252,7 +253,7 @@ class SpareundercarriageData extends BD_Controller {
 
     function getSpareUndercarriageData_get(){
         $spares_undercarriageDataId = $this->get('spares_undercarriageDataId');
-        $this->load->model("spare_undercarriagedatas");
+        
         $isCheck = $this->spare_undercarriagedatas->checkSpareUndercarriageData($spares_undercarriageDataId);
         if($isCheck){
             $result = $this->spare_undercarriagedatas->getSpareUndercarriageDataById($spares_undercarriageDataId);

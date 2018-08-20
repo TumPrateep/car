@@ -7,7 +7,8 @@ class Modelofcar extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("modelofcars");
     }
     function create_post(){
         $brandId = $this->post('brandId');
@@ -16,7 +17,6 @@ class Modelofcar extends BD_Controller {
         $bodyCode = $this->post('$machineCode');
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("modelofcars");
         $isCheck = $this->modelofcars->checkduplicate($modelofcarName,$modelId,$brandId);
         if($isCheck){
             $data = array(
@@ -49,7 +49,6 @@ class Modelofcar extends BD_Controller {
     function delete_get(){
         $modelofcarId = $this->get('modelofcarId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("modelofcars");
         $isCheck = $this->modelofcars->Check($modelofcarId);
         if($isCheck){
             $Checkpermistion = $this->modelofcars->Checkpermistion($userId,$modelofcarId);
@@ -79,7 +78,6 @@ class Modelofcar extends BD_Controller {
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
         $modelofcarId = $this->post('modelofcarId');
-        $this->load->model("modelofcars");
         $isCheck = $this->modelofcars->checkduplicateforupdate($modelofcarName,$modelId,$brandId,$modelofcarId);
         if($isCheck){
             $Checkpermistion = $this->modelofcars->Checkpermistion($userId,$modelofcarId);
@@ -118,7 +116,6 @@ class Modelofcar extends BD_Controller {
 
     function getallmodelofcar_post(){
         $modelofcarId = $this->post('modelofcarId');
-        $this->load->model("modelofcars");
         $result = $this->modelofcars->getAllmodelofcar($modelofcarId);
         if($result != null){
             $output["data"] = $result;
@@ -146,7 +143,6 @@ class Modelofcar extends BD_Controller {
         $dir = $sort;
 
         $modelofcarId = $this->post("modelofcarId");
-        $this->load->model("modelofcars");
         $totalData = $this->modelofcars->all_modelofcar_count($modelofcarId);
 
         $totalFiltered = $totalData; 

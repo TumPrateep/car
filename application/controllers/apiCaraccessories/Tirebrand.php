@@ -6,13 +6,14 @@ class Tirebrand extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("triebrands");
     }
 
     function getAllTireBrand_post(){
         $q = $this->post("term");
         $page = $this->post("page");
-        $this->load->model("triebrands");
+        
         $listTireBrand = $this->triebrands->getAllTireBrandByName($q, $page);
         $output["items"] = [];
         $nestedData = [];
@@ -44,7 +45,7 @@ class Tirebrand extends BD_Controller {
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
-        $this->load->model("triebrands");
+        
         $totalData = $this->triebrands->allTirebrand_count();
         $totalFiltered = $totalData; 
         if(empty($this->post('tire_brandName')))
@@ -91,7 +92,7 @@ class Tirebrand extends BD_Controller {
 
     function getTirebrand_post(){
         $tire_brandId = $this->post('tire_brandId');
-        $this->load->model("triebrands");
+        
         $Tirebranddata = $this->triebrands->getTirebrandById($tire_brandId);
         if($Tirebranddata != null){
             $output["data"] = $Tirebranddata;
@@ -105,7 +106,7 @@ class Tirebrand extends BD_Controller {
     
     function deleteTireBrand_get(){
         $tire_brandId = $this->get('tire_brandId');
-        $this->load->model("triebrands");
+        
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
         $tire = $this->triebrands->getirebrandById($tire_brandId);
@@ -139,7 +140,7 @@ class Tirebrand extends BD_Controller {
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
         $this->load->library('upload', $config);
-        $this->load->model("triebrands");
+        
         $userId = $this->session->userdata['logged_in']['id'];
 		if ( ! $this->upload->do_upload("tire_brandPicture"))
 		{
@@ -186,7 +187,7 @@ class Tirebrand extends BD_Controller {
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
         $this->load->library('upload', $config);
-        $this->load->model("triebrands");
+        
         $userId = $this->session->userdata['logged_in']['id'];
         
         $image =  "";
@@ -231,7 +232,7 @@ class Tirebrand extends BD_Controller {
     
     function getTireBrandforupdate_post(){
         $tire_brandId = $this->post('tire_brandId');
-        $this->load->model("triebrands");
+        
         $isCheck = $this->triebrands->checkTireBrandforget($tire_brandId);
         if($isCheck){
             $output["status"] = true;
@@ -253,7 +254,7 @@ class Tirebrand extends BD_Controller {
     }
 
     function getAllTireBrand_get(){
-        $this->load->model("triebrands");
+        
         $result = $this->triebrands->getAllTriebrands();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);

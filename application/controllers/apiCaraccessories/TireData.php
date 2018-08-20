@@ -6,11 +6,12 @@ class TireData extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("tiredatas");
     }
     public function delete_get(){
         $tire_dataId = $this->get('tire_dataId');
-        $this->load->model("tiredatas");
+        
         $tire = $this->tiredatas->getireById($tire_dataId);
         $userId = $this->session->userdata['logged_in']['id'];
         if($tire != null){
@@ -54,7 +55,7 @@ class TireData extends BD_Controller {
         // $config['remove_spaces'] = TRUE;
         // $this->load->library('upload', $config);
 
-        $this->load->model("tiredatas");
+        
         // $userId = $this->session->userdata['logged_in']['id'];
         $img = $this->post('tire_picture');
         $img = str_replace('data:image/png;base64,', '', $img);
@@ -130,7 +131,7 @@ class TireData extends BD_Controller {
         // $config['remove_spaces'] = TRUE;
         // $this->load->library('upload', $config);
 
-        $this->load->model("tiredatas");
+        
         $userId = $this->session->userdata['logged_in']['id'];
 
         $img = $this->post('tire_picture');
@@ -197,7 +198,7 @@ class TireData extends BD_Controller {
 
     function getTireData_get(){
         $tire_dataId = $this->get('tire_dataId');
-        $this->load->model("tiredatas");
+        
         $tire_data = $this->tiredatas->gettire_dataById($tire_dataId);
         if($tire_data != null){
             $output["data"] = $tire_data;
@@ -224,7 +225,6 @@ class TireData extends BD_Controller {
         $order = $column;
         $dir = $sort;
 
-        $this->load->model('tiredatas');
         $totalData = $this->tiredatas->allTire_count();
         $totalFiltered = $totalData; 
         if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')))

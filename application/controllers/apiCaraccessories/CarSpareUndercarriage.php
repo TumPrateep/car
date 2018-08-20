@@ -7,7 +7,8 @@ class CarSpareUndercarriage extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        //$this->auth();
+        $this->auth();
+        $this->load->model("sparesundercarriages");
     }
     function searchspareUndercarriage_post(){
         $column = "spares_undercarriageName";
@@ -24,8 +25,7 @@ class CarSpareUndercarriage extends BD_Controller {
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
-
-        $this->load->model("sparesundercarriages");
+        
         $totalData = $this->sparesundercarriages->allsparesUndercarriages_count();
 
         $totalFiltered = $totalData; 
@@ -82,7 +82,6 @@ class CarSpareUndercarriage extends BD_Controller {
 
         $spares_undercarriageName = $this->post("spares_undercarriageName");
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("sparesundercarriages");
         $isCheck = $this->sparesundercarriages->checksparesUndercarriage($spares_undercarriageName);
 
         if($isCheck){
@@ -120,7 +119,6 @@ class CarSpareUndercarriage extends BD_Controller {
         $spares_undercarriageId = $this->get('spares_undercarriageId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("sparesundercarriages");
         $spares_undercarriage = $this->sparesundercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
         if($spares_undercarriage != null){
             $isCheckStatus =$this->sparesundercarriages->checkStatusFromSpareUnderCarriages($spares_undercarriageId,$status,$userId);
@@ -145,7 +143,6 @@ class CarSpareUndercarriage extends BD_Controller {
 
     function getspareUndercarriage_post(){
         $spares_undercarriageId = $this->post('spares_undercarriageId');
-        $this->load->model("sparesundercarriages");
         $spares_undercarriage = $this->sparesundercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
             if($spares_undercarriage != null){
                 $output["data"] = $spares_undercarriage;
@@ -161,9 +158,7 @@ class CarSpareUndercarriage extends BD_Controller {
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_undercarriageName = $this->post('spares_undercarriageName');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("sparesundercarriages");
         $status = 2 ;
-        
         
         $result = $this->sparesundercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
         if($result){
@@ -199,7 +194,6 @@ class CarSpareUndercarriage extends BD_Controller {
     }
 
     function getAllSpareundercarriage_get(){
-        $this->load->model("sparesundercarriages");
         $result = $this->sparesundercarriages->getAllSpareundercarriage();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);

@@ -7,14 +7,14 @@ class LubricatorType extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("lubricatortypes");
     }
     function createLubricatorType_post(){
 
         $lubricator_typeName = $this->post("lubricator_typeName");
         $lubricator_typeSize = $this->post("lubricator_typeSize");
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("lubricatortypes");
         $isCheck = $this->lubricatortypes->checklubricatorType($lubricator_typeName);
 
         if($isCheck){
@@ -25,8 +25,7 @@ class LubricatorType extends BD_Controller {
                 'status' => 2,
                 'activeFlag' => 2,
                 'create_at' => date('Y-m-d H:i:s',time()),
-                'create_by' => $userId
-                
+                'create_by' => $userId    
                 
             );
             $result = $this->lubricatortypes->insert_lubricatorType($data);
@@ -59,13 +58,11 @@ class LubricatorType extends BD_Controller {
         }else{
             $sort = "asc";
         }
-
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
 
-        $this->load->model("lubricatortypes");
         $totalData = $this->lubricatortypes->allLubricatorTypes_count();
 
         $totalFiltered = $totalData; 
@@ -123,7 +120,6 @@ class LubricatorType extends BD_Controller {
         $lubricator_typeId = $this->get('lubricator_typeId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("lubricatortypes");
         $lubricator_type = $this->lubricatortypes->getlubricatorTypeById($lubricator_typeId);
         if($lubricator_type != null){
             $isCheckStatus =$this->lubricatortypes->checkStatusFromLubricatorTypes($lubricator_typeId,$status,$userId);
@@ -151,7 +147,6 @@ class LubricatorType extends BD_Controller {
         $lubricator_typeSize = $this->post("lubricator_typeSize");
         $status = 2;
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("lubricatortypes");
         $isCheck = $this->lubricatortypes->checklubricatorType($lubricator_typeName);
         if($isCheck){
             $data = array(

@@ -7,7 +7,8 @@ class CarAccessory extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        //$this->auth();
+        $this->auth();
+        $this->load->model("brand");
     }
 
     function search_post(){
@@ -25,8 +26,7 @@ class CarAccessory extends BD_Controller {
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
-
-        $this->load->model("brand");
+    
         $totalData = $this->brand->allBrand_count();
 
         $totalFiltered = $totalData; 
@@ -90,9 +90,8 @@ class CarAccessory extends BD_Controller {
         // $config['overwrite'] = TRUE;
         // $config['encrypt_name'] = TRUE;
         // $config['remove_spaces'] = TRUE;
-
         // $this->load->library('upload', $config);
-        $this->load->model("brand");
+        
         $userId = $this->session->userdata['logged_in']['id'];
 
         $img = $this->post('brandPicture');
@@ -147,7 +146,6 @@ class CarAccessory extends BD_Controller {
         $brandId = $this->get('brandId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("brand");
         $brand = $this->brand->getBrandById($brandId);
         if($brand != null){
             $isCheckStatus =$this->brand->checkStatusFromBrand($brandId,$status,$userId);
@@ -174,7 +172,6 @@ class CarAccessory extends BD_Controller {
 
    function getBrand_post(){
     $brandId = $this->post('brandId');
-    $this->load->model("brand");
     $brand = $this->brand->getBrandById($brandId);
         if($brand != null){
             $output["data"] = $brand;
@@ -189,7 +186,6 @@ class CarAccessory extends BD_Controller {
     function getBrandforupdate_post(){
 
         $brandId = $this->post('brandId');
-        $this->load->model("brand");
         $isCheck = $this->brand->checkBrandforget($brandId);
 
         if($isCheck){
@@ -220,11 +216,9 @@ class CarAccessory extends BD_Controller {
         $config['overwrite'] = TRUE;
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
-
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->library('upload', $config);
-        $this->load->model("brand");
-
+        
         $image =  "";
         if ( ! $this->upload->do_upload("brandPicture")){
             $error = array('error' => $this->upload->display_errors());

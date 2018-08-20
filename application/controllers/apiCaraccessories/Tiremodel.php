@@ -6,14 +6,15 @@ class Tiremodel extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("triemodels");
     }
 
     function getAllTireModel_post(){
         $q = $this->post("term");
         $page = $this->post("page");
         $tireBrandId = $this->post("tireBrandId");
-        $this->load->model("triemodels");
+        
         $listTireModel = $this->triemodels->getAllTireModelByName($q, $page, $tireBrandId);
         $output["items"] = [];
         $nestedData = [];
@@ -35,7 +36,7 @@ class Tiremodel extends BD_Controller {
         $tire_brandId = $this->post("tire_brandId");
         
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("triemodels");
+        
         $isCheck = $this->triemodels->get_tiremodel($tire_brandId,$tire_modelName);
         if($isCheck){
             $data = array(
@@ -85,7 +86,7 @@ class Tiremodel extends BD_Controller {
         $dir = $sort;
         $tire_brandId = $this->post('tire_brandId');
 
-        $this->load->model("triemodels");
+        
         $totalData = $this->triemodels->allTireModel_count($tire_brandId);
 
         $totalFiltered = $totalData; 
@@ -134,7 +135,7 @@ class Tiremodel extends BD_Controller {
     function getTireModel_post(){
         $tire_modelId = $this->post('tire_modelId');
         $tire_brandId = $this->post('tire_brandId');
-        $this->load->model("triemodels");
+        
         
         $this->set_response($isCheck, REST_Controller::HTTP_OK);
         
@@ -151,7 +152,7 @@ class Tiremodel extends BD_Controller {
 
     function deleteTireModel_get(){
         $tire_modelId = $this->get('tire_modelId');
-        $this->load->model("triemodels");
+        
         $tire = $this->triemodels->getireById($tire_modelId);
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
@@ -182,7 +183,7 @@ class Tiremodel extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
         
-        $this->load->model("triemodels");
+        
         $result = $this->triemodels->wherenotTireModelid($tire_modelId,$tire_modelName);
         if($result){
             $data = array(
@@ -217,7 +218,7 @@ class Tiremodel extends BD_Controller {
 
     function getAllTireModel_get(){
         $tire_brandId = $this->get("tire_brandId");
-        $this->load->model("triemodels");
+        
         $result = $this->triemodels->getAllTireModelByTireBrandId($tire_brandId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);

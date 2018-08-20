@@ -8,6 +8,8 @@ class TireRim extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         $this->auth();
+        $this->load->model("rims");
+        $this->load->model("tirerims");
     }
     function searchrim_post(){
         $column = "rimName";
@@ -24,7 +26,7 @@ class TireRim extends BD_Controller {
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
-        $this->load->model("rims");
+        
         $totalData = $this->rims->allrim_count();
         $totalFiltered = $totalData; 
         if(empty($this->post('rimName')))
@@ -72,7 +74,7 @@ class TireRim extends BD_Controller {
     function getAllTireRim_post(){
         $q = $this->post("term");
         $page = $this->post("page");
-        $this->load->model("tirerims");
+        
         $listTireRim = $this->tirerims->getAllTireRimByName($q, $page);
         $output["items"] = [];
         $nestedData = [];
@@ -91,7 +93,7 @@ class TireRim extends BD_Controller {
 
     function createRim_post(){
         $rimName = $this->post("rimName");
-        $this->load->model("rims");
+        
         $userId = $this->session->userdata['logged_in']['id'];
         $isCheck = $this->rims->checkrim($rimName);
         if($isCheck){
@@ -128,7 +130,7 @@ class TireRim extends BD_Controller {
         $rimId = $this->get('rimId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("rims");
+        
         $rim = $this->rims->getrimbyId($rimId);
         if($rim != null){
             $isCheckStatus =$this->rims->checkStatusFromRim($rimId,$status,$userId);
@@ -152,7 +154,7 @@ class TireRim extends BD_Controller {
     }
     function getRim_post(){
         $rimId = $this->post('rimId');
-        $this->load->model("rims");
+        
         $rimdata = $this->rims->getrimById($rimId);
         if($rimdata != null){
             $output["data"] = $rimdata;
@@ -170,7 +172,7 @@ class TireRim extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
         
-        $this->load->model("rims");
+        
         $result = $this->rims->wherenotrim($rimId,$rimName);
         if($result){
             $data = array(
@@ -205,7 +207,7 @@ class TireRim extends BD_Controller {
     }
 
     function getAllTireRims_get(){
-        $this->load->model("rims");
+        
         $result = $this->rims->getAllRims();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);

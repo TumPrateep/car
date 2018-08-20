@@ -7,7 +7,8 @@ class Lubricator extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("lubricators");
     }
 
     function searchLubricator_post(){
@@ -26,8 +27,6 @@ class Lubricator extends BD_Controller {
         $order = $column;
         $dir = $sort;
         $lubricator_brandId = $this->post('lubricator_brandId');
-
-        $this->load->model("lubricators");
         $totalData = $this->lubricators->allLubricators_count($lubricator_brandId);
 
         $totalFiltered = $totalData; 
@@ -84,7 +83,6 @@ class Lubricator extends BD_Controller {
 
     public function delete_get(){
         $lubricatorId = $this->get('lubricatorId'); 
-        $this->load->model("lubricators");
         $status = 2;
         $userId = $this->session->userdata['logged_in']['id'];
         $isCheck = $this->lubricators->getlubricatorById($lubricatorId);
@@ -108,14 +106,13 @@ class Lubricator extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-   public function update_post(){
+    public function update_post(){
         $lubricatorId = $this->post('lubricatorId');
         $lubricatorName = $this->post("lubricatorName");
         $lubricator_brandId = $this->post("lubricator_brandId");
         $lubricator_numberId = $this->post("lubricator_number");
         $lubricator_gear = $this->post("lubricator_gear");
         $status = 2;
-        $this->load->model("lubricators");
         $userId = $this->session->userdata['logged_in']['id'];
         $isCheck = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear);
         if($isCheck){
@@ -157,7 +154,6 @@ class Lubricator extends BD_Controller {
         $lubricator_gear = $this->post("lubricator_gear");
         $api = $this->post('api');
         $capacity = $this->post('capacity');
-        $this->load->model("lubricators");
         $userId = $this->session->userdata['logged_in']['id'];
         $isCheck = $this->lubricators->Checklubricator($lubricatorName,$lubricator_brandId,$lubricator_gear);
         
@@ -196,7 +192,6 @@ class Lubricator extends BD_Controller {
     function getAllLubricator_get(){
         $lubricator_brandId = $this->get("lubricator_brandId");
         $lubricator_gear = $this->get("lubricator_gear");
-        $this->load->model("lubricators");
         $result = $this->lubricators->getAllLubricator($lubricator_brandId, $lubricator_gear);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);

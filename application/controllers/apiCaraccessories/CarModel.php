@@ -8,6 +8,7 @@ class CarModel extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         $this->auth();
+        $this->load->model("model");
     }
     function searchModel_post(){
         $column = "modelName";
@@ -25,8 +26,7 @@ class CarModel extends BD_Controller {
         $order = $column;
         $dir = $sort;
         $brandId = $this->post('brandId');
-
-        $this->load->model("model");
+        
         $totalData = $this->model->allModel_count($brandId);
 
         $totalFiltered = $totalData; 
@@ -95,8 +95,6 @@ class CarModel extends BD_Controller {
             $yearEnd = null;
         }
 
-
-        $this->load->model("model");
         $isCheck = $this->model->get_model($brandId,$modelName,$yearStart,$yearEnd);
 
         if($isCheck){
@@ -136,7 +134,6 @@ class CarModel extends BD_Controller {
         $modelId = $this->get('modelId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("model");
         $model = $this->model->getmodel($modelId);
         if($model != null){
             $isCheckStatus =$this->model->checkStatusFromModelCar($modelId,$status,$userId);
@@ -161,7 +158,6 @@ class CarModel extends BD_Controller {
 
     function getModel_post(){
         $modelId = $this->post('modelId');
-        $this->load->model("model");
         $modeldata = $this->model->getmodelById($modelId);
         if($modeldata != null){
             $output["data"] = $modeldata;
@@ -179,7 +175,6 @@ class CarModel extends BD_Controller {
         $brandId = $this->post('brandId');
         $yearStart = $this->post('yearStart');
         $yearEnd = $this->post('yearEnd');
-        $this->load->model("model");
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
         

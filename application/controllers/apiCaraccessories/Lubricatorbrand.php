@@ -7,16 +7,15 @@ class Lubricatorbrand extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("lubricatorbrands");
     }
 
     function createLubricatorbrand_post(){
         $config['upload_path'] = 'public/image/lubricator_brand/';
         $config['allowed_types'] = 'gif|jpg|png';
         
-        $this->load->model("lubricatorbrands");
         $userId = $this->session->userdata['logged_in']['id'];
-
         $img = $this->post('lubricator_brandPicture');
         $img = str_replace('data:image/png;base64,', '', $img);
 	    $img = str_replace(' ', '+', $img);
@@ -68,11 +67,9 @@ class Lubricatorbrand extends BD_Controller {
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
         $status = 2;
-
         $userId = $this->session->userdata['logged_in']['id'];
         $this->load->library('upload', $config);
-        $this->load->model("lubricatorbrands");
-
+        
         $image =  "";
         if ( ! $this->upload->do_upload("lubricator_brandPicture")){
             $error = array('error' => $this->upload->display_errors());
@@ -129,7 +126,6 @@ class Lubricatorbrand extends BD_Controller {
         $lubricator_brandId = $this->get('lubricator_brandId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("lubricatorbrands");
         $oldData =$this->lubricatorbrands->getlubricatorById($lubricator_brandId);
         if($oldData != null){
             $isCheckStatus = $this->lubricatorbrands->checkStatusFromBrand($lubricator_brandId,$status,$userId);
@@ -169,10 +165,8 @@ class Lubricatorbrand extends BD_Controller {
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
-
-        $this->load->model("lubricatorbrands");
+        
         $totalData = $this->lubricatorbrands->allLubricatorbrand_count();
-
         $totalFiltered = $totalData; 
 
         if(empty($this->post('lubricator_brandName')))
@@ -226,7 +220,6 @@ class Lubricatorbrand extends BD_Controller {
     }
 
     function getAllLubricatorBrand_get(){
-        $this->load->model("lubricatorbrands");
         $result = $this->lubricatorbrands->getAllLubricatorBrand();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);

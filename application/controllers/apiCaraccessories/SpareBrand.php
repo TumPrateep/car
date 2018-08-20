@@ -7,14 +7,13 @@ class SpareBrand extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        //$this->auth();
+        $this->auth();
+        $this->load->model("sparesbrand");
     }
     function createSpareBrand_post(){
 
         $spares_brandName = $this->post("spares_brandName");
         $spares_undercarriageId = $this->post("spares_undercarriageId");
-        
-        $this->load->model("sparesbrand");
         $userId = $this->session->userdata['logged_in']['id'];
         $isCheck = $this->sparesbrand->isGetBrand($spares_brandName,$spares_undercarriageId);
 
@@ -63,9 +62,8 @@ class SpareBrand extends BD_Controller {
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
-
         $spares_undercarriageId = $this->post("spares_undercarriageId");
-        $this->load->model("sparesbrand");
+        
         $totalData = $this->sparesbrand->allSpares_brand_count($spares_undercarriageId);
 
         $totalFiltered = $totalData; 
@@ -120,7 +118,6 @@ class SpareBrand extends BD_Controller {
         $spares_brandId = $this->get('spares_brandId');
         $userId = $this->session->userdata['logged_in']['id'];
         $status = 2;
-        $this->load->model("sparesbrand");
         $sparBrand = $this->sparesbrand->getSpareBrandbyId($spares_brandId);
         if($sparBrand != null){
             $isCheckStatus =$this->sparesbrand->checkStatusFromSpareBrand($spares_brandId,$status,$userId);
@@ -145,7 +142,6 @@ class SpareBrand extends BD_Controller {
 
     function getSpareBrand_post(){
         $spares_brandId = $this->post('spares_brandId');
-        $this->load->model("sparesbrand");
         $sparBrand = $this->sparesbrand->getSpareBrandbyId($spares_brandId);
             if($sparBrand != null){
                 $output["data"] = $sparBrand;
@@ -162,9 +158,6 @@ class SpareBrand extends BD_Controller {
         $spares_brandName = $this->post('spares_brandName');
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("sparesbrand");
-        $userId = $this->session->userdata['logged_in']['id'];
-
         $result = $this->sparesbrand->wherenotBrand($spares_brandId,$spares_brandName,$spares_undercarriageId);
 
         if($result){
@@ -195,7 +188,6 @@ class SpareBrand extends BD_Controller {
 
     function getAllSpareBrand_get(){
         $spares_undercarriageId = $this->get("spares_undercarriageId");
-        $this->load->model("sparesbrand");
         $result = $this->sparesbrand->getAllSpareBrand($spares_undercarriageId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
