@@ -16,7 +16,13 @@ class Auth extends CI_Controller {
     }
     
     public function logout(){
-        session_destroy();
+        $sess_array = array(
+            'id' => '',
+            'username' => '',
+            'role' => '',
+            'name' => ''
+        );
+        $this->session->unset_userdata('logged_in', $sess_array);
         redirect("auth/login");
     }
 

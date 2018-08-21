@@ -8,7 +8,7 @@ class Register extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-
+        $this->load->model("user");
     }
 
     function register_post(){
@@ -19,7 +19,6 @@ class Register extends BD_Controller {
         $password = $this->post('password');
         $p = password_hash($password, PASSWORD_BCRYPT);
 
-        $this->load->model("user");
         $isCheck = $this->user->checkUser($username);
         if($isCheck){
             $data = array(
@@ -38,8 +37,7 @@ class Register extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }
-        else{
+        }else{
             $output["status"] = false;
             $output["data"] = "username ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
@@ -48,17 +46,17 @@ class Register extends BD_Controller {
 
     }
 
-    function create_post(){
-        $name = $this->post('brandname');
-        $this->load->model("brand");
-        $isCheck = $this->brand->checkBrand($name);
-        if($isCheck){
-            $output["status"] = true;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["status"] = false;
-            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
-        }
-    }
+    // function create_post(){
+    //     $name = $this->post('brandname');
+    //     $this->load->model("brand");
+    //     $isCheck = $this->brand->checkBrand($name);
+    //     if($isCheck){
+    //         $output["status"] = true;
+    //         $this->set_response($output, REST_Controller::HTTP_OK);
+    //     }else{
+    //         $output["status"] = false;
+    //         $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+    //     }
+    // }
     
 }

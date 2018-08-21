@@ -8,16 +8,16 @@ class Location extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("locationmodel");
     }
 
     function getSubdistrict_post(){
 
         $districtId = $this->post("districtId");
 
-        $this->load->model("locationModel");
         $output["status"] = true;
-        $result = $this->locationModel->getSubdistrict($districtId);
+        $result = $this->locationmodel->getSubdistrict($districtId);
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -33,9 +33,8 @@ class Location extends BD_Controller {
 
         $provinceId = $this->post("provinceId");
 
-        $this->load->model("locationModel");
         $output["status"] = true;
-        $result = $this->locationModel->getDistrict($provinceId);
+        $result = $this->locationmodel->getDistrict($provinceId);
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -49,9 +48,8 @@ class Location extends BD_Controller {
 
     function getProvince_post(){
 
-        $this->load->model("locationModel");
         $output["status"] = true;
-        $result = $this->locationModel->getProvince();
+        $result = $this->locationmodel->getProvince();
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -65,9 +63,8 @@ class Location extends BD_Controller {
 
     function getProvinceforcar_post(){
 
-        $this->load->model("locationModel");
         $output["status"] = true;
-        $result = $this->locationModel->getProvincecar();
+        $result = $this->locationmodel->getProvincecar();
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -78,7 +75,4 @@ class Location extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-
-
-
 }

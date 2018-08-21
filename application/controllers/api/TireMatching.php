@@ -6,7 +6,9 @@ class TireMatching extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model("tirematch");
+        $this->load->model("triebrands");
     }
     
     function searchTirematching_post(){
@@ -21,7 +23,6 @@ class TireMatching extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $this->load->model("tirematch");
         $totalData = $this->tirematch->allTirematching_count();
         $totalFiltered = $totalData; 
         $search = $this->post('modelName');
@@ -59,7 +60,6 @@ class TireMatching extends BD_Controller {
     }
     function getTireBrandforupdate_post(){
         $tire_brandId = $this->post('tire_brandId');
-        $this->load->model("triebrands");
         $isCheck = $this->triebrands->checkTireBrandforget($tire_brandId);
         if($isCheck){
             $output["status"] = true;
@@ -91,7 +91,7 @@ class TireMatching extends BD_Controller {
             'status' => $status,
             'activeFlag' => 1
         );
-        $this->load->model("tirematch");
+      
         $result = $this->tirematch->updateStatus($tire_matchingId,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -109,7 +109,6 @@ class TireMatching extends BD_Controller {
         $tire_sizeId = $this->post('tire_sizeId');
         $modelofcarId = $this->post('modelofcarId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model('tirematch');
         $checkDuplicate = $this->tirematch->checkduplicate($rimId,$brandId,$modelId,$tire_sizeId,$modelofcarId);
         if($checkDuplicate){
             $data = array(
@@ -148,7 +147,6 @@ class TireMatching extends BD_Controller {
         $modelId = $this->post('modelId');
         $tire_sizeId = $this->post('tire_sizeId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model('tirematch');
         $checkDuplicate = $this->tirematch->checkduplicateSameId($rimId,$brandId,$modelId,$tire_sizeId,$tire_matchingId);
         if($checkDuplicate){
             $data = array(
@@ -180,7 +178,6 @@ class TireMatching extends BD_Controller {
     
     function getTireMatching_get(){
         $tire_matchingId = $this->get('tire_matchingId');
-        $this->load->model("tirematch");
         $result = $this->tirematch->getTireMatchingbyId($tire_matchingId);
         if($result != null){
             $output["data"] = $result;
@@ -194,7 +191,6 @@ class TireMatching extends BD_Controller {
 
     function delete_get(){
         $tire_matchingId = $this->get('tire_matchingId');
-        $this->load->model("tirematch");
         $isCheck = $this->tirematch->checkTireMatching($tire_matchingId);
         if($isCheck != null){
             $isDelete = $this->tirematch->delete($tire_matchingId);

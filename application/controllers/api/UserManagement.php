@@ -7,7 +7,10 @@ class UserManagement extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        //$this->auth();
+        $this->auth();
+        $this->load->model("user");
+        $this->load->model("profile");
+        $this->load->model("location");
     }
 
     function search_post(){
@@ -24,7 +27,6 @@ class UserManagement extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
-        $this->load->model("user");
         $totalData = $this->user->allUser_count();
 
         $totalFiltered = $totalData; 
@@ -48,7 +50,6 @@ class UserManagement extends BD_Controller {
         {
             foreach ($posts as $post)
             {
-
                 $nestedData['id'] = $post->id;
                 $nestedData['username'] = $post->username;
                 $nestedData['phone'] = $post->phone;
@@ -79,8 +80,7 @@ class UserManagement extends BD_Controller {
 
     function delete_get(){
         $id = $this->get('id');
-        
-        $this->load->model("user");
+    
         $user = $this->user->getUser($id);
         if($user != null){
             $isDelete = $this->user->delete($id);
@@ -105,7 +105,6 @@ class UserManagement extends BD_Controller {
         $phone = $this->post('phoneNumber');
         $password = password_hash("password", PASSWORD_BCRYPT);
 
-        $this->load->model("user");
         $isCheck = $this->user->checkUser($username,$phone);
         if($isCheck){
             $data = array(
@@ -154,8 +153,6 @@ class UserManagement extends BD_Controller {
         $titleName = $this->post("titleName");
         $userId = $this->post("userId");
         $currentUser = $this->session->userdata['logged_in']['id'];
-
-        $this->load->model("profile");
     
         $profileData = array(
             'user_profile' => null,
@@ -379,7 +376,6 @@ class UserManagement extends BD_Controller {
         $data = array(
             'status' => $status
         );
-        $this->load->model("user");
         $result = $this->user->updateStatus($id,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -392,8 +388,7 @@ class UserManagement extends BD_Controller {
     function getuser_post(){
 
         $id = $this->post('id');
-        $this->load->model("user");
-        $isCheck = $this->user->checkuser($id);
+        $isCheck = $this->user->check_User($id);
 
         if($isCheck){
             $output["status"] = true;
@@ -420,11 +415,7 @@ class UserManagement extends BD_Controller {
         $username = $this->post('username');
         $phone = $this->post('phone');
         $email = $this->post('email');
-        
-        $this->load->model("user");
-
         $userId = $this->session->userdata['logged_in']['id'];
-
         $result = $this->user->wherenotUser($id,$username);
 
         if($result){
@@ -456,10 +447,6 @@ class UserManagement extends BD_Controller {
     function getusers_post(){
 
         $userId = $this->post('userId');
-        $this->load->model("user");
-        $this->load->model("profile");
-        $this->load->model("location");
-        
         $user = $this->user->getUser($userId);
         if($user != null){
             $result = $this->profile->findUserProfileByIdAndStatusActive($userId);
@@ -482,10 +469,8 @@ class UserManagement extends BD_Controller {
     }
 
     function getUserData($role, $userId){
-        $this->load->model("user");
         $this->load->model("garage");
         $this->load->model("caraccessories");
-        $this->load->model("location");
         $data = null;
         if($role == 4){
             $data = $this->user->getdataCar_profileById($userId);

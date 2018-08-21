@@ -18,6 +18,7 @@
         </a>
 
         <div class="input-group float-right">
+        <input type="hidden" name="rimId" id="rimId" value="<?=$rimId?>">
           <input id="table-search" class="form-control float-right" placeholder="ขนาดยาง">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-arrows"></i></button>

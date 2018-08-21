@@ -126,8 +126,6 @@ class Triesizes extends CI_Model{
                 ->or_like('tire_series',$search)
                 ->or_like('rim',$search)
             ->group_end()
-            ->limit($limit,$start)
-            ->order_by($col,$dir)
             ->get('tire_size');
     
         return $query->num_rows();

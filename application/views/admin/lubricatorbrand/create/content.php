@@ -19,7 +19,6 @@
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form id="create-lubricatorbrand">
-                  <input type="hidden" id="lubricator_brandId" name="lubricator_brandId" value="<?=$lubricator_brandId?>">
                     <div class="card-body black bg-light">
                       <div class="row">
                         <div class="col-md-12">

@@ -6,14 +6,15 @@ class TireChange extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
+        $this->load->model('tirechanges');
     }
     public function createtirechange_post(){
         $tire_front = $this->post('tire_front');
         $tire_back = $this->post('tire_back');
         $rimId = $this->post('tire_rimId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model('tirechanges');
+        
         $isDuplicate = $this->tirechanges->checkDuplicate($rimId);
         if($isDuplicate){
             $data = array(
@@ -48,7 +49,6 @@ class TireChange extends BD_Controller {
         $rimId = $this->post('rimId');
         $tire_changeId = $this->post('tire_changeId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model('tirechanges');
         $isDuplicate = $this->tirechanges->checkDuplicateById($tire_changeId,$rimId);
         if($isDuplicate){
             $data = array(
@@ -57,9 +57,7 @@ class TireChange extends BD_Controller {
                 'tire_back' => $tire_back,
                 'rimId' => $rimId,
                 'update_by' => $userId,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'status' => 1 ,
-                'activeFlag' => 1
+                'update_at' => date('Y-m-d H:i:s',time())
             );
             $result = $this->tirechanges->update($data);
             $output["status"] = $result;
@@ -78,7 +76,6 @@ class TireChange extends BD_Controller {
     }
     public function deletetirechange_get(){
         $tire_changeId = $this->get('tire_changeId');
-        $this->load->model('tirechanges');
         $checkData = $this->tirechanges->checkData($tire_changeId);
         if($checkData != null){
             $checkDelete = $this->tirechanges->delete($tire_changeId);
@@ -96,7 +93,6 @@ class TireChange extends BD_Controller {
     }
     public function getalltirechange_post(){
         $tire_changeId = $this->post('tire_changeId');
-        $this->load->model('tirechanges');
         $this->set_response($isCheck, REST_Controller::HTTP_OK);
         $getAlldata = $this->tirechanges->getallTire($tire_changeId);
         if($getAlldata != null){
@@ -121,7 +117,6 @@ class TireChange extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $this->load->model("tirechanges");
         $totalData = $this->tirechanges->allTirechanges_count();
         $totalFiltered = $totalData; 
         if(empty($this->post('rimName')) && empty($this->post('status')))
@@ -168,7 +163,6 @@ class TireChange extends BD_Controller {
             'status' => $status,
             'activeFlag' => 1
         );
-        $this->load->model("tirechanges");
         $result = $this->tirechanges->updateStatus($tire_changeId,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -181,8 +175,6 @@ class TireChange extends BD_Controller {
     
     function getTireChange_get(){
         $tire_changeId = $this->get('tire_changeId');
-        $this->load->model("tirechanges");
-
         $result = $this->tirechanges->getTireChangeById($tire_changeId);
         if($result != null){
             $output["data"] = $result;

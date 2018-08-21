@@ -3,22 +3,26 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SpareUndercarriage extends BD_Controller {
+    function __construct()
+    {
+        // Construct the parent class
+        parent::__construct();
+        $this->auth();
+        $this->load->model("sparesundercarriages");
+    }
+
     function searchspareUndercarriage_post(){
         $columns = array( 
             0 => null,
             1 => 'spares_undercarriageName',
             2 => 'status'
-            
-            
         );
 
-        
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
-        $this->load->model("sparesundercarriages");
         $totalData = $this->sparesundercarriages->allsparesUndercarriages_count();
 
         $totalFiltered = $totalData; 
@@ -41,13 +45,11 @@ class SpareUndercarriage extends BD_Controller {
         {
             foreach ($posts as $post)
             {
-
                 $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
                 $nestedData['spares_undercarriageName'] = $post->spares_undercarriageName;
                 $nestedData['status'] = $post->status;
 
                 $data[] = $nestedData;
-
             }
         }
 
@@ -65,7 +67,6 @@ class SpareUndercarriage extends BD_Controller {
 
         $spares_undercarriageName = $this->post("spares_undercarriageName");
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("sparesundercarriages");
         $isCheck = $this->sparesundercarriages->checksparesUndercarriage($spares_undercarriageName);
 
         if($isCheck){
@@ -88,9 +89,7 @@ class SpareUndercarriage extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }
-        
-        else{
+        }else{
             $output["status"] = false;
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
@@ -98,8 +97,6 @@ class SpareUndercarriage extends BD_Controller {
     }
     function deletespareUndercarriage_get(){
         $spares_undercarriageId = $this->get('spares_undercarriageId');
-
-        $this->load->model("sparesundercarriages");
         $spares_undercarriage = $this->sparesundercarriages->getsparesUndercarriagebyId($spares_undercarriageId);
         if($spares_undercarriage != null){
             $isDelete = $this->sparesundercarriages->delete($spares_undercarriageId);
@@ -122,7 +119,6 @@ class SpareUndercarriage extends BD_Controller {
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_undercarriageName = $this->post('spares_undercarriageName');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("sparesundercarriages");
 
         $result = $this->sparesundercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
 
@@ -156,8 +152,6 @@ class SpareUndercarriage extends BD_Controller {
     function getsparesUndercarriage_post(){
 
         $spares_undercarriageId = $this->post('spares_undercarriageId');
-
-        $this->load->model("sparesundercarriages");
         $isCheck = $this->sparesundercarriages->checksparesUndercarriage($spares_undercarriageId);
 
         if($isCheck){
@@ -191,7 +185,6 @@ class SpareUndercarriage extends BD_Controller {
             'status' => $status,
             'activeFlag' => 1
         );
-        $this->load->model("sparesundercarriages");
         $result = $this->sparesundercarriages->updateStatus($spares_undercarriageId,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;

@@ -127,13 +127,13 @@ class Model extends CI_Model{
     function get_modelbyId($modelId){
         $this->db->select("modelId");
         $this->db->from("model");
-        $this->db->where('modelId', $$modelId);
+        $this->db->where('modelId', $modelId);
         $result = $this->db->count_all_results();
 
         if($result > 0){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     function getmodel($modelId){
@@ -152,7 +152,7 @@ class Model extends CI_Model{
         return $result;
     }
 
-    function wherenot($modelId,$modelName,$yearStart,$brandId){
+    function wherenot($modelId,$modelName,$yearStart, $yearEnd,$brandId){
         $this->db->select("modelName");
         $this->db->from("model");
         $this->db->where('modelName', $modelName);

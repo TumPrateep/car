@@ -7,6 +7,7 @@ class LubricatorNumber extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         $this->auth();
+        $this->load->model("lubricatornumbers");
     }
     function searchLubricatorNumber_post(){
             $columns = array( 
@@ -19,7 +20,7 @@ class LubricatorNumber extends BD_Controller {
             $start = $this->post('start');
             $order = $columns[$this->post('order')[0]['column']];
             $dir = $this->post('order')[0]['dir'];
-            $this->load->model("lubricatornumbers");
+            
             $totalData = $this->lubricatornumbers->allLubricatorNumbers_count();
             $totalFiltered = $totalData; 
             if(empty($this->post('lubricator_number')) && empty($this->post('status')))
@@ -67,7 +68,7 @@ class LubricatorNumber extends BD_Controller {
                 'status' => $status,
                 'activeFlag' => 1
             );
-            $this->load->model("lubricatornumbers");
+
             $result = $this->lubricatornumbers->updateStatus($lubricator_numberId,$data);
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -81,7 +82,6 @@ class LubricatorNumber extends BD_Controller {
         function deleteLubricatorNumber_get(){
             $lubricator_numberId = $this->get('lubricator_numberId');
     
-            $this->load->model("lubricatornumbers");
             $lubricator_number = $this->lubricatornumbers->getLubricatorNumber($lubricator_numberId);
             if($lubricator_number != null){
                 $isDelete = $this->lubricatornumbers->delete($lubricator_numberId);
@@ -102,8 +102,7 @@ class LubricatorNumber extends BD_Controller {
             $lubricatorNumber = $this->post("lubricator_number");
             $lubricatorGear = $this->post("lubricator_gear");
             $lubricatorTypeId = $this->post("lubricator_typeId");
-            
-            $this->load->model("lubricatornumbers");
+
             $userId = $this->session->userdata['logged_in']['id'];
             $isCheck = $this->lubricatornumbers->checkLubricatorNumber($lubricatorNumber, $lubricatorGear, null);
             
@@ -138,7 +137,6 @@ class LubricatorNumber extends BD_Controller {
 
         function getLubricatorNumber_post(){
             $lubricator_numberId = $this->post('lubricator_numberId');
-            $this->load->model("lubricatornumbers");
             $data = $this->lubricatornumbers->getlubricatorNumberById($lubricator_numberId);
             if($data != null){
                 $output["data"] = $data;
@@ -156,7 +154,6 @@ class LubricatorNumber extends BD_Controller {
             $lubricatorGear = $this->post("lubricator_gear");
             $lubricatorTypeId = $this->post("lubricator_typeId");
             
-            $this->load->model("lubricatornumbers");
             $userId = $this->session->userdata['logged_in']['id'];
             $isCheck = $this->lubricatornumbers->checkLubricatorNumber($lubricatorNumber, $lubricatorGear, $lubricatorNumberId);
             
@@ -190,7 +187,6 @@ class LubricatorNumber extends BD_Controller {
         }
 
         function getAllLubricatorNumber_post(){
-            $this->load->model("lubricatornumbers");
             $lubricator_gear = $this->post("lubricator_gear");
             $status = 1;
             $lubricator_numberId = $this->post("lubricator_numberId");

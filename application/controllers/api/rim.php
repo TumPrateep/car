@@ -7,10 +7,10 @@ class Rim extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         $this->auth();
+        $this->load->model("rims");
     }
     function deleteRim_get(){
         $rimId = $this->get('rimId');
-        $this->load->model("rims");
         $rim = $this->rims->getrimbyId($rimId);
         if($rim != null){
             $isDelete = $this->rims->delete($rimId);
@@ -28,7 +28,6 @@ class Rim extends BD_Controller {
     }
     function createRim_post(){
         $rimName = $this->post("rimName");
-        $this->load->model("rims");
         $isCheck = $this->rims->checkrim($rimName);
         $userId = $this->session->userdata['logged_in']['id'];
         if($isCheck){
@@ -51,8 +50,7 @@ class Rim extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }
-        else{
+        }else{
             $output["status"] = false;
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
@@ -68,7 +66,6 @@ class Rim extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $this->load->model("rims");
         $totalData = $this->rims->allrim_count();
         $totalFiltered = $totalData; 
         if(empty($this->post('rimName'))&& empty($this->post('status')))
@@ -104,7 +101,6 @@ class Rim extends BD_Controller {
         $rimId = $this->post('rimId');
         $rimName = $this->post('rimName');
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->model("rims");
         $result = $this->rims->wherenotrim($rimId,$rimName);
         if($result){
             $data = array(
@@ -120,21 +116,18 @@ class Rim extends BD_Controller {
             if($result){
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
+            }else{
                 $output["status"] = false;
                 $output["message"] = REST_Controller::MSG_NOT_UPDATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }
-        else{
+        }else{
             $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
     function getRim_post(){
         $rimId = $this->post('rimId');
-        $this->load->model("rims");
         $rimdata = $this->rims->getrimById($rimId);
         if($rimdata != null){
             $output["data"] = $rimdata;
@@ -157,7 +150,6 @@ class Rim extends BD_Controller {
             'status' => $status,
             'activeFlag' => 1
         );
-        $this->load->model("rims");
         $result = $this->rims->updateStatus($rimId,$data);
         if($result){
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -169,7 +161,6 @@ class Rim extends BD_Controller {
     }     
 
     function getAllRims_get(){
-        $this->load->model("rims");
         $result = $this->rims->getAllRims();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);

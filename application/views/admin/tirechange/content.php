@@ -37,8 +37,6 @@
       </form>
     </div>
 
-    <input type="hidden" id="rimId" value="<?=$rimId ?>">
-
      <div class="table-responsive">
       <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
         <thead>
