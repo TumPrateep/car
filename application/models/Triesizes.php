@@ -29,7 +29,7 @@ class Triesizes extends CI_Model{
         return true;
     }
 
-    function isDuplicate($tire_size, $tire_series, $rim, $rimId, $tire_sizeId){
+    function isDuplicate($tire_size, $tire_series, $rim, $rimId, $tire_sizeId=null){
         if($tire_sizeId != null){
             $this->db->where('tire_sizeId', $tire_sizeId);
         }
@@ -131,7 +131,7 @@ class Triesizes extends CI_Model{
         return $query->num_rows();
     }
     function getiresizeById($tire_sizeId){
-        $this->db->select("tire_size,tire_series,rim");
+        $this->db->select("tire_size,tire_series,rim,status");
         return $this->db->where('tire_sizeId',$tire_sizeId)->get("tire_size")->row();
     }
     function delete($tire_sizeId){

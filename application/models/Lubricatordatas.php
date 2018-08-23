@@ -100,10 +100,11 @@ class Lubricatordatas extends CI_Model{
          return $query->num_rows();   
      }
 
-     function checkduplicated($lubricatorId,$lubricator_brandId){
+     function checkduplicated($lubricatorId,$lubricator_brandId,$userId){
         $this->db->from('lubricator_data');
         $this->db->where('lubricator_data.lubricator_brandId',$lubricator_brandId);
         $this->db->where('lubricator_data.lubricatorId',$lubricatorId);
+        $this->db->where('lubricator_data.create_by',$userId);
         $result = $this->db->count_all_results();
       
         if($result > 0){

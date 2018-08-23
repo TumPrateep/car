@@ -64,17 +64,15 @@ class Modelofcars extends CI_Model{
         return $this->db->where('modelofcarId',$modelofcarId)->get("modelofcar")->row();
         
     }
-    function all_modelofcar_count($brandId,$modelId){
-        $this->db->where("brandId", $brandId);
-        $this->db->where("modelId", $modelId);
+    function all_modelofcar_count($modelofcarId){
+        $this->db->where("modelId", $modelofcarId);
         $query = $this
                 ->db
                 ->get('modelofcar');
     
         return $query->num_rows();  
     }
-    function allmodelofcars($limit,$start,$col,$dir,$brandId,$modelId){
-        $this->db->where("brandId", $brandId);
+    function allmodelofcars($limit,$start,$col,$dir,$modelId){
         $this->db->where("modelId", $modelId);
         $query = $this->db->limit($limit,$start)
             ->order_by($col,$dir)

@@ -201,8 +201,9 @@ class Tiresize extends BD_Controller {
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId,
                 'activeFlag' => 2
-        );
-            $isCheckStatus =$this->triesizes->checkStatusFromTireSize($tire_sizeId,$status,$userId);
+            );
+            $status = $this->triesizes->getiresizeById($tire_sizeId)->status;
+            $isCheckStatus = $this->triesizes->checkStatusFromTireSize($tire_sizeId,$status,$userId);
             if($isCheckStatus ){
                 $result = $this->triesizes->updateTriesizes($data);
                 $output["status"] = $result;

@@ -42,6 +42,8 @@
         event.preventDefault();
         var isValid = $("#submit").valid();
         if(isValid){
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
             var myform = document.getElementById("submit");
             var formData = new FormData(myform);
             $.ajax({

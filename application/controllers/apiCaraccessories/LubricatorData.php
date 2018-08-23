@@ -82,8 +82,6 @@ class LubricatorData extends BD_Controller {
                 $nestedData[$count]['price'] = $post->price;
                 $nestedData[$count]['warranty_year'] = $post->warranty_year;
                 $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
-                $nestedData[$count]['activeFlag'] = $post->activeFlag;
-                $nestedData[$count]['create_by'] = $post->create_by;
                 $nestedData[$count]['warranty'] = $post->warranty;
                 $nestedData[$count]['lubricator_dataPicture'] = $post->lubricator_dataPicture;
                 $nestedData[$count]['lubricator_gear'] = $post->lubricator_gear;
@@ -145,7 +143,7 @@ class LubricatorData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $isDuplicated = $this->lubricatordatas->checkduplicated($lubricatorId,$lubricator_gear,$lubricator_brandId);
+            $isDuplicated = $this->lubricatordatas->checkduplicated($lubricatorId,$lubricator_brandId,$userId);
             if($isDuplicated){
                 unlink($file);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
@@ -236,7 +234,7 @@ class LubricatorData extends BD_Controller {
                 if(!empty($img)){
                     $data["lubricator_dataPicture"] = $image;
                 }
-                
+                $oldData = $this->lubricatordatas->getlubricatorbyId($lubricator_dataId);
                 $result = $this->lubricatordatas->update($data, $lubricator_dataId);
                 if($result){
                     unlink($config['upload_path'].$oldData->lubricator_dataPicture);

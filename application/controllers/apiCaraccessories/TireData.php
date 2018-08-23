@@ -175,7 +175,7 @@ class TireData extends BD_Controller {
                 if(!empty($img)){
                     $data["tire_picture"] = $image;
                 }
-                
+                $oldData = $this->tiredatas->gettire_dataById($tire_dataId);
                 $result = $this->tiredatas->update($data, $tire_dataId);
                 if($result){
                     unlink($config['upload_path'].$oldData->tire_picture);
@@ -224,12 +224,13 @@ class TireData extends BD_Controller {
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
+        $userId = $this->session->userdata['logged_in']['id'];
 
-        $totalData = $this->tiredatas->allTire_count();
+        $totalData = $this->tiredatas->allTire_count($userId);
         $totalFiltered = $totalData; 
         if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')))
         {            
-            $posts = $this->tiredatas->allTires($limit,$start,$order,$dir);
+            $posts = $this->tiredatas->allTires($limit,$start,$order,$dir,$userId);
         }
         else {
             // $search = $this->post('brandName'); 
@@ -241,9 +242,9 @@ class TireData extends BD_Controller {
             $can_change = $this->post('can_change');
             
             $status = null; 
-            $posts =  $this->tiredatas->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change);
+            $posts =  $this->tiredatas->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$userId);
 
-            $totalFiltered = $this->tiredatas->TireDatas_search_count($tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change);
+            $totalFiltered = $this->tiredatas->TireDatas_search_count($tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change, $userId);
         }
 
         $data = array();

@@ -17,7 +17,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-header-blue">
-                    <input type="hidden" id="tire_dataId" name="tire_dataId" value="<?=$tire_dataId ?>">
                         <div class="form-body"> <br>
                             <div class="row p-t-20">
                                 <div class="col-md-3">
@@ -141,7 +140,7 @@
                         <div class="row p-t-20">
                             <div class="col-md-12 card-grid">
                                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> บันทึก</button>
-                                <a href="<?=base_url("caraccessory/TireData/$tire_dataId"); ?>">
+                                <a href="<?=base_url("caraccessory/TireData/"); ?>">
                                 <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                 </a>
                             </div>
