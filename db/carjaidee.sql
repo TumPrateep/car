@@ -468,6 +468,39 @@ INSERT INTO `lubricator_type` VALUES (1,'สังเคาระห์แท้
 UNLOCK TABLES;
 
 --
+-- Table structure for table `lubricatortypeformachine`
+--
+
+DROP TABLE IF EXISTS `lubricatortypeformachine`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lubricatortypeformachine` (
+  `lubricatortypeFormachineId` int(11) NOT NULL AUTO_INCREMENT,
+  `lubricatortypeFormachine` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
+  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
+  PRIMARY KEY (`lubricatortypeFormachineId`),
+  KEY `fk_lubricatortypeFormachine_users1_idx` (`create_by`),
+  KEY `fk_lubricatortypeFormachine_users2_idx` (`update_by`),
+  CONSTRAINT `fk_lubricatortypeFormachine_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_lubricatortypeFormachine_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lubricatortypeformachine`
+--
+
+LOCK TABLES `lubricatortypeformachine` WRITE;
+/*!40000 ALTER TABLE `lubricatortypeformachine` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lubricatortypeformachine` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `machinetype`
 --
 
@@ -1260,4 +1293,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-27 10:38:01
+-- Dump completed on 2018-08-27 10:44:44
