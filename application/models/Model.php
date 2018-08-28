@@ -78,12 +78,12 @@ class Model extends CI_Model{
     } 
 
     
-    function insert_model($data){
+    function insert($data){
         $result = $this->db->insert('model', $data);
         return $result;
     }
     
-    function get_model($brandId,$modelName,$yearStart,$yearEnd){
+    function data_check_create($brandId,$modelName,$yearStart,$yearEnd){
         $this->db->select("modelName");
         $this->db->from("model");
         $this->db->where('modelName', $modelName);
@@ -116,12 +116,9 @@ class Model extends CI_Model{
                 $this->db->or_where('yearStart' ,$yearStart);
             }
         $this->db->group_end();
-        $result = $this->db->count_all_results();
+        $result = $this->db->get();
         
-        if($result > 0){
-            return false;
-        }
-        return true;
+        return $result->row();
     }
 
     function get_modelbyId($modelId){
@@ -186,12 +183,8 @@ class Model extends CI_Model{
             }
         $this->db->group_end();
         $this->db->where_not_in('modelId', $modelId);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return false;
-        }
-        return true;
+        $result = $this->db->get();
+        return $result->row();
     }
 
     function updateStatus($modelId,$data){
