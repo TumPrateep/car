@@ -1,7 +1,7 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-class lubricatortypeFormachines extends BD_Controller {
+class lubricatortypeFormachine extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
