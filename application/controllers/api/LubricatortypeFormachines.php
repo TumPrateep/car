@@ -12,7 +12,7 @@ class lubricatortypeFormachines extends BD_Controller {
     function createlubricatortypeFormachines_post(){
         $lubricatortypeFormachine = $this->post('lubricatortypeFormachine');
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check = $this->model->data_check_create($lubricatortypeFormachine);
+        $data_check = $this->lubricatortypeFormachines->data_check_create($lubricatortypeFormachine);
         $data = array(
             'lubricatortypeFormachineId' => null,
             'lubricatortypeFormachine' => $lubricatortypeFormachine,
@@ -24,7 +24,7 @@ class lubricatortypeFormachines extends BD_Controller {
         $option = [
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->model,
+            "model" => $this->lubricatortypeFormachines,
             "image_path" => null
         ];
 
@@ -35,8 +35,8 @@ class lubricatortypeFormachines extends BD_Controller {
         $lubricatortypeFormachineId = $this->post('lubricatortypeFormachineId');
         $lubricatortypeFormachine = $this->post('lubricatortypeFormachine');
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check_update = $this->model->getlubricatortypeFormachines($lubricatortypeFormachineId);
-        $data_check = $this->model->wherenot($lubricatortypeFormachineId,$lubricatortypeFormachine);
+        $data_check_update = $this->lubricatortypeFormachines->getlubricatortypeFormachines($lubricatortypeFormachineId);
+        $data_check = $this->lubricatortypeFormachines->wherenot($lubricatortypeFormachineId,$lubricatortypeFormachine);
         $data = array(
             'lubricatortypeFormachineId' => $lubricatortypeFormachineId,
             'lubricatortypeFormachine' => $lubricatortypeFormachine,
@@ -50,7 +50,7 @@ class lubricatortypeFormachines extends BD_Controller {
             "data_check_update" => $data_check_update,
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->model,
+            "model" => $this->lubricatortypeFormachines,
             "image_path" => null,
             "old_image_path" => null,
         ];
@@ -67,7 +67,7 @@ class lubricatortypeFormachines extends BD_Controller {
             $status = 1;
         }
 
-        $data_check_update = $this->brand->getlubricatortypeFormachineById($lubricatortypeFormachineId);
+        $data_check_update = $this->lubricatortypeFormachines->getlubricatortypeFormachineById($lubricatortypeFormachineId);
         $data = array(
             'lubricatortypeFormachineId' => $lubricatortypeFormachineId,
             'status' => $status,
@@ -77,10 +77,24 @@ class lubricatortypeFormachines extends BD_Controller {
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->brand
+            "model" => $this->lubricatortypeFormachines
         ];
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
     
+    function deletelubricatortypeFormachine_get(){
+        $lubricatortypeFormachineId = $this->get('lubricatortypeFormachineId');
+        $model = $this->lubricatortypeFormachines->getlubricatortypeFormachine($modelId);
+
+        $data_check = $this->lubricatortypeFormachines->getmlubricatortypeFormachine($modelId);
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $lubricatortypeFormachineId,
+            "model" => $this->lubricatortypeFormachines,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
+    }
 }
