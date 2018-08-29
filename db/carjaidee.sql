@@ -329,12 +329,15 @@ CREATE TABLE `lubricator_brand` (
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
+  `lubricatortypeFormachineId` int(11) DEFAULT NULL,
   PRIMARY KEY (`lubricator_brandId`),
   UNIQUE KEY `lubricator_brandName_UNIQUE` (`lubricator_brandName`),
   KEY `fk_lubricator_brand_users1_idx` (`create_by`),
   KEY `fk_lubricator_brand_users2_idx` (`update_by`),
+  KEY `lubricatortypeFormachineId_idx` (`lubricatortypeFormachineId`),
   CONSTRAINT `fk_lubricator_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_lubricator_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_lubricator_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `lubricatortypeFormachineId` FOREIGN KEY (`lubricatortypeFormachineId`) REFERENCES `lubricatortypeformachine` (`lubricatortypeFormachineId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -344,7 +347,7 @@ CREATE TABLE `lubricator_brand` (
 
 LOCK TABLES `lubricator_brand` WRITE;
 /*!40000 ALTER TABLE `lubricator_brand` DISABLE KEYS */;
-INSERT INTO `lubricator_brand` VALUES (1,'ZIC',1,1,'43fcac734f8a02217cd9b9a73e33a9dc.jpg',1,1,NULL,'2018-07-22 10:16:17'),(2,'ENEOS',1,1,'8e0ef6d90a4ae127929a9b5621a857fa.jpg',1,1,NULL,'2018-07-22 10:16:02'),(3,'ทดสอบ',1,1,'469217a9004669738ce1dc5ed3f4bad1.jpg',1,NULL,'2018-08-18 16:14:27',NULL);
+INSERT INTO `lubricator_brand` VALUES (1,'ZIC',1,1,'43fcac734f8a02217cd9b9a73e33a9dc.jpg',1,1,NULL,'2018-07-22 10:16:17',NULL),(2,'ENEOS',1,1,'8e0ef6d90a4ae127929a9b5621a857fa.jpg',1,1,NULL,'2018-07-22 10:16:02',NULL),(3,'ทดสอบ',1,1,'469217a9004669738ce1dc5ed3f4bad1.jpg',1,NULL,'2018-08-18 16:14:27',NULL,NULL);
 /*!40000 ALTER TABLE `lubricator_brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -478,7 +481,7 @@ CREATE TABLE `lubricatortypeformachine` (
   `lubricatortypeFormachineId` int(11) NOT NULL AUTO_INCREMENT,
   `lubricatortypeFormachine` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
   `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
@@ -512,7 +515,7 @@ CREATE TABLE `machinetype` (
   `machinetype` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
   `modelofcar_modelofcarId` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `status` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
@@ -1293,4 +1296,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-27 10:44:44
+-- Dump completed on 2018-08-29 16:18:51
