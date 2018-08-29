@@ -62,5 +62,20 @@ class Machinetype extends BD_Controller {
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
     
+    function delete_get(){
+        $machinetypeId = $this->get('machinetypeId');
+        $machinetype = $this->Machinetypes->getmachinetypebyId($machinetypeId);
+
+        $data_check = $this->Machinetypes->getmachinetypebyId($machinetypeId);
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $machinetypeId,
+            "model" => $this->Machinetypes,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
+    }
+
 
 }
