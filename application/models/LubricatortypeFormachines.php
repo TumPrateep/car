@@ -6,4 +6,9 @@ class LubricatortypeFormachines extends CI_Model{
         $result = $this->db->insert('lubricatortypeformachine', $data);
         return $result;
     }
+    function getLubricatortypeFormachines($lubricatortypeformachineId){
+        $this->db->where('lubricatortypeformachineId',$lubricatortypeformachineId);
+        $result = $this->db->get('lubricatortypeformachine')->row();
+        return $result;
+    }
 }
