@@ -41,6 +41,7 @@ class lubricatortypeFormachines extends BD_Controller {
             'lubricatortypeFormachineId' => $lubricatortypeFormachineId,
             'lubricatortypeFormachine' => $lubricatortypeFormachine,
             'status' => 1,
+            'activeFlag' =>1,
             'update_at' => date('Y-m-d H:i:s',time()),
             'update_by' => $userId
         );
