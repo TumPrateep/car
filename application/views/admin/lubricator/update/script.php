@@ -59,6 +59,22 @@
         );
     }
 
+    var lubricatortypeFormachine = $("#lubricatortypeFormachineId");
+
+    function getAllLubricatortypeformachine(lubricatortypeFormachineId){
+        $.get(base_url+"api/Lubricatortypeformachine/getAllLubricatortypeformachine",{},
+        function(result){
+            var data = result.data;
+            if(data != null){
+                $.each( data, function( key, value ) {
+                    lubricatortypeFormachine.append('<option value="' + value.lubricatortypeFormachineId + '">' + value.lubricatortypeFormachine + '</option>');
+                });
+
+                lubricatortypeFormachine.val(lubricatortypeFormachineId);
+            }
+        });
+    }
+
     function getLubricator(){
         $.post(base_url+"api/Lubricator/getlubricator",{
             "lubricatorId": lubricatorId,
@@ -67,6 +83,7 @@
             $("#lubricatorName").val(data.lubricatorName);
             lubricator_gear.val(data.lubricator_gear);
             getLubricatorNumber(data.lubricator_numberId);
+            getAllLubricatortypeformachine(data.lubricatortypeFormachineId)
         });
     }
 
