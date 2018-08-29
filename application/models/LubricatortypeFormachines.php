@@ -11,4 +11,14 @@ class LubricatortypeFormachines extends CI_Model{
         $result = $this->db->get('lubricatortypeformachine')->row();
         return $result;
     }
+    function data_check_create($lubricatortypeFormachine){
+        $this->db->select('lubricatortypeformachine');
+        $this->db->from('lubricatortypeFormachine');
+        $this->db->where('lubricatortypeFormachine',$lubricatortypeFormachine);
+        $result = $this->db->get();
+        echo $this->db->last_query();
+        exit();
+        return $result->row();
+
+    }
 }
