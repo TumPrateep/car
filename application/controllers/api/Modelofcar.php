@@ -46,57 +46,49 @@ class Modelofcar extends BD_Controller {
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
         $machineCode = $this->post('machineCode');
-        $bodyCode = $this->post('bodyCode');
+        $machineSize = $this->post('machineSize');
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
         $modelofcarId = $this->post('modelofcarId');
 
-        $isCheck = $this->modelofcars->checkduplicateforupdate($modelofcarName,$modelId,$brandId,$modelofcarId);
-        if($isCheck){
-            $data = array(
-                'modelofcarId' => $modelofcarId,
-                'brandId' => $brandId,
-                'modelId' => $modelId,
-                'modelofcarName' => $modelofcarName,
-                'activeFlag' => 1,
-                'machineCode' => $machineCode,
-                'bodyCode' => $bodyCode,
-                'update_by' => $userId,
-                'update_at' =>date('Y-m-d H:i:s',time())
-            );
-            $result = $this->modelofcars->update($data,$modelofcarId);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+        $data_check_update = $this->modelofcars->getCarOfModelById($modelofcarId);
+        $data_check = $this->modelofcars->data_check_update($machineSize,$modelofcarName,$modelId,$brandId,$modelofcarId);
+        $data = array(
+            'modelofcarId' => $modelofcarId,
+            'brandId' => $brandId,
+            'modelId' => $modelId,
+            'modelofcarName' => $modelofcarName,
+            'activeFlag' => 1,
+            'machineCode' => $machineCode,
+            'machineSize' => $machineSize,
+            'update_by' => $userId,
+            'update_at' =>date('Y-m-d H:i:s',time())
+        );
 
-        }else{
-            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->modelofcars,
+            "image_path" => null,
+            "old_image_path" => null,
+        ];
+
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
 
     function delete_get(){
         $modelofcarId = $this->get('modelofcarId');
-        $isCheck = $this->modelofcars->Check($modelofcarId);
-        if($isCheck){
-            $result = $this->modelofcars->delete($modelofcarId);
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_USED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $data_check = $this->modelofcars->getCarOfModelById($modelofcarId);        
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $modelofcarId,
+            "model" => $this->modelofcars,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
 
     function search_post(){
@@ -179,26 +171,14 @@ class Modelofcar extends BD_Controller {
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
-    function getCarOfModel_post(){
+    function getUpdate_post(){
         $modelofcarId = $this->post('modelofcarId');
-        $isCheck = $this->modelofcars->Check($modelofcarId);
-        if($isCheck){
-            $output["status"] = true;
-            $result = $this->modelofcars->getCarOfModel($modelofcarId);
-            if($result != null){
-                $output["data"] = $result;
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data_check = $this->modelofcars->getUpdate($modelofcarId);
+        $option = [
+            "data_check" => $data_check
+        ];
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+        
     }
 
 }

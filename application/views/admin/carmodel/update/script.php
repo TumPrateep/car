@@ -2,7 +2,7 @@
 
     var modelofcarId = $("#modelofcarId").val();
 
-    $.post(base_url+"api/Modelofcar/getCarOfModel",{
+    $.post(base_url+"api/Modelofcar/getUpdate",{
         "modelofcarId": modelofcarId,
     },function(data){
         if(data.message!=200){
@@ -10,7 +10,7 @@
         }else{
             result = data.data;
             $("#modelofcarName").val(result.modelofcarName);
-            $("#bodyCode").val(result.bodyCode);
+            $("#machineSize").val(result.machineSize);
             $("#machineCode").val(result.machineCode);
         }
     });

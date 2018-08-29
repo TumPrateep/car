@@ -15,17 +15,16 @@ class Modelofcars extends CI_Model{
     function insert($data){
         return $this->db->insert('modelofcar',$data);
     }
-    function checkduplicateforupdate($modelofcarName,$modelId,$brandId,$modelofcarId){
+
+    function data_check_update($machineSize,$modelofcarName,$modelId,$brandId,$modelofcarId){
         $this->db->from('modelofcar');
+        $this->db->where('machineSize',$machineSize);
         $this->db->where('modelofcarName',$modelofcarName);
         $this->db->where('modelId',$modelId);
         $this->db->where('brandId',$brandId);
         $this->db->where_not_in('modelofcarId',$modelofcarId);
-        $result = $this->db->count_all_results();
-        if($result > 0 ){
-            return false;
-        }
-            return true;
+        $result = $this->db->get();
+        return $result->row();
     }
 
     function update($data){
@@ -125,8 +124,8 @@ class Modelofcars extends CI_Model{
         return $this->db->where('modelofcarId',$modelofcarId)->get("modelofcar")->row();
     }
 
-    function getCarOfModel($modelofcarId){
-        $this->db->select("modelofcarId, modelofcarName, machineCode, bodyCode");
+    function getUpdate($modelofcarId){
+        $this->db->select("modelofcarId, modelofcarName, machineCode, machineSize");
         return $this->db->where('modelofcarId',$modelofcarId)->get("modelofcar")->row();
     }
     
