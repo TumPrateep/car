@@ -96,7 +96,7 @@
     function deleteCarModel(modelofcarId,modelofcarName,brandId,modelId){
         var option = {
             url: "/Modelofcar/delete?modelofcarId="+modelofcarId,
-            label: "ลบโมเดลรถ",
+            label: "รายละเอียดรุ่นรถ",
             content: "คุณต้องการลบ "+modelofcarName+" ใช่หรือไม่",
             gotoUrl: "admin/car/carmodel/"+brandId+"/"+modelId
         }

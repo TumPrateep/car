@@ -1,5 +1,5 @@
 <script>
-       $("#update-lubricator").validate({
+    $("#update-lubricator").validate({
         rules: {
             lubricatorName: {
                 required: true
@@ -11,6 +11,9 @@
                 required: true
             },
             capacity:{
+                required: true
+            },
+            lubricatortypeFormachineId:{
                 required: true
             }
         },
@@ -26,8 +29,11 @@
             },
             capacity:{
                 required: "เลือกความจุน้ำมันเครื่อง"
+            },
+            lubricatortypeFormachineId:{
+                required: "เลือกประเภทเครื่องยนต์"
             }
-        },
+        }    
     });
 
     var lubricator_brandId = $("#lubricator_brandId").val();

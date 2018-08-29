@@ -12,6 +12,9 @@
             },
             capacity:{
                 required: true
+            },
+            lubricatortypeFormachineId:{
+                required: true
             }
         },
         messages: {
@@ -26,8 +29,11 @@
             },
             capacity:{
                 required: "เลือกความจุน้ำมันเครื่อง"
+            },
+            lubricatortypeFormachineId:{
+                required: "เลือกประเภทเครื่องยนต์"
             }
-        },
+        }
     });
 
     
