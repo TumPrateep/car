@@ -1,17 +1,17 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
 class Modelofcars extends CI_Model{
-    function checkduplicate($modelofcarName,$modelId,$brandId){
+    
+    function data_check_create($machineSize,$modelofcarName,$modelId,$brandId){
         $this->db->from('modelofcar');
+        $this->db->where('machineSize',$machineSize);
         $this->db->where('modelofcarName',$modelofcarName);
         $this->db->where('modelId',$modelId);
         $this->db->where('brandId',$brandId);
-        $result = $this->db->count_all_results();
-        if($result > 0 ){
-            return false;
-        }
-            return true;
+        $result = $this->db->get();
+        return $result->row();
     }
+
     function insert($data){
         return $this->db->insert('modelofcar',$data);
     }
@@ -28,8 +28,8 @@ class Modelofcars extends CI_Model{
             return true;
     }
 
-    function update($data,$modelofcarId){
-        $this->db->where('modelofcarId',$modelofcarId);
+    function update($data){
+        $this->db->where('modelofcarId',$data['modelofcarId']);
         $result = $this->db->update('modelofcar',$data);
         return $result;
     }
@@ -59,21 +59,23 @@ class Modelofcars extends CI_Model{
         }
             return false;
     }
-    function getAllmodelofcar($modelofcarId){
+    function getAllmodelofcar($brandId,$modelId){
         $this->db->select('modelofcarName');
-        return $this->db->where('modelofcarId',$modelofcarId)->get("modelofcar")->row();
+        $this->db->where('brandId',$brandId);
+        $this->db->where('modelId',$modelId);
+        return $this->db->get("modelofcar")->row();
         
     }
-    function all_modelofcar_count($modelofcarId){
-        $this->db->where("modelId", $modelofcarId);
-        $query = $this
-                ->db
-                ->get('modelofcar');
+    function all_modelofcar_count($brandId,$modelId){
+        $this->db->where('brandId',$brandId);
+        $this->db->where('modelId',$modelId);
+        $query = $this->db->get('modelofcar');
     
         return $query->num_rows();  
     }
-    function allmodelofcars($limit,$start,$col,$dir,$modelId){
-        $this->db->where("modelId", $modelId);
+    function allmodelofcars($limit,$start,$col,$dir,$brandId,$modelId){
+        $this->db->where('brandId',$brandId);
+        $this->db->where('modelId',$modelId);
         $query = $this->db->limit($limit,$start)
             ->order_by($col,$dir)
             ->get('modelofcar');
@@ -119,10 +121,8 @@ class Modelofcars extends CI_Model{
         return $query->num_rows();
     }
 
-    function updateStatus($modelofcarId,$data){
-        $this->db->where('modelofcarId',$modelofcarId);
-        $result = $this->db->update('modelofcar', $data);
-        return $result; 
+    function getCarOfModelById($modelofcarId){
+        return $this->db->where('modelofcarId',$modelofcarId)->get("modelofcar")->row();
     }
 
     function getCarOfModel($modelofcarId){

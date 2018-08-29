@@ -9,42 +9,37 @@ class Modelofcar extends BD_Controller {
         $this->auth();
         $this->load->model("modelofcars");
     }
+
     public function create_post(){
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
         $machineCode = $this->post('machineCode');
-        $bodyCode = $this->post('bodyCode');
+        $machineSize = $this->post('machineSize');
         $modelofcarName = $this->post('modelofcarName');
         $userId = $this->session->userdata['logged_in']['id'];
         
-        $isCheck = $this->modelofcars->checkduplicate($modelofcarName,$modelId,$brandId);
-        if($isCheck){
-            $data = array(
-                'modelofcarId' => null,
-                'modelofcarName' => $modelofcarName,
-                'brandId' => $brandId,
-                'modelId' => $modelId,
-                'create_by' => $userId,
-                'machineCode' => $machineCode,
-                'bodyCode' => $bodyCode,
-                'create_at' =>date('Y-m-d H:i:s',time()),
-                'status' => 1,
-                'activeFlag' => 1
-            );
-            $result = $this->modelofcars->insert($data);
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data_check = $this->modelofcars->data_check_create($machineSize,$modelofcarName,$modelId,$brandId);
+        $data = array(
+            'modelofcarId' => null,
+            'modelofcarName' => $modelofcarName,
+            'brandId' => $brandId,
+            'modelId' => $modelId,
+            'create_by' => $userId,
+            'machineCode' => $machineCode,
+            'machineSize' => $machineSize,
+            'create_at' =>date('Y-m-d H:i:s',time()),
+            'status' => 1,
+            'activeFlag' => 1
+        );
+
+        $option = [
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->modelofcars,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
 
     public function update_post(){
@@ -107,8 +102,8 @@ class Modelofcar extends BD_Controller {
     function search_post(){
         $columns = array( 
             0 => null,
-            1 => 'modelofcarName',
-            2 => 'bodyCode',
+            1 => 'machineSize',
+            2 => 'modelofcarName',
             3 => 'machineCode',
             4 => 'status'  
         );
@@ -140,7 +135,7 @@ class Modelofcar extends BD_Controller {
                 $nestedData['brandId'] = $post->brandId;
                 $nestedData['modelId'] = $post->modelId;
                 $nestedData['machineCode'] = $post->machineCode;
-                $nestedData['bodyCode'] = $post->bodyCode;
+                $nestedData['machineSize'] = $post->machineSize;
                 $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
             }

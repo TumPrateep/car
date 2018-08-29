@@ -20,7 +20,7 @@
             modelofcarName: {
                 required: true
             },
-            bodyCode: {
+            machineSize: {
                 required: true
             },
             machineCode: {
@@ -31,8 +31,8 @@
             modelofcarName: {
                 required: "กรุณากรอกชื่อรุ่นรถ"
             },
-            bodyCode: {
-                required: "กรุณากรอกรหัสตัวถัง"
+            machineSize: {
+                required: "กรุณากรอกขนาดเครื่องยนต์(CC)"
             },
             machineCode: {
                 required: "กรุณากรอกรหัสเครื่องยนต์"

@@ -37,8 +37,8 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
+                { "data": "machineSize" },
                 { "data": "modelofcarName" },
-                { "data": "bodyCode" },
                 { "data": "machineCode" },
                 null,
                 null

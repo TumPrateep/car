@@ -9,7 +9,7 @@
           <a href="<?=base_url("admin/car/model/$brandId") ?>">รุ่นรถ</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car/carmodel/$brandId/$modelId") ?>">โมเดลรถ</a>
+          <a href="<?=base_url("admin/car/carmodel/$brandId/$modelId") ?>">รายละเอียดรุ่นรถ</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
@@ -32,7 +32,7 @@
         </a>
 
         <div class="input-group float-right">
-          <input id="table-search" class="form-control float-right" placeholder="ชื่อโมเดลรถ">
+          <input id="table-search" class="form-control float-right" placeholder="รายละเอียดรุ่นรถ">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
           </div>
@@ -63,8 +63,8 @@
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
-          <th><i class="fa fa-car"></i>  ชื่อโมเดล</th>
-          <th><i class="fa fa-calendar-check-o"></i>  รหัสตัวถัง</th>
+          <th><i class="fa fa-car"></i>  ขนาดเครื่องยนต์(CC)</th>
+          <th><i class="fa fa-calendar-check-o"></i>  รายละเอียดรุ่นรถ</th>
           <th><i class="fa fa-calendar-check-o"></i>  รหัสเครื่องยนต์</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>

@@ -10,9 +10,9 @@
           <a href="<?=base_url("admin/car/model/$brandId") ?>">รุ่นรถ</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/car/carmodel/$brandId/$modelId") ?>">โมเดลรถ</a>
+          <a href="<?=base_url("admin/car/carmodel/$brandId/$modelId") ?>">รายละเอียดรุ่นรถ</a>
         </li>
-        <li class="breadcrumb-item active">เพิ่มข้อมูลโมเดล</li>
+        <li class="breadcrumb-item active">เพิ่มรายละเอียดรุ่นรถ</li>
       </ol>
       <!-- Icon Cards-->
       <section class="content">
@@ -22,7 +22,7 @@
               <div class="card text-white bg-success">
                   <div class="card-header">
 
-                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i> เพิ่มข้อมูลโมเดล</h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i> เพิ่มรายละเอียดรุ่นรถ</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -33,14 +33,14 @@
                       <div class="row">
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label>ชื่อโมเดล</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ชื่อโมเดล" name="modelofcarName">
+                            <label>ขนาดเครื่องยนต์(CC)</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="ขนาดเครื่องยนต์(CC)" name="machineSize" id="machineSize">
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label>รหัสตัวถัง</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="รหัสตัวถัง" name="bodyCode" id="bodyCode">
+                            <label>รายละเอียดรุ่นรถ</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="รายละเอียดรุ่นรถ" name="modelofcarName">
                           </div>
                         </div>
                         <div class="col-md-4">
