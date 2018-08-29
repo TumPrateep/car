@@ -58,5 +58,29 @@ class lubricatortypeFormachines extends BD_Controller {
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
 
+    function changeStatus_post(){
+        $lubricatortypeFormachineId = $this->post('lubricatortypeFormachineId');
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+
+        $data_check_update = $this->brand->getlubricatortypeFormachineById($lubricatortypeFormachineId);
+        $data = array(
+            'lubricatortypeFormachineId' => $lubricatortypeFormachineId,
+            'status' => $status,
+            'activeFlag' => 1
+        );
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->brand
+        ];
+
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
+    
 }
