@@ -97,4 +97,9 @@ class Lubricatortypeformachine extends BD_Controller {
 
         $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
+
+    function getAllLubricatortypeformachine_get(){
+        $output['data'] = $this->lubricatortypeformachines->getAllLubricatortypeformachine();
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 }
