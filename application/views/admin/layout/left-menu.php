@@ -54,6 +54,12 @@
                     <span class="nav-link-text">ยี่ห้อน้ำมันเครื่อง</span>
                   </a>
                 </li>
+                <li class="<?= activate_menu('lubricator'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/lubricator") ?>">
+                    <i class="fa fa-cogs"></i>
+                    <span class="nav-link-text">ประเภทน้ำมันเครื่องตามเครื่องยนตร์</span>
+                  </a>
+                </li>
               </ul>
             </li>
 
