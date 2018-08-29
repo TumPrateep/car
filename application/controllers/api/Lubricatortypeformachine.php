@@ -102,4 +102,55 @@ class Lubricatortypeformachine extends BD_Controller {
         $output['data'] = $this->lubricatortypeformachines->getAllLubricatortypeformachine();
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
+
+    function searchlubricatortypeFormachine_post(){
+        $columns = array( 
+            0 =>null, 
+            1 =>'lubricatortypeFormachine',
+            2 =>'status'
+        );
+
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $lubricatortypeFormachineId = $this->post('lubricatortypeFormachineId');
+
+        $totalData = $this->lubricatortypeformachines->allLubricatortypeformachines_count();
+        $totalFiltered = $totalData; 
+
+        if(empty($this->post('lubricatortypeFormachine')) && empty($this->post('status')) )
+        {            
+            $posts = $this->lubricatortypeformachines->allLubricatortypeformachines($limit,$start,$order,$dir);
+        }
+        else {
+            $search = $this->post('lubricatortypeFormachine');
+            $status = $this->post('status');
+            $posts =  $this->lubricatortypeformachines->lubricatortypeformachines_search($limit,$start,$search, $status ,$order,$dir);
+            $totalFiltered = $this->lubricatortypeformachines->lubricatortypeformachines_search_count($search,$status);
+        }
+        $data = array();
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+
+                $nestedData['lubricatortypeFormachineId'] = $post->lubricatortypeFormachineId;
+                $nestedData['lubricatortypeFormachine'] = $post->lubricatortypeFormachine;
+                $nestedData['status'] = $post->status;
+                $data[] = $nestedData;
+
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+
+        $this->set_response($json_data);
+    }     
+
 }

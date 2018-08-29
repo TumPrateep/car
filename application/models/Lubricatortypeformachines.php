@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class Lubricatortypeformachines extends CI_Model{
+class lubricatortypeformachines extends CI_Model{
  
     function insert($data){
         $result = $this->db->insert('lubricatortypeformachine', $data);
@@ -24,5 +24,63 @@ class Lubricatortypeformachines extends CI_Model{
         $query = $this->db->get('lubricatortypeformachine');
         return $query->result();
     }
+
+    function allLubricatortypeformachines_count()
+    {   
+        $query = $this
+                ->db
+                ->get('lubricatortypeformachine');
+    
+        return $query->num_rows();  
+                                                                                                                                                                                                
+    }
+    
+    function allLubricatortypeformachines($limit,$start,$col,$dir)
+    {   
+       $query = $this
+                ->db
+                ->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('lubricatortypeformachine');
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
+    function lubricatortypeformachines_search($limit,$start,$search,$col,$dir,$status)
+    {
+        $this->db->like('lubricatortypeFormachine',$search);
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('lubricatortypeformachine');       
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    }
+    function lubricatortypeformachines_search_count($search,$status)
+    {
+        $query = $this
+                ->db
+                ->like('lubricatortypeFormachine',$search)
+                ->where('status',$status)
+                ->get('lubricatortypeformachine');
+    
+        return $query->num_rows();
+    }    
+
 
 }
