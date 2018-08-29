@@ -51,6 +51,12 @@
                             <label>ความจุ</label> <span class="error">*</span>
                             <input type="text" class="form-control" placeholder="ความจุ" name="capacity" id="capacity">
                           </div>
+                          <div class="col-md-4 form-group">
+                            <label>ประเภทเครื่องยนต์</label> <span class="error">*</span>
+                            <select class="form-control" name="lubricatortypeFormachineId" id="lubricatortypeFormachineId">
+                              <option value="">เลือกประเภทเครื่องยนต์</option>
+                            </select>
+                          </div>
                       </div>
                       <div class="row">
                         <div class="col-md-12">
