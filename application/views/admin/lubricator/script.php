@@ -37,11 +37,11 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                null,
                 { "data": "lubricatorName" },
                 { "data": "lubricator_number" },
                 { "data": "api" },
                 { "data": "capacity" },
+                { "data": "lubricatortypeFormachine"},
                 null,
                 null
             ],
@@ -49,9 +49,10 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5,6,7,1,4]
-                },{
-                    "targets": 5,
+                    "targets": [0,4,5,6,7,3]
+                },
+                {
+                    "targets": 4,
                     "data": "capacity",
                     "render": function ( data, type, full, meta ) {
                         return  data +' ลิตร';
@@ -69,14 +70,6 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
-                    }
-                },{
-                    "targets": 1,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        var path = pathImage + "lubricator_picture/"+data.lubricator_picture;
-                        var imageHtml = '<img src="'+ path +'" class="rounded" width="100px">';
-                        return imageHtml;
                     }
                 },{
                     "targets": 6,
@@ -99,13 +92,13 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [1]},
-                {"className": "dt-center", "targets": [0,1,2,3,4,5,]},
+                {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
                 { "width": "9%", "targets": 0 },
-                { "width": "10%", "targets": 4 },
-                { "width": "12%", "targets": 2 },
+                { "width": "10%", "targets": 3 },
+                { "width": "12%", "targets": 1 },
                 // { "width": "17%", "targets": 8 },
                 { "width": "12%", "targets": 6 },
-                { "width": "9%", "targets": 5 }
+                { "width": "9%", "targets": 4 }
             ]	 
     });
    
