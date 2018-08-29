@@ -1,18 +1,18 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-class LubricatortypeFormachine extends BD_Controller {
+class Lubricatortypeformachine extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
         // $this->auth();
-        $this->load->model("lubricatortypeFormachines");
+        $this->load->model("Lubricatortypeformachines");
     }
     function createlubricatortypeFormachines_post(){
         $lubricatortypeformachine = $this->post('lubricatortypeformachine');
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check = $this->lubricatortypeFormachines->data_check_create($lubricatortypeformachine);
+        $data_check = $this->Lubricatortypeformachines->data_check_create($lubricatortypeformachine);
         $data = array(
             'lubricatortypeformachine' => null,
             'lubricatortypeformachine' => $lubricatortypeformachine,
@@ -24,7 +24,7 @@ class LubricatortypeFormachine extends BD_Controller {
         $option = [
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->lubricatortypeFormachines,
+            "model" => $this->Lubricatortypeformachines,
             "image_path" => null
         ];
 
@@ -35,8 +35,8 @@ class LubricatortypeFormachine extends BD_Controller {
         $lubricatortypeformachineId = $this->post('lubricatortypeformachineId');
         $lubricatortypeformachine = $this->post('lubricatortypeformachine');
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check_update = $this->lubricatortypeFormachines->getlubricatortypeFormachines($lubricatortypeformachineId);
-        $data_check = $this->lubricatortypeFormachines->wherenot($lubricatortypeformachineId,$lubricatortypeformachine);
+        $data_check_update = $this->Lubricatortypeformachines->getlubricatortypeFormachines($lubricatortypeformachineId);
+        $data_check = $this->Lubricatortypeformachines->wherenot($lubricatortypeformachineId,$lubricatortypeformachine);
         $data = array(
             'lubricatortypeformachineId' => $lubricatortypeformachineId,
             'lubricatortypeformachine' => $lubricatortypeformachine,
@@ -50,7 +50,7 @@ class LubricatortypeFormachine extends BD_Controller {
             "data_check_update" => $data_check_update,
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->lubricatortypeFormachines,
+            "model" => $this->Lubricatortypeformachines,
             "image_path" => null,
             "old_image_path" => null,
         ];
@@ -67,7 +67,7 @@ class LubricatortypeFormachine extends BD_Controller {
             $status = 1;
         }
 
-        $data_check_update = $this->lubricatortypeFormachines->getlubricatortypeFormachineById($lubricatortypeformachineId);
+        $data_check_update = $this->Lubricatortypeformachines->getlubricatortypeFormachineById($lubricatortypeformachineId);
         $data = array(
             'lubricatortypeformachineId' => $lubricatortypeformachineId,
             'status' => $status,
@@ -77,7 +77,7 @@ class LubricatortypeFormachine extends BD_Controller {
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->lubricatortypeFormachines
+            "model" => $this->Lubricatortypeformachines
         ];
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
@@ -85,13 +85,13 @@ class LubricatortypeFormachine extends BD_Controller {
     
     function deletelubricatortypeFormachine_get(){
         $lubricatortypeformachineId = $this->get('lubricatortypeformachineId');
-        $model = $this->lubricatortypeFormachines->getlubricatortypeFormachine($lubricatortypeFormachineId);
+        $model = $this->Lubricatortypeformachines->getlubricatortypeFormachine($lubricatortypeFormachineId);
 
-        $data_check = $this->lubricatortypeFormachines->getmlubricatortypeFormachine($lubricatortypeFormachineId);
+        $data_check = $this->Lubricatortypeformachines->getmlubricatortypeFormachine($lubricatortypeFormachineId);
         $option = [
             "data_check_delete" => $data_check,
             "data" => $lubricatortypeFormachineId,
-            "model" => $this->lubricatortypeformachines,
+            "model" => $this->Lubricatortypeformachines,
             "image_path" => null
         ];
 

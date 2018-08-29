@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class LubricatortypeFormachines extends CI_Model{
+class Lubricatortypeformachines extends CI_Model{
  
     function insert($data){
         $result = $this->db->insert('lubricatortypeformachine', $data);
@@ -16,8 +16,7 @@ class LubricatortypeFormachines extends CI_Model{
         $this->db->from('lubricatortypeFormachine');
         $this->db->where('lubricatortypeFormachine',$lubricatortypeFormachine);
         $result = $this->db->get();
-        echo $this->db->last_query();
-        exit();
+        
         return $result->row();
 
     }
