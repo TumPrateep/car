@@ -164,17 +164,19 @@ class Modelofcar extends BD_Controller {
             $status = 1;
         }
         $data = array(
+            'modelofcarId' => $modelofcarId,
             'status' => $status,
             'activeFlag' => 1
         );
-        $result = $this->modelofcars->updateStatus($modelofcarId,$data);
-        if($result){
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data_check_update = $this->modelofcars->getCarOfModelById($modelofcarId);
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->modelofcars
+        ];
+
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
     function getCarOfModel_post(){
