@@ -54,10 +54,10 @@
                     <span class="nav-link-text">ยี่ห้อน้ำมันเครื่อง</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu(''); ?>">
-                  <a class="nav-link text-white" href="<?=base_url("admin/") ?>">
+                <li class="<?= activate_menu('LubricatortypeFormachine'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/LubricatortypeFormachine") ?>">
                     <i class="fa fa-cogs"></i>
-                    <span class="nav-link-text">ประเภทน้ำมันเครื่องตามเครื่องยนตร์</span>
+                    <span class="nav-link-text">ประเภทน้ำมันเครื่องตามเครื่องยนต์</span>
                   </a>
                 </li>
               </ul>
