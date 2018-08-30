@@ -60,7 +60,7 @@
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatusModel('+data.modelId+','+data.status+','+data.brandId+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatusModel('+data.machinetypeId+','+data.status+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
@@ -87,6 +87,28 @@
                 { "width": "10%", "targets": 4 }
             ]	 
     });
+
+    $("#form-search").submit(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+
+    var brandId = $("#brandId").val();
+    var modelId = $("#modelId").val();
+    var modelofcarId = $("#modelofcarId").val();
+
+    function updateStatusModel(machinetypeId,status){
+        $.post(base_url+"api/Machinetype/changeStatus",{
+            "machinetypeId": machinetypeId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,'admin/car/machinetype/'+brandId+'/'+modelId+'/'+modelofcarId);
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
 
 </script>
 

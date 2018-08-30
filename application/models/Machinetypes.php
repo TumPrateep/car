@@ -36,7 +36,7 @@ class Machinetypes extends CI_Model{
         $this->db->where("modelofcar_modelofcarId", $modelofcar_modelofcarId);
         $this->db->like('machinetype',$search);
         if($status != null){
-            $this->db->where("lubricator.status", $status);
+            $this->db->where("status", $status);
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
@@ -96,6 +96,17 @@ class Machinetypes extends CI_Model{
         $this->db->where('machinetype', $machinetype);
         $this->db->where('modelofcar_modelofcarId', $modelofcar_modelofcarId);
         $this->db->where('gear', $gear);
+        $result = $this->db->get();
+        return $result->row();
+    }
+
+    function data_check_update($machinetype,$modelofcar_modelofcarId,$gear,$machinetypeId){
+        $this->db->select("machinetype");
+        $this->db->from("machinetype");
+        $this->db->where('machinetype', $machinetype);
+        $this->db->where('modelofcar_modelofcarId', $modelofcar_modelofcarId);
+        $this->db->where('gear', $gear);
+        $this->db->where_not_in('machinetypeId',$machinetypeId);
         $result = $this->db->get();
         return $result->row();
     }
