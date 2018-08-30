@@ -202,8 +202,6 @@ class Car extends BD_Controller {
 
     function deleteModel_get(){
         $modelId = $this->get('modelId');
-        $model = $this->model->getmodel($modelId);
-
         $data_check = $this->model->getmodel($modelId);
         $option = [
             "data_check_delete" => $data_check,

@@ -111,13 +111,11 @@ class Machinetype extends BD_Controller {
     
     function delete_get(){
         $machinetypeId = $this->get('machinetypeId');
-        $machinetype = $this->machinetypes->getmachinetypebyId($machinetypeId);
-
         $data_check = $this->machinetypes->getmachinetypebyId($machinetypeId);
         $option = [
             "data_check_delete" => $data_check,
             "data" => $machinetypeId,
-            "model" => $this->machinetypess,
+            "model" => $this->machinetypes,
             "image_path" => null
         ];
 
