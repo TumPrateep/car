@@ -1,11 +1,25 @@
-<!-- <script>
+<script>
+
+$("#submit").validate({
+        rules: {
+            lubricatortypeFormachine: {
+                required: true
+            }
+        },
+        messages: {
+            lubricatortypeFormachine: {
+                required: "กรุณากรอกประเภทน้ำมันเครื่อง"
+            }   
+        },
+    });
+    
 var lubricatortypeFormachineId= $("#lubricatortypeFormachineId").val();
 
-$.post(base_url+"api/Lubricatortypeformachine/getAllLubricatortypeformachine",{
+$.post(base_url+"api/Lubricatortypeformachine/getUpdate",{
     "lubricatortypeFormachineId": $("#lubricatortypeFormachineId").val()
 },function(data){
     if(data.message!=200){
-        showMessage(data.message,"admin/car/model/"+brandId);
+        showMessage(data.message,"admin/LubricatortypeFormachine/");
     }
 
     if(data.message == 200){
@@ -27,10 +41,11 @@ function updatelubricatortypeFormachine(){
     
     if(isValid){
         var data = $("#submit").serialize();
-        $.post(base_url+"api/Lubricatortypeformachine/update",data,
+        
+        $.post(base_url+"api/Lubricatortypeformachine/updateLubricatortypeformachine",data,
         function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Tires/tiresize/"+rimId);
+                showMessage(data.message,"admin/LubricatortypeFormachine/");
             }else{
                 showMessage(data.message);
             }
@@ -38,4 +53,7 @@ function updatelubricatortypeFormachine(){
         
     }
 }
-</script> -->
+</script>
+
+</body>
+</html>

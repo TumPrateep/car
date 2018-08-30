@@ -85,7 +85,7 @@ class SpareundercarriageData extends BD_Controller {
 
         $this->set_response($json_data);
     }
-    function createSpareData_post(){
+    function create_post(){
         $spares_brandId = $this->post('spares_brandId');
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $userId = $this->session->userdata['logged_in']['id'];
@@ -120,8 +120,8 @@ class SpareundercarriageData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $image =  $imageName;
-            $checknotDuplicate = $this->spare_undercarriagedatas->checknotDuplicated($spares_brandId,$spares_undercarriageId,$userId);
-            if($checknotDuplicate){
+            $data_check = $this->spare_undercarriagedatas->data_check_create($spares_brandId,$spares_undercarriageId,$userId);
+            if($data_check){
                 unlink($file);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -140,15 +140,14 @@ class SpareundercarriageData extends BD_Controller {
                 'warranty_distance' => $warranty_distance,
                 'spares_undercarriageDataPicture' => $image
                 );
-                $result = $this->spare_undercarriagedatas->insert($data);
-                $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
+                $option = [
+                    "data_check" => $data_check,
+                    "data" => $data,
+                    "model" => $this->spare_undercarriagedatas,
+                    "image_path" => $file
+                ];
+
+                $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
             }
         }
     }
@@ -190,8 +189,13 @@ class SpareundercarriageData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $checknotDuplicate = $this->spare_undercarriagedatas->checknotDuplicatedforUpdate($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId);
-            if($checknotDuplicate){
+            $data_check_update = $this->spare_undercarriagedatas->getspares_undercarriageDatabyId($spares_undercarriageId);
+            $data_check = $this->spare_undercarriagedatas->data_check_update($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId);
+            $oldImage = null;
+            if($data_check != null){
+                $oldImage = $config['upload_path'].$data_check->spares_undercarriageDataPicture;
+            }
+            if($data_check){
                     $data = array(
                         'spares_undercarriageDataId' => $spares_undercarriageDataId,
                         'spares_brandId' => $spares_brandId,
@@ -206,47 +210,33 @@ class SpareundercarriageData extends BD_Controller {
                         'warranty_distance' => $warranty_distance,
                         'spares_undercarriageDataPicture' => $image
                     );
-                $result = $this->spare_undercarriagedatas->update($data);
-                $output["status"] = $result;
-                if($result){
-                    unlink($config['upload_path'].$oldData->spares_undercarriageDataPicture);
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    unlink($config['upload_path'].$image);
-                    $output["status"] = false;
-                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
+                    $option = [
+                        "data_check_update" => $data_check_update,
+                        "data_check" => $data_check,
+                        "data" => $data,
+                        "model" => $this->spare_undercarriagedatas,
+                        "image_path" => $file,
+                        "old_image_path" => $oldImage,
+                    ];
+
+                $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
             
         }
-        else{
-            unlink($file);
-            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        
     }
 }
     function delete_get(){
         $spares_undercarriageDataId = $this->get('spares_undercarriageDataId');
-        $userId = $this->session->userdata['logged_in']['id'];
+        $data_check = $this->spare_undercarriagedatas->getspares_undercarriageDatabyId($spares_undercarriageDataId);
         
-        $spareUndercarriage = $this->spare_undercarriagedatas->getspares_undercarriageDataById($spares_undercarriageDataId);
-        if($spareUndercarriage !=null){
-            $isDelete = $this->spare_undercarriagedatas->delete($spares_undercarriageDataId);
-            if($isDelete){
-                $config['upload_path'] = 'public/image/spareundercarriage/';
-                unlink($config['upload_path'].$spareUndercarriage->spares_undercarriageDataPicture);
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_USED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $spares_undercarriageDataId,
+            "model" => $this->spare_undercarriagedatas,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
 
     function getSpareUndercarriageData_get(){
@@ -254,7 +244,7 @@ class SpareundercarriageData extends BD_Controller {
         
         $isCheck = $this->spare_undercarriagedatas->checkSpareUndercarriageData($spares_undercarriageDataId);
         if($isCheck){
-            $result = $this->spare_undercarriagedatas->getSpareUndercarriageDataById($spares_undercarriageDataId);
+            $result = $this->spare_undercarriagedatas->getupdate($spares_undercarriageDataId);
             if($result != null){
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;

@@ -86,6 +86,15 @@
         event.preventDefault();
         table.ajax.reload();
     })  
+    function deleteLubricatorType(lubricatortypeFormachineId,lubricatortypeFormachine){
+        var option = {
+            url: "/Lubricatortypeformachine/deletelubricatortypeFormachine?lubricatortypeFormachineId="+lubricatortypeFormachineId,
+            label: "ลบประเภทน้ำมันเครื่องตามเครื่องยนต์",
+            content: "คุณต้องการลบ "+lubricatortypeFormachine+" ใช่หรือไม่",
+            gotoUrl: "admin/LubricatortypeFormachine/"
+        }
+        fnDelete(option);
+    }
 
 </script>
 
