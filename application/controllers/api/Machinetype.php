@@ -77,8 +77,7 @@ class Machinetype extends BD_Controller {
         $option = [
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->machinetypes,
-            "image_path" => null
+            "model" => $this->machinetypes
         ];
 
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);

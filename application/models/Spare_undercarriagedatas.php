@@ -73,7 +73,7 @@ class Spare_undercarriagedatas extends CI_Model{
                 ->get();
         return $query->num_rows();   
     }
-    function checknotDuplicated($spares_brandId,$spares_undercarriageId,$userId){
+    function data_check_create($spares_brandId,$spares_undercarriageId,$userId){
         $this->db->from('spares_undercarriageData');
         $this->db->where('spares_undercarriageData.spares_brandId',$spares_brandId);
         $this->db->where('spares_undercarriageData.spares_undercarriageId',$spares_undercarriageId);
@@ -89,7 +89,7 @@ class Spare_undercarriagedatas extends CI_Model{
     function insert($data){
        return $this->db->insert('spares_undercarriageData',$data);
     }
-    function checknotDuplicatedforUpdate($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId){
+    function data_check_update($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId){
         $this->db->from('spares_undercarriageData');
         $this->db->where('spares_undercarriageData.spares_brandId',$spares_brandId);
         $this->db->where('spares_undercarriageData.spares_undercarriageId',$spares_undercarriageId);
@@ -117,7 +117,7 @@ class Spare_undercarriagedatas extends CI_Model{
         $result = $this->db->update('spares_undercarriageData', $data);
         return $result;
     }
-    function getspares_undercarriageDataById($spares_undercarriageDataId){
+    function getspares_undercarriageDatabyId($spares_undercarriageDataId){
         return $this->db->where('spares_undercarriageDataId',$spares_undercarriageDataId)->get("spares_undercarriageData")->row();
     }
 
@@ -134,7 +134,7 @@ class Spare_undercarriagedatas extends CI_Model{
 
     }
 
-    function getSpareUndercarriageDataById($spares_undercarriageDataId){
+    function getupdate($spares_undercarriageDataId){
         $this->db->select("price,spares_brandId,spares_undercarriageDataId,spares_undercarriageDataPicture,spares_undercarriageId,status,warranty,warranty_distance,warranty_year");
         $this->db->where('spares_undercarriageDataId',$spares_undercarriageDataId);
         $result = $this->db->get('spares_undercarriageData')->row();

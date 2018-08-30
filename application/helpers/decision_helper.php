@@ -29,7 +29,7 @@
           $result = $option["model"]->update($option["data"]);
           if($result){
             if($option["old_image_path"] != null){
-              $option["old_image_path"];
+              unlink($option["old_image_path"]);
             }
             $output["message"] = REST_Controller::MSG_SUCCESS;
           }else{
