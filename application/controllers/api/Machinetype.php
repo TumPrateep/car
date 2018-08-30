@@ -59,7 +59,7 @@ class Machinetype extends BD_Controller {
     function create_post(){
 
         $machinetype = $this->post("machinetype");
-        $modelofcar_modelofcarId = $this->post("modelofcar_modelofcarId");
+        $modelofcar_modelofcarId = $this->post("modelofcarId");
         $gear = $this->post("gear");
         $userId = $this->session->userdata['logged_in']['id'];
 
@@ -78,6 +78,7 @@ class Machinetype extends BD_Controller {
             "data_check" => $data_check,
             "data" => $data,
             "model" => $this->machinetypes,
+            "image_path" => null
         ];
 
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);

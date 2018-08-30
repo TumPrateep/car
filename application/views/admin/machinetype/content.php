@@ -27,9 +27,6 @@
 
     <div class="card-tools one">
       <form id="form-search">
-        <input type="hidden" name="brandId" value="<?=$brandId ?>">
-        <input type="hidden" name="modelId" value="<?=$modelId ?>">
-        <input type="hidden" name="modelofcarId" value="<?=$modelofcarId ?>">
         <span class="left"></span>
         <a class="btn btn-primary create" href="<?=base_url("admin/car/createMachinetype/$brandId/$modelId/$modelofcarId") ?>">
           <i class="fa fa-plus">  สร้าง</i>
@@ -60,8 +57,9 @@
       </form>
     </div>
 
-    <input type="hidden" id="brandId" value="<?=$brandId ?>">
-    <input type="hidden" id="modelId" value="<?=$modelId ?>">
+    <input type="hidden" name="brandId" id="brandId" value="<?=$brandId ?>">
+    <input type="hidden" name="modelId" id="modelId" value="<?=$modelId ?>">
+    <input type="hidden" name="modelofcarId" id="modelofcarId" value="<?=$modelofcarId ?>">
   
     <div class="table-responsive">
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">

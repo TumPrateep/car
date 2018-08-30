@@ -33,7 +33,7 @@
                   <form id="submit">
                     <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
                     <input type="hidden" id="modelId" name="modelId" value="<?=$modelId ?>">
-                    <input type="hidden" name="modelofcarId" value="<?=$modelofcarId ?>">
+                    <input type="hidden" id="modelofcarId" name="modelofcarId" value="<?=$modelofcarId ?>">
                     
                     <div class="card-body black bg-light">
                       <div class="row">

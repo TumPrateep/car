@@ -48,6 +48,25 @@
                     "targets": [0,4]
                 },
                 {
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatusModel('+data.modelId+','+data.status+','+data.brandId+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
+                    }
+                },
+                {
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
@@ -65,7 +84,6 @@
                 {"className": "dt-head-center", "targets": []},
                 {"className": "dt-center", "targets": [0,1,2,3,4]},
                 { "width": "9%", "targets": 0 },
-                { "width": "12%", "targets": 1 },
                 { "width": "10%", "targets": 4 }
             ]	 
     });
