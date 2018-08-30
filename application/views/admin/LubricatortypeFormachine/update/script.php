@@ -1,4 +1,18 @@
 <script>
+
+$("#submit").validate({
+        rules: {
+            lubricatortypeFormachine: {
+                required: true
+            }
+        },
+        messages: {
+            lubricatortypeFormachine: {
+                required: "กรุณากรอกประเภทน้ำมันเครื่อง"
+            }   
+        },
+    });
+    
 var lubricatortypeFormachineId= $("#lubricatortypeFormachineId").val();
 
 $.post(base_url+"api/Lubricatortypeformachine/getUpdate",{
