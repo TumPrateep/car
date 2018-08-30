@@ -152,5 +152,18 @@ class Car extends CI_Controller {
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/machinetype/create/script");
 	}
+	public function updateMachinetype($brandId,$modelId,$modelofcarId)
+	{
+		$data["modelofcarId"] = $modelofcarId;
+		$data["brandId"] = $brandId;
+		$data["modelId"] = $modelId;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/machinetype/update/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/machinetype/update/script");
+	}
 
 }
