@@ -31,9 +31,9 @@ class LubricatortypeFormachine extends CI_Controller {
 		$this->load->view("admin/lubricatortypeformachine/create/script");
 	}
 
-	public function updatelubricatortypeformachine($lubricatortypeformachineId)
+	public function updatelubricatortypeformachine($lubricatortypeFormachineId)
 	{
-		$data['lubricatortypeformachineId'] = $lubricatortypeformachineId;
+		$data['lubricatortypeFormachineId'] = $lubricatortypeFormachineId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
