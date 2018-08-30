@@ -39,8 +39,8 @@ class lubricatortypeformachines extends CI_Model{
     }
 
     function update($data){
-        $this->db->where('lubricatortypeformachineId',$data["lubricatortypeformachineId"]);
-        return $this->db->update('lubricatortypeformachine', $data);
+        $this->db->where('lubricatortypeFormachineId',$data["lubricatortypeFormachineId"]);
+        return $this->db->update('lubricatortypeFormachine', $data);
     }
 
     function allLubricatortypeformachines_count()
