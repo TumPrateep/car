@@ -10,12 +10,12 @@ class Lubricatortypeformachine extends BD_Controller {
         $this->load->model("lubricatortypeformachines");
     }
     function createlubricatortypeFormachines_post(){
-        $lubricatortypeformachine = $this->post('lubricatortypeformachine');
+        $lubricatortypeFormachine = $this->post('lubricatortypeFormachine');
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check = $this->lubricatortypeformachines->data_check_create($lubricatortypeformachine);
+        $data_check = $this->lubricatortypeformachines->data_check_create($lubricatortypeFormachine);
         $data = array(
-            'lubricatortypeformachine' => null,
-            'lubricatortypeformachine' => $lubricatortypeformachine,
+            'lubricatortypeformachineId' => null,
+            'lubricatortypeFormachine' => $lubricatortypeFormachine,
             'status' => 1,
             'activeFlag' => 1,
             'create_at' => date('Y-m-d H:i:s',time()),

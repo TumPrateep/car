@@ -70,7 +70,7 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Lubricator/updatelubricator/"+data.lubricator_brandId+'/'+data.lubricatorId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/car/updateMachinetype/"+brandId+'/'+modelId+'/'+modelofcarId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                         +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricator('+data.lubricatorId+',\''+data.lubricatorName+'\',\''+data.lubricator_brandId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{
@@ -84,7 +84,7 @@
                 {"className": "dt-head-center", "targets": []},
                 {"className": "dt-center", "targets": [0,1,2,3,4]},
                 { "width": "9%", "targets": 0 },
-                { "width": "10%", "targets": 4 }
+                { "width": "20%", "targets": 4 }
             ]	 
     });
 
