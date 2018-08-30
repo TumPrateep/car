@@ -6,9 +6,9 @@ class lubricatortypeformachines extends CI_Model{
         $result = $this->db->insert('lubricatortypeformachine', $data);
         return $result;
     }
-    function getLubricatortypeFormachinesById($lubricatortypeformachineId){
-        $this->db->where('lubricatortypeformachineId',$lubricatortypeformachineId);
-        $result = $this->db->get('lubricatortypeformachine');
+    function getLubricatortypeFormachinesById($lubricatortypeFormachineId){
+        $this->db->where('lubricatortypeFormachineId',$lubricatortypeFormachineId);
+        $result = $this->db->get('lubricatortypeFormachine');
         return $result->row();
     }
     function getUpdate($lubricatortypeformachineId){
@@ -98,7 +98,10 @@ class lubricatortypeformachines extends CI_Model{
                 ->get('lubricatortypeformachine');
     
         return $query->num_rows();
-    }    
+    }  
+    function delete($lubricatortypeFormachineId){
+        return $this->db->delete('lubricatortypeFormachine', array('lubricatortypeFormachineId' => $lubricatortypeFormachineId));
+    } 
 
 
 }

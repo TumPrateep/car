@@ -84,10 +84,9 @@ class Lubricatortypeformachine extends BD_Controller {
     }
     
     function deletelubricatortypeFormachine_get(){
-        $lubricatortypeformachineId = $this->get('lubricatortypeformachineId');
-        $model = $this->lubricatortypeformachines->getlubricatortypeFormachine($lubricatortypeFormachineId);
+        $lubricatortypeFormachineId = $this->get('lubricatortypeFormachineId');
 
-        $data_check = $this->lubricatortypeformachines->getmlubricatortypeFormachine($lubricatortypeFormachineId);
+        $data_check = $this->lubricatortypeformachines->getLubricatortypeFormachinesById($lubricatortypeFormachineId);
         $option = [
             "data_check_delete" => $data_check,
             "data" => $lubricatortypeFormachineId,
