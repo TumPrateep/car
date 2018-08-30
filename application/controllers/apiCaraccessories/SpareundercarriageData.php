@@ -241,21 +241,12 @@ class SpareundercarriageData extends BD_Controller {
 
     function getSpareUndercarriageData_get(){
         $spares_undercarriageDataId = $this->get('spares_undercarriageDataId');
+        $data_check = $this->spare_undercarriagedatas->getupdate($spares_undercarriageDataId);
+        $option = [
+                "data_check" => $data_check
+        ];
+    
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
         
-        $isCheck = $this->spare_undercarriagedatas->checkSpareUndercarriageData($spares_undercarriageDataId);
-        if($isCheck){
-            $result = $this->spare_undercarriagedatas->getupdate($spares_undercarriageDataId);
-            if($result != null){
-                $output["data"] = $result;
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
     }
 }
