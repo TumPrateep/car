@@ -1,45 +1,42 @@
+<script>
+ $("#submit").validate({
+        rules: {
+            lubricatortypeFormachine: {
+                required: true
+            }
+        },
+        messages: {
+            lubricatortypeFormachine: {
+                required: "กรุณากรอกประเภทน้ำมันเครื่อง"
+            }   
+        },
+    });
+    
+    $("#submit").submit(function(){
+        createLubricatortypeFormachine();
+    })
 
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/SparePartCar") ?>">รายการอะไหล่</a>
-        </li>
-        <li class="breadcrumb-item active">เพิ่มรายการอะไหล่</li>
-      </ol>
-      <!-- Icon Cards-->
-      <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-10">
-              <div class="card text-white bg-success">
-                  <div class="card-header">
+    function createLubricatortypeFormachine(){
+        event.preventDefault();
+        var isValid = $("#submit").valid();
+        
+        if(isValid){
+            var data = $("#submit").serialize();
+            $.post(base_url+"api/Lubricatortypeformachine/createlubricatortypeFormachines",data,
+            function(data){
+                var lubricatortypeFormachineId = $("#lubricatortypeFormachineId").val();
+                if(data.message == 200){
+                    showMessage(data.message,"admin/LubricatortypeFormachine/");
+                }else{
+                    showMessage(data.message,);
+                }
+            });
+            
+        }
+    }
+    
+   
+</script>
 
-                    <h3 class="card-title"><i class="fa fa fa-wrench"></i> เพิ่มรายการอะไหล่</h3>
-                  </div>
-                  <!-- /.card-header -->
-                  <!-- form start -->
-                  <form id="submit">
-                    <div class="card-body black bg-light">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label>ชื่อรายการอะไหล่</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ชื่อรายการอะไหล่" name="spares_undercarriageName">
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="form-group">
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
-                      </div>
-                    </div>
-                    </form>
-                    <!-- /.card-body -->
-                 
-                </div>
-              </div>
-          </div>
-        </div>
-      </section>
-    </div>
+</body>
+</html>
