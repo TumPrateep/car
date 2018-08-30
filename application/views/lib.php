@@ -52,9 +52,9 @@
         }
 
         if(strWarranty == ""){
-            strWarranty = "ไม่รับประกัน";
+            strWarranty = "-";
         }else{
-            strWarranty = "รับประกัน "+strWarranty;
+            strWarranty = strWarranty;
         }
 
         return strWarranty;
