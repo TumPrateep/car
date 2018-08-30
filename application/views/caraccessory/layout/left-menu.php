@@ -40,11 +40,6 @@
                                 <i class="fa fa-tachometer"></i><span class="hide-menu">ข้อมูลยาง</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="<?=base_url("caraccessory/Tireneed"); ?>">
-                                <i class="fa fa-tachometer"></i><span class="hide-menu">ราคาเปลี่ยนยาง</span>
-                            </a>
-                        </li>
 
                     </ul>
                 </nav>

@@ -25,7 +25,7 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>ประเภทน้ำมันเครื่อง</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ประเภทน้ำมันเครื่อง" name="lubricatortypeFormachine">
+                            <input type="text" class="form-control" placeholder="ประเภทน้ำมันเครื่อง" name="lubricatortypeFormachine" id="lubricatortypeFormachine">
                           </div>
                         </div>
                       </div>

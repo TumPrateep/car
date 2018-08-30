@@ -138,15 +138,17 @@
                                         </div>
 
                                         <div class="card-body">
-                                            <div class="text-center">
-                                                <h3>ยี่ห้อยาง/รุ่นยาง ขนาดยาง</h3>
-                                            </div>
-                                            <div class="text-left">
-                                                <span>Mail Order/Fitted</span><br>
-                                                <span>รับประกัน</span>
-                                            </div>
-                                            <div class="text-center">
-                                                <h2>xxx,xxx บาทต่อเส้น</h2>
+                                            <div class="row">
+                                                <div class="col-md-7 font-black"><small>
+                                                    ยี่ห้อ ผผผผผผ <br>
+                                                    ขนาด ผผผผผผผ<br>
+                                                    รุ่น ผผผผผผผ<br>
+                                                    รับประกัน ผผผผผผผผ<br></small>
+                                                </div>
+                                                <div class="col-md-5 border-left">
+                                                    <h3 class="top-margin">1,000 .-</h3>
+                                                    สั่งจอง
+                                                </div>
                                             </div>
                                             <div>
                                                 <a href="#"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>
