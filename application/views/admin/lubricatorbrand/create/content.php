@@ -28,9 +28,22 @@
                           </div>
                         </div>
                       </div>
-                      <div class="form-group"> 
-                          <input id="lubricator_brandPicture" name ="lubricator_brandPicture" class="file" type="file">
-                      </div>
+                      <div class="row p-t-20">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                        <label class="control-label">รูปยี่ห้อน้ำมันเครื่อง</label>
+                                            <div class="image-editor">
+                                                <input type="file" class="cropit-image-input"  required>
+                                                <div class="cropit-preview"></div>
+                                                <div class="image-size-label">
+                                                ปรับขนาด
+                                                </div>
+                                                <input type="range" class="cropit-image-zoom-input">
+                                                <input type="hidden" name="lubricator_brandPicture" id="lubricator_brandPicture" class="hidden-image-data" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>     
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary ">บันทึก</button>
                       </div>
