@@ -84,7 +84,7 @@
                 {"className": "dt-head-center", "targets": []},
                 {"className": "dt-center", "targets": [0,1,2,3,4]},
                 { "width": "9%", "targets": 0 },
-                { "width": "10%", "targets": 4 }
+                { "width": "20%", "targets": 4 }
             ]	 
     });
 
