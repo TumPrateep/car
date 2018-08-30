@@ -6,7 +6,7 @@ class Lubricatortypeformachine extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        // $this->auth();
+        $this->auth();
         $this->load->model("lubricatortypeformachines");
     }
     function createlubricatortypeFormachines_post(){
@@ -35,8 +35,8 @@ class Lubricatortypeformachine extends BD_Controller {
         $lubricatortypeformachineId = $this->post('lubricatortypeformachineId');
         $lubricatortypeformachine = $this->post('lubricatortypeformachine');
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check_update = $this->lubricatortypeformachines->getlubricatortypeFormachines($lubricatortypeformachineId);
-        $data_check = $this->lubricatortypeformachines->wherenot($lubricatortypeformachineId,$lubricatortypeformachine);
+        $data_check_update = $this->lubricatortypeformachines->getLubricatortypeFormachinesById($lubricatortypeformachineId);
+        $data_check = $this->lubricatortypeformachines->data_check_update($lubricatortypeformachineId,$lubricatortypeformachine);
         $data = array(
             'lubricatortypeformachineId' => $lubricatortypeformachineId,
             'lubricatortypeformachine' => $lubricatortypeformachine,
@@ -67,7 +67,7 @@ class Lubricatortypeformachine extends BD_Controller {
             $status = 1;
         }
 
-        $data_check_update = $this->lubricatortypeformachines->getlubricatortypeFormachineById($lubricatortypeformachineId);
+        $data_check_update = $this->lubricatortypeformachines->getLubricatortypeFormachinesById($lubricatortypeformachineId);
         $data = array(
             'lubricatortypeformachineId' => $lubricatortypeformachineId,
             'status' => $status,
@@ -151,6 +151,18 @@ class Lubricatortypeformachine extends BD_Controller {
         );
 
         $this->set_response($json_data);
-    }     
+    }   
+    
+    function getUpdate_post(){
+
+        $lubricatortypeFormachineId = $this->post('lubricatortypeFormachineId');
+
+        $data_check = $this->lubricatortypeformachines->getUpdate($lubricatortypeFormachineId);
+        $option = [
+            "data_check" => $data_check
+        ];
+
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
 
 }

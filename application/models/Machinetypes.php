@@ -2,6 +2,67 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
 class Machinetypes extends CI_Model{
+
+    function allMachinetype_count($modelofcar_modelofcarId)
+    {   
+        $this->db->where("modelofcar_modelofcarId", $modelofcar_modelofcarId);
+        $query = $this->db->get('machinetype');
+        return $query->num_rows();                                                                                                                                                                                      
+    }
+    
+    function allMachinetype($limit,$start,$col,$dir,$modelofcar_modelofcarId)
+    {  
+        $this->db->select('machinetypeId,machinetype,gear,status'); 
+        $this->db->from('machinetype');
+        $this->db->where("modelofcar_modelofcarId", $modelofcar_modelofcarId);
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get();
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
+    function machinetype_search($limit,$start,$search,$col,$dir,$status,$modelofcar_modelofcarId)
+    {
+        $this->db->select('machinetypeId,machinetype,gear,status'); 
+        $this->db->from('machinetype');
+        $this->db->where("modelofcar_modelofcarId", $modelofcar_modelofcarId);
+        $this->db->like('machinetype',$search);
+        if($status != null){
+            $this->db->where("lubricator.status", $status);
+        }
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get();       
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    }
+    function machinetype_search_count($search,$status,$modelofcar_modelofcarId)
+    {
+        $this->db->select('machinetypeId,machinetype,gear,status'); 
+        $this->db->from('machinetype');
+        $this->db->where("modelofcar_modelofcarId", $modelofcar_modelofcarId);
+        $this->db->like('machinetype',$search);
+
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+        $query = $this->db->get();
+        return $query->num_rows();
+    } 
     
     function  insert($data){
         return $this->db->insert('machinetype', $data);
