@@ -307,3 +307,7 @@ label.error{
   .card-body{
     width: 100%;
   }
+
+  .card-img-top-50{
+      width: 56%;
+  }

@@ -189,7 +189,7 @@ class SpareundercarriageData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $data_check_update = $this->spare_undercarriagedatas->getspares_undercarriageDatabyId($spares_undercarriageId);
+            $data_check_update = $this->spare_undercarriagedatas->getspares_undercarriageDatabyId($spares_undercarriageDataId);
             $data_check = $this->spare_undercarriagedatas->data_check_update($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId);
             $oldImage = null;
             if($data_check != null){
@@ -203,7 +203,7 @@ class SpareundercarriageData extends BD_Controller {
                         'status' => 2,
                         'update_at' => date('Y-m-d H:i:s',time()),
                         'update_by' => $userId,
-                        "activeFlag" => 2,
+                        "activeFlag" => 1,
                         'price' => $price,
                         'warranty' => $warranty,
                         'warranty_year' => $warranty_year,

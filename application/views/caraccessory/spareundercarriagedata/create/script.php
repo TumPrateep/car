@@ -44,7 +44,7 @@
             var myform = document.getElementById("create-sparesUndercarriageData");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"apiCaraccessories/SpareundercarriageData/createSpareData",
+                url: base_url+"apiCaraccessories/SpareundercarriageData/create",
                 data: formData,
                 processData: false,
                 contentType: false,

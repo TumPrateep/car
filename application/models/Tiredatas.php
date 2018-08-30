@@ -1,6 +1,7 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
 class Tiredatas extends CI_Model{
+
     function getirebyId($tire_dataId){
         $this->db->select('*');
         $this->db->where('tire_dataId',$tire_dataId);
@@ -24,7 +25,7 @@ class Tiredatas extends CI_Model{
     function delete($tire_dataId){
         return $this->db->delete('tire_data',array('tire_dataId' => $tire_dataId));
     }
-    function checkduplicated($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId){
+    function data_check_create($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId){
         // $this->db->select('tire_data.tire_brandId');
         $this->db->from('tire_data');
         // $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
@@ -37,19 +38,14 @@ class Tiredatas extends CI_Model{
         $this->db->where('tire_data.tire_sizeId',$tire_sizeId);
         $this->db->where('tire_data.rimId',$rimId);
         $this->db->where('tire_data.car_accessoriesId',$car_accessoriesId);
-        $result = $this->db->count_all_results();
-      
-        if($result > 0){
-            return true;
-        }else{
-            return false;
-        }
+        $result = $this->db->get();
+        return $result->row();
     }
     function insert($data){
         return $this->db->insert('tire_data',$data);
     }
 
-    function checkduplicatedUpdate($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId){
+    function data_check_update($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId){
         // $this->db->select('tire_data.tire_brandId,tire_data.tire_modelId,tire_data.rimId,tire_data.car_accessoriesId,concat(tire_size.tire_size,"/",tire_size.tire_series,tire_size.rim) as tire_size');
         $this->db->from('tire_data');
         // $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
@@ -63,12 +59,8 @@ class Tiredatas extends CI_Model{
         $this->db->where('tire_data.rimId',$rimId);
         $this->db->where('tire_data.car_accessoriesId',$car_accessoriesId);
         $this->db->where_not_in('tire_data.tire_dataId',$tire_dataId);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return true;
-        }else
-            return false;
+        $result = $this->db->get();
+        return $result->row();
     }
     function update($data,$tire_dataId){
         $this->db->where('tire_dataId',$tire_dataId);

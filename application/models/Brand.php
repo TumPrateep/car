@@ -78,14 +78,8 @@ class Brand extends CI_Model {
         $this->db->from("brand");
         $this->db->where('brandName',$brandName);
         // $this->db->get();
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return true;
-        }else{
-            return false;
-        }
-
+        $result = $this->db->get();
+        return $result->row();
     }
     
     function get_brand($brandName){
@@ -93,7 +87,7 @@ class Brand extends CI_Model {
     }
 	
 
-    function insert_brand($data){
+    function insert($data){
 		return $this->db->insert('brand', $data);
     }
 
@@ -122,12 +116,8 @@ class Brand extends CI_Model {
         $this->db->from("brand");
         $this->db->where('brandName', $brandName);
         $this->db->where_not_in('brandId', $brandId);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return false;
-        }
-        return true;
+        $result = $this->db->get();
+        return $result->row();
     }
 
     function update($data){

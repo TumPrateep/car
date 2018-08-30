@@ -54,13 +54,14 @@
                             html += '<div class="col-lg-4" col-md-8>'
                                  + '<div class="card card-header-height">'
                                  + '<div class="text-right mg-15">'
-                                 	+ '<h3><span class="badge badge-pill badge-'+lubricatorClass[value.lubricator_gear]+'">'+lubricatorLib[value.lubricator_gear];
+                                 	+ '<span class="badge badge-pill badge-'+lubricatorClass[value.lubricator_gear]+'">'+lubricatorLib[value.lubricator_gear];
                                     if(value.lubricator_typeName != null){
                                         html += value.lubricator_typeName;
                                     }
-                                    html += '</span></h3>'
+                                    html += '</span>'
                                  + '</div>'
                                     + '<div class="card-body text-center">'
+                                        +'<img class="card-img-top-50" src="http://localhost/car/public/image/tire_brand/MICHELIN&#10;.png">'
                                         + '<img class="card-img-top img-80-p" src="'+picturePath+'lubricatordata/'+value.lubricator_dataPicture+'">'
                                     + '</div>'
                                     + '<div class="card-body">'

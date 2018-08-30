@@ -11,24 +11,15 @@ class TireData extends BD_Controller {
     }
     public function delete_get(){
         $tire_dataId = $this->get('tire_dataId');
-        
-        $tire = $this->tiredatas->getireById($tire_dataId);
-        $userId = $this->session->userdata['logged_in']['id'];
-        if($tire != null){
-        
-            $isDelete = $this->tiredatas->delete($tire_dataId);
-            if($isDelete){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_USED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-           
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data_check = $this->tiredatas->getirebyId($tire_dataId);
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $tire_dataId,
+            "model" => $this->tiredatas,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
 
     }
 
@@ -70,7 +61,7 @@ class TireData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $isDuplicated = $this->tiredatas->checkduplicated($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
+            $data_check = $this->tiredatas->data_check_create($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
             if($isDuplicated){
                 unlink($file);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
@@ -95,15 +86,14 @@ class TireData extends BD_Controller {
                     'warranty' => $warranty,
                     'can_change' =>$can_change
                 );
-                $result = $this->tiredatas->insert($data);
-                if($result){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    unlink($file);
-                    $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }   
+                $option = [
+                    "data_check" => $data_check,
+                    "data" => $data,
+                    "model" => $this->tiredatas,
+                    "image_path" => $file
+                ];
+
+                $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
             }
         }
     }
@@ -152,7 +142,8 @@ class TireData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $isDuplicated = $this->tiredatas->checkduplicatedUpdate($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
+            $data_check_update = $this->spare_undercarriagedatas->
+            $isDuplicated = $this->tiredatas->data_check_update($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
             if(!$isDuplicated){
                 $data = array(
                     'tire_dataId' => $tire_dataId,
@@ -172,26 +163,16 @@ class TireData extends BD_Controller {
                     'warranty' => $warranty,
                     'can_change' =>$can_change
                 );
-                if(!empty($img)){
-                    $data["tire_picture"] = $image;
-                }
-                $oldData = $this->tiredatas->gettire_dataById($tire_dataId);
-                $result = $this->tiredatas->update($data, $tire_dataId);
-                if($result){
-                    unlink($config['upload_path'].$oldData->tire_picture);
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    unlink($config['upload_path'].$image);
-                    $output["status"] = false;
-                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-                
-            }else{
-                unlink($file);
-                $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
+                $option = [
+                    "data_check_update" => $data_check_update,
+                    "data_check" => $data_check,
+                    "data" => $data,
+                    "model" => $this->tiredatas,
+                    "image_path" => $file,
+                    "old_image_path" => $oldImage,
+                ];
+
+            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
             }
         }
     }
