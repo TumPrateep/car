@@ -151,7 +151,7 @@ class SpareundercarriageData extends BD_Controller {
             }
         }
     }
-}
+
     function update_post(){
         $spares_undercarriageDataId = $this->post('spares_undercarriageDataId');
         $spares_brandId = $this->post('spares_brandId');
