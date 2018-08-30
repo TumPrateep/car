@@ -830,7 +830,6 @@ CREATE TABLE `spares_undercarriagedata` (
 
 LOCK TABLES `spares_undercarriagedata` WRITE;
 /*!40000 ALTER TABLE `spares_undercarriagedata` DISABLE KEYS */;
-INSERT INTO `spares_undercarriagedata` VALUES (5,22,22,8,8,'2018-08-16 16:59:34','2018-08-17 18:26:52',2,2,NULL,0,NULL,11111,'5b76b0fc0cccc.png');
 /*!40000 ALTER TABLE `spares_undercarriagedata` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1294,4 +1293,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-30 16:20:57
+-- Dump completed on 2018-08-30 16:21:58
