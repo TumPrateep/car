@@ -62,8 +62,9 @@ class Tiredatas extends CI_Model{
         $result = $this->db->get();
         return $result->row();
     }
-    function update($data,$tire_dataId){
-        $this->db->where('tire_dataId',$tire_dataId);
+
+    function update($data){
+        $this->db->where('tire_dataId',$data["tire_dataId"]);
         return $this->db->update('tire_data',$data);
     }
     
