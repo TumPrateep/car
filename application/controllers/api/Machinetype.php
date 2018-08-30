@@ -122,5 +122,37 @@ class Machinetype extends BD_Controller {
         $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
 
+    function update_post(){
+
+        $machinetypeId = $this->post("machinetypeId");
+        $machinetype = $this->post("machinetype");
+        $modelofcar_modelofcarId = $this->post("modelofcarId");
+        $gear = $this->post("gear");
+        $userId = $this->session->userdata['logged_in']['id'];
+        
+        $data_check_update = $this->machinetypes->getmachinetypebyId($machinetypeId);
+        $data_check = $this->machinetypes->data_check_update($machinetype, $modelofcar_modelofcarId, $gear ,$machinetypeId);
+        $data = array(
+            'machinetypeId' => $machinetypeId,
+            'machinetype' => $machinetype,
+            'modelofcar_modelofcarId' => $modelofcar_modelofcarId,
+            'gear' => $gear,
+            'status' => 1,
+            'activeFlag' => 1,
+            'update_at' => date('Y-m-d H:i:s',time()),
+            'update_by' => $userId
+        );
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->machinetypes,
+        ];
+
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+    }
+
+
 
 }
