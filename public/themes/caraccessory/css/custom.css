@@ -173,8 +173,12 @@ label.error{
     }
 
     .icon-right{
-        float: none !important;
+        /* float: none !important; */
         padding-bottom: 10px;
+    }
+
+    .float-right{
+        float: right;
     }
 
   }
@@ -293,8 +297,13 @@ label.error{
   .top-margin{
       margin-top: 30px;
       color:red;
+      font-weight: bold;
   }
   
   .text-lebel{
       color: #696969;
+  }
+
+  .card-body{
+    width: 100%;
   }
