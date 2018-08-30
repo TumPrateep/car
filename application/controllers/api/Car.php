@@ -265,87 +265,71 @@ class Car extends BD_Controller {
 
     function createBrand_post(){
         $config['upload_path'] = 'public/image/brand/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        // $config['max_size'] = '100';
-        $config['max_width']  = '1024';
-        $config['max_height']  = '768';
-        $config['overwrite'] = TRUE;
-        $config['encrypt_name'] = TRUE;
-        $config['remove_spaces'] = TRUE;
+        $brandName = $this->post("brandName");
+        $img = $this->post("brandPicture");
+        $img = str_replace('data:image/png;base64,', '', $img);
+	    $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $imageName = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName;
+        $success = file_put_contents($file, $data);
 
-        $this->load->library('upload', $config);
         $userId = $this->session->userdata['logged_in']['id'];
 
-		if ( ! $this->upload->do_upload("brandPicture"))
-		{
-            $error = array('error' => $this->upload->display_errors());
+        if (!$success){
             $output["message"] = REST_Controller::MSG_ERROR;
-            $output["data"] = $error;
 			$this->set_response($output, REST_Controller::HTTP_OK);
-		}
-		else
-		{
-            $imageDetailArray = $this->upload->data();
-            $image =  $imageDetailArray['file_name'];
-            $brandName = $this->post("brandName");
-            $isDublicte = $this->brand->checkBrand($brandName);
-            if($isDublicte){
-                unlink($config['upload_path'].$image);
-                $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $data = array(
-                    "brandId"=> null,
-                    "brandPicture"=> $image,
-                    "brandName"=> $brandName,
-                    "status"=> 1,
-                    "create_at" => date('Y-m-d H:i:s',time()),
-                    "create_by" => $userId,
-                    'update_at' => null,
-                    'update_by' => null,
-                    "activeFlag" => 1
-                );
-                $isResult = $this->brand->insert_brand($data);
-                if($isResult){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    unlink($config['upload_path'].$image);
-                    $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }
-		}
+		}else{
+            $data_check = $this->brand->checkBrand($brandName);
+            $data = array(
+                "brandId"=> null,
+                "brandPicture"=> $imageName,
+                "brandName"=> $brandName,
+                "status"=> 1,
+                "create_at" => date('Y-m-d H:i:s',time()),
+                "create_by" => $userId,
+                'update_at' => null,
+                'update_by' => null,
+                "activeFlag" => 1
+            );
+
+            $option = [
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->brand,
+                "image_path" => $file
+            ];
+    
+            $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
+
+        }
     }
 
     function updateBrand_post(){
         $config['upload_path'] = 'public/image/brand/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        // $config['max_size'] = '100';
-        // $config['max_width']  = '1024';
-        // $config['max_height']  = '768';
-        $config['overwrite'] = TRUE;
-        $config['encrypt_name'] = TRUE;
-        $config['remove_spaces'] = TRUE;
+        $brandId = $this->post("brandId");
+        $brandName = $this->post("brandName");
+        $img = $this->post("brandPicture");
+        $success = true;
+        $file = null; 
+        if(!empty($img)){
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
 
-        $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->library('upload', $config);
+            $imageName = uniqid().'.png';
+            $file = $config['upload_path']. '/'. $imageName;
+            $success = file_put_contents($file, $data);
+        }
 
-        $image =  "";
-        if ( ! $this->upload->do_upload("brandPicture")){
-            $error = array('error' => $this->upload->display_errors());
+        if (!$success){
+            unlink($file);
             $output["message"] = REST_Controller::MSG_ERROR;
-            $output["data"] = $error;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
-            $imageDetailArray = $this->upload->data();
-            $image =  $imageDetailArray['file_name'];
-        }   
-        
-        $brandName = $this->post("brandName");
-        $brandId = $this->post("brandId");
-        $isDublicte = $this->brand->wherenot($brandId,$brandName);
-        if($isDublicte){
+            $data_check_update = $this->brand->getBrandById($brandId);
+            $data_check = $this->brand->wherenot($brandId,$brandName);
+
             $data = array(
                 "brandId"=> $brandId,
                 "brandPicture"=> $image,
@@ -354,24 +338,24 @@ class Car extends BD_Controller {
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );
-            $oldData = $this->brand->getBrandById($brandId);
-            $isResult = $this->brand->update($data);
-            if($isResult){
-                unlink($config['upload_path'].$oldData->brandPicture);
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                unlink($config['upload_path'].$image);
-                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
+            $oldImage = null;
+            if($data_check_update != null){
+                $oldImage = $config['upload_path'].$data_check_update->brandPicture;
             }
 
-        }else{
-            unlink($config['upload_path'].$image);
-            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
+            $option = [
+                "data_check_update" => $data_check_update,
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->brand,
+                "image_path" => $file,
+                "old_image_path" => $oldImage,
+            ];
+    
+            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+
         }
-		
+    	
     }
 
     function getBrandforupdate_post(){
