@@ -31,15 +31,15 @@ class Lubricatortypeformachine extends BD_Controller {
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
 
-    function update_post(){
-        $lubricatortypeformachineId = $this->post('lubricatortypeformachineId');
-        $lubricatortypeformachine = $this->post('lubricatortypeformachine');
+    function updateLubricatortypeformachine_post(){
+        $lubricatortypeFormachineId = $this->post('lubricatortypeFormachineId');
+        $lubricatortypeFormachine = $this->post('lubricatortypeFormachine');
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check_update = $this->lubricatortypeformachines->getLubricatortypeFormachinesById($lubricatortypeformachineId);
-        $data_check = $this->lubricatortypeformachines->data_check_update($lubricatortypeformachineId,$lubricatortypeformachine);
+        $data_check_update = $this->lubricatortypeformachines->getLubricatortypeFormachinesById($lubricatortypeFormachineId);
+        $data_check = $this->lubricatortypeformachines->data_check_update($lubricatortypeFormachineId,$lubricatortypeFormachine);
         $data = array(
-            'lubricatortypeformachineId' => $lubricatortypeformachineId,
-            'lubricatortypeformachine' => $lubricatortypeformachine,
+            'lubricatortypeFormachineId' => $lubricatortypeFormachineId,
+            'lubricatortypeFormachine' => $lubricatortypeFormachine,
             'status' => 1,
             'activeFlag' =>1,
             'update_at' => date('Y-m-d H:i:s',time()),
@@ -98,7 +98,8 @@ class Lubricatortypeformachine extends BD_Controller {
         $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
 
-    function getAllLubricatortypeformachine_get(){
+    function getAllLubricatortypeformachine_post(){
+        
         $output['data'] = $this->lubricatortypeformachines->getAllLubricatortypeformachine();
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
