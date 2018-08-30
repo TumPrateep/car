@@ -32,12 +32,18 @@
     $("#update-tiresbrand").validate({
         rules: {
             tire_brandName: {
-            required: true
+                required: true
             },
+            tire_brandPicture:{
+                required: true
+            }
         },
         messages: {
             tire_brandName: {
-            required: "กรุณากรอกยี่ห้อยางรถยนต"
+                required: "กรุณากรอกยี่ห้อยางรถยนต"
+            },
+            tire_brandPicture:{
+                required: ""
             }
         },
     });

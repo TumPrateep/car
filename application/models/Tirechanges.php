@@ -108,9 +108,7 @@ class Tirechanges extends CI_Model{
         if($status != null){
             $this->db->where("tire_change.status", $status);
         }
-        $query = $this->db->limit($limit,$start)
-                ->order_by($col,$dir)
-                ->get();
+        $query = $this->db->get();
     
         return $query->num_rows();
     } 

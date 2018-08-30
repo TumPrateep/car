@@ -450,9 +450,11 @@ class UserManagement extends BD_Controller {
         $user = $this->user->getUser($userId);
         if($user != null){
             $result = $this->profile->findUserProfileByIdAndStatusActive($userId);
-            $result->provinceName = $this->location->getProvinceNameByProvinceId($result->provinceId);
-            $result->districtName = $this->location->getDistrictNameByDistrictId($result->districtId);
-            $result->subdistrictName = $this->location->getSubDistrictBySubDistrictId($result->subdistrictId);
+            if($result != null){
+                $result->provinceName = $this->location->getProvinceNameByProvinceId($result->provinceId);
+                $result->districtName = $this->location->getDistrictNameByDistrictId($result->districtId);
+                $result->subdistrictName = $this->location->getSubDistrictBySubDistrictId($result->subdistrictId);
+            }
             $result->create_at = REST_Controller::DateThai($result->create_at);
             // $result->create_at = date_format($date,"d/m/Y H:i:s");
             $output["profile"] = $result;
