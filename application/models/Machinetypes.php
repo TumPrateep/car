@@ -111,4 +111,11 @@ class Machinetypes extends CI_Model{
         return $result->row();
     }
 
+    function getUpdate($machinetypeId){
+        $this->db->select("machinetypeId,machinetype");
+        $this->db->where('machinetypeId',$machinetypeId);
+        $result = $this->db->get('machinetype');
+        return $result->row();
+    }
+
 }
