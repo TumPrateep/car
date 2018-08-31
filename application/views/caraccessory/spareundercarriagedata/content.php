@@ -122,15 +122,20 @@
                                         </div>
 
                                         <div class="card-body">
-                                            <div class="text-center">
-                                                <h3>อะไหล่/ยี่ห้ออะไหล่</h3>
-                                            </div>
-                                            <div class="text-left">
-                                                <span>Mail Order/Fitted</span><br>
-                                                <span>รับประกัน</span>
-                                            </div>
-                                            <div class="text-center">
-                                                <h2>xxx,xxx บาทต่อเส้น</h2>
+                                            <div class="row">
+                                                <div class="col-md-7 font-black">
+                                                    <small>
+                                                        อะไหล่ <span class="text-lebel">XXX</span> <br>
+                                                        ยี่ห้อไหล่ <span class="text-lebel">XXX</span> <br>
+                                                        ยี่ห้อรถ <span class="text-lebel">XXX</span> <br>
+                                                        รุ่นรถ <span class="text-lebel">XXX</span> <br>
+                                                        ปีผลิต <span class="text-lebel">XXX</span> <br>
+                                                        ขนาดยนต์ <span class="text-lebel">XXX</span> <br>
+                                                    </small>
+                                                </div>
+                                                <div class="col-md-5 border-left">
+                                                    <h3 class="top-margin">5,555 .-</h3>
+                                                </div>
                                             </div>
                                             <div>
                                                 <a href="#"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>
