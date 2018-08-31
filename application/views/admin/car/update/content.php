@@ -26,11 +26,22 @@
                         <label>ชื่อยี่ห้อรถ</label> <span class="error">*</span>
                         <input type="text" class="form-control" placeholder="ชื่อยี่ห้อรถ" name="brandName" id="brandName" value="">
                       </div>
-                      <div class="form-group">
-                          <!-- <label>Preview File Icon</label> -->
-                          <input id="brandPicture" type="file" multiple name="brandPicture">
-                        
-                      </div>
+                      <div class="form-group p-t-20">
+                          <div class="col-md-12">
+                              <div class="form-group">
+                              <label class="control-label">รูปยี่ห้อรถ</label>
+                                  <div class="image-editor">
+                                      <input type="file" class="cropit-image-input" name="tempImage" required>
+                                      <div class="cropit-preview"></div>
+                                      <div class="image-size-label">
+                                      ปรับขนาด
+                                      </div>
+                                      <input type="range" class="cropit-image-zoom-input">
+                                      <input type="hidden" name="brandPicture" class="hidden-image-data" />
+                                  </div>
+                              </div>
+                          </div>
+                      </div>  
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">บันทึก</button>
                       </div>

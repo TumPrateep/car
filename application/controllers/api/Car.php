@@ -311,7 +311,8 @@ class Car extends BD_Controller {
         $brandName = $this->post("brandName");
         $img = $this->post("brandPicture");
         $success = true;
-        $file = null; 
+        $file = null;
+        $imageName = null; 
         if(!empty($img)){
             $img = str_replace('data:image/png;base64,', '', $img);
             $img = str_replace(' ', '+', $img);
@@ -329,10 +330,10 @@ class Car extends BD_Controller {
         }else{
             $data_check_update = $this->brand->getBrandById($brandId);
             $data_check = $this->brand->wherenot($brandId,$brandName);
-
+            $userId = $this->session->userdata['logged_in']['id'];
             $data = array(
                 "brandId"=> $brandId,
-                "brandPicture"=> $image,
+                "brandPicture"=> $imageName,
                 "brandName"=> $brandName,
                 "status"=> 1,
                 'update_at' => date('Y-m-d H:i:s',time()),

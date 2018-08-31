@@ -13,20 +13,22 @@
         if(data.message == 200){
             result = data.data;
             $("#brandName").val(result.brandName);
+            setBrandPicture(result.brandPicture);
         }
         
     });
-    
-    $("#brandPicture").fileinput({
-        language: "th",
-        theme: 'fa',
-        allowedFileExtensions: ['jpg' , 'png'],
-        overwriteInitial: false,
-        maxFileSize: 300,
-        required: true,
-        showCancel: false,
-        showUpload: false
-    });
+
+    function setBrandPicture(brandPicture){
+        $('.image-editor').cropit({
+            allowDragNDrop: false,
+            width: 200,
+            height: 122,
+            type: 'image',
+            imageState: {
+                src: picturePath+"brand/"+brandPicture
+            }
+        });
+    }
 
     $("#update-brand").validate({
         rules: {
@@ -57,6 +59,8 @@
         event.preventDefault();
         var isValid = $("#update-brand").valid();
         if(isValid){
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
             var myform = document.getElementById("update-brand");
             var formData = new FormData(myform);
             $.ajax({
