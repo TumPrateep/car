@@ -62,7 +62,7 @@ class TireData extends BD_Controller {
 		}else{
             $image =  $imageName;
             $data_check = $this->tiredatas->data_check_create($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
-            if($isDuplicated){
+            if($data_check){
                 unlink($file);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -142,9 +142,13 @@ class TireData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $data_check_update = $this->spare_undercarriagedatas->
-            $isDuplicated = $this->tiredatas->data_check_update($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
-            if(!$isDuplicated){
+            $data_check_update = $this->tiredatas->getirebyId($tire_dataId);
+            $data_check = $this->tiredatas->data_check_update($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
+            $oldImage = null;
+            if($data_check != null){
+                $oldImage = $config['upload_path'].$data_check->spares_undercarriageDataPicture;
+            }
+            if(!$data_check){
                 $data = array(
                     'tire_dataId' => $tire_dataId,
                     'tire_brandId' => $tire_brandId,
@@ -171,25 +175,20 @@ class TireData extends BD_Controller {
                     "image_path" => $file,
                     "old_image_path" => $oldImage,
                 ];
-
-            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+                $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
             }
         }
     }
 
     function getTireData_get(){
         $tire_dataId = $this->get('tire_dataId');
-        
-        $tire_data = $this->tiredatas->gettire_dataById($tire_dataId);
-        if($tire_data != null){
-            $output["data"] = $tire_data;
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data_check = $this->tiredatas->getUpdate($tire_dataId);
+        $option = [
+            "data_check" => $data_check
+        ];
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
+
     function search_post(){
         $column = "tire_brandId";
         $sort = "asc";
