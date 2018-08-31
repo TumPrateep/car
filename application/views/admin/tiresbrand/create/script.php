@@ -42,6 +42,8 @@
         event.preventDefault();
         var isValid = $("#create-tiresbrand").valid();
         if(isValid){
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
             var myform = document.getElementById("create-tiresbrand");
             var formData = new FormData(myform);
             $.ajax({
@@ -60,6 +62,16 @@
             });
         }
     }
+    $('.image-editor').cropit({
+        allowDragNDrop: false,
+        width: 200,
+        height: 122,
+        type: 'image/jpeg'
+        // imageBackground: true,
+        // imageState: {
+        //     src: 'http://lorempixel.com/500/400/' // renders an image by default
+        // }
+    });
 </script>
 
 </body>

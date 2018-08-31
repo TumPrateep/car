@@ -21,7 +21,7 @@ class Triebrands extends CI_Model{
         }
         return false;
     }
-    function insert_triebrands($data){
+    function insert($data){
 		return $this->db->insert('tire_brand', $data);
     }
     function getirebrandById($tire_brandId){
