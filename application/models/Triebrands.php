@@ -35,14 +35,11 @@ class Triebrands extends CI_Model{
         $this->db->from("tire_brand");
         $this->db->where('tire_brandName', $tire_brandName);
         $this->db->where_not_in('tire_brandId', $tire_brandId);
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return false;
-        }
-        return true;
+        $result = $this->db->get();
+        return $result->row();
     }
-    function update($data, $tire_brandId){
-        $this->db->where('tire_brandId',$tire_brandId);
+    function update($data){
+        $this->db->where('tire_brandId',$data['tire_brandId']);
         $result = $this->db->update('tire_brand', $data);
         return $result;
     }

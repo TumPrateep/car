@@ -13,21 +13,23 @@
         if(data.message == 200){
             result = data.data;
             $("#tire_brandName").val(result.tire_brandName);
-            picture = result.tire_brandPicture;
+            setTireBrandPicture(result.tire_brandPicture);
         }
         
     });      
+    function setTireBrandPicture(tire_brandPicture){
+        $('.image-editor').cropit({
+            allowDragNDrop: false,
+            width: 200,
+            height: 122,
+            type: 'image',
+            imageState: {
+                src: picturePath+"tire_brand/"+tire_brandPicture
+            }
+        });
+    }
 
-             $("#tire_brandPicture").fileinput({
-                language: "th",
-                theme: 'fa',
-                allowedFileExtensions: ['jpg' , 'png'],
-                overwriteInitial: false,
-                maxFileSize: 300,
-                required: true,
-                showCancel: false,
-                showUpload: false
-            });
+             
 
     $("#update-tiresbrand").validate({
         rules: {
@@ -55,6 +57,8 @@
         event.preventDefault();
         var isValid = $("#update-tiresbrand").valid();
         if(isValid){
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
             var myform = document.getElementById("update-tiresbrand");
             var formData = new FormData(myform);
             $.ajax({
@@ -73,6 +77,7 @@
             });
         }
     }
+    
   
     
 </script>
