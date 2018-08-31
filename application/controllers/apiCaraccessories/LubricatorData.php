@@ -14,21 +14,16 @@ class LubricatorData extends BD_Controller {
     function delete_get(){
 
         $lubricator_dataId = $this->get('lubricator_dataId');
-        $lubricator = $this->lubricatordatas->getlubricatorbyId($lubricator_dataId);
-        if($lubricator                 != null){
-            $isDelete = $this->lubricatordatas->delete($lubricator_dataId);
-            if($isDelete){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_USED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
+        $lubricator = $this->lubricatordatas->getlubricatorDatabyId($lubricator_dataId);
+        
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $lubricator_dataId,
+            "model" => $this->lubricatordatas,
+            "image_path" => null
+        ];
+            $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
         }
-    }
 
     function searchLubricatordata_post(){
         $column = "lubricator_dataId";
@@ -143,8 +138,8 @@ class LubricatorData extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $image =  $imageName;
-            $isDuplicated = $this->lubricatordatas->checkduplicated($lubricatorId,$lubricator_brandId,$userId);
-            if($isDuplicated){
+            $data_check = $this->lubricatordatas->data_check_create($lubricatorId,$lubricator_brandId,$userId);
+            if($data_check){
                 unlink($file);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
@@ -152,7 +147,7 @@ class LubricatorData extends BD_Controller {
                 $data = array(
                     'lubricator_dataId' => null,
                     'lubricator_brandId' => $lubricator_brandId,
-                    'lubricator_dataPicture' => $image,
+                    'lubricatorId' => $lubricatorId,
                     'status' => 1,
                     'activeFlag' => 1,
                     'create_by' => $userId,
@@ -161,29 +156,29 @@ class LubricatorData extends BD_Controller {
                     'warranty' => $warranty,
                     'warranty_year' => $warranty_year,
                     'warranty_distance' => $warranty_distance,
-                    'lubricatorId' => $lubricatorId
+                    'lubricator_dataPicture' => $image,
                 );
-                $result = $this->lubricatordatas->insert($data);
-                if($result){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    unlink($file);
-                    $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
+                $option = [
+                    "data_check" => $data_check,
+                    "data" => $data,
+                    "model" => $this->lubricatordatas,
+                    "image_path" => $file
+                ];
+                    $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
             }
-        }
-    }   
+         }
+     }
+   
 
     public function update_post(){
         $lubricator_dataId = $this->post('lubricator_dataId');
         $lubricator_brandId = $this->post('lubricator_brandId');
+        $lubricatorId = $this->post('lubricatorId');
+        $userId = $this->session->userdata['logged_in']['id'];
         $price = $this->post('price');
         $warranty_year = $this->post('warranty_year');
         $warranty = $this->post('warranty');
         $warranty_distance = $this->post('warranty_distance');
-        $lubricatorId = $this->post('lubricatorId');
         $userId = $this->session->userdata['logged_in']['id'];
         $config['upload_path'] = 'public/image/lubricatordata/';
         // $config['allowed_types'] = 'gif|jpg|png';
@@ -195,8 +190,7 @@ class LubricatorData extends BD_Controller {
         // $config['remove_spaces'] = TRUE;
         // $this->load->library('upload', $config);
 
-        $userId = $this->session->userdata['logged_in']['id'];
-
+        $this->load->library('upload', $config);
         $img = $this->post('lubricator_dataPicture');
         $success = true;
         if(!empty($img)){
@@ -215,12 +209,17 @@ class LubricatorData extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $image =  $imageName;
-            $isDuplicated = $this->lubricatordatas->checkduplicatedUpdate($lubricatorId,$lubricator_brandId,$lubricator_dataId);
-            if(!$isDuplicated){
+            $data_check_update = $this->lubricatordatas->getlubricatorbyId($lubricator_dataId);
+            $data_check = $this->lubricatordatas->data_check_update($lubricatorId,$lubricator_brandId,$lubricator_dataId);
+            $oldImage = null;
+            if($data_check != null){
+                $oldImage = $config['upload_path'].$data_check->lubricator_dataPicture;
+            }
+            if(!$data_check){
                 $data = array(
                     'lubricator_dataId' => $lubricator_dataId,
                     'lubricator_brandId' => $lubricator_brandId,
-                    'lubricator_dataPicture' => $image,
+                    'lubricatorId' => $lubricatorId,
                     'status' => 1,
                     'activeFlag' => 1,
                     'update_by' => $userId,
@@ -229,48 +228,28 @@ class LubricatorData extends BD_Controller {
                     'warranty' => $warranty,
                     'warranty_year' => $warranty_year,
                     'warranty_distance' => $warranty_distance,
-                    'lubricatorId' => $lubricatorId
+                    'lubricator_dataPicture' => $image,
                 );
-                if(!empty($img)){
-                    $data["lubricator_dataPicture"] = $image;
-                }
-                $oldData = $this->lubricatordatas->getlubricatorbyId($lubricator_dataId);
-                $result = $this->lubricatordatas->update($data, $lubricator_dataId);
-                if($result){
-                    unlink($config['upload_path'].$oldData->lubricator_dataPicture);
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    unlink($config['upload_path'].$image);
-                    $output["status"] = false;
-                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-                
-            }else{
-                unlink($file);
-                $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
+                $option = [
+                    "data_check_update" => $data_check_update,
+                    "data_check" => $data_check,
+                    "data" => $data,
+                    "model" => $this->lubricatordatas,
+                    "image_path" => $file,
+                    "old_image_path" => $oldImage,
+                ];
+             $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
             }
-        }
+        }         
     }
     function getlubricatordata_get(){
         $lubricator_dataId = $this->get('lubricator_dataId');
-        $isCheck = $this->lubricatordatas->checklubricator_dataId($lubricator_dataId);
-        if($isCheck){
-            $result = $this->lubricatordatas->getlubricator_dataIdById($lubricator_dataId);
-            if($result != null){
-                $output["data"] = $result;
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data_check = $this->lubricatordatas->getupdate($lubricator_dataId);
+        $option = [
+            "data_check" => $data_check
+        ];
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+        
     }
 
 }
