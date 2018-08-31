@@ -95,16 +95,14 @@ class Lubricatorbrands extends CI_Model{
         return $result;
     }
 
-    function checklubricatorbrandforUpdate($lubricator_brandId,$lubricator_brandName){
+    function wherenot($lubricator_brandId,$lubricator_brandName){
         $this->db->select("lubricator_brandName");
         $this->db->from("lubricator_brand");
         $this->db->where('lubricator_brandName', $lubricator_brandName);
         $this->db->where_not_in('lubricator_brandId', $lubricator_brandId);
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return false;
-        }
-        return true;
+        $result = $this->db->get();
+        return $result->row();
+       
     }
     function update($data){
         $this->db->where('lubricator_brandId',$data['lubricator_brandId']);
