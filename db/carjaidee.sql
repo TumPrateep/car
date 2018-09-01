@@ -817,7 +817,7 @@ CREATE TABLE `spares_undercarriagedata` (
   `yearStart` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
   `yearEnd` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
   `modelofcarId` int(11) DEFAULT NULL,
-  `machinetypeId` int(11) DEFAULT NULL,
+  `machineSize` varchar(255) COLLATE utf16_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`spares_undercarriageDataId`),
   KEY `fk_spares_undercarriageData_spares_undercarriage1_idx` (`spares_undercarriageId`),
   KEY `fk_spares_undercarriageData_spares_brand1_idx` (`spares_brandId`),
@@ -825,14 +825,12 @@ CREATE TABLE `spares_undercarriagedata` (
   KEY `fk_spares_undercarriageData_users2_idx` (`update_by`),
   KEY `modelId_idx` (`modelId`),
   KEY `brandId_idx` (`brandId`),
-  KEY `machineId_idx` (`machinetypeId`),
   KEY `modelofcarId_idx` (`modelofcarId`),
   CONSTRAINT `brandId` FOREIGN KEY (`brandId`) REFERENCES `brand` (`brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_undercarriageData_spares_brand1` FOREIGN KEY (`spares_brandId`) REFERENCES `spares_brand` (`spares_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_undercarriageData_spares_undercarriage1` FOREIGN KEY (`spares_undercarriageId`) REFERENCES `spares_undercarriage` (`spares_undercarriageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_undercarriageData_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_undercarriageData_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `machinetypeId` FOREIGN KEY (`machinetypeId`) REFERENCES `machinetype` (`machinetypeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `modelId` FOREIGN KEY (`modelId`) REFERENCES `model` (`modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `modelofcar` FOREIGN KEY (`modelofcarId`) REFERENCES `modelofcar` (`modelofcarId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
@@ -1307,4 +1305,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-01 13:42:00
+-- Dump completed on 2018-09-01 13:53:28
