@@ -60,66 +60,59 @@ class Lubricatorbrand extends BD_Controller {
     function updateLubricatorbrands_post(){
         $config['upload_path'] = 'public/image/lubricator_brand/';
         $config['allowed_types'] = 'gif|jpg|png';
-        // $config['max_size'] = '100';
-        $config['max_width']  = '1024';
-        $config['max_height']  = '768';
-        $config['overwrite'] = TRUE;
-        $config['encrypt_name'] = TRUE;
-        $config['remove_spaces'] = TRUE;
-        $status = 2;
         $userId = $this->session->userdata['logged_in']['id'];
-        $this->load->library('upload', $config);
-        
-        $image =  "";
-        if ( ! $this->upload->do_upload("lubricator_brandPicture")){
-            $error = array('error' => $this->upload->display_errors());
-            $output["message"] = REST_Controller::MSG_ERROR;
-            $output["data"] = $error;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $imageDetailArray = $this->upload->data();
-            $image =  $imageDetailArray['file_name'];
-        }   
-        
         $lubricator_brandName = $this->post("lubricator_brandName");
-        $lubricator_brandId = $this->post("lubricator_brandId");
-        $isDublicte = $this->lubricatorbrands->checklubricatorbrandforUpdate($lubricator_brandId,$lubricator_brandName);
-        if($isDublicte){
-            $data = array(
-                "lubricator_brandId"=> $lubricator_brandId,
-                "lubricator_brandPicture"=> $image,
-                "lubricator_brandName"=> $lubricator_brandName,
-                "status"=> 2,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId,
-                "activeFlag" => 2
-            );
-            $isCheckStatus = $this->lubricatorbrands->checkStatusFromBrand($lubricator_brandId,$status,$userId);
-            if($isCheckStatus){
-                $oldData = $this->lubricatorbrands->getlubricatorById($lubricator_brandId);
-            $isResult = $this->lubricatorbrands->update($data);
-                    if($isResult){
-                        unlink($config['upload_path'].$oldData->brandPicture);
-                        $output["message"] = REST_Controller::MSG_SUCCESS;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }else{
-                        unlink($config['upload_path'].$image);
-                        $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }
-
-            }else{
-                unlink($config['upload_path'].$image);
-                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
-                $this->set_response($output, REST_Controller::HTTP_OK);
+        $lubricator_brandId = $this->post("lubricator_brandId");   
+            $img = $this->post("lubricator_brandPicture");
+            $success = true;
+            $file = null;
+            $imageName = null; 
+            if(!empty($img)){
+                $img = str_replace('data:image/png;base64,', '', $img);
+                $img = str_replace(' ', '+', $img);
+                $data = base64_decode($img);
+    
+                $imageName = uniqid().'.png';
+                $file = $config['upload_path']. '/'. $imageName;
+                $success = file_put_contents($file, $data);
             }
-
-        }else{
-            unlink($config['upload_path'].$image);
-            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }       
+    
+            if (!$success){
+                unlink($file);
+                $output["message"] = REST_Controller::MSG_ERROR;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $data_check_update = $this->lubricatorbrands->getlubricatorById($lubricator_brandId);
+                $data_check = $this->lubricatorbrands->wherenot($lubricator_brandId,$lubricator_brandName);
+                $userId = $this->session->userdata['logged_in']['id'];
+                $data = array(
+                    "lubricator_brandId"=> $lubricator_brandId,
+                    "lubricator_brandPicture"=> $imageName,
+                    "lubricator_brandName"=> $lubricator_brandName,
+                    "status"=> 1,
+                    'update_at' => date('Y-m-d H:i:s',time()),
+                    'update_by' => $userId,
+                    "activeFlag" => 1
+                );
+                $oldImage = null;
+                if($data_check_update != null){
+                    $oldImage = $config['upload_path'].$data_check_update->lubricator_brandPicture;
+                }
+    
+                $option = [
+                    "data_check_update" => $data_check_update,
+                    "data_check" => $data_check,
+                    "data" => $data,
+                    "model" => $this->lubricatorbrands,
+                    "image_path" => $file,
+                    "old_image_path" => $oldImage,
+                ];
+        
+                $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+    
+            }            
     }
+
 
     
     function deletelubricatorbrand_get(){

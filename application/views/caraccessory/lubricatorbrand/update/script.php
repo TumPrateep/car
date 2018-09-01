@@ -21,11 +21,22 @@ var lubricator_brandId = $("#lubricator_brandId");
         }else{
             result = data.data;
             $("#lubricator_brandName").val(result.lubricator_brandName);
-           
+            setlubricatorbrand(result.lubricator_brandPicture);
 
         }
         
     });
+    function setlubricatorbrand(lubricator_brandPicture){
+        $('.image-editor').cropit({
+            allowDragNDrop: false,
+            width: 200,
+            height: 122,
+            type: 'image',
+            imageState: {
+                src: picturePath+"lubricator_brand/"+lubricator_brandPicture
+            }
+        });
+    }
 
     $("#update-lubricatorbrand").submit(function(){
         updatelubricator_brand();
@@ -35,6 +46,8 @@ var lubricator_brandId = $("#lubricator_brandId");
         event.preventDefault();
         var isValid = $("#update-lubricatorbrand").valid();
         if(isValid){
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
             var myform = document.getElementById("update-lubricatorbrand");
             var formData = new FormData(myform);
             $.ajax({

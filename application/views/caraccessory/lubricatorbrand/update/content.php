@@ -45,7 +45,7 @@
                                                 ปรับขนาด
                                                 </div>
                                                 <input type="range" class="cropit-image-zoom-input">
-                                                <input type="hidden" name="brandPicture" class="hidden-image-data" />
+                                                <input type="hidden" name="lubricator_brandPicture" class="hidden-image-data" />
                                             </div>
                                         </div>
                                     </div>
