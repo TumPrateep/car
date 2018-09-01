@@ -64,7 +64,7 @@ CREATE TABLE `brand` (
   KEY `activeFlag_idx` (`activeFlag`),
   CONSTRAINT `id` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `update_by` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +73,7 @@ CREATE TABLE `brand` (
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES (1,'Isuzu.png','ISUZU',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',2,1),(2,'Toyota.png','TOYOTA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',2,1),(3,'Mitsubishi.png','MITSUBISHI',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(4,'Nissan.png','NISSAN',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(5,'Chevrolet.png','CHEVROLET',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(6,'Ford.png','FORD',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(7,'Mazda.png','MAZDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(8,'Honda.png','HONDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(10,'5b88b9bcaa651.png','CHEVROLETaaa',1,NULL,'2018-08-31 10:45:00',NULL,1,1);
+INSERT INTO `brand` VALUES (1,'Isuzu.png','ISUZU',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',2,1),(2,'Toyota.png','TOYOTA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',2,1),(3,'Mitsubishi.png','MITSUBISHI',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(4,'Nissan.png','NISSAN',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(5,'Chevrolet.png','CHEVROLET',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(6,'Ford.png','FORD',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(7,'Mazda.png','MAZDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(8,'Honda.png','HONDA',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,1),(10,'5b8a0e31cd69f.png','CHEVROLETaaas',8,8,'2018-08-31 10:45:00','2018-09-01 10:57:37',2,2),(11,'5b891ca0db30d.png','CHEVROLETaaaa',6,NULL,'2018-08-31 17:46:56',NULL,2,2);
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -338,7 +338,7 @@ CREATE TABLE `lubricator_brand` (
   KEY `fk_lubricator_brand_users2_idx` (`update_by`),
   CONSTRAINT `fk_lubricator_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lubricator_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,7 +347,7 @@ CREATE TABLE `lubricator_brand` (
 
 LOCK TABLES `lubricator_brand` WRITE;
 /*!40000 ALTER TABLE `lubricator_brand` DISABLE KEYS */;
-INSERT INTO `lubricator_brand` VALUES (1,'ZIC',1,1,'Zic.jpg',1,1,NULL,'2018-07-22 10:16:17'),(2,'ENEOS',1,1,'eneos.jpg',1,1,NULL,'2018-07-22 10:16:02'),(3,'ทดสอบ',2,2,'469217a9004669738ce1dc5ed3f4bad1.jpg',8,NULL,'2018-08-18 16:14:27',NULL);
+INSERT INTO `lubricator_brand` VALUES (1,'ZIC',1,1,'Zic.jpg',1,1,NULL,'2018-07-22 10:16:17'),(2,'ENEOS',1,1,'eneos.jpg',1,1,NULL,'2018-07-22 10:16:02'),(3,'ทดสอบ',1,1,'5b8a2eea471a7.png',8,8,'2018-08-18 16:14:27','2018-09-01 13:17:14'),(4,'ทดสอบ11',2,2,'5b892c1bee187.png',8,8,'2018-08-31 18:44:48','2018-08-31 18:52:59');
 /*!40000 ALTER TABLE `lubricator_brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -816,6 +816,8 @@ CREATE TABLE `spares_undercarriagedata` (
   `brandId` int(11) DEFAULT NULL,
   `yearStart` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
   `yearEnd` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `modelofcarId` int(11) DEFAULT NULL,
+  `machinetypeId` int(11) DEFAULT NULL,
   PRIMARY KEY (`spares_undercarriageDataId`),
   KEY `fk_spares_undercarriageData_spares_undercarriage1_idx` (`spares_undercarriageId`),
   KEY `fk_spares_undercarriageData_spares_brand1_idx` (`spares_brandId`),
@@ -823,13 +825,17 @@ CREATE TABLE `spares_undercarriagedata` (
   KEY `fk_spares_undercarriageData_users2_idx` (`update_by`),
   KEY `modelId_idx` (`modelId`),
   KEY `brandId_idx` (`brandId`),
+  KEY `machineId_idx` (`machinetypeId`),
+  KEY `modelofcarId_idx` (`modelofcarId`),
   CONSTRAINT `brandId` FOREIGN KEY (`brandId`) REFERENCES `brand` (`brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_undercarriageData_spares_brand1` FOREIGN KEY (`spares_brandId`) REFERENCES `spares_brand` (`spares_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_undercarriageData_spares_undercarriage1` FOREIGN KEY (`spares_undercarriageId`) REFERENCES `spares_undercarriage` (`spares_undercarriageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_undercarriageData_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_spares_undercarriageData_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `modelId` FOREIGN KEY (`modelId`) REFERENCES `model` (`modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+  CONSTRAINT `machinetypeId` FOREIGN KEY (`machinetypeId`) REFERENCES `machinetype` (`machinetypeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `modelId` FOREIGN KEY (`modelId`) REFERENCES `model` (`modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `modelofcar` FOREIGN KEY (`modelofcarId`) REFERENCES `modelofcar` (`modelofcarId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -903,7 +909,7 @@ CREATE TABLE `tire_brand` (
   KEY `fk_trie_brand_users2_idx` (`update_by`),
   CONSTRAINT `fk_trie_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_trie_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -912,7 +918,7 @@ CREATE TABLE `tire_brand` (
 
 LOCK TABLES `tire_brand` WRITE;
 /*!40000 ALTER TABLE `tire_brand` DISABLE KEYS */;
-INSERT INTO `tire_brand` VALUES (1,'MICHELIN','MICHELIN\r.png',1,1,NULL,NULL,'1',1),(2,'Briegestone','1991f5f7d21e5f4a613089261a791b41.JPG',1,1,'2018-06-12 11:14:01','2018-07-22 10:17:09','1',1);
+INSERT INTO `tire_brand` VALUES (1,'MICHELIN','MICHELIN\r.png',1,1,NULL,NULL,'1',1),(2,'Briegestone','1991f5f7d21e5f4a613089261a791b41.JPG',1,1,'2018-06-12 11:14:01','2018-07-22 10:17:09','1',1),(3,'Briegeston','5b8a2e9971daf.png',8,1,'2018-08-31 17:50:45','2018-09-01 13:15:53','2',1);
 /*!40000 ALTER TABLE `tire_brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1301,4 +1307,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-31 17:21:48
+-- Dump completed on 2018-09-01 13:42:00
