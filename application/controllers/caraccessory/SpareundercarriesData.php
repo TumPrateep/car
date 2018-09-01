@@ -20,6 +20,7 @@ class SpareundercarriesData extends CI_Controller {
 		$this->load->view("caraccessory/spareundercarriagedata/script");
 	}
 	public function createSpareundercarriesData(){
+		
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
