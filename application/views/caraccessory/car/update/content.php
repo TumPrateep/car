@@ -22,6 +22,7 @@
                     <div class="card-title"></div>
                     <div class="card-body">
                         <form id="submit">
+                        <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>"> 
                             <div class="form-body">
                                 <div class="row p-t-20">
                                     <div class="col-md-12">
@@ -32,11 +33,22 @@
                                         </div>       
                                     </div>
                                        
-                                    <h3 class="box-title m-t-40">รูปภาพ</h3>
-                                    <hr>                                                                       
-                                        <div class="fallback"><input type="file" multiple name="brandPicture" id="brandPicture" /></div>
-                                                                   
-                                    <h6 class="card-subtitle">เพิ่ม <code>รูปภาพ</code> ที่นี้</h6>
+                                    <div class="row p-t-20">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                        <label class="control-label">รูปยี่ห้อรถ</label>
+                                            <div class="image-editor">
+                                                <input type="file" class="cropit-image-input" name="tempImage" required>
+                                                <div class="cropit-preview"></div>
+                                                <div class="image-size-label">
+                                                ปรับขนาด
+                                                </div>
+                                                <input type="range" class="cropit-image-zoom-input">
+                                                <input type="hidden" name="brandPicture" class="hidden-image-data" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>     
                                            
                                 </div>      
 
