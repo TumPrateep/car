@@ -71,7 +71,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/car/updateMachinetype/"+brandId+'/'+modelId+'/'+modelofcarId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                        +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricator('+data.lubricatorId+',\''+data.lubricatorName+'\',\''+data.lubricator_brandId+'\')"><i class="fa fa-trash"></i></button>';
+                        +'<button type="button" class="delete btn btn-danger" onclick="deletemachinetype('+data.brandId+',\''+data.modelId+'\',\''+data.machinetypeId+'\',\''+data.machinetype+'\',\''+data.gear+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{
                     "targets": 0,
@@ -108,6 +108,15 @@
                 showMessage(data.message);
             }
         });
+    }
+    function deletemachinetype(brandId,modelId,machinetypeId,machinetype,gear){
+        var option = {
+            url: "/Machinetype/delete?machinetypeId="+machinetypeId,
+            label: "ลบรุ่นรถ",
+            content: "คุณต้องการลบ น้ำมัน "+machinetype+" ประเภทเกียร์ "+gear+"  ใช่หรือไม่",
+            gotoUrl: "admin/car/machinetype/"+brandId+"/"+modelId+"/"+machinetypeId
+        }
+        fnDelete(option);
     }
 
 </script>
