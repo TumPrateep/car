@@ -31,12 +31,13 @@ class TireBrand extends CI_Controller {
 		$this->load->view("caraccessory/tirebrand/create/script");
 	}
 
-	public function updatetirebrand()
+	public function updatetirebrand($tire_brandId)
 	{
+		$data['tire_brandId'] = $tire_brandId; 
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/tirebrand/update/content");
+		$this->load->view("caraccessory/tirebrand/update/content",$data);
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
 		$this->load->view("caraccessory/tirebrand/update/script");

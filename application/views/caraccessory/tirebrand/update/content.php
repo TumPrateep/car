@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-header-blue">
-
+                <input type="hidden" id="tire_brandId" name="tire_brandId" value="<?=$tire_brandId?>">
                     <div class="card-title"></div>
                     <div class="card-body">
                         <!-- <form action="#"> -->
@@ -28,19 +28,27 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">ชื่อยี่ห้อยาง</label>
-                                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้อยาง" id="brandName" name="brandName">
+                                            <input type="text" class="form-control" placeholder="ชื่อยี่ห้อยาง" id="tire_brandName" name="tire_brandName">
                                          </div>
                                         </div>       
                                     </div>
                                        
-                                    <h3 class="box-title m-t-40">รูปภาพ</h3>
-                                    <hr>
-                                    
-                                    <form class="dropzone">
-                                        <div class="fallback"><input name="file" type="file" multiple ="tire_brandPicture" /></div>
-                                    </form>  
-                                    <h6 class="card-subtitle">เพิ่ม <code>รูปภาพ</code> ที่นี้</h6>
-                                           
+                                    <div class="row p-t-20">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                          <label class="control-label">รูปยี่ห้อยาง</label>
+                              <div class="image-editor">
+                                  <input type="file" class="cropit-image-input" name="tempImage" required>
+                                  <div class="cropit-preview"></div>
+                                  <div class="image-size-label">
+                                  ปรับขนาด
+                                  </div>
+                                  <input type="range" class="cropit-image-zoom-input">
+                                  <input type="hidden" name="tire_brandPicture" class="hidden-image-data" />
+                              </div>
+                          </div>
+                      </div>
+                  </div>    
                                 </div>
 
                                 <div class="form-actions">
