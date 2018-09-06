@@ -58,9 +58,15 @@
             init(result.tire_brandId, result.tire_modelId, result.rimId, result.tire_sizeId);
             $("#price").val(result.price);
             $("#can_change").val(result.can_change);
-            $("#warranty_year").val(result.warranty_year);
-            $("#warranty").val(result.warranty);
-            $("#warranty_distance").val(result.warranty_distance);
+            if(result.warranty_year != 0){
+                $("#warranty_year").val(result.warranty_year);
+            }
+            if(result.warranty != 0){
+                $("#warranty").val(result.warranty);
+            }
+            if(result.warranty_distance != 0){
+                $("#warranty_distance").val(result.warranty_distance);
+            }
             setTirePicture(result.tire_picture);
         }
         

@@ -73,11 +73,16 @@
 
     var spares_undercarriage = $("#spares_undercarriageId");
     var spares_brand = $("#spares_brandId");
+    var brand = $("#brandId");
+    var model = $("#modelId");
+    var modelofcar = $("#modelofcarId");
+
 
     init();
 
     function init(){
         getSparesUndercarriage();
+        getBrand();
     }
 
     function getSparesUndercarriage(){
@@ -104,6 +109,53 @@
         );
     });
 
+
+
+    function getBrand(brandId = null){
+        $.get(base_url+"api/Car/getAllBrand",{},
+            function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    brand.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');
+                });
+            }
+        );
+    }
+
+    brand.change(function(){
+        var brandId = brand.val();
+        model.html('<option value="">เลือกรุ่นรถ</option>');
+        $.get(base_url+"api/Car/getAllModel",{
+            brandId: brandId
+        },function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    if(value.yearEnd != null){
+                        model.append('<option value="' + value.modelId + '">' + value.modelName + " ปีที่ผลิต " + value.yearStart + " - " + value.yearEnd +'</option>');
+                    }else{
+                        model.append('<option value="' + value.modelId + '">' + value.modelName + " ปีที่ผลิต " + value.yearStart +'</option>');
+                    }
+                });
+            }
+        );
+    });
+
+    model.change(function(){
+        modelofcar.html('<option value="">เลือกโมเดลรถ</option>');
+        $.get(base_url+"api/Modelofcar/getAllmodelofcar",{
+            modelId: model.val()
+        },function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    if(value.machineSize != null){
+                        modelofcar.append('<option value="' + value.modelofcarId + '">' + value.modelofcarName + " " + 	value.machineSize + '</option>');
+                    }else{
+                        modelofcar.append('<option value="' + value.modelofcarId + '">' + value.modelofcarName + '</option>');
+                    }
+                });
+            }
+        );
+    });
     
 
 </script>

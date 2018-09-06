@@ -23,6 +23,37 @@
                                 <div class="row p-t-20">
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                                <label class="control-label">ยี่ห้อรถ</label><span class="error">*</span> <label id="brandId-error" class="error" for="brandId"></label>
+                                            <div class="input-group input-group-default">
+                                                <select class="form-control" id="brandId" name="brandId">
+                                                    <option value="">เลือกยี่ห้อรถ</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                                <label class="control-label">รุ่นรถ</label><span class="error">*</span> <label id="modelId-error" class="error" for="modelId"></label>
+                                            <div class="input-group input-group-default">
+                                                <select class="form-control" id="modelId" name="modelId">
+                                                    <option value="">เลือกรุ่นรถ</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>รายระเอียดรุ่นรถ</label> <span class="error">*</span> <label id="modelofcarId-error" class="error" for="brandId"></label>
+                                                <select class="form-control" name="modelofcarId" id="modelofcarId">
+                                                <option value="">รายระเอียดรุ่นรถ</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                </div>                                   
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
                                             <label class="control-label">อะไหล่ช่วงล่าง</label><span class="error">*</span> <label id="spares_undercarriageId-error" class="error" for="spares_undercarriageId"></label>
                                             <div class="input-group input-group-default">
                                                 <select class="form-control" id="spares_undercarriageId" name="spares_undercarriageId">

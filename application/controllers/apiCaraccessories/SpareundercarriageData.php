@@ -93,6 +93,13 @@ class SpareundercarriageData extends BD_Controller {
         $warranty = $this->post('warranty');
         $warranty_year = $this->post('warranty_year');
         $warranty_distance = $this->post('warranty_distance');
+        $modelId = $this->post("modelId");
+        $brandId = $this->post("brandId");
+        $yearStart = $this->post("yearStart");
+        $yearEnd = $this->post("yearEnd");
+        $modelofcarId = $this->post("modelofcarId");
+        $machineSize = $this->post("machineSize");
+       
         
         $config['upload_path'] = 'public/image/spareundercarriage/';
 
@@ -138,7 +145,13 @@ class SpareundercarriageData extends BD_Controller {
                 'warranty' => $warranty,
                 'warranty_year' => $warranty_year,
                 'warranty_distance' => $warranty_distance,
-                'spares_undercarriageDataPicture' => $image
+                'spares_undercarriageDataPicture' => $image,
+                'modelId' => $modelId,
+                'brandId' => $brandId,
+                'yearStart' => $yearStart,
+                'yearEnd' => $yearEnd,
+                'modelofcarId' => $modelofcarId,
+                'machineSize' => $machineSize
                 );
                 $option = [
                     "data_check" => $data_check,
@@ -161,6 +174,12 @@ class SpareundercarriageData extends BD_Controller {
         $warranty = $this->post('warranty');
         $warranty_year = $this->post('warranty_year');
         $warranty_distance = $this->post('warranty_distance');
+        $modelId = $this->post("modelId");
+        $brandId = $this->post("brandId");
+        $yearStart = $this->post("yearStart");
+        $yearEnd = $this->post("yearEnd");
+        $modelofcarId = $this->post("modelofcarId");
+        $machineSize = $this->post("machineSize");
         
         $config['upload_path'] = 'public/image/spareundercarriage/';
         // $config['allowed_types'] = 'gif|jpg|png';
@@ -195,7 +214,7 @@ class SpareundercarriageData extends BD_Controller {
             if($data_check != null){
                 $oldImage = $config['upload_path'].$data_check->spares_undercarriageDataPicture;
             }
-            if($data_check){
+            if(!$data_check){
                     $data = array(
                         'spares_undercarriageDataId' => $spares_undercarriageDataId,
                         'spares_brandId' => $spares_brandId,
@@ -208,7 +227,13 @@ class SpareundercarriageData extends BD_Controller {
                         'warranty' => $warranty,
                         'warranty_year' => $warranty_year,
                         'warranty_distance' => $warranty_distance,
-                        'spares_undercarriageDataPicture' => $image
+                        'spares_undercarriageDataPicture' => $image,
+                        'modelId' => $modelId,
+                        'brandId' => $brandId,
+                        'yearStart' => $yearStart,
+                        'yearEnd' => $yearEnd,
+                        'modelofcarId' => $modelofcarId,
+                        'machineSize' => $machineSize
                     );
                     $option = [
                         "data_check_update" => $data_check_update,
