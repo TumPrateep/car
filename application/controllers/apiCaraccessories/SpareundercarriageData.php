@@ -7,7 +7,7 @@ class SpareundercarriageData extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
         $this->load->model("spare_undercarriagedatas");
     }
     public function search_post(){
@@ -248,5 +248,29 @@ class SpareundercarriageData extends BD_Controller {
     
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
         
+    }
+
+    function changeStatus_post(){
+        $spares_undercarriageDataId = $this->post("spares_undercarriageDataId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+
+        $data_check_update = $this->spare_undercarriagedatas->getspareDatasById($spares_undercarriageDataId);
+        $data = array(
+            'spares_undercarriageDataId' => $spares_undercarriageDataId,
+            'status' => $status
+        );
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->spare_undercarriagedatas
+        ];
+
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 }

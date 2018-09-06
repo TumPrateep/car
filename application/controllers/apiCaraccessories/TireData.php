@@ -6,7 +6,7 @@ class TireData extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
         $this->load->model("tiredatas");
     }
     public function delete_get(){
@@ -272,6 +272,29 @@ class TireData extends BD_Controller {
 
         $this->set_response($json_data);
 
+    }
+    function changeStatus_post(){
+        $tire_dataId = $this->post("tire_dataId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+
+        $data_check_update = $this->tiredatas->getTireDatasById($tire_dataId);
+        $data = array(
+            'tire_dataId' => $tire_dataId,
+            'status' => $status
+        );
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->tiredatas
+        ];
+
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
 }

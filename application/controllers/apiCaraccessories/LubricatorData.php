@@ -7,7 +7,7 @@ class LubricatorData extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
         $this->load->model("lubricatordatas");
     }
 
@@ -250,6 +250,30 @@ class LubricatorData extends BD_Controller {
         ];
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
         
+    }
+
+    function changeStatus_post(){
+        $lubricator_dataId = $this->post("lubricator_dataId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+
+        $data_check_update = $this->lubricatordatas->getlubricatorDatasById($lubricator_dataId);
+        $data = array(
+            'lubricator_dataId' => $lubricator_dataId,
+            'status' => $status
+        );
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->lubricatordatas
+        ];
+
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
 }

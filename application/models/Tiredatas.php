@@ -166,5 +166,9 @@ class Tiredatas extends CI_Model{
                 ->get();
         return $query->num_rows();   
     }
+
+    function getTireDatasById($tire_dataId){
+        return $this->db->where('tire_dataId',$tire_dataId)->get("tire_data")->row();
+    }
     
 }
