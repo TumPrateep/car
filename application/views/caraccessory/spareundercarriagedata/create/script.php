@@ -110,17 +110,6 @@
     });
 
 
-    dropdownStart.change(function(){
-        var endStartYear = dropdownStart.val();
-        dropdownStop.html('');
-        dropdownStop.append('<option value="">เลือกปี</option>');
-        if(dropdownStart.val() != ""){
-            // dropdownStop.append('<option value="'+nowYear+'">'+nowYear+' (ปัจจุบัน)</option>');
-            for(var i=nowYear;i>endStartYear;i--){
-                dropdownStop.append('<option value="'+i+'">'+i+'</option>');
-            }
-        }
-    });
 
     function getBrand(brandId = null){
         $.get(base_url+"api/Car/getAllBrand",{},
