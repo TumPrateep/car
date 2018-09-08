@@ -40,7 +40,8 @@ class Rim extends BD_Controller {
         $option = [
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->rims
+            "model" => $this->rims,
+            "image_path" => null
         ];
 
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
