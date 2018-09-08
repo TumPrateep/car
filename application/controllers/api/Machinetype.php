@@ -77,7 +77,8 @@ class Machinetype extends BD_Controller {
         $option = [
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->machinetypes
+            "model" => $this->machinetypes,
+            "image_path" => null
         ];
 
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
@@ -102,7 +103,9 @@ class Machinetype extends BD_Controller {
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->machinetypes
+            "model" => $this->machinetypes,
+            "image_path" => null,
+            "old_image_path" => null
         ];
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
@@ -147,8 +150,8 @@ class Machinetype extends BD_Controller {
             "data_check" => $data_check,
             "data" => $data,
             "model" => $this->machinetypes,
-            "image_path" => $file,
-            "old_image_path" => $oldImage,
+            "image_path" => null,
+            "old_image_path" => null,
         ];
 
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);

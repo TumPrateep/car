@@ -1,30 +1,27 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
 class Tirechanges extends CI_Model{
-    function checkDuplicate($rimId){
+
+    function data_check_create($rimId){
         $this->db->from("tire_change");
         $this->db->join('rim','tire_change.rimId = rim.rimId');
         $this->db->where('tire_change.rimId',$rimId);
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return false;
-        }else
-            return true;
+        $result = $this->db->get();
+        return $result->row();
     }
+
     function insert($data){
         return $this->db->insert('tire_change',$data);
     }
-    function checkDuplicateById($tire_changeId,$rimId){
+
+    function data_check_update($tire_changeId,$rimId){
         $this->db->select("tire_change.tire_front,tire_change.tire_back,tire_change.rimId");
         $this->db->from("tire_change");
         $this->db->join('rim','tire_change.rimId = rim.rimId');
         $this->db->where('tire_change.rimId',$rimId);
         $this->db->where_not_in('tire_change.tire_changeId',$tire_changeId);
-        $result = $this ->db->count_all_results();   
-        if($result > 0){
-            return false;
-        }else
-            return true;
+        $result = $this->db->get();
+        return $result->row();
     }
     function update($data){
         $this->db->where('tire_changeId',$data['tire_changeId']);
@@ -120,11 +117,17 @@ class Tirechanges extends CI_Model{
         return $result; 
     }
 
-    function getTireChangeById($tire_changeId){
+    function getUpdate($tire_changeId){
         $this->db->select("tire_changeId,tire_front,tire_back,rimId");
         $this->db->where('tire_changeId',$tire_changeId);
         $result = $this->db->get("tire_change")->row();
-    
         return $result;
+    }
+
+    function getTireChangeById($tire_changeId){
+        $this->db->select("tire_changeId");
+        $this->db->where('tire_changeId',$tire_changeId);
+        $result = $this->db->get("tire_change");
+        return $result->row();
     }
 }
