@@ -133,10 +133,8 @@ class Model extends CI_Model{
         return false;
     }
 
-    function getmodel($modelId){
-        $this->db->where('modelId',$modelId);
-        $result = $this->db->get('model')->row();
-        return $result;
+    function getmodelbyId($modelId){
+        return $this->db->where('modelId',$modelId)->get('model')->row();
     }
 
     function delete($modelId){
@@ -149,7 +147,7 @@ class Model extends CI_Model{
         return $result;
     }
 
-    function wherenot($modelId,$modelName,$yearStart, $yearEnd,$brandId){
+    function data_check_update($modelId,$modelName,$yearStart, $yearEnd,$brandId){
         $this->db->select("modelName");
         $this->db->from("model");
         $this->db->where('modelName', $modelName);

@@ -194,7 +194,7 @@ class Car extends BD_Controller {
 
     function deleteModel_get(){
         $modelId = $this->get('modelId');
-        $data_check = $this->model->getmodel($modelId);
+        $data_check = $this->model->getmodelbyId($modelId);
         $option = [
             "data_check_delete" => $data_check,
             "data" => $modelId,
@@ -218,8 +218,8 @@ class Car extends BD_Controller {
             $yearEnd = null;
         }
 
-        $data_check_update = $this->model->getmodel($modelId);
-        $data_check = $this->model->wherenot($modelId,$modelName, $yearStart, $yearEnd, $brandId);
+        $data_check_update = $this->model->getmodelbyId($modelId);
+        $data_check = $this->model->data_check_update($modelId,$modelName, $yearStart, $yearEnd, $brandId);
         $data = array(
             'modelId' => $modelId,
             'modelName' => $modelName,
@@ -246,7 +246,7 @@ class Car extends BD_Controller {
     function getModel_post(){
 
         $modelId = $this->post('modelId');
-        $data_check = $this->model->getmodel($modelId);
+        $data_check = $this->model->getmodelbyId($modelId);
 
         $option = [
             "data_check" => $data_check
@@ -396,7 +396,7 @@ class Car extends BD_Controller {
         }else{
             $status = 1;
         }
-        $data_check_update = $this->model->getmodel($modelId);
+        $data_check_update = $this->model->getmodelbyId($modelId);
         $data = array(
             'modelId' => $modelId,
             'status' => $status,
