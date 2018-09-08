@@ -59,7 +59,7 @@ class Lubricatortypeformachine extends BD_Controller {
     }
 
     function changeStatus_post(){
-        $lubricatortypeformachineId = $this->post('lubricatortypeformachineId');
+        $lubricatortypeFormachineId = $this->post("lubricatortypeFormachineId");
         $status = $this->post("status");
         if($status == 1){
             $status = 2;
@@ -67,9 +67,9 @@ class Lubricatortypeformachine extends BD_Controller {
             $status = 1;
         }
 
-        $data_check_update = $this->lubricatortypeformachines->getLubricatortypeFormachinesById($lubricatortypeformachineId);
+        $data_check_update = $this->lubricatortypeformachines->getLubricatortypeFormachinesById($lubricatortypeFormachineId);
         $data = array(
-            'lubricatortypeformachineId' => $lubricatortypeformachineId,
+            'lubricatortypeFormachineId' => $lubricatortypeFormachineId,
             'status' => $status,
             'activeFlag' => 1
         );

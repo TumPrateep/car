@@ -95,6 +95,18 @@
         }
         fnDelete(option);
     }
+    function updateStatus(lubricatortypeFormachineId,status){
+        $.post(base_url+"api/Lubricatortypeformachine/changeStatus",{
+            "lubricatortypeFormachineId": lubricatortypeFormachineId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/LubricatortypeFormachine");
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
 
 </script>
 
