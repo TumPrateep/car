@@ -20,7 +20,7 @@
     function setTireBrandPicture(tire_brandPicture){
         $('.image-editor').cropit({
             allowDragNDrop: false,
-            width: 200,
+            width: 414,
             height: 122,
             type: 'image',
             imageState: {
@@ -35,17 +35,11 @@
         rules: {
             tire_brandName: {
                 required: true
-            },
-            tire_brandPicture:{
-                required: true
             }
         },
         messages: {
             tire_brandName: {
                 required: "กรุณากรอกยี่ห้อยางรถยนต"
-            },
-            tire_brandPicture:{
-                required: ""
             }
         },
     });

@@ -28,7 +28,7 @@
     function setlubricatorbrand(lubricator_brandPicture){
         $('.image-editor').cropit({
             allowDragNDrop: false,
-            width: 200,
+            width: 414,
             height: 122,
             type: 'image',
             imageState: {
