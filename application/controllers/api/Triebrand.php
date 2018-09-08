@@ -9,6 +9,7 @@ class Triebrand extends BD_Controller {
         $this->auth();
         $this->load->model("triebrands");
     }
+    
     function createBrand_post(){
         $config['upload_path'] = 'public/image/tire_brand/';
         $config['allowed_types'] = 'gif|jpg|png';

@@ -151,7 +151,7 @@ class Machinetype extends BD_Controller {
             "old_image_path" => $oldImage,
         ];
 
-    $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
 
 

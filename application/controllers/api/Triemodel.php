@@ -8,94 +8,79 @@ class Triemodel extends BD_Controller {
         $this->auth();
         $this->load->model("triemodels");
     }
+
     function deletetriemodel_get(){
         $tire_modelId = $this->get('tire_modelId');
-        $tire = $this->triemodels->getireById($tire_modelId);
-        if($tire != null){
-            $isDelete = $this->triemodels->delete($tire_modelId);
-            if($isDelete){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_USED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data_check = $this->triemodels->geTireModelById($tire_modelId);
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $tire_modelId,
+            "model" => $this->triemodels,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
     function updateTireModel_post(){
         $tire_modelId = $this->post('tire_modelId');
         $tire_modelName = $this->post('tire_modelName');
         $tire_brandId = $this->post('tire_brandId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $result = $this->triemodels->wherenotTireModelid($tire_modelId,$tire_modelName);
-        if($result){
-            $data = array(
-                'tire_modelName' => $tire_modelName,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId
-            );
-            $result = $this->triemodels->updateTireModel($data, $tire_modelId);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $data_check_update = $this->triemodels->geTireModelById($tire_modelId);
+        $data_check = $this->triemodels->data_check_update($tire_modelId,$tire_modelName);
+        $data = array(
+            'tire_modelId' => $tire_modelId,
+            'tire_modelName' => $tire_modelName,
+            'update_at' => date('Y-m-d H:i:s',time()),
+            'update_by' => $userId
+        );
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->triemodels,
+            "image_path" => null,
+            "old_image_path" => null,
+        ];
+
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
+
     function getireById_post(){
         $tire_modelId = $this->post('tire_modelId');
-        $tire_brandId = $this->post('tire_brandId');
-        $result = $this->triemodels->geTireModelNameFromTireModelBytireId($tire_modelId);
-        if($result != null){
-            $output["data"] = $result;
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $data_check = $this->triemodels->getUpdate($tire_modelId);
+        $option = [
+            "data_check" => $data_check
+        ];
+
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
+
     function createTireModel_post(){
         $tire_modelName = $this->post("tire_modelName");
         $tire_brandId = $this->post("tire_brandId");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->triemodels->get_tiremodel($tire_brandId,$tire_modelName);
-        if($isCheck){
-            $data = array(
-                'tire_modelId' => null,
-                'tire_modelName' => $tire_modelName,
-                'tire_brandId' => $tire_brandId,
-                'create_by' => $userId,
-                'create_at' => date('Y-m-d H:i:s',time()),
-                'status' => 1,
-                'activeFlag' => 1
-            );
-            $result = $this->triemodels->insert_Tiremodel($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }
-        else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $data_check = $this->triemodels->data_check_create($tire_brandId,$tire_modelName);
+        $data = array(
+            'tire_modelName' => $tire_modelName,
+            'tire_brandId' => $tire_brandId,
+            'create_by' => $userId,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'status' => 1,
+            'activeFlag' => 1
+        );
+
+        $option = [
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->triemodels
+        ];
+
+        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
      
     function searchTireModel_post(){
@@ -140,6 +125,7 @@ class Triemodel extends BD_Controller {
         );
         $this->set_response($json_data);
     }
+
     function changeStatus_post(){
         $tire_modelId = $this->post("tire_modelId");
         $status = $this->post("status");
@@ -148,17 +134,20 @@ class Triemodel extends BD_Controller {
         }else{
             $status = 1;
         }
+
+        $data_check_update = $this->triemodels->geTireModelById($tire_modelId);
         $data = array(
+            'tire_modelId' => $tire_modelId,
             'status' => $status,
             'activeFlag' => 1
         );
-        $result = $this->triemodels->updateStatus($tire_modelId,$data);
-        if($result){
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->triemodels
+        ];
+
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 }

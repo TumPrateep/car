@@ -5,44 +5,43 @@ class Triemodels extends CI_Model {
     {
         parent::__construct();
     }
-    function getireById($tire_modelId){
+    function geTireModelById($tire_modelId){
         return $this->db->where('tire_modelId',$tire_modelId)->get("tire_model")->row();
     }
+
     function delete($tire_modelId){
         return $this->db->delete('tire_model', array('tire_modelId' => $tire_modelId));
     }
-    function wherenotTireModelid($tire_modelId,$tire_modelName){
+
+    function data_check_update($tire_modelId,$tire_modelName){
         $this->db->select("tire_modelName");
         $this->db->from("tire_model");
         $this->db->where('tire_modelName', $tire_modelName);
         $this->db->where_not_in('tire_modelId', $tire_modelId);
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return false;
-        }
-        return true;
-    }    
-    function updateTireModel($data, $tire_modelId){
-        $this->db->where('tire_modelId',$tire_modelId);
+        $result = $this->db->get();
+        return $result->row();
+    }   
+
+    function update($data){
+        $this->db->where('tire_modelId',$data['tire_modelId']);
         $result = $this->db->update('tire_model', $data);
         return $result;
     }
      
-    function insert_Tiremodel($data){
+    function insert($data){
         $result = $this->db->insert('tire_model', $data);
         return $result;
     }
-    function get_tiremodel($tire_brandId,$tire_modelName){
+
+    function data_check_create($tire_brandId,$tire_modelName){
         $this->db->select("tire_modelName");
         $this->db->from("tire_model");
         $this->db->where('tire_modelName', $tire_modelName);
         $this->db->where('tire_brandId', $tire_brandId);
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return false;
-        }
-        return true;
+        $result = $this->db->get();
+        return $result->row();
     }
+
     function allTireModel_count($tire_brandId)
     {   
         $this->db->where("tire_brandId", $tire_brandId);
@@ -50,7 +49,8 @@ class Triemodels extends CI_Model {
     
         return $query->num_rows();  
     }
-     function allTireModel($limit,$start,$col,$dir,$tire_brandId)
+
+    function allTireModel($limit,$start,$col,$dir,$tire_brandId)
     {   
        $this->db->where("tire_brandId", $tire_brandId);
        $query = $this
@@ -69,6 +69,7 @@ class Triemodels extends CI_Model {
         }
         
     }
+
     function tireModel_search($limit,$start,$search,$col,$dir,$tire_brandId,$status)
     {
         $this->db->where("tire_brandId", $tire_brandId);
@@ -92,6 +93,7 @@ class Triemodels extends CI_Model {
             return null;
         }
     }
+
     function tireModel_search_count($search,$tire_brandId,$status)
     {
         $this->db->where("tire_brandId", $tire_brandId);
@@ -102,7 +104,8 @@ class Triemodels extends CI_Model {
                 ->get('tire_model');
     
         return $query->num_rows();
-    } 
+    }
+
     function checksparestriemodels($tire_modelId,$tire_brandId) {
         $this->db->select("tire_brandId");
         $this->db->from("tire_model");
@@ -114,11 +117,12 @@ class Triemodels extends CI_Model {
         }
         return true;
     }
-    function geTireModelNameFromTireModelBytireId($tire_modelId){
+
+    function getUpdate($tire_modelId){
         $this->db->select('tire_modelName');
         $this->db->where('tire_modelId',$tire_modelId);
-        $result = $this->db->get('tire_model')->row();
-        return $result;
+        $result = $this->db->get('tire_model');
+        return $result->row();
     }
     function updateStatus($tire_modelId,$data){
         $this->db->where('tire_modelId',$tire_modelId);
