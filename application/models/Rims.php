@@ -4,24 +4,27 @@ class Rims extends CI_Model{
     function delete($rimId){
         return $this->db->delete('rim', array('rimId' => $rimId));
     }
-    function getrimById($rimId){
-        $this->db->select("rimId,rimName");
+
+    function getRimById($rimId){
         return $this->db->where('rimId',$rimId)->get("rim")->row();
     }
-    function insert_rim($data){
+
+    function getUpdate($rimId){
+        $this->db->select("rimId, rimName");
+        return $this->db->where('rimId',$rimId)->get("rim")->row();
+    }
+
+    function insert($data){
 		return $this->db->insert('rim', $data);
     }
     
     
-    function checkrim($rimName) {
-        $this->db->select("*");
+    function data_check_create($rimName) {
+        $this->db->select("rimName");
         $this->db->from("rim");
         $this->db->where('rimName',$rimName);
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return false;
-        }
-        return true;
+        $result = $this->db->get();
+        return $result->row();
     }
     function allrim_count()
     {   
@@ -78,27 +81,20 @@ class Rims extends CI_Model{
     
         return $query->num_rows();
     }
-    function wherenotrim($rimId,$rimName){
+    function data_check_update($rimId,$rimName){
         $this->db->select("rimName");
         $this->db->from("rim");
         $this->db->where('rimName', $rimName);
         $this->db->where_not_in('rimId', $rimId);
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return false;
-        }
-        return true;
+        $result = $this->db->get();
+        return $result->row();
     }
-    function updaterim($data){
+    function update($data){
         $this->db->where('rimId',$data['rimId']);
         $result = $this->db->update('rim', $data);
         return $result;
     }
-    function updateStatus($rimId,$data){
-        $this->db->where('rimId',$rimId);
-        $result = $this->db->update('rim', $data);
-        return $result; 
-    }
+
     function checkStatusFromRim($rimId,$status,$userId){
         $this->db->from('rim');
         $this->db->where('rimId',$rimId);

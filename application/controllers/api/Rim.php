@@ -11,50 +11,39 @@ class Rim extends BD_Controller {
     }
     function deleteRim_get(){
         $rimId = $this->get('rimId');
-        $rim = $this->rims->getrimbyId($rimId);
-        if($rim != null){
-            $isDelete = $this->rims->delete($rimId);
-            if($isDelete){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_USED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $data_check = $this->rims->getRimById($rimId);        
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $rimId,
+            "model" => $this->rims,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
+
     function createRim_post(){
         $rimName = $this->post("rimName");
-        $isCheck = $this->rims->checkrim($rimName);
         $userId = $this->session->userdata['logged_in']['id'];
-        if($isCheck){
-            $data = array(
-                'rimId' => null,
-                'rimName' => $rimName,
-                'create_at' => date('Y-m-d H:i:s',time()),
-                'create_by' => $userId,
-                'status' => 1,
-                'activeFlag' => 1
-            );
-            $result = $this->rims->insert_rim($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $data_check = $this->rims->data_check_create($rimName);
+        $data = array(
+            'rimId' => null,
+            'rimName' => $rimName,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'create_by' => $userId,
+            'status' => 1,
+            'activeFlag' => 1
+        );
+
+        $option = [
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->rims
+        ];
+
+        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
     function searchrim_post(){
         $columns = array( 
@@ -97,47 +86,46 @@ class Rim extends BD_Controller {
         );
         $this->set_response($json_data);
     }
+
     function updaterim_post(){
         $rimId = $this->post('rimId');
         $rimName = $this->post('rimName');
         $userId = $this->session->userdata['logged_in']['id'];
-        $result = $this->rims->wherenotrim($rimId,$rimName);
-        if($result){
-            $data = array(
-                'rimId' => $rimId,
-                'rimName' => $rimName,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId,
-                'status' => 1,
-                'activeFlag' => 1
-            );
-            $result = $this->rims->updaterim($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $data_check_update = $this->rims->getRimById($rimId);
+        $data_check = $this->rims->data_check_update($rimId,$rimName);
+        $data = array(
+            'rimId' => $rimId,
+            'rimName' => $rimName,
+            'update_at' => date('Y-m-d H:i:s',time()),
+            'update_by' => $userId,
+            'status' => 1,
+            'activeFlag' => 1
+        );
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->rims,
+            "image_path" => null,
+            "old_image_path" => null
+        ];
+
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
+
     function getRim_post(){
         $rimId = $this->post('rimId');
-        $rimdata = $this->rims->getrimById($rimId);
-        if($rimdata != null){
-            $output["data"] = $rimdata;
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $data_check = $this->rims->getUpdate($rimId);
+        $option = [
+            "data_check" => $data_check
+        ];
+
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
+
     function changeStatus_post(){
         $rimId = $this->post("rimId");
         $status = $this->post("status");
@@ -146,18 +134,21 @@ class Rim extends BD_Controller {
         }else{
             $status = 1;
         }
+
+        $data_check_update = $this->rims->getRimById($rimId);
         $data = array(
+            'rimId' => $rimId,
             'status' => $status,
             'activeFlag' => 1
         );
-        $result = $this->rims->updateStatus($rimId,$data);
-        if($result){
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->rims
+        ];
+
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }     
 
     function getAllRims_get(){
