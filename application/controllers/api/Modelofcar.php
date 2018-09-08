@@ -143,7 +143,7 @@ class Modelofcar extends BD_Controller {
 
     function getAllmodelofcar_get(){
         $modelId = $this->get("modelId");
-        $result = $this->modelofcars->getmodelofcar($modelId);
+        $result = $this->modelofcars->getmodelofcarId($modelId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
