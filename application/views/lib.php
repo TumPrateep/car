@@ -43,7 +43,7 @@
             strWarranty += warranty_year+" ปี ";
         }
 
-        if(warranty != 0){
+        if(warranty != 0 && warranty != null){
             strWarranty += (warranty == 1)? "และ ":"หรือ ";
         }
 

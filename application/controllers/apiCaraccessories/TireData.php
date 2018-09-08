@@ -105,7 +105,7 @@ class TireData extends BD_Controller {
         $tire_brandId = $this->post('tire_brandId');
         $tire_modelId = $this->post('tire_modelId');
         $price = $this->post('price');
-        $warranty = $this->post('warrnty');
+        $warranty = $this->post('warranty');
         $warranty_year = $this->post('warranty_year');
         $warranty_distance = $this->post('warranty_distance');
         $can_change = $this->post('can_change');
@@ -126,6 +126,7 @@ class TireData extends BD_Controller {
 
         $img = $this->post('tire_picture');
         $success = true;
+        $imageName = null;
         if(!empty($img)){
             $img = str_replace('data:image/png;base64,', '', $img);
             $img = str_replace(' ', '+', $img);
@@ -141,42 +142,41 @@ class TireData extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
-            $image =  $imageName;
             $data_check_update = $this->tiredatas->getirebyId($tire_dataId);
             $data_check = $this->tiredatas->data_check_update($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
             $oldImage = null;
-            if($data_check != null){
-                $oldImage = $config['upload_path'].$data_check->spares_undercarriageDataPicture;
+            if($data_check_update != null){
+                $oldImage = $config['upload_path'].$data_check_update->tire_picture;
             }
-            if(!$data_check){
-                $data = array(
-                    'tire_dataId' => $tire_dataId,
-                    'tire_brandId' => $tire_brandId,
-                    'tire_modelId' => $tire_modelId,
-                    'tire_sizeId' => $tire_sizeId,
-                    'rimId' => $rimId,
-                    'car_accessoriesId' => $car_accessoriesId,
-                    'status' => 2,
-                    'activeFlag' => 2,
-                    'update_by' => $userId,
-                    'update_at'=>date('Y-m-d H:i:s',time()),
-                    'price' => $price,
-                    'warranty' => $warranty,
-                    'warranty_year' => $warranty_year,
-                    'warranty_distance' => $warranty_distance,
-                    'warranty' => $warranty,
-                    'can_change' =>$can_change
-                );
-                $option = [
-                    "data_check_update" => $data_check_update,
-                    "data_check" => $data_check,
-                    "data" => $data,
-                    "model" => $this->tiredatas,
-                    "image_path" => $file,
-                    "old_image_path" => $oldImage,
-                ];
-                $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
-            }
+            
+            $data = array(
+                'tire_dataId' => $tire_dataId,
+                'tire_brandId' => $tire_brandId,
+                'tire_modelId' => $tire_modelId,
+                'tire_sizeId' => $tire_sizeId,
+                'rimId' => $rimId,
+                'car_accessoriesId' => $car_accessoriesId,
+                'update_by' => $userId,
+                'update_at'=>date('Y-m-d H:i:s',time()),
+                'price' => $price,
+                'warranty' => $warranty,
+                'warranty_year' => $warranty_year,
+                'warranty_distance' => $warranty_distance,
+                'warranty' => $warranty,
+                'can_change' =>$can_change,
+                'tire_picture' => $imageName
+            );
+
+            $option = [
+                "data_check_update" => $data_check_update,
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->tiredatas,
+                "image_path" => $file,
+                "old_image_path" => $oldImage,
+            ];
+            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+    
         }
     }
 

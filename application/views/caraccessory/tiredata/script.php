@@ -52,6 +52,15 @@
 
                         $.each(data, function( index, value ) {
 
+                            var switchVal = "true";
+                            var active = " active";
+                            if(value.status == null){
+                                return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                            }else if(value.status != "1"){
+                                switchVal = "false";
+                                active = "";
+                            }
+
                             html += '<div class="col-lg-4" col-md-8>'
                                  + '<div class="card card-header-height">'
                                     + '<div class="card-body">'
@@ -71,11 +80,16 @@
                                                 +'ยี่ห้อ <span class="text-lebel">'+value.tire_brandName+'</span> <br>'
                                                 +'ขนาด <span class="text-lebel">'+value.tire_size+'</span><br>'
                                                 +'รุ่น <span class="text-lebel">'+value.tire_modelName+'</span><br>'
-                                                +'รับประกัน <span class="text-lebel">'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span><br></small>'
+                                                +'ประกัน <span class="text-lebel">'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span><br></small>'
                                             +'</div>'
                                             +'<div class="col-md-5 border-left">'
-                                                +'<h3 class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' .-</h3>'
-                                                +mailOrFitted(value.can_change)
+                                                +'<span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' .-</span><br>'
+                                                +"<span>"+mailOrFitted(value.can_change)+"</span><br>"
+                                                +'<div>'
+                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.modelofcarId+',\''+data.status+'\',\''+data.brandId+'\',\''+data.modelId+'\')">'
+                                                    +'<div class="handle"></div>'
+                                                    +'</button>'
+                                                +'</div>'
                                             +'</div>'
                                         +'</div>'
                                         + '<div class="text-center">'

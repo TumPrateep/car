@@ -288,6 +288,8 @@ label.error{
   .border-left{
     text-align: center;
     border-left: solid #c5d2b7;
+    padding-top: 20px;
+    padding-bottom: 10px;
   }
 
   .font-black{
@@ -295,9 +297,9 @@ label.error{
   }
 
   .top-margin{
-      margin-top: 30px;
       color:red;
       font-weight: bold;
+      font-size: 20px;
   }
   
   .text-lebel{
