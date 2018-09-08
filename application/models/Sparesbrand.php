@@ -67,52 +67,28 @@ class Sparesbrand extends CI_Model{
         return $query->num_rows();
     }
 
-    function insertBrand($data){
-        $isfound = $this->isGetBrand($data['spares_brandName'], $data['spares_undercarriageId']);
-        $result = false;
-        if($isfound){
-            $result = $this->db->insert('spares_brand', $data);
-        }
-        return $result;
+    function insert($data){
+        return $this->db->insert('spares_brand',$data);
     }
 
     function isGetBrand($spares_brandName,$spares_undercarriageId){
-        $this->db->select("spares_brandName");
-        $this->db->from("spares_brand");
-        $this->db->where('spares_brandName', $spares_brandName);
-        $this->db->where('spares_undercarriageId' , $spares_undercarriageId);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return false;
-        }
-        return true;
-    }
-
-    function wherenotBrand($spares_brandId,$spares_brandName,$spares_undercarriageId){
-        $this->db->select("spares_brandName");
         $this->db->from("spares_brand");
         $this->db->where('spares_brandName', $spares_brandName);
         $this->db->where('spares_undercarriageId', $spares_undercarriageId);
-        $this->db->where_not_in('spares_brandId', $spares_brandId);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return false;
-        }
-        return true;
+        $result = $this->db->get();
+        return $result->row();
     }
 
-    function updateBrand($data){
+
+    function update($data){
         $this->db->where('spares_brandId',$data['spares_brandId']);
         $result = $this->db->update('spares_brand', $data);
         return $result;
     }
 
     function getSpareBrandbyId($spares_brandId){
-        $this->db->where('spares_brandId',$spares_brandId);
-        $result = $this->db->get('spares_brand')->row();
-        return $result;
+       return $this->db->where('spares_brandId',$spares_brandId)->get('spares_brand')->row();
+    
     }
 
     function delete($spares_brandId){
@@ -158,5 +134,22 @@ class Sparesbrand extends CI_Model{
         $query = $this->db->get("spares_brand");
         return $query->result();
     }
+
+    function data_check_update($spares_brandId,$spares_brandName,$spares_undercarriageId){
+        $this->db->select("spares_brandName");
+        $this->db->from("spares_brand");
+        $this->db->where('spares_brandName', $spares_brandName);
+        $this->db->where('spares_undercarriageId', $spares_undercarriageId);
+        $this->db->where_not_in('spares_brandId', $spares_brandId);
+        $result = $this->db->get();
+        return $result->row();
+    }
+    function getUpdate($spares_brandId,$spares_undercarriageId){
+        $this->db->select("spares_brandId, spares_brandName");
+        $this->db->where('spares_brandId',$spares_brandId);
+        return $this->db->where('spares_undercarriageId',$spares_undercarriageId)->get("spares_brand")->row();
+    }
+
+    
 
 }
