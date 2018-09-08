@@ -115,8 +115,9 @@ class Modelofcar extends BD_Controller {
     }
 
     function getallmodelofcar_post(){
-        $modelofcarId = $this->post('modelofcarId');
-        $result = $this->modelofcars->getAllmodelofcar($modelofcarId);
+        $brandId = $this->post('brandId');
+        $modelId = $this->post('modelId');
+        $result = $this->modelofcars->getAllmodelofcar($brandId,$modelId);
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;

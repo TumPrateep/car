@@ -141,7 +141,7 @@
     });
 
     model.change(function(){
-        modelofcar.html('<option value="">เลือกโมเดลรถ</option>');
+        modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
         $.get(base_url+"api/Modelofcar/getAllmodelofcar",{
             modelId: model.val()
         },function(data){

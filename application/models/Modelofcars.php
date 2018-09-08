@@ -58,13 +58,19 @@ class Modelofcars extends CI_Model{
         }
             return false;
     }
+
     function getAllmodelofcar($brandId,$modelId){
-        $this->db->select('modelofcarName');
-        $this->db->where('brandId',$brandId);
-        $this->db->where('modelId',$modelId);
-        return $this->db->get("modelofcar")->row();
-        
+        $this->db->select('modelofcarId,modelofcarName');
+        if($brandId == null){
+            $this->db->where("brandId", $brandId);
+        }
+
+        if($modelId == null){
+            $this->db->where("modelId", $modelId);
+        }
+        return $this->db->get("modelofcar")->result();
     }
+    
     function all_modelofcar_count($brandId,$modelId){
         $this->db->where('brandId',$brandId);
         $this->db->where('modelId',$modelId);

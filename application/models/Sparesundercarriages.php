@@ -14,21 +14,17 @@ class Sparesundercarriages extends CI_Model{
 
     function allsparesUndercarriage($limit,$start,$col,$dir)
     {   
-        $query = $this
-            ->db
-            ->limit($limit,$start)
-            ->order_by($col,$dir)
+        $query = $this->db->limit($limit,$start)->order_by($col,$dir)
             ->get('spares_undercarriage');
 
-            if($query->num_rows()>0)
-            {
-                return $query->result(); 
-            }
-            else
-            {
-                return null;
-            }
-
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
         
     }
     function sparesUndercarriage_search($limit,$start,$search,$col,$dir,$status)

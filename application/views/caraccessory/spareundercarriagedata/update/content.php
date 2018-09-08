@@ -15,6 +15,7 @@
    
     <div class="container-fluid">   
         <form id="create-sparesUndercarriageData">
+        <input type="hidden" name="spares_undercarriageDateId" id="spares_undercarriageDateId" value="<?=$spares_undercarriageDateId ?>">
         <div class="container-fluid">   
             <div class="row">
                 <div class="col-12">

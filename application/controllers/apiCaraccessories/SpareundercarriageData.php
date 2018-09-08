@@ -63,7 +63,15 @@ class SpareundercarriageData extends BD_Controller {
                 $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
                 $nestedData[$count]['warranty'] = $post->warranty;
                 $nestedData[$count]['spares_undercarriageDataPicture'] = $post->spares_undercarriageDataPicture;
-                
+                $nestedData[$count]['brandName'] = $post->brandName;
+                $nestedData[$count]['modelName'] = $post->modelName;
+                if($post->yearEnd != null){
+                    $nestedData[$count]['year'] = $post->yearStart."-".$post->yearEnd;
+                }else{
+                    $nestedData[$count]['year'] = $post->yearStart;
+                }
+                $nestedData[$count]['modelofcarName'] = $post->modelofcarName;
+                $nestedData[$count]['machineSize'] = $post->machineSize;
                 $data[$index] = $nestedData;
                 if($count >= 2){
                     $count = -1;

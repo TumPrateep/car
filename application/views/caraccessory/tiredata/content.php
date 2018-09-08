@@ -121,44 +121,7 @@
                 <tbody>
                     <tr role="row" class="odd">
                         <td class="sorting_1">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="card card-header-height">
 
-                                        <div class="card-body">
-                                            <div class="icon-left">
-                                                <img class="card-img-top" src="http://localhost/car/public/image/tire_brand/1991f5f7d21e5f4a613089261a791b41.JPG">
-                                                <img class="card-img-top" src="http://localhost/car/public/image/tire/tire.jpg">
-                                            </div>
-                                            <div class="icon-right">
-                                                <img class="card-img-top" src="http://localhost/car/public/image/icon/rain.png">
-                                                <img class="card-img-top" src="http://localhost/car/public/image/icon/iconsl.png">
-                                                <img class="card-img-top" src="http://localhost/car/public/image/icon/iconlow.png">
-                                            </div>
-                                        </div>
-
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-7 font-black"><small>
-                                                    ยี่ห้อ ผผผผผผ <br>
-                                                    ขนาด ผผผผผผผ<br>
-                                                    รุ่น ผผผผผผผ<br>
-                                                    รับประกัน ผผผผผผผผ<br></small>
-                                                </div>
-                                                <div class="col-md-5 border-left">
-                                                    <h3 class="top-margin">1,000 .-</h3>
-                                                    สั่งจอง
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <a href="#"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>
-                                                <a href="#"><button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-trash"></i> ลบ</button> </a>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
                         </td>
                     </tr>
                 </tbody>

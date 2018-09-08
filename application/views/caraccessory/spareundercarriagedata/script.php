@@ -53,6 +53,14 @@
                         var html = '<div class="row">';
 
                         $.each(data, function( index, value ) {
+                            var switchVal = "true";
+                            var active = " active";
+                            if(value.status == null){
+                                return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                            }else if(value.status != "1"){
+                                switchVal = "false";
+                                active = "";
+                            }
 
                             html += '<div class="col-lg-4" col-md-8>'
                                  + '<div class="card card-header-height">'
@@ -68,21 +76,26 @@
                                         // + '</div>'
                                     + '</div>'
                                     + '<div class="card-body">'
-                                        + '<div class="row">'
+                                        + '<div class="row pt-10">'
                                             + '<div class="col-md-7 font-black">'
                                                 + '<small>'
                                                     + 'อะไหล่ <span class="text-lebel">'+value.spares_undercarriageName+'</span> <br>'
                                                     + 'ยี่ห้อไหล่ <span class="text-lebel">'+value.spares_brandName+'</span> <br>'
-                                                    + 'ยี่ห้อรถ <span class="text-lebel">xx</span> <br>'
-                                                    + 'รุ่นรถ <span class="text-lebel">XXX</span> <br>'
-                                                    + 'ปีผลิต <span class="text-lebel">XXX</span> <br>'
-                                                    + 'ขนาดยนต์ <span class="text-lebel">XXX</span> <br>'
+                                                    + 'ยี่ห้อรถ <span class="text-lebel">'+value.brandName+'</span> <br>'
+                                                    + 'รุ่นรถ <span class="text-lebel">'+value.modelName+'</span> <br>'
+                                                    + 'ปีผลิต <span class="text-lebel">'+value.year+'</span> <br>'
+                                                    + 'ขนาดเครื่องยนต์ <span class="text-lebel">'+value.machineSize+'</span> <br>'
                                                     + 'รับประกัน <span class="text-lebel">'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span> <br>'
                                                 + '</small>'
                                             + '</div>'
-                                            + '<div class="col-md-5 border-left">'
-                                                + '<h3 class="top-margin">'+currency(value.price, { precision: 0 }).format()+' .-</h3>'
-                                            + '</div>'
+                                            + '<div class="col-md-5 border-left-data">'
+                                                +'<span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' .-</span><br>'
+                                                +'<div>'
+                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus()">'
+                                                    +'<div class="handle"></div>'
+                                                    +'</button>'
+                                                +'</div>'
+                                            +'</div>'
                                         + '</div>'
                                         + '<div class="text-center">'
                                             + '<a href="'+base_url+"caraccessory/SpareundercarriesData/updateSpareundercarriesData/"+value.spares_undercarriageDataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'

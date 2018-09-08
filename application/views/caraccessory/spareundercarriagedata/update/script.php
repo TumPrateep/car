@@ -25,14 +25,14 @@
     });
     
     
-    var spares_undercarriageDataId = $("#spares_undercarriageDataId");
+    var spares_undercarriageDataId = $("#spares_undercarriageDateId");
     var spares_undercarriage = $("#spares_undercarriageId");
     var spares_brand = $("#spares_brandId");
     var brand = $("#brandId");
     var model = $("#modelId");
     var modelofcar = $("#modelofcarId");
 
-    init();
+    getSparesUndercarriageData();
 
     function getSparesUndercarriageData(){
         $.get(base_url+"apiCaraccessories/SpareundercarriageData/getSpareUndercarriageData",{
@@ -54,15 +54,15 @@
                     }
                 });
                 
-                init(brandId, modelId);
+                init(sparesUndercarriageData.brandId, sparesUndercarriageData.modelId, sparesUndercarriageData.modelofcarId);
                 getSparesUndercarriage(sparesUndercarriageData.spares_undercarriageId, sparesUndercarriageData.spares_brandId);
             }
         );
     }
 
-    function init(brandId, modelId){
-        getSparesUndercarriageData();
-        getBrand(brandId, modelId);
+    function init(brandId, modelId, modelofcarId){
+        // getSparesUndercarriageData();
+        getBrand(brandId, modelId, modelofcarId);
     }
 
     function getSparesUndercarriage(spares_undercarriageId=null, spares_brandId=null){
@@ -136,7 +136,7 @@
         }
     }
 
-    function getBrand(brandId = null, modelId = null){
+    function getBrand(brandId = null, modelId = null, modelofcarId=null){
         $.get(base_url+"api/Car/getAllBrand",{},
             function(data){
                 var brandData = data.data;
@@ -144,12 +144,12 @@
                     brand.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');
                 });
                 brand.val(brandId);
-                getModel(brandId, modelId);
+                getModel(brandId, modelId, modelofcarId);
             }
         );
     }
 
-    function getModel(brandId = null,modelId = null){
+    function getModel(brandId = null,modelId = null, modelofcarId=null){
         $.get(base_url+"api/Car/getAllModel",{
             brandId: brandId
         },function(data){
@@ -162,9 +162,22 @@
                     }
                 });
                 model.val(modelId);
-                modelofcar.val(modelofcar);
+                getModelofcar(brandId, modelId, modelofcarId);
             }
         );
+    }
+
+    function getModelofcar(brandId = null,modelId = null, modelofcarId=null){
+        $.post(base_url+"apiCaraccessories/Modelofcar/getallmodelofcar",{
+            "brandId": brandId,
+            "modelId": modelId
+        },function(data){
+            var modelofcarData = data.data;
+            $.each( modelofcarData, function( key, value ) {
+                modelofcar.append('<option value="' + value.modelofcarId + '">' + value.modelofcarName + '</option>');
+            });
+            modelofcar.val(modelofcarId);
+        });
     }
 
     brand.change(function(){
@@ -174,7 +187,7 @@
     });
 
     model.change(function(){
-        modelofcar.html('<option value="">เลือกโมเดลรถ</option>');
+        modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
         $.get(base_url+"api/Modelofcar/getAllmodelofcar",{
             modelId: model.val()
         },function(data){

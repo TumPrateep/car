@@ -82,6 +82,7 @@ class LubricatorData extends BD_Controller {
                 $nestedData[$count]['lubricator_gear'] = $post->lubricator_gear;
                 $nestedData[$count]['lubricator_typeSize'] = $post->lubricator_typeSize;
                 $nestedData[$count]['capacity'] = $post->capacity;
+                $nestedData[$count]['lubricator_brandPicture'] = $post->lubricator_brandPicture;
                 
                 $data[$index] = $nestedData;
                 if($count >= 2){

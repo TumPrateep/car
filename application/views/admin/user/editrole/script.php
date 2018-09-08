@@ -21,6 +21,8 @@
         var subdistrictDropdown = $('#subdistrictId');
         subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
         
+        onLoad();
+
         function onLoad(){
             loadProvince();
             $("#role").imagepicker({

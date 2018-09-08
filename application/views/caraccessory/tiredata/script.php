@@ -75,7 +75,7 @@
                                         + '</div>'
                                     + '</div>'
                                     + '<div class="card-body float-right">'
-                                        +'<div class="row">'
+                                        +'<div class="row pt-10">'
                                             +'<div class="col-md-7 font-black"><small>'
                                                 +'ยี่ห้อ <span class="text-lebel">'+value.tire_brandName+'</span> <br>'
                                                 +'ขนาด <span class="text-lebel">'+value.tire_size+'</span><br>'
@@ -86,7 +86,7 @@
                                                 +'<span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' .-</span><br>'
                                                 +"<span>"+mailOrFitted(value.can_change)+"</span><br>"
                                                 +'<div>'
-                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.modelofcarId+',\''+data.status+'\',\''+data.brandId+'\',\''+data.modelId+'\')">'
+                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus()">'
                                                     +'<div class="handle"></div>'
                                                     +'</button>'
                                                 +'</div>'

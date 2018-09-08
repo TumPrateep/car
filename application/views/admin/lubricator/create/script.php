@@ -62,7 +62,7 @@
     var lubricatortypeFormachine = $("#lubricatortypeFormachineId");
 
     function getAllLubricatortypeformachine(){
-        $.get(base_url+"api/Lubricatortypeformachine/getAllLubricatortypeformachine",{},
+        $.post(base_url+"api/Lubricatortypeformachine/getAllLubricatortypeformachine",{},
         function(result){
             var data = result.data;
             if(data != null){

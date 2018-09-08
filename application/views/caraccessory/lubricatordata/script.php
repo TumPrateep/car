@@ -50,6 +50,14 @@
                         var html = '<div class="row">';
 
                         $.each(data, function( index, value ) {
+                            var switchVal = "true";
+                            var active = " active";
+                            if(value.status == null){
+                                return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                            }else if(value.status != "1"){
+                                switchVal = "false";
+                                active = "";
+                            }
 
                             html += '<div class="col-lg-4" col-md-8>'
                                  + '<div class="card card-header-height">'
@@ -61,11 +69,11 @@
                                     html += '</span>'
                                  + '</div>'
                                     + '<div class="card-body text-center">'
-                                        +'<img class="card-img-top-50" src="http://localhost/car/public/image/tire_brand/MICHELIN&#10;.png">'
+                                        +'<img class="card-img-top-50" src="'+picturePath+'lubricator_brand/'+value.lubricator_brandPicture+'">'
                                         + '<img class="card-img-top img-80-p" src="'+picturePath+'lubricatordata/'+value.lubricator_dataPicture+'">'
                                     + '</div>'
                                     + '<div class="card-body">'
-                                        +'<div class="row">'
+                                        +'<div class="row pt-10">'
                                             +'<div class="col-md-7 font-black"><small>'
                                                 +'ยี่ห้อ <span class="text-lebel">'+value.lubricator_brandName+'</span> <br>'
                                                 +'รุ่น <span class="text-lebel">'+value.lubricatorName+'</span><br>'
@@ -73,8 +81,13 @@
                                                 +'ระยะทาง <span class="text-lebel">'+currency(value.lubricator_typeSize, { precision: 0 }).format()+' กม.</span><br>'
                                                 +'รับประกัน <span class="text-lebel">'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span><br></small>'
                                             +'</div>'
-                                            +'<div class="col-md-5 border-left">'
-                                                +'<h3 class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' .-</h3>'
+                                            +'<div class="col-md-5 border-left-lubricator">'
+                                            +'<span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' .-</span><br>'
+                                                +'<div>'
+                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus()">'
+                                                    +'<div class="handle"></div>'
+                                                    +'</button>'
+                                                +'</div>'
                                             +'</div>'
                                         +'</div>'
                                         + '<div class="text-center">'
