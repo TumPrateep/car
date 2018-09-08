@@ -14,7 +14,7 @@ class LubricatorData extends BD_Controller {
     function delete_get(){
 
         $lubricator_dataId = $this->get('lubricator_dataId');
-        $lubricator = $this->lubricatordatas->getlubricatorDatabyId($lubricator_dataId);
+        $data_check = $this->lubricatordatas->getlubricatorDatabyId($lubricator_dataId);
         
         $option = [
             "data_check_delete" => $data_check,
