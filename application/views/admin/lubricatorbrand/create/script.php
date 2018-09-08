@@ -48,7 +48,7 @@
     }
     $('.image-editor').cropit({
         allowDragNDrop: false,
-        width: 200,
+        width: 414,
         height: 122,
         type: 'image/jpeg'
         // imageBackground: true,

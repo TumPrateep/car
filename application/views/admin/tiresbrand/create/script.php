@@ -19,21 +19,6 @@
         },
     });
 
-    $("#tire_brandPicture").fileinput({
-        language: "th",
-        theme: 'fa',
-        allowedFileExtensions: ['jpg' , 'png'],
-        overwriteInitial: false,
-        maxFileSize: 300,
-        required: true,
-        showCancel: false,
-        showUpload: false,
-                
-        
-          
-        
-});
-
     $("#create-tiresbrand").submit(function(){
         createBrand();
     });
@@ -64,7 +49,7 @@
     }
     $('.image-editor').cropit({
         allowDragNDrop: false,
-        width: 200,
+        width: 414,
         height: 122,
         type: 'image/jpeg'
         // imageBackground: true,

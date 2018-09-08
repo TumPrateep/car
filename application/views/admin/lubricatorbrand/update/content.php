@@ -34,7 +34,7 @@
                                         <div class="form-group">
                                         <label class="control-label">รูปยี่ห้อน้ำมันเครื่อง</label>
                                             <div class="image-editor">
-                                                <input type="file" class="cropit-image-input"  required>
+                                                <input type="file" class="cropit-image-input">
                                                 <div class="cropit-preview"></div>
                                                 <div class="image-size-label">
                                                 ปรับขนาด

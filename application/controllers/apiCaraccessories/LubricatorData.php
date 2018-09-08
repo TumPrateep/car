@@ -181,18 +181,11 @@ class LubricatorData extends BD_Controller {
         $warranty_distance = $this->post('warranty_distance');
         $userId = $this->session->userdata['logged_in']['id'];
         $config['upload_path'] = 'public/image/lubricatordata/';
-        // $config['allowed_types'] = 'gif|jpg|png';
-        // $config['max_size'] = '100';
-        // $config['max_width']  = '1024';
-        // $config['max_height']  = '768';
-        // $config['overwrite'] = TRUE;
-        // $config['encrypt_name'] = TRUE;
-        // $config['remove_spaces'] = TRUE;
-        // $this->load->library('upload', $config);
 
         $this->load->library('upload', $config);
         $img = $this->post('lubricator_dataPicture');
         $success = true;
+        $imageName = null;
         if(!empty($img)){
             $img = str_replace('data:image/png;base64,', '', $img);
             $img = str_replace(' ', '+', $img);
@@ -208,38 +201,38 @@ class LubricatorData extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
-            $image =  $imageName;
-            $data_check_update = $this->lubricatordatas->getlubricatorbyId($lubricator_dataId);
+            $data_check_update = $this->lubricatordatas->getlubricatorDatabyId($lubricator_dataId);
             $data_check = $this->lubricatordatas->data_check_update($lubricatorId,$lubricator_brandId,$lubricator_dataId);
             $oldImage = null;
-            if($data_check != null){
-                $oldImage = $config['upload_path'].$data_check->lubricator_dataPicture;
+            if($data_check_update != null){
+                $oldImage = $config['upload_path'].$data_check_update->lubricator_dataPicture;
             }
-            if(!$data_check){
-                $data = array(
-                    'lubricator_dataId' => $lubricator_dataId,
-                    'lubricator_brandId' => $lubricator_brandId,
-                    'lubricatorId' => $lubricatorId,
-                    'status' => 1,
-                    'activeFlag' => 1,
-                    'update_by' => $userId,
-                    'update_at'=>date('Y-m-d H:i:s',time()),
-                    'price' => $price,
-                    'warranty' => $warranty,
-                    'warranty_year' => $warranty_year,
-                    'warranty_distance' => $warranty_distance,
-                    'lubricator_dataPicture' => $image,
-                );
-                $option = [
-                    "data_check_update" => $data_check_update,
-                    "data_check" => $data_check,
-                    "data" => $data,
-                    "model" => $this->lubricatordatas,
-                    "image_path" => $file,
-                    "old_image_path" => $oldImage,
-                ];
-             $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
-            }
+     
+            $data = array(
+                'lubricator_dataId' => $lubricator_dataId,
+                'lubricator_brandId' => $lubricator_brandId,
+                'lubricatorId' => $lubricatorId,
+                'status' => 1,
+                'activeFlag' => 1,
+                'update_by' => $userId,
+                'update_at'=>date('Y-m-d H:i:s',time()),
+                'price' => $price,
+                'warranty' => $warranty,
+                'warranty_year' => $warranty_year,
+                'warranty_distance' => $warranty_distance,
+                'lubricator_dataPicture' => $imageName
+            );
+            
+            $option = [
+                "data_check_update" => $data_check_update,
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->lubricatordatas,
+                "image_path" => $file,
+                "old_image_path" => $oldImage,
+            ];
+            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+            
         }         
     }
     function getlubricatordata_get(){
