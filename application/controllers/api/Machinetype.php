@@ -93,7 +93,7 @@ class Machinetype extends BD_Controller {
             $status = 1;
         }
 
-        $data_check_update = $this->machinetypes->getmachinetypebyId($machinetypeId);
+        $data_check_update = $this->machinetypes->getMachinetypeById($machinetypeId);
         $data = array(
             'machinetypeId' => $machinetypeId,
             'status' => $status,
@@ -103,9 +103,7 @@ class Machinetype extends BD_Controller {
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->machinetypes,
-            "image_path" => null,
-            "old_image_path" => null
+            "model" => $this->machinetypes
         ];
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
@@ -113,7 +111,7 @@ class Machinetype extends BD_Controller {
     
     function delete_get(){
         $machinetypeId = $this->get('machinetypeId');
-        $data_check = $this->machinetypes->getmachinetypebyId($machinetypeId);
+        $data_check = $this->machinetypes->getMachinetypeById($machinetypeId);
         $option = [
             "data_check_delete" => $data_check,
             "data" => $machinetypeId,
@@ -132,15 +130,13 @@ class Machinetype extends BD_Controller {
         $gear = $this->post("gear");
         $userId = $this->session->userdata['logged_in']['id'];
         
-        $data_check_update = $this->machinetypes->getmachinetypebyId($machinetypeId);
+        $data_check_update = $this->machinetypes->getMachinetypeById($machinetypeId);
         $data_check = $this->machinetypes->data_check_update($machinetype, $modelofcar_modelofcarId, $gear ,$machinetypeId);
         $data = array(
             'machinetypeId' => $machinetypeId,
             'machinetype' => $machinetype,
             'modelofcar_modelofcarId' => $modelofcar_modelofcarId,
             'gear' => $gear,
-            'status' => 1,
-            'activeFlag' => 1,
             'update_at' => date('Y-m-d H:i:s',time()),
             'update_by' => $userId
         );

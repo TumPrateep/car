@@ -34,6 +34,7 @@
                     <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
                     <input type="hidden" id="modelId" name="modelId" value="<?=$modelId ?>">
                     <input type="hidden" id="modelofcarId" name="modelofcarId" value="<?=$modelofcarId ?>">
+                    <input type="hidden" id="machinetypeId" name="machinetypeId" value="<?=$machinetypeId ?>">
                     
                     <div class="card-body black bg-light">
                       <div class="row">

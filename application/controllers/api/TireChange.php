@@ -159,9 +159,7 @@ class TireChange extends BD_Controller {
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->tirechanges,
-            "image_path" => null,
-            "old_image_path" => null,
+            "model" => $this->tirechanges
         ];
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);

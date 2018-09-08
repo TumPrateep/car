@@ -70,7 +70,7 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/car/updateMachinetype/"+brandId+'/'+modelId+'/'+modelofcarId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/car/updateMachinetype/"+brandId+'/'+modelId+'/'+modelofcarId+'/'+data.machinetypeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                         +'<button type="button" class="delete btn btn-danger" onclick="deletemachinetype('+brandId+',\''+modelId+'\',\''+data.machinetypeId+'\',\''+data.machinetype+'\',\''+data.gear+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{

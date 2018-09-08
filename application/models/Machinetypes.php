@@ -78,16 +78,12 @@ class Machinetypes extends CI_Model{
         return $this->db->delete('machinetype', array('machinetypeId' => $machinetypeId));
     }
 
-    function getmachinetypebyId($machinetypeId){
+    function getMachinetypeById($machinetypeId){
         $this->db->select("machinetypeId");
         $this->db->from("machinetype");
         $this->db->where('machinetypeId', $machinetypeId);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return true;
-        }
-        return false;
+        $result = $this->db->get();
+        return $result->row();
     }
 
     function data_check_create($machinetype,$modelofcar_modelofcarId,$gear){
@@ -112,7 +108,7 @@ class Machinetypes extends CI_Model{
     }
 
     function getUpdate($machinetypeId){
-        $this->db->select("machinetypeId,machinetype");
+        $this->db->select("machinetypeId,machinetype,gear");
         $this->db->where('machinetypeId',$machinetypeId);
         $result = $this->db->get('machinetype');
         return $result->row();
