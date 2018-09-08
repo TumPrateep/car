@@ -86,7 +86,7 @@
                                                 +'<span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' .-</span><br>'
                                                 +"<span>"+mailOrFitted(value.can_change)+"</span><br>"
                                                 +'<div>'
-                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus()">'
+                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+value.tire_dataId+','+value.status+')">'
                                                     +'<div class="handle"></div>'
                                                     +'</button>'
                                                 +'</div>'
@@ -209,6 +209,18 @@
             gotoUrl: "caraccessory/Tiredata"
         }
         fnDelete(option);
+    }
+    function updateStatus(tire_dataId,status){
+        $.post(base_url+"apiCaraccessories/TireData/changeStatus",{
+            "tire_dataId": tire_dataId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"/caraccessory/Tiredata/");
+            }else{
+                showMessage(data.message);
+            }
+        });
     }
 
 </script>

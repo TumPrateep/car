@@ -91,7 +91,7 @@
                                             + '<div class="col-md-5 border-left-data">'
                                                 +'<span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' .-</span><br>'
                                                 +'<div>'
-                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus()">'
+                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+value.spares_undercarriageDataId+','+value.status+')">'
                                                     +'<div class="handle"></div>'
                                                     +'</button>'
                                                 +'</div>'
@@ -185,6 +185,18 @@
             gotoUrl: "/caraccessory/SpareundercarriesData"
         }
         fnDelete(option);
+    }
+    function updateStatus(spares_undercarriageDataId,status){
+        $.post(base_url+"apiCaraccessories/SpareundercarriageData/changeStatus",{
+            "spares_undercarriageDataId": spares_undercarriageDataId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"/caraccessory/SpareundercarriesData/");
+            }else{
+                showMessage(data.message);
+            }
+        });
     }
 
 </script>

@@ -84,7 +84,7 @@
                                             +'<div class="col-md-5 border-left-lubricator">'
                                             +'<span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' .-</span><br>'
                                                 +'<div>'
-                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus()">'
+                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+value.lubricator_dataId+','+value.status+')">'
                                                     +'<div class="handle"></div>'
                                                     +'</button>'
                                                 +'</div>'
@@ -183,6 +183,18 @@
             }
         },
     });
+    function updateStatus(lubricator_dataId,status){
+        $.post(base_url+"apiCaraccessories/LubricatorData/changeStatus",{
+            "lubricator_dataId": lubricator_dataId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"/caraccessory/Lubricatordata/");
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
 
 </script>
 
