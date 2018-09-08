@@ -69,7 +69,7 @@ class SparePartCar extends BD_Controller {
         $spares_brandName = $this->post("spares_brandName");
         $spares_undercarriageId = $this->post("spares_undercarriageId");
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check = $this->sparesbrand->isGetBrand($spares_brandName,$spares_undercarriageId);
+        $data_check = $this->sparesbrand->data_check_Brand($spares_brandName,$spares_undercarriageId);
             $data = array(
                 'spares_brandId' => null,
                 'spares_brandName' => $spares_brandName,
