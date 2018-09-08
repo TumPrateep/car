@@ -14,9 +14,7 @@ class Triesize extends BD_Controller {
         $rim = $this->post('rim');
         $tire_series = $this->post('tire_series');
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->triesizes->gettrie_sizeforrim($tire_size,$rimId,$tire_series,$rim);
-        
-        if($isCheck){
+        $data_check = $this->triesizes->gettrie_sizeforrim($tire_size,$rimId,$tire_series,$rim);
             $data = array(
                 'tire_sizeId' => null,
                 'tire_size' => $tire_size,
@@ -28,24 +26,16 @@ class Triesize extends BD_Controller {
                 'create_by' => $userId,
                 'activeFlag' => 1
             );
-            $result = $this->triesizes->inserttrie_size($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+            
+            $option = [
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->triesizes,
+                "image_path" => null
+            ];
+    
+            $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
         }
-        else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-    }
     function updatetriesize_post(){
         $tire_sizeId = $this->post('tire_sizeId');
         $tire_size = $this->post('tire_size');
@@ -53,8 +43,9 @@ class Triesize extends BD_Controller {
         $rim = $this->post('rim');
         $tire_series = $this->post('tire_series');
         $userId = $this->session->userdata['logged_in']['id'];
-        $result = $this->triesizes->wherenotTriesize($tire_sizeId,$tire_size,$rimId);
-        if($result){
+        $data_check = $this->triesizes->data_check_update($tire_sizeId,$tire_size,$rimId);
+        $data_check_update = $this->triesizes->gettrie_sizeById($tire_sizeId);
+        
             $data = array(
                 'tire_sizeId' => $tire_sizeId,
                 'tire_size' => $tire_size,
@@ -66,22 +57,18 @@ class Triesize extends BD_Controller {
                 'update_by' => $userId,
                 'activeFlag' => 1
             );
-            $result = $this->triesizes->updateTriesizes($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
+            $option = [
+                "data_check_update" => $data_check_update,
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->triesizes,
+                "image_path" => null,
+                "old_image_path" => null
+            ];
+    
+            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
         }
-    }
+
     function searchTriesize_post(){
         $columns = array( 
             0 => null,
@@ -128,35 +115,30 @@ class Triesize extends BD_Controller {
     }
     function deletetriesize_get(){
         $tire_sizeId = $this->get('tire_sizeId');
-        $tire = $this->triesizes->getiresizeById($tire_sizeId);
-        if($tire != null){
-            $isDelete = $this->triesizes->delete($tire_sizeId);
-            if($isDelete){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_USED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data_check = $this->triesizes->getiresizeById($tire_sizeId);
+             
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $tire_sizeId,
+            "model" => $this->triesizes,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
+            
+    
     function getiresizeById_post(){
         $tire_sizeId = $this->post('tire_sizeId');
         $rimId = $this->post('rimId');
        
-        $result = $this->triesizes->geTiresizeFromTiresizeBytireId($tire_sizeId);
-        if($result != null){
-            $output["data"] = $result;
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-       
+        $data_check = $this->triesizes->geTiresizeFromTiresizeBytireId($tire_sizeId);
+        
+        $option = [
+            "data_check" => $data_check
+        ];
+
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
     function changeStatus_post(){
         $tire_sizeId = $this->post("tire_sizeId");
@@ -166,19 +148,22 @@ class Triesize extends BD_Controller {
         }else{
             $status = 1;
         }
+        $data_check_update = $this->triesizes->gettrie_sizeById($tire_sizeId);
         $data = array(
+            'tire_sizeId' =>$tire_sizeId,
             'status' => $status,
             'activeFlag' => 1
         );
-        $result = $this->triesizes->updateStatus($tire_sizeId,$data);
-        if($result){
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-    }
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->triesizes
+        ];
+
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
+    }     
+        
+    
 
     function getAllTireSize_get(){
         $tire_rimId = $this->get("tire_rimId");

@@ -11,7 +11,7 @@ class Triesizes extends CI_Model{
         }
         return true;
     }
-    function inserttrie_size($data){
+    function insert($data){
         $result = $this->db->insert('tire_size', $data);
         return $result;
     }
@@ -22,13 +22,12 @@ class Triesizes extends CI_Model{
         $this->db->where('tire_series', $tire_series);
         $this->db->where('rim', $rim);
         $this->db->where('rimId' , $rimId);
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return false;
-        }
-        return true;
+        $result = $this->db->get();
+        return $result->row();
     }
-
+    function gettrie_sizeById($tire_sizeId){
+        return $this->db->where('tire_sizeId',$tire_sizeId)->get("tire_size")->row();
+    }
     function isDuplicate($tire_size, $tire_series, $rim, $rimId, $tire_sizeId=null){
         if($tire_sizeId != null){
             $this->db->where('tire_sizeId', $tire_sizeId);
@@ -58,7 +57,16 @@ class Triesizes extends CI_Model{
         return true;
     }
     
-    function updateTriesizes($data){
+    function data_check_update($tire_sizeId,$tire_size,$rimId){
+        $this->db->select("tire_size");
+        $this->db->from("tire_size");
+        $this->db->where('tire_size', $tire_size);
+        $this->db->where('rimId', $rimId);
+        $this->db->where_not_in('tire_sizeId', $tire_sizeId);
+        $result = $this->db->get();
+        return $result->row();
+    }
+    function update($data){
         $this->db->where('tire_sizeId',$data['tire_sizeId']);
         $result = $this->db->update('tire_size', $data);
         return $result;
