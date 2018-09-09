@@ -60,7 +60,7 @@
         $result = $option["model"]->delete($option["data"]);
         if($result){
           if($option["image_path"] != null){
-            $option["image_path"];
+            unlink($option["image_path"]);
           }
           $output["message"] = REST_Controller::MSG_SUCCESS;
         }else{

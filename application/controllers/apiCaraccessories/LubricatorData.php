@@ -22,8 +22,8 @@ class LubricatorData extends BD_Controller {
             "model" => $this->lubricatordatas,
             "image_path" => null
         ];
-            $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
-        }
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
+    }
 
     function searchLubricatordata_post(){
         $column = "lubricator_dataId";
@@ -117,15 +117,6 @@ class LubricatorData extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $config['upload_path'] = 'public/image/lubricatordata/';
 
-        // $config['allowed_types'] = 'gif|jpg|png';
-        // $config['max_size'] = '100';
-        // $config['max_width']  = '1024';
-        // $config['max_height']  = '768';
-        // $config['overwrite'] = TRUE;
-        // $config['encrypt_name'] = TRUE;
-        // $config['remove_spaces'] = TRUE;
-        // $this->load->library('upload', $config);
-        // $userId = $this->session->userdata['logged_in']['id'];
         $img = $this->post('lubricator_dataPicture');
         $img = str_replace('data:image/png;base64,', '', $img);
 	    $img = str_replace(' ', '+', $img);
@@ -165,7 +156,7 @@ class LubricatorData extends BD_Controller {
                     "model" => $this->lubricatordatas,
                     "image_path" => $file
                 ];
-                    $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
+                $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
             }
          }
      }
@@ -243,7 +234,6 @@ class LubricatorData extends BD_Controller {
             "data_check" => $data_check
         ];
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
-        
     }
 
     function changeStatus_post(){

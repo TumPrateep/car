@@ -9,6 +9,7 @@ class LubricatorType extends BD_Controller {
         $this->auth();
         $this->load->model("lubricatortypes");
     }
+
     function createtrieSize_post(){
         $lubricator_typeName = $this->post("lubricator_typeName");
         $lubricator_typeSize = $this->post("lubricator_typeSize");
@@ -29,34 +30,25 @@ class LubricatorType extends BD_Controller {
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
             $userId = $this->session->userdata['logged_in']['id'];
-            $isCheck = $this->lubricatortypes->checklubricatorType($lubricator_typeName);
-            
-            if($isCheck){
-                $data = array(
-                    'lubricator_typeId' => null,
-                    'lubricator_typeName' => $lubricator_typeName,
-                    'lubricator_typeSize' => $lubricator_typeSize,  
-                    'status' => 1,
-                    'create_at' => date('Y-m-d H:i:s',time()),
-                    'create_by' => $userId,
-                    'activeFlag' => 1,
-                    'lubricator_typePicture' => $imageName
-                );
-                $result = $this->lubricatortypes->insert_lubricatorType($data);
-                $output["status"] = $result;
-                if($result){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    unlink($file);
-                    $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }else{
-                unlink($file);
-                $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+            $data_check = $this->lubricatortypes->data_check_create($lubricator_typeName);
+            $data = array(
+                'lubricator_typeName' => $lubricator_typeName,
+                'lubricator_typeSize' => $lubricator_typeSize,  
+                'status' => 1,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'activeFlag' => 1,
+                'lubricator_typePicture' => $imageName
+            );
+
+            $option = [
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->lubricatortypes,
+                "image_path" => $file
+            ];
+
+            $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
         }
         
     }
@@ -114,19 +106,22 @@ class LubricatorType extends BD_Controller {
             }else{
                 $status = 1;
             }
+            
+            $data_check_update = $this->lubricatortypes->getLubricatorTypeById($lubricator_typeId);
             $data = array(
+                'lubricator_typeId' => $lubricator_typeId,
                 'status' => $status,
                 'activeFlag' => 1
             );
 
-            $result = $this->lubricatortypes->updateStatus($lubricator_typeId,$data);
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+            $option = [
+                "data_check_update" => $data_check_update,
+                "data" => $data,
+                "model" => $this->lubricatortypes
+            ];
+
+            $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
+
         }    
 
         function updateLubricatorType_post(){
@@ -135,8 +130,8 @@ class LubricatorType extends BD_Controller {
             $img = $this->post('lubricatorType_picture');
 
             $success = true;
-            $imageName = "";
-            $file = "";
+            $imageName = null;
+            $file = null;
             if(!empty($img)){
                 $img = str_replace('data:image/png;base64,', '', $img);
                 $img = str_replace(' ', '+', $img);
@@ -155,72 +150,60 @@ class LubricatorType extends BD_Controller {
                 $lubricator_typeId = $this->post("lubricator_typeId");
                 $lubricator_typeName = $this->post("lubricator_typeName");
                 $lubricator_typeSize = $this->post("lubricator_typeSize");
-
                 $userId = $this->session->userdata['logged_in']['id'];
-                $result = $this->lubricatortypes->wherenotlubricatorType($lubricator_typeId,$lubricator_typeName);
-                if($result){
-                    $data = array(
-                        'lubricator_typeId' => $lubricator_typeId,
-                        'lubricator_typeName' => $lubricator_typeName,
-                        'lubricator_typeSize' => $lubricator_typeSize,
-                        'update_at' => date('Y-m-d H:i:s',time()),
-                        'update_by' => $userId
-                    );
-                    if(!empty($img)){
-                        $data["lubricator_typePicture"] = $imageName;
-                    }
-                    $oldData = $this->lubricatortypes->getlubricatorTypeById($lubricator_typeId);
-                    $result = $this->lubricatortypes->update($data);
-                    $output["status"] = $result;
-                    if($result){
-                        unlink($config['upload_path']. '/'. $oldData->lubricator_typePicture);
-                        $output["message"] = REST_Controller::MSG_SUCCESS;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }else{
-                        unlink($file);
-                        $output["status"] = false;
-                        $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }
-                }else{
-                    unlink($file);
-                    $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
+
+                $data_check_update = $this->lubricatortypes->getLubricatorTypeById($lubricator_typeId);
+                $data_check = $this->lubricatortypes->data_check_update($lubricator_typeId,$lubricator_typeName);
+                $oldImage = null;
+                if($data_check_update != null){
+                    $oldImage = $config['upload_path'].$data_check_update->lubricator_typePicture;
                 }
+
+                $data = array(
+                    'lubricator_typeId' => $lubricator_typeId,
+                    'lubricator_typeName' => $lubricator_typeName,
+                    'lubricator_typeSize' => $lubricator_typeSize,
+                    'lubricator_typePicture' => $imageName,
+                    'update_at' => date('Y-m-d H:i:s',time()),
+                    'update_by' => $userId
+                );
+
+                $option = [
+                    "data_check_update" => $data_check_update,
+                    "data_check" => $data_check,
+                    "data" => $data,
+                    "model" => $this->lubricatortypes,
+                    "image_path" => $file,
+                    "old_image_path" => $oldImage,
+                ];
+
+                $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+
             }
         }
 
         function getLubricatorType_post(){
             $lubricator_typeId = $this->post('lubricator_typeId');
-            $result = $this->lubricatortypes->getlubricatorTypeById($lubricator_typeId);
-            if($result != null){
-                $output["data"] = $result;
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-           
+
+            $data_check = $this->lubricatortypes->getUpdate($lubricator_typeId);
+            $option = [
+                "data_check" => $data_check
+            ];
+            $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
         }
 
         function deleteLubricatorType_get(){
             $lubricator_typeId = $this->get('lubricator_typeId');
-    
-            $lubricator_type = $this->lubricatortypes->getLubricatorTypes($lubricator_typeId);
-            if($lubricator_type != null){
-                $isDelete = $this->lubricatortypes->delete($lubricator_typeId);
-                if($isDelete){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $output["message"] = REST_Controller::MSG_BE_USED;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+            $config['upload_path'] = 'public/image/lubricator_type/';
+            $data_check = $this->lubricatortypes->getLubricatorTypeById($lubricator_typeId);
+            $imagePath = $config['upload_path'].$data_check->lubricator_typePicture;
+            $option = [
+                "data_check_delete" => $data_check,
+                "data" => $lubricator_typeId,
+                "model" => $this->lubricatortypes,
+                "image_path" => $imagePath
+            ];
+            $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
         }
 
         function getAllLubricatorType_post(){
