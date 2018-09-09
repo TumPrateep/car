@@ -12,7 +12,6 @@ class Triebrand extends BD_Controller {
     
     function createBrand_post(){
         $config['upload_path'] = 'public/image/tire_brand/';
-        $config['allowed_types'] = 'gif|jpg|png';
         $img = $this->post("tire_brandPicture");
         $img = str_replace('data:image/png;base64,', '', $img);
 	    $img = str_replace(' ', '+', $img);
@@ -29,51 +28,48 @@ class Triebrand extends BD_Controller {
 		}
 		else
 		{
-            $data_check = $this->triebrands->checktriebrands($tire_brandName);
-                $data = array(
-                    "tire_brandId"=> null,
-                    "tire_brandName"=> $tire_brandName,
-                    "tire_brandPicture"=> $imageName,
-                    "status"=> 1,
-                    "create_at" => date('Y-m-d H:i:s',time()),
-                    "create_by" => $userId,
-                    "activeFlag" => 1
-                );
-                $option = [
-                    "data_check" => $data_check,
-                    "data" => $data,
-                    "model" => $this->triebrands,
-                    "image_path" => $file
-                ];
-        
-                $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
+            $data_check = $this->triebrands->data_check_create($tire_brandName);
+            $data = array(
+                "tire_brandId"=> null,
+                "tire_brandName"=> $tire_brandName,
+                "tire_brandPicture"=> $imageName,
+                "status"=> 1,
+                "create_at" => date('Y-m-d H:i:s',time()),
+                "create_by" => $userId,
+                "activeFlag" => 1
+            );
+            $option = [
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->triebrands,
+                "image_path" => $file
+            ];
+    
+            $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     
 		}
     }
     function deletetriebrand_get(){
         $tire_brandId = $this->get('tire_brandId');
-        $tire = $this->triebrands->getirebrandById($tire_brandId);
-        if($tire != null){
-            $isDelete = $this->triebrands->delete($tire_brandId);
-            if($isDelete){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_USED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $config['upload_path'] = 'public/image/tire_brand/';
+        $data_check = $this->triebrands->getTireBrandById($tire_brandId);
+        $imagePath = $config['upload_path'].$data_check->tire_brandPicture;
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $tire_brandId,
+            "model" => $this->triebrands,
+            "image_path" => $imagePath
+        ];
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
+
     function updateTireBrand_post(){
         $config['upload_path'] = 'public/image/tire_brand/';
-        $config['allowed_types'] = 'gif|jpg|png';
         $userId = $this->session->userdata['logged_in']['id'];
         $tire_brandId = $this->post("tire_brandId");
         $img = $this->post("tire_brandPicture");
         $tire_brandName = $this->post("tire_brandName");
+       
         $success = true;
         $file = null;
         $imageName = null; 
@@ -81,7 +77,6 @@ class Triebrand extends BD_Controller {
             $img = str_replace('data:image/png;base64,', '', $img);
             $img = str_replace(' ', '+', $img);
             $data = base64_decode($img);
-
             $imageName = uniqid().'.png';
             $file = $config['upload_path']. '/'. $imageName;
             $success = file_put_contents($file, $data);
@@ -92,7 +87,7 @@ class Triebrand extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
-            $data_check_update = $this->triebrands->getirebrandById($tire_brandId);
+            $data_check_update = $this->triebrands->getTireBrandById($tire_brandId);
             $data_check = $this->triebrands->wherenot($tire_brandId,$tire_brandName);
             $userId = $this->session->userdata['logged_in']['id'];
             $data = array(
@@ -114,13 +109,14 @@ class Triebrand extends BD_Controller {
                 "data" => $data,
                 "model" => $this->triebrands,
                 "image_path" => $file,
-                "old_image_path" => $oldImage,
+                "old_image_path" => $oldImage
             ];
     
             $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
 
         }	
     }
+
     function searchTirebrand_post(){
         $columns = array( 
             0 => null,
@@ -164,27 +160,16 @@ class Triebrand extends BD_Controller {
         );
         $this->set_response($json_data);
     }
+    
     function getTireBrandforupdate_post(){
         $tire_brandId = $this->post('tire_brandId');
-        $isCheck = $this->triebrands->checkTireBrandforget($tire_brandId);
-        if($isCheck){
-            $output["status"] = true;
-            $result = $this->triebrands->getirebrandById($tire_brandId);
-            if($result != null){
-                $output["data"] = $result;
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data_check = $this->triebrands->getUpdate($tire_brandId);
+        $option = [
+            "data_check" => $data_check
+        ];
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
+
     function changeStatus_post(){
         $tire_brandId = $this->post("tire_brandId");
         $status = $this->post("status");
@@ -193,17 +178,20 @@ class Triebrand extends BD_Controller {
         }else{
             $status = 1;
         }
+
+        $data_check_update = $this->triebrands->getTireBrandById($tire_brandId);
         $data = array(
+            'tire_brandId' => $tire_brandId,
             'status' => $status,
             'activeFlag' => 1
         );
-        $result = $this->triebrands->updateStatus($tire_brandId,$data);
-        if($result){
-            $output["message"] = REST_Controller::MSG_SUCCESS;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->triebrands
+        ];
+
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 }

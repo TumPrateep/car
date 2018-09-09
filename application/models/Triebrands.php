@@ -1,16 +1,15 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 //ยี่ห้อยาง นะ
 class Triebrands extends CI_Model{
-    function checktriebrands($tire_brandName) {
-        $this->db->select("*");
+
+    function data_check_create($tire_brandName) {
+        $this->db->select("tire_brandName");
         $this->db->from("tire_brand");
         $this->db->where("tire_brandName",$tire_brandName);
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return true;
-        }
-        return false;
+        $result = $this->db->get();
+        return $result->row();
     }
+
     function checkBrand($name){
         $this->db->select("tire_brandName");
         $this->db->from("tire_brand");
@@ -24,8 +23,15 @@ class Triebrands extends CI_Model{
     function insert($data){
 		return $this->db->insert('tire_brand', $data);
     }
-    function getirebrandById($tire_brandId){
+    function getTireBrandById($tire_brandId){
         return $this->db->where('tire_brandId',$tire_brandId)->get("tire_brand")->row();
+    }
+    function getUpdate($tire_brandId){
+        $this->db->select("tire_brandId,tire_brandName,tire_brandPicture");
+        $this->db->from("tire_brand");
+        $this->db->where('tire_brandId',$tire_brandId);
+        $result = $this->db->get();
+        return $result->row();
     }
     function delete($tire_brandId){
         return $this->db->delete('tire_brand', array('tire_brandId' => $tire_brandId));
