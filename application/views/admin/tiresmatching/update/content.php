@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label>โมเดลรถ</label> <span class="error">*</span> <label id="modelofcarId-error" class="error" for="modelofcarId"></label>
+                            <label>โมเดลรถ</label> <span class="error">*</span> <label id="modelofcarId-error" class="error" for="brandId"></label>
                             <select class="form-control" name="modelofcarId" id="modelofcarId">
                               <option value="">เลือกโมเดลรถ</option>
                             </select>

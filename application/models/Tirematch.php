@@ -93,14 +93,10 @@ class Tirematch extends CI_Model{
         $this->db->where('tire_matching.modelId',$modelId);
         $this->db->where('tire_matching.modelofcarId',$modelofcarId);
         $this->db->where('tire_matching.tire_sizeId',$tire_sizeId);
-        
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return false;
-        }else{
-            return true;
-        }
+        $result = $this->db->get();
+        return $result->row();
     }
+    
 
     function insert($data){
         return $this->db->insert('tire_matching',$data);
@@ -115,29 +111,24 @@ class Tirematch extends CI_Model{
         $this->db->where('tire_matching.rimId',$rimId);
         $this->db->where('tire_matching.modelId',$modelId);
         $this->db->where('tire_matching.tire_sizeId',$tire_sizeId);
-        $this->db->where_not_in('tire_matching.tire_matchingId',$tire_matching);
-        $result = $this->db->count_all_results();
-        if($result > 0){
-            return false;
-        }else{
-            return true;
-        }
+        $this->db->where_not_in('tire_matching.tire_matchingId',$tire_matchingId);
+        $result = $this->db->get();
+        return $result->row();
     }
 
-    function update($data,$tire_matchingId){
-        $this->db->where('tire_matchingId',$tire_matchingId);
+    function update($data){
+        $this->db->where('tire_matchingId',$data['tire_matchingId']);
         $result = $this->db->update('tire_matching',$data);
         return $result;
     }
     
     function getTireMatchingbyId($tire_matchingId){
-        $this->db->select('tire_matchingId,brandId,modelId,rimId,tire_sizeId');
+        $this->db->select('tire_matchingId,brandId,modelId,rimId,tire_sizeId,modelofcarId');
         $this->db->where('tire_matchingId',$tire_matchingId);
         $result = $this->db->get('tire_matching')->row();
         return $result;
     }
     function checkTireMatching($tire_matchingId){
-        $this->db->select('*');
         $this->db->where('tire_matchingId',$tire_matchingId);
         $result = $this->db->get('tire_matching')->row();
         return $result;
