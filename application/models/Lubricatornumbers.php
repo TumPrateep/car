@@ -12,14 +12,10 @@ class Lubricatornumbers extends CI_Model {
         $this->db->select('lubricator_number.lubricator_numberId,lubricator_number.lubricator_number, lubricator_number.lubricator_gear, lubricator_type.lubricator_typeName as lubricator_typeName, lubricator_number.lubricator_typeId, lubricator_number.status, lubricator_number.activeFlag, lubricator_number.create_by, lubricator_type.lubricator_typeSize'); 
         $this->db->from('lubricator_number');
         $this->db->join('lubricator_type', 'lubricator_number.lubricator_typeId = lubricator_type.lubricator_typeId' , 'left');
-        $query = $this
-                ->db
-                ->limit($limit,$start)
+        $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get();
         
-        // echo $this->db->last_query();
-        // exit();
         if($query->num_rows()>0){
             return $query->result(); 
         }else{
@@ -38,9 +34,7 @@ class Lubricatornumbers extends CI_Model {
         if($status != null){
             $this->db->where("lubricator_number.status", $status);
         }
-        $query = $this->db->limit($limit,$start)
-                ->order_by($col,$dir)
-                ->get();       
+        $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();       
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -72,7 +66,7 @@ class Lubricatornumbers extends CI_Model {
         return $result; 
     }
 
-    function getLubricatorNumber($lubricator_numberId){
+    function getLubricatorNumberById($lubricator_numberId){
         return $this->db->where('lubricator_numberId',$lubricator_numberId)->get("lubricator_number")->row();
     }
 
@@ -93,34 +87,28 @@ class Lubricatornumbers extends CI_Model {
         return true;
     }
 
-    function updateLubricatorNumber($data){
+    function update($data){
         $this->db->where('lubricator_numberId',$data['lubricator_numberId']);
         $result = $this->db->update('lubricator_number', $data);
         return $result;
     }
-    
-    function getlubricatorTypeById($lubricator_numberId){
-        $this->db->select("lubricator_numberId,lubricator_number");
-        return $this->db->where('lubricator_numberId',$lubricator_numberId)->get("lubricator_number")->row();
-    }
 
-    function checkLubricatorNumber($lubricatorNumber, $lubricatorGear, $lubricatorNumberId){
+    function data_check_create($lubricatorNumber, $lubricatorGear){
         $this->db->where("lubricator_number", $lubricatorNumber);
         $this->db->where("lubricator_gear", $lubricatorGear);
-
-        if($lubricatorNumberId != null){
-            $this->db->where_not_in("lubricator_numberId", $lubricatorNumberId);
-        }
-
-        $result = $this->db->from("lubricator_number")->count_all_results();
-        if($result > 0){
-            return false;
-        }
-
-        return true;
+        $result = $this->db->from("lubricator_number")->get();
+        return $result->row();
     }
 
-    function  insertLubricatorNumber($data){
+    function data_check_update($lubricatorNumber, $lubricatorGear, $lubricatorNumberId){
+        $this->db->where("lubricator_number", $lubricatorNumber);
+        $this->db->where("lubricator_gear", $lubricatorGear);
+        $this->db->where_not_in("lubricator_numberId", $lubricatorNumberId);
+        $result = $this->db->from("lubricator_number")->get();
+        return $result->row();
+    }
+
+    function  insert($data){
         return $this->db->insert('lubricator_number', $data);
     }
     function CheckStatus($lubricator_numberId,$userId,$status){
@@ -151,7 +139,7 @@ class Lubricatornumbers extends CI_Model {
         return true;
     }
 
-    function getlubricatorNumberById($lubricator_numberId){
+    function getUpdate($lubricator_numberId){
         $this->db->select("lubricator_numberId,lubricator_number,lubricator_typeId,	lubricator_gear");
         return $this->db->where('lubricator_numberId',$lubricator_numberId)->get("lubricator_number")->row();
     }

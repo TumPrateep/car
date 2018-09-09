@@ -64,126 +64,103 @@ class LubricatorNumber extends BD_Controller {
             }else{
                 $status = 1;
             }
+
+            $data_check_update = $this->lubricatornumbers->getLubricatorNumberById($lubricator_numberId);
             $data = array(
+                'lubricator_numberId' => $lubricator_numberId,
                 'status' => $status,
                 'activeFlag' => 1
             );
 
-            $result = $this->lubricatornumbers->updateStatus($lubricator_numberId,$data);
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+            $option = [
+                "data_check_update" => $data_check_update,
+                "data" => $data,
+                "model" => $this->lubricatornumbers
+            ];
+
+            $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
         }
 
         function deleteLubricatorNumber_get(){
             $lubricator_numberId = $this->get('lubricator_numberId');
-    
-            $lubricator_number = $this->lubricatornumbers->getLubricatorNumber($lubricator_numberId);
-            if($lubricator_number != null){
-                $isDelete = $this->lubricatornumbers->delete($lubricator_numberId);
-                if($isDelete){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $output["message"] = REST_Controller::MSG_BE_USED;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+
+            $data_check = $this->lubricatornumbers->getLubricatorNumberById($lubricator_numberId);
+            $option = [
+                "data_check_delete" => $data_check,
+                "data" => $lubricator_numberId,
+                "model" => $this->lubricatornumbers,
+                "image_path" => null
+            ];
+            $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
         }
 
         function createLubricatorNumber_post(){
             $lubricatorNumber = $this->post("lubricator_number");
             $lubricatorGear = $this->post("lubricator_gear");
             $lubricatorTypeId = $this->post("lubricator_typeId");
-
             $userId = $this->session->userdata['logged_in']['id'];
-            $isCheck = $this->lubricatornumbers->checkLubricatorNumber($lubricatorNumber, $lubricatorGear, null);
-            
-            if($isCheck){
-                $data = array(
-                    'lubricator_number' => $lubricatorNumber, 
-                    'lubricator_typeId' => $lubricatorTypeId,
-                    'lubricator_gear' => $lubricatorGear, 
-                    'status' => 1,
-                    'create_at' => date('Y-m-d H:i:s',time()),
-                    'create_by' => $userId,
-                    'activeFlag' => 1
-                );
-                $result = $this->lubricatornumbers->insertLubricatorNumber($data);
-                $output["status"] = $result;
-                if($result){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-                else{
-                    $output["status"] = false;
-                    $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }
-            else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+
+            $data_check = $this->lubricatornumbers->data_check_create($lubricatorNumber, $lubricatorGear, null);
+            $data = array(
+                'lubricator_number' => $lubricatorNumber, 
+                'lubricator_typeId' => $lubricatorTypeId,
+                'lubricator_gear' => $lubricatorGear, 
+                'status' => 1,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'activeFlag' => 1
+            );
+
+            $option = [
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->lubricatornumbers,
+                "image_path" => null
+            ];
+
+            $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
         }
 
         function getLubricatorNumber_post(){
             $lubricator_numberId = $this->post('lubricator_numberId');
-            $data = $this->lubricatornumbers->getlubricatorNumberById($lubricator_numberId);
-            if($data != null){
-                $output["data"] = $data;
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+
+            $data_check = $this->lubricatornumbers->getUpdate($lubricator_numberId);
+            $option = [
+                "data_check" => $data_check
+            ];
+            $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
         }
         
         function updateLubricatorNumber_post(){
-            $lubricatorNumberId = $this->post("lubricator_numberId");
+            $lubricator_numberId = $this->post("lubricator_numberId");
             $lubricatorNumber = $this->post("lubricator_number");
             $lubricatorGear = $this->post("lubricator_gear");
             $lubricatorTypeId = $this->post("lubricator_typeId");
-            
             $userId = $this->session->userdata['logged_in']['id'];
-            $isCheck = $this->lubricatornumbers->checkLubricatorNumber($lubricatorNumber, $lubricatorGear, $lubricatorNumberId);
-            
-            if($isCheck){
-                $data = array(
-                    'lubricator_numberId' => $lubricatorNumberId,
-                    'lubricator_number' => $lubricatorNumber, 
-                    'lubricator_typeId' => $lubricatorTypeId,
-                    'lubricator_gear' => $lubricatorGear, 
-                    'update_at' => date('Y-m-d H:i:s',time()),
-                    'update_by' => $userId,
-                    'activeFlag' => 1
-                );
-                $result = $this->lubricatornumbers->updateLubricatorNumber($data);
-                $output["status"] = $result;
-                if($result){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-                else{
-                    $output["status"] = false;
-                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            
+
+            $data_check_update = $this->lubricatornumbers->getLubricatorNumberById($lubricator_numberId);
+            $data_check = $this->lubricatornumbers->data_check_update($lubricatorNumber, $lubricatorGear, $lubricator_numberId);
+            $data = array(
+                'lubricator_numberId' => $lubricator_numberId,
+                'lubricator_number' => $lubricatorNumber, 
+                'lubricator_typeId' => $lubricatorTypeId,
+                'lubricator_gear' => $lubricatorGear, 
+                'update_at' => date('Y-m-d H:i:s',time()),
+                'update_by' => $userId,
+                'activeFlag' => 1
+            );
+
+            $option = [
+                "data_check_update" => $data_check_update,
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->lubricatornumbers,
+                "image_path" => null,
+                "old_image_path" => null
+            ];
+
+            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+
         }
 
         function getAllLubricatorNumber_post(){
