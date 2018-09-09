@@ -40,9 +40,16 @@
         },function(data){
                 var sparesUndercarriageData = data.data;
                 $("#price").val(sparesUndercarriageData.price);
-                $("#warranty_year").val(sparesUndercarriageData.warranty_year);
-                $("#warranty").val(sparesUndercarriageData.warranty);
-                $("#warranty_distance").val(sparesUndercarriageData.warranty_distance);
+                if(sparesUndercarriageData.warranty_year != 0){
+                    $("#warranty_year").val(sparesUndercarriageData.warranty_year);
+                }
+                if(sparesUndercarriageData.warranty != 0){
+                    $("#warranty").val(sparesUndercarriageData.warranty);
+                }
+                if(sparesUndercarriageData.warranty_distance != 0){
+                    $("#warranty_distance").val(sparesUndercarriageData.warranty_distance);
+                }
+                
 
                 $('.image-editor').cropit({
                     allowDragNDrop: false,
