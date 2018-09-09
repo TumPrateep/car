@@ -142,7 +142,7 @@ class TireData extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
-            $data_check_update = $this->tiredatas->getirebyId($tire_dataId);
+            $data_check_update = $this->tiredatas->getTireDatasbyId($tire_dataId);
             $data_check = $this->tiredatas->data_check_update($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
             $oldImage = null;
             if($data_check_update != null){
