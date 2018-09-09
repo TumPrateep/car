@@ -11,7 +11,7 @@ class TireData extends BD_Controller {
     }
     public function delete_get(){
         $tire_dataId = $this->get('tire_dataId');
-        $data_check = $this->tiredatas->getirebyId($tire_dataId);
+        $data_check = $this->tiredatas->getTireDatasbyId($tire_dataId);
         $option = [
             "data_check_delete" => $data_check,
             "data" => $tire_dataId,
@@ -282,7 +282,7 @@ class TireData extends BD_Controller {
             $status = 1;
         }
 
-        $data_check_update = $this->tiredatas->getTireDatasById($tire_dataId);
+        $data_check_update = $this->tiredatas->getTireDatasbyId($tire_dataId);
         $data = array(
             'tire_dataId' => $tire_dataId,
             'status' => $status
