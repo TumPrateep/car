@@ -140,7 +140,7 @@ class Spare_undercarriagedatas extends CI_Model{
         return $this->db->delete('spares_undercarriageData',array('spares_undercarriageDataId' => $spares_undercarriageDataId));
     }
 
-    function getspareDatasById($spares_undercarriageDataId){
+    function getSpareDatasById($spares_undercarriageDataId){
         return $this->db->where('spares_undercarriageDataId',$spares_undercarriageDataId)->get("spares_undercarriagedata")->row();
     }
 }
