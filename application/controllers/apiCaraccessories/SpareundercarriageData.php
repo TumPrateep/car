@@ -103,8 +103,6 @@ class SpareundercarriageData extends BD_Controller {
         $warranty_distance = $this->post('warranty_distance');
         $modelId = $this->post("modelId");
         $brandId = $this->post("brandId");
-        $yearStart = $this->post("yearStart");
-        $yearEnd = $this->post("yearEnd");
         $modelofcarId = $this->post("modelofcarId");
         $machineSize = $this->post("machineSize");
        
@@ -156,8 +154,6 @@ class SpareundercarriageData extends BD_Controller {
                 'spares_undercarriageDataPicture' => $image,
                 'modelId' => $modelId,
                 'brandId' => $brandId,
-                'yearStart' => $yearStart,
-                'yearEnd' => $yearEnd,
                 'modelofcarId' => $modelofcarId,
                 'machineSize' => $machineSize
                 );
