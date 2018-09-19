@@ -76,7 +76,7 @@ class Lubricatorbrands extends CI_Model{
         }
         return false;
     }
-    function insert_lubricatorbrand($data){
+    function insert($data){
 		return $this->db->insert('lubricator_brand', $data);
     }
 

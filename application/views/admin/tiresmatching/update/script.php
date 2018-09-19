@@ -39,6 +39,7 @@
     var tire_rim = $("#tire_rimId");
     var tire_size = $("#tire_sizeId");
     var tire_matchingId = $("#tire_matchingId").val();
+    var modelofcar = $("#modelofcarId");
 
     $.get(base_url+"api/TireMatching/getTireMatching",{
         "tire_matchingId": tire_matchingId
@@ -47,17 +48,17 @@
         if(data.message!=200){
             showMessage(data.message,"admin/Tires/tiresmatching/");
         }else{
-            init(result.brandId, result.modelId, result.rimId, result.tire_sizeId);
+            init(result.brandId, result.modelId, result.rimId, result.tire_sizeId, result.modelofcarId);
         }
         
     });
 
-    function init(brandId, modelId, rimId, tire_sizeId){
-        getBrand(brandId, modelId);
+    function init(brandId, modelId, rimId, tire_sizeId, modelofcarId){
+        getBrand(brandId, modelId,modelofcarId);
         getRim(rimId, tire_sizeId);
     }
 
-    function getBrand(brandId = null, modelId = null){
+    function getBrand(brandId = null, modelId = null, modelofcarId=null){
         $.get(base_url+"api/Car/getAllBrand",{},
             function(data){
                 var brandData = data.data;
@@ -65,28 +66,63 @@
                     brand.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');
                 });
                 brand.val(brandId);
-                getModel(brandId, modelId);
+                getModel(brandId, modelId, modelofcarId);
             }
         );
     }
 
-    function getModel(brandId = null,modelId = null){
+    function getModel(brandId = null,modelId = null, modelofcarId=null){
         $.get(base_url+"api/Car/getAllModel",{
             brandId: brandId
         },function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
-                    model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
+                    if(value.yearEnd != null){
+                        model.append('<option value="' + value.modelId + '">' + value.modelName + " ปีที่ผลิต " + value.yearStart + " - " + value.yearEnd +'</option>');
+                    }else{
+                        model.append('<option value="' + value.modelId + '">' + value.modelName + " ปีที่ผลิต " + value.yearStart +'</option>');
+                    }
                 });
                 model.val(modelId);
+                getModelofcar(brandId, modelId, modelofcarId);
             }
         );
+    }
+
+    function getModelofcar(brandId = null,modelId = null, modelofcarId=null){
+        $.post(base_url+"apiCaraccessories/Modelofcar/getallmodelofcar",{
+            "brandId": brandId,
+            "modelId": modelId
+        },function(data){
+            var modelofcarData = data.data;
+            $.each( modelofcarData, function( key, value ) {
+                modelofcar.append('<option value="' + value.modelofcarId + '">' + value.modelofcarName + '</option>');
+            });
+            modelofcar.val(modelofcarId);
+        });
     }
 
     brand.change(function(){
         var brandId = brand.val();
         model.html('<option value="">เลือกรุ่นรถ</option>');
         getModel(brandId);
+    });
+
+    model.change(function(){
+        modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
+        $.get(base_url+"api/Modelofcar/getAllmodelofcar",{
+            modelId: model.val()
+        },function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    if(value.machineSize != null){
+                        modelofcar.append('<option value="' + value.modelofcarId + '">' + value.modelofcarName + " " + 	value.machineSize + '</option>');
+                    }else{
+                        modelofcar.append('<option value="' + value.modelofcarId + '">' + value.modelofcarName + '</option>');
+                    }
+                });
+            }
+        );
     });
 
     function getTireSize(tire_rimId = null, tire_sizeId = null){
