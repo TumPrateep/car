@@ -58,5 +58,9 @@ $route['user'] = 'user/user';
 $route['caraccessory'] = 'caraccessory/CarAccessory';
 $route['garage'] = 'garage/garage';
 
+$route['register/sparepart'] = 'public/register/sparepart';
+$route['register/garage'] = 'public/register/garage';
+$route['register'] = 'public/register/user';
+
 // user route
 // $route['page/(:any)'] = 'main/Main/(:any)';
