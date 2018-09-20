@@ -3,6 +3,7 @@
 <script src="<?=base_url("public/themes/user/");?>js/jquery-3.3.1.min.js"></script>
 <script src="<?=base_url("public/themes/user/");?>styles/bootstrap4/popper.js"></script>
 <script src="<?=base_url("public/themes/user/");?>styles/bootstrap4/bootstrap.min.js"></script>
+<script src="<?=base_url() ?>public/js/jquery.validate.min.js"></script>
 <script src="<?=base_url("public/themes/user/");?>plugins/greensock/TweenMax.min.js"></script>
 <script src="<?=base_url("public/themes/user/");?>plugins/scrollmagic/ScrollMagic.min.js"></script>
 <script src="<?=base_url("public/themes/user/");?>plugins/greensock/animation.gsap.min.js"></script>
