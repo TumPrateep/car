@@ -133,7 +133,7 @@ class Model extends CI_Model{
         return false;
     }
 
-    function getmodelbyId($modelId){
+    function getModelbyId($modelId){
         return $this->db->where('modelId',$modelId)->get('model')->row();
     }
 

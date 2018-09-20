@@ -56,7 +56,7 @@
             
             if(isValid){
                 var data = $("#submit").serialize();
-                $.post(base_url+"apiCaraccessories/CarModel/createModel",data,
+                $.post(base_url+"apiCaraccessories/CarModel/create",data,
                 function(data){
                     if(data.message == 200){
                         var brandId = $("#brandId").val();

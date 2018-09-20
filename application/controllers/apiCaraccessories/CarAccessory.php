@@ -123,32 +123,18 @@ class CarAccessory extends BD_Controller {
 		}
     }
 
-    function deleteBrand_get(){
+    function delete_get(){
         $brandId = $this->get('brandId');
-        $userId = $this->session->userdata['logged_in']['id'];
-        $status = 2;
-        $brand = $this->brand->getBrandById($brandId);
-        if($brand != null){
-            $isCheckStatus =$this->brand->checkStatusFromBrand($brandId,$status,$userId);
-            if($isCheckStatus ){
-            $isDelete = $this->brand->delete($brandId);
-                if($isDelete){
-                    $config['upload_path'] = 'public/image/brand/';
-                    unlink($config['upload_path'].$brand->brandPicture);
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $output["message"] = REST_Controller::MSG_BE_USED;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }else{
-                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-       }
+        $data_check = $this->brand->getBrandbyId($brandId);
+        
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $brandId,
+            "model" => $this->brand,
+            "image_path" => null
+        ];
+
+        $this->set_response(user_decision_delete($option), REST_Controller::HTTP_OK);
    }
 
    function getBrand_post(){

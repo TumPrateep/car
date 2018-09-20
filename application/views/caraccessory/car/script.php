@@ -98,7 +98,7 @@
 
     function deleteBrand(brandId,brandName){
         var option = {
-            url: "/CarAccessory/deleteBrand?brandId="+brandId,
+            url: "/CarAccessory/delete?brandId="+brandId,
             label: "ลบยี่ห้อรถ",
             content: "คุณต้องการลบ "+brandName+" ใช่หรือไม่",
             gotoUrl: "caraccessory/Car"

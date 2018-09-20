@@ -81,18 +81,6 @@ class Brand extends CI_Model {
 		return $this->db->insert('brand', $data);
     }
 
-    function checkBrand($name){
-        $this->db->select("brandName");
-        $this->db->from("brand");
-        $this->db->where("brandName", $name);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return true;
-        }
-        return false;
-    }
-
     function delete($brandId){
         return $this->db->delete('brand', array('brandId' => $brandId));
     }

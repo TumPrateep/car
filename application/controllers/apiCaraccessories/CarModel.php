@@ -83,7 +83,7 @@ class CarModel extends BD_Controller {
         $this->set_response($json_data);
     }
 
-    function createModel_post(){
+    function create_post(){
 
         $modelName = $this->post("modelName");
         $brandId = $this->post("brandId");
@@ -95,70 +95,47 @@ class CarModel extends BD_Controller {
             $yearEnd = null;
         }
 
-        $isCheck = $this->model->get_model($brandId,$modelName,$yearStart,$yearEnd);
+        $data_check = $this->model->data_check_create($brandId,$modelName,$yearStart,$yearEnd);
+        $data = array(
+            'modelId' => null,
+            'modelName' => $modelName,
+            'brandId' => $brandId,
+            'yearStart' => $yearStart,
+            'yearEnd' => $yearEnd,
+            'status' => 2,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'create_by' => $userId,
+            'update_at' => null,
+            'update_by' => null,
+            'activeFlag' => 2
+        );
+        $option = [
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->model,
+            "image_path" => null
+        ];
 
-        if($isCheck){
-            $data = array(
-                'modelId' => null,
-                'modelName' => $modelName,
-                'brandId' => $brandId,
-                'yearStart' => $yearStart,
-                'yearEnd' => $yearEnd,
-                'status' => 2,
-                'create_at' => date('Y-m-d H:i:s',time()),
-                'create_by' => $userId,
-                'update_at' => null,
-                'update_by' => null,
-                'activeFlag' => 2
-            );
-            $result = $this->model->insert_model($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+        $this->set_response(user_decision_create($option), REST_Controller::HTTP_OK);
 
-        }
-        else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        
     }
     function deleteModel_get(){
         $modelId = $this->get('modelId');
-        $userId = $this->session->userdata['logged_in']['id'];
-        $status = 2;
-        $model = $this->model->getmodel($modelId);
-        if($model != null){
-            $isCheckStatus =$this->model->checkStatusFromModelCar($modelId,$status,$userId);
-            if($isCheckStatus ){
-            $isDelete = $this->model->delete($modelId);
-                if($isDelete){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $output["message"] = REST_Controller::MSG_BE_USED;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }else{
-                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        } 
+        $data_check = $this->model->getModelbyId($modelId);
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $modelId,
+            "model" => $this->model,
+            "image_path" => null
+        ];
+
+        $this->set_response(user_decision_delete($option), REST_Controller::HTTP_OK);
     }
 
     function getModel_post(){
         $modelId = $this->post('modelId');
-        $modeldata = $this->model->getmodelById($modelId);
+        $modeldata = $this->model->getModelById($modelId);
         if($modeldata != null){
             $output["data"] = $modeldata;
             $output["message"] = REST_Controller::MSG_SUCCESS;
@@ -181,41 +158,30 @@ class CarModel extends BD_Controller {
         if($yearEnd == 0){
             $yearEnd = null;
         }
-        
-        $result = $this->model->wherenot($modelId,$modelName, $yearStart, $brandId);
 
-        if($result){
-            $data = array(
-                'modelId' => $modelId,
-                'modelName' => $modelName,
-                'brandId' => $brandId,
-                'yearStart' => $yearStart,
-                'yearEnd' => $yearEnd,
-                'status' => 2,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId,
-                'activeFlag'=> 2
+        $data_check_update = $this->model->getModelbyId($modelId);
+        $data_check = $this->model->data_check_update($modelId,$modelName,$yearStart, $yearEnd,$brandId);
+        $data = array(
+            'modelId' => $modelId,
+            'modelName' => $modelName,
+            'brandId' => $brandId,
+            'yearStart' => $yearStart,
+            'yearEnd' => $yearEnd,
+            'update_at' => date('Y-m-d H:i:s',time()),
+            'update_by' => $userId,
         );
-            $isCheckStatus =$this->model->checkStatusFromModelCar($modelId,$status,$userId);
-            if($isCheckStatus ){
-                $result = $this->model->update($data);
-                $output["status"] = $result;
-                    if($result){
-                        $output["message"] = REST_Controller::MSG_SUCCESS;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }else{
-                        $output["status"] = false;
-                        $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                        $this->set_response($output, REST_Controller::HTTP_OK);
-                    }
-            }else{
-                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->model,
+            "image_path" => null,
+            "old_image_path" => null,
+        ];
+
+        $this->set_response(user_decision_update($option), REST_Controller::HTTP_OK);
+
 
     }
     
