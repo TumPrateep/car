@@ -20,16 +20,16 @@
 									<li>
 										<a href="#">ลงทะเบียนร้านค้าร่วม<i class="fas fa-chevron-down"></i></a>
 										<ul>
-											<li><a href="#">อู่</a></li>
-											<li><a href="#">ร้านอะไหล่</a></li>
+											<li><a href="<?=base_url("register/garage"); ?>">อู่</a></li>
+											<li><a href="<?=base_url("register/sparepart"); ?>">ร้านอะไหล่</a></li>
 										</ul>
 									</li>
 								</ul>
 							</div>
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="<?=base_url("public/themes/user/");?>images/user.svg" alt=""></div>
-								<div><a href="<?=base_url("auth/register");?>">ลงทะเบียน</a></div>
-								<div><a href="<?=base_url("auth/login");?>">เข้าสู่ระบบ</a></div>
+								<div><a href="<?=base_url("register");?>">ลงทะเบียน</a></div>
+								<div><a href="<?=base_url("login");?>">เข้าสู่ระบบ</a></div>
 							</div>
 						</div>
 					</div>
