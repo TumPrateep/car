@@ -66,8 +66,8 @@
 				<div class="row">
 					<div class="col-md-4">
 							<div class="form-group">
-								<label for="exampleFormControlInput1">รหัสไปรษณย์</label>
-								<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="รหัสไปรษณย์">
+								<label for="exampleFormControlInput1">รหัสไปรษณีย์</label>
+								<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="รหัสไปรษณีย์">
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -149,8 +149,8 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							<label for="exampleFormControlTextarea1">รหัสไปรษณย์</label>
-							<input class="form-control" type="text" placeholder="รหัสไปรษณย์">
+							<label for="exampleFormControlTextarea1">รหัสไปรษณีย์</label>
+							<input class="form-control" type="text" placeholder="รหัสไปรษณีย์">
 						</div>
 					</div>
 					<div class="col-md-4">
