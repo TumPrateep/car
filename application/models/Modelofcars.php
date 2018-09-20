@@ -2,9 +2,8 @@
 
 class Modelofcars extends CI_Model{
     
-    function data_check_create($machineSize,$modelofcarName,$modelId,$brandId){
+    function data_check_create($modelofcarName,$modelId,$brandId){
         $this->db->from('modelofcar');
-        $this->db->where('machineSize',$machineSize);
         $this->db->where('modelofcarName',$modelofcarName);
         $this->db->where('modelId',$modelId);
         $this->db->where('brandId',$brandId);
@@ -16,9 +15,8 @@ class Modelofcars extends CI_Model{
         return $this->db->insert('modelofcar',$data);
     }
 
-    function data_check_update($machineSize,$modelofcarName,$modelId,$brandId,$modelofcarId){
+    function data_check_update($modelofcarName,$modelId,$brandId,$modelofcarId){
         $this->db->from('modelofcar');
-        $this->db->where('machineSize',$machineSize);
         $this->db->where('modelofcarName',$modelofcarName);
         $this->db->where('modelId',$modelId);
         $this->db->where('brandId',$brandId);
@@ -126,7 +124,7 @@ class Modelofcars extends CI_Model{
         return $query->num_rows();
     }
 
-    function getCarOfModelById($modelofcarId){
+    function getModelofcarbyId($modelofcarId){
         return $this->db->where('modelofcarId',$modelofcarId)->get("modelofcar")->row();
     }
 
