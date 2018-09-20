@@ -68,24 +68,14 @@ class Brand extends CI_Model {
     
         return $query->num_rows();
     } 
-
     
-
-    
-    function check_brand($brandName) {
-
+    function data_check_create($brandName) {
         $this->db->select("*");
         $this->db->from("brand");
         $this->db->where('brandName',$brandName);
-        // $this->db->get();
         $result = $this->db->get();
         return $result->row();
     }
-    
-    function get_brand($brandName){
-        return $this->db->where('brandName',$brandName)->get("brand")->row();
-    }
-	
 
     function insert($data){
 		return $this->db->insert('brand', $data);
@@ -107,11 +97,11 @@ class Brand extends CI_Model {
         return $this->db->delete('brand', array('brandId' => $brandId));
     }
 
-    function getBrandById($brandId){
+    function getBrandbyId($brandId){
         return $this->db->where('brandId',$brandId)->get("brand")->row();
     }
 
-    function wherenot($brandId,$brandName){
+    function data_check_update($brandId,$brandName){
         $this->db->select("brandName");
         $this->db->from("brand");
         $this->db->where('brandName', $brandName);

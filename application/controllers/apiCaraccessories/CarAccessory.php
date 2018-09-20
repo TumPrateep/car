@@ -81,19 +81,10 @@ class CarAccessory extends BD_Controller {
         $this->set_response($json_data);
     }
 
-    function createBrand_post(){
+    function create_post(){
+        $brandName = $this->post('brandName');
         $config['upload_path'] = 'public/image/brand/';
-        // $config['allowed_types'] = 'gif|jpg|png';
-        // $config['max_size'] = '100';
-        // $config['max_width']  = '1024';
-        // $config['max_height']  = '768';
-        // $config['overwrite'] = TRUE;
-        // $config['encrypt_name'] = TRUE;
-        // $config['remove_spaces'] = TRUE;
-        // $this->load->library('upload', $config);
-        
         $userId = $this->session->userdata['logged_in']['id'];
-
         $img = $this->post('brandPicture');
         $img = str_replace('data:image/png;base64,', '', $img);
 	    $img = str_replace(' ', '+', $img);
@@ -104,41 +95,31 @@ class CarAccessory extends BD_Controller {
         $success = file_put_contents($file, $data);
         
 		if (!$success){
-            // $error = array('error' => $this->upload->display_errors());
             $output["message"] = REST_Controller::MSG_ERROR;
-            // $output["data"] = $error;
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
-        //     $imageDetailArray = $this->upload->data();
             $image =  $imageName;
-            $brandName = $this->post("brandName");
-            $isDublicte = $this->brand->checkBrand($brandName);
-            if($isDublicte){
-                unlink($config['upload_path'].$image);
-                $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $data = array(
-                    "brandId"=> null,
-                    "brandPicture"=> $image,
-                    "brandName"=> $brandName,
-                    "status"=> 2,
-                    "create_at" => date('Y-m-d H:i:s',time()),
-                    "create_by" => $userId,
-                    'update_at' => null,
-                    'update_by' => null,
-                    "activeFlag" => 2
-                );
-                $isResult = $this->brand->insert_brand($data);
-                if($isResult){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    unlink($config['upload_path'].$image);
-                    $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }
+            $data_check = $this->brand->data_check_create($brandName);
+            $data = array(
+                "brandId"=> null,
+                "brandPicture"=> $image,
+                "brandName"=> $brandName,
+                "status"=> 2,
+                "create_at" => date('Y-m-d H:i:s',time()),
+                "create_by" => $userId,
+                "update_at" => null,
+                "update_by" => null,
+                "activeFlag" => 2
+            );
+            $option = [
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->brand,
+                "image_path" => null
+            ];
+    
+            $this->set_response(user_decision_create($option), REST_Controller::HTTP_OK);
+        
 		}
     }
 
@@ -232,17 +213,15 @@ class CarAccessory extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
-            $data_check_update = $this->brand->getBrandById($brandId);
-            $data_check = $this->brand->wherenot($brandId,$brandName);
+            $data_check_update = $this->brand->getBrandbyId($brandId);
+            $data_check = $this->brand->data_check_update($brandId,$brandName);
             $userId = $this->session->userdata['logged_in']['id'];
             $data = array(
                 "brandId"=> $brandId,
                 "brandPicture"=> $imageName,
                 "brandName"=> $brandName,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId,
-                'activeFlag' => 1,
-                'status ' => 1
+                "update_at" => date('Y-m-d H:i:s',time()),
+                "update_by" => $userId
             );
             $oldImage = null;
             if($data_check_update != null){
@@ -258,7 +237,7 @@ class CarAccessory extends BD_Controller {
                 "old_image_path" => $oldImage,
             ];
     
-            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+            $this->set_response(user_decision_update($option), REST_Controller::HTTP_OK);
 
         }       
     }

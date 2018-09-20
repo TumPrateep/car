@@ -34,7 +34,7 @@
             var myform = document.getElementById("submit");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"apiCaraccessories/CarAccessory/createBrand",
+                url: base_url+"apiCaraccessories/CarAccessory/create",
                 data: formData,
                 processData: false,
                 contentType: false,
