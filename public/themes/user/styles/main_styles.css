@@ -3707,3 +3707,9 @@ select option
 .error{
 	color: red;
 }
+
+.btn-orange {
+    color: #fff;
+    background-color: #f4ab29;
+    border-color: #f5a415;
+}

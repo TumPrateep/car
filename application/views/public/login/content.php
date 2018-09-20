@@ -15,7 +15,7 @@
 						<label>รหัสผ่าน</label>
 						<input type="password" class="form-control" placeholder="รหัสผ่าน">
 					</div>
-					<button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
+					<button type="submit" class="btn btn-orange btn-block">เข้าสู่ระบบ</button>
 				</form>
 				<hr>
 				<button type="button" class="btn btn-primary btn-block"><i class="fab fa-facebook"></i> Facebook</button>
