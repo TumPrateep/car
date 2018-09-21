@@ -19,15 +19,17 @@ class Register extends BD_Controller {
         $password = $this->post('password');
         $p = password_hash($password, PASSWORD_BCRYPT);
 
-        $isCheck = $this->user->checkUser($username);
+        $isCheck = $this->user->checkUser($username,$phone);
         if($isCheck){
             $data = array(
                 'id' => null,
                 'username' => $username,
                 'email' => (empty($email))?null:$email,
-                'phone' => (empty($phone))?null:$phone,
+                'phone' => $phone,
                 'password' => $p, 
-                'category' => null
+                'category' => 4,
+                'status' => 1,
+                'create_at' => date('Y-m-d H:i:s',time())
             );
             $result = $this->user->insert_user($data);
             if($result){

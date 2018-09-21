@@ -46,12 +46,12 @@ class Auth extends BD_Controller {
             $output['token'] = JWT::encode($token,$kunci); //This is the output token
             $output['userId'] = $val->id;
 
-            $profile = $this->profile->findUserProfileById($val->id);
+            // $profile = $this->profile->findUserProfileById($val->id);
             $sess_array = array(
                 'id' => $val->id,
                 'username' => $val->username,
                 'role' => (int)$val->category,
-                'name' => $profile->firstname." ".$profile->lastname
+                'name' => $val->username
             );
             $this->session->set_userdata('logged_in', $sess_array);
 
