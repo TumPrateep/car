@@ -65,8 +65,6 @@ class Modelofcar extends BD_Controller {
             'brandId' => $brandId,
             'modelId' => $modelId,
             'modelofcarName' => $modelofcarName,
-            'status' => 2,
-            'activeFlag' => 2,
             'machineCode' => $machineCode,
             'bodyCode' => $bodyCode,
             'update_by' => $userId,
