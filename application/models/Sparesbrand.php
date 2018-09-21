@@ -71,7 +71,7 @@ class Sparesbrand extends CI_Model{
         return $this->db->insert('spares_brand',$data);
     }
 
-    function data_check_Brand($spares_brandName,$spares_undercarriageId){
+    function data_check_create($spares_brandName,$spares_undercarriageId){
         $this->db->from("spares_brand");
         $this->db->where('spares_brandName', $spares_brandName);
         $this->db->where('spares_undercarriageId', $spares_undercarriageId);

@@ -15,9 +15,7 @@ class SpareBrand extends BD_Controller {
         $spares_brandName = $this->post("spares_brandName");
         $spares_undercarriageId = $this->post("spares_undercarriageId");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->sparesbrand->isGetBrand($spares_brandName,$spares_undercarriageId);
-
-        if($isCheck){
+        $data_check = $this->sparesbrand->data_check_create($spares_brandName,$spares_undercarriageId);
             $data = array(
                 'spares_brandId' => null,
                 'spares_brandName' => $spares_brandName,
@@ -28,25 +26,16 @@ class SpareBrand extends BD_Controller {
                 'update_at' => null,
                 'update_by' => null,
                 "activeFlag" => 2
-            );
-            $result = $this->sparesbrand->insertBrand($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-
+            );$option = [
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->sparesbrand,
+                "image_path" => null
+            ];
+    
+            $this->set_response(user_decision_create($option), REST_Controller::HTTP_OK);
         }
-        else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
-    }
+            
     function searchSpares_post(){
         $column = "spares_brandName";
         $sort = "asc";
@@ -117,40 +106,24 @@ class SpareBrand extends BD_Controller {
     function deleteSpareBrand_get(){
         $spares_brandId = $this->get('spares_brandId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $status = 2;
-        $sparBrand = $this->sparesbrand->getSpareBrandbyId($spares_brandId);
-        if($sparBrand != null){
-            $isCheckStatus =$this->sparesbrand->checkStatusFromSpareBrand($spares_brandId,$status,$userId);
-            if($isCheckStatus ){
-            $isDelete = $this->sparesbrand->delete($spares_brandId);
-                if($isDelete){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $output["message"] = REST_Controller::MSG_BE_USED;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }else{
-                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-           }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data_check = $this->sparesbrand->getSpareBrandbyId($spares_brandId);
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $spares_brandId,
+            "model" => $this->sparesbrand,
+            "image_path" => null
+        ];
+
+        $this->set_response(user_decision_delete($option), REST_Controller::HTTP_OK);
     }
 
     function getSpareBrand_post(){
         $spares_brandId = $this->post('spares_brandId');
-        $sparBrand = $this->sparesbrand->getSpareBrandbyId($spares_brandId);
-            if($sparBrand != null){
-                $output["data"] = $sparBrand;
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_BE_DELETED;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+        $data_check = $this->sparesbrand->getSpareBrandbyId($spares_brandId);
+        $option = [
+            "data_check" => $data_check
+        ];
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
     function updateSpareBrand_post(){
 
@@ -158,10 +131,10 @@ class SpareBrand extends BD_Controller {
         $spares_brandName = $this->post('spares_brandName');
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $result = $this->sparesbrand->wherenotBrand($spares_brandId,$spares_brandName,$spares_undercarriageId);
-
-        if($result){
-            $data = array(
+        $data_check = $this->sparesbrand->data_check_update($spares_brandId,$spares_brandName,$spares_undercarriageId);
+        $data_check_update = $this->sparesbrand->getSpareBrandbyId($spares_brandId);
+       
+        $data = array(
                 'spares_brandId' => $spares_brandId,
                 'spares_brandName' => $spares_brandName,
                 'status' => 2,
@@ -169,22 +142,17 @@ class SpareBrand extends BD_Controller {
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );
-            $result = $this->sparesbrand->updateBrand($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
+            $option = [
+                "data_check_update" => $data_check_update,
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->sparesbrand,
+                "image_path" => null,
+                "old_image_path" => null,
+            ];
+    
+            $this->set_response(user_decision_update($option), REST_Controller::HTTP_OK);
         }
-    }
 
     function getAllSpareBrand_get(){
         $spares_undercarriageId = $this->get("spares_undercarriageId");
