@@ -59,20 +59,15 @@ class Sparesundercarriages extends CI_Model{
         return $query->num_rows();
     }
 
-    function insertsparesUndercarriage($data){
+    function insert($data){
         $result = $this->db->insert('spares_undercarriage', $data);
         return $result;
     }
-    function checksparesUndercarriage($spares_undercarriageName) {
-        $this->db->select("*");
+    function data_check_create($spares_undercarriageName) {
         $this->db->from("spares_undercarriage");
         $this->db->where('spares_undercarriageName',$spares_undercarriageName);
-        $result = $this->db->count_all_results();
-
-        if($result > 0){
-            return false;
-        }
-        return true;
+        $result = $this->db->get();
+        return $result->row();
 
     }
     function delete($spares_undercarriageId){
@@ -82,20 +77,16 @@ class Sparesundercarriages extends CI_Model{
         return $this->db->where('spares_undercarriageId',$spares_undercarriageId)->get("spares_undercarriage")->row();
     }
 
-    function wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName){
+    function data_check_update($spares_undercarriageId,$spares_undercarriageName){
             $this->db->select("spares_undercarriageName");
             $this->db->from("spares_undercarriage");
             $this->db->where('spares_undercarriageName', $spares_undercarriageName);
             $this->db->where_not_in('spares_undercarriageId', $spares_undercarriageId);
-            $result = $this->db->count_all_results();
-    
-            if($result > 0){
-                return false;
-            }
-            return true;
+            $result = $this->db->get();
+            return $result->row();
         }
 
-        function updatesparesUndercarriage($data){
+        function update($data){
                 $this->db->where('spares_undercarriageId',$data['spares_undercarriageId']);
                 $result = $this->db->update('spares_undercarriage', $data);
                 return $result;
