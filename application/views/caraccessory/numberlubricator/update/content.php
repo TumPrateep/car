@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Spareundercarries"); ?>">น้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Numberlubricator"); ?>">น้ำมันเครื่อง</a></li>
                 <li class="breadcrumb-item active">เเก้ไขข้อมูล</li>
             </ol>
         </div>
@@ -15,7 +15,7 @@
     <!-- End Bread crumb -->
     <!-- Container fluid  -->
     <div class="container-fluid">
-        <form id="submit"> 
+        <form id="update-lubricatornumber"> 
         <input type="hidden" id="lubricator_numberId" name="lubricator_numberId" value="<?=$lubricator_numberId ?>">     
         <div class="row">
             <div class="col-lg-12">
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                <a href="#">
+                                <a href="<?=base_url("caraccessory/Numberlubricator"); ?>">
                                 <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                 </a>
                             </form>

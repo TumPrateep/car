@@ -81,13 +81,13 @@
         updateLubricatorNumber();
     });
 
-    function updatelubricatornumber(){
+    function updateLubricatorNumber(){
         event.preventDefault();
-        var isValid = $("#submit").valid();
+        var isValid = $("#update-lubricatornumber").valid();
         
         if(isValid){
-            var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/Lubricatornumber/updateLubricatorNumber",data,
+            var data = $("#update-lubricatornumber").serialize();
+            $.post(base_url+"apiCaraccessories/LubricatorNumber/updateLubricatorNumber",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"caraccessory/NumberLubricator");

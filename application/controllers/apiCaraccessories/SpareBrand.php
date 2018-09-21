@@ -26,7 +26,8 @@ class SpareBrand extends BD_Controller {
                 'update_at' => null,
                 'update_by' => null,
                 "activeFlag" => 2
-            );$option = [
+            );
+            $option = [
                 "data_check" => $data_check,
                 "data" => $data,
                 "model" => $this->sparesbrand,

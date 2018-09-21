@@ -93,17 +93,17 @@ class Lubricatornumbers extends CI_Model {
         return $result;
     }
 
-    function data_check_create($lubricatorNumber, $lubricatorGear){
-        $this->db->where("lubricator_number", $lubricatorNumber);
-        $this->db->where("lubricator_gear", $lubricatorGear);
+    function data_check_create($lubricator_number, $lubricator_gear){
+        $this->db->where("lubricator_number", $lubricator_number);
+        $this->db->where("lubricator_gear", $lubricator_gear);
         $result = $this->db->from("lubricator_number")->get();
         return $result->row();
     }
 
-    function data_check_update($lubricatorNumber, $lubricatorGear, $lubricatorNumberId){
-        $this->db->where("lubricator_number", $lubricatorNumber);
-        $this->db->where("lubricator_gear", $lubricatorGear);
-        $this->db->where_not_in("lubricator_numberId", $lubricatorNumberId);
+    function data_check_update($lubricator_number, $lubricator_gear, $lubricator_numberId){
+        $this->db->where("lubricator_number", $lubricator_number);
+        $this->db->where("lubricator_gear", $lubricator_gear);
+        $this->db->where_not_in("lubricator_numberId", $lubricator_numberId);
         $result = $this->db->from("lubricator_number")->get();
         return $result->row();
     }
