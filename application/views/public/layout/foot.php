@@ -14,3 +14,6 @@
 <script src="<?=base_url("public/themes/user/");?>plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script src="<?=base_url("public/themes/user/");?>plugins/parallax-js-master/parallax.min.js"></script>
 <script src="<?=base_url("public/themes/user/");?>js/shop_custom.js"></script>
+<script>
+    var base_url = "<?=base_url();?>";
+</script>

@@ -6,7 +6,6 @@
             },
             brandPicture: {
                 required: true
-                
             } 
         },
         messages: {

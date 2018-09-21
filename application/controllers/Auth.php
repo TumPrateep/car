@@ -6,13 +6,13 @@ class Auth extends CI_Controller {
     public function login()
     {
         $this->load->view("lib");
-        $this->load->view("auth/login");
+        $this->load->view("login");
     }
 
     public function register()
     {
         $this->load->view("lib");
-        $this->load->view("auth/register");
+        $this->load->view("register");
     }
     
     public function logout(){
@@ -23,7 +23,7 @@ class Auth extends CI_Controller {
             'name' => ''
         );
         $this->session->unset_userdata('logged_in', $sess_array);
-        redirect("auth/login");
+        redirect("login");
     }
 
 }

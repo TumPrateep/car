@@ -3713,3 +3713,12 @@ select option
     background-color: #f4ab29;
     border-color: #f5a415;
 }
+
+.form-control.error {
+	color: #db5246;
+	border-bottom-color: #db5246;
+}
+
+#error-message{
+	display: none;
+}
