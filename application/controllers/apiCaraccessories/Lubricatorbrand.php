@@ -118,30 +118,18 @@ class Lubricatorbrand extends BD_Controller {
     function deletelubricatorbrand_get(){
         $lubricator_brandId = $this->get('lubricator_brandId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $status = 2;
-        $oldData =$this->lubricatorbrands->getlubricatorById($lubricator_brandId);
-        if($oldData != null){
-            $isCheckStatus = $this->lubricatorbrands->checkStatusFromBrand($lubricator_brandId,$status,$userId);
-            if($isCheckStatus ){
-                $isDelete = $this->lubricatorbrands->delete($lubricator_brandId);
-                if($isDelete){
-                    $config['upload_path'] = 'public/image/lubricator_brand/';
-                    unlink($config['upload_path'].$oldData->lubricator_brandPicture); 
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $output["message"] = REST_Controller::MSG_BE_USED;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }else{
-                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        } 
+        $config['upload_path'] = 'public/image/tire_brand/';
+        $data_check = $this->lubricatorbrands->getlubricatorById($lubricator_brandId);
+        $imagePath = $config['upload_path'].$data_check->lubricator_brandPicture;
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $lubricator_brandId,
+            "model" => $this->lubricatorbrands,
+            "image_path" => $imagePath
+        ];
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
+    
 
     function searchLubricatorbrand_post(){
         $column = "lubricator_brandName";

@@ -106,30 +106,19 @@ class Tirebrand extends BD_Controller {
     
     function deleteTireBrand_get(){
         $tire_brandId = $this->get('tire_brandId');
-        
         $userId = $this->session->userdata['logged_in']['id'];
-        $status = 2;
-        $tire = $this->triebrands->getirebrandById($tire_brandId);
-        if($tire != null){
-            $isCheckStatus =$this->triebrands->checkStatusFromTireBrand($tire_brandId,$status,$userId);
-            if($isCheckStatus ){
-                $isDelete = $this->triebrands->delete($tire_brandId);
-                if($isDelete){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $output["message"] = REST_Controller::MSG_BE_USED;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }else{
-                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["message"] = REST_Controller::MSG_BE_DELETED;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        } 
+        $config['upload_path'] = 'public/image/tire_brand/';
+        $data_check = $this->triebrands->getTireBrandById($tire_brandId);
+        $imagePath = $config['upload_path'].$data_check->tire_brandPicture;
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $tire_brandId,
+            "model" => $this->triebrands,
+            "image_path" => $imagePath
+        ];
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
+        
     function createBrand_post(){
         $config['upload_path'] = 'public/image/tire_brand/';
         $userId = $this->session->userdata['logged_in']['id'];
