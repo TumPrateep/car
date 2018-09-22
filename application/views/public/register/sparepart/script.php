@@ -1,5 +1,9 @@
 <script>
-
+$(document).ready(function() {
+    jQuery.validator.addMethod("username", function(value, element) {
+      return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
+    }, 'กรุณากรอกภาษาอังกฤษหรือตัวเลขเท่านั้น');
+    
     $("#submit").validate({
         rules: {
             username:{
@@ -23,7 +27,8 @@
             },
             car_accessoriesName:{
               required: true
-            },
+            }
+            ,
             businessRegistration:{
               required: true
             },
@@ -138,7 +143,8 @@
             }
         }
     });
-    
+   
+}); 
     
     function checkID(id) {
             if(id.length != 13) return false;

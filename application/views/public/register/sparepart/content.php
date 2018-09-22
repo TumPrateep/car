@@ -19,13 +19,13 @@
 				 </div>
 				 <div class="col-md-5">
 					 <div class="form-group">
-						 <label for="user_profile">ชื่อ</label>
+						 <label for="user_profile">ชื่อ</label><span class="error">*</span>
 						 <input type="email" class="form-control" id="firstname1" placeholder="ชื่อ">
 					 </div>
 				 </div>
 				 <div class="col-md-5">
 					 <div class="form-group">
-						 <label for="user_profile">นามสกุล</label>
+						 <label for="user_profile">นามสกุล</label><span class="error">*</span>
 						 <input type="email" class="form-control" id="lastname1" placeholder="นามสกุล">
 					 </div>
 				 </div>
@@ -102,8 +102,8 @@
 			 <div class="row">
 				 <div class="col-md-6">
 					 <div class="form-group">
-						 <label for="car_accessories">ชื่อ</label>
-						 <input type="email" class="form-control" id="firstname" placeholder="ชื่อ">
+						 <label for="car_accessories">ชื่อ</label><span class="error">*</span>
+						 <input type="text" class="form-control" id="firstname" placeholder="ชื่อ">
 					 </div>
 				 </div>
 				 <div class="col-md-6">
@@ -170,7 +170,7 @@
 		 </div>  
 		 <div class="col-md-4 leftline">
 			 <h4 class="users">สมัครลงชื่อเข้าใช้งาน</h4>
-			 <!-- <form id="login"> -->
+			 <form id="login">
 				 <div class="form-group">
 					 <label for="users">ชื่อผู้ใช้งาน</label>
 					 <input type="email" class="form-control" id="username" placeholder="ชื่อผู้ใช้งาน">
@@ -191,12 +191,13 @@
 					 <label for="users">ยืนยันรหัสผ่าน</label>
 					 <input type="password" class="form-control" id="confirmpassword" placeholder="ยืนยันรหัสผ่าน">
 				 </div>
+				 
 				 <button type="submit" class="btn btn-primary btn-block">บันทึก</button>
-			 <!-- </form> -->
+			 </form>
 		 </div>
 	 </div>
  </div>
- </form>
 </div> 
+</form>
 
 
