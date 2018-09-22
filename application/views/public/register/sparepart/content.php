@@ -9,18 +9,18 @@
 				 <div class="col-md-2">
 					 <div class="form-group">
 						 <label for="user_profile">คำนำหน้า</label>
-						 <select class="form-control" id="titleName">
-							 <option>คำนำหน้า</option>
-							 <option>นาย</option>
-							 <option>นาง</option>
-							 <option>นางสาว</option>
+						 <select class="form-control" name="titleName" id="titleName">
+							 <option value="">คำนำหน้า</option>
+							 <option value="1">นาย</option>
+							 <option value="2">นาง</option>
+							 <option value="3">นางสาว</option>
 						 </select>
 					 </div>
 				 </div>
 				 <div class="col-md-5">
 					 <div class="form-group">
 						 <label for="user_profile">ชื่อ</label><span class="error">*</span>
-						 <input type="email" class="form-control" id="firstname1" placeholder="ชื่อ">
+						 <input type="email" class="form-control" name="firstname1" id="firstname1" placeholder="ชื่อ">
 					 </div>
 				 </div>
 				 <div class="col-md-5">
@@ -170,7 +170,6 @@
 		 </div>  
 		 <div class="col-md-4 leftline">
 			 <h4 class="users">สมัครลงชื่อเข้าใช้งาน</h4>
-			 <form id="login">
 				 <div class="form-group">
 					 <label for="users">ชื่อผู้ใช้งาน</label>
 					 <input type="email" class="form-control" id="username" placeholder="ชื่อผู้ใช้งาน">
@@ -193,7 +192,6 @@
 				 </div>
 				 
 				 <button type="submit" class="btn btn-primary btn-block">บันทึก</button>
-			 </form>
 		 </div>
 	 </div>
  </div>
