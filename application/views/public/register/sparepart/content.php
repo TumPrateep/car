@@ -184,11 +184,11 @@
 				 </div>
 				 <div class="form-group">
 					 <label for="users">รหัสผ่าน</label>
-					 <input type="text" class="form-control" id="password" placeholder="รหัสผ่าน">
+					 <input type="password" class="form-control" id="password" placeholder="รหัสผ่าน">
 				 </div>
 				 <div class="form-group">
 					 <label for="users">ยืนยันรหัสผ่าน</label>
-					 <input type="text" class="form-control" id="confirmpassword" placeholder="ยืนยันรหัสผ่าน">
+					 <input type="password" class="form-control" id="confirmpassword" placeholder="ยืนยันรหัสผ่าน">
 				 </div>
 				 
 				 <button type="submit" class="btn btn-primary btn-block">บันทึก</button>
