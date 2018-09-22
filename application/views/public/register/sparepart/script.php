@@ -172,7 +172,7 @@
         onLoad();
         
         function loadProvince(){
-          $.post(base_url+"api/location/getProvince",{},
+          $.post(base_url+"LocationforRegister/getProvince",{},
             function(data){
               var province = data.data;
               $.each(province, function( index, value ) {
@@ -193,7 +193,7 @@
           subdistrictDropdown.html("");
           subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-          $.post(base_url+"api/location/getDistrict",{
+          $.post(base_url+"LocationforRegister/getDistrict",{
             provinceId: provinceId
           },
             function(data){
@@ -215,7 +215,7 @@
           subdistrictDropdown.html("");
           subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
           
-          $.post(base_url+"api/location/getSubdistrict",{
+          $.post(base_url+"LocationforRegister/getSubdistrict",{
             districtId: districtId
           },
             function(data){
