@@ -1,20 +1,16 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 
-class Users extends CI_Controller {
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-	function __construct()
+class Users extends BD_Controller {
+    function __construct()
     {
         // Construct the parent class
-		parent::__construct();
-		$this->load->view("lib");
-		$this->load->model("user");
-	}
-	
-	function index(){
-        echo "ผู้ใช้งาน";
-	}
-	
-	function create_post(){
+        parent::__construct();
+        $this->load->model("user");
+    }
+
+    function create_post(){
 		$username = $this->post('username');
 		$password = $this->post('password');
 		$phone = $this->post('phone');
