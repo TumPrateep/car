@@ -20,13 +20,13 @@
 				 <div class="col-md-5">
 					 <div class="form-group">
 						 <label for="user_profile">ชื่อ</label><span class="error">*</span>
-						 <input type="email" class="form-control" name="firstname1" id="firstname1" placeholder="ชื่อ">
+						 <input type="text" class="form-control" name="firstname1" id="firstname1" placeholder="ชื่อ">
 					 </div>
 				 </div>
 				 <div class="col-md-5">
 					 <div class="form-group">
 						 <label for="user_profile">นามสกุล</label><span class="error">*</span>
-						 <input type="email" class="form-control" id="lastname1" placeholder="นามสกุล">
+						 <input type="text" class="form-control" id="lastname1" placeholder="นามสกุล">
 					 </div>
 				 </div>
 			 </div>
@@ -68,19 +68,19 @@
 				 <div class="col-md-4">
 						 <div class="form-group">
 							 <label for="user_profile">รหัสไปรษณีย์</label>
-							 <input type="email" class="form-control" id="postCode" placeholder="รหัสไปรษณีย์">
+							 <input type="number" class="form-control" id="postCode" placeholder="รหัสไปรษณีย์">
 						 </div>
 					 </div>
 					 <div class="col-md-4">
 						 <div class="form-group">
 							 <label for="user_profile">เบอร์โทรศัพท์ที่สามารถติดต่อได้</label>
-							 <input type="email" class="form-control" id="phone1" placeholder="เบอร์โทรศัพท์">
+							 <input type="number" class="form-control" id="phone1" placeholder="เบอร์โทรศัพท์">
 						 </div>
 					 </div>
 					 <div class="col-md-4">
 						 <div class="form-group">
 							 <label for="user_profile">เบอร์โทรศัพท์</label>
-							 <input type="email" class="form-control" id="phone2" placeholder="เบอร์โทรศัพท์">
+							 <input type="number" class="form-control" id="phone2" placeholder="เบอร์โทรศัพท์">
 						 </div>
 					 </div>
 				 </div>
@@ -89,13 +89,13 @@
 				 <div class="col-md-6">
 					 <div class="form-group">
 						 <label for="car_accessories">ชื่อร้านค้าส่ง</label>
-						 <input type="email" class="form-control" id="car_accessoriesName" placeholder="ชื่อร้านค้าส่ง">
+						 <input type="text" class="form-control" id="car_accessoriesName" placeholder="ชื่อร้านค้าส่ง">
 					 </div>
 				 </div>
 				 <div class="col-md-6">
 					 <div class="form-group">
 						 <label for="car_accessories">หมายเลขทะเบียนการค้า</label>
-						 <input type="email" class="form-control" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า">
+						 <input type="text" class="form-control" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า">
 					 </div>
 				 </div>
 			 </div>
@@ -109,7 +109,7 @@
 				 <div class="col-md-6">
 					 <div class="form-group">
 						 <label for="car_accessories">เลขรหัสบัตรประชาชน</label>
-						 <input type="email" class="form-control" id="idcard" placeholder="เลขรหัสบัตรประชาชน">
+						 <input type="number" class="form-control" id="idcard" placeholder="เลขรหัสบัตรประชาชน">
 					 </div>
 				 </div>
 			 </div>
@@ -125,7 +125,7 @@
 				 <div class="col-md-4">
 					 <div class="form-group">
 						 <label for="car_accessories">จังหวัด</label>
-						 <select class="form-control" id="sparepart-provinceId">
+						 <select class="form-control" id="sparepart_provinceId">
 							 <option>จังหวัด</option>
 						 </select>
 					 </div>
@@ -133,7 +133,7 @@
 				 <div class="col-md-4">
 					 <div class="form-group">
 						 <label for="car_accessories">อำเภอ</label>
-						 <select class="form-control" id="sparepart-districtId">
+						 <select class="form-control" id="sparepart_districtId">
 							 <option>อำเภอ</option>
 						 </select>
 					 </div>
@@ -141,7 +141,7 @@
 				 <div class="col-md-4">
 					 <div class="form-group">
 						 <label for="car_accessories">ตำบล</label>
-						 <select class="form-control" id="sparepart-subdistrictId">
+						 <select class="form-control" id="sparepart_subdistrictId">
 							 <option>ตำบล</option>
 						 </select>
 					 </div>
@@ -172,11 +172,11 @@
 			 <h4 class="users">สมัครลงชื่อเข้าใช้งาน</h4>
 				 <div class="form-group">
 					 <label for="users">ชื่อผู้ใช้งาน</label>
-					 <input type="email" class="form-control" id="username" placeholder="ชื่อผู้ใช้งาน">
+					 <input type="text" class="form-control" id="username" placeholder="ชื่อผู้ใช้งาน">
 				 </div>
 				 <div class="form-group">
 					 <label>เบอร์โทรศัพท์</label>
-					 <input type="password" class="form-control" id="phone" placeholder="เบอร์โทรศัพท์">
+					 <input type="number" class="form-control" id="phone" placeholder="เบอร์โทรศัพท์">
 				 </div>
 				 <div class="form-group">
 					 <label for="users">อีเมล์</label>
@@ -184,11 +184,11 @@
 				 </div>
 				 <div class="form-group">
 					 <label for="users">รหัสผ่าน</label>
-					 <input type="password" class="form-control" id="password" placeholder="รหัสผ่าน">
+					 <input type="text" class="form-control" id="password" placeholder="รหัสผ่าน">
 				 </div>
 				 <div class="form-group">
 					 <label for="users">ยืนยันรหัสผ่าน</label>
-					 <input type="password" class="form-control" id="confirmpassword" placeholder="ยืนยันรหัสผ่าน">
+					 <input type="text" class="form-control" id="confirmpassword" placeholder="ยืนยันรหัสผ่าน">
 				 </div>
 				 
 				 <button type="submit" class="btn btn-primary btn-block">บันทึก</button>
