@@ -110,7 +110,7 @@ $(document).ready(function() {
             required: "กรุณากรอกชื่อ"
           },
           sparepart_idcard:{
-            required: "กรุณากรอกรหัสบัตรประชาชน,
+            required: "กรุณากรอกรหัสบัตรประชาชน",
             pid: true
           },
           sparepart_address:{
@@ -126,7 +126,7 @@ $(document).ready(function() {
             required: "กรุณากรอกตำบล"
           },
           sparepart_zipCode:{
-            required: "กรุณากรอกรหัสไปรษณี,
+            required: "กรุณากรอกรหัสไปรษณี",
             zipCode :true 
           },
         }
@@ -281,13 +281,13 @@ $(document).ready(function() {
 
 
 
-    var sparepartProvinceDropdown = $("#sparepart-provinceId");
+    var sparepartProvinceDropdown = $("#sparepart_provinceId");
     sparepartProvinceDropdown.append('<option value="">เลือกจังหวัด</option>');
 
-    var sparepartDistrictDropdown = $('#sparepart-districtId');
+    var sparepartDistrictDropdown = $('#sparepart_districtId');
     sparepartDistrictDropdown.append('<option value="">เลือกอำเภอ</option>');
 
-    var sparepartSubdistrictDropdown = $('#sparepart-subdistrictId');
+    var sparepartSubdistrictDropdown = $('#sparepart_subdistrictId');
     sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
     function loadSparepartProvince(){
