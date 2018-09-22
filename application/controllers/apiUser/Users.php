@@ -57,8 +57,8 @@ class Users extends BD_Controller {
 		$data['profile'] = array(
 			'user_profile' => null,
 			'titleName' => $titleName,
-			'firstname1' => $firstname1,
-			'lastname1' => $lastname1,
+			'firstname' => $firstname1,
+			'lastname' => $lastname1,
 			'address' => $address,
 			'provinceId' => $provinceId,
 			'districtId' => $districtId,
