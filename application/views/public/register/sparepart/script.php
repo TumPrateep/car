@@ -18,7 +18,7 @@ $(document).ready(function() {
           },
           address:{
             required: true
-          },
+          },  
           provinceId:{
             required: true
           },
@@ -30,31 +30,29 @@ $(document).ready(function() {
           },
           phone1: {
             minlength: 9,
-            require: true 
+            required: true 
           },
           phone2: {
             minlength: 9
           },
           postCode:{
             required: true
-          },
+          }
+          ,
           car_accessoriesName:{
               required: true
             },
           businessRegistration:{
             required: true
           },
-          sparepart_firstname:{
+          firstname:{
             required: true
           },
-          sparepart_lastname:{
-            required: true
-          },
-          sparepart_idcard:{
+          idcard:{
             required: true,
             pid: true
           },
-          sparepart_address:{
+          address1:{
             required: true
           },
           sparepart_provinceId:{
@@ -66,15 +64,38 @@ $(document).ready(function() {
           sparepart_subdistrictId:{
             required: true
           },
-          sparepart_zipCode:{
+          postCode1:{
             required: true,
             zipCode :true 
+          },
+          latitude:{
+            required: true
+          },
+          longitude:{
+            required: true
+          },
+          username:{
+            minlength:4,
+            required:true
+            },
+          phone: {
+              required: true,
+              minlength:9
+          },    
+          password: {
+            required: true,
+            minlength:6
+          },
+          confirmpassword: { 
+            required: true,
+            equalTo: "#password"
           },
         },
         messages: {
           titleName:{
             required: "กรุณากรอกคำนำหน้า"
-          },
+          }
+          ,
           firstname1:{
             required: "กรุณากรอกชื่อ"
           },
@@ -95,7 +116,7 @@ $(document).ready(function() {
           },
           phone1: {
             minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-            require: "กรุณากรอกเบอร์โทรศัพท์"
+            required: "กรุณากรอกเบอร์โทรศัพท์"
           },
           phone2: {
             minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว"
@@ -106,14 +127,14 @@ $(document).ready(function() {
           businessRegistration:{
             required: "หมายเลขทะเบียนการค้า"
           },
-          sparepart_firstname:{
+          firstname:{
             required: "กรุณากรอกชื่อ"
           },
-          sparepart_idcard:{
+          idcard:{
             required: "กรุณากรอกรหัสบัตรประชาชน",
             pid: true
           },
-          sparepart_address:{
+          address1:{
             required: "กรุณากรอกที่อยู่"
           },
           sparepart_provinceId:{
@@ -125,10 +146,35 @@ $(document).ready(function() {
           sparepart_subdistrictId:{
             required: "กรุณากรอกตำบล"
           },
-          sparepart_zipCode:{
+          postCode1:{
             required: "กรุณากรอกรหัสไปรษณี",
             zipCode :true 
           },
+          latitude:{
+            required: "กรุุณากรอกละติจูด"
+          },
+          longitude:{
+            required: "กรุณากรอกลองจิจูด"
+          },
+          username:{
+            required: "กรุณากรอกชื่อผู้ใช้งาน",
+            minlength:"กรุณากรอกชื่อผู้ใช้อย่างน้อย 4 ตัวอักษร"
+          },
+          phone: {
+            minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            required: "กรุณากรอกเบอร์โทรศัพท์"
+          },
+          password:{
+            required: "กรุณากรอกพาสเวิด"
+          },
+          password: {
+             required: "กรุณากรอกรหัสผ่าน",
+            minlength: "กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัวอักษร"
+            },
+          confirmpassword: {
+            required: "กรุณากรอกรหัสผ่านอีกครั้ง",
+            equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
+            },
         }
     });
 
@@ -221,66 +267,6 @@ $(document).ready(function() {
         }
       );
     }
-
-    function loadProvince(){
-        $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
-          function(data){
-            var province = data.data;
-            $.each(province, function( index, value ) {
-              provinceDropdown.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
-            });
-          }
-        );
-      }
-
-    provinceDropdown.change(function(){
-      var provinceId = $(this).val();
-      loadDistrict(provinceId);
-    });
-
-    function loadDistrict(provinceId){
-      districtDropdown.html("");
-      districtDropdown.append('<option value="">เลือกอำเภอ</option>');
-      subdistrictDropdown.html("");
-      subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
-
-      $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
-        provinceId: provinceId
-      },
-        function(data){
-          var district = data.data;
-          $.each(district, function( index, value ) {
-            districtDropdown.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
-          });
-        }
-      );
-
-    }
-
-    districtDropdown.change(function(){
-      var districtId = $(this).val();
-      loadSubdistrict(districtId);
-    });
-
-    function loadSubdistrict(districtId){
-      subdistrictDropdown.html("");
-      subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
-    
-      $.post(base_url+"LocationforRegister/getSubdistrict",{
-        districtId: districtId
-      },
-        function(data){
-          var subDistrict = data.data;
-          $.each(subDistrict, function( index, value ) {
-            subdistrictDropdown.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
-          });
-        }
-      );
-    }
-
-
-
-
     var sparepartProvinceDropdown = $("#sparepart_provinceId");
     sparepartProvinceDropdown.append('<option value="">เลือกจังหวัด</option>');
 
