@@ -79,7 +79,7 @@ class User extends CI_Model{
 		return $this->db->insert('users', $data);
     }
     
-    function checkUser($username,$phone){
+    function data_check_create($username,$phone){
         $this->db->select("username");
         $this->db->from("users");
         $this->db->where("username", $username);
@@ -214,8 +214,22 @@ class User extends CI_Model{
     }
 
     
-    
-
-    
+    function insert($data){
+        $this->db->trans_begin();
+        $this->db->insert('user', $data['user']);
+        $result = $this->db->where('username',$datauser['user']['username'])->get("users")->row();
+        $userId = $result->id;
+        $data['profile']['userId'] = $userId;
+        $data['accessories']['userId'] = $userId;
+        $this->db->insert('user_profile', $data['profile']);
+        $this->db->insert('car_accessories', $data['accessories']);
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
+    }
 
 }
