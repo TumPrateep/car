@@ -3,7 +3,7 @@ $(document).ready(function() {
     var register = $("#submit");
     // jQuery.validator.addMethod("username", function(value, element) {
     //   return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
-    // }, 'กรุณากรอกภาษาอังกฤษหรือตัวเลขเท่านั้น');
+    // }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
     
     register.validate({
         rules: {
@@ -93,88 +93,91 @@ $(document).ready(function() {
         },
         messages: {
           titleName:{
-            required: "กรุณากรอกคำนำหน้า"
+            required: "คำนำหน้า"
           }
           ,
           firstname1:{
-            required: "กรุณากรอกชื่อ"
+            required: "ชื่อ"
           },
           lastname: {
-            required: "กรุณากรอกนามสกุล"
+            required: "นามสกุล"
           },
           address:{
-            required: "กรุณากรอกที่อยู่"
+            required: "ที่อยู่"
           },
           provinceId:{
-            required: "กรุณากรอกจังหวัด"
+            required: "จังหวัด"
           },
           districtId: {
-            required: "กรุณากรอกอำเภอ"
+            required: "อำเภอ"
           },
           subdistrictId: {
-            required: "กรุณากรอกตำบล"
+            required: "ตำบล"
           },
           phone1: {
-            minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-            required: "กรุณากรอกเบอร์โทรศัพท์"
+            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            required: "เบอร์โทรศัพท์"
           },
           phone2: {
-            minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว"
+            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว"
           },
           car_accessoriesName:{
-              required: "กรุณากรอกชื่อร้านอะไหล่"
+              required: "ชื่อร้านอะไหล่"
             },
           businessRegistration:{
             required: "หมายเลขทะเบียนการค้า"
           },
           firstname:{
-            required: "กรุณากรอกชื่อ"
+            required: "ชื่อ"
           },
           idcard:{
-            required: "กรุณากรอกรหัสบัตรประชาชน",
-            pid: "กรุณากรอกรหัสบัตรประชาชนให้ถูกต้อง"
+            required: "รหัสบัตรประชาชน",
+            pid: "รหัสบัตรประชาชนให้ถูกต้อง"
           },
           address1:{
-            required: "กรุณากรอกที่อยู่"
+            required: "ที่อยู่"
           },
           sparepart_provinceId:{
-            required: "กรุณากรอกจังวัด"
+            required: "จังวัด"
           },
           sparepart_districtId:{
-            required: "กรุณากรอกอำเภอ"
+            required: "อำเภอ"
           },
           sparepart_subdistrictId:{
-            required: "กรุณากรอกตำบล"
+            required: "ตำบล"
           },
           postCode1:{
-            required: "กรุณากรอกรหัสไปรษณี",
+            required: "รหัสไปรษณี",
             zipCode :true 
           },
           latitude:{
             required: "กรุุณากรอกละติจูด"
           },
           longitude:{
-            required: "กรุณากรอกลองจิจูด"
+            required: "ลองจิจูด"
           },
           username:{
-            required: "กรุณากรอกชื่อผู้ใช้งาน",
-            minlength:"กรุณากรอกชื่อผู้ใช้อย่างน้อย 4 ตัวอักษร"
+            required: "ชื่อผู้ใช้งาน",
+            minlength:"ชื่อผู้ใช้อย่างน้อย 4 ตัวอักษร"
           },
           phone: {
-            minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-            required: "กรุณากรอกเบอร์โทรศัพท์"
+            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            required: "เบอร์โทรศัพท์"
           },
           password:{
-            required: "กรุณากรอกพาสเวิด"
+            required: "พาสเวิด"
           },
           password: {
-             required: "กรุณากรอกรหัสผ่าน",
-            minlength: "กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัวอักษร"
+             required: "รหัสผ่าน",
+            minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
             },
           confirmpassword: {
-            required: "กรุณากรอกรหัสผ่านอีกครั้ง",
+            required: "รหัสผ่านอีกครั้ง",
             equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
             },
+            postCode: {
+              required: "รหัสไปรณี"
+            }
         }
     });
 
@@ -196,7 +199,7 @@ $(document).ready(function() {
 
       jQuery.validator.addMethod("pid", function(value, element) {
         return checkID(value);
-      }, 'กรุณากรอกเลขบัตรประชาชนให้ถูกต้อง');
+      }, 'เลขบัตรประชาชนให้ถูกต้อง');
         
       var provinceDropdown = $("#provinceId");
       provinceDropdown.append('<option value="">เลือกจังหวัด</option>');
