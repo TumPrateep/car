@@ -26,7 +26,7 @@
 				 <div class="col-md-5">
 					 <div class="form-group">
 						 <label for="user_profile">นามสกุล</label><span class="error">*</span>
-						 <input type="text" class="form-control" name="lastname" id="lastname" placeholder="นามสกุล">
+						 <input type="text" class="form-control" name="lastname1" id="lastname1" placeholder="นามสกุล">
 					 </div>
 				 </div>
 			 </div>

@@ -15,6 +15,7 @@ class Users extends BD_Controller {
 		$password = $this->post('password');
 		$phone = $this->post('phone');
 		$email = $this->post('email');
+		$p = password_hash($password, PASSWORD_BCRYPT);
 
 		$titleName = $this->post('titleName');
 		$firstname1 = $this->post('firstname1');
@@ -43,7 +44,7 @@ class Users extends BD_Controller {
 		$data['users'] = array(
 			'id' => null,
 			'username' => $username,
-			'password' => $password,
+			'password' => $p,
 			'email' => $email,
 			'phone' => $phone,
 			'create_by' => null,

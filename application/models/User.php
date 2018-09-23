@@ -84,12 +84,9 @@ class User extends CI_Model{
         $this->db->from("users");
         $this->db->where("username", $username);
         $this->db->or_where("phone",$phone);
-        $result = $this->db->count_all_results();
+        $result = $this->db->get();
 
-        if($result > 0){
-            return false;
-        }
-        return true;
+        return $result->row();
     }
     
     
@@ -216,12 +213,13 @@ class User extends CI_Model{
     
     function insert($data){
         $this->db->trans_begin();
-        $this->db->insert('user', $data['user']);
-        $result = $this->db->where('username',$datauser['user']['username'])->get("users")->row();
+        $this->db->insert('users', $data['users']);
+        $result = $this->db->where('username',$data['users']['username'])->get("users")->row();
         $userId = $result->id;
         $data['profile']['userId'] = $userId;
         $data['accessories']['userId'] = $userId;
         $this->db->insert('user_profile', $data['profile']);
+        $data['accessories']['create_by'] = $userId;
         $this->db->insert('car_accessories', $data['accessories']);
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();

@@ -65,8 +65,7 @@ $(document).ready(function() {
             required: true
           },
           postCode1:{
-            required: true,
-            zipCode :true 
+            required: true
           },
           latitude:{
             required: true
@@ -147,8 +146,7 @@ $(document).ready(function() {
             required: "กรุณากรอกตำบล"
           },
           postCode1:{
-            required: "กรุณากรอกรหัสไปรษณี",
-            zipCode :true 
+            required: "กรุณากรอกรหัสไปรษณี"
           },
           latitude:{
             required: "กรุุณากรอกละติจูด"
@@ -177,13 +175,6 @@ $(document).ready(function() {
             },
         }
     });
-
-    register.submit(function (e) { 
-      e.preventDefault();
-      var isValid = register.valid();
-    });
-   
-
     
     function checkID(id) {
         if(id.length != 13) return false;
@@ -331,6 +322,19 @@ $(document).ready(function() {
         }
       );
     }
+
+    register.submit(function (e) { 
+      e.preventDefault();
+      var isValid = register.valid();
+      if(isValid){
+        var data = register.serialize();
+        $.post(base_url+"apiUser/Users/create", data,
+          function (data, textStatus, jqXHR) {
+            console.log(data);
+          }
+        );
+      }
+    });
 
   }); 
     
