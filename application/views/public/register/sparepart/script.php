@@ -132,7 +132,7 @@ $(document).ready(function() {
           },
           idcard:{
             required: "กรุณากรอกรหัสบัตรประชาชน",
-            pid: true
+            pid: "กรุณากรอกรหัสบัตรประชาชนให้ถูกต้อง"
           },
           address1:{
             required: "กรุณากรอกที่อยู่"
