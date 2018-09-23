@@ -20,7 +20,7 @@ class Register extends BD_Controller {
         $p = password_hash($password, PASSWORD_BCRYPT);
 
         $isCheck = $this->user->data_check_create($username,$phone);
-        if($isCheck){
+        if($isCheck != null){
             $data = array(
                 'id' => null,
                 'username' => $username,
