@@ -17,7 +17,14 @@ class Register extends CI_Controller {
 
     public function garage()
     {
-        echo "garage register";
+        $this->load->view("public/layout/head");
+        $this->load->view("public/layout/header");
+        $this->load->view("public/layout/wishlist");
+        $this->load->view("public/layout/menu");
+        $this->load->view("public/register/garage/content");
+        $this->load->view("public/layout/copyright");        
+        $this->load->view("public/layout/foot");
+        $this->load->view("public/register/garage/script");
     }
 
     public function user()
