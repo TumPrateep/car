@@ -134,7 +134,7 @@ CREATE TABLE `car_profile` (
   CONSTRAINT `fk_car_profile_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_car_profile_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_car_profile_users3` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +231,7 @@ CREATE TABLE `garage` (
   CONSTRAINT `fk_garage_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_garage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -921,7 +921,7 @@ CREATE TABLE `tire_change` (
   CONSTRAINT `create_by` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_change_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tire_change_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1207,12 +1207,14 @@ CREATE TABLE `user_profile` (
   `titleName` text,
   `update_at` datetime DEFAULT NULL,
   `activeFlag` int(11) NOT NULL,
-  `postCode` varchar(45) DEFAULT NULL,
+  `postCodes` varchar(45) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_profile`),
   KEY `fk_user_profile_province1_idx` (`provinceId`),
   KEY `fk_user_profile_district1_idx` (`districtId`),
   KEY `fk_user_profile_subdistrict1_idx` (`subdistrictId`),
   KEY `fk_user_profile_users1_idx` (`create_by`),
+  KEY `update_by_idx` (`update_by`),
   CONSTRAINT `fk_user_profile_district1` FOREIGN KEY (`districtId`) REFERENCES `district` (`districtId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_province1` FOREIGN KEY (`provinceId`) REFERENCES `province` (`provinceId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_profile_subdistrict1` FOREIGN KEY (`subdistrictId`) REFERENCES `subdistrict` (`subdistrictId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -1226,7 +1228,7 @@ CREATE TABLE `user_profile` (
 
 LOCK TABLES `user_profile` WRITE;
 /*!40000 ALTER TABLE `user_profile` DISABLE KEYS */;
-INSERT INTO `user_profile` VALUES (1,'admin','admin','1','080524171','0899996699',63,843,7662,1,NULL,1,'22/9 ต.ท่าศาลา จ.นครศรีธรรมราช','นาย',NULL,0,NULL),(3,'ณัฐพล','บุญสุวรรณ์','2','','0867454630',63,847,7718,1,'2018-06-10 12:50:15',6,'22/2','นาย',NULL,0,NULL),(4,'Micheal','D.rogis','1','','0998755211',14,176,1408,1,'2018-06-10 12:56:10',7,'99/5','นางสาว',NULL,0,NULL),(5,'พุตทิพัต','ไทยนิยม','2','','0897725524',63,836,7578,1,'2018-06-10 13:03:49',8,'33/9','นาง',NULL,0,NULL),(6,'พุตทิพัต','ไทยนิยม','2','','0897725524',63,836,7578,1,'2018-06-10 13:04:38',8,'33/9','นาง',NULL,0,NULL),(7,'ณัฐพล','บุญสุวรรณ์','2','','0867454630',63,847,7718,1,'2018-06-10 13:05:18',6,'22/2','นาย',NULL,0,NULL),(8,'ณัฐพล','บุญสุวรรณ์','1','','0805241999',63,847,7718,1,'2018-06-10 14:24:43',9,'22/2','นาย',NULL,0,NULL),(9,'พุตทิพัต','ไทยนิยม','1','','0897725524',63,836,7578,1,'2018-06-10 14:30:18',8,'33/9','นาง',NULL,0,NULL),(10,'ณัฐพล','บุญสุวรรณ์','1','','0867454630',63,847,7718,1,'2018-06-10 15:17:45',6,'22/2','นาย',NULL,0,NULL),(11,'car2','car2','1','','111111111111111111',58,810,7307,1,'2018-06-17 10:15:00',10,'car2','นาง',NULL,0,NULL),(12,'ร้าน','อะไหล่','1','','0000000000',63,836,7595,1,'2018-09-08 20:09:29',11,'ร้านอะไหล่','นาย',NULL,0,NULL);
+INSERT INTO `user_profile` VALUES (1,'admin','admin','1','080524171','0899996699',63,843,7662,1,NULL,1,'22/9 ต.ท่าศาลา จ.นครศรีธรรมราช','นาย',NULL,0,NULL,NULL),(3,'ณัฐพล','บุญสุวรรณ์','2','','0867454630',63,847,7718,1,'2018-06-10 12:50:15',6,'22/2','นาย',NULL,0,NULL,NULL),(4,'Micheal','D.rogis','1','','0998755211',14,176,1408,1,'2018-06-10 12:56:10',7,'99/5','นางสาว',NULL,0,NULL,NULL),(5,'พุตทิพัต','ไทยนิยม','2','','0897725524',63,836,7578,1,'2018-06-10 13:03:49',8,'33/9','นาง',NULL,0,NULL,NULL),(6,'พุตทิพัต','ไทยนิยม','2','','0897725524',63,836,7578,1,'2018-06-10 13:04:38',8,'33/9','นาง',NULL,0,NULL,NULL),(7,'ณัฐพล','บุญสุวรรณ์','2','','0867454630',63,847,7718,1,'2018-06-10 13:05:18',6,'22/2','นาย',NULL,0,NULL,NULL),(8,'ณัฐพล','บุญสุวรรณ์','1','','0805241999',63,847,7718,1,'2018-06-10 14:24:43',9,'22/2','นาย',NULL,0,NULL,NULL),(9,'พุตทิพัต','ไทยนิยม','1','','0897725524',63,836,7578,1,'2018-06-10 14:30:18',8,'33/9','นาง',NULL,0,NULL,NULL),(10,'ณัฐพล','บุญสุวรรณ์','1','','0867454630',63,847,7718,1,'2018-06-10 15:17:45',6,'22/2','นาย',NULL,0,NULL,NULL),(11,'car2','car2','1','','111111111111111111',58,810,7307,1,'2018-06-17 10:15:00',10,'car2','นาง',NULL,0,NULL,NULL),(12,'ร้าน','อะไหล่','1','','0000000000',63,836,7595,1,'2018-09-08 20:09:29',11,'ร้านอะไหล่','นาย',NULL,0,NULL,NULL);
 /*!40000 ALTER TABLE `user_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1282,4 +1284,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-23  1:12:08
+-- Dump completed on 2018-09-23 11:24:07
