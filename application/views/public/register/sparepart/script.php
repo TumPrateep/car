@@ -1,9 +1,9 @@
 <script>
 $(document).ready(function() {
     var register = $("#submit");
-    // jQuery.validator.addMethod("username", function(value, element) {
-    //   return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
-    // }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
+    jQuery.validator.addMethod("username", function(value, element) {
+      return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
+    }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
     
     register.validate({
         rules: {
