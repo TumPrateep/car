@@ -334,9 +334,14 @@ $(document).ready(function() {
         $.post(base_url+"apiUser/Users/create", data,
           function (data, textStatus, jqXHR) {
             console.log(data);
+            if(data.message == 200){
+              window.location = base_url+"login";
+            }else if(data.message == 3001){
+             showMessage(data.message);
+            }
           }
         );
-      }
+      }      
     });
 
   }); 
