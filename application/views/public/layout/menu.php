@@ -26,7 +26,7 @@
 
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href="#">หน้าหลัก<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="<?=base_url("Main/index");?>">หน้าหลัก<i class="fas fa-chevron-down"></i></a></li>
 									<li class="hassubs">
 										<a href="#">สินค้า<i class="fas fa-chevron-down"></i></a>
 										<ul>
@@ -35,9 +35,9 @@
 											<li><a href="#">ยางรถยนต์<i class="fas fa-chevron-down"></i></a></li>
 										</ul>
 									</li>
-									<li><a href="#">ขั้นตอนการใช้งาน<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="#">ค้นหาศูนย์บริการ<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="#">ติดต่อ<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="<?=base_url("public/menu/solution/");?>">ขั้นตอนการใช้งาน<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="<?=base_url("public/menu/solution/");?>">ค้นหาศูนย์บริการ<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="<?=base_url("public/menu/solution/");?>">ติดต่อ<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
 							</div>
 
@@ -84,9 +84,9 @@
 										<li><a href="#">ยางรถยนต์<i class="fa fa-angle-down"></i></a></li>
 									</ul>
 								</li>
-								<li class="page_menu_item"><a href="#">ขั้นตอนการใช้งาน<i class="fa fa-angle-down"></i></a></li>
-								<li class="page_menu_item"><a href="#">ค้นหาศูนย์บริการ<i class="fa fa-angle-down"></i></a></li>
-								<li class="page_menu_item"><a href="#">ติดต่อ<i class="fa fa-angle-down"></i></a></li>
+								<li class="page_menu_item"><a href="<?=base_url("public/menu/solution/");?>">ขั้นตอนการใช้งาน<i class="fa fa-angle-down"></i></a></li>
+								<li class="page_menu_item"><a href="<?=base_url("public/menu/solution/");?>">ค้นหาศูนย์บริการ<i class="fa fa-angle-down"></i></a></li>
+								<li class="page_menu_item"><a href="<?=base_url("public/menu/solution/");?>">ติดต่อ<i class="fa fa-angle-down"></i></a></li>
 							</ul>
 							
 							<div class="menu_contact">
