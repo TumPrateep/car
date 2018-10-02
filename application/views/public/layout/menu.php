@@ -16,9 +16,9 @@
 								</div>
 
 								<ul class="cat_menu">
-									<li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
-									<li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
+									<li><a href="#">อะไหล่ช่วงล่าง<i class="fas fa-chevron-right ml-auto"></i></a></li>
+									<li><a href="#">น้ำมันเครื่อง<i class="fas fa-chevron-right"></i></a></li>
+									<li><a href="#">ยางรถยนต์<i class="fas fa-chevron-right"></i></a></li>
 								</ul>
 							</div>
 
@@ -30,17 +30,9 @@
 									<li class="hassubs">
 										<a href="#">สินค้า<i class="fas fa-chevron-down"></i></a>
 										<ul>
-											<li>
-												<a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-												<ul>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-												</ul>
-											</li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+											<li><a href="#">อะไหล่ช่วงล่าง<i class="fas fa-chevron-down"></i></a></li>
+											<li><a href="#">น้ำมันเครื่อง<i class="fas fa-chevron-down"></i></a></li>
+											<li><a href="#">ยางรถยนต์<i class="fas fa-chevron-down"></i></a></li>
 										</ul>
 									</li>
 									<li><a href="#">ขั้นตอนการใช้งาน<i class="fas fa-chevron-down"></i></a></li>
@@ -87,10 +79,9 @@
 								<li class="page_menu_item has-children">
 									<a href="#">สินค้า<i class="fa fa-angle-down"></i></a>
 									<ul class="page_menu_selection">
-										<li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">อะไหล่ช่วงล่าง<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">น้ำมันเครื่อง<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">ยางรถยนต์<i class="fa fa-angle-down"></i></a></li>
 									</ul>
 								</li>
 								<li class="page_menu_item"><a href="#">ขั้นตอนการใช้งาน<i class="fa fa-angle-down"></i></a></li>

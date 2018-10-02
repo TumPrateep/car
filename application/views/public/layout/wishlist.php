@@ -22,10 +22,9 @@
 												<span class="custom_dropdown_placeholder clc">ทุกหมวดหมู่</span>
 												<i class="fas fa-chevron-down"></i>
 												<ul class="custom_list clc">
-													<li><a class="clc" href="#">ทุกหมวดหมู่</a></li>
-													<li><a class="clc" href="#">Computers</a></li>
-													<li><a class="clc" href="#">Laptops</a></li>
-													<li><a class="clc" href="#">Cameras</a></li>
+													<li><a class="clc" href="#">อะไหล่ช่วงล่าง</a></li>
+													<li><a class="clc" href="#">น้ำมันเครื่อง</a></li>
+													<li><a class="clc" href="#">ยางรถยนต์</a></li>
 												</ul>
 											</div>
 										</div>
