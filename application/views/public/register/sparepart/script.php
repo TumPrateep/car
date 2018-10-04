@@ -162,9 +162,6 @@ $(document).ready(function() {
             minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
             required: "เบอร์โทรศัพท์"
           },
-          password:{
-            required: "พาสเวิด"
-          },
           password: {
              required: "รหัสผ่าน",
             minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
