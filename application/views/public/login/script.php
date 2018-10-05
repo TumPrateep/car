@@ -49,6 +49,11 @@
             }
         });
     });
+
+    function onSignin(googleUser){
+        var profile = googleUser.getBasicProfile();
+        console.log(profile);
+    }
 </script>
 
 </body>
