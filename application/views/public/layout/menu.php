@@ -16,9 +16,9 @@
 								</div>
 
 								<ul class="cat_menu">
-									<li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
-									<li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
+									<li><a href="#">อะไหล่ช่วงล่าง<i class="fas fa-chevron-right ml-auto"></i></a></li>
+									<li><a href="#">น้ำมันเครื่อง<i class="fas fa-chevron-right"></i></a></li>
+									<li><a href="#">ยางรถยนต์<i class="fas fa-chevron-right"></i></a></li>
 								</ul>
 							</div>
 
@@ -26,26 +26,18 @@
 
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href="#">หน้าหลัก<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="<?=base_url("Main/index");?>">หน้าหลัก<i class="fas fa-chevron-down"></i></a></li>
 									<li class="hassubs">
 										<a href="#">สินค้า<i class="fas fa-chevron-down"></i></a>
 										<ul>
-											<li>
-												<a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-												<ul>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-												</ul>
-											</li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+											<li><a href="#">อะไหล่ช่วงล่าง<i class="fas fa-chevron-down"></i></a></li>
+											<li><a href="#">น้ำมันเครื่อง<i class="fas fa-chevron-down"></i></a></li>
+											<li><a href="#">ยางรถยนต์<i class="fas fa-chevron-down"></i></a></li>
 										</ul>
 									</li>
-									<li><a href="#">ขั้นตอนการใช้งาน<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="#">ค้นหาศูนย์บริการ<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="#">ติดต่อ<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="<?=base_url("public/menu/solution/");?>">ขั้นตอนการใช้งาน<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="<?=base_url("public/menu/solution/");?>">ค้นหาศูนย์บริการ<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="<?=base_url("public/menu/solution/");?>">ติดต่อ<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
 							</div>
 
@@ -87,15 +79,14 @@
 								<li class="page_menu_item has-children">
 									<a href="#">สินค้า<i class="fa fa-angle-down"></i></a>
 									<ul class="page_menu_selection">
-										<li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">อะไหล่ช่วงล่าง<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">น้ำมันเครื่อง<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">ยางรถยนต์<i class="fa fa-angle-down"></i></a></li>
 									</ul>
 								</li>
-								<li class="page_menu_item"><a href="#">ขั้นตอนการใช้งาน<i class="fa fa-angle-down"></i></a></li>
-								<li class="page_menu_item"><a href="#">ค้นหาศูนย์บริการ<i class="fa fa-angle-down"></i></a></li>
-								<li class="page_menu_item"><a href="#">ติดต่อ<i class="fa fa-angle-down"></i></a></li>
+								<li class="page_menu_item"><a href="<?=base_url("public/menu/solution/");?>">ขั้นตอนการใช้งาน<i class="fa fa-angle-down"></i></a></li>
+								<li class="page_menu_item"><a href="<?=base_url("public/menu/solution/");?>">ค้นหาศูนย์บริการ<i class="fa fa-angle-down"></i></a></li>
+								<li class="page_menu_item"><a href="<?=base_url("public/menu/solution/");?>">ติดต่อ<i class="fa fa-angle-down"></i></a></li>
 							</ul>
 							
 							<div class="menu_contact">

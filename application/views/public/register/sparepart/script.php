@@ -162,9 +162,6 @@ $(document).ready(function() {
             minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
             required: "เบอร์โทรศัพท์"
           },
-          password:{
-            required: "พาสเวิด"
-          },
           password: {
              required: "รหัสผ่าน",
             minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
@@ -334,9 +331,14 @@ $(document).ready(function() {
         $.post(base_url+"apiUser/Users/create", data,
           function (data, textStatus, jqXHR) {
             console.log(data);
+            if(data.message == 200){
+              window.location = base_url+"login";
+            }else if(data.message == 3001){
+             showMessage(data.message);
+            }
           }
         );
-      }
+      }      
     });
 
   }); 
