@@ -1,5 +1,5 @@
 
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="<?=base_url("public/themes/user/");?>js/jquery-3.3.1.min.js"></script>
 <script src="<?=base_url("public/themes/user/");?>styles/bootstrap4/popper.js"></script>
 <script src="<?=base_url("public/themes/user/");?>styles/bootstrap4/bootstrap.min.js"></script>

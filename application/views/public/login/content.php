@@ -19,8 +19,15 @@
 					<button type="submit" class="btn btn-orange btn-block">เข้าสู่ระบบ</button>
 				</form>
 				<hr>
-				<button type="button" class="btn btn-primary btn-block"><i class="fab fa-facebook"></i> Facebook</button>
-				<button type="button" class="btn btn-danger btn-block"><i class="fab fa-google-plus-square"></i> Google</button>
+
+				<div class="row">
+					<div class="col">
+						<div class="g-signin2" data-onsuccess="onSignin"></div>
+					</div>
+					<div class="col">
+						<button type="button" class="btn btn-primary btn-block"><i class="fab fa-facebook"></i> Facebook</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
