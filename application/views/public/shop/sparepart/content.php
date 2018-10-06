@@ -19,6 +19,71 @@
                      </select>
                   </div>
                   <div class="form-group">
+                     <label class="control-label">ยี่ห้อรถ</label>
+                     <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <option value="">เลือกยี่ห้อรถ</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label class="control-label">รุ่นรถ</label>
+                     <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <option value="">เลือกรุ่นรถ</option>
+                     </select>
+                  </div>
+        
+                  <div class="form-group">
+                     <label class="control-label">ปีที่ผลิต</label>
+                     <div class="row p-t-20">
+                        <div class="col-md-5">
+                            <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                                <option value="">เลือกปี</option>
+                            </select>
+                        </div>
+                            ถึง
+                        <div class="col-md-5">
+                            <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                                <option value="">เลือกปี</option>
+                            </select>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                     <label class="control-label">ขนาดเครื่องยนต์</label>
+                     <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <option value="">เลือกขนาดเครื่องยนต์</option>
+                     </select>
+                  </div>
+
+                  <div class="form-group">
+                     <label class="control-label">การรับประกัน-ปี</label>
+                     <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <option value="">เลือกปี</option>
+                        <option value="">1ปี</option>
+                        <option value="">2ปี</option>
+                        <option value="">3ปี</option>
+                        <option value="">4ปี</option>
+                        <option value="">5ปี</option>
+                     </select>
+                  </div>
+
+                  <div class="form-group">
+                     <label class="control-label">เงื่อนไข</label>
+                     <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <option value="">เลือกเงื่อนไข</option>
+                        <option value="">และ</option>
+                        <option value="">หรือ</option>
+                     </select>
+                  </div>
+
+                  <div class="form-group">
+                     <label class="control-label">การรับประกัน-ระยะทาง</label>
+                     <div class="input-group input-group-default">
+                        <input type="number" class="form-control" id="price" name="price" placeholder="ระยะทาง">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
                      <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
                      <select class="form-control input-default" name="can_change" id="can_change">
                         <option value="">สั่งจองหรือเปลี่ยนทันที</option>
@@ -85,13 +150,13 @@
                                     <div class="" style="width: 100%; display: inline-block;">
                                         <div class="border_active active"></div>
                                         <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/5b93d1d596129.png'); ?>"/></div>
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/49926538.jpg'); ?>"/></div>
                                             <div class="product_content">
-                                                <div class="product_price">3790 .-</div>
+                                                <div class="product_price">2400 .-</div>
                                                 <div class="product_name">
-                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
-                                                    <ul>Chevrolet AVEO</ul>
-                                                    <ul><small>2006-2014</small></ul>
+                                                    <div><a href="product.html" tabindex="0"><strong>ลูกปืนล้อหน้า TRW</strong></a></div>
+                                                    <ul>Honda CIVIC</ul>
+                                                    <ul><small>1992-1995</small></ul>
                                                 </div>
                                                 <div class="product_extras">
                                                     <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
@@ -109,13 +174,13 @@
                                     <div class="" style="width: 100%; display: inline-block;">
                                         <div class="border_active active"></div>
                                         <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/5b93d1d596129.png'); ?>"/></div>
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/jv.jpg'); ?>"/></div>
                                             <div class="product_content">
-                                                <div class="product_price">3790 .-</div>
+                                                <div class="product_price">3200 .-</div>
                                                 <div class="product_name">
-                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
-                                                    <ul>Chevrolet AVEO</ul>
-                                                    <ul><small>2006-2014</small></ul>
+                                                    <div><a href="product.html" tabindex="0"><strong>ลูกปืนล้อหน้า NTN</strong></a></div>
+                                                    <ul>Honda CIVIC</ul>
+                                                    <ul><small>1992-1995</small></ul>
                                                 </div>
                                                 <div class="product_extras">
                                                     <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
@@ -133,13 +198,13 @@
                                     <div class="" style="width: 100%; display: inline-block;">
                                         <div class="border_active active"></div>
                                         <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/5b93d1d596129.png'); ?>"/></div>
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/zzzz.jpg'); ?>"/></div>
                                             <div class="product_content">
-                                                <div class="product_price">3790 .-</div>
+                                                <div class="product_price">2400 .-</div>
                                                 <div class="product_name">
-                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
-                                                    <ul>Chevrolet AVEO</ul>
-                                                    <ul><small>2006-2014</small></ul>
+                                                    <div><a href="product.html" tabindex="0"><strong>ผ้าเบรคหน้า TRW</strong></a></div>
+                                                    <ul>Honda CITY</ul>
+                                                    <ul><small>1992-1995</small></ul>
                                                 </div>
                                                 <div class="product_extras">
                                                     <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
