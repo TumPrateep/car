@@ -1672,7 +1672,7 @@ select option
 {
 	display: block;
 	position: relative;
-	max-width: 100%;
+	max-width: 70%;
 }
 .product_content
 {
@@ -1680,9 +1680,10 @@ select option
 }
 .product_price
 {
-	font-size: 16px;
-	font-weight: 500;
-	margin-top: 25px;
+	font-size: 20px;
+    font-weight: 1000;
+    margin-top: 25px;
+    color: #ff2500;
 }
 .product_price.discount
 {
