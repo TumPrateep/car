@@ -7,4 +7,36 @@ class Menu extends CI_Controller {
         $this->load->view("public/menu/solution");
     }
 
+    public function tire(){
+        $this->load->view("public/layout/head");
+        $this->load->view("public/layout/header");
+        $this->load->view("public/layout/wishlist");
+        $this->load->view("public/layout/menu");
+        $this->load->view("public/shop/tire/content");
+        $this->load->view("public/layout/copyright");        
+        $this->load->view("public/layout/foot");
+        // $this->load->view("public/shop/tire/script");
+    }
+
+    public function lubricator(){
+        $this->load->view("public/layout/head");
+        $this->load->view("public/layout/header");
+        $this->load->view("public/layout/wishlist");
+        $this->load->view("public/layout/menu");
+        $this->load->view("public/shop/lubricator/content");
+        $this->load->view("public/layout/copyright");        
+        $this->load->view("public/layout/foot");
+        // $this->load->view("public/shop/lubricator/script");
+    }
+
+    public function sparepart(){
+        $this->load->view("public/layout/head");
+        $this->load->view("public/layout/header");
+        $this->load->view("public/layout/wishlist");
+        $this->load->view("public/layout/menu");
+        $this->load->view("public/shop/sparepart/content");
+        $this->load->view("public/layout/copyright");        
+        $this->load->view("public/layout/foot");
+        // $this->load->view("public/shop/sparepart/script");
+    }
 }
