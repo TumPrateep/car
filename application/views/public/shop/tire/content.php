@@ -134,21 +134,22 @@
 						<div class="product_grid">
 							<div class="product_grid_border"></div> 
                             <div class="col-md-3" >
-                                    <div class="row pt-2">
+                                    <div class="row pt-5">
                                     <div class="product_item is_new">
                                         <div class="product_border"></div>
                                             <div class="d-flex flex-column align-items-center "><img src="<?=base_url('public/image/tire_brand/5b93d03c7f4cf.png'); ?>" style="width: 70%;"></div>
                                             <div class="d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>" style="width: 100%;"></div> 
                                         
-                                        <div class="card-body float-right">
-                                            
+                                        <div class="card-body float-left">
                                             <div class=" text-danger h3 w-25 p-3">฿5,000-</div>
-                                                <div class="text-left">
-                                                    <div class="porduct_brand"><a>ยี่ห้อ MICHELIN</a></div>
-                                                    <div class="porduct_brand"><a>ขนาด 175/70R13</a></div>
-                                                    <div class="product_name"><div>รุ่น Primacy2 ST</div></div>
-                                                </div>
+                                                <div class="text-left"><a>ยี่ห้อ MICHELIN </a></div>
+                                                <div class="text-left"><a>ขนาด 175/70R13</a></div>
+                                                <div class="text-left"><div>รุ่น Primacy2 ST</div></div>
+                                            
                                         </div> 
+                                        <div class="card-body float-right">
+                                            <span class="text-success ">สั่งจอง</span>
+                                        </div>
                                         
                                         <!-- <div class="product_fav"><i class="fas fa-heart"></i></div>
                                         <ul class="product_marks">
@@ -156,7 +157,7 @@
                                             <li class="product_mark product_new">new</li>
                                         </ul>  -->
                                      </div>
-                                    </div>
+                            </div>
                             </div>
 
                             <div class="col-lg-3" col-md-9>
