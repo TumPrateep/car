@@ -36,7 +36,7 @@ $(document).ready(function()
 	initPageMenu();
 	initViewedSlider();
 	initBrandsSlider();
-	initIsotope();
+	// initIsotope();
 	initPriceSlider();
 	initFavs();
 
@@ -133,12 +133,12 @@ $(document).ready(function()
 		});
 
 
-		$('select').on('change', function (e)
-		{
-			placeholder.text(this.value);
+		// $('select').on('change', function (e)
+		// {
+		// 	placeholder.text(this.value);
 
-			$(this).animate({width: placeholder.width() + 'px' });
-		});
+		// 	$(this).animate({width: placeholder.width() + 'px' });
+		// });
 	}
 
 	/* 
