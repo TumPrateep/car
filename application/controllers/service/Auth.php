@@ -39,7 +39,7 @@ class Auth extends BD_Controller {
             if($tempUserData != null){
                 $this->tempLogin($tempUserData);
             }else{
-                $isTrue = $this->saveUser($data);
+                $isTrue = $this->tempuser->insert($data);
                 if($isTrue){
                     $tempUserData = $this->checkTempUser($email);
                     $this->tempLogin($tempUserData);
@@ -73,7 +73,7 @@ class Auth extends BD_Controller {
             if($tempUserData != null){
                 $this->tempLogin($tempUserData);
             }else{
-                $isTrue = $this->saveUser($data);
+                $isTrue = $this->tempuser->insert($data);
                 if($isTrue){
                     $tempUserData = $this->checkTempUser($email);
                     $this->tempLogin($tempUserData);
@@ -92,17 +92,6 @@ class Auth extends BD_Controller {
 
     public function checkUser($email){
         return $this->user->getUserByEmail($email);
-    }
-
-    public function saveUser($data){
-        $option = [
-            "data_check" => null,
-            "data" => $data,
-            "model" => $this->tempuser,
-            "image_path" => null
-        ];
-
-        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
 
     public function tempLogin($data){

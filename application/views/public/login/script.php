@@ -1,9 +1,9 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="<?=base_url("public/themes/user/");?>js/sdk.js"></script>
 <script>
+    var errorMessage = $("#error-message");
     $(document).ready(function () {
         var login = $("#login");
-        var errorMessage = $("#error-message");
         login.validate({
             rules:{
                 username: {
