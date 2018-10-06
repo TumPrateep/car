@@ -96,55 +96,119 @@
 						</div>
 
 						<div class="product_grid">
-                        
-                            <div class="col-lg-3" >
-                                <!-- <div class="row pt-3"> -->
-                                    <div class="product_item is_new">
-                                        <div class="product_border"></div>
-                                            <div class="d-flex flex-column align-items-center "><img src="<?=base_url('public/image/tire_brand/5b93d03c7f4cf.png'); ?>" style="width: 70%;"></div>
-                                            <div class="d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>" style="width: 100%;"></div> 
-                                        
-                                        <div class="card-body float-left">
-                                                <div class=" text-danger h3 w-25 p-3">฿5,000-</div>
-                                                <div class="text-left"><a>ยี่ห้อ MICHELIN </a></div>
-                                                <div class="text-left"><a>ขนาด 175/70R13</a></div>
-                                                <div class="text-left">รุ่น Primacy2 ST</div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="slick-active" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel">
+                                <div>
+                                    <div class="" style="width: 100%; display: inline-block;">
+                                        <div class="border_active active"></div>
+                                        <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/5b93d1d596129.png'); ?>"/></div>
+                                            <div class="product_content">
+                                                <div class="product_price">3790 .-</div>
+                                                <div class="product_name">
+                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
+                                                    <ul>Chevrolet AVEO</ul>
+                                                    <ul><small>2006-2014</small></ul>
+                                                </div>
+                                                <div class="product_extras">
+                                                    <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
+                                                </div>
+                                            </div>
                                             
-                                        </div> 
-                                        <div class="card-body float-right">
-                                            <span class="text-success h5 ">สั่งจอง</span>
                                         </div>
                                     </div>
-                                <!-- </div>      -->
+                                </div>
                             </div>
-                            <div class="col-lg-3" >
-                                <!-- <div class="row pt-3"> -->
-                                    <div class="product_item is_new">
-                                        <div class="product_border"></div>
-                                            <div class="d-flex flex-column align-items-center "><img src="<?=base_url('public/image/tire_brand/5b93d03c7f4cf.png'); ?>" style="width: 70%;"></div>
-                                            <div class="d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>" style="width: 100%;"></div> 
-                                        
-                                        <div class="card-body float-left">
-                                                <div class=" text-danger h3 w-25 p-3">฿5,000-</div>
-                                                <div class="text-left"><a>ยี่ห้อ MICHELIN </a></div>
-                                                <div class="text-left"><a>ขนาด 175/70R13</a></div>
-                                                <div class="text-left">รุ่น Primacy2 ST</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="slick-active" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel">
+                                <div>
+                                    <div class="" style="width: 100%; display: inline-block;">
+                                        <div class="border_active active"></div>
+                                        <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/5b93d1d596129.png'); ?>"/></div>
+                                            <div class="product_content">
+                                                <div class="product_price">3790 .-</div>
+                                                <div class="product_name">
+                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
+                                                    <ul>Chevrolet AVEO</ul>
+                                                    <ul><small>2006-2014</small></ul>
+                                                </div>
+                                                <div class="product_extras">
+                                                    <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
+                                                </div>
+                                            </div>
                                             
-                                        </div> 
-                                        <div class="card-body float-right">
-                                            <span class="text-success h5 ">สั่งจอง</span>
                                         </div>
                                     </div>
-                                <!-- </div>      -->
-                            </div>    
-
-
-                            
-                        
+                                </div>
+                            </div>
                         </div>
-                            
-                            
-
-		</div>
-    </div>
+                        <div class="col-md-3">
+                            <div class="slick-active" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel">
+                                <div>
+                                    <div class="" style="width: 100%; display: inline-block;">
+                                        <div class="border_active active"></div>
+                                        <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/5b93d1d596129.png'); ?>"/></div>
+                                            <div class="product_content">
+                                                <div class="product_price">3790 .-</div>
+                                                <div class="product_name">
+                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
+                                                    <ul>Chevrolet AVEO</ul>
+                                                    <ul><small>2006-2014</small></ul>
+                                                </div>
+                                                <div class="product_extras">
+                                                    <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="slick-active" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel">
+                                <div>
+                                    <div class="" style="width: 100%; display: inline-block;">
+                                        <div class="border_active active"></div>
+                                        <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/5b93d1d596129.png'); ?>"/></div>
+                                            <div class="product_content">
+                                                <div class="product_price">3790 .-</div>
+                                                <div class="product_name">
+                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
+                                                    <ul>Chevrolet AVEO</ul>
+                                                    <ul><small>2006-2014</small></ul>
+                                                </div>
+                                                <div class="product_extras">
+                                                    <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ <!-- Shop Page Navigation -->
+ <div class="shop_page_nav d-flex flex-row">
+                  <div class="page_prev d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-left"></i></div>
+                  <ul class="page_nav d-flex flex-row">
+                     <li><a href="#">1</a></li>
+                     <li><a href="#">2</a></li>
+                     <li><a href="#">3</a></li>
+                     <li><a href="#">...</a></li>
+                     <li><a href="#">21</a></li>
+                  </ul>
+                  <div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
