@@ -14,7 +14,11 @@
 <link rel="stylesheet" type="text/css" href="plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="styles/shop_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/shop_responsive.css">
-
+<style>
+shop{
+    color: #EA9252;
+}
+</style>
 </head>
 
 <body>
@@ -141,7 +145,7 @@
                                             <div class="d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>" style="width: 100%;"></div> 
                                         
                                         <div class="card-body float-left">
-                                            <div class=" text-danger h3 w-25 p-3">฿5,000-</div>
+                                            <div class=" h3 w-25 p-3"><shop>฿5,000-</shop></div>
                                                 <div class="text-left"><a>ยี่ห้อ MICHELIN </a></div>
                                                 <div class="text-left"><a>ขนาด 175/70R13</a></div>
                                                 <div class="text-left"><div>รุ่น Primacy2 ST</div></div>
