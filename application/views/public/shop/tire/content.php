@@ -90,16 +90,14 @@
 							
 						
 						
-								<div class="row p30">
-                                <div class="col-lg-5">
-                                    <div class="form-group">
-                                        <label class="control-label">ช่วงราคา</label>
-                                        <div class="input-default">
-                                            <span id="start"></span> <input type="text" name="price" id="price"> <span id="end"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
+								<!-- <div class="sidebar_section filter_by_section">
+							        <div class="sidebar_subtitle">ราคา</div>
+							        <div class="filter_price">
+								        <div id="slider-range" class="slider_range"></div>
+								        <p>Range: </p>
+								        <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+							        </div>
+						        </div> -->
 							
 							
 								<div class="form-group">
@@ -109,16 +107,7 @@
 										<option value="1">ปลี่ยนทันที</option>
 										<option value="2">สั่งจอง</option>
 									</select>
-								</div>
-							
-							
-								
-					
-						
-
-
-
-
+								</div>  
 					</div>
 
 				</div>
@@ -143,25 +132,81 @@
 						</div>
 
 						<div class="product_grid">
-							<div class="product_grid_border"></div>
+							<div class="product_grid_border"></div> 
+                            <div class="col-md-3" >
+                                    <div class="row pt-2">
+                                    <div class="product_item is_new">
+                                        <div class="product_border"></div>
+                                            <div class="d-flex flex-column align-items-center "><img src="<?=base_url('public/image/tire_brand/5b93d03c7f4cf.png'); ?>" style="width: 70%;"></div>
+                                            <div class="d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>" style="width: 100%;"></div> 
+                                        
+                                        <div class="card-body float-right">
+                                            
+                                            <div class=" text-danger h3 w-25 p-3">฿5,000-</div>
+                                                <div class="text-left">
+                                                    <div class="porduct_brand"><a>ยี่ห้อ MICHELIN</a></div>
+                                                    <div class="porduct_brand"><a>ขนาด 175/70R13</a></div>
+                                                    <div class="product_name"><div>รุ่น Primacy2 ST</div></div>
+                                                </div>
+                                        </div> 
+                                        
+                                        <!-- <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                        <ul class="product_marks">
+                                            <li class="product_mark product_discount">-25%</li>
+                                            <li class="product_mark product_new">new</li>
+                                        </ul>  -->
+                                     </div>
+                                    </div>
+                            </div>
 
-							<!-- Product Item -->
-							<div class="col-lg-3">
-								<div class="product_item is_new">
-									<div class="product_border"></div>
-									<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/new_5.jpg'); ?>" style="width: 100%;"></div>
-										<!-- <img src="./public/image/new_5.jpg" alt=""></div> -->
-									<div class="product_content">
-										<div class="product_price">$225</div>
-										<div class="product_name"><div><a href="#" tabindex="0">Philips BT6900A</a></div></div>
-									</div>
-									<div class="product_fav"><i class="fas fa-heart"></i></div>
-									<ul class="product_marks">
-										<li class="product_mark product_discount">-25%</li>
-										<li class="product_mark product_new">new</li>
-									</ul>
-								</div>
-							</div>	
+                            <div class="col-lg-3" col-md-9>
+                            <div class="row pt-10">
+                            <div class="product_item is_new">
+                                <div class="product_border"></div>
+                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>" style="width: 70%;"></div> 
+                                    <!-- <img src="./public/image/new_5.jpg" alt=""></div> -->
+                                <div class="card-body float-right">
+                                
+                                    <div class="product_price text-warning">$225</div>
+                                    <div class="porduct_brand"><a>ยี่ห้อ MICHELIN</a></div>
+                                    <div class="porduct_brand"><a>ขนาด 175/70R13</a></div>
+                                    <div class="product_name"> Primacy2 ST</div>
+                                </div> 
+                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                <ul class="product_marks">
+                                    <li class="product_mark product_discount">-25%</li>
+                                    <li class="product_mark product_new">new</li>
+                                </ul> 
+                            </div>
+                            </div>
+                        </div>	
+                            
+                                <div class="col-lg-3" col-md-9>
+                                    <div class="row pt-10">
+                                    <div class="product_item is_new">
+                                        <div class="product_border"></div>
+                                        <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>" style="width: 70%;"></div> 
+                                            <!-- <img src="./public/image/new_5.jpg" alt=""></div> -->
+                                        <div class="card-body float-right">
+                                        
+                                            <div class="product_price">$225</div>
+                                            <div class="porduct_brand"><a>ยี่ห้อ MICHELIN</a></div>
+                                            <div class="porduct_brand"><a>ขนาด 175/70R13</a></div>
+                                            <div class="product_name"><div>รุ่น Primacy2 ST</div></div>
+                                        </div> 
+                                        <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                        <ul class="product_marks">
+                                            <li class="product_mark product_discount">-25%</li>
+                                            <li class="product_mark product_new">new</li>
+                                        </ul> 
+                                    </div>
+                                    </div>
+                                </div>
+                            
+                                    
+                            </div>
+                            
+
 
 							</div>
 
