@@ -31,6 +31,6 @@
 				</a>
 				</div>
 
-		<!-- <img src="<?=base_url('public/img/banner/baner.png'); ?>" > -->
+		
 		</div>
 	</div>
