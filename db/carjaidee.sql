@@ -861,6 +861,33 @@ INSERT INTO `subdistrict` VALUES (1,'พระบรมมหาราชวั�
 UNLOCK TABLES;
 
 --
+-- Table structure for table `temp_user`
+--
+
+DROP TABLE IF EXISTS `temp_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `temp_user` (
+  `tempUserId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `firstname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `lastname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `create_at` datetime NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`tempUserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `temp_user`
+--
+
+LOCK TABLES `temp_user` WRITE;
+/*!40000 ALTER TABLE `temp_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `temp_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tire_brand`
 --
 
@@ -1184,33 +1211,6 @@ INSERT INTO `tire_size` VALUES (121,'175','70','R13',12,1,NULL,'2018-09-08 20:37
 UNLOCK TABLES;
 
 --
--- Table structure for table `trmp_user`
---
-
-DROP TABLE IF EXISTS `trmp_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `trmp_user` (
-  `tempUserId` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `firstname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `lastname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `create_at` datetime NOT NULL,
-  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`tempUserId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `trmp_user`
---
-
-LOCK TABLES `trmp_user` WRITE;
-/*!40000 ALTER TABLE `trmp_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `trmp_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user_profile`
 --
 
@@ -1311,4 +1311,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-05 12:00:45
+-- Dump completed on 2018-10-06 15:39:33
