@@ -36,7 +36,7 @@
 										</ul>
 									</li>
 									<li><a href="<?=base_url("public/menu/solution/");?>">ขั้นตอนการใช้งาน<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="<?=base_url("public/menu/solution/");?>">ค้นหาศูนย์บริการ<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="<?=base_url("public/menu/searchgarage/");?>">ค้นหาศูนย์บริการ<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="<?=base_url("public/menu/solution/");?>">ติดต่อ<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
 							</div>
