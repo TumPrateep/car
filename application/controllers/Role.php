@@ -22,7 +22,7 @@ class Role extends CI_Controller {
             redirect("garage");
         }else if($role == 4){
             // ผู้ใช้งาน
-            redirect("user");
+            redirect("");
         }else{
             // ไม่มี role
             redirect("userprofile");

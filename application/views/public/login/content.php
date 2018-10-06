@@ -52,10 +52,12 @@
 
 				<div class="row">
 					<div class="col">
-						<div class="g-signin2" data-onsuccess="onSignin"></div>
+						<div class="g-signin2" data-onsuccess="onSignin" data-theme="dark"></div>
 					</div>
-					<div class="col">
-						<button type="button" class="btn btn-primary btn-block"><i class="fab fa-facebook"></i> Facebook</button>
+					<div class="col border-left">
+						<button id="faceebook-login" class="loginBtn loginBtn-facebook">
+							ลงชื่อเข้าใช้
+						</button>
 					</div>
 				</div>
 			</div>

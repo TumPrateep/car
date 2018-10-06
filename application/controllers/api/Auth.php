@@ -51,7 +51,8 @@ class Auth extends BD_Controller {
                 'id' => $val->id,
                 'username' => $val->username,
                 'role' => (int)$val->category,
-                'name' => $val->username
+                'name' => $val->username,
+                'isUser' => ((int)$data->category != 4)?false:true
             );
             $this->session->set_userdata('logged_in', $sess_array);
 

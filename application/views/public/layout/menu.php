@@ -26,7 +26,7 @@
 
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href="<?=base_url("Main/index");?>">หน้าหลัก<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="<?=base_url();?>">หน้าหลัก<i class="fas fa-chevron-down"></i></a></li>
 									<li class="hassubs">
 										<a href="#">สินค้า<i class="fas fa-chevron-down"></i></a>
 										<ul>
@@ -77,7 +77,7 @@
 									<a href="#">หน้าหลัก<i class="fa fa-angle-down"></i></a>
 								</li>
 								<li class="page_menu_item has-children">
-									<a href="#">สินค้า<i class="fa fa-angle-down"></i></a>
+									<a href="<?=base_url();?>">สินค้า<i class="fa fa-angle-down"></i></a>
 									<ul class="page_menu_selection">
 										<li><a href="#">อะไหล่ช่วงล่าง<i class="fa fa-angle-down"></i></a></li>
 										<li><a href="#">น้ำมันเครื่อง<i class="fa fa-angle-down"></i></a></li>

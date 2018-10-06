@@ -230,4 +230,9 @@ class User extends CI_Model{
         }
     }
 
+    function getUserByEmail($email){
+        $result = $this->db->where("email", $email)->get("users");
+        return $result->row();
+    }
+
 }
