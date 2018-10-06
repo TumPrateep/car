@@ -15,6 +15,9 @@
 <link rel="stylesheet" type="text/css" href="styles/shop_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/shop_responsive.css">
 
+
+
+
 </head>
 
 <body>
@@ -42,7 +45,7 @@
 					<!-- Shop Sidebar -->
 					<div class="shop_sidebar">
 						<div class="sidebar_section">
-							<div class="sidebar_title">Categories</div>
+                            <div class="sidebar_title">Categories</div>
                             <div class="form-group">
 									<label class="control-label">อะไหล่ช่วงล่าง</label>
 									<select class="form-control input-default" name="tire_brandId" id="tire_brandId">
@@ -57,18 +60,6 @@
 										<option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>
 									</select>
 								</div>
-						
-						
-
-                                <div class="sidebar_section filter_by_section">
-							        <div class="sidebar_title">Filter By</div>
-							        <div class="sidebar_subtitle">Price</div>
-							        <div class="filter_price">
-								        <div id="slider-range" class="slider_range"></div>
-								        <p>Range: </p>
-								        <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
-							        </div>
-						        </div>
 							
 							
 								<div class="form-group">
@@ -78,7 +69,16 @@
 										<option value="1">ปลี่ยนทันที</option>
 										<option value="2">สั่งจอง</option>
 									</select>
-								</div>
+                                </div>
+                                
+                                <div class="sidebar_section filter_by_section">
+							        <div class="sidebar_subtitle">ราคา</div>
+							        <div class="filter_price">
+								        <div id="slider-range" class="slider_range"></div>
+								        <p>ช่วงราคา: </p>
+								        <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+							        </div>
+						        </div>
 						</div>
 					</div>
 
@@ -112,9 +112,13 @@
 									<div class="product_border"></div>
 									<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/new_5.jpg'); ?>" style="width: 100%;"></div>
 										<!-- <img src="./public/image/new_5.jpg" alt=""></div> -->
-									<div class="product_content">
-										<div class="product_price">$225</div>
-										<div class="product_name"><div><a href="#" tabindex="0">Philips BT6900A</a></div></div>
+									<br><div class="product_content">
+                                        <div class="product_price" style="text-align:left; margin:0px auto 0px auto;">
+                                            <h3>โช้คอัพหน้า</h3>
+                                            <ul>Chevrolet รุ่นAVEO</ul>
+                                            <ul>รับประกัน - </ul>
+                                            <div class="product_price"> $255 </div>
+                                        </div>
 									</div>
 									<div class="product_fav"><i class="fas fa-heart"></i></div>
 									<ul class="product_marks">
