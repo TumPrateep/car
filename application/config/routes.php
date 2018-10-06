@@ -65,6 +65,7 @@ $route['register'] = 'public/Register/user';
 $route['shop/lubricator'] = 'public/menu/lubricator';
 $route['shop/sparepart'] = 'public/menu/sparepart';
 $route['shop/tire'] = 'public/menu/tire';
+$route['shop/showshop'] = 'public/menu/showshop';
 
 $route['login'] = 'public/Auth/login';
 
