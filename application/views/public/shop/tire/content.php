@@ -103,13 +103,13 @@
                                     <div class="" style="width: 100%; display: inline-block;">
                                         <div class="border_active active"></div>
                                         <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/5b93d1d596129.png'); ?>"/></div>
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>"/></div>
                                             <div class="product_content">
                                                 <div class="product_price">3790 .-</div>
                                                 <div class="product_name">
-                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
-                                                    <ul>Chevrolet AVEO</ul>
-                                                    <ul><small>2006-2014</small></ul>
+                                                    <div><a href="product.html" tabindex="0"><strong>MICHELIN </strong></a></div>
+                                                    <ul>175/70R13</ul>
+                                                    <ul>Primacy2 ST</ul>
                                                 </div>
                                                 <div class="product_extras">
                                                     <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
@@ -127,13 +127,13 @@
                                     <div class="" style="width: 100%; display: inline-block;">
                                         <div class="border_active active"></div>
                                         <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/5b93d1d596129.png'); ?>"/></div>
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>"/></div>
                                             <div class="product_content">
                                                 <div class="product_price">3790 .-</div>
                                                 <div class="product_name">
-                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
-                                                    <ul>Chevrolet AVEO</ul>
-                                                    <ul><small>2006-2014</small></ul>
+                                                    <div><a href="product.html" tabindex="0"><strong>MICHELIN </strong></a></div>
+                                                    <ul>175/70R13</ul>
+                                                    <ul>Primacy2 ST</ul>
                                                 </div>
                                                 <div class="product_extras">
                                                     <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
@@ -151,13 +151,13 @@
                                     <div class="" style="width: 100%; display: inline-block;">
                                         <div class="border_active active"></div>
                                         <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/5b93d1d596129.png'); ?>"/></div>
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>"/></div>
                                             <div class="product_content">
                                                 <div class="product_price">3790 .-</div>
                                                 <div class="product_name">
-                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
-                                                    <ul>Chevrolet AVEO</ul>
-                                                    <ul><small>2006-2014</small></ul>
+                                                    <div><a href="product.html" tabindex="0"><strong>MICHELIN </strong></a></div>
+                                                    <ul>175/70R13</ul>
+                                                    <ul>Primacy2 ST</ul>
                                                 </div>
                                                 <div class="product_extras">
                                                     <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
@@ -175,13 +175,13 @@
                                     <div class="" style="width: 100%; display: inline-block;">
                                         <div class="border_active active"></div>
                                         <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/spareundercarriage/5b93d1d596129.png'); ?>"/></div>
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>"/></div>
                                             <div class="product_content">
                                                 <div class="product_price">3790 .-</div>
                                                 <div class="product_name">
-                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
-                                                    <ul>Chevrolet AVEO</ul>
-                                                    <ul><small>2006-2014</small></ul>
+                                                    <div><a href="product.html" tabindex="0"><strong>MICHELIN </strong></a></div>
+                                                    <ul>175/70R13</ul>
+                                                    <ul>Primacy2 ST</ul>
                                                 </div>
                                                 <div class="product_extras">
                                                     <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
@@ -193,8 +193,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
  <!-- Shop Page Navigation -->
  <div class="shop_page_nav d-flex flex-row">
                   <div class="page_prev d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-left"></i></div>
