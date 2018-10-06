@@ -18,7 +18,7 @@
 								<ul class="cat_menu">
 									<li><a href="#">อะไหล่ช่วงล่าง<i class="fas fa-chevron-right ml-auto"></i></a></li>
 									<li><a href="#">น้ำมันเครื่อง<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">ยางรถยนต์<i class="fas fa-chevron-right"></i></a></li>
+									<li><a href="<?=base_url("Menu/tire");?>">ยางรถยนต์<i class="fas fa-chevron-right"></i></a></li>
 								</ul>
 							</div>
 
@@ -32,7 +32,7 @@
 										<ul>
 											<li><a href="#">อะไหล่ช่วงล่าง<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="#">น้ำมันเครื่อง<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">ยางรถยนต์<i class="fas fa-chevron-down"></i></a></li>
+											<li><a href="<?=base_url("Menu/tire");?>">ยางรถยนต์<i class="fas fa-chevron-down"></i></a></li>
 										</ul>
 									</li>
 									<li><a href="<?=base_url("public/menu/solution/");?>">ขั้นตอนการใช้งาน<i class="fas fa-chevron-down"></i></a></li>
