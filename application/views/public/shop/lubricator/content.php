@@ -97,8 +97,8 @@
 											<div class="product_price">680 .-</div>
 											<div class="product_name">
 												<div><a href="product.html" tabindex="0"><strong> SK ZIC </strong></a></div>
-												<ul>X3</ul>
-												<ul>15W-60</ul>
+												<ul>4L</ul>
+												<ul>X3 15W-60</ul>
 											</div>
 											<div class="product_extras">
 												<button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
@@ -116,13 +116,13 @@
 								<div class="" style="width: 100%; display: inline-block;">
 									<div class="border_active active"></div>
 									<div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>"/></div>
+										<div class="product_image d-flex flex-column align-items-center justify-content-center"><img width = "auto" height = "150"; src="<?=base_url('public\image\lubricatordata\ZIC_4L_X9_5W-40.png'); ?>"/></div>
 										<div class="product_content">
-											<div class="product_price">3790 .-</div>
+											<div class="product_price">870 .-</div>
 											<div class="product_name">
-												<div><a href="product.html" tabindex="0"><strong>MICHELIN </strong></a></div>
-												<ul>175/70R13</ul>
-												<ul>Primacy2 ST</ul>
+												<div><a href="product.html" tabindex="0"><strong>SK ZIC </strong></a></div>
+												<ul>4L</ul>
+												<ul>X9 5W-40</ul>
 											</div>
 											<div class="product_extras">
 												<button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
@@ -140,13 +140,13 @@
 								<div class="" style="width: 100%; display: inline-block;">
 									<div class="border_active active"></div>
 									<div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>"/></div>
+										<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public\image\lubricatordata\ZIC_4L_ZIC-TOP_0W-40.png'); ?>"/></div>
 										<div class="product_content">
-											<div class="product_price">3790 .-</div>
+											<div class="product_price">1200 .-</div>
 											<div class="product_name">
-												<div><a href="product.html" tabindex="0"><strong>MICHELIN </strong></a></div>
-												<ul>175/70R13</ul>
-												<ul>Primacy2 ST</ul>
+												<div><a href="product.html" tabindex="0"><strong>SK SIC</strong></a></div>
+												<ul>4L</ul>
+												<ul>TOP 0W-40</ul>
 											</div>
 											<div class="product_extras">
 												<button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
@@ -164,13 +164,13 @@
 								<div class="" style="width: 100%; display: inline-block;">
 									<div class="border_active active"></div>
 									<div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>"/></div>
+									<div class="product_image d-flex flex-column align-items-center justify-content-center"><img  width = "auto" height = "150"; src="<?=base_url('public\image\lubricatordata\ZIC-M5-4T-20W-50-0.8L.png'); ?> "/></div>
 										<div class="product_content">
-											<div class="product_price">3790 .-</div>
+											<div class="product_price">250 .-</div>
 											<div class="product_name">
-												<div><a href="product.html" tabindex="0"><strong>MICHELIN </strong></a></div>
-												<ul>175/70R13</ul>
-												<ul>Primacy2 ST</ul>
+												<div><a href="product.html" tabindex="0"><strong>ZIC </strong></a></div>
+												<ul>0.8L</ul>
+												<ul>M5-4T 20W-50</ul>
 											</div>
 											<div class="product_extras">
 												<button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
