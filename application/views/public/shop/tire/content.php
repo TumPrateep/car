@@ -5,21 +5,8 @@
 
 					<!-- Shop Sidebar -->
 					<div class="shop_sidebar">
-						<div class="sidebar_section">
+						 <div class="sidebar_section">
 							<div class="sidebar_title">Categories</div>
-							<ul class="sidebar_categories">
-								<li><a href="#">Computers & Laptops</a></li>
-								<li><a href="#">Cameras & Photos</a></li>
-								<li><a href="#">Hardware</a></li>
-								<li><a href="#">Smartphones & Tablets</a></li>
-								<li><a href="#">TV & Audio</a></li>
-								<li><a href="#">Gadgets</a></li>
-								<li><a href="#">Car Electronics</a></li>
-								<li><a href="#">Video Games & Consoles</a></li>
-								<li><a href="#">Accessories</a></li>
-							</ul>
-						</div>
-						
 							
 								<div class="form-group">
 									<label class="control-label">ยี่ห้อยาง</label>
@@ -51,19 +38,7 @@
 										<option value="">เลือกขนาดยาง</option>
 									</select>
 								</div>
-							
-						
-						
-								<!-- <div class="sidebar_section filter_by_section">
-							        <div class="sidebar_subtitle">ราคา</div>
-							        <div class="filter_price">
-								        <div id="slider-range" class="slider_range"></div>
-								        <p>Range: </p>
-								        <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
-							        </div>
-						        </div> -->
-							
-							
+									
 								<div class="form-group">
 									<label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
 									<select class="form-control input-default" name="can_change" id="can_change">
@@ -72,9 +47,20 @@
 										<option value="2">สั่งจอง</option>
 									</select>
 								</div>  
-					</div>
+                                
+                                <div class="sidebar_section filter_by_section">
+							        <div class="sidebar_subtitle">ราคา</div>
+							        <div class="filter_price">
+								        <div id="slider-range" class="slider_range"></div>
+								        <p>Range: </p>
+								        <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+							        </div>
+						        </div>
+					
 
 				</div>
+                </div>
+                </div>
 
 				<div class="col-lg-9">
 					
