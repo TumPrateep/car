@@ -265,6 +265,10 @@
 
 @media only screen and (max-width: 767px)
 {
+	.brands_slider_container{
+		padding-left: 60px !important;
+    	padding-right: 10px !important;
+	}
 	.header_search
 	{
 		display: none;
