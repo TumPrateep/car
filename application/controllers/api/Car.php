@@ -272,7 +272,7 @@ class Car extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
-            $data_check = $this->brand->checkBrand($brandName);
+            $data_check = $this->brand->data_check_create($brandName);
             $data = array(
                 "brandId"=> null,
                 "brandPicture"=> $imageName,
@@ -321,7 +321,7 @@ class Car extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $data_check_update = $this->brand->getBrandById($brandId);
-            $data_check = $this->brand->wherenot($brandId,$brandName);
+            $data_check = $this->brand->data_check_update($brandId,$brandName);
             $userId = $this->session->userdata['logged_in']['id'];
             $data = array(
                 "brandId"=> $brandId,

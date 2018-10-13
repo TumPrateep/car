@@ -86,6 +86,7 @@
         var message = data.message;
         if(message == "2001"){
             localStorage.userId = data.userId;
+            localStorage.token = data.token;
             window.location = base_url+"role";
         }else if(message == "2002"){
             errorMessage.html("เกิดข้อผิดพลาด <a href='"+base_url+"register"+"'>ลงทะเบียน</a>");

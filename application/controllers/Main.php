@@ -24,7 +24,7 @@ class Main extends CI_Controller {
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
         $this->load->view("public/layout/banner");
-        $this->load->view("public/layout/main");
+        // $this->load->view("public/layout/main");
 		$this->load->view("public/layout/brand");
 		$this->load->view("public/layout/footer");
 		$this->load->view("public/layout/copyright");

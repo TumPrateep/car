@@ -10,16 +10,14 @@
 						<!-- Brands Slider -->
 
 						<div class="owl-carousel owl-theme brands_slider">
-							
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/themes/user/");?>images/brands_1.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/themes/user/");?>images/brands_2.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/themes/user/");?>images/brands_3.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/themes/user/");?>images/brands_4.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/themes/user/");?>images/brands_5.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/themes/user/");?>images/brands_6.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/themes/user/");?>images/brands_7.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/themes/user/");?>images/brands_8.jpg" alt=""></div></div>
-
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc1765f17f81.png" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc170725f8b8.png" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc17116744b2.png" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc1709a5cc29.png" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc1765f17f81.png" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc170c2ebd15.png" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc171b207a0a.png" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc175c1a3eec.png" alt=""></div></div>
 						</div>
 						
 						<!-- Brands Slider Navigation -->
