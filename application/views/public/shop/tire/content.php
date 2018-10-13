@@ -75,6 +75,12 @@
                             <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
                         </div>
                     </div>
+                    <div class="form-group">
+                    <div class="col-lg-4">
+                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                    </div>
+                    </div>
+                    
                 </div>
                 </div>
             </div>
