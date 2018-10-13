@@ -30,23 +30,7 @@
                             <option value="">เลือกรุ่นรถ</option>
                         </select>
                     </div>
-            
-                    <div class="form-group">
-                        <label class="control-label">ปีที่ผลิต</label>
-                        <div class="row p-t-20">
-                            <div class="col-md-5">
-                                <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                                    <option value="">เลือกปี</option>
-                                </select>
-                            </div>
-                                ถึง
-                            <div class="col-md-5">
-                                <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                                    <option value="">เลือกปี</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+        
                     <div class="form-group">
                         <label class="control-label">การรับประกัน-ปี</label>
                         <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
