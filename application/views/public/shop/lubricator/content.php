@@ -4,21 +4,6 @@
 			<div class="col-lg-3">
 				<!-- Shop Sidebar -->
 				<div class="shop_sidebar">
-						<div class="sidebar_section">
-							<div class="sidebar_title">น้ำมันเครื่อง</div>
-							<ul class="sidebar_categories">
-								<li><a href="#">Computers & Laptops</a></li>
-								<li><a href="#">Cameras & Photos</a></li>
-								<li><a href="#">Hardware</a></li>
-								<li><a href="#">Smartphones & Tablets</a></li>
-								<li><a href="#">TV & Audio</a></li>
-								<li><a href="#">Gadgets</a></li>
-								<li><a href="#">Car Electronics</a></li>
-								<li><a href="#">Video Games & Consoles</a></li>
-								<li><a href="#">Accessories</a></li>
-							</ul>
-						</div>
-					
 						
 							<div class="form-group">
 								<label class="control-label">ยี่ห้อน้ำมันเครื่อง</label>
@@ -53,15 +38,6 @@
 								</div>
 							</div>
 						
-						
-							<div class="form-group">
-								<label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
-								<select class="form-control input-default" name="can_change" id="can_change">
-									<option value="">สั่งจองหรือเปลี่ยนทันที</option>
-									<option value="1">ปลี่ยนทันที</option>
-									<option value="2">สั่งจอง</option>
-								</select>
-							</div>
 						</div>
 					</div>
 			
@@ -101,7 +77,7 @@
 												<ul>X3 15W-60</ul>
 											</div>
 											<div class="product_extras">
-												<button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
+												<button class="product_cart_button" tabindex="0"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>
 											</div>
 										</div>
 										
@@ -125,7 +101,7 @@
 												<ul>X9 5W-40</ul>
 											</div>
 											<div class="product_extras">
-												<button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
+												<button class="product_cart_button" tabindex="0"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>
 											</div>
 										</div>
 										
@@ -149,7 +125,7 @@
 												<ul>TOP 0W-40</ul>
 											</div>
 											<div class="product_extras">
-												<button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
+												<button class="product_cart_button" tabindex="0"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>
 											</div>
 										</div>
 										
@@ -173,7 +149,7 @@
 												<ul>M5-4T 20W-50</ul>
 											</div>
 											<div class="product_extras">
-												<button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
+												<button class="product_cart_button" tabindex="0"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>
 											</div>
 										</div>
 										
