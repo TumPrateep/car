@@ -131,7 +131,7 @@
 				<div class="row">
 					<div class="col-md-4">
 							<div class="form-group">
-								<label for="exampleFormControlInput1">ช่วงเวลาเปิดทำการ</label>
+								<label for="exampleFormControlInput1"><h3>ช่วงเวลาเปิดทำการ</h3></label>
 							</div>
 						</div>
 						<div class="col-md-4">
