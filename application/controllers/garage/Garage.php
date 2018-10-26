@@ -27,7 +27,7 @@ class Garage extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view("garage/testgarage/content");
+		$this->load->view("garage/testgarage/garage");
 	}
 
 }

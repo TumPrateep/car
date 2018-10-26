@@ -15,7 +15,6 @@
     <!-- <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet"> -->
     <link href="<?=base_url("/public/vendor/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/themes/caraccessory/css/lib/bootstrap/bootstrap.min.css") ?>" rel="stylesheet">
-    <!-- Custom CSS -->
 
     <!-- <link href="css/lib/calendar2/semantic.ui.min.css" rel="stylesheet"> -->
     <link href="<?=base_url("/public/themes/caraccessory/css/lib/calendar2/semantic.ui.min.css") ?>" rel="stylesheet">
@@ -789,14 +788,15 @@
     <!-- <script src="js/lib/bootstrap/js/popper.min.js"></script> -->
     <script src="<?=base_url("/public/themes/caraccessory/js/lib/bootstrap/js/popper.min.js") ?>"></script>
     <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/jquery.slimscroll.js"></script>
-    <script src="js/sidebarmenu.js"></script>
-    <script src="js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
-
-     <script src="js/lib/morris-chart/raphael-min.js"></script>
+    <!-- <script src="js/jquery.slimscroll.js"></script> -->
+    <script src="<?=base_url("/public/themes/caraccessory/js/jquery.slimscroll.js") ?>"></script>
+    <!-- <script src="js/sidebarmenu.js"></script> -->
+    <script src="<?=base_url("/public/themes/caraccessory/js/sidebarmenu.js") ?>"></script>
+    <!-- <script src="js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script> -->
+    <script src="<?=base_url("/public/themes/caraccessory/js/lib/sticky-kit-master/dist/sticky-kit.min.js") ?>"></script>
+    <script src="js/lib/morris-chart/raphael-min.js"></script>
     <script src="js/lib/morris-chart/morris.js"></script>
     <script src="js/lib/morris-chart/dashboard1-init.js"></script>
-
     <script src="js/lib/calendar-2/moment.latest.min.js"></script>
     <script src="js/lib/calendar-2/semantic.ui.min.js"></script>
     <script src="js/lib/calendar-2/prism.min.js"></script>
@@ -808,13 +808,7 @@
     <script src="js/scripts.js"></script>
 
     <script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="<?=base_url("/public/themes/caraccessory/js/jquery.slimscroll.js") ?>"></script>
-    <script src="<?=base_url("/public/themes/caraccessory/js/sidebarmenu.js") ?>"></script>
-    <script src="<?=base_url("/public/themes/caraccessory/js/lib/sticky-kit-master/dist/sticky-kit.min.js") ?>"></script>
-
     <script src="<?=base_url("/public/vendor/bootstrap/js/bootstrap.bundle.min.js") ?>"></script>
-    
     <script src="<?=base_url("/public/themes/caraccessory/js/scripts.js") ?>"></script>
 
     <script src="<?= base_url() ?>public/js/jquery.validate.min.js"></script>
