@@ -242,6 +242,7 @@
             </nav>
         </div>
         <!-- End header header -->
+
         <!-- Left Sidebar  -->
         <div class="left-sidebar">
             <!-- Sidebar scroll-->
@@ -372,6 +373,7 @@
             <!-- End Sidebar scroll-->
         </div>
         <!-- End Left Sidebar  -->
+        
         <!-- Page wrapper  -->
         <div class="page-wrapper">
             <!-- Bread crumb -->

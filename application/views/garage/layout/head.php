@@ -9,20 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>CarJaidee</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url("/public/themes/garage/images/favicon.png") ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url("/public/themes/garage/images/favicon.png") ?>">
+    <title> Elaaa - Bootstrap Admin Dashboard Template</title>
     <!-- Bootstrap Core CSS -->
-    <link href="<?=base_url("/public/vendor/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
-    <link href="<?=base_url("/public/themes/caraccessory/css/lib/bootstrap/bootstrap.min.css") ?>" rel="stylesheet">
-    <link href="<?=base_url("/public/themes/caraccessory/css/lib/dropzone/dropzone.css") ?>" rel="stylesheet">
-    <link href="<?=base_url("/public/themes/caraccessory/css/style.css") ?>" rel="stylesheet">
-    <link href="<?=base_url("/public/themes/caraccessory/css/custom.css") ?>" rel="stylesheet">
-    <link href="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.css") ?>" rel="stylesheet">
+    <link href="<?=base_url("/public/themes/garage/css/lib/bootstrap/bootstrap.min.css") ?>" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="<?=base_url("/public/themes/garage/css/lib/calendar2/semantic.ui.min.css") ?>" rel="stylesheet">
+    <link href="<?=base_url("/public/themes/garage/css/lib/calendar2/pignose.calendar.min.css") ?>" rel="stylesheet">
+    <link href="<?=base_url("/public/themes/garage/css/lib/owl.carousel.min.css") ?>" rel="stylesheet">
+    <link href="<?=base_url("/public/themes/garage/css/lib/owl.theme.default.min.css") ?>" rel="stylesheet">
+    <link href="<?=base_url("/public/themes/garage/css/helper.css") ?>" rel="stylesheet">
+    <link href="<?=base_url("/public/themes/garage/css/style.css") ?>" rel="stylesheet">
+    <link href="<?=base_url("/public/themes/garage/css/custom.css") ?>" rel="stylesheet">
+
     
-    <link href="<?=base_url("/public/css/select2-bootstrap.css") ?>" rel="stylesheet">
-    <link href="<?=base_url("/public/css/select2.min.css") ?>" rel="stylesheet">
-    <link href="<?=base_url("/public/css/bootstrap-slider.css") ?>" rel="stylesheet"> 
-    <link href="<?=base_url("/public/css/toggle-switch.css") ?>" rel="stylesheet">   
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>

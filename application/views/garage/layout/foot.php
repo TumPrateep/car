@@ -1,26 +1,22 @@
     <!-- All Jquery -->
-    <script src="<?=base_url("/public/themes/caraccessory/js/lib/jquery/jquery.min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/jquery/jquery.min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/bootstrap/js/popper.min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/bootstrap/js/bootstrap.min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/jquery.slimscroll.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/sidebarmenu.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/sticky-kit-master/dist/sticky-kit.min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/morris-chart/raphael-min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/morris-chart/morris.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/morris-chart/dashboard1-init.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/moment.latest.min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/semantic.ui.min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/prism.min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/pignose.calendar.min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/pignose.init.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/owl-carousel/owl.carousel.min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/jquery/owl-carousel/owl.carousel-init.js") ?>"></script>
 
-    <script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="<?=base_url("/public/themes/caraccessory/js/lib/bootstrap/js/popper.min.js") ?>"></script>
-    <script src="<?=base_url("/public/themes/caraccessory/js/jquery.slimscroll.js") ?>"></script>
-    <script src="<?=base_url("/public/themes/caraccessory/js/sidebarmenu.js") ?>"></script>
-    <script src="<?=base_url("/public/themes/caraccessory/js/lib/sticky-kit-master/dist/sticky-kit.min.js") ?>"></script>
+    <!-- scripit init-->
 
-    <script src="<?=base_url("/public/vendor/bootstrap/js/bootstrap.bundle.min.js") ?>"></script>
-    
-    <script src="<?=base_url("/public/themes/caraccessory/js/scripts.js") ?>"></script>
-
-    <script src="<?= base_url() ?>public/js/jquery.validate.min.js"></script>
-    <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
-    <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
-
-    <script src="<?=base_url("/public/themes/caraccessory/js/lib/dropzone/dropzone.js") ?>"></script>
-
-    <script src="<?=base_url("/public/js/select2.full.js") ?>"></script>
-    <script src="<?=base_url("/public/js/bootstrap-slider.js") ?>"></script>
-    <script src="<?=base_url("/public/js/currency.min.js") ?>"></script>
-
-    <script src="<?=base_url("/public/themes/caraccessory/js/setup.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/scripts.js") ?>"></script>
     

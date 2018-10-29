@@ -14,20 +14,20 @@ class Garage extends CI_Controller {
 
     // }
 
- //    public function index()
-	// {
-	// 	$this->load->view("garage/layout/head");
-	// 	$this->load->view("garage/layout/header");
-	// 	$this->load->view("garage/layout/left-menu");
-	// 	$this->load->view("garage/layout/content");
-	// 	$this->load->view("garage/layout/footer");
-	// 	$this->load->view("garage/layout/foot");
-	// 	// $this->load->view("garage/layout/script");
-	// }
-
-	public function index()
+    public function index()
 	{
-		$this->load->view("garage/testgarage/garage");
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+		$this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/layout/content");
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/layout/script");
 	}
+
+	// public function index()
+	// {
+	// 	$this->load->view("garage/testgarage/garage");
+	// }
 
 }
