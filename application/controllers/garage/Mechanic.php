@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Member extends CI_Controller {
+class Mechanic extends CI_Controller {
 
 	function __construct()
     {
@@ -12,10 +12,10 @@ class Member extends CI_Controller {
 		$this->load->view("garage/layout/head");
 		$this->load->view("garage/layout/header");
         $this->load->view("garage/layout/left-menu");
-		$this->load->view("garage/member/content");
+		$this->load->view("garage/mechanic/content");
 		$this->load->view("garage/layout/footer");
 		$this->load->view("garage/layout/foot");
-		$this->load->view("garage/member/script");
+		$this->load->view("garage/mechanic/script");
     }
     
     public function create()
@@ -23,10 +23,10 @@ class Member extends CI_Controller {
 		$this->load->view("garage/layout/head");
 		$this->load->view("garage/layout/header");
         $this->load->view("garage/layout/left-menu");
-		$this->load->view("garage/member/create/content");
+		$this->load->view("garage/mechanic/create/content");
 		$this->load->view("garage/layout/footer");
 		$this->load->view("garage/layout/foot");
-		$this->load->view("garage/member/create/script");
+		$this->load->view("garage/mechanic/create/script");
     }
 
     public function update()
@@ -34,10 +34,10 @@ class Member extends CI_Controller {
 		$this->load->view("garage/layout/head");
 		$this->load->view("garage/layout/header");
         $this->load->view("garage/layout/left-menu");
-		$this->load->view("garage/member/update/content");
+		$this->load->view("garage/mechanic/update/content");
 		$this->load->view("garage/layout/footer");
 		$this->load->view("garage/layout/foot");
-		$this->load->view("garage/member/update/script");
+		$this->load->view("garage/mechanic/update/script");
     }
 
 }
