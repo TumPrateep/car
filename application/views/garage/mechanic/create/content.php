@@ -43,18 +43,24 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="phone"><h4>ประสบการณ์(ปี)</h4></label>
-                                            <input type="text" class="form-control" name="exp" placeholder="ปี" title="enter your phone number if any.">
+                                            <label for="phone"><h4>เลขบัตรประชาชน</h4></label>
+                                            <input type="text" class="form-control" name="numbername" placeholder="เลขบัตรประชาชน" title="enter your phone number if any.">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="phone"><h4>เบอร์โทรศัพท์</h4></label>
-                                            <input type="text" class="form-control" name="phone" placeholder="enter phone" title="enter your phone number if any.">
+                                            <label for="phone"><h4>ประสบการณ์(ปี)</h4></label>
+                                            <input type="text" class="form-control" name="exp" placeholder=" ปี" title="enter your phone number if any.">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="phone"><h4>เบอร์โทรศัพท์</h4></label>
+                                            <input type="text" class="form-control" name="phone" placeholder="เบอร์โทรศัพท์" title="enter your phone number if any.">
+                                        </div>
+                                    </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="mobile"><h4>ความชำนาญ</h4></label>
