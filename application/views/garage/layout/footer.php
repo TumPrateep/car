@@ -1,5 +1,5 @@
-      <footer class="footer"> © 2018 All rights reserved. Template designed by 
-      <a href="https://colorlib.com">Colorlib</a></footer>
+      <footer class="footer"> Carjaicee  Version: 0.2.001  Date: 30/10/2018
+      <a href="#">Garage</a></footer>
             <!-- End footer -->
     </div>
         <!-- End Page wrapper  -->

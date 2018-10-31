@@ -9,9 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url("/public/themes/garage/images/favicon.png") ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url("/public/themes/garage/images/favicon.png") ?>">
-    <title> Elaaa - Bootstrap Admin Dashboard Template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url("/public/themes/garage/images/1.png") ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url("/public/themes/garage/images/1.png") ?>">
+    <title> Carjaidee</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url("/public/themes/garage/css/lib/bootstrap/bootstrap.min.css") ?>" rel="stylesheet">
     <!-- Custom CSS -->
