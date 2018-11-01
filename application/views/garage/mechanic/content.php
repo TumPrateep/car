@@ -1,4 +1,8 @@
+<<<<<<< HEAD
     <div class="page-wrapper">
+=======
+<div class="page-wrapper">
+>>>>>>> 7c27da1a72fb2b2330809b42b3d87df9a2c3bfb1
         <!-- Bread crumb -->
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
@@ -61,4 +65,8 @@
                 </tbody>
                 </table>
             </div>
+<<<<<<< HEAD
         </div>        
+=======
+        </div>
+>>>>>>> 7c27da1a72fb2b2330809b42b3d87df9a2c3bfb1

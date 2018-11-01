@@ -1,6 +1,12 @@
 
-  .card-img-top-50{
-      width: 56%;
-      margin-top: 5px;
-      margin-bottom: 5px;
-  }
+    .card-img-top-50{
+        width: 56%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .error{
+        color: red;
+    }
+    input.error, textarea.error, select.error { 
+        border: 1px solid red !important; 
+    }
