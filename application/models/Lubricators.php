@@ -145,4 +145,17 @@ class Lubricators extends CI_Model{
         return $query->result();
     }
 
+    function checkLubricatorforget($lubricatorId){
+        $this->db->select("lubricatorId");
+        $this->db->from("lubricator");
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
+        }
+        return false;
+    }
+
+
+
 }

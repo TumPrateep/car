@@ -79,14 +79,16 @@
 								<li class="page_menu_item has-children">
 									<a href="<?=base_url();?>">สินค้า<i class="fa fa-angle-down"></i></a>
 									<ul class="page_menu_selection">
-										<li><a href="#">อะไหล่ช่วงล่าง<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">น้ำมันเครื่อง<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">ยางรถยนต์<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="<?=base_url("shop/sparepart");?>">อะไหล่ช่วงล่าง<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="<?=base_url("shop/lubricator");?>">น้ำมันเครื่อง<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="<?=base_url("shop/tire");?>">ยางรถยนต์<i class="fa fa-angle-down"></i></a></li>
 									</ul>
 								</li>
 								<li class="page_menu_item"><a href="<?=base_url("public/menu/solution/");?>">ขั้นตอนการใช้งาน<i class="fa fa-angle-down"></i></a></li>
 								<li class="page_menu_item"><a href="<?=base_url("public/menu/solution/");?>">ค้นหาศูนย์บริการ<i class="fa fa-angle-down"></i></a></li>
 								<li class="page_menu_item"><a href="<?=base_url("public/menu/solution/");?>">ติดต่อ<i class="fa fa-angle-down"></i></a></li>
+								<li class="page_menu_item"><a href="<?=base_url("register");?>">ลงทะเบียน<i class="fa fa-angle-down"></i></a></li>
+								<li class="page_menu_item"><a href="<?=base_url("login");?>">ลงชื่อเข้าใช้งาน<i class="fa fa-angle-down"></i></a></li>
 							</ul>
 							
 							<div class="menu_contact">

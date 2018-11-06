@@ -196,5 +196,29 @@ class Lubricator extends BD_Controller {
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
+
+    function getLubricatorforupdate_post(){
+
+        $brandId = $this->post('lubricatorId');
+        $isCheck = $this->lubricators->checkLubricatorforget($lubricatorId);
+
+        if($isCheck){
+            $output["status"] = true;
+            $result = $this->lubricators->getlubricatorbyId($lubricatorId);
+            if($result != null){
+                $output["data"] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }else{
+                $output["status"] = false;
+                $output["message"] = REST_Controller::MSG_BE_DELETED;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
     
 }
