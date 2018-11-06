@@ -67,6 +67,8 @@ $route['shop/sparepart'] = 'public/menu/sparepart';
 $route['shop/tire'] = 'public/menu/tire';
 $route['shop/showshop'] = 'public/menu/showshop';
 
+$route['shop/cart'] = 'public/menu/cart';
+
 $route['login'] = 'public/Auth/login';
 
 // user route
