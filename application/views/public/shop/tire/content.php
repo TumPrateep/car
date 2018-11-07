@@ -112,7 +112,7 @@
                                         <div class="product_content">
                                             <div class="product_price">3790 .-</div>
                                             <div class="product_name">
-                                                <div><a href="product.html" tabindex="0"><strong>MICHELIN </strong></a></div>
+                                                <div><a href="<?=base_url('public/SingleProduct/'); ?>" tabindex="0"><strong>MICHELIN </strong></a></div>
                                                 <ul>175/70R13</ul>
                                                 <ul>Primacy2 ST</ul>
                                             </div>
