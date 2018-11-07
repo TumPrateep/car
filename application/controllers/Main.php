@@ -11,6 +11,7 @@ class Main extends CI_Controller {
 	
 	function index(){
 		$this->load->view("public/layout/head");
+		$this->load->view("public/layout/head_shop");
 		if(isset($this->session->userdata['logged_in'])){
 			$isUser = $this->session->userdata['logged_in']['isUser'];
 			if(!$isUser){

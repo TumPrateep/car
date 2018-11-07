@@ -46,7 +46,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '<div class="row">';
-
+                        var imagePath = base_url+"/public/image/lubricatordata/";
                         $.each(data, function( index, value ) {
                             var switchVal = "true";
                             var active = " active";
@@ -63,13 +63,13 @@
                                             +'<div class="" style="width: 100%; display: inline-block;">'
                                                 +'<div class="border_active active"></div>'
                                                 +'<div class="product_item d-flex flex-column align-items-center justify-content-center text-center">'
-                                                    +'<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src=""/></div>'
+                                                    +'<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="'+imagePath+value.lubricator_dataPicture+'"/></div>'
                                                     +'<div class="product_content">'
-                                                        +'<div class="product_price">680 .-</div>'
+                                                        +'<div class="product_price">'+currency(value.price, {  precision: 0 }).format()+' บาท</div>'
                                                         +'<div class="product_name">'
-                                                            +'<div><a href="product.html" tabindex="0"><strong> SK ZIC </strong></a></div>'
-                                                            +'<ul>4L</ul>'
-                                                            +'<ul>X3 15W-60</ul>'
+                                                            +'<div><a href="product.html" tabindex="0"><strong> '+value.lubricator_brandName+' </strong></a></div>'
+                                                            +'<ul>'+value.capacity+' ลิตร</ul>'
+                                                            +'<ul>'+value.lubricatorName+' '+value.lubricator_number+'</ul>'
                                                         +'</div>'
                                                         +'<div class="product_extras">'
                                                             +'<button class="product_cart_button" tabindex="0"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>'
