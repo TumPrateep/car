@@ -143,5 +143,22 @@ class Lubricatorbrands extends CI_Model{
         $query = $this->db->get("lubricator_brand");
         return $query->result();
     }
+
+    function data_check_create($lubricator_brandName) {
+        $this->db->select("*");
+        $this->db->from("lubricator_brand");
+        $this->db->where('lubricator_brandName',$lubricator_brandName);
+        $result = $this->db->get();
+        return $result->row();
+    }
+    function data_check_update($lubricator_brandName,$lubricator_brandId){
+        $this->db->select('*');
+        $this->db->from("lubricator_brand");
+        $this->db->where('lubricator_brandName',$lubricator_brandName);
+        $this->db->where_not_in('lubricator_brandId', $lubricator_brandId);
+        $result = $this->db->get();
+        return $result->row();
+    }
+
  
 }

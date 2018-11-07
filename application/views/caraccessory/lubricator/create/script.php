@@ -19,20 +19,20 @@
     });
 
     
-    var lubricator_number = $("#lubricator_number");
+    var lubricator_numberId = $("#lubricator_numberId");
     var lubricator_gear = $("#lubricator_gear");
 
     init();
 
     function init(){
-        lubricator_number.html('<option value="">เลือกเบอร์น้ำมันเครื่อง</option>');
+        lubricator_numberId.html('<option value="">เลือกเบอร์น้ำมันเครื่อง</option>');
         $.post(base_url+"api/LubricatorNumber/getAllLubricatorNumber",{
             lubricator_gear: lubricator_gear.val()
         },function(result){
                 var data = result.data;
                 if(data != null){
                     $.each( data, function( key, value ) {
-                        lubricator_number.append('<option value="' + value.lubricator_numberId + '">' + value.lubricator_number + '</option>');
+                        lubricator_numberId.append('<option value="' + value.lubricator_numberId + '">' + value.lubricator_number + '</option>');
                     });
                 }
             }

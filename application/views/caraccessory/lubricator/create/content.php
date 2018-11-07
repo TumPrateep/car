@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="form-group col-lg-4">
                                         <label>เบอร์น้ำมันเครื่อง</label><span class="error">*</span>
-                                    <select class="form-control input-default" name="lubricator_number" id="lubricator_number">
+                                    <select class="form-control input-default" name="lubricator_numberId" id="lubricator_numberId">
                                         <option value="">เลือกเบอร์น้ำมันเครื่อง</option>
                                     </select>      
                                 </div>

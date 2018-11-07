@@ -12,48 +12,48 @@ class Lubricatorbrand extends BD_Controller {
     }
 
     function createLubricatorbrand_post(){
-        $config['upload_path'] = 'public/image/lubricator_brand/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        
+        $lubricator_brandName = $this->post("lubricator_brandName");
+
         $userId = $this->session->userdata['logged_in']['id'];
+        $config['upload_path'] = 'public/image/lubricator_brand/';
+
         $img = $this->post('lubricator_brandPicture');
         $img = str_replace('data:image/png;base64,', '', $img);
 	    $img = str_replace(' ', '+', $img);
         $data = base64_decode($img);
-
         $imageName = uniqid().'.png';
         $file = $config['upload_path']. '/'. $imageName;
         $success = file_put_contents($file, $data);
 
-		if (!$success){
+        if (!$success){
             $output["message"] = REST_Controller::MSG_ERROR;
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
-            $lubricator_brandName = $this->post("lubricator_brandName");
-            $isDublicte = $this->lubricatorbrands->checklubricatorbrand($lubricator_brandName);
-            if($isDublicte){
+            $image =  $imageName;
+            $data_check = $this->lubricatorbrands->data_check_create($lubricator_brandName);
+            if($data_check){
+                unlink($file);
                 $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
                 $data = array(
-                    "lubricator_brandId"=> null,
-                    "lubricator_brandPicture"=> $imageName,
-                    "lubricator_brandName"=> $lubricator_brandName,
-                    "status"=> 2,
-                    "create_at" => date('Y-m-d H:i:s',time()),
-                    "create_by" => $userId,
-                    "activeFlag" => 2
+                    'lubricator_brandId' => null,
+                    'lubricator_brandName' => $lubricator_brandName,
+                    'status' => 2,
+                    'activeFlag' => 2,
+                    'create_by' => $userId,
+                    'create_at'=>date('Y-m-d H:i:s',time()),
+                    'lubricator_brandPicture' => $image,
                 );
-                $isResult = $this->lubricatorbrands->insert_lubricatorbrand($data);
-                if($isResult){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
+                $option = [
+                    "data_check" => $data_check,
+                    "data" => $data,
+                    "model" => $this->lubricatorbrands,
+                    "image_path" => $file
+                ];
+                $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
             }
-		}
+         }
     }
 
 
@@ -83,7 +83,7 @@ class Lubricatorbrand extends BD_Controller {
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
                 $data_check_update = $this->lubricatorbrands->getlubricatorById($lubricator_brandId);
-                $data_check = $this->lubricatorbrands->wherenot($lubricator_brandId,$lubricator_brandName);
+                $data_check = $this->lubricatorbrands->data_check_update($lubricator_brandId,$lubricator_brandName);
                 $userId = $this->session->userdata['logged_in']['id'];
                 $data = array(
                     "lubricator_brandId"=> $lubricator_brandId,
