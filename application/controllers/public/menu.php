@@ -9,6 +9,7 @@ class Menu extends CI_Controller {
 
     public function tire(){
         $this->load->view("public/layout/head");
+        $this->load->view("public/layout/head_shop");
         $this->load->view("public/layout/header");
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
