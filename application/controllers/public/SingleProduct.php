@@ -9,6 +9,7 @@ class SingleProduct extends CI_Controller {
 
     public function index(){
         $this->load->view("public/layout/head");
+        $this->load->view("public/layout/product_style");
         $this->load->view("public/layout/header");
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
