@@ -26,7 +26,7 @@ class Menu extends CI_Controller {
         $this->load->view("public/shop/lubricator/content");
         $this->load->view("public/layout/copyright");        
         $this->load->view("public/layout/foot");
-        // $this->load->view("public/shop/lubricator/script");
+        $this->load->view("public/shop/lubricator/script");
     }
 
     public function sparepart(){

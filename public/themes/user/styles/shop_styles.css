@@ -1285,6 +1285,7 @@ select option
 .shop_sorting
 {
 	float: right;
+	width: 300px;
 }
 .shop_sorting span
 {
@@ -1660,11 +1661,11 @@ select option
 .shop_sidebar
 {
 	width: 100%;
-	-webkit-transform: translateX(-37px);
+	/* -webkit-transform: translateX(-37px); */
 	-moz-transform: translateX(-37px);
 	-ms-transform: translateX(-37px);
 	-o-transform: translateX(-37px);
-	transform: translateX(-37px);
+	/* transform: translateX(-37px); */
 }
 .sidebar_title
 {
@@ -2327,4 +2328,24 @@ select option
     font-weight: 500;
     color: #000000;
     line-height: 1.2;
+}
+
+.table-bordered{
+    border: 0px;
+}
+
+.sorting_asc{
+    display: none;
+}
+
+.table-bordered td, .table-bordered th {
+    border: 0px solid #ffffff !important;
+}
+
+.pagination{
+	padding-left: 60%;
+}
+
+.dataTables_info{
+	padding-left: 20px;
 }
