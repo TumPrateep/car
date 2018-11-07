@@ -65,10 +65,11 @@ class Menu extends CI_Controller {
 
     public function Cart(){
         $this->load->view("public/layout/head");
+        $this->load->view("public/layout/head_cart");
         $this->load->view("public/layout/header");
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
-        $this->load->view("public/shop/basket/content");
+        $this->load->view("public/shop/cart/content");
         $this->load->view("public/layout/copyright");        
         $this->load->view("public/layout/foot");
     }
