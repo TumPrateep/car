@@ -56,7 +56,7 @@
                             </div>
                             <div class="row p-t-20">
                                     <div class="col-md-12 card-grid">
-                                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึกนะจ้ะ</button>
                                         <a href="<?=base_url("caraccessory/Numberlubricator"); ?>">
                                         <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                         </a>

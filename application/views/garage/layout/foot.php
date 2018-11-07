@@ -15,6 +15,13 @@
     <script src="<?=base_url("/public/themes/garage/js/lib/owl-carousel/owl.carousel.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/jquery/owl-carousel/owl.carousel-init.js") ?>"></script>
 
+    <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
+    <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
+
+    <script src="<?=base_url("/public/js/currency.min.js") ?>"></script>
+    <script> var base_url = "<?=base_url();?>"; </script>
+    <script src="<?=base_url("/public/themes/garage/js/setup.js") ?>"></script>
+    
     <!-- scripit init-->
 
     <script src="<?=base_url("/public/themes/garage/js/scripts.js") ?>"></script>

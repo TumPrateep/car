@@ -1,7 +1,7 @@
 <script>
     $(document).ready(function () {
 
-        var form = $("#create-member-form");
+        var form = $("#submit");
 
         form.validate({
             rules:{
@@ -39,16 +39,36 @@
             }
         });
 
-        form.submit(function (e) { 
-            e.preventDefault();
-            var isValid = form.valid();
-            if(isValid){
-                alert("pass");
-            }else{
-                alert("unpass");
-            }
-        });
+        // form.submit(function (e) { 
+        //     e.preventDefault();
+        //     var isValid = form.valid();
+        //     if(isValid){
+        //         alert("pass");
+        //     }else{
+        //         alert("unpass");
+        //     }
+        // });
 
+    form.submit(function(){
+        createMechanic();
+    })
+
+
+    function createMechanic(){
+        event.preventDefault();
+
+        var isValid = form.valid();
+        
+        if(isValid){
+            
+            var data = $("#submit").serialize();
+            $.post(base_url+"apiGarage/Mechaniccreates/createMechaniccreates",data,
+            function(data){
+                console.log(data);
+            });
+        }
+    }
+    
 
     });
 </script>

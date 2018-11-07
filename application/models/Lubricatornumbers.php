@@ -22,6 +22,7 @@ class Lubricatornumbers extends CI_Model {
             return null;
         }
         
+        
     }
 
     function lubricatorNumber_search($limit,$start,$search,$col,$dir,$status)

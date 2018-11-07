@@ -25,18 +25,18 @@
                             </div>
                         </div>
                         <div class="col-lg-9">
-                            <form id="create-member-form">
+                            <form id="submit">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="first_name"><h4>ชื่อ</h4></label>
-                                            <input type="text" class="form-control" name="firstname" placeholder="ชื่อ" title="enter your first name if any.">
+                                            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="ชื่อ" title="enter your first name if any.">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="last_name"><h4>นามสกุล</h4></label>
-                                            <input type="text" class="form-control" name="lastname" placeholder="นามสกุล" title="enter your last name if any.">
+                                            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="นามสกุล" title="enter your last name if any.">
                                         </div>
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="phone"><h4>เลขบัตรประชาชน</h4></label>
-                                            <input type="text" class="form-control" name="numbername" placeholder="เลขบัตรประชาชน" title="enter your phone number if any.">
+                                            <input type="text" class="form-control" name="idcard" id="idcard" placeholder="เลขบัตรประชาชน" title="enter your phone number if any.">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -64,7 +64,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="mobile"><h4>ความชำนาญ</h4></label>
-                                            <select type="select" aria-setsize="100" class="form-control" name="skill" placeholder="ความชำนาญ" title="enter your mobile number if any.">
+                                            <select class="form-control" name="skill" placeholder="ความชำนาญ" title="enter your mobile number if any.">
                                                   <option value="">เลือกความชำนาญ</option>
                                                   <option value="volvo">Honda</option>
                                                   <option value="saab">Isuzu</option>
