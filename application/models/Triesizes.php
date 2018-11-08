@@ -192,4 +192,6 @@ class Triesizes extends CI_Model{
         $query = $this->db->get("tire_size");
         return $query->result();
     }
+
+    
 }

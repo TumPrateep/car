@@ -227,9 +227,9 @@ class Tiresize extends BD_Controller {
     }
 
     function getAllTireSize_get(){
-        $tire_rimId = $this->get("tire_rimId");
+        $rimId = $this->get("rimId");
         
-        $result = $this->triesizes->getAllTireSizeByrimId($tire_rimId);
+        $result = $this->triesizes->getAllTireSizeByrimId($rimId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }

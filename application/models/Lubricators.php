@@ -166,6 +166,18 @@ class Lubricators extends CI_Model{
         $result = $this->db->get();
         return $result->row();
     }
+    function data_check_update($lubricatorName, $lubricator_brandId, $lubricator_gear,$lubricator_numberId,$lubricatorId){
+        $this->db->select('lubricator.lubricatorId,lubricator.lubricatorName,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_numberId'); 
+        $this->db->from('lubricator');
+        $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
+        $this->db->where('lubricator.lubricatorName',$lubricatorName);
+        $this->db->where('lubricator.lubricator_brandId',$lubricator_brandId);
+        $this->db->where('lubricator_number.lubricator_gear',$lubricator_gear);
+        $this->db->where('lubricator_number.lubricator_numberId',$lubricator_numberId);
+        $this->db->where_not_in('lubricatorId',$lubricatorId);
+        $result = $this->db->get();
+        return $result->row();
+    }
 
 
 }
