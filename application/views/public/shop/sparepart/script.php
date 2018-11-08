@@ -1,6 +1,6 @@
 <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
 <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
-<script src="<?=base_url("/public/themes/user/js/shop.js") ?>"></script>
+
 <script>
     var table = $('#brand-table').DataTable({
         "language": {
@@ -30,7 +30,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"service/Lubricator/search",
+                "url": base_url+"service/spareundercarriage/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -46,7 +46,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '<div class="row">';
-                        var imagePath = base_url+"/public/image/lubricatordata/";
+                        var imagePath = base_url+"/public/image/spareundercarriage/";
                         $.each(data, function( index, value ) {
                             var switchVal = "true";
                             var active = " active";
@@ -63,16 +63,16 @@
                                             +'<div class="" style="width: 100%; display: inline-block;">'
                                                 +'<div class="border_active active"></div>'
                                                 +'<div class="product_item d-flex flex-column align-items-center justify-content-center text-center">'
-                                                    +'<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="'+imagePath+value.lubricator_dataPicture+'"/></div>'
+                                                    +'<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="'+imagePath+value.spareundercarriage_dataPicture+'"/></div>'
                                                     +'<div class="product_content">'
                                                         +'<div class="product_price">'+currency(value.price, {  precision: 0 }).format()+' บาท</div>'
                                                         +'<div class="product_name">'
-                                                            +'<div><a href="product.html" tabindex="0"><strong> '+value.lubricator_brandName+' </strong></a></div>'
-                                                            +'<ul>'+value.capacity+' ลิตร</ul>'
-                                                            +'<ul>'+value.lubricatorName+' '+value.lubricator_number+'</ul>'
+                                                            +'<div><a href="product.html" tabindex="0"><strong> '+value.spares_undercarriageName+' ' + value.spares_brandName +' </strong></a></div>'
+                                                            +'<ul>'+value.brandName+' '+ value.modelName +' </ul>'
+                                                            +'<ul>'+value.yearStart+'-'+value.yearEnd+'</ul>'
                                                         +'</div>'
                                                         +'<div class="product_extras">'
-                                                            +'<button class="product_cart_button" tabindex="0" onclick="setCart(\'lubricator\',\''+value.lubricator_dataId+'\')"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>'
+                                                            +'<button class="product_cart_button" tabindex="0"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>'
                                                         +'</div>'
                                                     +'</div>'
                                                 +'</div>'
