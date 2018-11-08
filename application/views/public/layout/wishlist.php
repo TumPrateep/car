@@ -44,11 +44,11 @@
 								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
 									<div class="cart_icon">
 										<img src="<?=base_url("public/themes/user/");?>images/cart.png" alt="">
-										<div class="cart_count"><span>10</span></div>
+										<div class="cart_count"><span id="cart_count">0</span></div>
 									</div>
 									<div class="cart_content">
-										<div class="cart_text"><a href="<?=base_url("shop/cart");?>">Cart</a></div>
-										<div class="cart_price">$85</div>
+										<div class="cart_text"><a href="<?=base_url("shop/cart");?>">ตะกร้า</a></div>
+										<!-- <div class="cart_price">$85</div> -->
 									</div>
 								</div>
 							</div>
