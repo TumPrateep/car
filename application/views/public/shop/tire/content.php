@@ -17,10 +17,24 @@
                         </select>
                     </div>
 				
+					
+					<div class="form-group">
+						<label class="control-label">ขอบยาง</label>
+						<select class="form-control input-default" name="rimId" id="rimId">
+							<option value="">เลือกขอบยาง</option>
+						</select>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">ขนาดยาง</label>
+						<select class="form-control input-default" name="rimId" id="rimId">
+							<option value="">เลือกขนาดยาง</option>
+						</select>
+					</div>
 				
 					<div class="form-group">
                         <label class="control-label">ยี่ห้อรถ</label>
-                        <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <select class="form-control input-default" name="brandId" id="brandId">
                             <option value="">เลือกยี่ห้อรถ</option>
                         </select>
 					</div>
@@ -28,36 +42,27 @@
 				
 					<div class="form-group">
                         <label class="control-label">รุ่นรถ</label>
-                        <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <select class="form-control input-default" name="modelId" id="modelId">
                             <option value="">เลือกรุ่นรถ</option>
                         </select>
 					</div>
 				
 					<div class="form-group">
                     <label class="control-label">การรับประกัน-ปี</label>
-                        <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <select class="form-control input-default" name="warranty_year" id="warranty_year">
                             <option value="">เลือกปี</option>
-                            <option value="">1ปี</option>
-                            <option value="">2ปี</option>
-                            <option value="">3ปี</option>
-                            <option value="">4ปี</option>
-                            <option value="">5ปี</option>
+                            <option value="1">1ปี</option>
+                            <option value="2">2ปี</option>
+                            <option value="3">3ปี</option>
+                            <option value="4">4ปี</option>
+                            <option value="5">5ปี</option>
                         </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="control-label">เงื่อนไข</label>
-                        <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                            <option value="">เลือกเงื่อนไข</option>
-                            <option value="">และ</option>
-                            <option value="">หรือ</option>
-                        </select>
-                    </div>
+                    </div> 
 
                     <div class="form-group">
                         <label class="control-label">การรับประกัน-ระยะทาง</label>
                         <div class="input-group input-group-default">
-                            <input type="number" class="form-control" id="price" name="price" placeholder="ระยะทาง">
+                            <input type="number" class="form-control" id="warranty_distance" name="warranty_distance" placeholder="ระยะทาง">
                         </div>
                     </div>
 
@@ -128,9 +133,9 @@
 																<div class="product_content">
 																	<div class="product_price">680 .-</div>
 																	<div class="product_name">
-																		<div><a href="product.html" tabindex="0"><strong> SK ZIC </strong></a></div>
-																		<ul>175/70R13</ul>
-																		<ul>Primacy2 ST</ul>
+                                                                    <div><a href="product.html" tabindex="0"><strong>MICHELIN </strong></a></div>
+                                                                    <ul>175/70R13</ul>
+                                                                    <ul>Primacy2 ST</ul>
 																	</div>
 																	<div class="product_extras">
 																		<button class="product_cart_button" tabindex="0"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>
