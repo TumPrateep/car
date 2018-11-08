@@ -16,7 +16,7 @@ class Menu extends CI_Controller {
         $this->load->view("public/shop/tire/content");
         $this->load->view("public/layout/copyright");        
         $this->load->view("public/layout/foot");
-        // $this->load->view("public/shop/tire/script");
+        $this->load->view("public/shop/tire/script");
     }
 
     public function lubricator(){
