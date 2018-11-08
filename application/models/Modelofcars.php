@@ -140,4 +140,5 @@ class Modelofcars extends CI_Model{
         $query = $this->db->get("modelofcar");
         return $query->result();
     }
+
 }

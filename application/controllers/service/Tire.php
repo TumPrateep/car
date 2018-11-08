@@ -13,6 +13,8 @@ class Tire extends BD_Controller {
         $this->load->model("triemodels");
         $this->load->model("triesizes");
         $this->load->model("rims");
+        $this->load->model("brand");
+        $this->load->model("model");
     }
 
     function search_post(){
@@ -116,7 +118,7 @@ class Tire extends BD_Controller {
     }
 
     function getAllTireSize_get(){
-        $tire_rimId = $this->get("rimId");
+        $rimId = $this->get("rimId");
         
         $result = $this->triesizes->getAllTireSizeByrimId($rimId);
         $output["data"] = $result;
@@ -125,6 +127,18 @@ class Tire extends BD_Controller {
     function getAllTireRims_get(){
         
         $result = $this->rims->getAllRims();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+    function getAllBrand_get(){
+        $result = $this->brand->getAllBrandforSelect();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllModel_get(){
+        $brandId = $this->get("brandId");
+        $result = $this->model->getAllmodel($brandId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }

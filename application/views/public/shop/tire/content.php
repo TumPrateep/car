@@ -27,7 +27,7 @@
 					
 					<div class="form-group">
 						<label class="control-label">ขนาดยาง</label>
-						<select class="form-control input-default" name="rimId" id="rimId">
+						<select class="form-control input-default" name="tire_sizeId" id="tire_sizeId">
 							<option value="">เลือกขนาดยาง</option>
 						</select>
 					</div>

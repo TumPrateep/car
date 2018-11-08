@@ -47,7 +47,7 @@ class Model extends CI_Model{
 
         if($status != null){
             $this->db->where("status", $status);
-        }
+        
 
         $query = $this->db->where("brandId", $brandId)
                 ->limit($limit,$start)
@@ -62,6 +62,7 @@ class Model extends CI_Model{
         {
             return null;
         }
+        }
     }
 
     function model_search_count($search, $brandId)
@@ -75,7 +76,9 @@ class Model extends CI_Model{
             ->get('model');
     
         return $query->num_rows();
-    } 
+
+    }
+     
 
     
     function insert($data){
@@ -208,6 +211,13 @@ class Model extends CI_Model{
         $this->db->select("modelId,modelName,yearStart,yearEnd");
         $this->db->where("brandId", $brandId);
         $this->db->order_by('modelName', 'ASC');
+        $query = $this->db->get("model");
+        return $query->result();
+    }
+
+    function getAllmodel($brandId){
+        $this->db->select("modelId,modelName");
+        $this->db->where("brandId", $brandId);
         $query = $this->db->get("model");
         return $query->result();
     }
