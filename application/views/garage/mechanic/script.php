@@ -28,7 +28,7 @@ function deletemechanic(mechanicId,firstName){
                 }
             },
             "responsive": true,
-            "bLengthChange": true,
+            "bLengthChange": false,
             "searching": false,
             "processing": true,
             "serverSide": true,
@@ -44,7 +44,7 @@ function deletemechanic(mechanicId,firstName){
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "firstName" },
+                null,
                 null,
                 null
             ],
@@ -69,9 +69,9 @@ function deletemechanic(mechanicId,firstName){
                     }
                 },{
                     "targets": 1,
-                    "data": "rimName",
+                    "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return ' นาย'+ data ;
+                        return  data.firstName+" "+data.lastName;
                     }
                 },{
                     "targets": 2,
@@ -81,9 +81,9 @@ function deletemechanic(mechanicId,firstName){
                     }
                 },{
                     "targets": 3,
-                    "data": "rimName",
+                    "data": "phone",
                     "render": function ( data, type, full, meta ) {
-                        return ' เบอร์' + data ;
+                        return  data ;
                     }
                 },
                 { "orderable": false, "targets": 0 },
@@ -100,19 +100,7 @@ function deletemechanic(mechanicId,firstName){
         event.preventDefault();
         table.ajax.reload();
     })
-    // function updateStatus(mechanicId,status){
-    //     $.post(base_url+"api/rim/changeStatus",{
-    //         "rimId": mechanicId,
-    //         "status": status
-    //     },function(data){
-    //         if(data.message == 200){
-    //             showMessage(data.message,"admin/Tires");
-    //         }else{
-    //             showMessage(data.message);
-    //         }
-    //     });
-    // }
-    
+
 </script>
 
 </body>

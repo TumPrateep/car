@@ -20,7 +20,7 @@ function fnDelete(option) {
    $("#lebel-delete").html(option.label);
    $("#content-delete").html(option.content);
    $("#delete-modal").modal("show");
-   deleteUrl = base_url+"apiCaraccessories"+option.url;
+   deleteUrl = base_url+"apiGarage"+option.url;
    modalUrl = option.gotoUrl;
 }
 

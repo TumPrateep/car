@@ -55,16 +55,18 @@
 
         var mechanicId = $("#mechanicId").val();
 
-        $.post(base_url+"api/Rim/getRim",{
+        $.post(base_url+"apiGarage/Mechaniccreates/getMechaniccreates",{
             "mechanicId" : mechanicId
         },function(data){
             if(data.message!=200){
-                showMessage(data.message,"admin/Tires");
+                showMessage(data.message,"garage/mechanic");
             }
 
             if(data.message == 200){
                 result = data.data;
                 $("#firstName").val(result.firstName);
+                $("#lastName").val(result.lastName);
+                $("#phone").val(result.phone);
             }
             
         });
