@@ -102,3 +102,8 @@
 		</div>
 
 	</header>
+
+	<div class="myAlert-top alert alert-success">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		หยิบใส่ตะกร้า<strong>สำเร็จ</strong>
+	</div>

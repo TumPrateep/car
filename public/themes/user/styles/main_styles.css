@@ -3798,3 +3798,10 @@ select option
   .border-left{
 	border-left: #dcdcdc 1px solid;
   }
+
+  .myAlert-top{
+    position: fixed;
+    top: 15px; 
+    left:70%;
+	width: 96%;
+  }

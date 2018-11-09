@@ -19,6 +19,7 @@
             cartData.push(product);
         }
         localStorage.setItem("data", JSON.stringify(cartData));
+        myAlertTop();
     }
 
     
@@ -36,3 +37,11 @@
         }
         setNumberOfCart();
     });
+
+    function myAlertTop(){
+        $(".myAlert-top").show();
+        $(".myAlert-top").css("z-index", "1000");
+        setTimeout(function(){
+          $(".myAlert-top").hide(); 
+        }, 2000);
+    }
