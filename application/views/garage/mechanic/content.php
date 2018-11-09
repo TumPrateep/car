@@ -15,10 +15,10 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group" role="group" aria-label="First group">
-                        <button type="button" class="btn btn-success"> เพิ่ม </button>
+                    <div class="btn-group" role="group" aria-label="First group" >
+                        <button type="button" class="btn btn-success" href="<?=base_url("garage/mechanic/create") ?>"> เพิ่ม </button>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" id="table-Tsearch">
                         <input type="text" class="form-control" placeholder="ชื่อ - ช่าง" aria-label="Input group example" aria-describedby="btnGroupAddon2">
                         <div class="input-group-prepend">
                         <div class="input-group-text btn btn-danger" id="btnGroupAddon2"><i class="fa fa-wrench" aria-hidden="true"></i></div>
@@ -34,7 +34,7 @@
         </div>
         <div class="col-lg-12">
             <div class="card">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="Mechanic-table">
                     <thead>
                         <tr>
                         <th scope="col">ลำดับ</th>
@@ -44,22 +44,6 @@
                         <th scope="col"></th>
                         </tr>
                     </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    </tr>
-                </tbody>
                 </table>
             </div>
         </div>        

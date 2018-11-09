@@ -7,13 +7,15 @@
     <script src="<?=base_url("/public/themes/garage/js/sidebarmenu.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/sticky-kit-master/dist/sticky-kit.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/morris-chart/raphael-min.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/chart-js/Chart.bundle.js") ?>"></script>
+    <script src="<?=base_url("/public/themes/garage/js/lib/chart-js/chartjs-init.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/moment.latest.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/semantic.ui.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/prism.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/pignose.calendar.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/pignose.init.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/owl-carousel/owl.carousel.min.js") ?>"></script>
-    <script src="<?=base_url("/public/themes/garage/js/lib/jquery/owl-carousel/owl.carousel-init.js") ?>"></script>
+    <!-- <script src="<?=base_url("/public/themes/garage/js/lib/jquery/owl-carousel/owl.carousel-init.js") ?>"></script> -->
 
     <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
     <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
@@ -23,5 +25,4 @@
     <script src="<?=base_url("/public/themes/garage/js/setup.js") ?>"></script>
     
     <!-- scripit init-->
-
     <script src="<?=base_url("/public/themes/garage/js/scripts.js") ?>"></script>
