@@ -102,7 +102,7 @@
         event.preventDefault();
         table.ajax.reload();
     })
-<<<<<<< HEAD
+
     // function updateStatus(mechanicId,status){
     //     $.post(base_url+"api/rim/changeStatus",{
     //         "rimId": mechanicId,
@@ -116,11 +116,6 @@
     //     });
     // }
 
-
-    
-=======
-
->>>>>>> de0c7188235f95beb52baaa1249165e576498e00
 </script>
 
 </body>
