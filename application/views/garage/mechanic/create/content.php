@@ -30,13 +30,13 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="first_name"><h4>ชื่อ</h4></label>
-                                            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="ชื่อ" title="enter your first name if any.">
+                                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="ชื่อ" title="enter your first name if any.">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="last_name"><h4>นามสกุล</h4></label>
-                                            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="นามสกุล" title="enter your last name if any.">
+                                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="นามสกุล" title="enter your last name if any.">
                                         </div>
                                     </div>
                                 </div>
@@ -44,13 +44,13 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="phone"><h4>เลขบัตรประชาชน</h4></label>
-                                            <input type="text" class="form-control" name="idcard" id="idcard" placeholder="เลขบัตรประชาชน" title="enter your phone number if any.">
+                                            <input type="text" class="form-control" name="idcard"  placeholder="เลขบัตรประชาชน" title="enter your phone number if any.">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="phone"><h4>ประสบการณ์(ปี)</h4></label>
-                                            <input type="text" class="form-control" name="exp" placeholder=" ปี" title="enter your phone number if any.">
+                                            <input type="text" class="form-control" name="exp" id="exp" placeholder=" ปี" title="enter your phone number if any.">
                                         </div>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="phone"><h4>เบอร์โทรศัพท์</h4></label>
-                                            <input type="text" class="form-control" name="phone" placeholder="เบอร์โทรศัพท์" title="enter your phone number if any.">
+                                            <input type="text" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" title="enter your phone number if any.">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
