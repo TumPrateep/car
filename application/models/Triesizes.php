@@ -187,7 +187,7 @@ class Triesizes extends CI_Model{
     }
 
     function getAllTireSizeByrimId($rimId){
-        $this->db->select('tire_sizeId,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size');
+        $this->db->select('tire_sizeId,concat(tire_size.tire_size,"/",tire_size.tire_series,rim.rimName) as tire_size');
         $this->db->join('rim','rim.rimId = tire_size.rimId');
         $this->db->where("rim.rimId", $rimId);
         $query = $this->db->get("tire_size");

@@ -34,13 +34,15 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    // data.tire_brandId = $("#tire_brandId").val();
-                    // data.tire_modelId = $("#tire_modelId").val();
-                    // data.rimId = $("#rimId").val();
-                    // data.tire_sizeId = $("#tire_sizeId").val();
+                    data.tire_brandId = $("#tire_brandId").val();
+                    data.tire_modelId = $("#tire_modelId").val();
+                    data.rimId = $("#rimId").val();
+                    data.tire_sizeId = $("#tire_sizeId").val();
                     // data.price = $("#price").val();
-                    // data.can_change = $("#can_change").val();
-                    // data.sort = $("#sort").val();
+                    data.can_change = $("#can_change").val();
+                    data.sort = $("#sort").val();
+                    data.warranty_distance = $("#warranty_distance").val();
+                    data.warranty_year = $("#warranty_year").val();
                 }
             },
             "columns": [

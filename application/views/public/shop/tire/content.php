@@ -70,7 +70,7 @@
                         <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
                         <select class="form-control input-default" name="can_change" id="can_change">
                             <option value="">สั่งจองหรือเปลี่ยนทันที</option>
-                            <option value="1">ปลี่ยนทันที</option>
+                            <option value="1">เปลี่ยนทันที</option>
                             <option value="2">สั่งจอง</option>
                         </select>
                     </div>
@@ -84,11 +84,13 @@
 						</div>
                     </div>
                     
-                    <div class="form-group">
-                    <div class="col-lg-4">
-                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                    <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <button type="button" id="btn-search" class="btn-create btn btn-warning ">
+                            <i class="ti-search"> ค้นหา</i>
+                        </button>
                     </div>
-                    </div>
+                </div>
 
 				</div>
 			</div>

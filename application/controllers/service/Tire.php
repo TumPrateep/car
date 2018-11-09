@@ -36,7 +36,7 @@ class Tire extends BD_Controller {
 
         $totalData = $this->tireproduct->allTire_count();
         $totalFiltered = $totalData; 
-        if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')))
+        if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')) &&empty($this->post('warranty_year')) &&empty($this->post('warranty_distance')))
         {            
             $posts = $this->tireproduct->allTires($limit,$start,$order,$dir);
         }
@@ -48,11 +48,14 @@ class Tire extends BD_Controller {
             $tire_sizeId = $this->post('tire_sizeId');
             $price = $this->post('price');
             $can_change = $this->post('can_change');
+            $status = $this->post('status');
+            $warranty_year = $this->post('warranty_year');
+            $warranty_distance = $this->post('warranty_distance');
             
             // $status = null; 
-            // $posts =  $this->tireproduct->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$userId);
+            $posts =  $this->tireproduct->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance);
 
-            // $totalFiltered = $this->tireproduct->TireDatas_search_count($tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change, $userId);
+            $totalFiltered = $this->tireproduct->TireDatas_search_count($limit,$start,$order,$dir,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$status);
         }
 
         $data = array();
@@ -142,5 +145,7 @@ class Tire extends BD_Controller {
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
+
+    
 
 }
