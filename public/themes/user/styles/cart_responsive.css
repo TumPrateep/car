@@ -209,6 +209,7 @@
 	.cart_item_name
 	{
 		margin-left: 31px;
+		width: 100%;
 	}
 	.cart_item_text
 	{
@@ -308,6 +309,7 @@
 	.cart_item_name
 	{
 		margin-left: 0;
+		width: 100%;
 	}
 	.cart_info_col
 	{

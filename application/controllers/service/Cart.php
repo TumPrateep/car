@@ -26,7 +26,17 @@ class Cart extends BD_Controller {
             $data["lubricator"][$value->lubricator_dataId]["picture"] = $value->lubricator_dataPicture;
             $data["lubricator"][$value->lubricator_dataId]["brandName"] = $value->lubricator_brandName;
             $data["lubricator"][$value->lubricator_dataId]["name"] = $value->lubricatorName;
-            $data["lubricator"][$value->lubricator_dataId]["lubricatorNumber"] = $value->lubricatorName;
+            $data["lubricator"][$value->lubricator_dataId]["lubricatorNumber"] = $value->lubricator_number;
+            $data["lubricator"][$value->lubricator_dataId]["capacity"] = $value->capacity;
+        }
+
+        foreach($tireData as $value){
+            $data["tire"][$value->tire_dataId]["productId"] = $value->tire_dataId;
+            $data["tire"][$value->tire_dataId]["price"] = $value->price;
+            $data["tire"][$value->tire_dataId]["picture"] = $value->tire_picture;
+            $data["tire"][$value->tire_dataId]["brandName"] = $value->tire_brandName;
+            $data["tire"][$value->tire_dataId]["name"] = $value->tire_modelName;
+            $data["tire"][$value->tire_dataId]["number"] = $value->tire_size;
         }
 
         return $data;
