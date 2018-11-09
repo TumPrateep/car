@@ -22,7 +22,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active p-20" id="home7" role="tabpanel">
-                            2
+                            1
                         </div>
                         <div class="tab-pane  p-20" id="profile7" role="tabpanel">
                             2
