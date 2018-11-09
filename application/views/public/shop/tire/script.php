@@ -38,7 +38,7 @@
                     data.tire_modelId = $("#tire_modelId").val();
                     data.rimId = $("#rimId").val();
                     data.tire_sizeId = $("#tire_sizeId").val();
-                    // data.price = $("#price").val();
+                    data.price = $("#amount").val();
                     data.can_change = $("#can_change").val();
                     data.sort = $("#sort").val();
                     data.warranty_distance = $("#warranty_distance").val();
@@ -123,21 +123,21 @@
         table.ajax.reload();
     })
 
-    $("#price").slider({
-        range: true,
-        min: 0,
-        max: 10000,
-        value: [1000, 7000],
-        formatter: function formatter(val) {
-            // console.log(val);
-            if (Array.isArray(val)) {
-                var start = currency(val[0], { useVedic: true }).format();
-                var end = currency(val[1], { useVedic: true }).format();
-                $("#start").text(start);
-                $("#end").text(end);
-            }
-        },
-    });
+    // $("#amount").slider({
+    //     range: true,
+    //     min: 0,
+    //     max: 10000,
+    //     value: [1000, 7000],
+    //     formatter: function formatter(val) {
+    //         // console.log(val);
+    //         if (Array.isArray(val)) {
+    //             var start = currency(val[0], { useVedic: true }).format();
+    //             var end = currency(val[1], { useVedic: true }).format();
+    //             $("#start").text(start);
+    //             $("#end").text(end);
+    //         }
+    //     },
+    // });
 
     var tireBrand = $("#tire_brandId");
     var tireModel = $("#tire_modelId");

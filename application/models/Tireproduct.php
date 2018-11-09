@@ -30,7 +30,7 @@ class Tireproduct extends CI_Model{
 
     function tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance){
         
-        $price = explode(",",$price);
+        $price = explode("-",$price);
         $this->db->select('tire_data.tire_dataId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size,tire_data.status,tire_data.price,tire_data.warranty_year,tire_data.warranty_distance,tire_data.can_change,tire_data.activeFlag,tire_data.create_by, tire_data.warranty, tire_data.tire_picture, tire_brand.tire_brandPicture, tire_brand.tire_brandId');
         $this->db->from('tire_data');
         $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
@@ -44,12 +44,12 @@ class Tireproduct extends CI_Model{
         $this->db->like('tire_data.rimId',$rimId);
         $this->db->like('tire_data.tire_sizeId',$tire_sizeId);
         $this->db->like('tire_data.can_change',$can_change);
-        $this->db->like('tire_data.warranty_year >=',$warranty_year);
+        $this->db->like('tire_data.warranty_year ',$warranty_year);
+        $this->db->like('tire_data.warranty_distance ',$warranty_distance);
         $this->db->where('tire_data.price >=',$price[0]);
         
-        $this->db->where('tire_data.warranty_distance >=',$warranty_distance);
-        // $this->db->where('tire_data.price <=',$price[1]);
-        // $this->db->where('tire_data.create_by', $userId);
+        
+        $this->db->where('tire_data.price <=',$price[1]);
         
         if($status != null){
             $this->db->where("tire_data.status", $status);
@@ -59,9 +59,9 @@ class Tireproduct extends CI_Model{
                 ->order_by($order,$dir)
                 ->get();
       
-        $result = $this->db->last_query();
-        echo $result;
-        exit();
+        // $result = $this->db->last_query();
+        // echo $result;
+        // exit();
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -72,7 +72,7 @@ class Tireproduct extends CI_Model{
         }
     } 
     function TireDatas_search_count($limit,$start,$order,$dir,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$status){
-        $price = explode(",",$price);
+        $price = explode("-",$price);
         $this->db->select('tire_data.tire_dataId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size,tire_data.status,tire_data.price,tire_data.warranty_year,tire_data.warranty_distance,tire_data.can_change,tire_data.activeFlag,tire_data.create_by, tire_data.warranty, tire_data.tire_picture, tire_brand.tire_brandPicture, tire_brand.tire_brandId');
         $this->db->from('tire_data');
         $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
@@ -86,11 +86,12 @@ class Tireproduct extends CI_Model{
         $this->db->like('tire_data.rimId',$rimId);
         $this->db->like('tire_data.tire_sizeId',$tire_sizeId);
         $this->db->like('tire_data.can_change',$can_change);
-        $this->db->like('tire_data.warranty_year >=',$warranty_year);
+        $this->db->like('tire_data.warranty_year ',$warranty_year);
+        $this->db->like('tire_data.warranty_distance ',$warranty_distance);
         $this->db->where('tire_data.price >=',$price[0]);
         // $this->db->where('tire_data.warranty_year >=',$warranty_year);
-        $this->db->where('tire_data.warranty_distance >=',$warranty_distance);
-        // $this->db->where('tire_data.price <=',$price[1]);
+        // $this->db->where('tire_data.warranty_distance >=',$warranty_distance);
+        $this->db->where('tire_data.price <=',$price[1]);
         
         
         if($status != null){

@@ -76,13 +76,23 @@
                     </div>
 
 					<div class="sidebar_section filter_by_section">
-						<div class="sidebar_title">ราคายาง</div>
+						<div class="sidebar_title">ช่วงราคา</div>
 						<div class="filter_price">
 							<div id="slider-range" class="slider_range" ></div>
 							<p>ช่วงราคา: </p>
 							<p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
 						</div>
                     </div>
+
+					<!-- <div class="col-lg-1"></div>
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <label class="control-label">ช่วงราคา</label>
+                            <div class="input-default">
+                                <span id="start"></span> <input type="text" name="price" id="price"> <span id="end"></span>
+                            </div>
+                        </div>
+                    </div> -->
                     
                     <div class="row">
                     <div class="col-lg-12 text-center">
