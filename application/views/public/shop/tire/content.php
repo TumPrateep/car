@@ -84,23 +84,14 @@
 						</div>
                     </div>
 
-					<!-- <div class="col-lg-1"></div>
-                    <div class="col-lg-5">
-                        <div class="form-group">
-                            <label class="control-label">ช่วงราคา</label>
-                            <div class="input-default">
-                                <span id="start"></span> <input type="text" name="price" id="price"> <span id="end"></span>
-                            </div>
-                        </div>
-                    </div> -->
                     
-                    <div class="row">
-                    <div class="col-lg-12 text-center">
+                    <!-- <div class="row"> -->
+                    <div class="col-lg-12 ">
                         <button type="button" id="btn-search" class="btn-create btn btn-warning ">
                             <i class="ti-search"> ค้นหา</i>
                         </button>
                     </div>
-                </div>
+                <!-- </div> -->
 
 				</div>
 			</div>
