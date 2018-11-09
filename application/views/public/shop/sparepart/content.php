@@ -6,28 +6,28 @@
 
                     <div class="form-group">
                         <label class="control-label">อะไหล่ช่วงล่าง</label>
-                        <select class="form-control input-default" name="tire_brandId" id="tire_brandId">
+                        <select class="form-control input-default" name="spares_undercarriageId" id="spares_undercarriageId">
                             <option value="">เลือกอะไหล่ช่วงล่าง</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">ยี่ห้ออะไหล่ช่วงล่าง</label>
-                        <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <select class="form-control input-default" name="spares_brandId" id="spares_brandId">
                             <option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">ยี่ห้อรถ</label>
-                        <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <select class="form-control input-default" name="brandId" id="brandId">
                             <option value="">เลือกยี่ห้อรถ</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">รุ่นรถ</label>
-                        <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <select class="form-control input-default" name="modelId" id="modelId">
                             <option value="">เลือกรุ่นรถ</option>
                         </select>
                     </div>
@@ -36,29 +36,24 @@
                         <label class="control-label">ปีที่ผลิต</label>
                         <div class="row p-t-20">
                             <div class="col-md-5">
-                                <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                                    <option value="">เลือกปี</option>
+                                <select class="form-control input-default" name="yearStart" id="yearStart">
+                                    <!-- <option value="">เลือกปี</option> -->
                                 </select>
                             </div>
-                            <div class="col-md-2"><label class="control-label">ถึง</label></div>
+                            <label class="col-md-2">ถึง</label>
                             <div class="col-md-5">
-                                <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                                    <option value="">เลือกปี</option>
+                                <select class="form-control input-default" name="yearEnd" id="yearEnd">
+                                    <!-- <option value="">เลือกปี</option> -->
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">ขนาดเครื่องยนต์</label>
-                        <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                            <option value="">เลือกขนาดเครื่องยนต์</option>
-                        </select>
-                    </div>
-
+					</div>
+					
+					
+					
                     <div class="form-group">
                         <label class="control-label">การรับประกัน-ปี</label>
-                        <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+                        <select class="form-control input-default" name="warranty_year" id="warranty_year">
                             <option value="">เลือกปี</option>
                             <option value="">1ปี</option>
                             <option value="">2ปี</option>
@@ -69,9 +64,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">เงื่อนไข</label>
-                        <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                            <option value="">เลือกเงื่อนไข</option>
+                        <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
+                        <select class="form-control input-default" name="can_change" id="can_change">
+                            <option value="">สั่งจองหรือเปลี่ยนทันที</option>
                             <option value="">และ</option>
                             <option value="">หรือ</option>
                         </select>
@@ -80,18 +75,11 @@
                     <div class="form-group">
                         <label class="control-label">การรับประกัน-ระยะทาง</label>
                         <div class="input-group input-group-default">
-                            <input type="number" class="form-control" id="price" name="price" placeholder="ระยะทาง">
+                            <input type="number" class="form-control" id="warranty_distance" name="warranty_distance" placeholder="ระยะทาง">
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
-                        <select class="form-control input-default" name="can_change" id="can_change">
-                            <option value="">สั่งจองหรือเปลี่ยนทันที</option>
-                            <option value="1">ปลี่ยนทันที</option>
-                            <option value="2">สั่งจอง</option>
-                        </select>
-                    </div>
+                    
 
                     <div class="sidebar_section filter_by_section">
                         <div class="sidebar_subtitle">ราคา</div>
