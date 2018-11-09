@@ -1,5 +1,5 @@
-    <!-- All Jquery -->
-    <script src="<?=base_url("/public/themes/garage/js/lib/jquery/jquery.min.js") ?>"></script>
+<!-- All Jquery -->
+<script src="<?=base_url("/public/themes/garage/js/lib/jquery/jquery.min.js") ?>"></script>
     <script src="<?=base_url("/public/js/jquery.validate.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/bootstrap/js/popper.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/bootstrap/js/bootstrap.min.js") ?>"></script>
@@ -24,10 +24,4 @@
     
     <!-- scripit init-->
 
-
-  
-
-
-  
-
-    
+    <script src="<?=base_url("/public/themes/garage/js/scripts.js") ?>"></script>
