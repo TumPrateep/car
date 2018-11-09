@@ -17,3 +17,5 @@
 <script>
     var base_url = "<?=base_url();?>";
 </script>
+<script src="<?=base_url("/public/themes/user/js/shop.js") ?>"></script>
+

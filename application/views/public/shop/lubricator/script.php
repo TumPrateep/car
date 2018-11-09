@@ -1,6 +1,5 @@
 <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
 <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
-<script src="<?=base_url("/public/themes/user/js/shop.js") ?>"></script>
 <script>
     var table = $('#brand-table').DataTable({
         "language": {

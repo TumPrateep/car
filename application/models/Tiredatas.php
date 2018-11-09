@@ -163,5 +163,23 @@ class Tiredatas extends CI_Model{
     function getTireDatasbyId($tire_dataId){
         return $this->db->where('tire_dataId',$tire_dataId)->get("tire_data")->row();
     }
+
+    function getTireDataForCartByIdArray($tire_dataIdArray){
+        if($tire_dataIdArray == null){
+            return null;
+        }
+        $this->db->select('tire_data.tire_dataId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,concat(tire_size.tire_size,"/",tire_size.tire_series,rim.rimName) as tire_size,tire_data.status,tire_data.price,tire_data.warranty_year,tire_data.warranty_distance,tire_data.can_change,tire_data.activeFlag,tire_data.create_by, tire_data.warranty, tire_data.tire_picture, tire_brand.tire_brandPicture, tire_brand.tire_brandId');
+        $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
+        $this->db->join('tire_model','tire_model.tire_modelId = tire_data.tire_modelId');
+        $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');
+        $this->db->join('rim','rim.rimId = tire_data.rimId');
+        $this->db->where_in('tire_data.tire_dataId',$tire_dataIdArray);
+        $result = $this->db->get('tire_data');
+        if($result->num_rows()>0){
+            return $result->result();  
+        }else{
+            return null;
+        }
+    }
     
 }

@@ -73,6 +73,7 @@ class Menu extends CI_Controller {
         $this->load->view("public/shop/cart/content");
         $this->load->view("public/layout/copyright");        
         $this->load->view("public/layout/foot");
+        $this->load->view("public/shop/cart/script");
     }
 
 }

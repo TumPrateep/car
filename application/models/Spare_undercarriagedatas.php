@@ -143,4 +143,18 @@ class Spare_undercarriagedatas extends CI_Model{
     function getSpareDatasById($spares_undercarriageDataId){
         return $this->db->where('spares_undercarriageDataId',$spares_undercarriageDataId)->get("spares_undercarriagedata")->row();
     }
+
+    function getSpareDataForCartByIdArray($spares_undercarriageDataIdArray){
+        if($spares_undercarriageDataIdArray == null){
+            return null;
+        }
+        $this->db->select("price,spares_brandId,spares_undercarriageDataId,spares_undercarriageDataPicture,spares_undercarriageId,status,warranty,warranty_distance,warranty_year,modelId,brandId,modelofcarId,machineSize");
+        $this->db->where_in('spares_undercarriageDataId',$spares_undercarriageDataIdArray);
+        $result = $this->db->get('spares_undercarriageData');
+        if($result->num_rows()>0){
+            return $result->result();  
+        }else{
+            return null;
+        }
+    }
 }

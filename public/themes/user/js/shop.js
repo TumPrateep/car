@@ -1,4 +1,4 @@
-    var data = [];
+    var cartData = [];
     var numberOfCart = 0;
     var cartCount = $("#cart_count");
     function setCart(group, productId){
@@ -7,30 +7,32 @@
     }
 
     function setProductData(group, productId, number){
-        var index = data.findIndex(x => (x.productId === productId && x.group === group));
+        var index = cartData.findIndex(x => (x.productId === productId && x.group === group));
         if(index >= 0){
-            data[index].number += 1;
+            cartData[index].number += 1;
         }else{
             var product = {
                 "productId": productId,
                 "number": number,
                 "group": group 
             };
-            data.push(product);
-            localStorage.setItem("data", JSON.stringify(data));
+            cartData.push(product);
         }
-    } 
+        localStorage.setItem("data", JSON.stringify(cartData));
+    }
+
+    
 
     function setNumberOfCart(){
-        console.log(data);
-        numberOfCart = data.length;
+        console.log(cartData);
+        numberOfCart = cartData.length;
         cartCount.html(numberOfCart);
     }
 
     $(document).ready(function () {
-        data = JSON.parse(localStorage.getItem("data"));
-        if(data == null || data == undefined){
-            data = [];
+        cartData = JSON.parse(localStorage.getItem("data"));
+        if(cartData == null || cartData == undefined){
+            cartData = [];
         }
         setNumberOfCart();
     });

@@ -43,8 +43,10 @@
 							<div class="cart">
 								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
 									<div class="cart_icon">
-										<img src="<?=base_url("public/themes/user/");?>images/cart.png" alt="">
-										<div class="cart_count"><span id="cart_count">0</span></div>
+										<a href="<?=base_url("shop/cart");?>">
+											<img src="<?=base_url("public/themes/user/");?>images/cart.png" alt="">
+											<div class="cart_count"><span id="cart_count">0</span></div>
+										</a>
 									</div>
 									<div class="cart_content">
 										<div class="cart_text"><a href="<?=base_url("shop/cart");?>">ตะกร้า</a></div>
