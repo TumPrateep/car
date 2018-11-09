@@ -25,12 +25,4 @@
     <script src="<?=base_url("/public/themes/garage/js/setup.js") ?>"></script>
     
     <!-- scripit init-->
-
     <script src="<?=base_url("/public/themes/garage/js/scripts.js") ?>"></script>
-
-
-  
-
-
-  
-

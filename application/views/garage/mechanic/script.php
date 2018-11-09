@@ -29,7 +29,7 @@
                 }
             },
             "responsive": true,
-            "bLengthChange": true,
+            "bLengthChange": false,
             "searching": false,
             "processing": true,
             "serverSide": true,
@@ -45,7 +45,7 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "firstName" },
+                null,
                 null,
                 null
             ],
@@ -70,9 +70,9 @@
                     }
                 },{
                     "targets": 1,
-                    "data": "rimName",
+                    "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return ' นาย'+ data ;
+                        return  data.firstName+" "+data.lastName;
                     }
                 },{
                     "targets": 2,
@@ -82,9 +82,9 @@
                     }
                 },{
                     "targets": 3,
-                    "data": "rimName",
+                    "data": "phone",
                     "render": function ( data, type, full, meta ) {
-                        return ' เบอร์' + data ;
+                        return  data ;
                     }
                 },
                 { "orderable": false, "targets": 0 },
@@ -102,6 +102,7 @@
         event.preventDefault();
         table.ajax.reload();
     })
+<<<<<<< HEAD
     // function updateStatus(mechanicId,status){
     //     $.post(base_url+"api/rim/changeStatus",{
     //         "rimId": mechanicId,
@@ -117,6 +118,9 @@
 
 
     
+=======
+
+>>>>>>> de0c7188235f95beb52baaa1249165e576498e00
 </script>
 
 </body>

@@ -15,8 +15,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group" role="group" aria-label="First group" >
-                        <button type="button" class="btn btn-success" href="<?=base_url("garage/mechanic/create") ?>"> เพิ่ม </button>
+                    <div class="btn-group" role="group" aria-label="First group" >                    
+                        <a href="<?=base_url("garage/mechanic/create") ?>" class="btn btn-success" role="button" aria-pressed="true">เพิ่ม</a>    
                     </div>
                     <div class="input-group" id="table-Tsearch">
                         <input type="text" class="form-control" placeholder="ชื่อ - ช่าง" aria-label="Input group example" aria-describedby="btnGroupAddon2">

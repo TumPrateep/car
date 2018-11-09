@@ -37,7 +37,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="phone"><h4>เลขบัตรประชาชน</h4></label>
-                                            <input type="text" class="form-control" name="numbername" placeholder="เลขบัตรประชาชน" title="enter your phone number if any.">
+                                            <input type="text" class="form-control" name="personalid" id="personalid" placeholder="เลขบัตรประชาชน" title="enter your phone number if any.">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
