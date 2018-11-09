@@ -1,5 +1,5 @@
 <script>
-function deletemechanic(mechanicId,firstName){
+    function deletemechanic(mechanicId,firstName){
         var option = {
             url: "/Mechaniccreates/deleteMechaniccreates/mechanicId="+mechanicId,
             label: "ลบชื่อช่างคนนี้",
@@ -8,6 +8,7 @@ function deletemechanic(mechanicId,firstName){
         }
         fnDelete(option);
     }
+
     var table = $('#Mechanic-table').DataTable({
         "language": {
                 "aria": {
@@ -96,6 +97,7 @@ function deletemechanic(mechanicId,firstName){
 
             ]	 
     });
+    
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
@@ -112,6 +114,8 @@ function deletemechanic(mechanicId,firstName){
     //         }
     //     });
     // }
+
+
     
 </script>
 
