@@ -2,13 +2,19 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Spareundercarriageproduct extends BD_Controller {
+class Spareundercarriage extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
         // $this->auth();
-        $this->load->model("Sparesundercarriageproduct");
+        $this->load->model("Spareundercarriageproduct");
+        $this->load->model("sparesundercarriages");
+        $this->load->model("sparesbrand");
+        $this->load->model("brand");
+        $this->load->model("model");
+        
+        
     }
     public function search_post(){
         $column = "spares_undercarriageDataId";
@@ -27,12 +33,12 @@ class Spareundercarriageproduct extends BD_Controller {
         $dir = $sort;
 
         
-        $totalData = $this->spare_undercarriagedatas->allSpareData_count();
+        $totalData = $this->Spareundercarriageproduct->allSpareData_count();
         $totalFiltered = $totalData;
         $userId = $this->session->userdata['logged_in']['id'];
         if(empty($this->post('spares_brandId')) && empty($this->post('spares_undercarriageId'))  && empty($this->post('price')) )
         {            
-            $posts = $this->spare_undercarriagedatas->allSpareData($limit,$start,$order,$dir,$userId);
+            $posts = $this->Spareundercarriageproduct->allSpareData($limit,$start,$order,$dir,$userId);
         }
         else {
             
@@ -41,9 +47,9 @@ class Spareundercarriageproduct extends BD_Controller {
             // $price = $this->post('price');
             
             // $status = null; 
-            // $posts =  $this->spare_undercarriagedatas->SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price, $userId);
+            // $posts =  $this->Sparesundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price, $userId);
 
-            // $totalFiltered = $this->spare_undercarriagedatas->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price, $userId);
+            // $totalFiltered = $this->Sparesundercarriageproduct->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price, $userId);
         }
 
         $data = array();
@@ -93,4 +99,32 @@ class Spareundercarriageproduct extends BD_Controller {
 
         $this->set_response($json_data);
     }
+
+    function getAllSpareundercarriage_get(){
+        $result = $this->sparesundercarriages->getAllSpareundercarriage();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllSpareBrand_get(){
+        $spares_undercarriageId = $this->get("spares_undercarriageId");
+        $result = $this->sparesbrand->getAllSpareBrand($spares_undercarriageId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllBrand_get(){
+        $result = $this->brand->getAllBrandforSelect();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllModel_get(){
+        $brandId = $this->get("brandId");
+        $result = $this->model->getAllmodel($brandId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    
 }

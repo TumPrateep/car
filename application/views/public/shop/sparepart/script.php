@@ -30,11 +30,19 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"service/spareundercarriage/search",
+                "url": base_url+"service/Spareundercarriage/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    
+                    data.spares_brandId = $("#spares_brandId").val();
+                    data.spares_undercarriageId =$("#spares_undercarriageId").val();
+                    // data.modelId= $("#modelId").val();
+                    // data.brandId = $("#brandId").val();
+                    // data.yearStart = $("#yearStart").val();
+                    // data.yer = $("#tire_sizeId").val();
+                    data.price = $("#price").val();
+                    // data.can_change = $("#can_change").val();
+                    data.sort = $("#sort").val();
                 }
             },
             "columns": [
@@ -88,6 +96,114 @@
                 }
             ]
     });
+
+    $("#btn-search").click(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+
+    
+
+    var spares_undercarriage = $("#spares_undercarriageId");
+    var spares_brand = $("#spares_brandId");
+    var brand =$("#brandId");
+    var model = $("#modelId");
+    var dropdownStart = $("#yearStart");
+    var dropdownStop = $("#yearEnd");
+    var nowYear = (new Date).getFullYear();
+    var startYear = 1990;
+
+    init();
+
+    function init(){
+        getSparesUndercarriage();
+        getbrand();
+        year();
+    }
+
+    function year(){
+            dropdownStart.append('<option value="">เลือกปี</option>');
+            dropdownStop.append('<option value="">เลือกปี</option>');
+            for(var i=nowYear;i>=startYear;i--){
+                dropdownStart.append('<option value="'+i+'">'+i+'</option>');
+            }
+        }
+
+        dropdownStart.change(function(){
+            var endStartYear = dropdownStart.val();
+            dropdownStop.html('');
+            dropdownStop.append('<option value="">เลือกปี</option>');
+            if(dropdownStart.val() != ""){
+                // dropdownStop.append('<option value="'+nowYear+'">'+nowYear+' (ปัจจุบัน)</option>');
+                for(var i=nowYear;i>endStartYear;i--){
+                    dropdownStop.append('<option value="'+i+'">'+i+'</option>');
+                }
+            }
+        });
+
+    function getSparesUndercarriage(){
+        $.get(base_url+"service/Spareundercarriage/getAllSpareundercarriage",{},
+            function(data){
+                var sparesUndercarriageData = data.data;
+                $.each(sparesUndercarriageData, function( key, value ) {
+                    spares_undercarriage.append('<option value="' + value.spares_undercarriageId + '">' + value.spares_undercarriageName + '</option>');
+                });
+            }
+        );
+    }
+
+    spares_undercarriage.change(function(){
+        spares_brand.html('<option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>');
+        $.get(base_url+"service/Spareundercarriage/getAllSpareBrand",{
+            spares_undercarriageId: $(this).val()
+        },function(data){
+                var sparesBrandData = data.data;
+                $.each( sparesBrandData, function( key, value ) {
+                    spares_brand.append('<option value="' + value.spares_brandId + '">' + value.spares_brandName + '</option>');
+                });
+            }
+        );
+    });
+    
+    function getbrand(brandId = null ){
+        $.get(base_url+"service/Tire/getAllBrand",{},
+        function(data){
+            var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    brand.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');
+                });
+            }
+        );
+    }
+
+    brand.change(function(){
+        var brandId = brand.val();
+        model.html('<option value="">เลือกรุ่นรถ</option>');
+        $.get(base_url+"service/Tire/getAllModel",{
+            brandId : brandId
+        },function(data){
+            var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
+                });
+            }
+        );
+    });
+
+    
+        
+
+    $("#show-search").click(function(){
+        $(this).hide(100);
+        $("#search-form").slideDown();
+    });
+
+    $("#search-hide").click(function(){
+        $("#search-form").slideUp();
+        $("#show-search").show(100);
+    });
+
+    
 
 
 </script>

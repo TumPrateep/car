@@ -82,7 +82,7 @@ class Tire extends BD_Controller {
                 $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
                 
                 $data[$index] = $nestedData;
-                if($count >= 3){
+                if($count >= 4){
                     $count = -1;
                     $index++;
                     $nestedData = [];
