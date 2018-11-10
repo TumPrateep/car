@@ -43,7 +43,8 @@ class Mechaniccreates extends BD_Controller {
             'exp' => $exp,
             'phone' => $phone,
             'personalid' => $personalid,
-            'skill' => $skill
+            'skill' => $skill,
+            'rols' => 2
             //'idcard' => $idcard
         );
 
@@ -64,8 +65,9 @@ class Mechaniccreates extends BD_Controller {
             $columns = array( 
                 0 => null,
                 1 => 'firstName',
-                2 => null,
-                3 => 'phone' 
+                2 => 'skill',
+                3 => 'phone',
+                4 => 'rols'
             );
             $limit = $this->post('length');
             $start = $this->post('start');
@@ -73,15 +75,15 @@ class Mechaniccreates extends BD_Controller {
             $dir = $this->post('order')[0]['dir'];
             $totalData = $this->mechanic->allmechanic_count();
             $totalFiltered = $totalData; 
-            if(empty($this->post('firstName'))&& empty($this->post('phone')))
+            if(empty($this->post('firstName'))&& empty($this->post('skill')))
             {            
                 $posts = $this->mechanic->allmechanic($limit,$start,$order,$dir);
             }
             else {
-                $search = $this->post('firstName'); 
-                $status = $this->post('phone');
-                $posts =  $this->mechanic->mechanic_search($limit,$start,$search,$order,$dir,$status);
-                $totalFiltered = $this->mechanic->mechanic_search_count($search,$status);
+                $firstname = $this->post('firstName'); 
+                $skill = $this->post('skill');
+                $posts =  $this->mechanic->mechanic_search($limit,$start,$order,$dir,$firstname,$skill);
+                $totalFiltered = $this->mechanic->mechanic_search_count($firstname,$skill);
             }
             $data = array();
             if(!empty($posts))
@@ -94,7 +96,7 @@ class Mechaniccreates extends BD_Controller {
                     $nestedData['phone'] = $post->phone;
                     $nestedData['personalid'] = $post->personalid;
                     $nestedData['skill'] = $post->skill;
-                    //$nestedData['rold'] = $post->rold;
+                    $nestedData['rols'] = $post->rols;
                     $data[] = $nestedData;
                 }
             }

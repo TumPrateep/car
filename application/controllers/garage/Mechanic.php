@@ -39,6 +39,17 @@ class Mechanic extends CI_Controller {
 		$this->load->view("garage/layout/footer");
 		$this->load->view("garage/layout/foot");
 		$this->load->view("garage/mechanic/update/script");
-    }
-
+	}
+	    
+    public function show($mechanicId)
+	{
+		$data["mechanicId"] = $mechanicId;
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+        $this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/mechanic/show/content", $data);
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/mechanic/show/script");
+	}
 }
