@@ -33,7 +33,7 @@
                            </li>
                         </ul>
                         <div class="tab-content p-b-3">
-                           <div class="tab-pane active" id="profile"><br>
+                           <div cve" ilass="tab-pane actid="profile"><br>
                               <h5 class="m-t-2"><span class="fa fa-user-circle-o "></span> รายข้อมูลผู้ใช้งาน</h5>
                               <div class="row">
                                  <div class="col-md-6">
@@ -55,7 +55,7 @@
                                       จังหวัด <span id="province"></span>
                                       รหัสไปรษณีย์ <span id="postCode"></span>
                                     </p>
-                                  </div>
+                                  </div>  
                                 </div>
                                 <div class="row">
                                  <div class="col-md-12">

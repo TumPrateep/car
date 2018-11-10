@@ -11,27 +11,71 @@
                 </ol>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body p-b-0">
-                    <h4 class="card-title">Customtab2 Tab</h4>
-                    <ul class="nav nav-tabs customtab2" role="tablist">
-                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home7" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">ข้อมูลเจ้าของอู่</span></a> </li>
-                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile7" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">ข้อมูลอู่ซ้อมรถ</span></a> </li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div class="tab-pane active p-20" id="home7" role="tabpanel">
-                            1
-                        </div>
-                        <div class="tab-pane  p-20" id="profile7" role="tabpanel">
-                            2
+
+   
+        <section class="content">
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card ">
+                    <div class="card-body black bg-light">
+                    <div class="container">
+                        <div class="row m-y-2">
+                            <div class="col-lg-10 push-lg-4">
+                                <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">ข้อมูลเจ้าของอู๋</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">ข้อมูลอู่</a>
+                                </li>
+                                </ul>
+                                <div class="tab-content p-b-3">
+                                <div cve" ilass="tab-pane actid="profile"><br>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <h6><b>คำนำหน้า</b></h6>
+                                            <p id="titleName"></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h6><b>ชื่อ</b></h6>
+                                            <p id="firstName"></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h6><b>นามสกุล</b></h6>
+                                            <p id="lastName"></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h6><b>เบอร์โทรศัพท์</b></h6>
+                                            <p id="phone"></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h6><b>ประสบการณ์</b></h6>
+                                            <p id="exp"></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6><b>เลขบัตรประชาชน</b></h6>
+                                            <p id="personalid"></p>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="tab-pane" id="messages"><br>
+                                    <div id="role-4">
+                                        <div class="row">
+                                        <div class="col-md-6">
+                                            <h6><b>ป้ายทะเบียนรถ</b></h6>
+                                            <p id="plate"></p>
+                                            <h6><b>สีรถ</b></h6>
+                                            <p id="colorCar"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>    
+                    </div>
+                </div>
             </div>
+        </section>
         </div>
-        
-                           
-
-        
