@@ -24,88 +24,6 @@
                         "sLast": "หน้าสุดท้าย" // This is the link to the last page
                     }
                 },
-<<<<<<< HEAD
-                "sProcessing":   "กำลังดำเนินการ...",
-                "emptyTable": "ไม่พบข้อมูล",
-                "info": "แสดงสินค้า _TOTAL_ รายการ",
-                "infoEmpty": "ไม่พบข้อมูล",
-                "infoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
-                "lengthMenu": "_MENU_ รายการ",
-                "zeroRecords": "ไม่พบข้อมูล",
-                "oPaginate": {
-                    "sFirst": "หน้าแรก", // This is the link to the first page
-                    "sPrevious": "ก่อนหน้า", // This is the link to the previous page
-                    "sNext": "ถัดไป", // This is the link to the next page
-                    "sLast": "หน้าสุดท้าย" // This is the link to the last page
-                }
-            },
-            "responsive": true,
-            "bLengthChange": false,
-            "searching": false,
-            "processing": true,
-            "serverSide": true,
-            "orderable": false,
-            "pageLength": 12,
-            "ajax":{
-                "url": base_url+"service/Spareundercarriage/search",
-                "dataType": "json",
-                "type": "POST",
-                "data": function ( data ) {
-                    data.spares_brandId = $("#spares_brandId").val();
-                    data.spares_undercarriageId =$("#spares_undercarriageId").val();
-                    data.modelId= $("#modelId").val();
-                    data.brandId = $("#brandId").val();
-                    data.yearStart = $("#yearStart").val();
-                    data.yerrEnd = $("#yerrEnd").val();
-                    data.price = $("#amount").val();
-                    data.can_change = $("#can_change").val();
-                    data.sort = $("#sort").val();
-                    data.warranty_distance = $("#warranty_distance").val();
-                    data.warranty_year = $("#warranty_year").val();
-
-                    warranty_distance
-                }
-            },
-            "columns": [
-                null
-            ],
-            "columnDefs": [
-                {
-                    "targets": 0,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        var html = '<div class="row">';
-                        var imagePath = base_url+"/public/image/spareundercarriage/";
-                        $.each(data, function( index, value ) {
-                            var switchVal = "true";
-                            var active = " active";
-                            if(value.status == null){
-                                return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
-                            }else if(value.status != "1"){
-                                switchVal = "false";
-                                active = "";
-                            }
-
-                            html += '<div class="col-md-3">'
-                                    +'<div class="slick-active" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel">'
-                                        +'<div>'
-                                            +'<div class="" style="width: 100%; display: inline-block;">'
-                                                +'<div class="border_active active"></div>'
-                                                +'<div class="product_item d-flex flex-column align-items-center justify-content-center text-center">'
-                                                    +'<div class="product_image d-flex flex-column align-items-center justify-content-center" onclick="gotoDetail(\'spare\',\''+value.spares_undercarriageDataId+'\')"><img src="'+imagePath+value.spares_undercarriageDataPicture+'"/></div>'
-                                                    +'<div class="product_content">'
-                                                        +'<div class="product_price">'+currency(value.price, {  precision: 0 }).format()+' บาท</div>'
-                                                        +'<div class="product_name">'
-                                                            +'<div onclick="gotoDetail(\'spare\',\''+value.spares_undercarriageDataId+'\')">'
-                                                            +'<div><a href="product.html" tabindex="0"><strong> '+value.spares_undercarriageName+' ' + value.spares_brandName +' </strong></a></div>'
-                                                            +'<ul>'+value.brandName+' '+ value.modelName +' </ul>'
-                                                            // +'<ul>'+value.year+'-'+value.yearEnd+'</ul>'
-                                                            +'<ul>'+value.year+'</ul>'
-                                                        +'</div>'
-                                                        +'</div>'
-                                                        +'<div class="product_extras">'
-                                                        +'<button class="product_cart_button" tabindex="0" onclick="setCart(\'spare\',\''+value.spares_undercarriageDataId+'\')"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>'
-=======
                 "responsive": true,
                 "bLengthChange": false,
                 "searching": false,
@@ -153,8 +71,9 @@
                                                 +'<div class="" style="width: 100%; display: inline-block;">'
                                                     +'<div class="border_active active"></div>'
                                                     +'<div class="product_item d-flex flex-column align-items-center justify-content-center text-center">'
-                                                        +'<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="'+imagePath+value.spares_undercarriageDataPicture+'"/></div>'
+                                                        +'<div class="product_image d-flex flex-column align-items-center justify-content-center"onclick="gotoDetail(\'spare\',\''+value.spares_undercarriageDataId+'\')"><img src="'+imagePath+value.spares_undercarriageDataPicture+'"/></div>'
                                                         +'<div class="product_content">'
+                                                        +'<div onclick="gotoDetail(\'spare\',\''+value.spares_undercarriageDataId+'\')">'
                                                             +'<div class="product_price">'+currency(value.price, {  precision: 0 }).format()+' บาท</div>'
                                                             +'<div class="product_name">'
                                                                 +'<div><a href="product.html" tabindex="0"><strong> '+value.spares_undercarriageName+' ' + value.spares_brandName +' </strong></a></div>'
@@ -162,10 +81,10 @@
                                                                 // +'<ul>'+value.year+'-'+value.yearEnd+'</ul>'
                                                                 +'<ul>'+value.year+'</ul>'
                                                             +'</div>'
+                                                            +'</div>'
                                                             +'<div class="product_extras">'
                                                             +'<button class="product_cart_button" tabindex="0" onclick="setCart(\'spare\',\''+value.spares_undercarriageDataId+'\')"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>'
                                                             +'</div>'
->>>>>>> c1c1719aeaeae4b93b0d2143b0202c106ae1516d
                                                         +'</div>'
                                                     +'</div>'
                                                 +'</div>'
