@@ -1,7 +1,7 @@
 <?php
  
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Mechaniccreates extends BD_Controller {
+class Datagarage extends BD_Controller {
 
     function __construct()
     {
@@ -94,7 +94,6 @@ class Mechaniccreates extends BD_Controller {
                     $nestedData['phone'] = $post->phone;
                     $nestedData['personalid'] = $post->personalid;
                     $nestedData['skill'] = $post->skill;
-                    //$nestedData['rold'] = $post->rold;
                     $data[] = $nestedData;
                 }
             }
