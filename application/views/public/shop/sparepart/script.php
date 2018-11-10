@@ -36,13 +36,17 @@
                 "data": function ( data ) {
                     data.spares_brandId = $("#spares_brandId").val();
                     data.spares_undercarriageId =$("#spares_undercarriageId").val();
-                    // data.modelId= $("#modelId").val();
-                    // data.brandId = $("#brandId").val();
-                    // data.yearStart = $("#yearStart").val();
-                    // data.yer = $("#tire_sizeId").val();
-                    data.price = $("#price").val();
-                    // data.can_change = $("#can_change").val();
+                    data.modelId= $("#modelId").val();
+                    data.brandId = $("#brandId").val();
+                    data.yearStart = $("#yearStart").val();
+                    data.yerrEnd = $("#yerrEnd").val();
+                    data.price = $("#amount").val();
+                    data.can_change = $("#can_change").val();
                     data.sort = $("#sort").val();
+                    data.warranty_distance = $("#warranty_distance").val();
+                    data.warranty_year = $("#warranty_year").val();
+
+                    warranty_distance
                 }
             },
             "columns": [
@@ -77,7 +81,8 @@
                                                         +'<div class="product_name">'
                                                             +'<div><a href="product.html" tabindex="0"><strong> '+value.spares_undercarriageName+' ' + value.spares_brandName +' </strong></a></div>'
                                                             +'<ul>'+value.brandName+' '+ value.modelName +' </ul>'
-                                                            +'<ul>'+value.yearStart+'-'+value.yearEnd+'</ul>'
+                                                            // +'<ul>'+value.year+'-'+value.yearEnd+'</ul>'
+                                                            +'<ul>'+value.year+'</ul>'
                                                         +'</div>'
                                                         +'<div class="product_extras">'
                                                             +'<button class="product_cart_button" tabindex="0"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>'
