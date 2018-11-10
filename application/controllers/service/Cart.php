@@ -39,6 +39,17 @@ class Cart extends BD_Controller {
             $data["tire"][$value->tire_dataId]["number"] = $value->tire_size;
         }
 
+        foreach($spareData as $value){
+            $data["spare"][$value->spares_undercarriageDataId]["productId"] = $value->spares_undercarriageDataId;
+            $data["spare"][$value->spares_undercarriageDataId]["price"] = $value->price;
+            $data["spare"][$value->spares_undercarriageDataId]["picture"] = $value->spares_undercarriageDataPicture;
+            $data["spare"][$value->spares_undercarriageDataId]["brandName"] = $value->brandName;
+            $data["spare"][$value->spares_undercarriageDataId]["modelName"] = $value->modelName;
+            $data["spare"][$value->spares_undercarriageDataId]["year"] = $value->year;
+            $data["spare"][$value->spares_undercarriageDataId]["spares_brandName"] = $value->spares_brandName;
+            $data["spare"][$value->spares_undercarriageDataId]["spares_undercarriageName"] = $value->spares_undercarriageName;
+        }
+
         return $data;
     }
 
@@ -67,8 +78,10 @@ class Cart extends BD_Controller {
             $data, function ($e) { return $e["group"] == "spare"; }
         );
         $spareDataIdArray = array_column($spareArray, 'productId');
-        $this->load->model("tiredatas");
-        return $this->tiredatas->getTireDataForCartByIdArray($spareDataIdArray);
+        $this->load->model("Spare_undercarriagedatas");
+        return $this->Spare_undercarriagedatas->getSpareDataForCartByIdArray($spareDataIdArray);
     }
+
+    
 
 }
