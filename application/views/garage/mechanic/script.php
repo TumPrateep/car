@@ -1,5 +1,5 @@
 <script>
-function deletemechanic(mechanicId,firstName){
+    function deletemechanic(mechanicId,firstName){
         var option = {
             url: "/Mechaniccreates/deleteMechaniccreates?mechanicId="+mechanicId,
             label: "ลบชื่อช่างคนนี้",
@@ -8,6 +8,7 @@ function deletemechanic(mechanicId,firstName){
         }
         fnDelete(option);
     }
+
     var table = $('#Mechanic-table').DataTable({
         "language": {
                 "aria": {
@@ -96,10 +97,24 @@ function deletemechanic(mechanicId,firstName){
 
             ]	 
     });
+    
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
+
+    // function updateStatus(mechanicId,status){
+    //     $.post(base_url+"api/rim/changeStatus",{
+    //         "rimId": mechanicId,
+    //         "status": status
+    //     },function(data){
+    //         if(data.message == 200){
+    //             showMessage(data.message,"admin/Tires");
+    //         }else{
+    //             showMessage(data.message);
+    //         }
+    //     });
+    // }
 
 </script>
 
