@@ -20,7 +20,7 @@ class Datagarage extends CI_Controller {
     
 
 
-    public function update()  //($garageId)
+    public function updatedatagarage()  //($garageId)
 	{
 		//$data["garageId"] = $garageId;
 		$this->load->view("garage/layout/head");
@@ -30,6 +30,18 @@ class Datagarage extends CI_Controller {
 		$this->load->view("garage/layout/footer");
 		$this->load->view("garage/layout/foot");
 		$this->load->view("garage/datagarage/updatedatagarage/script");
+	}
+	
+	public function updatedataowner()  //($garageId)
+	{
+		//$data["garageId"] = $garageId;
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+        $this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/datagarage/updatedataowner/content"); //,$data);
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/datagarage/updatedataowner/script");
     }
 
 }
