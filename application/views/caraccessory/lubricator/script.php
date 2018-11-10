@@ -70,7 +70,7 @@
                                  + '<div class="card-body text-center card-bottom">'
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/Lubricator/updatelubricator/"+value.lubricatorId+'/'+value.lubricator_brandId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                html += '<a href="'+base_url+"caraccessory/Lubricator/updatelubricator/"+value.lubricator_brandId+'/'+value.lubricatorId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteLubricator('+value.lubricatorId+',\''+value.lubricatorName+'\',\''+value.lubricator_brandId+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  
