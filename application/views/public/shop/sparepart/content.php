@@ -35,52 +35,23 @@
                     <div class="form-group">
                         <label class="control-label">ปีที่ผลิต</label>
                         <div class="row p-t-20">
-                            <div class="col-md-5">
-                                <select class="form-control input-default" name="yearStart" id="yearStart">
-                                    <!-- <option value="">เลือกปี</option> -->
-                                </select>
-                            </div>
-                            <label class="col-md-2">ถึง</label>
-                            <div class="col-md-5">
-                                <select class="form-control input-default" name="yearEnd" id="yearEnd">
+                            <div class="col-md-12">
+                                <select class="form-control input-default" name="year" id="year">
                                     <!-- <option value="">เลือกปี</option> -->
                                 </select>
                             </div>
                         </div>
 					</div>
-					
-					
-					
-                    <div class="form-group">
-                        <label class="control-label">การรับประกัน-ปี</label>
-                        <select class="form-control input-default" name="warranty_year" id="warranty_year">
-                            <option value="">เลือกปี</option>
-                            <option value="">1ปี</option>
-                            <option value="">2ปี</option>
-                            <option value="">3ปี</option>
-                            <option value="">4ปี</option>
-                            <option value="">5ปี</option>
-                        </select>
-                    </div>
 
                     <div class="form-group">
                         <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
-                        <select class="form-control input-default" name="can_change" id="can_change">
-                            <option value="">สั่งจองหรือเปลี่ยนทันที</option>
-                            <option value="">และ</option>
-                            <option value="">หรือ</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">การรับประกัน-ระยะทาง</label>
-                        <div class="input-group input-group-default">
-                            <input type="number" class="form-control" id="warranty_distance" name="warranty_distance" placeholder="ระยะทาง">
-                        </div>
+                        <select class="form-control valid" id="can_change" name="can_change" aria-required="true" aria-invalid="false">
+							<option value="1">เปลี่ยนทันที</option>
+							<option value="2">สั่งจอง</option>
+						</select>
                     </div>
 
                     
-
                     <div class="sidebar_section filter_by_section">
                         <div class="sidebar_subtitle">ราคา</div>
                         <div class="filter_price">

@@ -36,7 +36,13 @@ class Spareundercarriage extends BD_Controller {
         $totalData = $this->Spareundercarriageproduct->allSpareData_count();
         $totalFiltered = $totalData;
         
-        if(empty($this->post('spares_brandId')) && empty($this->post('spares_undercarriageId'))  && empty($this->post('modelId')) && empty($this->post('brandId'))&& empty($this->post('yearStart'))&& empty($this->post('yerrEnd'))&& empty($this->post('price'))&& empty($this->post('can_change')) && empty($this->post('warranty_distance'))&& empty($this->post('warranty_year')))
+        if(empty($this->post('spares_brandId')) 
+            && empty($this->post('spares_undercarriageId')) 
+            && empty($this->post('modelId')) 
+            && empty($this->post('brandId'))
+            && empty($this->post('year'))
+            && empty($this->post('price'))
+            && empty($this->post('can_change')))
         {            
             $posts = $this->Spareundercarriageproduct->allSpareData($limit,$start,$order,$dir);
         }
@@ -46,18 +52,14 @@ class Spareundercarriage extends BD_Controller {
             $spares_undercarriageId = $this->post('spares_undercarriageId');
             $modelId =$this->post('modelId');
             $brandId =$this->post('brandId');
-            $yearStart =$this->post('yearStart');
-            $yearEnd =$this->post('yearEnd');
+            $year =$this->post('year');
             $can_change =$this->post('can_change');
-            $warranty_distance =$this->post('warranty_distance');
-            $warranty_year =$this->post('warranty_year');
             $price = $this->post('price');
             $status = $this->post('status');
             
-            
-            $posts =  $this->Spareundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$yearStart,$yearEnd,$can_change,$warranty_distance,$warranty_year);
+            $posts =  $this->Spareundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
 
-            $totalFiltered = $this->Spareundercarriageproduct->SpareDatas_search_count($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$yearStart,$yearEnd,$can_change,$warranty_distance,$warranty_year);
+            $totalFiltered = $this->Spareundercarriageproduct->SpareDatas_search_count($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
         }
 
         $data = array();
