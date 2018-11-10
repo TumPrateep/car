@@ -79,7 +79,7 @@ class Cart extends BD_Controller {
         );
         $spareDataIdArray = array_column($spareArray, 'productId');
         $this->load->model("Spare_undercarriagedatas");
-        return $this->Spare_undercarriagedatas->getSpareDataForCartByIdArray($spareDataIdArray);
+        return $this->Spareundercarriageproduct->getSpareDataForCartByIdArray($spareDataIdArray);
     }
 
     function getLubricatorDetail($productId){
@@ -93,8 +93,8 @@ class Cart extends BD_Controller {
     }
     
     function getSpareDetail($productId){
-        $this->load->model("spare_undercarriagedatas");
-        return $this->spare_undercarriagedatas->getSpareDataForCartById($productId);
+        $this->load->model("Spareundercarriageproduct");
+        return $this->Spareundercarriageproduct->getSpareDataForCartById($productId);
     }
 
     function getDetail_post(){
