@@ -3,55 +3,93 @@
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="shop_sidebar">
-					<div class="form-group">
-						<label class="control-label">ประเภทเครื่องยนต์</label>
-						<select class="form-control input-default" name="can_change" id="lubricator_typeId">
-							<option value="">เลือกประเภทเครื่องยนต์</option>
-							<option value="1">เบนซิน</option>
-							<option value="2">ดีเซล</option>
-						</select>
-					</div>
 
-					<div class="form-group">
-						<label class="control-label">ยี่ห้อน้ำมันเครื่อง</label>
-						<select class="form-control input-default" name="lubricator_brandId" id="lubricator_brandId">
-							<option value="">เลือกยี่ห้อน้ำมันเครื่อง</option>
-						</select>
-					</div>
-				
-				
-					<div class="form-group">
-						<label class="control-label">เบอร์น้ำมันเครื่อง</label>
-						<select class="form-control input-default" name="lubricator_numberId" id="lubricator_numberId">
-							<option value="">เลือกเบอร์น้ำมันเครื่อง</option>
-						</select>
-					</div>
-				
-				
-					<div class="form-group">
-						<label class="control-label">ประเภทน้ำมันเครื่อง</label>
-						<select class="form-control input-default" name="lubricator_typeId" id="lubricator_typeId">
-							<option value="">เลือกประเภทน้ำมันเครื่อง</option>
-						</select>
-					</div>
-				
-					<div class="form-group">
-						<label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
-						<select class="form-control input-default" name="can_change" id="can_change">
-							<option value="">สั่งจองหรือเปลี่ยนทันที</option>
-							<option value="1">ปลี่ยนทันที</option>
-							<option value="2">สั่งจอง</option>
-						</select>
-					</div>
+						 <div class="form-group">
+                            <label class="control-label">ประเภทเครื่องยนตร์</label>
+                            <div class="input-group input-group-default">
+                                <select class="form-control" id="lubricatortypeFormachineId" name="lubricatortypeFormachineId">
+                                <option value="">ประเภทเครื่องยนตร์</option>
+                                </select>
+                            </div>
+                        </div>
+
+						<div class="form-group">
+                            <label class="control-label">ชนิดน้ำมันเครื่อง</label>
+                            <div class="input-group input-group-default">
+                                <select class="form-control valid" name="lubricator_gear" id="lubricator_gear">
+                                    <option value="">เลือกชนิดน้ำมันเครื่อง</option>
+                                    <option value="1">น้ำมันเครื่อง</option>
+                                    <option value="2">น้ำมันเกียร์ธรรมดา</option>
+                                    <option value="3">น้ำมันเกียร์ออโต</option>
+                                </select>
+                            </div>
+                        </div>
+
+						
+
+						<div class="form-group">
+                            <label class="control-label">ยี่ห้อน้ำมันเครื่อง</label>
+                            <div class="input-group input-group-default">
+                                <select class="form-control" id="lubricator_brandId" name="lubricator_brandId">
+                                    <option value="">เลือกยี่ห้อน้ำมันเครื่อง</option>
+                                </select>
+                            </div>
+                        </div>
+
+						 <div class="form-group">
+                            <label class="control-label">รุ่นน้ำมันเครื่อง</label>
+                            <div class="input-group input-group-default">
+                                <select class="form-control" id="lubricatorId" name="lubricatorId">
+                                <option value="">เลือกรุ่นน้ำมันเครื่อง</option>
+                                </select>
+                            </div>
+                        </div>
+					
+					
+                    <div class="form-group">
+                        <label class="control-label">การรับประกัน-ปี</label>
+                        <select class="form-control input-default" name="warranty_year" id="warranty_year">
+                            <option value="">เลือกปี</option>
+                            <option value="">1ปี</option>
+                            <option value="">2ปี</option>
+                            <option value="">3ปี</option>
+                            <option value="">4ปี</option>
+                            <option value="">5ปี</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
+                        <select class="form-control input-default" name="can_change" id="can_change">
+                            <option value="">สั่งจองหรือเปลี่ยนทันที</option>
+                            <option value="">และ</option>
+                            <option value="">หรือ</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">การรับประกัน-ระยะทาง</label>
+                        <div class="input-group input-group-default">
+                            <input type="number" class="form-control" id="warranty_distance" name="warranty_distance" placeholder="ระยะทาง">
+                        </div>
+                    </div>
+
 
 					<div class="sidebar_section filter_by_section">
-						<div class="sidebar_title">ราคาน้ำมันเครื่อง</div>
-						<div class="filter_price">
-							<div id="slider-range" class="slider_range" ></div>
-							<p>ช่วงราคา: </p>
-							<p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
-						</div>
+                        <div class="sidebar_subtitle">ราคา</div>
+                        <div class="filter_price">
+                            <div id="slider-range" class="slider_range"></div>
+                            <p>ช่วงราคา: </p>
+                            <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+                        </div>
 					</div>
+
+					<div class="col-lg-12 ">
+                        <button type="button" id="btn-search" class="btn-create btn btn-warning ">
+                            <i class="ti-search"> ค้นหา</i>
+                        </button>
+                    </div>
+
 				</div>
 			</div>
 			<div class="col-lg-9">

@@ -88,6 +88,80 @@
             ]
     });
 
+     $("#btn-search").click(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+
+    $("#show-search").click(function(){
+        $(this).hide(100);
+        $("#search-form").slideDown();
+    });
+
+    $("#search-hide").click(function(){
+        $("#search-form").slideUp();
+        $("#show-search").show(100);
+    });
+
+    
+    init();
+
+    function init(){
+        getLubracatorBrand();
+        getlubricatortypeFormachine();
+        
+    }
+
+
+    var lubricator_brand = $("#lubricator_brandId");
+    var lubricator = $("#lubricatorId");
+    var lubricator_gear = $("#lubricator_gear");
+    var lubricatortypeFormachine = $("#lubricatortypeFormachineId");
+
+    function getLubracatorBrand(){
+        $.get(base_url+"service/Lubricator/getAllLubricatorBrand",{},
+            function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    lubricator_brand.append('<option value="' + value.lubricator_brandId + '">' + value.lubricator_brandName + '</option>');
+                });
+            }
+        );
+    }
+
+    lubricator_gear.change(function(){
+        lubricator_brand.html('<option value="">เลือกยี่ห้อน้ำมันเครื่อง</option>');
+        lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
+        if(lubricator_gear.val() != ""){
+            getLubracatorBrand(); 
+        }
+    });
+
+    lubricator_brand.change(function(){
+        lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
+        $.get(base_url+"service/Lubricator/getAllLubricator",{
+            lubricator_brandId: $(this).val(),
+            lubricator_gear: lubricator_gear.val()
+        },function(data){
+                var lubricatorData = data.data;
+                $.each( lubricatorData, function( key, value ) {
+                    lubricator.append('<option value="' + value.lubricatorId + '">' + value.lubricatorName + " " + value.capacity + " ลิตร " + value.lubricator_number + '</option>');
+                });
+            }
+        );
+    });
+
+    function getlubricatortypeFormachine(){
+        $.get(base_url+"service/Lubricator/getAlllubricatortypeFormachine",{},
+            function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    lubricatortypeFormachine.append('<option value="' + value.lubricatortypeFormachineId + '">' + value.lubricatortypeFormachine + '</option>');
+                });
+            }
+        );
+    }
+
 
 </script>
 </body>
