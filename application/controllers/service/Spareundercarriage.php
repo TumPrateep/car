@@ -35,21 +35,29 @@ class Spareundercarriage extends BD_Controller {
         
         $totalData = $this->Spareundercarriageproduct->allSpareData_count();
         $totalFiltered = $totalData;
-        $userId = $this->session->userdata['logged_in']['id'];
-        if(empty($this->post('spares_brandId')) && empty($this->post('spares_undercarriageId'))  && empty($this->post('price')) )
+        
+        if(empty($this->post('spares_brandId')) && empty($this->post('spares_undercarriageId'))  && empty($this->post('modelId')) && empty($this->post('brandId'))&& empty($this->post('yearStart'))&& empty($this->post('yerrEnd'))&& empty($this->post('price'))&& empty($this->post('can_change')) && empty($this->post('warranty_distance'))&& empty($this->post('warranty_year')))
         {            
-            $posts = $this->Spareundercarriageproduct->allSpareData($limit,$start,$order,$dir,$userId);
+            $posts = $this->Spareundercarriageproduct->allSpareData($limit,$start,$order,$dir);
         }
         else {
             
-            // $spares_brandId = $this->post('spares_brandId');
-            // $spares_undercarriageId = $this->post('spares_undercarriageId');
-            // $price = $this->post('price');
+            $spares_brandId = $this->post('spares_brandId');
+            $spares_undercarriageId = $this->post('spares_undercarriageId');
+            $modelId =$this->post('modelId');
+            $brandId =$this->post('brandId');
+            $yearStart =$this->post('yearStart');
+            $yearEnd =$this->post('yearEnd');
+            $can_change =$this->post('can_change');
+            $warranty_distance =$this->post('warranty_distance');
+            $warranty_year =$this->post('warranty_year');
+            $price = $this->post('price');
+            $status = $this->post('status');
             
-            // $status = null; 
-            // $posts =  $this->Sparesundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price, $userId);
+            
+            $posts =  $this->Spareundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$yearStart,$yearEnd,$can_change,$warranty_distance,$warranty_year);
 
-            // $totalFiltered = $this->Sparesundercarriageproduct->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price, $userId);
+            $totalFiltered = $this->Spareundercarriageproduct->SpareDatas_search_count($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$yearStart,$yearEnd,$can_change,$warranty_distance,$warranty_year);
         }
 
         $data = array();
@@ -76,10 +84,9 @@ class Spareundercarriage extends BD_Controller {
                 }else{
                     $nestedData[$count]['year'] = $post->yearStart;
                 }
-                $nestedData[$count]['modelofcarName'] = $post->modelofcarName;
-                $nestedData[$count]['machineSize'] = $post->machineSize;
+                
                 $data[$index] = $nestedData;
-                if($count >= 2){
+                if($count >= 4){
                     $count = -1;
                     $index++;
                     $nestedData = [];
