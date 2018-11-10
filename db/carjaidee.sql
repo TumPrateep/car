@@ -1368,6 +1368,7 @@ CREATE TABLE `mechanic` (
   `firstName` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lastName` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `exp` int(11) DEFAULT NULL,
+  `role` int(11) DEFAULT NULL,
   `personalid` int(13) DEFAULT NULL,
   `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
