@@ -45,35 +45,14 @@
                             </div>
                         </div>
 					
-					
-                    <div class="form-group">
-                        <label class="control-label">การรับประกัน-ปี</label>
-                        <select class="form-control input-default" name="warranty_year" id="warranty_year">
-                            <option value="">เลือกปี</option>
-                            <option value="">1ปี</option>
-                            <option value="">2ปี</option>
-                            <option value="">3ปี</option>
-                            <option value="">4ปี</option>
-                            <option value="">5ปี</option>
-                        </select>
-                    </div>
 
                     <div class="form-group">
                         <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
-                        <select class="form-control input-default" name="can_change" id="can_change">
-                            <option value="">สั่งจองหรือเปลี่ยนทันที</option>
-                            <option value="">และ</option>
-                            <option value="">หรือ</option>
-                        </select>
+                        <select class="form-control valid" id="can_change" name="can_change" aria-required="true" aria-invalid="false">
+							<option value="1">เปลี่ยนทันที</option>
+							<option value="2">สั่งจอง</option>
+						</select>
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label">การรับประกัน-ระยะทาง</label>
-                        <div class="input-group input-group-default">
-                            <input type="number" class="form-control" id="warranty_distance" name="warranty_distance" placeholder="ระยะทาง">
-                        </div>
-                    </div>
-
 
 					<div class="sidebar_section filter_by_section">
                         <div class="sidebar_subtitle">ราคา</div>

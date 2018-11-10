@@ -37,20 +37,24 @@ class Lubricator extends BD_Controller {
 
         $totalData = $this->lubricatorproduct->allLubricatordata_count();
         $totalFiltered = $totalData; 
-        if(empty($this->post('lubricatorId')) && empty($this->post('lubricator_brandId')) && empty($this->post('lubricator_gear')) && empty($this->post('price')))
+        if(empty($this->post('lubricatortypeFormachineId')) 
+            && empty($this->post('lubricator_gear')) 
+            && empty($this->post('lubricator_brandId')) 
+            && empty($this->post('lubricatorId'))
+            && empty($this->post('price')))
         {            
             $posts = $this->lubricatorproduct->allLubricatordatas($limit,$start,$order,$dir);
         }else{
-
-            // $lubricatorId = $this->post('lubricatorId');
-            // $lubricator_brandId = $this->post('lubricator_brandId');
-            // $lubricator_gear = $this->post('lubricator_gear');
-            // $price = $this->post('price');
+            $lubricatortypeFormachineId = $this->post('lubricatortypeFormachineId');
+            $lubricatorId = $this->post('lubricatorId');
+            $lubricator_brandId = $this->post('lubricator_brandId');
+            $lubricator_gear = $this->post('lubricator_gear');
+            $price = $this->post('price');
             
             // $status = null; 
-            // $posts =  $this->lubricatordatas->LubricatorDatas_search($limit,$start,$order,$dir,$status,$lubricatorId, $lubricator_brandId, $lubricator_gear, $price, $userId);
+            $posts =  $this->lubricatorproduct->LubricatorDatas_search($limit,$start,$order,$dir,$lubricatorId, $lubricator_brandId, $lubricator_gear, $price, $lubricatortypeFormachineId);
 
-            // $totalFiltered = $this->lubricatordatas->LubricatorDatas_search_count($lubricatorId, $lubricator_brandId, $lubricator_gear, $price, $userId);
+            $totalFiltered = $this->lubricatorproduct->LubricatorDatas_search_count($lubricatorId, $lubricator_brandId, $lubricator_gear, $price, $lubricatortypeFormachineId);
         }
 
         $data = array();
