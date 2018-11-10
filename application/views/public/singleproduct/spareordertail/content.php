@@ -25,15 +25,15 @@
 							<p>
 								<div class="row">
 									<div class="col">ยี่ห้อ : <span id="showBrand"></span></div>
-									<div class="col">รุ่น : <span id="showModel"></span></div>
+									<div class="col">อะไหล่ : <span id="showModel"></span></div>
 								</div>
 								<div class="row">
-									<div class="col">ขนาด : <span id="showNumber"></span></div>
-									<!-- <div class="col">ประเภท : <span id="showType"></span></div> -->
+									<div class="col">ยี่ห้อรถ : <span id="showNumber"></span></div>
+									<div class="col">รุ่นรถ : <span id="showType"></span></div>
 								</div>
 								<div class="row">
-									<!-- <div class="col">ระยะทาง : <span id="showDistance"></span></div> -->
-									<div class="col">รับประกัน : <span id="showWarranty"></span></div>
+									<div class="col">ปี : <span id="year"></span></div>
+									<!-- <div class="col">รับประกัน : <span id="showWarranty"></span></div> -->
 								</div>
 							</p>
 							<p>ข้อมูลเพิ่มเติม</p>

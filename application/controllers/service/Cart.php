@@ -79,7 +79,7 @@ class Cart extends BD_Controller {
         );
         $spareDataIdArray = array_column($spareArray, 'productId');
         $this->load->model("Spare_undercarriagedatas");
-        return $this->Spareundercarriageproduct->getSpareDataForCartByIdArray($spareDataIdArray);
+        return $this->Spare_undercarriagedatas->getSpareDataForCartByIdArray($spareDataIdArray);
     }
 
     function getLubricatorDetail($productId){
