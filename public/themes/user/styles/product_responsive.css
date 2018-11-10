@@ -92,6 +92,11 @@
 	{
 		height: 420px;
 	}
+	.image-brand-detail {
+		margin-top: 0px !important;
+		width: 40%;
+		margin-bottom: 30px !important;
+	}
 	.product_quantity,
 	.product_color
 	{
@@ -250,6 +255,11 @@
 		-ms-transform: none;
 		-o-transform: none;
 		transform: none;
+	}
+	.image-brand-detail {
+		margin-top: 0px !important;
+		width: 50% !important;
+		margin-bottom: 30px !important;
 	}
 	.image_list
 	{
@@ -568,6 +578,10 @@
 	.image_selected
 	{
 		height: calc(100vw - 30px);
+	}
+	.image-brand-detail {
+		margin-top: 0px !important;
+		width: 60% !important;
 	}
 	.image_list li
 	{

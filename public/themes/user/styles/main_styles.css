@@ -3806,3 +3806,13 @@ select option
 	width: 96%;
 	display: none;
   }
+
+  .image-brand-detail{
+	margin-top: -100px;
+	margin-bottom: 60px;
+	width: 50%;
+  }
+
+  .productImage{
+	  width: 50%;
+  }

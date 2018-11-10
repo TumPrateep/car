@@ -68,6 +68,16 @@ $route['shop/tire'] = 'public/menu/tire';
 $route['shop/showshop'] = 'public/menu/showshop';
 
 $route['shop/cart'] = 'public/menu/cart';
+$route['shop/detail/([a-zA-Z]+)/(\d+)'] = function ($group, $id)
+{
+    if($group == "lubricator"){
+        return 'public/SingleProduct/lubricatordetail/' . strtolower($group) . '/' . $id;
+    }else if($group == "tire"){
+
+    }else{
+
+    }
+};
 
 $route['login'] = 'public/Auth/login';
 

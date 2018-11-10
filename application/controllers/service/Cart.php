@@ -67,8 +67,37 @@ class Cart extends BD_Controller {
             $data, function ($e) { return $e["group"] == "spare"; }
         );
         $spareDataIdArray = array_column($spareArray, 'productId');
+        $this->load->model("spare_undercarriagedatas");
+        return $this->spare_undercarriagedatas->getSpareDataForCartByIdArray($spareDataIdArray);
+    }
+
+    function getLubricatorDetail($productId){
+        $this->load->model("lubricatordatas");
+        return $this->lubricatordatas->getLubricatorDataForCartById($productId);
+    }
+    
+    function getTireDetail($productId){
         $this->load->model("tiredatas");
-        return $this->tiredatas->getTireDataForCartByIdArray($spareDataIdArray);
+        return $this->tiredatas->getTireDataForCartById($productId);
+    }
+    
+    function getSpareDetail($productId){
+        $this->load->model("spare_undercarriagedatas");
+        return $this->spare_undercarriagedatas->getSpareDataForCartById($productId);
+    }
+
+    function getDetail_post(){
+        $group = $this->post("group");
+        $productId = $this->post("productId");
+        $data = [];
+        if($group == "lubricator"){
+            $data = $this->getLubricatorDetail($productId);
+        }else if($group == "tire"){
+            $data = $this->getTireDetail($productId);
+        }else{
+            $data = $this->getSpareDetail($productId);
+        }
+        $this->set_response($data, REST_Controller::HTTP_OK);
     }
 
 }
