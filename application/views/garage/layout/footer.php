@@ -1,4 +1,4 @@
-      
+  
       <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
@@ -29,7 +29,11 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
     </div> -->
+=======
+    </div>
+>>>>>>> b594baa755eda90285907ac4479d6b4d0f79dbb8
     <!-- Delete Modal-->
     <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -93,7 +97,11 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
+<<<<<<< HEAD
             <h5 class="modal-title" id="lebel-danger">คำเตือน</h5>
+=======
+            <h5 class="modal-title" id="lebel-danger">แจ้งเตือน</h5>
+>>>>>>> b594baa755eda90285907ac4479d6b4d0f79dbb8
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -131,9 +139,9 @@
       </div>
     </div>
 
-    <!-- <script>
+    <script>
       function logout(){
         localStorage.clear();
         window.location.assign(base_url+"auth/logout");
       }
-    </script> -->
+    </script>

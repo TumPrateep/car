@@ -38,26 +38,10 @@
                     <button type="button" class="btn btn-outline-info"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</button>
                     </div>
                     <div class="row">
-                    <!-- Line Chart -->
-                        <div class="col-sm-12 col-md-12">
-                            <div class="panel panel-bd lobidrag">
-                                <div class="panel-heading">
-                                    <div class="panel-title">
-                                        <h4>Line chart</h4>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-                                    <canvas id="lineChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-
                 </div>
             </div>
             <div class="card">
-        
+                
                 
             </div>
         </div>   

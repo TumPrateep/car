@@ -34,12 +34,19 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
+                                            <label for="phone"><h4>เบอร์โทรศัพท์</h4></label>
+                                            <input type="text" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" title="enter your phone number if any.">
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
                                             <label for="phone"><h4>เลขบัตรประชาชน</h4></label>
                                             <input type="text" class="form-control" name="personalid" id="personalid" placeholder="เลขบัตรประชาชน" title="enter your phone number if any.">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="phone"><h4>ประสบการณ์(ปี)</h4></label>
@@ -48,19 +55,13 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="phone"><h4>เบอร์โทรศัพท์</h4></label>
-                                            <input type="text" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" title="enter your phone number if any.">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
                                             <label for="mobile"><h4>ความชำนาญ</h4></label>
-                                            <select class="form-control" name="skill" placeholder="ความชำนาญ" title="enter your mobile number if any.">
+                                            <select class="form-control" name="skill" id="skill" placeholder="ความชำนาญ" title="enter your mobile number if any.">
                                                   <option value="">เลือกความชำนาญ</option>
-                                                  <option value="volvo">Honda</option>
-                                                  <option value="saab">Isuzu</option>
-                                                  <option value="fiat">Mazda</option> 
-                                                  <option value="audi">Toyota</option>
+                                                  <option value="Honda">Honda</option>
+                                                  <option value="Isuzu">Isuzu</option>
+                                                  <option value="Mazda">Mazda</option> 
+                                                  <option value="Toyota">Toyota</option>
                                             </select>
                                         </div>
                                     </div>

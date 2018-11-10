@@ -2,24 +2,23 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">แก้ไขข้อมูลช่าง</h3> </div>
+            <h3 class="text-primary">ดูข้อมูลเพิ่มเติมช่าง</h3> </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">หน้าหลัก</a></li>
                 <li class="breadcrumb-item active">ข้อมูลช่าง</li>
-                <li class="breadcrumb-item active">แก้ไขข้อมูลช่าง</li>
+                <li class="breadcrumb-item active">ดูข้อมูลเพิ่มเติมช่าง</li>
             </ol>
         </div>
     </div>
-    
     <div class="container-fluid">
         <div class="row bg-white m-l-0 m-r-0 box-shadow ">
             <div class="col-lg-12">
-                <div class="card ">
+                <div class="card">
                     <div class="row"> 
                         <div class="col-lg-12">
                             <form id="submit">
-                            <!-- <input type="hidden" id="mechanicId" name="mechanicId" value="<?=$mechanicId ?>"> -->
+                            <input type="hidden" id="mechanicId" name="mechanicId" value="<?=$mechanicId ?>">
                                 <div class="row">
                                 <div class="col-lg-4">
                                         <div class="form-group">
@@ -68,7 +67,9 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg text-right">
-                                    <button type="submit" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"> บันทึก</button>
+                                        <a class="btn btn-primary create" href="<?=base_url("garage/mechanic/") ?>">
+                                             กลับ
+                                        </a>
                                     </div>
                                 </div>
                             </form>

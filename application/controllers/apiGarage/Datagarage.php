@@ -1,7 +1,7 @@
 <?php
  
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Mechaniccreates extends BD_Controller {
+class Datagarage extends BD_Controller {
 
     function __construct()
     {
@@ -43,8 +43,7 @@ class Mechaniccreates extends BD_Controller {
             'exp' => $exp,
             'phone' => $phone,
             'personalid' => $personalid,
-            'skill' => $skill,
-            'rols' => 2
+            'skill' => $skill
             //'idcard' => $idcard
         );
 
@@ -65,9 +64,8 @@ class Mechaniccreates extends BD_Controller {
             $columns = array( 
                 0 => null,
                 1 => 'firstName',
-                2 => 'skill',
-                3 => 'phone',
-                4 => 'rols'
+                2 => null,
+                3 => 'phone' 
             );
             $limit = $this->post('length');
             $start = $this->post('start');
@@ -75,15 +73,15 @@ class Mechaniccreates extends BD_Controller {
             $dir = $this->post('order')[0]['dir'];
             $totalData = $this->mechanic->allmechanic_count();
             $totalFiltered = $totalData; 
-            if(empty($this->post('firstName'))&& empty($this->post('skill')))
+            if(empty($this->post('firstName'))&& empty($this->post('phone')))
             {            
                 $posts = $this->mechanic->allmechanic($limit,$start,$order,$dir);
             }
             else {
-                $firstname = $this->post('firstName'); 
-                $skill = $this->post('skill');
-                $posts =  $this->mechanic->mechanic_search($limit,$start,$order,$dir,$firstname,$skill);
-                $totalFiltered = $this->mechanic->mechanic_search_count($firstname,$skill);
+                $search = $this->post('firstName'); 
+                $status = $this->post('phone');
+                $posts =  $this->mechanic->mechanic_search($limit,$start,$search,$order,$dir,$status);
+                $totalFiltered = $this->mechanic->mechanic_search_count($search,$status);
             }
             $data = array();
             if(!empty($posts))
@@ -96,7 +94,6 @@ class Mechaniccreates extends BD_Controller {
                     $nestedData['phone'] = $post->phone;
                     $nestedData['personalid'] = $post->personalid;
                     $nestedData['skill'] = $post->skill;
-                    $nestedData['rols'] = $post->rols;
                     $data[] = $nestedData;
                 }
             }

@@ -1,7 +1,7 @@
 <script>
     function deletemechanic(mechanicId,firstName){
         var option = {
-            url: "/Mechaniccreates/deleteMechaniccreates/mechanicId="+mechanicId,
+            url: "/Mechaniccreates/deleteMechaniccreates?mechanicId="+mechanicId,
             label: "ลบชื่อช่างคนนี้",
             content: "คุณต้องการลบ "+firstName+" ใช่หรือไม่",
             gotoUrl: "garage/Mechanic"
@@ -38,12 +38,14 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.firstName = $("#table-Tsearch").val()
+                    data.firstName = $("#namemechanic").val()
+                    data.skill = $("#skillmechanic").val()
                     //data.status = $("#status").val()
                 }
             },
             "order": [[ 1, "asc" ]],
             "columns": [
+                null,
                 null,
                 null,
                 null,
@@ -53,14 +55,14 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,4]
+                    "targets": [0,5]
                 },{
-                    "targets": 4,
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Tires/tiresize/"+data.mechanicId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                        return '<center><a href="'+base_url+"garage/mechanic/show/"+data.mechanicId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
                             +'<a href="'+base_url+"garage/mechanic/update/"+data.mechanicId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletemechanic('+data.mechanicId+',\''+data.firstName+'\')"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletemechanic('+data.mechanicId+',\''+data.firstName+'\')"><i class="fa fa-trash"></i></button></center>';
                     }
                 },{
                     "targets": 0,
@@ -72,33 +74,40 @@
                     "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return  data.firstName+" "+data.lastName;
+                        return  data.firstName+"  "+data.lastName;
                     }
                 },{
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return  null;
+                        return  data.skill;
                     }
                 },{
                     "targets": 3,
-                    "data": "phone",
+                    "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return  data ;
+                        return  data.phone ;
+                    }
+                },{
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return  data.rols ;
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-center", "targets": [0,1,2,3]},
+                {"className": "dt-center", "targets": [0,1,2,3,4]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 1 },
                 { "width": "20%", "targets": 2 },
-                { "width": "20%", "targets": 3 },
-                { "width": "10%", "targets": 4 }
+                { "width": "15%", "targets": 3 },
+                { "width": "15%", "targets": 4 },
+                { "width": "10%", "targets": 5 }
 
             ]	 
     });
     
-    $("#form-search").submit(function(){
+    $("#search").click(function(){
         event.preventDefault();
         table.ajax.reload();
     })
