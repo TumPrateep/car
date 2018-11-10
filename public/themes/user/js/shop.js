@@ -43,5 +43,6 @@
         $(".myAlert-top").css("z-index", "1000");
         setTimeout(function(){
           $(".myAlert-top").hide(); 
+          $(".myAlert-top").css("z-index", "0");
         }, 2000);
     }
