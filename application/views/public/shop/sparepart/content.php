@@ -88,6 +88,12 @@
                             <p>ช่วงราคา: </p>
                             <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
                         </div>
+					</div>
+					
+					<div class="col-lg-12 ">
+                        <button type="button" id="btn-search" class="btn-create btn btn-warning ">
+                            <i class="ti-search"> ค้นหา</i>
+                        </button>
                     </div>
 
 				</div>

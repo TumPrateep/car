@@ -10,6 +10,13 @@ class Lubricator extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         $this->load->model("lubricatorproduct");
+        $this->load->model("lubricatorbrands");
+        $this->load->model("lubricators");
+        $this->load->model("Lubricatortypeformachines");
+
+        
+
+        
     }
 
     public function search_post(){
@@ -90,6 +97,26 @@ class Lubricator extends BD_Controller {
         );
 
         $this->set_response($json_data);
+    }
+
+    function getAllLubricatorBrand_get(){
+        $result = $this->lubricatorbrands->getAllLubricatorBrand();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllLubricator_get(){
+        $lubricator_brandId = $this->get("lubricator_brandId");
+        $lubricator_gear = $this->get("lubricator_gear");
+        $result = $this->lubricators->getAllLubricator($lubricator_brandId, $lubricator_gear);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAlllubricatortypeFormachine_get(){
+        $result = $this->Lubricatortypeformachines->getAlllubricatortypeFormachine();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
 }
