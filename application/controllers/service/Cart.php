@@ -88,8 +88,8 @@ class Cart extends BD_Controller {
     }
     
     function getTireDetail($productId){
-        $this->load->model("tiredatas");
-        return $this->tiredatas->getTireDataForCartById($productId);
+        $this->load->model("tireproduct");
+        return $this->tireproduct->getTireDataForCartById($productId);
     }
     
     function getSpareDetail($productId){

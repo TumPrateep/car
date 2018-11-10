@@ -73,9 +73,9 @@ $route['shop/detail/([a-zA-Z]+)/(\d+)'] = function ($group, $id)
     if($group == "lubricator"){
         return 'public/SingleProduct/lubricatordetail/' . strtolower($group) . '/' . $id;
     }else if($group == "tire"){
-
+        return 'public/SingleProduct/tireorderdetail/' . strtolower($group) . '/' . $id;
     }else{
-
+        return 'public/SingleProduct/spareordertail/' . strtolower($group) . '/' . $id;
     }
 };
 

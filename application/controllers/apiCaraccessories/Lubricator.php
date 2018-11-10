@@ -7,7 +7,7 @@ class Lubricator extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
         $this->load->model("lubricators");
     }
 
@@ -106,16 +106,57 @@ class Lubricator extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+    // public function update_post(){
+    //     $lubricatorId = $this->post('lubricatorId');
+    //     $lubricatorName = $this->post("lubricatorName");
+    //     $lubricator_brandId = $this->post("lubricator_brandId");
+    //     $lubricator_numberId = $this->post("lubricator_number");
+    //     $lubricator_gear = $this->post("lubricator_gear");
+    //     $status = 2;
+    //     $userId = $this->session->userdata['logged_in']['id'];
+    //     $isCheck = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear);
+    //     if($isCheck){
+    //         $data = array(
+    //             'lubricatorId' => $lubricatorId,
+    //             'lubricatorName' => $lubricatorName,
+    //             'lubricator_numberId' => $lubricator_numberId,
+    //             'update_by' => $userId,
+    //             'update_at' => date('Y-m-d H:i:s',time()),
+    //             'status' => 2,
+    //             'activeFlag' => 2
+    //         );
+    //         $isCheckStatus = $this->lubricators->checkStatusforUpdate($lubricatorId,$userId,$status);
+    //         if($isCheckStatus){
+    //             $isUpdate = $this->lubricators->update($data);
+    //             $output["status"] = $isUpdate;
+    //             if($isUpdate){
+    //                 $output["message"] = REST_Controller::MSG_SUCCESS;
+    //                 $this->set_response($output, REST_Controller::HTTP_OK);
+    //             }else{
+    //                 $output["status"] = false;
+    //                 $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+    //                 $this->set_response($output, REST_Controller::HTTP_OK);
+    //             }
+    //         }else{
+    //             $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
+    //             $this->set_response($output, REST_Controller::HTTP_OK);
+    //         }
+    //     }
+    //     else{
+    //         $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+    //         $this->set_response($output, REST_Controller::HTTP_OK);
+    //     }       
+    // }
+    
     public function update_post(){
         $lubricatorId = $this->post('lubricatorId');
         $lubricatorName = $this->post("lubricatorName");
         $lubricator_brandId = $this->post("lubricator_brandId");
         $lubricator_numberId = $this->post("lubricator_number");
         $lubricator_gear = $this->post("lubricator_gear");
-        $status = 2;
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear);
-        if($isCheck){
+        $data_check_update = $this->lubricators->getlubricatorbyId($lubricatorId);
+        $data_check = $this->lubricators->data_check_update($lubricatorName, $lubricator_brandId, $lubricator_gear,$lubricator_numberId,$lubricatorId);
             $data = array(
                 'lubricatorId' => $lubricatorId,
                 'lubricatorName' => $lubricatorName,
@@ -125,69 +166,21 @@ class Lubricator extends BD_Controller {
                 'status' => 2,
                 'activeFlag' => 2
             );
-            $isCheckStatus = $this->lubricators->checkStatusforUpdate($lubricatorId,$userId,$status);
-            if($isCheckStatus){
-                $isUpdate = $this->lubricators->update($data);
-                $output["status"] = $isUpdate;
-                if($isUpdate){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $output["status"] = false;
-                    $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }else{
-                $output["message"] = REST_Controller::MSG_UNAUTHORIZATION;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }
-        else{
-            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }       
+            
+            $option = [
+                "data_check_update" => $data_check_update,
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->lubricators,
+                "image_path" => null,
+                "old_image_path" => null,
+            ];
+    
+            $this->set_response(user_decision_update($option), REST_Controller::HTTP_OK);
+    
+            
     }
-    // function createlubricator_post(){
-    //     $lubricatorName = $this->post("lubricatorName");
-    //     $lubricator_brandId = $this->post("lubricator_brandId");
-    //     $lubricator_numberId = $this->post("lubricator_number");
-    //     $lubricator_gear = $this->post("lubricator_gear");
-    //     $api = $this->post('api');
-    //     $capacity = $this->post('capacity');
-    //     $userId = $this->session->userdata['logged_in']['id'];
-    //     $isCheck = $this->lubricators->Checklubricator($lubricatorName,$lubricator_brandId,$lubricator_gear);
-        
-    //     if($isCheck){
-    //         $data = array(
-    //             'lubricatorId' => null,
-    //             'lubricatorName' => $lubricatorName,  
-    //             'lubricator_brandId' =>$lubricator_brandId,
-    //             'lubricator_numberId' =>$lubricator_numberId,
-    //             'status' => 2,
-    //             'create_at' => date('Y-m-d H:i:s',time()),
-    //             'create_by' => $userId,
-    //             'activeFlag' => 2,
-    //             'capacity' => $capacity,
-    //             'api' => $api
-    //         );
-    //         $result = $this->lubricators->insert_lubricator($data);
-    //         $output["status"] = $result;
-    //         if($result){
-    //             $output["message"] = REST_Controller::MSG_SUCCESS;
-    //             $this->set_response($output, REST_Controller::HTTP_OK);
-    //         }
-    //         else{
-    //             $output["status"] = false;
-    //             $output["message"] = REST_Controller::MSG_NOT_CREATE;
-    //             $this->set_response($output, REST_Controller::HTTP_OK);
-    //         }
-    //     }
-    //     else{
-    //         $output["status"] = false;
-    //         $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-    //         $this->set_response($output, REST_Controller::HTTP_OK);
-    //     }
-    // }
+
     function createlubricator_post(){
         $lubricatorName = $this->post("lubricatorName");
         $lubricator_brandId = $this->post("lubricator_brandId");
@@ -232,7 +225,7 @@ class Lubricator extends BD_Controller {
 
     function getLubricatorforupdate_post(){
 
-        $brandId = $this->post('lubricatorId');
+        $lubricatorId = $this->post('lubricatorId');
         $isCheck = $this->lubricators->checkLubricatorforget($lubricatorId);
 
         if($isCheck){
@@ -249,6 +242,19 @@ class Lubricator extends BD_Controller {
             }
         }else{
             $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function getLubricator_post(){
+        $lubricatorId = $this->post('lubricatorId');
+        $isCheck = $this->lubricators->checkLubricatorforget($lubricatorId);
+        if($isCheck != null){
+            $output["data"] = $isCheck;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
