@@ -1,5 +1,5 @@
 <script>
-function deletemechanic(mechanicId,firstName){
+    function deletemechanic(mechanicId,firstName){
         var option = {
             url: "/Mechaniccreates/deleteMechaniccreates/mechanicId="+mechanicId,
             label: "ลบชื่อช่างคนนี้",
@@ -8,6 +8,7 @@ function deletemechanic(mechanicId,firstName){
         }
         fnDelete(option);
     }
+
     var table = $('#Mechanic-table').DataTable({
         "language": {
                 "aria": {
@@ -28,7 +29,7 @@ function deletemechanic(mechanicId,firstName){
                 }
             },
             "responsive": true,
-            "bLengthChange": true,
+            "bLengthChange": false,
             "searching": false,
             "processing": true,
             "serverSide": true,
@@ -44,7 +45,7 @@ function deletemechanic(mechanicId,firstName){
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "firstName" },
+                null,
                 null,
                 null
             ],
@@ -69,9 +70,9 @@ function deletemechanic(mechanicId,firstName){
                     }
                 },{
                     "targets": 1,
-                    "data": "rimName",
+                    "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return ' นาย'+ data ;
+                        return  data.firstName+" "+data.lastName;
                     }
                 },{
                     "targets": 2,
@@ -81,9 +82,9 @@ function deletemechanic(mechanicId,firstName){
                     }
                 },{
                     "targets": 3,
-                    "data": "rimName",
+                    "data": "phone",
                     "render": function ( data, type, full, meta ) {
-                        return ' เบอร์' + data ;
+                        return  data ;
                     }
                 },
                 { "orderable": false, "targets": 0 },
@@ -96,10 +97,12 @@ function deletemechanic(mechanicId,firstName){
 
             ]	 
     });
+    
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
+
     // function updateStatus(mechanicId,status){
     //     $.post(base_url+"api/rim/changeStatus",{
     //         "rimId": mechanicId,
@@ -112,7 +115,7 @@ function deletemechanic(mechanicId,firstName){
     //         }
     //     });
     // }
-    
+
 </script>
 
 </body>

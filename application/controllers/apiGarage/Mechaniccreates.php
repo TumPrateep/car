@@ -31,6 +31,7 @@ class Mechaniccreates extends BD_Controller {
         $lastName = $this->post("lastName");
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
+        $personalid = $this->post("personalid");
         //$idcard = $this->post("idcard");
 
         $data =array(
@@ -40,7 +41,8 @@ class Mechaniccreates extends BD_Controller {
             'firstName' => $firstName,
             'lastName' => $lastName,
             'exp' => $exp,
-            'phone' => $phone
+            'phone' => $phone,
+            'personalid' => $personalid
             //'idcard' => $idcard
         );
 
@@ -87,7 +89,9 @@ class Mechaniccreates extends BD_Controller {
                 {
                     $nestedData['mechanicId'] = $post->mechanicId;
                     $nestedData['firstName'] = $post->firstName;
+                    $nestedData['lastName'] = $post->lastName;
                     $nestedData['phone'] = $post->phone;
+                    $personalid['personalid'] = $post->personalid;
                     $data[] = $nestedData;
                 }
             }
@@ -106,14 +110,16 @@ class Mechaniccreates extends BD_Controller {
         $firstName = $this->post('firstName');
         //$userId = $this->session->userdata['logged_in']['id'];
 
-        $data_check_update = $this->Mechanic->getMechanicById($mechanicId);
+        $this->mechanic->
+        $data_check_update = $this->mechanic->getMechanicById($mechanicId);
         $data_check = $this->Mechanic->data_check_update($mechanicId,$firstName);
         $data = array(
             'mechanicId' => $mechanicId,
             'firstName' => $firstName,
             'lastName' => $lastName,
             'exp' => $exp,
-            'phone' => $phone
+            'phone' => $phone,
+            'personalid' =>$personalid
         );
 
         $option = [
@@ -126,6 +132,18 @@ class Mechaniccreates extends BD_Controller {
         ];
 
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+    }
+
+    function getMechaniccreates_post(){
+
+        $mechanicId = $this->post('mechanicId');
+
+        $data_check = $this->mechanic->getMechanicById($mechanicId);
+        $option = [
+            "data_check" => $data_check
+        ];
+
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
 
 }
