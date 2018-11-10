@@ -64,11 +64,11 @@ class Mechanic extends CI_Model {
         return $result;
     }
 
-    function mechanic_search($limit,$start,$search,$col,$dir,$status)
+    function mechanic_search($limit,$start,$col,$dir,$firstname,$skill)
     {
-        $this->db->like('firstName',$search);
-        if($phone != null){
-            $this->db->where("phone", $phone);
+        $this->db->like('firstName',$firstname);
+        if($skill != null){
+            $this->db->where("skill", $skill);
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
@@ -83,6 +83,15 @@ class Mechanic extends CI_Model {
             return null;
         }
         
+    }
+
+    function mechanic_search_count($firstname,$skill){
+        $this->db->like('firstName',$firstname);
+        if($skill != null){
+            $this->db->where("skill", $skill);
+        }
+        $query = $this->db->get('mechanic');
+        return $query->num_rows();
     }
     
 }

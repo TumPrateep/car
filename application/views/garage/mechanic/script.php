@@ -60,7 +60,7 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<center><a href="'+base_url+"admin/Tires/tiresize/"+data.mechanicId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                        return '<center><a href="'+base_url+"garage/mechanic/show/"+data.mechanicId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
                             +'<a href="'+base_url+"garage/mechanic/update/"+data.mechanicId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deletemechanic('+data.mechanicId+',\''+data.firstName+'\')"><i class="fa fa-trash"></i></button></center>';
                     }
@@ -92,7 +92,7 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return  data ;
+                        return  data.rols ;
                     }
                 },
                 { "orderable": false, "targets": 0 },
@@ -101,8 +101,8 @@
                 { "width": "20%", "targets": 1 },
                 { "width": "20%", "targets": 2 },
                 { "width": "15%", "targets": 3 },
-                { "width": "10%", "targets": 4 },
-                { "width": "15%", "targets": 5 }
+                { "width": "15%", "targets": 4 },
+                { "width": "10%", "targets": 5 }
 
             ]	 
     });

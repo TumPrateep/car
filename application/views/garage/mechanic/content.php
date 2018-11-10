@@ -34,7 +34,7 @@
         </div>
         <div class="col-lg-12">
             <div class="card">
-                <table class="table table-bordered" id="Mechanic-table">
+                <table class="table table-bordered table-striped" id="Mechanic-table">
                     <thead>
                         <tr>
                         <th scope="col">ลำดับ</th>
