@@ -49,6 +49,21 @@ class Mechanic extends CI_Model {
         return $result->row();
     }
 
+    function data_check_update($mechanicId,$firstName){
+        $this->db->select("firstName");
+        $this->db->from("mechanic");
+        $this->db->where('firstName', $firstName);
+        $this->db->where_not_in('mechanicId', $mechanicId);
+        $result = $this->db->get();
+        return $result->row();
+    }
+
+    function update($data){
+        $this->db->where('mechanicId',$data['mechanicId']);
+        $result = $this->db->update('mechanic', $data);
+        return $result;
+    }
+
     function mechanic_search($limit,$start,$search,$col,$dir,$status)
     {
         $this->db->like('firstName',$search);

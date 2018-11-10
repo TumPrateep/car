@@ -1,7 +1,7 @@
 <script>
 function deletemechanic(mechanicId,firstName){
         var option = {
-            url: "/Mechaniccreates/deleteMechaniccreates/mechanicId="+mechanicId,
+            url: "/Mechaniccreates/deleteMechaniccreates?mechanicId="+mechanicId,
             label: "ลบชื่อช่างคนนี้",
             content: "คุณต้องการลบ "+firstName+" ใช่หรือไม่",
             gotoUrl: "garage/Mechanic"
@@ -71,17 +71,17 @@ function deletemechanic(mechanicId,firstName){
                     "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return  data.firstName+" "+data.lastName;
+                        return  data.firstName+"  "+data.lastName;
                     }
                 },{
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return  null;
+                        return  data.skill;
                     }
                 },{
                     "targets": 3,
-                    "data": "phone",
+                    "data": "null",
                     "render": function ( data, type, full, meta ) {
                         return  data ;
                     }

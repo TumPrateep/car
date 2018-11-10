@@ -20,7 +20,6 @@ class Mechaniccreates extends BD_Controller {
             "model" => $this->mechanic,
             "image_path" => null
         ];
-
         $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
 
@@ -32,6 +31,7 @@ class Mechaniccreates extends BD_Controller {
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $personalid = $this->post("personalid");
+        $skill = $this->post("skill");
         //$idcard = $this->post("idcard");
 
         $data =array(
@@ -42,7 +42,8 @@ class Mechaniccreates extends BD_Controller {
             'lastName' => $lastName,
             'exp' => $exp,
             'phone' => $phone,
-            'personalid' => $personalid
+            'personalid' => $personalid,
+            'skill' => $skill
             //'idcard' => $idcard
         );
 
@@ -91,7 +92,8 @@ class Mechaniccreates extends BD_Controller {
                     $nestedData['firstName'] = $post->firstName;
                     $nestedData['lastName'] = $post->lastName;
                     $nestedData['phone'] = $post->phone;
-                    $personalid['personalid'] = $post->personalid;
+                    $nestedData['personalid'] = $post->personalid;
+                    $nestedData['skill'] = $post->skill;
                     $data[] = $nestedData;
                 }
             }
@@ -108,25 +110,31 @@ class Mechaniccreates extends BD_Controller {
 
         $mechanicId = $this->post('mechanicId');
         $firstName = $this->post('firstName');
+        $lastName = $this->post('lastName');
+        $exp = $this->post('exp');
+        $phone = $this->post('phone');
+        $personalid = $this->post('personalid');
+        $skill = $this->post('skill');
         //$userId = $this->session->userdata['logged_in']['id'];
 
-        $this->mechanic->
+        $this->load->model("mechanic");
         $data_check_update = $this->mechanic->getMechanicById($mechanicId);
-        $data_check = $this->Mechanic->data_check_update($mechanicId,$firstName);
+        $data_check = $this->mechanic->data_check_update($mechanicId,$firstName);
         $data = array(
             'mechanicId' => $mechanicId,
             'firstName' => $firstName,
             'lastName' => $lastName,
             'exp' => $exp,
             'phone' => $phone,
-            'personalid' =>$personalid
+            'personalid' => $personalid,
+            'skill' => $skill
         );
 
         $option = [
             "data_check_update" => $data_check_update,
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->Mechanic,
+            "model" => $this->mechanic,
             "image_path" => null,
             "old_image_path" => null
         ];

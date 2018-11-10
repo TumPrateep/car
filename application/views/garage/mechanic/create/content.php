@@ -55,12 +55,12 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="mobile"><h4>ความชำนาญ</h4></label>
-                                            <select class="form-control" name="skill" placeholder="ความชำนาญ" title="enter your mobile number if any.">
+                                            <select class="form-control" name="skill" id="skill" placeholder="ความชำนาญ" title="enter your mobile number if any.">
                                                   <option value="">เลือกความชำนาญ</option>
-                                                  <option value="volvo">Honda</option>
-                                                  <option value="saab">Isuzu</option>
-                                                  <option value="fiat">Mazda</option> 
-                                                  <option value="audi">Toyota</option>
+                                                  <option value="Honda">Honda</option>
+                                                  <option value="Isuzu">Isuzu</option>
+                                                  <option value="Mazda">Mazda</option> 
+                                                  <option value="Toyota">Toyota</option>
                                             </select>
                                         </div>
                                     </div>

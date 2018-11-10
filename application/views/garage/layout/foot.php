@@ -10,7 +10,6 @@
     <script src="<?=base_url("/public/themes/garage/js/lib/chart-js/Chart.bundle.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/chart-js/chartjs-init.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/moment.latest.min.js") ?>"></script>
-    <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/semantic.ui.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/prism.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/pignose.calendar.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/garage/js/lib/calendar-2/pignose.init.js") ?>"></script>

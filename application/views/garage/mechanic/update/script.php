@@ -66,7 +66,10 @@
                 result = data.data;
                 $("#firstName").val(result.firstName);
                 $("#lastName").val(result.lastName);
+                $("#exp").val(result.exp);
+                $("#personalid").val(result.personalid);
                 $("#phone").val(result.phone);
+                $("#skill").val(result.skill);
             }
             
         });
