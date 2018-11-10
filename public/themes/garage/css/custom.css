@@ -10,11 +10,30 @@
     input.error, textarea.error, select.error { 
         border: 1px solid red !important; 
     }
-
-  
-
-   
-
-    
-
+    .navbar.top-navbar.navbar-expand-md.navbar-light, .navbar-header, .garage-logo{
+        /*background: linear-gradient(#f4a81e, #f9bd6f);*/
+        background: linear-gradient(#ff3300, #eb5b1c , #f4a81e);
+    }
+    .sidebar-nav{
+        background-image: linear-gradient(to right, #ff471a, #ff751a, #ff8c1a);
+        /*background-image: linear-gradient(to right, #eb5b1c , #f4a81e);*/
+    }
+    .left-sidebar,.row.page-titles{
+        background: linear-gradient(#ff3300, #eb5b1c);
+    }
+    .garage-white, i.garage-white, ul li.nav-label.garage-white, ul li i.fa.garage-white, ul li a.garage-white{
+        color: #ffffff;
+    }
+    i.garage-white.icon-right{
+        padding-right: 7px;
+    }
+    ul li.nav-label.garage-white, {
+        color: #e6e6e6;
+    }
+    .logo, .fa.fa-car.garage-white{
+        padding: 7px;
+    }
+    ul.sidebar-nav li a.has-arrow{
+        border-color: #ffffff;
+    }
     
