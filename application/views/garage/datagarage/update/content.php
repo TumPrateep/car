@@ -2,21 +2,21 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">แก้ไขข้อมูลอู่</h3>
-        </div>
+            <h3 class="text-primary">แก้ไขข้อมูลช่าง</h3> </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">หน้าหลัก</a></li>
                 <li class="breadcrumb-item active">ข้อมูลช่าง</li>
-                <li class="breadcrumb-item active">สร้างข้อมูลช่าง</li>
+                <li class="breadcrumb-item active">แก้ไขข้อมูลช่าง</li>
             </ol>
         </div>
     </div>
+    
     <div class="container-fluid">
         <div class="row bg-white m-l-0 m-r-0 box-shadow ">
             <div class="col-lg-12">
-                <div class="card">
-                    <div class="row">
+                <div class="card ">
+                    <div class="row"> 
                         <div class="col-lg-12">
                             <form id="submit">
                             <h4 class="underline">ข้อมูลอู่ซ่อมรถ</h4>

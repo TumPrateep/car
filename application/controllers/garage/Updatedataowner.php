@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Datagarage extends CI_Controller {
+class Updatedataowner extends CI_Controller {
 
 	function __construct()
     {
@@ -13,24 +13,24 @@ class Datagarage extends CI_Controller {
 		$this->load->view("garage/layout/head");
 		$this->load->view("garage/layout/header");
         $this->load->view("garage/layout/left-menu");
-		$this->load->view("garage/datagarage/content");
+		$this->load->view("garage/updatedataowner/content");
 		$this->load->view("garage/layout/footer");
 		$this->load->view("garage/layout/foot");
-		$this->load->view("garage/datagarage/script");
+		$this->load->view("garage/updatedataowner/script");
     }
     
 
 
-    public function update()//($mechanicId)
+    public function updates($mechanicId)
 	{
-		//$data["mechanicId"] = $mechanicId;
+		$data["mechanicId"] = $mechanicId;
 		$this->load->view("garage/layout/head");
 		$this->load->view("garage/layout/header");
 		$this->load->view("garage/layout/left-menu");
-		$this->load->view("garage/datagarage/update/content");//,$data);
+		$this->load->view("garage/updatedataowner/updates/content",$data);
 		$this->load->view("garage/layout/footer");
 		$this->load->view("garage/layout/foot");
-		$this->load->view("garage/datagarage/update/script");
+		$this->load->view("garage/updatedataowner/updates/script");
 	}
 	
 

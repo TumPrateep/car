@@ -3,41 +3,41 @@
         
         var form = $("#update-member-form"); 
 
-        // form.validate({
-        //     rules:{
-        //         firstname: {
-        //             required: true
-        //         },
-        //         lastname: {
-        //             required: true
-        //         },
-        //         exp: {
-        //             required: true
-        //         },
-        //         phone: {
-        //             required: true
-        //         },
-        //         skill: {
-        //             required: true
-        //         }
-        //     },messages:{
-        //         firstname: {
-        //             required: "กรุณากรอกชื่อ"
-        //         },
-        //         lastname: {
-        //             required: "กรุณากรอกนามสกุล"
-        //         },
-        //         exp: {
-        //             required: "กรุณากรอกประสบการณ์(ปี)"
-        //         },
-        //         phone: {
-        //             required: "กรุณากรอกเบอร์โทรศัพท์"
-        //         },
-        //         skill: {
-        //             required: "กรุณาเลือกความชำนาญ"
-        //         }
-        //     }
-        // });
+        form.validate({
+            rules:{
+                firstname: {
+                    required: true
+                },
+                lastname: {
+                    required: true
+                },
+                exp: {
+                    required: true
+                },
+                phone: {
+                    required: true
+                },
+                skill: {
+                    required: true
+                }
+            },messages:{
+                firstname: {
+                    required: "กรุณากรอกชื่อ"
+                },
+                lastname: {
+                    required: "กรุณากรอกนามสกุล"
+                },
+                exp: {
+                    required: "กรุณากรอกประสบการณ์(ปี)"
+                },
+                phone: {
+                    required: "กรุณากรอกเบอร์โทรศัพท์"
+                },
+                skill: {
+                    required: "กรุณาเลือกความชำนาญ"
+                }
+            }
+        });
 
         // form.submit(function (e) { 
         //     e.preventDefault();
@@ -59,7 +59,7 @@
             "mechanicId" : mechanicId
         },function(data){
             if(data.message!=200){
-                showMessage(data.message,"garage/mechanic");
+                showMessage(data.message,"garage/updatedataowner");
             }
 
             if(data.message == 200){
@@ -110,7 +110,11 @@
                 });
                 
             }
-        }
+        };
+
+
+    
+        
 </script>
 
 </body>

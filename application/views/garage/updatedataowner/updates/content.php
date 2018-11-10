@@ -19,7 +19,7 @@
                     <div class="row"> 
                         <div class="col-lg-12">
                             <form id="submit">
-                            <input type="hidden" id="mechanicId" name="mechanicId" value="<?=$mechanicId ?>">
+                            <input type="hidden" id="mechanicId" name="mechanicId" value="<?=$mechanicId[6] ?>">
                                 <div class="row">
                                 <div class="col-lg-4">
                                         <div class="form-group">

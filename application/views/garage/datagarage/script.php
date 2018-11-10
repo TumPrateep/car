@@ -1,121 +1,116 @@
 <script>
-    function deletemechanic(mechanicId,firstName){
-        var option = {
-            url: "/Mechaniccreates/deleteMechaniccreates?mechanicId="+mechanicId,
-            label: "ลบชื่อช่างคนนี้",
-            content: "คุณต้องการลบ "+firstName+" ใช่หรือไม่",
-            gotoUrl: "garage/Mechanic"
-        }
-        fnDelete(option);
-    }
+    $(document).ready(function () {
+        
+        var form = $("#update-member-form"); 
 
-    var table = $('#Mechanic-table').DataTable({
-        "language": {
-                "aria": {
-                    "sortAscending": ": activate to sort column ascending",
-                    "sortDescending": ": activate to sort column descending"
-                },
-                "emptyTable": "ไม่พบข้อมูล",
-                "info": "แสดง _START_ ถึง _END_ ของ _TOTAL_ รายการ",
-                "infoEmpty": "ไม่พบข้อมูล",
-                "infoFiltered": "(กรอง 1 จากทั้งหมด _MAX_ รายการ)",
-                "lengthMenu": "_MENU_ รายการ",
-                "zeroRecords": "ไม่พบข้อมูล",
-                "oPaginate": {
-                    "sFirst": "หน้าแรก", // This is the link to the first page
-                    "sPrevious": "ก่อนหน้า", // This is the link to the previous page
-                    "sNext": "ถัดไป", // This is the link to the next page
-                    "sLast": "หน้าสุดท้าย" // This is the link to the last page
-                }
-            },
-            "responsive": true,
-            "bLengthChange": false,
-            "searching": false,
-            "processing": true,
-            "serverSide": true,
-            "ajax":{
-                "url": base_url+"apiGarage/Mechaniccreates/searchMechaniccreates",
-                "dataType": "json",
-                "type": "POST",
-                "data": function ( data ) {
-                    data.firstName = $("#table-Tsearch").val()
-                    //data.status = $("#status").val()
-                }
-            },
-            "order": [[ 1, "asc" ]],
-            "columns": [
-                null,
-                null,
-                null,
-                null
-            ],
-            "columnDefs": [
-                {
-                    "searchable": false,
-                    "orderable": false,
-                    "targets": [0,4]
-                },{
-                    "targets": 4,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Tires/tiresize/"+data.mechanicId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"garage/mechanic/update/"+data.mechanicId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletemechanic('+data.mechanicId+',\''+data.firstName+'\')"><i class="fa fa-trash"></i></button>';
-                    }
-                },{
-                    "targets": 0,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return meta.row + 1;
-                    }
-                },{
-                    "targets": 1,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return  data.firstName+"  "+data.lastName;
-                    }
-                },{
-                    "targets": 2,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return  data.skill;
-                    }
-                },{
-                    "targets": 3,
-                    "data": "null",
-                    "render": function ( data, type, full, meta ) {
-                        return  data ;
-                    }
-                },
-                { "orderable": false, "targets": 0 },
-                {"className": "dt-center", "targets": [0,1,2,3]},
-                { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 1 },
-                { "width": "20%", "targets": 2 },
-                { "width": "20%", "targets": 3 },
-                { "width": "10%", "targets": 4 }
+        // form.validate({
+        //     rules:{
+        //         firstname: {
+        //             required: true
+        //         },
+        //         lastname: {
+        //             required: true
+        //         },
+        //         exp: {
+        //             required: true
+        //         },
+        //         phone: {
+        //             required: true
+        //         },
+        //         skill: {
+        //             required: true
+        //         }
+        //     },messages:{
+        //         firstname: {
+        //             required: "กรุณากรอกชื่อ"
+        //         },
+        //         lastname: {
+        //             required: "กรุณากรอกนามสกุล"
+        //         },
+        //         exp: {
+        //             required: "กรุณากรอกประสบการณ์(ปี)"
+        //         },
+        //         phone: {
+        //             required: "กรุณากรอกเบอร์โทรศัพท์"
+        //         },
+        //         skill: {
+        //             required: "กรุณาเลือกความชำนาญ"
+        //         }
+        //     }
+        // });
 
-            ]	 
+        // form.submit(function (e) { 
+        //     e.preventDefault();
+        //     var isValid = form.valid();
+        //     if(isValid){
+        //         alert("pass");
+        //     }else{
+        //         alert("unpass");
+        //     }
+        // });
+
     });
-    
-    $("#form-search").submit(function(){
-        event.preventDefault();
-        table.ajax.reload();
-    })
 
-    // function updateStatus(mechanicId,status){
-    //     $.post(base_url+"api/rim/changeStatus",{
-    //         "rimId": mechanicId,
-    //         "status": status
-    //     },function(data){
-    //         if(data.message == 200){
-    //             showMessage(data.message,"admin/Tires");
-    //         }else{
-    //             showMessage(data.message);
-    //         }
-    //     });
-    // }
 
+
+        var mechanicId = $("#mechanicId").val();
+
+        $.post(base_url+"apiGarage/Mechaniccreates/getMechaniccreates",{
+            "mechanicId" : mechanicId
+        },function(data){
+            if(data.message!=200){
+                showMessage(data.message,"garage/mechanic");
+            }
+
+            if(data.message == 200){
+                result = data.data;
+                $("#firstName").val(result.firstName);
+                $("#lastName").val(result.lastName);
+                $("#exp").val(result.exp);
+                $("#personalid").val(result.personalid);
+                $("#phone").val(result.phone);
+                $("#skill").val(result.skill);
+            }
+            
+        });
+
+
+
+        $("#submit").validate({
+                rules: {
+                    firstName: {
+                        required: true
+                    }
+                },
+                messages: {
+                    firstName: {
+                        required: "กรุณากรอกชื่อ"
+                    }
+                }
+        });
+
+        $("#submit").submit(function(){
+            updatemechanic();
+        })
+
+
+        function updatemechanic(){
+            event.preventDefault();
+            var isValid = $("#submit").valid();
+            
+            if(isValid){
+                var data = $("#submit").serialize();
+                $.post(base_url+"apiGarage/Mechaniccreates/updateMechaniccreates",data,
+                function(data){
+                    if(data.message == 200){
+                        showMessage(data.message,"garage/mechanic/");
+                    }else{
+                        showMessage(data.message);
+                    }
+                });
+                
+            }
+        }
 </script>
 
 </body>
