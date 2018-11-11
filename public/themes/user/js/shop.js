@@ -1,12 +1,12 @@
     var cartData = [];
     var numberOfCart = 0;
     var cartCount = $("#cart_count");
-    function setCart(group, productId){
-        setProductData(group, productId, 1)
+    function setCart(group, productId, select){
+        setProductData(group, productId, 1, select)
         setNumberOfCart();
     }
 
-    function setProductData(group, productId, number){
+    function setProductData(group, productId, number, select){
         var index = cartData.findIndex(x => (x.productId === productId && x.group === group));
         if(index >= 0){
             cartData[index].number += 1;
@@ -19,7 +19,8 @@
             cartData.push(product);
         }
         localStorage.setItem("data", JSON.stringify(cartData));
-        myAlertTop();
+        // myAlertTop();
+        fly(select);
     }
 
     
@@ -38,14 +39,53 @@
         setNumberOfCart();
     });
 
-    function myAlertTop(){
-        $(".myAlert-top").show();
-        $(".myAlert-top").css("z-index", "1000");
-        setTimeout(function(){
-          $(".myAlert-top").hide(); 
-          $(".myAlert-top").css("z-index", "0");
-        }, 2000);
-    }
+    // function myAlertTop(){
+    //     $(".myAlert-top").show();
+    //     $(".myAlert-top").css("z-index", "1000");
+    //     setTimeout(function(){
+    //       $(".myAlert-top").hide(); 
+    //       $(".myAlert-top").css("z-index", "0");
+    //     }, 2000);
+    // }
+
+    function fly(select) {
+        var cart = $('.cart_icon');
+        var imgtodrag = $(select).parents(".product_item").children(".product_image").find("img").eq(0);
+        if (imgtodrag) {
+            var imgclone = imgtodrag.clone()
+                .offset({
+                top: imgtodrag.offset().top,
+                left: imgtodrag.offset().left
+            })
+                .css({
+                'opacity': '0.5',
+                    'position': 'absolute',
+                    'height': '150px',
+                    'width': '150px',
+                    'z-index': '100'
+            })
+                .appendTo($('body'))
+                .animate({
+                'top': cart.offset().top + 10,
+                    'left': cart.offset().left + 10,
+                    'width': 75,
+                    'height': 75
+            }, 1000, 'easeInOutExpo');
+            
+            setTimeout(function () {
+                cart.effect("shake", {
+                    times: 2
+                }, 200);
+            }, 1500);
+
+            imgclone.animate({
+                'width': 0,
+                    'height': 0
+            }, function () {
+                // imgtodrag.detach()
+            });
+        }
+    };
 
     function gotoDetail(group, productId){
         window.location.href = base_url+"shop/detail/"+group+"/"+productId;

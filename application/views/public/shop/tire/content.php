@@ -122,39 +122,6 @@
 										<th></th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr>
-										<td>
-										<div class="row">
-											<div class="col-md-3">
-												<div class="slick-active" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel">
-													<div>
-														<div class="" style="width: 100%; display: inline-block;">
-															<div class="border_active active"></div>
-															<div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-																<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/image/tirebranddata/5b93d10477365.png'); ?>"/></div>
-																<div class="product_content">
-																	<div class="product_price">680 .-</div>
-																	<div class="product_name">
-                                                                    <div><a href="product.html" tabindex="0"><strong>MICHELIN </strong></a></div>
-                                                                    <ul>175/70R13</ul>
-                                                                    <ul>Primacy2 ST</ul>
-																	</div>
-																	<div class="product_extras">
-																		<button class="product_cart_button" tabindex="0"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>
-																	</div>
-																</div>
-																
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											
-										</div>
-										</td>
-									</tr>
-								</tbody>
 							</table>
 						</div>
 						
