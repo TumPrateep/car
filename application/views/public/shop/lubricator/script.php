@@ -78,7 +78,7 @@
                                                                 +'</div>'
                                                             +'</div>'
                                                             +'<div class="product_extras">'
-                                                                +'<button class="product_cart_button" tabindex="0" onclick="setCart(\'lubricator\',\''+value.lubricator_dataId+'\')"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>'
+                                                                +'<button class="product_cart_button" tabindex="0" onclick="setCart(\'lubricator\',\''+value.lubricator_dataId+'\',this)"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>'
                                                             +'</div>'
                                                         +'</div>'
                                                     +'</div>'

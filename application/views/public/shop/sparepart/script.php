@@ -83,7 +83,7 @@
                                                             +'</div>'
                                                             +'</div>'
                                                             +'<div class="product_extras">'
-                                                            +'<button class="product_cart_button" tabindex="0" onclick="setCart(\'spare\',\''+value.spares_undercarriageDataId+'\')"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>'
+                                                            +'<button class="product_cart_button" tabindex="0" onclick="setCart(\'spare\',\''+value.spares_undercarriageDataId+'\',this)"><i class="fas fa-shopping-bag"></i> หยิบใส่ตะกร้า</button>'
                                                             +'</div>'
                                                         +'</div>'
                                                     +'</div>'
