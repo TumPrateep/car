@@ -1,3 +1,4 @@
+<form id="registergarage">
 <div class="shop">
 	<div class="container">
 		<h3>ลงทะเบียนอู่ซ่อมรถ</h3>
@@ -33,19 +34,19 @@
 					<div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleFormControlInput1">บ้านเลขที่</label><span class="error">*</span>
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="บ้านเลขที่">
+								<input type="text" class="form-control" name="hno" id="hno" placeholder="บ้านเลขที่">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleFormControlInput1">หมู่ที่</label><span class="error">*</span>
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="หมู่ที่">
+								<input type="text" class="form-control" name="village" id="village" placeholder="หมู่ที่">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleFormControlInput1">ถนน</label><span class="error">*</span>
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ถนน">
+								<input type="text" class="form-control" name="road" id="road" placeholder="ถนน">
 							</div>
 						</div>
 					</div>
@@ -100,7 +101,7 @@
 					<div class="col-md-2">
 						<div class="form-group">
 							<label for="exampleFormControlSelect1">คำนำหน้า</label><span class="error">*</span>
-							<select class="form-control" id="exampleFormControlSelect1">
+							<select class="form-control" name="titleName" id="titleName">
 								<option>คำนำหน้า</option>
 								<option>นาย</option>
 								<option>นาง</option>
@@ -111,13 +112,13 @@
 					<div class="col-md-5">
 						<div class="form-group">
 							<label for="exampleFormControlInput1">ชื่อ</label><span class="error">*</span>
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ชื่อ">
+							<input type="text" class="form-control" name="firstname" id="firstname" placeholder="ชื่อ">
 						</div>
 					</div>
 					<div class="col-md-5">
 						<div class="form-group">
 							<label for="exampleFormControlInput1">นามสกุล</label><span class="error">*</span>
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="นามสกุล">
+							<input type="text" class="form-control" name="lastname" id="lastname" placeholder="นามสกุล">
 						</div>
 					</div>
 				</div>
@@ -125,19 +126,19 @@
 					<div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleFormControlInput1">ประสบการณ์</label><span class="error">*</span>
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ประสบการณ์(ปี)">
+								<input type="text" class="form-control" name="exp" id="exp" placeholder="ประสบการณ์(ปี)">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleFormControlInput1">เลขรหัสบัตรประชาชน</label><span class="error">*</span>
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="เลขรหัสบัตรประชาชน">
+								<input type="text" class="form-control" name="personalid" id="personalid" placeholder="เลขรหัสบัตรประชาชน">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleFormControlInput1">เบอร์โทรศัพท์</label><span class="error">*</span>
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="เบอร์โทรศัพท์">
+								<input type="text" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์">
 							</div>
 						</div>
 					</div>
@@ -146,19 +147,19 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="exampleFormControlInput1">ชื่ออู่ซ่อมรถ</label><span class="error">*</span>
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ชื่ออู่ซ่อมรถ">
+							<input type="text" class="form-control" name="garagename" id="garagename" placeholder="ชื่ออู่ซ่อมรถ">
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="exampleFormControlInput1">เบอร์โทรศัพท์</label><span class="error">*</span>
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="เบอร์โทรศัพท์">
+							<input type="text" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์">
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="exampleFormControlInput1">หมายเลขทะเบียนการค้า</label><span class="error">*</span>
-							<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="หมายเลขทะเบียนการค้า">
+							<input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า">
 						</div>
 					</div>
 				</div>
@@ -166,7 +167,7 @@
 					<div class="col-md-3">
 							<div class="form-check">
 							  <label class="form-check-label">
-							  <input class="form-check-input" type="checkbox">จันทร์</label>s
+							  <input class="form-check-input" type="checkbox">จันทร์</label>
 							</div>
 						</div>
 						<div class="col-md-3">
@@ -229,13 +230,13 @@
 						<div class="col-md-4">
 							<div class="form-group">
 								<!-- <label for="exampleFormControlInput1">เลขรหัสบัตรประชาชน</label> -->
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="00 : 00">
+								<input type="text" class="form-control" name="timestart" id="timestart" placeholder="00 : 00">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<!-- <label for="exampleFormControlInput1">เบอร์โทรศัพท์</label> -->
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="00 : 00">
+								<input type="text" class="form-control" name="timeend" id="timeend" placeholder="00 : 00">
 							</div>
 						</div>
 					</div>
@@ -243,19 +244,19 @@
 					<div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleFormControlInput1">บ้านเลขที่</label><span class="error">*</span>
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="บ้านเลขที่">
+								<input type="text" class="form-control" name="hno" id="hno" placeholder="บ้านเลขที่">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleFormControlInput1">หมู่ที่</label><span class="error">*</span>
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="หมู่ที่">
+								<input type="text" class="form-control" name="village" id="village" placeholder="หมู่ที่">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<label for="exampleFormControlInput1">ถนน</label><span class="error">*</span>
-								<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ถนน">
+								<input type="text" class="form-control" name="road" id="road" placeholder="ถนน">
 							</div>
 						</div>
 					</div>
@@ -263,7 +264,7 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1">จังหวัด</label><span class="error">*</span>
-							<select class="form-control" id="exampleFormControlSelect1">
+							<select class="form-control" name="provinceId" id="provinceId">
 								<option>จังหวัด</option>
 							</select>
 						</div>
@@ -271,7 +272,7 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1">อำเภอ</label><span class="error">*</span>
-							<select class="form-control" id="exampleFormControlSelect1">
+							<select class="form-control" name="districtId" id="districtId">
 								<option>อำเภอ</option>
 							</select>
 						</div>
@@ -279,37 +280,37 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1">ตำบล</label><span class="error">*</span>
-							<select class="form-control" id="exampleFormControlSelect1">
+							<select class="form-control" name="subdistrictId" id="subdistrictId">
 								<option>ตำบล</option>
 							</select>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1">รหัสไปรษณีย์</label><span class="error">*</span>
-							<input class="form-control" type="text" placeholder="รหัสไปรษณีย์">
+							<input class="form-control" type="text" name="postCode" id="postCode" placeholder="รหัสไปรษณีย์">
 						</div>
 					</div>
-					<div class="col-md-3">
-						<div class="form-group">
-							<label for="exampleFormControlTextarea1"> </label>
-							<button type="submit" class="btn btn-primary btn-block">เก็บพิกัด</button>
+					<div class="col-md-8">
+						<div class="input-group">
+							<label for="exampleFormControlTextarea1"> เก็บตำเเหน่งที่ตั้ง</label><span class="error">*</span>
+						</div>
+						<div class="input-group">
+							
+							<input class="form-control" type="text" name="latitude" id="latitude" placeholder="ละติจูด">
+							<input class="form-control" type="text" name="longtitude" id="longtitude" placeholder="ลองติจูด">
+							<button type="submit" class="btn btn-primary">เก็บพิกัด</button>
+							
 						</div>
 					</div>
-					<div class="col-md-3">
+					<!-- <div class="col-md-3">
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1">ละติจูด</label><span class="error">*</span>
 							<input class="form-control" type="text" placeholder="ละติจูด">
 						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="form-group">
-							<label for="exampleFormControlTextarea1">ลองติจูด</label><span class="error">*</span>
-							<input class="form-control" type="text" placeholder="ลองติจูด">
-						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<div class="col-md-4 leftline">
@@ -317,23 +318,23 @@
 				<form id="login">
 					<div class="form-group">
 						<label>ชื่อผู้ใช้งาน</label><span class="error">*</span>
-						<input type="text" class="form-control" placeholder="ชื่อผู้ใช้งาน">
+						<input type="text" class="form-control" name="username" id="username" placeholder="ชื่อผู้ใช้งาน">
 					</div>
 					<div class="form-group">
 						<label>เบอร์โทรศัพท์</label><span class="error">*</span>
-						<input type="text" class="form-control" placeholder="เบอร์โทรศัพท์">
+						<input type="text" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์">
 					</div>
 					<div class="form-group">
 						<label>อีเมล์</label><span class="error">*</span>
-						<input type="email" class="form-control" placeholder="อีเมล์">
+						<input type="email" class="form-control" name="email" id="email" placeholder="อีเมล์">
 					</div>
 					<div class="form-group">
 						<label>รหัสผ่าน</label><span class="error">*</span>
-						<input type="password" class="form-control" placeholder="รหัสผ่าน">
+						<input type="password" class="form-control" name="password" id="password" placeholder="รหัสผ่าน">
 					</div>
 					<div class="form-group">
 						<label>ยืนยันรหัสผ่าน</label><span class="error">*</span>
-						<input type="password" class="form-control" placeholder="ยืนยันรหัสผ่าน">
+						<input type="password" class="form-control" name="checkpassword" id="checkpassword" placeholder="ยืนยันรหัสผ่าน">
 					</div>
 					<button type="submit" class="btn btn-primary btn-block">บันทึก</button>
 				</form>
@@ -341,3 +342,4 @@
 		</div>
 	</div>
 </div>
+</form>
