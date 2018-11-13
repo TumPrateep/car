@@ -1136,14 +1136,20 @@ INSERT INTO `district` (`districtId`, `districtName`, `provinceId`, `update_by`,
 
 CREATE TABLE `garage` (
   `garageId` int(11) NOT NULL,
-  `comment` varchar(45) NOT NULL,
-  `businessRegistration` varchar(45) NOT NULL,
-  `garageName` varchar(255) NOT NULL,
-  `garageAddress` varchar(255) NOT NULL,
+  `comment` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `businessRegistration` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `garageName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `dayopenhour` varchar(45) DEFAULT NULL,
+  `openingtime` time DEFAULT NULL,
+  `closingtime` time DEFAULT NULL,
+  `hno` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `village` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `road` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `postCode` varchar(45) NOT NULL,
   `latitude` varchar(45) NOT NULL,
   `longtitude` varchar(45) NOT NULL,
-  `approve` varchar(45) NOT NULL,
+  `approve` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `subdistrictId` int(11) NOT NULL,
   `districtId` int(11) NOT NULL,
   `provinceId` int(11) NOT NULL,
@@ -1370,6 +1376,7 @@ CREATE TABLE `mechanic` (
   `exp` int(11) DEFAULT NULL,
   `role` int(11) DEFAULT NULL,
   `personalid` int(13) DEFAULT NULL,
+  `skill` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `activeFlag` int(11) DEFAULT NULL,
@@ -10876,7 +10883,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `category`, `email`, `phone`, `create_at`, `update_at`, `create_by`, `update_by`, `status`) VALUES
 (1, 'admin', '$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe', '1', 'admin@admin', '0812587469', NULL, NULL, 1, 1, 1),
 (11, 'car', '$2y$10$BviIuI/vXcI26DhH95AMaeQX7H0oXH0t844bOdtrPusExUd/sOTn2', '2', NULL, '0000000000', NULL, NULL, NULL, NULL, 1),
-(12, 'nattaphon', '$2y$10$vsYwdP70tZuIlJvfptP3x.IE8WU9zRdOKvNVw1OZf4TwWGcqvfwby', '2', '', '0867454630', '2018-09-23 13:58:55', NULL, NULL, NULL, 1);
+(12, 'nattaphon', '$2y$10$vsYwdP70tZuIlJvfptP3x.IE8WU9zRdOKvNVw1OZf4TwWGcqvfwby', '2', '', '0867454630', '2018-09-23 13:58:55', NULL, NULL, NULL, 1),
+(12, 'garage', '$2y$10$vsYwdP70tZuIlJvfptP3x.IE8WU9zRdOKvNVw1OZf4TwWGcqvfwby', '3', '', '0833969552', '2018-09-23 13:58:55', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -10897,7 +10905,9 @@ CREATE TABLE `user_profile` (
   `create_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
+  `hno` varchar(45) DEFAULT NULL,
+  `village` varchar(45) DEFAULT NULL,
+  `road` varchar(45) DEFAULT NULL,
   `titleName` text,
   `update_at` datetime DEFAULT NULL,
   `activeFlag` int(11) NOT NULL,
@@ -10909,19 +10919,19 @@ CREATE TABLE `user_profile` (
 -- Dumping data for table `user_profile`
 --
 
-INSERT INTO `user_profile` (`user_profile`, `firstname`, `lastname`, `status`, `phone1`, `phone2`, `provinceId`, `districtId`, `subdistrictId`, `create_by`, `create_at`, `userId`, `address`, `titleName`, `update_at`, `activeFlag`, `postCodes`, `update_by`) VALUES
-(1, 'admin', 'admin', '1', '080524171', '0899996699', 63, 843, 7662, 1, NULL, 1, '22/9 ต.ท่าศาลา จ.นครศรีธรรมราช', 'นาย', NULL, 0, NULL, NULL),
-(3, 'ณัฐพล', 'บุญสุวรรณ์', '2', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 12:50:15', 6, '22/2', 'นาย', NULL, 0, NULL, NULL),
-(4, 'Micheal', 'D.rogis', '1', '', '0998755211', 14, 176, 1408, 1, '2018-06-10 12:56:10', 7, '99/5', 'นางสาว', NULL, 0, NULL, NULL),
-(5, 'พุตทิพัต', 'ไทยนิยม', '2', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 13:03:49', 8, '33/9', 'นาง', NULL, 0, NULL, NULL),
-(6, 'พุตทิพัต', 'ไทยนิยม', '2', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 13:04:38', 8, '33/9', 'นาง', NULL, 0, NULL, NULL),
-(7, 'ณัฐพล', 'บุญสุวรรณ์', '2', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 13:05:18', 6, '22/2', 'นาย', NULL, 0, NULL, NULL),
-(8, 'ณัฐพล', 'บุญสุวรรณ์', '1', '', '0805241999', 63, 847, 7718, 1, '2018-06-10 14:24:43', 9, '22/2', 'นาย', NULL, 0, NULL, NULL),
-(9, 'พุตทิพัต', 'ไทยนิยม', '1', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 14:30:18', 8, '33/9', 'นาง', NULL, 0, NULL, NULL),
-(10, 'ณัฐพล', 'บุญสุวรรณ์', '1', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 15:17:45', 6, '22/2', 'นาย', NULL, 0, NULL, NULL),
-(11, 'car2', 'car2', '1', '', '111111111111111111', 58, 810, 7307, 1, '2018-06-17 10:15:00', 10, 'car2', 'นาง', NULL, 0, NULL, NULL),
-(12, 'ร้าน', 'อะไหล่', '1', '', '0000000000', 63, 836, 7595, 1, '2018-09-08 20:09:29', 11, 'ร้านอะไหล่', 'นาย', NULL, 0, NULL, NULL),
-(13, 'ณัฐพล', 'บุญสุวรรณ์', '1', '0867454630', '', 63, 847, 7718, NULL, '2018-09-23 13:58:55', 12, '22/2 ถ.พัฒนาการบางวัง', '1', NULL, 1, NULL, NULL);
+INSERT INTO `user_profile` (`user_profile`, `firstname`, `lastname`, `status`, `phone1`, `phone2`, `provinceId`, `districtId`, `subdistrictId`, `create_by`, `create_at`, `userId`, `hno`, `village`, `road`, `titleName`, `update_at`, `activeFlag`, `postCodes`, `update_by`) VALUES
+(1, 'admin', 'admin', '1', '080524171', '0899996699', 63, 843, 7662, 1, NULL, 1, '22/2', '2', 'รัชดา', 'นาย', NULL, 0, NULL, NULL),
+(3, 'ณัฐพล', 'บุญสุวรรณ์', '2', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 12:50:15', 6, '22/2', '3', 'รัชดา', 'นาย', NULL, 0, NULL, NULL),
+(4, 'Micheal', 'D.rogis', '1', '', '0998755211', 14, 176, 1408, 1, '2018-06-10 12:56:10', 7, '28/2', '2', 'รัชดา', 'นางสาว', NULL, 0, NULL, NULL),
+(5, 'พุตทิพัต', 'ไทยนิยม', '2', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 13:03:49', 8, '30/2', '4', 'รัชดา', 'นาง', NULL, 0, NULL, NULL),
+(6, 'พุตทิพัต', 'ไทยนิยม', '2', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 13:04:38', 8, '44/2', '2', 'รัชดา', 'นาง', NULL, 0, NULL, NULL),
+(7, 'ณัฐพล', 'บุญสุวรรณ์', '2', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 13:05:18', 6, '18/2', '6', 'รัชดา', 'นาย', NULL, 0, NULL, NULL),
+(8, 'ณัฐพล', 'บุญสุวรรณ์', '1', '', '0805241999', 63, 847, 7718, 1, '2018-06-10 14:24:43', 9, '20/9', '8', 'รัชดา', 'นาย', NULL, 0, NULL, NULL),
+(9, 'พุตทิพัต', 'ไทยนิยม', '1', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 14:30:18', 8, '22/2', '5', 'รัชดา', 'นาง', NULL, 0, NULL, NULL),
+(10, 'ณัฐพล', 'บุญสุวรรณ์', '1', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 15:17:45', 6, '22/2', '8', 'รัชดา', 'นาย', NULL, 0, NULL, NULL),
+(11, 'car2', 'car2', '1', '', '111111111111111111', 58, 810, 7307, 1, '2018-06-17 10:15:00', 10, '22/2', '6', 'รัชดา', 'นาง', NULL, 0, NULL, NULL),
+(12, 'ร้าน', 'อะไหล่', '1', '', '0000000000', 63, 836, 7595, 1, '2018-09-08 20:09:29', 11, '22/2', '1', 'รัชดา', 'นาย', NULL, 0, NULL, NULL),
+(13, 'ณัฐพล', 'บุญสุวรรณ์', '1', '0867454630', '', 63, 847, 7718, NULL, '2018-09-23 13:58:55', 12, '22/2', '2', 'รัชดา', 'นางสาว', NULL, 1, NULL, NULL);
 
 --
 -- Indexes for dumped tables
