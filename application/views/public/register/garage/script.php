@@ -7,25 +7,35 @@ $(document).ready(function() {
     
     register.validate({
         rules: {
-          titleName:{
+          titleName_user:{
             required: true
           },
-          firstname1:{
+          firstname_user:{
             required: true
           },
-          lastname: {
+          lastname_user: {
             required: true
           },
-          address:{
+          hno_user:{
+            required: true
+          },
+          village_user:{
+            required: true
+          },
+          road_user:{
             required: true
           },  
-          provinceId:{
+          provinceId_user:{
             required: true
           },
-          districtId: {
+          districtId_user: {
             required: true
           },
-          subdistrictId: {
+          subdistrictId_user: {
+            required: true
+          },
+          postCode_user:{
+            minlength: 5,
             required: true
           },
           phone1: {
@@ -35,36 +45,64 @@ $(document).ready(function() {
           phone2: {
             minlength: 9
           },
-          postCode:{
-            required: true
-          }
-          ,
-          car_accessoriesName:{
+          titleName_mechanic:{
               required: true
             },
-          businessRegistration:{
+          firstname_mechanic:{
             required: true
           },
-          firstname:{
+          lastname_mechanic:{
             required: true
           },
-          idcard:{
+          personalid_mechanic:{
+            maxlength: 13,
             required: true,
             pid: true
           },
-          address1:{
+          phone_mechanic:{
+            minlength: 9,
             required: true
           },
-          sparepart_provinceId:{
+          exp:{
             required: true
           },
-          sparepart_districtId:{
+          skill:{
             required: true
           },
-          sparepart_subdistrictId:{
+          garagename:{
             required: true
           },
-          postCode1:{
+          phone_garage:{
+            required: true
+          },
+          businessRegistration:{
+            required: true
+          },
+          timestart:{
+            required: true
+          },
+          timeend:{
+            required: true
+          },
+          hno_garage:{
+            required: true
+          },
+          village_garage:{
+            required: true
+          },
+          road_garage:{
+            required: true
+          },
+          provinceId_garage:{
+            required: true
+          },
+          districtId_garage:{
+            required: true
+          },
+          subdistrictId_garage:{
+            required: true
+          },
+          postCode_garage:{
             required: true
           },
           latitude:{
@@ -74,13 +112,16 @@ $(document).ready(function() {
             required: true
           },
           username:{
-            minlength:4,
+            minlength:6,
             required:true
             },
-          phone: {
+          phone_user: {
               required: true,
               minlength:9
-          },    
+          },
+          email: {
+              required: true
+          },      
           password: {
             required: true,
             minlength:6
@@ -91,27 +132,35 @@ $(document).ready(function() {
           },
         },
         messages: {
-          titleName:{
+          titleName_user:{
             required: "คำนำหน้า"
-          }
-          ,
-          firstname1:{
+          },
+          firstname_user:{
             required: "ชื่อ"
           },
-          lastname: {
+          lastname_user: {
             required: "นามสกุล"
           },
-          address:{
-            required: "ที่อยู่"
+          hno_user:{
+            required: "บ้านเลขที่"
           },
-          provinceId:{
+          village_user:{
+            required: "หมู่ที่"
+          },
+          road_user:{
+            required: "ถนน"
+          },  
+          provinceId_user:{
             required: "จังหวัด"
           },
-          districtId: {
+          districtId_user: {
             required: "อำเภอ"
           },
-          subdistrictId: {
+          subdistrictId_user: {
             required: "ตำบล"
+          },
+          postCode_user: {
+            required: "รหัสไปรษณีย์"
           },
           phone1: {
             minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
@@ -120,59 +169,91 @@ $(document).ready(function() {
           phone2: {
             minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว"
           },
-          car_accessoriesName:{
-              required: "ชื่อร้านอะไหล่"
+          titleName_mechanic:{
+              required: "คำนำหน้า"
             },
-          businessRegistration:{
-            required: "หมายเลขทะเบียนการค้า"
-          },
-          firstname:{
+          firstname_mechanic:{
             required: "ชื่อ"
           },
-          idcard:{
+          lastname_mechanic:{
+            required: "นามสกุล"
+          },
+          personalid_mechanic:{
+            maxlength: "รหัสบัตรประชาชนให้ครบ 13 ตัว",
             required: "รหัสบัตรประชาชน",
             pid: "รหัสบัตรประชาชนให้ถูกต้อง"
           },
-          address1:{
-            required: "ที่อยู่"
+          phone_mechanic:{
+            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            required: "เบอร์โทรศัพท์"
           },
-          sparepart_provinceId:{
-            required: "จังวัด"
+          exp:{
+            required: "ประสบการณ์"
           },
-          sparepart_districtId:{
+          skill:{
+            required: "ความชำนาญ"
+          },
+          garagename:{
+            required: "ชื่ออู่ซ่อมรภ"
+          },
+          phone_garage:{
+            required: "เบอร์โทรศัพท์"
+          },
+          businessRegistration:{
+            required: "หมายเลขทะเบียนการค้า"
+          },
+          timestart:{
+            required: "เวลาที่เปิด"
+          },
+          timeend:{
+            required: "เวลาที่ปิด"
+          },
+          hno_garage:{
+            required: "บ้านเลขที่"
+          },
+          village_garage:{
+            required: "หมู่ที่"
+          },
+          road_garage:{
+            required: "ถนน"
+          },
+          provinceId_garage:{
+            required: "จังหวัด"
+          },
+          districtId_garage:{
             required: "อำเภอ"
           },
-          sparepart_subdistrictId:{
+          subdistrictId_garage:{
             required: "ตำบล"
           },
-          postCode1:{
-            required: "กรุณากรอกรหัสไปรษณี"
+          postCode_garage:{
+            required: "รหัสไปรษณีย์"
           },
           latitude:{
-            required: "กรุุณากรอกละติจูด"
+            required: "ละติจูด"
           },
           longitude:{
-            required: "ลองจิจูด"
+            required: "ลองติจูด"
           },
           username:{
             required: "ชื่อผู้ใช้งาน",
-            minlength:"ชื่อผู้ใช้อย่างน้อย 4 ตัวอักษร"
+            minlength:"ชื่อผู้ใช้อย่างน้อย 6 ตัวอักษร"
           },
           phone: {
             minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
             required: "เบอร์โทรศัพท์"
           },
+          email: {
+              required: "อีเมลล์"
+          },
           password: {
-             required: "รหัสผ่าน",
+            required: "รหัสผ่าน",
             minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
-            },
+          },
           confirmpassword: {
             required: "รหัสผ่านอีกครั้ง",
             equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
-            },
-            postCode: {
-              required: "รหัสไปรณี"
-            }
+          }
         }
     });
 
