@@ -2,6 +2,7 @@
 <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
 
 <script>
+$(document).ready(function () {
     var table = $('#brand-table').DataTable({
         "language": {
                 "aria": {
@@ -101,6 +102,7 @@
                 }
             ]
     });
+
 
      $("#btn-search").click(function(){
         event.preventDefault();
@@ -233,6 +235,8 @@
             }
         );
     });
+});
+
 
     
 

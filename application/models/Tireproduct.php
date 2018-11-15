@@ -37,7 +37,7 @@ class Tireproduct extends CI_Model{
         $this->db->join('tire_model','tire_model.tire_modelId = tire_data.tire_modelId');
         $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');
         $this->db->join('rim','rim.rimId = tire_data.rimId');
-        // $this->db->like('rim.rimName',$rimName);
+        
         $this->db->like('tire_data.tire_sizeId',$tire_sizeId);
         $this->db->like('tire_data.tire_brandId',$tire_brandId);
         $this->db->like('tire_data.tire_modelId',$tire_modelId);
@@ -47,8 +47,6 @@ class Tireproduct extends CI_Model{
         $this->db->like('tire_data.warranty_year ',$warranty_year);
         $this->db->like('tire_data.warranty_distance ',$warranty_distance);
         $this->db->where('tire_data.price >=',$price[0]);
-        
-        
         $this->db->where('tire_data.price <=',$price[1]);
         
         if($status != null){
@@ -58,15 +56,9 @@ class Tireproduct extends CI_Model{
         $query = $this->db->limit($limit,$start)
                 ->order_by($order,$dir)
                 ->get();
-      
-        if($query->num_rows()>0)
-        {
+    
             return $query->result();  
-        }
-        else
-        {
-            return null;
-        }
+       
     } 
     function TireDatas_search_count($limit,$start,$order,$dir,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$status){
         $price = explode("-",$price);
@@ -86,8 +78,8 @@ class Tireproduct extends CI_Model{
         $this->db->like('tire_data.warranty_year ',$warranty_year);
         $this->db->like('tire_data.warranty_distance ',$warranty_distance);
         $this->db->where('tire_data.price >=',$price[0]);
-        // $this->db->where('tire_data.warranty_year >=',$warranty_year);
-        // $this->db->where('tire_data.warranty_distance >=',$warranty_distance);
+        $this->db->where('tire_data.warranty_year >=',$warranty_year);
+        $this->db->where('tire_data.warranty_distance >=',$warranty_distance);
         $this->db->where('tire_data.price <=',$price[1]);
         
         
