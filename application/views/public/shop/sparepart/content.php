@@ -1,23 +1,18 @@
 <div class="shop">
 	<div class="container">
+        <div class="row">
+			<div class="col-lg-12">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?=base_url() ?>">หน้าหลัก</a></li>
+						<li class="breadcrumb-item active" aria-current="page">อะไหล่ช่วงล่าง</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="shop_sidebar">
-
-                    <div class="form-group">
-                        <label class="control-label">อะไหล่ช่วงล่าง</label>
-                        <select class="form-control input-default" name="spares_undercarriageId" id="spares_undercarriageId">
-                            <option value="">เลือกอะไหล่ช่วงล่าง</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">ยี่ห้ออะไหล่ช่วงล่าง</label>
-                        <select class="form-control input-default" name="spares_brandId" id="spares_brandId">
-                            <option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>
-                        </select>
-                    </div>
-
                     <div class="form-group">
                         <label class="control-label">ยี่ห้อรถ</label>
                         <select class="form-control input-default" name="brandId" id="brandId">
@@ -41,7 +36,21 @@
                                 </select>
                             </div>
                         </div>
-					</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label">อะไหล่ช่วงล่าง</label>
+                        <select class="form-control input-default" name="spares_undercarriageId" id="spares_undercarriageId">
+                            <option value="">เลือกอะไหล่ช่วงล่าง</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">ยี่ห้ออะไหล่ช่วงล่าง</label>
+                        <select class="form-control input-default" name="spares_brandId" id="spares_brandId">
+                            <option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
@@ -60,9 +69,9 @@
                             <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
                         </div>
 					</div>
-					
+					<br>
 					<div class="col-lg-12 ">
-                        <button type="button" id="btn-search" class="btn-create btn btn-warning ">
+                        <button type="button" id="btn-search" class="btn-create btn btn-orange btn-block">
                             <i class="ti-search"> ค้นหา</i>
                         </button>
                     </div>

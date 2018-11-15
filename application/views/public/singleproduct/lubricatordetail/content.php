@@ -5,9 +5,19 @@
 			<input type="hidden" name="group" id="group" value="<?=$group ?>">
 			<input type="hidden" name="productId" id="productId" value="<?=$productId ?>">
 			<div class="row">
+				<div class="col-lg-12">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="<?=base_url() ?>">หน้าหลัก</a></li>
+							<li class="breadcrumb-item active" aria-current="page">น้ำมันเครื่อง</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+			<div class="row">
 
 				<!-- Selected Image -->
-				<div class="col-lg-5 order-lg-2 order-1">
+				<div class="col-lg-4 order-1">
 					<div class="image_selected">
 						<img id="brandImage" class="image-brand-detail" />
 						<img id="productImage" class="productImage">
@@ -61,6 +71,23 @@
 								</div>
 								
 							</form>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 order-3">
+					<div class="right-select">
+						<h5>การรับประกัน</h5>
+						a<br>
+						a<br>
+						a<br>
+						<hr>
+						<h5>คะแนนสินค้า</h5>
+						<div class="summary">
+						<div class="score"><span class="score-average">4.3</span><span class="score-max">/5</span></div>
+							<div class="average">
+								<div class="container-star " style="width:166.25px;height:33.25px"><img class="star" src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png" style="width:33.25px;height:33.25px"><img class="star" src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png" style="width:33.25px;height:33.25px"><img class="star" src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png" style="width:33.25px;height:33.25px"><img class="star" src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png" style="width:33.25px;height:33.25px"><img class="star" src="//laz-img-cdn.alicdn.com/tfs/TB16MwRdOqAXuNjy1XdXXaYcVXa-64-64.png" style="width:33.25px;height:33.25px"></div>
+							</div>
 						</div>
 					</div>
 				</div>

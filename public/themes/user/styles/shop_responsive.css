@@ -265,6 +265,17 @@
 
 @media only screen and (max-width: 767px)
 {
+	.product_content {
+		padding-top: 15px;
+	}
+
+	.logo-product{
+		margin-bottom: 40px !important;
+	}
+
+	.logo-product > img{
+		width: 60% !important;
+	}
 	.brands_slider_container{
 		padding-left: 60px !important;
     	padding-right: 10px !important;

@@ -1,8 +1,44 @@
 <div class="shop">
 	<div class="container">
 		<div class="row">
+			<div class="col-lg-12">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?=base_url() ?>">หน้าหลัก</a></li>
+						<li class="breadcrumb-item active" aria-current="page">ยางรถยนต์</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-lg-3">
 				<div class="shop_sidebar">
+					
+					<div class="form-group">
+                        <label class="control-label">ยี่ห้อรถ</label>
+                        <select class="form-control input-default" name="brandId" id="brandId">
+                            <option value="">เลือกยี่ห้อรถ</option>
+                        </select>
+					</div>
+
+					<div class="form-group">
+                        <label class="control-label">ปีที่ผลิต</label>
+                        <div class="row p-t-20">
+                            <div class="col-md-12">
+                                <select class="form-control input-default" name="year" id="year">
+                                    <!-- <option value="">เลือกปี</option> -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+				
+					<div class="form-group">
+                        <label class="control-label">รุ่นรถ</label>
+                        <select class="form-control input-default" name="modelId" id="modelId">
+                            <option value="">เลือกรุ่นรถ</option>
+                        </select>
+					</div>
+
 					<div class="form-group">
                             <label class="control-label">ยี่ห้อยาง</label>
                             <select class="form-control input-default" name="tire_brandId" id="tire_brandId">
@@ -31,40 +67,6 @@
 							<option value="">เลือกขนาดยาง</option>
 						</select>
 					</div>
-				
-					<div class="form-group">
-                        <label class="control-label">ยี่ห้อรถ</label>
-                        <select class="form-control input-default" name="brandId" id="brandId">
-                            <option value="">เลือกยี่ห้อรถ</option>
-                        </select>
-					</div>
-				
-				
-					<div class="form-group">
-                        <label class="control-label">รุ่นรถ</label>
-                        <select class="form-control input-default" name="modelId" id="modelId">
-                            <option value="">เลือกรุ่นรถ</option>
-                        </select>
-					</div>
-				
-					<div class="form-group">
-                    <label class="control-label">การรับประกัน-ปี</label>
-                        <select class="form-control input-default" name="warranty_year" id="warranty_year">
-                            <option value="">เลือกปี</option>
-                            <option value="1">1ปี</option>
-                            <option value="2">2ปี</option>
-                            <option value="3">3ปี</option>
-                            <option value="4">4ปี</option>
-                            <option value="5">5ปี</option>
-                        </select>
-                    </div> 
-
-                    <div class="form-group">
-                        <label class="control-label">การรับประกัน-ระยะทาง</label>
-                        <div class="input-group input-group-default">
-                            <input type="number" class="form-control" id="warranty_distance" name="warranty_distance" placeholder="ระยะทาง">
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
@@ -83,11 +85,10 @@
 							<p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
 						</div>
                     </div>
-
-                    
+                    <br>
                     <!-- <div class="row"> -->
                     <div class="col-lg-12 ">
-                        <button type="button" id="btn-search" class="btn-create btn btn-warning ">
+                        <button type="button" id="btn-search" class="btn-create btn btn-orange btn-block">
                             <i class="ti-search"> ค้นหา</i>
                         </button>
                     </div>

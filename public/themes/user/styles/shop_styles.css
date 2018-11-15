@@ -729,7 +729,7 @@ select
 	width: auto;
 	margin-left: 10px;
 	outline: none;
-	-webkit-appearance: none;
+	/* -webkit-appearance: none; */
 	-moz-appearance: none;
 	border-bottom: 2px solid #555;
 	color: #7b00ff;
@@ -1258,9 +1258,9 @@ select option
 
 .shop
 {
-	background: #FFFFFF;
-	padding-top: 80px;
-	padding-bottom: 80px;
+	background: #f97314;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 .shop_content
 {
@@ -1695,7 +1695,7 @@ select option
 }
 .filter_by_section
 {
-	margin-top: 45px;
+	margin-top: 0px;
 }
 .filter_price
 {

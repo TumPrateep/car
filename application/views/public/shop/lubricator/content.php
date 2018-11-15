@@ -1,49 +1,84 @@
 <div class="shop">
 	<div class="container">
 		<div class="row">
+			<div class="col-lg-12">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?=base_url() ?>">หน้าหลัก</a></li>
+						<li class="breadcrumb-item active" aria-current="page">น้ำมันเครื่อง</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-lg-3">
 				<div class="shop_sidebar">
+					<div class="form-group">
+						<label class="control-label">ประเภทน้ำมันเครื่อง</label>
+						<div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+							<label class="btn btn-gray w-50">
+								<input type="radio" name="options" id="option1" autocomplete="off"> น้ำมันเครื่อง
+							</label>
+							<label class="btn btn-gray w-50">
+								<input type="radio" name="options" id="option3" autocomplete="off"> น้ำมันเกียร์
+							</label>
+						</div>
+					</div>
 
-						 <div class="form-group">
-                            <label class="control-label">ประเภทเครื่องยนตร์</label>
-                            <div class="input-group input-group-default">
-                                <select class="form-control" id="lubricatortypeFormachineId" name="lubricatortypeFormachineId">
-                                <option value="">ประเภทเครื่องยนตร์</option>
+					<div class="form-group">
+                        <label class="control-label">ยี่ห้อรถ</label>
+                        <select class="form-control input-default" name="brandId" id="brandId">
+                            <option value="">เลือกยี่ห้อรถ</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">รุ่นรถ</label>
+                        <select class="form-control input-default" name="modelId" id="modelId">
+                            <option value="">เลือกรุ่นรถ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label">ปีที่ผลิต</label>
+                        <div class="row p-t-20">
+                            <div class="col-md-12">
+                                <select class="form-control input-default" name="year" id="year">
+                                    <!-- <option value="">เลือกปี</option> -->
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+					<div class="form-group">
+						<label class="control-label">ชนิดน้ำมันเครื่อง</label>
+						<div class="input-group input-group-default">
+							<select class="form-control valid" name="lubricator_gear" id="lubricator_gear">
+								<option value="">เลือกชนิดน้ำมันเครื่อง</option>
+								<option value="1">น้ำมันเครื่อง</option>
+								<option value="2">น้ำมันเกียร์ธรรมดา</option>
+								<option value="3">น้ำมันเกียร์ออโต</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label">ยี่ห้อน้ำมันเครื่อง</label>
+						<div class="input-group input-group-default">
+							<select class="form-control" id="lubricator_brandId" name="lubricator_brandId">
+								<option value="">เลือกยี่ห้อน้ำมันเครื่อง</option>
+							</select>
+						</div>
+					</div>
 
 						<div class="form-group">
-                            <label class="control-label">ชนิดน้ำมันเครื่อง</label>
-                            <div class="input-group input-group-default">
-                                <select class="form-control valid" name="lubricator_gear" id="lubricator_gear">
-                                    <option value="">เลือกชนิดน้ำมันเครื่อง</option>
-                                    <option value="1">น้ำมันเครื่อง</option>
-                                    <option value="2">น้ำมันเกียร์ธรรมดา</option>
-                                    <option value="3">น้ำมันเกียร์ออโต</option>
-                                </select>
-                            </div>
-                        </div>
-
-						
-
-						<div class="form-group">
-                            <label class="control-label">ยี่ห้อน้ำมันเครื่อง</label>
-                            <div class="input-group input-group-default">
-                                <select class="form-control" id="lubricator_brandId" name="lubricator_brandId">
-                                    <option value="">เลือกยี่ห้อน้ำมันเครื่อง</option>
-                                </select>
-                            </div>
-                        </div>
-
-						 <div class="form-group">
-                            <label class="control-label">รุ่นน้ำมันเครื่อง</label>
-                            <div class="input-group input-group-default">
-                                <select class="form-control" id="lubricatorId" name="lubricatorId">
-                                <option value="">เลือกรุ่นน้ำมันเครื่อง</option>
-                                </select>
-                            </div>
-                        </div>
+						<label class="control-label">รุ่นน้ำมันเครื่อง</label>
+						<div class="input-group input-group-default">
+							<select class="form-control" id="lubricatorId" name="lubricatorId">
+							<option value="">เลือกรุ่นน้ำมันเครื่อง</option>
+							</select>
+						</div>
+					</div>
 					
 
                     <div class="form-group">
@@ -62,9 +97,9 @@
                             <p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
                         </div>
 					</div>
-
-					<div class="col-lg-12 ">
-                        <button type="button" id="btn-search" class="btn-create btn btn-warning ">
+					<br>
+					<div class="col-12">
+                        <button type="button" id="btn-search" class="btn-create btn btn-orange btn-block">
                             <i class="ti-search"> ค้นหา</i>
                         </button>
                     </div>
