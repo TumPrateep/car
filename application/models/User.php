@@ -85,10 +85,8 @@ class User extends CI_Model{
         $this->db->where("username", $username);
         $this->db->or_where("phone",$phone);
         $result = $this->db->get();
-
         return $result->row();
     }
-    
     
     function check_User($id){
         $this->db->where('id',$id);

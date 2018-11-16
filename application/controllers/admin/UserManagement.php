@@ -40,9 +40,9 @@ class UserManagement extends CI_Controller {
 		$this->load->view("admin/user/update/script");
 	}
 
-	public function editrole($userId,$category){
+	public function editrole($userId){
 		$data['userId'] = $userId;
-		$data['category'] = $category;
+		// $data['category'] = $category;
 		$this->load->view("admin/layoutwizard/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");

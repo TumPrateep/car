@@ -784,7 +784,7 @@
         }
 
         var userId = $("#userId").val();
-        var category = $("#category").val();
+        // var category = $("#category").val();
 
         $.post(base_url + "api/UserManagement/getusers", {
             "userId": userId

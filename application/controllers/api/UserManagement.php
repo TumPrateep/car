@@ -105,8 +105,8 @@ class UserManagement extends BD_Controller {
         $phone = $this->post('phoneNumber');
         $password = password_hash("password", PASSWORD_BCRYPT);
 
-        $isCheck = $this->user->checkUser($username,$phone);
-        if($isCheck){
+        $data_check = $this->user->data_check_create($username,$phone);
+        if($data_check == null){
             $data = array(
                 'id' => null,
                 'username' => $username,

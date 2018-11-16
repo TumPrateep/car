@@ -19,7 +19,6 @@ class Model extends CI_Model{
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('model');
-        
         if($query->num_rows()>0)
         {
             return $query->result(); 
@@ -47,13 +46,13 @@ class Model extends CI_Model{
 
         if($status != null){
             $this->db->where("status", $status);
-        
+        }
 
         $query = $this->db->where("brandId", $brandId)
                 ->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('model');
-        
+
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -61,7 +60,6 @@ class Model extends CI_Model{
         else
         {
             return null;
-        }
         }
     }
 

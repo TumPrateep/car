@@ -51,7 +51,7 @@ class Modelofcar extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $modelofcarId = $this->post('modelofcarId');
 
-        $data_check_update = $this->modelofcars->getCarOfModelById($modelofcarId);
+        $data_check_update = $this->modelofcars->getUpdate($modelofcarId);
         $data_check = $this->modelofcars->data_check_update($machineSize,$modelofcarName,$modelId,$brandId,$modelofcarId);
         $data = array(
             'modelofcarId' => $modelofcarId,
