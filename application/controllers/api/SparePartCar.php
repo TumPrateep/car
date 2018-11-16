@@ -69,26 +69,24 @@ class SparePartCar extends BD_Controller {
         $spares_brandName = $this->post("spares_brandName");
         $spares_undercarriageId = $this->post("spares_undercarriageId");
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check = $this->sparesbrand->data_check_Brand($spares_brandName,$spares_undercarriageId);
-            $data = array(
-                'spares_brandId' => null,
-                'spares_brandName' => $spares_brandName,
-                'status' => 1,
-                'spares_undercarriageId' => $spares_undercarriageId,
-                'create_at' => date('Y-m-d H:i:s',time()),
-                'create_by' => $userId,
-                'activeFlag' => 1
-            );
-            $option = [
-                "data_check" => $data_check,
-                "data" => $data,
-                "model" => $this->sparesbrand,
-                "image_path" => null
-            ];
-    
-            $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
-            
-    
+        $data_check = $this->sparesbrand->data_check_create($spares_brandName,$spares_undercarriageId);
+        $data = array(
+            'spares_brandId' => null,
+            'spares_brandName' => $spares_brandName,
+            'status' => 1,
+            'spares_undercarriageId' => $spares_undercarriageId,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'create_by' => $userId,
+            'activeFlag' => 1
+        );
+        $option = [
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->sparesbrand,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);      
     }
 
 
