@@ -14,8 +14,9 @@ class SparePartCar extends BD_Controller {
     function searchSpares_post(){
         $columns = array( 
             0 => null,
-            1 => 'spares_brandName',
-            2 => 'status',   
+            1 => null,
+            2 => 'spares_brandName',
+            3 => 'status',   
         );
 
         $limit = $this->post('length');
@@ -46,6 +47,7 @@ class SparePartCar extends BD_Controller {
             {
                 $nestedData['spares_brandId'] = $post->spares_brandId;
                 $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
+                $nestedData['spares_brandPicture'] = $post->spares_brandPicture;
                 $nestedData['spares_brandName'] = $post->spares_brandName;
                 $nestedData['status'] = $post->status;
 
