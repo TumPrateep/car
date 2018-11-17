@@ -32,20 +32,20 @@
                     data.status = $("#status").val()
                   }
             },
-            "order": [[ 1, "asc" ]],
+            "order": [[ 2, "asc" ]],
             "columns": [
                 null,
-                { "data": "spares_brandName" },
                 null,
+                { "data": "spares_brandName" },
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,3]
+                    "targets": [0,1,4]
                 },{
-                    "targets": 2,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -63,11 +63,20 @@
                         +'</div>';
                     }
                 },{
-                    "targets": 3,
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/SparePartCar/updatespare/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareBrand('+data.spares_brandId+',\''+data.spares_brandName+'\',\''+data.spares_undercarriageId+'\')"><i class="fa fa-trash"></i></button>';
+                    }
+                },
+                {
+                    "targets": 1,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var path = pathImage + "sparesbrand/"+data.spares_brandPicture;
+                        var imageHtml = '<img src="'+ path +'" class="rounded" width="100px">';
+                        return imageHtml;
                     }
                 },
                 {
@@ -78,11 +87,12 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [0,1]},
-                {"className": "dt-center", "targets": [2,3]},
+                {"className": "dt-head-center", "targets": [2]},
+                {"className": "dt-center", "targets": [0,1,4,3]},
                 { "width": "10%", "targets": 0 },
-                { "width": "12%", "targets": 2 },
-                { "width": "20%", "targets": 3 }
+                { "width": "20%", "targets": 1 },
+                { "width": "20%", "targets": 4 },
+                { "width": "12%", "targets": 3 }
             ]	 
 
     });
