@@ -67,14 +67,23 @@ class SparePartCar extends BD_Controller {
     }
 
     function createSpareBrand_post(){
-
+        $config['upload_path'] = 'public/image/sparesbrand/';
         $spares_brandName = $this->post("spares_brandName");
         $spares_undercarriageId = $this->post("spares_undercarriageId");
+        $img = $this->post("spares_brandPicture");
+        $img = str_replace('data:image/png;base64,', '', $img);
+	    $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $imageName = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName;
+        $success = file_put_contents($file, $data);
+
         $userId = $this->session->userdata['logged_in']['id'];
         $data_check = $this->sparesbrand->data_check_create($spares_brandName,$spares_undercarriageId);
         $data = array(
             'spares_brandId' => null,
             'spares_brandName' => $spares_brandName,
+            "spares_brandPicture"=> $imageName,
             'status' => 1,
             'spares_undercarriageId' => $spares_undercarriageId,
             'create_at' => date('Y-m-d H:i:s',time()),
@@ -101,15 +110,39 @@ class SparePartCar extends BD_Controller {
         $data_check_update = $this->sparesbrand-> getSpareBrandbyId($spares_brandId);
         $data_check = $this->sparesbrand->data_check_update($spares_brandId,$spares_brandName,$spares_undercarriageId);
 
-        
+        $config['upload_path'] = 'public/image/sparesbrand/';
+        $img = $this->post("spares_brandPicture");
+        $success = true;
+        $file = null;
+        $imageName = null;
+        if(!empty($img)){
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
+
+            $imageName = uniqid().'.png';
+            $file = $config['upload_path']. '/'. $imageName;
+            $success = file_put_contents($file, $data);
+        }
+
+        if (!$success){
+            unlink($file);
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
             $data = array(
                 'spares_brandId' => $spares_brandId,
                 'spares_brandName' => $spares_brandName,
+                'spares_brandPicture' => $imageName,
                 'status' => 1,
                 'spares_undercarriageId' => $spares_undercarriageId,
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );
+            $oldImage = null;
+            if($data_check_update != null){
+                $oldImage = $config['upload_path'].$data_check_update->spares_brandPicture;
+            }
             $option = [
                 "data_check_update" => $data_check_update,
                 "data_check" => $data_check,
@@ -121,6 +154,7 @@ class SparePartCar extends BD_Controller {
     
             $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
         }
+    }
 
 
     function deleteSpareBrand_get(){
