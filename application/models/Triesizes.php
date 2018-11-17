@@ -18,10 +18,11 @@ class Triesizes extends CI_Model{
     function gettrie_sizeforrim($tire_size,$rimId,$tire_series,$rim){
         // $this->db->select("tire_size");
         $this->db->from("tire_size");
-        $this->db->where('tire_size', $tire_size);
-        $this->db->where('tire_series', $tire_series);
-        $this->db->where('rim', $rim);
-        $this->db->where('rimId' , $rimId);
+        $this->db->join('rim','rim.rimId = tire_size.rimId');
+        $this->db->where('tire_size.tire_size', $tire_size);
+        $this->db->where('tire_size.tire_series', $tire_series);
+        $this->db->where('rim.rimName', $rim);
+        $this->db->where('rim.rimId' , $rimId);
         $result = $this->db->get();
         return $result->row();
     }
@@ -82,13 +83,14 @@ class Triesizes extends CI_Model{
     
     function allTriesize($limit,$start,$col,$dir,$rimId)
     {   
-        $this->db->where("rimId", $rimId);
+        $this->db->select("tire_size.tire_size,tire_size.tire_series,rim.rimName,rim.rimId,tire_size.tire_sizeId, tire_size.tire_size, tire_size.tire_series, tire_size.status");
+        $this->db->where("tire_size.rimId", $rimId);
+        $this->db->join('rim','rim.rimId = tire_size.rimId');
         $query = $this
                  ->db
                  ->limit($limit,$start)
                  ->order_by($col,$dir)
                  ->get('tire_size');
-         
          if($query->num_rows()>0)
          {
              return $query->result(); 
@@ -102,13 +104,15 @@ class Triesizes extends CI_Model{
     function trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status)
     {
         if($status != null){
-            $this->db->where("status", $status);
+            $this->db->where("tire_size.status", $status);
         }
-        $query = $this->db->where("rimId", $rimId)
+        $this->db->select("tire_size.tire_size,tire_size.tire_series,rim.rimName,rim.rimId,tire_size.tire_sizeId, tire_size.tire_size, tire_size.tire_series, tire_size.status");
+        $this->db->join('rim','rim.rimId = tire_size.rimId');
+        $this->db->where("tire_size.rimId", $rimId)
             ->group_start()
-                ->like('tire_size',$search)
-                ->or_like('tire_series',$search)
-                ->or_like('rim',$search)
+                ->like('tire_size.tire_size',$search)
+                ->or_like('tire_size.tire_series',$search)
+                ->or_like('rim.rimName',$search)
             ->group_end()
             ->limit($limit,$start)
             ->order_by($col,$dir)
@@ -126,9 +130,11 @@ class Triesizes extends CI_Model{
     function trie_size_search_count($search, $rimId,$status)
     {
         if($status != null){
-            $this->db->where("status", $status);
+            $this->db->where("tire_size.status", $status);
         }
-        $query = $this->db->where("rimId", $rimId)
+        $this->db->select("tire_size.tire_size,tire_size.tire_series,rim.rimName,rim.rimId,tire_size.tire_sizeId, tire_size.tire_size, tire_size.tire_series, tire_size.status");
+        $this->db->join('rim','rim.rimId = tire_size.rimId');
+        $query = $this->db->where("tire_size.rimId", $rimId)
             ->group_start()
                 ->like('tire_size',$search)
                 ->or_like('tire_series',$search)
@@ -139,8 +145,9 @@ class Triesizes extends CI_Model{
         return $query->num_rows();
     }
     function getiresizeById($tire_sizeId){
-        $this->db->select("tire_size,tire_series,rim,status");
-        return $this->db->where('tire_sizeId',$tire_sizeId)->get("tire_size")->row();
+        $this->db->select("tire_size.tire_size,tire_size.tire_series,rim.rimName,rim.rimId,tire_size.tire_sizeId, tire_size.tire_size, tire_size.tire_series, tire_size.status");
+        $this->db->join('rim','rim.rimId = tire_size.rimId');
+        return $this->db->where('tire_size.tire_sizeId',$tire_sizeId)->get("tire_size")->row();
     }
     function delete($tire_sizeId){
         return $this->db->delete('tire_size', array('tire_sizeId' => $tire_sizeId));
@@ -150,10 +157,9 @@ class Triesizes extends CI_Model{
         return $result;
     }
     function geTiresizeFromTiresizeBytireId($tire_sizeId){
-        $this->db->select('tire_size');
-        $this->db->select('tire_series');
-        $this->db->select('rim');
-        $this->db->where('tire_sizeId',$tire_sizeId);
+        $this->db->select("tire_size.tire_size,tire_size.tire_series,rim.rimName,rim.rimId,tire_size.tire_sizeId, tire_size.tire_size, tire_size.tire_series, tire_size.status");    
+        $this->db->join('rim','rim.rimId = tire_size.rimId');
+        $this->db->where('tire_size.tire_sizeId',$tire_sizeId);
         $result = $this->db->get('tire_size')->row();
         return $result;
     }
@@ -164,11 +170,11 @@ class Triesizes extends CI_Model{
     }
     
     function getAllTireSizeByName($q, $limit, $tireRimId){
-        $this->db->select("CONCAT(CONCAT(tire_size, '/', tire_series),'/', rim) AS tire_sizeName", FALSE);
-        $this->db->select('tire_sizeId');
-        $this->db->where('rimId',$tireRimId);
+        $this->db->select("CONCAT(CONCAT(tire_size.tire_size, '/', tire_size.tire_series),'R', rim.rimName) AS tire_sizeName", FALSE);
+        $this->db->select("tire_size.tire_size,tire_size.tire_series,rim.rimName,rim.rimId,tire_size.tire_sizeId, tire_size.tire_size, tire_size.tire_series, tire_size.status");        
+        $this->db->join('rim','rim.rimId = tire_size.rimId');
         if($q != null && $q != ""){
-            $this->db->where("CONCAT(CONCAT(tire_size, '/', tire_series),'/', rim) LIKE '%".$q."%'", NULL, FALSE);
+            $this->db->where("CONCAT(CONCAT(tire_size.tire_size, '/', tire_size.tire_series),'R', rim.rimName) LIKE '%".$q."%'", NULL, FALSE);
         }       
         return $this->db->limit($limit, 0)->get("tire_size")->result();
     }

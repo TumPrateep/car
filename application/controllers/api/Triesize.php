@@ -99,7 +99,7 @@ class Triesize extends BD_Controller {
                 $nestedData['tire_sizeId'] = $post->tire_sizeId;
                 $nestedData['tire_size'] = $post->tire_size;
                 $nestedData['tire_series'] = $post->tire_series;
-                $nestedData['rim'] = $post->rim;
+                $nestedData['rim'] = $post->rimName;
                 $nestedData['rimId'] = $post->rimId;
                 $nestedData['status'] = $post->status;
                 $data[] = $nestedData;

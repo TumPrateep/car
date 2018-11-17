@@ -59,7 +59,7 @@
                     "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return data.tire_size+"/"+data.tire_series+""+data.rim;
+                        return data.tire_size+"/"+data.tire_series+"R"+data.rim;
                     }
                 },{
                     "targets": 3,
