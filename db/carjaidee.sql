@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2018 at 04:59 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 5.6.38
+-- Generation Time: Nov 17, 2018 at 09:23 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,7 +45,8 @@ CREATE TABLE `brand` (
 --
 
 INSERT INTO `brand` (`brandId`, `brandPicture`, `brandName`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
-(12, '5b93cf22b510f.png', 'Chevrolet', 1, NULL, '2018-09-08 20:31:14', NULL, 1, 1);
+(12, '5b93cf22b510f.png', 'Chevrolet', 1, NULL, '2018-09-08 20:31:14', NULL, 1, 1),
+(13, '5befcbb66fb49.png', 'HONDA', 1, NULL, '2018-11-17 15:05:10', NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1354,7 +1355,44 @@ CREATE TABLE `machinetype` (
 --
 
 INSERT INTO `machinetype` (`machinetypeId`, `machinetype`, `modelofcar_modelofcarId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`, `gear`) VALUES
-(1, 'เบนซิน', 19, 1, NULL, '2018-09-08 20:33:03', NULL, '1', '1', 'AT');
+(1, 'เบนซิน', 19, 1, NULL, '2018-09-08 20:33:03', NULL, '1', '1', 'AT'),
+(2, 'เบนซิน', 20, 1, NULL, '2018-11-17 13:39:23', NULL, '1', '1', 'AT'),
+(3, 'เบนซิน', 21, 1, NULL, '2018-11-17 13:40:36', NULL, '1', '1', 'AT'),
+(4, 'เบนซิน', 22, 1, NULL, '2018-11-17 13:41:32', NULL, '1', '1', 'AT'),
+(5, 'เบนซิน', 23, 1, NULL, '2018-11-17 13:43:18', NULL, '1', '1', 'AT'),
+(6, 'เบนซิน', 24, 1, NULL, '2018-11-17 13:45:01', NULL, '1', '1', 'AT'),
+(7, 'เบนซิน', 25, 1, NULL, '2018-11-17 13:47:40', NULL, '1', '1', 'AT'),
+(8, 'เบนซิน', 26, 1, NULL, '2018-11-17 13:52:59', NULL, '1', '1', 'AT'),
+(9, 'เบนซิน', 27, 1, NULL, '2018-11-17 13:54:12', NULL, '1', '1', 'AT'),
+(10, 'เบนซิน', 28, 1, NULL, '2018-11-17 13:57:31', NULL, '1', '1', 'AT'),
+(11, 'เบนซิน', 29, 1, NULL, '2018-11-17 13:59:09', NULL, '1', '1', 'AT'),
+(13, 'เบนซิน', 32, 1, NULL, '2018-11-17 14:02:18', NULL, '1', '1', 'AT'),
+(14, 'เบนซิน', 35, 1, NULL, '2018-11-17 14:04:23', NULL, '1', '1', 'AT'),
+(17, 'เบนซิน', 38, 1, NULL, '2018-11-17 14:10:16', NULL, '1', '1', 'AT'),
+(18, 'เบนซิน', 39, 1, NULL, '2018-11-17 14:10:45', NULL, '1', '1', 'AT'),
+(19, 'เบนซิน', 40, 1, NULL, '2018-11-17 14:11:11', NULL, '1', '1', 'AT'),
+(20, 'เบนซิน', 41, 1, NULL, '2018-11-17 14:12:23', NULL, '1', '1', 'AT'),
+(21, 'เบนซิน', 42, 1, NULL, '2018-11-17 14:13:05', NULL, '1', '1', 'AT'),
+(22, 'เบนซิน', 44, 1, NULL, '2018-11-17 14:15:16', NULL, '1', '1', 'AT'),
+(23, 'เบนซิน', 48, 1, NULL, '2018-11-17 14:19:38', NULL, '1', '1', 'AT'),
+(24, 'เบนซิน', 49, 1, NULL, '2018-11-17 14:20:19', NULL, '1', '1', 'AT'),
+(25, 'เบนซิน', 50, 1, NULL, '2018-11-17 14:22:12', NULL, '1', '1', 'AT'),
+(26, 'เบนซิน', 51, 1, NULL, '2018-11-17 14:22:35', NULL, '1', '1', 'AT'),
+(27, 'เบนซิน', 52, 1, NULL, '2018-11-17 14:23:15', NULL, '1', '1', 'AT'),
+(28, 'เบนซิน', 53, 1, NULL, '2018-11-17 14:23:48', NULL, '1', '1', 'AT'),
+(29, 'เบนซิน', 54, 1, NULL, '2018-11-17 14:24:27', NULL, '1', '1', 'AT'),
+(30, 'เบนซิน', 55, 1, NULL, '2018-11-17 14:24:58', NULL, '1', '1', 'AT'),
+(31, 'เบนซิน', 56, 1, NULL, '2018-11-17 14:29:03', NULL, '1', '1', 'AT'),
+(32, 'เบนซิน', 57, 1, NULL, '2018-11-17 14:29:25', NULL, '1', '1', 'AT'),
+(33, 'เบนซิน', 58, 1, NULL, '2018-11-17 14:30:44', NULL, '1', '1', 'AT'),
+(34, 'เบนซิน', 59, 1, NULL, '2018-11-17 14:30:54', NULL, '1', '1', 'AT'),
+(35, 'เบนซิน', 60, 1, NULL, '2018-11-17 14:32:42', NULL, '1', '1', 'AT'),
+(36, 'เบนซิน', 61, 1, NULL, '2018-11-17 14:33:13', NULL, '1', '1', 'AT'),
+(37, 'เบนซิน', 62, 1, NULL, '2018-11-17 14:36:14', NULL, '1', '1', 'MT'),
+(38, 'เบนซิน', 63, 1, NULL, '2018-11-17 14:36:53', NULL, '1', '1', 'AT'),
+(39, 'เบนซิน', 64, 1, NULL, '2018-11-17 14:39:02', NULL, '1', '1', 'AT'),
+(40, 'เบนซิน', 65, 1, NULL, '2018-11-17 14:39:48', NULL, '1', '1', 'AT'),
+(41, 'เบนซิน', 88, 1, NULL, '2018-11-17 15:06:26', NULL, '1', '1', 'AT');
 
 -- --------------------------------------------------------
 
@@ -1405,7 +1443,20 @@ CREATE TABLE `model` (
 --
 
 INSERT INTO `model` (`modelId`, `modelName`, `brandId`, `create_at`, `update_at`, `create_by`, `update_by`, `status`, `yearStart`, `yearEnd`, `activeFlag`, `modelPicture`) VALUES
-(110, 'AVEO', 12, '2018-09-08 20:32:12', NULL, 1, NULL, 1, 2006, 2014, 1, NULL);
+(110, 'AVEO', 12, '2018-09-08 20:32:12', NULL, 1, NULL, 1, 2006, 2014, 1, NULL),
+(111, 'OPTRA', 12, '2018-11-17 13:59:51', NULL, 1, NULL, 1, 2003, 2007, 1, NULL),
+(112, 'OPTRA', 12, '2018-11-17 14:09:37', NULL, 1, NULL, 1, 2008, 2013, 1, NULL),
+(113, 'SONIC', 12, '2018-11-17 14:14:13', NULL, 1, NULL, 1, 2012, 2015, 1, NULL),
+(114, 'CRUZE', 12, '2018-11-17 14:18:59', NULL, 1, NULL, 1, 2010, 2015, 1, NULL),
+(115, 'CAPTIVA', 12, '2018-11-17 14:28:33', NULL, 1, NULL, 1, 2007, 2012, 1, NULL),
+(116, 'TRAIBLAZER', 12, '2018-11-17 14:35:04', NULL, 1, NULL, 1, 2012, 2016, 1, NULL),
+(117, 'COLORADO 4 ประตู', 12, '2018-11-17 14:40:57', NULL, 1, NULL, 1, 2004, 2007, 1, NULL),
+(118, 'COLORADO 4 ประตู', 12, '2018-11-17 14:44:41', NULL, 1, NULL, 1, 2008, 2011, 1, NULL),
+(119, 'COLORADO ตอนครึ่ง', 12, '2018-11-17 14:46:39', NULL, 1, NULL, 1, 2004, 2007, 1, NULL),
+(120, 'COLORADO ตอนครึ่ง', 12, '2018-11-17 14:49:30', NULL, 1, NULL, 1, 2008, 2011, 1, NULL),
+(121, 'COLORADO ตอนเดียว', 12, '2018-11-17 14:59:11', NULL, 1, NULL, 1, 2004, 2007, 1, NULL),
+(122, 'COLORADO ตอนเดียว', 12, '2018-11-17 15:00:11', NULL, 1, NULL, 1, 2008, 2011, 1, NULL),
+(123, 'CITY Exi', 13, '2018-11-17 15:05:57', NULL, 1, NULL, 1, 1995, 1999, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -1434,7 +1485,73 @@ CREATE TABLE `modelofcar` (
 --
 
 INSERT INTO `modelofcar` (`modelofcarId`, `modelofcarName`, `brandId`, `modelId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`, `machineCode`, `bodyCode`, `machineSize`) VALUES
-(19, 'Base', 12, 110, 1, NULL, '2018-09-08 20:32:49', NULL, '1', '1', 'F14D3', NULL, '1.4');
+(19, 'Base', 12, 110, 1, NULL, '2018-09-08 20:32:49', NULL, '1', '1', 'F14D3', NULL, '1.4'),
+(20, 'LS', 12, 110, 1, NULL, '2018-11-17 13:38:07', NULL, '1', '1', 'F14D3', NULL, '1.4'),
+(21, 'LT', 12, 110, 1, NULL, '2018-11-17 13:40:19', NULL, '1', '1', 'F14D3', NULL, '1.4'),
+(22, 'Lux', 12, 110, 1, NULL, '2018-11-17 13:41:18', NULL, '1', '1', 'F14D3', NULL, '1.4'),
+(23, 'SS', 12, 110, 1, NULL, '2018-11-17 13:43:05', NULL, '1', '1', 'F14D3', NULL, '1.4'),
+(24, 'LS', 12, 110, 1, NULL, '2018-11-17 13:43:50', NULL, '1', '1', 'F14D3', NULL, '1.6'),
+(25, 'LS CNG', 12, 110, 1, NULL, '2018-11-17 13:46:03', NULL, '1', '1', 'F14D3', NULL, '1.6'),
+(26, 'LSX', 12, 110, 1, NULL, '2018-11-17 13:52:37', NULL, '1', '1', 'F14D3', NULL, '1.6'),
+(27, 'LSX CNG', 12, 110, 1, NULL, '2018-11-17 13:53:47', NULL, '1', '1', 'F14D3', NULL, '1.6'),
+(28, 'Lux', 12, 110, 1, NULL, '2018-11-17 13:57:17', NULL, '1', '1', 'F14D3', NULL, '1.6'),
+(29, 'SS', 12, 110, 1, NULL, '2018-11-17 13:58:45', NULL, '1', '1', 'F14D3', NULL, '1.6'),
+(30, '-', 12, 111, 1, NULL, '2018-11-17 14:00:19', NULL, '1', '1', '-', NULL, '1.6'),
+(32, 'LT', 12, 111, 1, NULL, '2018-11-17 14:01:42', NULL, '1', '1', '-', NULL, '1.6'),
+(33, 'Sport', 12, 111, 1, NULL, '2018-11-17 14:02:45', NULL, '1', '1', '-', NULL, '1.6'),
+(34, 'LS', 12, 111, 1, NULL, '2018-11-17 14:03:19', NULL, '1', '1', '-', NULL, '1.8'),
+(35, 'LT', 12, 111, 1, NULL, '2018-11-17 14:03:50', NULL, '1', '1', '-', NULL, '1.8'),
+(38, 'CNG', 12, 112, 1, NULL, '2018-11-17 14:10:01', NULL, '1', '1', '-', NULL, '1.6'),
+(39, 'LS', 12, 112, 1, NULL, '2018-11-17 14:10:30', NULL, '1', '1', '-', NULL, '1.6'),
+(40, 'LS Sport', 12, 112, 1, NULL, '2018-11-17 14:11:03', NULL, '1', '1', '-', NULL, '1.6'),
+(41, 'LT Luxury Sport', 12, 112, 1, NULL, '2018-11-17 14:12:09', NULL, '1', '1', '-', NULL, '1.6'),
+(42, 'LT Sport', 12, 112, 1, NULL, '2018-11-17 14:12:55', NULL, '1', '1', '-', NULL, '1.6'),
+(43, 'LS', 12, 113, 1, NULL, '2018-11-17 14:14:42', NULL, '1', '1', 'A14XFR', NULL, '1.4'),
+(44, 'LT', 12, 113, 1, NULL, '2018-11-17 14:15:06', NULL, '1', '1', 'A14XFR', NULL, '1.4'),
+(45, 'LTZ', 12, 113, 1, NULL, '2018-11-17 14:16:32', NULL, '1', '1', 'A14XFR', NULL, '1.4'),
+(46, 'LT', 12, 113, 1, NULL, '2018-11-17 14:17:15', NULL, '1', '1', 'Z16XFR', NULL, '1.6'),
+(47, 'LTZ', 12, 113, 1, NULL, '2018-11-17 14:17:34', NULL, '1', '1', 'Z16XFR', NULL, '1.6'),
+(48, 'Base', 12, 114, 1, NULL, '2018-11-17 14:19:32', NULL, '1', '1', '-', NULL, '1.6'),
+(49, 'LS', 12, 114, 1, NULL, '2018-11-17 14:20:09', NULL, '1', '1', '-', NULL, '1.6'),
+(50, 'LT', 12, 114, 1, NULL, '2018-11-17 14:22:03', NULL, '1', '1', '-', NULL, '1.6'),
+(51, 'LTZ', 12, 114, 1, NULL, '2018-11-17 14:22:29', NULL, '1', '1', '-', NULL, '1.6'),
+(52, 'SL', 12, 114, 1, NULL, '2018-11-17 14:23:05', NULL, '1', '1', '-', NULL, '1.8'),
+(53, 'LT', 12, 114, 1, NULL, '2018-11-17 14:23:38', NULL, '1', '1', '-', NULL, '1.8'),
+(54, 'LTZ', 12, 114, 1, NULL, '2018-11-17 14:24:18', NULL, '1', '1', '-', NULL, '1.8'),
+(55, 'LTZ', 12, 114, 1, NULL, '2018-11-17 14:24:48', NULL, '1', '1', '-', NULL, '2.0'),
+(56, 'LS', 12, 115, 1, NULL, '2018-11-17 14:28:56', NULL, '1', '1', '-', NULL, '2.0'),
+(57, 'LSX', 12, 115, 1, NULL, '2018-11-17 14:29:19', NULL, '1', '1', '-', NULL, '2.0'),
+(58, 'LT', 12, 115, 1, 1, '2018-11-17 14:29:45', '2018-11-17 14:30:05', '1', '1', '-', NULL, '2.0'),
+(59, 'LTZ', 12, 115, 1, 1, '2018-11-17 14:29:46', '2018-11-17 14:30:22', '1', '1', '-', NULL, '2.0'),
+(60, 'LS', 12, 115, 1, NULL, '2018-11-17 14:32:32', NULL, '1', '1', '-', NULL, '2.4'),
+(61, 'LT', 12, 115, 1, NULL, '2018-11-17 14:33:06', NULL, '1', '1', '-', NULL, '2.4'),
+(62, 'LT', 12, 116, 1, NULL, '2018-11-17 14:36:04', NULL, '1', '1', 'XLD25', NULL, '2.5'),
+(63, 'LT', 12, 116, 1, NULL, '2018-11-17 14:36:45', NULL, '1', '1', 'XLD28', NULL, '2.8'),
+(64, 'LTZ', 12, 116, 1, NULL, '2018-11-17 14:37:17', NULL, '1', '1', 'XLD28', NULL, '2.8'),
+(65, 'LTZ 1', 12, 116, 1, NULL, '2018-11-17 14:39:38', NULL, '1', '1', 'XLD28', NULL, '2.8'),
+(66, 'LS', 12, 117, 1, 1, '2018-11-17 14:41:15', '2018-11-17 14:41:25', '1', '1', '-', NULL, '2.5'),
+(67, 'LT', 12, 117, 1, NULL, '2018-11-17 14:41:40', NULL, '1', '1', '-', NULL, '2.5'),
+(68, 'LS', 12, 117, 1, NULL, '2018-11-17 14:41:51', NULL, '1', '1', '-', NULL, '3.0'),
+(69, 'LT', 12, 117, 1, NULL, '2018-11-17 14:42:06', NULL, '1', '1', '-', NULL, '3.0'),
+(70, 'LT 1', 12, 117, 1, NULL, '2018-11-17 14:42:32', NULL, '1', '1', '-', NULL, '3.0'),
+(71, 'Z 71', 12, 117, 1, NULL, '2018-11-17 14:43:02', NULL, '1', '1', '-', NULL, '3.0'),
+(72, 'LT', 12, 118, 1, NULL, '2018-11-17 14:44:56', NULL, '1', '1', '-', NULL, '2.5'),
+(73, 'LT 1', 12, 118, 1, NULL, '2018-11-17 14:45:06', NULL, '1', '1', '-', NULL, '3.0'),
+(74, 'Z 71', 12, 118, 1, NULL, '2018-11-17 14:45:19', NULL, '1', '1', '-', NULL, '3.0'),
+(75, 'LS', 12, 119, 1, 1, '2018-11-17 14:47:03', '2018-11-17 14:47:11', '1', '1', '-', NULL, '2.5'),
+(76, 'LS 1', 12, 119, 1, NULL, '2018-11-17 14:47:23', NULL, '1', '1', '-', NULL, '2.5'),
+(77, 'LT', 12, 119, 1, NULL, '2018-11-17 14:47:34', NULL, '1', '1', '-', NULL, '2.5'),
+(78, 'LT 1', 12, 119, 1, NULL, '2018-11-17 14:48:02', NULL, '1', '1', '-', NULL, '3.0'),
+(79, 'Z 71', 12, 119, 1, NULL, '2018-11-17 14:48:43', NULL, '1', '1', '-', NULL, '3.0'),
+(80, 'LS', 12, 120, 1, NULL, '2018-11-17 14:49:53', NULL, '1', '1', '-', NULL, '2.5'),
+(81, 'LS 1', 12, 120, 1, NULL, '2018-11-17 14:53:02', NULL, '1', '1', '-', NULL, '2.5'),
+(82, 'LT', 12, 120, 1, NULL, '2018-11-17 14:53:16', NULL, '1', '1', '-', NULL, '2.5'),
+(83, 'Z71', 12, 120, 1, NULL, '2018-11-17 14:53:43', NULL, '1', '1', '-', NULL, '2.5'),
+(84, 'Z71', 12, 120, 1, NULL, '2018-11-17 14:54:39', NULL, '1', '1', '-', NULL, '3.0'),
+(85, '-', 12, 121, 1, NULL, '2018-11-17 14:59:33', NULL, '1', '1', '-', NULL, '2.5'),
+(86, '-', 12, 122, 1, NULL, '2018-11-17 15:00:34', NULL, '1', '1', '-', NULL, '2.5'),
+(87, 'LS', 12, 122, 1, NULL, '2018-11-17 15:00:46', NULL, '1', '1', '-', NULL, '2.5'),
+(88, 'Exi', 13, 123, 1, NULL, '2018-11-17 15:06:12', NULL, '1', '1', '-', NULL, '1.3');
 
 -- --------------------------------------------------------
 
@@ -10677,8 +10794,20 @@ CREATE TABLE `tire_brand` (
 --
 
 INSERT INTO `tire_brand` (`tire_brandId`, `tire_brandName`, `tire_brandPicture`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
-(4, 'MICHELIN', '5b93d03c7f4cf.png', 1, 1, '2018-09-08 20:35:26', '2018-09-08 20:35:56', '1', 1);
-
+(4, 'MICHELIN', '5befcebfa098f.png', 1, 1, '2018-09-08 20:35:26', '2018-11-17 15:18:07', '1', 1),
+(5, 'APOLO', '5befc8509b0eb.png', 1, NULL, '2018-11-17 14:50:40', NULL, '1', 1),
+(6, 'BFG', '5befc88ec0615.png', 1, NULL, '2018-11-17 14:51:42', NULL, '1', 1),
+(7, 'BRIDGESTONE', '5befca5cf109e.png', 1, NULL, '2018-11-17 14:59:24', NULL, '1', 1),
+(8, 'CONTINENTAL', '5befca97650dc.png', 1, NULL, '2018-11-17 15:00:23', NULL, '1', 1),
+(9, 'DAYTON', '5befcb2a5f4cb.png', 1, NULL, '2018-11-17 15:02:50', NULL, '1', 1),
+(10, 'DEESTONE', '5befcb5f7e2e7.png', 1, NULL, '2018-11-17 15:03:43', NULL, '1', 1),
+(11, 'DUNLOP', '5befcba3469f4.png', 1, NULL, '2018-11-17 15:04:51', NULL, '1', 1),
+(12, 'FIRESTONE', '5befcbe02d175.png', 1, NULL, '2018-11-17 15:05:52', NULL, '1', 1),
+(13, 'GODDYEAR', '5befcc0834b73.png', 1, NULL, '2018-11-17 15:06:32', NULL, '1', 1),
+(14, 'HANKOOK', '5befcc2a10d31.png', 1, NULL, '2018-11-17 15:07:06', NULL, '1', 1),
+(15, 'KUMHO', '5befcc620044e.png', 1, NULL, '2018-11-17 15:08:02', NULL, '1', 1),
+(16, 'MAXXIS', '5befcd455e1fb.png', 1, NULL, '2018-11-17 15:11:49', NULL, '1', 1),
+(17, 'OTANI', '5befce25022f9.png', 1, NULL, '2018-11-17 15:15:33', NULL, '1', 1);
 -- --------------------------------------------------------
 
 --
@@ -10783,8 +10912,67 @@ CREATE TABLE `tire_model` (
 --
 
 INSERT INTO `tire_model` (`tire_modelId`, `tire_modelName`, `tire_brandId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
-(17, 'Primacy2 ST', 4, 1, NULL, '2018-09-08 20:36:28', NULL, '1', 1);
-
+(17, 'Primacy2 ST', 4, 1, NULL, '2018-09-08 20:36:28', NULL, '1', 1),
+(18, 'Alnac 4G', 5, 1, NULL, '2018-11-17 15:19:09', NULL, '1', 1),
+(19, 'Amazer 3G', 5, 1, NULL, '2018-11-17 15:19:16', NULL, '1', 1),
+(20, 'Amazer 3G Maxx', 5, 1, NULL, '2018-11-17 15:19:23', NULL, '1', 1),
+(21, 'Amazer XL', 5, 1, NULL, '2018-11-17 15:19:30', NULL, '1', 1),
+(22, 'Aspire', 5, 1, NULL, '2018-11-17 15:19:36', NULL, '1', 1),
+(23, 'Aspire 4G', 5, 1, NULL, '2018-11-17 15:19:44', NULL, '1', 1),
+(24, 'Quantum', 5, 1, NULL, '2018-11-17 15:19:52', NULL, '1', 1),
+(25, 'Quantum Plus', 5, 1, NULL, '2018-11-17 15:19:59', NULL, '1', 1),
+(26, 'Apterra A/T', 5, 1, NULL, '2018-11-17 15:20:06', NULL, '1', 1),
+(27, 'Apterra H/T', 5, 1, NULL, '2018-11-17 15:20:14', NULL, '1', 1),
+(28, 'Amazer 4G life', 5, 1, NULL, '2018-11-17 15:20:21', NULL, '1', 1),
+(29, 'Alnac', 5, 1, NULL, '2018-11-17 15:20:28', NULL, '1', 1),
+(30, 'Alnac 4GS', 5, 1, NULL, '2018-11-17 15:20:36', NULL, '1', 1),
+(31, 'Mancheter United', 5, 1, NULL, '2018-11-17 15:20:43', NULL, '1', 1),
+(32, 'Apterra H/P', 5, 1, NULL, '2018-11-17 15:20:50', NULL, '1', 1),
+(33, 'Apterra H/L', 5, 1, NULL, '2018-11-17 15:20:59', NULL, '1', 1),
+(34, 'Apterra H/T2', 5, 1, NULL, '2018-11-17 15:21:05', NULL, '1', 1),
+(35, 'Altrust LT', 5, 1, NULL, '2018-11-17 15:21:12', NULL, '1', 1),
+(36, 'All Terrain T/A KO2', 6, 1, NULL, '2018-11-17 15:21:30', NULL, '1', 1),
+(37, 'Mud Terrain T/A KM2', 6, 1, NULL, '2018-11-17 15:21:37', NULL, '1', 1),
+(38, 'Advantage T/A SUV', 6, 1, NULL, '2018-11-17 15:21:44', NULL, '1', 1),
+(39, 'Advantage T/A Drive', 6, 1, NULL, '2018-11-17 15:21:51', NULL, '1', 1),
+(40, 'Potenza ADRENALIN RE003', 7, 1, NULL, '2018-11-17 15:22:10', NULL, '1', 1),
+(41, 'Turanza Gr-100', 7, 1, NULL, '2018-11-17 15:22:16', NULL, '1', 1),
+(42, 'MY-02', 7, 1, NULL, '2018-11-17 15:22:23', NULL, '1', 1),
+(43, 'B250', 7, 1, NULL, '2018-11-17 15:22:30', NULL, '1', 1),
+(44, 'DURAVIS R624', 7, 1, NULL, '2018-11-17 15:22:37', NULL, '1', 1),
+(45, 'DURAVIS R611', 7, 1, NULL, '2018-11-17 15:22:48', NULL, '1', 1),
+(46, 'DURAVIS R699 HD', 7, 1, NULL, '2018-11-17 15:22:54', NULL, '1', 1),
+(47, 'LEO 677', 7, 1, NULL, '2018-11-17 15:23:01', NULL, '1', 1),
+(48, 'DUELER HP SPORT', 7, 1, NULL, '2018-11-17 15:23:07', NULL, '1', 1),
+(49, 'DUELER H/T 840', 7, 1, NULL, '2018-11-17 15:23:15', NULL, '1', 1),
+(50, 'DUELER H/T 689', 7, 1, NULL, '2018-11-17 15:23:21', NULL, '1', 1),
+(51, 'DUELER H/T 684', 7, 1, NULL, '2018-11-17 15:23:31', NULL, '1', 1),
+(52, 'DUELER H/T 687', 7, 1, NULL, '2018-11-17 15:23:38', NULL, '1', 1),
+(53, 'DUELER H/T 470', 7, 1, NULL, '2018-11-17 15:23:45', NULL, '1', 1),
+(54, 'DUELER A/T 693', 7, 1, NULL, '2018-11-17 15:23:52', NULL, '1', 1),
+(55, 'DUELER M/T 674', 7, 1, NULL, '2018-11-17 15:23:58', NULL, '1', 1),
+(56, 'ECOPIA EP850', 7, 1, NULL, '2018-11-17 15:24:05', NULL, '1', 1),
+(57, 'ECOPIA EP150', 7, 1, NULL, '2018-11-17 15:24:11', NULL, '1', 1),
+(58, 'ECOPIA EP300', 7, 1, NULL, '2018-11-17 15:24:18', NULL, '1', 1),
+(59, 'TAXI', 7, 1, NULL, '2018-11-17 15:24:24', NULL, '1', 1),
+(60, 'Potenza S001', 7, 1, NULL, '2018-11-17 15:24:32', NULL, '1', 1),
+(61, 'Potenza S001 RFT', 7, 1, NULL, '2018-11-17 15:24:39', NULL, '1', 1),
+(62, 'Potenza RE050 RFT', 7, 1, NULL, '2018-11-17 15:24:47', NULL, '1', 1),
+(63, 'ContiSportContact TM 5', 8, 1, NULL, '2018-11-17 15:25:23', NULL, '1', 1),
+(64, 'ContiSportContact TM 5 P', 8, 1, NULL, '2018-11-17 15:25:30', NULL, '1', 1),
+(65, 'ContiMaxContact TM MC5', 8, 1, NULL, '2018-11-17 15:25:36', NULL, '1', 1),
+(66, 'ContiSportContact TM 3', 8, 1, NULL, '2018-11-17 15:25:43', NULL, '1', 1),
+(67, 'ContiSportContact TM 2', 8, 1, NULL, '2018-11-17 15:25:51', NULL, '1', 1),
+(68, 'ContiComfortContact TM 5', 8, 1, NULL, '2018-11-17 15:25:57', NULL, '1', 1),
+(69, 'ContiPremiumContact TM 2', 8, 1, NULL, '2018-11-17 15:26:04', NULL, '1', 1),
+(70, 'ContiCrossContact TM LX2', 8, 1, NULL, '2018-11-17 15:26:11', NULL, '1', 1),
+(71, 'ContiCrossContact TM UHP', 8, 1, NULL, '2018-11-17 15:26:19', NULL, '1', 1),
+(72, 'Conti4x4Contact', 8, 1, NULL, '2018-11-17 15:26:26', NULL, '1', 1),
+(73, 'ContiCrossContact TM AT', 8, 1, NULL, '2018-11-17 15:28:34', NULL, '1', 1),
+(74, 'ComfortContact CC6', 8, 1, NULL, '2018-11-17 15:28:44', NULL, '1', 1),
+(75, 'UltraContact UC6', 8, 1, NULL, '2018-11-17 15:28:51', NULL, '1', 1),
+(76, 'ContiMaxContact TM MC6', 8, 1, NULL, '2018-11-17 15:28:59', NULL, '1', 1),
+(77, 'ContimaxContact MC6', 8, 1, NULL, '2018-11-17 15:29:06', NULL, '1', 1);
 -- --------------------------------------------------------
 
 --
@@ -11252,182 +11440,152 @@ ALTER TABLE `user_profile`
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
+  MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `car_accessories`
 --
 ALTER TABLE `car_accessories`
   MODIFY `car_accessoriesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `car_profile`
 --
 ALTER TABLE `car_profile`
   MODIFY `car_profileId` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `district`
 --
 ALTER TABLE `district`
   MODIFY `districtId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=999;
-
 --
 -- AUTO_INCREMENT for table `garage`
 --
 ALTER TABLE `garage`
   MODIFY `garageId` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `lubricator`
 --
 ALTER TABLE `lubricator`
   MODIFY `lubricatorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
-
 --
 -- AUTO_INCREMENT for table `lubricatortypeformachine`
 --
 ALTER TABLE `lubricatortypeformachine`
   MODIFY `lubricatortypeFormachineId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `lubricator_brand`
 --
 ALTER TABLE `lubricator_brand`
   MODIFY `lubricator_brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
 -- AUTO_INCREMENT for table `lubricator_data`
 --
 ALTER TABLE `lubricator_data`
   MODIFY `lubricator_dataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `lubricator_number`
 --
 ALTER TABLE `lubricator_number`
   MODIFY `lubricator_numberId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
 --
 -- AUTO_INCREMENT for table `lubricator_type`
 --
 ALTER TABLE `lubricator_type`
   MODIFY `lubricator_typeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `machinetype`
 --
 ALTER TABLE `machinetype`
-  MODIFY `machinetypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+  MODIFY `machinetypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `model`
 --
 ALTER TABLE `model`
-  MODIFY `modelId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
-
+  MODIFY `modelId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 --
 -- AUTO_INCREMENT for table `modelofcar`
 --
 ALTER TABLE `modelofcar`
-  MODIFY `modelofcarId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
+  MODIFY `modelofcarId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 --
 -- AUTO_INCREMENT for table `province`
 --
 ALTER TABLE `province`
   MODIFY `provinceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
-
 --
 -- AUTO_INCREMENT for table `rim`
 --
 ALTER TABLE `rim`
   MODIFY `rimId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
 --
 -- AUTO_INCREMENT for table `spares_brand`
 --
 ALTER TABLE `spares_brand`
   MODIFY `spares_brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
 --
 -- AUTO_INCREMENT for table `spares_undercarriage`
 --
 ALTER TABLE `spares_undercarriage`
   MODIFY `spares_undercarriageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
 --
 -- AUTO_INCREMENT for table `spares_undercarriagedata`
 --
 ALTER TABLE `spares_undercarriagedata`
   MODIFY `spares_undercarriageDataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `subdistrict`
 --
 ALTER TABLE `subdistrict`
   MODIFY `subdistrictId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8861;
-
 --
 -- AUTO_INCREMENT for table `temp_user`
 --
 ALTER TABLE `temp_user`
   MODIFY `tempUserId` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tire_brand`
 --
 ALTER TABLE `tire_brand`
   MODIFY `tire_brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `tire_change`
 --
 ALTER TABLE `tire_change`
   MODIFY `tire_changeId` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tire_data`
 --
 ALTER TABLE `tire_data`
   MODIFY `tire_dataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `tire_matching`
 --
 ALTER TABLE `tire_matching`
   MODIFY `tire_matchingId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tire_model`
 --
 ALTER TABLE `tire_model`
   MODIFY `tire_modelId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
 --
 -- AUTO_INCREMENT for table `tire_need`
 --
 ALTER TABLE `tire_need`
   MODIFY `tire_needId` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tire_size`
 --
 ALTER TABLE `tire_size`
   MODIFY `tire_sizeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
 --
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
   MODIFY `user_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
 --
 -- Constraints for dumped tables
 --

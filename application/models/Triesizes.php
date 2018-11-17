@@ -15,14 +15,12 @@ class Triesizes extends CI_Model{
         $result = $this->db->insert('tire_size', $data);
         return $result;
     }
-    function gettrie_sizeforrim($tire_size,$rimId,$tire_series,$rim){
+    function gettrie_sizeforrim($tire_size,$rimId,$tire_series){
         // $this->db->select("tire_size");
         $this->db->from("tire_size");
-        $this->db->join('rim','rim.rimId = tire_size.rimId');
         $this->db->where('tire_size.tire_size', $tire_size);
         $this->db->where('tire_size.tire_series', $tire_series);
-        $this->db->where('rim.rimName', $rim);
-        $this->db->where('rim.rimId' , $rimId);
+        $this->db->where('tire_size.rimId' , $rimId);
         $result = $this->db->get();
         return $result->row();
     }

@@ -11,15 +11,13 @@ class Triesize extends BD_Controller {
     function createtrieSize_post(){
         $tire_size = $this->post("tire_size");
         $rimId = $this->post("rimId");
-        $rim = $this->post('rim');
         $tire_series = $this->post('tire_series');
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check = $this->triesizes->gettrie_sizeforrim($tire_size,$rimId,$tire_series,$rim);
+        $data_check = $this->triesizes->gettrie_sizeforrim($tire_size,$rimId,$tire_series);
             $data = array(
                 'tire_sizeId' => null,
                 'tire_size' => $tire_size,
                 'tire_series' => $tire_series,
-                'rim' => $rim,
                 'status' => 1,
                 'rimId' => $rimId,
                 'create_at' => date('Y-m-d H:i:s',time()),
@@ -40,7 +38,6 @@ class Triesize extends BD_Controller {
         $tire_sizeId = $this->post('tire_sizeId');
         $tire_size = $this->post('tire_size');
         $rimId = $this->post('rimId');
-        $rim = $this->post('rim');
         $tire_series = $this->post('tire_series');
         $userId = $this->session->userdata['logged_in']['id'];
         $data_check = $this->triesizes->data_check_update($tire_sizeId,$tire_size,$rimId);
@@ -50,7 +47,6 @@ class Triesize extends BD_Controller {
                 'tire_sizeId' => $tire_sizeId,
                 'tire_size' => $tire_size,
                 'tire_series' => $tire_series,
-                'rim' => $rim,
                 'status' => 1,
                 'rimId' => $rimId,
                 'update_at' => date('Y-m-d H:i:s',time()),

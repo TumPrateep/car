@@ -34,10 +34,6 @@
                             <label>ซีรี่ย์ยาง</label> <span class="error">*</span>
                             <input type="text" class="form-control" placeholder="ซีรี่ย์ยาง เช่น 55" name="tire_series" id="tire_series">
                           </div>
-                          <div class="col">
-                            <label>ขนาดกะทะล้อ</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="ขนาดกะทะล้อ เช่น R17" name="rim" id="rim">
-                          </div>
                       </div><br>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary ">บันทึก</button>

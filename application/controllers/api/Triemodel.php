@@ -77,7 +77,8 @@ class Triemodel extends BD_Controller {
         $option = [
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->triemodels
+            "model" => $this->triemodels,
+            "image_path" => null
         ];
 
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
