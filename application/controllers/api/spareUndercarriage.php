@@ -66,33 +66,27 @@ class SpareUndercarriage extends BD_Controller {
 
         $spares_undercarriageName = $this->post("spares_undercarriageName");
         $userId = $this->session->userdata['logged_in']['id'];
-        $isCheck = $this->sparesundercarriages->checksparesUndercarriage($spares_undercarriageName);
+        $data_check = $this->sparesundercarriages->data_check_create($spares_undercarriageName);
 
-        if($isCheck){
-            $data = array(
-                'spares_undercarriageId' => null,
-                'spares_undercarriageName' => $spares_undercarriageName,
-                'status' => 1,
-                'activeFlag' => 1,
-                'create_at' => date('Y-m-d H:i:s',time()),
-                'create_by' => $userId
-            );
-            $result = $this->sparesundercarriages->insertsparesUndercarriage($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }else{
-            $output["status"] = false;
-            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data = array(
+            'spares_undercarriageId' => null,
+            'spares_undercarriageName' => $spares_undercarriageName,
+            'status' => 1,
+            'activeFlag' => 1,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'create_by' => $userId
+        );
+
+        $option = [
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->sparesundercarriages,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
+            
+        
     }
     function deletespareUndercarriage_get(){
         $spares_undercarriageId = $this->get('spares_undercarriageId');
@@ -119,32 +113,27 @@ class SpareUndercarriage extends BD_Controller {
         $spares_undercarriageName = $this->post('spares_undercarriageName');
         $userId = $this->session->userdata['logged_in']['id'];
 
-        $result = $this->sparesundercarriages->wherenotsparesUndercarriage($spares_undercarriageId,$spares_undercarriageName);
+        $data_check_update = $this->sparesundercarriages->getUpdate($spares_undercarriageId);
+        $data_check = $this->sparesundercarriages->data_check_update($spares_undercarriageId,$spares_undercarriageName);
 
-        if($result){
-            $data = array(
-                'spares_undercarriageId' => $spares_undercarriageId,
-                'spares_undercarriageName' => $spares_undercarriageName,
-                'status' => 1,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId
-            );
-            $result = $this->sparesundercarriages->updatesparesUndercarriage($data);
-            $output["status"] = $result;
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
-                $output["status"] = false;
-                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        }
-        else{
-            $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }
+        $data = array(
+            'spares_undercarriageId' => $spares_undercarriageId,
+            'spares_undercarriageName' => $spares_undercarriageName,
+            'status' => 1,
+            'update_at' => date('Y-m-d H:i:s',time()),
+            'update_by' => $userId
+        );
+        
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->sparesundercarriages,
+            "image_path" => null,
+            "old_image_path" => null,
+        ];
+
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
 
 

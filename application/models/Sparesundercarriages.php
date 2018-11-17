@@ -131,4 +131,20 @@ class Sparesundercarriages extends CI_Model{
             return $query->result();
        }
 
+        function checksparesUndercarriage($spares_undercarriageId){
+            $this->db->select("spares_undercarriageId");
+            $this->db->from("spares_undercarriage");
+            $result = $this->db->count_all_results();
+
+            if($result > 0){
+                return true;
+            }
+            return false;
+        }
+
+        function getUpdate($spares_undercarriageId){
+            $this->db->select("spares_undercarriageId,spares_undercarriageName");
+            return $this->db->where('spares_undercarriageId',$spares_undercarriageId)->get("spares_undercarriage")->row();
+        }
+
 }
