@@ -71,7 +71,7 @@ class lubricatortypeformachines extends CI_Model{
         }
         
     }
-    function lubricatortypeformachines_search($limit,$start,$search,$col,$dir,$status)
+    function lubricatortypeformachines_search($limit,$start,$search,$dir,$col,$status)
     {
         $this->db->like('lubricatortypeFormachine',$search);
         if($status != null){
@@ -79,7 +79,8 @@ class lubricatortypeformachines extends CI_Model{
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
-                ->get('lubricatortypeformachine');       
+                ->get('lubricatortypeformachine'); 
+
         if($query->num_rows()>0)
         {
             return $query->result();  

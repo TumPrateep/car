@@ -126,7 +126,7 @@ class Lubricatortypeformachine extends BD_Controller {
         else {
             $search = $this->post('lubricatortypeFormachine');
             $status = $this->post('status');
-            $posts =  $this->lubricatortypeformachines->lubricatortypeformachines_search($limit,$start,$search, $status ,$order,$dir);
+            $posts =  $this->lubricatortypeformachines->lubricatortypeformachines_search($limit,$start,$search, $dir ,$order,$status);
             $totalFiltered = $this->lubricatortypeformachines->lubricatortypeformachines_search_count($search,$status);
         }
         $data = array();
