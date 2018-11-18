@@ -105,19 +105,22 @@
 
 
         
-        init();
+       
 
         function init(){
             getLubracatorBrand();
             getlubricatortypeFormachine();
+            getbrand();
             
         }
-
+        init();
 
         var lubricator_brand = $("#lubricator_brandId");
         var lubricator = $("#lubricatorId");
         var lubricator_gear = $("#lubricator_gear");
         var lubricatortypeFormachine = $("#lubricatortypeFormachineId");
+        var brand =$("#brandId");
+        var model = $("#modelId");
 
         function getLubracatorBrand(){
             $.get(base_url+"service/Lubricator/getAllLubricatorBrand",{},
@@ -162,7 +165,34 @@
                 }
             );
         }
+        function getbrand(brandId = null ){
+        $.get(base_url+"service/Tire/getAllBrand",{},
+        function(data){
+            var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    brand.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');
+                });
+            }
+        );
+    }
+
+    brand.change(function(){
+        var brandId = brand.val();
+        model.html('<option value="">เลือกรุ่นรถ</option>');
+        $.get(base_url+"service/Tire/getAllModel",{
+            brandId : brandId
+        },function(data){
+            var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
+                });
+            }
+        );
     });
+
+
+});
+   
 </script>
 </body>
 </html>
