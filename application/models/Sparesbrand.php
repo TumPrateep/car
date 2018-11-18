@@ -131,6 +131,7 @@ class Sparesbrand extends CI_Model{
 
     function getAllSpareBrand($spares_undercarriageId){
         $this->db->where("spares_undercarriageId", $spares_undercarriageId);
+        $this->db->where('status','1');
         $query = $this->db->get("spares_brand");
         return $query->result();
     }

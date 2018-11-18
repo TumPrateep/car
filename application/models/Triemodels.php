@@ -154,6 +154,7 @@ class Triemodels extends CI_Model {
     function getAllTireModelByTireBrandId($tire_brandId){
         $this->db->select("tire_modelId,tire_modelName");
         $this->db->where("tire_brandId", $tire_brandId);
+        $this->db->where('status','1');
         $query = $this->db->get("tire_model");
         return $query->result();
     }
