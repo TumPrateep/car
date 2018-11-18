@@ -142,7 +142,7 @@
             lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
             $.get(base_url+"service/Lubricator/getAllLubricator",{
                 lubricator_brandId: $(this).val(),
-                lubricator_gear: lubricator_gear.val()
+                // lubricator_gear: lubricator_gear.val()
             },function(data){
                     var lubricatorData = data.data;
                     $.each( lubricatorData, function( key, value ) {
