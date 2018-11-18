@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2018 at 09:23 AM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: Nov 18, 2018 at 09:21 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,8 +45,8 @@ CREATE TABLE `brand` (
 --
 
 INSERT INTO `brand` (`brandId`, `brandPicture`, `brandName`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
-(12, '5b93cf22b510f.png', 'Chevrolet', 1, NULL, '2018-09-08 20:31:14', NULL, 1, 1),
-(13, '5befcbb66fb49.png', 'HONDA', 1, NULL, '2018-11-17 15:05:10', NULL, 1, 1);
+(12, '5bf109fae2712.png', 'CHEVROLET', 1, 1, '2018-09-08 20:31:14', '2018-11-18 13:43:06', 1, 1),
+(13, '5bf10b2a8de99.png', 'HONDA', 1, 1, '2018-11-17 15:05:10', '2018-11-18 13:48:10', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -1789,15 +1789,16 @@ CREATE TABLE `spares_brand` (
   `update_by` int(11) DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
-  `activeFlag` int(11) NOT NULL DEFAULT '2'
+  `activeFlag` int(11) NOT NULL DEFAULT '2',
+  `spares_brandPicture` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `spares_brand`
 --
 
-INSERT INTO `spares_brand` (`spares_brandId`, `spares_brandName`, `status`, `spares_undercarriageId`, `create_by`, `update_by`, `update_at`, `create_at`, `activeFlag`) VALUES
-(35, 'TRW', '1', 33, 1, NULL, NULL, '2018-09-08 20:41:10', 1);
+INSERT INTO `spares_brand` (`spares_brandId`, `spares_brandName`, `status`, `spares_undercarriageId`, `create_by`, `update_by`, `update_at`, `create_at`, `activeFlag`, `spares_brandPicture`) VALUES
+(35, 'TRW', '1', 33, 1, NULL, NULL, '2018-09-08 20:41:10', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -10808,6 +10809,7 @@ INSERT INTO `tire_brand` (`tire_brandId`, `tire_brandName`, `tire_brandPicture`,
 (15, 'KUMHO', '5befcc620044e.png', 1, NULL, '2018-11-17 15:08:02', NULL, '1', 1),
 (16, 'MAXXIS', '5befcd455e1fb.png', 1, NULL, '2018-11-17 15:11:49', NULL, '1', 1),
 (17, 'OTANI', '5befce25022f9.png', 1, NULL, '2018-11-17 15:15:33', NULL, '1', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -10973,6 +10975,7 @@ INSERT INTO `tire_model` (`tire_modelId`, `tire_modelName`, `tire_brandId`, `cre
 (75, 'UltraContact UC6', 8, 1, NULL, '2018-11-17 15:28:51', NULL, '1', 1),
 (76, 'ContiMaxContact TM MC6', 8, 1, NULL, '2018-11-17 15:28:59', NULL, '1', 1),
 (77, 'ContimaxContact MC6', 8, 1, NULL, '2018-11-17 15:29:06', NULL, '1', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -11440,152 +11443,182 @@ ALTER TABLE `user_profile`
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
 -- AUTO_INCREMENT for table `car_accessories`
 --
 ALTER TABLE `car_accessories`
   MODIFY `car_accessoriesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `car_profile`
 --
 ALTER TABLE `car_profile`
   MODIFY `car_profileId` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `district`
 --
 ALTER TABLE `district`
   MODIFY `districtId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=999;
+
 --
 -- AUTO_INCREMENT for table `garage`
 --
 ALTER TABLE `garage`
   MODIFY `garageId` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `lubricator`
 --
 ALTER TABLE `lubricator`
   MODIFY `lubricatorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+
 --
 -- AUTO_INCREMENT for table `lubricatortypeformachine`
 --
 ALTER TABLE `lubricatortypeformachine`
   MODIFY `lubricatortypeFormachineId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `lubricator_brand`
 --
 ALTER TABLE `lubricator_brand`
   MODIFY `lubricator_brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `lubricator_data`
 --
 ALTER TABLE `lubricator_data`
   MODIFY `lubricator_dataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `lubricator_number`
 --
 ALTER TABLE `lubricator_number`
   MODIFY `lubricator_numberId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
 --
 -- AUTO_INCREMENT for table `lubricator_type`
 --
 ALTER TABLE `lubricator_type`
   MODIFY `lubricator_typeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `machinetype`
 --
 ALTER TABLE `machinetype`
   MODIFY `machinetypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
 --
 -- AUTO_INCREMENT for table `model`
 --
 ALTER TABLE `model`
   MODIFY `modelId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+
 --
 -- AUTO_INCREMENT for table `modelofcar`
 --
 ALTER TABLE `modelofcar`
   MODIFY `modelofcarId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+
 --
 -- AUTO_INCREMENT for table `province`
 --
 ALTER TABLE `province`
   MODIFY `provinceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+
 --
 -- AUTO_INCREMENT for table `rim`
 --
 ALTER TABLE `rim`
   MODIFY `rimId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `spares_brand`
 --
 ALTER TABLE `spares_brand`
   MODIFY `spares_brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `spares_undercarriage`
 --
 ALTER TABLE `spares_undercarriage`
   MODIFY `spares_undercarriageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
 --
 -- AUTO_INCREMENT for table `spares_undercarriagedata`
 --
 ALTER TABLE `spares_undercarriagedata`
   MODIFY `spares_undercarriageDataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `subdistrict`
 --
 ALTER TABLE `subdistrict`
   MODIFY `subdistrictId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8861;
+
 --
 -- AUTO_INCREMENT for table `temp_user`
 --
 ALTER TABLE `temp_user`
   MODIFY `tempUserId` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tire_brand`
 --
 ALTER TABLE `tire_brand`
-  MODIFY `tire_brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `tire_brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `tire_change`
 --
 ALTER TABLE `tire_change`
   MODIFY `tire_changeId` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tire_data`
 --
 ALTER TABLE `tire_data`
   MODIFY `tire_dataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tire_matching`
 --
 ALTER TABLE `tire_matching`
   MODIFY `tire_matchingId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `tire_model`
 --
 ALTER TABLE `tire_model`
-  MODIFY `tire_modelId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `tire_modelId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+
 --
 -- AUTO_INCREMENT for table `tire_need`
 --
 ALTER TABLE `tire_need`
   MODIFY `tire_needId` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tire_size`
 --
 ALTER TABLE `tire_size`
   MODIFY `tire_sizeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
   MODIFY `user_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- Constraints for dumped tables
 --
