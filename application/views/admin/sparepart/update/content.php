@@ -34,6 +34,23 @@
                           </div>
                         </div>
                       </div>
+
+                      <div class="form-group p-t-20">
+                          <div class="col-md-12">
+                              <div class="form-group">
+                              <label class="control-label">รูปยี่ห้อรถ</label>
+                                  <div class="image-editor">
+                                      <input type="file" class="cropit-image-input" name="tempImage" required>
+                                      <div class="cropit-preview"></div>
+                                      <div class="image-size-label">
+                                      ปรับขนาด
+                                      </div>
+                                      <input type="range" class="cropit-image-zoom-input">
+                                      <input type="hidden" name="spares_brandPicture" class="hidden-image-data" />
+                                  </div>
+                              </div>
+                          </div>
+                      </div>  
                       
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">บันทึก</button>

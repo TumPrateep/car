@@ -68,7 +68,7 @@ class Model extends CI_Model{
         $query = $this->db
             ->where("(`modelName` LIKE '%".$search."%' or  `yearStart` LIKE '%".$search."%' or `yearEnd` LIKE '%".$search."%') and `brandId` = ".$brandId,null,false)
             // ->like('modelName',$search)
-            // ->or_like('yearStart',$search)
+            // ->or_like('yearStart',$search
             // ->or_like('yearEnd',$search)
             // ->where("brandId", $brandId)
             ->get('model');
@@ -215,6 +215,7 @@ class Model extends CI_Model{
     function getAllModelByBrandId($brandId){
         $this->db->select("modelId,modelName,yearStart,yearEnd");
         $this->db->where("brandId", $brandId);
+        $this->db->where('status','1');
         $this->db->order_by('modelName', 'ASC');
         $query = $this->db->get("model");
         return $query->result();
@@ -223,6 +224,7 @@ class Model extends CI_Model{
     function getAllmodel($brandId){
         $this->db->select("modelId,modelName");
         $this->db->where("brandId", $brandId);
+        $this->db->where('status','1');
         $query = $this->db->get("model");
         return $query->result();
     }

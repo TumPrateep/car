@@ -139,6 +139,7 @@ class Lubricatorbrands extends CI_Model{
     
     function getAllLubricatorBrand(){
         $this->db->select("lubricator_brandId,lubricator_brandName");
+        $this->db->where('status','1');
         $this->db->order_by("lubricator_brandName","ASC");
         $query = $this->db->get("lubricator_brand");
         return $query->result();

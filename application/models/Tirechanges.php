@@ -38,6 +38,7 @@ class Tirechanges extends CI_Model{
     function getallTire($tire_changeId){
         $this->db->select("tire_front,tire_back,rimId");
         $this->db->where('tire_changeId',$tire_changeId);
+        $this->db->where('status','1');
         $result = $this->db->get('tire_change')->row();
         return $result;
     }
