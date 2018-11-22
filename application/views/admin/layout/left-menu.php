@@ -97,6 +97,33 @@
           </ul>
         </li>
 
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#serviceCharge" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">ค่าบริการ</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="serviceCharge">
+            <li class="<?= activate_menu('SpareCharge'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/SpareCharge") ?>">
+                <i class="fa fa-cog"></i>
+                <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
+              </a>
+            </li>
+            <li class="<?= activate_menu('LubricatorCharge'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/LubricatorCharge") ?>">
+                <i class="fa fa-cog"></i>
+                <span class="nav-link-text">น้ำมันเครื่อง</span>
+              </a>
+            </li>
+            <li class="<?= activate_menu('TiresCharge'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/TiresCharge") ?>">
+                <i class="fa fa-cog"></i>
+                <span class="nav-link-text">ยางรถ</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
          <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/garages") ?>">
             <i class="fa fa-map-o" aria-hidden="true"></i>

@@ -31,7 +31,7 @@
                               <div class="form-group">
                               <label class="control-label">รูปยี่ห้อรถ</label>
                                   <div class="image-editor">
-                                      <input type="file" class="cropit-image-input" name="tempImage" required>
+                                      <input type="file" class="cropit-image-input" name="tempImage">
                                       <div class="cropit-preview"></div>
                                       <div class="image-size-label">
                                       ปรับขนาด

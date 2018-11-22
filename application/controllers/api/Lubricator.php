@@ -98,7 +98,7 @@ class Lubricator extends BD_Controller {
         
         $userId = $this->session->userdata['logged_in']['id'];
 
-        $data_check = $this->lubricators->checkLubricator($lubricatorName, $lubricator_brandId, $lubricator_gear, $lubricatortypeFormachineId, $lubricator_numberId);
+        $data_check = $this->lubricators->checkLubricator($lubricatorName, $lubricator_brandId, $lubricator_gear, $lubricatortypeFormachineId, $lubricator_numberId, $capacity);
         $data = array(
             'lubricatorId' => null,
             'lubricatorName' => $lubricatorName,  
@@ -135,7 +135,7 @@ class Lubricator extends BD_Controller {
        
         $userId = $this->session->userdata['logged_in']['id'];
         $data_check_update = $this->lubricators->getlubricatorbyId($lubricatorId);
-        $data_check = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear,$lubricatortypeFormachineId,$lubricator_numberId);
+        $data_check = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear,$lubricatortypeFormachineId,$lubricator_numberId, $capacity);
         $data = array(
             'lubricatorId' => $lubricatorId,
             'lubricatorName' => $lubricatorName,

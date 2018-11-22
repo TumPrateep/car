@@ -89,36 +89,39 @@ class Model extends CI_Model{
         $this->db->from("model");
         $this->db->where('modelName', $modelName);
         $this->db->where('brandId', $brandId);
-        $this->db->group_start();
-            if($yearEnd != null){
-                $this->db->group_start();
-                    $this->db->group_start();
-                        $this->db->where('yearStart <=' ,$yearStart)
-                        ->where('yearEnd >=' ,$yearStart);
-                    $this->db->group_end();
+        // $this->db->group_start();
+        //     if($yearEnd != null){
+        //         $this->db->group_start();
+        //             $this->db->group_start();
+        //                 $this->db->where('yearStart <=' ,$yearStart)
+        //                 ->where('yearEnd >=' ,$yearStart);
+        //             $this->db->group_end();
 
-                    $this->db->or_group_start()
-                        ->where('yearStart <=' ,$yearEnd)
-                        ->where('yearEnd >=' ,$yearEnd);
-                    $this->db->group_end();
-                $this->db->group_end();
+        //             $this->db->or_group_start()
+        //                 ->where('yearStart <=' ,$yearEnd)
+        //                 ->where('yearEnd >=' ,$yearEnd);
+        //             $this->db->group_end();
+        //         $this->db->group_end();
 
-                $this->db->or_group_start();
-                    $this->db->where('yearStart >=' ,$yearStart)
-                    ->where('yearEnd <=' ,$yearEnd);
-                $this->db->group_end();
+        //         $this->db->or_group_start();
+        //             $this->db->where('yearStart >=' ,$yearStart)
+        //             ->where('yearEnd <=' ,$yearEnd);
+        //         $this->db->group_end();
 
-            }else{
-                $this->db->or_group_start();
-                    $this->db->where('yearStart <=' ,$yearStart)
-                    ->where('yearEnd >=' ,$yearStart);
-                $this->db->group_end();
+        //     }else{
+        //         $this->db->or_group_start();
+        //             $this->db->where('yearStart <=' ,$yearStart)
+        //             ->where('yearEnd >=' ,$yearStart);
+        //         $this->db->group_end();
 
-                $this->db->or_where('yearStart' ,$yearStart);
-            }
-        $this->db->group_end();
+        //         $this->db->or_where('yearStart' ,$yearStart);
+        //     }
+        // $this->db->group_end();
+        $this->db->where('yearStart' ,$yearStart);
+        if($yearEnd != null){
+            $this->db->where('yearEnd' ,$yearEnd);
+        }
         $result = $this->db->get();
-        
         return $result->row();
     }
 
@@ -153,34 +156,38 @@ class Model extends CI_Model{
         $this->db->from("model");
         $this->db->where('modelName', $modelName);
         $this->db->where('brandId', $brandId);
-        $this->db->group_start();
-            if($yearEnd != null){
-                $this->db->group_start();
-                    $this->db->group_start();
-                        $this->db->where('yearStart <=' ,$yearStart)
-                        ->where('yearEnd >=' ,$yearStart);
-                    $this->db->group_end();
+        // $this->db->group_start();
+        //     if($yearEnd != null){
+        //         $this->db->group_start();
+        //             $this->db->group_start();
+        //                 $this->db->where('yearStart <=' ,$yearStart)
+        //                 ->where('yearEnd >=' ,$yearStart);
+        //             $this->db->group_end();
 
-                    $this->db->or_group_start()
-                        ->where('yearStart <=' ,$yearEnd)
-                        ->where('yearEnd >=' ,$yearEnd);
-                    $this->db->group_end();
-                $this->db->group_end();
+        //             $this->db->or_group_start()
+        //                 ->where('yearStart <=' ,$yearEnd)
+        //                 ->where('yearEnd >=' ,$yearEnd);
+        //             $this->db->group_end();
+        //         $this->db->group_end();
 
-                $this->db->or_group_start();
-                    $this->db->where('yearStart >=' ,$yearStart)
-                    ->where('yearEnd <=' ,$yearEnd);
-                $this->db->group_end();
+        //         $this->db->or_group_start();
+        //             $this->db->where('yearStart >=' ,$yearStart)
+        //             ->where('yearEnd <=' ,$yearEnd);
+        //         $this->db->group_end();
 
-            }else{
-                $this->db->or_group_start();
-                    $this->db->where('yearStart <=' ,$yearStart)
-                    ->where('yearEnd >=' ,$yearStart);
-                $this->db->group_end();
+        //     }else{
+        //         $this->db->or_group_start();
+        //             $this->db->where('yearStart <=' ,$yearStart)
+        //             ->where('yearEnd >=' ,$yearStart);
+        //         $this->db->group_end();
 
-                $this->db->or_where('yearStart' ,$yearStart);
-            }
-        $this->db->group_end();
+        //         $this->db->or_where('yearStart' ,$yearStart);
+        //     }
+        // $this->db->group_end();
+        $this->db->where('yearStart' ,$yearStart);
+        if($yearEnd != null){
+            $this->db->where('yearEnd' ,$yearEnd);
+        }
         $this->db->where_not_in('modelId', $modelId);
         $result = $this->db->get();
         return $result->row();

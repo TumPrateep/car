@@ -33,19 +33,13 @@
     $("#update-brand").validate({
         rules: {
             brandName: {
-            required: true
-            },
-            brandPicture :{
-            required: true   
-            },
+                required: true
+            }
         },
         messages: {
             brandName: {
-            required: "กรุณากรอกยี่ห้อรถ"
-            },
-            brandPicture :{
-            required: ""   
-            },
+                required: "กรุณากรอกยี่ห้อรถ"
+            }
         },
     });
 
