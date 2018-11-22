@@ -136,6 +136,7 @@ class Users extends BD_Controller {
 		$exp = $this->post('exp');
 		$skill = $this->post('skill');
 
+		$garagePicture = $this->post('garagePicture');
 		$garagename = $this->post('garagename');
 		$phone_garage = $this->post('phone_garage');
 		$businessRegistration = $this->post('businessRegistration');
@@ -152,6 +153,11 @@ class Users extends BD_Controller {
 		$postCode_garage = $this->post('postCode_garage');
 		$latitude = $this->post('latitude');
 		$longitude = $this->post('longitude');
+		$Wifi = $this->post('Wifi');
+		$roomfan = $this->post('roomfan');
+		$roomAir = $this->post('roomAir');
+		$snack = $this->post('snack');
+		$Otherfacilities = $this->post('Otherfacilities');
 
 		$data_check = $this->user->data_check_create($username,$phone);
 		$data['users'] = array(
@@ -169,7 +175,7 @@ class Users extends BD_Controller {
 		);
 
 		$data['profile'] = array(
-			'mechanicId' => null,
+			'user_profile' => null,
 			'titleName' => $titleName_user,
 			'firstName' => $firstname_user,
 			'lastname' => $lastname_user,
@@ -193,7 +199,7 @@ class Users extends BD_Controller {
 		);
 
 		$data['mechanic'] = array(
-			'user_profile' => null,
+			'mechanicId' => null,
 			'titleName' => $titleName_mechanic,
 			'firstname' => $firstname_mechanic,
 			'lastname' => $lastname_mechanic,
@@ -230,11 +236,16 @@ class Users extends BD_Controller {
 			'postCode' => $postCode_garage,
 			'latitude'=> $latitude,
 			'longitude' => $longitude,
+			'option1' => $Wifi,
+			'option2' => $roomfan,
+			'option3' => $roomAir,
+			'option4' => $snack,
+			'option_outher' => $Otherfacilities,
+			'garagePicture' => $garagePicture,
 			'create_by' => null,
 			'update_by' => null,
 			'create_at' => date('Y-m-d H:i:s',time()),
 			'update_at' => null,
-			'userId' => null,
 			'status' => 1,
 			'userId' => null
 		);

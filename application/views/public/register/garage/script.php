@@ -1,9 +1,10 @@
 <script>
 $(document).ready(function() {
     var register = $("registergarage");
-    // jQuery.validator.addMethod("username", function(value, element) {
-    //   return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
-    // }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
+
+    jQuery.validator.addMethod("username", function(value, element) {
+      return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
+    }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
     
     register.validate({
         rules: {
@@ -19,12 +20,6 @@ $(document).ready(function() {
           hno_user:{
             required: true
           },
-          village_user:{
-            required: true
-          },
-          road_user:{
-            required: true
-          },  
           provinceId_user:{
             required: true
           },
@@ -87,12 +82,6 @@ $(document).ready(function() {
           hno_garage:{
             required: true
           },
-          village_garage:{
-            required: true
-          },
-          road_garage:{
-            required: true
-          },
           provinceId_garage:{
             required: true
           },
@@ -144,12 +133,6 @@ $(document).ready(function() {
           hno_user:{
             required: "บ้านเลขที่"
           },
-          village_user:{
-            required: "หมู่ที่"
-          },
-          road_user:{
-            required: "ถนน"
-          },  
           provinceId_user:{
             required: "จังหวัด"
           },
@@ -211,12 +194,6 @@ $(document).ready(function() {
           hno_garage:{
             required: "บ้านเลขที่"
           },
-          village_garage:{
-            required: "หมู่ที่"
-          },
-          road_garage:{
-            required: "ถนน"
-          },
           provinceId_garage:{
             required: "จังหวัด"
           },
@@ -273,25 +250,26 @@ $(document).ready(function() {
     var provinceDropdownUser = $("#provinceId_user");
     provinceDropdownUser.append('<option value="">เลือกจังหวัด</option>');
 
-    var districtDropdown = $('#districtId_user');
-    districtDropdown.append('<option value="">เลือกอำเภอ</option>');
+    var districtDropdownUser = $('#districtId_user');
+    districtDropdownUser.append('<option value="">เลือกอำเภอ</option>');
 
-    var subdistrictDropdown = $('#subdistrictId_user');
-    subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+    var subdistrictDropdownUser = $('#subdistrictId_user');
+    subdistrictDropdownUser.append('<option value="">เลือกตำบล</option>');
 
-     var provinceDropdownUser1 = $("#provinceId_garage");
-    provinceDropdownUser1.append('<option value="">เลือกจังหวัด</option>');
+    var provinceDropdownGarage = $("#provinceId_garage");
+    provinceDropdownGarage.append('<option value="">เลือกจังหวัด</option>');
 
-    var districtDropdown1 = $('#districtId_garage');
-    districtDropdown1.append('<option value="">เลือกอำเภอ</option>');
+    var districtDropdownGarage = $('#districtId_garage');
+    districtDropdownGarage.append('<option value="">เลือกอำเภอ</option>');
 
-    var subdistrictDropdown1 = $('#subdistrictId_garage');
-    subdistrictDropdown1.append('<option value="">เลือกตำบล</option>');
+    var subdistrictDropdownGarage = $('#subdistrictId_garage');
+    subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
 
     function onLoad(){
       loadProvinceUser();
       loadProvinceGarage();
     }
+    onLoad();
 
     function loadProvinceUser(){
       $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
@@ -310,10 +288,10 @@ $(document).ready(function() {
     });
 
     function loadDistrictUser(provinceId){
-      districtDropdown.html("");
-      districtDropdown.append('<option value="">เลือกอำเภอ</option>');
-      subdistrictDropdown.html("");
-      subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+      districtDropdownUser.html("");
+      districtDropdownUser.append('<option value="">เลือกอำเภอ</option>');
+      subdistrictDropdownUser.html("");
+      subdistrictDropdownUser.append('<option value="">เลือกตำบล</option>');
 
       $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
         provinceId: provinceId
@@ -321,21 +299,21 @@ $(document).ready(function() {
         function(data){
           var district = data.data;
           $.each(district, function( index, value ) {
-            districtDropdown.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+            districtDropdownUser.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
           });
         }
       );
 
     }
 
-    districtDropdown.change(function(){
+    districtDropdownUser.change(function(){
       var districtId = $(this).val();
       loadSubdistrictUser(districtId);
     });
 
     function loadSubdistrictUser(districtId){
-      subdistrictDropdown.html("");
-      subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+      subdistrictDropdownUser.html("");
+      subdistrictDropdownUser.append('<option value="">เลือกตำบล</option>');
         
       $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
         districtId: districtId
@@ -343,7 +321,7 @@ $(document).ready(function() {
         function(data){
           var subDistrict = data.data;
           $.each(subDistrict, function( index, value ) {
-            subdistrictDropdown.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+            subdistrictDropdownUser.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
           });
         }
       );
@@ -354,22 +332,22 @@ $(document).ready(function() {
         function(data){
           var province = data.data;
           $.each(province, function( index, value ) {
-            provinceDropdownUser1.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
+            provinceDropdownGarage.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
           });
         }
       );
     }
 
-    provinceDropdownUser1.change(function(){
+    provinceDropdownGarage.change(function(){
       var provinceId = $(this).val();
       loadDistrictGarage(provinceId);
     });
 
     function loadDistrictGarage(provinceId){
-      districtDropdown1.html("");
-      districtDropdown1.append('<option value="">เลือกอำเภอ</option>');
-      subdistrictDropdown1.html("");
-      subdistrictDropdown1.append('<option value="">เลือกตำบล</option>');
+      districtDropdownGarage.html("");
+      districtDropdownGarage.append('<option value="">เลือกอำเภอ</option>');
+      subdistrictDropdownGarage.html("");
+      subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
 
       $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
         provinceId: provinceId
@@ -377,21 +355,21 @@ $(document).ready(function() {
         function(data){
           var district = data.data;
           $.each(district, function( index, value ) {
-            districtDropdown1.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+            districtDropdownGarage.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
           });
         }
       );
 
     }
 
-    districtDropdown1.change(function(){
+    districtDropdownGarage.change(function(){
       var districtId = $(this).val();
       loadSubdistrictGarage(districtId);
     });
 
     function loadSubdistrictGarage(districtId){
-      subdistrictDropdown1.html("");
-      subdistrictDropdown1.append('<option value="">เลือกตำบล</option>');
+      subdistrictDropdownGarage.html("");
+      subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
         
       $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
         districtId: districtId
@@ -399,11 +377,29 @@ $(document).ready(function() {
         function(data){
           var subDistrict = data.data;
           $.each(subDistrict, function( index, value ) {
-            subdistrictDropdown1.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+            subdistrictDropdownGarage.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
           });
         }
       );
     }
+
+    register.submit(function (e) { 
+      e.preventDefault();
+      var isValid = register.valid();
+      if(isValid){
+        var data = register.serialize();
+        $.post(base_url+"apiUser/Users/creategarage", data,
+          function (data, textStatus, jqXHR) {
+            console.log(data);
+            if(data.message == 200){
+              window.location = base_url+"login";
+            }else if(data.message == 3001){
+             showMessage(data.message);
+            }
+          }
+        );
+      }      
+    });
 
   });
 

@@ -166,7 +166,7 @@
 		                            	<div class="cropit-preview"></div>
 		                          		<div class="image-size-label">ปรับขนาด</div>
 		                    			<input type="range" class="cropit-image-zoom-input">
-		                 				<input type="hidden" name="spares_undercarriageDataPicture" id="spares_undercarriageDataPicture" class="hidden-image-data" />
+		                 				<input type="hidden" name="garagePicture" id="garagePicture" class="hidden-image-data" />
 		                  			</div>
 		             			</div>
 		           			</div>
@@ -352,25 +352,25 @@
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label" for="garage">
-							<input class="form-check-input" name="Wifi" id="Wifi" type="checkbox">Wifi</label>
+							<input class="form-check-input" name="Wifi" id="Wifi" value="1" type="checkbox">Wifi</label>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label"  for="garage">
-							<input class="form-check-input" name="roomfan" id="roomfan" type="checkbox">ห้องพักพัดลม</label>
+							<input class="form-check-input" name="roomfan" id="roomfan" value="2" type="checkbox">ห้องพักพัดลม</label>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label" for="garage">
-							<input class="form-check-input" name="roomAir" id="roomAir" type="checkbox">ห้องพักเเอร์</label>
+							<input class="form-check-input" name="roomAir" id="roomAir" value="3" type="checkbox">ห้องพักเเอร์</label>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label" for="garage">
-							<input class="form-check-input" name="snack" id="snack" type="checkbox">ของว่าง</label>
+							<input class="form-check-input" name="snack" id="snack" value="4" type="checkbox">ของว่าง</label>
 						</div>
 					</div>
 				</div>
