@@ -217,10 +217,23 @@ class User extends CI_Model{
         $result = $this->db->where('username',$data['users']['username'])->get("users")->row();
         $userId = $result->id;
         $data['profile']['userId'] = $userId;
-        $data['accessories']['userId'] = $userId;
         $this->db->insert('user_profile', $data['profile']);
-        $data['accessories']['create_by'] = $userId;
-        $this->db->insert('car_accessories', $data['accessories']);
+        if($data['accessories'] != null){
+            $data['accessories']['userId'] = $userId;
+            $data['accessories']['create_by'] = $userId;
+            $this->db->insert('car_accessories', $data['accessories']);
+        }elseif ($data['mechanic'] != null && $data['garage'] != null) {
+            $data['mechanic']['userId'] = $userId;
+            $data['mechanic']['create_by'] = $userId;
+            $this->db->insert('mechanic', $data['mechanic']);
+            $data['garage']['userId'] = $userId;
+            $data['garage']['create_by'] = $userId;
+            $this->db->insert('garage', $data['garage']);
+        }
+        // $data['accessories']['userId'] = $userId;
+        // $data['accessories']['create_by'] = $userId;
+        // $this->db->insert('car_accessories', $data['accessories']);
+
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
             return false;

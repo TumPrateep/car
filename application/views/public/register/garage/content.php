@@ -31,22 +31,28 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="form-group">
 							<label for="user_profile">บ้านเลขที่</label><span class="error">*</span>
 							<input type="text" class="form-control" name="hno_user" id="hno_user" placeholder="บ้านเลขที่">
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="form-group">
-							<label for="user_profile">หมู่ที่</label><span class="error">*</span>
-							<input type="text" class="form-control" name="village_user" id="village_user" placeholder="หมู่ที่">
+							<label for="user_profile">ซอย</label>
+							<input type="text" class="form-control" name="alley_user" id="alley_user" placeholder="หมู่ที่">
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="form-group">
-							<label for="user_profile">ถนน</label><span class="error">*</span>
+							<label for="user_profile">ถนน</label>
 							<input type="text" class="form-control" name="road_user" id="road_user" placeholder="ถนน">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="user_profile">หมู่ที่</label>
+							<input type="text" class="form-control" name="village_user" id="village_user" placeholder="หมู่ที่">
 						</div>
 					</div>
 				</div>
@@ -150,22 +156,53 @@
 				</div>
 				<h4 class="underline">ข้อมูลอู่ซ่อมรถ</h4>
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-6">
+						<div class="row p-t-20">
+		                	<div class="col-md-12">
+		             			<div class="form-group">
+		                            <label class="control-label">รูปร้านอู่ซ่อมรถ</label>
+		                         	<div class="image-editor">
+		                            	<input type="file" class="cropit-image-input" name="tempImage">
+		                            	<div class="cropit-preview"></div>
+		                          		<div class="image-size-label">ปรับขนาด</div>
+		                    			<input type="range" class="cropit-image-zoom-input">
+		                 				<input type="hidden" name="spares_undercarriageDataPicture" id="spares_undercarriageDataPicture" class="hidden-image-data" />
+		                  			</div>
+		             			</div>
+		           			</div>
+		                </div>
+	                </div>
+	                <div class="col-md-6 ">
 						<div class="form-group">
 							<label for="garage">ชื่ออู่ซ่อมรถ</label><span class="error">*</span>
 							<input type="text" class="form-control" name="garagename" id="garagename" placeholder="ชื่ออู่ซ่อมรถ">
 						</div>
-					</div>
-					<div class="col-md-4">
 						<div class="form-group">
 							<label for="garage">เบอร์โทรศัพท์</label><span class="error">*</span>
 							<input type="text" class="form-control" name="phone_garage" id="phone_garage" placeholder="เบอร์โทรศัพท์">
 						</div>
-					</div>
-					<div class="col-md-4">
 						<div class="form-group">
 							<label for="garage">หมายเลขทะเบียนการค้า</label><span class="error">*</span>
 							<input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="garage"><h4>ช่วงเวลาเปิดทำการ</h4></label><span class="error">*</span>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<!-- <label for="exampleFormControlInput1">เวลาเริ่ม</label> -->
+							<input type="text" class="form-control" name="timestart" id="timestart" placeholder="00 : 00">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<!-- <label for="exampleFormControlInput1">เวลาปิด</label> -->
+							<input type="text" class="form-control" name="timeend" id="timeend" placeholder="00 : 00">
 						</div>
 					</div>
 				</div>
@@ -222,41 +259,35 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group">
-							<label for="garage"><h3>ช่วงเวลาเปิดทำการ</h3></label><span class="error">*</span>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<!-- <label for="exampleFormControlInput1">เวลาเริ่ม</label> -->
-							<input type="text" class="form-control" name="timestart" id="timestart" placeholder="00 : 00">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<!-- <label for="exampleFormControlInput1">เวลาปิด</label> -->
-							<input type="text" class="form-control" name="timeend" id="timeend" placeholder="00 : 00">
+							<button type="button" name="copyaddress" id="copyaddress" class="btn btn-primary">ข้อมูลที่อยู่</button><span> ใช้ข้อมูลเดี่ยวกันกับข้อมูลส่วนตัว</span>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="form-group">
 							<label for="garage">บ้านเลขที่</label><span class="error">*</span>
 							<input type="text" class="form-control" name="hno_garage" id="hno_garage" placeholder="บ้านเลขที่">
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="form-group">
-							<label for="garage">หมู่ที่</label><span class="error">*</span>
-							<input type="text" class="form-control" name="village_garage" id="village_garage" placeholder="หมู่ที่">
+							<label for="garage">ซอย</label>
+							<input type="text" class="form-control" name="alley_garage" id="alley_garage" placeholder="หมู่ที่">
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="form-group">
-							<label for="garage">ถนน</label><span class="error">*</span>
+							<label for="garage">ถนน</label>
 							<input type="text" class="form-control" name="road_garage" id="road_garage" placeholder="ถนน">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="garage">หมู่ที่</label>
+							<input type="text" class="form-control" name="village_garage" id="village_garage" placeholder="หมู่ที่">
 						</div>
 					</div>
 				</div>
@@ -310,12 +341,52 @@
 						</div>
 					</div> -->
 				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="garage">สิ่งอำนวยความสะดวก</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-check">
+							<label class="form-check-label" for="garage">
+							<input class="form-check-input" name="Wifi" id="Wifi" type="checkbox">Wifi</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-check">
+							<label class="form-check-label"  for="garage">
+							<input class="form-check-input" name="roomfan" id="roomfan" type="checkbox">ห้องพักพัดลม</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-check">
+							<label class="form-check-label" for="garage">
+							<input class="form-check-input" name="roomAir" id="roomAir" type="checkbox">ห้องพักเเอร์</label>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-check">
+							<label class="form-check-label" for="garage">
+							<input class="form-check-input" name="snack" id="snack" type="checkbox">ของว่าง</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<textarea class="form-control" name="Otherfacilities" id="Otherfacilities" rows="3" placeholder="สิ่งอำนวยความสะดวกอื่นๆ"></textarea>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col-md-4 leftline">
 				<h4 class="underline">สมัครลงชื่อเข้าใช้งาน</h4>
 				<form id="login">
 					<div class="form-group">
-						<label for="users"ชื่อผู้ใช้งาน</label><span class="error">*</span>
+						<label for="users">ชื่อผู้ใช้งาน</label><span class="error">*</span>
 						<input type="text" class="form-control" name="username" id="username" placeholder="ชื่อผู้ใช้งาน">
 					</div>
 					<div class="form-group">

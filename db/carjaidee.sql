@@ -1136,7 +1136,7 @@ INSERT INTO `district` (`districtId`, `districtName`, `provinceId`, `update_by`,
 
 CREATE TABLE `garage` (
   `garageId` int(11) NOT NULL,
-  `comment` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `comment` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
   `businessRegistration` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `garageName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(45) NOT NULL,
@@ -1145,12 +1145,11 @@ CREATE TABLE `garage` (
   `closingtime` time DEFAULT NULL,
   `hno` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `Alley` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `road` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `village` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `road` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `village` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `postCode` varchar(45) NOT NULL,
   `latitude` varchar(45) NOT NULL,
   `longtitude` varchar(45) NOT NULL,
-  `approve` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `subdistrictId` int(11) NOT NULL,
   `districtId` int(11) NOT NULL,
   `provinceId` int(11) NOT NULL,
@@ -1165,10 +1164,6 @@ CREATE TABLE `garage` (
   `option4` int(11) DEFAULT NULL,
   `option_outher` varchar(255) DEFAULT NULL,
   `garagePicture` varchar(255) DEFAULT NULL,
-  `firstname` varchar(45) DEFAULT NULL,
-  `lastname` varchar(45) DEFAULT NULL,
-  `idcard` varchar(45) DEFAULT NULL,
-  `addressGarage` varchar(45) DEFAULT NULL,
   `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

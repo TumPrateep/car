@@ -257,6 +257,156 @@ $(document).ready(function() {
         }
     });
 
+    jQuery.validator.addMethod("pid", function(value, element) {
+        return checkID(value);
+      }, 'เลขบัตรประชาชนให้ถูกต้อง');
+    
+    function checkID(id) {
+        if(id.length != 13) return false;
+        for(i=0, sum=0; i < 12; i++)
+            sum += parseFloat(id.charAt(i))*(13-i);
+        if((11-sum%11)%10!=parseFloat(id.charAt(12)))
+            return false;
+        return true;
+    }
+
+    var provinceDropdownUser = $("#provinceId_user");
+    provinceDropdownUser.append('<option value="">เลือกจังหวัด</option>');
+
+    var districtDropdown = $('#districtId_user');
+    districtDropdown.append('<option value="">เลือกอำเภอ</option>');
+
+    var subdistrictDropdown = $('#subdistrictId_user');
+    subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+     var provinceDropdownUser1 = $("#provinceId_garage");
+    provinceDropdownUser1.append('<option value="">เลือกจังหวัด</option>');
+
+    var districtDropdown1 = $('#districtId_garage');
+    districtDropdown1.append('<option value="">เลือกอำเภอ</option>');
+
+    var subdistrictDropdown1 = $('#subdistrictId_garage');
+    subdistrictDropdown1.append('<option value="">เลือกตำบล</option>');
+
+    function onLoad(){
+      loadProvinceUser();
+      loadProvinceGarage();
+    }
+
+    function loadProvinceUser(){
+      $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
+        function(data){
+          var province = data.data;
+          $.each(province, function( index, value ) {
+            provinceDropdownUser.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
+          });
+        }
+      );
+    }
+
+    provinceDropdownUser.change(function(){
+      var provinceId = $(this).val();
+      loadDistrictUser(provinceId);
+    });
+
+    function loadDistrictUser(provinceId){
+      districtDropdown.html("");
+      districtDropdown.append('<option value="">เลือกอำเภอ</option>');
+      subdistrictDropdown.html("");
+      subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+
+      $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
+        provinceId: provinceId
+      },
+        function(data){
+          var district = data.data;
+          $.each(district, function( index, value ) {
+            districtDropdown.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+          });
+        }
+      );
+
+    }
+
+    districtDropdown.change(function(){
+      var districtId = $(this).val();
+      loadSubdistrictUser(districtId);
+    });
+
+    function loadSubdistrictUser(districtId){
+      subdistrictDropdown.html("");
+      subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
+        
+      $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
+        districtId: districtId
+      },
+        function(data){
+          var subDistrict = data.data;
+          $.each(subDistrict, function( index, value ) {
+            subdistrictDropdown.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+          });
+        }
+      );
+    }
+
+    function loadProvinceGarage(){
+      $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
+        function(data){
+          var province = data.data;
+          $.each(province, function( index, value ) {
+            provinceDropdownUser1.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
+          });
+        }
+      );
+    }
+
+    provinceDropdownUser1.change(function(){
+      var provinceId = $(this).val();
+      loadDistrictGarage(provinceId);
+    });
+
+    function loadDistrictGarage(provinceId){
+      districtDropdown1.html("");
+      districtDropdown1.append('<option value="">เลือกอำเภอ</option>');
+      subdistrictDropdown1.html("");
+      subdistrictDropdown1.append('<option value="">เลือกตำบล</option>');
+
+      $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
+        provinceId: provinceId
+      },
+        function(data){
+          var district = data.data;
+          $.each(district, function( index, value ) {
+            districtDropdown1.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+          });
+        }
+      );
+
+    }
+
+    districtDropdown1.change(function(){
+      var districtId = $(this).val();
+      loadSubdistrictGarage(districtId);
+    });
+
+    function loadSubdistrictGarage(districtId){
+      subdistrictDropdown1.html("");
+      subdistrictDropdown1.append('<option value="">เลือกตำบล</option>');
+        
+      $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
+        districtId: districtId
+      },
+        function(data){
+          var subDistrict = data.data;
+          $.each(subDistrict, function( index, value ) {
+            subdistrictDropdown1.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+          });
+        }
+      );
+    }
+
+  });
+
 </script>
 </body>
 
