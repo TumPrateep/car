@@ -99,25 +99,25 @@
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#serviceCharge" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
+            <i class="fa fa-fw fa-dollar"></i>
             <span class="nav-link-text">ค่าบริการ</span>
           </a>
           <ul class="sidenav-second-level collapse" id="serviceCharge">
-            <li class="<?= activate_menu('SpareCharge'); ?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/SpareCharge") ?>">
+            <li class="<?= activate_menu('Charge/SpareCharge/'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/Charge/SpareCharge") ?>">
                 <i class="fa fa-cog"></i>
                 <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
               </a>
             </li>
-            <li class="<?= activate_menu('LubricatorCharge'); ?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/LubricatorCharge") ?>">
-                <i class="fa fa-cog"></i>
+            <li class="<?= activate_menu('Charge/LubricatorCharge/'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/Charge/LubricatorCharge") ?>">
+                <i class="fa fa-rebel"></i>
                 <span class="nav-link-text">น้ำมันเครื่อง</span>
               </a>
             </li>
-            <li class="<?= activate_menu('TiresCharge'); ?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/TiresCharge") ?>">
-                <i class="fa fa-cog"></i>
+            <li class="<?= activate_menu('Charge/TiresCharge/'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/Charge/TiresCharge") ?>">
+                <i class="fa fa-life-ring"></i>
                 <span class="nav-link-text">ยางรถ</span>
               </a>
             </li>

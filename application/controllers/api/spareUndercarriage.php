@@ -183,4 +183,10 @@ class SpareUndercarriage extends BD_Controller {
         }
     }
 
+    function getAllSparespartcarUndercarriage_get(){
+        $result = $this->sparesundercarriages->getAllSpareundercarriage();
+        $output['data'] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
 }
