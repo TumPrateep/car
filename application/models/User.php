@@ -222,7 +222,8 @@ class User extends CI_Model{
             $data['accessories']['userId'] = $userId;
             $data['accessories']['create_by'] = $userId;
             $this->db->insert('car_accessories', $data['accessories']);
-        }elseif ($data['mechanic'] != null && $data['garage'] != null) {
+        }
+        if ($data['mechanic'] != null) {
             $data['mechanic']['userId'] = $userId;
             $data['mechanic']['create_by'] = $userId;
             $this->db->insert('mechanic', $data['mechanic']);

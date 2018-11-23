@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function() {
-    var register = $("registergarage");
+    var register = $("#registergarage");
 
     jQuery.validator.addMethod("username", function(value, element) {
       return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
@@ -37,9 +37,6 @@ $(document).ready(function() {
             minlength: 9,
             required: true 
           },
-          phone2: {
-            minlength: 9
-          },
           titleName_mechanic:{
               required: true
             },
@@ -50,7 +47,7 @@ $(document).ready(function() {
             required: true
           },
           personalid_mechanic:{
-            maxlength: 13,
+            minlength: 13,
             required: true,
             pid: true
           },
@@ -115,7 +112,7 @@ $(document).ready(function() {
             required: true,
             minlength:6
           },
-          confirmpassword: { 
+          checkpassword: { 
             required: true,
             equalTo: "#password"
           },
@@ -149,9 +146,6 @@ $(document).ready(function() {
             minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
             required: "เบอร์โทรศัพท์"
           },
-          phone2: {
-            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว"
-          },
           titleName_mechanic:{
               required: "คำนำหน้า"
             },
@@ -162,7 +156,7 @@ $(document).ready(function() {
             required: "นามสกุล"
           },
           personalid_mechanic:{
-            maxlength: "รหัสบัตรประชาชนให้ครบ 13 ตัว",
+            minlength: "รหัสบัตรประชาชนไม่ครบ",
             required: "รหัสบัตรประชาชน",
             pid: "รหัสบัตรประชาชนให้ถูกต้อง"
           },
@@ -216,7 +210,7 @@ $(document).ready(function() {
             required: "ชื่อผู้ใช้งาน",
             minlength:"ชื่อผู้ใช้อย่างน้อย 6 ตัวอักษร"
           },
-          phone: {
+          phone_user: {
             minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
             required: "เบอร์โทรศัพท์"
           },
@@ -227,7 +221,7 @@ $(document).ready(function() {
             required: "รหัสผ่าน",
             minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
           },
-          confirmpassword: {
+          checkpassword: {
             required: "รหัสผ่านอีกครั้ง",
             equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
           }

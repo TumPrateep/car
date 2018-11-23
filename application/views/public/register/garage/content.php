@@ -97,7 +97,7 @@
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
-							<label for="user_profile">เบอร์โทรศัพท์</label><span class="error">*</span>
+							<label for="user_profile">เบอร์โทรศัพท์</label>
 							<input type="number" class="form-control" name="phone2" id="phone2" placeholder="เบอร์โทรศัพท์">
 						</div>
 					</div>
