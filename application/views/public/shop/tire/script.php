@@ -46,6 +46,9 @@ $(document).ready(function () {
                     data.warranty_year = $("#warranty_year").val();
                     data.brandId = $("#brandId").val();
                     data.modelId = $("#modelId").val();
+                    data.modelofcarId = $("#modelofcarId").val();
+                    data.yearStart = $("#yearStart").val();
+                    data.YearEnd = $("#YearEnd").val();
                 }
             },
             "columns": [
@@ -154,6 +157,9 @@ $(document).ready(function () {
     var tire_size = $("#tire_sizeId");
     var brand =$("#brandId");
     var model = $("#modelId");
+    var modelofcar =$("#modelofcarId");
+    var year = $("#yearStart");
+    var YearEnd = $("#YearEnd");
 
     function init(){
         getTireBrand();
@@ -237,6 +243,33 @@ $(document).ready(function () {
             }
         );
     });
+    model.change(function(){
+        var modelId = model.val();
+        year.html('<option value="">เลือกปีผลิต</option>');
+        $.get(base_url+"service/Tire/getAllYear",{
+            modelId : modelId
+        },function(data){
+            var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    year.append('<option value="' + value.yearStart +' "/" ' +value.YearEnd +'">'+' ปี ' + value.yearStart + '  -  '+value.YearEnd    +'</option>');
+                });
+            }
+        );
+    });
+    
+    model.change(function(){
+        var modelId = model.val();
+        modelofcar.html('<option value="">เลือกโฉมรถ</option>');
+        $.get(base_url+"service/Tire/getAllModelofCar",{
+            modelId : modelId
+        },function(data){
+            var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    modelofcar.append('<option value="' + value.modelofcarId + '">' + value.machineSize + '  '+value.modelofcarName+'</option>');
+                });
+            }
+        );
+    }); 
 });
 
 

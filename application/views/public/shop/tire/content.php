@@ -20,17 +20,6 @@
                             <option value="">เลือกยี่ห้อรถ</option>
                         </select>
 					</div>
-
-					<div class="form-group">
-                        <label class="control-label">ปีที่ผลิต</label>
-                        <div class="row p-t-20">
-                            <div class="col-md-12">
-                                <select class="form-control input-default" name="year" id="year">
-                                    <!-- <option value="">เลือกปี</option> -->
-                                </select>
-                            </div>
-                        </div>
-                    </div>
 				
 					<div class="form-group">
                         <label class="control-label">รุ่นรถ</label>
@@ -38,6 +27,25 @@
                             <option value="">เลือกรุ่นรถ</option>
                         </select>
 					</div>
+					
+					<div class="form-group">
+                        <label class="control-label">ปีที่ผลิต</label>
+                        <div class="row p-t-20">
+                            <div class="col-md-12">
+                                <select class="form-control input-default" name="yearStart" id="yearStart">
+                                    <option value="">เลือกปี</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label class="control-label">โฉมรถ</label>
+                        <select class="form-control input-default" name="modelofcarId" id="modelofcarId">
+                            <option value="">เลือกโฉมรถ</option>
+                        </select>
+					</div>
+
+					
 
 					<div class="form-group">
                             <label class="control-label">ยี่ห้อยาง</label>

@@ -15,6 +15,7 @@ class Tire extends BD_Controller {
         $this->load->model("rims");
         $this->load->model("brand");
         $this->load->model("model");
+        $this->load->model('modelofcars');
     }
 
     function search_post(){
@@ -36,7 +37,7 @@ class Tire extends BD_Controller {
 
         $totalData = $this->tireproduct->allTire_count();
         $totalFiltered = $totalData; 
-        if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')) &&empty($this->post('warranty_year')) &&empty($this->post('warranty_distance'))&& empty($this->post('brandId'))&& empty($this->post('modelId')))
+        if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')) &&empty($this->post('warranty_year')) &&empty($this->post('warranty_distance'))&& empty($this->post('brandId'))&& empty($this->post('modelId'))&& empty($this->post('modelofcarId'))&& empty($this->post('yearStart'))&& empty($this->post('yearEnd')))
         {            
             $posts = $this->tireproduct->allTires($limit,$start,$order,$dir);
         }
@@ -53,11 +54,14 @@ class Tire extends BD_Controller {
             $warranty_distance = $this->post('warranty_distance');
             $brandId = $this->post('brandId');
             $modelId = $this->post('modelId');
+            $modelofcarId = $this->post('modelofcarId');
+            $yearStart = $this->post('yearStart');
+            $yearEnd = $this->post('yearEnd');
             
             // $status = null; 
-            $posts =  $this->tireproduct->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$brandId,$modelId);
+            $posts =  $this->tireproduct->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$brandId,$modelId,$modelofcarId,$yearStart,$yearEnd);
 
-            $totalFiltered = $this->tireproduct->TireDatas_search_count($limit,$start,$order,$dir,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$status,$brandId,$modelId);
+            $totalFiltered = $this->tireproduct->TireDatas_search_count($limit,$start,$order,$dir,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$status,$brandId,$modelId,$modelofcarId,$yearStart,$yearEnd);
         }
 
         $data = array();
@@ -84,6 +88,11 @@ class Tire extends BD_Controller {
                 $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
                 $nestedData[$count]['brandName'] = $post->brandName;
                 $nestedData[$count]['modelName'] = $post->modelName;
+                $nestedData[$count]['modelofcarName'] = $post->modelofcarName;
+                $nestedData[$count]['machineCode'] = $post->machineCode;
+                $nestedData[$count]['machineSize'] = $post->machineSize;
+                $nestedData[$count]['yearStart'] = $post->yearStart;
+                $nestedData[$count]['yearEnd'] = $post->yearEnd;
                 
                 
                 $data[$index] = $nestedData;
@@ -147,6 +156,19 @@ class Tire extends BD_Controller {
     function getAllModel_get(){
         $brandId = $this->get("brandId");
         $result = $this->model->getAllmodel($brandId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllModelofCar_get(){
+        $modelId = $this->get("modelId");
+        $result = $this->modelofcars->getAllmodelofcars($modelId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+    function getAllYear_get(){
+        $modelId = $this->get("modelId");
+        $result = $this->model->getAllYear_get($modelId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
