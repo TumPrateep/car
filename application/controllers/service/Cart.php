@@ -35,9 +35,15 @@ class Cart extends BD_Controller {
     
         }
         if($tireData != null){
+            $this->load->model("tirechanges");
+            $tirePriceData = $this->tirechanges->getTireChangePrice();
+            $charge = [];
+            foreach($tirePriceData as $cost){
+                $charge[$cost->rimId] = ($cost->tire_front+$cost->tire_back)/2;
+            }
             foreach($tireData as $value){
                 $data["tire"][$value->tire_dataId]["productId"] = $value->tire_dataId;
-                $data["tire"][$value->tire_dataId]["price"] = $value->price;
+                $data["tire"][$value->tire_dataId]["price"] = $value->price + ($value->price*0.1) + $charge[$value->rimId];;
                 $data["tire"][$value->tire_dataId]["picture"] = $value->tire_picture;
                 $data["tire"][$value->tire_dataId]["brandName"] = $value->tire_brandName;
                 $data["tire"][$value->tire_dataId]["name"] = $value->tire_modelName;
