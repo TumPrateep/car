@@ -36,7 +36,7 @@ class Tire extends BD_Controller {
 
         $totalData = $this->tireproduct->allTire_count();
         $totalFiltered = $totalData; 
-        if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')) &&empty($this->post('warranty_year')) &&empty($this->post('warranty_distance')))
+        if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')) &&empty($this->post('warranty_year')) &&empty($this->post('warranty_distance'))&& empty($this->post('brandId'))&& empty($this->post('modelId')))
         {            
             $posts = $this->tireproduct->allTires($limit,$start,$order,$dir);
         }
@@ -51,11 +51,13 @@ class Tire extends BD_Controller {
             $status = $this->post('status');
             $warranty_year = $this->post('warranty_year');
             $warranty_distance = $this->post('warranty_distance');
+            $brandId = $this->post('brandId');
+            $modelId = $this->post('modelId');
             
             // $status = null; 
-            $posts =  $this->tireproduct->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance);
+            $posts =  $this->tireproduct->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$brandId,$modelId);
 
-            $totalFiltered = $this->tireproduct->TireDatas_search_count($limit,$start,$order,$dir,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$status);
+            $totalFiltered = $this->tireproduct->TireDatas_search_count($limit,$start,$order,$dir,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$status,$brandId,$modelId);
         }
 
         $data = array();
@@ -80,6 +82,9 @@ class Tire extends BD_Controller {
                 $nestedData[$count]['warranty'] = $post->warranty;
                 $nestedData[$count]['tire_picture'] = $post->tire_picture;
                 $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
+                $nestedData[$count]['brandName'] = $post->brandName;
+                $nestedData[$count]['modelName'] = $post->modelName;
+                
                 
                 $data[$index] = $nestedData;
                 if($count >= 4){

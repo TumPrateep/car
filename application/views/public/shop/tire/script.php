@@ -44,6 +44,8 @@ $(document).ready(function () {
                     data.sort = $("#sort").val();
                     data.warranty_distance = $("#warranty_distance").val();
                     data.warranty_year = $("#warranty_year").val();
+                    data.brandId = $("#brandId").val();
+                    data.modelId = $("#modelId").val();
                 }
             },
             "columns": [

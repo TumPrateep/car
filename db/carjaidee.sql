@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2018 at 09:21 AM
+-- Generation Time: Nov 24, 2018 at 05:51 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 5.6.38
 
@@ -45,8 +45,8 @@ CREATE TABLE `brand` (
 --
 
 INSERT INTO `brand` (`brandId`, `brandPicture`, `brandName`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
-(12, '5bf109fae2712.png', 'CHEVROLET', 1, 1, '2018-09-08 20:31:14', '2018-11-18 13:43:06', 1, 1),
-(13, '5bf10b2a8de99.png', 'HONDA', 1, 1, '2018-11-17 15:05:10', '2018-11-18 13:48:10', 2, 1);
+(12, '5bf65797b86f4.png', 'CHEVROLET', 1, 1, '2018-09-08 20:31:14', '2018-11-22 14:15:35', 1, 1),
+(13, '5befd70d6f39c.png', 'HONDA', 1, 1, '2018-11-17 15:05:10', '2018-11-17 15:53:33', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1195,7 +1195,14 @@ CREATE TABLE `lubricator` (
 
 INSERT INTO `lubricator` (`lubricatorId`, `lubricatorName`, `lubricator_brandId`, `lubricator_numberId`, `status`, `activeFlag`, `create_at`, `update_at`, `create_by`, `update_by`, `api`, `capacity`, `lubricator_picture`, `lubricatortypeFormachineId`) VALUES
 (106, 'X3', 5, 36, 1, 1, '2018-09-08 20:05:23', '2018-09-08 20:05:32', 1, 1, 'CF-4', '4', NULL, 1),
-(110, 'ทดสอบ', 11, 36, 2, 2, '2018-11-07 10:47:34', NULL, 11, NULL, NULL, NULL, NULL, NULL);
+(110, 'ทดสอบ', 11, 36, 2, 2, '2018-11-07 10:47:34', NULL, 11, NULL, NULL, NULL, NULL, NULL),
+(111, 'TOP', 5, 42, 1, 1, '2018-11-17 16:30:22', NULL, 1, NULL, 'ACEA', '4', NULL, 1),
+(112, 'X7 FE', 5, 43, 1, 1, '2018-11-17 16:32:06', '2018-11-17 16:34:40', 1, 1, 'SN', '4', NULL, 1),
+(113, 'X9', 5, 40, 1, 1, '2018-11-17 16:33:45', NULL, 1, NULL, 'SN', '4', NULL, 1),
+(114, 'X7', 5, 40, 1, 1, '2018-11-17 16:35:05', NULL, 1, NULL, 'SN', '4', NULL, 1),
+(115, 'X7', 5, 39, 1, 1, '2018-11-17 16:35:37', NULL, 1, NULL, 'SN', '4', NULL, 1),
+(116, 'X5', 5, 38, 1, 1, '2018-11-17 16:36:15', NULL, 1, NULL, 'SN', '4', NULL, 1),
+(117, 'X3', 5, 41, 1, 1, '2018-11-17 16:37:29', NULL, 1, NULL, 'SN', '4', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1219,7 +1226,8 @@ CREATE TABLE `lubricatortypeformachine` (
 --
 
 INSERT INTO `lubricatortypeformachine` (`lubricatortypeFormachineId`, `lubricatortypeFormachine`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
-(1, 'เบนซิน', 1, NULL, '2018-09-08 20:01:58', NULL, '1', '1');
+(1, 'เบนซิน', 1, NULL, '2018-09-08 20:01:58', NULL, '1', '1'),
+(2, 'ดีเซล', 1, NULL, '2018-11-17 16:32:25', NULL, '1', '1');
 
 -- --------------------------------------------------------
 
@@ -1245,9 +1253,24 @@ CREATE TABLE `lubricator_brand` (
 
 INSERT INTO `lubricator_brand` (`lubricator_brandId`, `lubricator_brandName`, `status`, `activeFlag`, `lubricator_brandPicture`, `create_by`, `update_by`, `create_at`, `update_at`) VALUES
 (5, 'ZIC', 1, 1, '5b93ce563f834.png', 1, 1, '2018-09-08 19:59:52', '2018-09-08 20:27:50'),
-(9, 'ทดสอบ', 1, 1, '5bdfe9ee182d2.png', 11, NULL, '2018-11-05 13:57:50', NULL),
-(10, 'ทดสอบ3', 1, 2, '5bdfea1a52fe8.png', 11, NULL, '2018-11-05 13:58:34', NULL),
 (11, 'ทดสอบ5', 1, 1, '5be2506ec96c6.png', 11, 11, '2018-11-07 09:38:40', '2018-11-07 09:39:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lubricator_change`
+--
+
+CREATE TABLE `lubricator_change` (
+  `lubricator_changeId` int(11) NOT NULL,
+  `lubricator_price` double DEFAULT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2'
+) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1303,7 +1326,14 @@ CREATE TABLE `lubricator_number` (
 --
 
 INSERT INTO `lubricator_number` (`lubricator_numberId`, `lubricator_number`, `lubricator_typeId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`, `lubricator_gear`) VALUES
-(36, '15W40', 4, 1, NULL, '2018-09-08 19:57:38', NULL, 1, 1, '1');
+(36, '15W40', 4, 1, 1, '2018-09-08 19:57:38', '2018-11-17 16:28:07', 1, 1, '1'),
+(37, '5W40', 6, 1, 1, '2018-11-17 16:17:41', '2018-11-17 16:33:24', 1, 1, '1'),
+(38, '10W30', 5, 1, 1, '2018-11-17 16:18:18', '2018-11-17 16:29:12', 1, 1, '1'),
+(39, '0W20', 6, 1, 1, '2018-11-17 16:18:45', '2018-11-17 16:34:10', 1, 1, '1'),
+(40, '5W30', 6, 1, 1, '2018-11-17 16:19:29', '2018-11-17 16:29:00', 1, 1, '1'),
+(41, '20W50', 4, 1, NULL, '2018-11-17 16:22:33', NULL, 1, 1, '1'),
+(42, '0W40', 6, 1, NULL, '2018-11-17 16:29:47', NULL, 1, 1, '1'),
+(43, '0W30', 6, 1, NULL, '2018-11-17 16:31:34', NULL, 1, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -1329,7 +1359,9 @@ CREATE TABLE `lubricator_type` (
 --
 
 INSERT INTO `lubricator_type` (`lubricator_typeId`, `lubricator_typeName`, `lubricator_typeSize`, `status`, `activeFlag`, `create_by`, `update_by`, `create_at`, `update_at`, `lubricator_typePicture`) VALUES
-(4, 'ทั่วไป', 5000, 1, 1, 1, NULL, '2018-09-08 19:55:54', NULL, '5b93c6da3681f.png');
+(4, 'ทั่วไป', 5000, 1, 1, 1, NULL, '2018-09-08 19:55:54', NULL, '5b93c6da3681f.png'),
+(5, 'กึ่งสังเคราะห์', 10000, 1, 1, 1, NULL, '2018-11-17 16:27:15', NULL, '5befdef32ff1e.png'),
+(6, 'สังเคราะห์แท้', 15000, 1, 1, 1, NULL, '2018-11-17 16:27:43', NULL, '5befdf0f58a92.png');
 
 -- --------------------------------------------------------
 
@@ -1772,7 +1804,16 @@ CREATE TABLE `rim` (
 --
 
 INSERT INTO `rim` (`rimId`, `rimName`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
-(12, '13', 1, NULL, '2018-09-08 20:36:48', NULL, '1', 1);
+(12, '13', 1, NULL, '2018-09-08 20:36:48', NULL, '1', 1),
+(13, '15', 1, NULL, '2018-11-17 13:54:17', NULL, '1', 1),
+(14, '14', 1, NULL, '2018-11-17 13:54:25', NULL, '1', 1),
+(15, '16', 1, NULL, '2018-11-17 13:57:17', NULL, '1', 1),
+(16, '17', 1, NULL, '2018-11-17 13:57:26', NULL, '1', 1),
+(17, '18', 1, NULL, '2018-11-17 13:57:33', NULL, '1', 1),
+(18, '19', 1, NULL, '2018-11-17 13:57:40', NULL, '1', 1),
+(19, '20', 1, NULL, '2018-11-17 13:57:48', NULL, '1', 1),
+(20, '21', 1, NULL, '2018-11-17 13:57:54', NULL, '1', 1),
+(21, '22', 1, NULL, '2018-11-17 13:58:02', NULL, '1', 1);
 
 -- --------------------------------------------------------
 
@@ -1789,16 +1830,40 @@ CREATE TABLE `spares_brand` (
   `update_by` int(11) DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
-  `activeFlag` int(11) NOT NULL DEFAULT '2',
-  `spares_brandPicture` varchar(255) DEFAULT NULL
+  `activeFlag` int(11) NOT NULL DEFAULT '2'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `spares_brand`
 --
 
-INSERT INTO `spares_brand` (`spares_brandId`, `spares_brandName`, `status`, `spares_undercarriageId`, `create_by`, `update_by`, `update_at`, `create_at`, `activeFlag`, `spares_brandPicture`) VALUES
-(35, 'TRW', '1', 33, 1, NULL, NULL, '2018-09-08 20:41:10', 1, NULL);
+INSERT INTO `spares_brand` (`spares_brandId`, `spares_brandName`, `status`, `spares_undercarriageId`, `create_by`, `update_by`, `update_at`, `create_at`, `activeFlag`) VALUES
+(35, 'TRW', '1', 33, 1, NULL, NULL, '2018-09-08 20:41:10', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `spares_change`
+--
+
+CREATE TABLE `spares_change` (
+  `spares_changeId` int(11) NOT NULL,
+  `spares_price` double DEFAULT NULL,
+  `spares_undercarriageId` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2'
+) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+
+--
+-- Dumping data for table `spares_change`
+--
+
+INSERT INTO `spares_change` (`spares_changeId`, `spares_price`, `spares_undercarriageId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
+(1, 1000, 33, 1, 1, '2018-11-23 15:14:00', '2018-11-23 16:55:03', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -10818,8 +10883,8 @@ INSERT INTO `tire_brand` (`tire_brandId`, `tire_brandName`, `tire_brandPicture`,
 
 CREATE TABLE `tire_change` (
   `tire_changeId` int(11) NOT NULL,
-  `tire_front` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `tire_back` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `tire_front` double DEFAULT NULL,
+  `tire_back` double DEFAULT NULL,
   `rimId` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL,
@@ -10845,23 +10910,26 @@ CREATE TABLE `tire_data` (
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  `tire_picture` varchar(255) DEFAULT NULL,
+  `status` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tire_picture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `car_accessoriesId` int(11) DEFAULT NULL,
   `activeFlag` int(11) NOT NULL DEFAULT '2',
   `price` double DEFAULT NULL,
   `warranty_year` int(11) DEFAULT NULL,
   `warranty_distance` double DEFAULT NULL,
   `can_change` int(11) DEFAULT NULL,
-  `warranty` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `warranty` int(11) DEFAULT NULL,
+  `modelofcarId` int(11) NOT NULL,
+  `modelId` int(11) NOT NULL,
+  `brandId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tire_data`
 --
 
-INSERT INTO `tire_data` (`tire_dataId`, `rimId`, `tire_sizeId`, `tire_brandId`, `tire_modelId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `tire_picture`, `car_accessoriesId`, `activeFlag`, `price`, `warranty_year`, `warranty_distance`, `can_change`, `warranty`) VALUES
-(1, 12, 121, 4, 17, 11, NULL, '2018-09-08 20:39:18', NULL, '1', '5b93d10477365.png', 11, 1, 5000, 0, 0, 2, 0);
+INSERT INTO `tire_data` (`tire_dataId`, `rimId`, `tire_sizeId`, `tire_brandId`, `tire_modelId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `tire_picture`, `car_accessoriesId`, `activeFlag`, `price`, `warranty_year`, `warranty_distance`, `can_change`, `warranty`, `modelofcarId`, `modelId`, `brandId`) VALUES
+(1, 12, 121, 4, 17, 11, NULL, '2018-09-08 20:39:18', NULL, '1', '5b93d10477365.png', 11, 1, 5000, 0, 0, 2, 0, 19, 110, 12);
 
 -- --------------------------------------------------------
 
@@ -10974,7 +11042,136 @@ INSERT INTO `tire_model` (`tire_modelId`, `tire_modelName`, `tire_brandId`, `cre
 (74, 'ComfortContact CC6', 8, 1, NULL, '2018-11-17 15:28:44', NULL, '1', 1),
 (75, 'UltraContact UC6', 8, 1, NULL, '2018-11-17 15:28:51', NULL, '1', 1),
 (76, 'ContiMaxContact TM MC6', 8, 1, NULL, '2018-11-17 15:28:59', NULL, '1', 1),
-(77, 'ContimaxContact MC6', 8, 1, NULL, '2018-11-17 15:29:06', NULL, '1', 1);
+(77, 'ContimaxContact MC6', 8, 1, NULL, '2018-11-17 15:29:06', NULL, '1', 1),
+(78, 'DT-30', 9, 1, NULL, '2018-11-17 15:57:03', NULL, '1', 1),
+(79, 'SP Sport maxx 050+', 11, 1, NULL, '2018-11-17 15:57:25', NULL, '1', 1),
+(80, 'Vuero Ve302', 11, 1, NULL, '2018-11-17 15:57:31', NULL, '1', 1),
+(81, 'Enasave EC 300+', 11, 1, NULL, '2018-11-17 15:57:39', NULL, '1', 1),
+(82, 'SP Sport  LM704', 11, 1, NULL, '2018-11-17 15:57:46', NULL, '1', 1),
+(83, 'NAKARA R101', 10, 1, NULL, '2018-11-17 15:57:48', NULL, '1', 1),
+(84, 'Direzza DZ102', 11, 1, NULL, '2018-11-17 15:58:00', NULL, '1', 1),
+(85, 'Sp Touring R1', 11, 1, NULL, '2018-11-17 15:58:08', NULL, '1', 1),
+(86, 'Sp touring T1', 11, 1, NULL, '2018-11-17 15:58:14', NULL, '1', 1),
+(87, 'KACHA R101', 10, 1, NULL, '2018-11-17 15:58:20', NULL, '1', 1),
+(88, 'Grandrex AT3', 11, 1, NULL, '2018-11-17 15:58:20', NULL, '1', 1),
+(89, 'Grandrex AT22', 11, 1, NULL, '2018-11-17 15:58:26', NULL, '1', 1),
+(90, 'NAKARA R200', 10, 1, NULL, '2018-11-17 15:58:32', NULL, '1', 1),
+(91, 'Grandrex MT2', 11, 1, NULL, '2018-11-17 15:58:34', NULL, '1', 1),
+(92, 'Grandrex PT3', 11, 1, NULL, '2018-11-17 15:58:39', NULL, '1', 1),
+(93, 'NAKARA R201', 10, 1, NULL, '2018-11-17 15:58:45', NULL, '1', 1),
+(94, 'SP LT37', 11, 1, NULL, '2018-11-17 15:58:46', NULL, '1', 1),
+(95, 'Vantrex V1', 11, 1, NULL, '2018-11-17 15:58:53', NULL, '1', 1),
+(96, 'NAKARA R202', 10, 1, NULL, '2018-11-17 15:58:54', NULL, '1', 1),
+(97, 'SP2030', 11, 1, NULL, '2018-11-17 15:58:59', NULL, '1', 1),
+(98, 'Grandrek AT1', 11, 1, NULL, '2018-11-17 15:59:05', NULL, '1', 1),
+(99, 'VINCENTE R203', 10, 1, NULL, '2018-11-17 15:59:07', NULL, '1', 1),
+(100, 'NAKARA R301', 10, 1, NULL, '2018-11-17 15:59:18', NULL, '1', 1),
+(101, 'VINCENTE R302', 10, 1, NULL, '2018-11-17 15:59:27', NULL, '1', 1),
+(102, 'Eagle F-1 Directional 5', 13, 1, NULL, '2018-11-17 15:59:30', NULL, '1', 1),
+(103, 'Assurance Duraplus', 13, 1, NULL, '2018-11-17 15:59:36', NULL, '1', 1),
+(104, 'PAYAK R401', 10, 1, NULL, '2018-11-17 15:59:38', NULL, '1', 1),
+(105, 'Assurance TripleMax', 13, 1, NULL, '2018-11-17 15:59:43', NULL, '1', 1),
+(106, 'PAYAK R402', 10, 1, NULL, '2018-11-17 15:59:45', NULL, '1', 1),
+(107, 'Cargo G26', 13, 1, NULL, '2018-11-17 15:59:49', NULL, '1', 1),
+(108, 'PAYAK R403', 10, 1, NULL, '2018-11-17 15:59:54', NULL, '1', 1),
+(109, 'DuraSport AquaTraction', 13, 1, NULL, '2018-11-17 15:59:57', NULL, '1', 1),
+(110, 'Eagle NCT 5', 13, 1, NULL, '2018-11-17 16:00:04', NULL, '1', 1),
+(111, 'PAYAK R404 BSW', 10, 1, NULL, '2018-11-17 16:00:08', NULL, '1', 1),
+(112, 'EfficientGrip Performance SUV', 13, 1, NULL, '2018-11-17 16:00:09', NULL, '1', 1),
+(113, 'EfficientGrip SUV', 13, 1, NULL, '2018-11-17 16:00:16', NULL, '1', 1),
+(114, 'PAYAK R404 OWL', 10, 1, NULL, '2018-11-17 16:00:17', NULL, '1', 1),
+(115, 'Exceiience', 13, 1, NULL, '2018-11-17 16:00:21', NULL, '1', 1),
+(116, 'Wrangler AT/SA', 13, 1, NULL, '2018-11-17 16:00:27', NULL, '1', 1),
+(117, 'PAYAK A/T R404', 10, 1, NULL, '2018-11-17 16:00:33', NULL, '1', 1),
+(118, 'Wrangler TripleMax', 13, 1, NULL, '2018-11-17 16:00:33', NULL, '1', 1),
+(119, 'MUD CLAWER R405 BSW', 10, 1, NULL, '2018-11-17 16:00:41', NULL, '1', 1),
+(120, 'GT3', 13, 1, NULL, '2018-11-17 16:00:41', NULL, '1', 1),
+(121, 'ECOWING KH27', 15, 1, NULL, '2018-11-17 16:01:13', NULL, '1', 1),
+(122, 'ECSTA PS91', 15, 1, NULL, '2018-11-17 16:01:20', NULL, '1', 1),
+(123, 'CRUGEN HT51', 15, 1, NULL, '2018-11-17 16:01:26', NULL, '1', 1),
+(124, 'ROAD VENTURE MT KL71', 15, 1, NULL, '2018-11-17 16:01:32', NULL, '1', 1),
+(125, 'SOLUS KH17', 15, 1, NULL, '2018-11-17 16:01:40', NULL, '1', 1),
+(126, 'ECSTA SEVEN KU36', 15, 1, NULL, '2018-11-17 16:01:46', NULL, '1', 1),
+(127, 'ECSTA HS51', 15, 1, NULL, '2018-11-17 16:01:53', NULL, '1', 1),
+(128, 'ECSTA XS KU36', 15, 1, NULL, '2018-11-17 16:01:59', NULL, '1', 1),
+(129, 'MUD CLAWER R405 OWL', 10, 1, NULL, '2018-11-17 16:01:59', NULL, '1', 1),
+(130, 'CRUGEN PREMIUM', 15, 1, NULL, '2018-11-17 16:02:07', NULL, '1', 1),
+(131, 'MUD CLAWER R408', 10, 1, NULL, '2018-11-17 16:02:09', NULL, '1', 1),
+(132, 'ECSTA PS31', 15, 1, NULL, '2018-11-17 16:02:14', NULL, '1', 1),
+(133, 'MUD CLAWER R408 BSW', 10, 1, NULL, '2018-11-17 16:02:20', NULL, '1', 1),
+(134, 'R501', 10, 1, NULL, '2018-11-17 16:02:31', NULL, '1', 1),
+(135, 'PAYAK 007 R601', 10, 1, NULL, '2018-11-17 16:02:42', NULL, '1', 1),
+(136, 'PAYAK HT R602', 10, 1, NULL, '2018-11-17 16:02:52', NULL, '1', 1),
+(137, 'ECSTA V720', 15, 1, NULL, '2018-11-17 16:02:56', NULL, '1', 1),
+(138, 'CARRERAS R701', 10, 1, NULL, '2018-11-17 16:03:00', NULL, '1', 1),
+(139, 'CRUGEN PREMIUM HP91', 15, 1, NULL, '2018-11-17 16:03:03', NULL, '1', 1),
+(140, 'T365', 15, 1, NULL, '2018-11-17 16:03:09', NULL, '1', 1),
+(141, 'CARRERAS R702', 10, 1, NULL, '2018-11-17 16:03:09', NULL, '1', 1),
+(142, 'PREMIUM TOUR RA01', 10, 1, NULL, '2018-11-17 16:03:18', NULL, '1', 1),
+(143, 'PAYAK SUV HT-603', 10, 1, NULL, '2018-11-17 16:03:27', NULL, '1', 1),
+(144, 'XM2', 4, 1, NULL, '2018-11-17 16:03:33', NULL, '1', 1),
+(145, 'TITANZ T88', 10, 1, NULL, '2018-11-17 16:03:36', NULL, '1', 1),
+(146, 'Primacy3 ST ZP', 4, 1, NULL, '2018-11-17 16:03:39', NULL, '1', 1),
+(147, 'Pilot sport 3', 4, 1, NULL, '2018-11-17 16:03:46', NULL, '1', 1),
+(148, 'Pilot sport 4', 4, 1, NULL, '2018-11-17 16:03:53', NULL, '1', 1),
+(149, 'Pilot sport PS2', 4, 1, NULL, '2018-11-17 16:03:59', NULL, '1', 1),
+(150, 'CV9000', 12, 1, NULL, '2018-11-17 16:04:01', NULL, '1', 1),
+(151, 'Pilot super sport', 4, 1, NULL, '2018-11-17 16:04:05', NULL, '1', 1),
+(152, 'DESTINATION LE-02', 12, 1, NULL, '2018-11-17 16:04:11', NULL, '1', 1),
+(153, 'Pilot cup 2', 4, 1, NULL, '2018-11-17 16:04:13', NULL, '1', 1),
+(154, 'TZ700', 12, 1, NULL, '2018-11-17 16:04:18', NULL, '1', 1),
+(155, 'Latitude Sport 3', 4, 1, NULL, '2018-11-17 16:04:18', NULL, '1', 1),
+(156, 'F01', 12, 1, NULL, '2018-11-17 16:04:25', NULL, '1', 1),
+(157, 'Touring FS100', 12, 1, NULL, '2018-11-17 16:04:33', NULL, '1', 1),
+(158, 'Latitude Sport ', 4, 1, NULL, '2018-11-17 16:04:47', NULL, '1', 1),
+(159, 'KlnERGy EX', 14, 1, NULL, '2018-11-17 16:04:52', NULL, '1', 1),
+(160, 'Latitude tour HP', 4, 1, NULL, '2018-11-17 16:04:54', NULL, '1', 1),
+(161, 'veNtus V2 concept 2', 14, 1, NULL, '2018-11-17 16:05:00', NULL, '1', 1),
+(162, 'Primacy SUV', 4, 1, NULL, '2018-11-17 16:05:01', NULL, '1', 1),
+(163, 'Latitude tour ', 4, 1, NULL, '2018-11-17 16:05:07', NULL, '1', 1),
+(164, 'veNtus V12 evo2', 14, 1, NULL, '2018-11-17 16:05:08', NULL, '1', 1),
+(165, 'Latitude cross', 4, 1, NULL, '2018-11-17 16:05:13', NULL, '1', 1),
+(166, 'Agilis', 4, 1, NULL, '2018-11-17 16:05:19', NULL, '1', 1),
+(167, 'VanTRa LT', 14, 1, NULL, '2018-11-17 16:05:20', NULL, '1', 1),
+(168, 'XCD 2', 4, 1, NULL, '2018-11-17 16:05:27', NULL, '1', 1),
+(169, 'veNtus R-s3', 14, 1, NULL, '2018-11-17 16:05:32', NULL, '1', 1),
+(170, 'LTX Force', 4, 1, NULL, '2018-11-17 16:05:34', NULL, '1', 1),
+(171, 'VENTUS AS', 14, 1, NULL, '2018-11-17 16:05:41', NULL, '1', 1),
+(172, 'Cross terrain', 4, 1, NULL, '2018-11-17 16:05:42', NULL, '1', 1),
+(173, 'Primacy 4', 4, 1, NULL, '2018-11-17 16:05:48', NULL, '1', 1),
+(174, 'OPTIMO ME02', 14, 1, NULL, '2018-11-17 16:05:51', NULL, '1', 1),
+(175, 'veNtus S1 noble2', 14, 1, NULL, '2018-11-17 16:06:00', NULL, '1', 1),
+(176, 'Dynapro HP2', 14, 1, NULL, '2018-11-17 16:06:08', NULL, '1', 1),
+(177, 'Dynapro ATM', 14, 1, NULL, '2018-11-17 16:06:18', NULL, '1', 1),
+(178, 'Dynapro HT', 14, 1, NULL, '2018-11-17 16:06:28', NULL, '1', 1),
+(179, 'Dynapro MT', 14, 1, NULL, '2018-11-17 16:06:41', NULL, '1', 1),
+(180, 'OPTIMO H724', 14, 1, NULL, '2018-11-17 16:06:50', NULL, '1', 1),
+(181, 'OPTIMO H426', 14, 1, NULL, '2018-11-17 16:07:01', NULL, '1', 1),
+(182, 'OPTIMO K415', 14, 1, NULL, '2018-11-17 16:07:10', NULL, '1', 1),
+(183, 'KC2000', 17, 1, NULL, '2018-11-17 16:07:29', NULL, '1', 1),
+(184, 'EK1000', 17, 1, NULL, '2018-11-17 16:07:35', NULL, '1', 1),
+(185, 'SR1000', 17, 1, NULL, '2018-11-17 16:07:44', NULL, '1', 1),
+(186, 'MS800', 16, 1, NULL, '2018-11-17 16:07:48', NULL, '1', 1),
+(187, 'MK2000', 17, 1, NULL, '2018-11-17 16:07:50', NULL, '1', 1),
+(188, 'UE-168', 16, 1, NULL, '2018-11-17 16:07:57', NULL, '1', 1),
+(189, 'UE-168N', 16, 1, NULL, '2018-11-17 16:08:07', NULL, '1', 1),
+(190, 'MA-569', 16, 1, NULL, '2018-11-17 16:08:20', NULL, '1', 1),
+(191, 'MA-589', 16, 1, NULL, '2018-11-17 16:08:29', NULL, '1', 1),
+(192, 'MA-579', 16, 1, NULL, '2018-11-17 16:08:38', NULL, '1', 1),
+(193, 'HP-600', 16, 1, NULL, '2018-11-17 16:08:46', NULL, '1', 1),
+(194, 'AT-700', 16, 1, NULL, '2018-11-17 16:08:52', NULL, '1', 1),
+(195, 'MT-762', 16, 1, NULL, '2018-11-17 16:09:01', NULL, '1', 1),
+(196, 'MT-764', 16, 1, NULL, '2018-11-17 16:09:30', NULL, '1', 1),
+(197, 'S-PRO', 16, 1, NULL, '2018-11-17 16:09:39', NULL, '1', 1),
+(198, 'HT-770', 16, 1, NULL, '2018-11-17 16:09:48', NULL, '1', 1),
+(199, 'AT-980', 16, 1, NULL, '2018-11-17 16:09:56', NULL, '1', 1),
+(200, 'PRO-R1', 16, 1, NULL, '2018-11-17 16:10:04', NULL, '1', 1),
+(201, 'MA-Z1', 16, 1, NULL, '2018-11-17 16:10:12', NULL, '1', 1),
+(202, 'MA-S2', 16, 1, NULL, '2018-11-17 16:10:19', NULL, '1', 1),
+(203, 'I-PRO', 16, 1, NULL, '2018-11-17 16:10:26', NULL, '1', 1),
+(204, 'MA-P3', 16, 1, NULL, '2018-11-17 16:10:34', NULL, '1', 1),
+(205, 'MA-707', 16, 1, NULL, '2018-11-17 16:10:42', NULL, '1', 1),
+(206, 'CV-01', 16, 1, NULL, '2018-11-17 16:10:51', NULL, '1', 1);
 
 -- --------------------------------------------------------
 
@@ -11037,7 +11234,31 @@ CREATE TABLE `tire_size` (
 --
 
 INSERT INTO `tire_size` (`tire_sizeId`, `tire_size`, `tire_series`, `rimId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
-(121, '175', '70', 12, 1, NULL, '2018-09-08 20:37:40', NULL, '1', 1);
+(121, '175', '70', 12, 1, NULL, '2018-09-08 20:37:40', NULL, '1', 1),
+(122, '195', '70', 14, 1, 1, '2018-11-17 14:36:27', '2018-11-17 14:40:55', '1', 1),
+(124, '205', '70', 14, 1, NULL, '2018-11-17 14:40:36', NULL, '1', 1),
+(125, '215', '70', 13, 1, NULL, '2018-11-17 14:41:13', NULL, '1', 1),
+(126, '225', '70', 13, 1, NULL, '2018-11-17 14:41:24', NULL, '1', 1),
+(127, '195', '50', 13, 1, NULL, '2018-11-17 14:41:50', NULL, '1', 1),
+(128, '195', '55', 13, 1, NULL, '2018-11-17 14:42:01', NULL, '1', 1),
+(129, '195', '60', 13, 1, NULL, '2018-11-17 14:42:11', NULL, '1', 1),
+(130, '195', '65', 13, 1, NULL, '2018-11-17 14:42:21', NULL, '1', 1),
+(131, '205', '55', 13, 1, NULL, '2018-11-17 14:42:32', NULL, '1', 1),
+(132, '205', '60', 13, 1, NULL, '2018-11-17 14:42:43', NULL, '1', 1),
+(133, '205', '65', 13, 1, NULL, '2018-11-17 14:42:54', NULL, '1', 1),
+(134, '215', '55', 15, 1, NULL, '2018-11-17 14:43:11', NULL, '1', 1),
+(135, '215', '60', 15, 1, NULL, '2018-11-17 14:43:20', NULL, '1', 1),
+(136, '215', '45', 16, 1, NULL, '2018-11-17 14:43:39', NULL, '1', 1),
+(137, '215', '50', 16, 1, NULL, '2018-11-17 14:43:49', NULL, '1', 1),
+(138, '215', '55', 16, 1, NULL, '2018-11-17 14:43:57', NULL, '1', 1),
+(139, '145', '50', 13, 1, NULL, '2018-11-17 14:44:55', NULL, '1', 1),
+(140, '155', '55', 15, 1, NULL, '2018-11-17 14:45:39', NULL, '1', 1),
+(141, '165', '60', 16, 1, NULL, '2018-11-17 14:45:56', NULL, '1', 1),
+(142, '175', '65', 17, 1, NULL, '2018-11-17 14:46:20', NULL, '1', 1),
+(143, '185', '70', 18, 1, NULL, '2018-11-17 14:46:49', NULL, '1', 1),
+(144, '195', '75', 19, 1, NULL, '2018-11-17 14:47:07', NULL, '1', 1),
+(145, '205', '80', 20, 1, NULL, '2018-11-17 14:47:24', NULL, '1', 1),
+(146, '215', '8.50', 21, 1, NULL, '2018-11-17 14:48:01', NULL, '1', 1);
 
 -- --------------------------------------------------------
 
@@ -11198,6 +11419,14 @@ ALTER TABLE `lubricator_brand`
   ADD KEY `fk_lubricator_brand_users2_idx` (`update_by`);
 
 --
+-- Indexes for table `lubricator_change`
+--
+ALTER TABLE `lubricator_change`
+  ADD PRIMARY KEY (`lubricator_changeId`),
+  ADD KEY `fk_lubricator_change_users1_idx` (`create_by`),
+  ADD KEY `fk_lubricator_change_users2_idx` (`update_by`);
+
+--
 -- Indexes for table `lubricator_data`
 --
 ALTER TABLE `lubricator_data`
@@ -11296,6 +11525,15 @@ ALTER TABLE `spares_brand`
   ADD KEY `fk_spares_brand_users2_idx` (`update_by`);
 
 --
+-- Indexes for table `spares_change`
+--
+ALTER TABLE `spares_change`
+  ADD PRIMARY KEY (`spares_changeId`),
+  ADD KEY `fk_spares_change_spares_undercarriageId_idx` (`spares_undercarriageId`),
+  ADD KEY `fk_spares_change_users1_idx` (`create_by`),
+  ADD KEY `fk_spares_change_users2_idx` (`update_by`);
+
+--
 -- Indexes for table `spares_undercarriage`
 --
 ALTER TABLE `spares_undercarriage`
@@ -11361,7 +11599,10 @@ ALTER TABLE `tire_data`
   ADD KEY `fk_trie_data_trie_brand1_idx` (`tire_brandId`),
   ADD KEY `fk_trie_data_tire_model1_idx` (`tire_modelId`),
   ADD KEY `fk_trie_data_users1_idx` (`create_by`),
-  ADD KEY `fk_trie_data_users2_idx` (`update_by`);
+  ADD KEY `fk_trie_data_users2_idx` (`update_by`),
+  ADD KEY `fk_tire_data_modelofcar1_idx` (`modelofcarId`),
+  ADD KEY `fk_tire_data_model1_idx` (`modelId`),
+  ADD KEY `fk_tire_data_brand1_idx` (`brandId`);
 
 --
 -- Indexes for table `tire_matching`
@@ -11443,7 +11684,7 @@ ALTER TABLE `user_profile`
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`
@@ -11473,19 +11714,25 @@ ALTER TABLE `garage`
 -- AUTO_INCREMENT for table `lubricator`
 --
 ALTER TABLE `lubricator`
-  MODIFY `lubricatorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `lubricatorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `lubricatortypeformachine`
 --
 ALTER TABLE `lubricatortypeformachine`
-  MODIFY `lubricatortypeFormachineId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `lubricatortypeFormachineId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lubricator_brand`
 --
 ALTER TABLE `lubricator_brand`
   MODIFY `lubricator_brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `lubricator_change`
+--
+ALTER TABLE `lubricator_change`
+  MODIFY `lubricator_changeId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lubricator_data`
@@ -11497,13 +11744,13 @@ ALTER TABLE `lubricator_data`
 -- AUTO_INCREMENT for table `lubricator_number`
 --
 ALTER TABLE `lubricator_number`
-  MODIFY `lubricator_numberId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `lubricator_numberId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `lubricator_type`
 --
 ALTER TABLE `lubricator_type`
-  MODIFY `lubricator_typeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `lubricator_typeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `machinetype`
@@ -11515,7 +11762,7 @@ ALTER TABLE `machinetype`
 -- AUTO_INCREMENT for table `model`
 --
 ALTER TABLE `model`
-  MODIFY `modelId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `modelId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT for table `modelofcar`
@@ -11533,7 +11780,7 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT for table `rim`
 --
 ALTER TABLE `rim`
-  MODIFY `rimId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `rimId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `spares_brand`
@@ -11542,10 +11789,16 @@ ALTER TABLE `spares_brand`
   MODIFY `spares_brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
+-- AUTO_INCREMENT for table `spares_change`
+--
+ALTER TABLE `spares_change`
+  MODIFY `spares_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `spares_undercarriage`
 --
 ALTER TABLE `spares_undercarriage`
-  MODIFY `spares_undercarriageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `spares_undercarriageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `spares_undercarriagedata`
@@ -11575,7 +11828,7 @@ ALTER TABLE `tire_brand`
 -- AUTO_INCREMENT for table `tire_change`
 --
 ALTER TABLE `tire_change`
-  MODIFY `tire_changeId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tire_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tire_data`
@@ -11593,7 +11846,7 @@ ALTER TABLE `tire_matching`
 -- AUTO_INCREMENT for table `tire_model`
 --
 ALTER TABLE `tire_model`
-  MODIFY `tire_modelId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `tire_modelId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 
 --
 -- AUTO_INCREMENT for table `tire_need`
@@ -11605,7 +11858,7 @@ ALTER TABLE `tire_need`
 -- AUTO_INCREMENT for table `tire_size`
 --
 ALTER TABLE `tire_size`
-  MODIFY `tire_sizeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `tire_sizeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -11818,11 +12071,13 @@ ALTER TABLE `tire_change`
 -- Constraints for table `tire_data`
 --
 ALTER TABLE `tire_data`
+  ADD CONSTRAINT `fk_tire_data_brand1` FOREIGN KEY (`brandId`) REFERENCES `brand` (`brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tire_data_model1` FOREIGN KEY (`modelId`) REFERENCES `model` (`modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tire_data_modelofcar1` FOREIGN KEY (`modelofcarId`) REFERENCES `modelofcar` (`modelofcarId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_trie_data_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_trie_data_tire_model1` FOREIGN KEY (`tire_modelId`) REFERENCES `tire_model` (`tire_modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_trie_data_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_trie_data_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tire_brandId` FOREIGN KEY (`tire_brandId`) REFERENCES `tire_brand` (`tire_brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_trie_data_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tire_matching`
