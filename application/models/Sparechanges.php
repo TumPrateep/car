@@ -30,6 +30,12 @@ class Sparechanges extends CI_Model{
         return $result->row();
     }
 
+    function getSpareChangePrice(){
+        $this->db->select("spares_undercarriageId,spares_price");
+        $result = $this->db->get("spares_change");
+        return $result->result();
+    }
+
     function insert($data){
         return $this->db->insert('spares_change',$data);
     }

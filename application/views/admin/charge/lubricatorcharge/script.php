@@ -78,8 +78,8 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+'admin/Charge/updateLubricatorCharge/'+data.lubritor_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletesparechange('+data.lubritor_changeId+',\''+data.lubricator_price+'\')"><i class="fa fa-trash"></i></button>';
+                        return '<a href="'+base_url+'admin/Charge/updateLubricatorCharge/'+data.lubricator_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletelubricatorchange('+data.lubricator_changeId+',\''+data.lubricator_price+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 { "orderable": false, "targets": 0 },
@@ -92,12 +92,12 @@
             ]	 
     });
 
-    function deletelubricatorchange(lubritor_changeId){
+    function deletelubricatorchange(lubricator_changeId){
         var option = {
-            url: "/LubricatorChange/deletelubricatorchange?lubricator_changeId="+tire_changeId,
+            url: "/LubricatorChange/deletelubricatorchange?lubricator_changeId="+lubricator_changeId,
             label: "ลบราคาเปลี่ยนยางนอก",
             content: "คุณต้องการลบข้อมูลนี้ ใช่หรือไม่",
-            gotoUrl: "admin/Lubricator/lubricatorchange/"
+            gotoUrl: "admin/Charge/LubricatorCharge"
         }
         fnDelete(option);
     }

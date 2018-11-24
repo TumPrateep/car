@@ -20,9 +20,12 @@ class Cart extends BD_Controller {
     function getCartData($lubricatorData, $tireData, $spareData){
         $data = [];
         if($lubricatorData != null){
+            $this->load->model("lubricatorchanges");
+            $charge = $this->lubricatorchanges->getLubricatorChangePrice();
+
             foreach ($lubricatorData as $value){
                 $data["lubricator"][$value->lubricator_dataId]["productId"] = $value->lubricator_dataId;
-                $data["lubricator"][$value->lubricator_dataId]["price"] = $value->price;
+                $data["lubricator"][$value->lubricator_dataId]["price"] =  $value->price + ($value->price*0.1) + $charge->lubricator_price;
                 $data["lubricator"][$value->lubricator_dataId]["picture"] = $value->lubricator_dataPicture;
                 $data["lubricator"][$value->lubricator_dataId]["brandName"] = $value->lubricator_brandName;
                 $data["lubricator"][$value->lubricator_dataId]["name"] = $value->lubricatorName;
@@ -42,9 +45,15 @@ class Cart extends BD_Controller {
             }
         }
         if($spareData != null){
+            $this->load->model("sparechanges");
+            $sparePriceData = $this->sparechanges->getSpareChangePrice();
+            $charge = [];
+            foreach($sparePriceData as $cost){
+                $charge[$cost->spares_undercarriageId] = $cost->spares_price;
+            }
             foreach($spareData as $value){
                 $data["spare"][$value->spares_undercarriageDataId]["productId"] = $value->spares_undercarriageDataId;
-                $data["spare"][$value->spares_undercarriageDataId]["price"] = $value->price;
+                $data["spare"][$value->spares_undercarriageDataId]["price"] = $value->price+($value->price*0.1) + $charge[$value->spares_undercarriageId];
                 $data["spare"][$value->spares_undercarriageDataId]["picture"] = $value->spares_undercarriageDataPicture;
                 $data["spare"][$value->spares_undercarriageDataId]["brandName"] = $value->brandName;
                 $data["spare"][$value->spares_undercarriageDataId]["modelName"] = $value->modelName;

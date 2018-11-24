@@ -158,4 +158,5 @@ class Triemodels extends CI_Model {
         $query = $this->db->get("tire_model");
         return $query->result();
     }
+
 }
