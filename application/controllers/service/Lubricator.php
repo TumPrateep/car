@@ -13,7 +13,9 @@ class Lubricator extends BD_Controller {
         $this->load->model("lubricatorbrands");
         $this->load->model("lubricators");
         $this->load->model("Lubricatortypeformachines");
-
+        $this->load->model("brand");
+        $this->load->model("model");
+        $this->load->model("modelofcars");
         
 
         
@@ -121,6 +123,32 @@ class Lubricator extends BD_Controller {
 
     function getAlllubricatortypeFormachine_get(){
         $result = $this->Lubricatortypeformachines->getAlllubricatortypeFormachine();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllBrand_get(){
+        $result = $this->brand->getAllBrandforSelect();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllModel_get(){
+        $brandId = $this->get("brandId");
+        $result = $this->model->getAllmodel($brandId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllModelofcar_get(){
+        $modelId = $this->get("modelId");
+        $result = $this->modelofcars->getAllmodelofcars($modelId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+    function getAllYear_get(){
+        $modelId = $this->get("modelId");
+        $result = $this->model->getAllYear($modelId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }

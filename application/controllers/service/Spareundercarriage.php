@@ -13,6 +13,7 @@ class Spareundercarriage extends BD_Controller {
         $this->load->model("sparesbrand");
         $this->load->model("brand");
         $this->load->model("model");
+        $this->load->model("modelofcars");
         
         
     }
@@ -141,6 +142,20 @@ class Spareundercarriage extends BD_Controller {
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
+
+    function getAllModelofcar_get(){
+        $modelId = $this->get("modelId");
+        $result = $this->modelofcars->getAllmodelofcars($modelId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+    function getAllYear_get(){
+        $modelId = $this->get("modelId");
+        $result = $this->model->getAllYear($modelId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+    
 
     
 }

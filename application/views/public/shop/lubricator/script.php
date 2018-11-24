@@ -169,33 +169,33 @@
             );
         }
         function getbrand(brandId = null ){
-        $.get(base_url+"service/Tire/getAllBrand",{},
-        function(data){
-            var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    brand.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');
-                });
-            }
-        );
-    }
+            $.get(base_url+"service/Spareundercarriage/getAllBrand",{},
+            function(data){
+                var brandData = data.data;
+                    $.each( brandData, function( key, value ) {
+                        brand.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');
+                    });
+                }
+            );
+        }
 
-    brand.change(function(){
-        var brandId = brand.val();
-        model.html('<option value="">เลือกรุ่นรถ</option>');
-        $.get(base_url+"service/Tire/getAllmodel",{
-            brandId : brandId
-        },function(data){
-            var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
-                });
-            }
-        );
-    });
-    model.change(function(){
+        brand.change(function(){
+            var brandId = brand.val();
+            model.html('<option value="">เลือกรุ่นรถ</option>');
+            $.get(base_url+"service/Spareundercarriage/getAllModel",{
+                brandId : brandId
+            },function(data){
+                var brandData = data.data;
+                    $.each( brandData, function( key, value ) {
+                        model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
+                    });
+                }
+            );
+        });
+        model.change(function(){
         var modelId = model.val();
         year.html('<option value="">เลือกปีผลิต</option>');
-        $.get(base_url+"service/Tire/getAllYear",{
+        $.get(base_url+"service/Spareundercarriage/getAllYear",{
             modelId : modelId
         },function(data){
             var brandData = data.data;
@@ -209,7 +209,7 @@
     model.change(function(){
         var modelId = model.val();
         modelofcar.html('<option value="">เลือกโฉมรถ</option>');
-        $.get(base_url+"service/Tire/getAllModelofcar",{
+        $.get(base_url+"service/Spareundercarriage/getAllModelofcar",{
             modelId : modelId
         },function(data){
             var brandData = data.data;
