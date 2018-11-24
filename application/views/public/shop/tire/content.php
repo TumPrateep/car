@@ -27,7 +27,7 @@
                             <option value="">เลือกรุ่นรถ</option>
                         </select>
 					</div>
-					
+
 					<div class="form-group">
                         <label class="control-label">ปีที่ผลิต</label>
                         <div class="row p-t-20">
@@ -79,6 +79,7 @@
                     <div class="form-group">
                         <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
                         <select class="form-control input-default" name="can_change" id="can_change">
+							<option value=""></option>
                             <option value="1">เปลี่ยนทันที</option>
                             <option value="2">สั่งจอง</option>
                         </select>

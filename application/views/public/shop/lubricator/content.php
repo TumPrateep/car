@@ -51,6 +51,13 @@
                     </div>
 
 					<div class="form-group">
+                        <label class="control-label">โฉมรถ</label>
+                        <select class="form-control input-default" name="modelofcarId" id="modelofcarId">
+                            <option value="">เลือกโฉมรถ</option>
+                        </select>
+					</div>
+
+					<div class="form-group">
 						<label class="control-label">ชนิดน้ำมันเครื่อง</label>
 						<div class="input-group input-group-default">
 							<select class="form-control valid" name="lubricator_gear" id="lubricator_gear">

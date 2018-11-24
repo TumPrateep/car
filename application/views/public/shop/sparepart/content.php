@@ -38,6 +38,12 @@
                         </div>
                     </div>
                     
+					<div class="form-group">
+                        <label class="control-label">โฉมรถ</label>
+                        <select class="form-control input-default" name="modelofcarId" id="modelofcarId">
+                            <option value="">เลือกโฉมรถ</option>
+                        </select>
+					</div>
                     <div class="form-group">
                         <label class="control-label">อะไหล่ช่วงล่าง</label>
                         <select class="form-control input-default" name="spares_undercarriageId" id="spares_undercarriageId">

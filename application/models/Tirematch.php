@@ -188,4 +188,41 @@ class Tirematch extends CI_Model{
         $result = $this->db->get();
         return $result->row();
     }
+
+    function getAllBrandforSelect(){
+        $this->db->select("tire_matching.brandId,brand.brandName");
+        $this->db->join('brand','brand.brandId = tire_matching.brandId');
+        $this->db->where('tire_matching.status','1');
+        $query = $this->db->get("tire_matching");
+        return $query->result();
+    }
+
+    function getAllmodelforSelect($brandId){
+        $this->db->select("tire_matching.modelId,model.modelName");
+        $this->db->join('model','model.modelId = tire_matching.modelId');
+        $this->db->where('tire_matching.status','1');
+        $this->db->where('tire_matching.brandId',$brandId);
+        $query = $this->db->get("tire_matching");
+        return $query->result();
+    }
+
+    function getAllmodelofcarforSelect($modelId){
+        $this->db->select("tire_matching.modelofcarId,modelofcar.modelofcarName,modelofcar.machineSize,modelofcar.machineCode");
+        $this->db->join('modelofcar','modelofcar.modelofcarId = tire_matching.modelofcarId');
+        $this->db->where('tire_matching.status','1');
+        $this->db->where('tire_matching.modelId',$modelId);
+        $query = $this->db->get("tire_matching");
+       
+        return $query->result();
+    }
+
+    function getAllYear_get($modelId){
+        $this->db->select("model.yearStart,model.yearEnd");
+        $this->db->join('model','model.modelId = tire_matching.modelId');
+        $this->db->where("tire_matching.modelId", $modelId);
+        $this->db->where('tire_matching.status','1');
+        $query = $this->db->get("tire_matching");
+        return $query->result();
+
+    }
 }
