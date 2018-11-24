@@ -134,7 +134,7 @@
         },function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
-                    tire_size.append('<option value="' + value.tire_sizeId + '">' + value.tiresize + '</option>');
+                    tire_size.append('<option value="' + value.tire_sizeId + '">' + value.tire_size + '</option>');
                 });
                 tire_size.val(tireSizeId);
             }

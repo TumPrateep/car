@@ -86,14 +86,6 @@ class Tire extends BD_Controller {
                 $nestedData[$count]['warranty'] = $post->warranty;
                 $nestedData[$count]['tire_picture'] = $post->tire_picture;
                 $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
-                $nestedData[$count]['brandName'] = $post->brandName;
-                $nestedData[$count]['modelName'] = $post->modelName;
-                $nestedData[$count]['modelofcarName'] = $post->modelofcarName;
-                $nestedData[$count]['machineCode'] = $post->machineCode;
-                $nestedData[$count]['machineSize'] = $post->machineSize;
-                $nestedData[$count]['yearStart'] = $post->yearStart;
-                $nestedData[$count]['yearEnd'] = $post->yearEnd;
-                
                 
                 $data[$index] = $nestedData;
                 if($count >= 4){
