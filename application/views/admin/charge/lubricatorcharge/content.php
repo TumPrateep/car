@@ -18,7 +18,7 @@
         </a>
 
         <div class="input-group float-right">
-          <input id="table-search" class="form-control float-right" placeholder="ขอบยาง">
+          <input id="table-search" class="form-control float-right" placeholder="ค่าบริการ">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-circle-o"></i></button>
           </div>
@@ -41,10 +41,8 @@
       <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
-          <th><i class="fa fa-toggle-left"></i>  ล้อหน้า</th>
-          <th><i class="fa fa-toggle-right"></i>  ล้อหลัง</th>
-          <th><i class="fa fa-circle-o"></i>  ขอบยาง</th>
-          <th><i class="fa fa-user-circle"></i>  สถานะ</th>
+          <th><i class="fa fa-toggle-left"></i>  ค่าบริการ</th>
+          <th><i class="fa fa-toggle-right"></i>  สถานะ</th>
           <th></th>
         </thead>	
       </table>

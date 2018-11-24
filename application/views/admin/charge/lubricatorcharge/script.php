@@ -24,20 +24,18 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/TireChange/searchTireChange",
+                "url": base_url+"api/LubricatorChange/searchLubricatorChange",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.rimName = $("#table-search").val(),
+                    data.lubricator_changeId = $("#table-search").val(),
                     data.status = $("#status").val()
                 }
             },
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "tire_front" },
-                { "data": "tire_back" },
-                { "data": "rimName" },
+                { "data": "lubricator_price" },
                 null,
                 null
             ],
@@ -45,7 +43,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5]
+                    "targets": [0]
                 },{
                     "targets": 0,
                     "data": null,
@@ -53,31 +51,13 @@
                         return meta.row + 1;
                     }
                 },{ "targets": 1,
-                    "data": "tire_front",
+                    "data": "lubricator_price",
                     "render": function ( data, type, full, meta ) {
                         return currency(data, { useVedic: true }).format();
                     }             
-                },{ "targets": 2,
-                    "data": "tire_back",
-                    "render": function ( data, type, full, meta ) {
-                        return currency(data, { useVedic: true }).format();
-                    }             
-                },{
-                    "targets": 3,
-                    "data": "rimName",
-                    "render": function ( data, type, full, meta ) {
-                        return  data +' นิ้ว';
-                    }
-                },{
-                    "targets": 5,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+'admin/Tires/updatetirechange/'+data.tire_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletetirechange('+data.tire_changeId+',\''+data.tire_front+'\',\''+data.tire_back+'\')"><i class="fa fa-trash"></i></button>';
-                    }
                 },
                 {
-                    "targets": 4,
+                    "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -89,29 +69,35 @@
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.tire_changeId+','+data.status+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.lubricator_changeId+','+data.status+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
                     }
+                },{
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return '<a href="'+base_url+'admin/Charge/updateLubricatorCharge/'+data.lubritor_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletesparechange('+data.lubritor_changeId+',\''+data.lubricator_price+'\')"><i class="fa fa-trash"></i></button>';
+                    }
                 },
                 { "orderable": false, "targets": 0 },
                 // {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,2,3,4,5]},
+                {"className": "dt-center", "targets": [0,1,2,3]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 1 },
                 { "width": "20%", "targets": 2 },
-                { "width": "20%", "targets": 3 },
-                { "width": "12%", "targets": 4 }
+                { "width": "20%", "targets": 3 }
             ]	 
     });
 
-    function deletetirechange(tire_changeId){
+    function deletelubricatorchange(lubritor_changeId){
         var option = {
-            url: "/TireChange/deletetirechange?tire_changeId="+tire_changeId,
+            url: "/LubricatorChange/deletelubricatorchange?lubricator_changeId="+tire_changeId,
             label: "ลบราคาเปลี่ยนยางนอก",
             content: "คุณต้องการลบข้อมูลนี้ ใช่หรือไม่",
-            gotoUrl: "admin/Tires/tirechange/"
+            gotoUrl: "admin/Lubricator/lubricatorchange/"
         }
         fnDelete(option);
     }
@@ -121,13 +107,13 @@
         table.ajax.reload();
     })
 
-    function updateStatus(tire_changeId,status){
-        $.post(base_url+"api/TireChange/changeStatus",{
-            "tire_changeId": tire_changeId,
+    function updateStatus(lubricator_changeId,status){
+        $.post(base_url+"api/LubricatorChange/changeStatus",{
+            "lubricator_changeId": lubricator_changeId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Tires/tirechange/");
+                showMessage(data.message,"admin/Charge/LubricatorCharge");
             }else{
                 showMessage(data.message);
             }
