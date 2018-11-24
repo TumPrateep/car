@@ -233,7 +233,7 @@ $(document).ready(function () {
     brand.change(function(){
         var brandId = brand.val();
         model.html('<option value="">เลือกรุ่นรถ</option>');
-        $.get(base_url+"service/Tire/getAllModel",{
+        $.get(base_url+"service/Tire/getAllmodel",{
             brandId : brandId
         },function(data){
             var brandData = data.data;
@@ -251,7 +251,7 @@ $(document).ready(function () {
         },function(data){
             var brandData = data.data;
                 $.each( brandData, function( key, value ) {
-                    year.append('<option value="' + value.yearStart +' "/" ' +value.YearEnd +'">'+' ปี ' + value.yearStart + '  -  '+value.YearEnd    +'</option>');
+                    year.append('<option value="' + value.yearStart +' "/" ' +value.yearEnd +'">'+' ปี ' + value.yearStart + '  -  '+value.yearEnd    +'</option>');
                 });
             }
         );
@@ -260,7 +260,7 @@ $(document).ready(function () {
     model.change(function(){
         var modelId = model.val();
         modelofcar.html('<option value="">เลือกโฉมรถ</option>');
-        $.get(base_url+"service/Tire/getAllModelofCar",{
+        $.get(base_url+"service/Tire/getAllModelofcar",{
             modelId : modelId
         },function(data){
             var brandData = data.data;
@@ -270,6 +270,7 @@ $(document).ready(function () {
             }
         );
     }); 
+    
 });
 
 

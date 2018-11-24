@@ -43,12 +43,19 @@
                         <label class="control-label">ปีที่ผลิต</label>
                         <div class="row p-t-20">
                             <div class="col-md-12">
-                                <select class="form-control input-default" name="year" id="year">
-                                    <!-- <option value="">เลือกปี</option> -->
+                                <select class="form-control input-default" name="yearStart" id="yearStart">
+                                    <option value="">เลือกปี</option>
                                 </select>
                             </div>
                         </div>
                     </div>
+
+					<div class="form-group">
+                        <label class="control-label">โฉมรถ</label>
+                        <select class="form-control input-default" name="modelofcarId" id="modelofcarId">
+                            <option value="">เลือกโฉมรถ</option>
+                        </select>
+					</div>
 
 					<div class="form-group">
 						<label class="control-label">ชนิดน้ำมันเครื่อง</label>
