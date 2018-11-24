@@ -32,7 +32,7 @@
                     data.status = $("#status").val()
                 }
             },
-            "order": [[ 1, "asc" ]],
+            "order": [[ 3, "asc" ]],
             "columns": [
                 null,
                 { "data": "tire_front" },

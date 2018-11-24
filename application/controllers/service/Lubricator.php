@@ -57,6 +57,9 @@ class Lubricator extends BD_Controller {
             $totalFiltered = $this->lubricatorproduct->LubricatorDatas_search_count($lubricatorId, $lubricator_brandId, $lubricator_gear, $price, $lubricatortypeFormachineId);
         }
 
+        $this->load->model("lubricatorchanges");
+        $charge = $this->lubricatorchanges->getLubricatorChangePrice();
+
         $data = array();
         if(!empty($posts))
         {
@@ -71,7 +74,7 @@ class Lubricator extends BD_Controller {
                 $nestedData[$count]['lubricatorName'] = $post->lubricatorName;
                 $nestedData[$count]['lubricator_number'] = $post->lubricator_number;
                 $nestedData[$count]['status'] = $post->status;
-                $nestedData[$count]['price'] = $post->price;
+                $nestedData[$count]['price'] = $post->price + ($post->price*0.1) + $charge->lubricator_price;
                 $nestedData[$count]['warranty_year'] = $post->warranty_year;
                 $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
                 $nestedData[$count]['warranty'] = $post->warranty;

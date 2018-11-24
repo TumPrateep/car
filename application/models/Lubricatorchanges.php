@@ -99,4 +99,10 @@ class Lubricatorchanges extends CI_Model{
         return $this->db->delete('lubricator_change', array('lubricator_changeId' => $lubricator_changeId));
     }
 
+    function getLubricatorChangePrice(){
+        $this->db->select('lubricator_price');
+        $result = $this->db->get("lubricator_change");
+        return $result->row();
+    }
+
 }

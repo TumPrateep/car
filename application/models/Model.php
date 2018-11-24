@@ -222,9 +222,11 @@ class Model extends CI_Model{
     }
 
     function getAllmodel($brandId){
-        $this->db->select("modelId,modelName");
+        $this->db->select("modelId,modelName,yearStart,yearEnd");
         $this->db->where("brandId", $brandId);
         $this->db->where('status','1');
+        $this->db->group_by('modelName');
+        $this->db->order_by("modelName","asc");
         $query = $this->db->get("model");
         return $query->result();
     }

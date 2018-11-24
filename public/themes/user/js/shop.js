@@ -27,7 +27,11 @@
 
     function setNumberOfCart(){
         console.log(cartData);
-        numberOfCart = cartData.length;
+        var count = 0;
+        $.each(cartData, function( index, value ) {
+            count += value.number;
+        });
+        numberOfCart = count;
         cartCount.html(numberOfCart);
     }
 

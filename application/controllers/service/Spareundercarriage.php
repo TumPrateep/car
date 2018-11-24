@@ -62,6 +62,13 @@ class Spareundercarriage extends BD_Controller {
             $totalFiltered = $this->Spareundercarriageproduct->SpareDatas_search_count($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
         }
 
+        $this->load->model("sparechanges");
+        $sparePriceData = $this->sparechanges->getSpareChangePrice();
+        $charge = [];
+        foreach($sparePriceData as $cost){
+            $charge[$cost->spares_undercarriageId] = $cost->spares_price;
+        }
+
         $data = array();
         if(!empty($posts))
         {
@@ -74,7 +81,7 @@ class Spareundercarriage extends BD_Controller {
                 $nestedData[$count]['spares_brandName'] = $post->spares_brandName;
                 $nestedData[$count]['spares_undercarriageName'] = $post->spares_undercarriageName;
                 $nestedData[$count]['status'] = $post->status;
-                $nestedData[$count]['price'] = $post->price;
+                $nestedData[$count]['price'] = $post->price+($post->price*0.1) + $charge[$post->spares_undercarriageId];
                 $nestedData[$count]['warranty_year'] = $post->warranty_year;
                 $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
                 $nestedData[$count]['warranty'] = $post->warranty;
