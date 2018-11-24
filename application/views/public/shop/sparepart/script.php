@@ -111,10 +111,14 @@
         var spares_brand = $("#spares_brandId");
         var brand =$("#brandId");
         var model = $("#modelId");
-        var dropdownStart = $("#year");
-        var dropdownStop = $("#yearEnd");
-        var nowYear = (new Date).getFullYear();
-        var startYear = 1990;
+        // var dropdownStart = $("#year");
+        // var dropdownStop = $("#yearEnd");
+        // var nowYear = (new Date).getFullYear();
+        // var startYear = 1990;
+        var modelofcar =$("#modelofcarId");
+        var year = $("#yearStart");
+        var YearEnd = $("#YearEnd");
+
 
         init();
 

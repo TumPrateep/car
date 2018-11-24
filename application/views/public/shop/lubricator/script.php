@@ -121,6 +121,9 @@
         var lubricatortypeFormachine = $("#lubricatortypeFormachineId");
         var brand =$("#brandId");
         var model = $("#modelId");
+        var modelofcar =$("#modelofcarId");
+        var year = $("#yearStart");
+        var YearEnd = $("#YearEnd");
 
         function getLubracatorBrand(){
             $.get(base_url+"service/Lubricator/getAllLubricatorBrand",{},
@@ -179,7 +182,7 @@
     brand.change(function(){
         var brandId = brand.val();
         model.html('<option value="">เลือกรุ่นรถ</option>');
-        $.get(base_url+"service/Tire/getAllModel",{
+        $.get(base_url+"service/Tire/getAllmodel",{
             brandId : brandId
         },function(data){
             var brandData = data.data;
@@ -189,6 +192,33 @@
             }
         );
     });
+    model.change(function(){
+        var modelId = model.val();
+        year.html('<option value="">เลือกปีผลิต</option>');
+        $.get(base_url+"service/Tire/getAllYear",{
+            modelId : modelId
+        },function(data){
+            var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    year.append('<option value="' + value.yearStart +' "/" ' +value.yearEnd +'">'+' ปี ' + value.yearStart + '  -  '+value.yearEnd    +'</option>');
+                });
+            }
+        );
+    });
+    
+    model.change(function(){
+        var modelId = model.val();
+        modelofcar.html('<option value="">เลือกโฉมรถ</option>');
+        $.get(base_url+"service/Tire/getAllModelofcar",{
+            modelId : modelId
+        },function(data){
+            var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    modelofcar.append('<option value="' + value.modelofcarId + '">' + value.machineSize + '  '+value.modelofcarName+'</option>');
+                });
+            }
+        );
+    }); 
 
 
 });
