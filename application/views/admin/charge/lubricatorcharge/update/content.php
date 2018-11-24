@@ -20,19 +20,19 @@
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form id="submit">
-                  <input type="hidden" name="tire_changeId" id="tire_changeId" value="<?=$tire_changeId?>">
+                  <input type="hidden" name="lubricator_changeId" id="lubricator_changeId" value="<?=$lubricator_changeId?>">
                   <div class="card-body black bg-light">
-                    <div class="form-group row">
-                      <div class="col-md-4">
-                          <label>ราคาค่าบริการ</label> <span class="error">*</span>
-                          <input type="number" class="form-control" placeholder="ราคาค่าบริการ" name="lubricator_price" id="lubricator_price">
+                      <div class="form-group row">
+                        <div class="col-md-4">
+                            <label>ราคาค่าบริการ</label> <span class="error">*</span>
+                            <input type="number" class="form-control" placeholder="ราคาค่าบริการ" name="lubricator_price" id="lubricator_price">
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary">บันทึก</button>
                       </div>
                     </div>
-                    
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-primary">บันทึก</button>
-                    </div>
-                  </div>
                 </form>
                   <!-- /.card-body -->
                

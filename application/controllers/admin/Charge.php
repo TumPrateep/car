@@ -29,8 +29,8 @@ class Charge extends CI_Controller {
 		$this->load->view("admin/charge/lubricatorcharge/create/script");
 	}
 
-	public function updateLubricatorCharge($tire_changeId){
-		$data['tire_changeId'] = $tire_changeId;
+	public function updateLubricatorCharge($lubricator_changeId){
+		$data['lubricator_changeId'] = $lubricator_changeId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
