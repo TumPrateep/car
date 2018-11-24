@@ -173,8 +173,9 @@ class Triesizes extends CI_Model{
         $this->db->join('rim','rim.rimId = tire_size.rimId');
         if($q != null && $q != ""){
             $this->db->where("CONCAT(CONCAT(tire_size.tire_size, '/', tire_size.tire_series),'R', rim.rimName) LIKE '%".$q."%'", NULL, FALSE);
-        }       
-        return $this->db->limit($limit, 0)->get("tire_size")->result();
+        }
+        $result = $this->db->limit($limit, 0)->get("tire_size"); 
+        return $result->result();
     }
     
     function checkStatusFromTireSize($tire_sizeId,$status,$userId){
@@ -195,8 +196,8 @@ class Triesizes extends CI_Model{
         $this->db->join('rim','rim.rimId = tire_size.rimId');
         $this->db->where("rim.rimId", $rimId);
         $this->db->where('tire_size.status','1');
+        $this->db->order_by('tire_size', 'asc');
         $query = $this->db->get("tire_size");
-    
         return $query->result();
     }
 

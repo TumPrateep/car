@@ -131,4 +131,10 @@ class Tirechanges extends CI_Model{
         $result = $this->db->get("tire_change");
         return $result->row();
     }
+
+    function getTireChangePrice(){
+        $this->db->select("rimId,tire_front,tire_back");
+        $result = $this->db->get("tire_change");
+        return $result->result();
+    }
 }

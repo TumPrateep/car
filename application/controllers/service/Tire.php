@@ -66,6 +66,13 @@ class Tire extends BD_Controller {
             $totalFiltered = $this->tireproduct->TireDatas_search_count($limit,$start,$order,$dir,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$status,$brandId,$modelId,$modelofcarId,$yearStart,$yearEnd,$tire_matchingId);
         }
 
+        $this->load->model("tirechanges");
+        $tirePriceData = $this->tirechanges->getTireChangePrice();
+        $charge = [];
+        foreach($tirePriceData as $cost){
+            $charge[$cost->rimId] = ($cost->tire_front+$cost->tire_back)/2;
+        }
+
         $data = array();
         if(!empty($posts))
         {
@@ -80,7 +87,7 @@ class Tire extends BD_Controller {
                 $nestedData[$count]['tire_modelName'] = $post->tire_modelName;
                 $nestedData[$count]['tire_brandName'] = $post->tire_brandName;
                 $nestedData[$count]['status'] = $post->status;
-                $nestedData[$count]['price'] = $post->price;
+                $nestedData[$count]['price'] = $post->price + ($post->price*0.1) + $charge[$post->rimId];
                 $nestedData[$count]['warranty_year'] = $post->warranty_year;
                 $nestedData[$count]['can_change'] = $post->can_change;
                 $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
@@ -88,14 +95,6 @@ class Tire extends BD_Controller {
                 $nestedData[$count]['warranty'] = $post->warranty;
                 $nestedData[$count]['tire_picture'] = $post->tire_picture;
                 $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
-                $nestedData[$count]['brandName'] = $post->brandName;
-                $nestedData[$count]['modelName'] = $post->modelName;
-                $nestedData[$count]['modelofcarName'] = $post->modelofcarName;
-                $nestedData[$count]['machineCode'] = $post->machineCode;
-                $nestedData[$count]['machineSize'] = $post->machineSize;
-                $nestedData[$count]['yearStart'] = $post->yearStart;
-                $nestedData[$count]['yearEnd'] = $post->yearEnd;
-                
                 
                 
                 

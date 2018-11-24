@@ -111,6 +111,7 @@ class Rims extends CI_Model{
     function getAllRims(){
         $this->db->select("rimId,rimName");
         $this->db->where('status','1');
+        $this->db->order_by('rimName', 'asc');
         $query = $this->db->get("rim");
         return $query->result();
     }
