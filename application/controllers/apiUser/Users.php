@@ -152,14 +152,14 @@ class Users extends BD_Controller {
 		$subdistrictId_garage = $this->post('subdistrictId_garage');
 		$postCode_garage = $this->post('postCode_garage');
 		$latitude = $this->post('latitude');
-		$longitude = $this->post('longitude');
+		$longtitude = $this->post('longtitude');
 		$Wifi = $this->post('Wifi');
 		$roomfan = $this->post('roomfan');
 		$roomAir = $this->post('roomAir');
 		$snack = $this->post('snack');
 		$Otherfacilities = $this->post('Otherfacilities');
 
-		$data_check = $this->user->data_check_create($username,$phone);
+		$data_check = $this->user->data_check_create($username,$phone_user);
 		$data['users'] = array(
 			'id' => null,
 			'username' => $username,
@@ -235,7 +235,7 @@ class Users extends BD_Controller {
 			'subdistrictId' => $subdistrictId_garage,
 			'postCode' => $postCode_garage,
 			'latitude'=> $latitude,
-			'longitude' => $longitude,
+			'longtitude' => $longtitude,
 			'option1' => $Wifi,
 			'option2' => $roomfan,
 			'option3' => $roomAir,

@@ -218,18 +218,20 @@ class User extends CI_Model{
         $userId = $result->id;
         $data['profile']['userId'] = $userId;
         $this->db->insert('user_profile', $data['profile']);
-        if($data['accessories'] != null){
+        if( !empty($data['accessories']) ){
             $data['accessories']['userId'] = $userId;
             $data['accessories']['create_by'] = $userId;
             $this->db->insert('car_accessories', $data['accessories']);
         }
-        if ($data['mechanic'] != null) {
-            $data['mechanic']['userId'] = $userId;
-            $data['mechanic']['create_by'] = $userId;
-            $this->db->insert('mechanic', $data['mechanic']);
+        if (!empty($data['garage']) ) {
             $data['garage']['userId'] = $userId;
             $data['garage']['create_by'] = $userId;
             $this->db->insert('garage', $data['garage']);
+            $result = $this->db->where('garageName',$data['garage']['garageName'])->get("garage")->row();
+            $garageId = $result->garageId;
+            $data['mechanic']['garageId'] = $garageId;
+            $data['mechanic']['create_by'] = $userId;
+            $this->db->insert('mechanic', $data['mechanic']);
         }
         // $data['accessories']['userId'] = $userId;
         // $data['accessories']['create_by'] = $userId;

@@ -47,7 +47,6 @@ $(document).ready(function() {
             required: true
           },
           personalid_mechanic:{
-            minlength: 13,
             required: true,
             pid: true
           },
@@ -156,7 +155,6 @@ $(document).ready(function() {
             required: "นามสกุล"
           },
           personalid_mechanic:{
-            minlength: "รหัสบัตรประชาชนไม่ครบ",
             required: "รหัสบัตรประชาชน",
             pid: "รหัสบัตรประชาชนให้ถูกต้อง"
           },

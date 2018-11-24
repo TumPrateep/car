@@ -1379,7 +1379,7 @@ CREATE TABLE `mechanic` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
+  `update_by` int(11) DEFAULT NULL,
   `garageId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -10880,7 +10880,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `category`, `email`, `phone`,
 (1, 'admin', '$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe', '1', 'admin@admin', '0812587469', NULL, NULL, 1, 1, 1),
 (11, 'car', '$2y$10$BviIuI/vXcI26DhH95AMaeQX7H0oXH0t844bOdtrPusExUd/sOTn2', '2', NULL, '0000000000', NULL, NULL, NULL, NULL, 1),
 (12, 'nattaphon', '$2y$10$vsYwdP70tZuIlJvfptP3x.IE8WU9zRdOKvNVw1OZf4TwWGcqvfwby', '2', '', '0867454630', '2018-09-23 13:58:55', NULL, NULL, NULL, 1),
-(12, 'garage', '$2y$10$vsYwdP70tZuIlJvfptP3x.IE8WU9zRdOKvNVw1OZf4TwWGcqvfwby', '3', '', '0833969552', '2018-09-23 13:58:55', NULL, NULL, NULL, 1);
+(13, 'garage', '$2y$10$vsYwdP70tZuIlJvfptP3x.IE8WU9zRdOKvNVw1OZf4TwWGcqvfwby', '3', '', '0833969552', '2018-09-23 13:58:55', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -11429,6 +11429,12 @@ ALTER TABLE `tire_size`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `mechanic`
+--
+ALTER TABLE `mechanic`
+  MODIFY `mechanicId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_profile`
