@@ -7,7 +7,7 @@
 			<div class="row">
 
 				<!-- Selected Image -->
-				<div class="col-lg-5 order-lg-2 order-1">
+				<div class="col-lg-4 order-1">
 					<div class="image_selected">
 						<img id="brandImage" class="image-brand-detail" />
 						<img id="productImage" class="productImage">
@@ -61,6 +61,31 @@
 								</div>
 								
 							</form>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 order-3">
+					<div class="right-select">
+						<h4><Strong><font color="orange"><i class="fas fa-check"></i></font> การรับประกัน</Strong></h4>
+						<span id="warranty_year"></span> ปี
+						<span id="warranty"></span>
+						<span id="warranty_distance"></span> กิโลเมตร <br><br>
+						<div class="col text-center"><img class="star" src="<?=base_url("public/image/verify.png") ?>" style="width:100%;"></div>
+						<hr>
+						<h4><strong><font color="orange"><i class="fa fa-star" aria-hidden="true"></i></font> คะแนนสินค้า</strong></h4>
+						<div class="summary">
+						<div class="score"><div class="col"><span class="score-average">4</span><span class="score-max">/5</span> คะแนน</div></div>
+							<div class="average">
+								<div class="container-star " style="width:166.25px;height:33.25px">
+									<img class="star" src="<?=base_url("public/image/StarIconGold.png") ?>" style="width:33.25px;height:33.25px">
+									<img class="star" src="<?=base_url("public/image/StarIconGold.png") ?>" style="width:33.25px;height:33.25px">
+									<img class="star" src="<?=base_url("public/image/StarIconGold.png") ?>" style="width:33.25px;height:33.25px">
+									<img class="star" src="<?=base_url("public/image/StarIconGold.png") ?>" style="width:33.25px;height:33.25px">
+								</div>
+							</div>
+							<br>
+							<div class="col text-center"><img class="star" src="<?=base_url("public/image/guarantee.png") ?>" style="width:100%;"></div>
 						</div>
 					</div>
 				</div>

@@ -24,6 +24,11 @@
         $("#showDistance").html(currency(data.lubricator_typeSize, { precision: 0 }).format()+' กม');
         $("#showWarranty").html(warranty(data.warranty, data.warranty_year, data.warranty_distance));
         $("#product_price").html(currency(data.price, { precision: 0 }).format()+" บาท");
+        $("#warranty_year").html(data.warranty_year);
+
+       $("#warranty_year").html(changwarranty(data.warranty_year));
+       $("#warranty_distance").html(changwarranty(data.warranty_distance));
+       $("#warranty").html(choosewarranty(data.warranty));
     }
 </script>
 </body>

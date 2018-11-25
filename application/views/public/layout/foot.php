@@ -16,6 +16,22 @@
 <script src="<?=base_url("/public/js/currency.min.js") ?>"></script>
 <script>
     var base_url = "<?=base_url();?>";
+    function choosewarranty(warranty){
+        if(warranty == 1){
+            return "และ";
+        }else if(warranty == 2){
+            return "หรือ";
+        }else{
+            return null;
+        }
+    }
+    function changwarranty(warranty){
+        if(warranty == 0 || warranty == null){
+            return "-";
+        }else{
+            return warranty;
+        }
+    }
 </script>
 <script src="<?=base_url("/public/themes/user/js/shop.js") ?>"></script>
 
