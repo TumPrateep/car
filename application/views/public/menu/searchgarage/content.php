@@ -56,20 +56,15 @@
                      </select>
                   </div>
 
-                  <!-- <div class="form-group">
-                     <button type="button" id="btn-search" class="btn-create btn btn-orange btn-block">
-                        <i class="ti-search"> ค้นหา</i>
-                     </button>
-                  </div> -->
 					<br>
 					<div class="form-group">
-                        <button type="button" id="btn-search" class="btn-create btn btn-orange btn-block">
+                        <button type="button" id="btn-search" class="btn-create btn btn-orange-garage btn-block">
                             <i class="ti-search"> ค้นหา</i>
                         </button>
                     </div>
                     <h4 class="underline"></h4>
                     <div class="form-group">
-                        <button type="button" id="btn-search-all" class="btn-create btn btn-primary btn-block">
+                        <button type="button" id="btn-search-all" class="btn-create btn btn-yellow btn-block">
                             <i class="ti-search"> ค้นหาอู่ใกล้เคียง</i>
                         </button>
                     </div>
@@ -100,29 +95,42 @@
                             <div class="slick-active" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel">
                                 <div>
                                     <div class="" style="width: 100%; display: inline-block;">
-                                        <div class="border_active active"></div>
-                                        <div class="product_item d-flex flex-column ">
+                                        <div class="border_active active border-Orange"></div>
+                                        <div class="product_item d-flex flex-column align-items-center justify-content-center text-center border-Orange">
                                             <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/themes/garage/images/garage.jpg'); ?>"/></div>
                                             <div class="product_content">
-                                                <div class="product_price">ร้านนายกอ.</div>
+                                                
                                                 <div class="product_name">
-                                                    <div><a href="product.html" tabindex="0"><strong>โช้คอัพหน้า TRW</strong></a></div>
-                                                    <ul>Chevrolet AVEO</ul>
-                                                    <ul><small>2006-2014</small></ul>
-                                                    <div class="card-tools one">
-	                                                    <div class="input-group-append">
-										            		<button class="btn btn-info inactive"><i class="fa fa-user-circle"></i></button>
-										          		</div>
-										          		<div class="input-group-append">
-										            		<button class="btn btn-info inactive"><i class="fa fa-user-circle"></i></button>
-										          		</div>
-									          		</div>
+                                                    <div><strong>ร้านก.</strong></div>
+                                                    <ul class="ul-left">ความชำนาญ : Honda</ul><br>
+                                                    <!-- <ul>เบอร์โทรศัพท์ : Honda</ul> -->
+                                                    <ul class="ul-left">ระยะ : 1 กิโลเมตร</ul><br>
+                                                    <!-- <ul><small>1992-1995</small></ul> -->
                                                 </div>
-                                                <!-- <div class="product_extras">
-                                                    <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
-                                                </div> -->
+                                                <div class="input-group-append">
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<!-- <button class="btn btn-orange "><i class="fa fa-address-book-o"></i></button>
+									            	<button class="btn btn-orange inactive"><i class="fa fa-snowflake-o"></i></button>
+									            	<button class="btn btn-orange inactive"><i class="fa fa-cutlery"></i></button> -->
+									          	</div>
+									          	<div class="input-group-append" >
+									            	<button class="btn btn-link " style="width: 80%; ">
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<!-- <i class="fa fa-star-half-o fa-yellow"></i> -->
+									            	</button>
+									          	</div>
+									          	<div class="product_name">
+                                                    <ul><small><a href="#" ><strong><u>รายละเอียด</u></strong></a></small></ul>
+                                                    
+                                                </div>
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -136,17 +144,38 @@
                                         <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
                                             <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/themes/garage/images/garage.jpg'); ?>"/></div>
                                             <div class="product_content">
-                                                <div class="product_price">2400 .-</div>
+                                                
                                                 <div class="product_name">
-                                                    <div><a href="product.html" tabindex="0"><strong>ลูกปืนล้อหน้า TRW</strong></a></div>
-                                                    <ul>Honda CIVIC</ul>
-                                                    <ul><small>1992-1995</small></ul>
+                                                    <div><strong>ร้านก.</strong></div>
+                                                    <ul class="ul-left">ความชำนาญ : Toyota</ul><br>
+                                                    <!-- <ul>เบอร์โทรศัพท์ : Honda</ul> -->
+                                                    <ul class="ul-left">ระยะ : 7 กิโลเมตร</ul><br>
+                                                    <!-- <ul><small>1992-1995</small></ul> -->
                                                 </div>
-                                                <!-- <div class="product_extras">
-                                                    <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
-                                                </div> -->
+                                                <div class="input-group-append">
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<!-- <button class="btn btn-orange "><i class="fa fa-address-book-o"></i></button>
+									            	<button class="btn btn-orange inactive"><i class="fa fa-snowflake-o"></i></button>
+									            	<button class="btn btn-orange inactive"><i class="fa fa-cutlery"></i></button> -->
+									          	</div>
+									          	<div class="input-group-append" >
+									            	<button class="btn btn-link " style="width: 80%; ">
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<!-- <i class="fa fa-star-half-o fa-yellow"></i> -->
+									            	</button>
+									          	</div>
+									          	<div class="product_name">
+                                                    <ul><small><a href="#" ><strong><u>รายละเอียด</u></strong></a></small></ul>
+                                                    
+                                                </div>
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -160,17 +189,38 @@
                                         <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
                                             <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/themes/garage/images/garage.jpg'); ?>"/></div>
                                             <div class="product_content">
-                                                <div class="product_price">3200 .-</div>
+                                                
                                                 <div class="product_name">
-                                                    <div><a href="product.html" tabindex="0"><strong>ลูกปืนล้อหน้า NTN</strong></a></div>
-                                                    <ul>Honda CIVIC</ul>
-                                                    <ul><small>1992-1995</small></ul>
+                                                    <div><strong>ร้านก.</strong></div>
+                                                    <ul class="ul-left">ความชำนาญ : Nissan</ul><br>
+                                                    <!-- <ul>เบอร์โทรศัพท์ : Honda</ul> -->
+                                                    <ul class="ul-left">ระยะ : 10 กิโลเมตร</ul><br>
+                                                    <!-- <ul><small>1992-1995</small></ul> -->
                                                 </div>
-                                                <!-- <div class="product_extras">
-                                                    <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
-                                                </div> -->
+                                                <div class="input-group-append">
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<!-- <button class="btn btn-orange "><i class="fa fa-address-book-o"></i></button>
+									            	<button class="btn btn-orange inactive"><i class="fa fa-snowflake-o"></i></button>
+									            	<button class="btn btn-orange inactive"><i class="fa fa-cutlery"></i></button> -->
+									          	</div>
+									          	<div class="input-group-append" >
+									            	<button class="btn btn-link " style="width: 80%; ">
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<!-- <i class="fa fa-star-half-o fa-yellow"></i> -->
+									            	</button>
+									          	</div>
+									          	<div class="product_name">
+                                                    <ul><small><a href="#" ><strong><u>รายละเอียด</u></strong></a></small></ul>
+                                                    
+                                                </div>
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -184,15 +234,37 @@
                                         <div class="product_item d-flex flex-column align-items-center justify-content-center text-center">
                                             <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?=base_url('public/themes/garage/images/garage.jpg'); ?>"/></div>
                                             <div class="product_content">
-                                                <div class="product_price">2400 .-</div>
+                                                
                                                 <div class="product_name">
-                                                    <div><a href="product.html" tabindex="0"><strong>ผ้าเบรคหน้า TRW</strong></a></div>
-                                                    <ul>Honda CITY</ul>
-                                                    <ul><small>1992-1995</small></ul>
+                                                    <div><strong>ร้านก.</strong></div>
+                                                    <ul class="ul-left">ความชำนาญ : Masda</ul><br>
+                                                    <!-- <ul>เบอร์โทรศัพท์ : Honda</ul> -->
+                                                    <ul class="ul-left">ระยะ : 27 กิโลเมตร</ul><br>
+                                                    <!-- <ul><small>1992-1995</small></ul> -->
                                                 </div>
-                                                <!-- <div class="product_extras">
-                                                    <button class="product_cart_button" tabindex="0">หยิบใส่ตะกร้า</button>
-                                                </div> -->
+                                                <div class="input-group-append">
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
+									            	<!-- <button class="btn btn-orange "><i class="fa fa-address-book-o"></i></button>
+									            	<button class="btn btn-orange inactive"><i class="fa fa-snowflake-o"></i></button>
+									            	<button class="btn btn-orange inactive"><i class="fa fa-cutlery"></i></button> -->
+									          	</div>
+									          	<div class="input-group-append" >
+									            	<button class="btn btn-link " style="width: 80%; ">
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<i class="fa fa-star fa-yellow"></i>
+									            		<!-- <i class="fa fa-star-half-o fa-yellow"></i> -->
+									            	</button>
+									          	</div>
+									          	<div class="product_name">
+                                                    <ul><small><a href="#" ><strong><u>รายละเอียด</u></strong></a></small></ul>
+                                                    
+                                                </div>
                                             </div>
                                             
                                         </div>

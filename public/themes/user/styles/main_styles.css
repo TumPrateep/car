@@ -3798,3 +3798,30 @@ select option
   .border-left{
 	border-left: #dcdcdc 1px solid;
   }
+  .fa.fa-star.fa-yellow,.fa.fa-star-half-o.fa-yellow{
+  	color: #ffff00 !important;
+  }
+  .btn.btn-link{
+  	z-index: -1;
+  }
+
+  .product_item.border-Orange, .border-Orange{
+  	border-color: #ff751a;
+  }
+  .ul-left{
+  	float: left;
+  	padding-left: 10px;
+  }
+
+  .btn-yellow {
+  	color: #fff;
+    background-color: #ffff00;
+    border-color: #ffcc00;
+  }
+    
+  .btn-orange-garage {
+  	color: #fff;
+    background-color: #ff471a;
+    border-color: #e62e00;
+  }
+    
