@@ -261,7 +261,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<button type="button" name="copyaddress" id="copyaddress" class="btn btn-primary">ข้อมูลที่อยู่</button><span> ใช้ข้อมูลเดี่ยวกันกับข้อมูลส่วนตัว</span>
+							<button type="button" name="copyaddress" id="copyaddress" class="btn btn-orange-garage">ข้อมูลที่อยู่</button><span> ใช้ข้อมูลเดี่ยวกันกับข้อมูลส่วนตัว</span>
 						</div>
 					</div>
 				</div>
@@ -405,7 +405,7 @@
 						<label  for="users">ยืนยันรหัสผ่าน</label><span class="error">*</span>
 						<input type="password" class="form-control" name="checkpassword" id="checkpassword" placeholder="ยืนยันรหัสผ่าน">
 					</div>
-					<button type="submit" class="btn btn-primary btn-block">บันทึก</button>
+					<button type="submit" class="btn btn-success btn-block">บันทึก</button>
 				</form>
 			</div>
 		</div>
