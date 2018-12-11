@@ -4,7 +4,7 @@
 		<h3>ลงทะเบียนอู่ซ่อมรถ</h3>
 		<div class="row">
 			<div class="col-md-8">
-				<h4 class="underline">ข้อมูลส่วนตัว</h4>
+				<h4 class="underline orange">ข้อมูลส่วนตัวของเจ้าของอู่</h4>
 				<div class="row">
 					<div class="col-md-2">
 						<div class="form-group">
@@ -27,6 +27,26 @@
 						<div class="form-group">
 							<label for="user_profile">นามสกุล</label><span class="error">*</span>
 							<input type="text" class="form-control" name="lastname_user" id="lastname_user" placeholder="นามสกุล">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="mechanic">เลขรหัสบัตรประชาชน</label><span class="error">*</span>
+							<input type="number" class="form-control" name="personalid" id="personalid" placeholder="เลขรหัสบัตรประชาชน">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="mechanic">ประสบการณ์</label><span class="error">*</span>
+							<input type="number" class="form-control" name="exp" id="exp" placeholder="ประสบการณ์(ปี)">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="mechanic">ความชำนาญ</label><span class="error">*</span>
+							<input type="text" class="form-control" name="skill" id="skill" placeholder="ความชำนาญ">
 						</div>
 					</div>
 				</div>
@@ -102,7 +122,7 @@
 						</div>
 					</div>
 				</div>
-				<h4 class="underline">ข้อมูลเจ้าของอู่</h4>
+				<!-- <h4 class="underline">ข้อมูลเจ้าของอู่</h4>
 				<div class="row">
 					<div class="col-md-2">
 						<div class="form-group">
@@ -153,8 +173,8 @@
 							<input type="text" class="form-control" name="skill" id="skill" placeholder="ความชำนาญ">
 						</div>
 					</div>
-				</div>
-				<h4 class="underline">ข้อมูลอู่ซ่อมรถ</h4>
+				</div> -->
+				<h4 class="underline orange">ข้อมูลอู่ซ่อมรถ</h4>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="row p-t-20">
@@ -179,11 +199,11 @@
 						</div>
 						<div class="form-group">
 							<label for="garage">เบอร์โทรศัพท์</label><span class="error">*</span>
-							<input type="text" class="form-control" name="phone_garage" id="phone_garage" placeholder="เบอร์โทรศัพท์">
+							<input type="number" class="form-control" name="phone_garage" id="phone_garage" placeholder="เบอร์โทรศัพท์">
 						</div>
 						<div class="form-group">
 							<label for="garage">หมายเลขทะเบียนการค้า</label><span class="error">*</span>
-							<input type="text" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า">
+							<input type="number" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า">
 						</div>
 					</div>
 				</div>
@@ -193,12 +213,23 @@
 							<label for="garage"><h4>ช่วงเวลาเปิดทำการ</h4></label><span class="error">*</span>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="form-group">
-							<!-- <label for="exampleFormControlInput1">เวลาเริ่ม</label> -->
-							<input type="text" class="form-control" name="timestart" id="timestart" placeholder="00 : 00">
-						</div>
+			                <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+			                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3"/>
+			                    <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+			                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+			                    </div>
+			                </div>
+			            </div>
 					</div>
+					<script type="text/javascript">
+			            $(function () {
+			                $('#datetimepicker3').datetimepicker({
+			                    format: 'LT'
+			                });
+			            });
+			        </script>
 					<div class="col-md-4">
 						<div class="form-group">
 							<!-- <label for="exampleFormControlInput1">เวลาปิด</label> -->
@@ -321,7 +352,7 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="garage">รหัสไปรษณีย์</label><span class="error">*</span>
-							<input class="form-control" type="text" name="postCode_garage" id="postCode_garage" placeholder="รหัสไปรษณีย์">
+							<input class="form-control" type="number" name="postCode_garage" id="postCode_garage" placeholder="รหัสไปรษณีย์">
 						</div>
 					</div>
 					<div class="col-md-8">
@@ -391,7 +422,7 @@
 					</div>
 					<div class="form-group">
 						<label for="users">เบอร์โทรศัพท์</label><span class="error">*</span>
-						<input type="text" class="form-control" name="phone_user" id="phone_user" placeholder="เบอร์โทรศัพท์">
+						<input type="number" class="form-control" name="phone_user" id="phone_user" placeholder="เบอร์โทรศัพท์">
 					</div>
 					<div class="form-group">
 						<label for="users">อีเมล์</label><span class="error">*</span>

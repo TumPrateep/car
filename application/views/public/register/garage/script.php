@@ -17,6 +17,16 @@ $(document).ready(function() {
           lastname_user: {
             required: true
           },
+          personalid:{
+            required: true,
+            pid: true
+          },
+          exp:{
+            required: true
+          },
+          skill:{
+            required: true
+          },
           hno_user:{
             required: true
           },
@@ -36,29 +46,6 @@ $(document).ready(function() {
           phone1: {
             minlength: 9,
             required: true 
-          },
-          titleName_mechanic:{
-              required: true
-            },
-          firstname_mechanic:{
-            required: true
-          },
-          lastname_mechanic:{
-            required: true
-          },
-          personalid_mechanic:{
-            required: true,
-            pid: true
-          },
-          phone_mechanic:{
-            minlength: 9,
-            required: true
-          },
-          exp:{
-            required: true
-          },
-          skill:{
-            required: true
           },
           garagename:{
             required: true
@@ -126,6 +113,16 @@ $(document).ready(function() {
           lastname_user: {
             required: "นามสกุล"
           },
+          personalid:{
+            required: "รหัสบัตรประชาชน",
+            pid: "รหัสบัตรประชาชนให้ถูกต้อง"
+          },
+          exp:{
+            required: "ประสบการณ์"
+          },
+          skill:{
+            required: "ความชำนาญ"
+          },
           hno_user:{
             required: "บ้านเลขที่"
           },
@@ -145,29 +142,7 @@ $(document).ready(function() {
             minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
             required: "เบอร์โทรศัพท์"
           },
-          titleName_mechanic:{
-              required: "คำนำหน้า"
-            },
-          firstname_mechanic:{
-            required: "ชื่อ"
-          },
-          lastname_mechanic:{
-            required: "นามสกุล"
-          },
-          personalid_mechanic:{
-            required: "รหัสบัตรประชาชน",
-            pid: "รหัสบัตรประชาชนให้ถูกต้อง"
-          },
-          phone_mechanic:{
-            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-            required: "เบอร์โทรศัพท์"
-          },
-          exp:{
-            required: "ประสบการณ์"
-          },
-          skill:{
-            required: "ความชำนาญ"
-          },
+          
           garagename:{
             required: "ชื่ออู่ซ่อมรภ"
           },
@@ -226,6 +201,12 @@ $(document).ready(function() {
         }
     });
 
+    navigator.geolocation.getCurrentPosition(function(location) {
+      console.log(location.coords.latitude);
+      console.log(location.coords.longitude);
+      console.log(location.coords.accuracy);
+    });
+    
     jQuery.validator.addMethod("pid", function(value, element) {
         return checkID(value);
       }, 'เลขบัตรประชาชนให้ถูกต้อง');

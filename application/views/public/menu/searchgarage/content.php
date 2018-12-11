@@ -7,6 +7,24 @@
                <div class="sidebar_section">
                   <div class="sidebar_title">Garage</div>
                   <div class="form-group">
+						<label for="user_profile">จังหวัด</label>
+						<select class="form-control" name="provinceIdSearch" id="provinceIdSearch">
+							<option>จังหวัด</option>
+						</select>
+				  </div>
+				  <div class="form-group">
+						<label for="user_profile">อำเภอ</label>
+						<select class="form-control" name="districtIdSearch" id="districtIdSearch">
+							<option>อำเภอ</option>
+						</select>
+				  </div>
+				  <div class="form-group">
+						<label for="user_profile">ตำบล</label>
+						<select class="form-control" name="subdistrictIdSearch" id="subdistrictIdSearch">
+							<option>ตำบล</option>
+						</select>
+				  </div>
+                  <div class="form-group">
                      <label class="control-label">ชื่ออู่ซ่อมรถ</label>
                      <div class="input-group input-group-default">
                         <input type="text" class="form-control" id="garagename" name="garagename" placeholder="ชื่ออู่ซ่อมรถ">
@@ -34,18 +52,6 @@
                         <option value="">เปลี่ยนยาง</option>
                      </select>
                   </div>
-                  <div class="form-group">
-                     <label class="control-label">รุ่นรถ</label>
-                     <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                        <option value="">เลือกรุ่นรถ</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-						<label for="user_profile">จังหวัด</label>
-						<select class="form-control" name="provinceIdSearch" id="provinceIdSearch">
-							<option>จังหวัด</option>
-						</select>
-					</div>
 
                   <div class="form-group">
                      <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
@@ -108,13 +114,10 @@
                                                     <!-- <ul><small>1992-1995</small></ul> -->
                                                 </div>
                                                 <div class="input-group-append">
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<!-- <button class="btn btn-orange "><i class="fa fa-address-book-o"></i></button>
-									            	<button class="btn btn-orange inactive"><i class="fa fa-snowflake-o"></i></button>
-									            	<button class="btn btn-orange inactive"><i class="fa fa-cutlery"></i></button> -->
+									            	<button class="btn btn-orange "><i class="fas fa-wifi"></i></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-hdd"></i></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-snowflake"></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-utensils"></i></i></button>
 									          	</div>
 									          	<div class="input-group-append" >
 									            	<button class="btn btn-link " style="width: 80%; ">
@@ -153,13 +156,10 @@
                                                     <!-- <ul><small>1992-1995</small></ul> -->
                                                 </div>
                                                 <div class="input-group-append">
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<!-- <button class="btn btn-orange "><i class="fa fa-address-book-o"></i></button>
-									            	<button class="btn btn-orange inactive"><i class="fa fa-snowflake-o"></i></button>
-									            	<button class="btn btn-orange inactive"><i class="fa fa-cutlery"></i></button> -->
+									            	<button class="btn btn-orange "><i class="fas fa-wifi"></i></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-hdd"></i></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-snowflake"></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-utensils"></i></i></button>
 									          	</div>
 									          	<div class="input-group-append" >
 									            	<button class="btn btn-link " style="width: 80%; ">
@@ -198,13 +198,10 @@
                                                     <!-- <ul><small>1992-1995</small></ul> -->
                                                 </div>
                                                 <div class="input-group-append">
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<!-- <button class="btn btn-orange "><i class="fa fa-address-book-o"></i></button>
-									            	<button class="btn btn-orange inactive"><i class="fa fa-snowflake-o"></i></button>
-									            	<button class="btn btn-orange inactive"><i class="fa fa-cutlery"></i></button> -->
+									            	<button class="btn btn-orange "><i class="fas fa-wifi"></i></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-hdd"></i></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-snowflake"></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-utensils"></i></i></button>
 									          	</div>
 									          	<div class="input-group-append" >
 									            	<button class="btn btn-link " style="width: 80%; ">
@@ -243,13 +240,10 @@
                                                     <!-- <ul><small>1992-1995</small></ul> -->
                                                 </div>
                                                 <div class="input-group-append">
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<button class="btn btn-orange "><i class="fa fa-wifi"></i></button>
-									            	<!-- <button class="btn btn-orange "><i class="fa fa-address-book-o"></i></button>
-									            	<button class="btn btn-orange inactive"><i class="fa fa-snowflake-o"></i></button>
-									            	<button class="btn btn-orange inactive"><i class="fa fa-cutlery"></i></button> -->
+									            	<button class="btn btn-orange "><i class="fas fa-wifi"></i></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-hdd"></i></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-snowflake"></i></button>
+									            	<button class="btn btn-orange "><i class="fas fa-utensils"></i></i></button>
 									          	</div>
 									          	<div class="input-group-append" >
 									            	<button class="btn btn-link " style="width: 80%; ">
