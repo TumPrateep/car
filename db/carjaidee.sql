@@ -55,10 +55,10 @@ INSERT INTO `brand` (`brandId`, `brandPicture`, `brandName`, `create_by`, `updat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `card`
+-- Table structure for table `cart`
 --
 
-CREATE TABLE `card` (
+CREATE TABLE `cart` (
   `cardId` int(11) NOT NULL,
   `productId` int(11) DEFAULT NULL,
   `quantity` varchar(45) DEFAULT NULL,
@@ -67,6 +67,17 @@ CREATE TABLE `card` (
   `status` varchar(45) DEFAULT NULL,
   `group` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cardId`, `productId`, `quantity`, `create_by`, `create_at`, `status`, `group`) VALUES
+(98, 5, '4', 13, '2018-12-16 01:29:52', NULL, 'spare'),
+(99, 4, '2', 13, '2018-12-16 01:29:52', NULL, 'spare'),
+(100, 5, '3', 13, '2018-12-16 01:29:52', NULL, 'spare'),
+(101, 7, '2', 13, '2018-12-16 01:29:52', NULL, 'spare'),
+(102, 8, '1', 13, '2018-12-16 01:29:52', NULL, 'spare');
 
 -- --------------------------------------------------------
 
@@ -1329,13 +1340,6 @@ CREATE TABLE `lubricator_data` (
   `lubricatorId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `lubricator_data`
---
-
-INSERT INTO `lubricator_data` (`lubricator_dataId`, `create_at`, `update_at`, `status`, `activeFlag`, `create_by`, `update_by`, `lubricator_brandId`, `warranty`, `warranty_distance`, `warranty_year`, `price`, `lubricator_dataPicture`, `lubricatorId`) VALUES
-(1, '2018-09-08 20:12:24', NULL, 1, 1, 11, NULL, 5, '', '', 0, 1000, '5b93cab7e6ef6.png', 106);
-
 -- --------------------------------------------------------
 
 --
@@ -2278,7 +2282,8 @@ CREATE TABLE `order` (
   `activeflag` varchar(45) DEFAULT NULL,
   `userId` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
-  `status` varchar(45) DEFAULT NULL
+  `status` varchar(45) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2295,7 +2300,8 @@ CREATE TABLE `orderdetail` (
   `quantity` int(11) DEFAULT NULL,
   `price` double DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
-  `activeflag` int(11) DEFAULT NULL
+  `activeflag` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2564,7 +2570,9 @@ INSERT INTO `spares_brand` (`spares_brandId`, `spares_brandName`, `spares_brandP
 (44, 'TRW', '5bf905f6036f7.png', '1', 43, 1, NULL, NULL, '2018-11-24 15:04:06', 1),
 (45, 'TRW', '5bf90604d811c.png', '1', 42, 1, NULL, NULL, '2018-11-24 15:04:20', 1),
 (46, 'TRW', '5bf90615b3eb1.png', '1', 41, 1, NULL, NULL, '2018-11-24 15:04:37', 1),
-(47, 'TRW', '5bf9062b059c1.png', '1', 37, 1, NULL, NULL, '2018-11-24 15:04:59', 1);
+(47, 'TRW', '5bf9062b059c1.png', '1', 37, 1, NULL, NULL, '2018-11-24 15:04:59', 1),
+(48, 'TRW', '5c1533606ca6e.png', '1', 35, 1, NULL, NULL, '2018-12-16 00:01:20', 1),
+(49, 'TRW', '5c15386c21f26.png', '1', 60, 1, NULL, NULL, '2018-12-16 00:22:52', 1);
 
 -- --------------------------------------------------------
 
@@ -2589,7 +2597,11 @@ CREATE TABLE `spares_change` (
 --
 
 INSERT INTO `spares_change` (`spares_changeId`, `spares_price`, `spares_undercarriageId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
-(1, 1000, 33, 1, 1, '2018-11-23 15:14:00', '2018-11-23 16:55:03', '1', '1');
+(1, 1000, 33, 1, 1, '2018-11-23 15:14:00', '2018-11-23 16:55:03', '1', '1'),
+(3, 1000, 56, 1, NULL, '2018-12-16 00:08:23', NULL, '1', '1'),
+(4, 1000, 35, 1, NULL, '2018-12-16 00:08:47', NULL, '1', '1'),
+(5, 1000, 60, 1, NULL, '2018-12-16 00:09:28', NULL, '1', '1'),
+(6, 1000, 41, 1, NULL, '2018-12-16 00:37:33', NULL, '1', '1');
 
 -- --------------------------------------------------------
 
@@ -2678,8 +2690,14 @@ CREATE TABLE `spares_undercarriagedata` (
 --
 
 INSERT INTO `spares_undercarriagedata` (`spares_undercarriageDataId`, `spares_undercarriageId`, `spares_brandId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`, `warranty`, `warranty_distance`, `warranty_year`, `price`, `spares_undercarriageDataPicture`, `modelId`, `brandId`, `modelofcarId`, `machineSize`) VALUES
-(2, 33, 35, 11, NULL, '2018-09-08 20:42:47', NULL, 1, 1, 0, 0, 0, 3000, '5b93d1d596129.png', 110, 12, 19, NULL),
-(3, 33, 35, 12, NULL, '2018-09-23 14:01:05', NULL, 1, 1, 2, 10000, 2, 3500, '5ba73a3171b21.png', 110, 12, 19, NULL);
+(4, 35, 48, 11, NULL, '2018-12-16 00:02:05', NULL, 1, 1, 2, 10000, 1, 500, '5c15338d91281.png', 110, 12, 19, NULL),
+(5, 56, 36, 11, NULL, '2018-12-16 00:12:14', NULL, 1, 1, 2, 10000, 1, 1200, '5c1535eecb537.png', 213, 12, 582, NULL),
+(7, 60, 49, 11, NULL, '2018-12-16 00:24:05', NULL, 1, 1, 2, 10000, 1, 1500, '5c1538b51e2c3.png', 182, 15, 432, NULL),
+(8, 41, 46, 11, NULL, '2018-12-16 00:26:01', NULL, 1, 1, 2, 10000, 1, 1300, '5c153929d2a2d.png', 152, 14, 326, NULL),
+(9, 35, 48, 12, NULL, '2018-12-16 00:32:38', NULL, 1, 1, 2, 10000, 1, 600, '5c153ab6a3e2e.png', 110, 12, 19, NULL),
+(10, 56, 36, 12, NULL, '2018-12-16 00:34:04', NULL, 1, 1, 2, 10000, 1, 1300, '5c153b0c5a58d.png', 213, 12, 581, NULL),
+(11, 60, 49, 12, NULL, '2018-12-16 00:34:49', NULL, 1, 1, 2, 10000, 1, 1600, '5c153b39d6dd7.png', 182, 15, 432, NULL),
+(12, 41, 46, 12, NULL, '2018-12-16 00:36:00', NULL, 1, 1, 2, 10000, 1, 1200, '5c153b8003c9e.png', 150, 14, 262, NULL);
 
 -- --------------------------------------------------------
 
@@ -11697,13 +11715,6 @@ CREATE TABLE `tire_data` (
   `brandId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `tire_data`
---
-
-INSERT INTO `tire_data` (`tire_dataId`, `rimId`, `tire_sizeId`, `tire_brandId`, `tire_modelId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `tire_picture`, `car_accessoriesId`, `activeFlag`, `price`, `warranty_year`, `warranty_distance`, `can_change`, `warranty`, `modelofcarId`, `modelId`, `brandId`) VALUES
-(1, 12, 121, 4, 17, 11, NULL, '2018-09-08 20:39:18', NULL, '1', '5b93d10477365.png', 11, 1, 5000, 0, 0, 2, 0, 19, 110, 12);
-
 -- --------------------------------------------------------
 
 --
@@ -12124,9 +12135,9 @@ ALTER TABLE `brand`
   ADD KEY `activeFlag_idx` (`activeFlag`);
 
 --
--- Indexes for table `card`
+-- Indexes for table `cart`
 --
-ALTER TABLE `card`
+ALTER TABLE `cart`
   ADD PRIMARY KEY (`cardId`),
   ADD KEY `fk_card_users1_idx` (`create_by`),
   ADD KEY `fk_card_users2_idx` (`create_by`);
@@ -12486,10 +12497,10 @@ ALTER TABLE `brand`
   MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `card`
+-- AUTO_INCREMENT for table `cart`
 --
-ALTER TABLE `card`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `cart`
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`
@@ -12603,13 +12614,13 @@ ALTER TABLE `rim`
 -- AUTO_INCREMENT for table `spares_brand`
 --
 ALTER TABLE `spares_brand`
-  MODIFY `spares_brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `spares_brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `spares_change`
 --
 ALTER TABLE `spares_change`
-  MODIFY `spares_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `spares_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `spares_undercarriage`
@@ -12621,7 +12632,7 @@ ALTER TABLE `spares_undercarriage`
 -- AUTO_INCREMENT for table `spares_undercarriagedata`
 --
 ALTER TABLE `spares_undercarriagedata`
-  MODIFY `spares_undercarriageDataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `spares_undercarriageDataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `subdistrict`
@@ -12651,7 +12662,7 @@ ALTER TABLE `tire_change`
 -- AUTO_INCREMENT for table `tire_data`
 --
 ALTER TABLE `tire_data`
-  MODIFY `tire_dataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tire_dataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tire_matching`
@@ -12701,9 +12712,9 @@ ALTER TABLE `brand`
   ADD CONSTRAINT `update_by` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `card`
+-- Constraints for table `cart`
 --
-ALTER TABLE `card`
+ALTER TABLE `cart`
   ADD CONSTRAINT `fk_card_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_card_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
