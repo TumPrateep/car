@@ -6,6 +6,44 @@ function plus(role, index){
     showCart();
 }
 
+function continueShop(){
+    window.location = base_url;
+}
+
+function orderConfirm(){
+    var userId = localStorage.getItem("userId");
+    if(userId != null){
+        var size = cartData.length;
+        if(size > 0){
+            $.confirm({
+                title: 'ยืนยันการสั่งซื้อสินค้า',
+                content: 'กดตกลงเพื่อยืนยัน',
+                buttons: {
+                    ok: {
+                        text: 'ตกลง',
+                        keys: ['enter'],
+                        action: function(){
+                            $.post(base_url+"service/Order/createOrderDetail", {},
+                                function (data, textStatus, jqXHR) {
+                                    synCartData();
+                                }
+                            );
+                        }
+                    },
+                    cancle: {
+                        text: 'ยกเลิก',
+                        action: function(){
+                            
+                        }
+                    }
+                }
+            });
+        }
+    }else{
+        alert("login!!!");
+    }
+}
+
 function minus(role, index){
     cartData[index].number--;
     if(cartData[index].number <= 0){
@@ -83,6 +121,8 @@ function showCart(){
             html += getspare(value, index);
         }
     });
+
+    setNumberOfCart();
     
     cartList.html(html);
     $("#order_total_amount").html(currency(totalCost, {  precision: 0 }).format() + " บาท");

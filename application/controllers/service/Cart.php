@@ -7,7 +7,7 @@ class Cart extends BD_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model("cards");
+        $this->load->model("carts");
     }
 
     function cartDetail_post(){
@@ -151,54 +151,36 @@ class Cart extends BD_Controller {
         $this->set_response($data, REST_Controller::HTTP_OK);
     }
 
-
-    function createCard_post(){
-        $cartId = $this->post("cartId");
-        $productId = $this->post("productId");
-        $group = $this->post("group");
-        $quantity = $this->post("quantity");
+    function getUserCart_post(){
         $userId = $this->session->userdata['logged_in']['id'];
+        $result = $this->carts->getCartByUserId($userId);
+        $this->set_response($result, REST_Controller::HTTP_OK);
+    }
 
-        $data_check = $this->cards->data_check_userId($userId);
-        if($data_check != null){
-            $data = array(
-                'cartId' => $cartId,
-                'productId' => $productId,
-                'create_at' => date('Y-m-d H:i:s',time()),
-                'create_by' => $userId,
-                'status' => 1,
-                'group' => $group,
-                'quantity' => $quantity
-            );
-            $result = $this->card->update($data);
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-        
-            
-        }else{
-            $data = array(
-                'cartId' => null,
-                'productId' => $productId,
-                'create_at' => date('Y-m-d H:i:s',time()),
-                'create_by' => $userId,
-                'status' => 1,
-                'group' => $group,
-                'quantity' => $quantity
-            );
-            $result = $this->card->insert($data);
-            if($result){
-                $output["message"] = REST_Controller::MSG_SUCCESS;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }
+
+    function createCart_post(){
+        $cartData = $this->post("cartData");
+        $this->set_response($cartData, REST_Controller::HTTP_OK);
+        $userId = $this->session->userdata['logged_in']['id'];
+        $index = 0;
+        $data = [];
+        foreach ($cartData as $val) {
+            $data[$index]["productId"] = $val['productId'];
+            $data[$index]["group"] = $val['group'];
+            $data[$index]["quantity"] = $val['number'];
+            $data[$index]["create_at"] = date('Y-m-d H:i:s',time());
+            $data[$index]["create_by"] = $userId;
+            $index++;
         }
+
+        $option = [
+            "data_check" => null,
+            "data" => $data,
+            "model" => $this->carts,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
         
     }
 
