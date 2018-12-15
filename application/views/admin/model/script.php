@@ -53,12 +53,15 @@
                     data.brandId = $("#brandId").val();
                     data.status = $("#status").val();
                     data.year = $("#year").val();
+                    data.detail = $("detail").val();
+                    
                 }
             },
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
                 { "data": "modelName" },
+                { "data": "detail"},
                 null,
                 null,
                 null
@@ -67,9 +70,9 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,4]
+                    "targets": [0,5]
                 },{
-                    "targets": 2,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         if(data.yearEnd != null){
@@ -78,7 +81,7 @@
                         return data.yearStart;
                     }
                 },{
-                    "targets": 4,
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/car/carmodel/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
@@ -92,8 +95,9 @@
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
-                },{
-                    "targets": 3,
+                },
+                {
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -113,7 +117,7 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [1]},
-                {"className": "dt-center", "targets": [0,1,2,3,4]},
+                {"className": "dt-center", "targets": [0,1,2,3,4,5]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 2 }
             ]	 

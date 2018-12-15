@@ -74,6 +74,7 @@ class Car extends BD_Controller {
         $brandId = $this->post("brandId");
         $yearStart = $this->post("yearStart");
         $yearEnd = $this->post("yearEnd");
+        $detail = $this->post("detail");
         $userId = $this->session->userdata['logged_in']['id'];
 
         if($yearEnd == 0){
@@ -90,7 +91,8 @@ class Car extends BD_Controller {
             'status' => 1,
             'activeFlag' => 1,
             'create_at' => date('Y-m-d H:i:s',time()),
-            'create_by' => $userId
+            'create_by' => $userId,
+            'detail' => $detail
         );
         $option = [
             "data_check" => $data_check,
@@ -147,6 +149,7 @@ class Car extends BD_Controller {
                 $nestedData['yearStart'] = $post->yearStart;
                 $nestedData['yearEnd'] = $post->yearEnd;
                 $nestedData['status'] = $post->status;
+                $nestedData['detail'] = $post->detail;
                 $data[] = $nestedData;
 
             }
@@ -212,6 +215,7 @@ class Car extends BD_Controller {
         $brandId = $this->post('brandId');
         $yearStart = $this->post('yearStart');
         $yearEnd = $this->post('yearEnd');
+        $detail = $this->post("detail");
         $userId = $this->session->userdata['logged_in']['id'];
         
         if($yearEnd == 0){
@@ -228,7 +232,8 @@ class Car extends BD_Controller {
             'yearEnd' => $yearEnd,
             'status' => 1,
             'update_at' => date('Y-m-d H:i:s',time()),
-            'update_by' => $userId
+            'update_by' => $userId,
+            'detail' => $detail
         );
 
         $option = [
