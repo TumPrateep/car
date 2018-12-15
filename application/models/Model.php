@@ -84,11 +84,12 @@ class Model extends CI_Model{
         return $result;
     }
     
-    function data_check_create($brandId,$modelName,$yearStart,$yearEnd){
+    function data_check_create($brandId,$modelName,$yearStart,$yearEnd,$detail){
         $this->db->select("modelName");
         $this->db->from("model");
         $this->db->where('modelName', $modelName);
         $this->db->where('brandId', $brandId);
+        $this->db->where('detail', $detail);
         // $this->db->group_start();
         //     if($yearEnd != null){
         //         $this->db->group_start();
@@ -151,11 +152,12 @@ class Model extends CI_Model{
         return $result;
     }
 
-    function data_check_update($modelId,$modelName,$yearStart, $yearEnd,$brandId){
+    function data_check_update($modelId,$modelName,$yearStart, $yearEnd,$brandId,$detail){
         $this->db->select("modelName");
         $this->db->from("model");
         $this->db->where('modelName', $modelName);
         $this->db->where('brandId', $brandId);
+        $this->db->where('detail', $detail);
         // $this->db->group_start();
         //     if($yearEnd != null){
         //         $this->db->group_start();
@@ -238,6 +240,14 @@ class Model extends CI_Model{
         $query = $this->db->get("model");
         return $query->result();
 
+    }
+    
+    function getAlldetail($modelId){
+        $this->db->select("detail");
+        $this->db->where("modelId", $modelId);
+        $this->db->where('status','1');
+        $query = $this->db->get("model");
+        return $query->result();
     }
 
 }

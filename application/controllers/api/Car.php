@@ -81,7 +81,7 @@ class Car extends BD_Controller {
             $yearEnd = null;
         }
 
-        $data_check = $this->model->data_check_create($brandId,$modelName,$yearStart,$yearEnd);
+        $data_check = $this->model->data_check_create($brandId,$modelName,$yearStart,$yearEnd,$detail);
         $data = array(
             'modelId' => null,
             'modelName' => $modelName,
@@ -223,7 +223,7 @@ class Car extends BD_Controller {
         }
 
         $data_check_update = $this->model->getmodelbyId($modelId);
-        $data_check = $this->model->data_check_update($modelId,$modelName, $yearStart, $yearEnd, $brandId);
+        $data_check = $this->model->data_check_update($modelId,$modelName, $yearStart, $yearEnd, $brandId,$detail);
         $data = array(
             'modelId' => $modelId,
             'modelName' => $modelName,
