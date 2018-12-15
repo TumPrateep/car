@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2018 at 08:03 PM
+-- Generation Time: Dec 15, 2018 at 08:07 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 5.6.38
 
@@ -2282,7 +2282,8 @@ CREATE TABLE `order` (
   `activeflag` varchar(45) DEFAULT NULL,
   `userId` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
-  `status` varchar(45) DEFAULT NULL
+  `status` varchar(45) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
