@@ -4,7 +4,8 @@
     var brandId = $("#brandId").val();
 
     $.post(base_url+"api/car/getModel",{
-        "modelId": $("#modelId").val()
+        "modelId": $("#modelId").val(),
+        "detail": $("#detail").val()
     },function(data){
         if(data.message!=200){
             showMessage(data.message,"admin/car/model/"+brandId);
@@ -14,7 +15,7 @@
             result = data.data;
             $("#modelName").val(result.modelName);
             // $("#yearStart").val(result.yearStart);
-            // $("#yearEnd").val(result.yearEnd);
+            $("#detail").val(result.detail);
             init(result.yearStart, result.yearEnd);
         }
         

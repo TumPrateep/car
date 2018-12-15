@@ -27,10 +27,17 @@
                     <input type="hidden" id="brandId" name="brandId" value="<?=$brandId ?>">
                     <div class="card-body black bg-light">
                       <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                           <div class="form-group">
                             <label>ชื่อรุ่น</label> <span class="error">*</span>
                             <input type="text" class="form-control" placeholder="ชื่อรุ่นรถ" name="modelName">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>รายละเอียด</label> <span class="error">*</span>
+                            <input type="text" class="form-control" placeholder="ชื่อรายละเอียด" name="detail">
                           </div>
                         </div>
                       </div>

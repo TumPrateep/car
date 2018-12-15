@@ -6,7 +6,7 @@
 					<!-- Logo -->
 					<div class="col-lg-3 col-sm-3 col-3 order-1">
 						<div class="logo_container">
-							<div class="logo"><a href="<?=base_url();?>"><img src="<?=base_url("public/image/logo/logo-003.PNG");?>" alt=""></a></div>
+							<div class="logo"><a href="<?=base_url();?>"><img src="<?=base_url("public/image/logo/notofficiallogo2.PNG");?>" alt=""></a></div>
 						</div>
 					</div>
 
