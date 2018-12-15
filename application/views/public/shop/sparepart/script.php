@@ -118,12 +118,13 @@
         // var dropdownStop = $("#yearEnd");
         // var nowYear = (new Date).getFullYear();
         // var startYear = 1990;
-        var modelofcar =$("#modelofcarId");
+        var modelofcar = $("#modelofcarId");
         var year = $("#yearStart");
         var YearEnd = $("#YearEnd");
         var detail = $("#detail");
         var modelName = $("modelName");
         var modelId = $("modelId");
+
 
 
         init();
