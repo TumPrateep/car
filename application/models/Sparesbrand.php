@@ -146,7 +146,7 @@ class Sparesbrand extends CI_Model{
         return $result->row();
     }
     function getUpdate($spares_brandId,$spares_undercarriageId){
-        $this->db->select("spares_brandId, spares_brandName");
+        $this->db->select("spares_brandId, spares_brandName, spares_brandPicture");
         $this->db->where('spares_brandId',$spares_brandId);
         return $this->db->where('spares_undercarriageId',$spares_undercarriageId)->get("spares_brand")->row();
     }

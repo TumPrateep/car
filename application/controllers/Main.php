@@ -17,7 +17,7 @@ class Main extends CI_Controller {
 			if(!$isUser){
 				$this->load->view("public/layout/header");
 			}else{
-				$this->load->view("public/layout/header_temp");
+				$this->load->view("public/layout/header_login");
 			}
 		}else{
 			$this->load->view("public/layout/header");

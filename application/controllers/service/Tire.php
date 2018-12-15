@@ -99,7 +99,7 @@ class Tire extends BD_Controller {
                 
                 
                 $data[$index] = $nestedData;
-                if($count >= 4){
+                if($count >= 3){
                     $count = -1;
                     $index++;
                     $nestedData = [];

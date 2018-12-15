@@ -14,13 +14,13 @@
 			<div class="col-lg-3">
 				<div class="shop_sidebar">
 					<div class="form-group">
-						<label class="control-label">ประเภทน้ำมันเครื่อง</label>
+						<label class="control-label">ชนิดน้ำมันเครื่อง</label>
 						<div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-							<label class="btn btn-gray w-50">
-								<input type="radio" name="options" id="option1" autocomplete="off"> น้ำมันเครื่อง
+							<label class="btn btn-gray w-50 active">
+								<input type="radio" name="options" id="option1" autocomplete="off" value="on" checked> น้ำมันเครื่อง
 							</label>
 							<label class="btn btn-gray w-50">
-								<input type="radio" name="options" id="option3" autocomplete="off"> น้ำมันเกียร์
+								<input type="radio" name="options" id="option2" autocomplete="off" value="off"> น้ำมันเกียร์
 							</label>
 						</div>
 					</div>
@@ -57,14 +57,23 @@
                         </select>
 					</div>
 
-					<div class="form-group">
+					<div class="form-group lubricator_gear">
 						<label class="control-label">ชนิดน้ำมันเครื่อง</label>
 						<div class="input-group input-group-default">
 							<select class="form-control valid" name="lubricator_gear" id="lubricator_gear">
-								<option value="">เลือกชนิดน้ำมันเครื่อง</option>
 								<option value="1">น้ำมันเครื่อง</option>
-								<option value="2">น้ำมันเกียร์ธรรมดา</option>
-								<option value="3">น้ำมันเกียร์ออโต</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group lubricator">
+						<label class="control-label">ประเภทน้ำมันเครื่อง</label>
+						<div class="input-group input-group-default">
+							<select class="form-control" id="lubricator_typeId" name="lubricator_typeId">
+                              	<option value="">ประเภทน้ำมันเครื่อง</option>
+								<option value="5">กึ่งสังเคราะห์</option>
+								<option value="4">ทั่วไป</option>
+								<option value="6">สังเคราะห์แท้</option>
 							</select>
 						</div>
 					</div>

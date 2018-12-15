@@ -3320,6 +3320,7 @@ select option
 	width: 100%;
 	padding-top: 90px;
 	padding-bottom: 90px;
+	background-color: white;
 }
 .brands_slider_container
 {
@@ -3899,4 +3900,8 @@ select option
 
   .sidebar_section{
 	  display: none;
+  }
+
+  .qty_input{
+	  text-align: center;
   }

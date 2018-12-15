@@ -264,7 +264,7 @@ class UserManagement extends BD_Controller {
                 'update_by' => null,
                 'status' => 1,
                 'firstname' => $sparepart_firstname,
-                'lastname' => $sparepart_lastname,
+                // 'lastname' => $sparepart_lastname,
                 'idcard' => $sparepart_idcard,
                 'address' => $sparepart_address,
                 'postCode' => $sparepart_postCode,

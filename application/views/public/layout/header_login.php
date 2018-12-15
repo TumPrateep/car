@@ -17,8 +17,8 @@
 						<div class="top_bar_content ml-auto">
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="<?=base_url("public/themes/user/");?>images/user.svg" alt=""></div>
-								<div><a href="<?=base_url("login");?>">temp</a></div>
-								<div><a href="<?=base_url("auth/logout");?>">ออกจากระบบ</a></div>
+								<div><?=now_user() ?></div>
+								<div><a href="#" onclick="logout()">ออกจากระบบ</a></div>
 							</div>
 						</div>
 					</div>

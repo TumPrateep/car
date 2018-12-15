@@ -1,7 +1,8 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
 class Spare_undercarriagedatas extends CI_Model{
-    function allSpareData_count(){
+    function allSpareData_count($userId){
+        $this->db->where("create_by", $userId);
         $query = $this
                 ->db
                 ->get('spares_undercarriagedata');

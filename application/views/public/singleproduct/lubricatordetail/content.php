@@ -66,7 +66,7 @@
 
 								<div class="product_price" id="product_price"></div>
 								<div class="button_container">
-									<button type="button" class="button cart_button">หยิบใส่ตะกร้า</button>
+									<button type="button" class="button cart_button" onclick="setCartItem(<?=$productId ?>,'<?=$group ?>')">หยิบใส่ตะกร้า</button>
 									<div class="product_fav"><i class="fas fa-heart"></i></div>
 								</div>
 								

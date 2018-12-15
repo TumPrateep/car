@@ -17,15 +17,15 @@
 						<!-- Order Total -->
 						<div class="order_total">
 							<div class="order_total_content text-md-right">
-								<div class="order_total_title">Order Total:</div>
-								<div class="order_total_amount">xxx บาท</div>
+								<div class="order_total_title">ราคารวม:</div>
+								<div class="order_total_amount" id="order_total_amount"></div>
 							</div>
 						</div>
 
-						<div class="cart_buttons">
+						<!-- <div class="cart_buttons">
 							<button type="button" class="button cart_button_clear">Add to Cart</button>
 							<button type="button" class="button cart_button_checkout">Add to Cart</button>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

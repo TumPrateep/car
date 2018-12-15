@@ -30,7 +30,7 @@
                 "processing": true,
                 "serverSide": true,
                 "orderable": false,
-                "pageLength": 12,
+                "pageLength": 8,
                 "ajax":{
                     "url": base_url+"service/Spareundercarriage/search",
                     "dataType": "json",
@@ -71,6 +71,9 @@
                                                 +'<div class="" style="width: 100%; display: inline-block;">'
                                                     +'<div class="border_active active"></div>'
                                                     +'<div class="product_item d-flex flex-column align-items-center justify-content-center text-center">'
+                                                        +'<div class="d-flex flex-column align-items-center logo-product">'
+															+'<img src="'+base_url+'public/image/sparesbrand/'+value.spares_brandPicture+'">'
+														+'</div>'
                                                         +'<div class="product_image d-flex flex-column align-items-center justify-content-center"onclick="gotoDetail(\'spare\',\''+value.spares_undercarriageDataId+'\')"><img src="'+imagePath+value.spares_undercarriageDataPicture+'"/></div>'
                                                         +'<div class="product_content">'
                                                         +'<div onclick="gotoDetail(\'spare\',\''+value.spares_undercarriageDataId+'\')">'
@@ -128,12 +131,12 @@
             // year();
         }
 
-        function year(){
-                dropdownStart.append('<option value="">เลือกปี</option>');
-                for(var i=nowYear;i>=startYear;i--){
-                    dropdownStart.append('<option value="'+i+'">'+i+'</option>');
-                }
-            }
+        // function year(){
+        //         dropdownStart.append('<option value="">เลือกปี</option>');
+        //         for(var i=nowYear;i>=startYear;i--){
+        //             dropdownStart.append('<option value="'+i+'">'+i+'</option>');
+        //         }
+        //     }
 
         function getSparesUndercarriage(){
             $.get(base_url+"service/Spareundercarriage/getAllSpareundercarriage",{},
@@ -184,27 +187,27 @@
             );
         });
         model.change(function(){
-        var modelId = model.val();
-        year.html('<option value="">เลือกปีผลิต</option>');
-        $.get(base_url+"service/Spareundercarriage/getAllYear",{
-            modelId : modelId
-        },function(data){
-            var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    year.append('<option value="' + value.yearStart +' "/" ' +value.yearEnd +'">'+' ปี ' + value.yearStart + '  -  '+value.yearEnd    +'</option>');
-                });
-            }
-        );
-    });
+            var modelName = model.find('option:selected').text();
+            year.html('<option value="">เลือกปีผลิต</option>');
+            $.get(base_url+"service/Spareundercarriage/getAllYear",{
+                modelName : modelName
+            },function(data){
+                var brandData = data.data;
+                    $.each( brandData, function( key, value ) {
+                        year.append('<option value="' + value.modelId + '"> ปี ' + value.yearStart + '  -  '+value.yearEnd    +'</option>');
+                    });
+                }
+            );
+        });
     
-    model.change(function(){
-        var modelId = model.val();
+    year.change(function(){
+        var modelId = year.val();
         modelofcar.html('<option value="">เลือกโฉมรถ</option>');
         $.get(base_url+"service/Spareundercarriage/getAllModelofcar",{
             modelId : modelId
         },function(data){
-            var brandData = data.data;
-                $.each( brandData, function( key, value ) {
+            var modelOfCarData = data.data;
+                $.each( modelOfCarData, function( key, value ) {
                     modelofcar.append('<option value="' + value.modelofcarId + '">' + value.machineSize + '  '+value.modelofcarName+'</option>');
                 });
             }

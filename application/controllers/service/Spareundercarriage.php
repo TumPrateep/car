@@ -89,6 +89,7 @@ class Spareundercarriage extends BD_Controller {
                 $nestedData[$count]['spares_undercarriageDataPicture'] = $post->spares_undercarriageDataPicture;
                 $nestedData[$count]['brandName'] = $post->brandName;
                 $nestedData[$count]['modelName'] = $post->modelName;
+                $nestedData[$count]['spares_brandPicture'] = $post->spares_brandPicture;
                 if($post->yearEnd != null){
                     $nestedData[$count]['year'] = $post->yearStart."-".$post->yearEnd;
                 }else{
@@ -96,7 +97,7 @@ class Spareundercarriage extends BD_Controller {
                 }
                 
                 $data[$index] = $nestedData;
-                if($count >= 4){
+                if($count >= 3){
                     $count = -1;
                     $index++;
                     $nestedData = [];
@@ -150,8 +151,8 @@ class Spareundercarriage extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
     function getAllYear_get(){
-        $modelId = $this->get("modelId");
-        $result = $this->model->getAllYear($modelId);
+        $modelName = $this->get("modelName");
+        $result = $this->model->getAllYear($modelName);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }

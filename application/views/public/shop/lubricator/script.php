@@ -28,7 +28,7 @@
                 "processing": true,
                 "serverSide": true,
                 "orderable": false,
-                "pageLength": 12,
+                "pageLength": 8,
                 "ajax":{
                     "url": base_url+"service/Lubricator/search",
                     "dataType": "json",
@@ -75,9 +75,9 @@
                                                             +'<div onclick="gotoDetail(\'lubricator\',\''+value.lubricator_dataId+'\')">'
                                                                 +'<div class="product_price">'+currency(value.price, {  precision: 0 }).format()+' บาท</div>'
                                                                 +'<div class="product_name">'
-                                                                    +'<div><a href="product.html" tabindex="0"><strong> '+value.lubricator_brandName+' </strong></a></div>'
+                                                                    +'<div><a href="product.html" tabindex="0"><strong> '+value.lubricator_brandName+' '+value.lubricatorName+' </strong></a></div>'
                                                                     +'<ul>'+value.capacity+' ลิตร</ul>'
-                                                                    +'<ul>'+value.lubricatorName+' '+value.lubricator_number+'</ul>'
+                                                                    +'<ul> '+value.lubricator_number+'</ul>'
                                                                 +'</div>'
                                                             +'</div>'
                                                             +'<div class="product_extras">'
@@ -193,33 +193,51 @@
             );
         });
         model.change(function(){
-        var modelId = model.val();
-        year.html('<option value="">เลือกปีผลิต</option>');
-        $.get(base_url+"service/Spareundercarriage/getAllYear",{
-            modelId : modelId
-        },function(data){
-            var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    year.append('<option value="' + value.yearStart +' "/" ' +value.yearEnd +'">'+' ปี ' + value.yearStart + '  -  '+value.yearEnd    +'</option>');
-                });
-            }
-        );
-    });
+            var modelName = model.find('option:selected').text();
+            year.html('<option value="">เลือกปีผลิต</option>');
+            $.get(base_url+"service/Spareundercarriage/getAllYear",{
+                modelName : modelName
+            },function(data){
+                var brandData = data.data;
+                    $.each( brandData, function( key, value ) {
+                        year.append('<option value="' + value.modelId + '"> ปี ' + value.yearStart + '  -  '+value.yearEnd    +'</option>');
+                    });
+                }
+            );
+        });
     
-    model.change(function(){
-        var modelId = model.val();
-        modelofcar.html('<option value="">เลือกโฉมรถ</option>');
-        $.get(base_url+"service/Spareundercarriage/getAllModelofcar",{
-            modelId : modelId
-        },function(data){
-            var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    modelofcar.append('<option value="' + value.modelofcarId + '">' + value.machineSize + '  '+value.modelofcarName+'</option>');
-                });
+        year.change(function(){
+            var modelId = year.val();
+            modelofcar.html('<option value="">เลือกโฉมรถ</option>');
+            $.get(base_url+"service/Spareundercarriage/getAllModelofcar",{
+                modelId : modelId
+            },function(data){
+                var modelOfCarData = data.data;
+                    $.each( modelOfCarData, function( key, value ) {
+                        modelofcar.append('<option value="' + value.modelofcarId + '">' + value.machineSize + '  '+value.modelofcarName+'</option>');
+                    });
+                }
+            );
+        });
+        var lubricatorGear = $(".lubricator_gear");
+        var lubricatorClass = $(".lubricator");
+        lubricatorGear.hide();
+        $("input[name='options']").change(function(){
+            var option = $(this).val();
+            var html = '<option value="">เลือกชนิดน้ำมันเครื่อง</option>';
+            lubricator.val("");
+            if(option == "on"){
+                html = '<option value="1">น้ำมันเครื่อง</option>';
+                lubricatorGear.hide();
+                lubricatorClass.show();
+            }else{
+                html += '<option value="2">น้ำมันเกียร์ธรรมดา</option>'
+                        + '<option value="3">น้ำมันเกียร์ออโต</option>';
+                lubricatorGear.show();
+                lubricatorClass.hide();
             }
-        );
-    }); 
-
+            lubricator_gear.html(html);
+        });
 
 });
    
