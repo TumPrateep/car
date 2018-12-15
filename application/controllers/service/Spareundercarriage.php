@@ -150,8 +150,15 @@ class Spareundercarriage extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
     function getAllYear_get(){
-        $modelId = $this->get("modelId");
-        $result = $this->model->getAllYear($modelId);
+        $detail = $this->get("detail");
+        // $modelId = $this->get("modelId");
+        $result = $this->model->getAllYear($detail);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+    function getAlldetail_get(){
+        $modelName = $this->get("modelName");
+        $result = $this->model->getAlldetail($modelName);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
