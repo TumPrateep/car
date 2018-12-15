@@ -29,6 +29,13 @@
 					</div>
 
 					<div class="form-group">
+                        <label class="control-label">รายละเอียดรถ</label>
+                        <select class="form-control input-default" name="detail" id="detail">
+                            <option value="">เลือกลายละเอียดรถ</option>
+                        </select>
+                    </div>
+
+					<div class="form-group">
                         <label class="control-label">ปีที่ผลิต</label>
                         <div class="row p-t-20">
                             <div class="col-md-12">
