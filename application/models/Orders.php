@@ -6,7 +6,7 @@ class Orders extends CI_Model{
     }
     function getAllCartByUserId($userId){
         $this->db->select("*");
-        $this->db->where('userId',$userId);
+        $this->db->where('create_by',$userId);
         $query = $this->db->get("cart");
         return $query->result();
     }
@@ -25,14 +25,15 @@ class Orders extends CI_Model{
 
     function insert($data){
         $this->db->trans_begin();
+            $userId = $this->session->userdata['logged_in']['id'];
             $this->db->insert("order",$data['order']);
             $orderId = $this->db->insert_id();
-
             $orderDetailData = $data['orderdetail'];
             $index = 0;
             foreach ($orderDetailData as $val) {
                 $orderDetail[$index]['orderId'] = $orderId;
-                $orderDetail[$index]['create_by'] = $userId;
+                $orderDetail[$index]['userId'] = $userId;
+                // $orderDetail[$index]['create_at'] = date('Y-m-d H:i:s',time());
                 $orderDetail[$index]['productId'] = $productId;
                 $orderDetail[$index]['quantity'] = $quantity;
                 $orderDetail[$index]['status'] = $status;
@@ -41,7 +42,8 @@ class Orders extends CI_Model{
                 $orderDetail[$index]['price'] = $this->getPrice($val->productId, $val->group);
                 $index++;
             }
-        delete($cartId);
+            $this->db->insert_batch('cart', $orderDetail);
+            $this->delete($userId);
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
             return false;
@@ -50,8 +52,8 @@ class Orders extends CI_Model{
             return true;
         }
     }
-    function delete($cartId){
-        return $this->db->delete('cart', array('cartId' => $cartId));
+    function delete($userId){
+        return $this->db->delete('cart', array('create_by' => $userId));
     }
     
 }

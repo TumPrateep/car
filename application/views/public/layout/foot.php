@@ -1,4 +1,4 @@
-
+<script>var base_url = "<?=base_url();?>";</script>
 <script src="<?=base_url("public/themes/user/");?>js/jquery-3.3.1.min.js"></script>
 <script src="<?=base_url("public/themes/user/");?>styles/bootstrap4/popper.js"></script>
 <script src="<?=base_url("public/themes/user/");?>styles/bootstrap4/bootstrap.min.js"></script>
@@ -17,7 +17,6 @@
 <script src="<?=base_url("/public/js/currency.min.js") ?>"></script>
 
 <script>
-    var base_url = "<?=base_url();?>";
     function choosewarranty(warranty){
         if(warranty == 1){
             return "และ";
@@ -35,7 +34,7 @@
         }
     }
     function logout(){
-        localStorage.data = [];
+        localStorage.clear();
         window.location = base_url+"auth/logout";
     }
 </script>
