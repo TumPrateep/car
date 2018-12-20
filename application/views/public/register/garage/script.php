@@ -1,6 +1,7 @@
 <script>
 $(document).ready(function() {
     var register = $("#registergarage");
+    var inputimg = $("garagePicture")
 
     jQuery.validator.addMethod("username", function(value, element) {
       return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
@@ -87,7 +88,7 @@ $(document).ready(function() {
             minlength:6,
             required:true
             },
-          phone_user: {
+          phone: {
               required: true,
               minlength:9
           },
@@ -183,7 +184,7 @@ $(document).ready(function() {
             required: "ชื่อผู้ใช้งาน",
             minlength:"ชื่อผู้ใช้อย่างน้อย 6 ตัวอักษร"
           },
-          phone_user: {
+          phone: {
             minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
             required: "เบอร์โทรศัพท์"
           },
@@ -199,6 +200,13 @@ $(document).ready(function() {
             equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
           }
         }
+    });
+
+    inputimg.fileinput({
+      allowedFileExtensions: ['jpg' , 'png'],
+      maxFileSize: 300,
+      required: true,
+      showUpload: false
     });
 
     navigator.geolocation.getCurrentPosition(function(location) {

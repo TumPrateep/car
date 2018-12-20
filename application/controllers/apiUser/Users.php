@@ -110,7 +110,7 @@ class Users extends BD_Controller {
 	function creategarage_post(){
 		$username = $this->post('username');
 		$password = $this->post('password');
-		$phone_user = $this->post('phone_user');
+		$phone_user = $this->post('phone');
 		$email = $this->post('email');
 		$p = password_hash($password, PASSWORD_BCRYPT);
 
@@ -128,11 +128,11 @@ class Users extends BD_Controller {
 		$phone1 = $this->post('phone1');
 		$phone2 = $this->post('phone2');
 
-		$titleName_mechanic = $this->post('titleName_mechanic');
-		$firstname_mechanic = $this->post('firstname_mechanic');
-		$lastname_mechanic = $this->post('lastname_mechanic');
-		$personalid_mechanic = $this->post('personalid_mechanic');
-		$phone_mechanic = $this->post('phone_mechanic');
+		$titleName_mechanic = $this->post('titleName_user');
+		$firstname_mechanic = $this->post('firstname_user');
+		$lastname_mechanic = $this->post('lastname_user');
+		$personalid_mechanic = $this->post('personalid');
+		$phone_mechanic = $this->post('phone1');
 		$exp = $this->post('exp');
 		$skill = $this->post('skill');
 

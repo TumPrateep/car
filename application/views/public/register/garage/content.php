@@ -213,7 +213,7 @@
 							<label for="garage"><h4>ช่วงเวลาเปิดทำการ</h4></label><span class="error">*</span>
 						</div>
 					</div>
-					<div class="col-sm-4">
+					<!-- <div class="col-sm-4">
 						<div class="form-group">
 			                <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
 			                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3"/>
@@ -222,18 +222,17 @@
 			                    </div>
 			                </div>
 			            </div>
-					</div>
-					<script type="text/javascript">
-			            $(function () {
-			                $('#datetimepicker3').datetimepicker({
-			                    format: 'LT'
-			                });
-			            });
-			        </script>
+					</div> -->
 					<div class="col-md-4">
 						<div class="form-group">
 							<!-- <label for="exampleFormControlInput1">เวลาปิด</label> -->
-							<input type="text" class="form-control" name="timeend" id="timeend" placeholder="00 : 00">
+							<input type="time" class="form-control" name="timestart" id="timestart" placeholder="00 : 00">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<!-- <label for="exampleFormControlInput1">เวลาปิด</label> -->
+							<input type="time" class="form-control" name="timeend" id="timeend" placeholder="00 : 00">
 						</div>
 					</div>
 				</div>
@@ -241,25 +240,25 @@
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label" for="garage">
-							<input class="form-check-input" name="monday" id="monday" type="checkbox">จันทร์</label>
+							<input class="form-check-input" name="monday" id="monday" type="checkbox" value="1">จันทร์</label>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label"  for="garage">
-							<input class="form-check-input" name="tuesday" id="tuesday" type="checkbox">อังคาร</label>
+							<input class="form-check-input" name="tuesday" id="tuesday" type="checkbox" value="2">อังคาร</label>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label" for="garage">
-							<input class="form-check-input" name="wednesday" id="wednesday" type="checkbox">พุธ</label>
+							<input class="form-check-input" name="wednesday" id="wednesday" type="checkbox" value="3">พุธ</label>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label" for="garage">
-							<input class="form-check-input" name="thursday" id="thursday" type="checkbox">พฤหัสบดี</label>
+							<input class="form-check-input" name="thursday" id="thursday" type="checkbox" value="4">พฤหัสบดี</label>
 						</div>
 					</div>
 				</div>
@@ -267,35 +266,35 @@
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label" for="garage">
-							<input class="form-check-input" name="friday" id="friday" type="checkbox">ศุกร์</label>
+							<input class="form-check-input" name="friday" id="friday" type="checkbox" value="5">ศุกร์</label>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label" for="garage">
-							<input class="form-check-input" name="saturday" id="saturday" type="checkbox">เสาร์</label>
+							<input class="form-check-input" name="saturday" id="saturday" type="checkbox" value="6">เสาร์</label>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label" for="garage">
-							<input class="form-check-input" name="sunday" id="sunday" type="checkbox">อาทิตย์</label>
+							<input class="form-check-input" name="sunday" id="sunday" type="checkbox" value="7">อาทิตย์</label>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-check">
 							<label class="form-check-label" for="garage">
-							<input class="form-check-input" name="allday" id="allday" type="checkbox">ทุกวัน</label>
-						</div>
+							<input class="form-check-input" name="allday" id="allday" type="checkbox" value="8">ทุกวัน</label>
+						</div>s
 					</div>
 				</div>
-				<div class="row">
+				<!-- <div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
 							<button type="button" name="copyaddress" id="copyaddress" class="btn btn-orange-garage">ข้อมูลที่อยู่</button><span> ใช้ข้อมูลเดี่ยวกันกับข้อมูลส่วนตัว</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="row">
 					<div class="col-md-3">
 						<div class="form-group">
@@ -422,7 +421,7 @@
 					</div>
 					<div class="form-group">
 						<label for="users">เบอร์โทรศัพท์</label><span class="error">*</span>
-						<input type="number" class="form-control" name="phone_user" id="phone_user" placeholder="เบอร์โทรศัพท์">
+						<input type="number" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์">
 					</div>
 					<div class="form-group">
 						<label for="users">อีเมล์</label><span class="error">*</span>
