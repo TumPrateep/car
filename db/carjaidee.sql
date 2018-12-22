@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2018 at 04:48 AM
+-- Generation Time: Dec 22, 2018 at 08:30 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -68,17 +68,6 @@ CREATE TABLE `cart` (
   `group` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cardId`, `productId`, `quantity`, `create_by`, `create_at`, `status`, `group`) VALUES
-(113, 5, '4', 13, '2018-12-16 16:10:40', NULL, 'spare'),
-(114, 4, '2', 13, '2018-12-16 16:10:40', NULL, 'spare'),
-(115, 5, '3', 13, '2018-12-16 16:10:40', NULL, 'spare'),
-(116, 7, '2', 13, '2018-12-16 16:10:40', NULL, 'spare'),
-(117, 8, '1', 13, '2018-12-16 16:10:40', NULL, 'spare');
-
 -- --------------------------------------------------------
 
 --
@@ -134,7 +123,7 @@ CREATE TABLE `car_profile` (
   `status` int(11) NOT NULL,
   `character_plate` varchar(45) NOT NULL,
   `number_plate` varchar(45) NOT NULL,
-  `province_plate` varchar(45) NOT NULL,
+  `province_plate` int(11) NOT NULL,
   `color` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -143,7 +132,7 @@ CREATE TABLE `car_profile` (
 --
 
 INSERT INTO `car_profile` (`car_profileId`, `mileage`, `pictureFront`, `pictureBack`, `circlePlate`, `userId`, `create_at`, `update_at`, `create_by`, `update_by`, `status`, `character_plate`, `number_plate`, `province_plate`, `color`) VALUES
-(1, '91020', NULL, NULL, NULL, 13, '2018-12-15 23:36:49', NULL, 1, NULL, 1, 'กข', '112', '1', 'แดง');
+(1, '91020', NULL, NULL, NULL, 13, '2018-12-15 23:36:49', NULL, 1, NULL, 1, 'กข', '112', 1, 'แดง');
 
 -- --------------------------------------------------------
 
@@ -2298,6 +2287,13 @@ CREATE TABLE `order` (
   `create_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`orderId`, `activeflag`, `userId`, `create_by`, `status`, `create_at`) VALUES
+(2, '1', 13, 13, '1', '2018-12-22 14:27:53');
+
 -- --------------------------------------------------------
 
 --
@@ -2313,8 +2309,20 @@ CREATE TABLE `orderdetail` (
   `price` double DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `activeflag` int(11) DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL
+  `create_at` datetime DEFAULT NULL,
+  `group` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orderdetail`
+--
+
+INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `quantity`, `price`, `status`, `activeflag`, `create_at`, `group`) VALUES
+(1, 2, 13, 5, 4, 1200, 1, 1, NULL, 'spare'),
+(2, 2, 13, 4, 2, 500, 1, 1, NULL, 'spare'),
+(3, 2, 13, 5, 3, 1200, 1, 1, NULL, 'spare'),
+(4, 2, 13, 7, 2, 1500, 1, 1, NULL, 'spare'),
+(5, 2, 13, 8, 1, 1300, 1, 1, NULL, 'spare');
 
 -- --------------------------------------------------------
 
@@ -12518,7 +12526,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`
@@ -12608,13 +12616,13 @@ ALTER TABLE `modelofcar`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `province`

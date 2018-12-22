@@ -80,7 +80,11 @@ $route['shop/detail/([a-zA-Z]+)/(\d+)'] = function ($group, $id)
 };
 
 $route['login'] = 'public/Auth/login';
+<<<<<<< HEAD
 $route['shop/payment'] = 'public/Payment/Payments';
+=======
+$route['shop/order'] = 'public/Order/Orders';
+>>>>>>> 366231f2bfcec65c85074f48186a79bcdb886d2d
 
 // user route
 // $route['page/(:any)'] = 'main/Main/(:any)';

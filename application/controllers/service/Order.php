@@ -37,4 +37,40 @@ class Order extends BD_Controller {
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
         
     }
+
+    function search_post(){
+        $columns = array( 
+            0 => null,
+            1 => 'create_by',
+            2 => 'status',
+        );
+        $userId = $this->session->userdata['logged_in']['id'];
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $totalData = $this->orders->all_count($userId);
+        $totalFiltered = $totalData; 
+        $posts = $this->orders->searAllOrder($limit,$start,$order,$dir,$userId);
+
+        $data = array();
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+                $nestedData['orderId'] = $post->orderId;
+                $nestedData['create_at'] = $post->create_at;
+                $nestedData['status'] = $post->status;
+                $nestedData['create_by'] = $post->userId;
+                $data[] = $nestedData;
+            }
+        }
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+        $this->set_response($json_data);
+    }
 }
