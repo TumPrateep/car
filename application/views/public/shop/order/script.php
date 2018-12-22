@@ -42,7 +42,7 @@
             "columns": [
                 null,
                 null,
-                { "data": "status"},
+                null,
                 null
             ],
             "columnDefs": [
@@ -64,6 +64,27 @@
                     }
                 },
                 {
+                    "targets":2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var  orderstatus = "<span>";
+                        
+                            if(data.status == "1"){
+                                orderstatus +="รอมัดจำ";
+                            }
+                            else if(data.status == "2"){
+                                orderstatus +="รอเข้าให้บริการ";
+                            }
+
+                            orderstatus += "</span>";
+                           
+                        return  orderstatus;
+                    
+                         
+                    }
+                        
+
+                },{
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
