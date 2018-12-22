@@ -44,23 +44,15 @@ class Order extends BD_Controller {
             1 => 'create_by',
             2 => 'status',
         );
-        $userId = $this->post('create_by');
+        $userId = $this->session->userdata['logged_in']['id'];
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $totalData = $this->orders->all_count($userId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('status')))
-        {            
-            $posts = $this->orders->allorder($limit,$start,$order,$dir,$userId);
-        }
-        else {
-            $status = $this->post('status');
-            $userId = $this->post('create_by');
-            $posts =  $this->orders->order_search($limit,$start,$order,$dir,$status,$userId);
-            $totalFiltered = $this->orders->order_search_count($status,$userId);
-        }
+        $posts = $this->orders->searAllOrder($limit,$start,$order,$dir,$userId);
+
         $data = array();
         if(!empty($posts))
         {

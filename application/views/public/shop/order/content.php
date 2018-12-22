@@ -18,7 +18,6 @@
 				</div>
             </div>
 			<div class="col-lg-9">
-			<input type="hidden" id="userId" name="userId" value="<?=$userId ?>">
 				<div class="table-responsive">
       				<table class="table table-bordered" id="order-table" width="100%" cellspacing="0">
 						<thead>

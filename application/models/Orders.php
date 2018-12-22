@@ -63,7 +63,7 @@ class Orders extends CI_Model{
     
         return $query->num_rows();  
     }
-    function allorder($limit,$start,$col,$dir,$userId)
+    function searAllOrder($limit,$start,$col,$dir,$userId)
     {   
         $query = $this
             ->db
@@ -71,6 +71,7 @@ class Orders extends CI_Model{
             ->limit($limit,$start)
             ->order_by($col,$dir)
             ->get('order');
+
             if($query->num_rows()>0)
             {
                 return $query->result(); 
@@ -80,36 +81,6 @@ class Orders extends CI_Model{
                 return null;
             }
         
-    }
-    function order_search($limit,$start,$col,$dir,$status,$userId)
-    {
-        $this->db->where('create_by',$userId);
-        if($status != null){
-            $this->db->where("status", $status);
-        }
-        $query = $this->db->limit($limit,$start)
-                ->order_by($col,$dir)
-                ->get('order');
-        
-        if($query->num_rows()>0)
-        {
-            return $query->result();  
-        }
-        else
-        {
-            return null;
-        }
-        
-    }
-    function order_search_count($search,$status,$userId)
-    {
-        $query = $this
-                ->db
-                ->where('create_by',$userId)
-                ->where('status',$status)
-                ->get('order');
-    
-        return $query->num_rows();
     }
     
 }

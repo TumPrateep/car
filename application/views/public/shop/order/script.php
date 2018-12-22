@@ -1,5 +1,5 @@
-<script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.css") ?>"></script>
-<script src="<?=base_url("/public/css/responsive.dataTables.min.css") ?>"></script>
+<link rel="stylesheet" href="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.css") ?>">
+<link rel="stylesheet" href="<?=base_url("/public/css/responsive.dataTables.min.css") ?>">
 <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
 <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
 <script src="<?php echo base_url() ?>public/js/datatable-responsive.js"></script>
@@ -34,7 +34,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.status = $("#status").val()
+                    // data.status = $("#status").val()
                 }
             },
             "order": [[ 2, "asc" ]],
@@ -81,8 +81,6 @@
         event.preventDefault();
         table.ajax.reload();
     })
-
-    
 
 </script>
 
