@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2018 at 05:37 PM
+-- Generation Time: Dec 22, 2018 at 04:48 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -73,11 +73,11 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cardId`, `productId`, `quantity`, `create_by`, `create_at`, `status`, `group`) VALUES
-(98, 5, '4', 13, '2018-12-16 01:29:52', NULL, 'spare'),
-(99, 4, '2', 13, '2018-12-16 01:29:52', NULL, 'spare'),
-(100, 5, '3', 13, '2018-12-16 01:29:52', NULL, 'spare'),
-(101, 7, '2', 13, '2018-12-16 01:29:52', NULL, 'spare'),
-(102, 8, '1', 13, '2018-12-16 01:29:52', NULL, 'spare');
+(113, 5, '4', 13, '2018-12-16 16:10:40', NULL, 'spare'),
+(114, 4, '2', 13, '2018-12-16 16:10:40', NULL, 'spare'),
+(115, 5, '3', 13, '2018-12-16 16:10:40', NULL, 'spare'),
+(116, 7, '2', 13, '2018-12-16 16:10:40', NULL, 'spare'),
+(117, 8, '1', 13, '2018-12-16 16:10:40', NULL, 'spare');
 
 -- --------------------------------------------------------
 
@@ -1339,6 +1339,18 @@ CREATE TABLE `lubricator_data` (
   `lubricator_dataPicture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lubricatorId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `lubricator_data`
+--
+
+INSERT INTO `lubricator_data` (`lubricator_dataId`, `create_at`, `update_at`, `status`, `activeFlag`, `create_by`, `update_by`, `lubricator_brandId`, `warranty`, `warranty_distance`, `warranty_year`, `price`, `lubricator_dataPicture`, `lubricatorId`) VALUES
+(1, '2018-12-16 15:50:37', NULL, 1, 1, 11, NULL, 5, '2', '10000', 1, 1000, '5c1611dc19ae2.png', 111),
+(2, '2018-12-16 15:51:08', NULL, 1, 1, 11, NULL, 5, '2', '10000', 1, 1200, '5c1611fc1332f.png', 106),
+(3, '2018-12-16 15:51:38', NULL, 1, 1, 11, NULL, 5, '2', '10000', 1, 1300, '5c16121a6e167.png', 117),
+(4, '2018-12-16 15:59:53', NULL, 1, 1, 12, NULL, 5, '2', '10000', 1, 1100, '5c1614090241b.png', 111),
+(5, '2018-12-16 16:01:13', NULL, 1, 1, 12, NULL, 5, '2', '10000', 1, 1100, '5c161459ca261.png', 106),
+(6, '2018-12-16 16:02:08', NULL, 1, 1, 12, NULL, 5, '2', '10000', 1, 1000, '5c161490304d4.png', 117);
 
 -- --------------------------------------------------------
 
@@ -11709,11 +11721,20 @@ CREATE TABLE `tire_data` (
   `warranty_year` int(11) DEFAULT NULL,
   `warranty_distance` double DEFAULT NULL,
   `can_change` int(11) DEFAULT NULL,
-  `warranty` int(11) DEFAULT NULL,
-  `modelofcarId` int(11) NOT NULL,
-  `modelId` int(11) NOT NULL,
-  `brandId` int(11) NOT NULL
+  `warranty` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tire_data`
+--
+
+INSERT INTO `tire_data` (`tire_dataId`, `rimId`, `tire_sizeId`, `tire_brandId`, `tire_modelId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `tire_picture`, `car_accessoriesId`, `activeFlag`, `price`, `warranty_year`, `warranty_distance`, `can_change`, `warranty`) VALUES
+(2, 12, 121, 4, 17, 11, NULL, '2018-12-16 15:49:51', NULL, '1', '5c1611af2f3f8.png', 11, 1, 1000, 1, 10000, 2, 2),
+(3, 13, 129, 8, 65, 11, NULL, '2018-12-16 15:54:42', NULL, '1', '5c1612d22fd4a.png', 11, 1, 1500, 1, 10000, 2, 2),
+(4, 14, 124, 5, 19, 11, NULL, '2018-12-16 15:56:51', NULL, '1', '5c16135331da7.png', 11, 1, 1600, 1, 10000, 2, 2),
+(5, 12, 121, 4, 17, 12, NULL, '2018-12-16 16:03:13', NULL, '1', '5c1614d1cb013.png', 12, 1, 1100, 1, 10000, 2, 2),
+(6, 14, 124, 5, 19, 12, NULL, '2018-12-16 16:05:15', NULL, '1', '5c16154bd6f9b.png', 12, 1, 1500, 1, 10000, 2, 2),
+(7, 13, 129, 8, 65, 12, NULL, '2018-12-16 16:06:37', NULL, '1', '5c16159d538e1.png', 12, 1, 1200, 1, 10000, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -12409,10 +12430,7 @@ ALTER TABLE `tire_data`
   ADD KEY `fk_trie_data_trie_brand1_idx` (`tire_brandId`),
   ADD KEY `fk_trie_data_tire_model1_idx` (`tire_modelId`),
   ADD KEY `fk_trie_data_users1_idx` (`create_by`),
-  ADD KEY `fk_trie_data_users2_idx` (`update_by`),
-  ADD KEY `fk_tire_data_modelofcar1_idx` (`modelofcarId`),
-  ADD KEY `fk_tire_data_model1_idx` (`modelId`),
-  ADD KEY `fk_tire_data_brand1_idx` (`brandId`);
+  ADD KEY `fk_trie_data_users2_idx` (`update_by`);
 
 --
 -- Indexes for table `tire_matching`
@@ -12500,7 +12518,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`
@@ -12530,7 +12548,7 @@ ALTER TABLE `garage`
 -- AUTO_INCREMENT for table `lubricator`
 --
 ALTER TABLE `lubricator`
-  MODIFY `lubricatorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `lubricatorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `lubricatortypeformachine`
@@ -12554,7 +12572,7 @@ ALTER TABLE `lubricator_change`
 -- AUTO_INCREMENT for table `lubricator_data`
 --
 ALTER TABLE `lubricator_data`
-  MODIFY `lubricator_dataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `lubricator_dataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `lubricator_number`
@@ -12662,7 +12680,7 @@ ALTER TABLE `tire_change`
 -- AUTO_INCREMENT for table `tire_data`
 --
 ALTER TABLE `tire_data`
-  MODIFY `tire_dataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `tire_dataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tire_matching`
@@ -12920,9 +12938,6 @@ ALTER TABLE `tire_change`
 -- Constraints for table `tire_data`
 --
 ALTER TABLE `tire_data`
-  ADD CONSTRAINT `fk_tire_data_brand1` FOREIGN KEY (`brandId`) REFERENCES `brand` (`brandId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_tire_data_model1` FOREIGN KEY (`modelId`) REFERENCES `model` (`modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_tire_data_modelofcar1` FOREIGN KEY (`modelofcarId`) REFERENCES `modelofcar` (`modelofcarId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_trie_data_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_trie_data_tire_model1` FOREIGN KEY (`tire_modelId`) REFERENCES `tire_model` (`tire_modelId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_trie_data_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
