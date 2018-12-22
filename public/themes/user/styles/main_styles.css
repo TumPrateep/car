@@ -3923,3 +3923,10 @@ select option
   .nav-control>.nav-item>a{
 	color: #000;
   }
+  th.dt-head-center{
+    text-align: center;
+  }
+
+  .dt-center{
+    text-align: center;
+  }
