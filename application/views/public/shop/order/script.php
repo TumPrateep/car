@@ -41,7 +41,7 @@
             "columns": [
                 null,
                 { "data": "create_at" },
-                { "data": "status"},
+                null,
                 null
             ],
             "columnDefs": [
@@ -57,6 +57,27 @@
                     }
                 },
                 {
+                    "targets":2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var  orderstatus = "";
+                        
+
+                       
+                            if(data.status == '1'){
+                                orderstatus ="รอมัดจำ";
+                            }
+                            else if(data.status == "2"){
+                                orderstatus ="รอเข้าให้บริการ";
+                            }
+                           
+                        return  orderstatus;
+                    
+                         
+                    }
+                        
+
+                },{
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
@@ -65,7 +86,7 @@
                 },
                 
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [2]},
+                {"className": "dt-head-center", "targets": [0,1,2,3]},
                 {"className": "dt-center", "targets": [0,1,3]},
                 { "width": "15%", "targets": 0 },
                 { "width": "20%", "targets": 1 },
