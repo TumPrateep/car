@@ -130,17 +130,10 @@ class Tirebrand extends BD_Controller {
         $imageName = uniqid().'.png';
         $file = $config['upload_path']. '/'. $imageName;
         $success = file_put_contents($file, $data);
+        $tire_brandName = $this->post("tire_brandName");
+        $data_check = $this->triebrands->data_check_create($tire_brandName);
         
-		if (!$success){
-            $output["message"] = REST_Controller::MSG_ERROR;
-			$this->set_response($output, REST_Controller::HTTP_OK);
-		}else{
-            $tire_brandName = $this->post("tire_brandName");
-            $isDublicte = $this->triebrands->checktriebrands($tire_brandName);
-            if($isDublicte){
-                $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
+		
                 $data = array(
                     "tire_brandId"=> null,
                     "tire_brandName"=> $tire_brandName,
@@ -149,17 +142,17 @@ class Tirebrand extends BD_Controller {
                     "create_at" => date('Y-m-d H:i:s',time()),
                     "create_by" => $userId,
                     "activeFlag" => 2
+                
                 );
-                $isResult = $this->triebrands->insert_triebrands($data);
-                if($isResult){
-                    $output["message"] = REST_Controller::MSG_SUCCESS;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $output["message"] = REST_Controller::MSG_NOT_CREATE;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }
-            }
-		}
+                $option = [
+                    "data_check" => $data_check,
+                    "data" => $data,
+                    "model" => $this->triebrands,
+                    "image_path" => null
+                ];
+        
+                $this->set_response(user_decision_create($option), REST_Controller::HTTP_OK);
+            
     }
 
     function updateTireBrand_post(){
