@@ -24,6 +24,7 @@
     }
 
     function synCartData(){
+        localStorage.data = JSON.stringify([]);
         $.post(base_url+"service/Cart/getUserCart",{},
             function(data){
                console.log(data);
@@ -35,7 +36,7 @@
                     };
                     cartData.push(product);
                });
-               localStorage.data = JSON.stringify(cartData);
+               localStorage.setItem("data", JSON.stringify(cartData));
                window.location = base_url+"role";
             }
         );

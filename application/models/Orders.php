@@ -29,21 +29,22 @@ class Orders extends CI_Model{
             $this->db->insert("order",$data['order']);
             $orderId = $this->db->insert_id();
             $orderDetailData = $data['orderdetail'];
-            $index = 0;
+            $orderDetail = [];
             foreach ($orderDetailData as $val) {
-                $orderDetail[$index]['orderId'] = $orderId;
-                $orderDetail[$index]['userId'] = $userId;
-                // $orderDetail[$index]['create_at'] = date('Y-m-d H:i:s',time());
-                $orderDetail[$index]['productId'] = $productId;
-                $orderDetail[$index]['quantity'] = $quantity;
-                $orderDetail[$index]['status'] = $status;
-                $orderDetail[$index]['activeflag'] = $activeflag;
-                $orderDetail[$index]['group'] = $group;
-                $orderDetail[$index]['price'] = $this->getPrice($val->productId, $val->group);
-                $index++;
+                $temp = [
+                    'orderId' => $orderId,
+                    'userId' => $userId,
+                    'productId' => $val->productId,
+                    'quantity' => $val->quantity,
+                    'status' => 1,
+                    'activeflag' => 1,
+                    'group' => $val->group,
+                    'price' => $this->getPrice($val->productId, $val->group)
+                ];
+                array_push($orderDetail, $temp);
             }
-            $this->db->insert_batch('cart', $orderDetail);
-            $this->delete($userId);
+            $this->db->delete('cart', array('create_by' => $userId));
+            $this->db->insert_batch('orderdetail', $orderDetail);
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
             return false;
@@ -51,9 +52,6 @@ class Orders extends CI_Model{
             $this->db->trans_commit();
             return true;
         }
-    }
-    function delete($userId){
-        return $this->db->delete('cart', array('create_by' => $userId));
     }
     
 }

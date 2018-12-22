@@ -25,6 +25,8 @@ function orderConfirm(){
                         action: function(){
                             $.post(base_url+"service/Order/createOrderDetail", {},
                                 function (data, textStatus, jqXHR) {
+                                    localStorage.setItem("data",JSON.stringify([]));
+                                    cartData = [];
                                     synCartData();
                                 }
                             );

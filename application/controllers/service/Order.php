@@ -17,9 +17,9 @@ class Order extends BD_Controller {
         $orderdetail = $this->orders->getAllCartByUserId($userId);
        
         $data['order'] = array(
-            'orderId' => null,
-            'userId' => (int)$userId,
-            // 'create_at' => date('Y-m-d H:i:s',time()),
+            'userId' => $userId,
+            'create_by' => $userId,
+            'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
             'activeflag' =>1
         );
