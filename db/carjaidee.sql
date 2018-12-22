@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2018 at 08:30 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 5.6.33
+-- Generation Time: Dec 22, 2018 at 08:56 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -2323,6 +2323,27 @@ INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `q
 (3, 2, 13, 5, 3, 1200, 1, 1, NULL, 'spare'),
 (4, 2, 13, 7, 2, 1500, 1, 1, NULL, 'spare'),
 (5, 2, 13, 8, 1, 1300, 1, 1, NULL, 'spare');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `paymentId` int(11) NOT NULL,
+  `order_orderId` int(11) NOT NULL,
+  `date` date DEFAULT NULL,
+  `time` time DEFAULT NULL,
+  `bank` varchar(45) DEFAULT NULL,
+  `transfer` varchar(45) DEFAULT NULL,
+  `slipimage` varchar(255) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `activeflag` varchar(45) DEFAULT NULL,
+  `userId` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `create_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -12331,6 +12352,15 @@ ALTER TABLE `orderdetail`
   ADD KEY `fk_orderDetail_users1_idx` (`userId`);
 
 --
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`paymentId`),
+  ADD KEY `fk_payment_order1_idx` (`order_orderId`),
+  ADD KEY `fk_payment_users1_idx` (`userId`),
+  ADD KEY `fk_payment_users2_idx` (`create_by`);
+
+--
 -- Indexes for table `province`
 --
 ALTER TABLE `province`
@@ -12625,6 +12655,12 @@ ALTER TABLE `orderdetail`
   MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `paymentId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `province`
 --
 ALTER TABLE `province`
@@ -12876,6 +12912,14 @@ ALTER TABLE `order`
 ALTER TABLE `orderdetail`
   ADD CONSTRAINT `fk_orderDetail_order1` FOREIGN KEY (`orderId`) REFERENCES `order` (`orderId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_orderDetail_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `payment`
+--
+ALTER TABLE `payment`
+  ADD CONSTRAINT `fk_payment_order1` FOREIGN KEY (`order_orderId`) REFERENCES `order` (`orderId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_payment_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_payment_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `province`
