@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="<?=base_url("/public/css/jquery.datetimepicker.css") ?>">
+<script src="<?php echo base_url() ?>public/js/jquery-ui.min.js"></script>
+<script src="<?php echo base_url() ?>public/js/php-date-formatter.min.js"></script>
+<script src="<?php echo base_url() ?>public/js/jquery.mousewheel.js"></script>
+<script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.js"></script>
 <script>
 
 function plus(role, index){
@@ -23,13 +28,15 @@ function orderConfirm(){
                         text: 'ตกลง',
                         keys: ['enter'],
                         action: function(){
-                            $.post(base_url+"service/Order/createOrderDetail", {},
-                                function (data, textStatus, jqXHR) {
-                                    localStorage.setItem("data",JSON.stringify([]));
-                                    cartData = [];
-                                    synCartData();
-                                }
-                            );
+                            // $.post(base_url+"service/Order/createOrderDetail", {},
+                            //     function (data, textStatus, jqXHR) {
+                            //         localStorage.setItem("data",JSON.stringify([]));
+                            //         cartData = [];
+                            //         synCartData();
+                            //     }
+                            // );
+
+                            $("#selectgarage").modal("show");
                         }
                     },
                     cancle: {
@@ -288,6 +295,38 @@ $(document).ready(function () {
             showCart();
         }
     );
+
+    $.get(base_url+"service/Garages/getAllGarage", {},
+        function (data, textStatus, jqXHR) {
+            var html = '<option val="">เลือกอู่ซ่อมรถ</option>';
+            $.each(data, function (index, val) { 
+                 html += '<option val="'+val.garageId+'">'+val.garageName+'</option>';
+            });
+            $("#garage").html(html);
+        }
+    );
+
+    $.get(base_url+"service/Carprofile/getCarProfile", {},
+        function (data, textStatus, jqXHR) {
+            var html = '<option val="">เลือกทะเบียนรถ</option>';
+            $.each(data, function (index, val) { 
+                 html += '<option value="'+val.car_profileId+'">'+val.plate+'</option>';
+            });
+            $("#plate").html(html);
+        }
+    );
+
+    $("#reserve_day").datetimepicker({
+        timepicker:false,
+        formatDate:'d/m/Y',
+        format:'d/m/Y'
+    });
+
+    $("#reserve_time").datetimepicker({
+        datepicker:false,
+        formatTime:'H:i',
+        format:'H:i'
+    });
 
 });
 
