@@ -53,5 +53,63 @@ class Orders extends CI_Model{
             return true;
         }
     }
+
+    function all_count($userId)
+    {   
+        $query = $this
+                ->db
+                ->where('create_by',$userId)
+                ->get('order');
+    
+        return $query->num_rows();  
+    }
+    function allorder($limit,$start,$col,$dir,$userId)
+    {   
+        $query = $this
+            ->db
+            ->where('create_by',$userId)
+            ->limit($limit,$start)
+            ->order_by($col,$dir)
+            ->get('order');
+            if($query->num_rows()>0)
+            {
+                return $query->result(); 
+            }
+            else
+            {
+                return null;
+            }
+        
+    }
+    function order_search($limit,$start,$col,$dir,$status,$userId)
+    {
+        $this->db->where('create_by',$userId);
+        if($status != null){
+            $this->db->where("status", $status);
+        }
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('order');
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
+    function order_search_count($search,$status,$userId)
+    {
+        $query = $this
+                ->db
+                ->where('create_by',$userId)
+                ->where('status',$status)
+                ->get('order');
+    
+        return $query->num_rows();
+    }
     
 }
