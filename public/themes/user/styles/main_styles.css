@@ -3915,3 +3915,10 @@ select option
     padding-top: 50px;
     padding-bottom: 50px;
   }
+  th.dt-head-center{
+    text-align: center;
+  }
+
+  .dt-center{
+    text-align: center;
+  }

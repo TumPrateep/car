@@ -60,7 +60,15 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/car/model/"+data.orderId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                        html = "";
+                        if(data.status == "1"){
+                            html += '<a href="#"><button type="button" class="btn btn-danger">มัดจำ</button>'
+                            }
+                            else if(data.status == "2"){
+                            html +='<a href="#"><button type="button" class="btn btn-warning">รับบริการ</button> '
+                            }
+                        return html 
+                        
                     }
                 },
                 {
@@ -88,7 +96,9 @@
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return meta.row + 1;
+                        html = "";
+                        count = meta.row + 1;
+                        return html += '<a href="#">'+ count
                     }
                 },
                 
