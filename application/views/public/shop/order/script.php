@@ -98,7 +98,7 @@
                     "render": function ( data, type, full, meta ) {
                         html = "";
                         count = meta.row + 1;
-                        return html += '<a href="#">'+ count
+                        return html += '<a href="#">'+"#"+ count
                     }
                 },
                 
