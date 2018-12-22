@@ -3905,3 +3905,7 @@ select option
   .qty_input{
 	  text-align: center;
   }
+
+  .top_bar_user {
+	margin-left: 10px;
+  }

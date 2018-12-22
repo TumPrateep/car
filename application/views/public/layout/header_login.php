@@ -15,10 +15,21 @@
 						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="<?=base_url("public/themes/user/");?>images/phone.png" alt=""></div>+66 000 000 000</div>
 						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="<?=base_url("public/themes/user/");?>images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">carjaidee@gmail.com</a></div>
 						<div class="top_bar_content ml-auto">
+							<div class="top_bar_menu">
+								<ul class="standard_dropdown top_bar_dropdown">
+									<li>
+										<a href="#">
+											<div><span class="fas fa-user-circle"></span> <?=now_user() ?></div>
+										</a>
+										<ul>
+											<li><a href="<?=base_url("shop/order"); ?>"><span class="fas fa-bars"></span>  รายการสั่งซื้อ</a></li>
+											<li><a href="#" onclick="logout()"><span class="fas fa-sign-out-alt"></span> ออกจากระบบ</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
 							<div class="top_bar_user">
-								<div class="user_icon"><img src="<?=base_url("public/themes/user/");?>images/user.svg" alt=""></div>
-								<div><?=now_user() ?></div>
-								<div><a href="#" onclick="logout()">ออกจากระบบ</a></div>
+								<div></div>
 							</div>
 						</div>
 					</div>

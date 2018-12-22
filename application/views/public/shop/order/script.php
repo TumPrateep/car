@@ -3,6 +3,7 @@
 <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
 <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
 <script src="<?php echo base_url() ?>public/js/datatable-responsive.js"></script>
+<script src="<?php echo base_url() ?>public/js/jquery-dateformat.min.js"></script>
 
 <script>
     var table = $('#order-table').DataTable({
@@ -40,7 +41,7 @@
             "order": [[ 2, "asc" ]],
             "columns": [
                 null,
-                { "data": "create_at" },
+                null,
                 { "data": "status"},
                 null
             ],
@@ -49,6 +50,12 @@
                     "searchable": false,
                     "orderable": false,
                     "targets": [0,1,3]
+                },{
+                    "targets": 1,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return jQuery.format.date(data.create_at, "dd/MM/yyyy HH:mm:ss");
+                    }
                 },{
                     "targets": 3,
                     "data": null,
@@ -74,8 +81,6 @@
             ]	 
 
     });
-
-    
 
     $("#form-search").submit(function(){
         event.preventDefault();
