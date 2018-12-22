@@ -3915,3 +3915,11 @@ select option
     padding-top: 50px;
     padding-bottom: 50px;
   }
+
+  .nav-control>.nav-item>a.active{
+	color: #000;
+    background: #f566004f;
+  } 
+  .nav-control>.nav-item>a{
+	color: #000;
+  }

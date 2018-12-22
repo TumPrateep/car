@@ -13,18 +13,18 @@
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="shop_sidebar">	
-					<ul class="nav flex-column">
+					<ul class="nav flex-column nav-control">
 						<li class="nav-item">
-							<a class="nav-link disabled" href="#">รายการสั่งซื้อ</a>
+							<a class="nav-link active" href="#">รายการสั่งซื้อ</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
+							<a class="nav-link" href="#">ข้อมูลรถ</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
+							<a class="nav-link" href="#">ข้อมูลส่วนตัว</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Disabled</a>
+							<a class="nav-link" href="#">ออกจากระบบ</a>
 						</li>
 					</ul>
 				</div>
