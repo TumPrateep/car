@@ -3909,3 +3909,9 @@ select option
   .top_bar_user {
 	margin-left: 10px;
   }
+
+  .shop {
+    background: #f97314;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
