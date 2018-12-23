@@ -6,7 +6,7 @@
 <script src="<?php echo base_url() ?>public/js/jquery-dateformat.min.js"></script>
 
 <script>
-    var table = $('#order-table').DataTable({
+    var table = $('#orderdetail-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -43,9 +43,6 @@
                 null,
                 null,
                 null,
-                null,
-                null,
-                null,
                 null
             ],
             "columnDefs": [
@@ -54,33 +51,18 @@
                     "orderable": false,
                     "targets": [0,1,3]
                 },{
-                    "targets": 2,
-                    "data": null
-
-                }
-                ,{
-                    "targets": 3,
-                    "data": null
-
-                }
-                ,{
-                    "targets": 4,
-                    "data": null
-
-                }
-                ,{
                     "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return jQuery.format.date(data.create_at, "dd/MM/yyyy HH:mm:ss");
                     }
                 },{
-                    "targets": 6,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         html = "";
                         if(data.status == "1"){
-                            html += '<a href="'+base_url+"shop/payment/"+data.orderId+'"><button type="button" class="btn btn-danger">มัดจำ</button>'
+                            html += '<a href="#"><button type="button" class="btn btn-danger">มัดจำ</button>'
                             }
                             else if(data.status == "2"){
                             html +='<a href="#"><button type="button" class="btn btn-warning">รับบริการ</button> '
@@ -90,7 +72,7 @@
                     }
                 },
                 {
-                    "targets":5,
+                    "targets":2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var  orderstatus = "<span>";
@@ -99,7 +81,7 @@
                                 orderstatus +="รอมัดจำ";
                             }
                             else if(data.status == "2"){
-                                orderstatus +="เข้าใช้บริการ";
+                                orderstatus +="รอเข้าให้บริการ";
                             }
 
                             orderstatus += "</span>";

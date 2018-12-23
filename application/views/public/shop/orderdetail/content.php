@@ -5,7 +5,7 @@
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="<?=base_url() ?>">หน้าหลัก</a></li>
-						<li class="breadcrumb-item active" aria-current="page">รายการสั่งซื้อ</li>
+						<li class="breadcrumb-item active" aria-current="page"></li><a href="<?=base_url("/shop/order/") ?>">รายการสั่งซื้อ</li>
 					</ol>
 				</nav>
 			</div>
@@ -31,22 +31,21 @@
             </div>
 			<div class="col-lg-9">
 				<div class="table-responsive">
-      				<table class="table table-bordered" id="order-table" width="100%" cellspacing="0">
+      				<table class="table table-bordered" id="orderdetail-table" width="100%" cellspacing="0">
 						<thead>
 							<tr>
-								<th>คำสั่งซื้อ</th>
-								<th>วันที่สั่ง</th>
-								<th>จำนวนเงินรวม</th>
-								<th>จำนวนเงินมัดจำ</th>
-								<th>จำนวนเงินคงเหลือ</th>
-								<th>สถานะ</th>
-								<th>รายการ</th>
+								<th>ลำดับ</th>
+								<th>สินค้า</th>
+								<th>ชื่อสินค้า</th>
+								<th>ราคา</th>
 							</tr>									
 						</thead>
 					</table>
 				</div>
 			</div>					
-		</div>
+        </div>
+        
+
 		
 	</div>
 </div>
