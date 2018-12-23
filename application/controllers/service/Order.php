@@ -9,6 +9,7 @@ class Order extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         $this->load->model('orders');
+        $this->load->model('orderdetails');
     }
 
     function createOrderDetail_post(){
@@ -62,6 +63,7 @@ class Order extends BD_Controller {
                 $nestedData['create_at'] = $post->create_at;
                 $nestedData['status'] = $post->status;
                 $nestedData['create_by'] = $post->userId;
+                $nestedData['summary'] = (int)$this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
                 $data[] = $nestedData;
             }
         }

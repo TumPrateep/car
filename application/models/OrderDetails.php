@@ -16,21 +16,26 @@ class OrderDetails extends CI_Model{
     }
     function searAllOrder($limit,$start,$col,$dir,$userId)
     {   
-        $query = $this
-            ->db
-            ->where('create_by',$userId)
-            ->limit($limit,$start)
+        $query = $this->db->where('create_by',$userId)->limit($limit,$start)
             ->order_by($col,$dir)
             ->get('order');
 
-            if($query->num_rows()>0)
-            {
-                return $query->result(); 
-            }
-            else
-            {
-                return null;
-            }
-        
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
     }
+
+    function getSummaryCostFromOrderDetail($orderId, $userId){
+        $this->db->select("sum(price) as summary");
+        $this->db->where("orderId", $orderId);
+        $result = $this->db->get("orderdetail");
+
+        return $result->row("summary");
+    }
+
 }
