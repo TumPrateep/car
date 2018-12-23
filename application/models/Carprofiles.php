@@ -17,4 +17,21 @@ class Carprofiles extends CI_Model {
         return $query->result();
     }
 
+
+    function createCarProfileByUserId($userId){
+
+    }
+
+    function data_check_create($character_plate, $number_plate, $province_plate, $userId){
+        $this->db->select("car_profileId");
+        $this->db->from("car_profile");
+        $this->db->where('character_plate', $character_plate);
+        $this->db->where('number_plate',$number_plate);
+        $this->db->where('province_plate',$province_plate);
+        $this->db->where('userId', $userId);
+        $result = $this->db->get();
+        return $result->row();
+
+    } 
+
 }
