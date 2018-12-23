@@ -42,7 +42,7 @@ class Order extends BD_Controller {
     function search_post(){
         $columns = array( 
             0 => null,
-            1 => 'create_by',
+            1 => 'create_at',
             2 => 'status',
         );
         $userId = $this->session->userdata['logged_in']['id'];
