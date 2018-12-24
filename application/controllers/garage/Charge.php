@@ -1,0 +1,45 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Charge extends CI_Controller {
+
+	function __construct()
+    {
+        // Construct the parent class
+		parent::__construct();
+		$this->load->view("lib");
+    }
+
+    public function lubricator()
+	{
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+		$this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/charge/lubricator/content");
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/charge/lubricator/script");
+	}
+
+	public function spares()
+	{
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+		$this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/charge/spares/content");
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/charge/spares/script");
+	}
+
+	public function tire()
+	{
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+		$this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/charge/tire/content");
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/charge/tire/script");
+	}
+
+}
