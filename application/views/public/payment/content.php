@@ -1,55 +1,73 @@
-<div class="payment">
+<div class="shop">
 	<div class="container">
+    
         <div class="row">
 			<div class="col-lg-12">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="<?=base_url() ?>">หน้าหลัก</a></li>
-						<li class="breadcrumb-item active" aria-current="page">แจ้งชำระเงิน</li>
+						<li class="breadcrumb-item "><a href="<?=base_url() ?>">หน้าหลัก</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">เเจ้งชำระเงิน</li>
 					</ol>
 				</nav>
 			</div>
-		</div>
-		<div class="row">
-			<div class="card col-lg-12">
-                <div class="form-group">
-                    <label class="control-label">เเจ้งชำระเงิน</label>
-                    <output>#</output>
-                </div>
-                <div class="card">
+        </div>
+        <form id="submit">
+            <p class="centerheadpayment">ใบเเจ้งชำระเงิน  #<?=$orderId ?></p>
+            <input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="card col-lg-6"><br>
                     <div class="form-group row">
-                        <label class="col-lg-2">วันที่</label>
-                            <div class="col-sm-9">
-                            <output>#</output>
+                        <label class="col-lg-3">วันที่</label>
+                        <div class="col-sm-8" >
+                            <input type="date" class="form-control" name="date" id="date">
                         </div>
                     </div> 
                     <div class="form-group row">
                         <label class="col-lg-3">เวลา</label>
-                            <div class="col-sm-9">
-                            <output>#</output>
+                        <div class="col-sm-8">
+                            <input type="time" class="form-control" name="time" id="time">
                         </div>
                     </div> 
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">โอนโดยธนาคาร</label>
+                        <label class="col-sm-3 col-form-label">ธนาคาร</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="bank" id="bank" placeholder="ชื่อธนาคารที่โอน">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">ชื่อผู้โอน</label>
+                        <label class="col-sm-3 col-form-label">ชื่อผู้โอน</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="nameSend" id="bank" placeholder="ชื่อผู้โอน">
+                            <input type="text" class="form-control" name="transfer" id="transfer" placeholder="ชื่อผู้โอน">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-6 col-form-label">เเนบสลิป</label>
-                        <div class="image-editor">
-                            <input type="file" class="cropit-image-input" name="slip">
-                            <div class="cropit-preview"></div>
+                        <label class="col-lg-3">จำนวนเงินรวม</label>
+                        
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-lg-3">จำนวนเงินมัดจำ</label>
+                        
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-lg-3">จำนวนเงินคงเหลือ</label>
+                        
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">เเนบสลิป</label>
+                        <div class="col-sm-9">
+                            <div class="image-editor">
+                                <input type="file" class="cropit-image-input" id="slip" name="slip">
+                                <div class="cropit-preview"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="form-group row ">
+                    <div class="col-sm-12">
+                        <button type="submit" id="submit" name="submit" class="btn btn-primary " style="float:right" >บันทึก</button>
+                    </div>
+                </div>				
             </div>
-		</div>	
+        </form>
 	</div>
 </div>

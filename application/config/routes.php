@@ -56,7 +56,7 @@ $route['translate_uri_dashes'] = false;
 $route['admin'] = 'admin/admin';
 $route['user'] = 'user/user';
 $route['caraccessory'] = 'caraccessory/CarAccessory';
-$route['garage'] = 'garage/garage';
+$route['garage'] = 'garage/home';
 
 $route['register/sparepart'] = 'public/Register/sparepart';
 $route['register/garage'] = 'public/Register/garage';
@@ -80,7 +80,10 @@ $route['shop/detail/([a-zA-Z]+)/(\d+)'] = function ($group, $id)
 };
 
 $route['login'] = 'public/Auth/login';
-$route['shop/payment'] = 'public/Payment/Payments';
+$route['shop/payment/(\d+)'] = function ( $id)
+{
+        return 'public/Payment/Payments/'. $id;
+};
 $route['shop/order'] = 'public/Order/Orders';
 
 // user route

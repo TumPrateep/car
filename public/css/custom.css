@@ -380,3 +380,10 @@
 .cropit-preview-image-container{
   border: 1px solid rgba(0,0,0,.125);
 }
+
+p.centerheadpayment{
+  text-align: center !important;
+}
+
+
+
