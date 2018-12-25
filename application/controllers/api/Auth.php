@@ -16,6 +16,7 @@ class Auth extends BD_Controller {
         $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
         $this->load->model('m_main');
         $this->load->model("profile");
+        $this->load->model("garage");
     }
     
     public function login_post()
@@ -52,8 +53,12 @@ class Auth extends BD_Controller {
                 'username' => $val->username,
                 'role' => (int)$val->category,
                 'name' => $val->username,
-                'isUser' => ((int)$val->category != 4)?false:true
+                'isUser' => ((int)$val->category != 4)?false:true,
             );
+            $garageId = $this->garage->findGarageByUserId($val->id);
+            if($garageId != null){
+                $sess_array["garageId"] = $garageId;
+            }
             $this->session->set_userdata('logged_in', $sess_array);
 
             $output['message'] = REST_Controller::MSG_LOGIN_OK;

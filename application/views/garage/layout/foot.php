@@ -16,5 +16,8 @@
     <script src="<?=base_url()?>public/themes/garage/js/lib/owl-carousel/owl.carousel.min.js"></script>
     <script src="<?=base_url()?>public/themes/garage/js/lib/owl-carousel/owl.carousel-init.js"></script>
     <script src="<?=base_url()?>public/themes/garage/js/scripts.js"></script>
+    <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
+    <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
+    <script src="<?php echo base_url() ?>public/js/datatable-responsive.js"></script>
 
     

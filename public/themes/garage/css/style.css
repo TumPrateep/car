@@ -4855,8 +4855,8 @@ footer p {
   margin-bottom: 20px;
 }
 .form-control {
-  height: 42px;
-  border-radius: 0;
+  height: 37px;
+  /* border-radius: 0; */
   box-shadow: none;
   border-color: #e7e7e7;
   font-family: 'Poppins', sans-serif;
@@ -6920,4 +6920,18 @@ tbody tr td:last-child {
   .retina-logo {
     display: inline-block !important;
   }
+}
+
+@media (max-width: 992px){
+  .mt-8{
+    margin-top: 8px;
+  }
+}
+
+th.dt-head-center{
+  text-align: center !important;
+}
+
+.dt-center{
+  text-align: center !important;
 }

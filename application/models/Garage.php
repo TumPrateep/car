@@ -70,4 +70,9 @@ class Garage extends CI_Model {
         return $query->result();
     }
 
+    function findGarageByUserId($userId){
+        $this->db->where("userId", $userId);
+        return $this->db->get("garage")->row("garageId");
+    }
+
 }
