@@ -173,7 +173,7 @@ class UserManagement extends BD_Controller {
 
         if($role == 3){
             $path = 'public/image/garage/'.$userId;
-            mkdir($path);
+            // mkdir($path);
             $config['upload_path'] = $path;
 
             $garageName = $this->post("garageName");
