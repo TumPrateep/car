@@ -8,15 +8,19 @@ class Carts extends CI_Model {
     }
 
     function insert($data){
-        $userId = $this->session->userdata['logged_in']['id'];
-        $this->db->trans_begin();
-            $this->db->delete('cart', array('create_by' => $userId));
-            $this->db->insert_batch('cart', $data); 
-        if ($this->db->trans_status() === FALSE){
-            $this->db->trans_rollback();
-            return false;
+        if(!empty($data)){
+            $userId = $this->session->userdata['logged_in']['id'];
+            $this->db->trans_begin();
+                $this->db->delete('cart', array('create_by' => $userId));
+                $this->db->insert_batch('cart', $data); 
+            if ($this->db->trans_status() === FALSE){
+                $this->db->trans_rollback();
+                return false;
+            }else{
+                $this->db->trans_commit();
+                return true;
+            }
         }else{
-            $this->db->trans_commit();
             return true;
         }
     }

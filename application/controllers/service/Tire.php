@@ -87,7 +87,7 @@ class Tire extends BD_Controller {
                 $nestedData[$count]['tire_modelName'] = $post->tire_modelName;
                 $nestedData[$count]['tire_brandName'] = $post->tire_brandName;
                 $nestedData[$count]['status'] = $post->status;
-                $nestedData[$count]['price'] = $post->price + ($post->price*0.1) + $charge[$post->rimId];
+                $nestedData[$count]['price'] = $post->price + $charge[$post->rimId];
                 $nestedData[$count]['warranty_year'] = $post->warranty_year;
                 $nestedData[$count]['can_change'] = $post->can_change;
                 $nestedData[$count]['warranty_distance'] = $post->warranty_distance;

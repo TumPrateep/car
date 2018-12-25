@@ -28,15 +28,15 @@ function orderConfirm(){
                         text: 'ตกลง',
                         keys: ['enter'],
                         action: function(){
-                            // $.post(base_url+"service/Order/createOrderDetail", {},
-                            //     function (data, textStatus, jqXHR) {
-                            //         localStorage.setItem("data",JSON.stringify([]));
-                            //         cartData = [];
-                            //         synCartData();
-                            //     }
-                            // );
+                            $.post(base_url+"service/Order/createOrderDetail", {},
+                                function (data, textStatus, jqXHR) {
+                                    localStorage.setItem("data",JSON.stringify([]));
+                                    cartData = [];
+                                    synCartData();
+                                }
+                            );
 
-                            $("#selectgarage").modal("show");
+                            // $("#selectgarage").modal("show");
                         }
                     },
                     cancle: {

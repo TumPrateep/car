@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2018 at 08:56 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 5.6.38
+-- Generation Time: Dec 25, 2018 at 09:34 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 5.6.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -2292,7 +2292,7 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`orderId`, `activeflag`, `userId`, `create_by`, `status`, `create_at`) VALUES
-(2, '1', 13, 13, '1', '2018-12-22 14:27:53');
+(9, '1', 13, 13, '1', '2018-12-24 16:35:37');
 
 -- --------------------------------------------------------
 
@@ -2304,9 +2304,10 @@ CREATE TABLE `orderdetail` (
   `orderDetailId` int(11) NOT NULL,
   `orderId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `productId` int(11) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `price` double DEFAULT NULL,
+  `productId` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `charge` double NOT NULL,
+  `cost` double NOT NULL,
   `status` int(11) DEFAULT NULL,
   `activeflag` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
@@ -2317,33 +2318,10 @@ CREATE TABLE `orderdetail` (
 -- Dumping data for table `orderdetail`
 --
 
-INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `quantity`, `price`, `status`, `activeflag`, `create_at`, `group`) VALUES
-(1, 2, 13, 5, 4, 1200, 1, 1, NULL, 'spare'),
-(2, 2, 13, 4, 2, 500, 1, 1, NULL, 'spare'),
-(3, 2, 13, 5, 3, 1200, 1, 1, NULL, 'spare'),
-(4, 2, 13, 7, 2, 1500, 1, 1, NULL, 'spare'),
-(5, 2, 13, 8, 1, 1300, 1, 1, NULL, 'spare');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payment`
---
-
-CREATE TABLE `payment` (
-  `paymentId` int(11) NOT NULL,
-  `order_orderId` int(11) NOT NULL,
-  `date` date DEFAULT NULL,
-  `time` time DEFAULT NULL,
-  `bank` varchar(45) DEFAULT NULL,
-  `transfer` varchar(45) DEFAULT NULL,
-  `slipimage` varchar(255) DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  `activeflag` varchar(45) DEFAULT NULL,
-  `userId` int(11) NOT NULL,
-  `create_by` int(11) NOT NULL,
-  `create_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `quantity`, `charge`, `cost`, `status`, `activeflag`, `create_at`, `group`) VALUES
+(12, 9, 13, 9, 1, 1000, 600, 1, 1, '2018-12-24 16:35:37', 'spare'),
+(13, 9, 13, 10, 1, 1000, 1300, 1, 1, '2018-12-24 16:35:37', 'spare'),
+(14, 9, 13, 11, 1, 1000, 1600, 1, 1, '2018-12-24 16:35:37', 'spare');
 
 -- --------------------------------------------------------
 
@@ -11753,18 +11731,6 @@ CREATE TABLE `tire_data` (
   `warranty` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `tire_data`
---
-
-INSERT INTO `tire_data` (`tire_dataId`, `rimId`, `tire_sizeId`, `tire_brandId`, `tire_modelId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `tire_picture`, `car_accessoriesId`, `activeFlag`, `price`, `warranty_year`, `warranty_distance`, `can_change`, `warranty`) VALUES
-(2, 12, 121, 4, 17, 11, NULL, '2018-12-16 15:49:51', NULL, '1', '5c1611af2f3f8.png', 11, 1, 1000, 1, 10000, 2, 2),
-(3, 13, 129, 8, 65, 11, NULL, '2018-12-16 15:54:42', NULL, '1', '5c1612d22fd4a.png', 11, 1, 1500, 1, 10000, 2, 2),
-(4, 14, 124, 5, 19, 11, NULL, '2018-12-16 15:56:51', NULL, '1', '5c16135331da7.png', 11, 1, 1600, 1, 10000, 2, 2),
-(5, 12, 121, 4, 17, 12, NULL, '2018-12-16 16:03:13', NULL, '1', '5c1614d1cb013.png', 12, 1, 1100, 1, 10000, 2, 2),
-(6, 14, 124, 5, 19, 12, NULL, '2018-12-16 16:05:15', NULL, '1', '5c16154bd6f9b.png', 12, 1, 1500, 1, 10000, 2, 2),
-(7, 13, 129, 8, 65, 12, NULL, '2018-12-16 16:06:37', NULL, '1', '5c16159d538e1.png', 12, 1, 1200, 1, 10000, 2, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -12352,15 +12318,6 @@ ALTER TABLE `orderdetail`
   ADD KEY `fk_orderDetail_users1_idx` (`userId`);
 
 --
--- Indexes for table `payment`
---
-ALTER TABLE `payment`
-  ADD PRIMARY KEY (`paymentId`),
-  ADD KEY `fk_payment_order1_idx` (`order_orderId`),
-  ADD KEY `fk_payment_users1_idx` (`userId`),
-  ADD KEY `fk_payment_users2_idx` (`create_by`);
-
---
 -- Indexes for table `province`
 --
 ALTER TABLE `province`
@@ -12556,7 +12513,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=938;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`
@@ -12646,19 +12603,13 @@ ALTER TABLE `modelofcar`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `payment`
---
-ALTER TABLE `payment`
-  MODIFY `paymentId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `province`
@@ -12724,7 +12675,7 @@ ALTER TABLE `tire_change`
 -- AUTO_INCREMENT for table `tire_data`
 --
 ALTER TABLE `tire_data`
-  MODIFY `tire_dataId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `tire_dataId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tire_matching`
@@ -12912,14 +12863,6 @@ ALTER TABLE `order`
 ALTER TABLE `orderdetail`
   ADD CONSTRAINT `fk_orderDetail_order1` FOREIGN KEY (`orderId`) REFERENCES `order` (`orderId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_orderDetail_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `payment`
---
-ALTER TABLE `payment`
-  ADD CONSTRAINT `fk_payment_order1` FOREIGN KEY (`order_orderId`) REFERENCES `order` (`orderId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_payment_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_payment_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `province`

@@ -11,16 +11,38 @@ class Orders extends CI_Model{
         return $query->result();
     }
 
-    function getPrice($productId, $group){
-        $price = null;
+    function getCost($productId, $group){
+        $cost = null;
         if($group == "tire"){
-            $price = $this->db->where("tiredataId",$productId)->get("tiredata")->row("price");
+            $cost = $this->db->where("tire_dataId",$productId)->get("tire_data")->row("price");
         }else if($group == "spare"){
-            $price = $this->db->where("spares_undercarriageDataId",$productId)->get("spares_undercarriagedata")->row("price");
+            $cost = $this->db->where("spares_undercarriageDataId",$productId)->get("spares_undercarriagedata")->row("price");
         }else{
-            $price = $this->db->where("lubricator_dataId",$productId)->get("lubricator_data")->row("price");
+            $cost = $this->db->where("lubricator_dataId",$productId)->get("lubricator_data")->row("price");
         }
-        return $price;
+        return $cost;
+    }
+
+    function getCharge($productId, $group){
+        $charge = null;
+        if($group == "tire"){
+            $this->db->select("((tire_change.tire_font + tire_change.tire_bank)/2) as charge");
+            $this->db->from("tire_data");
+            $this->db->join('tire_dataId','tire_change.rimId = tire_data.rimId');
+            $this->db->where("tire_data.tire_dataId",$productId);
+            $charge = $this->db->get()->row("charge");
+        }else if($group == "spare"){
+            $this->db->select("spares_change.spares_price as charge");
+            $this->db->from("spares_undercarriagedata");
+            $this->db->join('spares_change','spares_change.spares_undercarriageId = spares_undercarriagedata.spares_undercarriageId');
+            $this->db->where("spares_undercarriagedata.spares_undercarriageDataId",$productId);
+            $charge = $this->db->get()->row("charge");
+        }else{
+            $this->db->select("lubricator_change.lubricator_price as charge");
+            $this->db->from("lubricator_change");
+            $charge = $this->db->get()->row("charge");
+        }
+        return $charge;
     }
 
     function insert($data){
@@ -31,6 +53,8 @@ class Orders extends CI_Model{
             $orderDetailData = $data['orderdetail'];
             $orderDetail = [];
             foreach ($orderDetailData as $val) {
+                $cost =  $this->getCost($val->productId, $val->group);
+                $charge =  $this->getCharge($val->productId, $val->group);
                 $temp = [
                     'orderId' => $orderId,
                     'userId' => $userId,
@@ -39,7 +63,9 @@ class Orders extends CI_Model{
                     'status' => 1,
                     'activeflag' => 1,
                     'group' => $val->group,
-                    'price' => $this->getPrice($val->productId, $val->group)
+                    'cost' => $cost,
+                    'charge' => $charge,
+                    'create_at' => date('Y-m-d H:i:s',time())
                 ];
                 array_push($orderDetail, $temp);
             }

@@ -55,8 +55,10 @@
                     "targets": [0,1,3]
                 },{
                     "targets": 2,
-                    "data": null
-
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return currency(data.summary, {  precision: 0 }).format() + " บาท";
+                    }
                 }
                 ,{
                     "targets": 3,

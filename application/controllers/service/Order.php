@@ -26,10 +26,9 @@ class Order extends BD_Controller {
         );
 
         $data['orderdetail'] = $orderdetail;
-        $result = $this->orders->insert($data);
        
         $option = [
-            "data_check" => $orderdetail,
+            "data_check" => null,
             "data" => $data,
             "model" => $this->orders,
             "image_path" => null
