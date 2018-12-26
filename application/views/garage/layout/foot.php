@@ -19,5 +19,7 @@
     <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
     <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
     <script src="<?php echo base_url() ?>public/js/datatable-responsive.js"></script>
+    <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
+    <script src="<?php echo base_url() ?>public/js/additional-methods.min.js"></script>
 
     

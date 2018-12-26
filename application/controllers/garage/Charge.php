@@ -66,4 +66,28 @@ class Charge extends CI_Controller {
 		$this->load->view("garage/charge/tire/script");
 	}
 
+	
+	public function createtire()
+	{
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+		$this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/charge/tire/create/content");
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/charge/tire/create/script");
+	}
+
+	public function updatetire()
+	{
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+		$this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/charge/tire/update/content");
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/charge/tire/update/script");
+	}
+
+
 }

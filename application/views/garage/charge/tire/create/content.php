@@ -1,54 +1,62 @@
-
+<div class="page-wrapper">
+    <!-- Bread crumb -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-primary">เพิ่มข้อมูลราคาเปลี่ยนยาง</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">หน้าหลัก</a></li>
+                <li class="breadcrumb-item active">ข้อมูลช่าง</li>
+                <li class="breadcrumb-item active">สร้างข้อมูลช่าง</li>
+            </ol>
+        </div>
+    </div>
     <div class="container-fluid">
-    <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/Tires/tirechange") ?>">ราคาเปลี่ยนยาง</a>
-      </li>
-      <li class="breadcrumb-item active">เพิ่มข้อมูลราคาเปลี่ยนยาง</li>
-    </ol>
-    <!-- Icon Cards-->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-10">
-            <div class="card text-white bg-success">
-                <div class="card-header">
+      <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-title">
+                    <h4>เพิ่มข้อมูลราคาเปลี่ยนยาง</h4>
 
-                  <h3 class="card-title"><i class="fa fa fa-wrench"></i> เพิ่มข้อมูลราคาเปลี่ยนยาง</h3>
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form id="submit">
-                  <div class="card-body black bg-light">
-                    <div class="form-group row">
-                      <div class="col-md-4">
-                          <label>ราคายางล้อหน้า</label> <span class="error">*</span>
-                          <input type="number" class="form-control" placeholder="กรุณากรอกราคายางล้อหน้า" name="tire_front" id="tire_front">
+                <div class="card-body">
+                  <form id="submit">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>ราคายางล้อหน้า</label><span class="error">*</span>
+                                <input type="number" class="form-control"  name="tire_front" id="tire_front" placeholder="ราคายางล้อหน้า">
+                            </div>
+                        </div>
                       </div>
-                      <div class="col-md-4">
-                          <label>ราคายางล้อหลัง</label> <span class="error">*</span>
-                          <input type="number" class="form-control" placeholder="กรุณากรอกราคายางล้อหลัง" name="tire_back" id="tire_back">
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <div class="form-group">
+                                <label>ราคายางล้อหลัง</label><span class="error">*</span>
+                                <input type="number" class="form-control" name="tire_back" id="tire_back" placeholder="ราคายางล้อหลัง">
+                            </div>
+                        </div>
                       </div>
-                      <div class="col-md-4">
-                            <label>ชื่อขอบยาง</label> <span class="error">*</span>
-                            <select class="form-control" name="tire_rimId" id="tire_rimId">
-                                <option value="">กรุณาเลือกขอบยาง</option>
-                            </select>
-
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <div class="form-group">
+                             <label>ชื่อขอบยาง</label><span class="error">*</span>
+                                <input type="number" class="form-control" name="tire_rimId" id="tire_rimId" placeholder="ชื่อขอบยาง">
+                            </div>
+                        </div>
                       </div>
                     </div>
-                    
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-primary">บันทึก</button>
+                    <div class="row">
+                        <div class="col-lg-4"> 
+                        <button type="submit" class="btn btn-info m-b-10 m-l-5">บันทึก</button>
+                        </div>
                     </div>
-                  </div>
-                </form>
-                  <!-- /.card-body -->
-               
-              </div>
+                  </form>
+                </div>
             </div>
         </div>
-      </div>
-    </section>
-  </div>
+    </div>
+    </div>
+    
