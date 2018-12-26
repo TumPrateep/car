@@ -6,16 +6,17 @@ class TireChangegarage extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        //$this->auth();
         $this->load->model('tirechangesgarge');
     }
 
     public function createtirechange_post(){
+        $userId = $this->session->userdata['logged_in']['id'];
         $tire_front = $this->post('tire_front');
         $tire_back = $this->post('tire_back');
         $rimId = $this->post('tire_rimId');
         $garageId = $this->post('garageId');
-        $userId = $this->session->userdata['logged_in']['id'];
+        $data = array();
 
         $data_check = $this->tirechangesgarge->data_check_create($rimId);
         $data = array(
@@ -105,13 +106,15 @@ class TireChangegarage extends BD_Controller {
             3 => 'rimName',
             4 => 'status'
         );
+        $garageId = $this->session->userdata['logged_in']['garageId'];
+
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $totalData = $this->tirechanges->allTirechanges_count('garageId');
+        $totalData = $this->tirechanges->allTirechanges_count($garageId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('rimName')) && empty($this->post('status')))
+        if(empty($this->post('rimName')))
         {            
             $posts = $this->tirechangesgarge->allTirechanges($limit,$start,$order,$dir,$garageId);
         }
@@ -119,7 +122,7 @@ class TireChangegarage extends BD_Controller {
             $search = $this->post('rimName');
             $status = $this->post('status');
             $posts =  $this->tirechangesgarge->tirechanges_search($limit,$start,$search,$order,$dir,$status,$garageId);
-            $totalFiltered = $this->tirechangesgarge->tirechanges_search_count($search,$status);
+            $totalFiltered = $this->tirechangesgarge->tirechanges_search_count($search,$status,$garageId);
         }
         $data = array();
         if(!empty($posts))
