@@ -51,7 +51,7 @@ class Tirechangesgarge extends CI_Model{
         $this->db->select('tire_change_garage.tire_front, tire_change_garage.tire_back, rim.rimName, tire_change_garage.status, tire_change_garage.tire_changeId, tire_change_garage.status,tire_change_garage.garageId');
         $this->db->from('tire_change_garage');
         $this->db->join('rim', 'tire_change_garage.rimId = rim.rimId');
-
+        $this->db->where('tire_change_garage.garageId',$garageId);
 
         $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
         
