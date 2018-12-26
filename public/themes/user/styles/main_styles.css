@@ -3930,3 +3930,11 @@ select option
   .dt-center{
     text-align: center;
   }
+
+  .mw-500{
+	max-width: 500px;
+  }
+
+  small{
+	color: #afafaf;
+  }

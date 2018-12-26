@@ -28,15 +28,7 @@ function orderConfirm(){
                         text: 'ตกลง',
                         keys: ['enter'],
                         action: function(){
-                            $.post(base_url+"service/Order/createOrderDetail", {},
-                                function (data, textStatus, jqXHR) {
-                                    localStorage.setItem("data",JSON.stringify([]));
-                                    cartData = [];
-                                    synCartData();
-                                }
-                            );
-
-                            // $("#selectgarage").modal("show");
+                            $("#selectgarage").modal("show");
                         }
                     },
                     cancle: {
@@ -51,6 +43,17 @@ function orderConfirm(){
     }else{
         alert("login!!!");
     }
+}
+
+function createOrderDetail(){
+    $("#selectgarage").modal("hide");
+    $.post(base_url+"service/Order/createOrderDetail", {},
+        function (data, textStatus, jqXHR) {
+            localStorage.setItem("data",JSON.stringify([]));
+            cartData = [];
+            synCartData();
+        }
+    );
 }
 
 function minus(role, index){
@@ -326,6 +329,19 @@ $(document).ready(function () {
         datepicker:false,
         formatTime:'H:i',
         format:'H:i'
+    });
+
+    $("#addNewCar").click(function (e) { 
+        $("#addNewCarprofile").fadeIn("slow");
+        $("#selectGarage").attr("class", "col-md-6");
+        $("#maxWidthSelect").animate({"max-width":"1000px"}, "slow");
+    });
+
+    $("#newCarClose").click(function (e) { 
+        $("#addNewCarprofile").hide();
+        $("#selectGarage").attr("class", "col-md-12");
+        $("#addNewCarprofile").fadeOut("slow");
+        $("#maxWidthSelect").animate({"max-width":"500px"}, "slow");  
     });
 
 });

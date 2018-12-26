@@ -33,7 +33,7 @@
 	</div>
 
 	<div class="modal fade bd-example-modal-lg" id="selectgarage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-dialog modal-lg mw-500" id="maxWidthSelect" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">การใช้บริการ</h5>
@@ -43,7 +43,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-12" id="selectGarage">
 							<h4 class="underline">เลือกอู่ซ่อมรถที่ต้องการใช้บริการ</h4>
 							<div class="row">
 								<div class="col-md-12">
@@ -69,9 +69,10 @@
 							</div>
 							<h4 class="underline">เลือกรถยนต์ที่จะเข้าใช้บริการ</h4>
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<div class="form-group">
-										<button type="button" id="addNewCar" class="btn btn-orange"><span class="fas fa-plus"></span> เพิ่มข้อมูลรถ</button>
+										<button type="button" id="addNewCar" class="btn btn-orange btn-sm"><span class="fas fa-plus"></span> เพิ่มข้อมูลรถ</button>
+										<small>*หากต้องการเพิ่มข้อมูลรถ กดปุ่มเพิ่มข้อมูลรถ</small>
 									</div>
 								</div>
 							</div>
@@ -84,71 +85,105 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-orange"><span class="fas fa-save"></span> บันทึก</button>
+								<button type="button" class="btn btn-orange" onclick="createOrderDetail()"><span class="fas fa-save"></span> บันทึก</button>
 								<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="fas fa-times"></span> ปิด</button>
 							</div>
 						</div>
 					<!-- add new car -->
-					<div class="col-md-6 leftline">
-						<h4 class="underline">เพิ่มข้อมูลรถยนต์ที่ต้องการใช้บริการ</h4>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="garage">อักษรนำหน้า</label>
-									<input type="text" class="form-control" id="character" name="character" placeholder="อักษร">
+						<div class="col-md-6 leftline" id="addNewCarprofile" style="display:none;">
+							<h4 class="underline">เพิ่มข้อมูลรถยนต์ที่ต้องการใช้บริการ</h4>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="garage">อักษรนำหน้า</label>
+										<input type="text" class="form-control" id="character" name="character" placeholder="อักษร">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="garage">หมายเลข</label>
+										<input type="text" class="form-control" id="labelCarNumber" name="labelCarNumber" placeholder="หมายเลข">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="garage">จังหวัด</label>
+										<select class="form-control input-default" name="provinceforcar" id="provinceforcar">
+											<option value="">เลือกจังหวัด</option>
+										</select>
+									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="garage">หมายเลข</label>
-									<input type="text" class="form-control" id="labelCarNumber" name="labelCarNumber" placeholder="หมายเลข">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="control-label">ยี่ห้อรถ</label>
+										<select class="form-control input-default" name="brandId" id="brandId">
+											<option value="">เลือกยี่ห้อรถ</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="control-label">รุ่นรถ</label>
+										<select class="form-control input-default">
+											<option value="">เลือกรุ่นรถ</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="control-label">รายละเอียด</label>
+										<select class="form-control input-default" name="brandId" id="brandId">
+											<option value="">เลือกรายละเอียด</option>
+										</select>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="garage">จังหวัด</label>
-									<select class="form-control input-default" name="provinceforcar" id="provinceforcar">
-			                            <option value="">เลือกจังหวัด</option>
-			                        </select>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">ปีที่ผลิต</label>
+										<select class="form-control input-default">
+											<option value="">เลือกปีที่ผลิต</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">โฉมรถ</label>
+										<select class="form-control input-default">
+											<option value="">เลือกโฉมรถ</option>
+										</select>
+									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label class="control-label">ยี่ห้อรถ</label>
-			                        <select class="form-control input-default" name="brandId" id="brandId">
-			                            <option value="">เลือกยี่ห้อรถ</option>
-			                            <option value="">CHEVROLET</option>
-			                            <option value="">HONDA</option>
-			                            <option value="">ISUZU</option>
-			                            <option value="">FORD</option>
-			                            <option value="">MAZDA</option>
-			                            <option value="">TOYOTA</option>
-			                        </select>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="garage">สีรถ</label>
+										<input type="text" class="form-control" id="colorCar" name="colorCar" placeholder="สีรถ">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="garage">เลขไมล์</label>
+										<input type="text" class="form-control" id="mileage" name="mileage" placeholder="เลขไมล์">
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="garage">สีรถ</label>
-									<input type="text" class="form-control" id="colorCar" name="colorCar" placeholder="สีรถ">
+							<div class="row">
+								<div class="col-md-12">
+									<a href="#">วิธีการดูข้อมูลรถ</a>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="garage">เลขไมล์</label>
-									<input type="text" class="form-control" id="mileage" name="mileage" placeholder="เลขไมล์">
-								</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-orange"><span class="fas fa-save"></span> บันทึก</button>
+								<button type="button" class="btn btn-secondary" id="newCarClose"><span class="fas fa-times"></span> ปิด</button>		
 							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-orange"><span class="fas fa-save"></span> บันทึก</button>		
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 	</div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2018 at 09:34 AM
+-- Generation Time: Dec 26, 2018 at 05:30 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -133,6 +133,24 @@ CREATE TABLE `car_profile` (
 
 INSERT INTO `car_profile` (`car_profileId`, `mileage`, `pictureFront`, `pictureBack`, `circlePlate`, `userId`, `create_at`, `update_at`, `create_by`, `update_by`, `status`, `character_plate`, `number_plate`, `province_plate`, `color`) VALUES
 (1, '91020', NULL, NULL, NULL, 13, '2018-12-15 23:36:49', NULL, 1, NULL, 1, 'กข', '112', 1, 'แดง');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `deposit`
+--
+
+CREATE TABLE `deposit` (
+  `depositId` int(11) NOT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `time` time DEFAULT NULL,
+  `bank` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `money` double DEFAULT NULL,
+  `slip` varchar(255) DEFAULT NULL,
+  `orderId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1193,6 +1211,13 @@ CREATE TABLE `garage` (
   `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `garage`
+--
+
+INSERT INTO `garage` (`garageId`, `comment`, `businessRegistration`, `garageName`, `garageAddress`, `postCode`, `latitude`, `longtitude`, `approve`, `subdistrictId`, `districtId`, `provinceId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `option1`, `option2`, `option3`, `option4`, `option_outher`, `garagePicture`, `firstname`, `lastname`, `idcard`, `addressGarage`, `userId`) VALUES
+(1, '', '1111111111111', 'garageService', '13', '11111', '', '', '2', 6384, 716, 49, 1, NULL, '2018-12-26 11:29:22', NULL, 1, 2, 2, 2, 2, '', NULL, 'garage', 'garage', '1111111111119', '13', 12);
+
 -- --------------------------------------------------------
 
 --
@@ -1305,6 +1330,24 @@ CREATE TABLE `lubricator_change` (
 
 INSERT INTO `lubricator_change` (`lubricator_changeId`, `lubricator_price`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
 (1, 200, 1, NULL, '2018-11-24 14:56:33', NULL, '1', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lubricator_change_garage`
+--
+
+CREATE TABLE `lubricator_change_garage` (
+  `lubricator_change_garageId` int(11) NOT NULL,
+  `lubricator_price` double DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `activeFlag` varchar(255) DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `garageId` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2284,15 +2327,16 @@ CREATE TABLE `order` (
   `userId` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL
+  `create_at` datetime DEFAULT NULL,
+  `car_profileId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `order`
 --
 
-INSERT INTO `order` (`orderId`, `activeflag`, `userId`, `create_by`, `status`, `create_at`) VALUES
-(9, '1', 13, 13, '1', '2018-12-24 16:35:37');
+INSERT INTO `order` (`orderId`, `activeflag`, `userId`, `create_by`, `status`, `create_at`, `car_profileId`) VALUES
+(11, '1', 13, 13, '1', '2018-12-26 11:20:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -2319,9 +2363,8 @@ CREATE TABLE `orderdetail` (
 --
 
 INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `quantity`, `charge`, `cost`, `status`, `activeflag`, `create_at`, `group`) VALUES
-(12, 9, 13, 9, 1, 1000, 600, 1, 1, '2018-12-24 16:35:37', 'spare'),
-(13, 9, 13, 10, 1, 1000, 1300, 1, 1, '2018-12-24 16:35:37', 'spare'),
-(14, 9, 13, 11, 1, 1000, 1600, 1, 1, '2018-12-24 16:35:37', 'spare');
+(15, 11, 13, 9, 1, 1000, 600, 1, 1, '2018-12-26 11:20:58', 'spare'),
+(16, 11, 13, 10, 1, 1000, 1300, 1, 1, '2018-12-26 11:20:58', 'spare');
 
 -- --------------------------------------------------------
 
@@ -2523,6 +2566,20 @@ INSERT INTO `provinceforcar` (`provinceforcarId`, `provinceforcarName`, `status`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reserve`
+--
+
+CREATE TABLE `reserve` (
+  `reserveId` int(11) NOT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `reserveDate` date DEFAULT NULL,
+  `reservetime` time DEFAULT NULL,
+  `order_orderId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rim`
 --
 
@@ -2621,6 +2678,25 @@ INSERT INTO `spares_change` (`spares_changeId`, `spares_price`, `spares_undercar
 (4, 1000, 35, 1, NULL, '2018-12-16 00:08:47', NULL, '1', '1'),
 (5, 1000, 60, 1, NULL, '2018-12-16 00:09:28', NULL, '1', '1'),
 (6, 1000, 41, 1, NULL, '2018-12-16 00:37:33', NULL, '1', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `spares_change_garage`
+--
+
+CREATE TABLE `spares_change_garage` (
+  `spares_change_garageId` int(11) NOT NULL,
+  `spares_price` double DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `spares_undercarriageId` int(11) DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `activeFlag` varchar(255) DEFAULT NULL,
+  `garageId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -11707,6 +11783,25 @@ INSERT INTO `tire_change` (`tire_changeId`, `tire_front`, `tire_back`, `rimId`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tire_change_garage`
+--
+
+CREATE TABLE `tire_change_garage` (
+  `tire_change_garageId` int(11) NOT NULL,
+  `tire_front` double DEFAULT NULL,
+  `tire_back` double DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `activeFlag` varchar(255) DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `garageId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tire_data`
 --
 
@@ -12087,7 +12182,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `category`, `email`, `phone`, `create_at`, `update_at`, `create_by`, `update_by`, `status`) VALUES
 (1, 'admin', '$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe', '1', 'admin@admin', '0812587469', NULL, NULL, 1, 1, 1),
 (11, 'car', '$2y$10$BviIuI/vXcI26DhH95AMaeQX7H0oXH0t844bOdtrPusExUd/sOTn2', '2', NULL, '0000000000', NULL, NULL, NULL, NULL, 1),
-(12, 'nattaphon', '$2y$10$vsYwdP70tZuIlJvfptP3x.IE8WU9zRdOKvNVw1OZf4TwWGcqvfwby', '2', '', '0867454630', '2018-09-23 13:58:55', NULL, NULL, NULL, 1),
+(12, 'garage', '$2y$10$vsYwdP70tZuIlJvfptP3x.IE8WU9zRdOKvNVw1OZf4TwWGcqvfwby', '3', '', '0867454630', '2018-09-23 13:58:55', '2018-12-26 11:29:44', NULL, 1, 1),
 (13, 'user', '$2y$10$x.ksVYEIzWMK5fVaxYedg.YTD8oLpf4qayNtYQAGaexSoUKXuEC5y', '4', NULL, '0121122222', NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
@@ -12133,8 +12228,9 @@ INSERT INTO `user_profile` (`user_profile`, `firstname`, `lastname`, `status`, `
 (10, 'ณัฐพล', 'บุญสุวรรณ์', '1', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 15:17:45', 6, '22/2', 'นาย', NULL, 0, NULL, NULL),
 (11, 'car2', 'car2', '1', '', '111111111111111111', 58, 810, 7307, 1, '2018-06-17 10:15:00', 10, 'car2', 'นาง', NULL, 0, NULL, NULL),
 (12, 'ร้าน', 'อะไหล่', '1', '', '0000000000', 63, 836, 7595, 1, '2018-09-08 20:09:29', 11, 'ร้านอะไหล่', 'นาย', NULL, 0, NULL, NULL),
-(13, 'ณัฐพล', 'บุญสุวรรณ์', '1', '0867454630', '', 63, 847, 7718, NULL, '2018-09-23 13:58:55', 12, '22/2 ถ.พัฒนาการบางวัง', '1', NULL, 1, NULL, NULL),
-(14, 'user', 'user', '1', '', '081255223', 1, 48, 232, 1, '2018-12-15 23:36:49', 13, '-', 'นาย', NULL, 0, NULL, NULL);
+(13, 'ณัฐพล', 'บุญสุวรรณ์', '2', '0867454630', '', 63, 847, 7718, NULL, '2018-09-23 13:58:55', 12, '22/2 ถ.พัฒนาการบางวัง', '1', NULL, 1, NULL, NULL),
+(14, 'user', 'user', '1', '', '081255223', 1, 48, 232, 1, '2018-12-15 23:36:49', 13, '-', 'นาย', NULL, 0, NULL, NULL),
+(15, 'garage', 'garage', '1', '', '0867454630', 63, 847, 7718, 1, '2018-12-26 11:29:22', 12, '22/2 ถ.พัฒนาการบางวัง', 'นาย', NULL, 0, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -12178,6 +12274,13 @@ ALTER TABLE `car_profile`
   ADD KEY `fk_car_profile_users1_idx` (`userId`),
   ADD KEY `fk_car_profile_users2_idx` (`create_by`),
   ADD KEY `fk_car_profile_users3_idx` (`update_by`);
+
+--
+-- Indexes for table `deposit`
+--
+ALTER TABLE `deposit`
+  ADD PRIMARY KEY (`depositId`),
+  ADD KEY `fk_deposit_order1_idx` (`orderId`);
 
 --
 -- Indexes for table `district`
@@ -12235,6 +12338,15 @@ ALTER TABLE `lubricator_change`
   ADD PRIMARY KEY (`lubricator_changeId`),
   ADD KEY `fk_lubricator_change_users1_idx` (`create_by`),
   ADD KEY `fk_lubricator_change_users2_idx` (`update_by`);
+
+--
+-- Indexes for table `lubricator_change_garage`
+--
+ALTER TABLE `lubricator_change_garage`
+  ADD PRIMARY KEY (`lubricator_change_garageId`),
+  ADD KEY `fk_lubricator_change_garage_users1_idx` (`create_by`),
+  ADD KEY `fk_lubricator_change_garage_users2_idx` (`update_by`),
+  ADD KEY `fk_lubricator_change_garage_garage1_idx` (`garageId`);
 
 --
 -- Indexes for table `lubricator_data`
@@ -12307,7 +12419,8 @@ ALTER TABLE `modelofcar`
 ALTER TABLE `order`
   ADD PRIMARY KEY (`orderId`),
   ADD KEY `fk_order_users1_idx` (`userId`),
-  ADD KEY `fk_order_users2_idx` (`create_by`);
+  ADD KEY `fk_order_users2_idx` (`create_by`),
+  ADD KEY `fk_order_car_profile1_idx` (`car_profileId`);
 
 --
 -- Indexes for table `orderdetail`
@@ -12330,6 +12443,13 @@ ALTER TABLE `province`
 --
 ALTER TABLE `provinceforcar`
   ADD PRIMARY KEY (`provinceforcarId`);
+
+--
+-- Indexes for table `reserve`
+--
+ALTER TABLE `reserve`
+  ADD PRIMARY KEY (`reserveId`),
+  ADD KEY `fk_reserve_order1_idx` (`order_orderId`);
 
 --
 -- Indexes for table `rim`
@@ -12358,6 +12478,16 @@ ALTER TABLE `spares_change`
   ADD KEY `fk_spares_change_spares_undercarriageId_idx` (`spares_undercarriageId`),
   ADD KEY `fk_spares_change_users1_idx` (`create_by`),
   ADD KEY `fk_spares_change_users2_idx` (`update_by`);
+
+--
+-- Indexes for table `spares_change_garage`
+--
+ALTER TABLE `spares_change_garage`
+  ADD PRIMARY KEY (`spares_change_garageId`),
+  ADD KEY `fk_spares_change_garage_spares_undercarriage1_idx` (`spares_undercarriageId`),
+  ADD KEY `fk_spares_change_garage_users1_idx` (`create_by`),
+  ADD KEY `fk_spares_change_garage_users2_idx` (`update_by`),
+  ADD KEY `fk_spares_change_garage_garage1_idx` (`garageId`);
 
 --
 -- Indexes for table `spares_undercarriage`
@@ -12414,6 +12544,15 @@ ALTER TABLE `tire_change`
   ADD KEY `fk_tire_change_rim1_idx` (`rimId`),
   ADD KEY `fk_tire_change_users1_idx` (`create_by`),
   ADD KEY `fk_tire_change_users2_idx` (`update_by`);
+
+--
+-- Indexes for table `tire_change_garage`
+--
+ALTER TABLE `tire_change_garage`
+  ADD PRIMARY KEY (`tire_change_garageId`),
+  ADD KEY `fk_tire_change_garage_users1_idx` (`create_by`),
+  ADD KEY `fk_tire_change_garage_users2_idx` (`update_by`),
+  ADD KEY `fk_tire_change_garage_garage1_idx` (`garageId`);
 
 --
 -- Indexes for table `tire_data`
@@ -12513,7 +12652,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=938;
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1255;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`
@@ -12528,6 +12667,12 @@ ALTER TABLE `car_profile`
   MODIFY `car_profileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `deposit`
+--
+ALTER TABLE `deposit`
+  MODIFY `depositId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `district`
 --
 ALTER TABLE `district`
@@ -12537,7 +12682,7 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT for table `garage`
 --
 ALTER TABLE `garage`
-  MODIFY `garageId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `garageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lubricator`
@@ -12562,6 +12707,12 @@ ALTER TABLE `lubricator_brand`
 --
 ALTER TABLE `lubricator_change`
   MODIFY `lubricator_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `lubricator_change_garage`
+--
+ALTER TABLE `lubricator_change_garage`
+  MODIFY `lubricator_change_garageId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lubricator_data`
@@ -12603,19 +12754,25 @@ ALTER TABLE `modelofcar`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `province`
 --
 ALTER TABLE `province`
   MODIFY `provinceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+
+--
+-- AUTO_INCREMENT for table `reserve`
+--
+ALTER TABLE `reserve`
+  MODIFY `reserveId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rim`
@@ -12634,6 +12791,12 @@ ALTER TABLE `spares_brand`
 --
 ALTER TABLE `spares_change`
   MODIFY `spares_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `spares_change_garage`
+--
+ALTER TABLE `spares_change_garage`
+  MODIFY `spares_change_garageId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `spares_undercarriage`
@@ -12670,6 +12833,12 @@ ALTER TABLE `tire_brand`
 --
 ALTER TABLE `tire_change`
   MODIFY `tire_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `tire_change_garage`
+--
+ALTER TABLE `tire_change_garage`
+  MODIFY `tire_change_garageId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tire_data`
@@ -12711,7 +12880,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `user_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
@@ -12749,6 +12918,12 @@ ALTER TABLE `car_profile`
   ADD CONSTRAINT `fk_car_profile_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_car_profile_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_car_profile_users3` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `deposit`
+--
+ALTER TABLE `deposit`
+  ADD CONSTRAINT `fk_deposit_order1` FOREIGN KEY (`orderId`) REFERENCES `order` (`orderId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `district`
@@ -12792,6 +12967,14 @@ ALTER TABLE `lubricatortypeformachine`
 ALTER TABLE `lubricator_brand`
   ADD CONSTRAINT `fk_lubricator_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_lubricator_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `lubricator_change_garage`
+--
+ALTER TABLE `lubricator_change_garage`
+  ADD CONSTRAINT `fk_lubricator_change_garage_garage1` FOREIGN KEY (`garageId`) REFERENCES `garage` (`garageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_lubricator_change_garage_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_lubricator_change_garage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `lubricator_data`
@@ -12854,6 +13037,7 @@ ALTER TABLE `modelofcar`
 -- Constraints for table `order`
 --
 ALTER TABLE `order`
+  ADD CONSTRAINT `fk_order_car_profile1` FOREIGN KEY (`car_profileId`) REFERENCES `car_profile` (`car_profileId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_order_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_order_users2` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
@@ -12872,6 +13056,12 @@ ALTER TABLE `province`
   ADD CONSTRAINT `fk_province_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `reserve`
+--
+ALTER TABLE `reserve`
+  ADD CONSTRAINT `fk_reserve_order1` FOREIGN KEY (`order_orderId`) REFERENCES `order` (`orderId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `rim`
 --
 ALTER TABLE `rim`
@@ -12885,6 +13075,15 @@ ALTER TABLE `spares_brand`
   ADD CONSTRAINT `fk_spares_brand_spares_undercarriage1` FOREIGN KEY (`spares_undercarriageId`) REFERENCES `spares_undercarriage` (`spares_undercarriageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_spares_brand_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_spares_brand_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `spares_change_garage`
+--
+ALTER TABLE `spares_change_garage`
+  ADD CONSTRAINT `fk_spares_change_garage_garage1` FOREIGN KEY (`garageId`) REFERENCES `garage` (`garageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_spares_change_garage_spares_undercarriage1` FOREIGN KEY (`spares_undercarriageId`) REFERENCES `spares_undercarriage` (`spares_undercarriageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_spares_change_garage_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_spares_change_garage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `spares_undercarriage`
@@ -12928,6 +13127,14 @@ ALTER TABLE `tire_change`
   ADD CONSTRAINT `create_by` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_tire_change_rim1` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_tire_change_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tire_change_garage`
+--
+ALTER TABLE `tire_change_garage`
+  ADD CONSTRAINT `fk_tire_change_garage_garage1` FOREIGN KEY (`garageId`) REFERENCES `garage` (`garageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tire_change_garage_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tire_change_garage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tire_data`
