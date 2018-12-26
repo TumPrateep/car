@@ -42,6 +42,12 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">จำนวนเงิน</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="money" id="money" placeholder="จำนวนเงิน">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-lg-3">จำนวนเงินรวม</label>
                         
                     </div> 

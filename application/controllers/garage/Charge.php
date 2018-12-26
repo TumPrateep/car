@@ -20,6 +20,19 @@ class Charge extends CI_Controller {
 		$this->load->view("garage/charge/lubricator/script");
 	}
 
+	
+	public function createlubricator()
+	{
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+		$this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/charge/lubricator/create/content");
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/charge/lubricator/create/script");
+	}
+
+
 	public function spares()
 	{
 		$this->load->view("garage/layout/head");
@@ -29,6 +42,17 @@ class Charge extends CI_Controller {
 		$this->load->view("garage/layout/footer");
 		$this->load->view("garage/layout/foot");
 		$this->load->view("garage/charge/spares/script");
+	}
+
+	public function createspares()
+	{
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+		$this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/charge/spares/create/content");
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/charge/spares/create/script");
 	}
 
 	public function tire()
