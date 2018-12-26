@@ -200,22 +200,22 @@
             );
         });
         
-        brand.change(function(){
-            var brandId = brand.val();
-            model.html('<option value="">เลือกรุ่นรถ</option>');
-            detail.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-            year.html('<option value="">เลือกปีผลิต</option>');
-            modelofcar.html('<option value="">เลือกโฉมรถ</option>');
-            $.get(base_url+"service/Lubricator/getAllModel",{
-                brandId : brandId
-            },function(data){
-                var modelData = data.data;
-                    $.each( modelData, function( key, value ) {
-                        model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
-                    });
-                }
-            );
-        });
+        // brand.change(function(){
+        //     var brandId = brand.val();
+        //     model.html('<option value="">เลือกรุ่นรถ</option>');
+        //     detail.html('<option value="">เลือกรายละเอียดรุ่น</option>');
+        //     year.html('<option value="">เลือกปีผลิต</option>');
+        //     modelofcar.html('<option value="">เลือกโฉมรถ</option>');
+        //     $.get(base_url+"service/Lubricator/getAllModel",{
+        //         brandId : brandId
+        //     },function(data){
+        //         var modelData = data.data;
+        //             $.each( modelData, function( key, value ) {
+        //                 model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
+        //             });
+        //         }
+        //     );
+        // });
 
         model.change(function(){
             var modelName = $("#modelId option:selected").text();
