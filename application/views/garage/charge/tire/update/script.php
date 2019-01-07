@@ -35,10 +35,10 @@
 
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/TireChange/update",data,
+            $.post(base_url+"apiGarage/TireChangegarage/update",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/tirechange");
+                    showMessage(data.message,"garage/charge/tire");
                 }else{
                     showMessage(data.message);
                 }
@@ -56,7 +56,7 @@
         $("#tire_back").val(tireChange.tire_back);
     });
 
-    var tire_rim = $("#rimId");
+    var tire_rim = $("#tire_rimId");
 
     function getRim(rimId = null){
         $.get(base_url+"api/Rim/getAllRims",{},

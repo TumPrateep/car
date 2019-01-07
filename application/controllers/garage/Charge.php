@@ -78,12 +78,13 @@ class Charge extends CI_Controller {
 		$this->load->view("garage/charge/tire/create/script");
 	}
 
-	public function updatetire()
+	public function updatetire($tire_changeId)
 	{
+		$data["tire_changeId"] = $tire_changeId;
 		$this->load->view("garage/layout/head");
 		$this->load->view("garage/layout/header");
 		$this->load->view("garage/layout/left-menu");
-		$this->load->view("garage/charge/tire/update/content");
+		$this->load->view("garage/charge/tire/update/content", $data);
 		$this->load->view("garage/layout/footer");
 		$this->load->view("garage/layout/foot");
 		$this->load->view("garage/charge/tire/update/script");
