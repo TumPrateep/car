@@ -132,7 +132,7 @@ class Tirechangesgarge extends CI_Model{
 
     function getTireChangeById($tire_changeId){
         $this->db->select("tire_change_garageId");
-        $this->db->where('tire_change_garageId',$tire_change_garageId);
+        $this->db->where('tire_change_garageId',$tire_changeId);
         $result = $this->db->get("tire_change_garage");
         return $result->row();
     }

@@ -13,7 +13,7 @@ class Spareschangegarages extends CI_Model{
 
     // update
     function getUpdate($spares_changeId){
-        $this->db->select('spares_changeId,spares_price');
+        $this->db->select('spares_changeId,spares_price, spares_undercarriageId');
         $this->db->where('spares_changeId',$spares_changeId);
         $result = $this->db->get("spares_change_garage")->row();
         return $result;
@@ -32,10 +32,10 @@ class Spareschangegarages extends CI_Model{
     }
 
     // delete
-    function delete($lubricator_changeId){
+    function delete($spares_changeId){
         return $this->db->delete('spares_change_garage', array('spares_changeId' => $spares_changeId));
     }
-    function getLubricatorChangeById($lubricator_changeId){
+    function getSparesChangeById($spares_changeId){
         $this->db->select("spares_changeId");
         $this->db->where('spares_changeId',$spares_changeId);
         $result = $this->db->get("spares_change_garage");
@@ -43,10 +43,11 @@ class Spareschangegarages extends CI_Model{
     }
 
     // search เข้ามาครั้งเเรก ใช้ดึงข้อมูลมาเเสดง คู่กันกับ allLubricatorschanges_count + funtion search ข้อมูล
-    function allLubricatorchanges($limit,$start,$col,$dir,$garageId){
-        $this->db->select('spares_changeId,spares_price,status,garageId');
+    function allSpareschanges($limit,$start,$col,$dir,$garageId){
+        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName');
         $this->db->from('spares_change_garage');
-        $this->db->where("garageId",$garageId);
+        $this->db->join('spares_undercarriage', 'spares_undercarriage.spares_undercarriageId = spares_change_garage.spares_undercarriageId');
+        $this->db->where("spares_change_garage.garageId",$garageId);
 
         $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
         if($query->num_rows()>0){
@@ -56,25 +57,27 @@ class Spareschangegarages extends CI_Model{
         }
         
     }
-    function allLubricatorschanges_count($garageId){  
-        $this->db->select('spares_changeId');
+    function allSpareschanges_count($garageId){  
+        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName');
         $this->db->from('spares_change_garage');
-        $this->db->where("garageId",$garageId);
+        $this->db->join('spares_undercarriage', 'spares_undercarriage.spares_undercarriageId = spares_change_garage.spares_undercarriageId');
+        $this->db->where("spares_change_garage.garageId",$garageId);
         $query = $this->db->get();
         return $query->num_rows();  
                                                                                                                                                                                                 
     }
-    // lubricatorchanges_search ,lubricatorchanges_search_count ใช้ในการ search ข้อมูล
-    function lubricatorchanges_search($limit,$start,$search,$col,$dir,$status,$garageId){
+
+    function spareschanges_search($limit,$start,$search,$col,$dir,$status,$garageId){
         
-        $this->db->select('spares_changeId, spares_price, status,garageId');
-        $this->db->from('spares_change');
-        $this->db->where("garageId",$garageId);
+        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName');
+        $this->db->from('spares_change_garage');
+        $this->db->join('spares_undercarriage', 'spares_undercarriage.spares_undercarriageId = spares_change_garage.spares_undercarriageId');
+        $this->db->where("spares_change_garage.garageId",$garageId);
         if($search != null){
-            $this->db->where("spares_price",$search);
+            $this->db->where("spares_change_garage.spares_price",$search);
         }
         if($status != null){
-            $this->db->where("status", $status);
+            $this->db->where("spares_change_garage.status", $status);
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
@@ -86,16 +89,17 @@ class Spareschangegarages extends CI_Model{
             return null;
         }
     }
-    function lubricatorchanges_search_count($search,$status,$garageId){
+    function spareschanges_search_count($search,$status,$garageId){
        
-        $this->db->select('spares_changeId, spares_price, status');
-        $this->db->from('spares_change');
-        $this->db->where("garageId",$garageId);
+        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName');
+        $this->db->from('spares_change_garage');
+        $this->db->join('spares_undercarriage', 'spares_undercarriage.spares_undercarriageId = spares_change_garage.spares_undercarriageId');
+        $this->db->where("spares_change_garage.garageId",$garageId);
         if($search != null){
-            $this->db->where("spares_price",$search);
+            $this->db->where("spares_change_garage.spares_price",$search);
         }
         if($status != null){
-            $this->db->where("status", $status);
+            $this->db->where("spares_change_garage.status", $status);
         }
         $query = $this->db->get();
         return $query->num_rows();

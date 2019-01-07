@@ -56,10 +56,20 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="updatelubricator/' +data.lubricator_change_garageId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricatorChange('+data.lubricator_change_garageId+')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2]}
             ]	 
     });
+
+    function deleteLubricatorChange(id){
+        var option = {
+            url: "/Lubricatorchange/deleteLubricatorchangegarage?lubricator_change_garageId="+id,
+            label: "ลบราคาเปลี่ยนน้ำมันเครื่อง",
+            content: "คุณต้องการลบข้อมูลใช่หรือไม่",
+            gotoUrl: "garage/charge/lubricator"
+        }
+        fnDelete(option);
+    }
 </script>

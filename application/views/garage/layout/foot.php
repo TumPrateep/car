@@ -3,7 +3,7 @@
     <script src="<?=base_url()?>public/themes/garage/js/lib/bootstrap/js/popper.min.js"></script>
     <script src="<?=base_url()?>public/themes/garage/js/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>public/themes/garage/js/jquery.slimscroll.js"></script>
-    <!-- <script src="<?=base_url()?>public/themes/garage/js/sidebarmenu.js"></script> -->
+    <script src="<?=base_url()?>public/themes/garage/js/sidebarmenu.js"></script>
     <script src="<?=base_url()?>public/themes/garage/js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <script src="<?=base_url()?>public/themes/garage/js/lib/morris-chart/raphael-min.js"></script>
     <script src="<?=base_url()?>public/themes/garage/js/lib/morris-chart/morris.js"></script>

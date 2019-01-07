@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiGarage/Lubricatorchange/searchLubricatorChange",
+                "url": base_url+"apiGarage/Spareschange/searchSpareChange",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -36,30 +36,46 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "lubricator_price" },
+                { "data": "spares_undercarriageName"},
+                { "data": "spares_price" },
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,2]
+                    "targets": [0,3]
                 },{
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
-                },
-                {
+                },{
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="#"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger"><i class="fa fa-trash"></i></button>';
+                        return currency(data, { useVedic: true }).format();
+                    }
+                },{
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return '<a href="'+base_url+"garage/Charge/updatespares/"+data.spares_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareChange('+data.spares_changeId+')"><i class="fa fa-trash"></i></button>';
                     }
                 },
-                {"className": "dt-center", "targets": [0,1,2]}
+                {"className": "dt-center", "targets": [0,1,2,3]}
             ]	 
     });
+
+    function deleteSpareChange(id){
+        var option = {
+            url: "/Spareschange/deleteSpareschangegarage?spares_changeId="+id,
+            label: "ลบราคาเปลี่ยนอะไหล่ช่วงล่าง",
+            content: "คุณต้องการลบข้อมูลใช่หรือไม่",
+            gotoUrl: "garage/charge/spares"
+        }
+        fnDelete(option);
+    }
 </script>

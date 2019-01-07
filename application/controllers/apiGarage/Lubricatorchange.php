@@ -8,7 +8,7 @@ class Lubricatorchange extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         // $this->auth();
-        $this->load->model('Lubricatorchangegarages');
+        $this->load->model('lubricatorchangegarages');
     }
 
     public function createLubricatorchangegarage_post(){
@@ -16,7 +16,7 @@ class Lubricatorchange extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $garageId = $this->session->userdata['logged_in']['garageId'];
 
-        $data_check = $this->Lubricatorchangegarages->data_check_create($garageId);
+        $data_check = $this->lubricatorchangegarages->data_check_create($garageId);
         $data = array(
             'lubricator_change_garageId' => null,
             'lubricator_price'  => $lubricator_price,
@@ -29,7 +29,7 @@ class Lubricatorchange extends BD_Controller {
         $option = [
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->Lubricatorchangegarages,
+            "model" => $this->lubricatorchangegarages,
             "image_path" => null
         ];
 
@@ -39,7 +39,7 @@ class Lubricatorchange extends BD_Controller {
     function getUpdate_get(){
         $lubricator_change_garageId = $this->get('lubricator_change_garageId');
         $garageId = $this ->get('garageId');
-        $data_check = $this->Lubricatorchangegarages->getUpdate($lubricator_change_garageId,$garageId);
+        $data_check = $this->lubricatorchangegarages->getUpdate($lubricator_change_garageId,$garageId);
         
         $option = [
             "data_check" => $data_check
@@ -49,17 +49,15 @@ class Lubricatorchange extends BD_Controller {
     }
     public function update_post(){
         $lubricator_change_garageId = $this->post('lubricator_change_garageId');
-        $garageId = $this->post('garageId');
         $lubricator_price = $this->post('lubricator_price');
         $userId = $this->session->userdata['logged_in']['id'];
+        $garageId = $this->session->userdata['logged_in']['garageId'];
 
-
-        $data_check_update = $this->Lubricatorchangegarage->getLubricatorChangeById($lubricator_change_garageId,$garageId);
-        $data_check = $this->Lubricatorchangegarage->data_check_update($lubricator_change_garageId,$garageId);
+        $data_check_update = $this->lubricatorchangegarages->getLubricatorChangeById($lubricator_change_garageId,$garageId);
+        $data_check = $this->lubricatorchangegarages->data_check_update($lubricator_change_garageId,$garageId);
 
         $data = array(
             'lubricator_change_garageId' => $lubricator_change_garageId,
-            'garageId' => $garageId,
             'lubricator_price'  => $lubricator_price,
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time())
@@ -69,7 +67,7 @@ class Lubricatorchange extends BD_Controller {
             "data_check_update" => $data_check_update,
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->Lubricatorchangegarage,
+            "model" => $this->lubricatorchangegarages,
             "image_path" => null,
             "old_image_path" => null,
         ];
@@ -80,13 +78,12 @@ class Lubricatorchange extends BD_Controller {
     public function deleteLubricatorchangegarage_get(){
         $lubricator_change_garageId = $this->get('lubricator_change_garageId');
         $garageId = $this->get('garageId');
-        $data_check = $this->Lubricatorchangegarages->getLubricatorChangeById($lubricator_change_garageId,$garageId);
+        $data_check = $this->lubricatorchangegarages->getLubricatorChangeById($lubricator_change_garageId,$garageId);
         
         $option = [
             "data_check_delete" => $data_check,
             "data" => $lubricator_change_garageId,
-            "data" => $garageId,
-            "model" => $this->Lubricatorchangegarages,
+            "model" => $this->lubricatorchangegarages,
             "image_path" => null
         ];
 
@@ -104,16 +101,16 @@ class Lubricatorchange extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $totalData = $this->Lubricatorchangegarages->allLubricatorschanges_count($garageId);
+        $totalData = $this->lubricatorchangegarages->allLubricatorschanges_count($garageId);
         $totalFiltered = $totalData; 
         if(empty($this->post('lubricator_price')))
         {            
-            $posts = $this->Lubricatorchangegarages->allLubricatorchanges($limit,$start,$order,$dir,$garageId);
+            $posts = $this->lubricatorchangegarages->allLubricatorchanges($limit,$start,$order,$dir,$garageId);
         }
         else {
             $search = $this->post('lubricator_price');
-            $posts =  $this->Lubricatorchangegarages->lubricatorchanges_search($limit,$start,$search,$order,$dir,$status,$garageId);
-            $totalFiltered = $this->Lubricatorchangegarages->lubricatorchanges_search_count($search,$status,$garageId);
+            $posts =  $this->lubricatorchangegarages->lubricatorchanges_search($limit,$start,$search,$order,$dir,$status,$garageId);
+            $totalFiltered = $this->lubricatorchangegarages->lubricatorchanges_search_count($search,$status,$garageId);
         }
         $data = array();
         if(!empty($posts))

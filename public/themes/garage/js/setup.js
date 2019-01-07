@@ -19,7 +19,7 @@ function fnDelete(option) {
    $("#lebel-delete").html(option.label);
    $("#content-delete").html(option.content);
    $("#delete-modal").modal("show");
-   deleteUrl = base_url+"api"+option.url;
+   deleteUrl = base_url+"apiGarage"+option.url;
    modalUrl = option.gotoUrl;
 }
 
@@ -52,7 +52,7 @@ function showMessage(message, url=null){
         }else if(message == 1002){
             warningContent.html("แก้ไขไม่สำเร็จ");
         }else if(message == 3001 || message == 3002){
-            warningContent.html("ชื่อหรือถูกใช้งานแล้ว");
+            warningContent.html("ชื่อถูกใช้งานแล้ว");
         }else{
             warningContent.html("เกิดข้อผิดพลาด");
         }
@@ -74,4 +74,4 @@ $("#btn-delete-modal").click(function(){
         $("#delete-modal").modal("hide");
         showMessage(data.message, modalUrl);
     });
-})
+});

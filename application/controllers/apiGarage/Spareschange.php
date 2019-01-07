@@ -8,26 +8,29 @@ class Spareschange extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         // $this->auth();
-        $this->load->model('Spareschangegarages');
+        $this->load->model('spareschangegarages');
     }
 
     public function createLubricatorchangegarage_post(){
-        $lubricator_price = $this->post('spares_price');
+        $spares_price = $this->post('spares_price');
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
         $userId = $this->session->userdata['logged_in']['id'];
-
-        $data_check = $this->Spareschangegarages->data_check_create();
+        $garageId = $this->session->userdata['logged_in']['garageId'];
+        $data_check = $this->spareschangegarages->data_check_create($garageId);
         $data = array(
             'spares_changeId' => null,
-            'spares_price'  => $lubricator_price,
+            'spares_undercarriageId' => $spares_undercarriageId,
+            'spares_price'  => $spares_price,
             'create_by' => $userId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
-            'activeFlag' => 1
+            'activeFlag' => 1,
+            'garageId' => $garageId
         );
         $option = [
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->Spareschangegarages,
+            "model" => $this->spareschangegarages,
             "image_path" => null
         ];
 
@@ -35,9 +38,9 @@ class Spareschange extends BD_Controller {
     }
 
     function getUpdate_get(){
-        $lubricator_changeId = $this->get('spares_changeId');
-        $garageId = $this ->get('garageId');
-        $data_check = $this->Spareschangegarages->getUpdate($spares_changeId,$garageId);
+        $spares_changeId = $this->get('spares_changeId');
+        $garageId = $this->session->userdata['logged_in']['garageId'];
+        $data_check = $this->spareschangegarages->getUpdate($spares_changeId,$garageId);
         
         $option = [
             "data_check" => $data_check
@@ -46,18 +49,20 @@ class Spareschange extends BD_Controller {
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
     public function update_post(){
-        $lubricator_changeId = $this->post('spares_changeId');
-        $garageId = $this->post('garageId');
-        $lubricator_price = $this->post('spares_price');
+        $spares_changeId = $this->post('spares_changeId');
+        $garageId = $this->session->userdata['logged_in']['garageId'];        
+        $spares_price = $this->post('spares_price');
+        $spares_undercarriageId = $this->post('spares_undercarriageId');
         $userId = $this->session->userdata['logged_in']['id'];
 
-        $data_check_update = $this->Spareschange->getLubricatorChangeById($spares_changeId,$garageId);
-        $data_check = $this->Spareschange->data_check_update($spares_changeId,$garageId);
+        $data_check_update = $this->spareschangegarages->getSparesChangeById($spares_changeId,$garageId);
+        $data_check = $this->spareschangegarages->data_check_update($spares_changeId,$garageId);
 
         $data = array(
-            'lubricator_changeId' => $spares_changeId,
+            'spares_changeId' => $spares_changeId,
             'garageId' => $garageId,
-            'lubricator_price'  => $spares_price,
+            'spares_price'  => $spares_price,
+            'spares_undercarriageId' => $spares_undercarriageId,
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time())
         );
@@ -66,7 +71,7 @@ class Spareschange extends BD_Controller {
             "data_check_update" => $data_check_update,
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->Spareschange,
+            "model" => $this->spareschangegarages,
             "image_path" => null,
             "old_image_path" => null,
         ];
@@ -74,43 +79,39 @@ class Spareschange extends BD_Controller {
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
 
-    public function deleteLubricatorchangegarage_get(){
-        $lubricator_changeId = $this->get('lubricator_changeId');
-        $garageId = $this->get('garageId');
-        $data_check = $this->Spareschangegarages->getLubricatorChangeById($spares_changeId,$garageId);
-
-
+    public function deleteSpareschangegarage_get(){
+        $spares_changeId = $this->get('spares_changeId');
+        $data_check = $this->spareschangegarages->getSparesChangeById($spares_changeId);
         $option = [
             "data_check_delete" => $data_check,
             "data" => $spares_changeId,
-            "data" => $garageId,
-            "model" => $this->Spareschangegarages,
+            "model" => $this->spareschangegarages,
             "image_path" => null
         ];
 
         $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
 
-    function searchLubricatorChange_post(){
+    function searchSpareChange_post(){
         $columns = array( 
             0 => null,
-            1 => 'lubricator_changeId'
+            1 => 'spares_undercarriageName',
+            2 => 'spares_price'
         );
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $totalData = $this->Spareschangegarages->allLubricatorschanges_count($garageId);
+        $totalData = $this->spareschangegarages->allSpareschanges_count($garageId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('lubricator_price')))
+        if(empty($this->post('price')))
         {            
-            $posts = $this->Spareschangegarages->allLubricatorchanges($limit,$start,$order,$dir,$garageId);
-        }
-        else {
-            $search = $this->post('lubricator_price');
-            $posts =  $this->Spareschangegarages->lubricatorchanges_search($limit,$start,$search,$order,$dir,$status,$garageId);
-            $totalFiltered = $this->Spareschangegarages->lubricatorchanges_search_count($search,$status,$garageId);
+            $posts = $this->spareschangegarages->allSpareschanges($limit,$start,$order,$dir,$garageId);
+        }else {
+            $search = $this->post('price');
+            $posts =  $this->spareschangegarages->spareschanges_search($limit,$start,$search,$order,$dir,$status,$garageId);
+            $totalFiltered = $this->spareschangegarages->spareschanges_search_count($search,$status,$garageId);
         }
         $data = array();
         if(!empty($posts))
@@ -121,6 +122,7 @@ class Spareschange extends BD_Controller {
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['spares_price'] = $post->spares_price;
                 $nestedData['status'] = $post->status;
+                $nestedData['spares_undercarriageName'] = $post->spares_undercarriageName;
                 $data[] = $nestedData;
             }
         }

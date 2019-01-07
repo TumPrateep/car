@@ -25,29 +25,21 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <div class="form-group">
-                                        <select class="form-control" name="tire_rimId" id="tire_rimId">
-                                        <option value="">กรุณาเลือกขอบยาง</option>
+                                        <label>รายการอะไหล่ช่วงล่าง</label> <span class="error">*</span>
+                                        <select class="form-control" name="spares_undercarriageId" id="spares_undercarriageId">
+                                            <option value="">เลือกรายการอะไหล่ช่วงล่าง</option>
+                                        </select>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="col-lg-4">
+                            </div>
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <div class="form-group">
-                                        <label>ราคายางล้อหลัง</label><span class="error">*</span>
-                                        <input type="number" class="form-control" name="tire_back" id="tire_back" placeholder="ราคายางล้อหลัง">
+                                        <label>ราคาค่าบริการ</label> <span class="error">*</span>
+                                        <input type="number" class="form-control" placeholder="ราคาค่าบริการ" name="spares_price" id="spares_price">
                                     </div>
                                 </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                            <div class="form-group">
-                                    <label>ชื่อขอบยาง</label> <span class="error">*</span>
-                                        <select class="form-control" name="tire_rimId" id="tire_rimId">
-                                        <option value="">กรุณาเลือกขอบยาง</option>
-                                    </select> 
                             </div>
-                            </div>
-                        </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-4"> 
