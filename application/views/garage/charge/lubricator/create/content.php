@@ -25,7 +25,7 @@
                                 <div class="basic-form">
                                     <form id="submit">
                                         <div class="form-group">
-                                            <input type="text" class="form-control input-default " placeholder="ราคาค่าบริการ">
+                                            <input type="text" class="form-control input-default " id="lubricator_price" name="lubricator_price" placeholder="ราคาค่าบริการ">
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-info ">บันทึก</button>

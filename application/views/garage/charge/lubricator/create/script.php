@@ -39,7 +39,7 @@
             $.post(base_url+"apiGarage/Lubricatorchange/createLubricatorchangegarage",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"garage/Charge/lubricator");
+                    showMessage(data.message,"garage/charge/lubricator");
                 }else{
                     showMessage(data.message,);
                 }
