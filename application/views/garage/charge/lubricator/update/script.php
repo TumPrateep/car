@@ -19,32 +19,33 @@
         
     })
 
-
+    // แก้ไข
     function updatelubricatorChangegarage(){
         event.preventDefault();
         var isValid = $("#submit").valid();
 
         if(isValid){
             var data = $("#submit").serialize();
-            // งง v
-            $.post(base_url+"api/LubricatorChange/update",data,
+           
+            $.post(base_url+"apiGarage/Lubricatorchange/update",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"garage/Charge/lubricator");
+                    showMessage(data.message,"garage/charge/lubricator");
                 }else{
                     showMessage(data.message);
                 }
             });
         }
     }
-        // งง v
-    $.get(base_url+"api/LubricatorChange/getUpdate",{
+      
+    // ดึงข้อมูลมาเเสดงเพื่อแก้ไข #lubricatorChange เป็นชื่อที่ตั้งไว้เองไม่ได้เอามาจากหน้าไหน
+    $.get(base_url+"apiGarage/Lubricatorchange/getUpdate",{
         "lubricator_change_garageId": lubricator_change_garageId
     },function(data){
-        // งง v
         var lubricatorChange = data.data;  
         $("#lubricator_price").val(lubricatorChange.lubricator_price);
     });
 
+    
     
 </script>

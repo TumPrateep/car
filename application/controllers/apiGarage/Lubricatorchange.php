@@ -14,12 +14,14 @@ class Lubricatorchange extends BD_Controller {
     public function createLubricatorchangegarage_post(){
         $lubricator_price = $this->post('lubricator_price');
         $userId = $this->session->userdata['logged_in']['id'];
+        $garageId = $this->session->userdata['logged_in']['garageId'];
 
-        $data_check = $this->Lubricatorchangegarages->data_check_create();
+        $data_check = $this->Lubricatorchangegarages->data_check_create($garageId);
         $data = array(
             'lubricator_change_garageId' => null,
             'lubricator_price'  => $lubricator_price,
             'create_by' => $userId,
+            'garageId' => $garageId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
             'activeFlag' => 1

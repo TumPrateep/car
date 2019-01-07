@@ -32,6 +32,18 @@ class Charge extends CI_Controller {
 		$this->load->view("garage/charge/lubricator/create/script");
 	}
 
+	public function updatelubricator($lubricator_change_garageId)
+	{
+		$data["lubricator_change_garageId"] = $lubricator_change_garageId;
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+		$this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/charge/lubricator/update/content",$data);
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/charge/lubricator/update/script");
+	}
+
 
 	public function spares()
 	{
@@ -54,6 +66,7 @@ class Charge extends CI_Controller {
 		$this->load->view("garage/layout/foot");
 		$this->load->view("garage/charge/spares/create/script");
 	}
+	
 
 	public function tire()
 	{
