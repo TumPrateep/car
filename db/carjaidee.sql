@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2018 at 07:50 AM
+-- Generation Time: Jan 07, 2019 at 10:32 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -1349,6 +1349,13 @@ CREATE TABLE `lubricator_change_garage` (
   `update_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `lubricator_change_garage`
+--
+
+INSERT INTO `lubricator_change_garage` (`lubricator_change_garageId`, `lubricator_price`, `status`, `activeFlag`, `create_by`, `update_by`, `garageId`, `create_at`, `update_at`) VALUES
+(10, 1100, '1', '1', 12, NULL, 1, '2019-01-07 12:02:55', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -2371,6 +2378,25 @@ INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `q
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `paymentId` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `bank` varchar(100) NOT NULL,
+  `transfer` varchar(100) NOT NULL,
+  `money` double NOT NULL,
+  `slip` varchar(255) NOT NULL,
+  `orderId` int(11) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `province`
 --
 
@@ -2576,8 +2602,18 @@ CREATE TABLE `reserve` (
   `status` varchar(45) DEFAULT NULL,
   `reserveDate` date DEFAULT NULL,
   `reservetime` time DEFAULT NULL,
-  `order_orderId` int(11) NOT NULL
+  `orderId` int(11) NOT NULL,
+  `garageId` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `reserve`
+--
+
+INSERT INTO `reserve` (`reserveId`, `status`, `reserveDate`, `reservetime`, `orderId`, `garageId`, `created_at`, `created_by`) VALUES
+(1, '1', '2019-01-09', '05:00:00', 13, 1, '2019-01-09 05:00:00', 13);
 
 -- --------------------------------------------------------
 
@@ -2688,7 +2724,7 @@ INSERT INTO `spares_change` (`spares_changeId`, `spares_price`, `spares_undercar
 --
 
 CREATE TABLE `spares_change_garage` (
-  `spares_change_garageId` int(11) NOT NULL,
+  `spares_changeId` int(11) NOT NULL,
   `spares_price` double DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `spares_undercarriageId` int(11) DEFAULT NULL,
@@ -12434,6 +12470,14 @@ ALTER TABLE `orderdetail`
   ADD KEY `fk_orderDetail_users1_idx` (`userId`);
 
 --
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`paymentId`),
+  ADD KEY `fk_payment_order_idx` (`orderId`),
+  ADD KEY `fk_payment_createdBy_idx` (`created_by`);
+
+--
 -- Indexes for table `province`
 --
 ALTER TABLE `province`
@@ -12452,7 +12496,9 @@ ALTER TABLE `provinceforcar`
 --
 ALTER TABLE `reserve`
   ADD PRIMARY KEY (`reserveId`),
-  ADD KEY `fk_reserve_order1_idx` (`order_orderId`);
+  ADD KEY `fk_reserve_order1_idx` (`orderId`),
+  ADD KEY `fk_reserve_garageId_idx` (`garageId`),
+  ADD KEY `fk_reserve_created_by_idx` (`created_by`);
 
 --
 -- Indexes for table `rim`
@@ -12486,7 +12532,7 @@ ALTER TABLE `spares_change`
 -- Indexes for table `spares_change_garage`
 --
 ALTER TABLE `spares_change_garage`
-  ADD PRIMARY KEY (`spares_change_garageId`),
+  ADD PRIMARY KEY (`spares_changeId`),
   ADD KEY `fk_spares_change_garage_spares_undercarriage1_idx` (`spares_undercarriageId`),
   ADD KEY `fk_spares_change_garage_users1_idx` (`create_by`),
   ADD KEY `fk_spares_change_garage_users2_idx` (`update_by`),
@@ -12656,7 +12702,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1382;
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`
@@ -12716,7 +12762,7 @@ ALTER TABLE `lubricator_change`
 -- AUTO_INCREMENT for table `lubricator_change_garage`
 --
 ALTER TABLE `lubricator_change_garage`
-  MODIFY `lubricator_change_garageId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `lubricator_change_garageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `lubricator_data`
@@ -12767,6 +12813,12 @@ ALTER TABLE `orderdetail`
   MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `paymentId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `province`
 --
 ALTER TABLE `province`
@@ -12776,7 +12828,7 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT for table `reserve`
 --
 ALTER TABLE `reserve`
-  MODIFY `reserveId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reserveId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `rim`
@@ -12800,7 +12852,7 @@ ALTER TABLE `spares_change`
 -- AUTO_INCREMENT for table `spares_change_garage`
 --
 ALTER TABLE `spares_change_garage`
-  MODIFY `spares_change_garageId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `spares_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `spares_undercarriage`
@@ -12842,7 +12894,7 @@ ALTER TABLE `tire_change`
 -- AUTO_INCREMENT for table `tire_change_garage`
 --
 ALTER TABLE `tire_change_garage`
-  MODIFY `tire_change_garageId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tire_change_garageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tire_data`
@@ -13053,6 +13105,13 @@ ALTER TABLE `orderdetail`
   ADD CONSTRAINT `fk_orderDetail_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `payment`
+--
+ALTER TABLE `payment`
+  ADD CONSTRAINT `fk_payment_createdBy` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_payment_order` FOREIGN KEY (`orderId`) REFERENCES `order` (`orderId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `province`
 --
 ALTER TABLE `province`
@@ -13063,7 +13122,9 @@ ALTER TABLE `province`
 -- Constraints for table `reserve`
 --
 ALTER TABLE `reserve`
-  ADD CONSTRAINT `fk_reserve_order1` FOREIGN KEY (`order_orderId`) REFERENCES `order` (`orderId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_reserve_created_by` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_reserve_garageId` FOREIGN KEY (`garageId`) REFERENCES `garage` (`garageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_reserve_order1` FOREIGN KEY (`orderId`) REFERENCES `order` (`orderId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `rim`
