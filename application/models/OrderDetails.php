@@ -31,7 +31,7 @@ class OrderDetails extends CI_Model{
     }
 
     function getSummaryCostFromOrderDetail($orderId, $userId){
-        $this->db->select("sum(price) as summary");
+        $this->db->select("sum((cost*1.1)+charge) as summary");
         $this->db->where("orderId", $orderId);
         $result = $this->db->get("orderdetail");
 

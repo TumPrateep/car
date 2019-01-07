@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2018 at 05:30 AM
+-- Generation Time: Dec 26, 2018 at 07:50 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -2336,7 +2336,8 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`orderId`, `activeflag`, `userId`, `create_by`, `status`, `create_at`, `car_profileId`) VALUES
-(11, '1', 13, 13, '1', '2018-12-26 11:20:58', NULL);
+(13, '1', 13, 13, '1', '2018-12-26 13:24:43', NULL),
+(14, '1', 13, 13, '1', '2018-12-26 13:42:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -2363,8 +2364,9 @@ CREATE TABLE `orderdetail` (
 --
 
 INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `quantity`, `charge`, `cost`, `status`, `activeflag`, `create_at`, `group`) VALUES
-(15, 11, 13, 9, 1, 1000, 600, 1, 1, '2018-12-26 11:20:58', 'spare'),
-(16, 11, 13, 10, 1, 1000, 1300, 1, 1, '2018-12-26 11:20:58', 'spare');
+(21, 13, 13, 8, 1, 1000, 1300, 1, 1, '2018-12-26 13:24:43', 'spare'),
+(22, 14, 13, 9, 4, 1000, 600, 1, 1, '2018-12-26 13:42:48', 'spare'),
+(23, 14, 13, 10, 1, 1000, 1300, 1, 1, '2018-12-26 13:42:48', 'spare');
 
 -- --------------------------------------------------------
 
@@ -11796,7 +11798,8 @@ CREATE TABLE `tire_change_garage` (
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `garageId` int(11) DEFAULT NULL
+  `garageId` int(11) DEFAULT NULL,
+  `rimId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -12552,7 +12555,8 @@ ALTER TABLE `tire_change_garage`
   ADD PRIMARY KEY (`tire_change_garageId`),
   ADD KEY `fk_tire_change_garage_users1_idx` (`create_by`),
   ADD KEY `fk_tire_change_garage_users2_idx` (`update_by`),
-  ADD KEY `fk_tire_change_garage_garage1_idx` (`garageId`);
+  ADD KEY `fk_tire_change_garage_garage1_idx` (`garageId`),
+  ADD KEY `fk_tire_change_garage_rimId_idx` (`rimId`);
 
 --
 -- Indexes for table `tire_data`
@@ -12652,7 +12656,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1255;
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1382;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`
@@ -12754,13 +12758,13 @@ ALTER TABLE `modelofcar`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `province`
@@ -13133,6 +13137,7 @@ ALTER TABLE `tire_change`
 --
 ALTER TABLE `tire_change_garage`
   ADD CONSTRAINT `fk_tire_change_garage_garage1` FOREIGN KEY (`garageId`) REFERENCES `garage` (`garageId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tire_change_garage_rimId` FOREIGN KEY (`rimId`) REFERENCES `rim` (`rimId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_tire_change_garage_users1` FOREIGN KEY (`create_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_tire_change_garage_users2` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
