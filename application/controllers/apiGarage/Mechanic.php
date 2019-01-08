@@ -58,52 +58,65 @@ class Mechanic extends BD_Controller {
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
     function searchMechanic_post(){
-            $columns = array( 
-                0 => null,
-                1 => 'firstName',
-                2 => 'skill',
-                3 => 'phone',
-                4 => 'rols'
-            );
-            $limit = $this->post('length');
-            $start = $this->post('start');
-            $order = $columns[$this->post('order')[0]['column']];
-            $dir = $this->post('order')[0]['dir'];
-            $totalData = $this->mechanics->allmechanics_count();
-            $totalFiltered = $totalData; 
-            if(empty($this->post('firstName'))&& empty($this->post('skill')))
-            {            
-                $posts = $this->mechanics->allmechanics($limit,$start,$order,$dir);
-            }
-            else {
-                $firstname = $this->post('firstName'); 
-                $skill = $this->post('skill');
-                $posts =  $this->mechanics->mechanics_search($limit,$start,$order,$dir,$firstname,$skill);
-                $totalFiltered = $this->mechanics->mechanics_search_count($firstname,$skill);
-            }
-            $data = array();
-            if(!empty($posts))
-            {
-                foreach ($posts as $post)
-                {
-                    $nestedData['mechanicId'] = $post->mechanicId;
-                    $nestedData['firstName'] = $post->firstName;
-                    $nestedData['lastName'] = $post->lastName;
-                    $nestedData['phone'] = $post->phone;
-                    $nestedData['personalid'] = $post->personalid;
-                
-                   
-                    $data[] = $nestedData;
-                }
-            }
-            $json_data = array(
-                "draw"            => intval($this->post('draw')),  
-                "recordsTotal"    => intval($totalData),  
-                "recordsFiltered" => intval($totalFiltered), 
-                "data"            => $data   
-            );
-            $this->set_response($json_data);
+
+        $columns = array( 
+            0 => 'role'
+        );
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $totalData = $this->mechanics->allmechanics_count();
+        $totalFiltered = $totalData; 
+        if(empty($this->post('firstName'))&& empty($this->post('skill')))
+        {            
+            $posts = $this->mechanics->allmechanics($limit,$start,$order,$dir);
         }
+        else {
+            $firstname = $this->post('firstName'); 
+            $skill = $this->post('skill');
+            $posts =  $this->mechanics->mechanics_search($limit,$start,$order,$dir,$firstname,$skill);
+            $totalFiltered = $this->mechanics->mechanics_search_count($firstname,$skill);
+        }
+        $data = array();
+        if(!empty($posts))
+        {
+            $index = 0;
+            $count = 0;
+            foreach ($posts as $post)
+            {
+                
+                $nestedData[$count]['mechanicId'] = $post->mechanicId;
+                $nestedData[$count]['tire_dataId'] = $post->titleName;
+                $nestedData[$count]['firstName'] = $post->firstName;
+                $nestedData[$count]['lastName'] = $post->lastName;
+                $nestedData[$count]['phone'] = $post->phone;
+                $nestedData[$count]['personalid'] = $post->personalid;
+              
+                $nestedData[$count]['skill'] = $post->skill;
+                $nestedData[$count]['role'] = $post->role;
+                $nestedData[$count]['exp'] = $post->exp;
+
+
+                $data[$index] = $nestedData;
+                if($count >= 3){
+                    $count = -1;
+                    $index++;
+                    $nestedData = [];
+                }
+                
+                $count++;
+
+            }
+        }
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+        $this->set_response($json_data);
+    }
     function updateMechanic_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $mechanicId = $this->post("mechanicId");
