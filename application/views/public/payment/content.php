@@ -18,6 +18,18 @@
                 <div class="col-lg-3"></div>
                 <div class="card col-lg-6"><br>
                     <div class="form-group row">
+                        <label class="col-lg-3">จำนวนเงินรวม</label>
+                        
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-lg-3">จำนวนเงินมัดจำ</label>
+                        
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-lg-3">จำนวนเงินคงเหลือ</label>
+                        
+                    </div> 
+                    <div class="form-group row">
                         <label class="col-lg-3">วันที่</label>
                         <div class="col-sm-8" >
                             <input type="date" class="form-control" name="date" id="date">
@@ -47,18 +59,6 @@
                             <input type="text" class="form-control" name="money" id="money" placeholder="จำนวนเงิน">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3">จำนวนเงินรวม</label>
-                        
-                    </div> 
-                    <div class="form-group row">
-                        <label class="col-lg-3">จำนวนเงินมัดจำ</label>
-                        
-                    </div> 
-                    <div class="form-group row">
-                        <label class="col-lg-3">จำนวนเงินคงเหลือ</label>
-                        
-                    </div> 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">เเนบสลิป</label>
                         <div class="col-sm-9">
