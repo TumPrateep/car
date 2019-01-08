@@ -9,7 +9,7 @@ class Reserve extends CI_Controller {
 		$this->load->view("lib");
     }
 
-    public function reserve()
+    public function index()
 	{
 		$this->load->view("garage/layout/head");
 		$this->load->view("garage/layout/header");
