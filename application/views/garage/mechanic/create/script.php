@@ -17,6 +17,9 @@
                 },
                 skill: {
                     required: true
+                },
+                personalid:{
+                    required: true
                 }
             },messages:{
                 firstname: {
@@ -33,6 +36,9 @@
                 },
                 skill: {
                     required: "กรุณาเลือกความชำนาญ"
+                },
+                personalid:{
+                    required: "กรอกหมายเลขประจำตัวประชาชน"
                 }
             }
         });
@@ -57,7 +63,11 @@
             var data = $("#submit").serialize();
             $.post(base_url+"apiGarage/Mechanic/createMechanic",data,
             function(data){
-                console.log(data);
+                if(data.message == 200){
+                    showMessage(data.message,"garage/mechanic");
+                }else{
+                    showMessage(data.message,);
+                }
             });
         }
     }

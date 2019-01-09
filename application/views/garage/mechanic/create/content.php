@@ -13,49 +13,51 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row bg-white m-l-0 m-r-0 box-shadow ">
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div class="card-title">
+                        <h4>สร้างข้อมูลช่าง</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
                             <form id="submit">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="first_name"><h4>ชื่อ</h4></label>
-                                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="ชื่อ" title="enter your first name if any.">
+                                            <label for="first_name">ชื่อ</label><span class="error">*</span>
+                                            <input type="text" class="form-control" name="firstname" id="firstName" placeholder="ชื่อ" title="enter your first name if any.">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="last_name"><h4>นามสกุล</h4></label>
-                                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="นามสกุล" title="enter your last name if any.">
+                                            <label for="last_name">นามสกุล</label><span class="error">*</span>
+                                            <input type="text" class="form-control" name="lastname" id="lastName" placeholder="นามสกุล" title="enter your last name if any.">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="phone"><h4>เบอร์โทรศัพท์</h4></label>
+                                            <label for="phone">เบอร์โทรศัพท์</label><span class="error">*</span>
                                             <input type="text" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" title="enter your phone number if any.">
                                         </div>
                                     </div>
-                                  
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="phone"><h4>เลขบัตรประชาชน</h4></label>
+                                            <label for="phone">เลขบัตรประชาชน</label><span class="error">*</span>
                                             <input type="text" class="form-control" name="personalid" id="personalid" placeholder="เลขบัตรประชาชน" title="enter your phone number if any.">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="phone"><h4>ประสบการณ์(ปี)</h4></label>
+                                            <label for="phone">ประสบการณ์(ปี)</label><span class="error">*</span>
                                             <input type="text" class="form-control" name="exp" id="exp" placeholder=" ปี" title="enter your phone number if any.">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="mobile"><h4>ความชำนาญ</h4></label>
+                                            <label for="mobile">ความชำนาญ</label><span class="error">*</span>
                                             <select class="form-control" name="skill" id="skill" placeholder="ความชำนาญ" title="enter your mobile number if any.">
                                                   <option value="">เลือกความชำนาญ</option>
                                                   <option value="Honda">Honda</option>
@@ -67,8 +69,8 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg text-right">
-                                        <button type="submit" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"> บันทึก</button>
+                                    <div class="col-lg-4"> 
+                                        <button type="submit" class="btn btn-info m-b-10 m-l-5">บันทึก</button>
                                     </div>
                                 </div>
                             </form>

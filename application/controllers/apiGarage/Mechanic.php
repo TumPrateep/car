@@ -26,10 +26,10 @@ class Mechanic extends BD_Controller {
         $lastName = $this->post("lastName");
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
-        $personalid = $this->post("personalid");
+        $idCard = $this->post("personalid");
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $data_check = $this->mechanics->data_check_create($personalid,$garageId);
-        // $skill = $this->post("skill");
+        $skill = $this->post("skill");
         //$idcard = $this->post("idcard");
         $data =array(
             'mechanicId' => null,
@@ -38,13 +38,13 @@ class Mechanic extends BD_Controller {
             'lastName' => $lastName,
             'exp' => $exp,
             'phone' => $phone,
-            'personalid' => $personalid,
+            'personalid' => $idCard,
             'status' => 1,
             'activeFlag' => 1,
             'create_by' => $userId,
-            'update_by' => null,
-            'garageId' => $garageId
-            // 'skill' => $skill,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'garageId' => $garageId,
+            'skill' => $skill
             //'rols' => 2
             //'idcard' => $idcard
         );
@@ -60,7 +60,7 @@ class Mechanic extends BD_Controller {
     function searchMechanic_post(){
 
         $columns = array( 
-            0 => 'role'
+            0 => 'firstname'
         );
         $limit = $this->post('length');
         $start = $this->post('start');
@@ -94,7 +94,7 @@ class Mechanic extends BD_Controller {
                 $nestedData[$count]['personalid'] = $post->personalid;
               
                 $nestedData[$count]['skill'] = $post->skill;
-                $nestedData[$count]['role'] = $post->role;
+                // $nestedData[$count]['role'] = $post->role;
                 $nestedData[$count]['exp'] = $post->exp;
 
 
@@ -124,26 +124,24 @@ class Mechanic extends BD_Controller {
         $lastName = $this->post("lastName");
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
-        $personalid = $this->post("personalid");
+        $idCard = $this->post("personalid");
+        $skill = $this->post("skill");
         $garageId = $this->session->userdata['logged_in']['garageId'];
-        $data_check = $this->mechanics->data_check_create($personalid,$garageId);
-        //$userId = $this->session->userdata['logged_in']['id'];
+        $data_check = $this->mechanics->data_check_create($idCard,$garageId);
         $this->load->model("mechanics");
         $data_check_update = $this->mechanics->getMechanicsById($mechanicId);
-        $data_check = $this->mechanics->data_check_update($mechanicId,$firstName,$personalid,$garageId);
+        $data_check = $this->mechanics->data_check_update($mechanicId,$firstName,$idCard,$garageId);
         $data = array(
             'mechanicId' => $mechanicId,
-            'titleName' => null,
             'firstName' => $firstName,
             'lastName' => $lastName,
             'exp' => $exp,
             'phone' => $phone,
-            'personalid' => $personalid,
-            'status' => 1,
-            'activeFlag' => 1,
-            'create_by' => $userId,
-            'update_by' => null,
-            'garageId' => $garageId
+            'personalid' => $idCard,
+            'update_by' => $userId,
+            'update_at' => date('Y-m-d H:i:s',time()),
+            'garageId' => $garageId,
+            'skill' => $skill
         );
         $option = [
             "data_check_update" => $data_check_update,

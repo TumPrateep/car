@@ -88,7 +88,8 @@
 }
 body {
   background: #fff;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: "Open Sans", sans-serif;
   margin: 0;
   overflow-x: hidden;
   color: #67757c;
@@ -5696,7 +5697,7 @@ tbody tr td:last-child {
 }
 .card-two .desc {
   padding: 0 1rem 2rem;
-  text-align: center;
+  text-align: left;
   line-height: 1.5;
   color: #777;
 }
@@ -6947,4 +6948,21 @@ th.dt-head-center{
 
 .error{
   color: red;
+}
+
+.table > div{
+  padding: 0px
+}
+
+.table-nobordered{
+  border: 0px;
+  width: 100% !important;
+}
+
+.table-nobordered > thead > tr > th.sorting_asc{
+  display: none;
+}
+
+.table-nobordered td, .table-nobordered th {
+  border: 0px solid #ffffff !important;
 }

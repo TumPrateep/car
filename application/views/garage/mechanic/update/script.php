@@ -89,7 +89,7 @@
                 $.post(base_url+"apiGarage/Mechanic/updateMechanic",data,
                 function(data){
                     if(data.message == 200){
-                        showMessage(data.message,"garage/mechanic/");
+                        showMessage(data.message,"garage/mechanic");
                     }else{
                         showMessage(data.message);
                     }
