@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2019 at 10:32 AM
+-- Generation Time: Jan 09, 2019 at 05:55 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -67,6 +67,14 @@ CREATE TABLE `cart` (
   `status` varchar(45) DEFAULT NULL,
   `group` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cardId`, `productId`, `quantity`, `create_by`, `create_at`, `status`, `group`) VALUES
+(5, 8, '1', 13, '2019-01-09 11:46:18', NULL, 'spare'),
+(6, 9, '1', 13, '2019-01-09 11:46:18', NULL, 'spare');
 
 -- --------------------------------------------------------
 
@@ -1583,16 +1591,24 @@ CREATE TABLE `mechanic` (
   `firstName` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lastName` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `exp` int(11) DEFAULT NULL,
-  `personalid` int(13) DEFAULT NULL,
+  `personalid` varchar(13) COLLATE utf8_unicode_ci DEFAULT NULL,
   `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `activeFlag` int(11) DEFAULT NULL,
-  `create_at` datetime DEFAULT NULL,
+  `create_at` datetime NOT NULL,
   `update_at` datetime DEFAULT NULL,
   `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
-  `garageId` int(11) NOT NULL
+  `update_by` int(11) DEFAULT NULL,
+  `garageId` int(11) NOT NULL,
+  `skill` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `mechanic`
+--
+
+INSERT INTO `mechanic` (`mechanicId`, `titleName`, `firstName`, `lastName`, `exp`, `personalid`, `phone`, `status`, `activeFlag`, `create_at`, `update_at`, `create_by`, `update_by`, `garageId`, `skill`) VALUES
+(7, NULL, 'ศุภณัฐ', 'คุ้มปิยะผล', 1, '1803366253568', '0835212041', 1, 1, '2019-01-09 11:36:26', NULL, 12, NULL, 1, 'Toyota');
 
 -- --------------------------------------------------------
 
@@ -2391,7 +2407,8 @@ CREATE TABLE `payment` (
   `slip` varchar(255) NOT NULL,
   `orderId` int(11) NOT NULL,
   `created_by` int(11) NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` datetime NOT NULL,
+  `status` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -12702,7 +12719,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`
@@ -12787,6 +12804,12 @@ ALTER TABLE `lubricator_type`
 --
 ALTER TABLE `machinetype`
   MODIFY `machinetypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+
+--
+-- AUTO_INCREMENT for table `mechanic`
+--
+ALTER TABLE `mechanic`
+  MODIFY `mechanicId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `model`

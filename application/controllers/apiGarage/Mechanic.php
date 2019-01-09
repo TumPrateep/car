@@ -22,13 +22,13 @@ class Mechanic extends BD_Controller {
     function createMechanic_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $mechanicId = $this->post("mechanicId");
-        $firstName = $this->post("firstName");
-        $lastName = $this->post("lastName");
+        $firstName = $this->post("firstname");
+        $lastName = $this->post("lastname");
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
         $garageId = $this->session->userdata['logged_in']['garageId'];
-        $data_check = $this->mechanics->data_check_create($personalid,$garageId);
+        $data_check = $this->mechanics->data_check_create($idCard,$garageId);
         $skill = $this->post("skill");
         //$idcard = $this->post("idcard");
         $data =array(
@@ -120,8 +120,8 @@ class Mechanic extends BD_Controller {
     function updateMechanic_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $mechanicId = $this->post("mechanicId");
-        $firstName = $this->post("firstName");
-        $lastName = $this->post("lastName");
+        $firstName = $this->post("firstname");
+        $lastName = $this->post("lastname");
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
