@@ -8,7 +8,7 @@ class Orderdetail extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->load->model('OrderDetails');
+        $this->load->model('orderdetails');
     }
 
     function search_post(){
@@ -22,9 +22,9 @@ class Orderdetail extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $totalData = $this->OrderDetails->all_count($userId);
+        $totalData = $this->orderdetails->all_count($userId);
         $totalFiltered = $totalData; 
-        $posts = $this->OrderDetails->searAllOrder($limit,$start,$order,$dir,$userId);
+        $posts = $this->orderdetails->searAllOrder($limit,$start,$order,$dir,$userId);
 
         $data = array();
         if(!empty($posts))
@@ -51,6 +51,81 @@ class Orderdetail extends BD_Controller {
             "data"            => $data   
         );
         $this->set_response($json_data);
+    }
+
+    function orderDetail_get(){
+        $orderId = $this->get("orderId");
+        $orderDetailData = $this->orderdetails->getOrderDetailByOrderId($orderId);
+        
+        $lubricatorData = $this->getLubricator($orderDetailData);
+        $tireData = $this->getTire($orderDetailData);
+        $spareData = $this->getSpare($orderDetailData);
+
+        $this->set_response($this->getCartData($lubricatorData, $tireData, $spareData), REST_Controller::HTTP_OK);
+    }
+
+    function getCartData($lubricatorData, $tireData, $spareData){
+        $data = [];
+        if($lubricatorData != null){
+
+            foreach ($lubricatorData as $value){
+                $value->group = "lubricator";
+                array_push($data,$value);
+            }
+    
+        }
+        if($tireData != null){
+            foreach($tireData as $value){
+                $value->group = "tire";
+                array_push($data,$value);
+            }
+        }
+        if($spareData != null){
+            foreach($spareData as $value){
+                $value->group = "spare";
+                array_push($data,$value);
+            }
+        }
+
+        return $data;
+    }
+
+    function getLubricator($data){
+        $lubricatorArray = array_filter(
+            $data, function ($e) { 
+                return $e->group == "lubricator"; 
+            }
+        );
+        $productId = [];
+        foreach ($lubricatorArray as $key => $val) {
+            $productId[$key] = $val->productId;
+        }
+        $this->load->model("lubricatordatas");
+        return $this->lubricatordatas->getLubricatorDataForOrderByIdArray($productId);
+    }
+
+    function getTire($data){
+        $tireArray = array_filter(
+            $data, function ($e) { return $e->group == "tire"; }
+        );
+        $productId = [];
+        foreach ($tireArray as $key => $val) {
+            $productId[$key] = $val->productId;
+        }
+        $this->load->model("tiredatas");
+        return $this->tiredatas->getTireDataForOrderByIdArray($productId);
+    }
+
+    function getSpare($data){
+        $spareArray = array_filter(
+            $data, function ($e) { return $e->group == "spare"; }
+        );
+        $productId = [];
+        foreach ($spareArray as $key => $val) {
+            $productId[$key] = $val->productId;
+        }
+        $this->load->model("spare_undercarriagedatas");
+        return $this->spare_undercarriagedatas->getSpareDataForOrderByIdArray($productId);
     }
 
 }

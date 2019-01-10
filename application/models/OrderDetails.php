@@ -1,5 +1,5 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
-class OrderDetails extends CI_Model{
+class Orderdetails extends CI_Model{
     
     function __construct() {
         parent::__construct(); 
@@ -36,6 +36,13 @@ class OrderDetails extends CI_Model{
         $result = $this->db->get("orderdetail");
 
         return $result->row("summary");
+    }
+
+    function getOrderDetailByOrderId($orderId){
+        // $this->db->select("*");
+        $this->db->where("orderId", $orderId);
+        $query = $this->db->get("orderdetail");
+        return $query->result();
     }
 
 }

@@ -58,7 +58,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '';
-                        html+='#'+data.orderId+'<br>';
+                        html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.orderId+'">#'+data.orderId+'</a><br>';
                         if(data.status==1){
                             html+='<span class="badge badge-warning">รออนุมัติ</span>';
                         }else if(data.status==2){

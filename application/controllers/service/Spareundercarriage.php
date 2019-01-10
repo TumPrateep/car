@@ -8,7 +8,7 @@ class Spareundercarriage extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         // $this->auth();
-        $this->load->model("Spareundercarriageproduct");
+        $this->load->model("spareundercarriageproduct");
         $this->load->model("sparesundercarriages");
         $this->load->model("sparesbrand");
         $this->load->model("brand");
@@ -34,7 +34,7 @@ class Spareundercarriage extends BD_Controller {
         $dir = $sort;
 
         
-        $totalData = $this->Spareundercarriageproduct->allSpareData_count();
+        $totalData = $this->spareundercarriageproduct->allSpareData_count();
         $totalFiltered = $totalData;
         
         if(empty($this->post('spares_brandId')) 
@@ -45,7 +45,7 @@ class Spareundercarriage extends BD_Controller {
             && empty($this->post('price'))
             && empty($this->post('can_change')))
         {            
-            $posts = $this->Spareundercarriageproduct->allSpareData($limit,$start,$order,$dir);
+            $posts = $this->spareundercarriageproduct->allSpareData($limit,$start,$order,$dir);
         }
         else {
             
@@ -58,9 +58,9 @@ class Spareundercarriage extends BD_Controller {
             $price = $this->post('price');
             $status = $this->post('status');
             
-            $posts =  $this->Spareundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
+            $posts =  $this->spareundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
 
-            $totalFiltered = $this->Spareundercarriageproduct->SpareDatas_search_count($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
+            $totalFiltered = $this->spareundercarriageproduct->SpareDatas_search_count($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
         }
 
         $this->load->model("sparechanges");
