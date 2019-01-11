@@ -109,7 +109,7 @@ class Menu extends CI_Controller {
         $this->load->view("public/menu/searchgarage/content");
         $this->load->view("public/layout/copyright");        
         $this->load->view("public/layout/foot");
-        // $this->load->view("public/shop/sparepart/script");
+        $this->load->view("public/menu/searchgarage/script");
     }
 
     public function Cart(){
