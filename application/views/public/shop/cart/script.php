@@ -45,9 +45,9 @@ function orderConfirm(){
     }
 }
 
-function createOrderDetail(){
+function createOrderDetail(data){
     $("#selectgarage").modal("hide");
-    $.post(base_url+"service/Order/createOrderDetail", {},
+    $.post(base_url+"service/Order/createOrderDetail", data,
         function (data, textStatus, jqXHR) {
             localStorage.setItem("data",JSON.stringify([]));
             cartData = [];
@@ -326,7 +326,7 @@ $(document).ready(function () {
     $("#reserve_day").datetimepicker({
         timepicker:false,
         formatDate:'d/m/Y',
-        format:'d/m/Y'
+        format:'Y/m/d'
     });
 
     $("#reserve_time").datetimepicker({
@@ -360,7 +360,7 @@ $(document).ready(function () {
         var isValid = confirmForm.valid();
         
         if(isValid){
-            createOrderDetail();
+            createOrderDetail(confirmForm.serialize());
         }
     });
 

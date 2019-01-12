@@ -93,6 +93,8 @@ class Orders extends CI_Model{
                 ];
                 array_push($orderDetail, $temp);
             }
+            $data["reserve"]["orderId"] = $orderId;
+            $this->db->insert("reserve",$data['reserve']);
             $this->db->delete('cart', array('create_by' => $userId));
             $this->db->insert_batch('orderdetail', $orderDetail);
         if ($this->db->trans_status() === FALSE){

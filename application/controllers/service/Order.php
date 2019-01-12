@@ -14,8 +14,23 @@ class Order extends BD_Controller {
 
     function createOrderDetail_post(){
         $userId = $this->session->userdata['logged_in']['id'];
+        $garageId = $this->post("garageId");
+        $reserve_day = $this->post("reserve_day");
+        $reserve_time = $this->post("reserve_time");
+        $plate = $this->post("plate");
+
         $data = array();
         $orderdetail = $this->orders->getAllCartByUserId($userId);
+
+        $data["reserve"] = array(
+            "reserveDate" => $reserve_day,
+            "reservetime" => $reserve_time,
+            "garageId" => $garageId,
+            "created_at" => date('Y-m-d H:i:s',time()),
+            "created_by" => $userId,
+            "status" => 1,
+            "orderId" => ""
+        );
        
         $data['order'] = array(
             'userId' => $userId,

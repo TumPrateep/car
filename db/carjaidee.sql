@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2019 at 01:14 PM
+-- Generation Time: Jan 12, 2019 at 01:39 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -67,13 +67,6 @@ CREATE TABLE `cart` (
   `status` varchar(45) DEFAULT NULL,
   `group` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cardId`, `productId`, `quantity`, `create_by`, `create_at`, `status`, `group`) VALUES
-(189, 9, '3', 13, '2019-01-12 19:12:09', NULL, 'spare');
 
 -- --------------------------------------------------------
 
@@ -2357,9 +2350,9 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`orderId`, `activeflag`, `userId`, `create_by`, `status`, `create_at`, `car_profileId`) VALUES
-(10000, '1', 13, 13, '1', '2019-01-12 18:04:36', NULL),
-(10001, '1', 13, 13, '1', '2019-01-12 18:06:54', NULL),
-(10002, '1', 13, 13, '1', '2019-01-12 18:08:00', NULL);
+(10008, '1', 13, 13, '1', '2019-01-12 19:35:09', NULL),
+(10009, '1', 13, 13, '1', '2019-01-12 19:35:51', NULL),
+(10010, '1', 13, 13, '1', '2019-01-12 19:37:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -2387,10 +2380,13 @@ CREATE TABLE `orderdetail` (
 --
 
 INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `quantity`, `charge`, `chargeGarage`, `cost`, `status`, `activeflag`, `create_at`, `group`) VALUES
-(28, 10000, 13, 10, 1, 1000, 700, 1300, 1, 1, '2019-01-12 18:04:36', 'spare'),
-(29, 10001, 13, 11, 1, 1000, 700, 1600, 1, 1, '2019-01-12 18:06:54', 'spare'),
-(30, 10002, 13, 8, 1, 1000, 700, 1300, 1, 1, '2019-01-12 18:08:01', 'spare'),
-(31, 10002, 13, 9, 4, 1000, 700, 600, 1, 1, '2019-01-12 18:08:01', 'spare');
+(34, 10008, 13, 8, 3, 1000, 700, 1300, 1, 1, '2019-01-12 19:35:10', 'spare'),
+(35, 10009, 13, 8, 1, 1000, 700, 1300, 1, 1, '2019-01-12 19:35:51', 'spare'),
+(36, 10009, 13, 9, 1, 1000, 700, 600, 1, 1, '2019-01-12 19:35:51', 'spare'),
+(37, 10009, 13, 10, 1, 1000, 700, 1300, 1, 1, '2019-01-12 19:35:51', 'spare'),
+(38, 10009, 13, 11, 2, 1000, 700, 1600, 1, 1, '2019-01-12 19:35:51', 'spare'),
+(39, 10010, 13, 9, 1, 1000, 700, 600, 1, 1, '2019-01-12 19:37:57', 'spare'),
+(40, 10010, 13, 10, 1, 1000, 700, 1300, 1, 1, '2019-01-12 19:37:57', 'spare');
 
 -- --------------------------------------------------------
 
@@ -2625,6 +2621,15 @@ CREATE TABLE `reserve` (
   `created_at` datetime NOT NULL,
   `created_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `reserve`
+--
+
+INSERT INTO `reserve` (`reserveId`, `status`, `reserveDate`, `reservetime`, `orderId`, `garageId`, `created_at`, `created_by`) VALUES
+(6, '1', '2019-01-25', '20:00:00', 10008, 1, '2019-01-12 19:35:09', 13),
+(7, '1', '2019-01-30', '22:00:00', 10009, 1, '2019-01-12 19:35:51', 13),
+(8, '1', '2019-01-09', '20:00:00', 10010, 1, '2019-01-12 19:37:57', 13);
 
 -- --------------------------------------------------------
 
@@ -12794,7 +12799,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`
@@ -12902,13 +12907,13 @@ ALTER TABLE `modelofcar`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10003;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10011;
 
 --
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -12926,7 +12931,7 @@ ALTER TABLE `province`
 -- AUTO_INCREMENT for table `reserve`
 --
 ALTER TABLE `reserve`
-  MODIFY `reserveId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `reserveId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `rim`
