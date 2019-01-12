@@ -61,11 +61,7 @@ class Orderapprove extends BD_Controller {
     function changeStatus_post(){
         $orderId = $this->post("orderId");
         $status = $this->post("status");
-        if($status == 1){
-            $status = 2;
-        }else{
-            $status = 1;
-        }
+      
         $data = array(
             'orderId' => $orderId,
             'status' => $status,

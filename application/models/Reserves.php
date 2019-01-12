@@ -16,7 +16,7 @@ class Reserves extends CI_Model{
     }
 
     function allReserve($limit,$start,$col,$dir,$garageId){
-        $this->db->select('reserve.reserveId, order.orderId, reserve.reserveDate, reserve.reservetime,user_profile.userId,reserve.status');
+        $this->db->select('reserve.reserveId, order.orderId, reserve.reserveDate, reserve.reservetime,user_profile.userId,reserve.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
         $this->db->from('order');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');

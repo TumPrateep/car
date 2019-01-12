@@ -38,6 +38,7 @@ class Reserve extends BD_Controller {
         {
             foreach ($posts as $post)
             {
+                $nestedData['name'] = $post->name;
                 $nestedData['reserveId'] = $post->reserveId;
                 // $nestedData['garageId'] = $post->garageId;
                 $nestedData['orderId'] = $post->orderId;

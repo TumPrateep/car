@@ -35,10 +35,13 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "orderId" },
+                null,
+                // { "data": "orderId" },
                 { "data": "name" },
-                { "data": "reserveStatus" },
-                { "data": "paymentStatus" },
+                null,
+                null,
+                // { "data": "reserveStatus" },
+                // { "data": "paymentStatus" },
                 null
             ],
             "columnDefs": [
@@ -51,6 +54,49 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
+                    }
+                },{
+                    "targets": 1,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var html = '';
+                        html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.orderId+'">#'+data.orderId+'</a><br>';
+                     
+                        return html;
+                    }
+                },{
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var html = '';
+                        // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.reserveStatus+'">#'+data.reserveStatus+'</a><br>';
+                        if(data.status==1){
+                            html+='<span class="badge badge-warning">รออนุมัติ</span>';
+                        }else if(data.status==2){
+                            html+='<span class="badge badge-success">อนุมัติ</span>';
+                        }else if(data.status==3){
+                            html+='<span class="badge badge-danger">ยกเลิกการจอง</span>';
+                        }else{
+                            html+='<span class="badge badge-danger">ผิดพลาด</span>';
+                        }
+                        return html;
+                    }
+                },{
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var html = '';
+                        // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.paymentStatus+'">#'+data.paymentStatus+'</a><br>';
+                        if(data.status==1){
+                            html+='<span class="badge badge-warning">รออนุมัติ</span>';
+                        }else if(data.status==2){
+                            html+='<span class="badge badge-success">อนุมัติ</span>';
+                        }else if(data.status==3){
+                            html+='<span class="badge badge-danger">ยกเลิกการจอง</span>';
+                        }else{
+                            html+='<span class="badge badge-danger">ผิดพลาด</span>';
+                        }
+                        return html;
                     }
                 },{
                     "targets": 5,
