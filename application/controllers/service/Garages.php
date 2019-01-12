@@ -19,25 +19,36 @@ class Garages extends BD_Controller {
    
     function searchgarage_post(){
 
-        $columns = array( 
-            0 => 'garageName'
-        );
+        // $columns = array( 
+        //     0 => 'garageName'
+        // );
+
+        $column = "garageId";
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
+
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $columns[$this->post('order')[0]['column']];
-        $dir = $this->post('order')[0]['dir'];
+        $order = $column;
+        $dir = $sort;
         $totalData = $this->searchgarages->allgarage_count();
         $totalFiltered = $totalData; 
-        if(empty($this->post('garageName'))&& empty($this->post('businessRegistration')))
-        {            
+        // if(empty($this->post('garageName'))&& empty($this->post('businessRegistration')))
+        // {            
             $posts = $this->searchgarages->allgarage($limit,$start,$order,$dir);
-        }
-        else {
-            $garageName = $this->post('garageName'); 
-            $businessRegistration = $this->post('businessRegistration');
-            $posts =  $this->searchgarages->garage_search($limit,$start,$order,$dir,$garageName,$businessRegistration);
-            $totalFiltered = $this->searchgarages->garage_search_count($garageName,$businessRegistration);
-        }
+        // }
+        // else {
+        //     $garageName = $this->post('garageName'); 
+        //     $businessRegistration = $this->post('businessRegistration');
+        //     $posts =  $this->searchgarages->garage_search($limit,$start,$order,$dir,$garageName,$businessRegistration);
+        //     $totalFiltered = $this->searchgarages->garage_search_count($garageName,$businessRegistration);
+        // }
         $data = array();
         if(!empty($posts))
         {
@@ -49,15 +60,13 @@ class Garages extends BD_Controller {
                 $nestedData[$count]['garageId'] = $post->garageId;
                 $nestedData[$count]['garageName'] = $post->garageName;
                 $nestedData[$count]['businessRegistration'] = $post->businessRegistration;
-                $nestedData[$count]['garageAddress'] = $post->garageAddress;
-                $nestedData[$count]['postCode'] = $post->postCode;
-                $nestedData[$count]['subdistrictId'] = $post->subdistrictId;
-                $nestedData[$count]['districtId'] = $post->districtId;
-                $nestedData[$count]['provinceId'] = $post->provinceId;
-                $nestedData[$count]['latitude'] = $post->latitude;
-                $nestedData[$count]['longtitude'] = $post->longtitude;
-              
-    
+                // $nestedData[$count]['garageAddress'] = $post->garageAddress;
+                // $nestedData[$count]['postCode'] = $post->postCode;
+                // $nestedData[$count]['subdistrictId'] = $post->subdistrictId;
+                // $nestedData[$count]['districtId'] = $post->districtId;
+                // $nestedData[$count]['provinceId'] = $post->provinceId;
+                // $nestedData[$count]['latitude'] = $post->latitude;
+                // $nestedData[$count]['longtitude'] = $post->longtitude;
 
                 $data[$index] = $nestedData;
                 if($count >= 3){
