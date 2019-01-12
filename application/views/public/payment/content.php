@@ -16,20 +16,7 @@
             <input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">
             <div class="row">
                 <div class="col-lg-5">
-                    <div class="card"><br>
-                        <div class="form-group text-center">
-                            <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker">
-                        </div> 
-                        <div class="form-group">
-                            <h3>เลขบัญชี : 12345678909876</h3>
-                        </div> 
-                        <div class="form-group">
-                            <p>ชื่อผู้รับเงิน : Dome</p>
-                        </div> 
-                        <div class="form-group text-center">
-                            <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker">
-                        </div>
-                    </div>
+                    <img src="<?=base_url("public/themes/user/images/bank.jpg") ?>" class="img-fluid">
                 </div>
                 <div class="card col-lg-6"><br>
                     <div class="form-group row">
