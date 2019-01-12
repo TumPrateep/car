@@ -354,7 +354,6 @@ $(document).ready(function () {
 
     function createCarprofile(){
         
-
         var isValid = form.valid();
         
         if(isValid){

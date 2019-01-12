@@ -45,6 +45,28 @@ class Orders extends CI_Model{
         return $charge;
     }
 
+    function getGarageCharge($productId, $group){
+        $charge = null;
+        if($group == "tire"){
+            $this->db->select("((tire_change_charge.tire_font + tire_change_charge.tire_bank)/2) as charge");
+            $this->db->from("tire_data");
+            $this->db->join('tire_change_charge','tire_change_charge.rimId = tire_data.rimId');
+            $this->db->where("tire_data.tire_dataId",$productId);
+            $charge = $this->db->get()->row("charge");
+        }else if($group == "spare"){
+            $this->db->select("spares_change_garage.spares_price as charge");
+            $this->db->from("spares_undercarriagedata");
+            $this->db->join('spares_change_garage','spares_change_garage.spares_undercarriageId = spares_undercarriagedata.spares_undercarriageId');
+            $this->db->where("spares_undercarriagedata.spares_undercarriageDataId",$productId);
+            $charge = $this->db->get()->row("charge");
+        }else{
+            $this->db->select("lubricator_change_garage.lubricator_price as charge");
+            $this->db->from("lubricator_change_garage");
+            $charge = $this->db->get()->row("charge");
+        }
+        return $charge;
+    }
+
     function insert($data){
         $this->db->trans_begin();
             $userId = $this->session->userdata['logged_in']['id'];
@@ -55,6 +77,7 @@ class Orders extends CI_Model{
             foreach ($orderDetailData as $val) {
                 $cost =  $this->getCost($val->productId, $val->group);
                 $charge =  $this->getCharge($val->productId, $val->group);
+                $chargeGarage =  $this->getGarageCharge($val->productId, $val->group);
                 $temp = [
                     'orderId' => $orderId,
                     'userId' => $userId,
@@ -65,6 +88,7 @@ class Orders extends CI_Model{
                     'group' => $val->group,
                     'cost' => $cost,
                     'charge' => $charge,
+                    'chargeGarage' => $chargeGarage,
                     'create_at' => date('Y-m-d H:i:s',time())
                 ];
                 array_push($orderDetail, $temp);
@@ -89,7 +113,7 @@ class Orders extends CI_Model{
     
         return $query->num_rows();  
     }
-    function searAllOrder($limit,$start,$col,$dir,$userId)
+    function searchAllOrder($limit,$start,$col,$dir,$userId)
     {   
         $query = $this
             ->db

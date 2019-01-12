@@ -31,11 +31,11 @@ class Orderdetails extends CI_Model{
     }
 
     function getSummaryCostFromOrderDetail($orderId, $userId){
-        $this->db->select("sum((cost*1.1)+charge) as summary");
+        $this->db->select("sum(cost) as cost, sum(charge) as charge, sum(chargeGarage) as chargeGarage");
         $this->db->where("orderId", $orderId);
         $result = $this->db->get("orderdetail");
 
-        return $result->row("summary");
+        return $result->row();
     }
 
     function getOrderDetailByOrderId($orderId){

@@ -51,7 +51,7 @@ class Order extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
         $totalData = $this->orders->all_count($userId);
         $totalFiltered = $totalData; 
-        $posts = $this->orders->searAllOrder($limit,$start,$order,$dir,$userId);
+        $posts = $this->orders->searchAllOrder($limit,$start,$order,$dir,$userId);
 
         $data = array();
         if(!empty($posts))
@@ -62,7 +62,9 @@ class Order extends BD_Controller {
                 $nestedData['create_at'] = $post->create_at;
                 $nestedData['status'] = $post->status;
                 $nestedData['create_by'] = $post->userId;
-                $nestedData['summary'] = (int)$this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
+                $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
+                $nestedData['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
+                $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage);
                 $data[] = $nestedData;
             }
         }
