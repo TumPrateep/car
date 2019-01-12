@@ -9,6 +9,7 @@ class Paymentss extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         $this->load->model('payments');
+        $this->load->model('orderdetails');
     }
 
     function createPaymentDetail_post(){
@@ -47,13 +48,12 @@ class Paymentss extends BD_Controller {
         
     }
 
-    function getcost_get(){
+    function getCost_get(){
         $orderId = $this->get("orderId");
         $userId = $this->session->userdata['logged_in']['id'];
-        $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
-        $result['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
-        $result['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage);
-        $output["data"] = $result;
+        $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($orderId, $userId);
+        $output['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
+        $output['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage);
         $this->set_response($output, REST_Controller::HTTP_OK);
     } 
 

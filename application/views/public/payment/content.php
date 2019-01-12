@@ -20,19 +20,13 @@
                     <div class="form-group row">
                         <label class="col-lg-3" >จำนวนเงินรวม</label>
                          <div class="col-sm-8">
-                            <input type="text" class="form-control" name="summoney" id="summoney">
+                            <input type="text" class="form-control" name="summoney" id="summoney" disabled>
                         </div>
                     </div> 
                     <div class="form-group row">
                         <label class="col-lg-3" >จำนวนเงินมัดจำ</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="depositmoney" id="depositmoney">
-                        </div>
-                    </div> 
-                    <div class="form-group row">
-                        <label class="col-lg-3" >จำนวนเงินคงเหลือ</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" name="totalmoney" id="totalmoney">
+                            <input type="text" class="form-control" name="depositmoney" id="depositmoney" disabled>
                         </div>
                     </div> 
                     <div class="form-group row">

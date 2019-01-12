@@ -51,13 +51,5 @@ class Payments extends CI_Model {
         return $result->row();
     }
 
-  
-
-
-
-
-
-
-
-
+}
    

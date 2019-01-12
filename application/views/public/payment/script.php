@@ -34,16 +34,6 @@
             }
         });
 
-        form.submit(function (e) { 
-            e.preventDefault();
-            var isValid = form.valid();
-            if(isValid){
-                alert("pass");
-            }else{
-                alert("unpass");
-            }
-        });
-
     form.submit(function(){
         createPayment();
     })
@@ -68,6 +58,14 @@
             });
         }
     }
+
+    $.get(base_url+"service/Paymentss/getCost", {orderId: $("#orderId").val()},
+        function (data, textStatus, jqXHR) {
+            console.log(data);
+            $("#summoney").val(data.summary);
+            $("#depositmoney").val(data.deposit);
+        }
+    );
 
   });
 </script>
