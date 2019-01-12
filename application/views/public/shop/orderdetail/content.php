@@ -30,22 +30,18 @@
 				</div>
             </div>
 			<div class="col-lg-9">
+			<h4 class="orange">หมายเลขสั่งซื้อ: <?=$orderId ?></h4>
 			<input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">
-					<table class="table table-borderless" id="showOrder">
+					<table class="table">
 						<thead>
-							<tr>
-							<th scope="col">First</th>
-							<th scope="col">ชื่อสินค้า</th>
-							<th scope="col">จำนวน</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-							</tr>
-						</tbody>
+                        	<tr>
+                            	<th scope="col">รูป</th>
+                            	<th scope="col">ชื่อสินค้า</th>
+                            	<th scope="col">จำนวน</th>
+                            	<th scope="col">ราคา</th>
+                            </tr>
+                        </thead>
+						<tbody id="showOrder"></tbody>
 					</table>
 				</div>
 							

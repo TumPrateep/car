@@ -70,6 +70,8 @@ class Orderdetail extends BD_Controller {
 
             foreach ($lubricatorData as $value){
                 $value->group = "lubricator";
+                $value->cost = calSummary($value->cost, $value->charge) * $value->quantity;
+                $value->charge = 0;
                 array_push($data,$value);
             }
     
@@ -77,12 +79,16 @@ class Orderdetail extends BD_Controller {
         if($tireData != null){
             foreach($tireData as $value){
                 $value->group = "tire";
+                $value->cost = calSummary($value->cost, $value->charge) * $value->quantity;
+                $value->charge = 0;
                 array_push($data,$value);
             }
         }
         if($spareData != null){
             foreach($spareData as $value){
                 $value->group = "spare";
+                $value->cost = calSummary($value->cost, $value->charge) * $value->quantity;
+                $value->charge = 0;
                 array_push($data,$value);
             }
         }
