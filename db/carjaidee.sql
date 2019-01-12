@@ -1193,6 +1193,7 @@ CREATE TABLE `garage` (
   `businessRegistration` varchar(45) NOT NULL,
   `garageName` varchar(255) NOT NULL,
   `garageAddress` varchar(255) NOT NULL,
+  `skill` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `postCode` varchar(45) NOT NULL,
   `latitude` varchar(45) NOT NULL,
   `longtitude` varchar(45) NOT NULL,
@@ -1222,8 +1223,11 @@ CREATE TABLE `garage` (
 -- Dumping data for table `garage`
 --
 
-INSERT INTO `garage` (`garageId`, `comment`, `businessRegistration`, `garageName`, `garageAddress`, `postCode`, `latitude`, `longtitude`, `approve`, `subdistrictId`, `districtId`, `provinceId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `option1`, `option2`, `option3`, `option4`, `option_outher`, `garagePicture`, `firstname`, `lastname`, `idcard`, `addressGarage`, `userId`) VALUES
-(1, '', '1111111111111', 'garageService', '13', '11111', '', '', '2', 6384, 716, 49, 1, NULL, '2018-12-26 11:29:22', NULL, 1, 2, 2, 2, 2, '', NULL, 'garage', 'garage', '1111111111119', '13', 12);
+INSERT INTO `garage` (`garageId`, `comment`, `businessRegistration`, `garageName`, `garageAddress`, `skill`, `postCode`, `latitude`, `longtitude`, `approve`, `subdistrictId`, `districtId`, `provinceId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `option1`, `option2`, `option3`, `option4`, `option_outher`, `garagePicture`, `firstname`, `lastname`, `idcard`, `addressGarage`, `userId`) VALUES
+(1, '', '1111111111101', 'garageService0', '13','ISUZU', '11111', '', '', '2', 6384, 716, 49, 1, NULL, '2018-12-26 11:29:22', NULL, 1, 2, 2, 2, 2, '', NULL, 'garage', 'garage', '1111111111119', '13', 12),
+(2, '', '1111111111102', 'garageService1', '13','MAZDA', '11102', '', '', '2', 6384, 716, 49, 1, NULL, '2018-12-26 11:29:22', NULL, 1, 2, 2, 2, 2, '', NULL, 'garage', 'garage', '1111111111119', '13', 12),
+(3, '', '1111111111103', 'garageService2', '13','FORD', '11114', '', '', '2', 6384, 716, 49, 1, NULL, '2018-12-26 11:29:22', NULL, 1, 2, 2, 2, 2, '', NULL, 'garage', 'garage', '1111111111119', '13', 12),
+(4, '', '1111111111104', 'garageService3', '13','HONDA', '11178', '', '', '2', 6384, 716, 49, 1, NULL, '2018-12-26 11:29:22', NULL, 1, 2, 2, 2, 2, '', NULL, 'garage', 'garage', '1111111111119', '13', 12);
 
 -- --------------------------------------------------------
 
