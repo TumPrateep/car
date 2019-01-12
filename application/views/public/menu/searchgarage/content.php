@@ -94,9 +94,9 @@
 						</div>
 					</div>
 
-					<div class="product_grid">
+                    <div class="product_grid">
 						<div class="row">
-							<table class="table table-bordered" id="search-table" width="100%" cellspacing="0">
+							<table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
 								<thead>
 									<tr>
 										<th></th>
@@ -104,10 +104,6 @@
 								</thead>
 							</table>
 						</div>
-						
-
-					</div>
-					
 				</div>
 			</div>
 		</div>
