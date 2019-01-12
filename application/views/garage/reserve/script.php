@@ -36,10 +36,11 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "orderId" },
+                null,
+                // { "data": "orderId" },
                 { "data": "reserveDate" },
                 { "data": "reservetime" },
-                { "data": "userId" },
+                { "data": "name" },
                 null,
                 null
                 
@@ -56,11 +57,31 @@
                         return meta.row + 1;
                     }
                 },{
+                    "targets": 1,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var html = '';
+                        html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.orderId+'">#'+data.orderId+'</a><br>';
+                     
+                        return html;
+                    }
+                },{
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        
-                        return data.status;
+                        var html = '';
+                        // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
+                        if(data.status==1){
+                            html+='<span class="badge badge-warning">รออนุมัติ</span>';
+                        }else if(data.status==2){
+                            html+='<span class="badge badge-success">อนุมัติ</span>';
+                        }else if(data.status==3){
+                            html+='<span class="badge badge-danger">ยกเลิกการจอง</span>';
+                        }else{
+                            html+='<span class="badge badge-danger">ผิดพลาด</span>';
+                        }
+                        return html;
+                        // return data.status;
                     }
                 },{
                     "targets": 6,

@@ -131,6 +131,21 @@
           </a>
         </li>
         
+        <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link text-white" href="<?=base_url("admin/orderapprove") ?>">
+            <i class="fa fa-map-o" aria-hidden="true"></i>
+            <span class="nav-link-text">orderapprove</span>
+          </a>
+        </li>
+        
+        <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link text-white" href="<?=base_url("admin/paymentapprove") ?>">
+            <i class="fa fa-map-o" aria-hidden="true"></i>
+            <span class="nav-link-text">paymentapprove</span>
+          </a>
+        </li>
+        
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="#">
             <i class="fa fa-fw fa-link"></i>

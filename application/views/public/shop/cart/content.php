@@ -92,24 +92,26 @@
 					<!-- add new car -->
 						<div class="col-md-6 leftline" id="addNewCarprofile" style="display:none;">
 							<h4 class="underline">เพิ่มข้อมูลรถยนต์ที่ต้องการใช้บริการ</h4>
+							<form id="submit">
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
-										<label for="garage">อักษรนำหน้า</label>
-										<input type="text" class="form-control" id="character" name="character" placeholder="อักษร">
+										<label for="garage">อักษรนำหน้า</label><span class="error">*</span>
+										<input type="text" class="form-control" id="character_plate" name="character_plate" placeholder="อักษร">
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label for="garage">หมายเลข</label>
-										<input type="text" class="form-control" id="labelCarNumber" name="labelCarNumber" placeholder="หมายเลข">
+										<label for="garage">หมายเลข</label><span class="error">*</span>
+										<input type="text" class="form-control" id="number_plate" name="number_plate" placeholder="หมายเลข">
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label for="garage">จังหวัด</label>
-										<select class="form-control input-default" name="provinceforcar" id="provinceforcar">
+										<label for="garage">จังหวัด</label><span class="error">*</span>
+										<select class="form-control input-default" name="province_plate" id="province_plate">
 											<option value="">เลือกจังหวัด</option>
+											<option value="ตรัง">ตรัง</option>
 										</select>
 									</div>
 								</div>
@@ -117,25 +119,28 @@
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
-										<label class="control-label">ยี่ห้อรถ</label>
-										<select class="form-control input-default" name="brandId" id="brandId">
+										<label class="control-label">ยี่ห้อรถ</label><span class="error">*</span>
+										<select class="form-control input-default" name="" id="">
 											<option value="">เลือกยี่ห้อรถ</option>
+											<option value="toyota">toyota</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label class="control-label">รุ่นรถ</label>
-										<select class="form-control input-default">
+										<label class="control-label">รุ่นรถ</label><span class="error">*</span>
+										<select class="form-control input-default" name"" id="">
 											<option value="">เลือกรุ่นรถ</option>
+											<option value="มังกรไฟ">มังกรไฟ</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label class="control-label">รายละเอียด</label>
-										<select class="form-control input-default" name="brandId" id="brandId">
+										<label class="control-label">รายละเอียด</label><span class="error">*</span>
+										<select class="form-control input-default" name="" id="">
 											<option value="">เลือกรายละเอียด</option>
+											<option value="ม่วงงาม">ม่วงงาม</option>
 										</select>
 									</div>
 								</div>
@@ -143,17 +148,19 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="control-label">ปีที่ผลิต</label>
-										<select class="form-control input-default">
+										<label class="control-label">ปีที่ผลิต</label><span class="error">*</span>
+										<select class="form-control input-default" name"" id="">
 											<option value="">เลือกปีที่ผลิต</option>
+											<option value="2012">2012</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="control-label">โฉมรถ</label>
-										<select class="form-control input-default">
+										<label class="control-label">โฉมรถ</label><span class="error">*</span>
+										<select class="form-control input-default" name"" id="">
 											<option value="">เลือกโฉมรถ</option>
+											<option value="95">95</option>
 										</select>
 									</div>
 								</div>
@@ -161,13 +168,13 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="garage">สีรถ</label>
-										<input type="text" class="form-control" id="colorCar" name="colorCar" placeholder="สีรถ">
+										<label for="garage">สีรถ</label><span class="error">*</span>
+										<input type="text" class="form-control" id="color" name="color" placeholder="สีรถ">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="garage">เลขไมล์</label>
+										<label for="garage">เลขไมล์</label><span class="error">*</span>
 										<input type="text" class="form-control" id="mileage" name="mileage" placeholder="เลขไมล์">
 									</div>
 								</div>
@@ -178,9 +185,10 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-orange"><span class="fas fa-save"></span> บันทึก</button>
+								<button type="submit" class="btn btn-orange"><span class="fas fa-save"></span> บันทึก</button>
 								<button type="button" class="btn btn-secondary" id="newCarClose"><span class="fas fa-times"></span> ปิด</button>		
 							</div>
+							</form>
 						</div>
 					</div>
 				</div>

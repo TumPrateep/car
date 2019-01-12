@@ -24,7 +24,7 @@ class Carprofile extends BD_Controller {
         $mileage = $this->post("mileage");
         $color = $this->post("color");
 
-        $data_check = $this->Carprofiles->data_check_create($character_plate,$number_plate ,$province_plate, $userId);
+        $data_check = $this->carprofiles->data_check_create($character_plate,$number_plate ,$province_plate, $userId);
 
         $data =array(
             'car_profileId' => null,

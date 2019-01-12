@@ -63,6 +63,8 @@
                             html+='<span class="badge badge-warning">รออนุมัติ</span>';
                         }else if(data.status==2){
                             html+='<span class="badge badge-success">อนุมัติ</span>';
+                        }else if(data.status==3){
+                            html+='<span class="badge badge-danger">ยกเลิกการจอง</span>';
                         }else{
                             html+='<span class="badge badge-danger">ผิดพลาด</span>';
                         }

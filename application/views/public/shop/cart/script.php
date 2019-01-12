@@ -291,7 +291,7 @@ function getTire(value, index){
 }
 
 $(document).ready(function () {
-
+    var form = $("#submit");
     $.post(base_url+"service/Cart/cartDetail", {"cartData": cartData},
         function (data, textStatus, jqXHR) {
             cartDataDetail = data;
@@ -343,6 +343,73 @@ $(document).ready(function () {
         $("#addNewCarprofile").fadeOut("slow");
         $("#maxWidthSelect").animate({"max-width":"500px"}, "slow");  
     });
+
+
+    
+    form.submit(function(event){
+        event.preventDefault();
+        createCarprofile();
+    })
+
+
+    function createCarprofile(){
+        
+
+        var isValid = form.valid();
+        
+        if(isValid){
+            
+            var data = form.serialize();
+            $.post(base_url+"service/Carprofile/createCarProfile",data,
+            function(data){
+                if(data.message == 200){
+                    showMessage(data.message,"shop/lubricator");
+                }else{
+                    showMessage(data.message);
+                }
+                console.log(data);
+            });
+        }
+    }
+
+
+
+        form.validate({
+            rules:{
+                character_plate: {
+                    required: true
+                },
+                number_plate: {
+                    required: true
+                },
+                province_plate: {
+                    required: true
+                },
+                color: {
+                    required: true
+                },
+                mileage: {
+                    required: true
+                }    
+            },messages:{
+                character_plate: {
+                    required: "กรุณากรอกอักษรนำหน้า"
+                },
+                number_plate: {
+                    required: "กรุณากรอกหมายเลข"
+                },
+                province_plate: {
+                    required: "กรุณากรอกจังหวัด"
+                },
+                color: {
+                    required: "กรุณากรอกสี"
+                },
+                mileage: {
+                    required: "กรุณากรอกเลขไมล์"
+                } 
+            }
+        });
+
 
 });
 
