@@ -52,7 +52,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,1,3]
+                    "targets": [0,2,3,4,5,6]
                 },{
                     "targets": 2,
                     "data": null,
@@ -62,12 +62,18 @@
                 }
                 ,{
                     "targets": 3,
-                    "data": null
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return currency(data.deposit, {  precision: 0 }).format() + " บาท";
+                    }
 
                 }
                 ,{
                     "targets": 4,
-                    "data": null
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return currency(data.summary - data.deposit, {  precision: 0 }).format() + " บาท";
+                    }
 
                 }
                 ,{
@@ -123,12 +129,12 @@
                 },
                 
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,3]},
-                { "width": "15%", "targets": 0 },
-                { "width": "20%", "targets": 1 },
-                { "width": "20%", "targets": 2 },
-                { "width": "20%", "targets": 3 }
+                {"className": "dt-head-center", "targets": []},
+                {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
+                // { "width": "12%", "targets": 0 },
+                // { "width": "20%", "targets": 1 },
+                // { "width": "20%", "targets": 2 },
+                // { "width": "20%", "targets": 3 }
             ]	 
 
     });
