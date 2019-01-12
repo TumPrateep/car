@@ -42,13 +42,14 @@
                 null,
                 // { "data": "reserveStatus" },
                 // { "data": "paymentStatus" },
+                null,
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5]
+                    "targets": [0,6]
                 },{
                     "targets": 0,
                     "data": null,
@@ -68,42 +69,30 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        var html = '';
-                        // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.reserveStatus+'">#'+data.reserveStatus+'</a><br>';
-                        if(data.status==1){
-                            html+='<span class="badge badge-warning">รออนุมัติ</span>';
-                        }else if(data.status==2){
-                            html+='<span class="badge badge-success">อนุมัติ</span>';
-                        }else if(data.status==3){
-                            html+='<span class="badge badge-danger">ยกเลิกการจอง</span>';
-                        }else{
-                            html+='<span class="badge badge-danger">ผิดพลาด</span>';
-                        }
-                        return html;
+                        return approveStatus(data.reserveStatus);
                     }
                 },{
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        var html = '';
-                        // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.paymentStatus+'">#'+data.paymentStatus+'</a><br>';
-                        if(data.status==1){
-                            html+='<span class="badge badge-warning">รออนุมัติ</span>';
-                        }else if(data.status==2){
-                            html+='<span class="badge badge-success">อนุมัติ</span>';
-                        }else if(data.status==3){
-                            html+='<span class="badge badge-danger">ยกเลิกการจอง</span>';
-                        }else{
-                            html+='<span class="badge badge-danger">ผิดพลาด</span>';
-                        }
-                        return html;
+                        return approveStatus(data.paymentStatus);
                     }
                 },{
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<button type="button" class="btn btn-warning">ยืนยัน</button> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletetirechange('+data.tire_changeId+',\''+data.tire_front+'\',\''+data.tire_back+'\')">ยกเลิก</button>';
+                        return approveStatus(data.status);
+                    }
+                },{
+                    "targets": 6,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var disable = "";
+                        if(data.paymentStatus != 2 && data.reserveStatus != 3){
+                            disable = "disabled";
+                        }
+                        return '<button type="button" class="btn btn-success" '+disable+' onclick="confirmStatus('+data.orderId+')">ยืนยัน</button> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.orderId+')">ยกเลิก</button>';
                     }
                 },
                 
@@ -112,7 +101,7 @@
                 {"className": "dt-center", "targets": [0,1,2,3,4,5]},
                 { "width": "8%", "targets": 0 },
                 { "width": "18%", "targets": 1 },
-                { "width": "20%", "targets": 2 },
+                { "width": "15%", "targets": 2 },
                 { "width": "15%", "targets": 3 },
                 { "width": "20%", "targets": 4 }
             ]	 
@@ -126,6 +115,28 @@
             gotoUrl: "admin/Tires/tirechange/"
         }
         fnDelete(option);
+    }
+
+    function confirmStatus(orderId){
+        var option = {
+            url: "/Orderapprove/changeStatus?orderId="+orderId,
+            label: "ยืนยันรายการสั่งซื้อ",
+            status: 2,
+            content: "คุณต้องการยืนยันรายการสั่งซื้อนี้ ใช่หรือไม่",
+            gotoUrl: "admin/orderapprove"
+        }
+        fnConfirm(option);
+    }   
+
+    function cancelStatus(orderId){
+        var option = {
+            url: "/Orderapprove/changeStatus?orderId="+orderId,
+            label: "ยกเลิกรายการสั่งซื้อ",
+            status: 3,
+            content: "คุณต้องการยกเลิกรายการสั่งซื้อนี้ ใช่หรือไม่",
+            gotoUrl: "admin/orderapprove"
+        }
+        fnConfirm(option);
     }
 
     $("#form-search").submit(function(){

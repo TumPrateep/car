@@ -20,15 +20,11 @@
     <script src="<?php echo base_url() ?>public/js/additional-methods.min.js"></script>
 
     <script src="<?php echo base_url() ?>public/js/datatable-responsive.js"></script>
-    
-    
     <script src="<?=base_url("/public/js/popper.min.js") ?>"></script>
-
     <script src="<?=base_url("/public/js/currency.min.js") ?>"></script>
-
     <script src="<?=base_url("/public/js/fileinput.js") ?>"></script>
-
     <script src="<?=base_url("/public/locales/th.js") ?>"></script>
+    <script src="<?=base_url("/public/js/jquery-confirm.min.js");?>"></script>
     
     <script>
         $(document).ready(function(){

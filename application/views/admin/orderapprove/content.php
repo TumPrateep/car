@@ -19,6 +19,7 @@
           <th><i class="fa fa-toggle-right"></i>  ผู้ส่ง</th>
           <th><i class="fa fa-circle-o"></i>  สถานะของอู่</th>
           <th><i class="fa fa-user-circle"></i>  สถานะการชำระเงิน</th>
+          <th><i class="fa fa-user-circle"></i>  สถานะการสั่งซื้อ</th>
           <th></th>
         </thead>	
       </table>

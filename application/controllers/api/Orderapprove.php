@@ -44,6 +44,7 @@ class Orderapprove extends BD_Controller {
                
                 $nestedData['name'] = $post->name;
                 $nestedData['paymentStatus'] = $post->paymentStatus;
+                $nestedData['status'] = $post->status;
 
                 $data[] = $nestedData;
             }
@@ -58,9 +59,9 @@ class Orderapprove extends BD_Controller {
         $this->set_response($json_data);
     }
 
-    function changeStatus_post(){
-        $orderId = $this->post("orderId");
-        $status = $this->post("status");
+    function changeStatus_get(){
+        $orderId = $this->get("orderId");
+        $status = $this->get("status");
       
         $data = array(
             'orderId' => $orderId,
@@ -72,7 +73,7 @@ class Orderapprove extends BD_Controller {
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->modelofcars
+            "model" => $this->orderapproves
         ];
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);

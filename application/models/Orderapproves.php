@@ -12,7 +12,7 @@ class Orderapproves extends CI_Model{
     }
 
     function allOrderApproves($limit,$start,$col,$dir){
-        $this->db->select('user_profile.userId,order.orderId, concat(user_profile.firstname," ",user_profile.lastname) as name, reserve.status as reserveStatus, payment.status as paymentStatus');
+        $this->db->select('user_profile.userId,order.orderId, concat(user_profile.firstname," ",user_profile.lastname) as name, reserve.status as reserveStatus, payment.status as paymentStatus, order.status');
         $this->db->from('order');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
