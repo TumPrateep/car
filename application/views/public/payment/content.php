@@ -15,19 +15,31 @@
             <p class="centerheadpayment">ใบเเจ้งชำระเงิน  #<?=$orderId ?></p>
             <input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">
             <div class="row">
-                <div class="col-lg-3"></div>
+                <div class="col-lg-5">
+                    <div class="card"><br>
+                        <div class="form-group text-center">
+                            <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker">
+                        </div> 
+                        <div class="form-group">
+                            <h3>เลขบัญชี : 12345678909876</h3>
+                        </div> 
+                        <div class="form-group">
+                            <p>ชื่อผู้รับเงิน : Dome</p>
+                        </div> 
+                        <div class="form-group text-center">
+                            <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker">
+                        </div>
+                    </div>
+                </div>
                 <div class="card col-lg-6"><br>
                     <div class="form-group row">
-                        <label class="col-lg-3">จำนวนเงินรวม</label>
-                        
+                        <label class="col-lg-3">จำนวนเงินรวม</label>  
                     </div> 
                     <div class="form-group row">
                         <label class="col-lg-3">จำนวนเงินมัดจำ</label>
-                        
                     </div> 
                     <div class="form-group row">
                         <label class="col-lg-3">จำนวนเงินคงเหลือ</label>
-                        
                     </div> 
                     <div class="form-group row">
                         <label class="col-lg-3">วันที่</label>
