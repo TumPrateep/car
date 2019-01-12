@@ -42,13 +42,14 @@
 					</button>
 				</div>
 				<div class="modal-body">
+					<form id="confirm">
 					<div class="row">
 						<div class="col-md-12" id="selectGarage">
 							<h4 class="underline">เลือกอู่ซ่อมรถที่ต้องการใช้บริการ</h4>
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label for="garage">เลือกอู่ซอมรถ</label>
+										<label for="garage">เลือกอู่ซอมรถ</label><span class="error">*</span>
 										<select class="form-control" id="garage" name="garageId"></select>
 									</div>
 								</div>
@@ -56,13 +57,13 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="garage">เลือกวันทำการ</label>
+										<label for="garage">เลือกวันทำการ</label><span class="error">*</span>
 										<input type="text" class="form-control" id="reserve_day" name="reserve_day" placeholder="เลือกวันทำการ">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="garage">เลือกเวลาทำการ</label>
+										<label for="garage">เลือกเวลาทำการ</label><span class="error">*</span>
 										<input type="text" class="form-control" id="reserve_time" name="reserve_time" placeholder="เลือกเวลาทำการ">
 									</div>
 								</div>
@@ -79,16 +80,17 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label for="garage">เลือกป้ายทะเบียนรถ</label>
+										<label for="garage">เลือกป้ายทะเบียนรถ</label><span class="error">*</span>
 										<select class="form-control" id="plate" name="plate"></select>
 									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-orange" onclick="createOrderDetail()"><span class="fas fa-save"></span> บันทึก</button>
+								<button type="submit" class="btn btn-orange"><span class="fas fa-save"></span> บันทึก</button>
 								<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="fas fa-times"></span> ปิด</button>
 							</div>
 						</div>
+						</form>
 					<!-- add new car -->
 						<div class="col-md-6 leftline" id="addNewCarprofile" style="display:none;">
 							<h4 class="underline">เพิ่มข้อมูลรถยนต์ที่ต้องการใช้บริการ</h4>

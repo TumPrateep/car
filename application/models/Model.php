@@ -252,4 +252,13 @@ class Model extends CI_Model{
         return $query->result();
     }
 
+    function getAllYearForSelect($modelName){
+        $this->db->select("modelId, yearStart, yearEnd, detail");
+        $this->db->where("modelName", $modelName);
+        $this->db->where('status','1');
+        $this->db->order_by("detail","asc");
+        $query = $this->db->get("model");
+        return $query->result();
+    }
+
 }

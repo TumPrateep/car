@@ -291,7 +291,11 @@ function getTire(value, index){
 }
 
 $(document).ready(function () {
+
+
+
     var form = $("#submit");
+    var confirmForm = $("#confirm");
     $.post(base_url+"service/Cart/cartDetail", {"cartData": cartData},
         function (data, textStatus, jqXHR) {
             cartDataDetail = data;
@@ -301,9 +305,9 @@ $(document).ready(function () {
 
     $.get(base_url+"service/Garages/getAllGarage", {},
         function (data, textStatus, jqXHR) {
-            var html = '<option val="">เลือกอู่ซ่อมรถ</option>';
+            var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
             $.each(data, function (index, val) { 
-                 html += '<option val="'+val.garageId+'">'+val.garageName+'</option>';
+                 html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
             });
             $("#garage").html(html);
         }
@@ -311,7 +315,7 @@ $(document).ready(function () {
 
     $.get(base_url+"service/Carprofile/getCarProfile", {},
         function (data, textStatus, jqXHR) {
-            var html = '<option val="">เลือกทะเบียนรถ</option>';
+            var html = '<option value="">เลือกทะเบียนรถ</option>';
             $.each(data, function (index, val) { 
                  html += '<option value="'+val.car_profileId+'">'+val.plate+'</option>';
             });
@@ -349,7 +353,16 @@ $(document).ready(function () {
     form.submit(function(event){
         event.preventDefault();
         createCarprofile();
-    })
+    });
+
+    confirmForm.submit(function(event){
+        event.preventDefault();
+        var isValid = confirmForm.valid();
+        
+        if(isValid){
+            createOrderDetail();
+        }
+    });
 
 
     function createCarprofile(){
@@ -373,41 +386,71 @@ $(document).ready(function () {
 
 
 
-        form.validate({
-            rules:{
-                character_plate: {
-                    required: true
-                },
-                number_plate: {
-                    required: true
-                },
-                province_plate: {
-                    required: true
-                },
-                color: {
-                    required: true
-                },
-                mileage: {
-                    required: true
-                }    
-            },messages:{
-                character_plate: {
-                    required: "กรุณากรอกอักษรนำหน้า"
-                },
-                number_plate: {
-                    required: "กรุณากรอกหมายเลข"
-                },
-                province_plate: {
-                    required: "กรุณากรอกจังหวัด"
-                },
-                color: {
-                    required: "กรุณากรอกสี"
-                },
-                mileage: {
-                    required: "กรุณากรอกเลขไมล์"
-                } 
+    form.validate({
+        rules:{
+            character_plate: {
+                required: true
+            },
+            number_plate: {
+                required: true
+            },
+            province_plate: {
+                required: true
+            },
+            color: {
+                required: true
+            },
+            mileage: {
+                required: true
+            }    
+        },messages:{
+            character_plate: {
+                required: "กรุณากรอกอักษรนำหน้า"
+            },
+            number_plate: {
+                required: "กรุณากรอกหมายเลข"
+            },
+            province_plate: {
+                required: "กรุณากรอกจังหวัด"
+            },
+            color: {
+                required: "กรุณากรอกสี"
+            },
+            mileage: {
+                required: "กรุณากรอกเลขไมล์"
+            } 
+        }
+    });
+
+    confirmForm.validate({
+        rules:{
+            garageId: {
+                required: true
+            },
+            reserve_day: {
+                required: true
+            },
+            reserve_time: {
+                required: true
+            },
+            plate: {
+                required: true
+            }   
+        },messages:{
+            garageId: {
+                required: "เลือกอู่ซ่อมรถ"
+            },
+            reserve_day: {
+                required: "เลือกวันที่เข้าซ่อม"
+            },
+            reserve_time: {
+                required: "เลือกเวลาเข้าซ่อม"
+            },
+            plate: {
+                required: "เลือกรถที่จะเข้าใช้บริการ"
             }
-        });
+        }
+    });
 
 
 });

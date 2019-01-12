@@ -14,45 +14,33 @@
 			<div class="col-lg-3">
 				<div class="shop_sidebar">
 					
-					<div class="form-group">
+				<div class="form-group">
                         <label class="control-label">ยี่ห้อรถ</label>
                         <select class="form-control input-default" name="brandId" id="brandId">
                             <option value="">เลือกยี่ห้อรถ</option>
                         </select>
-					</div>
-				
-					<div class="form-group">
+                    </div>
+
+                    <div class="form-group">
                         <label class="control-label">รุ่นรถ</label>
                         <select class="form-control input-default" name="modelId" id="modelId">
                             <option value="">เลือกรุ่นรถ</option>
                         </select>
-					</div>
+                    </div>
 
-					<div class="form-group">
-                        <label class="control-label">รายละเอียดรถ</label>
+                    <div class="form-group">
+                        <label class="control-label">โฉมรถยนต์</label>
                         <select class="form-control input-default" name="detail" id="detail">
-                            <option value="">เลือกลายละเอียดรถ</option>
+                            <option value="">เลือกโฉมรถยนต์</option>
                         </select>
                     </div>
 
 					<div class="form-group">
-                        <label class="control-label">ปีที่ผลิต</label>
-                        <div class="row p-t-20">
-                            <div class="col-md-12">
-                                <select class="form-control input-default" name="yearStart" id="yearStart">
-                                    <option value="">เลือกปี</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-					<div class="form-group">
-                        <label class="control-label">โฉมรถ</label>
+                        <label class="control-label">รายละเอียดรุ่น</label>
                         <select class="form-control input-default" name="modelofcarId" id="modelofcarId">
-                            <option value="">เลือกโฉมรถ</option>
+                            <option value="">เลือกรายละเอียดรุ่น</option>
                         </select>
 					</div>
-
-					
 
 					<div class="form-group">
                             <label class="control-label">ยี่ห้อยาง</label>
