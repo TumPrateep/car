@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2019 at 05:55 AM
+-- Generation Time: Jan 12, 2019 at 09:52 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -73,8 +73,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cardId`, `productId`, `quantity`, `create_by`, `create_at`, `status`, `group`) VALUES
-(5, 8, '1', 13, '2019-01-09 11:46:18', NULL, 'spare'),
-(6, 9, '1', 13, '2019-01-09 11:46:18', NULL, 'spare');
+(126, 10, '1', 13, '2019-01-12 15:36:49', NULL, 'spare');
 
 -- --------------------------------------------------------
 
@@ -1362,7 +1361,7 @@ CREATE TABLE `lubricator_change_garage` (
 --
 
 INSERT INTO `lubricator_change_garage` (`lubricator_change_garageId`, `lubricator_price`, `status`, `activeFlag`, `create_by`, `update_by`, `garageId`, `create_at`, `update_at`) VALUES
-(10, 1100, '1', '1', 12, NULL, 1, '2019-01-07 12:02:55', NULL);
+(10, 500, '1', '1', 12, NULL, 1, '2019-01-07 12:02:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -1608,7 +1607,8 @@ CREATE TABLE `mechanic` (
 --
 
 INSERT INTO `mechanic` (`mechanicId`, `titleName`, `firstName`, `lastName`, `exp`, `personalid`, `phone`, `status`, `activeFlag`, `create_at`, `update_at`, `create_by`, `update_by`, `garageId`, `skill`) VALUES
-(7, NULL, 'ศุภณัฐ', 'คุ้มปิยะผล', 1, '1803366253568', '0835212041', 1, 1, '2019-01-09 11:36:26', NULL, 12, NULL, 1, 'Toyota');
+(7, NULL, 'ศุภณัฐ', 'คุ้มปิยะผล', 1, '1803366253568', '0835212041', 1, 1, '2019-01-09 11:36:26', NULL, 12, NULL, 1, 'Toyota'),
+(8, NULL, 'Sittichai', 'Kheawkhem', 12, '1801700077431', '0808845891', 1, 1, '2019-01-11 10:58:41', NULL, 12, NULL, 1, 'Honda');
 
 -- --------------------------------------------------------
 
@@ -2359,8 +2359,8 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`orderId`, `activeflag`, `userId`, `create_by`, `status`, `create_at`, `car_profileId`) VALUES
-(13, '1', 13, 13, '1', '2018-12-26 13:24:43', NULL),
-(14, '1', 13, 13, '1', '2018-12-26 13:42:48', NULL);
+(17, '1', 13, 13, '1', '2019-01-12 13:58:32', NULL),
+(18, '1', 13, 13, '1', '2019-01-12 15:21:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -2375,6 +2375,7 @@ CREATE TABLE `orderdetail` (
   `productId` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `charge` double NOT NULL,
+  `chargeGarage` double DEFAULT NULL,
   `cost` double NOT NULL,
   `status` int(11) DEFAULT NULL,
   `activeflag` int(11) DEFAULT NULL,
@@ -2386,10 +2387,10 @@ CREATE TABLE `orderdetail` (
 -- Dumping data for table `orderdetail`
 --
 
-INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `quantity`, `charge`, `cost`, `status`, `activeflag`, `create_at`, `group`) VALUES
-(21, 13, 13, 8, 1, 1000, 1300, 1, 1, '2018-12-26 13:24:43', 'spare'),
-(22, 14, 13, 9, 4, 1000, 600, 1, 1, '2018-12-26 13:42:48', 'spare'),
-(23, 14, 13, 10, 1, 1000, 1300, 1, 1, '2018-12-26 13:42:48', 'spare');
+INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `quantity`, `charge`, `chargeGarage`, `cost`, `status`, `activeflag`, `create_at`, `group`) VALUES
+(24, 17, 13, 8, 3, 1000, 900, 1300, 1, 1, '2019-01-12 13:58:32', 'spare'),
+(25, 17, 13, 9, 1, 1000, 900, 600, 1, 1, '2019-01-12 13:58:32', 'spare'),
+(26, 18, 13, 9, 1, 1000, 700, 600, 1, 1, '2019-01-12 15:21:49', 'spare');
 
 -- --------------------------------------------------------
 
@@ -2625,13 +2626,6 @@ CREATE TABLE `reserve` (
   `created_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `reserve`
---
-
-INSERT INTO `reserve` (`reserveId`, `status`, `reserveDate`, `reservetime`, `orderId`, `garageId`, `created_at`, `created_by`) VALUES
-(1, '1', '2019-01-09', '05:00:00', 13, 1, '2019-01-09 05:00:00', 13);
-
 -- --------------------------------------------------------
 
 --
@@ -2732,7 +2726,34 @@ INSERT INTO `spares_change` (`spares_changeId`, `spares_price`, `spares_undercar
 (3, 1000, 56, 1, NULL, '2018-12-16 00:08:23', NULL, '1', '1'),
 (4, 1000, 35, 1, NULL, '2018-12-16 00:08:47', NULL, '1', '1'),
 (5, 1000, 60, 1, NULL, '2018-12-16 00:09:28', NULL, '1', '1'),
-(6, 1000, 41, 1, NULL, '2018-12-16 00:37:33', NULL, '1', '1');
+(6, 1000, 41, 1, NULL, '2018-12-16 00:37:33', NULL, '1', '1'),
+(7, 1000, 57, 1, NULL, '2019-01-09 13:15:18', NULL, '1', '1'),
+(8, 1000, 65, 1, NULL, '2019-01-09 13:15:27', NULL, '1', '1'),
+(9, 1000, 55, 1, NULL, '2019-01-09 13:15:52', NULL, '1', '1'),
+(10, 1000, 46, 1, NULL, '2019-01-09 13:16:06', NULL, '1', '1'),
+(11, 1000, 45, 1, NULL, '2019-01-09 13:16:13', NULL, '1', '1'),
+(12, 1000, 40, 1, NULL, '2019-01-09 13:16:27', NULL, '1', '1'),
+(13, 1000, 44, 1, NULL, '2019-01-09 13:16:35', NULL, '1', '1'),
+(14, 1000, 43, 1, NULL, '2019-01-09 13:16:42', NULL, '1', '1'),
+(15, 1000, 42, 1, NULL, '2019-01-09 13:17:05', NULL, '1', '1'),
+(16, 1000, 37, 1, NULL, '2019-01-09 13:17:18', NULL, '1', '1'),
+(17, 1000, 38, 1, NULL, '2019-01-09 13:17:27', NULL, '1', '1'),
+(18, 1000, 63, 1, NULL, '2019-01-09 13:17:35', NULL, '1', '1'),
+(19, 1000, 62, 1, NULL, '2019-01-09 13:17:46', NULL, '1', '1'),
+(20, 1000, 36, 1, NULL, '2019-01-09 13:18:09', NULL, '1', '1'),
+(21, 1000, 61, 1, NULL, '2019-01-09 13:19:07', NULL, '1', '1'),
+(22, 1000, 52, 1, NULL, '2019-01-09 13:19:25', NULL, '1', '1'),
+(23, 1000, 51, 1, NULL, '2019-01-09 13:19:37', NULL, '1', '1'),
+(24, 1000, 54, 1, NULL, '2019-01-09 13:19:47', NULL, '1', '1'),
+(25, 1000, 53, 1, NULL, '2019-01-09 13:19:58', NULL, '1', '1'),
+(26, 1000, 48, 1, NULL, '2019-01-09 13:20:11', NULL, '1', '1'),
+(27, 1000, 47, 1, NULL, '2019-01-09 13:20:21', NULL, '1', '1'),
+(28, 1000, 50, 1, NULL, '2019-01-09 13:20:29', NULL, '1', '1'),
+(29, 1000, 49, 1, NULL, '2019-01-09 13:20:38', NULL, '1', '1'),
+(30, 1000, 59, 1, NULL, '2019-01-09 13:20:47', NULL, '1', '1'),
+(31, 1000, 58, 1, NULL, '2019-01-09 13:20:56', NULL, '1', '1'),
+(32, 1000, 64, 1, NULL, '2019-01-09 13:21:06', NULL, '1', '1'),
+(33, 1000, 39, 1, NULL, '2019-01-09 13:21:19', NULL, '1', '1');
 
 -- --------------------------------------------------------
 
@@ -2752,6 +2773,44 @@ CREATE TABLE `spares_change_garage` (
   `activeFlag` varchar(255) DEFAULT NULL,
   `garageId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `spares_change_garage`
+--
+
+INSERT INTO `spares_change_garage` (`spares_changeId`, `spares_price`, `status`, `spares_undercarriageId`, `create_by`, `update_by`, `create_at`, `update_at`, `activeFlag`, `garageId`) VALUES
+(7, 700, '1', 56, 12, NULL, '2019-01-09 15:32:59', NULL, '1', 1),
+(8, 700, '1', 57, 12, NULL, '2019-01-09 15:37:21', NULL, '1', 1),
+(9, 700, '1', 65, 12, NULL, '2019-01-09 15:37:39', NULL, '1', 1),
+(10, 700, '1', 55, 12, NULL, '2019-01-09 15:37:54', NULL, '1', 1),
+(11, 700, '1', 46, 12, NULL, '2019-01-09 15:38:15', NULL, '1', 1),
+(12, 700, '1', 45, 12, NULL, '2019-01-09 15:38:34', NULL, '1', 1),
+(13, 700, '1', 40, 12, NULL, '2019-01-09 15:38:45', NULL, '1', 1),
+(14, 700, '1', 44, 12, NULL, '2019-01-09 15:38:54', NULL, '1', 1),
+(15, 700, '1', 43, 12, NULL, '2019-01-09 15:39:38', NULL, '1', 1),
+(16, 700, '1', 42, 12, NULL, '2019-01-09 15:39:44', NULL, '1', 1),
+(17, 700, '1', 41, 12, NULL, '2019-01-09 15:39:59', NULL, '1', 1),
+(18, 700, '1', 37, 12, NULL, '2019-01-09 15:40:08', NULL, '1', 1),
+(19, 700, '1', 38, 12, NULL, '2019-01-09 15:40:16', NULL, '1', 1),
+(20, 700, '1', 63, 12, NULL, '2019-01-09 15:42:12', NULL, '1', 1),
+(21, 700, '1', 62, 12, NULL, '2019-01-09 15:42:21', NULL, '1', 1),
+(22, 700, '1', 35, 12, NULL, '2019-01-09 15:43:35', NULL, '1', 1),
+(23, 700, '1', 36, 12, NULL, '2019-01-09 15:44:20', NULL, '1', 1),
+(24, 700, '1', 61, 12, NULL, '2019-01-09 15:45:56', NULL, '1', 1),
+(25, 700, '1', 60, 12, NULL, '2019-01-09 15:46:10', NULL, '1', 1),
+(26, 700, '1', 52, 12, NULL, '2019-01-09 15:46:20', NULL, '1', 1),
+(27, 700, '1', 51, 12, NULL, '2019-01-09 15:46:30', NULL, '1', 1),
+(28, 700, '1', 54, 12, NULL, '2019-01-09 15:48:49', NULL, '1', 1),
+(29, 700, '1', 48, 12, NULL, '2019-01-09 15:49:17', NULL, '1', 1),
+(30, 700, '1', 53, 12, NULL, '2019-01-09 15:50:34', NULL, '1', 1),
+(31, 700, '1', 47, 12, NULL, '2019-01-09 15:50:50', NULL, '1', 1),
+(32, 700, '1', 50, 12, NULL, '2019-01-09 15:50:58', NULL, '1', 1),
+(33, 700, '1', 49, 12, NULL, '2019-01-09 15:51:05', NULL, '1', 1),
+(34, 700, '1', 59, 12, NULL, '2019-01-09 15:51:13', NULL, '1', 1),
+(35, 700, '1', 58, 12, NULL, '2019-01-09 15:51:37', NULL, '1', 1),
+(36, 700, '1', 64, 12, NULL, '2019-01-09 15:51:48', NULL, '1', 1),
+(37, 700, '1', 33, 12, NULL, '2019-01-09 15:51:56', NULL, '1', 1),
+(38, 700, '1', 39, 12, NULL, '2019-01-09 15:52:05', NULL, '1', 1);
 
 -- --------------------------------------------------------
 
@@ -11855,6 +11914,22 @@ CREATE TABLE `tire_change_garage` (
   `rimId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tire_change_garage`
+--
+
+INSERT INTO `tire_change_garage` (`tire_change_garageId`, `tire_front`, `tire_back`, `status`, `activeFlag`, `create_by`, `update_by`, `create_at`, `update_at`, `garageId`, `rimId`) VALUES
+(3, 80, 80, '1', '1', 12, NULL, '2019-01-09 15:52:29', NULL, 1, 12),
+(4, 80, 100, '1', '1', 12, NULL, '2019-01-09 15:52:43', NULL, 1, 14),
+(5, 80, 100, '1', '1', 12, NULL, '2019-01-09 15:52:58', NULL, 1, 13),
+(6, 80, 100, '1', '1', 12, NULL, '2019-01-09 15:53:13', NULL, 1, 15),
+(7, 100, 80, '1', '1', 12, NULL, '2019-01-09 15:53:26', NULL, 1, 16),
+(8, 80, 100, '1', '1', 12, NULL, '2019-01-09 15:53:48', NULL, 1, 17),
+(9, 80, 100, '1', '1', 12, NULL, '2019-01-09 15:54:02', NULL, 1, 18),
+(10, 100, 80, '1', '1', 12, NULL, '2019-01-09 15:54:16', NULL, 1, 19),
+(11, 100, 80, '1', '1', 12, NULL, '2019-01-09 15:54:29', NULL, 1, 20),
+(12, 80, 100, '1', '1', 12, NULL, '2019-01-09 15:54:37', NULL, 1, 21);
+
 -- --------------------------------------------------------
 
 --
@@ -12719,7 +12794,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`
@@ -12809,7 +12884,7 @@ ALTER TABLE `machinetype`
 -- AUTO_INCREMENT for table `mechanic`
 --
 ALTER TABLE `mechanic`
-  MODIFY `mechanicId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `mechanicId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `model`
@@ -12827,13 +12902,13 @@ ALTER TABLE `modelofcar`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -12869,13 +12944,13 @@ ALTER TABLE `spares_brand`
 -- AUTO_INCREMENT for table `spares_change`
 --
 ALTER TABLE `spares_change`
-  MODIFY `spares_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `spares_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `spares_change_garage`
 --
 ALTER TABLE `spares_change_garage`
-  MODIFY `spares_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `spares_changeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `spares_undercarriage`
@@ -12917,7 +12992,7 @@ ALTER TABLE `tire_change`
 -- AUTO_INCREMENT for table `tire_change_garage`
 --
 ALTER TABLE `tire_change_garage`
-  MODIFY `tire_change_garageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `tire_change_garageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tire_data`
