@@ -12,19 +12,30 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-10">
-              <div class="card text-white bg-success">
-                  <div class="card-header">
-
-                    <!-- <h3 class="card-title"><i class="fa fa-fw fa-car"></i> รายละเอียดสินค้า</h3> -->
-                  </div>
-                  <!-- /.card-header -->
-                  <!-- form start -->
+              <div class="card text-white ">
+                  <!-- <div class="card-header">
+                    <h3 class="card-title"><i class="fa fa-fw fa-car"></i> รายละเอียดสินค้า</h3>
+                  </div> -->
                   <input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">  
-                    <!-- /.card-body -->
-                  <div class="card-body black bg-light">
+                  <!-- <div class="card-body black bg-light">
                       <table id="showOrder"></table>
-                  </div>
-                 
+                  </div> -->
+                  <table class="table table-borderless" id="showOrder">
+                      <thead>
+                        <tr>
+                          <th scope="col">First</th>
+                          <th scope="col">ชื่อสินค้า</th>
+                          <th scope="col">จำนวน</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                      </tbody>
+                    </table>
                 </div>
               </div>
           </div>

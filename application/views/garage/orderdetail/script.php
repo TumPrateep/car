@@ -21,35 +21,32 @@ $(document).ready(function () {
                     quantity = val.quantity;
                 }
 
-                html += '<tr>';
-                    html += '<td>';
-                    html += '<img src="'+picture+'" />';
-                    html += '</td>';
-                    html += '<td>';
-                    html += content;
-                    html += '</td>';
-                    html += '<td>';
-                    html += quantity;
-                    html += '</td>';
-                html += '</tr>';
-    //  var html = '<li class="cart_item clearfix">'
-    //     +'<div class="cart_item_image"><a href="'+base_url+'shop/detail/spare/'+value.productId+'"><img src="'+base_url+'public/image/spareundercarriage/'+product.picture+'" alt=""></a></div>'
-    //     +'<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">'
-    //         +'<div class="cart_item_name cart_info_col">'
-    //             +'<div class="cart_item_title">ชื่อสินค้า</div>'
-    //             +'<div class="cart_item_text"><a href="'+base_url+'shop/detail/spare/'+value.content+'">'+product.spares_brandName+' '+product.spares_undercarriageName+' '+product.brandName+' '+product.modelName+' '+product.year+'</a></div>'
-    //         +'</div>'
-    
-    //         +'<div class="cart_item_quantity cart_info_col">'
-    //             +'<div class="cart_item_title">จำนวน</div>'
-    //             +'<div class="cart_item_text">'
-    //                 +'<div class="input-group mb-3 col-lg-6">'
-    //                     +'<input type="number" class="form-control form-control-sm qty_input" value="'+value.quantity+'" min="1" onblur="setNumber('+index+', this)">'
-    //                 +'</div>'
-    //             +'</div>'
-    //         +'</div>'
-    //     +'</div>'
-    // +'</li>';
+                // html += '<tr>';
+                //     html += '<td>';
+                //     html += '<img src="'+picture+'" />';
+                //     html += '</td>';
+                //     html += '<td>';
+                //     html += content;
+                //     html += '</td>';
+                //     html += '<td>';
+                //     html += quantity;
+                //     html += '</td>';
+                // html += '</tr>';
+
+                html += '<thead>'
+                        +'<tr>' 
+                        +'<th scope="col">รูป</th>'
+                        +'<th scope="col">ชื่อสินค้า</th>'
+                        +'<th scope="col">จำนวน</th>'
+                        +'</tr>'
+                    +'</thead>'
+                    +'<tbody>'
+                        +'<tr>'
+                        +'<td><img src="'+picture+'" width="150"/></td>'
+                        +'<td>'+content+'</td>'
+                        +'<td>'+quantity+'</td>'
+                        +'</tr>'
+                    +'</tbody>'
             });
             table.html(html);
         }

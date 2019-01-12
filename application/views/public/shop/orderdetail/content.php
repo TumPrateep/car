@@ -30,19 +30,25 @@
 				</div>
             </div>
 			<div class="col-lg-9">
-				<div class="table-responsive">
-      				<table class="table table-bordered" id="orderdetail-table" width="100%" cellspacing="0">
+			<input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">
+					<table class="table table-borderless" id="showOrder">
 						<thead>
 							<tr>
-								<th>ลำดับ</th>
-								<th>สินค้า</th>
-								<th>ชื่อสินค้า</th>
-								<th>ราคา</th>
-							</tr>									
+							<th scope="col">First</th>
+							<th scope="col">ชื่อสินค้า</th>
+							<th scope="col">จำนวน</th>
+							</tr>
 						</thead>
+						<tbody>
+							<tr>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+							</tr>
+						</tbody>
 					</table>
 				</div>
-			</div>					
+							
         </div>
         
 

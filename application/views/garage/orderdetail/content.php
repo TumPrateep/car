@@ -1,33 +1,48 @@
-
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/") ?>">หน้าหลัก</a>
-        </li>
-        <li class="breadcrumb-item active">รายละเอียดสินค้า</li>
-      </ol>
-      <!-- Icon Cards-->
-      <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-10">
-              <div class="card text-white bg-success">
-                  <div class="card-header">
-
-                    <!-- <h3 class="card-title"><i class="fa fa-fw fa-car"></i> รายละเอียดสินค้า</h3> -->
-                  </div>
-                  <!-- /.card-header -->
-                  <!-- form start -->
-                  <input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">  
-                    <!-- /.card-body -->
-                  <div class="card-body black bg-light">
-                      <table id="showOrder"></table>
-                  </div>
-                 
-                </div>
-              </div>
-          </div>
+<div class="page-wrapper">
+    <!-- Bread crumb -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-primary">สร้างข้อมูลช่าง</h3>
         </div>
-      </section>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">หน้าหลัก</a></li>
+                <li class="breadcrumb-item active">ข้อมูลช่าง</li>
+                <li class="breadcrumb-item active">สร้างข้อมูลช่าง</li>
+            </ol>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <!-- <div class="card-title">
+                        <h4>สร้างข้อมูลช่าง</h4>
+                    </div> -->
+                    <div class="card-body">
+                        <div class="basic-form">
+                            <form id="submit">
+                            <input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">  
+                                <table class="table table-borderless" id="showOrder">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">First</th>
+                                      <th scope="col">ชื่อสินค้า</th>
+                                      <th scope="col">จำนวน</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>Mark</td>
+                                      <td>Otto</td>
+                                      <td>@mdo</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
