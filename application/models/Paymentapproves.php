@@ -18,7 +18,7 @@ class Paymentapproves extends CI_Model{
     function allPaymentApprove($limit,$start,$col,$dir){
         $this->db->select(' order.orderId, order.userId, payment.money,payment.slip	,concat(user_profile.firstname ," ",user_profile.lastname) as name,payment.status,payment.paymentId');
         $this->db->from('order');
-        $this->db->join('payment', 'order.orderId = payment.orderId');
+        $this->db->join('payment', 'order.orderId = payment.orderId', 'left');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
         // $this->db->where('reserve.garageId',$garageId);
 
@@ -45,7 +45,7 @@ class Paymentapproves extends CI_Model{
         
         $this->db->select(' order.orderId, order.userId, payment.money,payment.slip	,concat(user_profile.firstname ," ",user_profile.lastname) as name,payment.status,payment.paymentId');
         $this->db->from('order');
-        $this->db->join('payment', 'order.orderId = payment.orderId');
+        $this->db->join('payment', 'order.orderId = payment.orderId', 'left');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
         // $this->db->where('reserve.garageId',$garageId);
      

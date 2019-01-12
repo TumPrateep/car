@@ -66,7 +66,7 @@
                         }else if(data.status==3){
                             html+='<span class="badge badge-danger">ยกเลิกการจอง</span>';
                         }else{
-                            html+='<span class="badge badge-danger">ผิดพลาด</span>';
+                            html+='<span class="badge badge-default">รอมัดจำ</span>';
                         }
                         return html;
                     }
@@ -75,7 +75,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         
-                        return data.orderId;
+                        return currency(data.summary, {  precision: 0 }).format()+' บาท';
                     }
                 },{
                     "targets": 5,
@@ -87,8 +87,11 @@
                     "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                      
-                        return '<button type="button" class="btn btn-success"  onclick="confirmStatus('+data.paymentId+')">ยืนยัน</button> '
+                        var disable = "";
+                        if(data.status == null){
+                            disable = "disabled";
+                        }
+                        return '<button type="button" class="btn btn-success" '+disable+'  onclick="confirmStatus('+data.paymentId+')">ยืนยัน</button> '
                             +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.paymentId+')">ยกเลิก</button>';
                     }
                 },

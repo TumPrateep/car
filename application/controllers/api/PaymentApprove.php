@@ -9,6 +9,7 @@ class PaymentApprove extends BD_Controller {
         parent::__construct();
         // $this->auth();
         $this->load->model('paymentapproves');
+        $this->load->model('orderdetails');
     }
 
     function searchPaymentApprove_post(){
@@ -19,11 +20,13 @@ class PaymentApprove extends BD_Controller {
 
         );
         // $garageId = $this->session->userdata['logged_in']['garageId'];
+        $userId = $this->session->userdata['logged_in']['id'];
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $totalData = $this->paymentapproves->allPaymentApprove_count(); 
+
         $totalFiltered = $totalData; 
         if(empty($this->post('orderId')))
         {            
@@ -42,6 +45,8 @@ class PaymentApprove extends BD_Controller {
                 $nestedData['orderId'] = $post->orderId;
                 $nestedData['name'] = $post->name;
                 $nestedData['money'] = $post->money;
+                $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
+                $nestedData['summary'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage);
                 $nestedData['slip'] = $post->slip;
                 $nestedData['status'] = $post->status;
                 $nestedData['paymentId'] = $post->paymentId;

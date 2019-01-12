@@ -123,8 +123,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         html = "";
-                        count = meta.row + 1;
-                        return html += '<a href="'+base_url+"public/Orderdetail/Orderdetails/"+data.orderId+'">'+"#"+ count
+                        return html += '<a href="'+base_url+"public/Orderdetail/Orderdetails/"+data.orderId+'">'+"#"+ data.orderId
                     }
                 },
                 
