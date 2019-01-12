@@ -60,6 +60,7 @@ class Garages extends BD_Controller {
                 $nestedData[$count]['garageId'] = $post->garageId;
                 $nestedData[$count]['garageName'] = $post->garageName;
                 $nestedData[$count]['businessRegistration'] = $post->businessRegistration;
+                $nestedData[$count]['skill'] = $post->skill;
                 // $nestedData[$count]['garageAddress'] = $post->garageAddress;
                 // $nestedData[$count]['postCode'] = $post->postCode;
                 // $nestedData[$count]['subdistrictId'] = $post->subdistrictId;
