@@ -60,5 +60,23 @@ class Reserve extends BD_Controller {
         $this->set_response($json_data);
     }
 
+    function changeStatus_get(){
+        $reserveId = $this->get("reserveId");
+        $status = $this->get("status");
+        $data = array(
+            'reserveId' => $reserveId,
+            'status' => $status
+          
+        );
+        $data_check_update = $this->reserves->getReserveById($reserveId);
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->reserves
+        ];
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
+    }
+    
 
 }

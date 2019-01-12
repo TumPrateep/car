@@ -87,11 +87,34 @@
                     "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="#' +data.lubricator_change_garageId+'"><button type="button" class="btn btn-success">ยืนยัน</button></a> '
-                            +'<button type="button" class="delete btn btn-danger">ยกเลิก</button>';
+                        return '<button type="button" class="btn btn-success"  onclick="confirmStatus('+data.reserveId+')">ยืนยัน</button>'
+                            +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.reserveId+')">ยกเลิก</button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}
             ]	 
     });
+
+    function confirmStatus(reserveId){
+        var option = {
+            url: "/Reserve/changeStatus?reserveId="+reserveId,
+            label: "ยืนยันการทำรายการการจอง",
+            status: 2,
+            content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
+            gotoUrl: "garage/Reserve"
+        }
+        fnConfirm(option);
+    }   
+
+    function cancelStatus(reserveId){
+        var option = {
+            url: "/Reserve/changeStatus?reserveId="+reserveId,
+            label: "ยกเลิกการทำรายการการจอง",
+            status: 3,
+            content: "คุณต้องการยกเลิกการทำรายการการจองนี้ ใช่หรือไม่",
+            gotoUrl: "garage/Reserve"
+        }
+        fnConfirm(option);
+    }
+
 </script>

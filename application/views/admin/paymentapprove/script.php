@@ -87,14 +87,38 @@
                     "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<button type="button" class="btn btn-success">ยืนยัน</button> '
-                            +'<button type="button" class="delete btn btn-danger">ยกเลิก</button>';
+                      
+                        return '<button type="button" class="btn btn-success"  onclick="confirmStatus('+data.paymentId+')">ยืนยัน</button> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.paymentId+')">ยกเลิก</button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}
             ]	 
 
     });
+
+    function confirmStatus(paymentId){
+        var option = {
+            url: "/PaymentApprove/changeStatus?paymentId="+paymentId,
+            label: "ยืนยันรายการชำระเงิน",
+            status: 2,
+            content: "คุณต้องการยืนยันรายการชำระเงินนี้ ใช่หรือไม่",
+            gotoUrl: "admin/paymentapprove"
+        }
+        fnConfirm(option);
+    }   
+
+    function cancelStatus(paymentId){
+        var option = {
+            url: "/PaymentApprove/changeStatus?paymentId="+paymentId,
+            label: "ยกเลิกรายการชำระเงิน",
+            status: 3,
+            content: "คุณต้องการยกเลิกรายการชำระเงินนี้ ใช่หรือไม่",
+            gotoUrl: "admin/paymentapprove"
+        }
+        fnConfirm(option);
+    }
+
 
 
 </script>

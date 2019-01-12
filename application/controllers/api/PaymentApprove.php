@@ -44,6 +44,7 @@ class PaymentApprove extends BD_Controller {
                 $nestedData['money'] = $post->money;
                 $nestedData['slip'] = $post->slip;
                 $nestedData['status'] = $post->status;
+                $nestedData['paymentId'] = $post->paymentId;
                 $data[] = $nestedData;
             }
         }
@@ -57,13 +58,13 @@ class PaymentApprove extends BD_Controller {
         $this->set_response($json_data);
     }
 
-    function changeStatus_post(){
-        $paymentId = $this->post("paymentId");
-        $status = $this->post("status");
+    function changeStatus_get(){
+        $paymentId = $this->get("paymentId");
+        $status = $this->get("status");
         $data = array(
             'paymentId' => $paymentId,
-            'status' => $status,
-            'activeFlag' => 1
+            'status' => $status
+          
         );
         $data_check_update = $this->paymentapproves->getPaymentApproveById($paymentId);
 

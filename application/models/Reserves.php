@@ -4,7 +4,7 @@ class Reserves extends CI_Model{
 
 
 
-    function getReserveById($lubricator_changeId){
+    function getReserveById($reserveId){
         $this->db->select("reserveId");
         $this->db->where('reserveId',$reserveId);
         $result = $this->db->get("reserve");
@@ -85,6 +85,11 @@ class Reserves extends CI_Model{
         return $query->num_rows();
     } 
 
+    function update($data){
+        $this->db->where('reserveId',$data['reserveId']);
+        $result = $this->db->update('reserve',$data);
+        return $result;
+    }
    
    
 

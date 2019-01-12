@@ -13,9 +13,38 @@
             <!-- End Bread crumb -->
             <!-- Container fluid  -->
             <div class="container-fluid">
-                <!-- Start Page Content -->
                 <div class="row">
                     <div class="card col-lg-12">
+                    <div class="row ">
+                        <div class="col-lg-3 offset-lg-1 mt-8">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="วันที่" id="date">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"></span>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3  mt-8">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="ผู้จอง" id="reservename">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 mt-8">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="สถานะ" id="status">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <button type="button" class="btn btn-info btn-block"><i class="fa fa-search"></i>  ค้นหา</i></button>
+                            </div>
+                        </div>
+                    
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="table-responsive">
@@ -33,6 +62,7 @@
                                 </div>
                             </div> 
                         </div>
+                    
                     </div>  			
                 </div>
                 <!-- End PAge Content -->

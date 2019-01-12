@@ -75,3 +75,22 @@ $("#btn-delete-modal").click(function(){
         showMessage(data.message, modalUrl);
     });
 });
+
+$("#btn-confirm-modal").click(function(){
+    var status = $(this).data('status');
+    $.get(confirmUrl+"&status="+status,
+        function (data, textStatus, jqXHR) {
+            $("#confirm-modal").modal("hide");
+            showMessage(data.message, modalUrl);
+        }
+    );
+});
+
+function fnConfirm(option){
+    $("#btn-confirm-modal").attr('data-status', option.status);
+    $("#lebel-confirm").html(option.label);
+    $("#content-confirm").html(option.content);
+    $("#confirm-modal").modal("show");
+    confirmUrl = base_url+"apiGarage"+option.url;
+    modalUrl = option.gotoUrl;
+}
