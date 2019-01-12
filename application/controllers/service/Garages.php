@@ -3,17 +3,18 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 use \Firebase\JWT\JWT;
 
-class Garage extends BD_Controller {
+class Garages extends BD_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model("searchgarage");
+        $this->load->model("searchgarages");
+        $this->load->model("garage");
     }
 
-    // function getAllGarage_get(){
-    //     $data = $this->garage->getAllGarage();
-    //     $this->set_response($data, REST_Controller::HTTP_OK);
-    // }
+    function getAllGarage_get(){
+        $data = $this->garage->getAllGarage();
+        $this->set_response($data, REST_Controller::HTTP_OK);
+    }
 
    
     function searchgarage_post(){
@@ -25,17 +26,17 @@ class Garage extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $totalData = $this->Searchgarages->allgarage_count();
+        $totalData = $this->searchgarages->allgarage_count();
         $totalFiltered = $totalData; 
         if(empty($this->post('garageName'))&& empty($this->post('businessRegistration')))
         {            
-            $posts = $this->Searchgarages->allgarage($limit,$start,$order,$dir);
+            $posts = $this->searchgarages->allgarage($limit,$start,$order,$dir);
         }
         else {
             $garageName = $this->post('garageName'); 
             $businessRegistration = $this->post('businessRegistration');
-            $posts =  $this->Searchgarages->garage_search($limit,$start,$order,$dir,$garageName,$businessRegistration);
-            $totalFiltered = $this->Searchgarages->garage_search_count($garageName,$businessRegistration);
+            $posts =  $this->searchgarages->garage_search($limit,$start,$order,$dir,$garageName,$businessRegistration);
+            $totalFiltered = $this->searchgarages->garage_search_count($garageName,$businessRegistration);
         }
         $data = array();
         if(!empty($posts))
