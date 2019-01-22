@@ -132,18 +132,20 @@
         </li>
         
         <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link text-white" href="<?=base_url("admin/paymentapprove") ?>">
+            <i class="fa fa-map-o" aria-hidden="true"></i>
+            <span class="nav-link-text">ยืนยันค่ามัดจำ</span>
+          </a>
+        </li>
+
+        <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/orderapprove") ?>">
             <i class="fa fa-map-o" aria-hidden="true"></i>
-            <span class="nav-link-text">orderapprove</span>
+            <span class="nav-link-text">ยืนยันการสั่งซื่อ</span>
           </a>
         </li>
         
-        <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link text-white" href="<?=base_url("admin/paymentapprove") ?>">
-            <i class="fa fa-map-o" aria-hidden="true"></i>
-            <span class="nav-link-text">paymentapprove</span>
-          </a>
-        </li>
+        
         
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">

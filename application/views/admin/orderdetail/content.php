@@ -12,7 +12,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-10">
-              <div class="card text-white ">
+              <div class="card">
               <h4 class="orange">หมายเลขสั่งซื้อ: <?=$orderId ?></h4>
                 <input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">
                     <table class="table">

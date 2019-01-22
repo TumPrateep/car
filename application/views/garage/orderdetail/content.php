@@ -22,23 +22,19 @@
                     <div class="card-body">
                         <div class="basic-form">
                             <form id="submit">
-                            <input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">  
-                                <table class="table table-borderless" id="showOrder">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">First</th>
-                                      <th scope="col">ชื่อสินค้า</th>
-                                      <th scope="col">จำนวน</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>Mark</td>
-                                      <td>Otto</td>
-                                      <td>@mdo</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                            <h4 class="orange">หมายเลขสั่งซื้อ: <?=$orderId ?></h4>
+                            <input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">รูป</th>
+                                                <th scope="col">ชื่อสินค้า</th>
+                                                <th scope="col">จำนวน</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody id="showOrder"></tbody>
+                                    </table>
                             </form>
                         </div>
                     </div>

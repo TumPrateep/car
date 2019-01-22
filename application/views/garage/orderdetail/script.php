@@ -33,20 +33,12 @@ $(document).ready(function () {
                 //     html += '</td>';
                 // html += '</tr>';
 
-                html += '<thead>'
-                        +'<tr>' 
-                        +'<th scope="col">รูป</th>'
-                        +'<th scope="col">ชื่อสินค้า</th>'
-                        +'<th scope="col">จำนวน</th>'
-                        +'</tr>'
-                    +'</thead>'
-                    +'<tbody>'
-                        +'<tr>'
-                        +'<td><img src="'+picture+'" width="150"/></td>'
-                        +'<td>'+content+'</td>'
-                        +'<td>'+quantity+'</td>'
-                        +'</tr>'
-                    +'</tbody>'
+                         html += '<tr>'
+                            +'<td><img src="'+picture+'" width="80"/></td>'
+                            +'<td>'+content+'</td>'
+                            +'<td>'+quantity+'</td>'
+                            
+                            +'</tr>';
             });
             table.html(html);
         }

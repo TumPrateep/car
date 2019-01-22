@@ -72,4 +72,72 @@
         }
         fnDelete(option);
     }
+
+
+    //  form.validate({
+    //     rules:{
+    //         character_plate: {
+    //             required: true
+    //         },
+    //         number_plate: {
+    //             required: true
+    //         },
+    //         province_plate: {
+    //             required: true
+    //         },
+    //         color: {
+    //             required: true
+    //         },
+    //         mileage: {
+    //             required: true
+    //         }    
+    //     },messages:{
+    //         character_plate: {
+    //             required: "กรุณากรอกอักษรนำหน้า"
+    //         },
+    //         number_plate: {
+    //             required: "กรุณากรอกหมายเลข"
+    //         },
+    //         province_plate: {
+    //             required: "กรุณากรอกจังหวัด"
+    //         },
+    //         color: {
+    //             required: "กรุณากรอกสี"
+    //         },
+    //         mileage: {
+    //             required: "กรุณากรอกเลขไมล์"
+    //         } 
+    //     }
+    // });
+
+    // confirmForm.validate({
+    //     rules:{
+    //         garageId: {
+    //             required: true
+    //         },
+    //         reserve_day: {
+    //             required: true
+    //         },
+    //         reserve_time: {
+    //             required: true
+    //         },
+    //         plate: {
+    //             required: true
+    //         }   
+    //     },messages:{
+    //         garageId: {
+    //             required: "เลือกอู่ซ่อมรถ"
+    //         },
+    //         reserve_day: {
+    //             required: "เลือกวันที่เข้าซ่อม"
+    //         },
+    //         reserve_time: {
+    //             required: "เลือกเวลาเข้าซ่อม"
+    //         },
+    //         plate: {
+    //             required: "เลือกรถที่จะเข้าใช้บริการ"
+    //         }
+    //     }
+    // });
+
 </script>
