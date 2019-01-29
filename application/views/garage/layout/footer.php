@@ -119,3 +119,9 @@
         </div>
       </div>
     </div>
+    <script>
+      function logout(){
+        localStorage.clear();
+        window.location.assign(base_url+"auth/logout");
+      }
+    </script>
