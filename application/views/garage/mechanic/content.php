@@ -1,4 +1,4 @@
-<div class="page-wrapper">
+<div class="page-wrapper bg-container">
 
         <!-- Bread crumb -->
         <div class="row page-titles">
