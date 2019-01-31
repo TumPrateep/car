@@ -64,12 +64,18 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">เเนบสลิป</label>
                         <div class="col-sm-9">
-                            <div class="image-editor">
-                                <input type="file" class="cropit-image-input" id="slip" name="slip">
-                                <div class="cropit-preview"></div>
+                            <div class="form-group">
+                                <div class="image-editor">
+                                    <input type="file" class="cropit-image-input" name="tempImage" required>
+                                    <div class="cropit-preview"></div>
+                                    <div class="image-size-label">ปรับขนาด</div>
+                                    <input type="range" class="cropit-image-zoom-input">
+                                    <input type="hidden" name="slip" class="hidden-image-data" />
+                                </div>
                             </div>
-                        </div>
+                        </div>               
                     </div>
+                    
                     <div class="form-group row ">
                     <div class="col-sm-12">
                         <button type="submit" id="submit" name="submit" class="btn btn-primary " style="float:right" >บันทึก</button>

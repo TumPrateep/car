@@ -5,7 +5,7 @@ class Mechanic extends BD_Controller {
     function __construct()
     {
         parent::__construct();
-       // $this->auth();
+        $this->auth();
         $this->load->model("mechanics");
     }
     function deleteMechanic_get(){
@@ -30,6 +30,18 @@ class Mechanic extends BD_Controller {
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $data_check = $this->mechanics->data_check_create($idCard,$garageId);
         $skill = $this->post("skill");
+        $config['upload_path'] = 'public/image/mechanic/';
+        $img = $this->post("picture");
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $imageName = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName;
+        $success = file_put_contents($file, $data);
+        if (!$success){
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
         //$idcard = $this->post("idcard");
         $data =array(
             'mechanicId' => null,
@@ -44,7 +56,8 @@ class Mechanic extends BD_Controller {
             'create_by' => $userId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'garageId' => $garageId,
-            'skill' => $skill
+            'skill' => $skill,
+            "picture"=> $imageName
             //'rols' => 2
             //'idcard' => $idcard
         );
@@ -53,7 +66,7 @@ class Mechanic extends BD_Controller {
             "data_check" => $data_check,
             "data" => $data,
             "model" => $this->mechanics,
-            "image_path" => null
+            "image_path" => $file
         ];
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
@@ -96,7 +109,7 @@ class Mechanic extends BD_Controller {
                 $nestedData[$count]['skill'] = $post->skill;
                 // $nestedData[$count]['role'] = $post->role;
                 $nestedData[$count]['exp'] = $post->exp;
-
+                $nestedData[$count]['picture'] = $post->picture;
 
                 $data[$index] = $nestedData;
                 if($count >= 3){
@@ -119,6 +132,7 @@ class Mechanic extends BD_Controller {
     }
     function updateMechanic_post(){
         $userId = $this->session->userdata['logged_in']['id'];
+        $config['upload_path'] = 'public/image/mechanic/';
         $mechanicId = $this->post("mechanicId");
         $firstName = $this->post("firstname");
         $lastName = $this->post("lastname");
@@ -126,9 +140,27 @@ class Mechanic extends BD_Controller {
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
         $skill = $this->post("skill");
+        $img = $this->post("picture");
+        $success = true;
+        $file = null;
+        $imageName = null; 
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $data_check = $this->mechanics->data_check_create($idCard,$garageId);
         $this->load->model("mechanics");
+        if(!empty($img)){
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
+
+            $imageName = uniqid().'.png';
+            $file = $config['upload_path']. '/'. $imageName;
+            $success = file_put_contents($file, $data);
+        }
+        if (!$success){
+            unlink($file);
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
         $data_check_update = $this->mechanics->getMechanicsById($mechanicId);
         $data_check = $this->mechanics->data_check_update($mechanicId,$firstName,$idCard,$garageId);
         $data = array(
@@ -141,18 +173,26 @@ class Mechanic extends BD_Controller {
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time()),
             'garageId' => $garageId,
-            'skill' => $skill
+            'skill' => $skill,
+            "picture"=> $imageName
         );
+        $oldImage = null;
+        if($data_check_update != null){
+            $oldImage = $config['upload_path'].$data_check_update->picture;
+        }
+
         $option = [
             "data_check_update" => $data_check_update,
             "data_check" => $data_check,
             "data" => $data,
             "model" => $this->mechanics,
-            "image_path" => null,
-            "old_image_path" => null
+            "image_path" => $file,
+            "old_image_path" => $oldImage
         ];
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+        }
     }
+
     function getMechanic_post(){
         $mechanicId = $this->post('mechanicId');
         $data_check = $this->mechanics->getMechanicsById($mechanicId);

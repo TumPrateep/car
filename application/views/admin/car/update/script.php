@@ -52,6 +52,7 @@
     function updateBrand(){
         event.preventDefault();
         var isValid = $("#update-brand").valid();
+        
         if(isValid){
             var imageData = $('.image-editor').cropit('export');
             $('.hidden-image-data').val(imageData);

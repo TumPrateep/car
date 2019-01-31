@@ -15,7 +15,10 @@
                     required: true
                 },
                 transfer: {
-                    required: true,
+                    required: true
+                },
+                money: {
+                    required: true
                 }
             },messages:{
                 date: {
@@ -29,6 +32,9 @@
                 },
                 transfer: {
                     required: "กรุณาระบุผู้โอน"
+                },
+                money: {
+                    required: "กรุณาระบุจำนวนเงิน"
                 }
               
             }
@@ -41,23 +47,32 @@
 
     function createPayment(){
         event.preventDefault();
-
+        var data = $("#submit").serialize();
         var isValid = form.valid();
         
         if(isValid){
-            
-            var data = $("#submit").serialize();
-            $.post(base_url+"service/Paymentss/createPaymentDetail",data,
-            function(data){
-                if(data.message == 200){
-                    showMessage(data.message,"car/shop/order");
-                }else{
-                    showMessage(data.message);
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
+            var myform = document.getElementById("submit");
+            var formData = new FormData(myform);
+            $.ajax({
+            url: base_url+"service/Paymentss/createPaymentDetail",data,
+            data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function(data){
+                    if(data.message == 200){
+                        showMessage(data.message,"car/");
+                    }else{
+                        showMessage(data.message);
+                    }
+                    console.log(data);
                 }
-                console.log(data);
-            });
+          });
         }
     }
+
 
     $.get(base_url+"service/Paymentss/getCost", {orderId: $("#orderId").val()},
         function (data, textStatus, jqXHR) {
@@ -66,6 +81,13 @@
             $("#depositmoney").val(data.deposit);
         }
     );
+
+     $('.image-editor').cropit({
+        allowDragNDrop: false,
+        width: 200,
+        height: 200,
+        type: 'image/jpeg'
+    });
 
   });
 </script>

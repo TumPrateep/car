@@ -7,8 +7,8 @@ class Payments extends CI_Model {
     //     return $this->db->delete('mechanic', array('mechanicId' => $mechanicId));
     // }
 
-    function getPaymentId($paymentId){
-        return $this->db->where('paymentId',$paymentId)->get("payment")->row();
+    function getPaymentId($orderId){
+        return $this->db->where('orderId',$orderId)->get("payment")->row();
     }
 
     function insert($data){

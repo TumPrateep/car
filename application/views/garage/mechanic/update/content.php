@@ -69,6 +69,23 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                        <label class="control-label">รูปช่าง</label>
+                                            <div class="image-editor">
+                                                <input type="file" class="cropit-image-input" name="tempImage" required>
+                                                <div class="cropit-preview"></div>
+                                                <div class="image-size-label">ปรับขนาด</div>
+                                                <input type="range" class="cropit-image-zoom-input">
+                                                <input type="hidden" name="picture" class="hidden-image-data" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                                
+
                                 <div class="row">
                                     <div class="col-lg-4"> 
                                         <button type="submit" class="btn btn-info m-b-10 m-l-5">บันทึก</button>

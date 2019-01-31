@@ -61,7 +61,7 @@
                                                 + '<div class="card-two">'
                                                     + '<header>'
                                                         + '<div class="avatar">'
-                                                            + '<img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker">'
+                                                            + '<img src="'+picturePath+'mechanic/'+value.picture+'" width="100" />'
                                                         + '</div>'
                                                     + '</header>'
                                                     + '<h3>'+value.firstName+' '+value.lastName+'</h3>'

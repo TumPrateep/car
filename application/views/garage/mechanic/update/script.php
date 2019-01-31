@@ -81,6 +81,7 @@
 
     });
 
+ 
 
 
         var mechanicId = $("#mechanicId").val();
@@ -101,10 +102,22 @@
                 
                 $("#phone").val(result.phone);
                 $("#skill").val(result.skill);
+                setBrandPicture(result.picture);
             }
             
         });
 
+        function setBrandPicture(picture){
+                    $('.image-editor').cropit({
+                        allowDragNDrop: false,
+                        width: 200,
+                        height: 200,
+                        type: 'image',
+                        imageState: {
+                            src: picturePath+"mechanic/"+picture
+                        }
+                    });
+                }
 
 
         $("#submit").validate({
@@ -128,18 +141,28 @@
         function updatemechanic(){
             event.preventDefault();
             var isValid = $("#submit").valid();
+           
             
             if(isValid){
-                var data = $("#submit").serialize();
-                $.post(base_url+"apiGarage/Mechanic/updateMechanic",data,
-                function(data){
+                var imageData = $('.image-editor').cropit('export');
+                $('.hidden-image-data').val(imageData);
+                var myform = document.getElementById("submit");
+                var formData = new FormData(myform);
+
+                $.ajax({
+                url: base_url+"apiGarage/Mechanic/updateMechanic",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function(data){
                     if(data.message == 200){
                         showMessage(data.message,"garage/mechanic/");
                     }else{
                         showMessage(data.message);
                     }
-                });
-                
+                }
+              });
             }
         };
 

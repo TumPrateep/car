@@ -66,6 +66,8 @@
         // imageState: {
         //     src: 'http://lorempixel.com/500/400/' // renders an image by default
         // }
+    
+    
     });
 </script>
 
