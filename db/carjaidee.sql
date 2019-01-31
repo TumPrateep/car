@@ -1182,15 +1182,20 @@ INSERT INTO `district` (`districtId`, `districtName`, `provinceId`, `update_by`,
 
 CREATE TABLE `garage` (
   `garageId` int(11) NOT NULL,
-  `comment` varchar(45) NOT NULL,
-  `businessRegistration` varchar(45) NOT NULL,
-  `garageName` varchar(255) NOT NULL,
-  `garageAddress` varchar(255) NOT NULL,
-  `skill` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `comment` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `businessRegistration` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `garageName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `dayopenhour` varchar(45) DEFAULT NULL,
+  `openingtime` time DEFAULT NULL,
+  `closingtime` time DEFAULT NULL,
+  `hno` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `Alley` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `road` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `village` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `postCode` varchar(45) NOT NULL,
   `latitude` varchar(45) NOT NULL,
   `longtitude` varchar(45) NOT NULL,
-  `approve` varchar(45) NOT NULL,
   `subdistrictId` int(11) NOT NULL,
   `districtId` int(11) NOT NULL,
   `provinceId` int(11) NOT NULL,
@@ -1205,10 +1210,6 @@ CREATE TABLE `garage` (
   `option4` int(11) DEFAULT NULL,
   `option_outher` varchar(255) DEFAULT NULL,
   `garagePicture` varchar(255) DEFAULT NULL,
-  `firstname` varchar(45) DEFAULT NULL,
-  `lastname` varchar(45) DEFAULT NULL,
-  `idcard` varchar(45) DEFAULT NULL,
-  `addressGarage` varchar(45) DEFAULT NULL,
   `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1216,12 +1217,8 @@ CREATE TABLE `garage` (
 -- Dumping data for table `garage`
 --
 
-INSERT INTO `garage` (`garageId`, `comment`, `businessRegistration`, `garageName`, `garageAddress`, `skill`, `postCode`, `latitude`, `longtitude`, `approve`, `subdistrictId`, `districtId`, `provinceId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `option1`, `option2`, `option3`, `option4`, `option_outher`, `garagePicture`, `firstname`, `lastname`, `idcard`, `addressGarage`, `userId`) VALUES
-(1, '', '1111111111101', 'garageService0', '13','ISUZU', '11111', '', '', '2', 6384, 716, 49, 1, NULL, '2018-12-26 11:29:22', NULL, 1, 2, 2, 2, 2, '', NULL, 'garage', 'garage', '1111111111119', '13', 12),
-(2, '', '1111111111102', 'garageService1', '13','MAZDA', '11102', '', '', '2', 6384, 716, 49, 1, NULL, '2018-12-26 11:29:22', NULL, 1, 2, 2, 2, 2, '', NULL, 'garage', 'garage', '1111111111119', '13', 12),
-(3, '', '1111111111103', 'garageService2', '13','FORD', '11114', '', '', '2', 6384, 716, 49, 1, NULL, '2018-12-26 11:29:22', NULL, 1, 2, 2, 2, 2, '', NULL, 'garage', 'garage', '1111111111119', '13', 12),
-(4, '', '1111111111104', 'garageService3', '13','HONDA', '11178', '', '', '2', 6384, 716, 49, 1, NULL, '2018-12-26 11:29:22', NULL, 1, 2, 2, 2, 2, '', NULL, 'garage', 'garage', '1111111111119', '13', 12);
-
+INSERT INTO `garage` (`garageId`, `comment`, `businessRegistration`, `garageName`, `phone`, `dayopenhour`, `openingtime`, `closingtime`, `hno`, `Alley`, `road`, `village`, `postCode`, `latitude`, `longtitude`, `subdistrictId`, `districtId`, `provinceId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `option1`, `option2`, `option3`, `option4`, `option_outher`, `garagePicture`, `userId`) VALUES 
+(1, 'null', '1111111111111', 'garagesives0', '0833969512', NULL, '08:30:00', '19:30:00', '128-126/10', NULL, NULL, NULL, '10236', '8.064029', '100.176328', '2412', '108', '63', '12', '12', '2019-01-16 07:13:30', '2019-01-15 05:13:08', '1', NULL, NULL, NULL, NULL, NULL, NULL, '12');
 -- --------------------------------------------------------
 
 --
