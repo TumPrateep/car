@@ -26,19 +26,19 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="first_name">ชื่อ</label><span class="error">*</span>
-                                            <input type="text" class="form-control" name="firstname" id="firstName" placeholder="ชื่อ" title="enter your first name if any.">
+                                            <input type="text" class="form-control" name="firstname" id="firstName" placeholder="ชื่อ">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="last_name">นามสกุล</label><span class="error">*</span>
-                                            <input type="text" class="form-control" name="lastname" id="lastName" placeholder="นามสกุล" title="enter your last name if any.">
+                                            <input type="text" class="form-control" name="lastname" id="lastName" placeholder="นามสกุล" >
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="phone">เบอร์โทรศัพท์</label><span class="error">*</span>
-                                            <input type="text" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" title="enter your phone number if any.">
+                                            <input type="text" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" >
                                         </div>
                                     </div>
                                 </div>
@@ -46,19 +46,19 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="phone">เลขบัตรประชาชน</label><span class="error">*</span>
-                                            <input type="text" class="form-control" name="personalid" id="personalid" placeholder="เลขบัตรประชาชน" title="enter your phone number if any.">
+                                            <input type="text" class="form-control" name="personalid" id="personalid" placeholder="เลขบัตรประชาชน" >
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="phone">ประสบการณ์(ปี)</label><span class="error">*</span>
-                                            <input type="text" class="form-control" name="exp" id="exp" placeholder=" ปี" title="enter your phone number if any.">
+                                            <input type="text" class="form-control" name="exp" id="exp" placeholder=" ปี" >
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="mobile">ความชำนาญ</label><span class="error">*</span>
-                                            <select class="form-control" name="skill" id="skill" placeholder="ความชำนาญ" title="enter your mobile number if any.">
+                                            <select class="form-control" name="skill" id="skill" placeholder="ความชำนาญ" >
                                                   <option value="">เลือกความชำนาญ</option>
                                                   <option value="Honda">Honda</option>
                                                   <option value="Isuzu">Isuzu</option>

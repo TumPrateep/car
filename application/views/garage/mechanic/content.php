@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="col-lg-2">
-                            <button type="button" class="btn btn-info btn-block"><i class="fa fa-search"></i>  ค้นหา</i></button>
+                            <button type="button" class="btn btn-info btn-block" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
                         </div>
                     </div>
                 </div>

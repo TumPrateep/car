@@ -110,6 +110,7 @@ class Spareschange extends BD_Controller {
             $posts = $this->spareschangegarages->allSpareschanges($limit,$start,$order,$dir,$garageId);
         }else {
             $search = $this->post('price');
+            $status = null;
             $posts =  $this->spareschangegarages->spareschanges_search($limit,$start,$search,$order,$dir,$status,$garageId);
             $totalFiltered = $this->spareschangegarages->spareschanges_search_count($search,$status,$garageId);
         }

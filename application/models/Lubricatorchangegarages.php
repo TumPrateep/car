@@ -68,7 +68,7 @@ class Lubricatorchangegarages extends CI_Model{
     function lubricatorchanges_search($limit,$start,$search,$col,$dir,$status,$garageId){
         
         $this->db->select('lubricator_change_garageId, lubricator_price, status,garageId');
-        $this->db->from('lubricator_change');
+        $this->db->from('lubricator_change_garage');
         $this->db->where("garageId",$garageId);
         if($search != null){
             $this->db->where("lubricator_price",$search);
@@ -89,7 +89,7 @@ class Lubricatorchangegarages extends CI_Model{
     function lubricatorchanges_search_count($search,$status,$garageId){
        
         $this->db->select('lubricator_change_garageId, lubricator_price, status');
-        $this->db->from('lubricator_change');
+        $this->db->from('lubricator_change_garage');
         $this->db->where("garageId",$garageId);
         if($search != null){
             $this->db->where("lubricator_price",$search);

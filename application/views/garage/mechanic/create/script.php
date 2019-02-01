@@ -16,15 +16,27 @@
 
     $(document).ready(function () {
 
+        var letters = /^[ก-๙a-zA-Z]+$/;  
+        console.log(letters.test('จาวาสคริปต์'));         //True
+        console.log(letters.test('จาวาสคริปต์1'));        //false
+        console.log(letters.test('จาวาสคริปต์ Thai'));    //false
+        console.log(letters.test('จาวาสคริปต์ ไทย'));     //false
+
         var form = $("#submit");
+
+        jQuery.validator.addMethod("THEN", function(value, element) {
+            return this.optional(element) || /^[ก-๙a-zA-Z]+$/.test(value);
+        }, 'asasas');
 
         form.validate({
             rules:{
-                firstName: {
-                    required: true
+                firstname: {
+                    required: true,
+                    THEN: true
                 },
-                lastName: {
-                    required: true
+                lastname: {
+                    required: true,
+                    THEN: true
                 },
                 exp: {
                     required: true
@@ -45,11 +57,13 @@
                 
                 }
             },messages:{
-                firstName: {
-                    required: "กรุณากรอกชื่อ"
+                firstname: {
+                    required: "กรุณากรอกชื่อ",
+                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
                 },
-                lastName: {
-                    required: "กรุณากรอกนามสกุล"
+                lastname: {
+                    required: "กรุณากรอกนามสกุล",
+                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
                 },
                 exp: {
                     required: "กรุณากรอกประสบการณ์(ปี)"
