@@ -16,7 +16,7 @@
 <script src="<?=base_url("public/themes/user/");?>js/jquery-confirm.min.js"></script>
 <script src="<?=base_url("/public/js/currency.min.js") ?>"></script>
 <script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
-    
+
 <script>
     function choosewarranty(warranty){
         if(warranty == 1){
