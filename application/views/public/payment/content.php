@@ -34,13 +34,13 @@
                     <div class="form-group row">
                         <label class="col-lg-3">วันที่</label>
                         <div class="col-sm-8" >
-                            <input type="date" class="form-control" name="date" id="date">
+                            <input type="text" class="form-control" name="date" id="date" placeholder="ว/ด/ป">
                         </div>
                     </div> 
                     <div class="form-group row">
                         <label class="col-lg-3">เวลา</label>
                         <div class="col-sm-8">
-                            <input type="time" class="form-control" name="time" id="time">
+                            <input type="text" class="form-control" name="time" id="time" placeholder="H:m">
                         </div>
                     </div> 
                     <div class="form-group row">

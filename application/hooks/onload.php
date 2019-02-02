@@ -15,9 +15,8 @@ class Onload{
         if(!isset($this->ci->session->userdata['logged_in'])){
             if(
                 // $controller != "auth" && 
-                $directory != "public/" && $directory != "api/" && $directory != "service/"
-                // && 
-                // $directory != "apiCaraccessories/"
+                $directory != "public/" && $directory != "api/" && $directory != "service/" && $directory != "apiUser/"
+                && $directory != "apiCaraccessories/"
             ){
                 redirect("/login");
                 exit();

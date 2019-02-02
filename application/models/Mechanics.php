@@ -11,6 +11,7 @@ class Mechanics extends CI_Model {
     }
     function allmechanics_count()
     {   
+        $this->db->where('status', 2);
         $query = $this
                 ->db
                 ->get('mechanic');
@@ -19,6 +20,7 @@ class Mechanics extends CI_Model {
     }
     function allmechanics($limit,$start,$col,$dir)
     {   
+        $this->db->where('status', 2);
         $query = $this
             ->db
             ->limit($limit,$start)
@@ -34,19 +36,19 @@ class Mechanics extends CI_Model {
             }
         
     }
-    function data_check_create($personalid,$garageId) {
-        // $this->db->select("firstName");
+    function data_check_create($idCard,$garageId) {
+        $this->db->select("personalid");
         $this->db->from("mechanic");
-        $this->db->where('personalid',$personalid);
+        $this->db->where('personalid',$idCard);
         $this->db->where('garageId',$garageId);
         $result = $this->db->get();
         return $result->row();
     }
-    function data_check_update($mechanicId,$firstName){
-        $this->db->select("firstName");
+    function data_check_update($garageId,$idCard){
+        $this->db->select("personalid");
         $this->db->from("mechanic");
-        $this->db->where('firstName', $firstName);
-        $this->db->where_not_in('mechanicId', $mechanicId);
+        $this->db->where('personalid', $idCard);
+        $this->db->where_not_in('garageId', $garageId);
         $result = $this->db->get();
         return $result->row();
     }
@@ -57,6 +59,7 @@ class Mechanics extends CI_Model {
     }
     function mechanics_search($limit,$start,$col,$dir,$firstname,$skill)
     {
+        $this->db->where('status', 2);
         $this->db->like('firstName',$firstname);
         if($skill != null){
             $this->db->where("skill", $skill);
@@ -76,6 +79,7 @@ class Mechanics extends CI_Model {
         
     }
     function mechanics_search_count($firstname,$skill){
+        $this->db->where('status', 2);
         $this->db->like('firstName',$firstname);
         if($skill != null){
             $this->db->where("skill", $skill);

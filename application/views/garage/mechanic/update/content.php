@@ -58,8 +58,8 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="mobile">ความชำนาญ</label><span class="error">*</span>
-                                            <select class="form-control" name="skill" id="skill" placeholder="ความชำนาญ" >
+                                            <label for="mobile">ความเชี่ยวชาญด้านรถ</label><span class="error">*</span>
+                                            <select class="form-control" name="skill" id="skill" placeholder="ความเชี่ยวชาญด้านรถ" >
                                                   <option value="">เลือกความชำนาญ</option>
                                                   <option value="Honda">Honda</option>
                                                   <option value="Isuzu">Isuzu</option>
