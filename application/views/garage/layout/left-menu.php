@@ -7,6 +7,9 @@
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
                         <li class="nav-label">-</li>
+                        <li><a class="garage-white " href="<?=base_url("garage/Managegarage"); ?>">
+                            <i class="fa fa-address-card-o garage-white"></i>จัดการข้อมูลอู่</a>
+                        </li>
                         <li><a class="garage-white " href="<?=base_url("garage/Mechanic"); ?>">
                             <i class="fa fa-address-card-o garage-white"></i>ข้อมูลช่าง</a>
                         </li>

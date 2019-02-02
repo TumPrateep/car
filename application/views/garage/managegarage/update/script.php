@@ -1,110 +1,134 @@
 <script>
-
-    function checkID(id) {
-            if(id.length != 13) return false;
-            for(i=0, sum=0; i < 12; i++)
-                sum += parseFloat(id.charAt(i))*(13-i);
-            if((11-sum%11)%10!=parseFloat(id.charAt(12)))
-                return false;
-            return true;
-        }
-
-        jQuery.validator.addMethod("pid", function(value, element) {
-          return checkID(value);
-        }, 'กรุณากรอกเลขที่บัตรประชาชนให้ถูกต้อง');
-
-
     $(document).ready(function () {
+        
+        var form = $("#update-member-form"); 
 
-        var letters = /^[ก-๙a-zA-Z]+$/;  
-        console.log(letters.test('จาวาสคริปต์'));         //True
-        console.log(letters.test('จาวาสคริปต์1'));        //false
-        console.log(letters.test('จาวาสคริปต์ Thai'));    //false
-        console.log(letters.test('จาวาสคริปต์ ไทย'));     //false
-
-        var form = $("#submit");
-
-        jQuery.validator.addMethod("THEN", function(value, element) {
-            return this.optional(element) || /^[ก-๙a-zA-Z]+$/.test(value);
-        }, 'asasas');
-
-        form.validate({
-            rules:{
-                firstname: {
-                    required: true,
-                    THEN: true
-                },
-                lastname: {
-                    required: true,
-                    THEN: true
-                },
-                exp: {
-                    required: true
-                },
-                phone: {
-                    required: true,
-                    minlength: 10,
-                    maxlength: 10
-                },
-                skill: {
-                    required: true
-                },
-                personalid: {
-                    required: true,
-                    pid: true
-                }
-            },messages:{
-                firstname: {
-                    required: "กรุณากรอกชื่อ",
-                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
-                },
-                lastname: {
-                    required: "กรุณากรอกนามสกุล",
-                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
-                },
-                exp: {
-                    required: "กรุณากรอกประสบการณ์(ปี)"
-                },
-                phone: {
-                    required: "กรุณากรอกเบอร์โทรศัพท์",
-                    minlength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ",
-                    maxlength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ"
-                },
-                skill: {
-                    required: "กรุณาเลือกความชำนาญ"
-                },
-                personalid: {
-                    required: "กรุณาใส่บัตรประชาชน",
-                    pid: "กรุณากรอกเลขบัตรประชาชนให้ถูกต้อง"
-                }
-            }
-        });
+       
     });
 
- 
+        var garageId = $("#garageId").val();
 
-
-        var mechanicId = $("#mechanicId").val();
-
-        $.post(base_url+"apiGarage/Mechanic/getMechanic",{
-            "mechanicId" : mechanicId
+        $.post(base_url+"apiGarage/Managegarage/getmanagegarage",{
+            "garageId" : garageId
         },function(data){
             if(data.message!=200){
-                showMessage(data.message,"garage/mechanic");
+                showMessage(data.message,"garage/managegarage");
             }
-
             if(data.message == 200){
                 result = data.data;
-                $("#firstName").val(result.firstName);
-                $("#lastName").val(result.lastName);
-                $("#exp").val(result.exp);
-                $("#personalid").val(result.personalid);
-                
+                $("#garageName").val(result.garageName);
                 $("#phone").val(result.phone);
-                $("#skill").val(result.skill);
+                $("#businessRegistration").val(result.businessRegistration);
+                $("#personalid").val(result.personalid);
+                $("#hno").val(result.hno);
+                $("#alley").val(result.alley);
+                $("#road").val(result.road);
+                $("#village").val(result.village);
+                $("#provinceId").val(result.provinceId);
+                $("#districtId").val(result.districtId);
+                $("#postCode").val(result.postCode);
+                $("#subdistrictId").val(result.subdistrictId);
+                $("#latitude").val(result.latitude);
+                $("#longtitude").val(result.longtitude);
                 setBrandPicture(result.picture);
             }
+
+            loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);
             
+        });
+
+
+        
+            var provinceDropdownGarage = $("#provinceId");
+            provinceDropdownGarage.append('<option value="">เลือกจังหวัด</option>');
+
+            var districtDropdownGarage = $('#districtId');
+            districtDropdownGarage.append('<option value="">เลือกอำเภอ</option>');
+
+            var subdistrictDropdownGarage = $('#subdistrictId');
+            subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
+
+
+    //     function onLoad(){
+    //    // loadProvinceUser();
+        
+    //     }
+    //     onLoad();
+
+
+        function loadProvinceGarage(provinceId, districtId,subdistrictId){
+            $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
+                function(data){
+                var province = data.data;
+                $.each(province, function( index, value ) {
+                    provinceDropdownGarage.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
+                });
+
+                provinceDropdownGarage.val(provinceId);
+                loadDistrictGarage(provinceId, districtId,subdistrictId);
+                }
+            );
+            }
+
+            provinceDropdownGarage.change(function(){
+            var provinceId = $(this).val();
+            loadDistrictGarage(provinceId);
+            });
+
+            function loadDistrictGarage(provinceId, districtId,subdistrictId){
+            districtDropdownGarage.html("");
+            districtDropdownGarage.append('<option value="">เลือกอำเภอ</option>');
+            subdistrictDropdownGarage.html("");
+            subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
+
+            $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
+                provinceId: provinceId
+            },
+                function(data){
+                var district = data.data;
+                $.each(district, function( index, value ) {
+                    districtDropdownGarage.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+                });
+                districtDropdownGarage.val(districtId);
+                loadSubdistrictGarage(districtId,subdistrictId);
+                }
+            );
+
+            }
+
+            districtDropdownGarage.change(function(){
+            var districtId = $(this).val();
+            loadSubdistrictGarage(districtId);
+            });
+
+            function loadSubdistrictGarage(districtId,subdistrictId){
+            subdistrictDropdownGarage.html("");
+            subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
+                
+            $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
+                districtId: districtId
+            },
+                function(data){
+                var subDistrict = data.data;
+                $.each(subDistrict, function( index, value ) {
+                    subdistrictDropdownGarage.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+                });
+                subdistrictDropdownGarage.val(subdistrictId);
+                }
+            );
+            }
+
+        $("#submit").validate({
+                rules: {
+                    firstName: {
+                        required: true
+                    }
+                },
+                messages: {
+                    firstName: {
+                        required: "กรุณากรอกชื่อ"
+                    }
+                }
         });
 
         function setBrandPicture(picture){
@@ -114,31 +138,18 @@
                         height: 200,
                         type: 'image',
                         imageState: {
-                            src: picturePath+"mechanic/"+picture
+                            src: picturePath+"garage/"+picture
                         }
                     });
                 }
 
 
-        // $("#submit").validate({
-        //         rules: {
-        //             firstName: {
-        //                 required: true
-        //             }
-        //         },
-        //         messages: {
-        //             firstName: {
-        //                 required: "กรุณากรอกชื่อ"
-        //             }
-        //         }
-        // });
-
         $("#submit").submit(function(){
-            updatemechanic();
+            updategarage();
         })
 
 
-        function updatemechanic(){
+        function updategarage(){
             event.preventDefault();
             var isValid = $("#submit").valid();
            
@@ -150,14 +161,14 @@
                 var formData = new FormData(myform);
 
                 $.ajax({
-                url: base_url+"apiGarage/Mechanic/updateMechanic",
+                url: base_url+"apiGarage/Managegarage/update",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function(data){
                     if(data.message == 200){
-                        showMessage(data.message,"garage/mechanic/");
+                        showMessage(data.message,"garage/Managegarage/");
                     }else{
                         showMessage(data.message);
                     }
@@ -166,9 +177,6 @@
             }
         };
 
-
-    
-        
 </script>
 
 </body>

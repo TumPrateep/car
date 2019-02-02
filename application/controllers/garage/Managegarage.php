@@ -17,7 +17,7 @@ class Managegarage extends CI_Controller {
     }
     
 
-    public function update($mechanicId)
+    public function update()//($mechanicId)
 	{
 		// $data["mechanicId"] = $mechanicId;
 		$this->load->view("garage/layout/head");
@@ -35,7 +35,7 @@ class Managegarage extends CI_Controller {
 	// 	$data["mechanicId"] = $mechanicId;
 	// 	$this->load->view("garage/layout/head");
 	// 	$this->load->view("garage/layout/header");
-    //     $this->load->view("garage/layout/left-menu");
+    //  $this->load->view("garage/layout/left-menu");
 	// 	$this->load->view("garage/managegarage/show/content", $data);
 	// 	$this->load->view("garage/layout/footer");
 	// 	$this->load->view("garage/layout/foot");
