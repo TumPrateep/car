@@ -34,9 +34,9 @@ class lubricatortypeformachines extends CI_Model{
         return $result->row();
     }
     function getAllLubricatortypeformachine(){   
-        $this->db->get('lubricatortypeformachine');
+        $this->db->select('lubricatortypeFormachineId,lubricatortypeFormachine');
         $this->db->where('status','1');
-        return $result = $this->db->get();
+        return $this->db->get('lubricatortypeformachine')->result();
     }
 
     function update($data){

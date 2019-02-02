@@ -98,6 +98,33 @@
         </li>
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#dataProduct" data-parent="#exampleAccordion">
+            <i class="fa fa-product-hunt"></i>
+            <span class="nav-link-text">ข้อมูลสินค้า </span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="dataProduct">
+            <li class="<?= activate_menu('spareproduct'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/spareproduct") ?>">
+                <i class="fa fa-cog"></i>
+                <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
+              </a>
+            </li>
+            <li class="<?= activate_menu('lubricatorproduct'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/lubricatorproduct") ?>">
+                <i class="fa fa-rebel"></i>
+                <span class="nav-link-text">น้ำมันเครื่อง</span>
+              </a>
+            </li>
+            <li class="<?= activate_menu('tireproduct'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/tireproduct") ?>">
+                <i class="fa fa-life-ring"></i>
+                <span class="nav-link-text">ยางรถ</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#serviceCharge" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-dollar"></i>
             <span class="nav-link-text">ค่าบริการ</span>

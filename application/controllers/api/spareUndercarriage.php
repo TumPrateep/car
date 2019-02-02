@@ -9,6 +9,7 @@ class SpareUndercarriage extends BD_Controller {
         parent::__construct();
         $this->auth();
         $this->load->model("sparesundercarriages");
+        $this->load->model("sparesbrand");
     }
 
     function searchspareUndercarriage_post(){
@@ -186,6 +187,19 @@ class SpareUndercarriage extends BD_Controller {
     function getAllSparespartcarUndercarriage_get(){
         $result = $this->sparesundercarriages->getAllSpareundercarriage();
         $output['data'] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllSpareundercarriage_get(){
+        $result = $this->sparesundercarriages->getAllSpareundercarriage();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getAllSpareBrand_get(){
+        $spares_undercarriageId = $this->get("spares_undercarriageId");
+        $result = $this->sparesbrand->getAllSpareBrand($spares_undercarriageId);
+        $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
