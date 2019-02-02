@@ -7,7 +7,6 @@ class LocationforRegister extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        
         $this->load->model("locationmodel");
     }
     function getSubdistrict_post(){
