@@ -11,6 +11,7 @@ class Mechanics extends CI_Model {
     }
     function allmechanics_count()
     {   
+        $this->db->where('status', 2);
         $query = $this
                 ->db
                 ->get('mechanic');
@@ -19,6 +20,7 @@ class Mechanics extends CI_Model {
     }
     function allmechanics($limit,$start,$col,$dir)
     {   
+        $this->db->where('status', 2);
         $query = $this
             ->db
             ->limit($limit,$start)
@@ -57,6 +59,7 @@ class Mechanics extends CI_Model {
     }
     function mechanics_search($limit,$start,$col,$dir,$firstname,$skill)
     {
+        $this->db->where('status', 2);
         $this->db->like('firstName',$firstname);
         if($skill != null){
             $this->db->where("skill", $skill);
@@ -76,6 +79,7 @@ class Mechanics extends CI_Model {
         
     }
     function mechanics_search_count($firstname,$skill){
+        $this->db->where('status', 2);
         $this->db->like('firstName',$firstname);
         if($skill != null){
             $this->db->where("skill", $skill);

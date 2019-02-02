@@ -44,7 +44,7 @@ class Managegarage extends BD_Controller {
 
         $this->load->model("managegarages");
         $config['upload_path'] = 'public/image/garage/';
-        $img = $this->post("picture");
+        $img = $this->post("garagePicture");
         $success = true;
         $file = null;
         $imageName = null; 

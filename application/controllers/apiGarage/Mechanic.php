@@ -57,7 +57,8 @@ class Mechanic extends BD_Controller {
             'create_at' => date('Y-m-d H:i:s',time()),
             'garageId' => $garageId,
             'skill' => $skill,
-            "picture"=> $imageName
+            "picture"=> $imageName,
+            "status"=>2
             //'rols' => 2
             //'idcard' => $idcard
         );
@@ -174,7 +175,8 @@ class Mechanic extends BD_Controller {
             'update_at' => date('Y-m-d H:i:s',time()),
             'garageId' => $garageId,
             'skill' => $skill,
-            "picture"=> $imageName
+            "picture"=> $imageName,
+            "status"=>2
         );
         $oldImage = null;
         if($data_check_update != null){
