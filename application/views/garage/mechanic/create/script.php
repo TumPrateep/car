@@ -17,11 +17,6 @@
     $(document).ready(function () {
 
         var letters = /^[ก-๙a-zA-Z]+$/;  
-        console.log(letters.test('จาวาสคริปต์'));         //True
-        console.log(letters.test('จาวาสคริปต์1'));        //false
-        console.log(letters.test('จาวาสคริปต์ Thai'));    //false
-        console.log(letters.test('จาวาสคริปต์ ไทย'));     //false
-
         var form = $("#submit");
 
         jQuery.validator.addMethod("THEN", function(value, element) {

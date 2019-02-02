@@ -36,19 +36,19 @@ class Mechanics extends CI_Model {
             }
         
     }
-    function data_check_create($personalid,$garageId) {
-        // $this->db->select("firstName");
+    function data_check_create($idCard,$garageId) {
+        $this->db->select("personalid");
         $this->db->from("mechanic");
-        $this->db->where('personalid',$personalid);
+        $this->db->where('personalid',$idCard);
         $this->db->where('garageId',$garageId);
         $result = $this->db->get();
         return $result->row();
     }
-    function data_check_update($mechanicId,$firstName){
-        $this->db->select("firstName");
+    function data_check_update($garageId,$idCard){
+        $this->db->select("personalid");
         $this->db->from("mechanic");
-        $this->db->where('firstName', $firstName);
-        $this->db->where_not_in('mechanicId', $mechanicId);
+        $this->db->where('personalid', $idCard);
+        $this->db->where_not_in('garageId', $garageId);
         $result = $this->db->get();
         return $result->row();
     }

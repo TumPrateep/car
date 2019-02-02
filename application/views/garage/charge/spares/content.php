@@ -24,7 +24,7 @@
                             
                             <div class="col-lg-3 offset-lg-5 mt-8">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="price" placeholder="ค่าบริการ">
+                                    <input type="text" class="form-control" id="spa" placeholder="อะไหล่ช่วงล่าง">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-usd" aria-hidden="true"></i></span>
                                     </div>
@@ -40,7 +40,7 @@
                                     <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
                                         <thead>
                                         <th><i class="fa fa-sort"></i>  ลำดับ</th>
-                                        <th><i class="fa fa-toggle-left"></i>  ราคาเปลี่ยนอะไหล่ช่วงล่าง</th>
+                                        <th><i class="fa fa-toggle-left"></i>  เปลี่ยนอะไหล่ช่วงล่าง</th>
                                         <th><i class="fa fa-toggle-left"></i>  ค่าบริการ</th>
                                         <th></th>
                                         </thead>	

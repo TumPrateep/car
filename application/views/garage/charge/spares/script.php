@@ -28,7 +28,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.price = $("#price").val()
+                    data.spa = $("#spa").val()
                 }
             },
             "order": [[ 1, "asc" ]],
