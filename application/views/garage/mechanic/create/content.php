@@ -69,6 +69,8 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-4"> 
                                         <button type="submit" class="btn btn-info m-b-10 m-l-5">บันทึก</button>
                                     </div>
