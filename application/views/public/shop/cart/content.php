@@ -151,7 +151,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="control-label">ปีที่ผลิต</label><span class="error">*</span>
-										<select class="form-control input-default" name"" id="">
+										<select class="form-control input-default" name="" id="">
 											<option value="">เลือกปีที่ผลิต</option>
 											<option value="2012">2012</option>
 										</select>
@@ -160,7 +160,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="control-label">โฉมรถ</label><span class="error">*</span>
-										<select class="form-control input-default" name"" id="">
+										<select class="form-control input-default" name="" id="">
 											<option value="">เลือกโฉมรถ</option>
 											<option value="95">95</option>
 										</select>
@@ -197,5 +197,47 @@
 			</div>
 		</div>
 	</div>
+
+<div class="modal fade" id="modal-garage">
+  <div class="modal-dialog" style="max-width: 70%;">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">ค้นหาอู่</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+	  	<div class="row justify-content-end">
+			<div class="col-lg-5">
+				<div class="header_search_content">
+					<div class="header_search_form_container">
+						<form action="#" class="header_search_form clearfix">
+							<input type="search" required="required" class="header_search_input" placeholder="ค้นหาสินค้า...">
+							<button type="submit" class="header_search_button trans_300" value="Submit"><img src="http://localhost/car/public/themes/user/images/search.png" alt=""></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div><br>
+		<div id="showGarage">
+			<div class="row">
+				<div class="col-lg-12">
+					<select class="image-picker show-html" id="image-picker"></select>
+				</div>
+			</div>
+		</div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">ปิด</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
