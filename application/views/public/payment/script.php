@@ -1,11 +1,28 @@
+<script src="<?php echo base_url() ?>public/js/jquery-ui.min.js"></script>
+<script src="<?php echo base_url() ?>public/js/php-date-formatter.min.js"></script>
+<script src="<?php echo base_url() ?>public/js/jquery.mousewheel.js"></script>
+<script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.full.min.js"></script>
 <script>
     $(document).ready(function () {
+        $.datetimepicker.setLocale('th');
+        $("#date").datetimepicker({
+            timepicker:false,
+            formatDate:'d/m/Y',
+            lang:'th',
+            minDate: new Date(),
+            mask:true,
+            scrollInput: false,
+            format:'d/m/Y'
+        });
 
-        var letters = /^[ก-๙a-zA-Z]+$/;  
-        console.log(letters.test('จาวาสคริปต์'));         //True
-        console.log(letters.test('จาวาสคริปต์1'));        //false
-        console.log(letters.test('จาวาสคริปต์ Thai'));    //false
-        console.log(letters.test('จาวาสคริปต์ ไทย'));     //false
+        $("#time").datetimepicker({
+            datepicker:false,
+            formatTime:'H:i',
+            mask:true,
+            scrollInput: false,
+            minTime: new Date(),
+            format:'H:i'
+        });
 
         var form = $("#submit");
 
