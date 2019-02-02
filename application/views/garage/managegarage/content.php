@@ -35,22 +35,25 @@
 																			<div class="container">
 																				<!-- <h4 class="underline orange">ข้อมูลอู่ซ่อมรถ</h4> -->
 																				<div class="row">
-																					<div class="col-md-6">
-																						<div class="row p-t-20">
-																							<div class="col-md-12">
-																								<div class="form-group">
-																									<label class="control-label">รูปร้านอู่ซ่อมรถ</label>
-																									<div class="image-editor">
-																										<input type="file" class="cropit-image-input" name="tempImage">
-																										<div class="cropit-preview"></div>
-																										<div class="image-size-label">ปรับขนาด</div>
-																										<input type="range" class="cropit-image-zoom-input">
-																										<input type="hidden" name="garagePicture" id="garagePicture" class="hidden-image-data" />
+																					<div class="card">
+																						<div class="col-md-6">
+																							<div class="row p-t-20">
+																								<div class="col-md-12">
+																									<div class="form-group">
+																										<label class="control-label">รูปร้านอู่ซ่อมรถ</label>
+																										<div class="image-editor">
+																											<input type="file" class="cropit-image-input" name="tempImage">
+																											<div class="cropit-preview"></div>
+																											<div class="image-size-label">ปรับขนาด</div>
+																											<input type="range" class="cropit-image-zoom-input">
+																											<input type="hidden" name="garagePicture" id="garagePicture" class="hidden-image-data" />
+																										</div>
 																									</div>
 																								</div>
 																							</div>
 																						</div>
 																					</div>
+																					
 																					<div class="col-md-6 ">
 																						<div class="form-group">
 																							<label for="garage">ชื่ออู่ซ่อมรถ</label><span class="error">*</span>

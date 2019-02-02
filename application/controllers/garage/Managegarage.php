@@ -41,4 +41,15 @@ class Managegarage extends CI_Controller {
 	// 	$this->load->view("garage/layout/foot");
 	// 	$this->load->view("garage/managegarage/show/script");
 	// }
+	public function test()
+	{
+		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/header");
+        $this->load->view("garage/layout/left-menu");
+		$this->load->view("garage/managegarage/test/content");
+		$this->load->view("garage/layout/footer");
+		$this->load->view("garage/layout/foot");
+		$this->load->view("garage/managegarage/test/script");
+    }
+
 }
