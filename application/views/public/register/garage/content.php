@@ -18,34 +18,34 @@
 					</div>
 					<div class="col-md-5">
 						<div class="form-group">
-							<label for="exampleFormControlInput1">ชื่อ</label>
-							<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ชื่อ">
+							<label for=" ">ชื่อ</label>
+							<input type="email" class="form-control" id=" " placeholder="ชื่อ">
 						</div>
 					</div>
 					<div class="col-md-5">
 						<div class="form-group">
-							<label for="exampleFormControlInput1">นามสกุล</label>
-							<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="นามสกุล">
+							<label for=" ">นามสกุล</label>
+							<input type="email" class="form-control" id=" " placeholder="นามสกุล">
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-4">
 							<div class="form-group">
-								<label for="exampleFormControlInput1">ประสบการณ์</label>
-								<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ประสบการณ์(ปี)">
+								<label for=" ">ประสบการณ์</label>
+								<input type="email" class="form-control" id=" " placeholder="ประสบการณ์(ปี)">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label for="exampleFormControlInput1">เลขรหัสบัตรประชาชน</label>
-								<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="เลขรหัสบัตรประชาชน">
+								<label for=" ">เลขรหัสบัตรประชาชน</label>
+								<input type="email" class="form-control" id=" " placeholder="เลขรหัสบัตรประชาชน">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label for="exampleFormControlInput1">เบอร์โทรศัพท์</label>
-								<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="เบอร์โทรศัพท์">
+								<label for=" ">เบอร์โทรศัพท์</label>
+								<input type="email" class="form-control" id=" " placeholder="เบอร์โทรศัพท์">
 							</div>
 						</div>
 					</div>
@@ -53,28 +53,28 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="exampleFormControlInput1">ชื่ออู่ซ่อมรถ</label>
-							<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ชื่ออู่ซ่อมรถ">
+							<label for=" ">ชื่ออู่ซ่อมรถ</label>
+							<input type="email" class="form-control" id=" " placeholder="ชื่ออู่ซ่อมรถ">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="exampleFormControlInput1">หมายเลขทะเบียนการค้า</label>
-							<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="หมายเลขทะเบียนการค้า">
+							<label for=" ">หมายเลขทะเบียนการค้า</label>
+							<input type="email" class="form-control" id=" " placeholder="หมายเลขทะเบียนการค้า">
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="exampleFormControlInput1">เบอร์โทรศัพท์</label>
-							<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="เบอร์โทรศัพท์">
+							<label for=" ">เบอร์โทรศัพท์</label>
+							<input type="email" class="form-control" id=" " placeholder="เบอร์โทรศัพท์">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="exampleFormControlInput1">เวลาเปิด-ปิด</label>
-							<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="เวลาเปิด-ปิด">
+							<label for=" ">เวลาเปิด-ปิด</label>
+							<input type="email" class="form-control" id=" " placeholder="เวลาเปิด-ปิด">
 						</div>
 					</div>
 				</div>
@@ -90,7 +90,7 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1">จังหวัด</label>
-							<select class="form-control" id="exampleFormControlSelect1">
+							<select class="form-control" id="provinceId">
 								<option>จังหวัด</option>
 							</select>
 						</div>
@@ -98,7 +98,7 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1">อำเภอ</label>
-							<select class="form-control" id="exampleFormControlSelect1">
+							<select class="form-control" id="districtId">
 								<option>อำเภอ</option>
 							</select>
 						</div>
@@ -106,7 +106,7 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1">ตำบล</label>
-							<select class="form-control" id="exampleFormControlSelect1">
+							<select class="form-control" id="subdistrictId">
 								<option>ตำบล</option>
 							</select>
 						</div>
