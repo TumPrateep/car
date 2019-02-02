@@ -76,13 +76,13 @@
 																					<div class="col-md-4">
 																						<div class="form-group">
 																							<!-- <label for="exampleFormControlInput1">เวลาปิด</label> -->
-																							<input type="time" class="form-control" name="timestart" id="timestart" placeholder="00 : 00">
+																							<input type="time" class="form-control" name="openingtime" id="openingtime" placeholder="00 : 00">
 																						</div>
 																					</div>
 																					<div class="col-md-4">
 																						<div class="form-group">
 																							<!-- <label for="exampleFormControlInput1">เวลาปิด</label> -->
-																							<input type="time" class="form-control" name="timeend" id="timeend" placeholder="00 : 00">
+																							<input type="time" class="form-control" name="closingtime" id="closingtime" placeholder="00 : 00">
 																						</div>
 																					</div>
 																				</div>
@@ -149,7 +149,7 @@
 																					<div class="col-md-3">
 																						<div class="form-group">
 																							<label for="garage">ซอย</label>
-																							<input type="text" class="form-control" name="Alley" id="Alley" placeholder="หมู่ที่">
+																							<input type="text" class="form-control" name="alley" id="alley" placeholder="หมู่ที่">
 																						</div>
 																					</div>
 																					<div class="col-md-3">

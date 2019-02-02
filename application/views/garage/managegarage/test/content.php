@@ -26,22 +26,20 @@
                                         <tr>
                                             <td>
 												<div class="card">
-                                                    <form id="registergarage">
+                                                    <form id="submit">
                                                         <div class="shop">
                                                             <div class="container">
                                                                 <h3>ข้อมูลอู่ซ่อมรถ</h3>
+                                                                <div class="tab-pane" id="garage"><br>
                                                                 <div class="container">
                                                                     <div class="row">
                                                                         <div class="card col-md-4">
                                                                             <div class="row p-t-20">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <label class="control-label">รูปร้านอู่ซ่อมรถ</label>
+                                                                                        <H3><label class="control-label">รูปร้านอู่ซ่อมรถ</label></H3>
                                                                                         <div class="image-editor">
-                                                                                            <input type="file" class="cropit-image-input" name="tempImage">
                                                                                             <div class="cropit-preview"></div>
-                                                                                            <div class="image-size-label">ปรับขนาด</div>
-                                                                                            <input type="range" class="cropit-image-zoom-input">
                                                                                             <input type="hidden" name="garagePicture" id="garagePicture" class="hidden-image-data" />
                                                                                         </div>
                                                                                     </div>
@@ -49,7 +47,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="card col-md-8"> 
-                                                                        <h4>ข้อมูลทั่วไป</h4>
+                                                                        <h3>ข้อมูลทั่วไป</h3>
                                                                             <div class="row">
                                                                                 <div class="col-sm">
                                                                                     <label for="garage">หมายเลขทะเบียนการค้า</label>
@@ -92,6 +90,7 @@
                                                                             <textarea class="form-control" rows="5" id="address" readonly></textarea>
                                                                        </div>
                                                                     </div>
+                                                                </div>
                                                                 </div>
                                                             </div>
                                                         </div>					
