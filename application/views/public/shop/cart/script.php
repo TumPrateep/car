@@ -1,7 +1,10 @@
+<link rel="stylesheet" href="<?=base_url("/public/css/image-picker.css") ?>">
+
 <script src="<?php echo base_url() ?>public/js/jquery-ui.min.js"></script>
 <script src="<?php echo base_url() ?>public/js/php-date-formatter.min.js"></script>
 <script src="<?php echo base_url() ?>public/js/jquery.mousewheel.js"></script>
-<script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.js"></script>
+<script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.full.min.js"></script>
+<script src="<?php echo base_url() ?>public/js/image-picker.js"></script>
 <script>
 
 function plus(role, index){
@@ -302,15 +305,40 @@ $(document).ready(function () {
         }
     );
 
+    var pickerData = null;
+
     $.get(base_url+"service/Garages/getAllGarage", {},
         function (data, textStatus, jqXHR) {
+            pickerData = data;
+            var imagePickerHtml = '<option value=""></option>';
             var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
             $.each(data, function (index, val) { 
-                 html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
+                html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
+                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-label="<strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span>" value="'+val.garageId+'">'+val.garageName+'</option>';
             });
             $("#garage").html(html);
+            $("#image-picker").html(imagePickerHtml);
+            showImagePicker();
         }
     );
+
+    function showImagePicker(){
+        $(".image-picker").imagepicker({
+            hide_select : true,
+            show_label  : true
+        });
+    }
+
+    $("#modal-garage").on('hidden.bs.modal', function () {
+        $("#garage").removeAttr("disabled");
+        var garageId = $("#image-picker").val();
+        $("#garage").val(garageId);
+    });
+
+    $("#garage").click(function(){
+        $(this).attr("disabled", "disabled"); 
+        $("#modal-garage").modal("show");
+    });
 
     $.get(base_url+"service/Carprofile/getCarProfile", {},
         function (data, textStatus, jqXHR) {
@@ -321,6 +349,8 @@ $(document).ready(function () {
             $("#plate").html(html);
         }
     );
+
+    $.datetimepicker.setLocale('th');
 
     $("#reserve_day").datetimepicker({
         timepicker:false,

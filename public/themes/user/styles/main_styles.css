@@ -3942,3 +3942,15 @@ select option
   .orange{
 	  color:#f5a415;
   }
+
+  ul.thumbnails.image_picker_selector li .thumbnail.selected {
+    background: #f19405c4 !important;
+  }
+
+  ul.thumbnails.image_picker_selector li .thumbnail > p {
+	text-align: center;
+  }
+
+  ul.thumbnails.image_picker_selector li .thumbnail > p > strong {
+	color: black !important;
+  }
