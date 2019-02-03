@@ -46,9 +46,9 @@
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <h3><label class="control-label">รูปเจ้าของอู่ซ่อมรถ</label></h3>
-                                                                            <div class="image-editor">
+                                                                            <div class="image-editor" id="owner">
 																			<div class="cropit-preview"></div>
-                                                                                <input type="hidden" name="picture" id="picture" class="hidden-image-data" />
+                                                                                <input type="hidden" name="pictures" id="pictures" class="hidden-image-data" />
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -78,17 +78,23 @@
                                                                 </div><br>
                                                                 <div class="row">
                                                                     <div class="col-sm-6">
-                                                                        <label for="garage">ความชำนาญ</label>
-                                                                        <input type="number" class="form-control" name="skill" id="skill"  readonly>
+                                                                        <div class="form-group">
+                                                                            <label for="mobile">ความเชี่ยวชาญด้านรถ</label><span class="error">*</span>
+                                                                            <select class="form-control" name="skill" id="skill" placeholder="ความเชี่ยวชาญด้านรถ" >
+                                                                                <option value="">เลือกความชำนาญ</option>
+                                                                                <option value="Honda">Honda</option>
+                                                                                <option value="Isuzu">Isuzu</option>
+                                                                                <option value="Mazda">Mazda</option> 
+                                                                                <option value="Toyota">Toyota</option>
+                                                                            </select>
+                                                                        </div>
                                                                     </div>
                                                                 </div><br>
-                                                               
-                                                                
                                                             </div>  
                                                         </div>
                                                         <div class="row">
                                                             <div class="card col-md-12"> 
-                                                            <h3>ที่อยู่</h3>
+                                                            <h3>ข้อมูลเพิ่มเติม</h3>
                                                                 <textarea class="form-control" rows="5" id="garageowneraddress" readonly></textarea>
                                                             </div>
 															<div class="col-md-2">
@@ -112,7 +118,7 @@
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <h3><label class="control-label">รูปร้านอู่ซ่อมรถ</label></h3>
-                                                                            <div class="image-editor">
+                                                                            <div class="image-editor" id="garage">
                                                                                 <div class="cropit-preview"></div>
                                                                               <input type="hidden" name="garagePicture" id="garagePicture" class="hidden-image-data" />
                                                                             </div>
@@ -150,12 +156,12 @@
                                                                         <input type="text" class="form-control" name="dateSE"  id="dateSE"  readonly>
                                                                     </div>
                                                                 </div><br>
-                                                                <div class="row">
+                                                                <!-- <div class="row">
                                                                     <div class="col-sm">
                                                                         <label for="comment">ข้อมูลเพิ่มเติม:</label>
                                                                         <textarea class="form-control" rows="5" id="comment" readonly></textarea>
                                                                     </div>
-                                                                </div><br>
+                                                                </div><br> -->
                                                             </div>  
                                                         </div>
                                                         <div class="row">

@@ -95,6 +95,7 @@
                 
                 $("#phone").val(result.phone);
                 $("#skill").val(result.skill);
+                $("#mechanicId").val(result.mechanicId);
                 setBrandPicture(result.picture);
             }
             
@@ -129,14 +130,14 @@
                 var formData = new FormData(myform);
 
                 $.ajax({
-                url: base_url+"apiGarage/Mechanic/updateMechanic",
+                url: base_url+"apiGarage/Mechanic/updateOwner",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function(data){
                     if(data.message == 200){
-                        showMessage(data.message,"garage/mechanic/");
+                        showMessage(data.message,"garage/managegarage/");
                     }else{
                         showMessage(data.message);
                     }

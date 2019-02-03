@@ -195,7 +195,72 @@ class Mechanic extends BD_Controller {
         }
     }
 
+    function updateOwner_post(){
+        $userId = $this->session->userdata['logged_in']['id'];
+        $config['upload_path'] = 'public/image/mechanic/';
+        $mechanicId = $this->post("mechanicId");
+        $firstName = $this->post("firstname");
+        $lastName = $this->post("lastname");
+        $exp       = $this->post("exp");
+        $phone     = $this->post("phone");
+        $idCard = $this->post("personalid");
+        $skill = $this->post("skill");
+        $img = $this->post("picture");
+        $success = true;
+        $file = null;
+        $imageName = null; 
+        $garageId = $this->session->userdata['logged_in']['garageId'];
+        $data_check = $this->mechanics->data_check_create($idCard,$garageId);
+        $this->load->model("mechanics");
+        if(!empty($img)){
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
+
+            $imageName = uniqid().'.png';
+            $file = $config['upload_path']. '/'. $imageName;
+            $success = file_put_contents($file, $data);
+        }
+        if (!$success){
+            unlink($file);
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+        $data_check_update = $this->mechanics->getMechanicsById($mechanicId);
+        $data_check = $this->mechanics->data_check_update($mechanicId,$firstName,$idCard,$garageId);
+        $data = array(
+            'mechanicId' => $mechanicId,
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'exp' => $exp,
+            'phone' => $phone,
+            'personalid' => $idCard,
+            'update_by' => $userId,
+            'update_at' => date('Y-m-d H:i:s',time()),
+            'garageId' => $garageId,
+            'skill' => $skill,
+            "picture"=> $imageName,
+            "status"=>1
+        );
+        $oldImage = null;
+        if($data_check_update != null){
+            $oldImage = $config['upload_path'].$data_check_update->picture;
+        }
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->mechanics,
+            "image_path" => $file,
+            "old_image_path" => $oldImage
+        ];
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+        }
+    }
+
     function getMechanic_post(){
+        // $garageId = $this->session->userdata['logged_in']['garageId'];
         $mechanicId = $this->post('mechanicId');
         $data_check = $this->mechanics->getMechanicsById($mechanicId);
         $option = [
