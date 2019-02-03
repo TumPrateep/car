@@ -22,6 +22,7 @@ class Mechanic extends BD_Controller {
     function createMechanic_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $mechanicId = $this->post("mechanicId");
+        // $titleName = $this->post("titleName");
         $firstName = $this->post("firstname");
         $lastName = $this->post("lastname");
         $exp       = $this->post("exp");
@@ -76,6 +77,7 @@ class Mechanic extends BD_Controller {
         $columns = array( 
             0 => 'firstname'
         );
+        $garageId = $this->session->userdata['logged_in']['garageId'];
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
@@ -89,7 +91,7 @@ class Mechanic extends BD_Controller {
         else {
             $firstname = $this->post('firstName'); 
             $skill = $this->post('skill');
-            $posts =  $this->mechanics->mechanics_search($limit,$start,$order,$dir,$firstname,$skill);
+            $posts =  $this->mechanics->mechanics_search($limit,$start,$order,$dir,$firstname,$skill,$garageId);
             $totalFiltered = $this->mechanics->mechanics_search_count($firstname,$skill);
         }
         $data = array();
@@ -199,6 +201,7 @@ class Mechanic extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $config['upload_path'] = 'public/image/mechanic/';
         $mechanicId = $this->post("mechanicId");
+        $titleName = $this->post("titleName");
         $firstName = $this->post("firstname");
         $lastName = $this->post("lastname");
         $exp       = $this->post("exp");
@@ -232,6 +235,7 @@ class Mechanic extends BD_Controller {
             'mechanicId' => $mechanicId,
             'firstName' => $firstName,
             'lastName' => $lastName,
+            'titleName' => $titleName,
             'exp' => $exp,
             'phone' => $phone,
             'personalid' => $idCard,

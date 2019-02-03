@@ -30,7 +30,7 @@
                 $("#subdistrictId").val(result.subdistrictId);
                 $("#latitude").val(result.latitude);
                 $("#longtitude").val(result.longtitude);
-                $("#timeSE").val(result.openingtime+" ถึง"+result.closingtime);
+                $("#timeSE").val(result.openingtime+" ถึง "+result.closingtime);
                 // $("#closingtime").val(result.closingtime);
                 $("#address").val(result.hno+"  หมู่ที่"+result.village+"  ถนน"+result.road+"  ซอย"+result.alley+"  ตำบล"+result.subdistrictName+"  อำเภอ"+result.districtName+"  จังหวัด"+result.provinceName+"  รหัสไปรษณีย์"+result.postCode+"  ละติจูด"+result.latitude+"  ลองติจูด"+result.longtitude);
                 $("#dateSE").val(changeStringToDay(result.dayopenhour));
@@ -51,7 +51,8 @@
                 $("#exp").val(ownerData.exp);
                 $("#skill").val(ownerData.skill);
                 // $("#skill").val(ownerData.skill);
-                $("#flName").val(ownerData.firstName+" "+ownerData.lastName);
+                // $("#titleName").val(result.titleName);
+                $("#flName").val(ownerData.titleName+ownerData.firstName+" "+ownerData.lastName);
                 $('#owner.image-editor').cropit({
                         allowDragNDrop: false,
                         width: 200,

@@ -57,8 +57,9 @@ class Mechanics extends CI_Model {
         $result = $this->db->update('mechanic', $data);
         return $result;
     }
-    function mechanics_search($limit,$start,$col,$dir,$firstname,$skill)
+    function mechanics_search($limit,$start,$col,$dir,$firstname,$skill,$garageId)
     {
+        $this->db->where("garageId", $garageId);
         $this->db->where('status', 2);
         $this->db->like('firstName',$firstname);
         if($skill != null){
@@ -80,6 +81,7 @@ class Mechanics extends CI_Model {
     }
     function mechanics_search_count($firstname,$skill){
         $this->db->where('status', 2);
+        $this->db->where("garageId", $garageId);
         $this->db->like('firstName',$firstname);
         if($skill != null){
             $this->db->where("skill", $skill);
@@ -89,7 +91,7 @@ class Mechanics extends CI_Model {
     }
 
     function getOwnerGarage($garageId){
-        $this->db->select("firstName, garageId, lastName, personalid, phone, picture, skill, exp, mechanicId");
+        $this->db->select("firstName, garageId, lastName, personalid, phone, picture, skill, exp, mechanicId, titleName");
         $this->db->where("garageId", $garageId);
         $this->db->where("status", 1);
         return $this->db->get("mechanic")->row();

@@ -55,7 +55,7 @@
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label class="form-label required" for="mechanic">ความชำนาญ</label>
+								<label class="form-label required" for="mechanic">ความเชี่ยวชาญด้านรถ</label>
 								<input type="text" class="form-control" name="skill" id="skill" placeholder="ความชำนาญ">
 							</div>
 						</div>

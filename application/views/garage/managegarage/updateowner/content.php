@@ -44,9 +44,9 @@
 													<label class="form-label" for="mechanic">คำนำหน้า</label><span class="error">*</span>
 													<select class="form-control" name="titleName_user" id="titleName_user">
 														<option value=""></option>
-														<option value="1">นาย</option>
-														<option value="2">นาง</option>
-														<option value="3">นางสาว</option>
+														<option value="นาย">นาย</option>
+														<option value="นาง">นาง</option>
+														<option value="นางสาว">นางสาว</option>
 													</select>
 												</div>
 											</div>
