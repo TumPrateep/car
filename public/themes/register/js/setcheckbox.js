@@ -1,4 +1,4 @@
-(function($) {
+$(document).ready(function() {
 
     // -- check all
 
@@ -67,7 +67,7 @@
     $('#monday').click(function(event) {   
         if(this.checked ) {
             // Iterate each checkbox
-            if ('#tuesday' == true) {
+            if ('#tuesday' == true && '#tuesday' == true) {
                 $('#allday').each(function() {
                     this.checked = true;                        
                 });
@@ -170,4 +170,4 @@
 
    
         
-})(jQuery);
+});

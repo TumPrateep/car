@@ -142,14 +142,22 @@ class Users extends BD_Controller {
 		$businessRegistration = $this->post('businessRegistration');
 		// $dayopenhour = $this->post('dayopenhour');
 		$daym = $this->post('monday');
+		// $daym = $this->post(isset($var['monday']) ? $var['monday'] : '';);
+		// $daym = $this->post(isset($var['monday']) ? $var['monday'] : '');
+		// $daymon = isset('monday') ? 'monday' : "0";
+		// $daym = $this->isset($var['monday']) ? $var['monday'] : '';
+		// $daym = isset($this->post('monday');) ? $this->post('monday'); : '';
+		// $daym = isset($this->post('monday')) ? $this->post('monday') : '';
+		
 		$dayt = $this->post('tuesday');
+		// $daytues = isset($dayt) ? $dayt : "0";
 		$dayw = $this->post('wednesday');
 		$dayth = $this->post('thursday');
 		$dayf = $this->post('friday');
 		$dayst = $this->post('saturday');
 		$days = $this->post('sunday');
 		$daya = $this->post('allday');
-		$dayopenhour = $daym.$dayt.$dayw.$dayth.$dayf.$dayst.$days.$daya;
+		$dayopenhour = $daym.$daytues.$dayw.$dayth.$dayf.$dayst.$days.$daya;
 
 		$timeend = $this->post('timeend');
 		$hno_garage = $this->post('hno_garage');
