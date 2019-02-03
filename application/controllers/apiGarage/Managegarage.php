@@ -9,6 +9,7 @@ class Managegarage extends BD_Controller {
         parent::__construct();
         // $this->auth();
         $this->load->model('managegarages');
+        $this->load->model('mechanics');
         $this->load->model("location");
         
     }
@@ -153,7 +154,7 @@ class Managegarage extends BD_Controller {
         $garageId = $this->session->userdata['logged_in']['garageId'];
 
         $data_check = $this->managegarages->getmanagegaragesById($garageId);
-
+        $data_check->owner = $this->mechanics->getOwnerGarage($garageId);
         if($data_check != null){
             $data_check->provinceName = $this->location->getProvinceNameByProvinceId($data_check->provinceId);
             $data_check->districtName = $this->location->getDistrictNameByDistrictId($data_check->districtId);

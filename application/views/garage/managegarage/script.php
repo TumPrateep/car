@@ -30,7 +30,15 @@
                 $("#subdistrictId").val(result.subdistrictId);
                 $("#latitude").val(result.latitude);
                 $("#longtitude").val(result.longtitude);
+                $("#address").val(result.hno+" หมู่ที่ "+result.village+" ถนน "+result.road+" ตำบล"+result.subdistrictName+" อำเภอ "+result.districtName+" จังหวัด "+result.provinceName);
+                $("#dateSE").val(changeStringToDay(result.dayopenhour));
                 setBrandPicture(result.picture);
+
+                // owner
+                var ownerData = result.owner;
+                $("#personalid").val(ownerData.personalid);
+                $("#flName").val(ownerData.firstName+" "+ownerData.lastName);
+                setBrandPicture(ownerData.picture);
             }
 
             loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);

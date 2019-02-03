@@ -87,5 +87,12 @@ class Mechanics extends CI_Model {
         $query = $this->db->get('mechanic');
         return $query->num_rows();
     }
+
+    function getOwnerGarage($garageId){
+        $this->db->select("firstName, garageId, lastName, personalid, phone, picture, skill");
+        $this->db->where("garageId", $garageId);
+        $this->db->where("status", 1);
+        return $this->db->get("mechanic")->row();
+    }
     
 }

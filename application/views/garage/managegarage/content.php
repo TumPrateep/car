@@ -49,7 +49,7 @@
                                                                                                         <h3><label class="control-label">รูปเจ้าของอู่ซ่อมรถ</label></h3>
                                                                                                         <div class="image-editor">
 																										<div class="cropit-preview"></div>
-                                                                                                            <input type="hidden" name="garagePicture" id="garagePicture" class="hidden-image-data" />
+                                                                                                            <input type="hidden" name="picture" id="picture" class="hidden-image-data" />
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
