@@ -5,8 +5,8 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/user/");?>styles/responsive.css">
 <link rel="stylesheet" type="text/css" href="<?=base_url("public/css/");?>custom.css">
 
-<!-- <link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/register/");?>fonts/themify-icons/themify-icons.css">
-<link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/register/");?>css/sty le.css"> -->
+<link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/register/");?>fonts/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/register/");?>css/style.css">
 
 <style type="text/css">
 	img.star{
