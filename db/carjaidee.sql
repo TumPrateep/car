@@ -132,7 +132,7 @@ CREATE TABLE `car_profile` (
 --
 
 INSERT INTO `car_profile` (`car_profileId`, `mileage`, `pictureFront`, `pictureBack`, `circlePlate`, `userId`, `create_at`, `update_at`, `create_by`, `update_by`, `status`, `character_plate`, `number_plate`, `province_plate`, `color`) VALUES
-(1, '91020', NULL, NULL, NULL, 13, '2018-12-15 23:36:49', NULL, 1, NULL, 1, 'กข', '112', 1, 'แดง');
+(1, '91020', NULL, NULL, NULL, 4, '2018-12-15 23:36:49', NULL, 1, NULL, 1, 'กข', '112', 1, 'แดง');
 
 -- --------------------------------------------------------
 
@@ -1603,7 +1603,7 @@ CREATE TABLE `mechanic` (
 
 INSERT INTO `mechanic` (`mechanicId`, `titleName`, `firstName`, `lastName`, `exp`, `personalid`, `phone`, `status`, `activeFlag`, `create_at`, `update_at`, `create_by`, `update_by`, `garageId`, `skill`, `picture`) VALUES
 (1, NULL, 'ศุภณัฐ', 'คุ้มปิยะผล', 1, '1803366253568', '0835212041', 1, 1, '2019-01-09 11:36:26', NULL, 12, NULL, 1, 'Toyota', ''),
-(2, NULL, 'Sittichai', 'Kheawkhem', 12, '1801700077431', '0808845891', 1, 1, '2019-01-11 10:58:41', NULL, 12, NULL, 1, 'Honda', '');
+(2, NULL, 'Sittichai', 'Kheawkhem', 12, '1801700077431', '0808845891', 2, 1, '2019-01-11 10:58:41', NULL, 12, NULL, 1, 'Honda', '');
 
 -- --------------------------------------------------------
 
