@@ -17,7 +17,7 @@
             if(data.message == 200){
                 result = data.data;
                 $("#garageName").val(result.garageName);
-                $("#phone").val(result.phone);
+                $("#phoned").val(result.phone);
                 $("#businessRegistration").val(result.businessRegistration);
                 $("#personalid").val(result.personalid);
                 $("#hno").val(result.hno);
@@ -30,15 +30,38 @@
                 $("#subdistrictId").val(result.subdistrictId);
                 $("#latitude").val(result.latitude);
                 $("#longtitude").val(result.longtitude);
+                $("#timeSE").val(result.openingtime+" ถึง"+result.closingtime);
+                // $("#closingtime").val(result.closingtime);
                 $("#address").val(result.hno+"  หมู่ที่"+result.village+"  ถนน"+result.road+"  ซอย"+result.alley+"  ตำบล"+result.subdistrictName+"  อำเภอ"+result.districtName+"  จังหวัด"+result.provinceName+"  รหัสไปรษณีย์"+result.postCode+"  ละติจูด"+result.latitude+"  ลองติจูด"+result.longtitude);
                 $("#dateSE").val(changeStringToDay(result.dayopenhour));
-                setBrandPicture(result.picture);
+                $('#garage.image-editor').cropit({
+                    allowDragNDrop: false,
+                    width: 200,
+                    height: 200,
+                    type: 'image',
+                    imageState: {
+                        src: picturePath+"garage/"+result.picture
+                    }
+                });
 
                 // owner
                 var ownerData = result.owner;
                 $("#personalid").val(ownerData.personalid);
+                $("#phone").val(ownerData.phone);
+                $("#exp").val(ownerData.exp);
+                $("#skill").val(ownerData.skill);
+                // $("#skill").val(ownerData.skill);
                 $("#flName").val(ownerData.firstName+" "+ownerData.lastName);
-                // setBrandPicture(ownerData.picture);
+                $('#owner.image-editor').cropit({
+                        allowDragNDrop: false,
+                        width: 200,
+                        height: 200,
+                        type: 'image',
+                        imageState: {
+                            src: picturePath+"mechanic/"+ownerData.picture
+                        }
+                    });
+                // setBrandPicture(ownerData.pictures);
             }
 
             loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);
@@ -139,17 +162,6 @@
                 }
         });
 
-        function setBrandPicture(picture){
-                    $('.image-editor').cropit({
-                        allowDragNDrop: false,
-                        width: 200,
-                        height: 200,
-                        type: 'image',
-                        imageState: {
-                            src: picturePath+"garage/"+picture
-                        }
-                    });
-                }
 
 
         $("#submit").submit(function(){

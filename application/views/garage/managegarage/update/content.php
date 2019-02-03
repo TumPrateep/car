@@ -262,9 +262,9 @@
 																						</div>
 																					</div>
 																					<div class="col-md-2">
-																						<div class="form-group">
+																						<!-- <div class="form-group">
 																							<button type="button" class="btn btn-Secondary" data-toggle="modal" data-target="#exampleModal1">กรอกรายละเอียดข้อมูลอู่เพิ่มเติม</button>
-																						</div>
+																						</div> -->
 																						<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
 																							<div class="modal-dialog" role="document">
 																								<div class="modal-content">

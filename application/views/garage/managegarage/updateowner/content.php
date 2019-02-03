@@ -21,6 +21,7 @@
 							<h3>ข้อมูลเจ้าของอู่</h3>
 							<div class="row m-y-2">
 									<div class="container">
+									<input type="hidden" name="mechanicId" id="mechanicId">
 										<!-- <h4 class="underline orange">ข้อมูลอู่ซ่อมรถ</h4> -->
 										<div class="row">
 											<div class="col-md-6 ">
@@ -75,12 +76,18 @@
 													<input type="text" class="form-control" name="personalid" id="personalid" placeholder="เลขรหัสบัตรประชาชน">
 												</div>
 											</div>
-											<div class="col-md-4">
+											<div class="col-lg-4">
 												<div class="form-group">
-													<label class="form-label" for="mechanic">ความชำนาญ</label><span class="error">*</span>
-													<input type="text" class="form-control" name="skill" id="skill" placeholder="ความชำนาญ">
+													<label for="mobile">ความเชี่ยวชาญด้านรถ</label><span class="error">*</span>
+													<select class="form-control" name="skill" id="skill" placeholder="ความเชี่ยวชาญด้านรถ" >
+														<option value="">เลือกความชำนาญ</option>
+														<option value="Honda">Honda</option>
+														<option value="Isuzu">Isuzu</option>
+														<option value="Mazda">Mazda</option> 
+														<option value="Toyota">Toyota</option>
+													</select>
 												</div>
-											</div>
+											</div
 											<div class="col-md-4">
 												<div class="form-group">
 													<label class="form-label" for="mechanic">เบอร์โทรศัพท์</label><span class="error">*</span>
