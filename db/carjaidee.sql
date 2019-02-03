@@ -1602,8 +1602,8 @@ CREATE TABLE `mechanic` (
 --
 
 INSERT INTO `mechanic` (`mechanicId`, `titleName`, `firstName`, `lastName`, `exp`, `personalid`, `phone`, `status`, `activeFlag`, `create_at`, `update_at`, `create_by`, `update_by`, `garageId`, `skill`, `picture`) VALUES
-(7, NULL, 'ศุภณัฐ', 'คุ้มปิยะผล', 1, '1803366253568', '0835212041', 1, 1, '2019-01-09 11:36:26', NULL, 12, NULL, 1, 'Toyota', ''),
-(8, NULL, 'Sittichai', 'Kheawkhem', 12, '1801700077431', '0808845891', 2, 1, '2019-01-11 10:58:41', NULL, 12, NULL, 1, 'Honda', '');
+(1, NULL, 'ศุภณัฐ', 'คุ้มปิยะผล', 1, '1803366253568', '0835212041', 1, 1, '2019-01-09 11:36:26', NULL, 12, NULL, 1, 'Toyota', ''),
+(2, NULL, 'Sittichai', 'Kheawkhem', 12, '1801700077431', '0808845891', 1, 1, '2019-01-11 10:58:41', NULL, 12, NULL, 1, 'Honda', '');
 
 -- --------------------------------------------------------
 
@@ -12894,7 +12894,7 @@ ALTER TABLE `machinetype`
 -- AUTO_INCREMENT for table `mechanic`
 --
 ALTER TABLE `mechanic`
-  MODIFY `mechanicId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `mechanicId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `model`
