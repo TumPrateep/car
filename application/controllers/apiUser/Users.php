@@ -141,24 +141,29 @@ class Users extends BD_Controller {
 		$phone_garage = $this->post('phone_garage');
 		$businessRegistration = $this->post('businessRegistration');
 		// $dayopenhour = $this->post('dayopenhour');
+		$openDay = "";
 		$daym = $this->post('monday');
-		if (empty($daym)) {$daym == 1;} else {$daym == 0;}
+		$openDay .= (isset($daym) ? 1 : 0 );
 		
 		$dayt = $this->post('tuesday');
-		if (empty($dayt)) {$dayt == 1;} else {$dayt == 0;}
+		$openDay .= (isset($dayt) ? 1 : 0 );
+
 		$dayw = $this->post('wednesday');
-		if (empty($dayw)) {$dayw == 1;} else {$dayw == 0;}
+		$openDay .= (isset($dayw) ? 1 : 0 );
+
 		$dayth = $this->post('thursday');
-		if (empty($dayth)) {$dayth == 1;} else {$dayth == 0;}
+		$openDay .= (isset($dayth) ? 1 : 0 );
+
 		$dayf = $this->post('friday');
-		if (empty($dayf)) {$dayf == 1;} else {$dayf == 0;}
+		$openDay .= (isset($dayf) ? 1 : 0 );
+
 		$dayst = $this->post('saturday');
-		if (empty($dayst)) {$dayst == 1;} else {$dayst == 0;}
+		$openDay .= (isset($dayst) ? 1 : 0 );
+
 		$days = $this->post('sunday');
-		if (empty($days)) {$days == 1;} else {$days == 0;}
-		$daya = $this->post('allday');
-		if (empty($daya)) {$daya == 1;} else {$daya == 0;}
-		$dayopenhour = $daym.$daytues.$dayw.$dayth.$dayf.$dayst.$days.$daya;
+		$openDay .= (isset($days) ? 1 : 0 );
+
+		$dayopenhour = $openDay;
 
 		$timeend = $this->post('timeend');
 		$hno_garage = $this->post('hno_garage');

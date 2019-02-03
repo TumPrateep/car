@@ -52,13 +52,13 @@
 											<div class="col-md-4">
 												<div class="form-group">
 													<label class="form-label" for="mechanic">ชื่อ</label><span class="error">*</span>
-													<input type="text" class="form-control" name="firstname_user" id="firstname_user" placeholder="ชื่อ">
+													<input type="text" class="form-control" name="firstName" id="firstName" placeholder="ชื่อ">
 												</div>
 											</div>
 											<div class="col-md-4">
 												<div class="form-group">
 													<label class="form-label" for="mechanic">นามสกุล</label><span class="error">*</span>
-													<input type="text" class="form-control" name="lastname_user" id="lastname_user" placeholder="นามสกุล">
+													<input type="text" class="form-control" name="lastName" id="lastName" placeholder="นามสกุล">
 												</div>
 											</div>
 											<div class="col-md-2 ">
@@ -84,7 +84,7 @@
 											<div class="col-md-4">
 												<div class="form-group">
 													<label class="form-label" for="mechanic">เบอร์โทรศัพท์</label><span class="error">*</span>
-													<input type="number" class="form-control" name="phone1" id="phone1" placeholder="เบอร์โทรศัพท์">
+													<input type="number" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์">
 												</div>
 											</div>
 										</div>

@@ -1,60 +1,123 @@
 <script>
+
+    function checkID(id) {
+            if(id.length != 13) return false;
+            for(i=0, sum=0; i < 12; i++)
+                sum += parseFloat(id.charAt(i))*(13-i);
+            if((11-sum%11)%10!=parseFloat(id.charAt(12)))
+                return false;
+            return true;
+        }
+
+        jQuery.validator.addMethod("pid", function(value, element) {
+          return checkID(value);
+        }, 'กรุณากรอกเลขที่บัตรประชาชนให้ถูกต้อง');
+
+
     $(document).ready(function () {
+
+        var letters = /^[ก-๙a-zA-Z]+$/;  
+        var form = $("#submit");
         
-        var form = $("#update-member-form"); 
+        jQuery.validator.addMethod("THEN", function(value, element) {
+            return this.optional(element) || /^[ก-๙a-zA-Z]+$/.test(value);
+        }, 'asasas');
+
+        form.validate({
+            rules:{
+                firstname: {
+                    required: true,
+                    THEN: true
+                },
+                lastname: {
+                    required: true,
+                    THEN: true
+                },
+                exp: {
+                    required: true
+                },
+                phone: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                skill: {
+                    required: true
+                },
+                personalid: {
+                    required: true,
+                    pid: true
+                }
+            },messages:{
+                firstname: {
+                    required: "กรุณากรอกชื่อ",
+                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
+                },
+                lastname: {
+                    required: "กรุณากรอกนามสกุล",
+                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
+                },
+                exp: {
+                    required: "กรุณากรอกประสบการณ์(ปี)"
+                },
+                phone: {
+                    required: "กรุณากรอกเบอร์โทรศัพท์",
+                    minlength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ",
+                    maxlength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ"
+                },
+                skill: {
+                    required: "กรุณาเลือกความชำนาญ"
+                },
+                personalid: {
+                    required: "กรุณาใส่บัตรประชาชน",
+                    pid: "กรุณากรอกเลขบัตรประชาชนให้ถูกต้อง"
+                }
+            }
+        });
     });
 
-        var garageId = $("#garageId").val();
+ 
 
-        $.post(base_url+"apiGarage/Managegarage/getmanagegarage",{
-            "garageId" : garageId
-        },function(data){
+
+        var mechanicId = $("#mechanicId").val();
+
+        $.get(base_url+"apiGarage/Mechanic/getOwner",{},function(data){
             if(data.message!=200){
                 showMessage(data.message,"garage/managegarage");
             }
+
             if(data.message == 200){
                 result = data.data;
-                $("#garageName").val(result.garageName);
-                $("#phone").val(result.phone);
-                $("#businessRegistration").val(result.businessRegistration);
+                $("#firstName").val(result.firstName);
+                $("#lastName").val(result.lastName);
+                $("#exp").val(result.exp);
                 $("#personalid").val(result.personalid);
-                $("#hno").val(result.hno);
-                $("#alley").val(result.alley);
-                $("#road").val(result.road);
-                $("#village").val(result.village);
-                $("#provinceId").val(result.provinceId);
-                $("#districtId").val(result.districtId);
-                $("#postCode").val(result.postCode);
-                $("#subdistrictId").val(result.subdistrictId);
-                $("#latitude").val(result.latitude);
-                $("#longtitude").val(result.longtitude);
+                
+                $("#phone").val(result.phone);
+                $("#skill").val(result.skill);
                 setBrandPicture(result.picture);
             }
-
-            loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);
             
         });
 
-        $("#submit").validate({
-                rules: {
-                    firstName: {
-                        required: true
-                    }
-                },
-                messages: {
-                    firstName: {
-                        required: "กรุณากรอกชื่อ"
-                    }
+        function setBrandPicture(picture){
+                    $('.image-editor').cropit({
+                        allowDragNDrop: false,
+                        width: 200,
+                        height: 200,
+                        type: 'image',
+                        imageState: {
+                            src: picturePath+"mechanic/"+picture
+                        }
+                    });
                 }
-        });
-
 
         $("#submit").submit(function(){
-            updategarage();
+            updatemechanic();
         })
 
 
-        function updategarage(){
+        function updatemechanic(){
             event.preventDefault();
             var isValid = $("#submit").valid();
            
@@ -66,14 +129,14 @@
                 var formData = new FormData(myform);
 
                 $.ajax({
-                url: base_url+"apiGarage/Managegarage/update",
+                url: base_url+"apiGarage/Mechanic/updateMechanic",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function(data){
                     if(data.message == 200){
-                        showMessage(data.message,"garage/Managegarage/");
+                        showMessage(data.message,"garage/mechanic/");
                     }else{
                         showMessage(data.message);
                     }
@@ -82,6 +145,9 @@
             }
         };
 
+
+    
+        
 </script>
 
 </body>

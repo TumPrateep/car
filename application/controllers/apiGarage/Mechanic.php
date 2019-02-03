@@ -203,4 +203,13 @@ class Mechanic extends BD_Controller {
         ];
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
+
+    function getOwner_get(){
+        $garageId = $this->session->userdata['logged_in']['garageId'];
+        $owner = $this->mechanics->getOwnerGarage($garageId);
+        $option = [
+            "data_check" => $owner
+        ];
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
 }

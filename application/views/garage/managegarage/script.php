@@ -30,7 +30,7 @@
                 $("#subdistrictId").val(result.subdistrictId);
                 $("#latitude").val(result.latitude);
                 $("#longtitude").val(result.longtitude);
-                $("#address").val(result.hno+" หมู่ที่ "+result.village+" ถนน "+result.road+" ตำบล"+result.subdistrictName+" อำเภอ "+result.districtName+" จังหวัด "+result.provinceName);
+                $("#address").val(result.hno+"  หมู่ที่"+result.village+"  ถนน"+result.road+"  ซอย"+result.alley+"  ตำบล"+result.subdistrictName+"  อำเภอ"+result.districtName+"  จังหวัด"+result.provinceName+"  รหัสไปรษณีย์"+result.postCode+"  ละติจูด"+result.latitude+"  ลองติจูด"+result.longtitude);
                 $("#dateSE").val(changeStringToDay(result.dayopenhour));
                 setBrandPicture(result.picture);
 
@@ -38,7 +38,7 @@
                 var ownerData = result.owner;
                 $("#personalid").val(ownerData.personalid);
                 $("#flName").val(ownerData.firstName+" "+ownerData.lastName);
-                setBrandPicture(ownerData.picture);
+                // setBrandPicture(ownerData.picture);
             }
 
             loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);
