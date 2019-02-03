@@ -105,7 +105,7 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="garage">หมายเลข</label><span class="error">*</span>
-										<input type="text" class="form-control" id="number_plate" name="number_plate" placeholder="หมายเลข">
+										<input type="number" class="form-control" id="number_plate" name="number_plate" placeholder="หมายเลข">
 									</div>
 								</div>
 								<div class="col-md-4">
@@ -113,7 +113,6 @@
 										<label for="garage">จังหวัด</label><span class="error">*</span>
 										<select class="form-control input-default" name="province_plate" id="province_plate">
 											<option value="">เลือกจังหวัด</option>
-											<option value="ตรัง">ตรัง</option>
 										</select>
 									</div>
 								</div>
