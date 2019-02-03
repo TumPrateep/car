@@ -1594,16 +1594,16 @@ CREATE TABLE `mechanic` (
   `update_by` int(11) DEFAULT NULL,
   `garageId` int(11) NOT NULL,
   `skill` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `picture` varchar(255) NOT NULL
+  `picture` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `mechanic`
 --
 
-INSERT INTO `mechanic` (`mechanicId`, `titleName`, `firstName`, `lastName`, `exp`, `personalid`, `phone`, `status`, `activeFlag`, `create_at`, `update_at`, `create_by`, `update_by`, `garageId`, `skill`) VALUES
-(7, NULL, 'ศุภณัฐ', 'คุ้มปิยะผล', 1, '1803366253568', '0835212041', 1, 1, '2019-01-09 11:36:26', NULL, 12, NULL, 1, 'Toyota'),
-(8, NULL, 'Sittichai', 'Kheawkhem', 12, '1801700077431', '0808845891', 1, 1, '2019-01-11 10:58:41', NULL, 12, NULL, 1, 'Honda');
+INSERT INTO `mechanic` (`mechanicId`, `titleName`, `firstName`, `lastName`, `exp`, `personalid`, `phone`, `status`, `activeFlag`, `create_at`, `update_at`, `create_by`, `update_by`, `garageId`, `skill`, `picture`) VALUES
+(7, NULL, 'ศุภณัฐ', 'คุ้มปิยะผล', 1, '1803366253568', '0835212041', 1, 1, '2019-01-09 11:36:26', NULL, 12, NULL, 1, 'Toyota', ''),
+(8, NULL, 'Sittichai', 'Kheawkhem', 12, '1801700077431', '0808845891', 2, 1, '2019-01-11 10:58:41', NULL, 12, NULL, 1, 'Honda', '');
 
 -- --------------------------------------------------------
 
@@ -12319,9 +12319,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `category`, `email`, `phone`, `create_at`, `update_at`, `create_by`, `update_by`, `status`) VALUES
 (1, 'admin', '$2y$10$z0glw9l0y.YcYQGPmM7eCuRmuNoZgVED5YxP/yVKBkJYrFaaNIVpe', '1', 'admin@admin', '0812587469', NULL, NULL, 1, 1, 1),
-(11, 'car', '$2y$10$BviIuI/vXcI26DhH95AMaeQX7H0oXH0t844bOdtrPusExUd/sOTn2', '2', NULL, '0000000000', NULL, NULL, NULL, NULL, 1),
-(12, 'garage', '$2y$10$vsYwdP70tZuIlJvfptP3x.IE8WU9zRdOKvNVw1OZf4TwWGcqvfwby', '3', '', '0867454630', '2018-09-23 13:58:55', '2018-12-26 11:29:44', NULL, 1, 1),
-(13, 'user', '$2y$10$x.ksVYEIzWMK5fVaxYedg.YTD8oLpf4qayNtYQAGaexSoUKXuEC5y', '4', NULL, '0121122222', NULL, NULL, NULL, NULL, 1);
+(2, 'car', '$2y$10$BviIuI/vXcI26DhH95AMaeQX7H0oXH0t844bOdtrPusExUd/sOTn2', '2', NULL, '0000000000', NULL, NULL, NULL, NULL, 1),
+(3, 'garage', '$2y$10$vsYwdP70tZuIlJvfptP3x.IE8WU9zRdOKvNVw1OZf4TwWGcqvfwby', '3', '', '0867454630', '2018-09-23 13:58:55', '2018-12-26 11:29:44', NULL, 1, 1),
+(4, 'user', '$2y$10$x.ksVYEIzWMK5fVaxYedg.YTD8oLpf4qayNtYQAGaexSoUKXuEC5y', '4', NULL, '0121122222', NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -12342,7 +12342,10 @@ CREATE TABLE `user_profile` (
   `create_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
+  `hno` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `Alley` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `road` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `village` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `titleName` text,
   `update_at` datetime DEFAULT NULL,
   `activeFlag` int(11) NOT NULL,
@@ -12354,21 +12357,21 @@ CREATE TABLE `user_profile` (
 -- Dumping data for table `user_profile`
 --
 
-INSERT INTO `user_profile` (`user_profile`, `firstname`, `lastname`, `status`, `phone1`, `phone2`, `provinceId`, `districtId`, `subdistrictId`, `create_by`, `create_at`, `userId`, `address`, `titleName`, `update_at`, `activeFlag`, `postCodes`, `update_by`) VALUES
-(1, 'admin', 'admin', '1', '080524171', '0899996699', 63, 843, 7662, 1, NULL, 1, '22/9 ต.ท่าศาลา จ.นครศรีธรรมราช', 'นาย', NULL, 0, NULL, NULL),
-(3, 'ณัฐพล', 'บุญสุวรรณ์', '2', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 12:50:15', 6, '22/2', 'นาย', NULL, 0, NULL, NULL),
-(4, 'Micheal', 'D.rogis', '1', '', '0998755211', 14, 176, 1408, 1, '2018-06-10 12:56:10', 7, '99/5', 'นางสาว', NULL, 0, NULL, NULL),
-(5, 'พุตทิพัต', 'ไทยนิยม', '2', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 13:03:49', 8, '33/9', 'นาง', NULL, 0, NULL, NULL),
-(6, 'พุตทิพัต', 'ไทยนิยม', '2', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 13:04:38', 8, '33/9', 'นาง', NULL, 0, NULL, NULL),
-(7, 'ณัฐพล', 'บุญสุวรรณ์', '2', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 13:05:18', 6, '22/2', 'นาย', NULL, 0, NULL, NULL),
-(8, 'ณัฐพล', 'บุญสุวรรณ์', '1', '', '0805241999', 63, 847, 7718, 1, '2018-06-10 14:24:43', 9, '22/2', 'นาย', NULL, 0, NULL, NULL),
-(9, 'พุตทิพัต', 'ไทยนิยม', '1', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 14:30:18', 8, '33/9', 'นาง', NULL, 0, NULL, NULL),
-(10, 'ณัฐพล', 'บุญสุวรรณ์', '1', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 15:17:45', 6, '22/2', 'นาย', NULL, 0, NULL, NULL),
-(11, 'car2', 'car2', '1', '', '111111111111111111', 58, 810, 7307, 1, '2018-06-17 10:15:00', 10, 'car2', 'นาง', NULL, 0, NULL, NULL),
-(12, 'ร้าน', 'อะไหล่', '1', '', '0000000000', 63, 836, 7595, 1, '2018-09-08 20:09:29', 11, 'ร้านอะไหล่', 'นาย', NULL, 0, NULL, NULL),
-(13, 'ณัฐพล', 'บุญสุวรรณ์', '2', '0867454630', '', 63, 847, 7718, NULL, '2018-09-23 13:58:55', 12, '22/2 ถ.พัฒนาการบางวัง', '1', NULL, 1, NULL, NULL),
-(14, 'user', 'user', '1', '', '081255223', 1, 48, 232, 1, '2018-12-15 23:36:49', 13, '-', 'นาย', NULL, 0, NULL, NULL),
-(15, 'garage', 'garage', '1', '', '0867454630', 63, 847, 7718, 1, '2018-12-26 11:29:22', 12, '22/2 ถ.พัฒนาการบางวัง', 'นาย', NULL, 0, NULL, NULL);
+INSERT INTO `user_profile` (`user_profile`, `firstname`, `lastname`, `status`, `phone1`, `phone2`, `provinceId`, `districtId`, `subdistrictId`, `create_by`, `create_at`, `userId`, `hno`, `Alley`, `road`, `village`, `titleName`, `update_at`, `activeFlag`, `postCodes`, `update_by`) VALUES
+(1, 'admin', 'admin', '1', '080524171', '0899996699', 63, 843, 7662, 1, NULL, 1, '22/9 ', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
+(2, 'ณัฐพล', 'บุญสุวรรณ์', '2', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 12:50:15', 6, '22/2', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
+(3, 'Micheal', 'D.rogis', '1', '', '0998755211', 14, 176, 1408, 1, '2018-06-10 12:56:10', 7, '99/5', '1 ', '1 ', '1', 'นางสาว', NULL, 0, NULL, NULL),
+(4, 'พุตทิพัต', 'ไทยนิยม', '2', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 13:03:49', 8, '33/9', '1 ', '1 ', '1', 'นาง', NULL, 0, NULL, NULL),
+(5, 'พุตทิพัต', 'ไทยนิยม', '2', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 13:04:38', 8, '33/9', '1 ', '1 ', '1', 'นาง', NULL, 0, NULL, NULL),
+(6, 'ณัฐพล', 'บุญสุวรรณ์', '2', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 13:05:18', 6, '22/2', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
+(7, 'ณัฐพล', 'บุญสุวรรณ์', '1', '', '0805241999', 63, 847, 7718, 1, '2018-06-10 14:24:43', 9, '22/2', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
+(8, 'พุตทิพัต', 'ไทยนิยม', '1', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 14:30:18', 8, '33/9', '1 ', '1 ', '1', 'นาง', NULL, 0, NULL, NULL),
+(9, 'ณัฐพล', 'บุญสุวรรณ์', '1', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 15:17:45', 6, '22/2', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
+(10, 'car2', 'car2', '1', '', '111111111111111111', 58, 810, 7307, 1, '2018-06-17 10:15:00', 10, 'car2', '1 ', '1 ', '1', 'นาง', NULL, 0, NULL, NULL),
+(11, 'ร้าน', 'อะไหล่', '1', '', '0000000000', 63, 836, 7595, 1, '2018-09-08 20:09:29', 11, 'ร้านอะไหล่', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
+(12, 'ณัฐพล', 'บุญสุวรรณ์', '2', '0867454630', '', 63, 847, 7718, NULL, '2018-09-23 13:58:55', 12, '22/2 ถ.พัฒนาการบางวัง', '1 ', '1 ', '1', 'นาย', NULL, 1, NULL, NULL),
+(13, 'user', 'user', '1', '', '081255223', 1, 48, 232, 1, '2018-12-15 23:36:49', 13, '18/6', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
+(14, 'garage', 'garage', '1', '', '0867454630', 63, 847, 7718, 1, '2018-12-26 11:29:22', 12, '22/2 ถ.พัฒนาการบางวัง', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -13035,13 +13038,13 @@ ALTER TABLE `tire_size`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `user_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `user_profile` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
