@@ -1,6 +1,7 @@
 
 <script src="<?=base_url("public/themes/register/");?>vendor/jquery-steps/jquery.steps.min.js"></script>
 <script src="<?=base_url("public/themes/register/");?>vendor/minimalist-picker/dobpicker.js"></script>
+<script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.full.min.js"></script>
 <script src="<?=base_url("public/themes/register/");?>js/main.js"></script>
 <script src="<?=base_url("public/themes/register/");?>js/setcheckbox.js"></script>
 
@@ -65,11 +66,6 @@
     };
 
   $(document).ready(function() {
-
-    // var getLocation = $("#coordinate")
-    // $("input:checkbox").click(function(){
-    //   $(this).val($(this).attr("checked") ? 1 : 0);
-    // });
 
     var form = $("#rigister");
     jQuery.validator.addMethod("username", function(value, element) {
@@ -495,11 +491,25 @@
       }      
     });
 
-      $('.image-editor').cropit({
+    $('.image-editor').cropit({
         allowDragNDrop: false,
         width: 200,
         height: 200,
         type: 'image/jpeg'
+    });
+
+    $.datetimepicker.setLocale('th');
+
+    $("#timestart").datetimepicker({
+        datepicker:false,
+        formatTime:'H:i',
+        format:'H:i'
+    });
+
+    $("#timeend").datetimepicker({
+        datepicker:false,
+        formatTime:'H:i',
+        format:'H:i'
     });
         
 });  

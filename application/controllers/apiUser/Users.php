@@ -165,6 +165,7 @@ class Users extends BD_Controller {
 
 		$dayopenhour = $openDay;
 
+		$timestart = $this->post('timestart');
 		$timeend = $this->post('timeend');
 		$hno_garage = $this->post('hno_garage');
 		$alley_garage = $this->post('alley_garage');
@@ -196,6 +197,7 @@ class Users extends BD_Controller {
         }
 		$data_check = $this->user->data_check_create($username,$phone_user);
 		$data_check = $this->user->data_check_garage_create($businessRegistration );
+		$data = null;
 		$data['users'] = array(
 			'id' => null,
 			'username' => $username,
@@ -247,7 +249,7 @@ class Users extends BD_Controller {
 			'update_at' => null,
 			'garageId' => null,
 			'status' => 1,
-			'role' => 1,
+			'picture' => null,
 			'activeFlag' => 1
 		);
 		$data['garage'] = array(
