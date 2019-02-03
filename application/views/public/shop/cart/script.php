@@ -292,9 +292,27 @@ function getTire(value, index){
     return html;
 }
 
+
 $(document).ready(function () {
 
+    var provinceDropdownCar = $("#province_plate");
+    provinceDropdownCar.append('<option value="">เลือกจังหวัด</option>');
 
+    function onLoad(){
+      loadProvinceforcar();
+    }
+    onLoad();
+
+    function loadProvinceforcar(){
+      $.post(base_url+"apiUser/LocationforRegister/getProvinceforcar",{},
+        function(data){
+          var province = data.data;
+          $.each(province, function( index, value ) {
+            provinceDropdownCar.append('<option value="'+value.provinceforcarId+'">'+value.provinceforcarName+'</option>');
+          });
+        }
+      );
+    }
 
     var form = $("#submit");
     var confirmForm = $("#confirm");
@@ -413,24 +431,7 @@ $(document).ready(function () {
         }
     }
 
-    var provinceDropdownoforcar = $("#province_plate");
-    provinceDropdownforcar.append('<option value="">เลือกจังหวัด</option>');
-
-    function onLoad(){
-      loadProvinceforcar();
-    }
-    onLoad();
-
-    function loadProvinceforcar(){
-      $.post(base_url+"apiUser/LocationforRegister/getProvinceforcar",{},
-        function(data){
-          var province = data.data;
-          $.each(province, function( index, value ) {
-            provinceDropdownforcar.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
-          });
-        }
-      );
-    }
+    
 
     form.validate({
         rules:{

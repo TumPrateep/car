@@ -113,7 +113,6 @@
 										<label for="garage">จังหวัด</label><span class="error">*</span>
 										<select class="form-control input-default" name="province_plate" id="province_plate">
 											<option value="">เลือกจังหวัด</option>
-											<option value="ตรัง">ตรัง</option>
 										</select>
 									</div>
 								</div>
