@@ -30,7 +30,10 @@
                 $("#subdistrictId").val(result.subdistrictId);
                 $("#latitude").val(result.latitude);
                 $("#longtitude").val(result.longtitude);
-                setBrandPicture(result.picture);
+                $("#openingtime").val(result.openingtime);
+                $("#closingtime").val(result.closingtime);
+                $("#option_outher").val(result.option_outher);
+                setBrandPicture(result.garagePicture);
             }
 
             loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);

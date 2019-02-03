@@ -40,7 +40,7 @@
                     height: 200,
                     type: 'image',
                     imageState: {
-                        src: picturePath+"garage/"+result.picture
+                        src: picturePath+"garage/"+result.garagePicture
                     }
                 });
 

@@ -42,6 +42,9 @@ class Managegarage extends BD_Controller {
         $alley = $this->post('alley');
         $latitude = $this->post('latitude');
         $longtitude = $this->post('longtitude');
+        $option_outher = $this->post('option_outher');
+        $openingtime = $this->post('openingtime');
+        $closingtime = $this->post('closingtime');
 
         $this->load->model("managegarages");
         $config['upload_path'] = 'public/image/garage/';
@@ -68,7 +71,7 @@ class Managegarage extends BD_Controller {
         $data_check = $this->managegarages->data_check_update($garageId,$garageName);
 
         $data = array(
-           'garageId' => $garageId,
+            'garageId' => $garageId,
             'garageName' => $garageName,
             'phone' => $phone,
             'businessRegistration' => $businessRegistration,
@@ -81,12 +84,15 @@ class Managegarage extends BD_Controller {
             'postCode' => $postCode,
             'alley' => $alley,
             'latitude' => $latitude,
-            'latitude' => $latitude,
-            "picture"=> $imageName
+            'option_outher' => $option_outher,
+            'openingtime' => $openingtime,
+            'closingtime' => $closingtime,
+            
+            "garagePicture"=> $imageName
         );
         $oldImage = null;
         if($data_check_update != null){
-            $oldImage = $config['upload_path'].$data_check_update->picture;
+            $oldImage = $config['upload_path'].$data_check_update->garagePicture;
         }
 
 
