@@ -256,9 +256,33 @@
 																							<button type="submit" class="btn btn-success btn-block">ก่อนหน้า</button>
 																						</div>
 																					</div> -->
+																					<div class="col-md-1">
+																						<div class="form-group">
+																							<button type="submit" class="btn btn-info m-b-10 m-l-5">บันทึก</button>
+																						</div>
+																					</div>
 																					<div class="col-md-2">
 																						<div class="form-group">
-																						  <button type="submit" class="btn btn-info m-b-10 m-l-5">บันทึก</button>
+																							<button type="button" class="btn btn-Secondary" data-toggle="modal" data-target="#exampleModal1">กรอกรายละเอียดข้อมูลอู่เพิ่มเติม</button>
+																						</div>
+																						<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+																							<div class="modal-dialog" role="document">
+																								<div class="modal-content">
+																									<div class="modal-header">
+																										<h5 class="modal-title" id="exampleModalLabel">รายละเอียดข้อมูลอู่เพิ่มเติม</h5>
+																										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																										<span aria-hidden="true">&times;</span>
+																										</button>
+																									</div>
+																									<div class="modal-body">
+																										<textarea class="form-control" rows="5" cols="50" id="comment" style="height: auto"></textarea>
+																									</div>
+																									<div class="modal-footer">
+																										<button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+																										<button type="button" class="btn btn-primary">บันทึก</button>
+																									</div>
+																								</div>
+																							</div>
 																						</div>
 																					</div>
 																				</div>
