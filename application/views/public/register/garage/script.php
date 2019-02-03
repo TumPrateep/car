@@ -1,6 +1,4 @@
-<script src="<?=base_url("public/themes/register/");?>vendor/jquery/jquery.min.js"></script>
-<script src="<?=base_url("public/themes/register/");?>vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="<?=base_url("public/themes/register/");?>vendor/jquery-validation/dist/additional-methods.min.js"></script>
+
 <script src="<?=base_url("public/themes/register/");?>vendor/jquery-steps/jquery.steps.min.js"></script>
 <script src="<?=base_url("public/themes/register/");?>vendor/minimalist-picker/dobpicker.js"></script>
 <script src="<?=base_url("public/themes/register/");?>js/main.js"></script>
@@ -473,9 +471,19 @@
       e.preventDefault();
       var isValid = form.valid();
       if(isValid){
-        var data = form.serialize();
-        $.post(base_url+"apiUser/Users/creategarage", data,
-          function (data, textStatus, jqXHR) {
+        var imageData = $('.image-editor').cropit('export');
+        $('.hidden-image-data').val(imageData);
+        var myform = document.getElementById("rigister");
+        var formData = new FormData(myform);
+
+        // var data = form.serialize();
+        $.ajax({
+          url: base_url+"apiUser/Users/creategarage",
+          data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+            success:function (data, textStatus, jqXHR) {
             console.log(data);
             if(data.message == 200){
               window.location = base_url+"login";
@@ -483,8 +491,15 @@
              showMessage(data.message);
             }
           }
-        );
+        });
       }      
+    });
+
+      $('.image-editor').cropit({
+        allowDragNDrop: false,
+        width: 200,
+        height: 200,
+        type: 'image/jpeg'
     });
         
 });  

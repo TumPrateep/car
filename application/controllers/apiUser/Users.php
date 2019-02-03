@@ -136,7 +136,7 @@ class Users extends BD_Controller {
 		$exp = $this->post('exp');
 		$skill = $this->post('skill');
 
-		$garagePicture = $this->post('garagePicture');
+		// $garagePicture = $this->post('garagePicture');
 		$garagename = $this->post('garagename');
 		$phone_garage = $this->post('phone_garage');
 		$businessRegistration = $this->post('businessRegistration');
@@ -181,6 +181,19 @@ class Users extends BD_Controller {
 		$roomAir = $this->post('roomAir');
 		$snack = $this->post('snack');
 		$Otherfacilities = $this->post('Otherfacilities');
+
+		$config['upload_path'] = 'public/image/mechanic/';
+        $img = $this->post("garagePicture");
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $imageName = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName;
+        $success = file_put_contents($file, $data);
+        if (!$success){
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
 		$data_check = $this->user->data_check_create($username,$phone_user);
 		$data_check = $this->user->data_check_garage_create($businessRegistration );
 		$data['users'] = array(
@@ -261,7 +274,7 @@ class Users extends BD_Controller {
 			'option3' => $roomAir,
 			'option4' => $snack,
 			'option_outher' => $Otherfacilities,
-			'garagePicture' => $garagePicture,
+			'garagePicture' => $imageName,
 			'create_by' => null,
 			'update_by' => null,
 			'create_at' => date('Y-m-d H:i:s',time()),

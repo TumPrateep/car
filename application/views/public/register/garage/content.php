@@ -5,7 +5,7 @@
 			
             <!-- <h2>SIGN UP OFFICE EMPLYEE ACCOUNT</h2> -->
             <div class="col-md-12">
-            <form method="POST" id="rigister" class="signup-form">
+            <form  id="rigister" class="signup-form">
                 <h3>
                     <span class="icon"><i class="ti-id-badge"></i></span>
                     <span class="title_text">เจ้าของอู่</span>

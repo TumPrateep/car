@@ -137,7 +137,7 @@
                                                                     </div>
                                                                     <div class="col-sm">
                                                                         <label for="garage">เบอร์โทรศัพท์</label>
-                                                                        <input type="number" class="form-control" name="phone" id="phone"  readonly>
+                                                                        <input type="number" class="form-control" name="phoned" id="phoned"  readonly>
                                                                     </div>
                                                                 </div><br>
                                                                 <div class="row">
