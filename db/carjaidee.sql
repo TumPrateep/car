@@ -1218,7 +1218,7 @@ CREATE TABLE `garage` (
 --
 
 INSERT INTO `garage` (`garageId`, `comment`, `businessRegistration`, `garageName`, `phone`, `dayopenhour`, `openingtime`, `closingtime`, `hno`, `Alley`, `road`, `village`, `postCode`, `latitude`, `longtitude`, `subdistrictId`, `districtId`, `provinceId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `option1`, `option2`, `option3`, `option4`, `option_outher`, `garagePicture`, `userId`) VALUES 
-(1, 'null', '1111111111111', 'garagesives0', '0833969512', NULL, '08:30:00', '19:30:00', '128-126/10', NULL, NULL, NULL, '10236', '8.064029', '100.176328', '2412', '108', '63', '12', '12', '2019-01-16 07:13:30', '2019-01-15 05:13:08', '1', NULL, NULL, NULL, NULL, NULL, NULL, '12');
+(1, 'null', '1111111111111', 'garagesives0', '0833969512', NULL, '08:30:00', '19:30:00', '128-126/10', NULL, NULL, NULL, '10236', '8.064029', '100.176328', '2412', '108', '63', '3', '3', '2019-01-16 07:13:30', '2019-01-15 05:13:08', '1', NULL, NULL, NULL, NULL, NULL, NULL, '3');
 -- --------------------------------------------------------
 
 --
