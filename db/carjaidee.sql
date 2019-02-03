@@ -1593,7 +1593,8 @@ CREATE TABLE `mechanic` (
   `create_by` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL,
   `garageId` int(11) NOT NULL,
-  `skill` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `skill` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `picture` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
