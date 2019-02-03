@@ -183,7 +183,7 @@ class Users extends BD_Controller {
 		$snack = $this->post('snack');
 		$Otherfacilities = $this->post('Otherfacilities');
 
-		$config['upload_path'] = 'public/image/mechanic/';
+		$config['upload_path'] = 'public/image/garage/';
         $img = $this->post("garagePicture");
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
