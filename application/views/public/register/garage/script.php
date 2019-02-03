@@ -17,9 +17,54 @@
     });
   };
 
-
-
-
+  function checkboxall() {   
+        if(this.checked) {
+            // Iterate each checkbox
+            $('#monday').each(function() {
+                this.checked = true;                        
+            });
+            $('#tuesday').each(function() {
+                this.checked = true;                        
+            });
+            $('#wednesday').each(function() {
+                this.checked = true;                        
+            });
+            $('#thursday').each(function() {
+                this.checked = true;                        
+            });
+            $('#friday').each(function() {
+                this.checked = true;                        
+            });
+            $('#saturday').each(function() {
+                this.checked = true;                        
+            });
+            $('#sunday').each(function() {
+                this.checked = true;                        
+            });
+        } else {
+            $('#monday').each(function() {
+                this.checked = false;                       
+            });
+            $('#tuesday').each(function() {
+                this.checked = false;                        
+            });
+            $('#wednesday').each(function() {
+                this.checked = false;                        
+            });
+            $('#thursday').each(function() {
+                this.checked = false;                        
+            });
+            $('#friday').each(function() {
+                this.checked = false;                        
+            });
+            $('#saturday').each(function() {
+                this.checked = false;                        
+            });
+            $('#sunday').each(function() {
+                this.checked = false;                        
+            });
+        }
+    };
 
   $(document).ready(function() {
 
@@ -27,8 +72,6 @@
     // $("input:checkbox").click(function(){
     //   $(this).val($(this).attr("checked") ? 1 : 0);
     // });
-
-    
 
     var form = $("#rigister");
     jQuery.validator.addMethod("username", function(value, element) {
@@ -246,58 +289,6 @@
     //         $(element).addClass('valid');
     //     }
     // });
-
-    $('#allday').click(function(event) {   
-        if(this.checked) {
-            // Iterate each checkbox
-            $('#monday').each(function() {
-                this.checked = true;                        
-            });
-            $('#tuesday').each(function() {
-                this.checked = true;                        
-            });
-            $('#wednesday').each(function() {
-                this.checked = true;                        
-            });
-            $('#thursday').each(function() {
-                this.checked = true;                        
-            });
-            $('#friday').each(function() {
-                this.checked = true;                        
-            });
-            $('#saturday').each(function() {
-                this.checked = true;                        
-            });
-            $('#sunday').each(function() {
-                this.checked = true;                        
-            });
-        } else {
-            $('#monday').each(function() {
-                this.checked = false;                       
-            });
-            $('#tuesday').each(function() {
-                this.checked = false;                        
-            });
-            $('#wednesday').each(function() {
-                this.checked = false;                        
-            });
-            $('#thursday').each(function() {
-                this.checked = false;                        
-            });
-            $('#friday').each(function() {
-                this.checked = false;                        
-            });
-            $('#saturday').each(function() {
-                this.checked = false;                        
-            });
-            $('#sunday').each(function() {
-                this.checked = false;                        
-            });
-        }
-    });
-
-
-  
 
     jQuery.validator.addMethod("pid", function(value, element) {
         return checkID(value);

@@ -247,15 +247,6 @@ class User extends CI_Model{
         return ($result == null)?null:$result->row();
     }
 
-    function data_check_mechanic_create($firstname,$personalid){
-        $this->db->select("firstname");
-        $this->db->from("mechanic");
-        $this->db->where("firstname", $firstname);
-        $this->db->or_where("personalid",$personalid);
-        $result = $this->db->get();
-        return $result->row();
-    }
-
     function data_check_garage_create($businessRegistration){
         $this->db->select("businessRegistration");
         $this->db->from("garage");

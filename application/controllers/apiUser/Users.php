@@ -142,21 +142,22 @@ class Users extends BD_Controller {
 		$businessRegistration = $this->post('businessRegistration');
 		// $dayopenhour = $this->post('dayopenhour');
 		$daym = $this->post('monday');
-		// $daym = $this->post(isset($var['monday']) ? $var['monday'] : '';);
-		// $daym = $this->post(isset($var['monday']) ? $var['monday'] : '');
-		// $daymon = isset('monday') ? 'monday' : "0";
-		// $daym = $this->isset($var['monday']) ? $var['monday'] : '';
-		// $daym = isset($this->post('monday');) ? $this->post('monday'); : '';
-		// $daym = isset($this->post('monday')) ? $this->post('monday') : '';
+		if (empty($daym)) {$daym == 1;} else {$daym == 0;}
 		
 		$dayt = $this->post('tuesday');
-		// $daytues = isset($dayt) ? $dayt : "0";
+		if (empty($dayt)) {$dayt == 1;} else {$dayt == 0;}
 		$dayw = $this->post('wednesday');
+		if (empty($dayw)) {$dayw == 1;} else {$dayw == 0;}
 		$dayth = $this->post('thursday');
+		if (empty($dayth)) {$dayth == 1;} else {$dayth == 0;}
 		$dayf = $this->post('friday');
+		if (empty($dayf)) {$dayf == 1;} else {$dayf == 0;}
 		$dayst = $this->post('saturday');
+		if (empty($dayst)) {$dayst == 1;} else {$dayst == 0;}
 		$days = $this->post('sunday');
+		if (empty($days)) {$days == 1;} else {$days == 0;}
 		$daya = $this->post('allday');
+		if (empty($daya)) {$daya == 1;} else {$daya == 0;}
 		$dayopenhour = $daym.$daytues.$dayw.$dayth.$dayf.$dayst.$days.$daya;
 
 		$timeend = $this->post('timeend');
@@ -176,7 +177,6 @@ class Users extends BD_Controller {
 		$snack = $this->post('snack');
 		$Otherfacilities = $this->post('Otherfacilities');
 		$data_check = $this->user->data_check_create($username,$phone_user);
-		$data_check = $this->user->data_check_mechanic_create($firstname_mechanic,$personalid_mechanic);
 		$data_check = $this->user->data_check_garage_create($businessRegistration );
 		$data['users'] = array(
 			'id' => null,

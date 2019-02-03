@@ -244,7 +244,7 @@
 						<div class="col-md-3">
 							<div class="form-check">
 								<label class="form-check-label" for="garage">
-								<input class="form-check-input" name="allday" id="allday" type="checkbox" value="8">ทุกวัน</label>
+								<input class="form-check-input" name="allday" id="allday" type="checkbox" value="8" onclick="checkboxall()">ทุกวัน</label>
 							</div>
 						</div>
 					</div>
