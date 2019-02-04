@@ -82,17 +82,17 @@ class Mechanic extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $totalData = $this->mechanics->allmechanics_count();
+        $totalData = $this->mechanics->allmechanics_count($garageId);
         $totalFiltered = $totalData; 
         if(empty($this->post('firstName'))&& empty($this->post('skill')))
         {            
-            $posts = $this->mechanics->allmechanics($limit,$start,$order,$dir);
+            $posts = $this->mechanics->allmechanics($limit,$start,$order,$dir,$garageId);
         }
         else {
             $firstname = $this->post('firstName'); 
             $skill = $this->post('skill');
             $posts =  $this->mechanics->mechanics_search($limit,$start,$order,$dir,$firstname,$skill,$garageId);
-            $totalFiltered = $this->mechanics->mechanics_search_count($firstname,$skill);
+            $totalFiltered = $this->mechanics->mechanics_search_count($firstname,$skill,$garageId);
         }
         $data = array();
         if(!empty($posts))
@@ -201,14 +201,14 @@ class Mechanic extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $config['upload_path'] = 'public/image/mechanic/';
         $mechanicId = $this->post("mechanicId");
-        $titleName = $this->post("titleName");
-        $firstName = $this->post("firstname");
-        $lastName = $this->post("lastname");
+        $titleName = $this->post("titleName_user");
+        $firstName = $this->post("firstName");
+        $lastName = $this->post("lastName");
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
         $skill = $this->post("skill");
-        $img = $this->post("picture");
+        $img = $this->post("Picture");
         $success = true;
         $file = null;
         $imageName = null; 
@@ -264,7 +264,7 @@ class Mechanic extends BD_Controller {
     }
 
     function getMechanic_post(){
-        // $garageId = $this->session->userdata['logged_in']['garageId'];
+        $garageId = $this->session->userdata['logged_in']['garageId'];
         $mechanicId = $this->post('mechanicId');
         $data_check = $this->mechanics->getMechanicsById($mechanicId);
         $option = [

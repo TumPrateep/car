@@ -9,8 +9,9 @@ class Mechanics extends CI_Model {
     function insert($data){
 		return $this->db->insert('mechanic', $data);
     }
-    function allmechanics_count()
+    function allmechanics_count($garageId)
     {   
+        $this->db->where("garageId", $garageId);
         $this->db->where('status', 2);
         $query = $this
                 ->db
@@ -18,8 +19,9 @@ class Mechanics extends CI_Model {
     
         return $query->num_rows();  
     }
-    function allmechanics($limit,$start,$col,$dir)
+    function allmechanics($limit,$start,$col,$dir,$garageId)
     {   
+        $this->db->where("garageId", $garageId);
         $this->db->where('status', 2);
         $query = $this
             ->db
@@ -79,7 +81,7 @@ class Mechanics extends CI_Model {
         }
         
     }
-    function mechanics_search_count($firstname,$skill){
+    function mechanics_search_count($firstname,$skill,$garageId){
         $this->db->where('status', 2);
         $this->db->where("garageId", $garageId);
         $this->db->like('firstName',$firstname);

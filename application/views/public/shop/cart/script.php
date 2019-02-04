@@ -332,7 +332,7 @@ $(document).ready(function () {
             var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
             $.each(data, function (index, val) { 
                 html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
-                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-label="<strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span>" value="'+val.garageId+'">'+val.garageName+'</option>';
+                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-label="<strong>'+val.garageName+'</strong><br><span></span>" value="'+val.garageId+'">'+val.garageName+'</option>';
             });
             $("#garage").html(html);
             $("#image-picker").html(imagePickerHtml);
