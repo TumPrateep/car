@@ -72,217 +72,217 @@
       return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
     }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
 
-    // form.validate({
+    form.validate({
 
-    //     // errorPlacement: function errorPlacement(error, element) {
-    //     //      element.before(error); 
-    //     // },
-    //     rules: {
-    //       titleName_user:{
-    //         required: true
-    //       },
-    //       firstname_user:{
-    //         required: true
-    //       },
-    //       lastname_user: {
-    //         required: true
-    //       },
-    //       personalid:{
-    //         required: true,
-    //         pid: true
-    //       },
-    //       exp:{
-    //         required: true
-    //       },
-    //       skill:{
-    //         required: true
-    //       },
-    //       hno_user:{
-    //         required: true
-    //       },
-    //       provinceId_user:{
-    //         required: true
-    //       },
-    //       districtId_user: {
-    //         required: true
-    //       },
-    //       subdistrictId_user: {
-    //         required: true
-    //       },
-    //       postCode_user:{
-    //         minlength: 5,
-    //         required: true
-    //       },
-    //       phone1: {
-    //         minlength: 9,
-    //         required: true 
-    //       },
-    //       garagename:{
-    //         required: true
-    //       },
-    //       phone_garage:{
-    //         required: true
-    //       },
-    //       businessRegistration:{
-    //         required: true
-    //       },
-    //       timestart:{
-    //         required: true
-    //       },
-    //       timeend:{
-    //         required: true
-    //       },
-    //       hno_garage:{
-    //         required: true
-    //       },
-    //       provinceId_garage:{
-    //         required: true
-    //       },
-    //       districtId_garage:{
-    //         required: true
-    //       },
-    //       subdistrictId_garage:{
-    //         required: true
-    //       },
-    //       postCode_garage:{
-    //         required: true
-    //       },
-    //       latitude:{
-    //         required: true
-    //       },
-    //       longitude:{
-    //         required: true
-    //       },
-    //       username:{
-    //         minlength:6,
-    //         required:true
-    //         },
-    //       phone: {
-    //           required: true,
-    //           minlength:9
-    //       },
-    //       email: {
-    //           required: true
-    //       },      
-    //       password: {
-    //         required: true,
-    //         minlength:6
-    //       },
-    //       checkpassword: { 
-    //         required: true,
-    //         equalTo: "#password"
-    //       },
-    //     },
-    //     messages: {
-    //       titleName_user:{
-    //         required: "คำนำหน้า"
-    //       },
-    //       firstname_user:{
-    //         required: "ชื่อ"
-    //       },
-    //       lastname_user: {
-    //         required: "นามสกุล"
-    //       },
-    //       personalid:{
-    //         required: "รหัสบัตรประชาชน",
-    //         pid: "รหัสบัตรประชาชนให้ถูกต้อง"
-    //       },
-    //       exp:{
-    //         required: "ประสบการณ์"
-    //       },
-    //       skill:{
-    //         required: "ความชำนาญ"
-    //       },
-    //       hno_user:{
-    //         required: "บ้านเลขที่"
-    //       },
-    //       provinceId_user:{
-    //         required: "จังหวัด"
-    //       },
-    //       districtId_user: {
-    //         required: "อำเภอ"
-    //       },
-    //       subdistrictId_user: {
-    //         required: "ตำบล"
-    //       },
-    //       postCode_user: {
-    //         required: "รหัสไปรษณีย์"
-    //       },
-    //       phone1: {
-    //         minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-    //         required: "เบอร์โทรศัพท์"
-    //       },
+        // errorPlacement: function errorPlacement(error, element) {
+        //      element.before(error); 
+        // },
+        rules: {
+          titleName_user:{
+            required: true
+          },
+          firstname_user:{
+            required: true
+          },
+          lastname_user: {
+            required: true
+          },
+          personalid:{
+            required: true,
+            pid: true
+          },
+          exp:{
+            required: true
+          },
+          skill:{
+            required: true
+          },
+          hno_user:{
+            required: true
+          },
+          provinceId_user:{
+            required: true
+          },
+          districtId_user: {
+            required: true
+          },
+          subdistrictId_user: {
+            required: true
+          },
+          postCode_user:{
+            minlength: 5,
+            required: true
+          },
+          phone1: {
+            minlength: 9,
+            required: true 
+          },
+          garagename:{
+            required: true
+          },
+          phone_garage:{
+            required: true
+          },
+          businessRegistration:{
+            required: true
+          },
+          timestart:{
+            required: true
+          },
+          timeend:{
+            required: true
+          },
+          hno_garage:{
+            required: true
+          },
+          provinceId_garage:{
+            required: true
+          },
+          districtId_garage:{
+            required: true
+          },
+          subdistrictId_garage:{
+            required: true
+          },
+          postCode_garage:{
+            required: true
+          },
+          latitude:{
+            required: true
+          },
+          longtitude:{
+            required: true
+          },
+          username:{
+            minlength:6,
+            required:true
+            },
+          phone: {
+              required: true,
+              minlength:9
+          },
+          email: {
+              required: true
+          },      
+          password: {
+            required: true,
+            minlength:6
+          },
+          checkpassword: { 
+            required: true,
+            equalTo: "#password"
+          },
+        },
+        messages: {
+          titleName_user:{
+            required: "คำนำหน้า"
+          },
+          firstname_user:{
+            required: "ชื่อ"
+          },
+          lastname_user: {
+            required: "นามสกุล"
+          },
+          personalid:{
+            required: "รหัสบัตรประชาชน",
+            pid: "รหัสบัตรประชาชนให้ถูกต้อง"
+          },
+          exp:{
+            required: "ประสบการณ์"
+          },
+          skill:{
+            required: "ความชำนาญ"
+          },
+          hno_user:{
+            required: "บ้านเลขที่"
+          },
+          provinceId_user:{
+            required: "จังหวัด"
+          },
+          districtId_user: {
+            required: "อำเภอ"
+          },
+          subdistrictId_user: {
+            required: "ตำบล"
+          },
+          postCode_user: {
+            required: "รหัสไปรษณีย์"
+          },
+          phone1: {
+            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            required: "เบอร์โทรศัพท์"
+          },
           
-    //       garagename:{
-    //         required: "ชื่ออู่ซ่อมรภ"
-    //       },
-    //       phone_garage:{
-    //         required: "เบอร์โทรศัพท์"
-    //       },
-    //       businessRegistration:{
-    //         required: "หมายเลขทะเบียนการค้า"
-    //       },
-    //       timestart:{
-    //         required: "เวลาที่เปิด"
-    //       },
-    //       timeend:{
-    //         required: "เวลาที่ปิด"
-    //       },
-    //       hno_garage:{
-    //         required: "บ้านเลขที่"
-    //       },
-    //       provinceId_garage:{
-    //         required: "จังหวัด"
-    //       },
-    //       districtId_garage:{
-    //         required: "อำเภอ"
-    //       },
-    //       subdistrictId_garage:{
-    //         required: "ตำบล"
-    //       },
-    //       postCode_garage:{
-    //         required: "รหัสไปรษณีย์"
-    //       },
-    //       latitude:{
-    //         required: "ละติจูด"
-    //       },
-    //       longitude:{
-    //         required: "ลองติจูด"
-    //       },
-    //       username:{
-    //         required: "ชื่อผู้ใช้งาน",
-    //         minlength:"ชื่อผู้ใช้อย่างน้อย 6 ตัวอักษร"
-    //       },
-    //       phone: {
-    //         minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-    //         required: "เบอร์โทรศัพท์"
-    //       },
-    //       email: {
-    //           required: "อีเมลล์"
-    //       },
-    //       password: {
-    //         required: "รหัสผ่าน",
-    //         minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
-    //       },
-    //       checkpassword: {
-    //         required: "รหัสผ่านอีกครั้ง",
-    //         equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
-    //       }
-    //     },
-    //     onfocusout: function(element) {
-    //         $(element).valid();
-    //     },
-    //     highlight : function(element, errorClass, validClass) {
-    //         $(element.form).find('.actions').addClass('form-error');
-    //         $(element).removeClass('valid');
-    //         $(element).addClass('error');
-    //     },
-    //     unhighlight: function(element, errorClass, validClass) {
-    //         $(element.form).find('.actions').removeClass('form-error');
-    //         $(element).removeClass('error');
-    //         $(element).addClass('valid');
-    //     }
-    // });
+          garagename:{
+            required: "ชื่ออู่ซ่อมรภ"
+          },
+          phone_garage:{
+            required: "เบอร์โทรศัพท์"
+          },
+          businessRegistration:{
+            required: "หมายเลขทะเบียนการค้า"
+          },
+          timestart:{
+            required: "เวลาที่เปิด"
+          },
+          timeend:{
+            required: "เวลาที่ปิด"
+          },
+          hno_garage:{
+            required: "บ้านเลขที่"
+          },
+          provinceId_garage:{
+            required: "จังหวัด"
+          },
+          districtId_garage:{
+            required: "อำเภอ"
+          },
+          subdistrictId_garage:{
+            required: "ตำบล"
+          },
+          postCode_garage:{
+            required: "รหัสไปรษณีย์"
+          },
+          latitude:{
+            required: "ละติจูด"
+          },
+          longtitude:{
+            required: "ลองติจูด"
+          },
+          username:{
+            required: "ชื่อผู้ใช้งาน",
+            minlength:"ชื่อผู้ใช้อย่างน้อย 6 ตัวอักษร"
+          },
+          phone: {
+            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            required: "เบอร์โทรศัพท์"
+          },
+          email: {
+              required: "อีเมลล์"
+          },
+          password: {
+            required: "รหัสผ่าน",
+            minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
+          },
+          checkpassword: {
+            required: "รหัสผ่านอีกครั้ง",
+            equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
+          }
+        },
+        onfocusout: function(element) {
+            $(element).valid();
+        },
+        highlight : function(element, errorClass, validClass) {
+            $(element.form).find('.actions').addClass('form-error');
+            $(element).removeClass('valid');
+            $(element).addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element.form).find('.actions').removeClass('form-error');
+            $(element).removeClass('error');
+            $(element).addClass('valid');
+        }
+    });
 
     jQuery.validator.addMethod("pid", function(value, element) {
         return checkID(value);
@@ -302,9 +302,9 @@
     bodyTag: "fieldset",
     transitionEffect: "fade",
     labels: {
-        previous : 'Previous',
-        next : 'Next',
-        finish : 'Submit',
+        previous : 'ก่อนหน้า',
+        next : 'ถัดไป',
+        finish : 'บันทึก',
         current : ''
     },
     titleTemplate : '<span class="title">#title#</span>',
@@ -320,7 +320,33 @@
     },
     onFinished: function (event, currentIndex)
     {
-        alert('Sumited');
+        // alert('Sumited');
+
+        event.preventDefault();
+          var isValid = form.valid();
+          if(isValid){
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
+            var myform = document.getElementById("rigister");
+            var formData = new FormData(myform);
+
+            // var data = form.serialize();
+            $.ajax({
+              url: base_url+"apiUser/Users/creategarage",
+              data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                success:function (data, textStatus, jqXHR) {
+                console.log(data);
+                if(data.message == 200){
+                  window.location = base_url+"login";
+                }else if(data.message == 3001){
+                showMessage(data.message);
+                }
+              }
+            });
+          }
     },
     // onInit : function (event, currentIndex) {
     //     event.append('demo');
@@ -463,33 +489,33 @@
       );
     }
 
-    form.submit(function (e) { 
-      e.preventDefault();
-      var isValid = form.valid();
-      if(isValid){
-        var imageData = $('.image-editor').cropit('export');
-        $('.hidden-image-data').val(imageData);
-        var myform = document.getElementById("rigister");
-        var formData = new FormData(myform);
+    // form.submit(function (e) { 
+    //   e.preventDefault();
+    //   var isValid = form.valid();
+    //   if(isValid){
+    //     var imageData = $('.image-editor').cropit('export');
+    //     $('.hidden-image-data').val(imageData);
+    //     var myform = document.getElementById("rigister");
+    //     var formData = new FormData(myform);
 
-        // var data = form.serialize();
-        $.ajax({
-          url: base_url+"apiUser/Users/creategarage",
-          data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-            success:function (data, textStatus, jqXHR) {
-            console.log(data);
-            if(data.message == 200){
-              window.location = base_url+"login";
-            }else if(data.message == 3001){
-             showMessage(data.message);
-            }
-          }
-        });
-      }      
-    });
+    //     // var data = form.serialize();
+    //     $.ajax({
+    //       url: base_url+"apiUser/Users/creategarage",
+    //       data: formData,
+    //             processData: false,
+    //             contentType: false,
+    //             type: 'POST',
+    //         success:function (data, textStatus, jqXHR) {
+    //         console.log(data);
+    //         if(data.message == 200){
+    //           window.location = base_url+"login";
+    //         }else if(data.message == 3001){
+    //          showMessage(data.message);
+    //         }
+    //       }
+    //     });
+    //   }      
+    // });
 
     $('.image-editor').cropit({
         allowDragNDrop: false,

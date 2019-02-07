@@ -38,7 +38,7 @@
                 },
                 phone: {
                     required: true,
-                    minlength: 10,
+                    minlength: 9,
                     maxlength: 10
                 },
                 skill: {

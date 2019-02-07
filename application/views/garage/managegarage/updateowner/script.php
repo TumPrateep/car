@@ -25,11 +25,11 @@
 
         form.validate({
             rules:{
-                firstname: {
+                firstName: {
                     required: true,
                     THEN: true
                 },
-                lastname: {
+                lastName: {
                     required: true,
                     THEN: true
                 },
@@ -38,7 +38,7 @@
                 },
                 phone: {
                     required: true,
-                    minlength: 10,
+                    minlength: 9,
                     maxlength: 10
                 },
                 skill: {
@@ -49,11 +49,11 @@
                     pid: true
                 }
             },messages:{
-                firstname: {
+                firstName: {
                     required: "กรุณากรอกชื่อ",
                     THEN: "กรอกข้อมูลไม่ถูกต้อง"
                 },
-                lastname: {
+                lastName: {
                     required: "กรุณากรอกนามสกุล",
                     THEN: "กรอกข้อมูลไม่ถูกต้อง"
                 },

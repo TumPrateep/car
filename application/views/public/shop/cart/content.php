@@ -112,7 +112,9 @@
 									<div class="form-group">
 										<label for="garage">จังหวัด</label><span class="error">*</span>
 										<select class="form-control input-default" name="province_plate" id="province_plate">
-											<option value="">เลือกจังหวัด</option>
+											<!-- <option value="">เลือกจังหวัด</option>
+											<option value="1">ตรัง</option>
+											<option value="2">นครศรีธรรมราช</option> -->
 										</select>
 									</div>
 								</div>
@@ -209,7 +211,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-	  	<div class="row justify-content-end">
+	  	<!-- <div class="row justify-content-end">
 			<div class="col-lg-5">
 				<div class="header_search_content">
 					<div class="header_search_form_container">
@@ -220,7 +222,7 @@
 					</div>
 				</div>
 			</div>
-		</div><br>
+		</div><br> -->
 		<div id="showGarage">
 			<div class="row">
 				<div class="col-lg-12">

@@ -20,7 +20,7 @@
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">คำนำหน้า</label>
 								<select class="form-control" name="titleName_user" id="titleName_user">
-									<option value=""></option>
+									<option value="">คำนำหน้า</option>
 									<option value="1">นาย</option>
 									<option value="2">นาง</option>
 									<option value="3">นางสาว</option>
@@ -91,7 +91,7 @@
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">จังหวัด</label>
 								<select class="form-control" name="provinceId_user" id="provinceId_user">
-									<option>จังหวัด</option>
+									<!-- <option>จังหวัด</option> -->
 								</select>
 							</div>
 						</div>
@@ -99,7 +99,7 @@
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">อำเภอ</label>
 								<select class="form-control" name="districtId_user" id="districtId_user">
-									<option>อำเภอ</option>
+									<!-- <option>อำเภอ</option> -->
 								</select>
 							</div>
 						</div>
@@ -107,7 +107,7 @@
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">ตำบล</label>
 								<select class="form-control" name="subdistrictId_user" id="subdistrictId_user">
-									<option>ตำบล</option>
+									<!-- <option>ตำบล</option> -->
 								</select>
 							</div>
 						</div>
@@ -186,13 +186,13 @@
 						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="garage"> </label>
-								<input type="time" class="form-control" name="timestart" id="timestart" placeholder="00 : 00">
+								<input type="text" class="form-control" name="timestart" id="timestart" placeholder="00 : 00">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="garage"> </label>
-								<input type="time" class="form-control" name="timeend" id="timeend" placeholder="00 : 00">
+								<input type="text" class="form-control" name="timeend" id="timeend" placeholder="00 : 00">
 							</div>
 						</div>
 					</div>
@@ -241,12 +241,12 @@
 								<input class="form-check-input" name="sunday" id="sunday" type="checkbox" value="7">อาทิตย์</label>
 							</div>
 						</div>
-						<div class="col-md-3">
+						<!-- <div class="col-md-3">
 							<div class="form-check">
 								<label class="form-check-label" for="garage">
 								<input class="form-check-input" name="allday" id="allday" type="checkbox" value="8" onclick="checkboxall()">ทุกวัน</label>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div class="row">
 						<div class="col-md-4">
@@ -286,7 +286,7 @@
 							<div class="form-group">
 								<label class="form-label required" for="garage">จังหวัด</label>
 								<select class="form-control" name="provinceId_garage" id="provinceId_garage">
-									<option>จังหวัด</option>
+									<!-- <option>จังหวัด</option> -->
 								</select>
 							</div>
 						</div>
@@ -294,7 +294,7 @@
 							<div class="form-group">
 								<label class="form-label required" for="garage">อำเภอ</label>
 								<select class="form-control" name="districtId_garage" id="districtId_garage">
-									<option>อำเภอ</option>
+									<!-- <option>อำเภอ</option> -->
 								</select>
 							</div>
 						</div>
@@ -302,19 +302,37 @@
 							<div class="form-group">
 								<label class="form-label required" for="garage">ตำบล</label>
 								<select class="form-control" name="subdistrictId_garage" id="subdistrictId_garage">
-									<option>ตำบล</option>
+									<!-- <option>ตำบล</option> -->
 								</select>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">รหัสไปรษณีย์</label>
 								<input class="form-control" type="number" name="postCode_garage" id="postCode_garage" placeholder="รหัสไปรษณีย์">
 							</div>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label required" for="garage">ละติจูด</label>
+								<input class="form-control" type="text" name="latitude" id="latitude" placeholder="ละติจูด">
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label required" for="garage">ลองติจูด</label>
+								<input class="form-control" type="text" name="longtitude" id="longtitude" placeholder="ลองติจูด">
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label required" for="garage">ดึงพิกัด</label>
+								<button type="button" class="btn btn-primary" id="coordinates" name="coordinates" onclick="getLocation()">ดึงพิกัด</button>
+							</div>
+						</div>
+						<!-- <div class="col-md-8">
 							<div class="input-group">
 								<label class="form-label required" for="garage"> เก็บตำเเหน่งที่ตั้ง</label>
 							</div>
@@ -323,7 +341,7 @@
 								<input class="form-control" type="text" name="longtitude" id="longtitude" placeholder="ลองติจูด">
 								<button type="button" class="btn btn-primary" id="coordinates" name="coordinates" onclick="getLocation()">เก็บพิกัด</button>
 							</div>
-						</div>
+						</div> -->
 						
 					</div>
 					<div class="row">
@@ -400,7 +418,7 @@
 							<label class="form-label required" for="users">ยืนยันรหัสผ่าน</label>
 							<input type="password" class="form-control" name="checkpassword" id="checkpassword" placeholder="ยืนยันรหัสผ่าน">
 						</div>
-						<button type="submit" class="btn btn-success btn-block">บันทึก</button>
+						<!-- <button type="submit" class="btn btn-success btn-block">บันทึก</button> -->
 						</form>
 					</div>
                 </fieldset>
