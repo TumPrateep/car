@@ -160,16 +160,10 @@ class Spareproduct extends BD_Controller {
         $spares_brandId = $this->post('spares_brandId');
         $brandId = $this->post('brandId');
         $modelId = $this->post('modelId');
-        $detail = $this->post('detail');
         $modelofcarId = $this->post('modelofcarId');
         $config['upload_path'] = 'public/image/spareproduct/';
         $img = $this->post("picture");
-        // $img = str_replace('data:image/png;base64,', '', $img);
-	    // $img = str_replace(' ', '+', $img);
-        // $data = base64_decode($img);
-        // $imageName = uniqid().'.png';
-        // $file = $config['upload_path']. '/'. $imageName;
-        // $success = file_put_contents($file, $data);
+        
         $file = null;
         $success = true;
         $imageName = null;
@@ -197,16 +191,15 @@ class Spareproduct extends BD_Controller {
                 'spares_brandId'  => $spares_brandId,
                 'brandId'  => $brandId,
                 'modelId'  => $modelId,
-                'detail'  => $detail,
                 'modelofcarId'  => $modelofcarId,
                 'picture'  =>  $imageName,
                 'update_by' => $userId,
                 'update_at' => date('Y-m-d H:i:s',time())
             );
             $oldImage = null;
-            // if($data_check_update != null){
-            //     $oldImage = $config['upload_path'].$data_check_update->picture;
-            // }
+            if($data_check_update != null){
+                $oldImage = $config['upload_path'].$data_check_update->picture;
+            }
 
             $option = [
                 "data_check_update" => $data_check_update,
@@ -229,7 +222,7 @@ class Spareproduct extends BD_Controller {
             "data_check_delete" => $data_check,
             "data" => $productId,
             "model" => $this->spareproductdata,
-            "image_path" => null
+            "image_path" => 'public/image/spareproduct/'.$data_check->picture
         ];
 
         $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);

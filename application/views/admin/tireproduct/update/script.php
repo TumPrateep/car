@@ -11,27 +11,53 @@
         var model = $("#modelId");
         var modelofcar = $("#modelofcarId");
         var detail = $("#detail");
+        var productId = $("#productId").val();
     
         init();
         
         function init(){
-            initpicture();
-            getTireBrand();
-            getRim();
+            getUpdate();
         }
 
-        function getTireBrand(brandId = null){
-        $.get(base_url+"api/Tireproduct/getAllTireBrand",{},
-            function(data){
-                var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    tireBrand.append('<option value="' + value.tire_brandId + '">' + value.tire_brandName + '</option>');
-                });
-            }
-        );
+        function getUpdate(){
+            $.post(base_url+"api/Tireproduct/getUpdate",{
+                "productId" : productId
+            },function(data){
+                if(data.message!=200){
+                    showMessage(data.message,"admin/tireproduct");
+                }
+                if(data.message == 200){
+                    result = data.data;
+                    // $("#productId").val(result.productId);
+                    // $("#tire_brandId").val(result.tire_brandId);
+                    // $("#tire_modelId").val(result.tire_modelId);
+                    // $("#rimId").val(result.rimId);
+                    // $("#tire_sizeId").val(result.tire_sizeId);
+                    // $("#status").val(result.status);
+                    initpicture(result.picture);
+
+                    getTireBrand(result.tire_brandId, result.tire_modelId);
+                    getRim(result.rimId, result.tire_sizeId);
+                    
+                }
+                
+            });
         }
 
-        tireBrand.change(function(){
+        function getTireBrand(brandId = null, modelId=null){
+            $.get(base_url+"api/Tireproduct/getAllTireBrand",{},
+                function(data){
+                    var brandData = data.data;
+                    $.each( brandData, function( key, value ) {
+                        tireBrand.append('<option value="' + value.tire_brandId + '">' + value.tire_brandName + '</option>');
+                    });
+                    tireBrand.val(brandId);
+                    getTireModel(modelId);
+                }
+            );
+        }
+
+        function getTireModel(modelId = null){
             var tireBrandId = tireBrand.val();
             tireModel.html('<option value="">เลือกรุ่นยาง</option>');
             $.get(base_url+"api/Tireproduct/getAllTireModel",{
@@ -41,22 +67,29 @@
                     $.each( tireModelData, function( key, value ) {
                         tireModel.append('<option value="' + value.tire_modelId + '">' + value.tire_modelName + '</option>');
                     });
+                    tireModel.val(modelId);
                 }
             );
+        }
+
+        tireBrand.change(function(){
+            getTireModel();
         });
 
-        function getRim(rimId = null){
+        function getRim(rimId = null, tire_sizeId = null){
             $.get(base_url+"api/Tireproduct/getAllTireRims",{},
                 function(data){
                     var brandData = data.data;
                     $.each( brandData, function( key, value ) {
                         tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>');
                     });
+                    tire_rim.val(rimId);
+                    getTireSize(tire_sizeId);
                 }
             );
         }
 
-        tire_rim.change(function(){
+        function getTireSize(tire_sizeId = null){
             var rimId = tire_rim.val();
             tire_size.html('<option value="">เลือกขนาดยาง</option>');
             $.get(base_url+"api/Tireproduct/getAllTireSize",{
@@ -66,82 +99,32 @@
                     $.each( brandData, function( key, value ) {
                         tire_size.append('<option value="' + value.tire_sizeId + '">' + value.tire_size + '</option>');
                     });
+                    tire_size.val(tire_sizeId);
                 }
             );
-        });
+        }
 
-        function getbrand(brandId = null ){
-                $.get(base_url+"api/CarSelect/getCarBrand",{},
-                function(data){
-                    var brandData = data.data;
-                        $.each( brandData, function( key, value ) {
-                            brand.append('<option data-thumbnail="images/icon-chrome.png" value="' + value.brandId + '">' + value.brandName + '</option>');
-                        });
-                    }
-                );
-            }
-
-        brand.change(function(){
-            var brandId = brand.val();
-            model.html('<option value="">เลือกรุ่นรถ</option>');
-            detail.html('<option value="">เลือกโฉมรถยนต์</option>');
-            // year.html('<option value="">เลือกปีผลิต</option>');
-            modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-            $.get(base_url+"api/CarSelect/getCarModel",{
-                brandId : brandId
-            },function(data){
-                var modelData = data.data;
-                    $.each( modelData, function( key, value ) {
-                        model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
-                    });
-                }
-            );
-        });
-
-        model.change(function(){
-            var modelName = $("#modelId option:selected").text();
-            detail.html('<option value="">เลือกโฉมรถยนต์</option>');
-            // year.html('<option value="">เลือกปีผลิต</option>');
-            modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');            
-            $.get(base_url+"api/CarSelect/getCarYear",{
-                modelName : modelName
-            },function(data){
-                var detailData = data.data;
-                $.each( detailData, function( key, value ) {
-                    detail.append('<option value="' + value.modelId+'">'+'(ปี ' + value.yearStart + '-'+value.yearEnd+') '+value.detail+'</option>');
-                });
-            });
+        tire_rim.change(function(){
+            getTireSize();
         });
         
-        detail.change(function(){
-            // var modelId = model.val();
-            // var detail = $("#detail").val();
-            modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-            $.get(base_url+"api/CarSelect/getCarDetail",{
-                modelId : detail.val()
-            },function(data){
-                var carModelData = data.data;
-                console.log(carModelData);
-                $.each( carModelData, function( key, value ) {
-                    modelofcar.append('<option value="' + value.modelofcarId+'">' + value.machineSize + ' '+ value.modelofcarName +'</option>');
-                });
-            });
-        });
-        
-        function initpicture(){
+        function initpicture(picture){
             $('.image-editor').cropit({
                 allowDragNDrop: false,
                 width: 200,
                 height: 200,
-                type: 'image/jpeg'
+                type: 'image/jpeg',
+                imageState: {
+                    src: picturePath+"tireproduct/"+picture
+                }
             });
         }
 
         form.submit(function(){
-            createBrand();
+            updateBrand();
         });
 
-        function createBrand(){
+        function updateBrand(){
             event.preventDefault();
             var isValid = form.valid();
             if(isValid){
@@ -150,7 +133,7 @@
                 var myform = document.getElementById("submit");
                 var formData = new FormData(myform);
                 $.ajax({
-                    url: base_url+"api/Tireproduct/create",
+                    url: base_url+"api/Tireproduct/update",
                     data: formData,
                     processData: false,
                     contentType: false,
@@ -166,26 +149,6 @@
             }
         }
 
-        
-        $.post(base_url+"api/Tireproduct/getUpdate",{
-            "productId" : productId
-        },function(data){
-            if(data.message!=200){
-                showMessage(data.message,"admin/tireproduct");
-            }
-            if(data.message == 200){
-                result = data.data;
-                $("#productId").val(result.productId);
-                $("#tire_brandId").val(result.tire_brandId);
-                $("#tire_modelId").val(result.tire_modelId);
-                $("#rimId").val(result.rimId);
-                $("#tire_sizeId").val(result.tire_sizeId);
-                $("#status").val(result.status);
-                setBrandPicture(result.picture);
-                
-            }
-            
-        });
 
         function updateBrand(){
             event.preventDefault();

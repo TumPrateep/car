@@ -55,7 +55,7 @@
                             <div class="form-group">
                             <label class="control-label">รูปยางรถ</label>
                                 <div class="image-editor">
-                                    <input type="file" class="cropit-image-input" name="tempImage" required>
+                                    <input type="file" class="cropit-image-input" name="tempImage">
                                     <div class="cropit-preview"></div>
                                     <div class="image-size-label">ปรับขนาด</div>
                                     <input type="range" class="cropit-image-zoom-input">
@@ -66,7 +66,8 @@
                     </div>
   
                     <div class="form-group">
-                      <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <input type="hidden" name="productId" id="productId" value="<?=$productId ?>">
+                        <button type="submit" class="btn btn-primary">บันทึก</button>
                     </div>
                   </div>
                 </form>

@@ -32,7 +32,7 @@
                         <div class="col-md-5">
                             <label>รายการยี่ห้ออะไหล่</label> 
                             <select class="form-control" name="spares_brandId" id="spares_brandId">
-                                <option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>
+                                
                             </select>
                         </div>
                     </div>

@@ -62,7 +62,6 @@ class Spareproductdata extends CI_Model{
 
 
     function getSpareById($productId){
-        $this->db->select("productId");
         $this->db->where('productId',$productId);
         $result = $this->db->get("spare_product");
         return $result->row();

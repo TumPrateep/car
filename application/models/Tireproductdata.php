@@ -8,7 +8,7 @@ class Tireproductdata extends CI_Model{
     }
 
     function allData($limit,$start,$order,$dir){
-        $this->db->select("tire_product.productId,tire_brand.tire_brandId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,tire_size.tire_size,tire_product.status,tire_product.picture");//,tire_series.tire_series
+        $this->db->select("tire_product.productId,tire_brand.tire_brandId,tire_brand.tire_brandName,tire_model.tire_modelName,concat(tire_size.tire_size,'/',tire_size.tire_series,'R',rim.rimName) as tire_size,tire_product.status,tire_product.picture");//,tire_series.tire_series
         $this->db->from('tire_product');
         $this->db->join('tire_brand','tire_product.tire_brandId  = tire_brand.tire_brandId');
         $this->db->join('tire_model','tire_product.tire_modelId  = tire_model.tire_modelId');
@@ -65,12 +65,12 @@ class Tireproductdata extends CI_Model{
         return $result;
     }
 
-    function getTireById($productId){
-        $this->db->select("productId");
-        $this->db->where('productId',$productId);
-        $result = $this->db->get("tire_product");
-        return $result->row();
-    }
+    // function getTireById($productId){
+    //     $this->db->select("*");
+    //     $this->db->where('productId',$productId);
+    //     $result = $this->db->get("tire_product");
+    //     return $result->row();
+    // }
 
     function data_check_update($productId,$tire_brandId){
         $this->db->from("tire_product");

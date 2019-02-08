@@ -37,9 +37,8 @@
 
                 null,
                 null,
-                {"data": "tire_brandId"},
-                {"data": "tire_model"},
-                {"data": "rimName"},
+                {"data": "tire_brandName"},
+                {"data": "tire_modelName"},
                 {"data": "tire_size"},
                 null,
                 null
@@ -48,7 +47,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,6,7]
+                    "targets": [0,5,6]
                 },{
                     "targets": 0,
                     "data": null,
@@ -62,7 +61,7 @@
                         return '<img src="'+picturePath+'tireproduct/'+data.picture+'" width="100" />';
                     }
                 },{
-                    "targets": 6,
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -80,7 +79,7 @@
                         +'</div>';
                     }
                 },{
-                    "targets": 7,
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var disable = "";
@@ -91,7 +90,7 @@
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteTire('+data.productId+')"><i class="fa fa-trash"></i></button>';
                     }
                 },
-                {"className": "dt-center", "targets": [0,1,2,3,4,5,6,7]}
+                {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}
             ]	 
 
     });
