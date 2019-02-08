@@ -537,6 +537,16 @@
         formatTime:'H:i',
         format:'H:i'
     });
+
+    $("#personalid").on('input', function () {
+    
+        var value = $(this).val();
+        
+        if ((value !== '') && (value.indexOf('.') === -1)) {
+            
+            $(this).val(Math.max(Math.min(value, 9999999999999), 0));
+        }
+    });
         
 });  
 </script>

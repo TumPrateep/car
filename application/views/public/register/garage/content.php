@@ -30,13 +30,13 @@
 						<div class="col-md-5">
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">ชื่อ</label>
-								<input type="text" class="form-control" name="firstname_user" id="firstname_user" placeholder="ชื่อ">
+								<input type="text" class="form-control" name="firstname_user" id="firstname_user" maxlength="35" placeholder="ชื่อ">
 							</div>
 						</div>
 						<div class="col-md-5">
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">นามสกุล</label>
-								<input type="text" class="form-control" name="lastname_user" id="lastname_user" placeholder="นามสกุล">
+								<input type="text" class="form-control" name="lastname_user" id="lastname_user" maxlength="35" placeholder="นามสกุล">
 							</div>
 						</div>
 					</div>
@@ -44,7 +44,7 @@
 						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="mechanic">เลขรหัสบัตรประชาชน</label>
-								<input type="number" class="form-control" name="personalid" id="personalid" placeholder="เลขรหัสบัตรประชาชน">
+								<input type="number" class="form-control" name="personalid" id="personalid"  placeholder="เลขรหัสบัตรประชาชน">
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -64,25 +64,25 @@
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">บ้านเลขที่</label>
-								<input type="text" class="form-control" name="hno_user" id="hno_user" placeholder="บ้านเลขที่">
+								<input type="text" class="form-control" name="hno_user" id="hno_user" maxlength="20" placeholder="บ้านเลขที่">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="user_profile">ซอย</label>
-								<input type="text" class="form-control" name="alley_user" id="alley_user" placeholder="หมู่ที่">
+								<input type="text" class="form-control" name="alley_user" id="alley_user" maxlength="20" placeholder="หมู่ที่">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="user_profile">ถนน</label>
-								<input type="text" class="form-control" name="road_user" id="road_user" placeholder="ถนน">
+								<input type="text" class="form-control" name="road_user" id="road_user" maxlength="20" placeholder="ถนน">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="user_profile">หมู่ที่</label>
-								<input type="text" class="form-control" name="village_user" id="village_user" placeholder="หมู่ที่">
+								<input type="text" class="form-control" name="village_user" id="village_user" maxlength="20" placeholder="หมู่ที่">
 							</div>
 						</div>
 					</div>
