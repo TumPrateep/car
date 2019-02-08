@@ -56,6 +56,8 @@ class Lubricatorproduct extends BD_Controller {
                 $nestedData['lubricatorName'] = $post->lubricatorName;
                 $nestedData['lubricator_number'] = $post->lubricator_number;
                 $nestedData['lubricator_gear'] = $post->lubricator_gear;
+                $nestedData['capacity'] = $post->capacity;
+                $nestedData['lubricatortypeFormachine'] = $post->lubricatortypeFormachine;
                 $nestedData['status'] = $post->status;
         
                 $data[] = $nestedData;
@@ -172,7 +174,7 @@ class Lubricatorproduct extends BD_Controller {
                 "data_check_update" => $data_check_update,
                 "data_check" => $data_check,
                 "data" => $data,
-                "model" => $this->spareproductdata,
+                "model" => $this->lubricatorproductdata,
                 "image_path" => $file,
                 "old_image_path" => $oldImage,
             ];
@@ -200,5 +202,42 @@ class Lubricatorproduct extends BD_Controller {
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
+
+    function changeStatus_post(){
+        $productId = $this->post("productId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+
+        $data_check_update = $this->lubricatorproductdata->getProductDataById($productId);
+        $data = array(
+            'productId' => $productId,
+            'status' => $status
+        );
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->lubricatorproductdata
+        ];
+
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
+    }
     
+    public function delete_get(){
+        $productId = $this->get('productId');
+        $data_check = $this->lubricatorproductdata->getProductDataById($productId);
+
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $productId,
+            "model" => $this->lubricatorproductdata,
+            "image_path" => "public/image/lubricatorproduct/".$data_check->picture
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
+    }
 }

@@ -23,6 +23,14 @@
                   <div class="card-body black bg-light ">
                     <div class="form-group row">
                         <div class="col-md-4">
+                            <label>รายการชนิดน้ำมันเครื่อง</label> 
+                            <select class="form-control valid" name="lubricator_gear" id="lubricator_gear">
+                                <option value="1">น้ำมันเครื่อง</option>
+                                <option value="2">น้ำมันเกียร์ธรรมดา</option>
+                                <option value="3">น้ำมันเกียร์ออโต</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
                             <label>รายการยี่ห้อน้ำมันเครื่อง</label> 
                             <select class="form-control" name="lubricator_brandId" id="lubricator_brandId">
                                 <option value="">เลือกยี่ห้อน้ำมันเครื่อง</option>
@@ -34,13 +42,6 @@
                                 <option value="">เลือกรุ่นน้ำมันเครื่อง</option>
                             </select>
                         </div>
-
-                        <div class="col-md-4">
-                            <label>รายการชนิดน้ำมันเครื่อง</label> 
-                            <select class="form-control" name="lubricator_typeId" id="lubricator_typeId">
-                                <option value="">เลือกชนิดน้ำมันเครื่อง</option>
-                            </select>
-                        </div>
                     </div>
 
                     <div class="row p-t-20">
@@ -48,7 +49,7 @@
                             <div class="form-group">
                             <label class="control-label">รูปน้ำมันเครื่อง</label>
                                 <div class="image-editor">
-                                    <input type="file" class="cropit-image-input" name="tempImage" required>
+                                    <input type="file" class="cropit-image-input" name="tempImage">
                                     <div class="cropit-preview"></div>
                                     <div class="image-size-label">ปรับขนาด</div>
                                     <input type="range" class="cropit-image-zoom-input">
@@ -61,7 +62,8 @@
 
                     
                     <div class="form-group">
-                      <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <input type="hidden" name="productId" id="productId" value="<?=$productId ?>">
+                        <button type="submit" class="btn btn-primary">บันทึก</button>
                     </div>
                   </div>
                 </form>

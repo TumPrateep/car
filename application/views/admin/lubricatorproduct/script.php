@@ -36,9 +36,10 @@
             "columns": [
                 null,
                 null,
-                {"data": "lubricator_brandId"},
-                {"data": "lubricatorId"},
-                {"data": "lubricator_typeId"},
+                {"data": "lubricator_brandName"},
+                {"data": "lubricatorName"},
+                null,
+                null,
                 null,
                 null
             ],
@@ -60,7 +61,19 @@
                         return '<img src="'+picturePath+'lubricatorproduct/'+data.picture+'" width="100" />';
                     }
                 },{
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return data.lubricator_number+'<br><span class="badge badge-info">'+data.capacity+' ลิตร</span>';
+                    }
+                },{
                     "targets": 5,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return lubricatorLib[data.lubricator_gear]+'<br><span class="badge badge-light">'+data.lubricatortypeFormachine+'</span>';
+                    }
+                },{
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -78,11 +91,11 @@
                         +'</div>';
                     }
                 },{
-                    "targets": 6,
+                    "targets": 7,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/lubricatorproduct/update/"+data.productId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteBrand('+data.productId+',\''+data.brandName+'\')"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletelubricator('+data.productId+')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}
@@ -101,6 +114,16 @@
                 showMessage(data.message);
             }
         });
+    }
+
+    function deletelubricator(productId){
+        var option = {
+            url: "/Lubricatorproduct/delete?productId="+productId,
+            label: "ลบข้อมูลน้ำมันเครื่อง",
+            content: "คุณต้องการลบข้อมูลน้ำมันเครื่องใช่หรือไม่",
+            gotoUrl: "admin/lubricatorproduct"
+        }
+        fnDelete(option);
     }
 
 </script>

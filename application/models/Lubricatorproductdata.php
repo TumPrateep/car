@@ -8,11 +8,12 @@ class Lubricatorproductdata extends CI_Model{
     }
 
     function allData($limit,$start,$order,$dir){
-        $this->db->select("lubricator_product.productId, lubricator_brand.lubricator_brandName, lubricator.lubricatorName, lubricator_product.picture, lubricator_number.lubricator_number, lubricator_number.lubricator_gear, lubricator_product.status");
+        $this->db->select("lubricator_product.productId, lubricator_brand.lubricator_brandName, lubricator.lubricatorName, lubricator_product.picture, lubricator_number.lubricator_number, lubricator_number.lubricator_gear, lubricator_product.status, lubricator.capacity, lubricatortypeformachine.lubricatortypeFormachine");
         $this->db->from('lubricator_product');
         $this->db->join('lubricator','lubricator_product.lubricatorId  = lubricator.lubricatorId');
         $this->db->join('lubricator_brand','lubricator.lubricator_brandId  = lubricator_brand.lubricator_brandId');
         $this->db->join('lubricator_number','lubricator.lubricator_numberId  = lubricator_number.lubricator_numberId');
+        $this->db->join("lubricatortypeformachine", "lubricatortypeformachine.lubricatortypeFormachineId = lubricator.lubricatortypeFormachineId");
 
         $this->db->limit($limit,$start)->order_by($order,$dir);
         $query = $this->db->get();
@@ -40,7 +41,7 @@ class Lubricatorproductdata extends CI_Model{
 
     function data_check_update($productId, $lubricatorId){
         $this->db->select('productId');
-        $this->from("lubricator_product");
+        $this->db->from("lubricator_product");
         $this->db->where('lubricatorId', $lubricatorId);
         $this->db->where_not_in('productId', $productId);
         $query = $query = $this->db->get();
@@ -55,6 +56,19 @@ class Lubricatorproductdata extends CI_Model{
         $this->db->where('productId',$data['productId']);
         $result = $this->db->update('lubricator_product', $data);
         return $result;
+    }
+
+    function getUpdate($productId){
+        $this->db->select('lubricator_product.productId, lubricator_number.lubricator_gear, lubricator.lubricatorId, lubricator_product.picture, lubricator.lubricator_brandId, lubricator.lubricatorId');
+        $this->db->join('lubricator', 'lubricator.lubricatorId = lubricator_product.lubricatorId');
+        $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId');
+        $this->db->where('lubricator_product.productId',$productId);
+        $result = $this->db->get("lubricator_product")->row();
+        return $result;
+    }
+
+    function delete($productId){
+        return $this->db->delete('lubricator_product', array('productId' => $productId));
     }
 
     function getProductDataById($productId){
