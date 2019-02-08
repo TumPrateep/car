@@ -88,7 +88,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/spareproduct/update/"+data.productId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteBrand('+data.productId+',\''+data.brandName+'\')"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteSpare('+data.productId+')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}
@@ -107,6 +107,16 @@
                 showMessage(data.message);
             }
         });
+    }
+
+    function deleteSpare(id){
+        var option = {
+            url: "/Spareproduct/delete?productId="+id,
+            label: "ลบราคาเปลี่ยนอะไหล่ช่วงล่าง",
+            content: "คุณต้องการลบข้อมูลใช่หรือไม่",
+            gotoUrl: "admin/spareproduct"
+        }
+        fnDelete(option);
     }
 
 </script>

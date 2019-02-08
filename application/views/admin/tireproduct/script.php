@@ -38,9 +38,9 @@
                 null,
                 null,
                 {"data": "tire_brandId"},
-                {"data": "tire_seriesId"},
-                {"data": "rimId"},
-                {"data": "tire_sizeId"},
+                {"data": "tire_model"},
+                {"data": "rimName"},
+                {"data": "tire_size"},
                 null,
                 null
             ],
@@ -62,6 +62,24 @@
                         return '<img src="'+picturePath+'tireproduct/'+data.picture+'" width="100" />';
                     }
                 },{
+                    "targets": 6,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.productId+','+data.status+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
+                    }
+                },{
                     "targets": 7,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
@@ -70,7 +88,7 @@
                             disable = "disabled";
                         }
                         return '<a href="'+base_url+"admin/tireproduct/update/"+data.productId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteBrand('+data.productId+',\''+data.brandName+'\')"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteTire('+data.productId+')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6,7]}
@@ -91,7 +109,15 @@
         });
     }
 
- 
+    function deleteTire(id){
+        var option = {
+            url: "/Tireproduct/delete?productId="+id,
+            label: "ลบราคาเปลี่ยนอะไหล่ช่วงล่าง",
+            content: "คุณต้องการลบข้อมูลใช่หรือไม่",
+            gotoUrl: "admin/tireproduct"
+        }
+        fnDelete(option);
+    }
 
 
 

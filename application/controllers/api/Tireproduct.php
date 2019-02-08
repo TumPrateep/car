@@ -93,7 +93,7 @@ class Tireproduct extends BD_Controller {
             0 => null,
             1 => null,
             2 => 'tire_brand.tire_brandId', 
-            3 => 'tire_series.tire_seriesId',
+            3 => 'tire_model.tire_modelId',
             4 => 'rim.rimId',
             5 => 'tire_size.tire_sizeId',
             6 => 'spare_product.status'
@@ -128,14 +128,11 @@ class Tireproduct extends BD_Controller {
             {
                 $nestedData['productId'] = $post->productId;
                 $nestedData['tire_brandId'] = $post->tire_brandId;
-                $nestedData['tire_seriesId'] = $post->tire_seriesId;
-                $nestedData['rimId'] = $post->rimId;
-                $nestedData['tire_sizeId'] = $post->tire_sizeId;
+                // $nestedData['tire_series'] = $post->tire_series;
+                $nestedData['rimName'] = $post->rimName;
+                $nestedData['tire_size'] = $post->tire_size;
                 $nestedData['status'] = $post->status;
                 $nestedData['picture'] = $post->picture;
-             
-            
-
                 $data[] = $nestedData;
             }
         }
@@ -149,4 +146,95 @@ class Tireproduct extends BD_Controller {
 
         $this->set_response($json_data);
     }
+
+    
+    public function delete_get(){
+        $productId = $this->get('productId');
+        $data_check = $this->tireproductdata->getProductDataById($productId);
+
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $productId,
+            "model" => $this->tireproductdata,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
+    }
+
+    
+    function getUpdate_post(){
+        $productId = $this->post('productId');
+        $data_check = $this->tireproductdata->getUpdate($productId);
+        
+        $option = [
+            "data_check" => $data_check
+        ];
+
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
+
+    public function update_post(){
+        $this->load->model("tireproductdata");
+        $productId = $this->post('productId');
+        $tire_modelId = $this->post('tire_modelId');
+        $rimId = $this->post('rimId');
+        $tire_sizeId = $this->post('tire_sizeId');
+        $config['upload_path'] = 'public/image/tireproduct/';
+        $img = $this->post("picture");
+        // $img = str_replace('data:image/png;base64,', '', $img);
+	    // $img = str_replace(' ', '+', $img);
+        // $data = base64_decode($img);
+        // $imageName = uniqid().'.png';
+        // $file = $config['upload_path']. '/'. $imageName;
+        // $success = file_put_contents($file, $data);
+        $file = null;
+        $success = true;
+        $imageName = null;
+        $userId = $this->session->userdata['logged_in']['id'];
+        if(!empty($img)){
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
+
+            $imageName = uniqid().'.png';
+            $file = $config['upload_path']. '/'. $imageName;
+            $success = file_put_contents($file, $data);
+        }
+        if (!$success){
+            unlink($file);
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $data_check_update = $this->Tireproductdata->getTireById($productId);
+            $data_check = $this->Tireproductdata->data_check_update($productId,$tire_brandId);
+
+            $data = array(
+                'productId' => $productId,
+                'tire_brandId'  => $tire_brandId,
+                'tire_modelId'  => $tire_modelId,
+                'rimId'  => $rimId,
+                'tire_sizeId'  => $tire_sizeId,
+                'picture'  =>  $imageName,
+                'update_by' => $userId,
+                'update_at' => date('Y-m-d H:i:s',time())
+            );
+            $oldImage = null;
+            // if($data_check_update != null){
+            //     $oldImage = $config['upload_path'].$data_check_update->picture;
+            // }
+
+            $option = [
+                "data_check_update" => $data_check_update,
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->Tireproductdata,
+                "image_path" => $file,
+                "old_image_path" => $oldImage,
+            ];
+
+            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+        }
+    }
+
 }

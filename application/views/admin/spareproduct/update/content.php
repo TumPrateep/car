@@ -20,6 +20,7 @@
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form id="submit">
+                <input type="hidden" name="productId" id="productId" value="<?=$productId?>">
                   <div class="card-body black bg-light ">
                     <div class="form-group row">
                         <div class="col-md-5">
@@ -73,7 +74,7 @@
                                     <div class="cropit-preview"></div>
                                     <div class="image-size-label">ปรับขนาด</div>
                                     <input type="range" class="cropit-image-zoom-input">
-                                    <input type="hidden" name="picture" class="hidden-image-data" />
+                                    <input type="hidden" name="picture" class="hidden-image-data" id="picture" />
                                 </div>
                             </div>
                         </div>

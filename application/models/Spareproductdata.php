@@ -2,6 +2,10 @@
 
 class Spareproductdata extends CI_Model{
 
+    function delete($productId){
+        return $this->db->delete('spare_product', array('productId' => $productId));
+    }
+
     function allData_count(){
         $query = $this->db->get('spare_product');
         return $query->num_rows();  
@@ -61,6 +65,21 @@ class Spareproductdata extends CI_Model{
         $this->db->select("productId");
         $this->db->where('productId',$productId);
         $result = $this->db->get("spare_product");
+        return $result->row();
+    }
+
+    function getUpdate($productId){
+        $this->db->select('productId,spares_undercarriageId,spares_brandId,brandId,modelId,modelofcarId,status,picture');
+        $this->db->where('productId',$productId);
+        $result = $this->db->get("spare_product")->row();
+        return $result;
+    }
+
+    function data_check_update($productId,$spares_undercarriageId){
+        $this->db->from("spare_product");
+        $this->db->where('spares_undercarriageId',$spares_undercarriageId);
+        $this->db->where_not_in('productId',$productId);
+        $result = $this->db->get();
         return $result->row();
     }
 

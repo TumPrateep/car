@@ -142,9 +142,9 @@ class Spareproduct extends BD_Controller {
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
-    function getUpdate_get(){
-        $productId = $this->get('productId');
-        $data_check = $this->Spareproductdata->getUpdate($productId);
+    function getUpdate_post(){
+        $productId = $this->post('productId');
+        $data_check = $this->spareproductdata->getUpdate($productId);
         
         $option = [
             "data_check" => $data_check
@@ -154,7 +154,7 @@ class Spareproduct extends BD_Controller {
     }
 
     public function update_post(){
-
+        $this->load->model("spareproductdata");
         $productId = $this->post('productId');
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_brandId = $this->post('spares_brandId');
@@ -164,13 +164,15 @@ class Spareproduct extends BD_Controller {
         $modelofcarId = $this->post('modelofcarId');
         $config['upload_path'] = 'public/image/spareproduct/';
         $img = $this->post("picture");
-        $img = str_replace('data:image/png;base64,', '', $img);
-	    $img = str_replace(' ', '+', $img);
-        $data = base64_decode($img);
-        $imageName = uniqid().'.png';
-        $file = $config['upload_path']. '/'. $imageName;
-        $success = file_put_contents($file, $data);
-
+        // $img = str_replace('data:image/png;base64,', '', $img);
+	    // $img = str_replace(' ', '+', $img);
+        // $data = base64_decode($img);
+        // $imageName = uniqid().'.png';
+        // $file = $config['upload_path']. '/'. $imageName;
+        // $success = file_put_contents($file, $data);
+        $file = null;
+        $success = true;
+        $imageName = null;
         $userId = $this->session->userdata['logged_in']['id'];
         if(!empty($img)){
             $img = str_replace('data:image/png;base64,', '', $img);
@@ -186,8 +188,8 @@ class Spareproduct extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
-            $data_check_update = $this->Spareproductdata->getSpareById($productId);
-            $data_check = $this->Spareproductdata->data_check_update($productId);
+            $data_check_update = $this->spareproductdata->getSpareById($productId);
+            $data_check = $this->spareproductdata->data_check_update($productId,$spares_undercarriageId);
 
             $data = array(
                 'productId' => $productId,
@@ -197,26 +199,40 @@ class Spareproduct extends BD_Controller {
                 'modelId'  => $modelId,
                 'detail'  => $detail,
                 'modelofcarId'  => $modelofcarId,
-
+                'picture'  =>  $imageName,
                 'update_by' => $userId,
                 'update_at' => date('Y-m-d H:i:s',time())
             );
             $oldImage = null;
-            if($data_check_update != null){
-                $oldImage = $config['upload_path'].$data_check_update->picture;
-            }
+            // if($data_check_update != null){
+            //     $oldImage = $config['upload_path'].$data_check_update->picture;
+            // }
 
             $option = [
                 "data_check_update" => $data_check_update,
                 "data_check" => $data_check,
                 "data" => $data,
-                "model" => $this->Spareproductdata,
+                "model" => $this->spareproductdata,
                 "image_path" => $file,
                 "old_image_path" => $oldImage,
             ];
 
             $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
         }
+    }
+
+    public function delete_get(){
+        $productId = $this->get('productId');
+        $data_check = $this->spareproductdata->getProductDataById($productId);
+
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $productId,
+            "model" => $this->spareproductdata,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
 
     
