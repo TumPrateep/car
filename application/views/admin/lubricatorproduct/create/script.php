@@ -12,7 +12,7 @@
         
         function init(){
             getLubracatorBrand();
-        
+            initpicture();
         }
 
         function getLubracatorBrand(){
@@ -39,7 +39,7 @@
             },function(data){
                     var lubricatorData = data.data;
                     $.each( lubricatorData, function( key, value ) {
-                        lubricator.append('<option value="' + value.lubricatorId + '">' + value.lubricatorName + " " + value.capacity + " ลิตร " + value.lubricator_number + '</option>');
+                        lubricator.append('<option value="' + value.lubricatorId + '">' + value.lubricatorName + " " + value.capacity + " ลิตร " + value.lubricator_number +" "+value.lubricatortypeFormachine+ '</option>');
                     });
                 }
             );
