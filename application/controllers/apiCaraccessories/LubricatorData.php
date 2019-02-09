@@ -90,7 +90,7 @@ class LubricatorData extends BD_Controller {
                 $nestedData[$count]['picture'] = getPictureLubricator($option);
 
                 $data[$index] = $nestedData;
-                if($count >= 2){
+                if($count >= 3){
                     $count = -1;
                     $index++;
                     $nestedData = [];

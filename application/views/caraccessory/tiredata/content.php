@@ -113,7 +113,7 @@
             </div>
         </div>
         
-        <div class="table mt-20">
+        <div class="table ">
             <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
                 <thead>
                     <th></th>

@@ -59,7 +59,7 @@
                                 active = "";
                             }
 
-                            html += '<div class="col-lg-4" col-md-8>'
+                            html += '<div class="col-lg-3" col-md-8>'
                                  + '<div class="card card-header-height">'
                                  + '<div class="text-right mg-15">'
                                  	+ '<span class="badge badge-pill badge-'+lubricatorClass[value.lubricator_gear]+'">'+lubricatorLib[value.lubricator_gear];

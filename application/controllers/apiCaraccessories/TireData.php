@@ -207,7 +207,7 @@ class TireData extends BD_Controller {
                 $nestedData[$count]['picture'] = getPictureTire($option);
                 
                 $data[$index] = $nestedData;
-                if($count >= 2){
+                if($count >= 3){
                     $count = -1;
                     $index++;
                     $nestedData = [];
@@ -224,6 +224,7 @@ class TireData extends BD_Controller {
             "recordsFiltered" => intval($totalFiltered), 
             "data"            => $data   
         );
+
 
         $this->set_response($json_data);
 
