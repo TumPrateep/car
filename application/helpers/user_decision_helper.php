@@ -129,6 +129,9 @@
       // ];
       $CI->load->model("dataoption");
       $result = $CI->dataoption->getPictureSpare($option);
+      if($result == null){
+        $result = "carimage.png";
+      }
       return $result;
     }
       
