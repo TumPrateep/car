@@ -18,7 +18,7 @@ class Dataoption extends CI_Model {
         return $query->row();
     }
 
-    function getPictureTireLubricator($option){
+    function getPictureTire($option){
         $this->db->select("picture");
         $this->db->from("tire_product");
         $this->db->where("tire_brandId", $option['tire_brandId']);
