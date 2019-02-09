@@ -54,7 +54,7 @@
                         "data": null,
                         "render": function ( data, type, full, meta ) {
                             var html = '<div class="row">';
-                            var imagePath = base_url+"/public/image/spareundercarriage/";
+                            var imagePath = base_url+"/public/image/spareproduct/";
                             $.each(data, function( index, value ) {
                                 var switchVal = "true";
                                 var active = " active";
@@ -74,7 +74,7 @@
                                                         +'<div class="d-flex flex-column align-items-center logo-product">'
 															+'<img src="'+base_url+'public/image/sparesbrand/'+value.spares_brandPicture+'">'
 														+'</div>'
-                                                        +'<div class="product_image d-flex flex-column align-items-center justify-content-center"onclick="gotoDetail(\'spare\',\''+value.spares_undercarriageDataId+'\')"><img src="'+imagePath+value.spares_undercarriageDataPicture+'"/></div>'
+                                                        +'<div class="product_image d-flex flex-column align-items-center justify-content-center"onclick="gotoDetail(\'spare\',\''+value.spares_undercarriageDataId+'\')"><img src="'+imagePath+value.picture+'"/></div>'
                                                         +'<div class="product_content">'
                                                         +'<div onclick="gotoDetail(\'spare\',\''+value.spares_undercarriageDataId+'\')">'
                                                             +'<div class="product_price">'+currency(value.price, {  precision: 0 }).format()+' บาท</div>'

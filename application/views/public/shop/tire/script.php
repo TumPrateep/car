@@ -60,7 +60,7 @@ $(document).ready(function () {
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '<div class="row">';
-                        var imagePath = base_url+"/public/image/tirebranddata/";
+                        var imagePath = base_url+"/public/image/tireproduct/";
                         $.each(data, function( index, value ) {
                             var switchVal = "true";
                             var active = " active";
@@ -80,7 +80,7 @@ $(document).ready(function () {
                                                     +'<div class="d-flex flex-column align-items-center logo-product">'
                                                         +'<img src="'+base_url+'public/image/tire_brand/'+value.tire_brandPicture+'">'
                                                     +'</div>'
-                                                    +'<div class="product_image d-flex flex-column align-items-center justify-content-center"onclick="gotoDetail(\'tire\',\''+value.tire_dataId+'\')"><img src="'+imagePath+value.tire_picture+'"/></div>'
+                                                    +'<div class="product_image d-flex flex-column align-items-center justify-content-center"onclick="gotoDetail(\'tire\',\''+value.tire_dataId+'\')"><img src="'+imagePath+value.picture+'"/></div>'
                                                     +'<div class="product_content">'
                                                         +'<div onclick="gotoDetail(\'tire\',\''+value.tire_dataId+'\')">'
                                                         +'<div class="product_price">'+currency(value.price, {  precision: 0 }).format()+' บาท</div>'
