@@ -62,7 +62,7 @@
                                 active = "";
                             }
 
-                            html += '<div class="col-lg-4" col-md-8>'
+                            html += '<div class="col-lg-3" col-md-8>'
                                  + '<div class="card card-header-height">'
                                     + '<div class="card-body">'
                                         + '<div class="icon-button mg-15">'

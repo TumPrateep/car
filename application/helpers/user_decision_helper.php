@@ -116,5 +116,20 @@
 
       return $output;
     }
+
+    function getPictureSpare($option){
+      $CI = get_instance();
+      // example
+      // $option = [
+      //   'spares_undercarriageId' => '',
+      //   'spares_brandId' => '',
+      //   'brandId' => '',
+      //   'modelId' => '',
+      //   'modelofcarId' => ''
+      // ];
+      $CI->load->model("dataoption");
+      $result = $CI->dataoption->getPictureSpare($option);
+      return $result;
+    }
       
 ?>
