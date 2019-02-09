@@ -51,8 +51,7 @@ class SpareundercarriageData extends BD_Controller {
             $index = 0;
             $count = 0;
             foreach ($posts as $post)
-            {
-                
+            { 
                 $nestedData[$count]['spares_undercarriageDataId'] = $post->spares_undercarriageDataId;
                 $nestedData[$count]['spares_brandName'] = $post->spares_brandName;
                 $nestedData[$count]['spares_undercarriageName'] = $post->spares_undercarriageName;
@@ -71,15 +70,24 @@ class SpareundercarriageData extends BD_Controller {
                 }
                 $nestedData[$count]['modelofcarName'] = $post->modelofcarName;
                 $nestedData[$count]['machineSize'] = $post->machineSize;
+
+                //picture
+                $option = [
+                    'spares_undercarriageId' => $post->spares_undercarriageId,
+                    'spares_brandId' => $post->spares_brandId,
+                    'brandId' => $post->brandId,
+                    'modelId' => $post->modelId,
+                    'modelofcarId' => $post->modelofcarId
+                ];
+                $nestedData[$count]['picture'] = getPictureSpare($option);
                 $data[$index] = $nestedData;
-                if($count >= 2){
+                if($count >= 3){
                     $count = -1;
                     $index++;
                     $nestedData = [];
                 }
                 
                 $count++;
-
             }
         }
 
