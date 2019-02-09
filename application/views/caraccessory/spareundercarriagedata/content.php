@@ -130,7 +130,7 @@
                                                         ยี่ห้อรถ <span class="text-lebel">XXX</span> <br>
                                                         รุ่นรถ <span class="text-lebel">XXX</span> <br>
                                                         ปีผลิต <span class="text-lebel">XXX</span> <br>
-                                                        ขนาดยนต์ <span class="text-lebel">XXX</span> <br>
+                                                        ขนาดยนต์<span class="text-lebel">XXX</span> <br>
                                                     </small>
                                                 </div>
                                                 <div class="col-md-5 border-left">

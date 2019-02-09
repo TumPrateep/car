@@ -18,7 +18,7 @@ class Spare_undercarriagedatas extends CI_Model{
         spares_undercarriageData.spares_undercarriageDataPicture,
         brand.brandName,model.modelName,model.yearStart,model.yearEnd,
         modelofcar.modelofcarName,modelofcar.machineSize,spares_undercarriage.spares_undercarriageId,
-        spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId');
+        spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,spares_brand.spares_brandPicture');
         $this->db->from('spares_undercarriagedata');
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarriagedata.spares_brandId');
         $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriageData.spares_undercarriageId');
@@ -48,7 +48,7 @@ class Spare_undercarriagedatas extends CI_Model{
         spares_undercarriageData.spares_undercarriageDataPicture,
         brand.brandName,model.modelName,model.yearStart,model.yearEnd,
         modelofcar.modelofcarName,modelofcar.machineSize,spares_undercarriage.spares_undercarriageId,
-        spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId');
+        spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,spares_brand.spares_brandPicture');
         $this->db->from('spares_undercarriagedata');
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarriagedata.spares_brandId');
         $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriageData.spares_undercarriageId');
@@ -84,7 +84,7 @@ class Spare_undercarriagedatas extends CI_Model{
         spares_undercarriageData.spares_undercarriageDataPicture,
         brand.brandName,model.modelName,model.yearStart,model.yearEnd,
         modelofcar.modelofcarName,modelofcar.machineSize,spares_undercarriage.spares_undercarriageId,
-        spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId');
+        spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,spares_brand.spares_brandPicture');
         $this->db->from('spares_undercarriagedata');
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarriagedata.spares_brandId');
         $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriageData.spares_undercarriageId');

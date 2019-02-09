@@ -64,6 +64,7 @@
 
                             html += '<div class="col-lg-3" col-md-8>'
                                  + '<div class="card card-header-height">'
+                                    + '<img class="card-img-top" src="'+picturePath+"sparesbrand/"+value.spares_brandPicture+'">'
                                     + '<div class="card-body">'
                                         + '<div class="icon-button mg-15">'
                                             // + '<img class="card-img-top" src="'+picturePath+"tire_brand/"+value.tire_brandPicture+'">'
@@ -77,25 +78,15 @@
                                     + '</div>'
                                     + '<div class="card-body">'
                                         + '<div class="row pt-10">'
-                                            + '<div class="col-md-7 font-black">'
+                                            + '<div class="col-md-12 font-black">'
                                                 + '<small>'
-                                                    + 'อะไหล่ <span class="text-lebel">'+value.spares_undercarriageName+'</span> <br>'
-                                                    + 'ยี่ห้อไหล่ <span class="text-lebel">'+value.spares_brandName+'</span> <br>'
-                                                    + 'ยี่ห้อรถ <span class="text-lebel">'+value.brandName+'</span> <br>'
-                                                    + 'รุ่นรถ <span class="text-lebel">'+value.modelName+'</span> <br>'
-                                                    + 'ปีผลิต <span class="text-lebel">'+value.year+'</span> <br>'
-                                                    + 'ขนาดเครื่องยนต์ <span class="text-lebel">'+value.machineSize+'</span> <br>'
-                                                    + 'รับประกัน <span class="text-lebel">'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span> <br>'
+                                                    +'<center><span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' บาท</span><br></center>'
+                                                    + 'อะไหล่ :<span class="text-lebel">'+value.spares_undercarriageName+'</span> <br>'
+                                                    + 'ยี่ห้อไหล่ :<span class="text-lebel">'+value.spares_brandName+'</span> <br>'
+                                                    + 'ข้อมูลรถ :<span class="text-lebel">'+value.brandName+" "+value.modelName+" "+value.year+" "+value.machineSize+'</span> <br>'
+                                                    + 'รับประกัน :<span class="text-lebel">'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span> <br>'
                                                 + '</small>'
                                             + '</div>'
-                                            + '<div class="col-md-5 border-left-data">'
-                                                +'<span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' .-</span><br>'
-                                                +'<div>'
-                                                    +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+value.spares_undercarriageDataId+','+value.status+')">'
-                                                    +'<div class="handle"></div>'
-                                                    +'</button>'
-                                                +'</div>'
-                                            +'</div>'
                                         + '</div>'
                                         + '<div class="text-center">'
                                             + '<a href="'+base_url+"caraccessory/SpareundercarriesData/updateSpareundercarriesData/"+value.spares_undercarriageDataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
@@ -121,7 +112,7 @@
     $("#price").slider({
         range: true,
         min: 0,
-        max: 10000,
+        max: 1000,
         value: [1000, 7000],
         formatter: function formatter(val) {
             // console.log(val);

@@ -63,6 +63,7 @@ class SpareundercarriageData extends BD_Controller {
                 $nestedData[$count]['spares_undercarriageDataPicture'] = $post->spares_undercarriageDataPicture;
                 $nestedData[$count]['brandName'] = $post->brandName;
                 $nestedData[$count]['modelName'] = $post->modelName;
+                $nestedData[$count]['spares_brandPicture'] = $post->spares_brandPicture;
                 if($post->yearEnd != null){
                     $nestedData[$count]['year'] = $post->yearStart."-".$post->yearEnd;
                 }else{
@@ -113,67 +114,36 @@ class SpareundercarriageData extends BD_Controller {
         $modelofcarId = $this->post("modelofcarId");
         $machineSize = $this->post("machineSize");
        
-        
-        $config['upload_path'] = 'public/image/spareundercarriage/';
-
-        // $config['allowed_types'] = 'gif|jpg|png';
-        // $config['max_size'] = '100';
-        // $config['max_width']  = '1024';
-        // $config['max_height']  = '768';
-        // $config['overwrite'] = TRUE;
-        // $config['encrypt_name'] = TRUE;
-        // $config['remove_spaces'] = TRUE;
-        // $this->load->library('upload', $config);
-        // $checknotDuplicate = $this->spare_undercarriageDatas->checknotDuplicated($spares_brandId,$spares_undercarriageId);
-        
+       
         $userId = $this->session->userdata['logged_in']['id'];
-        $img = $this->post('spares_undercarriageDataPicture');
-        $img = str_replace('data:image/png;base64,', '', $img);
-	    $img = str_replace(' ', '+', $img);
-        $data = base64_decode($img);
-        $imageName = uniqid().'.png';
-        $file = $config['upload_path']. '/'. $imageName;
-        $success = file_put_contents($file, $data);
+        $data_check = $this->spare_undercarriagedatas->data_check_create($spares_brandId,$spares_undercarriageId,$userId);
+    
+        $data = array(
+        'spares_undercarriageDataId' => null,
+        'spares_brandId' => $spares_brandId,
+        'spares_undercarriageId' =>$spares_undercarriageId,
+        'status' => 1,
+        'create_at' => date('Y-m-d H:i:s',time()),
+        'create_by' => $userId,
+        "activeFlag" => 1,
+        'price' => $price,
+        'warranty' => $warranty,
+        'warranty_year' => $warranty_year,
+        'warranty_distance' => $warranty_distance,
+        // 'spares_undercarriageDataPicture' => $image,
+        'modelId' => $modelId,
+        'brandId' => $brandId,
+        'modelofcarId' => $modelofcarId,
+        'machineSize' => $machineSize
+        );
+        $option = [
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->spare_undercarriagedatas,
+            "image_path" => null
+        ];
 
-        if (!$success){
-            $output["message"] = REST_Controller::MSG_ERROR;
-			$this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $image =  $imageName;
-            $data_check = $this->spare_undercarriagedatas->data_check_create($spares_brandId,$spares_undercarriageId,$userId);
-            if($data_check){
-                unlink($file);
-                $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
-                $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
-                $data = array(
-                'spares_undercarriageDataId' => null,
-                'spares_brandId' => $spares_brandId,
-                'spares_undercarriageId' =>$spares_undercarriageId,
-                'status' => 1,
-                'create_at' => date('Y-m-d H:i:s',time()),
-                'create_by' => $userId,
-                "activeFlag" => 1,
-                'price' => $price,
-                'warranty' => $warranty,
-                'warranty_year' => $warranty_year,
-                'warranty_distance' => $warranty_distance,
-                'spares_undercarriageDataPicture' => $image,
-                'modelId' => $modelId,
-                'brandId' => $brandId,
-                'modelofcarId' => $modelofcarId,
-                'machineSize' => $machineSize
-                );
-                $option = [
-                    "data_check" => $data_check,
-                    "data" => $data,
-                    "model" => $this->spare_undercarriagedatas,
-                    "image_path" => $file
-                ];
-
-                $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
-            }
-        }
+        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
 
     function update_post(){
@@ -190,40 +160,11 @@ class SpareundercarriageData extends BD_Controller {
         $modelofcarId = $this->post("modelofcarId");
         $machineSize = $this->post("machineSize");
         
-        $config['upload_path'] = 'public/image/spareundercarriage/';
-        // $config['allowed_types'] = 'gif|jpg|png';
-        // $config['max_size'] = '100';
-        // $config['max_width']  = '1024';
-        // $config['max_height']  = '768';
-        // $config['overwrite'] = TRUE;
-        // $config['encrypt_name'] = TRUE;
-        // $config['remove_spaces'] = TRUE;
-        // $this->load->library('upload', $config);
-        $img = $this->post('spares_undercarriageDataPicture');
-        $success = true;
-        $file = null;
-        $imageName = null;
-        if(!empty($img)){
-            $img = str_replace('data:image/png;base64,', '', $img);
-            $img = str_replace(' ', '+', $img);
-            $data = base64_decode($img);
-
-            $imageName = uniqid().'.png';
-            $file = $config['upload_path']. '/'. $imageName;
-            $success = file_put_contents($file, $data);
-        }
-        
-		if (!$success){
-            unlink($file);
-            $output["message"] = REST_Controller::MSG_ERROR;
-			$this->set_response($output, REST_Controller::HTTP_OK);
-		}else{
+       
             $data_check_update = $this->spare_undercarriagedatas->getSpareDatasById($spares_undercarriageDataId);
             $data_check = $this->spare_undercarriagedatas->data_check_update($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId);
-            $oldImage = null;
-            if($data_check_update != null){
-                $oldImage = $config['upload_path'].$data_check_update->spares_undercarriageDataPicture;
-            }
+           
+            
             
             $data = array(
                 'spares_undercarriageDataId' => $spares_undercarriageDataId,
@@ -235,7 +176,7 @@ class SpareundercarriageData extends BD_Controller {
                 'warranty' => $warranty,
                 'warranty_year' => $warranty_year,
                 'warranty_distance' => $warranty_distance,
-                'spares_undercarriageDataPicture' => $imageName,
+                // 'spares_undercarriageDataPicture' => $imageName,
                 'modelId' => $modelId,
                 'brandId' => $brandId,
                 'modelofcarId' => $modelofcarId,
@@ -246,13 +187,11 @@ class SpareundercarriageData extends BD_Controller {
                 "data_check" => $data_check,
                 "data" => $data,
                 "model" => $this->spare_undercarriagedatas,
-                "image_path" => $file,
-                "old_image_path" => $oldImage,
+                "image_path" => null,
+                "old_image_path" => null
             ];
 
             $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
-            
-        }   
     }
 
     function delete_get(){
