@@ -68,7 +68,7 @@
                                     + '<div class="card-body">'
                                         + '<div class="icon-button mg-15">'
                                             // + '<img class="card-img-top" src="'+picturePath+"tire_brand/"+value.tire_brandPicture+'">'
-                                            + '<img class="card-img-top" src="'+picturePath+"spareundercarriage/"+value.spares_undercarriageDataPicture+'">'
+                                            + '<img class="card-img-top" src="'+picturePath+"spareproduct/"+value.picture+'">'
                                         + '</div>'
                                         // + '<div class="icon-right">'
                                             // + '<img class="card-img-top" src="http://localhost/car/public/image/icon/Wet-Grip-Tyre-Label.png">'

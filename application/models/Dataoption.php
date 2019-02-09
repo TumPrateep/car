@@ -15,6 +15,8 @@ class Dataoption extends CI_Model {
         $this->db->where("modelId", $option['modelId']);
         $this->db->where("modelofcarId", $option['modelofcarId']);
         $query = $this->db->get();
+        // echo $this->db->last_query();
+        // exit();
         return $query->row();
     }
 

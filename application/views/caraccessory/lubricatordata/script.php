@@ -70,7 +70,7 @@
                                  + '</div>'
                                     + '<div class="card-body text-center">'
                                         +'<img class="card-img-top-50" src="'+picturePath+'lubricator_brand/'+value.lubricator_brandPicture+'">'
-                                        + '<img class="card-img-top img-80-p" src="'+picturePath+'lubricatordata/'+value.lubricator_dataPicture+'">'
+                                        + '<img class="card-img-top img-80-p" src="'+picturePath+'lubricatorproduct/'+value.picture+'">'
                                     + '</div>'
                                     + '<div class="card-body">'
                                         +'<div class="row pt-10">'
