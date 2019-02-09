@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2019 at 08:22 AM
+-- Generation Time: Feb 09, 2019 at 11:59 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -44,10 +44,10 @@ CREATE TABLE IF NOT EXISTS `brand` (
 
 INSERT INTO `brand` (`brandId`, `brandPicture`, `brandName`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
 (12, '5bf65797b86f4.png', 'CHEVROLET', 1, 1, '2018-09-08 20:31:14', '2018-11-22 14:15:35', 1, 1),
-(13, '5befd70d6f39c.png', 'HONDA', 1, 1, '2018-11-17 15:05:10', '2018-11-17 15:53:33', 1, 1),
-(14, '5bf03b089557c.png', 'ISUZU', 1, NULL, '2018-11-17 23:00:08', NULL, 1, 1),
-(15, '5bf119974710b.png', 'FORD', 1, NULL, '2018-11-18 14:49:43', NULL, 1, 1),
-(16, '5bf5241be8b3d.png', 'MAZDA', 1, 1, '2018-11-21 16:23:15', '2018-11-21 16:23:40', 1, 1),
+(13, '5befd70d6f39c.png', 'HONDA', 1, 1, '2018-11-17 15:05:10', '2018-11-17 15:53:33', 2, 1),
+(14, '5bf03b089557c.png', 'ISUZU', 1, NULL, '2018-11-17 23:00:08', NULL, 2, 1),
+(15, '5bf119974710b.png', 'FORD', 1, NULL, '2018-11-18 14:49:43', NULL, 2, 1),
+(16, '5bf5241be8b3d.png', 'MAZDA', 1, 1, '2018-11-21 16:23:15', '2018-11-21 16:23:40', 2, 1),
 (17, '5bf5915669f52.png', 'TOYOTA', 1, NULL, '2018-11-22 00:09:42', NULL, 1, 1);
 
 -- --------------------------------------------------------
@@ -1253,7 +1253,6 @@ CREATE TABLE IF NOT EXISTS `lubricator` (
 
 INSERT INTO `lubricator` (`lubricatorId`, `lubricatorName`, `lubricator_brandId`, `lubricator_numberId`, `status`, `activeFlag`, `create_at`, `update_at`, `create_by`, `update_by`, `api`, `capacity`, `lubricator_picture`, `lubricatortypeFormachineId`) VALUES
 (106, 'X3', 5, 36, 1, 1, '2018-09-08 20:05:23', '2018-09-08 20:05:32', 1, 1, 'CF-4', '4', NULL, 1),
-(110, 'ทดสอบ', 11, 36, 2, 2, '2018-11-07 10:47:34', NULL, 11, NULL, NULL, NULL, NULL, NULL),
 (111, 'TOP', 5, 42, 1, 1, '2018-11-17 16:30:22', NULL, 1, NULL, 'ACEA', '4', NULL, 1),
 (112, 'X7 FE', 5, 43, 1, 1, '2018-11-17 16:32:06', '2018-11-17 16:34:40', 1, 1, 'SN', '4', NULL, 1),
 (113, 'X9', 5, 40, 1, 1, '2018-11-17 16:33:45', NULL, 1, NULL, 'SN', '4', NULL, 1),
@@ -1303,7 +1302,7 @@ CREATE TABLE IF NOT EXISTS `lubricator_brand` (
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `lubricator_brand`
@@ -1311,7 +1310,7 @@ CREATE TABLE IF NOT EXISTS `lubricator_brand` (
 
 INSERT INTO `lubricator_brand` (`lubricator_brandId`, `lubricator_brandName`, `status`, `activeFlag`, `lubricator_brandPicture`, `create_by`, `update_by`, `create_at`, `update_at`) VALUES
 (5, 'ZIC', 1, 1, '5b93ce563f834.png', 1, 1, '2018-09-08 19:59:52', '2018-09-08 20:27:50'),
-(11, 'ทดสอบ5', 1, 1, '5be2506ec96c6.png', 11, 11, '2018-11-07 09:38:40', '2018-11-07 09:39:42');
+(12, 'ENEOS', 2, 1, '5c5ead6ff183d.png', 1, NULL, '2019-02-09 17:37:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -1383,7 +1382,7 @@ CREATE TABLE IF NOT EXISTS `lubricator_data` (
   `price` double DEFAULT NULL,
   `lubricator_dataPicture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lubricatorId` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `lubricator_data`
@@ -2721,28 +2720,43 @@ CREATE TABLE IF NOT EXISTS `spares_brand` (
   `update_at` datetime DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `activeFlag` int(11) NOT NULL DEFAULT '2'
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `spares_brand`
 --
 
 INSERT INTO `spares_brand` (`spares_brandId`, `spares_brandName`, `spares_brandPicture`, `status`, `spares_undercarriageId`, `create_by`, `update_by`, `update_at`, `create_at`, `activeFlag`) VALUES
-(35, 'TRW', NULL, '1', 33, 1, NULL, NULL, '2018-09-08 20:41:10', 1),
-(36, 'TRW', '5bf90542b01c2.png', '1', 56, 1, NULL, NULL, '2018-11-24 15:01:06', 1),
+(35, 'TRW', '5c5eac133248d.png', '1', 33, 1, 1, '2019-02-09 17:31:47', '2018-09-08 20:41:10', 1),
+(36, 'TRW', '5c5eae2f58bec.png', '1', 56, 1, 1, '2019-02-09 17:40:47', '2018-11-24 15:01:06', 1),
 (37, 'TRW', '5bf9057561eb5.png', '1', 57, 1, NULL, NULL, '2018-11-24 15:01:57', 1),
-(38, 'TRW', '5bf9059bcacff.png', '1', 65, 1, NULL, NULL, '2018-11-24 15:02:35', 1),
-(39, 'TRW', '5bf905a8aec97.png', '1', 55, 1, NULL, NULL, '2018-11-24 15:02:48', 1),
-(40, 'TRW', '5bf905b879203.png', '1', 46, 1, NULL, NULL, '2018-11-24 15:03:04', 1),
-(41, 'TRW', '5bf905c6760ea.png', '1', 45, 1, NULL, NULL, '2018-11-24 15:03:18', 1),
-(42, 'TRW', '5bf905d41a0fb.png', '1', 40, 1, NULL, NULL, '2018-11-24 15:03:32', 1),
-(43, 'TRW', '5bf905e8a1742.png', '1', 44, 1, NULL, NULL, '2018-11-24 15:03:52', 1),
-(44, 'TRW', '5bf905f6036f7.png', '1', 43, 1, NULL, NULL, '2018-11-24 15:04:06', 1),
-(45, 'TRW', '5bf90604d811c.png', '1', 42, 1, NULL, NULL, '2018-11-24 15:04:20', 1),
-(46, 'TRW', '5bf90615b3eb1.png', '1', 41, 1, NULL, NULL, '2018-11-24 15:04:37', 1),
-(47, 'TRW', '5bf9062b059c1.png', '1', 37, 1, NULL, NULL, '2018-11-24 15:04:59', 1),
-(48, 'TRW', '5c1533606ca6e.png', '1', 35, 1, NULL, NULL, '2018-12-16 00:01:20', 1),
-(49, 'TRW', '5c15386c21f26.png', '1', 60, 1, NULL, NULL, '2018-12-16 00:22:52', 1);
+(38, 'TRW', '5c5eaa7f6496c.png', '1', 65, 1, 1, '2019-02-09 17:25:03', '2018-11-24 15:02:35', 1),
+(39, 'TRW', '5c5eaaa197613.png', '1', 55, 1, 1, '2019-02-09 17:25:37', '2018-11-24 15:02:48', 1),
+(40, 'TRW', '5c5eaab766979.png', '1', 46, 1, 1, '2019-02-09 17:25:59', '2018-11-24 15:03:04', 1),
+(41, 'TRW', '5c5eaac3d7a57.png', '1', 45, 1, 1, '2019-02-09 17:26:11', '2018-11-24 15:03:18', 1),
+(42, 'TRW', '5c5eaad14f5c5.png', '1', 40, 1, 1, '2019-02-09 17:26:25', '2018-11-24 15:03:32', 1),
+(43, 'TRW', '5c5eaadfbafbb.png', '1', 44, 1, 1, '2019-02-09 17:26:39', '2018-11-24 15:03:52', 1),
+(44, 'TRW', '5c5eaaec72bd7.png', '1', 43, 1, 1, '2019-02-09 17:26:52', '2018-11-24 15:04:06', 1),
+(45, 'TRW', '5c5eaaf76c18a.png', '1', 42, 1, 1, '2019-02-09 17:27:03', '2018-11-24 15:04:20', 1),
+(46, 'TRW', '5c5eab05561d4.png', '1', 41, 1, 1, '2019-02-09 17:27:17', '2018-11-24 15:04:37', 1),
+(47, 'TRW', '5c5eab1f8d491.png', '1', 37, 1, 1, '2019-02-09 17:27:43', '2018-11-24 15:04:59', 1),
+(48, 'TRW', '5c5eab56b8eac.png', '1', 35, 1, 1, '2019-02-09 17:28:38', '2018-12-16 00:01:20', 1),
+(49, 'TRW', '5c15386c21f26.png', '1', 60, 1, NULL, NULL, '2018-12-16 00:22:52', 1),
+(50, 'TRW', '5c5eab2eb8eb0.png', '1', 38, 1, NULL, NULL, '2019-02-09 17:27:58', 1),
+(51, 'TRW', '5c5eab3d80507.png', '1', 63, 1, NULL, NULL, '2019-02-09 17:28:13', 1),
+(52, 'TRW', '5c5eab65f3bec.png', '1', 36, 1, NULL, NULL, '2019-02-09 17:28:54', 1),
+(53, 'TRW', '5c5eab71ab4e5.png', '1', 61, 1, NULL, NULL, '2019-02-09 17:29:05', 1),
+(54, 'TRW', '5c5eab88ea444.png', '1', 52, 1, NULL, NULL, '2019-02-09 17:29:28', 1),
+(55, 'TRW', '5c5eab9430432.png', '1', 51, 1, NULL, NULL, '2019-02-09 17:29:40', 1),
+(56, 'TRW', '5c5eaba0cbdae.png', '1', 54, 1, NULL, NULL, '2019-02-09 17:29:52', 1),
+(57, 'TRW', '5c5eabafcf8b2.png', '1', 48, 1, NULL, NULL, '2019-02-09 17:30:07', 1),
+(58, 'TRW', '5c5eabbc0aa63.png', '1', 47, 1, NULL, NULL, '2019-02-09 17:30:20', 1),
+(59, 'TRW', '5c5eabc61c43a.png', '1', 50, 1, NULL, NULL, '2019-02-09 17:30:30', 1),
+(60, 'TRW', '5c5eabd944ff1.png', '1', 49, 1, NULL, NULL, '2019-02-09 17:30:49', 1),
+(61, 'TRW', '5c5eabedb719e.png', '1', 59, 1, NULL, NULL, '2019-02-09 17:31:09', 1),
+(62, 'TRW', '5c5eabfd79b14.png', '1', 58, 1, NULL, NULL, '2019-02-09 17:31:25', 1),
+(63, 'TRW', '5c5eac06dca81.png', '1', 64, 1, NULL, NULL, '2019-02-09 17:31:34', 1),
+(64, 'TRW', '5c5eac1cf09d3.png', '1', 39, 1, NULL, NULL, '2019-02-09 17:31:56', 1);
 
 -- --------------------------------------------------------
 
@@ -2880,37 +2894,37 @@ CREATE TABLE IF NOT EXISTS `spares_undercarriage` (
 
 INSERT INTO `spares_undercarriage` (`spares_undercarriageId`, `spares_undercarriageName`, `status`, `create_by`, `update_by`, `create_at`, `update_at`, `activeFlag`) VALUES
 (33, 'โช้คอัพหน้า', '1', 1, NULL, '2018-09-08 20:41:00', NULL, 1),
-(35, 'ลูกปืนล้อหน้า', '1', 1, NULL, '2018-11-24 14:42:39', NULL, 1),
-(36, 'ลูกปืนล้อหลัง', '1', 1, NULL, '2018-11-24 14:42:47', NULL, 1),
-(37, 'ผ้าเบรคหน้า', '1', 1, NULL, '2018-11-24 14:42:56', NULL, 1),
-(38, 'ผ้าเบรคหลัง', '1', 1, NULL, '2018-11-24 14:43:05', NULL, 1),
+(35, 'ลูกปืนล้อหน้า', '2', 1, NULL, '2018-11-24 14:42:39', NULL, 1),
+(36, 'ลูกปืนล้อหลัง', '2', 1, NULL, '2018-11-24 14:42:47', NULL, 1),
+(37, 'ผ้าเบรคหน้า', '2', 1, NULL, '2018-11-24 14:42:56', NULL, 1),
+(38, 'ผ้าเบรคหลัง', '2', 1, NULL, '2018-11-24 14:43:05', NULL, 1),
 (39, 'โช้คอัพหลัง', '1', 1, NULL, '2018-11-24 14:43:22', NULL, 1),
-(40, 'ชุดประกอบ', '1', 1, NULL, '2018-11-24 14:43:31', NULL, 1),
-(41, 'ปีกนกล่างหน้าซ้าย (ไม่มีลูกหมาก)', '1', 1, NULL, '2018-11-24 14:43:47', NULL, 1),
-(42, 'ปีกนกล่างหน้าขวา (ไม่มีลูกหมาก)', '1', 1, NULL, '2018-11-24 14:43:57', NULL, 1),
-(43, 'ปีกนกบนหน้าซ้าย (ไม่มีลูกหมาก)', '1', 1, NULL, '2018-11-24 14:44:09', NULL, 1),
-(44, 'ปีกนกบนหน้าขวา (ไม่มีลูกหมาก)', '1', 1, NULL, '2018-11-24 14:44:18', NULL, 1),
-(45, 'คานหลังซ้าย', '1', 1, NULL, '2018-11-24 14:44:26', NULL, 1),
-(46, 'คานหลังขวา', '1', 1, NULL, '2018-11-24 14:44:34', NULL, 1),
-(47, 'ลูกหมากปีกนกบนซ้าย', '1', 1, NULL, '2018-11-24 14:44:44', NULL, 1),
-(48, 'ลูกหมากปีกนกบนขวา', '1', 1, NULL, '2018-11-24 14:44:56', NULL, 1),
-(49, 'ลูกหมากปีกนกล่างซ้าย', '1', 1, NULL, '2018-11-24 14:45:05', NULL, 1),
-(50, 'ลูกหมากปีกนกล่างขวา', '1', 1, NULL, '2018-11-24 14:45:50', NULL, 1),
-(51, 'ลูกหมากคันชักนอกซ้าย (สั้น)', '1', 1, NULL, '2018-11-24 14:46:02', NULL, 1),
-(52, 'ลูกหมากคันชักนอกขวา(สั้น)', '1', 1, NULL, '2018-11-24 14:46:13', NULL, 1),
-(53, 'ลูกหมากคันชักในซ้าย (ยาว)', '1', 1, NULL, '2018-11-24 14:46:26', NULL, 1),
-(54, 'ลูกหมากคันชักในขวา (ยาว)', '1', 1, NULL, '2018-11-24 14:46:36', NULL, 1),
-(55, 'คันส่งกลาง', '1', 1, NULL, '2018-11-24 14:46:44', NULL, 1),
-(56, 'กล้องยา', '1', 1, NULL, '2018-11-24 14:46:52', NULL, 1),
-(57, 'ขาไก่กระปุกพวงมาลัย', '1', 1, NULL, '2018-11-24 14:47:01', NULL, 1),
-(58, 'ลูกหมากแร็คซ้าย', '1', 1, NULL, '2018-11-24 14:47:10', NULL, 1),
-(59, 'ลูกหมากแร็คขวา', '1', 1, NULL, '2018-11-24 14:47:41', NULL, 1),
-(60, 'ลูกหมากกันโคลงหน้าซ้าย', '1', 1, NULL, '2018-11-24 14:47:50', NULL, 1),
-(61, 'ลูกหมากกันโคลงหน้าขวา', '1', 1, NULL, '2018-11-24 14:47:58', NULL, 1),
-(62, 'ยางแท่งเครื่อง', '1', 1, NULL, '2018-11-24 14:48:11', NULL, 1),
-(63, 'ยางเพลากลาง', '1', 1, NULL, '2018-11-24 14:48:20', NULL, 1),
-(64, 'สายพานไทมิ่ง', '1', 1, NULL, '2018-11-24 14:48:29', NULL, 1),
-(65, 'ครัช (แผ่น หวี ลูกปืน)', '1', 1, NULL, '2018-11-24 14:48:40', NULL, 1);
+(40, 'ชุดประกอบ', '2', 1, NULL, '2018-11-24 14:43:31', NULL, 1),
+(41, 'ปีกนกล่างหน้าซ้าย (ไม่มีลูกหมาก)', '2', 1, NULL, '2018-11-24 14:43:47', NULL, 1),
+(42, 'ปีกนกล่างหน้าขวา (ไม่มีลูกหมาก)', '2', 1, NULL, '2018-11-24 14:43:57', NULL, 1),
+(43, 'ปีกนกบนหน้าซ้าย (ไม่มีลูกหมาก)', '2', 1, NULL, '2018-11-24 14:44:09', NULL, 1),
+(44, 'ปีกนกบนหน้าขวา (ไม่มีลูกหมาก)', '2', 1, NULL, '2018-11-24 14:44:18', NULL, 1),
+(45, 'คานหลังซ้าย', '2', 1, NULL, '2018-11-24 14:44:26', NULL, 1),
+(46, 'คานหลังขวา', '2', 1, NULL, '2018-11-24 14:44:34', NULL, 1),
+(47, 'ลูกหมากปีกนกบนซ้าย', '2', 1, NULL, '2018-11-24 14:44:44', NULL, 1),
+(48, 'ลูกหมากปีกนกบนขวา', '2', 1, NULL, '2018-11-24 14:44:56', NULL, 1),
+(49, 'ลูกหมากปีกนกล่างซ้าย', '2', 1, NULL, '2018-11-24 14:45:05', NULL, 1),
+(50, 'ลูกหมากปีกนกล่างขวา', '2', 1, NULL, '2018-11-24 14:45:50', NULL, 1),
+(51, 'ลูกหมากคันชักนอกซ้าย (สั้น)', '2', 1, NULL, '2018-11-24 14:46:02', NULL, 1),
+(52, 'ลูกหมากคันชักนอกขวา(สั้น)', '2', 1, NULL, '2018-11-24 14:46:13', NULL, 1),
+(53, 'ลูกหมากคันชักในซ้าย (ยาว)', '2', 1, NULL, '2018-11-24 14:46:26', NULL, 1),
+(54, 'ลูกหมากคันชักในขวา (ยาว)', '2', 1, NULL, '2018-11-24 14:46:36', NULL, 1),
+(55, 'คันส่งกลาง', '2', 1, NULL, '2018-11-24 14:46:44', NULL, 1),
+(56, 'กล้องยา', '2', 1, NULL, '2018-11-24 14:46:52', NULL, 1),
+(57, 'ขาไก่กระปุกพวงมาลัย', '2', 1, NULL, '2018-11-24 14:47:01', NULL, 1),
+(58, 'ลูกหมากแร็คซ้าย', '2', 1, NULL, '2018-11-24 14:47:10', NULL, 1),
+(59, 'ลูกหมากแร็คขวา', '2', 1, NULL, '2018-11-24 14:47:41', NULL, 1),
+(60, 'ลูกหมากกันโคลงหน้าซ้าย', '2', 1, NULL, '2018-11-24 14:47:50', NULL, 1),
+(61, 'ลูกหมากกันโคลงหน้าขวา', '2', 1, NULL, '2018-11-24 14:47:58', NULL, 1),
+(62, 'ยางแท่งเครื่อง', '2', 1, NULL, '2018-11-24 14:48:11', NULL, 1),
+(63, 'ยางเพลากลาง', '2', 1, NULL, '2018-11-24 14:48:20', NULL, 1),
+(64, 'สายพานไทมิ่ง', '2', 1, NULL, '2018-11-24 14:48:29', NULL, 1),
+(65, 'ครัช (แผ่น หวี ลูกปืน)', '2', 1, NULL, '2018-11-24 14:48:40', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -2937,7 +2951,7 @@ CREATE TABLE IF NOT EXISTS `spares_undercarriagedata` (
   `brandId` int(11) DEFAULT NULL,
   `modelofcarId` int(11) DEFAULT NULL,
   `machineSize` varchar(255) COLLATE utf16_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 
 --
 -- Dumping data for table `spares_undercarriagedata`
@@ -2947,11 +2961,11 @@ INSERT INTO `spares_undercarriagedata` (`spares_undercarriageDataId`, `spares_un
 (4, 35, 48, 11, NULL, '2018-12-16 00:02:05', NULL, 1, 1, 2, 10000, 1, 500, '5c15338d91281.png', 110, 12, 19, NULL),
 (5, 56, 36, 11, NULL, '2018-12-16 00:12:14', NULL, 1, 1, 2, 10000, 1, 1200, '5c1535eecb537.png', 213, 12, 582, NULL),
 (7, 60, 49, 11, NULL, '2018-12-16 00:24:05', NULL, 1, 1, 2, 10000, 1, 1500, '5c1538b51e2c3.png', 182, 15, 432, NULL),
-(8, 41, 46, 11, NULL, '2018-12-16 00:26:01', NULL, 1, 1, 2, 10000, 1, 1300, '5c153929d2a2d.png', 152, 14, 326, NULL),
 (9, 35, 48, 12, NULL, '2018-12-16 00:32:38', NULL, 1, 1, 2, 10000, 1, 600, '5c153ab6a3e2e.png', 110, 12, 19, NULL),
 (10, 56, 36, 12, NULL, '2018-12-16 00:34:04', NULL, 1, 1, 2, 10000, 1, 1300, '5c153b0c5a58d.png', 213, 12, 581, NULL),
 (11, 60, 49, 12, NULL, '2018-12-16 00:34:49', NULL, 1, 1, 2, 10000, 1, 1600, '5c153b39d6dd7.png', 182, 15, 432, NULL),
-(12, 41, 46, 12, NULL, '2018-12-16 00:36:00', NULL, 1, 1, 2, 10000, 1, 1200, '5c153b8003c9e.png', 150, 14, 262, NULL);
+(12, 41, 46, 12, NULL, '2018-12-16 00:36:00', NULL, 1, 1, 2, 10000, 1, 1200, '5c153b8003c9e.png', 150, 14, 262, NULL),
+(13, 33, 35, 11, NULL, '2019-02-09 17:41:56', NULL, 1, 1, 0, 0, 0, 1000, NULL, 110, 12, 20, NULL);
 
 -- --------------------------------------------------------
 
@@ -2972,7 +2986,7 @@ CREATE TABLE IF NOT EXISTS `spare_product` (
   `create_at` datetime NOT NULL,
   `update_by` int(11) DEFAULT NULL,
   `update_at` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `spare_product`
@@ -2996,7 +3010,36 @@ INSERT INTO `spare_product` (`productId`, `picture`, `spares_undercarriageId`, `
 (29, '5c5d3b0654506.png', 33, 35, 12, 111, 30, '1', 1, '2019-02-08 15:17:10', NULL, NULL),
 (30, '5c5d3b1dab904.png', 33, 35, 12, 112, 38, '1', 1, '2019-02-08 15:17:33', NULL, NULL),
 (31, '5c5d3bf6c9b90.png', 33, 35, 12, 113, 43, '1', 1, '2019-02-08 15:21:10', NULL, NULL),
-(32, '5c5d3c6f546c1.png', 33, 35, 12, 116, 62, '1', 1, '2019-02-08 15:23:11', NULL, NULL);
+(32, '5c5d3c6f546c1.png', 33, 35, 12, 116, 62, '1', 1, '2019-02-08 15:23:11', NULL, NULL),
+(33, '5c5e9f12b823b.png', 33, 35, 17, 210, 570, '1', 1, '2019-02-09 16:36:18', NULL, NULL),
+(34, '5c5e9f347021a.png', 33, 35, 17, 210, 571, '1', 1, '2019-02-09 16:36:52', NULL, NULL),
+(37, '5c5e9f5f67371.png', 33, 35, 17, 209, 566, '1', 1, '2019-02-09 16:37:35', NULL, NULL),
+(38, '5c5e9f77c135b.png', 33, 35, 17, 209, 568, '1', 1, '2019-02-09 16:37:59', NULL, NULL),
+(39, '5c5e9fa2207ee.png', 33, 35, 17, 209, 567, '1', 1, '2019-02-09 16:38:42', NULL, NULL),
+(40, '5c5e9fb66c93e.png', 33, 35, 17, 209, 569, '1', 1, '2019-02-09 16:39:02', NULL, NULL),
+(41, '5c5e9fca85c1a.png', 33, 35, 17, 209, 565, '1', 1, '2019-02-09 16:39:22', NULL, NULL),
+(42, '5c5ea05663371.png', 33, 35, 17, 206, 544, '1', 1, '2019-02-09 16:41:42', NULL, NULL),
+(43, '5c5ea0792862a.png', 33, 35, 17, 206, 545, '1', 1, '2019-02-09 16:42:17', NULL, NULL),
+(44, '5c5ea0b573ffc.png', 33, 35, 17, 206, 543, '1', 1, '2019-02-09 16:43:17', NULL, NULL),
+(45, '5c5ea0c99d92c.png', 33, 35, 17, 206, 546, '1', 1, '2019-02-09 16:43:37', NULL, NULL),
+(46, '5c5ea0de5c760.png', 33, 35, 17, 206, 547, '1', 1, '2019-02-09 16:43:58', NULL, NULL),
+(47, '5c5ea0f3b5a0b.png', 33, 35, 17, 206, 548, '1', 1, '2019-02-09 16:44:19', NULL, NULL),
+(48, '5c5ea106dbd9d.png', 33, 35, 17, 207, 549, '1', 1, '2019-02-09 16:44:38', NULL, NULL),
+(49, '5c5ea11c2c1b8.png', 33, 35, 17, 207, 550, '1', 1, '2019-02-09 16:45:00', NULL, NULL),
+(50, '5c5ea137cfd39.png', 33, 35, 17, 207, 551, '1', 1, '2019-02-09 16:45:27', NULL, NULL),
+(51, '5c5ea14ccad3c.png', 33, 35, 17, 207, 552, '1', 1, '2019-02-09 16:45:48', NULL, NULL),
+(52, '5c5ea161b4fd8.png', 33, 35, 17, 207, 553, '1', 1, '2019-02-09 16:46:09', NULL, NULL),
+(53, '5c5ea178c923b.png', 33, 35, 17, 207, 554, '1', 1, '2019-02-09 16:46:32', NULL, NULL),
+(54, '5c5ea276ab102.png', 33, 35, 17, 208, 555, '1', 1, '2019-02-09 16:50:46', NULL, NULL),
+(55, '5c5ea289d1b53.png', 33, 35, 17, 208, 556, '1', 1, '2019-02-09 16:51:05', NULL, NULL),
+(56, '5c5ea29ab2f08.png', 33, 35, 17, 208, 557, '1', 1, '2019-02-09 16:51:22', NULL, NULL),
+(57, '5c5ea2aac5c5e.png', 33, 35, 17, 208, 558, '1', 1, '2019-02-09 16:51:38', NULL, NULL),
+(58, '5c5ea2bb64859.png', 33, 35, 17, 208, 559, '1', 1, '2019-02-09 16:51:55', NULL, NULL),
+(59, '5c5ea2cc179d3.png', 33, 35, 17, 208, 560, '1', 1, '2019-02-09 16:52:12', NULL, NULL),
+(74, '5c5eb22d0338e.png', 33, 35, 17, 208, 561, '1', 1, '2019-02-09 17:57:49', NULL, NULL),
+(75, '5c5eb24451e7d.png', 33, 35, 17, 208, 562, '1', 1, '2019-02-09 17:58:12', NULL, NULL),
+(76, '5c5eb257dc2ba.png', 33, 35, 17, 208, 563, '1', 1, '2019-02-09 17:58:31', NULL, NULL),
+(77, '5c5eb269b1d41.png', 33, 35, 17, 208, 564, '1', 1, '2019-02-09 17:58:49', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -11938,19 +11981,19 @@ CREATE TABLE IF NOT EXISTS `tire_brand` (
 
 INSERT INTO `tire_brand` (`tire_brandId`, `tire_brandName`, `tire_brandPicture`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `activeFlag`) VALUES
 (4, 'MICHELIN', '5befcebfa098f.png', 1, 1, '2018-09-08 20:35:26', '2018-11-17 15:18:07', '1', 1),
-(5, 'APOLO', '5befc8509b0eb.png', 1, NULL, '2018-11-17 14:50:40', NULL, '1', 1),
-(6, 'BFG', '5befc88ec0615.png', 1, NULL, '2018-11-17 14:51:42', NULL, '1', 1),
+(5, 'APOLO', '5befc8509b0eb.png', 1, NULL, '2018-11-17 14:50:40', NULL, '2', 1),
+(6, 'BFG', '5befc88ec0615.png', 1, NULL, '2018-11-17 14:51:42', NULL, '2', 1),
 (7, 'BRIDGESTONE', '5befca5cf109e.png', 1, NULL, '2018-11-17 14:59:24', NULL, '1', 1),
-(8, 'CONTINENTAL', '5befca97650dc.png', 1, NULL, '2018-11-17 15:00:23', NULL, '1', 1),
-(9, 'DAYTON', '5befcb2a5f4cb.png', 1, NULL, '2018-11-17 15:02:50', NULL, '1', 1),
-(10, 'DEESTONE', '5befcb5f7e2e7.png', 1, NULL, '2018-11-17 15:03:43', NULL, '1', 1),
-(11, 'DUNLOP', '5befcba3469f4.png', 1, NULL, '2018-11-17 15:04:51', NULL, '1', 1),
-(12, 'FIRESTONE', '5befcbe02d175.png', 1, NULL, '2018-11-17 15:05:52', NULL, '1', 1),
-(13, 'GODDYEAR', '5befcc0834b73.png', 1, NULL, '2018-11-17 15:06:32', NULL, '1', 1),
-(14, 'HANKOOK', '5befcc2a10d31.png', 1, NULL, '2018-11-17 15:07:06', NULL, '1', 1),
-(15, 'KUMHO', '5befcc620044e.png', 1, NULL, '2018-11-17 15:08:02', NULL, '1', 1),
-(16, 'MAXXIS', '5befcd455e1fb.png', 1, NULL, '2018-11-17 15:11:49', NULL, '1', 1),
-(17, 'OTANI', '5befce25022f9.png', 1, NULL, '2018-11-17 15:15:33', NULL, '1', 1);
+(8, 'CONTINENTAL', '5befca97650dc.png', 1, NULL, '2018-11-17 15:00:23', NULL, '2', 1),
+(9, 'DAYTON', '5befcb2a5f4cb.png', 1, NULL, '2018-11-17 15:02:50', NULL, '2', 1),
+(10, 'DEESTONE', '5befcb5f7e2e7.png', 1, NULL, '2018-11-17 15:03:43', NULL, '2', 1),
+(11, 'DUNLOP', '5befcba3469f4.png', 1, NULL, '2018-11-17 15:04:51', NULL, '2', 1),
+(12, 'FIRESTONE', '5befcbe02d175.png', 1, NULL, '2018-11-17 15:05:52', NULL, '2', 1),
+(13, 'GODDYEAR', '5befcc0834b73.png', 1, NULL, '2018-11-17 15:06:32', NULL, '2', 1),
+(14, 'HANKOOK', '5befcc2a10d31.png', 1, NULL, '2018-11-17 15:07:06', NULL, '2', 1),
+(15, 'KUMHO', '5befcc620044e.png', 1, NULL, '2018-11-17 15:08:02', NULL, '2', 1),
+(16, 'MAXXIS', '5befcd455e1fb.png', 1, NULL, '2018-11-17 15:11:49', NULL, '2', 1),
+(17, 'OTANI', '5befce25022f9.png', 1, NULL, '2018-11-17 15:15:33', NULL, '2', 1);
 
 -- --------------------------------------------------------
 
@@ -12048,7 +12091,15 @@ CREATE TABLE IF NOT EXISTS `tire_data` (
   `warranty_distance` double DEFAULT NULL,
   `can_change` int(11) DEFAULT NULL,
   `warranty` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tire_data`
+--
+
+INSERT INTO `tire_data` (`tire_dataId`, `rimId`, `tire_sizeId`, `tire_brandId`, `tire_modelId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `tire_picture`, `car_accessoriesId`, `activeFlag`, `price`, `warranty_year`, `warranty_distance`, `can_change`, `warranty`) VALUES
+(1, 14, 122, 4, 17, 11, NULL, '2019-02-09 17:51:00', NULL, '1', NULL, 11, 1, 3000, 0, 0, 1, 0),
+(2, 15, 140, 4, 17, 11, NULL, '2019-02-09 17:51:44', NULL, '1', NULL, 11, 1, 5000, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -12846,7 +12897,7 @@ MODIFY `lubricatortypeFormachineId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREME
 -- AUTO_INCREMENT for table `lubricator_brand`
 --
 ALTER TABLE `lubricator_brand`
-MODIFY `lubricator_brandId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `lubricator_brandId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `lubricator_change`
 --
@@ -12861,7 +12912,7 @@ MODIFY `lubricator_change_garageId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREME
 -- AUTO_INCREMENT for table `lubricator_data`
 --
 ALTER TABLE `lubricator_data`
-MODIFY `lubricator_dataId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `lubricator_dataId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `lubricator_number`
 --
@@ -12931,7 +12982,7 @@ MODIFY `rimId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 -- AUTO_INCREMENT for table `spares_brand`
 --
 ALTER TABLE `spares_brand`
-MODIFY `spares_brandId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+MODIFY `spares_brandId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=65;
 --
 -- AUTO_INCREMENT for table `spares_change`
 --
@@ -12951,12 +13002,12 @@ MODIFY `spares_undercarriageId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6
 -- AUTO_INCREMENT for table `spares_undercarriagedata`
 --
 ALTER TABLE `spares_undercarriagedata`
-MODIFY `spares_undercarriageDataId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `spares_undercarriageDataId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `spare_product`
 --
 ALTER TABLE `spare_product`
-MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=78;
 --
 -- AUTO_INCREMENT for table `subdistrict`
 --
@@ -12986,7 +13037,7 @@ MODIFY `tire_change_garageId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 -- AUTO_INCREMENT for table `tire_data`
 --
 ALTER TABLE `tire_data`
-MODIFY `tire_dataId` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `tire_dataId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tire_matching`
 --
