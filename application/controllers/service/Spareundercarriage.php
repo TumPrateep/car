@@ -95,6 +95,16 @@ class Spareundercarriage extends BD_Controller {
                 }else{
                     $nestedData[$count]['year'] = $post->yearStart;
                 }
+
+                //picture
+                $option = [
+                    'spares_undercarriageId' => $post->spares_undercarriageId,
+                    'spares_brandId' => $post->spares_brandId,
+                    'brandId' => $post->brandId,
+                    'modelId' => $post->modelId,
+                    'modelofcarId' => $post->modelofcarId
+                ];
+                $nestedData[$count]['picture'] = getPictureSpare($option);
                 
                 $data[$index] = $nestedData;
                 if($count >= 3){

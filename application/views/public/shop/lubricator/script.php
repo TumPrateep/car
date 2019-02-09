@@ -50,7 +50,7 @@
                         "data": null,
                         "render": function ( data, type, full, meta ) {
                             var html = '<div class="row">';
-                            var imagePath = base_url+"/public/image/lubricatordata/";
+                            var imagePath = base_url+"/public/image/lubricatorproduct/";
                             $.each(data, function( index, value ) {
                                 var switchVal = "true";
                                 var active = " active";
@@ -70,7 +70,7 @@
                                                         +'<div class="d-flex flex-column align-items-center logo-product">'
 															+'<img src="'+base_url+'public/image/lubricator_brand/'+value.lubricator_brandPicture+'">'
 														+'</div>'
-                                                        +'<div class="product_image d-flex flex-column align-items-center justify-content-center" onclick="gotoDetail(\'lubricator\',\''+value.lubricator_dataId+'\')"><img src="'+imagePath+value.lubricator_dataPicture+'"/></div>'
+                                                        +'<div class="product_image d-flex flex-column align-items-center justify-content-center" onclick="gotoDetail(\'lubricator\',\''+value.lubricator_dataId+'\')"><img src="'+imagePath+value.picture+'"/></div>'
                                                         +'<div class="product_content">'
                                                             +'<div onclick="gotoDetail(\'lubricator\',\''+value.lubricator_dataId+'\')">'
                                                                 +'<div class="product_price">'+currency(value.price, {  precision: 0 }).format()+' บาท</div>'

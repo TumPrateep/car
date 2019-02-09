@@ -96,7 +96,13 @@ class Tire extends BD_Controller {
                 $nestedData[$count]['tire_picture'] = $post->tire_picture;
                 $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
                 
-                
+                $option = [
+                    'tire_brandId' => $post->tire_brandId,
+                    'tire_modelId' => $post->tire_modelId,
+                    'tire_sizeId' => $post->tire_sizeId,
+                    'rimId' => $post->rimId
+                ];
+                $nestedData[$count]['picture'] = getPictureTire($option);
                 
                 $data[$index] = $nestedData;
                 if($count >= 3){
