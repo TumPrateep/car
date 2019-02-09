@@ -129,10 +129,30 @@
       // ];
       $CI->load->model("dataoption");
       $result = $CI->dataoption->getPictureSpare($option);
-      if($result == null){
-        $result = "carimage.png";
+      if($result->picture == null){
+        $result->picture = "carimage.png";
       }
-      return $result;
+      return $result->picture;
+    }
+
+    function getPictureTire($option){
+      $CI = get_instance();
+      $CI->load->model("dataoption");
+      $result = $CI->dataoption->getPictureTire($option);
+      if($result->picture == null){
+        $result->picture = "carimage.png";
+      }
+      return $result->picture;
+    }
+
+    function getPictureLubricator($option){
+      $CI = get_instance();
+      $CI->load->model("dataoption");
+      $result = $CI->dataoption->getPictureLubricator($option);
+      if($result->picture == null){
+        $result->picture = "carimage.png";
+      }
+      return $result->picture;
     }
       
 ?>

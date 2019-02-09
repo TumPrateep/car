@@ -17,5 +17,24 @@ class Dataoption extends CI_Model {
         $query = $this->db->get();
         return $query->row();
     }
+
+    function getPictureTireLubricator($option){
+        $this->db->select("picture");
+        $this->db->from("tire_product");
+        $this->db->where("tire_brandId", $option['tire_brandId']);
+        $this->db->where("tire_modelId", $option['tire_modelId']);
+        $this->db->where("rimId", $option['rimId']);
+        $this->db->where("tire_sizeId", $option['tire_sizeId']);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    function getPictureLubricator($option){
+        $this->db->select("picture");
+        $this->db->from("lubricator_product");
+        $this->db->where("lubricatorId", $option['lubricatorId']);
+        $query = $this->db->get();
+        return $query->row();
+    }
     
 }
