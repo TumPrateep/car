@@ -250,6 +250,11 @@ class TireData extends BD_Controller {
                 $nestedData[$count]['warranty'] = $post->warranty;
                 $nestedData[$count]['tire_picture'] = $post->tire_picture;
                 $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
+
+                // $option = [
+                //     'lubricatorId' => $post->lubricatorId
+                // ];
+                // $nestedData[$count]['picture'] = getPictureTire($option);
                 
                 $data[$index] = $nestedData;
                 if($count >= 2){

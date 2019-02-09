@@ -129,7 +129,8 @@
       // ];
       $CI->load->model("dataoption");
       $result = $CI->dataoption->getPictureSpare($option);
-      if($result->picture == null){
+      if($result == null){
+        $result = new stdClass();
         $result->picture = "carimage.png";
       }
       return $result->picture;
@@ -139,7 +140,8 @@
       $CI = get_instance();
       $CI->load->model("dataoption");
       $result = $CI->dataoption->getPictureTire($option);
-      if($result->picture == null){
+      if($result == null){
+        $result = new stdClass();
         $result->picture = "carimage.png";
       }
       return $result->picture;
@@ -149,7 +151,8 @@
       $CI = get_instance();
       $CI->load->model("dataoption");
       $result = $CI->dataoption->getPictureLubricator($option);
-      if($result->picture == null){
+      if($result == null){
+        $result = new stdClass();
         $result->picture = "carimage.png";
       }
       return $result->picture;
