@@ -8,13 +8,10 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/shop-cart/");?>css/style.css">
 
 <style type="text/css">
-	.orange{
-		background-color: #ff8533!important;
-		color: #ffffff!important;
-	}
-	.orange-light{
-		background-color: #ffbf80!important;
-		/*color: #ffffff!important;*/
+	.orange-table{
+		background-color: #ffb366;
+		color: #ffffff;
+		font-size: 14px;
 	}
 	table{
 		text-align: center;
@@ -22,21 +19,29 @@
 	/*.form-group-width{
 		width: 50px;
 	}*/
+	.title-head{
+		font-size: 20px;
+		font-weight: bold;
+	}
+	.underline-line{
+		border-color: #000000;
+		border-bottom: 2px solid;
+	}
 	.top{
 		padding-top: 20px;
 		padding-left: 10px;
 	}
 	.produst-name{
-		font-size: 200%;
+		font-size: 18px;
 	}
 	.buy-price{
-		font-size: 150%;
+		font-size: 17px;
 	}
 	.text-title{
-		font-size: 150%;
+		font-size: 12px;
 	}
 	.amount{
-		font-size: 200%;
+		font-size: 20px;
 	}
 	.size-check{
 		height: 1.5rem;
@@ -59,6 +64,11 @@
 	    background-color: #ff6600;
 	    border-color: #ff6600;
 	}
+	.btn-orang-y{
+		color: #fff;
+	    background-color: #ffb31a;
+	    border-color: #ffb31a;
+	}
 	.btn-light-orange{
 		color: #fff;
 	    background-color: #ffa64d;
@@ -68,6 +78,36 @@
 		color: #fff;
 	    background-color: #00ccff;
 	    border-color: #00ccff;
+	}
+	.underline-text{
+		text-decoration: underline;
+	}
+	.border-light-orange{
+		color: #fff;
+	    background-color: #ffb366;
+	    border-color: #ffa64d;
+	    border: 3px solid ;
+	    width: 120px;
+	    margin-left: auto;
+  		margin-right: auto;
+	}
+	.border-black{
+		color: #000000;
+	    background-color: #ffffff;
+	    border-color: #000000;
+	    border: 3px solid ;
+	    width: 120px;
+	    margin-left: auto;
+  		margin-right: auto;
+	}
+	.border-light-black{
+		color: #333333;
+	    background-color: #e6e6e6;
+	    border-color: #333333;
+	    border: 3px solid ;
+	    width: 120px;
+	    margin-left: auto;
+  		margin-right: auto;
 	}
 
 </style>

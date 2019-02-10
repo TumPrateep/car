@@ -11,6 +11,14 @@
 <script src="<?=base_url("public/themes/shop-cart/");?>js/main.js"></script>
 <script>
 
+function orderConfirm(){
+    var userId = localStorage.getItem("userId");
+    if(userId != null){
+        $("#selectgarage").modal("show");
+    }else{
+        alert("login!!!");
+    }
+}
 
 $(document).ready(function () {
 
