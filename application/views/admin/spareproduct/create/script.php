@@ -12,6 +12,7 @@
 
         init();
         
+        
         function init(){
             initpicture();
             getSparesUndercarriage();
@@ -86,8 +87,7 @@
         });
         
         detail.change(function(){
-            // var modelId = model.val();
-            // var detail = $("#detail").val();
+           
             modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
             $.get(base_url+"api/CarSelect/getCarDetail",{
                 modelId : detail.val()

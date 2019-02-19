@@ -76,6 +76,7 @@
     var brand = $("#brandId");
     var model = $("#modelId");
     var modelofcar = $("#modelofcarId");
+    var detail = $("#detail");
 
 
     init();
@@ -125,37 +126,48 @@
     brand.change(function(){
         var brandId = brand.val();
         model.html('<option value="">เลือกรุ่นรถ</option>');
-        $.get(base_url+"api/Car/getAllModel",{
-            brandId: brandId
+        detail.html('<option value="">เลือกโฉมรถยนต์</option>');
+        // year.html('<option value="">เลือกปีผลิต</option>');
+        modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
+        $.get(base_url+"api/CarSelect/getCarModel",{
+            brandId : brandId
         },function(data){
-                var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    if(value.yearEnd != null){
-                        model.append('<option value="' + value.modelId + '">' + value.modelName + " ปีที่ผลิต " + value.yearStart + " - " + value.yearEnd +'</option>');
-                    }else{
-                        model.append('<option value="' + value.modelId + '">' + value.modelName + " ปีที่ผลิต " + value.yearStart +'</option>');
-                    }
+            var modelData = data.data;
+                $.each( modelData, function( key, value ) {
+                    model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
                 });
             }
         );
     });
 
     model.change(function(){
-        modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-        $.get(base_url+"api/Modelofcar/getAllmodelofcar",{
-            modelId: model.val()
+        var modelName = $("#modelId option:selected").text();
+        detail.html('<option value="">เลือกโฉมรถยนต์</option>');
+        // year.html('<option value="">เลือกปีผลิต</option>');
+        modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');            
+        $.get(base_url+"api/CarSelect/getCarYear",{
+            modelName : modelName
         },function(data){
-                var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    if(value.machineSize != null){
-                        modelofcar.append('<option value="' + value.modelofcarId + '">' + value.modelofcarName + " " + 	value.machineSize + '</option>');
-                    }else{
-                        modelofcar.append('<option value="' + value.modelofcarId + '">' + value.modelofcarName + '</option>');
-                    }
-                });
-            }
-        );
+            var detailData = data.data;
+            $.each( detailData, function( key, value ) {
+                detail.append('<option value="' + value.modelId+'">'+'(ปี ' + value.yearStart + '-'+value.yearEnd+') '+value.detail+'</option>');
+            });
+        });
     });
+        
+    detail.change(function(){  
+        modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
+        $.get(base_url+"api/CarSelect/getCarDetail",{
+            modelId : detail.val()
+        },function(data){
+            var carModelData = data.data;
+            console.log(carModelData);
+            $.each( carModelData, function( key, value ) {
+                modelofcar.append('<option value="' + value.modelofcarId+'">' + value.machineSize + ' '+ value.modelofcarName +'</option>');
+            });
+        });
+    });
+
     
 
 </script>

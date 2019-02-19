@@ -160,16 +160,16 @@
         }
 
         function setBrandPicture(picture){
-                    $('.image-editor').cropit({
-                        allowDragNDrop: false,
-                        width: 200,
-                        height: 200,
-                        type: 'image',
-                        imageState: {
-                            src: picturePath+"spareproduct/"+picture
-                        }
-                    });
+            $('.image-editor').cropit({
+                allowDragNDrop: false,
+                width: 200,
+                height: 200,
+                type: 'image',
+                imageState: {
+                    src: picturePath+"spareproduct/"+picture
                 }
+            });
+        }
 
         form.submit(function(){
             updateBrand();
