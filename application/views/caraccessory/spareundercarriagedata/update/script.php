@@ -32,6 +32,7 @@
     var model = $("#modelId");
     var detail = $("#detail");
     var modelofcar = $("#modelofcarId");
+    var form = $("#update-sparesUndercarriageData");
 
     getSparesUndercarriageData();
 
@@ -62,20 +63,20 @@
                     }
                 });
                 
-            //     init(sparesUndercarriageData.brandId, sparesUndercarriageData.modelId, sparesUndercarriageData.modelofcarId);
-            //     getSparesUndercarriage(sparesUndercarriageData.spares_undercarriageId, sparesUndercarriageData.spares_brandId);
-            // 
+                init(sparesUndercarriageData.brandId, sparesUndercarriageData.modelId, sparesUndercarriageData.modelofcarId);
+                getSparesUndercarriage(sparesUndercarriageData.spares_undercarriageId, sparesUndercarriageData.spares_brandId);
+            
         }
         );
     }
 
-    // function init(brandId, modelId, modelofcarId){
-    //     // getSparesUndercarriageData();
-    //     getBrand(brandId, modelId, modelofcarId);
-    // }
+    function init(brandId, modelId, modelofcarId){
+        // getSparesUndercarriageData();
+        getBrand(brandId, modelId, modelofcarId);
+    }
 
     function getSparesUndercarriage(spares_undercarriageId = null, spares_brandId = null){
-        $.get(base_url+"apiCaraccessories/SpareUndercarriage/getAllSpareundercarriage",{},
+        $.get(base_url+"apiCaraccessories/CarSpareUndercarriage/getAllSpareundercarriage",{},
             function(data){
                 var sparesUndercarriageData = data.data;
                 $.each(sparesUndercarriageData, function( key, value ) {
@@ -91,7 +92,7 @@
     function getSpareBrand(spares_brandId=null){
         var spares_undercarriageId = spares_undercarriage.val();
         spares_brand.html('<option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>');
-        $.get(base_url+"apiCaraccessories/SpareUndercarriage/getAllSpareBrand",{
+        $.get(base_url+"apiCaraccessories/SpareBrand/getAllSpareBrand",{
             "spares_undercarriageId": spares_undercarriageId
         },function(data){
                 var sparesBrandData = data.data;
@@ -139,7 +140,7 @@
         }
     }
 
-    function getbrand(brandId = null, modelId = null, modelofcarId = null){
+    function getBrand(brandId = null, modelId = null, modelofcarId = null){
         $.get(base_url+"apiCaraccessories/CarSelect/getCarBrand",{},
         function(data){
             var brandData = data.data;
@@ -218,30 +219,30 @@
     //     updateBrand();
     // });
 
-    function updateBrand(){
-        event.preventDefault();
-        var isValid = form.valid();
-        if(isValid){
-            var imageData = $('.image-editor').cropit('export');
-            $('.hidden-image-data').val(imageData);
-            var myform = document.getElementById("submit");
-            var formData = new FormData(myform);
-            $.ajax({
-                url: base_url+"apiCaraccessories/spareundercarriagedata/update",
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                success: function (data) {
-                    if(data.message == 200){
-                        showMessage(data.message,"admin/spareundercarriagedata");
-                    }else{
-                        showMessage(data.message);
-                    }
-                }
-            });
-        }
-    }
+    // function updateBrand(){
+    //     event.preventDefault();
+    //     var isValid = form.valid();
+    //     if(isValid){
+    //         var imageData = $('.image-editor').cropit('export');
+    //         $('.hidden-image-data').val(imageData);
+    //         var myform = document.getElementById("submit");
+    //         var formData = new FormData(myform);
+    //         $.ajax({
+    //             url: base_url+"apiCaraccessories/spareundercarriagedata/update",
+    //             data: formData,
+    //             processData: false,
+    //             contentType: false,
+    //             type: 'POST',
+    //             success: function (data) {
+    //                 if(data.message == 200){
+    //                     showMessage(data.message,"car/caraccessory/SpareundercarriesData");
+    //                 }else{
+    //                     showMessage(data.message);
+    //                 }
+    //             }
+    //         });
+    //     }
+    // }
 
 </script>
 

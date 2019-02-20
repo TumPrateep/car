@@ -116,7 +116,7 @@ class SpareundercarriageData extends BD_Controller {
        
        
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check = $this->spare_undercarriagedatas->data_check_create($spares_brandId,$spares_undercarriageId,$userId);
+        $data_check = $this->spare_undercarriagedatas->data_check_create($spares_brandId,$spares_undercarriageId,$brandId,$modelId,$modelofcarId,$userId);
     
         $data = array(
         'spares_undercarriageDataId' => null,

@@ -83,7 +83,7 @@
                                                     +'<center><span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' บาท</span><br></center>'
                                                     + 'อะไหล่ :<span class="text-lebel">'+value.spares_undercarriageName+'</span> <br>'
                                                     + 'ยี่ห้อไหล่ :<span class="text-lebel">'+value.spares_brandName+'</span> <br>'
-                                                    + 'ข้อมูลรถ :<span class="text-lebel">'+value.brandName+" "+value.modelName+" "+value.year+" "+value.machineSize+'</span> <br>'
+                                                    + 'ข้อมูลรถ :<span class="text-lebel">'+value.brandName+" "+value.modelName+" "+value.year+" "+value.machineSize+" "+value.modelofcarName+'</span> <br>'
                                                     + 'รับประกัน :<span class="text-lebel">'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span> <br>'
                                                 + '</small>'
                                             + '</div>'
