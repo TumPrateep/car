@@ -41,11 +41,11 @@
 								      		<div class="col-md-12">
 									      		<div class="input-group form-group-width ">
 									      			<div class="input-group-prepend">
-									      				<button type="button" class="btn btn-danger"><i class="fa fa-plus"></i></button>
+									      				<button type="button" class="btn btn-danger"><i class="fa fa-minus"></i></button>
 									      			</div>
 													<input type="number" class="form-control" min="1" placeholder="1">
 													<div class="input-group-prepend">
-														<button type="button" class="btn btn-warning"><i class="fa fa-minus"></i></button>
+														<button type="button" class="btn btn-warning"><i class="fa fa-plus"></i></button>
 													</div>
 												</div>
 								      		</div>

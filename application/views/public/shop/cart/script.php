@@ -141,7 +141,7 @@ function getLubricator(value, index){
         +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" id="blankCheckbox" value="option1" ></div></td>'
         +'<td><a href="'+base_url+'shop/detail/lubricator/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/lubricatordata/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/lubricator/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.lubricatorNumber+' ขนาด '+product.capacity+' ลิตร</a></td>'
-
+        +'<td></td>'
         +'<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">'
             +'<div class="cart_item_name cart_info_col">'
                 +'<div class="cart_item_title">ชื่อสินค้า</div>'
