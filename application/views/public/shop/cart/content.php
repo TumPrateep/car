@@ -1,6 +1,6 @@
 <div class="shop">
 	<div class="container">
-		<h3>ลงทะเบียนอู่ซ่อมรถ</h3>
+		<!-- <h3>จองซ่อมอู่</h3> -->
 		<div class="row">
 			
             <!-- <h2>SIGN UP OFFICE EMPLYEE ACCOUNT</h2> -->
@@ -28,7 +28,7 @@
 								      	<th width="10%" scope="col"></th>
 							    	</tr>
 							  	</thead>
-							  	<tbody >
+							  	<tbody id="cart_list">
 							    	<tr>
 								      	<td>
 								      		<div class="form-check top">
@@ -54,40 +54,19 @@
 								      	<td><button type="button" class="btn btn-orange"><i class="fa fa-trash"></i></button></td>
 								    </tr>
 								    <tr>
-								      	<td>
-								      		<div class="form-check top">
-											  	<input class="form-check-input size-check" type="checkbox" id="blankCheckbox" value="option1" >
-											</div>
-										</td>
-								      	<td><img src="<?=base_url()?>public/image/icon/car.png"  class="cart_item_image"></td>
-								      	<td><span class="produst-name">ยาง TRW HONDA 2014 </span></td>
-								      	<td>
-								      		<div class="col-md-12">
-									      		<div class="input-group form-group-width ">
-									      			<div class="input-group-prepend">
-									      				<button type="button" class="btn btn-danger"><i class="fa fa-plus"></i></button>
-									      			</div>
-													<input type="number" class="form-control" min="1" placeholder="1">
-													<div class="input-group-prepend">
-														<button type="button" class="btn btn-warning"><i class="fa fa-minus"></i></button>
-													</div>
-												</div>
-								      		</div>
-								      	</td>
-								      	<td><span class="buy-price">2600 บ.</span></td>
-								      	<td><button type="button" class="btn btn-orange"><i class="fa fa-trash"></i></button></td>
+								    
 								    </tr>
 							  	</tbody>
 							</table>
                         </div>
-                        <div class="underline-line "></div>
+                        <!-- <div class="underline-line "></div> -->
                         <div class="col-12">
                         	<div class="content text-md-right">
 								<span class="text-title"> ราคารวม :</span>
-								<span class="amount"> 4200</span>
+								<span class="amount" id="order_total_amount"></span>
 							</div>
                         </div>
-                        <div class="underline-line "></div>
+                        
 					</div>
                 </fieldset>
 
@@ -103,7 +82,7 @@
                     </legend>
                     <div class="row ">
                         <div class="col-lg-2">
-                            <button type="button" class="btn btn-create" onclick="orderConfirm()" ><i class="fa fa-plus"></i>  สร้าง</button>  
+                            <button type="button" class="btn btn-create" onclick="createCarConfirm()" ><i class="fa fa-plus"></i>  สร้าง</button>  
                         </div>
                         
                         <div class="col-lg-3 offset-lg-2 mt-8">
@@ -127,23 +106,7 @@
                         </div>
                     </div>
 
-					<div class="row">
-						<div class="col-md-3">
-						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
-						    	<div class="card-body">
-						      		<!-- <h4 class="card-title text-center">1234 as</h4> -->
-						      		<!-- License Plate car -->
-						      		<div class="card border-light-orange mb-3" >
-									    <div class=" text-center"><h4>กน 4598</h4></div>
-									    <div class=" text-center">นครศรีธรรมราช</div>
-									</div>
-						    	</div>
-						    	<div class="card-footer">
-						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
-						    	</div>
-						  	</div>
-						</div>
+					<div class="row">	
 						<div class="col-md-3">
 						  	<div class="card">
 						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
@@ -158,21 +121,6 @@
 						    	</div>
 						  	</div>
 						</div>
-						<div class="col-md-3">
-						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
-						    	<div class="card-body">
-						      		<div class="card border-light-black mb-3" >
-									    <div class=" text-center"><h4>งง 5555</h4></div>
-									    <div class=" text-center">ตรัง</div>
-									</div>
-						    	</div>
-						    	<div class="card-footer">
-						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
-						    	</div>
-						  	</div>
-						</div>
-						
 					</div>
                 </fieldset>
 
@@ -269,7 +217,7 @@
 		</div>
 	</div>
 
-	<div class="modal fade bd-example-modal-lg" id="selectgarage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade bd-example-modal-lg" id="selectcar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg mw-500" id="maxWidthSelect" role="document">
 			<div class="modal-content">
 				<div class="modal-header">

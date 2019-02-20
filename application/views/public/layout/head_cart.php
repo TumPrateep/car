@@ -82,15 +82,7 @@
 	.underline-text{
 		text-decoration: underline;
 	}
-	.border-light-orange{
-		color: #fff;
-	    background-color: #ffb366;
-	    border-color: #ffa64d;
-	    border: 3px solid ;
-	    width: 120px;
-	    margin-left: auto;
-  		margin-right: auto;
-	}
+	
 	.border-black{
 		color: #000000;
 	    background-color: #ffffff;
@@ -100,15 +92,7 @@
 	    margin-left: auto;
   		margin-right: auto;
 	}
-	.border-light-black{
-		color: #333333;
-	    background-color: #e6e6e6;
-	    border-color: #333333;
-	    border: 3px solid ;
-	    width: 120px;
-	    margin-left: auto;
-  		margin-right: auto;
-	}
+	
 
 </style>
 
