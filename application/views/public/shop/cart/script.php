@@ -141,31 +141,23 @@ function getLubricator(value, index){
         +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" id="blankCheckbox" value="option1" ></div></td>'
         +'<td><a href="'+base_url+'shop/detail/lubricator/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/lubricatordata/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/lubricator/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.lubricatorNumber+' ขนาด '+product.capacity+' ลิตร</a></td>'
-        +'<td></td>'
+        +'<td><div class="col-md-12">'
+            +'<div class="input-group form-group-width ">'
+                +'<div class="input-group-prepend">'
+                    +'<button type="button" class="btn btn-danger" id="minus-btn" onclick="minus(\'lubricator\','+index+')"><i class="fa fa-minus"></i></button>'
+                +'</div'
+                +'<input type="number" class="form-control" min="1" value="'+value.number+'" onblur="setNumber('+index+', this)">'
+                +'<div class="input-group-prepend">'
+                    +'<button type="button" class="btn btn-warning" id="plus-btn" onclick="plus(\'lubricator\','+index+')"><i class="fa fa-plus"></i></button>'
+                +'</div'
+            +'</div>'
+        +'</div></td>'
+        +'<td><span class="buy-price">'+currency((product.price*value.number), {  precision: 0 }).format()+' บาท</span></td>'
+        +'<td><button type="button" class="btn btn-orange"><i class="fa fa-trash"></i></button></td>'
+
+
         +'<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">'
-            +'<div class="cart_item_name cart_info_col">'
-                +'<div class="cart_item_title">ชื่อสินค้า</div>'
-                +'<div class="cart_item_text"><a href="'+base_url+'shop/detail/lubricator/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.lubricatorNumber+' ขนาด '+product.capacity+' ลิตร</a></div>'
-            +'</div>'
-    
-            +'<div class="cart_item_quantity cart_info_col">'
-                +'<div class="cart_item_title">จำนวน</div>'
-                +'<div class="cart_item_text">'
-                    +'<div class="input-group mb-3 col-lg-6">'
-                        +'<div class="input-group-prepend">'
-                            +'<button class="btn btn-danger btn-sm" id="minus-btn" onclick="minus(\'lubricator\','+index+')"><i class="fa fa-minus"></i></button>'
-                        +'</div>'
-                        +'<input type="number" class="form-control form-control-sm qty_input" value="'+value.number+'" min="1" onblur="setNumber('+index+', this)">'
-                        +'<div class="input-group-prepend">'
-                            +'<button class="btn btn-orange btn-sm" id="plus-btn" onclick="plus(\'lubricator\','+index+')"><i class="fa fa-plus"></i></button>'
-                        +'</div>'
-                    +'</div>'
-                +'</div>'
-            +'</div>'
-            +'<div class="cart_item_price cart_info_col">'
-                +'<div class="cart_item_title">ราคา</div>'
-                +'<div class="cart_item_text">'+currency((product.price*value.number), {  precision: 0 }).format()+' บาท</div>'
-            +'</div>'
+            
             +'<div class="cart_item_total cart_info_col">'
                 +'<div class="cart_item_title">ลบ</div>'
                 +'<div class="cart_item_text ">'
@@ -178,7 +170,6 @@ function getLubricator(value, index){
     
     return html;
 }
-
 
 
 $(document).ready(function () {

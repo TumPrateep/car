@@ -41,11 +41,11 @@
 								      		<div class="col-md-12">
 									      		<div class="input-group form-group-width ">
 									      			<div class="input-group-prepend">
-									      				<button type="button" class="btn btn-danger"><i class="fa fa-minus"></i></button>
+									      				<button type="button" class="btn btn-danger"><i class="fa fa-plus"></i></button>
 									      			</div>
 													<input type="number" class="form-control" min="1" placeholder="1">
 													<div class="input-group-prepend">
-														<button type="button" class="btn btn-warning"><i class="fa fa-plus"></i></button>
+														<button type="button" class="btn btn-warning"><i class="fa fa-minus"></i></button>
 													</div>
 												</div>
 								      		</div>
@@ -106,7 +106,23 @@
                         </div>
                     </div>
 
-					<div class="row">	
+					<div class="row">
+						<div class="col-md-3">
+						  	<div class="card">
+						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
+						    	<div class="card-body">
+						      		<!-- <h4 class="card-title text-center">1234 as</h4> -->
+						      		<!-- License Plate car -->
+						      		<div class="card border-light-orange mb-3" >
+									    <div class=" text-center"><h4>กน 4598</h4></div>
+									    <div class=" text-center">นครศรีธรรมราช</div>
+									</div>
+						    	</div>
+						    	<div class="card-footer">
+						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
+						    	</div>
+						  	</div>
+						</div>
 						<div class="col-md-3">
 						  	<div class="card">
 						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
@@ -121,6 +137,21 @@
 						    	</div>
 						  	</div>
 						</div>
+						<div class="col-md-3">
+						  	<div class="card">
+						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
+						    	<div class="card-body">
+						      		<div class="card border-light-black mb-3" >
+									    <div class=" text-center"><h4>งง 5555</h4></div>
+									    <div class=" text-center">ตรัง</div>
+									</div>
+						    	</div>
+						    	<div class="card-footer">
+						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
+						    	</div>
+						  	</div>
+						</div>
+						
 					</div>
                 </fieldset>
 
