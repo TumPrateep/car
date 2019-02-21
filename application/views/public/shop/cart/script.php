@@ -11,83 +11,83 @@
 <script src="<?=base_url("public/themes/shop-cart/");?>js/main.js"></script>
 <script>
 
-function createCarConfirm(){
-    var userId = localStorage.getItem("userId");
-    if(userId != null){
-        $("#selectcar").modal("show");
-    }else{
-        alert("login!!!");
-    }
-}
+// function createCarConfirm(){
+//     var userId = localStorage.getItem("userId");
+//     if(userId != null){
+//         $("#selectcar").modal("show");
+//     }else{
+//         alert("login!!!");
+//     }
+// }
 
-function plus(role, index){
-    cartData[index].number++;
-    localStorage.setItem("data", JSON.stringify(cartData));
-    showCart();
-}
+// function plus(role, index){
+//     cartData[index].number++;
+//     localStorage.setItem("data", JSON.stringify(cartData));
+//     showCart();
+// }
 
-function minus(role, index){
-    cartData[index].number--;
-    if(cartData[index].number <= 0){
-        $.confirm({
-            title: 'ลบรายการสินค้า',
-            content: 'กดตกลงเพื่อยืนยันการลบ',
-            buttons: {
-                ok: {
-                    text: 'ตกลง',
-                    keys: ['enter'],
-                    action: function(){
-                        cartData.splice(index, 1);
-                        localStorage.setItem("data", JSON.stringify(cartData));
-                        showCart();
-                    }
-                },
-                cancle: {
-                    text: 'ยกเลิก',
-                    action: function(){
+// function minus(role, index){
+//     cartData[index].number--;
+//     if(cartData[index].number <= 0){
+//         $.confirm({
+//             title: 'ลบรายการสินค้า',
+//             content: 'กดตกลงเพื่อยืนยันการลบ',
+//             buttons: {
+//                 ok: {
+//                     text: 'ตกลง',
+//                     keys: ['enter'],
+//                     action: function(){
+//                         cartData.splice(index, 1);
+//                         localStorage.setItem("data", JSON.stringify(cartData));
+//                         showCart();
+//                     }
+//                 },
+//                 cancle: {
+//                     text: 'ยกเลิก',
+//                     action: function(){
                         
-                    }
-                }
-            }
-        });
-    }else{
-        localStorage.setItem("data", JSON.stringify(cartData));
-        showCart();
-    }
-}
+//                     }
+//                 }
+//             }
+//         });
+//     }else{
+//         localStorage.setItem("data", JSON.stringify(cartData));
+//         showCart();
+//     }
+// }
 
-function setNumber(index, number){
-    if(parseInt(number.value) <= 0){
-        $.confirm({
-            title: 'ลบรายการสินค้า',
-            content: 'กดตกลงเพื่อยืนยันการลบ',
-            buttons: {
-                ok: {
-                    text: 'ตกลง',
-                    keys: ['enter'],
-                    action: function(){
-                        cartData.splice(index, 1);
-                        localStorage.setItem("data", JSON.stringify(cartData));
-                        showCart();
-                    }
-                },
-                cancle: {
-                    text: 'ยกเลิก',
-                    action: function(){
-                        showCart();
-                    }
-                }
-            }
-        });
-    }else{
-        cartData[index].number = parseInt(number.value);
-        localStorage.setItem("data", JSON.stringify(cartData));
-        showCart();
-    }
-}
+// function setNumber(index, number){
+//     if(parseInt(number.value) <= 0){
+//         $.confirm({
+//             title: 'ลบรายการสินค้า',
+//             content: 'กดตกลงเพื่อยืนยันการลบ',
+//             buttons: {
+//                 ok: {
+//                     text: 'ตกลง',
+//                     keys: ['enter'],
+//                     action: function(){
+//                         cartData.splice(index, 1);
+//                         localStorage.setItem("data", JSON.stringify(cartData));
+//                         showCart();
+//                     }
+//                 },
+//                 cancle: {
+//                     text: 'ยกเลิก',
+//                     action: function(){
+//                         showCart();
+//                     }
+//                 }
+//             }
+//         });
+//     }else{
+//         cartData[index].number = parseInt(number.value);
+//         localStorage.setItem("data", JSON.stringify(cartData));
+//         showCart();
+//     }
+// }
 
-var cartDataDetail = [];
-var totalCost = 0;
+// var cartDataDetail = [];
+// var totalCost = 0;
 
 function showCart(){
     var html = "";
@@ -110,29 +110,29 @@ function showCart(){
     $("#order_total_amount").html(currency(totalCost, {  precision: 0 }).format() + " บาท");
 }
 
-function deleteCart(index){
-    $.confirm({
-        title: 'ลบรายการสินค้า',
-        content: 'กดตกลงเพื่อยืนยันการลบ',
-        buttons: {
-            ok: {
-                text: 'ตกลง',
-                keys: ['enter'],
-                action: function(){
-                    cartData.splice(index, 1);
-                    localStorage.setItem("data", JSON.stringify(cartData));
-                    showCart();
-                }
-            },
-            cancle: {
-                text: 'ยกเลิก',
-                action: function(){
+// function deleteCart(index){
+//     $.confirm({
+//         title: 'ลบรายการสินค้า',
+//         content: 'กดตกลงเพื่อยืนยันการลบ',
+//         buttons: {
+//             ok: {
+//                 text: 'ตกลง',
+//                 keys: ['enter'],
+//                 action: function(){
+//                     cartData.splice(index, 1);
+//                     localStorage.setItem("data", JSON.stringify(cartData));
+//                     showCart();
+//                 }
+//             },
+//             cancle: {
+//                 text: 'ยกเลิก',
+//                 action: function(){
                     
-                }
-            }
-        }
-    });
-}
+//                 }
+//             }
+//         }
+//     });
+// }
 
 function getLubricator(value, index){
     var product = cartDataDetail["lubricator"][value.productId];
@@ -246,6 +246,15 @@ $(document).ready(function () {
         //     event.append('demo');
         // }
     });
+
+    var form = $("#submit");
+    var confirmForm = $("#confirm");
+    $.post(base_url+"service/Cart/cartDetail", {"cartData": cartData},
+        function (data, textStatus, jqXHR) {
+            cartDataDetail = data;
+            showCart();
+        }
+    );
 
 
 });

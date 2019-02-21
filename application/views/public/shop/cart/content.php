@@ -6,6 +6,7 @@
             <!-- <h2>SIGN UP OFFICE EMPLYEE ACCOUNT</h2> -->
             <div class="col-md-12">
             <form  id="rigister" class="signup-form">
+				<!-- Step 1 -->
                 <h3>
                     <span class="icon"><i class="fa fa-shopping-cart"></i></span>
                     <span class="title_text">สินค้า</span>
@@ -68,7 +69,7 @@
 					</div>
                 </fieldset>
 
-
+				<!-- Step 2 -->
                 <h3>
                     <span class="icon"><i class="fa fa-car"></i></span>
                     <span class="title_text">รถยนต์</span>
