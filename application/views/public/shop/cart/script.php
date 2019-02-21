@@ -11,14 +11,14 @@
 <script src="<?=base_url("public/themes/shop-cart/");?>js/main.js"></script>
 <script>
 
-// function createCarConfirm(){
-//     var userId = localStorage.getItem("userId");
-//     if(userId != null){
-//         $("#selectcar").modal("show");
-//     }else{
-//         alert("login!!!");
-//     }
-// }
+function createCarConfirm(){
+    var userId = localStorage.getItem("userId");
+    if(userId != null){
+        $("#selectcar").modal("show");
+    }else{
+        alert("login!!!");
+    }
+}
 
 function plus(role, index){
     cartData[index].number++;

@@ -10,6 +10,11 @@ class Carprofile extends BD_Controller {
         $this->load->model("carprofiles");
     }
 
+    function getAllProfile_get(){
+        $data = $this->carprofiles->getAllCarProfile();
+        $this->set_response($data, REST_Controller::HTTP_OK);
+    }
+
     function getCarProfile_get(){
         $userId = $this->session->userdata['logged_in']['id'];
         $data = $this->carprofiles->getCarProfileByUserId($userId);

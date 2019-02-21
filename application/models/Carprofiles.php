@@ -30,6 +30,13 @@ class Carprofiles extends CI_Model {
         $result = $this->db->get();
         return $result->row();
 
-    } 
+    }
+
+    function getAllCarProfile(){
+        $this->db->select('car_profileId, character_plate, number_plate, province_plate, pictureFront');
+        $this->db->where('status', 1);
+        $query = $this->db->get("car_profile");
+        return $query->result();
+    }
 
 }
