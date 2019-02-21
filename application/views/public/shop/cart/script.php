@@ -20,80 +20,80 @@
 //     }
 // }
 
-// function plus(role, index){
-//     cartData[index].number++;
-//     localStorage.setItem("data", JSON.stringify(cartData));
-//     showCart();
-// }
+function plus(role, index){
+    cartData[index].number++;
+    localStorage.setItem("data", JSON.stringify(cartData));
+    showCart();
+}
 
-// function minus(role, index){
-//     cartData[index].number--;
-//     if(cartData[index].number <= 0){
-//         $.confirm({
-//             title: 'ลบรายการสินค้า',
-//             content: 'กดตกลงเพื่อยืนยันการลบ',
-//             buttons: {
-//                 ok: {
-//                     text: 'ตกลง',
-//                     keys: ['enter'],
-//                     action: function(){
-//                         cartData.splice(index, 1);
-//                         localStorage.setItem("data", JSON.stringify(cartData));
-//                         showCart();
-//                     }
-//                 },
-//                 cancle: {
-//                     text: 'ยกเลิก',
-//                     action: function(){
+function minus(role, index){
+    cartData[index].number--;
+    if(cartData[index].number <= 0){
+        $.confirm({
+            title: 'ลบรายการสินค้า',
+            content: 'กดตกลงเพื่อยืนยันการลบ',
+            buttons: {
+                ok: {
+                    text: 'ตกลง',
+                    keys: ['enter'],
+                    action: function(){
+                        cartData.splice(index, 1);
+                        localStorage.setItem("data", JSON.stringify(cartData));
+                        showCart();
+                    }
+                },
+                cancle: {
+                    text: 'ยกเลิก',
+                    action: function(){
                         
-//                     }
-//                 }
-//             }
-//         });
-//     }else{
-//         localStorage.setItem("data", JSON.stringify(cartData));
-//         showCart();
-//     }
-// }
+                    }
+                }
+            }
+        });
+    }else{
+        localStorage.setItem("data", JSON.stringify(cartData));
+        showCart();
+    }
+}
 
-// function setNumber(index, number){
-//     if(parseInt(number.value) <= 0){
-//         $.confirm({
-//             title: 'ลบรายการสินค้า',
-//             content: 'กดตกลงเพื่อยืนยันการลบ',
-//             buttons: {
-//                 ok: {
-//                     text: 'ตกลง',
-//                     keys: ['enter'],
-//                     action: function(){
-//                         cartData.splice(index, 1);
-//                         localStorage.setItem("data", JSON.stringify(cartData));
-//                         showCart();
-//                     }
-//                 },
-//                 cancle: {
-//                     text: 'ยกเลิก',
-//                     action: function(){
-//                         showCart();
-//                     }
-//                 }
-//             }
-//         });
-//     }else{
-//         cartData[index].number = parseInt(number.value);
-//         localStorage.setItem("data", JSON.stringify(cartData));
-//         showCart();
-//     }
-// }
+function setNumber(index, number){
+    if(parseInt(number.value) <= 0){
+        $.confirm({
+            title: 'ลบรายการสินค้า',
+            content: 'กดตกลงเพื่อยืนยันการลบ',
+            buttons: {
+                ok: {
+                    text: 'ตกลง',
+                    keys: ['enter'],
+                    action: function(){
+                        cartData.splice(index, 1);
+                        localStorage.setItem("data", JSON.stringify(cartData));
+                        showCart();
+                    }
+                },
+                cancle: {
+                    text: 'ยกเลิก',
+                    action: function(){
+                        showCart();
+                    }
+                }
+            }
+        });
+    }else{
+        cartData[index].number = parseInt(number.value);
+        localStorage.setItem("data", JSON.stringify(cartData));
+        showCart();
+    }
+}
 
-// var cartDataDetail = [];
+var cartDataDetail = [];
 // var totalCost = 0;
 
 function showCart(){
     var html = "";
     var cartList = $("#cart_list");
     cartData = JSON.parse(localStorage.getItem("data"));
-    totalCost = 0;
+    // totalCost = 0;
     $.each(cartData, function( index, value ) {
         if(value.group == "lubricator"){
             html += getLubricator(value, index);
@@ -107,49 +107,63 @@ function showCart(){
     setNumberOfCart();
     
     cartList.html(html);
-    $("#order_total_amount").html(currency(totalCost, {  precision: 0 }).format() + " บาท");
+    setTotalAmount();
+    // $("#order_total_amount").html(currency(totalCost, {  precision: 0 }).format() + " บาท");
 }
 
-// function deleteCart(index){
-//     $.confirm({
-//         title: 'ลบรายการสินค้า',
-//         content: 'กดตกลงเพื่อยืนยันการลบ',
-//         buttons: {
-//             ok: {
-//                 text: 'ตกลง',
-//                 keys: ['enter'],
-//                 action: function(){
-//                     cartData.splice(index, 1);
-//                     localStorage.setItem("data", JSON.stringify(cartData));
-//                     showCart();
-//                 }
-//             },
-//             cancle: {
-//                 text: 'ยกเลิก',
-//                 action: function(){
+function setTotalAmount(){
+    var total = 0;
+    var table = $("#cart-table > tbody");
+    $("#cart-table > tbody  > tr").each(function(index, val) {
+        var trTable = table.find('tr:eq('+index+')').find('input');
+        var isCheck = trTable.is(':checked');
+        if(isCheck){
+            total += trTable.data('amount');
+        }
+    });
+    $("#order_total_amount").html(currency(total, {  precision: 0 }).format() + " บาท");
+}
+
+function deleteCart(index){
+    $.confirm({
+        title: 'ลบรายการสินค้า',
+        content: 'กดตกลงเพื่อยืนยันการลบ',
+        buttons: {
+            ok: {
+                text: 'ตกลง',
+                keys: ['enter'],
+                action: function(){
+                    cartData.splice(index, 1);
+                    localStorage.setItem("data", JSON.stringify(cartData));
+                    showCart();
+                }
+            },
+            cancle: {
+                text: 'ยกเลิก',
+                action: function(){
                     
-//                 }
-//             }
-//         }
-//     });
-// }
+                }
+            }
+        }
+    });
+}
 
 function getLubricator(value, index){
     var product = cartDataDetail["lubricator"][value.productId];
-    totalCost += (product.price*value.number);
+    var totalCost = (product.price*value.number);
     var html = '<tr>'
-        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" id="blankCheckbox" value="option1" ></div></td>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()" data-amount="'+totalCost+'"></div></td>'
         +'<td><a href="'+base_url+'shop/detail/lubricator/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/lubricatordata/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/lubricator/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.lubricatorNumber+' ขนาด '+product.capacity+' ลิตร</a></td>'
         +'<td><div class="col-md-12">'
             +'<div class="input-group form-group-width ">'
                 +'<div class="input-group-prepend">'
                     +'<button type="button" class="btn btn-danger" id="minus-btn" onclick="minus(\'lubricator\','+index+')"><i class="fa fa-minus"></i></button>'
-                +'</div'
+                +'</div>'
                 +'<input type="number" class="form-control" min="1" value="'+value.number+'" onblur="setNumber('+index+', this)">'
                 +'<div class="input-group-prepend">'
                     +'<button type="button" class="btn btn-warning" id="plus-btn" onclick="plus(\'lubricator\','+index+')"><i class="fa fa-plus"></i></button>'
-                +'</div'
+                +'</div>'
             +'</div>'
         +'</div></td>'
         +'<td><span class="buy-price">'+currency((product.price*value.number), {  precision: 0 }).format()+' บาท</span></td>'
@@ -161,20 +175,20 @@ function getLubricator(value, index){
 
 function getTire(value, index){
     var product = cartDataDetail["tire"][value.productId];
-    totalCost += (product.price*value.number);
+    var totalCost = (product.price*value.number);
     var html = '<tr>'
-        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" id="blankCheckbox" value="option1" ></div></td>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'"></div></td>'
         +'<td><a href="'+base_url+'shop/detail/tire/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/tirebranddata/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/tire/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.number+'</a></td>'
         +'<td><div class="col-md-12">'
             +'<div class="input-group form-group-width ">'
                 +'<div class="input-group-prepend">'
                     +'<button type="button" class="btn btn-danger" id="minus-btn" onclick="minus(\'tire\','+index+')"><i class="fa fa-minus"></i></button>'
-                +'</div'
+                +'</div>'
                 +'<input type="number" class="form-control" min="1" value="'+value.number+'" onblur="setNumber('+index+', this)">'
                 +'<div class="input-group-prepend">'
                     +'<button type="button" class="btn btn-warning" id="plus-btn" onclick="plus(\'tire\','+index+')"><i class="fa fa-plus"></i></button>'
-                +'</div'
+                +'</div>'
             +'</div>'
         +'</div></td>'
         +'<td><span class="buy-price">'+currency((product.price*value.number), {  precision: 0 }).format()+' บาท</span></td>'
@@ -186,20 +200,20 @@ function getTire(value, index){
 
 function getspare(value, index){
     var product = cartDataDetail["spare"][value.productId];
-    totalCost += (product.price*value.number);
+    var totalCost = (product.price*value.number);
     var html = '<tr>'
-        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" id="blankCheckbox" value="option1" ></div></td>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'"></div></td>'
         +'<td><a href="'+base_url+'shop/detail/spare/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/spareundercarriage/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/spare/'+value.productId+'">'+product.spares_brandName+' '+product.spares_undercarriageName+' '+product.brandName+' '+product.modelName+' '+product.year+'</a></td>'
         +'<td><div class="col-md-12">'
             +'<div class="input-group form-group-width ">'
                 +'<div class="input-group-prepend">'
                     +'<button type="button" class="btn btn-danger" id="minus-btn" onclick="minus(\'spare\','+index+')"><i class="fa fa-minus"></i></button>'
-                +'</div'
+                +'</div>'
                 +'<input type="number" class="form-control" min="1" value="'+value.number+'" onblur="setNumber('+index+', this)">'
                 +'<div class="input-group-prepend">'
                     +'<button type="button" class="btn btn-warning" id="plus-btn" onclick="plus(\'spare\','+index+')"><i class="fa fa-plus"></i></button>'
-                +'</div'
+                +'</div>'
             +'</div>'
         +'</div></td>'
         +'<td><span class="buy-price">'+currency((product.price*value.number), {  precision: 0 }).format()+' บาท</span></td>'
@@ -247,8 +261,8 @@ $(document).ready(function () {
         // }
     });
 
-    var form = $("#submit");
-    var confirmForm = $("#confirm");
+    // var form = $("#submit");
+    // var confirmForm = $("#confirm");
     $.post(base_url+"service/Cart/cartDetail", {"cartData": cartData},
         function (data, textStatus, jqXHR) {
             cartDataDetail = data;

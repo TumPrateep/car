@@ -18,7 +18,7 @@
                     </legend>
                     <div class="row">
 						<div class="col-12">
-                        	<table class="table table-hover ">
+                        	<table class="table table-hover" id="cart-table">
 							  	<thead class="orange-table">
 							    	<tr >
 							      		<th width="10%" scope="col"></th>
@@ -29,33 +29,7 @@
 								      	<th width="10%" scope="col"></th>
 							    	</tr>
 							  	</thead>
-							  	<tbody id="cart_list">
-							    	<tr>
-								      	<td>
-								      		<div class="form-check top">
-											  	<input class="form-check-input size-check" type="checkbox" id="blankCheckbox" value="option1" >
-											</div>
-										</td>
-								      	<td><img src="<?=base_url()?>public/image/icon/car.png"  class="cart_item_image"></td>
-								      	<td><span class="produst-name">ยาง TRW HONDA 2014 </span></td>
-								      	<td>
-								      		<div class="col-md-12">
-									      		<div class="input-group form-group-width ">
-									      			<div class="input-group-prepend">
-									      				<button type="button" class="btn btn-danger"><i class="fa fa-plus"></i></button>
-									      			</div>
-													<input type="number" class="form-control" min="1" placeholder="1">
-													<div class="input-group-prepend">
-														<button type="button" class="btn btn-warning"><i class="fa fa-minus"></i></button>
-													</div>
-												</div>
-								      		</div>
-								      	</td>
-								      	<td><span class="buy-price">1600 บ.</span></td>
-								      	<td><button type="button" class="btn btn-orange"><i class="fa fa-trash"></i></button></td>
-								    </tr>
-								    
-							  	</tbody>
+							  	<tbody id="cart_list"></tbody>
 							</table>
                         </div>
                         <!-- <div class="underline-line "></div> -->
@@ -106,7 +80,7 @@
                     </div>
 
 					<div class="row">
-						<div class="col-md-3">
+						<!-- <div class="col-md-3">
 						  	<div class="card">
 						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
 						    	<div class="card-body">
@@ -119,11 +93,11 @@
 						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
 						    	</div>
 						  	</div>
-						</div>
+						</div> -->
 					</div>
                 </fieldset>
 
-
+				<!-- Step 3  -->
                 <h3>
                     <span class="icon"><i class="fa fa-cog"></i></span>
                     <span class="title_text">อู่ซ่อมรถ</span>
