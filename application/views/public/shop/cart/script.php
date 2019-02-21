@@ -270,6 +270,28 @@ $(document).ready(function () {
         }
     );
 
+    var pickerData = null;
+    $.get(base_url+"service/Garages/getAllGarage", {},
+        function (data, textStatus, jqXHR) {
+            pickerData = data;
+            var imagePickerHtml = '<option value=""></option>';
+            var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
+            $.each(data, function (index, val) { 
+                html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
+                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span>" value="'+val.garageId+'">'+val.garageName+'</option>';                
+            });
+            $("#garage").html(html);
+            $("#image-picker").html(imagePickerHtml);
+            showImagePicker();
+        }
+    );
+    function showImagePicker(){
+        $(".image-picker").imagepicker({
+            hide_select : true,
+            show_label  : true
+        });
+    }
+
 
 });
 

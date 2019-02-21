@@ -1,20 +1,19 @@
-<link rel="stylesheet" href="<?=base_url("/public/css/jquery.datetimepicker.css") ?>">
+<link rel="stylesheet" href="<?=base_url("/public/css/image-picker.css") ?>">
+
 <script src="<?php echo base_url() ?>public/js/jquery-ui.min.js"></script>
 <script src="<?php echo base_url() ?>public/js/php-date-formatter.min.js"></script>
 <script src="<?php echo base_url() ?>public/js/jquery.mousewheel.js"></script>
-<script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.js"></script>
+<script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.full.min.js"></script>
+<script src="<?php echo base_url() ?>public/js/image-picker.js"></script>
 <script>
-
 function plus(role, index){
     cartData[index].number++;
     localStorage.setItem("data", JSON.stringify(cartData));
     showCart();
 }
-
 function continueShop(){
     window.location = base_url;
 }
-
 function orderConfirm(){
     var userId = localStorage.getItem("userId");
     if(userId != null){
@@ -44,7 +43,6 @@ function orderConfirm(){
         alert("login!!!");
     }
 }
-
 function createOrderDetail(data){
     $("#selectgarage").modal("hide");
     $.post(base_url+"service/Order/createOrderDetail", data,
@@ -55,7 +53,6 @@ function createOrderDetail(data){
         }
     );
 }
-
 function minus(role, index){
     cartData[index].number--;
     if(cartData[index].number <= 0){
@@ -85,7 +82,6 @@ function minus(role, index){
         showCart();
     }
 }
-
 function setNumber(index, number){
     if(parseInt(number.value) <= 0){
         $.confirm({
@@ -115,10 +111,8 @@ function setNumber(index, number){
         showCart();
     }
 }
-
 var cartDataDetail = [];
 var totalCost = 0;
-
 function showCart(){
     var html = "";
     var cartList = $("#cart_list");
@@ -133,13 +127,11 @@ function showCart(){
             html += getspare(value, index);
         }
     });
-
     setNumberOfCart();
     
     cartList.html(html);
     $("#order_total_amount").html(currency(totalCost, {  precision: 0 }).format() + " บาท");
 }
-
 function deleteCart(index){
     $.confirm({
         title: 'ลบรายการสินค้า',
@@ -163,7 +155,6 @@ function deleteCart(index){
         }
     });
 }
-
 function getspare(value, index){
     var product = cartDataDetail["spare"][value.productId];
     totalCost += (product.price*value.number);
@@ -205,7 +196,6 @@ function getspare(value, index){
     
     return html;
 }
-
 function getLubricator(value, index){
     var product = cartDataDetail["lubricator"][value.productId];
     totalCost += (product.price*value.number);
@@ -247,7 +237,6 @@ function getLubricator(value, index){
     
     return html;
 }
-
 function getTire(value, index){
     var product = cartDataDetail["tire"][value.productId];
     totalCost += (product.price*value.number);
@@ -289,11 +278,7 @@ function getTire(value, index){
     
     return html;
 }
-
 $(document).ready(function () {
-
-
-
     var form = $("#submit");
     var confirmForm = $("#confirm");
     $.post(base_url+"service/Cart/cartDetail", {"cartData": cartData},
@@ -302,17 +287,36 @@ $(document).ready(function () {
             showCart();
         }
     );
-
+    var pickerData = null;
     $.get(base_url+"service/Garages/getAllGarage", {},
         function (data, textStatus, jqXHR) {
+            pickerData = data;
+            var imagePickerHtml = '<option value=""></option>';
             var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
             $.each(data, function (index, val) { 
-                 html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
+                html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
+                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-label="<strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span>" value="'+val.garageId+'">'+val.garageName+'</option>';
             });
             $("#garage").html(html);
+            $("#image-picker").html(imagePickerHtml);
+            showImagePicker();
         }
     );
-
+    function showImagePicker(){
+        $(".image-picker").imagepicker({
+            hide_select : true,
+            show_label  : true
+        });
+    }
+    $("#modal-garage").on('hidden.bs.modal', function () {
+        $("#garage").removeAttr("disabled");
+        var garageId = $("#image-picker").val();
+        $("#garage").val(garageId);
+    });
+    $("#garage").click(function(){
+        $(this).attr("disabled", "disabled"); 
+        $("#modal-garage").modal("show");
+    });
     $.get(base_url+"service/Carprofile/getCarProfile", {},
         function (data, textStatus, jqXHR) {
             var html = '<option value="">เลือกทะเบียนรถ</option>';
@@ -322,39 +326,33 @@ $(document).ready(function () {
             $("#plate").html(html);
         }
     );
-
+    $.datetimepicker.setLocale('th');
     $("#reserve_day").datetimepicker({
         timepicker:false,
         formatDate:'d/m/Y',
         format:'Y/m/d'
     });
-
     $("#reserve_time").datetimepicker({
         datepicker:false,
         formatTime:'H:i',
         format:'H:i'
     });
-
     $("#addNewCar").click(function (e) { 
         $("#addNewCarprofile").fadeIn("slow");
         $("#selectGarage").attr("class", "col-md-6");
         $("#maxWidthSelect").animate({"max-width":"1000px"}, "slow");
     });
-
     $("#newCarClose").click(function (e) { 
         $("#addNewCarprofile").hide();
         $("#selectGarage").attr("class", "col-md-12");
         $("#addNewCarprofile").fadeOut("slow");
         $("#maxWidthSelect").animate({"max-width":"500px"}, "slow");  
     });
-
-
     
     form.submit(function(event){
         event.preventDefault();
         createCarprofile();
     });
-
     confirmForm.submit(function(event){
         event.preventDefault();
         var isValid = confirmForm.valid();
@@ -363,8 +361,6 @@ $(document).ready(function () {
             createOrderDetail(confirmForm.serialize());
         }
     });
-
-
     function createCarprofile(){
         
         var isValid = form.valid();
@@ -383,9 +379,6 @@ $(document).ready(function () {
             });
         }
     }
-
-
-
     form.validate({
         rules:{
             character_plate: {
@@ -421,7 +414,6 @@ $(document).ready(function () {
             } 
         }
     });
-
     confirmForm.validate({
         rules:{
             garageId: {
@@ -451,10 +443,7 @@ $(document).ready(function () {
             }
         }
     });
-
-
 });
-
         
 </script>
 </body>

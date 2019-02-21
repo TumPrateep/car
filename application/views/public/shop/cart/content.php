@@ -82,7 +82,7 @@
 					<div class="row">
 						<!-- <div class="col-md-3">
 						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
+						    	<img src="/public/image/icon/741407.png"  class="cart_car_image">
 						    	<div class="card-body">
 						      		<div class="card border-black mb-3" >
 									    <div class=" text-center"><h4>นก 5555</h4></div>
@@ -123,47 +123,9 @@
                     </div>
 
                     <div class="row">
-						<div class="col-md-4">
-						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/garage/5c57e6b465164.png"  class="cart_car_image">
-						    	<div class="card-body">
-						      		<div class="title-head text-center">อู่หน้ากอ.</div>
-						      		<div class=" text-center">จ.อ.พ.พฤ.ศ.ส.อา.</div>
-						      		<div class=" text-center">08:00 - 16:00 น.</div>
-						      		
-						    	</div>
-						    	<div class="card-footer">
-						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
-						    	</div>
-						  	</div>
+						<div class="col-md-12">
+							<select class="image-picker show-html" id="image-picker"></select>
 						</div>
-						<div class="col-md-4">
-						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/garage/5c57e6b465164.png"  class="cart_car_image">
-						    	<div class="card-body">
-						      		<div class="title-head text-center">อู่หน้ากอ.</div>
-						      		<div class=" text-center">จ.พ.พฤ.ส.อา.</div>
-						      		<div class=" text-center">11:00 - 22:00 น.</div>
-						    	</div>
-						    	<div class="card-footer">
-						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
-						    	</div>
-						  	</div>
-						</div>
-						<div class="col-md-4">
-						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/garage/5c57e6b465164.png"  class="cart_car_image">
-						    	<div class="card-body">
-						      		<div class="title-head text-center">อู่หน้ากอ.</div>
-						      		<div class=" text-center">จ.อ.พ.พฤ.ศ.</div>
-						      		<div class=" text-center">10:00 - 20:00 น.</div>
-						    	</div>
-						    	<div class="card-footer">
-						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
-						    	</div>
-						  	</div>
-						</div>
-						
 					</div>
 					<div class="row"><br></div>
 					<h4 class="underline text-center">เลือกเวลาที่ต้องการใช้บริการ</h4>
