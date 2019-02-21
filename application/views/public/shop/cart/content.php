@@ -111,22 +111,6 @@
 						  	<div class="card">
 						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
 						    	<div class="card-body">
-						      		<!-- <h4 class="card-title text-center">1234 as</h4> -->
-						      		<!-- License Plate car -->
-						      		<div class="card border-light-orange mb-3" >
-									    <div class=" text-center"><h4>กน 4598</h4></div>
-									    <div class=" text-center">นครศรีธรรมราช</div>
-									</div>
-						    	</div>
-						    	<div class="card-footer">
-						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
-						    	</div>
-						  	</div>
-						</div>
-						<div class="col-md-3">
-						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
-						    	<div class="card-body">
 						      		<div class="card border-black mb-3" >
 									    <div class=" text-center"><h4>นก 5555</h4></div>
 									    <div class=" text-center">เลย</div>
@@ -137,21 +121,6 @@
 						    	</div>
 						  	</div>
 						</div>
-						<div class="col-md-3">
-						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
-						    	<div class="card-body">
-						      		<div class="card border-light-black mb-3" >
-									    <div class=" text-center"><h4>งง 5555</h4></div>
-									    <div class=" text-center">ตรัง</div>
-									</div>
-						    	</div>
-						    	<div class="card-footer">
-						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
-						    	</div>
-						  	</div>
-						</div>
-						
 					</div>
                 </fieldset>
 
@@ -183,7 +152,7 @@
                     <div class="row">
 						<div class="col-md-4">
 						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/garage/5c572eaa6c02d.png"  class="cart_car_image">
+						    	<img src="<?=base_url()?>public/image/garage/5c57e6b465164.png"  class="cart_car_image">
 						    	<div class="card-body">
 						      		<div class="title-head text-center">อู่หน้ากอ.</div>
 						      		<div class=" text-center">จ.อ.พ.พฤ.ศ.ส.อา.</div>
@@ -197,7 +166,7 @@
 						</div>
 						<div class="col-md-4">
 						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/garage/5c56f3c8b3fbf.png"  class="cart_car_image">
+						    	<img src="<?=base_url()?>public/image/garage/5c57e6b465164.png"  class="cart_car_image">
 						    	<div class="card-body">
 						      		<div class="title-head text-center">อู่หน้ากอ.</div>
 						      		<div class=" text-center">จ.พ.พฤ.ส.อา.</div>
@@ -210,7 +179,7 @@
 						</div>
 						<div class="col-md-4">
 						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/garage/5c572f463ba43.png"  class="cart_car_image">
+						    	<img src="<?=base_url()?>public/image/garage/5c57e6b465164.png"  class="cart_car_image">
 						    	<div class="card-body">
 						      		<div class="title-head text-center">อู่หน้ากอ.</div>
 						      		<div class=" text-center">จ.อ.พ.พฤ.ศ.</div>
