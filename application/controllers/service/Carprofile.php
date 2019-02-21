@@ -12,7 +12,7 @@ class Carprofile extends BD_Controller {
 
     function getCarProfile_get(){
         $userId = $this->session->userdata['logged_in']['id'];
-        $data = $this->carprofiles->getCarProfileByUserId($userId);
+        $data = $this->carprofiles->getUserProfileByUserId($userId);
         $this->set_response($data, REST_Controller::HTTP_OK);
     }
 
