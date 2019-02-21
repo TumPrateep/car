@@ -53,9 +53,7 @@
 								      	<td><span class="buy-price">1600 บ.</span></td>
 								      	<td><button type="button" class="btn btn-orange"><i class="fa fa-trash"></i></button></td>
 								    </tr>
-								    <tr>
 								    
-								    </tr>
 							  	</tbody>
 							</table>
                         </div>
