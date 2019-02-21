@@ -27,7 +27,11 @@ class Cart extends BD_Controller {
             foreach ($lubricatorData as $value){
                 $data["lubricator"][$value->lubricator_dataId]["productId"] = $value->lubricator_dataId;
                 $data["lubricator"][$value->lubricator_dataId]["price"] =  ($value->price*1.1) + $charge->lubricator_price;
-                $data["lubricator"][$value->lubricator_dataId]["picture"] = $value->lubricator_dataPicture;
+                $option = [
+                    'lubricatorId' => $value->lubricatorId
+                ];
+                $data["lubricator"][$value->lubricator_dataId]['picture'] = getPictureLubricator($option);
+                // $data["lubricator"][$value->lubricator_dataId]["picture"] = $value->lubricator_dataPicture;
                 $data["lubricator"][$value->lubricator_dataId]["brandName"] = $value->lubricator_brandName;
                 $data["lubricator"][$value->lubricator_dataId]["name"] = $value->lubricatorName;
                 $data["lubricator"][$value->lubricator_dataId]["lubricatorNumber"] = $value->lubricator_number;
@@ -45,7 +49,14 @@ class Cart extends BD_Controller {
             foreach($tireData as $value){
                 $data["tire"][$value->tire_dataId]["productId"] = $value->tire_dataId;
                 $data["tire"][$value->tire_dataId]["price"] = ($value->price*1.1) + $charge[$value->rimId];
-                $data["tire"][$value->tire_dataId]["picture"] = $value->tire_picture;
+                $option = [
+                    'tire_brandId' => $value->tire_brandId,
+                    'tire_modelId' => $value->tire_modelId,
+                    'tire_sizeId' => $value->tire_sizeId,
+                    'rimId' => $value->rimId
+                ];
+                $data["tire"][$value->tire_dataId]['picture'] = getPictureTire($option);
+                // $data["tire"][$value->tire_dataId]["picture"] = $value->tire_picture;
                 $data["tire"][$value->tire_dataId]["brandName"] = $value->tire_brandName;
                 $data["tire"][$value->tire_dataId]["name"] = $value->tire_modelName;
                 $data["tire"][$value->tire_dataId]["number"] = $value->tire_size;
@@ -61,7 +72,15 @@ class Cart extends BD_Controller {
             foreach($spareData as $value){
                 $data["spare"][$value->spares_undercarriageDataId]["productId"] = $value->spares_undercarriageDataId;
                 $data["spare"][$value->spares_undercarriageDataId]["price"] = ($value->price*1.1) + $charge[$value->spares_undercarriageId];
-                $data["spare"][$value->spares_undercarriageDataId]["picture"] = $value->spares_undercarriageDataPicture;
+                $option = [
+                    'spares_undercarriageId' => $value->spares_undercarriageId,
+                    'spares_brandId' => $value->spares_brandId,
+                    'brandId' => $value->brandId,
+                    'modelId' => $value->modelId,
+                    'modelofcarId' => $value->modelofcarId
+                ];
+                $data["spare"][$value->spares_undercarriageDataId]['picture'] = getPictureSpare($option);
+                // $data["spare"][$value->spares_undercarriageDataId]["picture"] = $value->spares_undercarriageDataPicture;
                 $data["spare"][$value->spares_undercarriageDataId]["brandName"] = $value->brandName;
                 $data["spare"][$value->spares_undercarriageDataId]["modelName"] = $value->modelName;
                 $data["spare"][$value->spares_undercarriageDataId]["year"] = $value->year;

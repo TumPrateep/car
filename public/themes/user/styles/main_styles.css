@@ -3942,3 +3942,18 @@ select option
   .orange{
 	  color:#f5a415;
   }
+
+  @media only screen and (max-width: 991px)
+  {
+	.garage-width{
+		width: 100%;
+	}
+
+	ul.thumbnails.image_picker_selector{
+		display: block !important;
+	}
+  }
+
+  ul.thumbnails.image_picker_selector{
+	display: contents;
+  }

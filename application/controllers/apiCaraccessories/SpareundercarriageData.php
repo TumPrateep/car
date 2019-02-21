@@ -161,37 +161,35 @@ class SpareundercarriageData extends BD_Controller {
         $machineSize = $this->post("machineSize");
         
        
-            $data_check_update = $this->spare_undercarriagedatas->getSpareDatasById($spares_undercarriageDataId);
-            $data_check = $this->spare_undercarriagedatas->data_check_update($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId);
+        $data_check_update = $this->spare_undercarriagedatas->getSpareDatasById($spares_undercarriageDataId);
+        $data_check = $this->spare_undercarriagedatas->data_check_update($spares_brandId,$spares_undercarriageId,$brandId,$modelId,$modelofcarId,$userId,$spares_undercarriageDataId);
            
-            
-            
-            $data = array(
-                'spares_undercarriageDataId' => $spares_undercarriageDataId,
-                'spares_brandId' => $spares_brandId,
-                'spares_undercarriageId' =>$spares_undercarriageId,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId,
-                'price' => $price,
-                'warranty' => $warranty,
-                'warranty_year' => $warranty_year,
-                'warranty_distance' => $warranty_distance,
-                // 'spares_undercarriageDataPicture' => $imageName,
-                'modelId' => $modelId,
-                'brandId' => $brandId,
-                'modelofcarId' => $modelofcarId,
-                'machineSize' => $machineSize
-            );
-            $option = [
-                "data_check_update" => $data_check_update,
-                "data_check" => $data_check,
-                "data" => $data,
-                "model" => $this->spare_undercarriagedatas,
-                "image_path" => null,
-                "old_image_path" => null
-            ];
+        $data = array(
+            'spares_undercarriageDataId' => $spares_undercarriageDataId,
+            'spares_brandId' => $spares_brandId,
+            'spares_undercarriageId' =>$spares_undercarriageId,
+            'update_at' => date('Y-m-d H:i:s',time()),
+            'update_by' => $userId,
+            'price' => $price,
+            'warranty' => $warranty,
+            'warranty_year' => $warranty_year,
+            'warranty_distance' => $warranty_distance,
+            // 'spares_undercarriageDataPicture' => $imageName,
+            'modelId' => $modelId,
+            'brandId' => $brandId,
+            'modelofcarId' => $modelofcarId,
+            'machineSize' => $machineSize
+        );
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->spare_undercarriagedatas,
+            "image_path" => null,
+            "old_image_path" => null
+        ];
 
-            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
 
     function delete_get(){
