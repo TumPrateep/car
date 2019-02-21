@@ -161,8 +161,8 @@ class SpareundercarriageData extends BD_Controller {
         $machineSize = $this->post("machineSize");
         
        
-            $data_check_update = $this->spare_undercarriagedatas->getSpareDatasById($spares_undercarriageDataId);
-            $data_check = $this->spare_undercarriagedatas->data_check_update($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId);
+        $data_check_update = $this->spare_undercarriagedatas->getSpareDatasById($spares_undercarriageDataId);
+        $data_check = $this->spare_undercarriagedatas->data_check_create($spares_brandId,$spares_undercarriageId,$brandId,$modelId,$modelofcarId,$userId);
            
             
             

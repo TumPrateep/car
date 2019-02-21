@@ -121,6 +121,8 @@ class Spare_undercarriagedatas extends CI_Model{
         $this->db->where('spares_undercarriageData.spares_brandId',$spares_brandId);
         $this->db->where('spares_undercarriageData.spares_undercarriageId',$spares_undercarriageId);
         $this->db->where_not_in('spares_undercarriageData.spares_undercarriageDataId',$spares_undercarriageDataId);
+        // $this->db->where_not_in('spares_undercarriageData.spares_brandId',$spares_brandId);
+        // $this->db->where_not_in('spares_undercarriageData.spares_undercarriageDataId',$spares_undercarriageId);
         $result = $this->db->get();
         return $result->row();
     }
