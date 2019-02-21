@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2019 at 09:23 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 5.6.38
+-- Generation Time: Feb 21, 2019 at 11:06 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 5.6.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -75,7 +75,9 @@ CREATE TABLE `cart` (
 INSERT INTO `cart` (`cardId`, `productId`, `quantity`, `create_by`, `create_at`, `status`, `group`) VALUES
 (173, 9, '1', 1, '2019-02-18 13:44:58', NULL, 'spare'),
 (174, 10, '1', 1, '2019-02-18 13:44:58', NULL, 'spare'),
-(179, 9, '2', 13, '2019-02-18 14:44:54', NULL, 'spare');
+(183, 2, '2', 13, '2019-02-21 16:52:36', NULL, 'lubricator'),
+(184, 2, '5', 13, '2019-02-21 16:52:36', NULL, 'tire'),
+(185, 9, '4', 13, '2019-02-21 16:52:36', NULL, 'spare');
 
 -- --------------------------------------------------------
 
@@ -1191,17 +1193,17 @@ INSERT INTO `district` (`districtId`, `districtName`, `provinceId`, `update_by`,
 
 CREATE TABLE `garage` (
   `garageId` int(11) NOT NULL,
-  `comment` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `businessRegistration` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `garageName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `comment` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `businessRegistration` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `garageName` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(45) NOT NULL,
   `dayopenhour` varchar(45) DEFAULT NULL,
   `openingtime` time DEFAULT NULL,
   `closingtime` time DEFAULT NULL,
-  `hno` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `Alley` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `road` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `village` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hno` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Alley` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `road` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `village` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `postCode` varchar(45) NOT NULL,
   `latitude` varchar(45) NOT NULL,
   `longtitude` varchar(45) NOT NULL,
@@ -1225,8 +1227,9 @@ CREATE TABLE `garage` (
 --
 -- Dumping data for table `garage`
 --
-INSERT INTO `garage` (`garageId`, `comment`, `businessRegistration`, `garageName`, `phone`, `dayopenhour`, `openingtime`, `closingtime`, `hno`, `Alley`, `road`, `village`, `postCode`, `latitude`, `longtitude`, `subdistrictId`, `districtId`, `provinceId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `option1`, `option2`, `option3`, `option4`, `option_outher`, `picture`, `userId`) VALUES 
-(1, 'null', '1111111111111', 'garagesives0', '0833969512', NULL, '08:30:00', '19:30:00', '128-126/10', NULL, NULL, NULL, '10236', '8.064029', '100.176328', '2412', '108', '63', '13', '13', '2019-01-16 07:13:30', '2019-01-15 05:13:08', '1', NULL, NULL, NULL, NULL, NULL, 'example.png', '13');
+
+INSERT INTO `garage` (`garageId`, `comment`, `businessRegistration`, `garageName`, `phone`, `dayopenhour`, `openingtime`, `closingtime`, `hno`, `Alley`, `road`, `village`, `postCode`, `latitude`, `longtitude`, `subdistrictId`, `districtId`, `provinceId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `option1`, `option2`, `option3`, `option4`, `option_outher`, `picture`, `userId`) VALUES
+(1, 'null', '1111111111111', 'garagesives0', '0833969512', NULL, '08:30:00', '19:30:00', '128-126/10', NULL, NULL, NULL, '10236', '8.064029', '100.176328', 2412, 108, 63, 13, 13, '2019-01-16 07:13:30', '2019-01-15 05:13:08', 1, NULL, NULL, NULL, NULL, NULL, 'example.png', 12);
 
 -- --------------------------------------------------------
 
@@ -1620,16 +1623,16 @@ CREATE TABLE `mechanic` (
   `update_by` int(11) DEFAULT NULL,
   `garageId` int(11) NOT NULL,
   `skill` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `picture` varchar(255) DEFAULT NULL
+  `picture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `mechanic`
 --
 
-INSERT INTO `mechanic` (`mechanicId`, `titleName`, `firstName`, `lastName`, `exp`, `personalid`, `phone`, `status`, `activeFlag`, `create_at`, `update_at`, `create_by`, `update_by`, `garageId`, `skill`, `picture`) VALUES
-(7, NULL, 'ศุภณัฐ', 'คุ้มปิยะผล', 1, '1803366253568', '0835212041', 1, 1, '2019-01-09 11:36:26', NULL, 12, NULL, 1, 'Toyota', ''),
-(8, NULL, 'Sittichai', 'Kheawkhem', 12, '1801700077431', '0808845891', 2, 1, '2019-01-11 10:58:41', NULL, 12, NULL, 1, 'Honda', '');
+INSERT INTO `mechanic` (`mechanicId`, `titleName`, `firstName`, `lastName`, `nickName`, `exp`, `personalid`, `phone`, `status`, `activeFlag`, `create_at`, `update_at`, `create_by`, `update_by`, `garageId`, `skill`, `picture`) VALUES
+(7, NULL, 'ศุภณัฐ', 'คุ้มปิยะผล', NULL, 1, '1803366253568', '0835212041', 1, 1, '2019-01-09 11:36:26', NULL, 12, NULL, 1, 'Toyota', ''),
+(8, NULL, 'Sittichai', 'Kheawkhem', NULL, 12, '1801700077431', '0808845891', 2, 1, '2019-01-11 10:58:41', NULL, 12, NULL, 1, 'Honda', '');
 
 -- --------------------------------------------------------
 
@@ -12435,10 +12438,10 @@ CREATE TABLE `user_profile` (
   `create_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
-  `hno` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `Alley` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `road` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `village` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hno` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Alley` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `road` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `village` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `titleName` text,
   `update_at` datetime DEFAULT NULL,
   `activeFlag` int(11) NOT NULL,
@@ -12452,19 +12455,10 @@ CREATE TABLE `user_profile` (
 
 INSERT INTO `user_profile` (`user_profile`, `firstname`, `lastname`, `status`, `phone1`, `phone2`, `provinceId`, `districtId`, `subdistrictId`, `create_by`, `create_at`, `userId`, `hno`, `Alley`, `road`, `village`, `titleName`, `update_at`, `activeFlag`, `postCodes`, `update_by`) VALUES
 (1, 'admin', 'admin', '1', '080524171', '0899996699', 63, 843, 7662, 1, NULL, 1, '22/9 ', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
-(3, 'ณัฐพล', 'บุญสุวรรณ์', '2', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 12:50:15', 6, '22/2', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
-(4, 'Micheal', 'D.rogis', '1', '', '0998755211', 14, 176, 1408, 1, '2018-06-10 12:56:10', 7, '99/5', '1 ', '1 ', '1', 'นางสาว', NULL, 0, NULL, NULL),
-(5, 'พุตทิพัต', 'ไทยนิยม', '2', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 13:03:49', 8, '33/9', '1 ', '1 ', '1', 'นาง', NULL, 0, NULL, NULL),
-(6, 'พุตทิพัต', 'ไทยนิยม', '2', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 13:04:38', 8, '33/9', '1 ', '1 ', '1', 'นาง', NULL, 0, NULL, NULL),
-(7, 'ณัฐพล', 'บุญสุวรรณ์', '2', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 13:05:18', 6, '22/2', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
-(8, 'ณัฐพล', 'บุญสุวรรณ์', '1', '', '0805241999', 63, 847, 7718, 1, '2018-06-10 14:24:43', 9, '22/2', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
-(9, 'พุตทิพัต', 'ไทยนิยม', '1', '', '0897725524', 63, 836, 7578, 1, '2018-06-10 14:30:18', 8, '33/9', '1 ', '1 ', '1', 'นาง', NULL, 0, NULL, NULL),
-(10, 'ณัฐพล', 'บุญสุวรรณ์', '1', '', '0867454630', 63, 847, 7718, 1, '2018-06-10 15:17:45', 6, '22/2', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
-(11, 'car2', 'car2', '1', '', '111111111111111111', 58, 810, 7307, 1, '2018-06-17 10:15:00', 10, 'car2', '1 ', '1 ', '1', 'นาง', NULL, 0, NULL, NULL),
 (12, 'ร้าน', 'อะไหล่', '1', '', '0000000000', 63, 836, 7595, 1, '2018-09-08 20:09:29', 11, 'ร้านอะไหล่', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
-(13, 'ณัฐพล', 'บุญสุวรรณ์', '2', '0867454630', '', 63, 847, 7718, NULL, '2018-09-23 13:58:55', 12, '22/2 ถ.พัฒนาการบางวัง', '1 ', '1 ', '1', 'นาย', NULL, 1, NULL, NULL),
 (14, 'user', 'user', '1', '', '081255223', 1, 48, 232, 1, '2018-12-15 23:36:49', 13, '18/6', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL),
-(15, 'garage', 'garage', '1', '', '0867454630', 63, 847, 7718, 1, '2018-12-26 11:29:22', 12, '22/2 ถ.พัฒนาการบางวัง', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL);
+(15, 'garage', 'garage', '1', '', '0867454630', 63, 836, 7595, 1, '2018-12-26 11:29:22', 12, '22/2 ถ.พัฒนาการบางวัง', '1 ', '1 ', '1', 'นาย', NULL, 0, NULL, NULL);
+
 --
 -- Indexes for dumped tables
 --
@@ -12929,7 +12923,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
 -- AUTO_INCREMENT for table `car_accessories`

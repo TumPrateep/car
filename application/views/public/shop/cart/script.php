@@ -292,6 +292,25 @@ $(document).ready(function () {
         });
     }
 
+    $.datetimepicker.setLocale('th');
+    var nowDate = new Date();
+    $("#reserve_day").datetimepicker({
+        timepicker:false,
+        formatDate:'d/m/Y',
+        lang:'th',
+        minDate: nowDate.setDate( nowDate.getDate() + 2 ),
+        mask:true,
+        scrollInput: false,
+        format:'d/m/Y'
+    });
+    $("#reserve_time").datetimepicker({
+        datepicker:false,
+        formatTime:'H:i',
+        mask:true,
+        scrollInput: false,
+        format:'H:i'
+    });
+
 
 });
 
