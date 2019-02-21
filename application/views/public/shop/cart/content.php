@@ -94,6 +94,9 @@
 						    	</div>
 						  	</div>
 						</div> -->
+						<div class="col-md-12">
+							<select class="image-picker show-html" id="image-picker-car"></select>
+						</div>
 					</div>
                 </fieldset>
 
