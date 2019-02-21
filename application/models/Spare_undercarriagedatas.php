@@ -116,13 +116,14 @@ class Spare_undercarriagedatas extends CI_Model{
     function insert($data){
        return $this->db->insert('spares_undercarriageData',$data);
     }
-    function data_check_update($spares_brandId,$spares_undercarriageId,$spares_undercarriageDataId){
+    function data_check_update($spares_brandId,$spares_undercarriageId,$brandId,$modelId,$modelofcarId,$userId,$spares_undercarriageDataId){
         $this->db->from('spares_undercarriageData');
-        $this->db->where('spares_undercarriageData.spares_brandId',$spares_brandId);
+        $this->db->where('brandId', $brandId);
+        $this->db->where('modelId', $modelId);
+        $this->db->where('modelofcarId', $modelofcarId);
         $this->db->where('spares_undercarriageData.spares_undercarriageId',$spares_undercarriageId);
+        $this->db->where('spares_undercarriageData.create_by',$userId);
         $this->db->where_not_in('spares_undercarriageData.spares_undercarriageDataId',$spares_undercarriageDataId);
-        // $this->db->where_not_in('spares_undercarriageData.spares_brandId',$spares_brandId);
-        // $this->db->where_not_in('spares_undercarriageData.spares_undercarriageDataId',$spares_undercarriageId);
         $result = $this->db->get();
         return $result->row();
     }
