@@ -30,9 +30,9 @@
 				</div>
             </div>
 			<div class="col-lg-9">
-				<div class="table-responsive">
+				<div class="table-responsive" >
       				<table class="table table-bordered" id="order-table" width="100%" cellspacing="0">
-						<thead>
+						<!-- <thead>
 							<tr>
 								<th>คำสั่งซื้อ</th>
 								<th>วันที่สั่ง</th>
@@ -42,7 +42,7 @@
 								<th>สถานะ</th>
 								<th>รายการ</th>
 							</tr>									
-						</thead>
+						</thead> -->
 					</table>
 				</div>
 			</div>					
