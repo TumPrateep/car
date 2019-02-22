@@ -13,10 +13,10 @@
             }
             if(data.message == 200){
                 result = data.data;
-                $("#titleName").val(result.titleName);
-                $("#firstname").val(result.firstname);
-                $("#lastname").val(result.lastname);
-                $("#name").val(result.titleName+" "+result.firstname+" "+result.lastname);
+                $("#titleName").html(result.titleName);
+                $("#firstname").html(result.firstname);
+                $("#lastname").html(result.lastname);
+                
                 $("#hno").val(result.hno);
                 $("#village").val(result.village);
                 $("#road").val(result.road);
@@ -28,8 +28,9 @@
                 $("#districtName").val(result.districtName);
                 $("#provinceName").val(result.provinceName);
                 $("#address").val("บ้านเลขที่"+result.hno+"  หมู่ที่ "+result.village+"  ถนน "+result.road+"  ซอย "+result.Alley+"  ตำบล "+result.subdistrictName+"  อำเภอ "+result.districtName+"  จังหวัด "+result.provinceName);
-                $("#phone1").val(result.phone1);
-                $("#phone2").val(result.phone2);
+                
+                $("#phone1").html(result.phone1);
+                $("#phone2").html(result.phone2);
                 loadProvinceUser(result.provinceId,result.districtId,result.subdistrictId);
 
             }

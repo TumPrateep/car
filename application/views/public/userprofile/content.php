@@ -37,22 +37,28 @@
                         <h4>ข้อมูลส่วนตัว</h4><hr>
                         <div class="form-group row ">
                             <div class="form-group col-md-4">
-                                <label>ชื่อ-นามสกุล</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="ชื่อ" readonly>
+                                <label>ชื่อ-นามสกุล :</label><br>
+                                <label class="size-text-user" name="titleName" id="titleName"> </label>
+                                <label class="size-text-user" name="firstname" id="firstname"> </label>
+                                <label class="size-text-user" name="lastname" id="lastname"> </label>
                             </div>
                             <div class="form-group col-md-4">
-                                <label>เบอร์โทรศัพท์</label>
-                                <input type="text" name="phone1" id="phone1" class="form-control" placeholder="เบอร์โทรศัพท์" readonly>
+                                <label>เบอร์โทรศัพท์ :</label>
+                                <label name="phone1" id="phone1" ></label>
                             </div>
                             <div class="form-group col-md-4">
-                                <label>เบอร์โทรศัพท์ที่สามารถติดต่อได้</label>
-                                <input type="text" name="phone2" id="phone2" class="form-control" placeholder="เบอร์โทรศัพท์ที่สามารถติดต่อได้" readonly>
+                                <label>เบอร์โทรศัพท์ที่สามารถติดต่อได้ :</label>
+                                <label name="phone2" id="phone2"></label>
                             </div>
                         </div>
                         <div class="form-group row ">
                             <div class="form-group col-md-12">
-                                <label>ที่อยู่</label>
-                                <textarea class="form-control" name="address" id="address" rows="3" readonly></textarea>            
+                                <label>รายละเอียดที่อยู่ :</label>
+                                <textarea class="form-control input-white" name="address" id="address" rows="3" readonly></textarea><br>
+                                <label name="phone2" id="phone2"></label>
+                                <label name="phone2" id="phone2"></label>
+                                <label name="phone2" id="phone2"></label>
+                                <label name="phone2" id="phone2"></label>            
                             </div>
                         </div>
                         <div class="form-group row ">
