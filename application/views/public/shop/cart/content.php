@@ -136,13 +136,13 @@
 						<div class="col-md-3 offset-lg-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">เลือกวันทำการ</label>
-								<input type="text" class="form-control" id="reserve_day" name="reserve_day" placeholder="เลือกวันทำการ">
+								<input type="text" class="form-control" id="reserve_day" name="reserve_day" placeholder="เลือกวันทำการ" readonly>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">เลือกเวลาทำการ</label>
-								<input type="text" class="form-control" id="reserve_time" name="reserve_time" placeholder="เลือกเวลาทำการ">
+								<input type="text" class="form-control" id="reserve_time" name="reserve_time" placeholder="เลือกเวลาทำการ" readonly>
 							</div>
 						</div>
 					</div>

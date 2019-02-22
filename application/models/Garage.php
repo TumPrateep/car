@@ -64,7 +64,7 @@ class Garage extends CI_Model {
     }
 
     function getAllGarage(){
-        $this->db->select('garageId, garageName, picture');
+        $this->db->select('garageId, garageName, picture, dayopenhour');
         $this->db->where('status', 1);
         $query = $this->db->get("garage");
         return $query->result();
