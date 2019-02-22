@@ -1,10 +1,12 @@
+<script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
+<script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
 <script>
-    function deletemechanic(mechanicId,firstName){
+    function deleteCarProfile(car_profileId){
         var option = {
-            url: "/Mechanic/deleteMechanic?mechanicId="+mechanicId,
-            label: "ลบชื่อช่างคนนี้",
-            content: "คุณต้องการลบ "+firstName+" ใช่หรือไม่",
-            gotoUrl: "garage/Mechanic"
+            url: "/Carprofile/deleteCarProfile?car_profileId="+car_profileId,
+            label: "ลบข้อมูลรถคันนี้",
+            // content: "คุณต้องการลบ "+firstName+" ใช่หรือไม่",
+            gotoUrl: "public/carprofilepublic"
         }
         fnDelete(option);
     }
@@ -34,12 +36,12 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiGarage/Mechanic/searchMechanic",
+                "url": base_url+"service/Carprofile/searchCarProfile",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.firstName = $("#namemechanic").val()
-                    data.skill = $("#skillmechanic").val()
+                    // data.firstName = $("#namemechanic").val()
+                    // data.skill = $("#skillmechanic").val()
                     //data.status = $("#status").val()
                 }
             },
@@ -55,7 +57,7 @@
                         var html = '<div class="row">';
 
                         $.each(data, function( index, value ) {
-                            html+= '<div class="col-md-3">'
+                            html+= '<div class="col-md-4">'
                                         + '<div class="card">'
                                             + '<div class="card-body">'
                                                 + '<div class="card-two">'
@@ -64,17 +66,18 @@
                                                             + '<img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker">'
                                                         + '</div>'
                                                     + '</header>'
-                                                    + '<h3>'+value.firstName+' '+value.lastName+'</h3>'
+                                                    // + '<h3>'+value.firstName+' '+value.lastName+'</h3>'
                                                     + '<div class="desc">'
-                                                        + '<small>เลขที่ประจำตัวประชาชน</small><br> <span>'+value.personalid+'</span><br>'
-                                                        + '<small>เบอร์โทรศัพท์</small><br> '+value.phone+'<br>'
-                                                        + '<small>ความถนัด</small><br> '+value.skill+'<br>'
-                                                        + '<small>ประสบการณ์</small><br> '+value.exp+' '+"ปี"+'<br>'
+                                                        + '<small>อักษรนำหน้า</small><br> <span>'+value.character_plate+'</span><br>'
+                                                        + '<small>หมายเลข</small><br> '+value.number_plate+'<br>'
+                                                        + '<small>จังหวัด</small><br> '+value.province_plate+'<br>'
+                                                        + '<small>เลขไมค์</small><br> '+value.mileage+' '+"ปี"+'<br>'
+                                                        + '<small>สี</small><br> '+value.color+'<br>'
                                                     + '</div>'
                                                     +'<div class="row">'
                                                         +'<div class=" col-lg-12">'
-                                                            +'<a href="'+base_url+"garage/mechanic/update/"+value.mechanicId+'"><button type="button" class="btn btn-warning   d1 "  id="#"  ><i class="fa fa-pencil-square-o" title="แก้ไข" ></i></button></a>' 
-                                                            +'<button type="button" class="delete btn  btn btn-danger  d1"  onclick="deletemechanic('+value.mechanicId+',\''+value.firstName+'\')"><i class="fa fa-trash" title="ลบ"></i></button>'
+                                                            +'<a href="'+base_url+"public/carprofile/update/"+value.car_profileId+'"><button type="button" class="btn btn-warning   d1 "  id="#"  ><i class="fa fa-pencil-square-o" title="แก้ไข" ></i></button></a>' 
+                                                            +'<button type="button" class="delete btn  btn btn-danger  d1"  onclick="deleteCarProfile('+value.car_profileId+')"><i class="fa fa-trash" title="ลบ"></i></button>'
                                                         +'</div>'
                                                     +'</div>'
                                                 + '</div>'

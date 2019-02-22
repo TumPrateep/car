@@ -32,21 +32,16 @@ class Carprofilepublic extends BD_Controller {
         $data_check = $this->carprofilepublics->data_check_create($userId,$car_profileId,$character_plate,$number_plate,$province_plate);
         
         $data =array(
-            'mechanicId' => null,
-            'titleName' => null,
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'exp' => $exp,
-            'phone' => $phone,
-            'personalid' => $idCard,
+            'car_profileId' => null,
+            'mileage' => $mileage,
+            'character_plate' => $character_plate,
+            'number_plate' => $number_plate,
+            'province_plate' => $province_plate,
+            'color' => $color,
             'status' => 1,
-            'activeFlag' => 1,
             'create_by' => $userId,
             'create_at' => date('Y-m-d H:i:s',time()),
-            'garageId' => $garageId,
-            'skill' => $skill
-            //'rols' => 2
-            //'idcard' => $idcard
+           
         );
         
         $option = [
@@ -60,24 +55,24 @@ class Carprofilepublic extends BD_Controller {
     function searchcarprofile_post(){
 
         $columns = array( 
-            0 => 'firstname'
+            0 => null//'firstname'
         );
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $totalData = $this->carprofilepublics->allmechanics_count();
+        $totalData = $this->carprofilepublics->allcarprofile_count();
         $totalFiltered = $totalData; 
-        if(empty($this->post('firstName'))&& empty($this->post('skill')))
-        {            
-            $posts = $this->carprofilepublics->allmechanics($limit,$start,$order,$dir);
-        }
-        else {
-            $firstname = $this->post('firstName'); 
-            $skill = $this->post('skill');
-            $posts =  $this->carprofilepublics->mechanics_search($limit,$start,$order,$dir,$firstname,$skill);
-            $totalFiltered = $this->carprofilepublics->mechanics_search_count($firstname,$skill);
-        }
+        // if(empty($this->post('firstName'))&& empty($this->post('skill')))
+        // {            
+        //     $posts = $this->carprofilepublics->allmechanics($limit,$start,$order,$dir);
+        // }
+        // else {
+        //     $firstname = $this->post('firstName'); 
+        //     $skill = $this->post('skill');
+        //     $posts =  $this->carprofilepublics->mechanics_search($limit,$start,$order,$dir,$firstname,$skill);
+        //     $totalFiltered = $this->carprofilepublics->mechanics_search_count($firstname,$skill);
+        // }
         $data = array();
         if(!empty($posts))
         {
@@ -86,17 +81,15 @@ class Carprofilepublic extends BD_Controller {
             foreach ($posts as $post)
             {
                 
-                $nestedData[$count]['mechanicId'] = $post->mechanicId;
-                $nestedData[$count]['tire_dataId'] = $post->titleName;
-                $nestedData[$count]['firstName'] = $post->firstName;
-                $nestedData[$count]['lastName'] = $post->lastName;
-                $nestedData[$count]['phone'] = $post->phone;
-                $nestedData[$count]['personalid'] = $post->personalid;
-              
-                $nestedData[$count]['skill'] = $post->skill;
+                $nestedData[$count]['car_profileId'] = $post->car_profileId;
+                $nestedData[$count]['mileage'] = $post->mileage;
+                $nestedData[$count]['character_plate'] = $post->character_plate;
+                $nestedData[$count]['number_plate'] = $post->number_plate;
+                $nestedData[$count]['province_plate'] = $post->province_plate;
+                $nestedData[$count]['color'] = $post->color;
                 // $nestedData[$count]['role'] = $post->role;
-                $nestedData[$count]['exp'] = $post->exp;
-
+                // $nestedData[$count]['skill'] = $post->skill;
+                // $nestedData[$count]['exp'] = $post->exp;
 
                 $data[$index] = $nestedData;
                 if($count >= 3){
@@ -119,29 +112,26 @@ class Carprofilepublic extends BD_Controller {
     }
     function updatecarprofile_post(){
         $userId = $this->session->userdata['logged_in']['id'];
-        $mechanicId = $this->post("mechanicId");
-        $firstName = $this->post("firstname");
-        $lastName = $this->post("lastname");
-        $exp       = $this->post("exp");
-        $phone     = $this->post("phone");
-        $idCard = $this->post("personalid");
-        $skill = $this->post("skill");
-        $garageId = $this->session->userdata['logged_in']['garageId'];
-        $data_check = $this->carprofilepublics->data_check_create($idCard,$garageId);
-        $this->load->model("mechanics");
-        $data_check_update = $this->carprofilepublics->getMechanicsById($mechanicId);
-        $data_check = $this->carprofilepublics->data_check_update($mechanicId,$firstName,$idCard,$garageId);
+        $car_profileId = $this->post("car_profileId");
+        $mileage = $this->post("mileage");
+        $character_plate = $this->post("character_plate");
+        $number_plate = $this->post("number_plate");
+        $province_plate = $this->post("province_plate");
+        $color     = $this->post("color");
+        $status = $this->post("status");
+
+        $data_check_update = $this->carprofilepublics->getcarprofileById($car_profileId);
+        $data_check = $this->carprofilepublics->data_check_update($userId,$car_profileId,$character_plate,$number_plate,$province_plate);
         $data = array(
-            'mechanicId' => $mechanicId,
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'exp' => $exp,
-            'phone' => $phone,
-            'personalid' => $idCard,
-            'update_by' => $userId,
-            'update_at' => date('Y-m-d H:i:s',time()),
-            'garageId' => $garageId,
-            'skill' => $skill
+            'car_profileId' => $car_profileId,
+            'mileage' => $mileage,
+            'character_plate' => $character_plate,
+            'number_plate' => $number_plate,
+            'province_plate' => $province_plate,
+            'color' => $color,
+            'status' => 1,
+            'create_by' => $userId,
+            'create_at' => date('Y-m-d H:i:s',time()),
         );
         $option = [
             "data_check_update" => $data_check_update,
@@ -154,8 +144,8 @@ class Carprofilepublic extends BD_Controller {
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
     function getcarprofile_post(){
-        $mechanicId = $this->post('mechanicId');
-        $data_check = $this->carprofilepublics->getMechanicsById($mechanicId);
+        $car_profileId = $this->post('car_profileId');
+        $data_check = $this->carprofilepublics->getcarprofileById($car_profileId);
         $option = [
             "data_check" => $data_check
         ];
