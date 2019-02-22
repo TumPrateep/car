@@ -23,6 +23,8 @@
 										</a>
 										<ul>
 											<li><a href="<?=base_url("shop/order"); ?>"><span class="fas fa-bars"></span>  รายการสั่งซื้อ</a></li>
+											<li><a href="<?=base_url("public/userprofile"); ?>"><span class="fa fa-user"></span>  ข้อมูลผู้ใช้งาน</a></li>
+											<li><a href="<?=base_url("public/carprofile"); ?>"><span class="fa fa-car"></span>  ข้อมูลรถ</a></li>
 											<li><a href="#" onclick="logout()"><span class="fas fa-sign-out-alt"></span> ออกจากระบบ</a></li>
 										</ul>
 									</li>
