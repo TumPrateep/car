@@ -254,7 +254,24 @@ $(document).ready(function () {
         },
         onFinished: function (event, currentIndex)
         {
-            alert('Sumited');
+            // alert('Sumited');
+            // event.preventDefault();
+            //   var isValid = register.valid();
+            //   if(isValid){
+            //     var data = register.serialize();
+            //     $.post(base_url+"apiUser/Users/create", data,
+            //       function (data, textStatus, jqXHR) {
+            //         console.log(data);
+            //         if(data.message == 200){
+            //           window.location = base_url+"login";
+            //         }else if(data.message == 3001){
+            //          showMessage(data.message);
+            //         }
+            //       }
+            //     );
+            //   }
+
+            window.location = base_url+"shop/payment/10011";
         },
         // onInit : function (event, currentIndex) {
         //     event.append('demo');
@@ -269,6 +286,28 @@ $(document).ready(function () {
             showCart();
         }
     );
+
+    var pickerCarData = null;
+    $.get(base_url+"service/Carprofile/getAllProfile", {},
+        function (data, textStatus, jqXHR) {
+            pickerCarData = data;
+            var imagePickerCarHtml = '<option value=""></option>';
+            var htmlCar = '<option value="">เลือกป้ายทะเบียนรถ</option>';
+            $.each(data, function (index, val) { 
+                htmlCar += '<option value="'+val.car_profileId  +'">'+val.character_plate+' '+val.number_plate+'</option>';
+                imagePickerCarHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.pictureFront+'" data-img-class="garage-width" data-img-label="<strong>'+val.character_plate+' '+val.number_plate+'</strong><br><span>'+val.province_plate+'</span>" value="'+val.car_profileId   +'">'+val.character_plate+' '+val.number_plate+'</option>';                
+            });
+            $("#garage").html(htmlCar);
+            $("#image-picker").html(imagePickerCarHtml);
+            showImagePickerCar();
+        }
+    );
+    function showImagePickerCar(){
+        $(".image-picker-car").imagepicker({
+            hide_select : true,
+            show_label  : true
+        });
+    }
 
     var pickerData = null;
     $.get(base_url+"service/Garages/getAllGarage", {},
