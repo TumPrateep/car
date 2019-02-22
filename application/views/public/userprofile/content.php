@@ -21,7 +21,7 @@
 							<a class="nav-link " href="#">ข้อมูลรถ</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="#">ข้อมูลส่วนตัว</a>
+							<a class="nav-link active" href="public/userprofile/">ข้อมูลส่วนตัว</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">ออกจากระบบ</a>
@@ -55,20 +55,6 @@
                                 <textarea class="form-control" name="address" id="address" rows="3" readonly></textarea>            
                             </div>
                         </div>
-                        <!-- <div class="form-group row ">
-                            <div class="form-group col-md-4">
-                                <label>จังหวัด</label><span class="error">*</span>
-                                <select class="form-control" name="provinceId" id="provinceId" readonly></select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>อำเภอ</label><span class="error">*</span>
-                                <select class="form-control" name="districtId" id="districtId" readonly></select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>ตำบล</label><span class="error">*</span>
-                                <select class="form-control" name="subdistrictId" id="subdistrictId" readonly></select>
-                            </div>
-                        </div> -->
                         <div class="form-group row ">
                             <div class="col-md-12">
                                 <div class="form-group">

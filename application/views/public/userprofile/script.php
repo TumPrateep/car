@@ -24,7 +24,10 @@
                 $("#provinceId").val(result.provinceId);
                 $("#districtId").val(result.districtId);
                 $("#subdistrictId").val(result.subdistrictId);
-                $("#address").val("บ้านเลขที่"+result.hno+"  หมู่ที่ "+result.village+"  ถนน "+result.road+"  ซอย "+result.Alley+"  ตำบล "+result.districtId+"  อำเภอ "+result.districtId+"  จังหวัด "+result.provinceId);
+                $("#subdistrictName").val(result.subdistrictName);
+                $("#districtName").val(result.districtName);
+                $("#provinceName").val(result.provinceName);
+                $("#address").val("บ้านเลขที่"+result.hno+"  หมู่ที่ "+result.village+"  ถนน "+result.road+"  ซอย "+result.Alley+"  ตำบล "+result.subdistrictName+"  อำเภอ "+result.districtName+"  จังหวัด "+result.provinceName);
                 $("#phone1").val(result.phone1);
                 $("#phone2").val(result.phone2);
                 loadProvinceUser(result.provinceId,result.districtId,result.subdistrictId);

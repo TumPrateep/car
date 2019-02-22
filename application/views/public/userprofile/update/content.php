@@ -21,7 +21,7 @@
 							<a class="nav-link " href="#">ข้อมูลรถ</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="#">ข้อมูลส่วนตัว</a>
+							<a class="nav-link active" href="public/userprofile/">ข้อมูลส่วนตัว</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">ออกจากระบบ</a>
