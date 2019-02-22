@@ -1,7 +1,11 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 class Userprofiles extends CI_Model {
    
-    function getuserById($userId){
+    function getuserById($user_profile){
+        return $this->db->where('user_profile',$user_profile)->where('status', 1)->get("user_profile")->row("user_profile");
+    }
+
+    function getUserProfileByUserId($userId){
         return $this->db->where('userId',$userId)->where('status', 1)->get("user_profile")->row("user_profile");
     }
 

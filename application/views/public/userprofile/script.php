@@ -16,6 +16,7 @@
                 $("#titleName").val(result.titleName);
                 $("#firstname").val(result.firstname);
                 $("#lastname").val(result.lastname);
+                $("#name").val(result.titleName+" "+result.firstname+" "+result.lastname);
                 $("#hno").val(result.hno);
                 $("#village").val(result.village);
                 $("#road").val(result.road);
@@ -23,12 +24,12 @@
                 $("#provinceId").val(result.provinceId);
                 $("#districtId").val(result.districtId);
                 $("#subdistrictId").val(result.subdistrictId);
+                $("#address").val("บ้านเลขที่"+result.hno+"  หมู่ที่ "+result.village+"  ถนน "+result.road+"  ซอย "+result.Alley+"  ตำบล "+result.districtId+"  อำเภอ "+result.districtId+"  จังหวัด "+result.provinceId);
                 $("#phone1").val(result.phone1);
                 $("#phone2").val(result.phone2);
-                $("#address").val("บ้านเลขที่"+result.hno+"  หมู่ที่"+result.village+"  ถนน"+result.road+"  ซอย"+result.Alley);
-   
+                loadProvinceUser(result.provinceId,result.districtId,result.subdistrictId);
+
             }
-            loadProvinceUser(result.provinceId,result.districtId,result.subdistrictId);
             
         });
         
@@ -92,7 +93,7 @@
                 subdistrictDropdownUser.val(subdistrictId);
                 }
             );
-            }
+        }
         $("#submit").validate({
                 rules: {
                     firstName: {

@@ -19,16 +19,14 @@
                 $("#hno").val(result.hno);
                 $("#village").val(result.village);
                 $("#road").val(result.road);
-                $("#alley").val(result.alley);
+                $("#Alley").val(result.Alley);
                 $("#provinceId").val(result.provinceId);
                 $("#districtId").val(result.districtId);
                 $("#subdistrictId").val(result.subdistrictId);
                 $("#phone1").val(result.phone1);
-                $("#phone2").val(result.phone2);
-                $("#address").val("บ้านเลขที่"+result.hno+"  หมู่ที่"+result.village+"  ถนน"+result.road+"  ซอย"+result.Alley);
-   
+                $("#phone2").val(result.phone2); 
+                loadProvinceUser(result.provinceId,result.districtId,result.subdistrictId);
             }
-            loadProvinceUser(result.provinceId,result.districtId,result.subdistrictId);
             
         });
         
@@ -108,32 +106,27 @@
         $("#submit").submit(function(){
             updateuser();
         })
+
+
         function updateuser(){
             event.preventDefault();
             var isValid = $("#submit").valid();
-           
             
             if(isValid){
-                var imageData = $('.image-editor').cropit('export');
-                $('.hidden-image-data').val(imageData);
-                var myform = document.getElementById("submit");
-                var formData = new FormData(myform);
-                $.ajax({
-                url: base_url+"service/Userprofile/update",
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                success: function(data){
+                var data = $("#submit").serialize();
+                $.post(base_url+"service/Userprofile/update",data,
+                function(data){
                     if(data.message == 200){
                         showMessage(data.message,"public/userprofile/");
                     }else{
                         showMessage(data.message);
                     }
-                }
-              });
+                });
+                
             }
         };
+
+
     });
 </script>
 

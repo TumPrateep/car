@@ -39,7 +39,7 @@ class Userprofile extends BD_Controller {
             'hno' => $hno,
             'village' => $village,
             'road' => $road,
-            'alley' => $alley,
+            'Alley' => $Alley,
             'provinceId' => $provinceId,
             'districtId' => $districtId,
             'subdistrictId' => $subdistrictId,
@@ -55,8 +55,8 @@ class Userprofile extends BD_Controller {
             "data_check" => $data_check,
             "data" => $data,
             "model" => $this->userprofiles,
-            "image_path" => $null,
-            "old_image_path" => $null
+            "image_path" => null,
+            "old_image_path" => null
         ];
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }

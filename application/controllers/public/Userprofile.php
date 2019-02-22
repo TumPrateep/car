@@ -14,11 +14,20 @@ class Userprofile extends CI_Controller {
 	{
         
         $userId = $this->session->userdata['logged_in']['id'];
-        $data['user_profile'] = $this->userprofiles->getuserById($userId);
+        $data['user_profile'] = $this->userprofiles->getUserProfileByUserId($userId);
     
         $this->load->view("public/layout/head");
         $this->load->view("public/layout/head_shop");
-        $this->load->view("public/layout/header");
+        if(isset($this->session->userdata['logged_in'])){
+			$isUser = $this->session->userdata['logged_in']['isUser'];
+			if(!$isUser){
+				$this->load->view("public/layout/header");
+			}else{
+				$this->load->view("public/layout/header_login");
+			}
+		}else{
+			$this->load->view("public/layout/header");
+		}
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
         $this->load->view("public/userprofile/content",$data);
@@ -31,11 +40,20 @@ class Userprofile extends CI_Controller {
 	{
         
         $userId = $this->session->userdata['logged_in']['id'];
-        $data['user_profile'] = $this->userprofiles->getuserById($userId);
+        $data['user_profile'] = $this->userprofiles->getUserProfileByUserId($userId);
     
         $this->load->view("public/layout/head");
         $this->load->view("public/layout/head_shop");
-        $this->load->view("public/layout/header");
+        if(isset($this->session->userdata['logged_in'])){
+			$isUser = $this->session->userdata['logged_in']['isUser'];
+			if(!$isUser){
+				$this->load->view("public/layout/header");
+			}else{
+				$this->load->view("public/layout/header_login");
+			}
+		}else{
+			$this->load->view("public/layout/header");
+		}
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
         $this->load->view("public/userprofile/update/content",$data);

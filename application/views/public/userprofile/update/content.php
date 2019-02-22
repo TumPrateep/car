@@ -30,11 +30,11 @@
 				</div>
             </div>
             <div class="row col-md-9">
-                <div class="col-lg-12">
+                <div class="card col-lg-12">
                     <form id="submit">
                         <input type="hidden" id="user_profile" name="user_profile" value="<?=$user_profile ?>">
-                        <div class="card-body black bg-light ">
-                        <h4>ข้อมูลส่วนตัว</h4>
+                        <div class="card-body ">
+                        <h4>แก้ไขข้อมูลส่วนตัว</h4><hr>
                         <div class="form-group row ">
                             <div class="form-group col-md-2">
                                 <label>คำนำหน้า</label> 
@@ -55,9 +55,21 @@
                             </div>
                         </div>
                         <div class="form-group row ">
-                            <div class="form-group col-md-12">
-                                <label>ที่อยู่</label><span class="error">*</span>
-                                <textarea class="form-control" name="address" id="address" rows="3"></textarea>            
+                            <div class="form-group col-md-3">
+                                <label>บ้านเลขที่</label><span class="error">*</span>
+                                <input type="text" name="hno" id="hno" class="form-control" placeholder="บ้านเลขที่">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>หมู่ที่</label><span class="error">*</span>
+                                <input type="text" name="village" id="village" class="form-control" placeholder="หมู่ที่">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>ถนน</label><span class="error">*</span>
+                                <input type="text" name="road" id="road" class="form-control" placeholder="ถนน">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>ซอย</label><span class="error">*</span>
+                                <input type="text" name="Alley" id="Alley" class="form-control" placeholder="ซอย">
                             </div>
                         </div>
                         <div class="form-group row ">
@@ -84,12 +96,13 @@
                                 <input type="text" name="phone2" id="phone2" class="form-control" placeholder="เบอร์โทรศัพท์ที่สามารถติดต่อได้">
                             </div>
                         </div>
-
-                    
-                        <div class="form-group">
-                            <button type="#" class="btn btn-success offset-md-11">บันทึก</button>
+                        <div class="form-group row ">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                <button type="submit" class="btn btn-success ">บันทึก</button> </div>
+                                </div>
+                            </div>
                         </div>
-
                     </form>		
                 </div>
             </div>			

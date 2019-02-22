@@ -30,64 +30,49 @@
 				</div>
             </div>
             <div class="row col-md-9">
-                <div class="col-lg-12">
+                <div class="card col-lg-12">
                     <form id="submit">
                         <input type="hidden" id="user_profile" name="user_profile" value="<?=$user_profile ?>">
-                        <div class="card-body black bg-light ">
-                        <h4>ข้อมูลส่วนตัว</h4>
+                        <div class="card-body ">
+                        <h4>ข้อมูลส่วนตัว</h4><hr>
                         <div class="form-group row ">
-                            <div class="form-group col-md-2">
-                                <label>คำนำหน้า</label> 
-                                <select class="form-control" name="titleName" id="titleName" >
-                                    <option value=""> </option >
-                                    <option value="นาย">นาย</option>
-                                    <option value="นาง">นาง</option>
-                                    <option value="นางสาว">นางสาว</option>
-                                </select>
+                            <div class="form-group col-md-4">
+                                <label>ชื่อ-นามสกุล</label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="ชื่อ" readonly>
                             </div>
-                            <div class="form-group col-md-5">
-                                <label>ชื่อ</label><span class="error">*</span>
-                                <input type="text" name="firstname" id="firstname" class="form-control" placeholder="ชื่อ"  >
+                            <div class="form-group col-md-4">
+                                <label>เบอร์โทรศัพท์</label>
+                                <input type="text" name="phone1" id="phone1" class="form-control" placeholder="เบอร์โทรศัพท์" readonly>
                             </div>
-                            <div class="form-group col-md-5">
-                                <label>นามสกุล</label><span class="error">*</span>
-                                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="นามสกุล">
+                            <div class="form-group col-md-4">
+                                <label>เบอร์โทรศัพท์ที่สามารถติดต่อได้</label>
+                                <input type="text" name="phone2" id="phone2" class="form-control" placeholder="เบอร์โทรศัพท์ที่สามารถติดต่อได้" readonly>
                             </div>
                         </div>
                         <div class="form-group row ">
                             <div class="form-group col-md-12">
-                                <label>ที่อยู่</label><span class="error">*</span>
-                                <textarea class="form-control" name="address" id="address" rows="3"></textarea>            
+                                <label>ที่อยู่</label>
+                                <textarea class="form-control" name="address" id="address" rows="3" readonly></textarea>            
                             </div>
                         </div>
-                        <div class="form-group row ">
+                        <!-- <div class="form-group row ">
                             <div class="form-group col-md-4">
                                 <label>จังหวัด</label><span class="error">*</span>
-                                <select class="form-control" name="provinceId" id="provinceId"></select>
+                                <select class="form-control" name="provinceId" id="provinceId" readonly></select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label>อำเภอ</label><span class="error">*</span>
-                                <select class="form-control" name="districtId" id="districtId"></select>
+                                <select class="form-control" name="districtId" id="districtId" readonly></select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label>ตำบล</label><span class="error">*</span>
-                                <select class="form-control" name="subdistrictId" id="subdistrictId"></select>
+                                <select class="form-control" name="subdistrictId" id="subdistrictId" readonly></select>
                             </div>
-                        </div>
-                        <div class="form-group row ">
-                            <div class="form-group col-md-6">
-                                <label>เบอร์โทรศัพท์</label>
-                                <input type="text" name="phone1" id="phone1" class="form-control" placeholder="เบอร์โทรศัพท์">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>เบอร์โทรศัพท์ที่สามารถติดต่อได้</label><span class="error">*</span>
-                                <input type="text" name="phone2" id="phone2" class="form-control" placeholder="เบอร์โทรศัพท์ที่สามารถติดต่อได้">
-                            </div>
-                        </div>
+                        </div> -->
                         <div class="form-group row ">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <a  href="<?=base_url("public/userprofile/update") ?>"><button type="button" class="btn btn-warning col-md-2 offset-md-10" ><i class="fa fa-edit" aria-hidden="true"></i>แก้ไข</button></a>
+                                    <a  href="<?=base_url("public/userprofile/update") ?>"><button type="button" class="btn btn-warning col-md-2  ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไข</button></a>
                                 </div>
                             </div>
                         </div>
