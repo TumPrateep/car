@@ -254,7 +254,24 @@ $(document).ready(function () {
         },
         onFinished: function (event, currentIndex)
         {
-            alert('Sumited');
+            // alert('Sumited');
+            // event.preventDefault();
+            //   var isValid = register.valid();
+            //   if(isValid){
+            //     var data = register.serialize();
+            //     $.post(base_url+"apiUser/Users/create", data,
+            //       function (data, textStatus, jqXHR) {
+            //         console.log(data);
+            //         if(data.message == 200){
+            //           window.location = base_url+"login";
+            //         }else if(data.message == 3001){
+            //          showMessage(data.message);
+            //         }
+            //       }
+            //     );
+            //   }
+
+            window.location = base_url+"shop/payment/10011";
         },
         // onInit : function (event, currentIndex) {
         //     event.append('demo');
