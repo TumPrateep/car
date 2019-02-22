@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/shop-cart/");?>fonts/themify-icons/themify-icons.css">
 <link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/shop-cart/");?>css/style.css">
+<link rel="stylesheet" href="<?=base_url("/public/css/jquery.datetimepicker.min.css") ?>">
 
 <style type="text/css">
 	.orange-table{

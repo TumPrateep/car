@@ -87,13 +87,13 @@ function setNumber(index, number){
 }
 
 var cartDataDetail = [];
-var totalCost = 0;
+// var totalCost = 0;
 
 function showCart(){
     var html = "";
     var cartList = $("#cart_list");
     cartData = JSON.parse(localStorage.getItem("data"));
-    totalCost = 0;
+    // totalCost = 0;
     $.each(cartData, function( index, value ) {
         if(value.group == "lubricator"){
             html += getLubricator(value, index);
@@ -107,7 +107,21 @@ function showCart(){
     setNumberOfCart();
     
     cartList.html(html);
-    $("#order_total_amount").html(currency(totalCost, {  precision: 0 }).format() + " บาท");
+    setTotalAmount();
+    // $("#order_total_amount").html(currency(totalCost, {  precision: 0 }).format() + " บาท");
+}
+
+function setTotalAmount(){
+    var total = 0;
+    var table = $("#cart-table > tbody");
+    $("#cart-table > tbody  > tr").each(function(index, val) {
+        var trTable = table.find('tr:eq('+index+')').find('input');
+        var isCheck = trTable.is(':checked');
+        if(isCheck){
+            total += trTable.data('amount');
+        }
+    });
+    $("#order_total_amount").html(currency(total, {  precision: 0 }).format() + " บาท");
 }
 
 function deleteCart(index){
@@ -136,20 +150,20 @@ function deleteCart(index){
 
 function getLubricator(value, index){
     var product = cartDataDetail["lubricator"][value.productId];
-    totalCost += (product.price*value.number);
+    var totalCost = (product.price*value.number);
     var html = '<tr>'
-        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" id="blankCheckbox" value="option1" ></div></td>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()" data-amount="'+totalCost+'"></div></td>'
         +'<td><a href="'+base_url+'shop/detail/lubricator/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/lubricatordata/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/lubricator/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.lubricatorNumber+' ขนาด '+product.capacity+' ลิตร</a></td>'
         +'<td><div class="col-md-12">'
             +'<div class="input-group form-group-width ">'
                 +'<div class="input-group-prepend">'
                     +'<button type="button" class="btn btn-danger" id="minus-btn" onclick="minus(\'lubricator\','+index+')"><i class="fa fa-minus"></i></button>'
-                +'</div'
+                +'</div>'
                 +'<input type="number" class="form-control" min="1" value="'+value.number+'" onblur="setNumber('+index+', this)">'
                 +'<div class="input-group-prepend">'
                     +'<button type="button" class="btn btn-warning" id="plus-btn" onclick="plus(\'lubricator\','+index+')"><i class="fa fa-plus"></i></button>'
-                +'</div'
+                +'</div>'
             +'</div>'
         +'</div></td>'
         +'<td><span class="buy-price">'+currency((product.price*value.number), {  precision: 0 }).format()+' บาท</span></td>'
@@ -161,20 +175,20 @@ function getLubricator(value, index){
 
 function getTire(value, index){
     var product = cartDataDetail["tire"][value.productId];
-    totalCost += (product.price*value.number);
+    var totalCost = (product.price*value.number);
     var html = '<tr>'
-        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" id="blankCheckbox" value="option1" ></div></td>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'"></div></td>'
         +'<td><a href="'+base_url+'shop/detail/tire/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/tirebranddata/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/tire/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.number+'</a></td>'
         +'<td><div class="col-md-12">'
             +'<div class="input-group form-group-width ">'
                 +'<div class="input-group-prepend">'
                     +'<button type="button" class="btn btn-danger" id="minus-btn" onclick="minus(\'tire\','+index+')"><i class="fa fa-minus"></i></button>'
-                +'</div'
+                +'</div>'
                 +'<input type="number" class="form-control" min="1" value="'+value.number+'" onblur="setNumber('+index+', this)">'
                 +'<div class="input-group-prepend">'
                     +'<button type="button" class="btn btn-warning" id="plus-btn" onclick="plus(\'tire\','+index+')"><i class="fa fa-plus"></i></button>'
-                +'</div'
+                +'</div>'
             +'</div>'
         +'</div></td>'
         +'<td><span class="buy-price">'+currency((product.price*value.number), {  precision: 0 }).format()+' บาท</span></td>'
@@ -186,42 +200,25 @@ function getTire(value, index){
 
 function getspare(value, index){
     var product = cartDataDetail["spare"][value.productId];
-    totalCost += (product.price*value.number);
-    var html = '<li class="cart_item clearfix">'
-        +'<div class="cart_item_image"><a href="'+base_url+'shop/detail/spare/'+value.productId+'"><img src="'+base_url+'public/image/spareundercarriage/'+product.picture+'" alt=""></a></div>'
-        +'<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">'
-            +'<div class="cart_item_name cart_info_col">'
-                +'<div class="cart_item_title">ชื่อสินค้า</div>'
-                +'<div class="cart_item_text"><a href="'+base_url+'shop/detail/spare/'+value.productId+'">'+product.spares_brandName+' '+product.spares_undercarriageName+' '+product.brandName+' '+product.modelName+' '+product.year+'</a></div>'
-            +'</div>'
-    
-            +'<div class="cart_item_quantity cart_info_col">'
-                +'<div class="cart_item_title">จำนวน</div>'
-                +'<div class="cart_item_text">'
-                    +'<div class="input-group mb-3 col-lg-6">'
-                        +'<div class="input-group-prepend">'
-                            +'<button class="btn btn-danger btn-sm" id="minus-btn" onclick="minus(\'spare\','+index+')"><i class="fa fa-minus"></i></button>'
-                        +'</div>'
-                        +'<input type="number" class="form-control form-control-sm qty_input" value="'+value.number+'" min="1" onblur="setNumber('+index+', this)">'
-                        +'<div class="input-group-prepend">'
-                            +'<button class="btn btn-orange btn-sm" id="plus-btn" onclick="plus(\'spare\','+index+')"><i class="fa fa-plus"></i></button>'
-                        +'</div>'
-                    +'</div>'
+    var totalCost = (product.price*value.number);
+    var html = '<tr>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'"></div></td>'
+        +'<td><a href="'+base_url+'shop/detail/spare/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/spareundercarriage/'+product.picture+'" alt=""></a></td>'
+        +'<td><a class="produst-name" href="'+base_url+'shop/detail/spare/'+value.productId+'">'+product.spares_brandName+' '+product.spares_undercarriageName+' '+product.brandName+' '+product.modelName+' '+product.year+'</a></td>'
+        +'<td><div class="col-md-12">'
+            +'<div class="input-group form-group-width ">'
+                +'<div class="input-group-prepend">'
+                    +'<button type="button" class="btn btn-danger" id="minus-btn" onclick="minus(\'spare\','+index+')"><i class="fa fa-minus"></i></button>'
+                +'</div>'
+                +'<input type="number" class="form-control" min="1" value="'+value.number+'" onblur="setNumber('+index+', this)">'
+                +'<div class="input-group-prepend">'
+                    +'<button type="button" class="btn btn-warning" id="plus-btn" onclick="plus(\'spare\','+index+')"><i class="fa fa-plus"></i></button>'
                 +'</div>'
             +'</div>'
-            +'<div class="cart_item_price cart_info_col">'
-                +'<div class="cart_item_title">ราคา</div>'
-                +'<div class="cart_item_text">'+currency((product.price*value.number), {  precision: 0 }).format()+' บาท</div>'
-            +'</div>'
-            +'<div class="cart_item_total cart_info_col">'
-                +'<div class="cart_item_title">ลบ</div>'
-                +'<div class="cart_item_text ">'
-                    +'<button type="button" class="btn btn-orange" onclick="deleteCart('+index+')"><i class="fa fa-trash"></i></button>'
-                +'</div>'
-            +'</div>'
-            
-        +'</div>'
-    +'</li>';
+        +'</div></td>'
+        +'<td><span class="buy-price">'+currency((product.price*value.number), {  precision: 0 }).format()+' บาท</span></td>'
+        +'<td><button type="button" class="btn btn-orange" onclick="deleteCart('+index+')"><i class="fa fa-trash"></i></button></td>'
+    +'</tr>';
     
     return html;
 }
@@ -257,11 +254,100 @@ $(document).ready(function () {
         },
         onFinished: function (event, currentIndex)
         {
-            alert('Sumited');
+            // alert('Sumited');
+            // event.preventDefault();
+            //   var isValid = register.valid();
+            //   if(isValid){
+            //     var data = register.serialize();
+            //     $.post(base_url+"apiUser/Users/create", data,
+            //       function (data, textStatus, jqXHR) {
+            //         console.log(data);
+            //         if(data.message == 200){
+            //           window.location = base_url+"login";
+            //         }else if(data.message == 3001){
+            //          showMessage(data.message);
+            //         }
+            //       }
+            //     );
+            //   }
+
+            window.location = base_url+"shop/payment/10011";
         },
         // onInit : function (event, currentIndex) {
         //     event.append('demo');
         // }
+    });
+
+    // var form = $("#submit");
+    // var confirmForm = $("#confirm");
+    $.post(base_url+"service/Cart/cartDetail", {"cartData": cartData},
+        function (data, textStatus, jqXHR) {
+            cartDataDetail = data;
+            showCart();
+        }
+    );
+
+    var pickerCarData = null;
+    $.get(base_url+"service/Carprofile/getAllProfile", {},
+        function (data, textStatus, jqXHR) {
+            pickerCarData = data;
+            var imagePickerCarHtml = '<option value=""></option>';
+            var htmlCar = '<option value="">เลือกป้ายทะเบียนรถ</option>';
+            $.each(data, function (index, val) { 
+                htmlCar += '<option value="'+val.car_profileId  +'">'+val.character_plate+' '+val.number_plate+'</option>';
+                imagePickerCarHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.pictureFront+'" data-img-class="garage-width" data-img-label="<strong>'+val.character_plate+' '+val.number_plate+'</strong><br><span>'+val.province_plate+'</span>" value="'+val.car_profileId   +'">'+val.character_plate+' '+val.number_plate+'</option>';                
+            });
+            $("#garage").html(htmlCar);
+            $("#image-picker").html(imagePickerCarHtml);
+            showImagePickerCar();
+        }
+    );
+    function showImagePickerCar(){
+        $(".image-picker-car").imagepicker({
+            hide_select : true,
+            show_label  : true
+        });
+    }
+
+    var pickerData = null;
+    $.get(base_url+"service/Garages/getAllGarage", {},
+        function (data, textStatus, jqXHR) {
+            pickerData = data;
+            var imagePickerHtml = '<option value=""></option>';
+            var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
+            $.each(data, function (index, val) { 
+                html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
+                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span>" value="'+val.garageId+'">'+val.garageName+'</option>';                
+            });
+            $("#garage").html(html);
+            $("#image-picker").html(imagePickerHtml);
+            showImagePicker();
+        }
+    );
+    function showImagePicker(){
+        $(".image-picker").imagepicker({
+            hide_select : true,
+            show_label  : true
+        });
+    }
+
+    $.datetimepicker.setLocale('th');
+    var nowDate = new Date();
+    $("#reserve_day").datetimepicker({
+        timepicker:false,
+        formatDate:'d/m/Y',
+        lang:'th',
+        minDate: nowDate.setDate( nowDate.getDate() + 2 ),
+        mask:true,
+        scrollInput: false,
+        format:'d/m/Y'
+    });
+    $("#reserve_time").datetimepicker({
+        datepicker:false,
+        formatTime:'H:i',
+        mask:true,
+        scrollInput: false,
+        format:'H:i'
     });
 
 

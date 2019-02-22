@@ -82,7 +82,7 @@ $route['shop/detail/([a-zA-Z]+)/(\d+)'] = function ($group, $id)
 $route['login'] = 'public/Auth/login';
 $route['shop/payment/(\d+)'] = function ( $id)
 {
-        return 'public/Payment/Payments/'. $id;
+    return 'public/Payment/Payments/'. $id;
 };
 $route['shop/order'] = 'public/Order/Orders';
 

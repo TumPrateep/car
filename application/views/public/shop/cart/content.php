@@ -6,6 +6,7 @@
             <!-- <h2>SIGN UP OFFICE EMPLYEE ACCOUNT</h2> -->
             <div class="col-md-12">
             <form  id="rigister" class="signup-form">
+				<!-- Step 1 -->
                 <h3>
                     <span class="icon"><i class="fa fa-shopping-cart"></i></span>
                     <span class="title_text">สินค้า</span>
@@ -17,7 +18,7 @@
                     </legend>
                     <div class="row">
 						<div class="col-12">
-                        	<table class="table table-hover ">
+                        	<table class="table table-hover" id="cart-table">
 							  	<thead class="orange-table">
 							    	<tr >
 							      		<th width="10%" scope="col"></th>
@@ -28,35 +29,7 @@
 								      	<th width="10%" scope="col"></th>
 							    	</tr>
 							  	</thead>
-							  	<tbody id="cart_list">
-							    	<tr>
-								      	<td>
-								      		<div class="form-check top">
-											  	<input class="form-check-input size-check" type="checkbox" id="blankCheckbox" value="option1" >
-											</div>
-										</td>
-								      	<td><img src="<?=base_url()?>public/image/icon/car.png"  class="cart_item_image"></td>
-								      	<td><span class="produst-name">ยาง TRW HONDA 2014 </span></td>
-								      	<td>
-								      		<div class="col-md-12">
-									      		<div class="input-group form-group-width ">
-									      			<div class="input-group-prepend">
-									      				<button type="button" class="btn btn-danger"><i class="fa fa-plus"></i></button>
-									      			</div>
-													<input type="number" class="form-control" min="1" placeholder="1">
-													<div class="input-group-prepend">
-														<button type="button" class="btn btn-warning"><i class="fa fa-minus"></i></button>
-													</div>
-												</div>
-								      		</div>
-								      	</td>
-								      	<td><span class="buy-price">1600 บ.</span></td>
-								      	<td><button type="button" class="btn btn-orange"><i class="fa fa-trash"></i></button></td>
-								    </tr>
-								    <tr>
-								    
-								    </tr>
-							  	</tbody>
+							  	<tbody id="cart_list"></tbody>
 							</table>
                         </div>
                         <!-- <div class="underline-line "></div> -->
@@ -70,7 +43,7 @@
 					</div>
                 </fieldset>
 
-
+				<!-- Step 2 -->
                 <h3>
                     <span class="icon"><i class="fa fa-car"></i></span>
                     <span class="title_text">รถยนต์</span>
@@ -107,9 +80,9 @@
                     </div>
 
 					<div class="row">
-						<div class="col-md-3">
+						<!-- <div class="col-md-3">
 						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/icon/741407.png"  class="cart_car_image">
+						    	<img src="/public/image/icon/741407.png"  class="cart_car_image">
 						    	<div class="card-body">
 						      		<div class="card border-black mb-3" >
 									    <div class=" text-center"><h4>นก 5555</h4></div>
@@ -120,11 +93,14 @@
 						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
 						    	</div>
 						  	</div>
+						</div> -->
+						<div class="col-md-12">
+							<select class="image-picker show-html" id="image-picker-car"></select>
 						</div>
 					</div>
                 </fieldset>
 
-
+				<!-- Step 3  -->
                 <h3>
                     <span class="icon"><i class="fa fa-cog"></i></span>
                     <span class="title_text">อู่ซ่อมรถ</span>
@@ -150,47 +126,9 @@
                     </div>
 
                     <div class="row">
-						<div class="col-md-4">
-						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/garage/5c57e6b465164.png"  class="cart_car_image">
-						    	<div class="card-body">
-						      		<div class="title-head text-center">อู่หน้ากอ.</div>
-						      		<div class=" text-center">จ.อ.พ.พฤ.ศ.ส.อา.</div>
-						      		<div class=" text-center">08:00 - 16:00 น.</div>
-						      		
-						    	</div>
-						    	<div class="card-footer">
-						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
-						    	</div>
-						  	</div>
+						<div class="col-md-12">
+							<select class="image-picker show-html" id="image-picker"></select>
 						</div>
-						<div class="col-md-4">
-						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/garage/5c57e6b465164.png"  class="cart_car_image">
-						    	<div class="card-body">
-						      		<div class="title-head text-center">อู่หน้ากอ.</div>
-						      		<div class=" text-center">จ.พ.พฤ.ส.อา.</div>
-						      		<div class=" text-center">11:00 - 22:00 น.</div>
-						    	</div>
-						    	<div class="card-footer">
-						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
-						    	</div>
-						  	</div>
-						</div>
-						<div class="col-md-4">
-						  	<div class="card">
-						    	<img src="<?=base_url()?>public/image/garage/5c57e6b465164.png"  class="cart_car_image">
-						    	<div class="card-body">
-						      		<div class="title-head text-center">อู่หน้ากอ.</div>
-						      		<div class=" text-center">จ.อ.พ.พฤ.ศ.</div>
-						      		<div class=" text-center">10:00 - 20:00 น.</div>
-						    	</div>
-						    	<div class="card-footer">
-						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
-						    	</div>
-						  	</div>
-						</div>
-						
 					</div>
 					<div class="row"><br></div>
 					<h4 class="underline text-center">เลือกเวลาที่ต้องการใช้บริการ</h4>
@@ -232,23 +170,23 @@
 						<div class="col-md-12" id="selectGarage">
 						<!-- add new car -->
 							<!-- <h4 class="underline">เพิ่มข้อมูลรถยนต์ที่ต้องการใช้บริการ</h4> -->
-							<form id="submit-create-garage">
+							<form id="submit-create-car-profile">
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
-										<label class="form-label required" for="garage">อักษรนำหน้า</label>
+										<label class="form-label required" for="car-profile">อักษรนำหน้า</label>
 										<input type="text" class="form-control" id="character_plate" name="character_plate" placeholder="อักษร">
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label class="form-label required" for="garage">หมายเลข</label>
+										<label class="form-label required" for="car-profile">หมายเลข</label>
 										<input type="number" class="form-control" id="number_plate" name="number_plate" placeholder="หมายเลข">
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label class="form-label required" for="garage">จังหวัด</label>
+										<label class="form-label required" for="car-profile">จังหวัด</label>
 										<select class="form-control input-default" name="province_plate" id="province_plate">
 											<option value="">เลือกจังหวัด</option>
 											<option value="1">ตรัง</option>
@@ -258,30 +196,21 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label required">ยี่ห้อรถ</label>
-										<select class="form-control input-default" name="" id="">
+										<select class="form-control input-default" name="brandId" id="brandId">
 											<option value="">เลือกยี่ห้อรถ</option>
 											<option value="toyota">toyota</option>
 										</select>
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label required">รุ่นรถ</label>
-										<select class="form-control input-default" name"" id="">
+										<select class="form-control input-default" name="modelId" id="modelId">
 											<option value="">เลือกรุ่นรถ</option>
 											<option value="มังกรไฟ">มังกรไฟ</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-										<label class="form-label required">รายละเอียด</label>
-										<select class="form-control input-default" name="" id="">
-											<option value="">เลือกรายละเอียด</option>
-											<option value="ม่วงงาม">ม่วงงาม</option>
 										</select>
 									</div>
 								</div>
@@ -289,8 +218,8 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="form-label required">ปีที่ผลิต</label>
-										<select class="form-control input-default" name="" id="">
+										<label class="form-label required">โฉมรถยนต์</label>
+										<select class="form-control input-default" name="detail" id="detail">
 											<option value="">เลือกปีที่ผลิต</option>
 											<option value="2012">2012</option>
 										</select>
@@ -298,8 +227,8 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="form-label required">โฉมรถ</label>
-										<select class="form-control input-default" name="" id="">
+										<label class="form-label required">รายละเอียดรุ่น</label>
+										<select class="form-control input-default" name="modelofcarId" id="modelofcarId">
 											<option value="">เลือกโฉมรถ</option>
 											<option value="95">95</option>
 										</select>
