@@ -215,10 +215,24 @@ class User extends CI_Model{
         $result = $this->db->where('username',$data['users']['username'])->get("users")->row();
         $userId = $result->id;
         $data['profile']['userId'] = $userId;
-        $data['accessories']['userId'] = $userId;
         $this->db->insert('user_profile', $data['profile']);
-        $data['accessories']['create_by'] = $userId;
-        $this->db->insert('car_accessories', $data['accessories']);
+
+        if( !empty($data['accessories']) ){
+            $data['accessories']['userId'] = $userId;
+            $data['accessories']['create_by'] = $userId;
+            $this->db->insert('car_accessories', $data['accessories']);
+        }
+        if (!empty($data['garage']) ) {
+            $data['garage']['userId'] = $userId;
+            $data['garage']['create_by'] = $userId;
+            $this->db->insert('garage', $data['garage']);
+            $result = $this->db->where('garageName',$data['garage']['garageName'])->get("garage")->row();
+            $garageId = $result->garageId;
+            $data['mechanic']['garageId'] = $garageId;
+            $data['mechanic']['create_by'] = $userId;
+            $this->db->insert('mechanic', $data['mechanic']);
+        }
+
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
             return false;
@@ -231,6 +245,14 @@ class User extends CI_Model{
     function getUserByEmail($email){
         $result = $this->db->where("email", $email)->get("users");
         return ($result == null)?null:$result->row();
+    }
+
+    function data_check_garage_create($businessRegistration){
+        $this->db->select("businessRegistration");
+        $this->db->from("garage");
+        $this->db->where("businessRegistration", $businessRegistration);
+        $result = $this->db->get();
+        return $result->row();
     }
 
 }

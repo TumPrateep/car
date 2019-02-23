@@ -51,8 +51,11 @@
                 <fieldset>
                     <legend>
                         <span class="step-heading">เลือกรถยนต์ที่ต้องการ: </span>
-                        <span class="step-number">Step 2 / 3</span>
-                    </legend>
+						<span class="step-number">Step 2 / 3</span>
+					</legend>
+					<div class="alert alert-danger hide" role="alert">
+						<strong>คำเตือน!</strong> เลือกรถยนต์ที่ต้องการ
+					</div>
                     <div class="row ">
                         <div class="col-lg-2">
                             <button type="button" class="btn btn-create" onclick="createCarConfirm()" ><i class="fa fa-plus"></i>  สร้าง</button>  
@@ -95,7 +98,7 @@
 						  	</div>
 						</div> -->
 						<div class="col-md-12">
-							<select class="image-picker show-html" id="image-picker-car"></select>
+							<select class="image-picker show-html" id="image-picker-car" name="carProfileId"></select>
 						</div>
 					</div>
                 </fieldset>
@@ -127,19 +130,19 @@
 
                     <div class="row">
 						<div class="col-md-12">
-							<select class="image-picker show-html" id="image-picker"></select>
+							<select class="image-picker show-html" id="image-picker" name="garageId"></select>
 						</div>
 					</div>
-					<div class="row"><br></div>
+					<br>
 					<h4 class="underline text-center">เลือกเวลาที่ต้องการใช้บริการ</h4>
-					<div class="row">
-						<div class="col-md-3 offset-lg-3">
+					<div class="row justify-content-md-center">
+						<div class="col-lg-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">เลือกวันทำการ</label>
 								<input type="text" class="form-control" id="reserve_day" name="reserve_day" placeholder="เลือกวันทำการ" readonly>
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-lg-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">เลือกเวลาทำการ</label>
 								<input type="text" class="form-control" id="reserve_time" name="reserve_time" placeholder="เลือกเวลาทำการ" readonly>

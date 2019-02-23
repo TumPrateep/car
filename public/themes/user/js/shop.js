@@ -39,7 +39,7 @@
                         cartData.push(product);
                 });
                 localStorage.setItem("data", JSON.stringify(cartData));
-                window.location = base_url+"role";
+                // window.location = base_url+"role";
                 }
             );
         }
