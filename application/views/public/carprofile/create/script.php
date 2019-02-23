@@ -1,3 +1,4 @@
+<script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
 <script>
 
         //  function checkID(id) {
@@ -80,31 +81,71 @@
         //     }
         // });
 
+    // form.submit(function(){
+    //     createcarprofile();
+    // })
+
+
+    // function createcarprofile(){
+    //     event.preventDefault();
+
+    //     var isValid = form.valid();
+        
+    //     if(isValid){
+            
+    //         var data = $("#submit").serialize();
+    //         $.post(base_url+"service/Carprofile/createCarProfile",data,
+    //         function(data){
+    //             if(data.message == 200){
+    //                 showMessage(data.message,"public/carprofilepublic");
+    //             }else{
+    //                 showMessage(data.message);
+    //             }
+    //             console.log(data);
+    //         });
+    //     }
+    // }
+    
     form.submit(function(){
         createcarprofile();
     })
-
-
     function createcarprofile(){
         event.preventDefault();
-
+        var data = $("#submit").serialize();
         var isValid = form.valid();
         
         if(isValid){
-            
-            var data = $("#submit").serialize();
-            $.post(base_url+"service/Carprofile/createCarProfile",data,
-            function(data){
-                if(data.message == 200){
-                    showMessage(data.message,"public/carprofilepublic");
-                }else{
-                    showMessage(data.message);
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
+            var myform = document.getElementById("submit");
+            var formData = new FormData(myform);
+            $.ajax({
+            url: base_url+"service/Carprofile/createCarProfile",data,
+            data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function(data){
+                    if(data.message == 200){
+                        showMessage(data.message,"public/carprofile");
+                    }else{
+                        showMessage(data.message);
+                    }
+                    console.log(data);
                 }
-                console.log(data);
-            });
+          });
         }
     }
     
+    $('.image-editor').cropit({
+        allowDragNDrop: false,
+        width: 200,
+        height: 200,
+        type: 'image/jpeg'
+    });
+
+
+
 
     });
 </script>
