@@ -16,21 +16,51 @@
                 $("#titleName").html(result.titleName);
                 $("#firstname").html(result.firstname);
                 $("#lastname").html(result.lastname);
+                $("#hno").html("บ้านเลขที่ "+result.hno);
+
+                if(result.village == ""){
+                    $("#village").html('-');
+                }else{
+                    $("#village").html("  หมู่ที่ "+result.village);
+                }
+
+                if(result.road == ""){
+                    $("#road").html('-');
+                }else{
+                    $("#road").html("  ถนน "+result.road);
+                }
+
+                if(result.alley == ""){
+                    $("#alley").html('-');
+                }else{
+                    $("#alley").html("  ซอย "+result.Alley);
+                }
+                $("#provinceId").html(result.provinceId);
+                $("#districtId").html(result.districtId);
+                $("#subdistrictId").html(result.subdistrictId);
+                $("#subdistrictName").html("  ตำบล "+result.subdistrictName);
+                $("#districtName").html("  อำเภอ "+result.districtName);
+                $("#provinceName").html("  จังหวัด "+result.provinceName);
+
+                // $("#address").val("บ้านเลขที่"+result.hno+"  หมู่ที่ "+result.village+"  ถนน "+result.road+"  ซอย "+result.Alley+"  ตำบล "+result.subdistrictName+"  อำเภอ "+result.districtName+"  จังหวัด "+result.provinceName);
+                if(result.postCodes == null){
+                    $("#postCodes").html("  รหัสไปรษณีย์ -");
+                }else{
+                    $("#postCodes").html("  รหัสไปรษณีย์ "+result.postCodes);
+                }
+
+                if(result.phone1 == ""){
+                    $("#phone1").html('-');
+                }else{
+                    $("#phone1").html(result.phone1);
+                }
+
+                if(result.phone2 == ""){
+                    $("#phone2").html('-');
+                }else{
+                    $("#phone2").html(result.phone2);
+                }
                 
-                $("#hno").val(result.hno);
-                $("#village").val(result.village);
-                $("#road").val(result.road);
-                $("#alley").val(result.alley);
-                $("#provinceId").val(result.provinceId);
-                $("#districtId").val(result.districtId);
-                $("#subdistrictId").val(result.subdistrictId);
-                $("#subdistrictName").val(result.subdistrictName);
-                $("#districtName").val(result.districtName);
-                $("#provinceName").val(result.provinceName);
-                $("#address").val("บ้านเลขที่"+result.hno+"  หมู่ที่ "+result.village+"  ถนน "+result.road+"  ซอย "+result.Alley+"  ตำบล "+result.subdistrictName+"  อำเภอ "+result.districtName+"  จังหวัด "+result.provinceName);
-                
-                $("#phone1").html(result.phone1);
-                $("#phone2").html(result.phone2);
                 loadProvinceUser(result.provinceId,result.districtId,result.subdistrictId);
 
             }
