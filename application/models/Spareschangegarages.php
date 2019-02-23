@@ -76,7 +76,7 @@ class Spareschangegarages extends CI_Model{
         $this->db->join('spares_undercarriage', 'spares_undercarriage.spares_undercarriageId = spares_change_garage.spares_undercarriageId');
         $this->db->where("spares_change_garage.garageId",$garageId);
         if($search != null){
-            $this->db->where("spares_change_garage.spares_price",$search);
+            $this->db->where("spares_undercarriage.spares_undercarriageName",$search);//เอาไว่ค้นหาตัวที่จะค้นหา
         }
         if($status != null){
             $this->db->where("spares_change_garage.status", $status);
