@@ -35,33 +35,51 @@
                         <input type="hidden" id="user_profile" name="user_profile" value="<?=$user_profile ?>">
                         <div class="card-body ">
                         <h4>ข้อมูลส่วนตัว</h4><hr>
-                        <div class="form-group row ">
-                            <div class="form-group col-md-4">
-                                <label>ชื่อ-นามสกุล :</label><br>
+                        <div class="row ">
+                            <div class="form-group col-md-4 ">
+                                <label>ชื่อ-นามสกุล :</label>
+                            </div>
+                            <div class="form-group col-md-8">
                                 <label class="size-text-user" name="titleName" id="titleName"> </label>
                                 <label class="size-text-user" name="firstname" id="firstname"> </label>
                                 <label class="size-text-user" name="lastname" id="lastname"> </label>
                             </div>
+                        </div>
+
+                        <div class="row ">
                             <div class="form-group col-md-4">
                                 <label>เบอร์โทรศัพท์ :</label>
-                                <label name="phone1" id="phone1" ></label>
                             </div>
+                            <div class="form-group col-md-8">
+                                <label class="size-text-user" name="phone1" id="phone1" ></label>
+                            </div>
+                        </div>
+
+                        <div class="row ">
                             <div class="form-group col-md-4">
                                 <label>เบอร์โทรศัพท์ที่สามารถติดต่อได้ :</label>
-                                <label name="phone2" id="phone2"></label>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label class="size-text-user" name="phone2" id="phone2"></label>
                             </div>
                         </div>
-                        <div class="form-group row ">
-                            <div class="form-group col-md-12">
+
+                        <div class="row ">
+                            <div class="form-group col-md-4">
                                 <label>รายละเอียดที่อยู่ :</label>
-                                <textarea class="form-control input-white" name="address" id="address" rows="3" readonly></textarea><br>
-                                <label name="phone2" id="phone2"></label>
-                                <label name="phone2" id="phone2"></label>
-                                <label name="phone2" id="phone2"></label>
-                                <label name="phone2" id="phone2"></label>            
+                            </div>
+                            <div class="form-group col-md-8">
+                                <span class="size-text-user" name="hno" id="hno"></span>
+                                <span class="size-text-user" name="village" id="village"></span>
+                                <span class="size-text-user" name="road" id="road"></span>
+                                <span class="size-text-user" name="alley" id="alley"></span> 
+                                <span class="size-text-user" name="subdistrictName" id="subdistrictName"></span>
+                                <span class="size-text-user" name="districtName" id="districtName"></span>
+                                <span class="size-text-user" name="provinceName" id="provinceName"></span>
+                                <span class="size-text-user" name="postCodes" id="postCodes"></span>
                             </div>
                         </div>
-                        <div class="form-group row ">
+                        <div class="row ">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <a  href="<?=base_url("public/userprofile/update") ?>"><button type="button" class="btn btn-warning col-md-2  ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไข</button></a>

@@ -26,6 +26,7 @@ class Userprofile extends BD_Controller {
         $provinceId = $this->post('provinceId');
         $districtId = $this->post('districtId');
         $subdistrictId = $this->post('subdistrictId');
+        $postCodes = $this->post('postCodes');
         $phone1 = $this->post('phone1');
         $phone2 = $this->post('phone2');
  
@@ -43,6 +44,7 @@ class Userprofile extends BD_Controller {
             'provinceId' => $provinceId,
             'districtId' => $districtId,
             'subdistrictId' => $subdistrictId,
+            'postCodes' => $postCodes,
             'phone1' => $phone1,
             'phone2' => $phone2,
     
