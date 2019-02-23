@@ -378,7 +378,7 @@
     onLoad();
 
     function loadProvinceUser(){
-      $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
+      $.post(base_url+"service/LocationforRegister/getProvince",{},
         function(data){
           var province = data.data;
           $.each(province, function( index, value ) {
@@ -399,7 +399,7 @@
       subdistrictDropdownUser.html("");
       subdistrictDropdownUser.append('<option value="">เลือกตำบล</option>');
 
-      $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
+      $.post(base_url+"service/LocationforRegister/getDistrict",{
         provinceId: provinceId
       },
         function(data){
@@ -421,7 +421,7 @@
       subdistrictDropdownUser.html("");
       subdistrictDropdownUser.append('<option value="">เลือกตำบล</option>');
         
-      $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
+      $.post(base_url+"service/LocationforRegister/getSubdistrict",{
         districtId: districtId
       },
         function(data){
@@ -434,7 +434,7 @@
     }
 
     function loadProvinceGarage(){
-      $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
+      $.post(base_url+"service/LocationforRegister/getProvince",{},
         function(data){
           var province = data.data;
           $.each(province, function( index, value ) {
@@ -455,7 +455,7 @@
       subdistrictDropdownGarage.html("");
       subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
 
-      $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
+      $.post(base_url+"service/LocationforRegister/getDistrict",{
         provinceId: provinceId
       },
         function(data){
@@ -477,7 +477,7 @@
       subdistrictDropdownGarage.html("");
       subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
         
-      $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
+      $.post(base_url+"service/LocationforRegister/getSubdistrict",{
         districtId: districtId
       },
         function(data){
