@@ -10,7 +10,7 @@ class Lubricatorchange extends BD_Controller {
         // $this->auth();
         $this->load->model('lubricatorchangegarages');
     }
-
+      
     public function createLubricatorchangegarage_post(){
         $lubricator_price = $this->post('lubricator_price');
         $userId = $this->session->userdata['logged_in']['id'];
@@ -103,12 +103,13 @@ class Lubricatorchange extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
         $totalData = $this->lubricatorchangegarages->allLubricatorschanges_count($garageId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('lubricator_price')))
+        if(empty($this->post('price')))
         {            
             $posts = $this->lubricatorchangegarages->allLubricatorchanges($limit,$start,$order,$dir,$garageId);
         }
         else {
-            $search = $this->post('lubricator_price');
+            $search = $this->post('price');
+            $status = null;
             $posts =  $this->lubricatorchangegarages->lubricatorchanges_search($limit,$start,$search,$order,$dir,$status,$garageId);
             $totalFiltered = $this->lubricatorchangegarages->lubricatorchanges_search_count($search,$status,$garageId);
         }

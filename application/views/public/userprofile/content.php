@@ -64,7 +64,7 @@
                         <div class="form-group row ">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <a  href="<?=base_url("public/userprofile/update") ?>"><button type="button" class="btn btn-warning col-md-2  ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไข</button></a>
+                                    <a  href="<?=base_url("public/userprofile/update") ?>"><button type="button" class="btn btn-warning col-md-2  ><i class="fas fa-edit></i>แก้ไข</button></a>
                                 </div>
                             </div>
                         </div>

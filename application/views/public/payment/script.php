@@ -50,7 +50,7 @@
             $.post(base_url+"service/Paymentss/createPaymentDetail",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"car/shop/order");
+                    showMessage(data.message,"shop/order");
                 }else{
                     showMessage(data.message);
                 }
@@ -66,6 +66,12 @@
             $("#depositmoney").val(data.deposit);
         }
     );
+     $('.image-editor').cropit({
+        allowDragNDrop: false,
+        width: 200,
+        height: 200,
+        type: 'image/jpeg'
+    });
 
   });
 </script>

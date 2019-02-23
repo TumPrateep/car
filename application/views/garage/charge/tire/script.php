@@ -28,8 +28,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    // data.rimName = $("#table-search").val(),
-                    // data.status = $("#status").val()
+                    data.rims = $("#rims").val()
                 }
             },
             "order": [[ 1, "asc" ]],
@@ -97,11 +96,10 @@
         fnDelete(option);
     }
 
-    $("#form-search").submit(function(){
+    $("#search").click(function(){
         event.preventDefault();
         table.ajax.reload();
     })
-
     
 </script>
 

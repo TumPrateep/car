@@ -2,8 +2,8 @@
     function deletemechanic(mechanicId,firstName){
         var option = {
             url: "/Mechanic/deleteMechanic?mechanicId="+mechanicId,
-            label: "ลบชื่อช่างคนนี้",
-            content: "คุณต้องการลบ "+firstName+" ใช่หรือไม่",
+            label: "ลบข้อมูลช่าง",
+            content: "คุณต้องการลบช่าง "+firstName+" ใช่หรือไม่",
             gotoUrl: "garage/Mechanic"
         }
         fnDelete(option);
@@ -61,14 +61,14 @@
                                                 + '<div class="card-two">'
                                                     + '<header>'
                                                         + '<div class="avatar">'
-                                                            + '<img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker">'
+                                                            + '<img src="'+picturePath+'mechanic/'+value.picture+'" width="100" />'
                                                         + '</div>'
                                                     + '</header>'
                                                     + '<h3>'+value.firstName+' '+value.lastName+'</h3>'
                                                     + '<div class="desc">'
                                                         + '<small>เลขที่ประจำตัวประชาชน</small><br> <span>'+value.personalid+'</span><br>'
                                                         + '<small>เบอร์โทรศัพท์</small><br> '+value.phone+'<br>'
-                                                        + '<small>ความถนัด</small><br> '+value.skill+'<br>'
+                                                        + '<small>ความเชี่ยวชาญด้านรถ</small><br> '+value.skill+'<br>'
                                                         + '<small>ประสบการณ์</small><br> '+value.exp+' '+"ปี"+'<br>'
                                                     + '</div>'
                                                     +'<div class="row">'
