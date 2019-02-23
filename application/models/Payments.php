@@ -7,13 +7,13 @@ class Payments extends CI_Model {
     //     return $this->db->delete('mechanic', array('mechanicId' => $mechanicId));
     // }
 
-    function getPaymentId($paymentId){
-        return $this->db->where('paymentId',$paymentId)->get("payment")->row();
+    function getPaymentId($orderId){
+        return $this->db->where('orderId',$orderId)->get("payment")->row();
     }
 
-    function insert($data){
-        return $this->db->insert('payment', $data);
-    }
+    // function insert($data){
+    //     return $this->db->insert('payment', $data);
+    // }
 
     function allpayment_count()
     {   
@@ -43,7 +43,6 @@ class Payments extends CI_Model {
     }
 
     function data_check_create($paymentId) {
-
         $this->db->select("paymentId");
         $this->db->from("payment");
         $this->db->where('paymentId',$paymentId);
@@ -51,5 +50,29 @@ class Payments extends CI_Model {
         return $result->row();
     }
 
+    function getPaymentById($paymentId){
+        $this->db->select("paymentId");
+        $this->db->where('paymentId',$paymentId);
+        $result = $this->db->get("payment");
+        return $result->row();
+    }
+
+    function insert($data){
+        $this->db->trans_begin();
+            $userId = $this->session->userdata['logged_in']['id'];
+            $this->db->insert('payment', $data);
+
+            $this->db->where('orderId',$data['orderId']);
+            $result = $this->db->update('order',['status'=> 2]);
+
+
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
+    }
 }
    

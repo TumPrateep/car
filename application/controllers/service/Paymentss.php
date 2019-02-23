@@ -15,35 +15,47 @@ class Paymentss extends BD_Controller {
     function createPaymentDetail_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $data = array();
-        $paymentId = $this->post("orderId");
+        $orderId = $this->post("orderId");
         $date = $this->post("date");
         $time = $this->post("time");
         $bank = $this->post("bank");
+        $money = $this->post("money");
         $transfer = $this->post("transfer");
-        $paymentdetail = $this->payments-> getPaymentId($paymentId);
-       
+        $paymentdetail = $this->payments-> getPaymentId($orderId);
+        $config['upload_path'] = 'public/image/payment/';
+        $img = $this->post("slip");
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $imageName = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName;
+        $success = file_put_contents($file, $data);
+        if (!$success){
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
         $data = array(
-            'order_orderId' => $paymentId,
+            'orderId' => $orderId,
             'paymentId' => null,
-            'create_by' =>$userId ,
+            'created_by' =>$userId ,
             'date' => $date,
             'time' => $time,
-            'create_at' => date('Y-m-d H:i:s',time()),
+            'created_at' => date('Y-m-d H:i:s',time()),
             'bank' => $bank,
             'transfer' => $transfer,
-            'slipimage' => NULL,
+            'money' => $money,
+            // 'slipimage' => NULL,
             'status' => 1,
-            'activeflag' =>1
+            // 'activeflag' =>1
+            "slip"=> $imageName
         );
-
       
         $option = [
             "data_check" => $paymentdetail,
             "data" => $data,
             "model" => $this->payments,
-            "image_path" => null
+            "image_path" => $file
         ];
-
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
         
     }
@@ -55,7 +67,10 @@ class Paymentss extends BD_Controller {
         $output['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
         $output['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage);
         $this->set_response($output, REST_Controller::HTTP_OK);
-    } 
+    }  
+
+  
+    
 
    
 }

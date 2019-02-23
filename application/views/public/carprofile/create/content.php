@@ -58,9 +58,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label required" for="garage">จังหวัด</label>
                                                     <select class="form-control input-default" name="province_plate" id="province_plate">
-                                                        <option value="">เลือกจังหวัด</option>
-                                                        <option value="1">ตรัง</option>
-                                                        <option value="2">นครศรีธรรมราช</option>
+                                                      
                                                     </select>
                                                 </div>
                                             </div>
@@ -78,18 +76,6 @@
                                                     <input type="text" class="form-control" name="color" id="color" placeholder=" สี" >
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label for="mobile">ความเชี่ยวชาญด้านรถ</label><span class="error">*</span>
-                                                    <select class="form-control" name="skill" id="skill" placeholder="ความเชี่ยวชาญด้านรถ" >
-                                                        <option value="">เลือกความชำนาญ</option>
-                                                        <option value="Honda">Honda</option>
-                                                        <option value="Isuzu">Isuzu</option>
-                                                        <option value="Mazda">Mazda</option> 
-                                                        <option value="Toyota">Toyota</option>
-                                                    </select>
-                                                </div>
-                                            </div> -->
                                         </div>
                                         <div class="row p-t-20">
                                             <div class="col-md-12">
@@ -101,34 +87,6 @@
                                                         <div class="image-size-label">ปรับขนาด</div>
                                                         <input type="range" class="cropit-image-zoom-input">
                                                         <input type="hidden" name="picture" class="hidden-image-data" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>  
-                                        <div class="row p-t-20">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                <label class="control-label">รูปหลังรถ</label>
-                                                    <div class="image-editor">
-                                                        <input type="file" class="cropit-image-input" name="tempImage" required>
-                                                        <div class="cropit-preview"></div>
-                                                        <div class="image-size-label">ปรับขนาด</div>
-                                                        <input type="range" class="cropit-image-zoom-input">
-                                                        <input type="hidden" name="picture1" class="hidden-image-data" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>  
-                                        <div class="row p-t-20">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                <label class="control-label">รูปรถ</label>
-                                                    <div class="image-editor">
-                                                        <input type="file" class="cropit-image-input" name="tempImage" required>
-                                                        <div class="cropit-preview"></div>
-                                                        <div class="image-size-label">ปรับขนาด</div>
-                                                        <input type="range" class="cropit-image-zoom-input">
-                                                        <input type="hidden" name="picture2" class="hidden-image-data" />
                                                     </div>
                                                 </div>
                                             </div>

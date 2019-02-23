@@ -82,11 +82,12 @@
                 result = data.data;
                 $("#character_plate").val(result.character_plate);
                 $("#number_plate").val(result.number_plate);
-                $("#province_plate").val(result.province_plate);
+                // $("#province_plate").val(result.province_plate);
                 $("#personalid").val(result.personalid);
                 $("#mileage").val(result.mileage);
                 $("#color").val(result.color);
                 setBrandPicture(result.pictureFront);
+                setProvincePlate(result.province_plate);
             }
             
         });
@@ -157,6 +158,25 @@
               });
             }
         };
+
+    
+        function setProvincePlate(province=null){
+        var provincePlateDropdown = $("#province_plate");
+            provincePlateDropdown.append('<option value="">เลือกจังหวัด</option>');
+            
+            $.post(base_url + "service/Location/getProvinceforcar", {},
+                function(data) {
+                    var provinceforcar = data.data;
+                    $.each(provinceforcar, function(index, value) {
+                        if(province == value.provinceforcarId){
+                            provincePlateDropdown.append('<option value="' + value.provinceforcarId + '" selected>' + value.provinceforcarName + '</option>');   
+                        }else{
+                            provincePlateDropdown.append('<option value="' + value.provinceforcarId + '">' + value.provinceforcarName + '</option>');                               
+                        }
+                    });
+                }
+            );
+        }
 
     });
 
