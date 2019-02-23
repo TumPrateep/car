@@ -2,6 +2,7 @@
 <script src="<?=base_url("public/themes/register/");?>vendor/jquery-steps/jquery.steps.min.js"></script>
 <script src="<?=base_url("public/themes/register/");?>vendor/minimalist-picker/dobpicker.js"></script>
 <script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.full.min.js"></script>
+<script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
 <script src="<?=base_url("public/themes/register/");?>js/main.js"></script>
 <script src="<?=base_url("public/themes/register/");?>js/setcheckbox.js"></script>
 
@@ -16,54 +17,54 @@
     });
   };
 
-  function checkboxall() {   
-        if(this.checked) {
-            // Iterate each checkbox
-            $('#monday').each(function() {
-                this.checked = true;                        
-            });
-            $('#tuesday').each(function() {
-                this.checked = true;                        
-            });
-            $('#wednesday').each(function() {
-                this.checked = true;                        
-            });
-            $('#thursday').each(function() {
-                this.checked = true;                        
-            });
-            $('#friday').each(function() {
-                this.checked = true;                        
-            });
-            $('#saturday').each(function() {
-                this.checked = true;                        
-            });
-            $('#sunday').each(function() {
-                this.checked = true;                        
-            });
-        } else {
-            $('#monday').each(function() {
-                this.checked = false;                       
-            });
-            $('#tuesday').each(function() {
-                this.checked = false;                        
-            });
-            $('#wednesday').each(function() {
-                this.checked = false;                        
-            });
-            $('#thursday').each(function() {
-                this.checked = false;                        
-            });
-            $('#friday').each(function() {
-                this.checked = false;                        
-            });
-            $('#saturday').each(function() {
-                this.checked = false;                        
-            });
-            $('#sunday').each(function() {
-                this.checked = false;                        
-            });
-        }
-    };
+  // function checkboxall() {   
+  //       if(this.checked) {
+  //           // Iterate each checkbox
+  //           $('#monday').each(function() {
+  //               this.checked = true;                        
+  //           });
+  //           $('#tuesday').each(function() {
+  //               this.checked = true;                        
+  //           });
+  //           $('#wednesday').each(function() {
+  //               this.checked = true;                        
+  //           });
+  //           $('#thursday').each(function() {
+  //               this.checked = true;                        
+  //           });
+  //           $('#friday').each(function() {
+  //               this.checked = true;                        
+  //           });
+  //           $('#saturday').each(function() {
+  //               this.checked = true;                        
+  //           });
+  //           $('#sunday').each(function() {
+  //               this.checked = true;                        
+  //           });
+  //       } else {
+  //           $('#monday').each(function() {
+  //               this.checked = false;                       
+  //           });
+  //           $('#tuesday').each(function() {
+  //               this.checked = false;                        
+  //           });
+  //           $('#wednesday').each(function() {
+  //               this.checked = false;                        
+  //           });
+  //           $('#thursday').each(function() {
+  //               this.checked = false;                        
+  //           });
+  //           $('#friday').each(function() {
+  //               this.checked = false;                        
+  //           });
+  //           $('#saturday').each(function() {
+  //               this.checked = false;                        
+  //           });
+  //           $('#sunday').each(function() {
+  //               this.checked = false;                        
+  //           });
+  //       }
+  //   };
 
   $(document).ready(function() {
 
@@ -332,7 +333,7 @@
 
             // var data = form.serialize();
             $.ajax({
-              url: base_url+"apiUser/Users/creategarage",
+              url: base_url+"service/Users/creategarage",
               data: formData,
                     processData: false,
                     contentType: false,
@@ -529,12 +530,16 @@
     $("#timestart").datetimepicker({
         datepicker:false,
         formatTime:'H:i',
+        // mask:true,
+        // scrollInput: false,
         format:'H:i'
     });
 
     $("#timeend").datetimepicker({
         datepicker:false,
         formatTime:'H:i',
+        // mask:true,
+        // scrollInput: false,
         format:'H:i'
     });
 
