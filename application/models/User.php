@@ -226,11 +226,22 @@ class User extends CI_Model{
             $data['garage']['userId'] = $userId;
             $data['garage']['create_by'] = $userId;
             $this->db->insert('garage', $data['garage']);
-            $result = $this->db->where('garageName',$data['garage']['garageName'])->get("garage")->row();
-            $garageId = $result->garageId;
+            // $result = $this->db->where('garageName',$data['garage']['garageName'])->get("garage")->row();
+            $garageId = $this->db->insert_id();;
             $data['mechanic']['garageId'] = $garageId;
             $data['mechanic']['create_by'] = $userId;
             $this->db->insert('mechanic', $data['mechanic']);
+
+            $nowDate = date('Y-m-d H:i:s',time());
+            $this->db->query("INSERT INTO lubricator_change_garage(`garageId`, `lubricator_price`, `status`, `activeFlag`, `create_by`, `create_at`)
+                    SELECT $garageId,`lubricator_price`, `status`, `activeFlag`, $userId, '$nowDate' FROM lubricator_change_garage where garageId = 1");
+            
+            $this->db->query("INSERT INTO `spares_change_garage`(`spares_price`, `status`, `spares_undercarriageId`, `create_by`, `create_at`, `activeFlag`, `garageId`)
+                    SELECT `spares_price`, `status`, `spares_undercarriageId`, $userId, '$nowDate', `activeFlag`, $garageId FROM `spares_change_garage` WHERE garageId = 1");
+
+            $this->db->query("INSERT INTO `tire_change_garage`(`tire_front`, `tire_back`, `status`, `activeFlag`, `create_by`, `create_at`, `garageId`, `rimId`)
+                    SELECT `tire_front`, `tire_back`, `status`, `activeFlag`, $userId, '$nowDate', $garageId, `rimId` FROM `tire_change_garage` WHERE garageId = 1");
+            
         }
 
         if ($this->db->trans_status() === FALSE){
