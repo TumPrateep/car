@@ -25,11 +25,11 @@
 
         form.validate({
             rules:{
-                firstname: {
+                firstName: {
                     required: true,
                     THEN: true
                 },
-                lastname: {
+                lastName: {
                     required: true,
                     THEN: true
                 },
@@ -49,11 +49,11 @@
                     pid: true
                 }
             },messages:{
-                firstname: {
+                firstName: {
                     required: "กรุณากรอกชื่อ",
                     THEN: "กรอกข้อมูลไม่ถูกต้อง"
                 },
-                lastname: {
+                lastName: {
                     required: "กรุณากรอกนามสกุล",
                     THEN: "กรอกข้อมูลไม่ถูกต้อง"
                 },
@@ -81,11 +81,9 @@
 
         var mechanicId = $("#mechanicId").val();
 
-        $.post(base_url+"apiGarage/Mechanic/getMechanic",{
-            "mechanicId" : mechanicId
-        },function(data){
+        $.get(base_url+"apiGarage/Mechanic/getOwner",{},function(data){
             if(data.message!=200){
-                showMessage(data.message,"garage/mechanic");
+                showMessage(data.message,"garage/managegarage");
             }
 
             if(data.message == 200){
@@ -94,9 +92,10 @@
                 $("#lastName").val(result.lastName);
                 $("#exp").val(result.exp);
                 $("#personalid").val(result.personalid);
-                
+                $("#titleName_user").val(result.titleName);
                 $("#phone").val(result.phone);
                 $("#skill").val(result.skill);
+                $("#mechanicId").val(result.mechanicId);
                 setBrandPicture(result.picture);
             }
             
@@ -113,20 +112,6 @@
                         }
                     });
                 }
-
-
-        // $("#submit").validate({
-        //         rules: {
-        //             firstName: {
-        //                 required: true
-        //             }
-        //         },
-        //         messages: {
-        //             firstName: {
-        //                 required: "กรุณากรอกชื่อ"
-        //             }
-        //         }
-        // });
 
         $("#submit").submit(function(){
             updatemechanic();
@@ -145,14 +130,14 @@
                 var formData = new FormData(myform);
 
                 $.ajax({
-                url: base_url+"apiGarage/Mechanic/updateMechanic",
+                url: base_url+"apiGarage/Mechanic/updateOwner",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function(data){
                     if(data.message == 200){
-                        showMessage(data.message,"garage/mechanic/");
+                        showMessage(data.message,"garage/managegarage/");
                     }else{
                         showMessage(data.message);
                     }

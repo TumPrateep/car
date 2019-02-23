@@ -115,12 +115,12 @@ class TireChangegarage extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
         $totalData = $this->tirechangesgarge->allTirechanges_count($garageId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('rimName')))
+        if(empty($this->post('rims')))
         {            
             $posts = $this->tirechangesgarge->allTirechanges($limit,$start,$order,$dir,$garageId);
         }
         else {
-            $search = $this->post('rimName');
+            $search = $this->post('rims');
             $status = $this->post('status');
             $posts =  $this->tirechangesgarge->tirechanges_search($limit,$start,$search,$order,$dir,$status,$garageId);
             $totalFiltered = $this->tirechangesgarge->tirechanges_search_count($search,$status,$garageId);

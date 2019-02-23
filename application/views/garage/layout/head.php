@@ -28,4 +28,48 @@
     <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+    <style type="text/css">
+        .header .top-navbar .navbar-nav > .nav-item > .nav-link{
+            color: #ffffff !important;
+        }
+        .navbar-bg-Orange, .dark-logo , .header .top-navbar .navbar-header{
+            background-color: #ff471a !important;
+        }
+        .bg-o-footer{
+            background-color: #ffb380;
+            color: #ffffff;
+        }
+        .ft-white{
+        color: #e62e00 !important;
+        }
+        .pad-bot{
+            padding-top: : 7px!important;
+        }
+        .bg-sidebar{
+            background-color: #4d4d4d;
+        }
+        .bg-container{
+            background-color: #f2f2f2;
+        }
+        .garage-white i.garage-white{
+        color: #cccccc !important;
+        }
+        .sidebar-nav > ul > li.active > a {
+        color: #cccccc !important;
+        }
+        .sidebar-nav ul li a:hover {
+        color: #ffffff !important;
+        }
+        .sidebar-nav > ul > li > a.active {
+        background-color: #666666 !important;
+        color: #ffffff !important;
+        }
+        .sidebar-nav > ul > li > ul > li > a.active {
+        background-color: #666666 !important;
+        color: #ffffff !important;
+        }
+        .sidebar-nav > ul > li.active > a:hover {
+        color: #ffffff !important;
+        }
+    </style>
 </head>

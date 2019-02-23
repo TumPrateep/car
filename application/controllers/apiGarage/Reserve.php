@@ -24,12 +24,12 @@ class Reserve extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
         $totalData = $this->reserves->allReserve_count($garageId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('orderId')))
+        if(empty($this->post('date,reservename,status')))
         {            
             $posts = $this->reserves->allReserve($limit,$start,$order,$dir,$garageId);
         }
         else {
-            $search = $this->post('orderId');
+            $search = $this->post('date,reservename,status');
             $posts =  $this->reserves->reserves_search($limit,$start,$search,$order,$dir,$status,$garageId);
             $totalFiltered = $this->reserves->reserves_search($search,$status,$garageId);
         }

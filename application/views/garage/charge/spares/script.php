@@ -28,9 +28,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.lubricator_change_garageId = $("#table-search").val(),
-                    // data.lubricator_changeId = $("#table-search").val(),
-                    data.status = $("#status").val()
+                    data.spa = $("#spa").val()
                 }
             },
             "order": [[ 1, "asc" ]],
@@ -78,4 +76,10 @@
         }
         fnDelete(option);
     }
+
+    $("#search").click(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+
 </script>

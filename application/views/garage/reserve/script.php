@@ -28,8 +28,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.reserveId = $("#table-search").val(),
-                    // data.lubricator_changeId = $("#table-search").val(),
+                    data.date = $("#date").val(),
+                    data.reservename = $("#reservename").val(),
                     data.status = $("#status").val()
                 }
             },
@@ -116,5 +116,10 @@
         }
         fnConfirm(option);
     }
+
+    $("#search").click(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
 
 </script>
