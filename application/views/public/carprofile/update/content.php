@@ -79,18 +79,6 @@
                                                     <input type="text" class="form-control" name="color" id="color" placeholder=" สี" >
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label for="mobile">ความเชี่ยวชาญด้านรถ</label><span class="error">*</span>
-                                                    <select class="form-control" name="skill" id="skill" placeholder="ความเชี่ยวชาญด้านรถ" >
-                                                        <option value="">เลือกความชำนาญ</option>
-                                                        <option value="Honda">Honda</option>
-                                                        <option value="Isuzu">Isuzu</option>
-                                                        <option value="Mazda">Mazda</option> 
-                                                        <option value="Toyota">Toyota</option>
-                                                    </select>
-                                                </div>
-                                            </div> -->
                                         </div>
                                         <div class="row p-t-20">
                                             <div class="col-md-12">
@@ -106,34 +94,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row p-t-20">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                <label class="control-label">รูปหลังรถ</label>
-                                                    <div class="image-editor">
-                                                        <input type="file" class="cropit-image-input" name="tempImage" >
-                                                        <div class="cropit-preview"></div>
-                                                        <div class="image-size-label">ปรับขนาด</div>
-                                                        <input type="range" class="cropit-image-zoom-input">
-                                                        <input type="hidden" name="picture1" class="hidden-image-data" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>  
-                                        <div class="row p-t-20">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                <label class="control-label">รูปรถ</label>
-                                                    <div class="image-editor">
-                                                        <input type="file" class="cropit-image-input" name="tempImage" >
-                                                        <div class="cropit-preview"></div>
-                                                        <div class="image-size-label">ปรับขนาด</div>
-                                                        <input type="range" class="cropit-image-zoom-input">
-                                                        <input type="hidden" name="picture2" class="hidden-image-data" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>    
                                         <div class="row">
                                             <div class="col-lg-4"> 
                                                 <button type="submit" class="btn btn-info m-b-10 m-l-5">บันทึก</button>

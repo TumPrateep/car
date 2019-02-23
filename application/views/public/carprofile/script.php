@@ -100,6 +100,7 @@
         event.preventDefault();
         table.ajax.reload();
     })
+    
 
 </script>
 

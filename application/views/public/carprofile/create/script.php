@@ -144,8 +144,25 @@
         type: 'image/jpeg'
     });
 
+    setProvincePlate();
 
-
+    function setProvincePlate(province=null){
+        var provincePlateDropdown = $("#province_plate");
+            provincePlateDropdown.append('<option value="">เลือกจังหวัด</option>');
+            
+            $.post(base_url + "service/Location/getProvinceforcar", {},
+                function(data) {
+                    var provinceforcar = data.data;
+                    $.each(provinceforcar, function(index, value) {
+                        if(province == value.provinceforcarId){
+                            provincePlateDropdown.append('<option value="' + value.provinceforcarId + '" selected>' + value.provinceforcarName + '</option>');   
+                        }else{
+                            provincePlateDropdown.append('<option value="' + value.provinceforcarId + '">' + value.provinceforcarName + '</option>');                               
+                        }
+                    });
+                }
+            );
+        }
 
     });
 </script>
