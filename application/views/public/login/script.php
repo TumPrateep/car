@@ -35,6 +35,7 @@
                             localStorage.token = data.token;
                             localStorage.userId = data.userId;
                             synCartData();
+                            window.location = base_url+"role";
                         }else if(message == "2002"){
                             errorMessage.html("ไม่พบชื่อผู้ใช้งาน <a href='"+base_url+"register"+"'>ลงทะเบียน</a>");
                             errorMessage.show();
