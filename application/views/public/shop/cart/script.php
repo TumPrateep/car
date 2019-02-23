@@ -230,6 +230,36 @@ $(document).ready(function () {
     jQuery.validator.addMethod("username", function(value, element) {
       return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
     }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
+
+    form.validate({
+        rules:{
+            carProfileId: {
+                required: true
+            },
+            garageId: {
+                required: true
+            },
+            reserve_day: {
+                required: true
+            },
+            reserve_time: {
+                required: true
+            }  
+        },messages:{
+            carProfileId: {
+                required: ""
+            },
+            garageId:{
+                required: ""
+            },
+            reserve_day: {
+                required: "เลือกวันที่ทำการ"
+            },
+            reserve_time: {
+                required: "เลือกเวลาทำการ"
+            } 
+        }
+    });
     
     form.steps({
         headerTag: "h3",
@@ -244,34 +274,48 @@ $(document).ready(function () {
         titleTemplate : '<span class="title">#title#</span>',
         onStepChanging: function (event, currentIndex, newIndex)
         {
-            form.validate().settings.ignore = ":disabled,:hidden";
-            return form.valid();
+            var isvalid = true;
+            // form.validate().settings.ignore = ":disabled,:hidden";
+            if(currentIndex == 0){
+                isvalid = form.valid();
+            }
+            if(currentIndex == 1){
+                isvalid = $("#image-picker-car").val() != "";
+                if(!isvalid){
+                    $(".alert").show();
+                    $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
+                }
+            }
+            // if(currentIndex == 2){
+            //     console.log($("#image-picker").val());
+            // }
+            return isvalid;
         },
         onFinishing: function (event, currentIndex)
         {
-            form.validate().settings.ignore = ":disabled";
+            // form.validate().settings.ignore = ":disabled";
             return form.valid();
         },
         onFinished: function (event, currentIndex)
         {
-            // alert('Sumited');
-            // event.preventDefault();
-            //   var isValid = register.valid();
-            //   if(isValid){
-            //     var data = register.serialize();
-            //     $.post(base_url+"apiUser/Users/create", data,
-            //       function (data, textStatus, jqXHR) {
-            //         console.log(data);
-            //         if(data.message == 200){
-            //           window.location = base_url+"login";
-            //         }else if(data.message == 3001){
-            //          showMessage(data.message);
-            //         }
-            //       }
-            //     );
-            //   }
+              var isValid = form.valid();
+              if(isValid){
+                var data = form.serializeArray();
+                $.post(base_url+"service/Order/createOrderDetail", data,
+                    function (data, textStatus, jqXHR) {
+                        if(data.message == 200){
+                            localStorage.setItem("data",JSON.stringify([]));
+                            cartData = [];
+                            synCartData();
+                            showMessage(data.message,"shop/order");
+                        }else{
+                            showMessage(data.message);
+                        }
+                    }
+                );
+              }
 
-            window.location = base_url+"shop/payment/10011";
+            // window.location = base_url+"shop/payment/10011";
         },
         // onInit : function (event, currentIndex) {
         //     event.append('demo');
@@ -332,6 +376,7 @@ $(document).ready(function () {
                 var picker = $("#image-picker option:selected");
                 var dayopen = picker.data("openday");
                 disableDay(dayopen.toString());
+                $("#reserve_day, #reserve_time").val("");
             },
             clicked:function(select, picker, option, event){
                 var picker = $("#image-picker option:selected");

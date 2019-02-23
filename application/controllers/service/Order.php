@@ -17,13 +17,13 @@ class Order extends BD_Controller {
         $garageId = $this->post("garageId");
         $reserve_day = $this->post("reserve_day");
         $reserve_time = $this->post("reserve_time");
-        $plate = $this->post("plate");
+        $carProfileId = $this->post("carProfileId");
 
         $data = array();
         $orderdetail = $this->orders->getAllCartByUserId($userId);
 
         $data["reserve"] = array(
-            "reserveDate" => $reserve_day,
+            "reserveDate" => date('Y-m-d H:i:s', changeFormateDateToTime($reserve_day)),
             "reservetime" => $reserve_time,
             "garageId" => $garageId,
             "created_at" => date('Y-m-d H:i:s',time()),
@@ -35,6 +35,7 @@ class Order extends BD_Controller {
         $data['order'] = array(
             'userId' => $userId,
             'create_by' => $userId,
+            'car_profileId' => $carProfileId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
             'activeflag' =>1
