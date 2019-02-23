@@ -23,14 +23,14 @@
                             </div>
                             <div class="col-lg-3 offset-lg-5 mt-8">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="ขอบยาง">
+                                    <input type="text" class="form-control" id="rims" placeholder="ขอบยาง">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-usd" aria-hidden="true"></i></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-2">
-                                <button type="button" class="btn btn-info btn-block"><i class="fa fa-search"></i>  ค้นหา</i></button>
+                                <button type="button" class="btn btn-info btn-block"  id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
                             </div>
                         </div><br>
                         <div class="row">

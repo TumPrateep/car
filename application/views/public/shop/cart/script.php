@@ -230,6 +230,36 @@ $(document).ready(function () {
     jQuery.validator.addMethod("username", function(value, element) {
       return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
     }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
+
+    form.validate({
+        rules:{
+            carProfileId: {
+                required: true
+            },
+            garageId: {
+                required: true
+            },
+            reserve_day: {
+                required: true
+            },
+            reserve_time: {
+                required: true
+            }  
+        },messages:{
+            carProfileId: {
+                required: ""
+            },
+            garageId:{
+                required: ""
+            },
+            reserve_day: {
+                required: "เลือกวันที่ทำการ"
+            },
+            reserve_time: {
+                required: "เลือกเวลาทำการ"
+            } 
+        }
+    });
     
     form.steps({
         headerTag: "h3",
@@ -244,34 +274,48 @@ $(document).ready(function () {
         titleTemplate : '<span class="title">#title#</span>',
         onStepChanging: function (event, currentIndex, newIndex)
         {
-            form.validate().settings.ignore = ":disabled,:hidden";
-            return form.valid();
+            var isvalid = true;
+            // form.validate().settings.ignore = ":disabled,:hidden";
+            if(currentIndex == 0){
+                isvalid = form.valid();
+            }
+            if(currentIndex == 1){
+                isvalid = $("#image-picker-car").val() != "";
+                if(!isvalid){
+                    $(".alert").show();
+                    $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
+                }
+            }
+            // if(currentIndex == 2){
+            //     console.log($("#image-picker").val());
+            // }
+            return isvalid;
         },
         onFinishing: function (event, currentIndex)
         {
-            form.validate().settings.ignore = ":disabled";
+            // form.validate().settings.ignore = ":disabled";
             return form.valid();
         },
         onFinished: function (event, currentIndex)
         {
-            // alert('Sumited');
-            // event.preventDefault();
-            //   var isValid = register.valid();
-            //   if(isValid){
-            //     var data = register.serialize();
-            //     $.post(base_url+"apiUser/Users/create", data,
-            //       function (data, textStatus, jqXHR) {
-            //         console.log(data);
-            //         if(data.message == 200){
-            //           window.location = base_url+"login";
-            //         }else if(data.message == 3001){
-            //          showMessage(data.message);
-            //         }
-            //       }
-            //     );
-            //   }
+              var isValid = form.valid();
+              if(isValid){
+                var data = form.serializeArray();
+                $.post(base_url+"service/Order/createOrderDetail", data,
+                    function (data, textStatus, jqXHR) {
+                        if(data.message == 200){
+                            localStorage.setItem("data",JSON.stringify([]));
+                            cartData = [];
+                            synCartData();
+                            showMessage(data.message,"shop/order");
+                        }else{
+                            showMessage(data.message);
+                        }
+                    }
+                );
+              }
 
-            window.location = base_url+"shop/payment/10011";
+            // window.location = base_url+"shop/payment/10011";
         },
         // onInit : function (event, currentIndex) {
         //     event.append('demo');
@@ -292,18 +336,18 @@ $(document).ready(function () {
         function (data, textStatus, jqXHR) {
             pickerCarData = data;
             var imagePickerCarHtml = '<option value=""></option>';
-            var htmlCar = '<option value="">เลือกป้ายทะเบียนรถ</option>';
+            // var htmlCar = '<option value="">เลือกป้ายทะเบียนรถ</option>';
             $.each(data, function (index, val) { 
-                htmlCar += '<option value="'+val.car_profileId  +'">'+val.character_plate+' '+val.number_plate+'</option>';
-                imagePickerCarHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.pictureFront+'" data-img-class="garage-width" data-img-label="<strong>'+val.character_plate+' '+val.number_plate+'</strong><br><span>'+val.province_plate+'</span>" value="'+val.car_profileId   +'">'+val.character_plate+' '+val.number_plate+'</option>';                
+                // htmlCar += '<option value="'+val.car_profileId  +'">'+val.character_plate+' '+val.number_plate+'</option>';
+                imagePickerCarHtml += '<option data-img-src="'+base_url+'public/image/carprofile/'+val.pictureFront+'" data-img-class="garage-width" data-img-label="<div class=\'card border-black mrt-4 mb-3\'><div class=\'text-center\'><h4>'+val.character_plate+' '+val.number_plate+'</h4></div><div class=\'text-center\'>'+val.provinceforcarName+'</div></div>" value="'+val.car_profileId   +'">'+val.character_plate+' '+val.number_plate+'</option>';                
             });
-            $("#garage").html(htmlCar);
-            $("#image-picker").html(imagePickerCarHtml);
+            // $("#garage").html(htmlCar);
+            $("#image-picker-car").html(imagePickerCarHtml);
             showImagePickerCar();
         }
     );
     function showImagePickerCar(){
-        $(".image-picker-car").imagepicker({
+        $("#image-picker-car").imagepicker({
             hide_select : true,
             show_label  : true
         });
@@ -314,42 +358,65 @@ $(document).ready(function () {
         function (data, textStatus, jqXHR) {
             pickerData = data;
             var imagePickerHtml = '<option value=""></option>';
-            var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
+            // var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
             $.each(data, function (index, val) { 
-                html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
-                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span>" value="'+val.garageId+'">'+val.garageName+'</option>';                
+                // html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
+                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<div class=\'text-center\'><strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span></div>" value="'+val.garageId+'" data-openday="'+val.dayopenhour+'">'+val.garageName+'</option>';                
             });
-            $("#garage").html(html);
+            // $("#garage").html(html);
             $("#image-picker").html(imagePickerHtml);
             showImagePicker();
         }
     );
     function showImagePicker(){
-        $(".image-picker").imagepicker({
+        $("#image-picker").imagepicker({
             hide_select : true,
-            show_label  : true
+            show_label  : true,
+            selected: function(select, picker, option, event){
+                var picker = $("#image-picker option:selected");
+                var dayopen = picker.data("openday");
+                disableDay(dayopen.toString());
+                $("#reserve_day, #reserve_time").val("");
+            },
+            clicked:function(select, picker, option, event){
+                var picker = $("#image-picker option:selected");
+                if(picker.val() == ""){
+                    $("#reserve_day, #reserve_time").datetimepicker("destroy");
+                    $("#reserve_day, #reserve_time").val("");
+                }
+            },
         });
     }
 
-    $.datetimepicker.setLocale('th');
-    var nowDate = new Date();
-    $("#reserve_day").datetimepicker({
-        timepicker:false,
-        formatDate:'d/m/Y',
-        lang:'th',
-        minDate: nowDate.setDate( nowDate.getDate() + 2 ),
-        mask:true,
-        scrollInput: false,
-        format:'d/m/Y'
-    });
-    $("#reserve_time").datetimepicker({
-        datepicker:false,
-        formatTime:'H:i',
-        mask:true,
-        scrollInput: false,
-        format:'H:i'
-    });
-
+    function disableDay(openday){
+        console.log(openday);
+        $.datetimepicker.setLocale('th');
+        var nowDate = new Date();
+        $("#reserve_day").datetimepicker({
+            timepicker:false,
+            formatDate:'d/m/Y',
+            lang:'th',
+            minDate: nowDate.setDate( nowDate.getDate() + 2 ),
+            mask:true,
+            scrollInput: false,
+            format:'d/m/Y',
+            beforeShowDay: function(date) {
+                var day = date.getDay();
+                if(openday.charAt(day) == 0){
+                    return [false, ''];
+                } else {
+                    return [true, ''];
+                }
+            }
+        });
+        $("#reserve_time").datetimepicker({
+            datepicker:false,
+            formatTime:'H:i',
+            mask:true,
+            scrollInput: false,
+            format:'H:i'
+        });
+    }
 
 });
 

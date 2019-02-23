@@ -17,6 +17,9 @@
 		height: 25px!important;
 		width: 25px!important;
 	}
+	.size-text-user{
+		font-size: 19px;
+	}
 </style>
 
 </head>

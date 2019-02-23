@@ -22,5 +22,5 @@
     <script src="<?=base_url()?>public/themes/garage/js/setup.js"></script>
     <script src="<?=base_url("/public/js/currency.min.js") ?>"></script>
     
-
+    <script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
     

@@ -45,6 +45,15 @@ class Carprofiles extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+
+    function getCarProfileByUserIdAndCarprofileId($userId,$car_profileId){
+        $this->db->select('car_profileId,number_plate,character_plate,province_plate,mileage,color,pictureFront');
+        $this->db->from('car_profile');
+        $this->db->where("userId", $userId);
+        $this->db->where("car_profileId", $car_profileId);
+        $query = $this->db->get();
+        return $query->row();
+    }
     
     function data_check_create($character_plate, $number_plate, $province_plate, $userId){
         $this->db->select("car_profileId");
@@ -59,13 +68,15 @@ class Carprofiles extends CI_Model {
     }
 
     function getAllCarProfile(){
-        $this->db->select('car_profileId, character_plate, number_plate, province_plate, pictureFront');
-        $this->db->where('status', 1);
-        $query = $this->db->get("car_profile");
+        $this->db->select('car_profile.car_profileId, car_profile.character_plate, car_profile.number_plate, car_profile.province_plate, car_profile.pictureFront, provinceforcar.provinceforcarName');
+        $this->db->from("car_profile");
+        $this->db->join("provinceforcar","provinceforcar.provinceforcarId = car_profile.province_plate");
+        $this->db->where('car_profile.status', 1);
+        $query = $this->db->get();
         return $query->result();
     }
 
-    function data_check_update($character_plate, $number_plate, $province_plate, $userId){
+    function data_check_update($character_plate, $number_plate, $province_plate, $userId, $car_profileId){
         $this->db->select("car_profileId");
         $this->db->from("car_profile");
         $this->db->where('character_plate',$character_plate);

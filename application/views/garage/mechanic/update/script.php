@@ -16,22 +16,29 @@
 
     $(document).ready(function () {
 
+        var letters = /^[ก-๙a-zA-Z]+$/;  
         var form = $("#submit");
+        
+        jQuery.validator.addMethod("THEN", function(value, element) {
+            return this.optional(element) || /^[ก-๙a-zA-Z]+$/.test(value);
+        }, 'asasas');
 
         form.validate({
             rules:{
-                firstName: {
-                    required: true
+                firstname: {
+                    required: true,
+                    THEN: true
                 },
-                lastName: {
-                    required: true
+                lastname: {
+                    required: true,
+                    THEN: true
                 },
                 exp: {
                     required: true
                 },
                 phone: {
                     required: true,
-                    minlength: 10,
+                    minlength: 9,
                     maxlength: 10
                 },
                 skill: {
@@ -40,16 +47,15 @@
                 personalid: {
                     required: true,
                     pid: true
-                    // minlength: 13,
-                    // maxlength: 13
-                
                 }
             },messages:{
-                firstName: {
-                    required: "กรุณากรอกชื่อ"
+                firstname: {
+                    required: "กรุณากรอกชื่อ",
+                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
                 },
-                lastName: {
-                    required: "กรุณากรอกนามสกุล"
+                lastname: {
+                    required: "กรุณากรอกนามสกุล",
+                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
                 },
                 exp: {
                     required: "กรุณากรอกประสบการณ์(ปี)"
@@ -68,19 +74,9 @@
                 }
             }
         });
-
-        // form.submit(function (e) { 
-        //     e.preventDefault();
-        //     var isValid = form.valid();
-        //     if(isValid){
-        //         alert("pass");
-        //     }else{
-        //         alert("unpass");
-        //     }
-        // });
-
     });
 
+ 
 
 
         var mechanicId = $("#mechanicId").val();
@@ -101,24 +97,36 @@
                 
                 $("#phone").val(result.phone);
                 $("#skill").val(result.skill);
+                setBrandPicture(result.picture);
             }
             
         });
 
-
-
-        $("#submit").validate({
-                rules: {
-                    firstName: {
-                        required: true
-                    }
-                },
-                messages: {
-                    firstName: {
-                        required: "กรุณากรอกชื่อ"
-                    }
+        function setBrandPicture(picture){
+                    $('.image-editor').cropit({
+                        allowDragNDrop: false,
+                        width: 200,
+                        height: 200,
+                        type: 'image',
+                        imageState: {
+                            src: picturePath+"mechanic/"+picture
+                        }
+                    });
                 }
-        });
+
+
+        // $("#submit").validate({
+        //         rules: {
+        //             firstName: {
+        //                 required: true
+        //             }
+        //         },
+        //         messages: {
+        //             firstName: {
+        //                 required: "กรุณากรอกชื่อ"
+        //             }
+        //         }
+        // });
 
         $("#submit").submit(function(){
             updatemechanic();
@@ -128,18 +136,28 @@
         function updatemechanic(){
             event.preventDefault();
             var isValid = $("#submit").valid();
+           
             
             if(isValid){
-                var data = $("#submit").serialize();
-                $.post(base_url+"apiGarage/Mechanic/updateMechanic",data,
-                function(data){
+                var imageData = $('.image-editor').cropit('export');
+                $('.hidden-image-data').val(imageData);
+                var myform = document.getElementById("submit");
+                var formData = new FormData(myform);
+
+                $.ajax({
+                url: base_url+"apiGarage/Mechanic/updateMechanic",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function(data){
                     if(data.message == 200){
                         showMessage(data.message,"garage/mechanic/");
                     }else{
                         showMessage(data.message);
                     }
-                });
-                
+                }
+              });
             }
         };
 

@@ -1,4 +1,4 @@
-<div class="page-wrapper">
+<div class="page-wrapper bg-container">
 
         <!-- Bread crumb -->
         <div class="row page-titles">
@@ -17,7 +17,7 @@
                 <div class="card col-lg-12">
                     <div class="row justify-content-between">
                         <div class="col-lg-2">
-                        <a  href="<?=base_url("garage/mechanic/create") ?>"><button type="button" class="btn btn-info btn-block" ><i class="fa fa-plus"></i>  สร้าง</button></a>  
+                            <a  href="<?=base_url("garage/mechanic/create") ?>"><button type="button" class="btn btn-info btn-block" ><i class="fa fa-plus"></i>  สร้าง</button></a>  
                         </div>
                         
                         <div class="col-lg-3 offset-lg-2 mt-8">
@@ -30,14 +30,14 @@
                         </div>
                         <div class="col-lg-3 mt-8">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="ความชำนาญ" id="skillmechanic">
+                                <input type="text" class="form-control" placeholder="ความเชี่ยวชาญด้านรถ" id="skillmechanic">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-star" aria-hidden="true"></i></span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-2">
-                            <button type="button" class="btn btn-info btn-block"><i class="fa fa-search"></i>  ค้นหา</i></button>
+                            <button type="button" class="btn btn-info btn-block" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
                         </div>
                     </div>
                 </div>
