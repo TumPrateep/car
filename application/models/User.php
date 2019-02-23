@@ -212,8 +212,9 @@ class User extends CI_Model{
     function insert($data){
         $this->db->trans_begin();
         $this->db->insert('users', $data['users']);
-        $result = $this->db->where('username',$data['users']['username'])->get("users")->row();
-        $userId = $result->id;
+        $userId = $this->db->insert_id();
+        // $result = $this->db->where('username',$data['users']['username'])->get("users")->row();
+        // $userId = $result->id;
         $data['profile']['userId'] = $userId;
         $this->db->insert('user_profile', $data['profile']);
 
@@ -227,7 +228,7 @@ class User extends CI_Model{
             $data['garage']['create_by'] = $userId;
             $this->db->insert('garage', $data['garage']);
             // $result = $this->db->where('garageName',$data['garage']['garageName'])->get("garage")->row();
-            $garageId = $this->db->insert_id();;
+            $garageId = $this->db->insert_id();
             $data['mechanic']['garageId'] = $garageId;
             $data['mechanic']['create_by'] = $userId;
             $this->db->insert('mechanic', $data['mechanic']);
