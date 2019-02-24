@@ -70,7 +70,7 @@
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="user_profile">ซอย</label>
-								<input type="text" class="form-control" name="alley_user" id="alley_user" maxlength="20" placeholder="หมู่ที่">
+								<input type="text" class="form-control" name="alley_user" id="alley_user" maxlength="20" placeholder="ซอย">
 							</div>
 						</div>
 						<div class="col-md-3">
@@ -265,7 +265,7 @@
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="garage">ซอย</label>
-								<input type="text" class="form-control" name="alley_garage" id="alley_garage" placeholder="หมู่ที่">
+								<input type="text" class="form-control" name="alley_garage" id="alley_garage" placeholder="ซอย">
 							</div>
 						</div>
 						<div class="col-md-3">
