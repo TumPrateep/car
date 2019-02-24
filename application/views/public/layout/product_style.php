@@ -13,5 +13,18 @@
 	    margin-left: auto;
   		margin-right: auto;
 	}
+	.txt-S-m{
+		font-size: 19px;
+	}
+	.img-pandding{
+		padding-bottom: 15px;
+	}
+	.btn-center{
+		margin-left: auto;
+  		margin-right: auto;
+	}
+	.btn-white{
+		color: #ffffff;
+	}
 </style>
 </head>

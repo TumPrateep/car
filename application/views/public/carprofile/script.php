@@ -60,37 +60,28 @@
                             html+= '<div class="col-md-4">'
                                         + '<div class="card">'
                                             + '<div class="card-body">'
-                                                + '<div class="card-two">'
-                                                    
-                                                        + '<div class="avatar">'
-                                                            + '<img src="'+picturePath+'carprofile/'+value.picture+'" width="100%" />'
-                                                        + '</div><br>'
-                                                    
-                                                    // + '<h3>'+value.firstName+' '+value.lastName+'</h3>'
-                                                    // + '<div class="card border-black >'
-                                                    //     +'<div class="text-center">'
-                                                    //         +'<h4>'+val.character_plate+' '+val.number_plate+'</h4>'
-                                                    //     +'</div>'
-                                                    //     +'<div class="text-center">'
-                                                    //         // +' 'val.provinceforcarName''
-                                                    //     +'</div>'
-                                                    // +'</div>'
-                                                    
-                                                    + '<div class="desc">'
-                                                        
-                                                        + '<small>อักษรนำหน้า</small><br> <span>'+value.character_plate+'</span><br>'
-                                                        + '<small>หมายเลข</small><br> '+value.number_plate+'<br>'
-                                                        + '<small>จังหวัด</small><br> '+value.province_plate+'<br>'
-                                                        + '<small>เลขไมค์</small><br> '+value.mileage+'<br>'
-                                                        + '<small>สี</small><br> '+value.color+'<br>'
-                                                    + '</div>'
-                                                    +'<div class="row">'
-                                                        +'<div class=" col-lg-12">'
-                                                            +'<a href="'+base_url+"public/carprofile/update/"+value.car_profileId+'"><button type="button" class="btn btn-warning   d1 "  id="#"  ><i class="fa fa-pencil-square-o" title="แก้ไข" ></i></button></a>' 
-                                                            +'<button type="button" class="delete btn  btn btn-danger  d1"  onclick="deleteCarProfile('+value.car_profileId+')"><i class="fa fa-trash" title="ลบ"></i></button>'
-                                                        +'</div>'
+                                                + '<img class="img-pandding" src="'+picturePath+'carprofile/'+value.picture+'" width="100%" />'
+                                                
+                                                + '<div class="card border-black >'
+                                                    +'<div class="text-center">'
+                                                        +'<span class="text-center txt-S-m">'+value.character_plate+'  '+value.number_plate+'</span>'
+                                                        +'<span class="text-center txt-S-m">'+value.province_plate+'</span>'
                                                     +'</div>'
-                                                + '</div>'
+                                                    
+                                                    //     +'<span>'+val.provinceforcarName+'</span>'
+                                                    
+                                                +'</div>'
+                                                + '<span class="text-center txt-S-m">เลขไมค์ : '+value.mileage+'</span> '
+                                                + '<span class="text-center txt-S-m">สีของรถ : '+value.color+'</span> <br>'
+
+
+                                                +'<div class="row btn-center">'
+                                                    +'<div class=" col-lg-12">'
+                                                        +'<a href="'+base_url+"public/carprofile/update/"+value.car_profileId+'"><button type="button" class="btn btn-warning btn-white  d1 " id="#"><i class="fas fa-pen-square" title="แก้ไข" ></i></button></a>' 
+                                                        +'<button type="button" class="delete btn  btn btn-danger  d1"  onclick="deleteCarProfile('+value.car_profileId+')"><i class="fa fa-trash" title="ลบ"></i></button>'
+                                                    +'</div>'
+                                                +'</div><br>'
+
                                             + '</div>'
                                         + '</div>'
                                     + '</div>';
