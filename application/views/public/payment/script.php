@@ -1,3 +1,4 @@
+<script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
 <script>
     $(document).ready(function () {
 

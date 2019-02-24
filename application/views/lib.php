@@ -73,11 +73,25 @@
         if(status==1){
             html+='<span class="badge badge-warning">รออนุมัติ</span>';
         }else if(status==2){
-            html+='<span class="badge badge-success">อนุมัติ</span>';
+            html+='<span class="badge badge-success">รอตรวจสอบ</span>';
         }else if(status==3){
+            html+='<span class="badge badge-success">อนุมัติ</span>';
+        }else if(status==4){
             html+='<span class="badge badge-danger">ยกเลิกการจอง</span>';
         }else{
             html+='<span class="badge badge-danger">ผิดพลาด</span>';
+        }
+        return html;
+    }
+
+    function paymenttStatus(status){
+        var html = '';
+        if(status==1){
+            html+='<span class="badge badge-warning">รออนุมัติ</span>';
+        }else if(status==2){
+            html+='<span class="badge badge-success">อนุมัติ</span>';
+        }else {
+            html+='<span class="badge badge-success">ยกเลิก</span>';
         }
         return html;
     }

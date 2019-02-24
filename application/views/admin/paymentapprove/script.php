@@ -38,7 +38,8 @@
                 null,
                 { "data": "name" },
                 null,
-                { "data": "money" },
+                null,
+                // { "data": "money" },
                 { "data": "slip" },
                 null
             ],
@@ -76,6 +77,17 @@
                     "render": function ( data, type, full, meta ) {
                         
                         return currency(data.summary, {  precision: 0 }).format()+' บาท';
+                    }
+                },{
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.money != null){
+                            return currency(data.money, {  precision: 0 }).format()+' บาท';
+                        }else {
+                            return '<small><i class="gray">รอจ่ายมัดจำ</i></small>';
+                        }
+                        
                     }
                 },{
                     "targets": 5,

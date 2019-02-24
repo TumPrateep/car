@@ -89,10 +89,10 @@
                         html = "";
                         if(data.status == "1"){
                             html += '<a href="'+base_url+"shop/payment/"+data.orderId+'"><button type="button" class="btn btn-danger">มัดจำ</button>'
-                            }
-                            else if(data.status == "2"){
+                        }
+                        else if(data.status == "3"){
                             html +='<a href="#"><button type="button" class="btn btn-warning">รับบริการ</button> '
-                            }
+                        }
                         return html 
                         
                     }
@@ -107,6 +107,8 @@
                                 orderstatus +="รอมัดจำ";
                             }
                             else if(data.status == "2"){
+                                orderstatus +="รออนุมัติ";
+                            }else if(data.status == "3"){
                                 orderstatus +="เข้าใช้บริการ";
                             }
 
