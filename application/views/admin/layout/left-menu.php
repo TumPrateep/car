@@ -153,21 +153,21 @@
 
          <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/garages") ?>">
-            <i class="fa fa-map-o" aria-hidden="true"></i>
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
             <span class="nav-link-text">ที่ตั้งอู่</span>
           </a>
         </li>
         
         <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/paymentapprove") ?>">
-            <i class="fa fa-map-o" aria-hidden="true"></i>
+            <i class="fa fa-credit-card" aria-hidden="true"></i>
             <span class="nav-link-text">ยืนยันค่ามัดจำ</span>
           </a>
         </li>
 
         <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/orderapprove") ?>">
-            <i class="fa fa-map-o" aria-hidden="true"></i>
+            <i class="fa fa-check-square-o" aria-hidden="true"></i>
             <span class="nav-link-text">ยืนยันการสั่งซื่อ</span>
           </a>
         </li>

@@ -69,13 +69,13 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return approveStatus(data.reserveStatus);
+                        return paymenttStatus(data.reserveStatus);
                     }
                 },{
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return approveStatus(data.paymentStatus);
+                        return paymenttStatus(data.paymentStatus);
                     }
                 },{
                     "targets": 5,
@@ -121,7 +121,7 @@
         var option = {
             url: "/Orderapprove/changeStatus?orderId="+orderId,
             label: "ยืนยันรายการสั่งซื้อ",
-            status: 2,
+            status: 3,
             content: "คุณต้องการยืนยันรายการสั่งซื้อนี้ ใช่หรือไม่",
             gotoUrl: "admin/orderapprove"
         }
@@ -132,7 +132,7 @@
         var option = {
             url: "/Orderapprove/changeStatus?orderId="+orderId,
             label: "ยกเลิกรายการสั่งซื้อ",
-            status: 3,
+            status: 4,
             content: "คุณต้องการยกเลิกรายการสั่งซื้อนี้ ใช่หรือไม่",
             gotoUrl: "admin/orderapprove"
         }
