@@ -181,7 +181,8 @@ class Carprofile extends BD_Controller {
             $character_plate = $this->post('character_plate'); 
             $number_plate = $this->post('number_plate');
             $province_plate = $this->post('province_plate');
-            $posts =  $this->carprofiles->allprofile($limit,$start,$order,$dir,$character_plate, $number_plate, $province_plate);
+            $provinceforcarName = $this->post('provinceforcarName');
+            $posts =  $this->carprofiles->allprofile($limit,$start,$order,$dir,$character_plate, $number_plate, $province_plate, $provinceforcarName);
             $totalFiltered = $this->carprofiles->carprofile_search_count($character_plate, $number_plate, $province_plate);
         }
         $data = array();
@@ -196,6 +197,7 @@ class Carprofile extends BD_Controller {
                 $nestedData[$count]['character_plate'] = $post->character_plate;
                 $nestedData[$count]['number_plate'] = $post->number_plate;
                 $nestedData[$count]['province_plate'] = $post->province_plate;
+                $nestedData[$count]['provinceforcarName'] = $post->provinceforcarName;
                 $nestedData[$count]['mileage'] = $post->mileage;
                 $nestedData[$count]['color'] = $post->color;
                 $nestedData[$count]['picture'] = $post->pictureFront;

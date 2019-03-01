@@ -24,7 +24,11 @@ class Carprofiles extends CI_Model {
             ->db
             ->limit($limit,$start)
             ->order_by($col,$dir)
+            ->join("provinceforcar","provinceforcar.provinceforcarId = car_profile.province_plate")
             ->get('car_profile');
+            
+            // ->where('car_profile.status', 1);
+
             if($query->num_rows()>0)
             {
                 return $query->result(); 

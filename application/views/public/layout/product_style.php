@@ -16,6 +16,9 @@
 	.txt-S-m{
 		font-size: 19px;
 	}
+	.txt-S-s{
+		font-size: 16px;
+	}
 	.img-pandding{
 		padding-bottom: 15px;
 	}
