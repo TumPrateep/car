@@ -14,18 +14,22 @@ class Spareschange extends BD_Controller {
     public function createLubricatorchangegarage_post(){
         $spares_price = $this->post('spares_price');
         $spares_undercarriageId = $this->post('spares_undercarriageId');
+        $brandId = $this->post('brandId');
+        
         $userId = $this->session->userdata['logged_in']['id'];
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $data_check = $this->spareschangegarages->data_check_create($garageId,$spares_undercarriageId);
         $data = array(
             'spares_changeId' => null,
+            'brandId'  => $brandId,
             'spares_undercarriageId' => $spares_undercarriageId,
             'spares_price'  => $spares_price,
             'create_by' => $userId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
             'activeFlag' => 1,
-            'garageId' => $garageId
+            'garageId' => $garageId,
+           
         );
         $option = [
             "data_check" => $data_check,
@@ -50,10 +54,12 @@ class Spareschange extends BD_Controller {
     }
     public function update_post(){
         $spares_changeId = $this->post('spares_changeId');
+        $brandId = $this->post('brandId');
         $garageId = $this->session->userdata['logged_in']['garageId'];        
         $spares_price = $this->post('spares_price');
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $userId = $this->session->userdata['logged_in']['id'];
+        
 
         $data_check_update = $this->spareschangegarages->getSparesChangeById($spares_changeId,$garageId);
         $data_check = $this->spareschangegarages->data_check_update($spares_changeId,$garageId,$spares_undercarriageId);
@@ -61,6 +67,7 @@ class Spareschange extends BD_Controller {
         $data = array(
             'spares_changeId' => $spares_changeId,
             'garageId' => $garageId,
+            'brandId'  => $brandId,
             'spares_price'  => $spares_price,
             'spares_undercarriageId' => $spares_undercarriageId,
             'update_by' => $userId,
@@ -95,8 +102,9 @@ class Spareschange extends BD_Controller {
     function searchSpareChange_post(){
         $columns = array( 
             0 => null,
-            1 => 'spares_undercarriageName',
-            2 => 'spares_price'
+            1 => 'brandName',
+            2 => 'spares_undercarriageId',
+            3 => 'spares_price'
         );
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $limit = $this->post('length');
@@ -122,6 +130,7 @@ class Spareschange extends BD_Controller {
                 $nestedData['spares_changeId'] = $post->spares_changeId;
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['spares_price'] = $post->spares_price;
+                $nestedData['brandName'] = $post->brandName;
                 $nestedData['status'] = $post->status;
                 $nestedData['spares_undercarriageName'] = $post->spares_undercarriageName;
                 $data[] = $nestedData;
@@ -136,4 +145,18 @@ class Spareschange extends BD_Controller {
         $this->set_response($json_data);
     }
 
+    function getBrand_post(){
+
+        $output["status"] = true;
+        $result = $this->spareschangegarages->getBrand();
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
 }

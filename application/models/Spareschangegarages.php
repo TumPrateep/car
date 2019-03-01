@@ -14,7 +14,7 @@ class Spareschangegarages extends CI_Model{
 
     // update
     function getUpdate($spares_changeId){
-        $this->db->select('spares_changeId,spares_price, spares_undercarriageId');
+        $this->db->select('spares_changeId,spares_price, spares_undercarriageId,brandId');
         $this->db->where('spares_changeId',$spares_changeId);
         $result = $this->db->get("spares_change_garage")->row();
         return $result;
@@ -46,9 +46,10 @@ class Spareschangegarages extends CI_Model{
 
     // search เข้ามาครั้งเเรก ใช้ดึงข้อมูลมาเเสดง คู่กันกับ allLubricatorschanges_count + funtion search ข้อมูล
     function allSpareschanges($limit,$start,$col,$dir,$garageId){
-        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName');
+        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName,brand.brandName,brand.brandId');
         $this->db->from('spares_change_garage');
         $this->db->join('spares_undercarriage', 'spares_undercarriage.spares_undercarriageId = spares_change_garage.spares_undercarriageId');
+        $this->db->join('brand', 'brand.brandId = spares_change_garage.brandId');
         $this->db->where("spares_change_garage.garageId",$garageId);
 
         $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
@@ -60,9 +61,10 @@ class Spareschangegarages extends CI_Model{
         
     }
     function allSpareschanges_count($garageId){  
-        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName');
+        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName,brand.brandName,brand.brandId');
         $this->db->from('spares_change_garage');
         $this->db->join('spares_undercarriage', 'spares_undercarriage.spares_undercarriageId = spares_change_garage.spares_undercarriageId');
+        $this->db->join('brand', 'brand.brandId = spares_change_garage.brandId');
         $this->db->where("spares_change_garage.garageId",$garageId);
         $query = $this->db->get();
         return $query->num_rows();  
@@ -71,9 +73,10 @@ class Spareschangegarages extends CI_Model{
 
     function spareschanges_search($limit,$start,$search,$col,$dir,$status,$garageId){
         
-        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName');
+        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName,brand.brandName,brand.brandId');
         $this->db->from('spares_change_garage');
         $this->db->join('spares_undercarriage', 'spares_undercarriage.spares_undercarriageId = spares_change_garage.spares_undercarriageId');
+        $this->db->join('brand', 'brand.brandId = spares_change_garage.brandId');
         $this->db->where("spares_change_garage.garageId",$garageId);
         if($search != null){
             $this->db->where("spares_undercarriage.spares_undercarriageName",$search);//เอาไว่ค้นหาตัวที่จะค้นหา
@@ -93,9 +96,10 @@ class Spareschangegarages extends CI_Model{
     }
     function spareschanges_search_count($search,$status,$garageId){
        
-        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName');
+        $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName,brand.brandName,brand.brandId');
         $this->db->from('spares_change_garage');
         $this->db->join('spares_undercarriage', 'spares_undercarriage.spares_undercarriageId = spares_change_garage.spares_undercarriageId');
+        $this->db->join('brand', 'brand.brandId = spares_change_garage.brandId');
         $this->db->where("spares_change_garage.garageId",$garageId);
         if($search != null){
             $this->db->where("spares_change_garage.spares_price",$search);
@@ -106,6 +110,17 @@ class Spareschangegarages extends CI_Model{
         $query = $this->db->get();
         return $query->num_rows();
     } 
+
+    
+    function getBrand(){
+        $this->db->select('brandId,brandName');
+        $this->db->from('brand');
+        $this->db->where('status',1);
+        $this->db->order_by("brandName", "asc");
+        $result = $this->db->get();
+        return $result->result();
+
+    }
 
 
 }

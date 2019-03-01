@@ -12,14 +12,11 @@
             }
         },
         messages: {
-            tire_front: {
-                required: "กรุณากรอกราคายางล้อหน้า"
-            },
-            tire_back: {
-                required: "กรุณากรอกราคายางล้อหลัง"
-            },
             tire_rimId: {
                 required: "กรุณาเลือกขอบยาง"
+            },
+            tire_price: {
+                required: "กรุณากรอกราคาขอบยาง"
             }
         },
     });

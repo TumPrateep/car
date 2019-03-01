@@ -34,6 +34,7 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
+                { "data": "brandName"},
                 { "data": "spares_undercarriageName"},
                 { "data": "spares_price" },
                 null
@@ -42,7 +43,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,3]
+                    "targets": [0,4]
                 },{
                     "targets": 0,
                     "data": null,
@@ -50,20 +51,20 @@
                         return meta.row + 1;
                     }
                 },{
-                    "targets": 2,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return currency(data, { useVedic: true }).format();
                     }
                 },{
-                    "targets": 3,
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"garage/Charge/updatespares/"+data.spares_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareChange('+data.spares_changeId+')"><i class="fa fa-trash"></i></button>';
                     }
                 },
-                {"className": "dt-center", "targets": [0,1,2,3]}
+                {"className": "dt-center", "targets": [0,1,2,3,4]}
             ]	 
     });
 

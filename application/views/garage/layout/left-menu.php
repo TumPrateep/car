@@ -14,12 +14,12 @@
                             <i class="fa fa-address-card-o garage-white"></i>ข้อมูลช่าง</a>
                         </li>
                         <li><a class="has-arrow garage-white " href="#" aria-expanded="false">
-                            <i class="fa fa-usd garage-white"></i><span class="hide-menu">ราคาเปลี่ยน</span></a>
+                            <i class="fa fa-usd garage-white"></i><span class="hide-menu">ราคาค่าบริการ</span></a>
 
                             <ul aria-expanded="false" class="collapse">
-                                <li><a class="garage-white " href="<?=base_url("garage/charge/lubricator"); ?>">น้ำมันเครื่อง</a></li>
-                                <li><a class="garage-white " href="<?=base_url("garage/charge/tire"); ?>">ยางรถ</a></li>
-                                <li><a class="garage-white " href="<?=base_url("garage/charge/spares"); ?>">อะไหล่ช่วงล่าง</a></li>
+                                <li><a class="garage-white " href="<?=base_url("garage/charge/lubricator"); ?>">ค่าบริการเปลี่ยนน้ำมันเครื่อง</a></li>
+                                <li><a class="garage-white " href="<?=base_url("garage/charge/tire"); ?>">ค่าบริการเปลี่ยนยาง</a></li>
+                                <li><a class="garage-white " href="<?=base_url("garage/charge/spares"); ?>">ค่าบริการเปลี่ยนอะไหล่ช่วงล่าง</a></li>
                             </ul>
                         </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/Reserve"); ?>">

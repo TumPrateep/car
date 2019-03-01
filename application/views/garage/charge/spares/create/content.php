@@ -22,6 +22,32 @@
                 <div class="card-body">
                     <form id="submit">
                         <div class="row">
+                            <!-- <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label>ยี่ห้อรถ</label> <span class="error">*</span>
+                                        <select class="form-control" name="brandId" id="brandId">
+                                            <option value="">  </option>
+                                            <option value="CHEVROLET">CHEVROLET</option>
+                                            <option value="FORD">FORD</option>
+                                            <option value="HONDA">HONDA</option>
+                                            <option value="ISUZU">ISUZU</option>
+                                            <option value="MAZDA">MAZDA</option>
+                                            <option value="TOYOTA">TOYOTA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label>ยี่ห้อรถ</label> <span class="error">*</span>
+                                        <select class="form-control" name="brandId" id="brandId">
+                                        
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <div class="form-group">

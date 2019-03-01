@@ -31,7 +31,7 @@ class Tirechangesgarge extends CI_Model{
     }
 
     function checkData($tire_change_garageId){
-        $this->db->select("tire_front,tire_back,rimId");
+        $this->db->select("tire_price,rimId");
         return $this->db->where('tire_change_garageId',$tire_change_garageId)->get("tire_change_garage")->row(); 
     }
 
@@ -40,7 +40,7 @@ class Tirechangesgarge extends CI_Model{
     }
 
     function getallTire($tire_change_garageId){
-        $this->db->select("tire_front,tire_back,rimId");
+        $this->db->select("tire_price,rimId");
         $this->db->where('tire_change_garageId',$tire_change_garageId);
         $this->db->where('status','1');
         $result = $this->db->get('tire_change_garage')->row();
@@ -48,7 +48,7 @@ class Tirechangesgarge extends CI_Model{
     }
 
     function allTirechanges($limit,$start,$col,$dir,$garageId){
-        $this->db->select('tire_change_garage.tire_front, tire_change_garage.tire_back, rim.rimName, tire_change_garage.status, tire_change_garage.tire_change_garageId, tire_change_garage.status,tire_change_garage.garageId');
+        $this->db->select('tire_change_garage.tire_price,rim.rimName, tire_change_garage.status, tire_change_garage.tire_change_garageId, tire_change_garage.status,tire_change_garage.garageId');
         $this->db->from('tire_change_garage');
         $this->db->join('rim', 'tire_change_garage.rimId = rim.rimId');
         $this->db->where('tire_change_garage.garageId',$garageId);
@@ -67,10 +67,9 @@ class Tirechangesgarge extends CI_Model{
     }
 
     function allTirechanges_count(){  
-        $this->db->select('tire_change_garage.tire_front, tire_change_garage.tire_back, rim.rimName, tire_change_garage.tire_change_garageId, tire_change_garage.status ');
+        $this->db->select('tire_change_garage.tire_price,rim.rimName, tire_change_garage.status, tire_change_garage.tire_change_garageId, tire_change_garage.status,tire_change_garage.garageId');
         $this->db->from('tire_change_garage');
         $this->db->join('rim', 'tire_change_garage.rimId = rim.rimId');
-
         $query = $this->db->get();
     
         return $query->num_rows();  
@@ -79,7 +78,7 @@ class Tirechangesgarge extends CI_Model{
     
     function tirechanges_search($limit,$start,$search,$col,$dir,$status,$garageId){
         
-        $this->db->select('tire_change_garage.tire_front, tire_change_garage.tire_back, rim.rimName, tire_change_garage.tire_change_garageId, tire_change_garage.status');
+        $this->db->select('tire_change_garage.tire_price,rim.rimName, tire_change_garage.status, tire_change_garage.tire_change_garageId, tire_change_garage.status,tire_change_garage.garageId');
         $this->db->from('tire_change_garage');
         $this->db->join('rim', 'tire_change_garage.rimId = rim.rimId');
         $this->db->where('tire_change_garage.garageId',$garageId);
@@ -103,7 +102,7 @@ class Tirechangesgarge extends CI_Model{
 
     function tirechanges_search_count($search,$status,$garageId){
        
-        $this->db->select('tire_change_garage.tire_front, tire_change_garage.tire_back, rim.rimName, tire_change_garage.status, tire_change_garage.tire_change_garageId ');
+        $this->db->select('tire_change_garage.tire_price,rim.rimName, tire_change_garage.status, tire_change_garage.tire_change_garageId, tire_change_garage.status,tire_change_garage.garageId');
         $this->db->from('tire_change_garage');
         $this->db->join('rim', 'tire_change_garage.rimId = rim.rimId');
         $this->db->where('tire_change_garage.garageId',$garageId);
@@ -124,7 +123,7 @@ class Tirechangesgarge extends CI_Model{
     }
 
     function getUpdate($tire_change_garageId){
-        $this->db->select("tire_change_garageId,tire_front,tire_back,rimId");
+        $this->db->select("tire_change_garageId,tire_price,rimId");
         $this->db->where('tire_change_garageId',$tire_change_garageId);
         $result = $this->db->get("tire_change_garage")->row();
         return $result;
@@ -138,7 +137,7 @@ class Tirechangesgarge extends CI_Model{
     }
 
     function getTireChangePrice(){
-        $this->db->select("rimId,tire_front,tire_back");
+        $this->db->select("rimId,tire_price");
         $result = $this->db->get("tire_change_garage");
         return $result->result();
     }

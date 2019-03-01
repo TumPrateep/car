@@ -12,14 +12,11 @@
             }
         },
         messages: {
-            tire_front: {
-                required: "กรุณากรอกราคายางล้อหน้า"
+            rimId: {
+                required: "กรุณากรอกขอบยาง"
             },
             tire_back: {
                 required: "กรุณากรอกราคายางล้อหลัง"
-            },
-            rimId: {
-                required: "กรุณากรอกขอบยาง"
             }
         },
     });
@@ -52,8 +49,7 @@
     },function(data){
         var tireChange = data.data;
         getRim(tireChange.rimId);
-        $("#tire_front").val(tireChange.tire_front);
-        $("#tire_back").val(tireChange.tire_back);
+        $("#tire_price").val(tireChange.tire_price);
     });
 
     var tire_rim = $("#tire_rimId");

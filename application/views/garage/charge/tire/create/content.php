@@ -15,7 +15,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-            <div class="card">
+            <div class="card ">
                 <div class="card-title">
                     <h4>เพิ่มข้อมูลราคาเปลี่ยนยาง</h4>
 
@@ -24,31 +24,23 @@
                   <form id="submit">
                     <div class="row">
                       <div class="col-lg-4">
-                        <div class="form-group">
+                          <div class="form-group">
                             <div class="form-group">
-                                <label>ราคายางล้อหน้า</label><span class="error">*</span>
-                                <input type="number" class="form-control"  name="tire_front" id="tire_front" placeholder="ราคายางล้อหน้า">
-                            </div>
+                            <label>ชื่อขอบยาง</label> <span class="error">*</span>
+                              <select class="form-control" name="tire_rimId" id="tire_rimId">
+                                  <option value="">กรุณาเลือกขอบยาง</option>
+                              </select>
+                          </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
+                        <div class="col-lg-4">
                           <div class="form-group">
-                                <label>ราคายางล้อหลัง</label><span class="error">*</span>
-                                <input type="number" class="form-control" name="tire_back" id="tire_back" placeholder="ราคายางล้อหลัง">
-                            </div>
+                              <div class="form-group">
+                                  <label>ราคาขอบยาง</label><span class="error">*</span>
+                                  <input type="number" class="form-control"  name="tire_price" id="tire_price" placeholder="ราคาขอบยาง">
+                              </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <div class="form-group">
-                          <label>ชื่อขอบยาง</label> <span class="error">*</span>
-                            <select class="form-control" name="tire_rimId" id="tire_rimId">
-                                <option value="">กรุณาเลือกขอบยาง</option>
-                            </select>
-                         </div>
-                        </div>
-                      </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-4"> 

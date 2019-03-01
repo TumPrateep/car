@@ -26,6 +26,16 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <div class="form-group">
+                                        <label>ยี่ห้อรถ</label> <span class="error">*</span>
+                                        <select class="form-control" name="brandId" id="brandId">
+                                        
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div class="form-group">
                                         <label>รายการอะไหล่ช่วงล่าง</label> <span class="error">*</span>
                                         <select class="form-control" name="spares_undercarriageId" id="spares_undercarriageId">
                                             <option value="">เลือกรายการอะไหล่ช่วงล่าง</option>

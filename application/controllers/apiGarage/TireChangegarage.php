@@ -12,16 +12,14 @@ class TireChangegarage extends BD_Controller {
 
     public function createtirechange_post(){
         $userId = $this->session->userdata['logged_in']['id'];
-        $tire_front = $this->post('tire_front');
-        $tire_back = $this->post('tire_back');
         $rimId = $this->post('tire_rimId');
+        $tire_price = $this->post('tire_price');
         //$garageId = $this->post('garageId');
         $data = array();
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $data_check = $this->tirechangesgarge->data_check_create($rimId,$garageId);
         $data = array(
-            'tire_front' => $tire_front,
-            'tire_back'  => $tire_back,
+            'tire_price' => $tire_price,
             'rimId' => $rimId,
             'create_by' => $userId,
             'create_at' => date('Y-m-d H:i:s',time()),
@@ -40,10 +38,9 @@ class TireChangegarage extends BD_Controller {
     }
 
     public function update_post(){
-        $tire_front = $this->post('tire_front');
-
-        $tire_back = $this->post('tire_back');
         $rimId = $this->post('tire_rimId');
+        $tire_price = $this->post('tire_price');
+      
         //$gargeId = $this->post('gargeId');
         $tire_change_garageId = $this->post('tire_changeId');
         $userId = $this->session->userdata['logged_in']['id'];
@@ -52,9 +49,8 @@ class TireChangegarage extends BD_Controller {
         $data_check = $this->tirechangesgarge->data_check_update($tire_change_garageId,$rimId,$garageId);
         $data = array(
             'tire_change_garageId' => $tire_change_garageId,
-            'tire_front' => $tire_front,
-            'tire_back' => $tire_back,
             'rimId' => $rimId,
+            'tire_price' => $tire_price,
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time())
         );
@@ -102,10 +98,9 @@ class TireChangegarage extends BD_Controller {
     function searchTireChange_post(){
         $columns = array( 
             0 => null,
-            1 => 'tire_front', 
-            2 => 'tire_back',
-            3 => 'rimName',
-            4 => 'status'
+            1 => 'rimName', 
+            2 => 'tire_price',
+            3 => 'status'
         );
         $garageId = $this->session->userdata['logged_in']['garageId'];
 
@@ -131,9 +126,8 @@ class TireChangegarage extends BD_Controller {
             foreach ($posts as $post)
             {
                 $nestedData['tire_changeId'] = $post->tire_change_garageId;
-                $nestedData['tire_front'] = $post->tire_front;
-                $nestedData['tire_back'] = $post->tire_back;
                 $nestedData['rimName'] = $post->rimName;
+                $nestedData['tire_price'] = $post->tire_price;
                 $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
             }

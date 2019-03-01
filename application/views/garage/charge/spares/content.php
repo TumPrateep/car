@@ -40,6 +40,7 @@
                                     <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
                                         <thead>
                                         <th><i class="fa fa-sort"></i>  ลำดับ</th>
+                                        <th><i class="fa fa-car"></i>  ยี่ห้อรถ</th>
                                         <th><i class="fa fa-toggle-left"></i>  เปลี่ยนอะไหล่ช่วงล่าง</th>
                                         <th><i class="fa fa-toggle-left"></i>  ค่าบริการ</th>
                                         <th></th>

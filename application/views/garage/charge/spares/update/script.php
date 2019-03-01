@@ -1,7 +1,9 @@
 <script>
     $("#submit").validate({
         rules: {
-            spares_price: {
+            brandName: {
+                required: "กรอกยี่ห้อรถ"
+            },spares_price: {
                 required: true
             },
             spares_undercarriageId: {
@@ -9,7 +11,9 @@
             }
         },
         messages: {
-            spares_price: {
+            brandName: {
+                required: "กรอกยี่ห้อรถ"
+            },spares_price: {
                 required: "กรอกราคาค่าบริการ"
             },
             spares_undercarriageId: {
@@ -40,6 +44,8 @@
                 var spareData = data.data;
                 $("#spares_undercarriageId").val(spareData.spares_undercarriageId);
                 $("#spares_price").val(spareData.spares_price);
+                $("#brandId").val(spareData.brandId);
+
             }
         );
     }
@@ -62,6 +68,7 @@
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"garage/charge/spares");
+
                 }else{
                     showMessage(data.message);
                 }
@@ -69,5 +76,25 @@
             
         }
     }
+
+    setBrand();
+
+    function setBrand(brand=null){
+        var brandDropdown = $("#brandId");
+            brandDropdown.append('<option value="">เลือกยี่ห้อรถ</option>');
+            
+            $.post(base_url + "apiGarage/Spareschange/getBrand", {},
+                function(data) {
+                    var Brand = data.data;
+                    $.each(Brand, function(index, value) {
+                        if(brand == value.brandId){
+                            brandDropdown.append('<option value="' + value.brandId + '" selected>' + value.brandName + '</option>');   
+                        }else{
+                            brandDropdown.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');                               
+                        }
+                    });
+                }
+            );
+        }
 
 </script>
