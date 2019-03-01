@@ -55,8 +55,10 @@
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label class="form-label required" for="mechanic">ความเชี่ยวชาญด้านรถ</label>
-								<input type="text" class="form-control" name="skill" id="skill" placeholder="ความชำนาญ">
+								<label class="form-label required" for="mechanic">ความเชี่ยวชาญรถ</label>
+								<select class="form-control" name="brandCar" id="brandCar">
+									<!-- <option>ความเชี่ยวชาญรถ</option> -->
+								</select>
 							</div>
 						</div>
 					</div>
@@ -174,6 +176,23 @@
 								<label class="form-label required" for="garage">หมายเลขทะเบียนการค้า</label>
 								<input type="number" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า">
 							</div>
+
+							<div class="form-group">
+								<label class="for-time-date" for="garage"><h4>การบริการ</h4></label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label" for="garage">
+								<input class="form-check-input" name="change_spare" id="change_spare" type="checkbox" value="1">บริการเปลี่ยนอะไหล่</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label" for="garage">
+								<input class="form-check-input" name="change_tire" id="change_tire" type="checkbox" value="1">บริการเปลี่ยนยางรถ</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label" for="garage">
+								<input class="form-check-input" name="change_lubricator" id="change_lubricator" type="checkbox" value="1">บริการเปลี่ยนน้ำมันเครื่อง</label>
+							</div>
+						
 						</div>
 					</div>
 					<div class="row">
@@ -185,13 +204,13 @@
 						
 						<div class="col-md-4">
 							<div class="form-group">
-								<label class="form-label required" for="garage"> </label>
+								<label class="form-label required" for="garage">ช่วงเวลาเปิด </label>
 								<input type="text" class="form-control" name="timestart" id="timestart" placeholder="00 : 00">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label class="form-label required" for="garage"> </label>
+								<label class="form-label required" for="garage">ช่วงเวลาปิด </label>
 								<input type="text" class="form-control" name="timeend" id="timeend" placeholder="00 : 00">
 							</div>
 						</div>
