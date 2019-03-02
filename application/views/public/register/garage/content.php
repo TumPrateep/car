@@ -57,7 +57,7 @@
 							<div class="form-group">
 								<label class="form-label required" for="mechanic">ความเชี่ยวชาญรถ</label>
 								<select class="form-control" name="brandCar" id="brandCar">
-									<!-- <option>ความเชี่ยวชาญรถ</option> -->
+									<option>ความเชี่ยวชาญรถ</option>
 								</select>
 							</div>
 						</div>
