@@ -60,9 +60,10 @@ class Tirechanges extends CI_Model{
         }
         
     }
+ 
 
     function allTirechanges_count(){  
-        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.tire_changeId, tire_change.status ');
+        $this->db->select('tire_change.tire_front, tire_change.tire_back, rim.rimName, tire_change.status, tire_change.tire_changeId ');
         $this->db->from('tire_change');
         $this->db->join('rim', 'tire_change.rimId = rim.rimId');
 
