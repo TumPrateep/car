@@ -52,8 +52,7 @@
     },function(data){
         var tireChange = data.data;
         getRim(tireChange.rimId);
-        $("#tire_front").val(tireChange.tire_front);
-        $("#tire_back").val(tireChange.tire_back);
+        $("#tire_price").val(tireChange.tire_price);
     });
 
     var tire_rim = $("#rimId");

@@ -40,6 +40,7 @@
                 var spareData = data.data;
                 $("#spares_undercarriageId").val(spareData.spares_undercarriageId);
                 $("#spares_price").val(spareData.spares_price);
+                $("#brandId").val(spareData.brandId);
             }
         );
     }

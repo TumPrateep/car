@@ -21,6 +21,16 @@
                 <form id="submit">
                   <div class="card-body black bg-light">
                     <div class="form-group row">
+                      <div class="col-lg-4">
+                          <div class="form-group">
+                              <div class="form-group">
+                                  <label>ยี่ห้อรถ</label> <span class="error">*</span>
+                                  <select class="form-control" name="brandId" id="brandId">
+                                  
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
                       <div class="col-md-4">
                           <label>รายการอะไหล่ช่วงล่าง</label> <span class="error">*</span>
                           <select class="form-control" name="spares_undercarriageId" id="spares_undercarriageId">
