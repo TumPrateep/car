@@ -6,11 +6,11 @@ class SpareChange extends BD_Controller {
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
+        // $this->auth();
         $this->load->model('sparechanges');
     }
 
-    function searchTireChange_post(){
+    function searchspares_post(){
         $columns = array( 
             0 => null,
             1 => 'spares_change.spares_undercarriageId', 
@@ -40,6 +40,7 @@ class SpareChange extends BD_Controller {
                 $nestedData['spares_changeId'] = $post->spares_changeId;
                 $nestedData['spares_price'] = $post->spares_price;
                 $nestedData['spares_undercarriageName'] = $post->spares_undercarriageName;
+                $nestedData['brandName'] = $post->brandName;
                 $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
             }
@@ -128,6 +129,21 @@ class SpareChange extends BD_Controller {
         ];
 
         $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
+    }
+
+    function getBrand_post(){
+
+        $output["status"] = true;
+        $result = $this->sparechanges->getBrand();
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
     }
 
 }

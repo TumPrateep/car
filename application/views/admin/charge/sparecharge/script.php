@@ -26,7 +26,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/SpareChange/searchTireChange",
+                "url": base_url+"api/SpareChange/searchspares",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -38,8 +38,8 @@
             "columns": [
                 null,
                 { "data": "brandName"},
-                { "data": "spares_undercarriageName" },
-                { "data": "spares_price" },
+                { "data": "spares_undercarriageName"},
+                { "data": "spares_price"},
                 null,
                 null
             ],

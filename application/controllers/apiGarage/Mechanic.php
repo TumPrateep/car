@@ -25,6 +25,7 @@ class Mechanic extends BD_Controller {
         // $titleName = $this->post("titleName");
         $firstName = $this->post("firstname");
         $lastName = $this->post("lastname");
+        $nickName = $this->post("nickName");
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
@@ -49,6 +50,7 @@ class Mechanic extends BD_Controller {
             'titleName' => null,
             'firstName' => $firstName,
             'lastName' => $lastName,
+            'nickName' => $nickName,
             'exp' => $exp,
             'phone' => $phone,
             'personalid' => $idCard,
@@ -106,11 +108,10 @@ class Mechanic extends BD_Controller {
                 $nestedData[$count]['tire_dataId'] = $post->titleName;
                 $nestedData[$count]['firstName'] = $post->firstName;
                 $nestedData[$count]['lastName'] = $post->lastName;
+                // $nestedData[$count]['nickName'] = $post->nickName;
                 $nestedData[$count]['phone'] = $post->phone;
                 $nestedData[$count]['personalid'] = $post->personalid;
-              
                 $nestedData[$count]['skill'] = $post->skill;
-                // $nestedData[$count]['role'] = $post->role;
                 $nestedData[$count]['exp'] = $post->exp;
                 $nestedData[$count]['picture'] = $post->picture;
 
@@ -139,6 +140,7 @@ class Mechanic extends BD_Controller {
         $mechanicId = $this->post("mechanicId");
         $firstName = $this->post("firstname");
         $lastName = $this->post("lastname");
+        $nickName = $this->post("nickName");
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
@@ -170,6 +172,7 @@ class Mechanic extends BD_Controller {
             'mechanicId' => $mechanicId,
             'firstName' => $firstName,
             'lastName' => $lastName,
+            'nickName' => $nickName,
             'exp' => $exp,
             'phone' => $phone,
             'personalid' => $idCard,
@@ -204,6 +207,7 @@ class Mechanic extends BD_Controller {
         $titleName = $this->post("titleName_user");
         $firstName = $this->post("firstName");
         $lastName = $this->post("lastName");
+        $nickName = $this->post("nickName");
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
@@ -235,6 +239,7 @@ class Mechanic extends BD_Controller {
             'mechanicId' => $mechanicId,
             'firstName' => $firstName,
             'lastName' => $lastName,
+            'nickName' => $nickName,
             'titleName' => $titleName,
             'exp' => $exp,
             'phone' => $phone,
