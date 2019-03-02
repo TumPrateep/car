@@ -1211,7 +1211,7 @@ CREATE TABLE `garage` (
   `option_outher` varchar(255) DEFAULT NULL,
   `picture` varchar(255) DEFAULT NULL,
   `userId` int(11) NOT NULL,
-  `garageService` varchar(45) NOT NULL
+  `garageService` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
