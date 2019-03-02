@@ -134,13 +134,27 @@ class Users extends BD_Controller {
 		$personalid_mechanic = $this->post('personalid');
 		$phone_mechanic = $this->post('phone1');
 		$exp = $this->post('exp');
-		$skill = $this->post('skill');
+		$brandCar = $this->post('brandCar');
 
 		// $garagePicture = $this->post('garagePicture');
 		$garagename = $this->post('garagename');
 		$phone_garage = $this->post('phone_garage');
 		$businessRegistration = $this->post('businessRegistration');
 		// $dayopenhour = $this->post('dayopenhour');
+
+		$Service = "";
+		$changeS = $this->post('change_spare');
+		$Service .= (isset($changeS) ? 1 : 0 );
+		
+		$changeT = $this->post('change_tire');
+		$Service .= (isset($changeT) ? 1 : 0 );
+		
+		$changeL = $this->post('change_lubricator');
+		$Service .= (isset($changeL) ? 1 : 0 );
+
+		$garageService = $Service;
+
+
 		$openDay = "";
 		$days = $this->post('sunday');
 		$openDay .= (isset($days) ? 1 : 0 );
@@ -162,7 +176,6 @@ class Users extends BD_Controller {
 
 		$dayst = $this->post('saturday');
 		$openDay .= (isset($dayst) ? 1 : 0 );
-
 
 		$dayopenhour = $openDay;
 
@@ -240,9 +253,10 @@ class Users extends BD_Controller {
 			'titleName' => $titleName_mechanic,
 			'firstName' => $firstname_mechanic,
 			'lastName' => $lastname_mechanic,
+			'nickName' => null,
 			'exp' => $exp,
 			'personalid' => $personalid_mechanic,
-			'skill' => $skill,
+			'brandId' => $brandCar,
 			'phone' => $phone_mechanic,
 			'create_by' => null,
 			'update_by' => null,
@@ -251,6 +265,7 @@ class Users extends BD_Controller {
 			'garageId' => null,
 			'status' => 1,
 			'picture' => null,
+			'job' => null,
 			'activeFlag' => 1
 		);
 		$data['garage'] = array(
@@ -258,6 +273,7 @@ class Users extends BD_Controller {
 			'garageName' => $garagename,
 			'businessRegistration' => $businessRegistration,
 			'comment' => null,
+			'garageService' => $garageService,
 			'phone' => $phone_garage,
 			'dayopenhour' => $dayopenhour,
 			'openingtime' => $timestart,
