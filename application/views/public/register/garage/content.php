@@ -57,7 +57,7 @@
 							<div class="form-group">
 								<label class="form-label required" for="mechanic">ความเชี่ยวชาญรถ</label>
 								<select class="form-control" name="brandCar" id="brandCar">
-									<option>ความเชี่ยวชาญรถ</option>
+									<!-- <option>ความเชี่ยวชาญรถ</option> -->
 								</select>
 							</div>
 						</div>
@@ -182,15 +182,15 @@
 							</div>
 							<div class="form-check">
 								<label class="form-check-label" for="garage">
-								<input class="form-check-input" name="change_spare" id="change_spare" type="checkbox" value="1">บริการเปลี่ยนอะไหล่</label>
+								<input class="form-check-input" name="change_spare" id="change_spare" type="checkbox" value="11">บริการเปลี่ยนอะไหล่</label>
 							</div>
 							<div class="form-check">
 								<label class="form-check-label" for="garage">
-								<input class="form-check-input" name="change_tire" id="change_tire" type="checkbox" value="1">บริการเปลี่ยนยางรถ</label>
+								<input class="form-check-input" name="change_tire" id="change_tire" type="checkbox" value="12">บริการเปลี่ยนยางรถ</label>
 							</div>
 							<div class="form-check">
 								<label class="form-check-label" for="garage">
-								<input class="form-check-input" name="change_lubricator" id="change_lubricator" type="checkbox" value="1">บริการเปลี่ยนน้ำมันเครื่อง</label>
+								<input class="form-check-input" name="change_lubricator" id="change_lubricator" type="checkbox" value="13">บริการเปลี่ยนน้ำมันเครื่อง</label>
 							</div>
 						
 						</div>

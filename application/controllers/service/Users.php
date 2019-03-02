@@ -136,23 +136,23 @@ class Users extends BD_Controller {
 		$exp = $this->post('exp');
 		$brandCar = $this->post('brandCar');
 
-		// $garagePicture = $this->post('garagePicture');
+		$garagePicture = $this->post('garagePicture');
 		$garagename = $this->post('garagename');
 		$phone_garage = $this->post('phone_garage');
 		$businessRegistration = $this->post('businessRegistration');
 		// $dayopenhour = $this->post('dayopenhour');
 
-		$Service = "";
+		$ServiceAll = "";
 		$changeS = $this->post('change_spare');
-		$Service .= (isset($changeS) ? 1 : 0 );
+		$ServiceAll .= (isset($changeS) ? 1 : 0 );
 		
 		$changeT = $this->post('change_tire');
-		$Service .= (isset($changeT) ? 1 : 0 );
+		$ServiceAll .= (isset($changeT) ? 1 : 0 );
 		
 		$changeL = $this->post('change_lubricator');
-		$Service .= (isset($changeL) ? 1 : 0 );
+		$ServiceAll .= (isset($changeL) ? 1 : 0 );
 
-		$garageService = $Service;
+		$garageService = $ServiceAll;
 
 
 		$openDay = "";
