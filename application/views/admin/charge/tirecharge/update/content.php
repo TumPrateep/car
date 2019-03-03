@@ -30,8 +30,8 @@
                           </select>
                       </div>
                       <div class="col-md-4">
-                          <label>ราคาขอบยาง</label> <span class="error">*</span>
-                          <input type="number" class="form-control" placeholder="กรุณากรอกราคาขอบยาง" name="tire_price" id="tire_price">
+                          <label>ราคาค่าบริการเปลี่ยนขอบยาง</label> <span class="error">*</span>
+                          <input type="number" class="form-control" placeholder="กรุณากรอกราคาค่าบริการเปลี่ยนขอบยาง" name="tire_price" id="tire_price">
                       </div>
                     </div>
                     
