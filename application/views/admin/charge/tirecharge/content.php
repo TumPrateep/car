@@ -42,7 +42,7 @@
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
           <th><i class="fa fa-circle-o"></i>  ขอบยาง</th>
-          <th><i class="fa fa-usd" ></i>  ราคาขอบยาง</th>
+          <th><i class="fa fa-usd" ></i>  ราคาค่าบริการ</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	

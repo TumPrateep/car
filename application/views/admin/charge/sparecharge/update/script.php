@@ -18,21 +18,10 @@
         },
     });
 
-    var sparePartCar = $("#spares_undercarriageId");
+
     var spares_changeId = $("#spares_changeId");
 
-    function init(){
-        $.get(base_url+"api/SpareUndercarriage/getAllSparespartcarUndercarriage",{},
-            function(data){
-                var spareData = data.data;
-                $.each( spareData, function( key, value ) {
-                    sparePartCar.append('<option value="' + value.spares_undercarriageId + '">' + value.spares_undercarriageName + '</option>');
-                });
-                getUpdate();
-            }
-        );
-
-    }
+  
 
     function getUpdate(){
         $.get(base_url+"api/SpareChange/getUpdate",{"spares_changeId": spares_changeId.val()},
@@ -71,6 +60,7 @@
         }
     }
 
+    
     setBrand();
 
     function setBrand(brand=null){

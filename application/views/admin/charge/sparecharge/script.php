@@ -108,18 +108,6 @@
         fnDelete(option);
     }
 
-    function init(){
-        $.get(base_url+"api/SpareUndercarriage/getAllSparespartcarUndercarriage",{},
-            function(data){
-                var spareData = data.data;
-                $.each( spareData, function( key, value ) {
-                    sparePartCar.append('<option value="' + value.spares_undercarriageId + '">' + value.spares_undercarriageName + '</option>');
-                });
-            }
-        );
-    }
-
-    init();
 
     $("#form-search").submit(function(){
         event.preventDefault();
