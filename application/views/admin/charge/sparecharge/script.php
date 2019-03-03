@@ -57,9 +57,9 @@
                     }
                 },{
                     "targets": 2,
-                    "data": null,
+                    "data": "spares_undercarriageName",
                     "render": function ( data, type, full, meta ) {
-                        return currency(data, { useVedic: true }).format();
+                        return data;
                     }
                 },{ 
                     "targets": 3,

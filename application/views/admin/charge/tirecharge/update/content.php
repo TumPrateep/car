@@ -24,22 +24,14 @@
                   <div class="card-body black bg-light">
                     <div class="form-group row">
                       <div class="col-md-4">
-                          <label>ราคายางล้อหน้า</label> <span class="error">*</span>
-                          <input type="number" class="form-control" placeholder="กรุณากรอกราคายางล้อหน้า" name="tire_front" id="tire_front">
+                          <label>ชื่อขอบยาง</label> <span class="error">*</span>
+                          <select class="form-control" name="tire_rimId" id="tire_rimId">
+                              <option value="">กรุณาเลือกขอบยาง</option>
+                          </select>
                       </div>
                       <div class="col-md-4">
-                          <label>ราคายางล้อหลัง</label> <span class="error">*</span>
-                          <input type="number" class="form-control" placeholder="กรุณากรอกราคายางล้อหลัง" name="tire_back" id="tire_back">
-                      </div>
-                      <div class="col-md-4">
-                            <label>ชื่อขอบยาง</label> <span class="error">*</span>
-                            <select class="form-control" name="rimId" id="rimId">
-                                <option value="">กรุณาเลือกขอบยาง</option>
-                            </select>
-                      </div>
-                      <div class="col-md-4">
-                          <label>ราคาขอบยาง</label> <span class="error">*</span>
-                          <input type="number" class="form-control" placeholder="กรุณากรอกราคาขอบยาง" name="tire_price" id="tire_price">
+                          <label>ราคาค่าบริการเปลี่ยนขอบยาง</label> <span class="error">*</span>
+                          <input type="number" class="form-control" placeholder="กรุณากรอกราคาค่าบริการเปลี่ยนขอบยาง" name="tire_price" id="tire_price">
                       </div>
                     </div>
                     

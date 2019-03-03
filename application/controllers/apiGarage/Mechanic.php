@@ -26,12 +26,13 @@ class Mechanic extends BD_Controller {
         $firstName = $this->post("firstname");
         $lastName = $this->post("lastname");
         $nickName = $this->post("nickName");
+        // $job = $this->post("job");
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $data_check = $this->mechanics->data_check_create($idCard,$garageId);
-        $skill = $this->post("skill");
+        // $skill = $this->post("skill");
         $config['upload_path'] = 'public/image/mechanic/';
         $img = $this->post("picture");
         $img = str_replace('data:image/png;base64,', '', $img);
@@ -59,7 +60,7 @@ class Mechanic extends BD_Controller {
             'create_by' => $userId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'garageId' => $garageId,
-            'skill' => $skill,
+            'job' => null,
             "picture"=> $imageName,
             "status"=>2
             //'rols' => 2
@@ -111,7 +112,7 @@ class Mechanic extends BD_Controller {
                 // $nestedData[$count]['nickName'] = $post->nickName;
                 $nestedData[$count]['phone'] = $post->phone;
                 $nestedData[$count]['personalid'] = $post->personalid;
-                $nestedData[$count]['skill'] = $post->skill;
+                // $nestedData[$count]['skill'] = $post->skill;
                 $nestedData[$count]['exp'] = $post->exp;
                 $nestedData[$count]['picture'] = $post->picture;
 
@@ -144,7 +145,7 @@ class Mechanic extends BD_Controller {
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
-        $skill = $this->post("skill");
+        // $skill = $this->post("skill");
         $img = $this->post("picture");
         $success = true;
         $file = null;
@@ -179,7 +180,7 @@ class Mechanic extends BD_Controller {
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time()),
             'garageId' => $garageId,
-            'skill' => $skill,
+            'job' => null,
             "picture"=> $imageName,
             "status"=>2
         );
@@ -211,7 +212,7 @@ class Mechanic extends BD_Controller {
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
-        $skill = $this->post("skill");
+        // $skill = $this->post("skill");
         $img = $this->post("Picture");
         $success = true;
         $file = null;
@@ -247,7 +248,7 @@ class Mechanic extends BD_Controller {
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time()),
             'garageId' => $garageId,
-            'skill' => $skill,
+            'job' => null,
             "picture"=> $imageName,
             "status"=>1
         );

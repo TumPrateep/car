@@ -38,7 +38,7 @@
             $.post(base_url+"api/TireChange/update",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/tirechange");
+                    showMessage(data.message,"admin/Charge/TiresCharge");
                 }else{
                     showMessage(data.message);
                 }
@@ -51,11 +51,14 @@
         "tire_changeId": tire_changeId
     },function(data){
         var tireChange = data.data;
+
         getRim(tireChange.rimId);
         $("#tire_price").val(tireChange.tire_price);
     });
 
-    var tire_rim = $("#rimId");
+    var tire_rim = $("#tire_rimId");
+
+    
 
     function getRim(rimId = null){
         $.get(base_url+"api/Rim/getAllRims",{},

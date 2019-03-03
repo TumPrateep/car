@@ -37,8 +37,8 @@
                         <div class="col-lg-4">
                           <div class="form-group">
                               <div class="form-group">
-                                  <label>ราคาขอบยาง</label><span class="error">*</span>
-                                  <input type="number" class="form-control"  name="tire_price" id="tire_price" placeholder="ราคาขอบยาง">
+                                  <label>ราคาค่าบริการเปลี่ยนขอบยาง</label><span class="error">*</span>
+                                  <input type="number" class="form-control"  name="tire_price" id="tire_price" placeholder="กรุณากรอกราคาค่าบริการเปลี่ยนขอบยาง">
                               </div>
                           </div>
                         </div>

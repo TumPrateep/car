@@ -94,3 +94,14 @@ function fnConfirm(option){
     confirmUrl = base_url+"apiGarage"+option.url;
     modalUrl = option.gotoUrl;
 }
+function changeStringToDay(str){
+    var html = "";
+    var day = ["จ","อ","พ","พฤ","ศ","ส","อา"];
+
+    for(var i=0;i<str.length;i++){   // 1111011
+        if(str.charAt(i) == "1"){
+            html += day[i]+", ";
+        }
+    }
+    return html.substring(0, html.length - 2);
+}

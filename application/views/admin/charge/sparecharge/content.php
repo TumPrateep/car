@@ -43,7 +43,7 @@
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
           <th><i class="fa fa-car"></i>  ยี่ห้อรถ</th>
-          <th><i class="fa fa-toggle-left"></i>  ราคาเปลี่ยนอะไหล่ช่วงล่าง</th>
+          <th><i class="fa fa-toggle-left"></i>  อะไหล่ช่วงล่าง</th>
           <th><i class="fa fa-toggle-right"></i>  ค่าบริการ</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>

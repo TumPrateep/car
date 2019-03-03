@@ -240,8 +240,8 @@ class User extends CI_Model{
             $this->db->query("INSERT INTO `spares_change_garage`(`spares_price`, `status`, `spares_undercarriageId`, `create_by`, `create_at`, `activeFlag`, `garageId`)
                     SELECT `spares_price`, `status`, `spares_undercarriageId`, $userId, '$nowDate', `activeFlag`, $garageId FROM `spares_change_garage` WHERE garageId = 1");
 
-            $this->db->query("INSERT INTO `tire_change_garage`(`tire_front`, `tire_back`, `status`, `activeFlag`, `create_by`, `create_at`, `garageId`, `rimId`)
-                    SELECT `tire_front`, `tire_back`, `status`, `activeFlag`, $userId, '$nowDate', $garageId, `rimId` FROM `tire_change_garage` WHERE garageId = 1");
+            $this->db->query("INSERT INTO `tire_change_garage`(`tire_price`, `status`, `activeFlag`, `create_by`, `create_at`, `garageId`, `rimId`)
+                    SELECT `tire_price`, `status`, `activeFlag`, $userId, '$nowDate', $garageId, `rimId` FROM `tire_change_garage` WHERE garageId = 1");
             
         }
 

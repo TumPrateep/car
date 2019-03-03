@@ -2805,7 +2805,7 @@ CREATE TABLE `spares_change_garage` (
   `update_at` datetime DEFAULT NULL,
   `activeFlag` varchar(255) DEFAULT NULL,
   `garageId` int(11) DEFAULT NULL,
-  `brandId` int(11) NOT NULL
+  `brandId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

@@ -71,6 +71,26 @@
         }
     }
 
+    setBrand();
+
+    function setBrand(brand=null){
+        var brandDropdown = $("#brandId");
+            brandDropdown.append('<option value="">เลือกยี่ห้อรถ</option>');
+            
+            $.post(base_url + "apiGarage/Spareschange/getBrand", {},
+                function(data) {
+                    var Brand = data.data;
+                    $.each(Brand, function(index, value) {
+                        if(brand == value.brandId){
+                            brandDropdown.append('<option value="' + value.brandId + '" selected>' + value.brandName + '</option>');   
+                        }else{
+                            brandDropdown.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');                               
+                        }
+                    });
+                }
+            );
+        }
+
     
 
 </script>

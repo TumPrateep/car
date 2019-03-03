@@ -36,7 +36,8 @@
                 null,
                 { "data": "rimName" },
                 { "data": "tire_price" },
-                null
+                null,
+                
             ],
             "columnDefs": [
                 {

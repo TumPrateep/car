@@ -55,12 +55,14 @@ class SpareChange extends BD_Controller {
     }
 
     public function createSparechange_post(){
+        $brandId = $this->post('brandId');
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_price = $this->post('spares_price');
         $userId = $this->session->userdata['logged_in']['id'];
 
         $data_check = $this->sparechanges->data_check_create($spares_undercarriageId);
         $data = array(
+            'brandId' => $brandId,
             'spares_undercarriageId' => $spares_undercarriageId,
             'spares_price'  => $spares_price,
             'create_by' => $userId,
@@ -91,6 +93,7 @@ class SpareChange extends BD_Controller {
 
     public function update_post(){
         $spares_changeId = $this->post('spares_changeId');
+        $brandId = $this->post('brandId');
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_price = $this->post('spares_price');
         $userId = $this->session->userdata['logged_in']['id'];
@@ -99,6 +102,7 @@ class SpareChange extends BD_Controller {
         $data_check = $this->sparechanges->data_check_update($spares_changeId,$spares_undercarriageId);
         $data = array(
             'spares_changeId' => $spares_changeId,
+            'brandId' => $brandId,
             'spares_undercarriageId' => $spares_undercarriageId,
             'spares_price'  => $spares_price,
             'update_by' => $userId,
@@ -145,5 +149,6 @@ class SpareChange extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+  
 
 }
