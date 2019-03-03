@@ -63,7 +63,7 @@
         var brandDropdown = $("#brandId");
             brandDropdown.append('<option value="">เลือกยี่ห้อรถ</option>');
             
-            $.post(base_url + "apiGarage/Spareschange/getBrand", {},
+            $.post(base_url + "api/SpareChange/getBrand", {},
                 function(data) {
                     var Brand = data.data;
                     $.each(Brand, function(index, value) {

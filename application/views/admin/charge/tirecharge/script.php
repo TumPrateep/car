@@ -44,7 +44,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5]
+                    "targets": [0,4]
                 },{
                     "targets": 0,
                     "data": null,
@@ -61,17 +61,9 @@
                     "targets": 2,
                     "data": "tire_price",
                     "render": function ( data, type, full, meta ) {
-                        return  data +' นิ้ว';
+                        return  data +' บาท';
                     }
                 },{
-                    "targets": 4,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+'admin/Tires/updatetirechange/'+data.tire_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletetirechange('+data.tire_changeId+',\''+data.tire_front+'\',\''+data.tire_back+'\')"><i class="fa fa-trash"></i></button>';
-                    }
-                },
-                {
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
@@ -89,14 +81,23 @@
                         +'</button>'
                         +'</div>';
                     }
+                },{
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return '<a href="'+base_url+'admin/charge/updateTiresCharge/'+data.tire_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletetirechange('+data.tire_changeId+',\''+data.tire_front+'\',\''+data.tire_back+'\')"><i class="fa fa-trash"></i></button>';
+                    }
                 },
+               
                 { "orderable": false, "targets": 0 },
                 // {"className": "dt-head-center", "targets": [2]},
                 {"className": "dt-center", "targets": [0,1,2,3,4]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 1 },
                 { "width": "20%", "targets": 2 },
-                { "width": "20%", "targets": 3 }
+                { "width": "20%", "targets": 3 },
+                { "width": "10%", "targets": 4 }
             ]	 
     });
 

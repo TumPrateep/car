@@ -11,16 +11,15 @@ class TireChange extends BD_Controller {
     }
 
     public function createtirechange_post(){
-        $tire_front = $this->post('tire_front');
-        $tire_back = $this->post('tire_back');
+
         $rimId = $this->post('tire_rimId');
+        $tire_price = $this->post('tire_price');
         $userId = $this->session->userdata['logged_in']['id'];
 
         $data_check = $this->tirechanges->data_check_create($rimId);
         $data = array(
-            'tire_front' => $tire_front,
-            'tire_back'  => $tire_back,
             'rimId' => $rimId,
+            'tire_price' => $tire_price,
             'create_by' => $userId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
@@ -37,9 +36,8 @@ class TireChange extends BD_Controller {
     }
 
     public function update_post(){
-        $tire_front = $this->post('tire_front');
-        $tire_back = $this->post('tire_back');
-        $rimId = $this->post('rimId');
+        $rimId = $this->post('tire_rimId');
+        $tire_price = $this->post('tire_price');
         $tire_changeId = $this->post('tire_changeId');
         $userId = $this->session->userdata['logged_in']['id'];
 
@@ -47,8 +45,7 @@ class TireChange extends BD_Controller {
         $data_check = $this->tirechanges->data_check_update($tire_changeId,$rimId);
         $data = array(
             'tire_changeId' => $tire_changeId,
-            'tire_front' => $tire_front,
-            'tire_back' => $tire_back,
+            'tire_price' => $tire_price,
             'rimId' => $rimId,
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time())
@@ -97,10 +94,9 @@ class TireChange extends BD_Controller {
     function searchTireChange_post(){
         $columns = array( 
             0 => null,
-            1 => 'tire_front', 
-            2 => 'tire_back',
-            3 => 'rimName',
-            4 => 'status'
+            1 => 'rimName', 
+            2 => 'tire_price',
+            3 => 'status'
         );
         $limit = $this->post('length');
         $start = $this->post('start');
@@ -124,9 +120,8 @@ class TireChange extends BD_Controller {
             foreach ($posts as $post)
             {
                 $nestedData['tire_changeId'] = $post->tire_changeId;
-                $nestedData['tire_front'] = $post->tire_front;
-                $nestedData['tire_back'] = $post->tire_back;
                 $nestedData['rimName'] = $post->rimName;
+                $nestedData['tire_price'] = $post->tire_price;
                 $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
             }

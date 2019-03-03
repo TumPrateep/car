@@ -51,7 +51,7 @@
             $.post(base_url+"api/TireChange/createtirechange",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/tirechange/");
+                    showMessage(data.message,"admin/Charge/TiresCharge/");
                 }else{
                     showMessage(data.message,);
                 }

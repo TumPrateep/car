@@ -23,10 +23,10 @@
                   <div class="card-body black bg-light">
                     <div class="form-group row">
                       <div class="col-md-4">
-                            <label>ชื่อขอบยาง</label> <span class="error">*</span>
-                            <select class="form-control" name="tire_rimId" id="tire_rimId">
-                                <option value="">กรุณาเลือกขอบยาง</option>
-                            </select>
+                        <label>ชื่อขอบยาง</label> <span class="error">*</span>
+                        <select class="form-control" name="tire_rimId" id="tire_rimId">
+                            <option value="">กรุณาเลือกขอบยาง</option>
+                        </select>
                       </div>
                       <div class="col-md-4">
                           <label>ราคายางขอบยาง</label> <span class="error">*</span>
