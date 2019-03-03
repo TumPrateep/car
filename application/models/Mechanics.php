@@ -59,13 +59,13 @@ class Mechanics extends CI_Model {
         $result = $this->db->update('mechanic', $data);
         return $result;
     }
-    function mechanics_search($limit,$start,$col,$dir,$firstname,$skill,$garageId)
+    function mechanics_search($limit,$start,$col,$dir,$firstname,$garageId,$brandId)
     {
         $this->db->where("garageId", $garageId);
         $this->db->where('status', 2);
         $this->db->like('firstName',$firstname);
-        if($skill != null){
-            $this->db->where("skill", $skill);
+        if($brandId != null){
+            $this->db->where("brandId", $brandId);
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
@@ -81,19 +81,19 @@ class Mechanics extends CI_Model {
         }
         
     }
-    function mechanics_search_count($firstname,$skill,$garageId){
+    function mechanics_search_count($firstname,$brandId,$garageId){
         $this->db->where('status', 2);
         $this->db->where("garageId", $garageId);
         $this->db->like('firstName',$firstname);
-        if($skill != null){
-            $this->db->where("skill", $skill);
+        if($brandId != null){
+            $this->db->where("brandId", $brandId);
         }
         $query = $this->db->get('mechanic');
         return $query->num_rows();
     }
 
     function getOwnerGarage($garageId){
-        $this->db->select("firstName, garageId, lastName, personalid, phone, picture, skill, exp, mechanicId, titleName, nickName");
+        $this->db->select("firstName, garageId, lastName, personalid, phone, picture, brandId, exp, mechanicId, titleName, nickName");
         $this->db->where("garageId", $garageId);
         $this->db->where("status", 1);
         return $this->db->get("mechanic")->row();

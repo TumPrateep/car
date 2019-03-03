@@ -49,7 +49,7 @@
                 $("#personalid").val(ownerData.personalid);
                 $("#phone").val(ownerData.phone);
                 $("#exp").val(ownerData.exp);
-                $("#skill").val(ownerData.skill);
+                // $("#skill").val(ownerData.skill);
                 // $("#skill").val(ownerData.skill);
                 // $("#titleName").val(result.titleName);
                 $("#flName").val(ownerData.titleName+ownerData.firstName+" "+ownerData.lastName);
