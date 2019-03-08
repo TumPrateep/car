@@ -41,6 +41,13 @@
                             </a>
                         </li>
 
+                        <li class="nav-label">ส่วนของการจัดส่ง</li>
+                        <li>
+                            <a href="<?=base_url("caraccessory/deliverorder"); ?>">
+                                <i class="fa fa-tachometer"></i>
+                                <span class="hide-menu">การจัดการส่งสินค้า</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
