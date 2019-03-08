@@ -20,7 +20,7 @@
 }
 
 .sorting_asc{
-    display: none;
+    /* display: none; */
 }
 
 .table-bordered td, .table-bordered th {

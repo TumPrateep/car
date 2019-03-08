@@ -25,6 +25,9 @@
                         <li ><a class="garage-white " href="<?=base_url("garage/Reserve"); ?>">
                             <i class="fa fa-handshake-o garage-white"></i>การจอง</a>
                         </li>
+                        <li ><a class="garage-white " href="<?=base_url("garage/Orderdetail/show"); ?>">
+                            <i class="fa fa-truck garage-white"></i>รายการสินค้า</a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

@@ -157,5 +157,74 @@
       }
       return $result->picture;
     }
+
+    function getProductDetail($productId, $group){
+      $data = [];
+      if($group == "lubricator"){
+          $data = getLubricatorDetail($productId);
+      }else if($group == "tire"){
+          $data = getTireDetail($productId);
+      }else{
+          $data = getSpareDetail($productId);
+      }
+      return $data;
+    }
+
+    function getLubricatorDetail($productId){
+      $CI = get_instance();
+      $CI->load->model("lubricatorchanges");
+      $charge = $CI->lubricatorchanges->getLubricatorChangePrice();
+      $CI->load->model("lubricatordatas");
+      $result = $CI->lubricatordatas->getLubricatorDataForCartById($productId);
+      $result->price = ($result->price*1.1) + $charge->lubricator_price;
+      $option = [
+        'lubricatorId' => $result->lubricatorId
+      ];
+      $result->picture = getPictureLubricator($option);
+      return $result;
+  }
+  
+  function getTireDetail($productId){
+      $CI = get_instance();
+      $CI->load->model("tirechanges");
+      $tirePriceData = $CI->tirechanges->getTireChangePrice();
+      $charge = [];
+      foreach($tirePriceData as $cost){
+          $charge[$cost->rimId] = $cost->tire_price;
+      }
+      $CI->load->model("tireproduct");
+      $result = $CI->tireproduct->getTireDataForCartById($productId);
+      $result->price = ($result->price*1.1) + $charge[$result->rimId];
+      $option = [
+        'tire_brandId' => $result->tire_brandId,
+        'tire_modelId' => $result->tire_modelId,
+        'tire_sizeId' => $result->tire_sizeId,
+        'rimId' => $result->rimId
+      ];
+      $result->picture = getPictureTire($option);
+      return $result;
+  }
+  
+  function getSpareDetail($productId){
+      $CI = get_instance();
+      $CI->load->model("sparechanges");
+      $sparePriceData = $CI->sparechanges->getSpareChangePrice();
+      $charge = [];
+      foreach($sparePriceData as $cost){
+          $charge[$cost->spares_undercarriageId] = $cost->spares_price;
+      }
+      $CI->load->model("Spareundercarriageproduct");
+      $result = $CI->Spareundercarriageproduct->getSpareDataForCartById($productId);
+      $result->price = ($result->price*1.1) + $charge[$result->spares_undercarriageId];
+      $option = [
+        'spares_undercarriageId' => $result->spares_undercarriageId,
+        'spares_brandId' => $result->spares_brandId,
+        'brandId' => $result->brandId,
+        'modelId' => $result->modelId,
+        'modelofcarId' => $result->modelofcarId
+      ];
+      $result->picture = getPictureSpare($option);
+      return $result;
+  }
       
 ?>

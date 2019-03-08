@@ -40,6 +40,11 @@
                                 <i class="fa fa-tachometer"></i><span class="hide-menu">ข้อมูลยาง</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="<?=base_url("caraccessory/orderselect"); ?>">
+                                <i class="fa fa-tachometer"></i><span class="hide-menu">เลือกสินค้า</span>
+                            </a>
+                        </li>
 
                         <li class="nav-label">ส่วนของการจัดส่ง</li>
                         <li>
