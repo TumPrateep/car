@@ -71,5 +71,13 @@
         .sidebar-nav > ul > li.active > a:hover {
         color: #ffffff !important;
         }
+
+        .brand-image{
+            width: 80%;
+            height: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+        }
     </style>
 </head>
