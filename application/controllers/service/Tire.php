@@ -70,7 +70,7 @@ class Tire extends BD_Controller {
         $tirePriceData = $this->tirechanges->getTireChangePrice();
         $charge = [];
         foreach($tirePriceData as $cost){
-            $charge[$cost->rimId] = ($cost->tire_front+$cost->tire_back)/2;
+            $charge[$cost->rimId] = $cost->tire_price;
         }
 
         $data = array();

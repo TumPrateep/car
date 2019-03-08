@@ -44,7 +44,7 @@ class Cart extends BD_Controller {
             $tirePriceData = $this->tirechanges->getTireChangePrice();
             $charge = [];
             foreach($tirePriceData as $cost){
-                $charge[$cost->rimId] = ($cost->tire_front+$cost->tire_back)/2;
+                $charge[$cost->rimId] = $cost->tire_price;
             }
             foreach($tireData as $value){
                 $data["tire"][$value->tire_dataId]["productId"] = $value->tire_dataId;
@@ -119,41 +119,6 @@ class Cart extends BD_Controller {
         $spareDataIdArray = array_column($spareArray, 'productId');
         $this->load->model("Spare_undercarriagedatas");
         return $this->Spare_undercarriagedatas->getSpareDataForCartByIdArray($spareDataIdArray);
-    }
-
-    function getLubricatorDetail($productId){
-        $this->load->model("lubricatorchanges");
-        $charge = $this->lubricatorchanges->getLubricatorChangePrice();
-        $this->load->model("lubricatordatas");
-        $result = $this->lubricatordatas->getLubricatorDataForCartById($productId);
-        $result->price = ($result->price*1.1) + $charge->lubricator_price;
-        return $result;
-    }
-    
-    function getTireDetail($productId){
-        $this->load->model("tirechanges");
-        $tirePriceData = $this->tirechanges->getTireChangePrice();
-        $charge = [];
-        foreach($tirePriceData as $cost){
-            $charge[$cost->rimId] = ($cost->tire_front+$cost->tire_back)/2;
-        }
-        $this->load->model("tireproduct");
-        $result = $this->tireproduct->getTireDataForCartById($productId);
-        $result->price = ($result->price*1.1) + $charge[$result->rimId];
-        return $result;
-    }
-    
-    function getSpareDetail($productId){
-        $this->load->model("sparechanges");
-        $sparePriceData = $this->sparechanges->getSpareChangePrice();
-        $charge = [];
-        foreach($sparePriceData as $cost){
-            $charge[$cost->spares_undercarriageId] = $cost->spares_price;
-        }
-        $this->load->model("Spareundercarriageproduct");
-        $result = $this->Spareundercarriageproduct->getSpareDataForCartById($productId);
-        $result->price = ($result->price*1.1) + $charge[$result->spares_undercarriageId];
-        return $result;
     }
 
     function getDetail_post(){

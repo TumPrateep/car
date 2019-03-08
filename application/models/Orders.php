@@ -26,7 +26,7 @@ class Orders extends CI_Model{
     function getCharge($productId, $group){
         $charge = null;
         if($group == "tire"){
-            $this->db->select("tire_change.tire_front as charge");
+            $this->db->select("tire_change.tire_price as charge");
             $this->db->from("tire_data");
             $this->db->join('tire_change','tire_change.rimId = tire_data.rimId');
             $this->db->where("tire_data.tire_dataId",$productId);
@@ -48,7 +48,7 @@ class Orders extends CI_Model{
     function getGarageCharge($productId, $group){
         $charge = null;
         if($group == "tire"){
-            $this->db->select("tire_change_garage.tire_front as charge");
+            $this->db->select("tire_change_garage.tire_price as charge");
             $this->db->from("tire_data");
             $this->db->join('tire_change_garage','tire_change_garage.rimId = tire_data.rimId');
             $this->db->where("tire_data.tire_dataId",$productId);
