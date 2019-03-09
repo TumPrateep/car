@@ -103,7 +103,7 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<button type="button" class="btn btn-success" '+'  onclick="updateStatus('+data.orderId+','+data.status+')">เลือกรายการสั่งซื้อ</button> ';
+                        return '<button type="button" class="btn btn-success" '+'  onclick="updateStatus('+data.orderId+','+data.status+')">เลือกร้านอะไหล่</button> ';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4]}

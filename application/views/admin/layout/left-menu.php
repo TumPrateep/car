@@ -171,6 +171,13 @@
             <span class="nav-link-text">ยืนยันการสั่งซื่อ</span>
           </a>
         </li>
+
+        <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link text-white" href="<?=base_url("admin/manageorder") ?>">
+          <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            <span class="nav-link-text">จัดการการสั่งสินค้า</span>
+          </a>
+        </li>
         
         
         
