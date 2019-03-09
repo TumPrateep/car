@@ -36,14 +36,27 @@
             "columns": [
                 null,
                 null,
-                // { "data": "orderId" },
                 null,
-                null,
-                null,
+                {"data" : "quantity"},
                 null,
                 null,
                 null
             ],
+            "drawCallback": function ( settings ) {
+                var api = this.api();
+                var rows = api.rows( {page:'current'} ).nodes();
+                var last=null;
+                
+                api.rows({page:'current'} ).data().each( function ( data, i ) {
+                    if ( last !== data.orderId ) {
+                        $(rows).eq( i ).before(
+                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' อู่ '+data.garageId+'</td></tr>'
+                        );
+    
+                        last = data.orderId;
+                    }
+                });
+            },
             "columnDefs": [
                 {
                     "searchable": false,
@@ -78,18 +91,35 @@
                         var productData = data.data;
                         var group = data.group;
                         if(group == "tire"){
-                            html += "";
+                            html += "ยี่ห้อ "+productData.tire_brandName+" "+"ขนาด "+productData.tire_size+" "+"รุ่น "+productData.tire_modelName;
                         }else if(group == "lubricator"){
-                            html += "";
+                            html += productData.lubricator_brandName+" "+productData.lubricatorName+" "+productData.capacity+" ลิตร"+" "+productData.lubricator_number;
                         }else{
-                            html += productData.spares_undercarriageName+" "+productData.spares_brandName;
+                            html += productData.spares_undercarriageName+" "+productData.spares_brandName+" "+productData.brandName+" "+productData.modelName+" "+productData.year;
                         }
                         return html;
                     }
                 }
-                
+                // ,{
+                //     "targets": 4,
+                //     "data": null,
+                //     "render": function ( data, type, full, meta ) {
+                //         var html = "";
+                //         var productData = data.data;
+                //         var group = data.group;
+                //         if(group == "tire"){
+                //             html += "ยี่ห้อ "+productData.tire_brandName+" "+"ขนาด "+productData.tire_size+" "+"รุ่น "+productData.tire_modelName;
+                //         }else if(group == "lubricator"){
+                //             html += productData.lubricator_brandName+" "+productData.lubricatorName+" "+productData.capacity+" ลิตร"+" "+productData.lubricator_number;
+                //         }else{
+                //             html += productData.spares_undercarriageName+" "+productData.spares_brandName+" "+productData.brandName+" "+productData.modelName+" "+productData.year;
+                //         }
+                //         return html;
+                //     }
+                // }
+
                 // { "orderable": false, "targets": 0 },
-                // {"className": "dt-center", "targets": [0,1,2,3,4,5,6,7]},
+                // {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
                 // { "width": "8%", "targets": 0 },
                 // { "width": "20%", "targets": [2,3] },
                 // { "width": "12%", "targets": [4,5] },
