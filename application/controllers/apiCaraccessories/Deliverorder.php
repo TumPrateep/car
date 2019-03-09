@@ -13,6 +13,7 @@ class Deliverorder extends BD_Controller {
 
     function searchorder_post(){
         $column = "	orderId";
+
         $sort = "asc";
         if($this->post('column') == 3){
             $column = "status";
@@ -26,6 +27,7 @@ class Deliverorder extends BD_Controller {
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
+
         // $car_accessoriesId = $this->session->userdata['logged_in']['car_accessoriesId'];
         // $totalData = $this->deliverorders->allDeliverorders_count($car_accessoriesId);
         $totalData = $this->deliverorders->allDeliverorders_count();
@@ -54,15 +56,13 @@ class Deliverorder extends BD_Controller {
             $count = 0;
             foreach ($posts as $post)
             {
-                
-                $nestedData[$count]['orderId'] = $post->orderId;
-                // $nestedData[$count]['productId'] = $post->productId;
-                // $nestedData[$count]['garageId'] = $post->garageId;
-      
-                // $option = [
-                //     'orderId' => $post->orderId
-                // ];
-                // $nestedData[$count]['picture'] = getPictureLubricator($option);
+                $nestedData['quantity'] = $post->quantity;
+                $nestedData['garageId'] = $post->garageId;
+                $nestedData['group'] = $post->group;
+                $nestedData['productId'] = $post->productId;
+                // $nestedData['picture'] = $post->picture;
+                $nestedData['data'] = getProductDetail($post->productId, $post->group);
+
                 $data[$index] = $nestedData;
                 if($count >= 3){
                     $count = -1;

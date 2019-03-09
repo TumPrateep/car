@@ -1,5 +1,5 @@
 <script>
-    var table = $('#dome-table1').DataTable({
+    var table = $('#dome-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -36,7 +36,8 @@
             "columns": [
                 null,
                 null,
-                { "data": "orderId" },
+                // { "data": "orderId" },
+                null,
                 null,
                 null,
                 null,
@@ -58,12 +59,37 @@
                     "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return null
-                        // return '<img src="'+picturePath+"lubricator_type/"+data.lubricator_typePicture+'"/>';
+                        var imgPath = picturePath;
+                        var group = data.group;
+                        if(group == "tire"){
+                            imgPath += "tireproduct/";
+                        }else if(group == "lubricator"){
+                            imgPath += "lubricatorproduct/";
+                        }else{
+                            imgPath += "spareproduct/";
+                        }
+                        return '<img src="'+imgPath+data.data.picture+'" width="100" />';
                     }
-                },
+                },{
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var html = "";
+                        var productData = data.data;
+                        var group = data.group;
+                        if(group == "tire"){
+                            html += "";
+                        }else if(group == "lubricator"){
+                            html += "";
+                        }else{
+                            html += productData.spares_undercarriageName+" "+productData.spares_brandName;
+                        }
+                        return html;
+                    }
+                }
+                
                 // { "orderable": false, "targets": 0 },
-                {"className": "dt-center", "targets": [0,1,2,3,4,5,6,7]},
+                // {"className": "dt-center", "targets": [0,1,2,3,4,5,6,7]},
                 // { "width": "8%", "targets": 0 },
                 // { "width": "20%", "targets": [2,3] },
                 // { "width": "12%", "targets": [4,5] },

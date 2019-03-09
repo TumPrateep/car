@@ -119,7 +119,7 @@
                 <thead>
                   <th><i class="fa fa-sort"></i> ลำดับ</th>
                   <th><i class="fa fa-picture-o"></i> รูปยี่ห้อรถ</th>
-                  <th><i class="fa fa-rebel"></i>  ประเภทสินค้า</th>
+                  <th><i class="fa fa-rebel"></i>  รายละเอียดสินค้า</th>
                   <th><i class="fa fa-rebel"></i>  จำนวน</th>
                   <th><i class="fa fa-rebel"></i>  อู่</th>
                   <th><i class="fa fa-rebel"></i>  ราคา</th>
