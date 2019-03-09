@@ -51,6 +51,7 @@ class Orderselect extends BD_Controller {
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['group'] = $post->group;
                 $nestedData['productId'] = $post->productId;
+                $nestedData['garageName'] = $post->garageName;
                 // $nestedData['picture'] = $post->picture;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
           
@@ -70,28 +71,29 @@ class Orderselect extends BD_Controller {
 
     
     function changeStatus_post(){
-        $productId = $this->post("productId");
+        $orderId = $this->post("orderId");
         $status = $this->post("status");
-        if($status == 1){
-            $status = 2;
+        if($status == 3){
+            $status = 4;
         }else{
-            $status = 1;
+            $status = 3;
         }
 
-        $data_check_update = $this->spareproductdata->getProductDataById($productId);
+        $data_check_update = $this->orderselects->getOrderDataById($orderId);
         $data = array(
-            'productId' => $productId,
+            'orderId' => $orderId,
             'status' => $status
         );
 
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->spareproductdata
+            "model" => $this->orderselects
         ];
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
+    
 
 }
 
