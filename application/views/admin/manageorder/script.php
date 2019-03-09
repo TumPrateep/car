@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiCaraccessories/Orderselect/search",
+                "url": base_url+"api/manageorder/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -48,7 +48,7 @@
                 api.rows({page:'current'} ).data().each( function ( data, i ) {
                     if ( last !== data.orderId ) {
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' อู่ '+data.garageName+'</td></tr>'
+                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' อู่ '+data.garageName+' วันที่สั่ง '+data.create_at+'</td></tr>'
                         );
     
                         last = data.orderId;
