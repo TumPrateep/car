@@ -131,5 +131,35 @@ class Carprofiles extends CI_Model {
         return $query->num_rows();
     }
 
-   
+    function getBrandCar(){
+        $this->db->select('brandId,brandName');
+        $this->db->from('brand');
+        $this->db->where('status',1);
+        $this->db->order_by("brandName", "asc");
+        $result = $this->db->get();
+        return $result->result();
+
+    }
+
+    function getModelCar($brandId){
+        $this->db->select('modelId, modelName, yearStart, yearEnd');
+        $this->db->from('model');
+        $this->db->where('brandId',$brandId);
+        $this->db->where('status',1);
+        $this->db->order_by("modelName", "asc");
+        $result = $this->db->get();
+        return $result->result();
+
+    }
+
+    function getModelofCar($modelId){
+        $this->db->select("modelofcarId, modelofcarName, machineCode, machineSize");
+        $this->db->from('modelofcar');
+        $this->db->where('modelId',$modelId);
+        $this->db->where('status',1);
+        $this->db->order_by("modelofcarName", "asc");
+        $result = $this->db->get();
+        return $result->result();
+
+    }
 }
