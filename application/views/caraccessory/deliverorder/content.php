@@ -122,7 +122,7 @@
                   <th><i class="fa fa-rebel"></i>  รายละเอียดสินค้า</th>
                   <th><i class="fa fa-rebel"></i>  จำนวน</th>
                   <th><i class="fa fa-rebel"></i>  ราคา</th>
-                  <th><i class="fa fa-user-circle"></i>  สถานะ</th>
+                  <!-- <th><i class="fa fa-user-circle"></i>  สถานะ</th> -->
                   <th></th>
                 </thead>
             </table>

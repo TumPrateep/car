@@ -39,7 +39,6 @@
                 null,
                 {"data" : "quantity"},
                 null,
-                null,
                 null
             ],
             "drawCallback": function ( settings ) {
@@ -99,30 +98,36 @@
                         }
                         return html;
                     }
+                },{
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var html = "";
+                        var productData = data.data;
+                        var group = data.group;
+                        if(group == "tire"){
+                            html += productData.price;
+                        }else if(group == "lubricator"){
+                            html += productData.price;
+                        }else{
+                            html += productData.price;
+                        }
+                        return html;
+                    }
+                },{
+                    "targets": 5,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
+                          
+                    }
                 }
-                // ,{
-                //     "targets": 4,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         var html = "";
-                //         var productData = data.data;
-                //         var group = data.group;
-                //         if(group == "tire"){
-                //             html += "ยี่ห้อ "+productData.tire_brandName+" "+"ขนาด "+productData.tire_size+" "+"รุ่น "+productData.tire_modelName;
-                //         }else if(group == "lubricator"){
-                //             html += productData.lubricator_brandName+" "+productData.lubricatorName+" "+productData.capacity+" ลิตร"+" "+productData.lubricator_number;
-                //         }else{
-                //             html += productData.spares_undercarriageName+" "+productData.spares_brandName+" "+productData.brandName+" "+productData.modelName+" "+productData.year;
-                //         }
-                //         return html;
-                //     }
-                // }
 
                 // { "orderable": false, "targets": 0 },
                 // {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
                 // { "width": "8%", "targets": 0 },
                 // { "width": "20%", "targets": [2,3] },
-                // { "width": "12%", "targets": [4,5] },
+                // { "width": "12%", "targets": [4,5] },  
                
             ]	 
     });
