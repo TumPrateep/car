@@ -152,7 +152,7 @@ function getLubricator(value, index){
     var product = cartDataDetail["lubricator"][value.productId];
     var totalCost = (product.price*value.number);
     var html = '<tr>'
-        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()" data-amount="'+totalCost+'"></div></td>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()" data-amount="'+totalCost+'" data-productId="'+value.productId+'"></div></td>'
         +'<td><a href="'+base_url+'shop/detail/lubricator/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/lubricatordata/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/lubricator/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.lubricatorNumber+' ขนาด '+product.capacity+' ลิตร</a></td>'
         +'<td><div class="col-md-12">'
@@ -177,7 +177,7 @@ function getTire(value, index){
     var product = cartDataDetail["tire"][value.productId];
     var totalCost = (product.price*value.number);
     var html = '<tr>'
-        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'"></div></td>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'" data-productId="'+value.productId+'"></div></td>'
         +'<td><a href="'+base_url+'shop/detail/tire/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/tirebranddata/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/tire/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.number+'</a></td>'
         +'<td><div class="col-md-12">'
@@ -202,7 +202,7 @@ function getspare(value, index){
     var product = cartDataDetail["spare"][value.productId];
     var totalCost = (product.price*value.number);
     var html = '<tr>'
-        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'"></div></td>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'" data-productId="'+value.productId+'"></div></td>'
         +'<td><a href="'+base_url+'shop/detail/spare/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/spareundercarriage/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/spare/'+value.productId+'">'+product.spares_brandName+' '+product.spares_undercarriageName+' '+product.brandName+' '+product.modelName+' '+product.year+'</a></td>'
         +'<td><div class="col-md-12">'
@@ -278,6 +278,7 @@ $(document).ready(function () {
             // form.validate().settings.ignore = ":disabled,:hidden";
             if(currentIndex == 0){
                 isvalid = form.valid();
+                getCartList();
             }
             if(currentIndex == 1){
                 isvalid = $("#image-picker-car").val() != "";
@@ -301,6 +302,7 @@ $(document).ready(function () {
               var isValid = form.valid();
               if(isValid){
                 var data = form.serializeArray();
+                data[data.length] = { name: "productData", value: getCartList() };
                 $.post(base_url+"service/Order/createOrderDetail", data,
                     function (data, textStatus, jqXHR) {
                         if(data.message == 200){
@@ -321,6 +323,18 @@ $(document).ready(function () {
         //     event.append('demo');
         // }
     });
+
+    function getCartList(){
+        var productData = [];
+        $('#cart-table td:first-child').each(function() {
+            var product = $(this).find("input");
+            var isCheck = product.is(':checked');
+            if(isCheck){
+                productData.push(product.attr("data-productId"));
+            }
+        });
+        return JSON.stringify(productData);
+    }
 
     // var form = $("#submit");
     // var confirmForm = $("#confirm");

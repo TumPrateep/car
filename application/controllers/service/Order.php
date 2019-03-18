@@ -18,9 +18,10 @@ class Order extends BD_Controller {
         $reserve_day = $this->post("reserve_day");
         $reserve_time = $this->post("reserve_time");
         $carProfileId = $this->post("carProfileId");
+        $productData = json_decode($this->post("productData"));
 
         $data = array();
-        $orderdetail = $this->orders->getAllCartByUserId($userId);
+        $orderdetail = $this->orders->getAllCartByUserIdAndProductId($userId, $productData);
 
         $data["reserve"] = array(
             "reserveDate" => date('Y-m-d H:i:s', changeFormateDateToTime($reserve_day)),

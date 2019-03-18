@@ -11,6 +11,14 @@ class Orders extends CI_Model{
         return $query->result();
     }
 
+    function getAllCartByUserIdAndProductId($userId, $productData){
+        $this->db->select("*");
+        $this->db->where('create_by',$userId);
+        $this->db->where_in('productId',$productData);
+        $query = $this->db->get("cart");
+        return $query->result();
+    }
+
     function getCost($productId, $group){
         $cost = null;
         if($group == "tire"){
@@ -74,6 +82,7 @@ class Orders extends CI_Model{
             $orderId = $this->db->insert_id();
             $orderDetailData = $data['orderdetail'];
             $orderDetail = [];
+            $arrProductId = [];
             foreach ($orderDetailData as $val) {
                 $cost =  $this->getCost($val->productId, $val->group);
                 $charge =  $this->getCharge($val->productId, $val->group);
@@ -85,17 +94,22 @@ class Orders extends CI_Model{
                     'quantity' => $val->quantity,
                     'status' => 1,
                     'activeflag' => 1,
-                    'group' => $val->group,
+                    'group' => $val->group, 
                     'cost' => $cost,
                     'charge' => $charge,
                     'chargeGarage' => $chargeGarage,
                     'create_at' => date('Y-m-d H:i:s',time())
                 ];
                 array_push($orderDetail, $temp);
+                array_push($arrProductId, $val->productId);
             }
             $data["reserve"]["orderId"] = $orderId;
             $this->db->insert("reserve",$data['reserve']);
-            $this->db->delete('cart', array('create_by' => $userId));
+
+            $this->db->where_in('productId', $arrProductId);
+            $this->db->where('create_by', $userId);
+            $this->db->delete('cart');
+
             $this->db->insert_batch('orderdetail', $orderDetail);
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
@@ -133,6 +147,22 @@ class Orders extends CI_Model{
                 return null;
             }
         
+    }
+
+    function CheckOrder(){
+        $this->db->select("create_by,sum(price) as price");
+        $this->db->from('lubricator_data');
+        $this->db->where('lubricatorId ', $lubricatorId)
+        $this->db->group_by('create_by'); 
+        $this->db->having('COUNT(`*`);
+
+     
+
+        
+        
+       
+        $query = $this->db->get();
+        return $query->num_rows();
     }
     
 }
