@@ -54,14 +54,14 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th class="text-center" scope="col"><i class="fa fa-sort"></i>ลำดับ</th>
-                                                <th class="text-center" scope="col"><i class="fa fa-picture-o"\></i>รูป</th>
-                                                <th class="text-center" scope="col"><i class="fa fa-picture-o"\></i>ประเภทสินค้า</th>
-                                                <th class="text-center" scope="col"><i class="fa fa-picture-o"\></i>จำนวน</th>
-                                                <th class="text-center" scope="col"><i class="fa fa-usd" ></i>ราคา</th>
-                                                <th class="text-center" scope="col"><i class="fa fa-picture-o"\></i>ร้านอะไหล่</th>
-                                                <th class="text-center" scope="col"><i class="fa fa-picture-o"\></i>ผู้จอง</th>
-                                                <th class="text-center" scope="col"><i class="fa fa-picture-o"\></i>สถานะ</th>
+                                                <th class="text-center" scope="col"><i class="fa fa-sort"></i> ลำดับ</th>
+                                                <th class="text-center" scope="col"><i class="fa fa-picture-o"\></i> รูป</th>
+                                                <th class="text-center" scope="col"><i class="fa fa-pencil-square"\></i> ชื่อสินค้า</th>
+                                                <th class="text-center" scope="col"><i class="fa fa-calendar"\></i> วันที่ส่ง</th>
+                                                <th class="text-center" scope="col"><i class="fa fa-clock-o"\></i> เวลาที่ส่ง</th>
+                                                <th class="text-center" scope="col"><i class="fa fa-usd" ></i> ราคา</th>
+                                                <th class="text-center" scope="col"><i class="fa fa-truck"\></i> ร้านอะไหล่</th>
+                                                <th class="text-center" scope="col"> สถานะ</th>
                                                 <th scope="col"></th>
                                                
                                             </tr>
@@ -70,14 +70,13 @@
                                             <tr>
                                                 <th scope="col">1</th>
                                                 <th scope="col"><img src="/public/image/brand/5bc1709a5cc29.png"  class="brand-image"></th>
-                                                <th scope="col">ประเภทสินค้า</th>
-                                                <th scope="col">2</th>
+                                                <th scope="col">โชคอัพหน้า trw</th>
+                                                <th scope="col">18-03-2562</th>
+                                                <th scope="col">12:00</th>
                                                 <th scope="col">4200</th>
                                                 <th scope="col">พี3อะไห่ยนต์</th>
-                                                <th scope="col">user</th>
                                                 <th scope="col">รับสินค้า</th>
                                                 <th class="text-center">
-                                                    <a href=""><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
                                                     <a href=""><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
                                                 </th>
                                                

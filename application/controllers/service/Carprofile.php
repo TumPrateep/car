@@ -221,4 +221,54 @@ class Carprofile extends BD_Controller {
         $this->set_response($json_data);
     }
 
+    function getModelofCar_post(){
+
+        $districtId = $this->post("modelId");
+
+        $output["status"] = true;
+        $result = $this->carprofiles->getModelofCar($modelId);
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function getModelCar_post(){
+
+        $districtId = $this->post("brandId");
+
+        $output["status"] = true;
+        $result = $this->carprofiles->getModelCar($brandId);
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function getBrandCar_post(){
+
+        $output["status"] = true;
+        $result = $this->carprofiles->getBrandCar();
+        if($result != null){
+            $output["data"] = $result;
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+
 }

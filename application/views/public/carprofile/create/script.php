@@ -144,7 +144,11 @@
         type: 'image/jpeg'
     });
 
-    setProvincePlate();
+    
+    function onLoad(){
+      setProvincePlate();
+    }
+    onLoad();
 
     function setProvincePlate(province=null){
         var provincePlateDropdown = $("#province_plate");
