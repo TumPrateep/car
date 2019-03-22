@@ -66,6 +66,8 @@ class Orderdetail extends BD_Controller {
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['group'] = $post->group;
                 $nestedData['productId'] = $post->productId;
+                $nestedData['firstname'] = $post->firstname;
+                $nestedData['lastname'] = $post->lastname;
                 // $nestedData['car_accessoriesName'] = $post->car_accessoriesName;
                 // $nestedData['picture'] = $post->picture;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);

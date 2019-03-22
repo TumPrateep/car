@@ -129,6 +129,16 @@
                           
                     }
                 }
+                ,{
+                    "targets": 6,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var userdata = data.data;
+                        // return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
+                        return userdata.firstname+ " "+userdata.lastname ;
+                          
+                    }
+                }
                
             ]	 
     });

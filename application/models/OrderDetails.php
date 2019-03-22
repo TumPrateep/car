@@ -43,12 +43,14 @@ class Orderdetails extends CI_Model{
     function allorders_count()
     {   
         
-        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId");
+        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,user_profile.firstname,user_profile.lastname");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
         // $this->db->join('car_accessories','order.car_accessoriesId = car_accessories.car_accessoriesId');
-        $this->db->where('order.status', 1);
+        $this->db->join('users','order.userId = users.id');
+        $this->db->join('user_profile','user.userId = user_profile.userId');
+        $this->db->where('order.status', 4);
 
         $query = $this->db->get();
         return $query->num_rows();  
@@ -61,12 +63,14 @@ class Orderdetails extends CI_Model{
 
     function allorders($limit,$start,$order,$dir)//$limit,$start,$col,$dir,$order
     {   
-        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId");
+        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,user_profile.firstname,user_profile.lastname");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
         // $this->db->join('car_accessories','order.car_accessoriesId = car_accessories.car_accessoriesId');
-        $this->db->where('order.status', 1);
+        $this->db->join('users','order.userId = users.id');
+        $this->db->join('user_profile','user.userId = user_profile.userId');
+        $this->db->where('order.status', 4);
         $this->db->limit($limit,$start)->order_by($order,$dir);
 
         $query = $this->db->get();
