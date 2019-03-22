@@ -12,6 +12,18 @@ class Order extends BD_Controller {
         $this->load->model('orderdetails');
     }
 
+    function getCaracessoryId($orderdetail){
+        $arrData['spare'] = [];
+        $arrData['tire'] = [];
+        $arrData['lubricator'] = [];
+        foreach ($orderdetail as $row) {
+            $arrData[$row->group][] = getDataForOrderDetail($row->productId, $row->group);
+        }
+
+        $result = $this->orders->CheckCar_accessories($arrData);
+        return $result;
+    }
+
     function createOrderDetail_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $garageId = $this->post("garageId");
@@ -22,6 +34,8 @@ class Order extends BD_Controller {
 
         $data = array();
         $orderdetail = $this->orders->getAllCartByUserIdAndProductId($userId, $productData);
+
+        $caraccessoryId = $this->getCaracessoryId($orderdetail);
 
         $data["reserve"] = array(
             "reserveDate" => date('Y-m-d H:i:s', changeFormateDateToTime($reserve_day)),
@@ -39,6 +53,7 @@ class Order extends BD_Controller {
             'car_profileId' => $carProfileId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
+            'car_accessoriesId' => $caraccessoryId,
             'activeflag' =>1
         );
 
@@ -50,6 +65,8 @@ class Order extends BD_Controller {
             "model" => $this->orders,
             "image_path" => null
         ];
+        
+        // $this->set_response(["asdas" => $data], REST_Controller::HTTP_OK);
 
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
         
@@ -81,7 +98,7 @@ class Order extends BD_Controller {
                 $nestedData['create_by'] = $post->userId;
                 $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
                 $nestedData['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
-                $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage);
+                $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
                 $data[] = $nestedData;
             }
         }
@@ -93,4 +110,5 @@ class Order extends BD_Controller {
         );
         $this->set_response($json_data);
     }
+   
 }

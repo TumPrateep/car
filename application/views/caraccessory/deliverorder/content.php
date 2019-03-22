@@ -3,11 +3,11 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">ข้อมูลน้ำมันเครื่อง</h3>  
+            <h3 class="text-primary">ข้อมูลการกส่งสินค้า</h3>  
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Lubricatordata"); ?>">ข้อมูลน้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Lubricatordata"); ?>">ข้อมูลการจัดส่งสินค้า</a></li>
                 <li class="breadcrumb-item active">ค้นหา</li>
             </ol>
         </div>
@@ -123,10 +123,50 @@
                   <th><i class="fa fa-rebel"></i>  จำนวน</th>
                   <th><i class="fa fa-rebel"></i>  ราคา</th>
                   <!-- <th><i class="fa fa-user-circle"></i>  สถานะ</th> -->
-                  <th></th>
+                  <!-- <th></th> -->
                 </thead>
             </table>
         </div>
     </div>
+
+    <div class="modal fade" id="tracking-order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+        <div class="modal-dialog modal-lg mw-500" id="maxWidthSelect" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ติดตามสินค้า</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="update-traking-number">
+                    <div class="row">
+                        <div class="col-md-12">
+                        
+                            <input type="hidden" name="orderId" id="orderId">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label " for="order">อักษรนำหน้า</label>
+                                        <!-- <input type="textarea" class="form-control" id="character_plate" name="character_plate" placeholder="อักษร"> -->
+                                        <textarea  class="form-control" name="tracking-number" id="tracking-number" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="button" onclick="updatetrakingnumber()" class="btn btn-success"> บันทึก</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal"> ปิด</button>
+                            </div>
+                        </div>
+                    </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
         

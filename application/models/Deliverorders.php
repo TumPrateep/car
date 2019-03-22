@@ -19,7 +19,7 @@ class Deliverorders extends CI_Model {
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
-        $this->db->where('order.status', 1);
+        $this->db->where('order.status', 3);
 
         $query = $this->db->get();
         return $query->num_rows();  
@@ -36,7 +36,7 @@ class Deliverorders extends CI_Model {
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
-        $this->db->where('order.status', 1);
+        $this->db->where('order.status', 3);
         $this->db->limit($limit,$start)->order_by($order,$dir);
 
         $query = $this->db->get();
@@ -88,15 +88,29 @@ class Deliverorders extends CI_Model {
         
     }
 
-    function Deliverorders_search_count($orderId){
-        $this->db->where('status', 2);
-        $this->db->where("garageId", $garageId);
-        $this->db->like('firstName',$firstname);
-        if($orderId != null){
-            $this->db->where("$orderId", $$orderId);
-        }
-        $query = $this->db->get('order');
-        return $query->num_rows();
+    // function Deliverorders_search_count($orderId){
+    //     $this->db->where('status', 2);
+    //     $this->db->where("garageId", $garageId);
+    //     $this->db->like('firstName',$firstname);
+    //     if($orderId != null){
+    //         $this->db->where("$orderId", $$orderId);
+    //     }
+    //     $query = $this->db->get('order');
+    //     return $query->num_rows();
+    // }
+
+    function update($data){
+        $this->db->where('orderId',$data['orderId']);
+        $result = $this->db->update('order', $data);
+        return $result;
+    }
+
+    function getorderById($orderId){
+        $this->db->select("orderId");
+        $this->db->where('orderId',$orderId);
+        $result = $this->db->get("order");
+        return $result->row();
+
     }
     
 }
