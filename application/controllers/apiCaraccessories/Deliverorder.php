@@ -61,7 +61,7 @@ class Deliverorder extends BD_Controller {
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['group'] = $post->group;
                 $nestedData['productId'] = $post->productId;
-                // $nestedData['garageName'] = $post->garageName;
+                $nestedData['garageName'] = $post->garageName;
                 // $nestedData['picture'] = $post->picture;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 

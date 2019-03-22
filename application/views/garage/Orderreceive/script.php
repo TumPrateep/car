@@ -118,20 +118,15 @@
                         }
                         return html;
                     }
-                },{
-                    "targets": 5,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
-                          
-                    }
                 }
-
-                // { "orderable": false, "targets": 0 },
-                // {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
-                // { "width": "8%", "targets": 0 },
-                // { "width": "20%", "targets": [2,3] },
-                // { "width": "12%", "targets": [4,5] },  
+                // ,{
+                //     "targets": 5,
+                //     "data": null,
+                //     "render": function ( data, type, full, meta ) {
+                //         return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
+                          
+                //     }
+                // }
                
             ]	 
     });
