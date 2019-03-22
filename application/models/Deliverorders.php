@@ -66,27 +66,27 @@ class Deliverorders extends CI_Model {
         
     }
 
-    // function Deliverorders_search($limit,$start,$col,$dir)
-    // {
-    //     $this->db->where('status', 2);
-    //     $this->db->like('firstName',$firstname);
-    //     if($brandId != null){
-    //         $this->db->where("brandId", $brandId);
-    //     }
-    //     $query = $this->db->limit($limit,$start)
-    //             ->order_by($col,$dir)
-    //             ->get('order');
+    function Deliverorders_search($limit,$start,$col,$dir)
+    {
+        $this->db->where('status', 2);
+        $this->db->like('firstName',$firstname);
+        if($brandId != null){
+            $this->db->where("brandId", $brandId);
+        }
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get('order');
         
-    //     if($query->num_rows()>0)
-    //     {
-    //         return $query->result();  
-    //     }
-    //     else
-    //     {
-    //         return null;
-    //     }
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
         
-    // }
+    }
 
     // function Deliverorders_search_count($orderId){
     //     $this->db->where('status', 2);
@@ -110,6 +110,7 @@ class Deliverorders extends CI_Model {
         $this->db->where('orderId',$orderId);
         $result = $this->db->get("order");
         return $result->row();
+
     }
     
 }
