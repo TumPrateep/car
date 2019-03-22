@@ -15,10 +15,11 @@ class Deliverorders extends CI_Model {
     function allDeliverorders_count()
     {   
         
-        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId");
+        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
+        $this->db->join('garage','garage.garageId = reserve.garageId');
         $this->db->where('order.status', 3);
 
         $query = $this->db->get();
@@ -32,10 +33,11 @@ class Deliverorders extends CI_Model {
 
     function allDeliverorders($limit,$start,$order,$dir)//$limit,$start,$col,$dir,$order
     {   
-        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId");
+        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
+        $this->db->join('garage','garage.garageId = reserve.garageId');
         $this->db->where('order.status', 3);
         $this->db->limit($limit,$start)->order_by($order,$dir);
 

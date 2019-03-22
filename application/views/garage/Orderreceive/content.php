@@ -46,8 +46,8 @@
                   <th><i class="fa fa-sort"></i> ลำดับ</th>
                   <th><i class="fa fa-picture-o"></i> รูปยี่ห้อรถ</th>
                   <th><i class="fa fa-rebel"></i>  รายละเอียดสินค้า</th>
-                  <th><i class="fa fa-rebel"></i>  จำนวน</th>
-                  <th><i class="fa fa-rebel"></i>  ราคา</th>
+                  <th><!-- <i class="fa fa-rebel"></i> -->  จำนวน</th>
+                  <th><!-- <i class="fa fa-rebel"></i> -->  ราคา</th>
                   <th><i class="fa fa-rebel"></i>  ร้านอะไหล่</th>
                   <th><i class="fa fa-rebel"></i>  ลูกค้า</th>
                   <th><i class="fa fa-user-circle"></i>  สถานะ</th>

@@ -53,7 +53,7 @@
                 api.rows({page:'current'} ).data().each( function ( data, i ) {
                     if ( last !== data.orderId ) {
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' อู่ '+data.garageId+'</td></tr>'
+                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+'</td></tr>'
                         );
     
                         last = data.orderId;
@@ -118,15 +118,70 @@
                         }
                         return html;
                     }
-                }
-                // ,{
-                //     "targets": 5,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
+                },{
+                    "targets": 5,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var car_accessoriesdata = data;
+                        // return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
+                        return car_accessoriesdata.car_accessoriesName;
                           
-                //     }
-                // }
+                    }
+                },{
+                    "targets": 6,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var userdata = data;
+                        console.log(userdata);
+                        // return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
+                        return userdata.firstname+ " "+userdata.lastname ;
+                          
+                    }
+                },{
+                    "targets": 7,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var html = '';
+                        // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
+                        if(data.status==1){
+                            html+='<span class="badge badge-warning">รอการตอบรับ</span>';
+                        }else if(data.status==2){
+                            html+='<span class="badge badge-success">รับสินค้า</span>';
+                        }else if(data.status==3){
+                            html+='<span class="badge badge-danger">คืนสินค้า</span>';
+                        }else{
+                            html+='<span class="badge badge-danger">ผิดพลาด</span>';
+                        }
+                        return html;
+                          
+                    }
+                },{
+                    "targets": 8,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var html = '';
+
+                        if(data.status==1){
+                            return '<button type="button" class="btn btn-success"  onclick="confirmStatus('+data.orderDetailId+')">รับ</button>'
+                            +'<button type="button" class="btn btn-danger"  onclick="returnStatus('+data.orderDetailId+')">คืน</button>';
+                        }else if(data.status==2){
+                            return html;
+                        }else if(data.status==3){
+                            return html;
+                        }
+                        
+                          
+                    }
+                },
+                { "width": "10%", "targets": 0 },
+                { "width": "10%", "targets": 1 },
+                { "width": "10%", "targets": 2 },
+                { "width": "10%", "targets": 3 },
+                { "width": "10%", "targets": 4 },
+                { "width": "10%", "targets": 5 },
+                { "width": "10%", "targets": 6 },
+                { "width": "10%", "targets": 7 },
+                { "width": "10%", "targets": 8 }
                
             ]	 
     });
@@ -148,6 +203,28 @@
     //         }
     //     });
     // }
+
+    function confirmStatus(orderDetailId){
+        var option = {
+            url: "/Orderdetail/changeStatus?orderDetailId="+orderDetailId,
+            label: "ยืนยันการรับสินค้า",
+            status: 2,
+            content: "คุณต้องการยืนยันการรับสินค้า ใช่หรือไม่",
+            gotoUrl: "garage/Orderreceive/show"
+        }
+        fnConfirm(option);
+    }
+
+    function returnStatus(orderDetailId){
+        var option = {
+            url: "/Orderdetail/changeStatus?orderDetailId="+orderDetailId,
+            label: "ยืนยันการคืนสินค้า",
+            status: 3,
+            content: "คุณต้องการยืนยันการคืนสินค้า ใช่หรือไม่",
+            gotoUrl: "garage/Orderreceive/show"
+        }
+        fnConfirm(option);
+    }      
 
     $("#btn-search").click(function(){
         event.preventDefault();
