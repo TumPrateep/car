@@ -30,7 +30,12 @@ class Orderdetails extends CI_Model{
     //     }
     // }
 
-
+    function getorderDetailById($orderDetailId){
+        $this->db->select("orderDetailId");
+        $this->db->where('orderDetailId',$orderDetailId);
+        $result = $this->db->get("orderdetail");
+        return $result->row();
+    }
 
     function getOrderDetailByOrderId($orderId){
         // $this->db->select("*");
@@ -43,13 +48,13 @@ class Orderdetails extends CI_Model{
     function allorders_count()
     {   
         
-        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,user_profile.firstname,user_profile.lastname");
+        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
-        // $this->db->join('car_accessories','order.car_accessoriesId = car_accessories.car_accessoriesId');
+        $this->db->join('car_accessories','order.car_accessoriesId = car_accessories.userId');
         $this->db->join('users','order.userId = users.id');
-        $this->db->join('user_profile','user.userId = user_profile.userId');
+        $this->db->join('user_profile','users.id = user_profile.userId');
         $this->db->where('order.status', 4);
 
         $query = $this->db->get();
@@ -63,13 +68,13 @@ class Orderdetails extends CI_Model{
 
     function allorders($limit,$start,$order,$dir)//$limit,$start,$col,$dir,$order
     {   
-        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,user_profile.firstname,user_profile.lastname");
+        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
-        // $this->db->join('car_accessories','order.car_accessoriesId = car_accessories.car_accessoriesId');
+        $this->db->join('car_accessories','order.car_accessoriesId = car_accessories.userId');
         $this->db->join('users','order.userId = users.id');
-        $this->db->join('user_profile','user.userId = user_profile.userId');
+        $this->db->join('user_profile','users.id = user_profile.userId');
         $this->db->where('order.status', 4);
         $this->db->limit($limit,$start)->order_by($order,$dir);
 
@@ -123,5 +128,13 @@ class Orderdetails extends CI_Model{
         $query = $this->db->get('order');
         return $query->num_rows();
     }
+
+    function update($data){
+        $this->db->where('orderDetailId',$data['orderDetailId']);
+        $result = $this->db->update('orderdetail',$data);
+        return $result;
+    }
+
+
 
 }

@@ -62,13 +62,16 @@ class Orderdetail extends BD_Controller {
             foreach ($posts as $post)
             {
                 $nestedData['orderId'] = $post->orderId;
+                $nestedData['orderDetailId'] = $post->orderDetailId;
                 $nestedData['quantity'] = $post->quantity;
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['group'] = $post->group;
+                $nestedData['status'] = $post->status;
                 $nestedData['productId'] = $post->productId;
+                $nestedData['car_accessoriesName'] = $post->car_accessoriesName;
                 $nestedData['firstname'] = $post->firstname;
                 $nestedData['lastname'] = $post->lastname;
-                // $nestedData['car_accessoriesName'] = $post->car_accessoriesName;
+                
                 // $nestedData['picture'] = $post->picture;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
@@ -94,6 +97,24 @@ class Orderdetail extends BD_Controller {
 
         $this->set_response($json_data);
 
+    }
+
+    function changeStatus_get(){
+        $orderDetailId = $this->get("orderDetailId");
+        $status = $this->get("status");
+        $data = array(
+            'orderDetailId' => $orderDetailId,
+            'status' => $status
+          
+        );
+        $data_check_update = $this->orderdetails->getorderDetailById($orderDetailId);
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->orderdetails
+        ];
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
     // function getorder_get(){
