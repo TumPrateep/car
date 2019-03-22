@@ -12,6 +12,18 @@ class Order extends BD_Controller {
         $this->load->model('orderdetails');
     }
 
+    function getCaracessoryId($orderdetail){
+        $arrData['spare'] = [];
+        $arrData['tire'] = [];
+        $arrData['lubricator'] = [];
+        foreach ($orderdetail as $row) {
+            $arrData[$row->group][] = getDataForOrderDetail($row->productId, $row->group);
+        }
+
+        $result = $this->orders->CheckCar_accessories($arrData);
+        return $result;
+    }
+
     function createOrderDetail_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $garageId = $this->post("garageId");
@@ -23,35 +35,39 @@ class Order extends BD_Controller {
         $data = array();
         $orderdetail = $this->orders->getAllCartByUserIdAndProductId($userId, $productData);
 
-        $data["reserve"] = array(
-            "reserveDate" => date('Y-m-d H:i:s', changeFormateDateToTime($reserve_day)),
-            "reservetime" => $reserve_time,
-            "garageId" => $garageId,
-            "created_at" => date('Y-m-d H:i:s',time()),
-            "created_by" => $userId,
-            "status" => 1,
-            "orderId" => ""
-        );
-       
-        $data['order'] = array(
-            'userId' => $userId,
-            'create_by' => $userId,
-            'car_profileId' => $carProfileId,
-            'create_at' => date('Y-m-d H:i:s',time()),
-            'status' => 1,
-            'activeflag' =>1
-        );
+        $caraccessoryId = $this->getCaracessoryId($orderdetail);
 
-        $data['orderdetail'] = $orderdetail;
+        // $data["reserve"] = array(
+        //     "reserveDate" => date('Y-m-d H:i:s', changeFormateDateToTime($reserve_day)),
+        //     "reservetime" => $reserve_time,
+        //     "garageId" => $garageId,
+        //     "created_at" => date('Y-m-d H:i:s',time()),
+        //     "created_by" => $userId,
+        //     "status" => 1,
+        //     "orderId" => ""
+        // );
        
-        $option = [
-            "data_check" => null,
-            "data" => $data,
-            "model" => $this->orders,
-            "image_path" => null
-        ];
+        // $data['order'] = array(
+        //     'userId' => $userId,
+        //     'create_by' => $userId,
+        //     'car_profileId' => $carProfileId,
+        //     'create_at' => date('Y-m-d H:i:s',time()),
+        //     'status' => 1,
+        //     'activeflag' =>1
+        // );
 
-        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
+        // $data['orderdetail'] = $orderdetail;
+       
+        // $option = [
+        //     "data_check" => null,
+        //     "data" => $data,
+        //     "model" => $this->orders,
+        //     "image_path" => null
+        // ];
+        
+        $this->set_response(["asdas" => $caraccessoryId], REST_Controller::HTTP_OK);
+
+        // $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
         
     }
 
@@ -93,4 +109,5 @@ class Order extends BD_Controller {
         );
         $this->set_response($json_data);
     }
+   
 }
