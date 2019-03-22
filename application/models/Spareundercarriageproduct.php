@@ -119,4 +119,15 @@ class Spareundercarriageproduct extends CI_Model{
         
     }
 
+    function getCostForOrderDetail($caraccessoryId, $productDetail){
+        $this->db->where('modelId', $productDetail['modelId']);
+        $this->db->where('spares_undercarriageId', $productDetail['spares_undercarriageId']);
+        $this->db->where('spares_brandId', $productDetail['spares_brandId']);
+        $this->db->where('brandId', $productDetail['brandId']);
+        $this->db->where('modelofcarId', $productDetail['modelofcarId']);
+        $this->db->where('create_by', $caraccessoryId);
+        $result = $this->db->get('spares_undercarriagedata');
+        return $result->row('price');
+    }
+
 }

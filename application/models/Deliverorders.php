@@ -19,7 +19,7 @@ class Deliverorders extends CI_Model {
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
-        $this->db->where('order.status', 1);
+        $this->db->where('order.status', 3);
 
         $query = $this->db->get();
         return $query->num_rows();  
@@ -36,7 +36,7 @@ class Deliverorders extends CI_Model {
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
-        $this->db->where('order.status', 1);
+        $this->db->where('order.status', 3);
         $this->db->limit($limit,$start)->order_by($order,$dir);
 
         $query = $this->db->get();

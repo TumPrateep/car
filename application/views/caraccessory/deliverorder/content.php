@@ -150,7 +150,7 @@
                                     <div class="form-group">
                                         <label class="form-label " for="order">อักษรนำหน้า</label>
                                         <!-- <input type="textarea" class="form-control" id="character_plate" name="character_plate" placeholder="อักษร"> -->
-                                        <textarea class="form-control" name="tracking-number" id="tracking-number" rows="3"></textarea>
+                                        <textarea  class="form-control" name="tracking-number" id="tracking-number" rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>

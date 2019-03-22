@@ -48,7 +48,7 @@
                 api.rows({page:'current'} ).data().each( function ( data, i ) {
                     if ( last !== data.orderId ) {
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' อู่ '+data.garageId+' <button type="button" class="btn btn-warning"  onclick="tracking_order('+data.orderId+')"><i class="fa fa-paper-plane" ></i></button></td></tr>'
+                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' อู่ '+data.garageName+' <button type="button" class="btn btn-warning"  onclick="tracking_order('+data.orderId+')"><i class="fa fa-paper-plane" ></i></button></td></tr>'
                         );
     
                         last = data.orderId;
@@ -181,7 +181,8 @@
     });
 
     function tracking_order(orderId){
-        // var orderId = $("#orderId"),
+        
+        $("#orderId").val(orderId);
         $("#tracking-order").modal("show");
     }
 

@@ -172,6 +172,14 @@ class Lubricatordatas extends CI_Model{
         }
     }
 
+    function getLubricatorIdForOrderDetail($lubricator_dataId){
+        $this->db->select('lubricatorId');
+        $this->db->from("lubricator_data");
+        $this->db->where("lubricator_dataId", $lubricator_dataId);
+        $result = $this->db->get();
+        return $result->row();
+    }   
+
     function getLubricatorDataForCartById($lubricator_dataId){
         $this->db->select('lubricator_data.lubricator_dataId as productId, lubricator.capacity, lubricator_type.lubricator_typeName, lubricator_brand.lubricator_brandName, lubricator.lubricatorName, lubricator_number.lubricator_number, lubricator_number.lubricator_gear, concat(lubricator_brand.lubricator_brandName,"/",lubricator.lubricatorName) as lubricator, lubricator_data.status, lubricator_data.price, lubricator_data.warranty_year, lubricator_data.warranty_distance, lubricator_data.create_by, lubricator_data.warranty, lubricator_type.lubricator_typePicture, lubricator_type.lubricator_typeSize, lubricator_data.lubricator_dataPicture, lubricator.capacity, lubricator_brand.lubricator_brandPicture, lubricator_data.lubricator_dataPicture as picture, lubricator.lubricatorId');        
         $this->db->from("lubricator_data");
@@ -202,6 +210,13 @@ class Lubricatordatas extends CI_Model{
         }else{
             return null;
         }
+    }
+
+    function getCostForOrderDetail($caraccessoryId, $productDetail){
+        $this->db->where('lubricatorId', $productDetail);
+        $this->db->where('create_by', $caraccessoryId);
+        $result = $this->db->get('lubricator_data');
+        return $result->row('price');
     }
 
 }

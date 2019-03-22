@@ -158,6 +158,85 @@
       return $result->picture;
     }
 
+    function getCostFromProductDetail($caraccessoryId, $productDetail, $group){
+        $data = [];
+        if($group == "lubricator"){
+            $data = getCostLubricatorForOrderDetail($caraccessoryId, $productDetail);
+        }else if($group == "tire"){
+            $data = getCostTireForOrderDetail($caraccessoryId, $productDetail);
+        }else{
+            $data = getCostSpareForOrderDetail($caraccessoryId, $productDetail);
+        }
+        return $data;
+    } 
+
+    function getCostLubricatorForOrderDetail($caraccessoryId, $productDetail){
+      $CI = get_instance();
+      $CI->load->model("lubricatordatas");
+      $result = $CI->lubricatordatas->getCostForOrderDetail($caraccessoryId, $productDetail);
+      return $result;
+    }
+
+    function getCostTireForOrderDetail($caraccessoryId, $productDetail){
+      $CI = get_instance();
+      $CI->load->model("tireproduct");
+      $result = $CI->tireproduct->getCostForOrderDetail($caraccessoryId, $productDetail);
+      return $result;
+    }
+
+    function getCostSpareForOrderDetail($caraccessoryId, $productDetail){
+      $CI = get_instance();
+      $CI->load->model("Spareundercarriageproduct");
+      $result = $CI->Spareundercarriageproduct->getCostForOrderDetail($caraccessoryId, $productDetail);
+      return $result;
+    }
+
+    function getDataForOrderDetail($productId, $group){
+      $data = [];
+      if($group == "lubricator"){
+          $data = getLubricatorForOrderDetail($productId);
+      }else if($group == "tire"){
+          $data = getTireDetailForOrderDetail($productId);
+      }else{
+          $data = getSpareDetailForOrderDetail($productId);
+      }
+      return $data;
+    }
+
+    function getLubricatorForOrderDetail($productId){
+      $CI = get_instance();
+      $CI->load->model("lubricatordatas");
+      $result = $CI->lubricatordatas->getLubricatorIdForOrderDetail($productId);
+      return $result->lubricatorId;
+    }
+
+    function getTireDetailForOrderDetail($productId){
+      $CI = get_instance();
+      $CI->load->model("tireproduct");
+      $result = $CI->tireproduct->getTireDataForCartById($productId);
+      $option = [
+        'tire_brandId' => $result->tire_brandId,
+        'tire_modelId' => $result->tire_modelId,
+        'tire_sizeId' => $result->tire_sizeId,
+        'rimId' => $result->rimId
+      ];
+      return $option;
+    }
+
+    function getSpareDetailForOrderDetail($productId){
+      $CI = get_instance();
+      $CI->load->model("Spareundercarriageproduct");
+      $result = $CI->Spareundercarriageproduct->getSpareDataForCartById($productId);
+      $option = [
+        'spares_undercarriageId' => $result->spares_undercarriageId,
+        'spares_brandId' => $result->spares_brandId,
+        'brandId' => $result->brandId,
+        'modelId' => $result->modelId,
+        'modelofcarId' => $result->modelofcarId
+      ];
+      return $option;
+    }
+
     function getProductDetail($productId, $group){
       $data = [];
       if($group == "lubricator"){
@@ -183,6 +262,8 @@
       $result->picture = getPictureLubricator($option);
       return $result;
   }
+
+
   
   function getTireDetail($productId){
       $CI = get_instance();

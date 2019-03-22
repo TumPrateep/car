@@ -56,10 +56,12 @@ class Deliverorder extends BD_Controller {
             $count = 0;
             foreach ($posts as $post)
             {
+                $nestedData['orderId'] = $post->orderId;
                 $nestedData['quantity'] = $post->quantity;
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['group'] = $post->group;
                 $nestedData['productId'] = $post->productId;
+                // $nestedData['garageName'] = $post->garageName;
                 // $nestedData['picture'] = $post->picture;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
@@ -133,6 +135,7 @@ class Deliverorder extends BD_Controller {
 
         $data = array(
             'orderId' => $orderId,
+            'status' => 4,
             'number_tracking'  => $tracking_number
         );
 
