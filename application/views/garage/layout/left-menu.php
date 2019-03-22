@@ -28,7 +28,7 @@
                         <li ><a class="garage-white " href="<?=base_url("garage/Orderdetail/show"); ?>">
                             <i class="fa fa-truck garage-white"></i>รายการสินค้า</a>
                         </li>
-                        <li ><a class="garage-white " href="<?=base_url("#"); ?>">
+                        <li ><a class="garage-white " href="<?=base_url("garage/Orderreceive/show"); ?>">
                         <i class="fa fa-check-square-o" aria-hidden="true"></i>รับสินค้า</a>
                         </li>
                     </ul>
