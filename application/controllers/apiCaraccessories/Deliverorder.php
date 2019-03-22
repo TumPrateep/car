@@ -65,14 +65,16 @@ class Deliverorder extends BD_Controller {
                 // $nestedData['picture'] = $post->picture;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
-                $data[$index] = $nestedData;
-                if($count >= 3){
-                    $count = -1;
-                    $index++;
-                    $nestedData = [];
-                }
+                $data[] = $nestedData;
                 
-                $count++;
+                // $data[$index] = $nestedData;
+                // if($count >= 3){
+                //     $count = -1;
+                //     $index++;
+                //     $nestedData = [];
+                // }
+                
+                // $count++;
 
             }
         }
