@@ -65,7 +65,7 @@ class Paymentss extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($orderId, $userId);
         $output['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
-        $output['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage);
+        $output['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
         $this->set_response($output, REST_Controller::HTTP_OK);
     }  
 
