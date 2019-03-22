@@ -182,17 +182,21 @@ class Tiredatas extends CI_Model{
         }
     }
 
-    function getTireDataForOrderByIdArray($tire_dataIdArray){
+    function getTireDataForOrderByIdArray($tire_dataIdArray, $orderId = null, $group){
         if($tire_dataIdArray == null){
             return null;
         }
-        $this->db->select('tire_data.tire_dataId as productId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size,tire_data.status,tire_data.warranty_year,tire_data.warranty_distance,tire_data.can_change,tire_data.activeFlag,tire_data.create_by, tire_data.warranty, tire_data.tire_picture, tire_brand.tire_brandPicture, tire_brand.tire_brandId,rim.rimId, orderdetail.quantity, tire_data.tire_picture as picture, orderdetail.cost, orderdetail.charge');
+        $this->db->select('tire_data.tire_dataId as productId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size,tire_data.status,tire_data.warranty_year,tire_data.warranty_distance,tire_data.can_change,tire_data.activeFlag,tire_data.create_by, tire_data.warranty, tire_data.tire_picture, tire_brand.tire_brandPicture, tire_brand.tire_brandId,rim.rimId, orderdetail.quantity, tire_data.tire_picture as picture, orderdetail.cost, orderdetail.charge,tire_model.tire_modelId,tire_size.tire_sizeId');
         $this->db->join('orderdetail','orderdetail.productId = tire_data.tire_dataId');
         $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
         $this->db->join('tire_model','tire_model.tire_modelId = tire_data.tire_modelId');
         $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');
         $this->db->join('rim','rim.rimId = tire_data.rimId');
         $this->db->where_in('tire_data.tire_dataId',$tire_dataIdArray);
+        $this->db->where('orderdetail.group', $group);
+        if($orderId != null){
+            $this->db->where_in("orderdetail.orderId", $orderId);
+        }
         $result = $this->db->get('tire_data');
         if($result->num_rows()>0){
             return $result->result();  

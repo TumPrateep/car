@@ -57,9 +57,9 @@ class Orderdetail extends BD_Controller {
         $orderId = $this->get("orderId");
         $orderDetailData = $this->orderdetails->getOrderDetailByOrderId($orderId);
         
-        $lubricatorData = $this->getLubricator($orderDetailData);
-        $tireData = $this->getTire($orderDetailData);
-        $spareData = $this->getSpare($orderDetailData);
+        $lubricatorData = $this->getLubricator($orderDetailData, $orderId);
+        $tireData = $this->getTire($orderDetailData, $orderId);
+        $spareData = $this->getSpare($orderDetailData, $orderId);
 
         $this->set_response($this->getCartData($lubricatorData, $tireData, $spareData), REST_Controller::HTTP_OK);
     }
@@ -72,6 +72,10 @@ class Orderdetail extends BD_Controller {
                 $value->group = "lubricator";
                 $value->cost = calSummary($value->cost, $value->charge) * $value->quantity;
                 $value->charge = 0;
+                $option = [
+                    'lubricatorId' => $value->lubricatorId
+                ];
+                $value->picture = getPictureLubricator($option);
                 array_push($data,$value);
             }
     
@@ -81,6 +85,13 @@ class Orderdetail extends BD_Controller {
                 $value->group = "tire";
                 $value->cost = calSummary($value->cost, $value->charge) * $value->quantity;
                 $value->charge = 0;
+                $option = [
+                    'tire_brandId' => $value->tire_brandId,
+                    'tire_modelId' => $value->tire_modelId,
+                    'tire_sizeId' => $value->tire_sizeId,
+                    'rimId' => $value->rimId
+                ];
+                $value->picture = getPictureTire($option);
                 array_push($data,$value);
             }
         }
@@ -89,6 +100,14 @@ class Orderdetail extends BD_Controller {
                 $value->group = "spare";
                 $value->cost = calSummary($value->cost, $value->charge) * $value->quantity;
                 $value->charge = 0;
+                $option = [
+                    'spares_undercarriageId' => $value->spares_undercarriageId,
+                    'spares_brandId' => $value->spares_brandId,
+                    'brandId' => $value->brandId,
+                    'modelId' => $value->modelId,
+                    'modelofcarId' => $value->modelofcarId
+                ];
+                $value->picture = getPictureSpare($option);
                 array_push($data,$value);
             }
         }
@@ -96,7 +115,7 @@ class Orderdetail extends BD_Controller {
         return $data;
     }
 
-    function getLubricator($data){
+    function getLubricator($data, $orderId = null){
         $lubricatorArray = array_filter(
             $data, function ($e) { 
                 return $e->group == "lubricator"; 
@@ -107,10 +126,10 @@ class Orderdetail extends BD_Controller {
             $productId[$key] = $val->productId;
         }
         $this->load->model("lubricatordatas");
-        return $this->lubricatordatas->getLubricatorDataForOrderByIdArray($productId);
+        return $this->lubricatordatas->getLubricatorDataForOrderByIdArray($productId, $orderId, "lubricator");
     }
 
-    function getTire($data){
+    function getTire($data, $orderId=null){
         $tireArray = array_filter(
             $data, function ($e) { return $e->group == "tire"; }
         );
@@ -119,10 +138,10 @@ class Orderdetail extends BD_Controller {
             $productId[$key] = $val->productId;
         }
         $this->load->model("tiredatas");
-        return $this->tiredatas->getTireDataForOrderByIdArray($productId);
+        return $this->tiredatas->getTireDataForOrderByIdArray($productId, $orderId, "tire");
     }
 
-    function getSpare($data){
+    function getSpare($data, $orderId=null){
         $spareArray = array_filter(
             $data, function ($e) { return $e->group == "spare"; }
         );
@@ -131,7 +150,7 @@ class Orderdetail extends BD_Controller {
             $productId[$key] = $val->productId;
         }
         $this->load->model("spare_undercarriagedatas");
-        return $this->spare_undercarriagedatas->getSpareDataForOrderByIdArray($productId);
+        return $this->spare_undercarriagedatas->getSpareDataForOrderByIdArray($productId, $orderId, "spare");
     }
 
 }

@@ -26,7 +26,7 @@ class Spareundercarriageproduct extends CI_Model{
             return null;
         }
     }
-
+    //แบบที่ถูก
     function SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change){
         $price = explode("-",$price);
         

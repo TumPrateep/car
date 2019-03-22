@@ -42,11 +42,11 @@ class Orderdetails extends CI_Model{
 
     function allorders_count()
     {   
-        
         $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
+        // $this->db->where("order.orderId", $orderId);
         $this->db->where('order.status', 1);
 
         $query = $this->db->get();
@@ -64,6 +64,7 @@ class Orderdetails extends CI_Model{
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
+        // $this->db->where("order.orderId", $orderId);
         $this->db->where('order.status', 1);
         $this->db->limit($limit,$start)->order_by($order,$dir);
 

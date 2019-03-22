@@ -136,6 +136,12 @@
       return $result->picture;
     }
 
+    function dd(){
+      $CI = get_instance();
+      echo $CI->db->last_query();
+      exit();
+    }
+
     function getPictureTire($option){
       $CI = get_instance();
       $CI->load->model("dataoption");

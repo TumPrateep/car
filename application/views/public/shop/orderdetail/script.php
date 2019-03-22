@@ -18,12 +18,16 @@
                     var quantity = "";
 
                     if(val.group == "tire"){
-
+                        picture = base_url+'public/image/tireproduct/'+val.picture;
+                        content = val.tire_brandName+" "+val.tire_modelName+" "+val.tire_size;
+                        quantity = val.quantity;
                     }else if(val.group == "lubricator"){
-
+                        picture = base_url+'public/image/lubricatorproduct/'+val.picture;
+                        content = val.lubricator+" "+val.lubricator_number+" "+val.capacity+" ลิตร";
+                        quantity = val.quantity;
                     }else if(val.group == "spare"){
                         picture = base_url+'public/image/spareundercarriage/'+val.picture;
-                        content = val.spares_undercarriageName; 
+                        content = val.spares_undercarriageName+" "+val.brandName+" "+val.modelName+" "+val.machineSize+" "+val.modelofcarName; 
                         quantity = val.quantity;
                     }
 
