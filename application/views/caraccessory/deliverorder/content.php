@@ -3,7 +3,7 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">ข้อมูลการกส่งสินค้า</h3>  
+            <h3 class="text-primary">ข้อมูลการส่งสินค้า</h3>  
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
@@ -119,9 +119,9 @@
                 <thead>
                   <th><i class="fa fa-sort"></i> ลำดับ</th>
                   <th><i class="fa fa-picture-o"></i> รูปยี่ห้อรถ</th>
-                  <th><i class="fa fa-rebel"></i>  รายละเอียดสินค้า</th>
-                  <th><i class="fa fa-rebel"></i>  จำนวน</th>
-                  <th><i class="fa fa-rebel"></i>  ราคา</th>
+                  <th><i class="fa fa-bars"></i>  รายละเอียดสินค้า</th>
+                  <th><i class="fa fa-plus"></i>  จำนวน</th>
+                  <th><i class="fa fa-usd"></i>  ราคา</th>
                   <!-- <th><i class="fa fa-user-circle"></i>  สถานะ</th> -->
                   <!-- <th></th> -->
                 </thead>
@@ -130,10 +130,10 @@
     </div>
 
     <div class="modal fade" id="tracking-order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
-        <div class="modal-dialog modal-lg mw-500" id="maxWidthSelect" role="document">
+        <div class="modal-dialog modal-lg model-Width-sm" id="maxWidthSelect" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ติดตามสินค้า</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">กรอกข้อมูลหมายเลขติดตาม</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -148,9 +148,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="form-label " for="order">อักษรนำหน้า</label>
+                                        <!-- <label class="form-label " for="order">อักษรนำหน้า</label> -->
                                         <!-- <input type="textarea" class="form-control" id="character_plate" name="character_plate" placeholder="อักษร"> -->
-                                        <textarea  class="form-control" name="tracking-number" id="tracking-number" rows="3"></textarea>
+                                        <textarea class="form-control sm-text-a" name="tracking-number" id="tracking-number" rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>
