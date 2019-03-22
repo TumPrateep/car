@@ -37,37 +37,38 @@ class Order extends BD_Controller {
 
         $caraccessoryId = $this->getCaracessoryId($orderdetail);
 
-        // $data["reserve"] = array(
-        //     "reserveDate" => date('Y-m-d H:i:s', changeFormateDateToTime($reserve_day)),
-        //     "reservetime" => $reserve_time,
-        //     "garageId" => $garageId,
-        //     "created_at" => date('Y-m-d H:i:s',time()),
-        //     "created_by" => $userId,
-        //     "status" => 1,
-        //     "orderId" => ""
-        // );
+        $data["reserve"] = array(
+            "reserveDate" => date('Y-m-d H:i:s', changeFormateDateToTime($reserve_day)),
+            "reservetime" => $reserve_time,
+            "garageId" => $garageId,
+            "created_at" => date('Y-m-d H:i:s',time()),
+            "created_by" => $userId,
+            "status" => 1,
+            "orderId" => ""
+        );
        
-        // $data['order'] = array(
-        //     'userId' => $userId,
-        //     'create_by' => $userId,
-        //     'car_profileId' => $carProfileId,
-        //     'create_at' => date('Y-m-d H:i:s',time()),
-        //     'status' => 1,
-        //     'activeflag' =>1
-        // );
+        $data['order'] = array(
+            'userId' => $userId,
+            'create_by' => $userId,
+            'car_profileId' => $carProfileId,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'status' => 1,
+            'car_accessoriesId' => $caraccessoryId,
+            'activeflag' =>1
+        );
 
-        // $data['orderdetail'] = $orderdetail;
+        $data['orderdetail'] = $orderdetail;
        
-        // $option = [
-        //     "data_check" => null,
-        //     "data" => $data,
-        //     "model" => $this->orders,
-        //     "image_path" => null
-        // ];
+        $option = [
+            "data_check" => null,
+            "data" => $data,
+            "model" => $this->orders,
+            "image_path" => null
+        ];
         
-        $this->set_response(["asdas" => $caraccessoryId], REST_Controller::HTTP_OK);
+        // $this->set_response(["asdas" => $data], REST_Controller::HTTP_OK);
 
-        // $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
+        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
         
     }
 
@@ -97,7 +98,7 @@ class Order extends BD_Controller {
                 $nestedData['create_by'] = $post->userId;
                 $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
                 $nestedData['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
-                $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage);
+                $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
                 $data[] = $nestedData;
             }
         }

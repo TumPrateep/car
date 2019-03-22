@@ -92,6 +92,15 @@ class Tireproduct extends CI_Model{
         return $result->row();  
         
     }
+
+    function getCostForOrderDetail($caraccessoryId, $productDetail){
+        $this->db->where('tire_sizeId', $productDetail['tire_sizeId']);
+        $this->db->where('tire_brandId', $productDetail['tire_brandId']);
+        $this->db->where('tire_modelId', $productDetail['tire_modelId']);
+        $this->db->where('create_by', $caraccessoryId);
+        $result = $this->db->get('tire_data');
+        return $result->row('price');
+    }
     
     
 }

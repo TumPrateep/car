@@ -78,6 +78,7 @@ class Orders extends CI_Model{
     function insert($data){
         $this->db->trans_begin();
             $userId = $this->session->userdata['logged_in']['id'];
+            $caraccessoryId = $data['order']['car_accessoriesId'];
             $this->db->insert("order",$data['order']);
             $orderId = $this->db->insert_id();
             $orderDetailData = $data['orderdetail'];
@@ -85,6 +86,8 @@ class Orders extends CI_Model{
             $arrProductId = [];
             foreach ($orderDetailData as $val) {
                 $cost =  $this->getCost($val->productId, $val->group);
+                $productDetail = getDataForOrderDetail($val->productId, $val->group);
+                $costCaraccessories = getCostFromProductDetail($caraccessoryId, $productDetail, $val->group);
                 $charge =  $this->getCharge($val->productId, $val->group);
                 $chargeGarage =  $this->getGarageCharge($val->productId, $val->group);
                 $temp = [
@@ -96,6 +99,7 @@ class Orders extends CI_Model{
                     'activeflag' => 1,
                     'group' => $val->group, 
                     'cost' => $cost,
+                    'costCaraccessories'=>$costCaraccessories,
                     'charge' => $charge,
                     'chargeGarage' => $chargeGarage,
                     'create_at' => date('Y-m-d H:i:s',time())

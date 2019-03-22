@@ -212,4 +212,11 @@ class Lubricatordatas extends CI_Model{
         }
     }
 
+    function getCostForOrderDetail($caraccessoryId, $productDetail){
+        $this->db->where('lubricatorId', $productDetail);
+        $this->db->where('create_by', $caraccessoryId);
+        $result = $this->db->get('lubricator_data');
+        return $result->row('price');
+    }
+
 }

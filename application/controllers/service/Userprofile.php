@@ -30,9 +30,9 @@ class Userprofile extends BD_Controller {
         $phone1 = $this->post('phone1');
         $phone2 = $this->post('phone2');
  
-        $data_check_update = $this->userprofiles->
+        $data_check_update = $this->userprofiles->($user_profile);
         
-        ($user_profile);
+ 
         $data_check = $this->userprofiles->data_check_update($user_profile,$firstname,$lastname);
         $data = array(
             'user_profile' => $user_profile,

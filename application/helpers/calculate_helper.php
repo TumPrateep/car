@@ -4,8 +4,8 @@
       return $cost*1.1+$charge;
     }
 
-    function calDeposit($cost, $charge, $chargeGarage){
-      return ($cost*0.1)+($charge-$chargeGarage);
+    function calDeposit($cost, $charge, $chargeGarage, $costCaraccessories){
+      return ($cost*0.1)+($cost - $costCaraccessories)+($charge-$chargeGarage);
     }
 
     function changeFormateDateToTime($strDate){
