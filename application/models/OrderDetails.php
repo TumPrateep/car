@@ -47,6 +47,7 @@ class Orderdetails extends CI_Model{
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
+        // $this->db->join('car_accessories','order.car_accessoriesId = car_accessories.car_accessoriesId');
         $this->db->where('order.status', 1);
 
         $query = $this->db->get();
@@ -64,6 +65,7 @@ class Orderdetails extends CI_Model{
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
+        // $this->db->join('car_accessories','order.car_accessoriesId = car_accessories.car_accessoriesId');
         $this->db->where('order.status', 1);
         $this->db->limit($limit,$start)->order_by($order,$dir);
 

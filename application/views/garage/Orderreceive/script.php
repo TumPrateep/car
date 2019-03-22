@@ -119,14 +119,16 @@
                         return html;
                     }
                 }
-                // ,{
-                //     "targets": 5,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
+                ,{
+                    "targets": 5,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var car_accessoriesdata = data.data;
+                        // return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
+                        return car_accessoriesdata.car_accessoriesName;
                           
-                //     }
-                // }
+                    }
+                }
                
             ]	 
     });

@@ -61,21 +61,24 @@ class Orderdetail extends BD_Controller {
             $count = 0;
             foreach ($posts as $post)
             {
+                $nestedData['orderId'] = $post->orderId;
                 $nestedData['quantity'] = $post->quantity;
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['group'] = $post->group;
                 $nestedData['productId'] = $post->productId;
+                // $nestedData['car_accessoriesName'] = $post->car_accessoriesName;
                 // $nestedData['picture'] = $post->picture;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
-                $data[$index] = $nestedData;
-                if($count >= 3){
-                    $count = -1;
-                    $index++;
-                    $nestedData = [];
-                }
+                $data[] = $nestedData;
+                // $data[$index] = $nestedData;
+                // if($count >= 3){
+                //     $count = -1;
+                //     $index++;
+                //     $nestedData = [];
+                // }
                 
-                $count++;
+                // $count++;
 
             }
         }
