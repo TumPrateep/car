@@ -98,5 +98,18 @@ class Deliverorders extends CI_Model {
     //     $query = $this->db->get('order');
     //     return $query->num_rows();
     // }
+
+    function update($data){
+        $this->db->where('orderId',$data['orderId']);
+        $result = $this->db->update('order', $data);
+        return $result;
+    }
+
+    function getorderById($orderId){
+        $this->db->select("orderId");
+        $this->db->where('orderId',$orderId);
+        $result = $this->db->get("order");
+        return $result->row();
+    }
     
 }

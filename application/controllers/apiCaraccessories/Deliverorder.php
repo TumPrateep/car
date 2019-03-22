@@ -119,6 +119,35 @@ class Deliverorder extends BD_Controller {
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
+    public function updatetraking_post(){
+        $orderId = $this->post('orderId');
+        $tracking_number = $this->post('tracking-number');
+        $userId = $this->session->userdata['logged_in']['id'];
+        // $car_accessoriesId = $this->session->userdata['logged_in']['car_accessoriesId'];
+
+        // $data_check_update = $this->lubricatorchangegarages->getLubricatorChangeById($lubricator_change_garageId,$garageId);
+        // $data_check = $this->lubricatorchangegarages->data_check_update($lubricator_change_garageId,$garageId);
+
+        $data_check_update = $this->deliverorders->getorderById($orderId);
+        // $data_check = $this->deliverorders->data_check_update($lubricator_change_garageId,$garageId);
+
+        $data = array(
+            'orderId' => $orderId,
+            'number_tracking'  => $tracking_number
+        );
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data_check" => null,
+            "data" => $data,
+            "model" => $this->deliverorders,
+            "image_path" => null,
+            "old_image_path" => null,
+        ];
+
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+    }
+
 }
 
 

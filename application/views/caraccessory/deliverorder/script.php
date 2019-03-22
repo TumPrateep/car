@@ -38,7 +38,6 @@
                 null,
                 null,
                 {"data" : "quantity"},
-                null,
                 null
             ],
             "drawCallback": function ( settings ) {
@@ -49,7 +48,7 @@
                 api.rows({page:'current'} ).data().each( function ( data, i ) {
                     if ( last !== data.orderId ) {
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' อู่ '+data.garageId+'</td></tr>'
+                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' อู่ '+data.garageId+' <button type="button" class="btn btn-warning"  onclick="tracking_order('+data.orderId+')"><i class="fa fa-paper-plane" ></i></button></td></tr>'
                         );
     
                         last = data.orderId;
@@ -114,14 +113,15 @@
                         }
                         return html;
                     }
-                },{
-                    "targets": 5,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
-                          
-                    }
                 }
+                // ,{
+                //     "targets": 5,
+                //     "data": null,
+                //     "render": function ( data, type, full, meta ) {
+                //         return '<a href="'+base_url+"caraccessory/deliverorder"+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
+                          
+                //     }
+                // }
 
                 // { "orderable": false, "targets": 0 },
                 // {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
@@ -164,7 +164,7 @@
         $("#show-search").show(100);
     });
 
-        $("#price").slider({
+    $("#price").slider({
         range: true,
         min: 0,
         max: 10000,
@@ -179,6 +179,29 @@
             }
         },
     });
+
+    function tracking_order(orderId){
+        // var orderId = $("#orderId"),
+        $("#tracking-order").modal("show");
+    }
+
+    function updatetrakingnumber(){
+        event.preventDefault();
+        var isValid = $("#update-traking-number").valid();
+
+        if(isValid){
+            var data = $("#update-traking-number").serialize();
+           
+            $.post(base_url+"apiCaraccessories/Deliverorder/updatetraking",data,
+            function(data){
+                if(data.message == 200){
+                    showMessage(data.message,"caraccessory/deliverorder");
+                }else{
+                    showMessage(data.message);
+                }
+            });
+        }
+    }
 
 </script>
 
