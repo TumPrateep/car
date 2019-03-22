@@ -30,13 +30,7 @@ class Orderdetails extends CI_Model{
     //     }
     // }
 
-    function getSummaryCostFromOrderDetail($orderId, $userId){
-        $this->db->select("sum(cost) as cost, sum(charge) as charge, sum(chargeGarage) as chargeGarage");
-        $this->db->where("orderId", $orderId);
-        $result = $this->db->get("orderdetail");
 
-        return $result->row();
-    }
 
     function getOrderDetailByOrderId($orderId){
         // $this->db->select("*");
@@ -85,7 +79,6 @@ class Orderdetails extends CI_Model{
         }
     }
 
-<<<<<<< HEAD
     function orders_search($limit,$start,$col,$dir,$orderId)
     {
         $this->db->where('status', 2);
@@ -106,13 +99,12 @@ class Orderdetails extends CI_Model{
             return null;
         }
         
-=======
+    }
     function getSummaryCostFromOrderDetail($orderId, $userId){
         $this->db->select("sum(cost) as cost, sum(charge) as charge, sum(chargeGarage) as chargeGarage, sum(costCaraccessories) as costCaraccessories");
         $this->db->where("orderId", $orderId);
         $result = $this->db->get("orderdetail");
         return $result->row();
->>>>>>> 2e5fe03bc28421e3ed004782ddfc6b9d959464e8
     }
 
     function orders_search_count($orderId){
