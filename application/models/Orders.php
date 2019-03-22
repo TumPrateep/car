@@ -220,6 +220,7 @@ class Orders extends CI_Model{
             }else{
                 $union = $union."union $subQuery3 ";
             }
+            
         }
 
         $this->db->select('create_by, sum(price) as total');
@@ -229,6 +230,7 @@ class Orders extends CI_Model{
         $this->db->order_by("total", "asc");
         $this->db->limit(1);
         $result = $this->db->get();
+     
         return $result->row('create_by');
     }
     

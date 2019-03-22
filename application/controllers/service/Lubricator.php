@@ -61,6 +61,7 @@ class Lubricator extends BD_Controller {
 
         $this->load->model("lubricatorchanges");
         $charge = $this->lubricatorchanges->getLubricatorChangePrice();
+        
 
         $data = array();
         if(!empty($posts))
