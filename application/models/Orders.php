@@ -194,7 +194,7 @@ class Orders extends CI_Model{
                 $isFirst = false;
                 $union = $union."$subQuery2 ";
             }else{
-                $union = $union."union $subQuery2 ";
+                $union = $union."union all $subQuery2 ";
             }
         }
 
@@ -218,7 +218,7 @@ class Orders extends CI_Model{
                 $isFirst = false;
                 $union = $union."$subQuery3 ";
             }else{
-                $union = $union."union $subQuery3 ";
+                $union = $union."union all $subQuery3 ";
             }
             
         }
@@ -230,7 +230,6 @@ class Orders extends CI_Model{
         $this->db->order_by("total", "asc");
         $this->db->limit(1);
         $result = $this->db->get();
-     
         return $result->row('create_by');
     }
     
