@@ -44,15 +44,15 @@
                 null,
                 null,
                 null,
-                null,
-                null,
+                // null,
+                // null,
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,2,3,4,5,6]
+                    "targets": [0,2,3,4]
                 },{
                     "targets": 2,
                     "data": null,
@@ -60,22 +60,22 @@
                         return currency(data.summary, {  precision: 0 }).format() + " บาท";
                     }
                 }
-                ,{
-                    "targets": 3,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return currency(data.deposit, {  precision: 0 }).format() + " บาท";
-                    }
+                // ,{
+                //     "targets": 3,
+                //     "data": null,
+                //     "render": function ( data, type, full, meta ) {
+                //         return currency(data.deposit, {  precision: 0 }).format() + " บาท";
+                //     }
 
-                }
-                ,{
-                    "targets": 4,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return currency(data.summary - data.deposit, {  precision: 0 }).format() + " บาท";
-                    }
+                // }
+                // ,{
+                //     "targets": 4,
+                //     "data": null,
+                //     "render": function ( data, type, full, meta ) {
+                //         return currency(data.summary - data.deposit, {  precision: 0 }).format() + " บาท";
+                //     }
 
-                }
+                // }
                 ,{
                     "targets": 1,
                     "data": null,
@@ -83,12 +83,12 @@
                         return jQuery.format.date(data.create_at, "dd/MM/yyyy HH:mm:ss");
                     }
                 },{
-                    "targets": 6,
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         html = "";
                         if(data.status == "1"){
-                            html += '<a href="'+base_url+"shop/payment/"+data.orderId+'"><button type="button" class="btn btn-danger">มัดจำ</button>'
+                            html += '<a href="'+base_url+"shop/payment/"+data.orderId+'"><button type="button" class="btn btn-danger">จ่ายเงิน</button>'
                         }
                         else if(data.status == "3"){
                             html +='<a href="#"><button type="button" class="btn btn-warning">รับบริการ</button> '
@@ -98,13 +98,13 @@
                     }
                 },
                 {
-                    "targets":5,
+                    "targets":3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var  orderstatus = "<span>";
                         
                             if(data.status == "1"){
-                                orderstatus +="รอมัดจำ";
+                                orderstatus +="รอชำระเงิน";
                             }
                             else if(data.status == "2"){
                                 orderstatus +="รออนุมัติ";
@@ -131,7 +131,7 @@
                 
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": []},
-                {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
+                {"className": "dt-center", "targets": [0,1,2,3,4]},
                 // { "width": "12%", "targets": 0 },
                 // { "width": "20%", "targets": 1 },
                 // { "width": "20%", "targets": 2 },

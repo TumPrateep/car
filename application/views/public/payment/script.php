@@ -1,5 +1,15 @@
 <script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
+<script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.full.min.js"></script>
+
 <script>
+    $("#time").datetimepicker({
+        datepicker:false,
+        formatTime:'H:i',
+        // mask:true,
+        // scrollInput: false,
+        format:'H:i'
+    });
+
     $(document).ready(function () {
 
         var form = $("#submit");

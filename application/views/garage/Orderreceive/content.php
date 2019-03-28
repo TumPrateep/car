@@ -40,7 +40,7 @@
                 </div>
             </div>
             
-        <div class="table">
+        <div class="table-responsive">
             <table class="table table-bordered" id="do-table" width="100%" cellspacing="0">
                 <thead>
                   <th><i class="fa fa-sort"></i> ลำดับ</th>
