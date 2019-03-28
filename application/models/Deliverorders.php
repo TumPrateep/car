@@ -6,23 +6,13 @@ class Deliverorders extends CI_Model {
         $this->db->select("order.orderId, car_accessories.car_accessoriesName, car_accessories.phone, car_accessories.address");
         $this->db->from('order');
         $this->db->join('car_accessories','car_accessories.userId = order.car_accessoriesId');
-        // $this->db->join('reserve','order.orderId = reserve.orderId');
-        // $this->db->join('garage','garage.garageId = reserve.garageId');
+        // $this->db->join('orderdetail','orderdetail.orderId = order.orderId');
         $this->db->where('order.status', 3);
         return $this->db->where('orderId',$orderId)->get()->row();
         
     }
-
-    // function exportgarage($orderId){
-    //     $this->db->select('garage.garageName');
-    //     $this->db->from('order');
-    //     $this->db->join('reserve','order.orderId = reserve.orderId');
-    //     $this->db->join('garage','garage.garageId = reserve.garageId');
-    //     $this->db->where('order.status', 3);
-    //     return $this->db->where('orderId',$orderId)->get()->row();
-    // }
     
-    function allDeliverorders_count($orderId)
+    function allDeliverorders_count()
     {   
         $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName");
         $this->db->from('order');
