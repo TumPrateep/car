@@ -41,8 +41,6 @@
                 {"data" : "quantity"},
                 null,
                 null,
-                null,
-                null,
                 null
             ],
             "drawCallback": function ( settings ) {
@@ -53,7 +51,7 @@
                 api.rows({page:'current'} ).data().each( function ( data, i ) {
                     if ( last !== data.orderId ) {
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+'</td></tr>'
+                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+ " "+"ลูกค้า"+" "+'<a href="'+base_url+"garage/Orderreceive/userdata/"+data.firstname+'"><u>'+ data.firstname+'</u></td></tr>'
                         );
     
                         last = data.orderId;
@@ -122,25 +120,6 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        var car_accessoriesdata = data;
-                        // return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
-                        return car_accessoriesdata.car_accessoriesName;
-                          
-                    }
-                },{
-                    "targets": 6,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        var userdata = data;
-                        console.log(userdata);
-                        // return '<a href="'+base_url+"admin/LubricatorNumber/updatelubricatornumber/"+data.lubricator_numberId+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
-                        return userdata.firstname+ " "+userdata.lastname ;
-                          
-                    }
-                },{
-                    "targets": 7,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
                         var html = '';
                         // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
                         if(data.status==1){
@@ -156,7 +135,7 @@
                           
                     }
                 },{
-                    "targets": 8,
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '';
@@ -169,10 +148,10 @@
                         }else if(data.status==3){
                             return html;
                         }
-                        
-                          
-                    }
+      
+                    }        
                 },
+
                 { "width": "10%", "targets": 0 },
                 { "width": "10%", "targets": 1 },
                 { "width": "10%", "targets": 2 },
@@ -180,8 +159,8 @@
                 { "width": "10%", "targets": 4 },
                 { "width": "10%", "targets": 5 },
                 { "width": "10%", "targets": 6 },
-                { "width": "10%", "targets": 7 },
-                { "width": "10%", "targets": 8 }
+
+                
                
             ]	 
     });
@@ -255,6 +234,9 @@
             }
         },
     });
+
+
+    
 
 </script>
 

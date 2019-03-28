@@ -5,23 +5,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Orderdetail extends BD_Controller {
     function __construct()
     {
-        // Construct the parent class
+
         parent::__construct();
         $this->auth();
         $this->load->model("orderdetails");
     }
 
     function searchorder_post(){
-        // $column = "	orderId";
-
-        // $sort = "asc";
-        // if($this->post('column') == 3){
-        //     $column = "status";
-        // }else if($this->post('column') == 2){
-        //     $sort = "desc";
-        // }else{
-        //     $sort = "asc";
-        // }
+      
 
         $columns = array( 
             0 => null
@@ -29,12 +20,9 @@ class Orderdetail extends BD_Controller {
         
         $limit = $this->post('length');
         $start = $this->post('start');
-        // $order = $column;
         $order = $columns[$this->post('order')[0]['column']];
-        // $dir = $sort;
         $dir = $this->post('order')[0]['dir'];
-        // $car_accessoriesId = $this->session->userdata['logged_in']['car_accessoriesId'];
-        // $totalData = $this->deliverorders->allDeliverorders_count($car_accessoriesId);
+       
         $totalData = $this->orderdetails->allorders_count();
         $totalFiltered = $totalData; 
         if(empty($this->post('orderId')))
@@ -50,9 +38,7 @@ class Orderdetail extends BD_Controller {
             $totalFiltered = $this->orderdetails->orders_search_count($orderId);
                 
         }
-        // $orderId = $this->post('orderId'); 
-        // $posts =  $this->orderdetails->orders_search($limit,$start,$order,$dir,$status,$orderId);
-        // $totalFiltered = $this->orderdetails->orders_search_count($orderId);
+
             
         $data = array();
         if(!empty($posts))
@@ -69,21 +55,25 @@ class Orderdetail extends BD_Controller {
                 $nestedData['status'] = $post->status;
                 $nestedData['productId'] = $post->productId;
                 $nestedData['car_accessoriesName'] = $post->car_accessoriesName;
+                $nestedData['titleName'] = $post->titleName;
                 $nestedData['firstname'] = $post->firstname;
                 $nestedData['lastname'] = $post->lastname;
+
+                $nestedData['character_plate'] = $post->character_plate;
+                $nestedData['number_plate'] = $post->number_plate;
+                $nestedData['provinceforcarName'] = $post->provinceforcarName;
+                $nestedData['brandName'] = $post->brandName;
+                $nestedData['modelName'] = $post->modelName;
+                $nestedData['yearStart'] = $post->yearStart;
+                $nestedData['yearEnd'] = $post->yearEnd;
+                $nestedData['modelofcarName'] = $post->modelofcarName;
+              
                 
-                // $nestedData['picture'] = $post->picture;
+      
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;
-                // $data[$index] = $nestedData;
-                // if($count >= 3){
-                //     $count = -1;
-                //     $index++;
-                //     $nestedData = [];
-                // }
-                
-                // $count++;
+   
 
             }
         }
@@ -116,39 +106,6 @@ class Orderdetail extends BD_Controller {
         ];
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
-
-    // function getorder_get(){
-    //     $lubricator_dataId = $this->get('lubricator_dataId');
-    //     $data_check = $this->lubricatordatas->getupdate($lubricator_dataId);
-    //     $option = [
-    //         "data_check" => $data_check
-    //     ];
-    //     $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
-    // }
-
-    // function changeStatus_post(){
-    //     $lubricator_dataId = $this->post("lubricator_dataId");
-    //     $status = $this->post("status");
-    //     if($status == 1){
-    //         $status = 2;
-    //     }else{
-    //         $status = 1;
-    //     }
-
-    //     $data_check_update = $this->lubricatordatas->getlubricatorDatasById($lubricator_dataId);
-    //     $data = array(
-    //         'lubricator_dataId' => $lubricator_dataId,
-    //         'status' => $status
-    //     );
-
-    //     $option = [
-    //         "data_check_update" => $data_check_update,
-    //         "data" => $data,
-    //         "model" => $this->lubricatordatas
-    //     ];
-
-    //     $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
-    // }
 
 }
 
