@@ -120,6 +120,7 @@ class LubricatorData extends BD_Controller {
         $warranty_distance = $this->post('warranty_distance');
         $lubricatorId = $this->post('lubricatorId');
         $userId = $this->session->userdata['logged_in']['id'];
+        // $userId = $this->session->userdata['logged_in']['id'];
         $data_check = $this->lubricatordatas->data_check_create($lubricatorId,$lubricator_brandId,$userId);
           
         $data = array(

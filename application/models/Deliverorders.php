@@ -2,33 +2,37 @@
 
 class Deliverorders extends CI_Model {
  
-    // function getDeliverordersById($orderId){
-    //     $this->db->select('order.orderId,orderdetail.productId,reserve.garageId');
-    //     $this->db->from('order');
-    //     $this->db->join('orderdetail','orderdetail.orderId = order.orderId');
-    //     $this->db->join('reserve','reserve.orderId = order.orderId');
-    //     $this->db->where('order.status', 3);
-    //     return $this->db->where('orderId',$orderId)->get("order")->row();
+    function getDeliverordersById($orderId){
+        $this->db->select("order.orderId, car_accessories.car_accessoriesName, car_accessories.phone, car_accessories.address");
+        $this->db->from('order');
+        $this->db->join('car_accessories','car_accessories.userId = order.car_accessoriesId');
+        // $this->db->join('reserve','order.orderId = reserve.orderId');
+        // $this->db->join('garage','garage.garageId = reserve.garageId');
+        $this->db->where('order.status', 3);
+        return $this->db->where('orderId',$orderId)->get()->row();
         
+    }
+
+    // function exportgarage($orderId){
+    //     $this->db->select('garage.garageName');
+    //     $this->db->from('order');
+    //     $this->db->join('reserve','order.orderId = reserve.orderId');
+    //     $this->db->join('garage','garage.garageId = reserve.garageId');
+    //     $this->db->where('order.status', 3);
+    //     return $this->db->where('orderId',$orderId)->get()->row();
     // }
     
-    function allDeliverorders_count()
+    function allDeliverorders_count($orderId)
     {   
-        
         $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
         $this->db->join('garage','garage.garageId = reserve.garageId');
         $this->db->where('order.status', 3);
-
         $query = $this->db->get();
         return $query->num_rows();  
-        // $query = $this
-        //         ->db
-        //         ->get('order');
-    
-        // return $query->num_rows();  
+        
     }
 
     function allDeliverorders($limit,$start,$order,$dir)//$limit,$start,$col,$dir,$order
@@ -40,7 +44,6 @@ class Deliverorders extends CI_Model {
         $this->db->join('garage','garage.garageId = reserve.garageId');
         $this->db->where('order.status', 3);
         $this->db->limit($limit,$start)->order_by($order,$dir);
-
         $query = $this->db->get();
 
         if($query->num_rows()>0)
@@ -51,20 +54,6 @@ class Deliverorders extends CI_Model {
         {
             return null;
         }
-
-        // $query = $this
-        //     ->db
-        //     ->limit($limit,$start)
-        //     ->order_by($col,$dir)
-        //     ->get('order');
-        //     if($query->num_rows()>0)
-        //     {
-        //         return $query->result(); 
-        //     }
-        //     else
-        //     {
-        //         return null;
-        //     }
         
     }
 
@@ -90,16 +79,16 @@ class Deliverorders extends CI_Model {
         
     }
 
-    // function Deliverorders_search_count($orderId){
-    //     $this->db->where('status', 2);
-    //     $this->db->where("garageId", $garageId);
-    //     $this->db->like('firstName',$firstname);
-    //     if($orderId != null){
-    //         $this->db->where("$orderId", $$orderId);
-    //     }
-    //     $query = $this->db->get('order');
-    //     return $query->num_rows();
-    // }
+    function Deliverorders_search_count($orderId){
+        // $this->db->where('status', 2);
+        // $this->db->where("garageId", $garageId);
+        // $this->db->like('firstName',$firstname);
+        if($orderId != null){
+            $this->db->where("$orderId", $$orderId);
+        }
+        $query = $this->db->get('order');
+        return $query->num_rows();
+    }
 
     function update($data){
         $this->db->where('orderId',$data['orderId']);

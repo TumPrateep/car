@@ -27,9 +27,6 @@ class Deliverorder extends BD_Controller {
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
-
-        // $car_accessoriesId = $this->session->userdata['logged_in']['car_accessoriesId'];
-        // $totalData = $this->deliverorders->allDeliverorders_count($car_accessoriesId);
         $totalData = $this->deliverorders->allDeliverorders_count();
         $totalFiltered = $totalData; 
         if(empty($this->post('orderId')))
@@ -45,9 +42,6 @@ class Deliverorder extends BD_Controller {
             $totalFiltered = $this->deliverorders->Deliverorders_search_count($orderId);
                 
         }
-        // $orderId = $this->post('orderId'); 
-        // $posts =  $this->deliverorders->Deliverorders_search($limit,$start,$order,$dir,$status,$orderId);
-        // $totalFiltered = $this->deliverorders->Deliverorders_search_count($orderId);
             
         $data = array();
         if(!empty($posts))
@@ -62,7 +56,6 @@ class Deliverorder extends BD_Controller {
                 $nestedData['group'] = $post->group;
                 $nestedData['productId'] = $post->productId;
                 $nestedData['garageName'] = $post->garageName;
-                // $nestedData['picture'] = $post->picture;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;
@@ -89,6 +82,36 @@ class Deliverorder extends BD_Controller {
         $this->set_response($json_data);
 
     }
+    
+    function getexport_post(){
+        // $garageId = $this->session->userdata['logged_in']['garageId'];
+        $orderId = $this->post('orderId');
+        $data_check = $this->deliverorders->getDeliverordersById($orderId);
+        $option = [
+            "data_check" => $data_check
+        ];
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
+
+    // function getexportforgarage_post(){
+        
+    //     $orderId = $this->post('orderId');
+    //     $exportgarage = $this->deliverorders->exportgarage($orderId);
+    //     $option = [
+    //         "data_check" => $exportgarage
+    //     ];
+    //     $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    // }
+
+    // function getexportsum_post(){
+    //     $data_check = $this->deliverorders->getDeliverordersById($orderId);
+    //     $data_check->exportgarage = $this->deliverorders->exportgarage($orderId);
+
+    //     $option = [
+    //         "data_check" => $data_check
+    //     ];
+    //     $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    // }
 
     function getorder_get(){
         $lubricator_dataId = $this->get('lubricator_dataId');

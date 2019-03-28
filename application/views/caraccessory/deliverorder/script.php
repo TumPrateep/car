@@ -48,7 +48,7 @@
                 api.rows({page:'current'} ).data().each( function ( data, i ) {
                     if ( last !== data.orderId ) {
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' ชื่อร้านอู่ '+data.garageName+' <button type="button" class="btn btn-warning"  onclick="tracking_order('+data.orderId+')"><i class="fa fa-paper-plane" ></i></button></td></tr>'
+                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' ชื่อร้านอู่ '+data.garageName+' <button type="button" class="btn btn-warning"  onclick="tracking_order('+data.orderId+')"><i class="fa fa-paper-plane" ></i></button> <a href="'+base_url+"caraccessory/exportorder/show/"+data.orderId+'"><button type="button" class="btn btn-warning"><i class="fa fa-print" aria-hidden="true" ></i></button></a></td></tr>'
                         );
     
                         last = data.orderId;
