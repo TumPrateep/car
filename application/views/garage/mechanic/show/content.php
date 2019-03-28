@@ -21,7 +21,7 @@
                             <form id="submit">
                             <input type="hidden" id="mechanicId" name="mechanicId" value="<?=$mechanicId ?>">
                                 <div class="row">
-                                <div class="col-lg-4">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="first_name"><h5>ชื่อ:</h5></label>
                                             <output type="text"  name="firstName" id="firstName">
