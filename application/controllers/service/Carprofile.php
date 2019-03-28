@@ -50,6 +50,10 @@ class Carprofile extends BD_Controller {
         $character_plate = $this->post("character_plate");
         $number_plate = $this->post("number_plate");
         $province_plate = $this->post("province_plate");
+        $brandId = $this->post("brandId");
+        $modelId = $this->post("modelId");
+        // $detail = $this->post("detail");
+        $modelofcarId = $this->post("modelofcarId");
         $mileage = $this->post("mileage");
         $color = $this->post("color");
 
@@ -80,6 +84,9 @@ class Carprofile extends BD_Controller {
             'character_plate' => $character_plate,
             'number_plate' => $number_plate,
             'province_plate' => $province_plate,
+            'brandId' => $brandId,
+            'modelId' => $modelId,
+            'modelofcarId' => $modelofcarId,
             'mileage' => $mileage,
             'color' => $color,
             // "picture"=> $imageName

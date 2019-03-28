@@ -66,6 +66,42 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group">
+                                                    <label class="form-label required" for="garage">ยี่ห้อ</label>
+                                                    <select class="form-control input-default" name="brandId" id="brandId">
+                                                        <option value="">เลือกยี่ห้อรถ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label class="form-label required" for="garage">รุ่นรถ</label>
+                                                    <select class="form-control input-default" name="modelId" id="modelId">
+                                                        <option value="">เลือกรุ่นรถ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label class="form-label required" for="garage">โฉมรถยนต์</label>
+                                                    <select class="form-control input-default" name="detail" id="detail">
+                                                        <option value="">เลือกโฉมรถยนต์</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label class="form-label required" for="garage">รายละเอียดรุ่น</label>
+                                                    <select class="form-control input-default" name="modelofcarId" id="modelofcarId">
+                                                        <option value="">เลือกรายละเอียดรุ่น</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
                                                     <label for="color">เลขไมค์</label><span class="error">*</span>
                                                     <input type="number" class="form-control" name="mileage" id="mileage" placeholder="เลขไมค์" >
                                                 </div>
