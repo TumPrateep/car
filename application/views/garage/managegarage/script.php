@@ -81,13 +81,6 @@
             subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
 
 
-    //     function onLoad(){
-    //    // loadProvinceUser();
-        
-    //     }
-    //     onLoad();
-
-
         function loadProvinceGarage(provinceId, districtId,subdistrictId){
             $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
                 function(data){

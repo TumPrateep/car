@@ -45,13 +45,13 @@
 											<div class="col-md-4 ">
 												<div class="form-group">
 													<label class="form-label" for="mechanic">หมายเลขโทรศัพท์</label><span class="error">*</span>
-													<input type="number" class="form-control" name="phone_car" id="phone_car" readonly>
+													<input type="number" class="form-control" name="phonecar" id="phonecar" readonly>
 												</div>
 											</div>
 											<div class="col-md-4 offset-lg-2 ">
 												<div class="form-group">
 													<label class="form-label" for="mechanic">หมายเลขโทรศัพท์</label><span class="error">*</span>
-													<input type="number" class="form-control" name="phone_garage" id="phone_garage" readonly>
+													<input type="number" class="form-control" name="phonegarage" id="phonegarage" readonly>
 												</div>
 											</div>
 										</div>
@@ -60,14 +60,14 @@
 												<div class="form-group">
 													<label for="garage">ที่อยู่</label><span class="error">*</span>
 													<!-- <input type="text" class="form-control" name="address_car" id="address_ca6" readonly> -->
-													<textarea class="form-control sm-text-a" name="address_car" id="address_car" rows="3" readonly></textarea>
+													<textarea class="form-control sm-text-a" name="addresscar" id="addresscar" rows="3" readonly></textarea>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label for="garage">ที่อยู่</label><span class="error">*</span>
 													<!-- <input type="text" class="form-control" name="address_garage" id="address_garage" readonly> -->
-													<textarea class="form-control sm-text-a" name="address_garage" id="address_garage" rows="3" readonly></textarea>
+													<textarea class="form-control sm-text-a" name="addressgarage" id="addressgarage" rows="3" readonly></textarea>
 												</div>
 											</div>
 										</div>

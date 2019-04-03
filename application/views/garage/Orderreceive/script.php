@@ -106,14 +106,13 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = "";
-                        var productData = data.data;
                         var group = data.group;
                         if(group == "tire"){
-                            html += productData.price;
+                            html += data.tire_price;
                         }else if(group == "lubricator"){
-                            html += productData.price;
+                            html += data.lubricator_price;
                         }else{
-                            html += productData.price;
+                            html += data.spares_price;
                         }
                         return html;
                     }

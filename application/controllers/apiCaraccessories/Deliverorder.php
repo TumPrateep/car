@@ -5,10 +5,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Deliverorder extends BD_Controller {
     function __construct()
     {
-        // Construct the parent class
+        // Construct the parent class  location
         parent::__construct();
         $this->auth();
         $this->load->model("deliverorders");
+        $this->load->model("location");
     }
 
     function searchorder_post(){
@@ -87,6 +88,11 @@ class Deliverorder extends BD_Controller {
         // $garageId = $this->session->userdata['logged_in']['garageId'];
         $orderId = $this->post('orderId');
         $data_check = $this->deliverorders->getDeliverordersById($orderId);
+        if($data_check != null){
+            $data_check->provinceName = $this->location->getProvinceNameByProvinceId($data_check->provinceId);
+            $data_check->districtName = $this->location->getDistrictNameByDistrictId($data_check->districtId);
+            $data_check->subdistrictName = $this->location->getSubDistrictBySubDistrictId($data_check->subdistrictId);
+        }
         $option = [
             "data_check" => $data_check
         ];

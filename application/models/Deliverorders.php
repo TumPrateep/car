@@ -3,18 +3,19 @@
 class Deliverorders extends CI_Model {
  
     function getDeliverordersById($orderId){
-        $this->db->select("order.orderId, car_accessories.car_accessoriesName, car_accessories.phone, car_accessories.address");
+        $this->db->select("order.orderId, car_accessories.car_accessoriesName, (car_accessories.phone) as phonecar, car_accessories.address, reserve.garageId, garage.garageName, (garage.phone) as phonegarage, garage.hno, garage.Alley, garage.road, garage.village, garage.postCode, garage.subdistrictId, garage.districtId, garage.provinceId");
         $this->db->from('order');
         $this->db->join('car_accessories','car_accessories.userId = order.car_accessoriesId');
-        // $this->db->join('orderdetail','orderdetail.orderId = order.orderId');
+        $this->db->join('reserve','order.orderId = reserve.orderId');
+        $this->db->join('garage','garage.garageId = reserve.garageId');
         $this->db->where('order.status', 3);
-        return $this->db->where('orderId',$orderId)->get()->row();
+        return $this->db->where('order.orderId',$orderId)->get()->row();
         
     }
     
     function allDeliverorders_count()
     {   
-        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName");
+        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId, garage.garageName");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
