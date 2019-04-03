@@ -51,7 +51,8 @@
                 api.rows({page:'current'} ).data().each( function ( data, i ) {
                     if ( last !== data.orderId ) {
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+ " "+"ลูกค้า"+" "+'<a href="'+base_url+"garage/Orderreceive/userdata/"+data.firstname+'"><u>'+ data.firstname+'</u></td></tr>'
+                            // '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+ " "+"ลูกค้า"+" "+'<a href="'+base_url+"garage/Orderreceive/userdata/"+data.orderId+'"><u>'+ data.firstname+'</u></td></tr>'
+                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+ " " +'<button type="button" class="btn btn-secondary"  onclick="tracking_order('+data.orderId+')">ข้อมูลลูกค้า</button></td></tr>'
                         );
     
                         last = data.orderId;
@@ -235,6 +236,33 @@
         },
     });
 
+
+    function tracking_order(orderId){
+        
+        $("#orderId").val(orderId);
+        $("#tracking-order").modal("show");
+
+        var orderId = $("#orderId").val();
+
+        $.post(base_url+"apiGarage/Orderdetail/getuserdata",{
+            "orderId" : orderId
+        },function(data){
+            if(data.message!=200){
+                showMessage(data.message,"garage/orderreceive");
+            }
+            if(data.message == 200){
+                result = data.data;
+                $("#name").val(result.titleName+" "+result.firstname+" "+result.lastname);
+                $("#car_plate").val(result.character_plate+" "+result.number_plate+" "+result.provinceforcarName);
+                $("#brandName").val(result.brandName);
+                $("#modelName").val(result.modelName);
+                $("#yearCar").val("ปี "+result.yearStart+"-"+result.yearEnd);
+                $("#modelofcarName").val(result.modelofcarName);
+              
+            }
+     
+        });
+    }
 
     
 

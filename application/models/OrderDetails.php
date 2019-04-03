@@ -13,6 +13,22 @@ class Orderdetails extends CI_Model{
         return $result->row();
     }
 
+    function getorderdata($orderId){
+        $this->db->select("order.orderId,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName");
+        $this->db->from('order');
+        $this->db->join('users','order.userId = users.id');
+        $this->db->join('user_profile','users.id = user_profile.userId');
+        $this->db->join('car_profile','order.car_profileId = car_profile.car_profileId');
+        $this->db->join('provinceforcar','car_profile.province_plate = provinceforcar.provinceforcarId');
+        $this->db->join('brand','car_profile.brandId = brand.brandId');
+        $this->db->join('model','car_profile.modelId = model.modelId');
+        $this->db->join('modelofcar','car_profile.modelofcarId = modelofcar.modelofcarId');
+        $this->db->where('order.orderId',$orderId);
+        $this->db->where('order.status', 4);
+        $result = $this->db->get("orderdetail");
+        return $result->row();
+    }
+
     function getOrderDetailByOrderId($orderId){
   
         $this->db->where("orderId", $orderId);
@@ -118,7 +134,4 @@ class Orderdetails extends CI_Model{
         $result = $this->db->update('orderdetail',$data);
         return $result;
     }
-
-
-
 }

@@ -89,6 +89,17 @@ class Orderdetail extends BD_Controller {
 
     }
 
+    function getuserdata_post(){
+        // $garageId = $this->session->userdata['logged_in']['garageId'];
+        $orderId = $this->post('orderId');
+        $data_check = $this->orderdetails->getorderdata($orderId);
+        $option = [
+            "data_check" => $data_check
+        ];
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
+
+
     function changeStatus_get(){
         $orderDetailId = $this->get("orderDetailId");
         $status = $this->get("status");

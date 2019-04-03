@@ -31,12 +31,12 @@ class Orderreceive extends CI_Controller {
 		$this->load->view("garage/orderreceive/script");
 		}
 		
-		public function userdata(){
-			// $data['orderId'] = $orderId;
+		public function userdata($orderId){
+			$data['orderId'] = $orderId;
 			$this->load->view("garage/layout/head");
 			$this->load->view("garage/layout/left-menu");
 			$this->load->view("garage/layout/header");
-			$this->load->view("garage/orderreceive/userdata/content");
+			$this->load->view("garage/orderreceive/userdata/content",$data);
 			$this->load->view("garage/layout/footer");
 			$this->load->view("garage/layout/foot");	
 			$this->load->view("garage/orderreceive/userdata/script");
