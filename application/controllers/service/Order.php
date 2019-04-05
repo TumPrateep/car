@@ -12,18 +12,6 @@ class Order extends BD_Controller {
         $this->load->model('orderdetails');
     }
 
-    function getCaracessoryId($orderdetail){
-        $arrData['spare'] = [];
-        $arrData['tire'] = [];
-        $arrData['lubricator'] = [];
-        foreach ($orderdetail as $row) {
-            $arrData[$row->group][] = getDataForOrderDetail($row->productId, $row->group);
-        }
-
-        $result = $this->orders->CheckCar_accessories($arrData);
-        return $result;
-    }
-
     function createOrderDetail_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $garageId = $this->post("garageId");
@@ -35,7 +23,7 @@ class Order extends BD_Controller {
         $data = array();
         $orderdetail = $this->orders->getAllCartByUserIdAndProductId($userId, $productData);
 
-        $caraccessoryId = $this->getCaracessoryId($orderdetail);
+        $caraccessoryId = getCaracessoryId($orderdetail);
 
         $data["reserve"] = array(
             "reserveDate" => date('Y-m-d H:i:s', changeFormateDateToTime($reserve_day)),

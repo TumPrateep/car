@@ -42,7 +42,8 @@
 		font-size: 12px;
 	}
 	.amount{
-		font-size: 20px;
+		font-size: 18px;
+		color: #616161;
 	}
 	.size-check{
 		height: 1.5rem;

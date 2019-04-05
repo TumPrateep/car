@@ -183,6 +183,21 @@
       return $result;
     }
 
+    function getCaracessoryId($orderdetail){
+      $CI = get_instance();
+      $CI->load->model("orders");
+      $arrData['spare'] = [];
+      $arrData['tire'] = [];
+      $arrData['lubricator'] = [];
+      foreach ($orderdetail as $row) {
+        $row = (object) $row;
+        $arrData[$row->group][] = getDataForOrderDetail($row->productId, $row->group);
+      }
+
+      $result = $CI->orders->CheckCar_accessories($arrData);
+      return $result;
+    }
+
     function getCostTireForOrderDetail($caraccessoryId, $productDetail){
       $CI = get_instance();
       $CI->load->model("tireproduct");

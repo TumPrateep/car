@@ -15,7 +15,9 @@ class Cart extends BD_Controller {
         $lubricatorData = $this->getLubricator($cartData);
         $tireData = $this->getTire($cartData);
         $spareData = $this->getSpare($cartData);
-        $this->set_response($this->getCartData($lubricatorData, $tireData, $spareData), REST_Controller::HTTP_OK);
+        $data["caraccessoryId"] = getCaracessoryId($cartData);
+        $data["cartData"] = $this->getCartData($lubricatorData, $tireData, $spareData);
+        $this->set_response($data, REST_Controller::HTTP_OK);
     }
 
     function getCartData($lubricatorData, $tireData, $spareData){
