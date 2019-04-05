@@ -80,6 +80,15 @@
             margin-top: auto;
         }
 
+        .size-sm-model{
+            width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .text-font-model{
+            font-size: 18px;
+        }
+
       
     </style>
 </head>

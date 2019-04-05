@@ -251,12 +251,13 @@
             }
             if(data.message == 200){
                 result = data.data;
-                $("#name").val(result.titleName+" "+result.firstname+" "+result.lastname);
-                $("#car_plate").val(result.character_plate+" "+result.number_plate+" "+result.provinceforcarName);
-                $("#brandName").val(result.brandName);
-                $("#modelName").val(result.modelName);
-                $("#yearCar").val("ปี "+result.yearStart+"-"+result.yearEnd);
-                $("#modelofcarName").val(result.modelofcarName);
+                // $("#name").val(result.titleName+" "+result.firstname+" "+result.lastname);
+                $("#name").html(": "+result.titleName+" "+result.firstname+" "+result.lastname);
+                $("#car_plate").html(": "+result.character_plate+" "+result.number_plate+" "+result.provinceforcarName);
+                $("#brandName").html(": "+result.brandName);
+                $("#modelName").html(": "+result.modelName);
+                $("#yearCar").html(": ปี "+result.yearStart+" - "+result.yearEnd);
+                $("#modelofcarName").html(": "+result.modelofcarName);
               
             }
      

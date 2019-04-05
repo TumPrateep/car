@@ -55,7 +55,7 @@
         </div>  
 
 
-        <div class="modal fade" id="tracking-order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+        <div class="modal fade size-sm-model" id="tracking-order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
             <div class="modal-dialog modal-lg model-Width-sm" id="maxWidthSelect" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -73,35 +73,54 @@
                                         <input type="hidden" name="orderId" id="orderId">
 
                                         <div class="row">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label for="userdata">ชื่อ-นามสกุล</label>
-                                                    <input type="text" class="form-control" name="name" id="name" readonly>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label for="userdata">หมายเลขทะเบียนรถ</label>
-                                                    <input type="text" class="form-control" name="car_plate" id="car_plate" readonly>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label for="userdata">ยี่ห้อรถ</label>
-                                                    <input type="text" class="form-control" name="brandName" id="brandName"  readonly>
-                                                </div>
-                                            </div><br>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label for="userdata">รุ่นรถ</label>
-                                                    <input type="text" class="form-control" name="modelName" id="modelName" readonly>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                        <label for="userdata">โฉมรถ</label>
-                                                        <input type="text" class="form-control" name="yearCar" id="yearCar" readonly>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <label for="userdata">รายละเอียดรุ่นรถ</label>
-                                                    <input type="text" class="form-control" name="modelofcarName" id="modelofcarName" readonly>
-                                                </div>
-                                            </div><br>
-                                        </div><br>
+                                            <div class="col-md-6">
+                                                <label class="text-font-model" for="userdata">ชื่อ-นามสกุล</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="text-font-model" for="userdata" name="name" id="name" ></label>
+                                            </div>   
+                                        </div>
+                                        <div class="row"> 
+                                            <div class="col-sm-6">
+                                                <label class="text-font-model" for="userdata">หมายเลขทะเบียนรถ</label>  
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="text-font-model" for="userdata" name="car_plate" id="car_plate"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row"> 
+                                            <div class="col-sm-6">
+                                                <label class="text-font-model" for="userdata">ยี่ห้อรถ</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="text-font-model" for="userdata" name="brandName" id="brandName"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label class="text-font-model" for="userdata">รุ่นรถ</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="text-font-model" for="userdata" name="modelName" id="modelName"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label class="text-font-model" for="userdata">โฉมรถ</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="text-font-model" for="userdata" name="yearCar" id="yearCar"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label class="text-font-model" for="userdata">รายละเอียดรุ่นรถ</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="text-font-model" for="userdata" name="modelofcarName" id="modelofcarName"></label>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal"> ปิด</button>
                                         </div>
