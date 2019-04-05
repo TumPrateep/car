@@ -441,20 +441,30 @@ $(document).ready(function () {
         var nowDate = new Date();
         $("#reserve_day").datetimepicker({
             timepicker:false,
+            beforeShowDay: $.datepicker.noWeekends,
             formatDate:'d/m/Y',
             lang:'th',
-            minDate: nowDate.setDate( nowDate.getDate() + 2 ),
+            minDate: (function () {
+                var today = new Date().getDay(), add = 2;
+                switch (today) {
+                    case 4:
+                        add = 5;
+                        break;
+                    case 5:
+                        add = 6;
+                        break;
+                    case 6:
+                        add = 4;
+                        break;
+                    case 0:
+                        add = 3;
+                        break;
+                }
+                return nowDate.setDate( nowDate.getDate() + add );
+            })(),
             mask:true,
             scrollInput: false,
-            format:'d/m/Y',
-            beforeShowDay: function(date) {
-                var day = date.getDay();
-                if(openday.charAt(day) == 0){
-                    return [false, ''];
-                } else {
-                    return [true, ''];
-                }
-            }
+            format:'d/m/Y'
         });
         $("#reserve_time").datetimepicker({
             datepicker:false,
