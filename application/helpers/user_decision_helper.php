@@ -328,5 +328,26 @@
       $result->picture = getPictureSpare($option);
       return $result;
   }
+
+  function getDeliveryCost($caraccessoryId, $cartData){
+    $total = 0;
+    $number = 0;
+    foreach ($cartData as $index => $row) {
+      if($row->group == "spare"){
+        if($caraccessoryId == null){
+          $total += (ceil($row->quantity/3.0) * 50);
+        }
+        $number += $row->quantity;
+      }else if($row->group == "tire"){
+        $total += (100*$row->quantity);
+      }else{
+        $total += 0;
+      }
+    }
+    if($caraccessoryId != null){
+      $total += (ceil($number/3.0) * 50);
+    }
+    return $total;
+  }
       
 ?>

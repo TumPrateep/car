@@ -24,7 +24,8 @@ class Order extends BD_Controller {
         $orderdetail = $this->orders->getAllCartByUserIdAndProductId($userId, $productData);
 
         $caraccessoryId = getCaracessoryId($orderdetail);
-
+        $costDelivery = getDeliveryCost($caraccessoryId, $orderdetail);
+        $data['caraccessoryId'] = $caraccessoryId;
         $data["reserve"] = array(
             "reserveDate" => date('Y-m-d H:i:s', changeFormateDateToTime($reserve_day)),
             "reservetime" => $reserve_time,
@@ -41,8 +42,8 @@ class Order extends BD_Controller {
             'car_profileId' => $carProfileId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
-            'car_accessoriesId' => $caraccessoryId,
-            'activeflag' =>1
+            'activeflag' =>1,
+            'costDelivery' => $costDelivery
         );
 
         $data['orderdetail'] = $orderdetail;
@@ -54,7 +55,7 @@ class Order extends BD_Controller {
             "image_path" => null
         ];
         
-        // $this->set_response(["asdas" => $data], REST_Controller::HTTP_OK);
+        // $this->set_response($data, REST_Controller::HTTP_OK);
 
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
         

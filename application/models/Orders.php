@@ -53,6 +53,33 @@ class Orders extends CI_Model{
         return $charge;
     }
 
+    function getCarassoryId($productDetail, $group){
+        $createBy = null;
+        if($group == "tire"){
+            $this->db->from("tire_data");
+            $this->db->where("tire_sizeId",$productDetail['tire_sizeId']);
+            $this->db->where("tire_brandId",$productDetail['tire_brandId']);
+            $this->db->where("tire_modelId",$productDetail['tire_modelId']);
+            $this->db->limit(1)->order_by("price","ASC");
+            $createBy = $this->db->get()->row("create_by");
+        }else if($group == "spare"){
+            $this->db->from("spares_undercarriagedata");
+            $this->db->where("modelId",$productDetail['modelId']);
+            $this->db->where("spares_undercarriageId",$productDetail['spares_undercarriageId']);
+            $this->db->where("spares_brandId",$productDetail['spares_brandId']);
+            $this->db->where("brandId",$productDetail['brandId']);
+            $this->db->where("modelofcarId",$productDetail['modelofcarId']);
+            $this->db->limit(1)->order_by("price","ASC");
+            $createBy = $this->db->get()->row("create_by");
+        }else{
+            $this->db->from("lubricator_data");
+            $this->db->where("lubricatorId",$productDetail);
+            $this->db->limit(1)->order_by("price","ASC");
+            $createBy = $this->db->get()->row("create_by");
+        }
+        return $createBy;
+    }
+
     function getGarageCharge($productId, $group){
         $charge = null;
         if($group == "tire"){
@@ -78,7 +105,7 @@ class Orders extends CI_Model{
     function insert($data){
         $this->db->trans_begin();
             $userId = $this->session->userdata['logged_in']['id'];
-            $caraccessoryId = $data['order']['car_accessoriesId'];
+            $caraccessoryId = $data['caraccessoryId'];
             $this->db->insert("order",$data['order']);
             $orderId = $this->db->insert_id();
             $orderDetailData = $data['orderdetail'];
@@ -87,7 +114,14 @@ class Orders extends CI_Model{
             foreach ($orderDetailData as $val) {
                 $cost =  $this->getCost($val->productId, $val->group);
                 $productDetail = getDataForOrderDetail($val->productId, $val->group);
-                $costCaraccessories = getCostFromProductDetail($caraccessoryId, $productDetail, $val->group);
+                $tempCaraccessoryId = null;
+                if($caraccessoryId == null){
+                    $tempCaraccessoryId = $this->getCarassoryId($productDetail, $val->group);
+                }else{
+                    $tempCaraccessoryId = $caraccessoryId;
+                }
+
+                $costCaraccessories = getCostFromProductDetail($tempCaraccessoryId, $productDetail, $val->group);
                 $charge =  $this->getCharge($val->productId, $val->group);
                 $chargeGarage =  $this->getGarageCharge($val->productId, $val->group);
                 $temp = [
@@ -99,6 +133,7 @@ class Orders extends CI_Model{
                     'activeflag' => 1,
                     'group' => $val->group, 
                     'cost' => $cost,
+                    'car_accessoriesId' => $tempCaraccessoryId,
                     'costCaraccessories'=>$costCaraccessories,
                     'charge' => $charge,
                     'chargeGarage' => $chargeGarage,

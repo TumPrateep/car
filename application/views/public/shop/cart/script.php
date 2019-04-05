@@ -453,6 +453,7 @@ $(document).ready(function () {
                     case 5:
                         add = 6;
                         break;
+                    case 3:
                     case 6:
                         add = 4;
                         break;
