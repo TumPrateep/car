@@ -11,7 +11,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light navbar-bg-Orange">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="<?=base_url("garage/"); ?>">
+                    <a class="navbar-brand" href="<?=base_url("garage/schedule"); ?>">
                         <!-- Logo icon -->
                         <!-- <b><img src="<?=base_url()?>public/themes/garage/images/logo.png" alt="homepage" class="dark-logo" /></b>
                         

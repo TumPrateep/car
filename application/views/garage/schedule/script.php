@@ -1,10 +1,4 @@
-<link href="https://fullcalendar.io/releases/core/4.0.2/main.min.css" rel="stylesheet">
-<link href="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.css" rel="stylesheet">
-<link href="https://fullcalendar.io/releases/timegrid/4.0.1/main.min.css" rel="stylesheet">
-<script src="https://fullcalendar.io/releases/core/4.0.2/main.min.js"></script>
-<script src="https://fullcalendar.io/releases/interaction/4.0.2/main.min.js"></script>
-<script src="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.js"></script>
-<script src="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.js"></script>
+
 <style>
     html, body {
         margin: 0;
@@ -18,6 +12,7 @@
         margin: 40px auto;
     }
 </style>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
