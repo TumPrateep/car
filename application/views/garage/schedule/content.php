@@ -13,9 +13,10 @@
             <!-- End Bread crumb -->
             <!-- Container fluid  -->
             <div class="container-fluid">
-                <div class="row" style="background: white;border-radius: 25px; 0px 1px 3px 3px #d0cdcd">
-                    <div id='calendar' ></div>			
-                </div>
+                <!-- <div class="row" style="background: white;border-radius: 25px; 0px 1px 3px 3px #d0cdcd">
+                    <div id="calendar" ></div>			
+                </div> -->
+                <div id="calendar" ></div>
                 <!-- End PAge Content -->
             </div>
             <!-- End Container fluid  -->

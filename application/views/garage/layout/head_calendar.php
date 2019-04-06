@@ -23,15 +23,9 @@
     <link href="<?=base_url("/public/css/responsive.dataTables.min.css") ?>" rel="stylesheet">
     <link href="<?=base_url()?>public/themes/garage/css/style.css" rel="stylesheet">
 
-    <!-- <link href="https://fullcalendar.io/releases/core/4.0.2/main.min.css" rel="stylesheet"> -->
     <link href="<?=base_url()?>public/fullcalendar/packages/core/main.css" rel="stylesheet">
-
-    <!-- <link href="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.css" rel="stylesheet"> -->
     <link href="<?=base_url()?>public/fullcalendar/packages/daygrid/main.min.css" rel="stylesheet">
-
-    <!-- <link href="https://fullcalendar.io/releases/timegrid/4.0.1/main.min.css" rel="stylesheet"> -->
     <link href="<?=base_url()?>public/fullcalendar/packages/timegrid/main.min.css" rel="stylesheet">
-    <link href="<?=base_url()?>public/fullcalendar/packages/list/main.css" rel="stylesheet">
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -101,6 +95,23 @@
             font-size: 18px;
         }
 
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+
+        #calendar {
+            max-width: 900px;
+            margin: 40px auto;
+        }
+        span.fc-title, span.fc-time{
+            color: #ffffff;
+        }
+        th.fc-sat{
+            text-align: center!important;
+        }
       
     </style>
 </head>
