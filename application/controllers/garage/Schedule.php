@@ -11,7 +11,7 @@ class Schedule extends CI_Controller {
 
     public function index()
 	{
-		$this->load->view("garage/layout/head");
+		$this->load->view("garage/layout/head_calendar");
 		$this->load->view("garage/layout/header");
 		$this->load->view("garage/layout/left-menu");
 		$this->load->view("garage/schedule/content");

@@ -1,18 +1,3 @@
-
-<style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-        font-size: 14px;
-    }
-
-    #calendar {
-        max-width: 900px;
-        margin: 40px auto;
-    }
-</style>
-
 <script>
     $(document).ready(function () {
         var calendar = $('#calendar').fullCalendar({

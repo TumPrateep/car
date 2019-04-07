@@ -13,6 +13,7 @@
 
 function createCarConfirm(){
     var userId = localStorage.getItem("userId");
+    var hasCaraccessory = null;
     if(userId != null){
         $("#selectcar").modal("show");
     }else{
@@ -113,15 +114,46 @@ function showCart(){
 
 function setTotalAmount(){
     var total = 0;
+    var deliveryCost = 0;
+    var deliveryData = [];
     var table = $("#cart-table > tbody");
     $("#cart-table > tbody  > tr").each(function(index, val) {
         var trTable = table.find('tr:eq('+index+')').find('input');
         var isCheck = trTable.is(':checked');
         if(isCheck){
             total += trTable.data('amount');
+            deliveryData[index] = {
+                group: trTable.data('group'),
+                number: trTable.data('number')
+            }
         }
     });
-    $("#order_total_amount").html(currency(total, {  precision: 0 }).format() + " บาท");
+    deliveryCost = calculateDeliveryCost(deliveryData);
+    $("#order_total_cost").html(currency(total, {  precision: 0 }).format() + " บาท");
+    $("#order_total_delivery").html(currency(deliveryCost, {  precision: 0 }).format() + " บาท");
+    $("#order_total_amount").html(currency(total+deliveryCost, {  precision: 0 }).format() + " บาท");
+}
+
+function calculateDeliveryCost(deliveryData){
+    var total = 0;
+    var number = 0;
+    deliveryData.forEach(function(val, index) {
+        console.log(val);
+        if(val.group == "spare"){
+            if(hasCaraccessory == null){
+                total += (Math.ceil(val.number/3.0) * 50);
+            }
+            number += val.number;
+        }else if(val.group == "tire"){
+            total += (100*val.number);
+        }else{
+            total += 0
+        }
+    });
+    if(hasCaraccessory != null){
+        total += (Math.ceil(number/3.0) * 50);
+    }
+    return total;
 }
 
 function deleteCart(index){
@@ -152,7 +184,7 @@ function getLubricator(value, index){
     var product = cartDataDetail["lubricator"][value.productId];
     var totalCost = (product.price*value.number);
     var html = '<tr>'
-        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()" data-amount="'+totalCost+'" data-productId="'+value.productId+'"></div></td>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()" data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'"></div></td>'
         +'<td><a href="'+base_url+'shop/detail/lubricator/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/lubricatordata/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/lubricator/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.lubricatorNumber+' ขนาด '+product.capacity+' ลิตร</a></td>'
         +'<td><div class="col-md-12">'
@@ -177,7 +209,7 @@ function getTire(value, index){
     var product = cartDataDetail["tire"][value.productId];
     var totalCost = (product.price*value.number);
     var html = '<tr>'
-        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'" data-productId="'+value.productId+'"></div></td>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'"></div></td>'
         +'<td><a href="'+base_url+'shop/detail/tire/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/tirebranddata/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/tire/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.number+'</a></td>'
         +'<td><div class="col-md-12">'
@@ -202,7 +234,7 @@ function getspare(value, index){
     var product = cartDataDetail["spare"][value.productId];
     var totalCost = (product.price*value.number);
     var html = '<tr>'
-        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'" data-productId="'+value.productId+'"></div></td>'
+        +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'"></div></td>'
         +'<td><a href="'+base_url+'shop/detail/spare/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/spareundercarriage/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/spare/'+value.productId+'">'+product.spares_brandName+' '+product.spares_undercarriageName+' '+product.brandName+' '+product.modelName+' '+product.year+'</a></td>'
         +'<td><div class="col-md-12">'
@@ -340,7 +372,8 @@ $(document).ready(function () {
     // var confirmForm = $("#confirm");
     $.post(base_url+"service/Cart/cartDetail", {"cartData": cartData},
         function (data, textStatus, jqXHR) {
-            cartDataDetail = data;
+            cartDataDetail = data.cartData;
+            hasCaraccessory = data.caraccessoryId;
             showCart();
         }
     );
@@ -408,20 +441,31 @@ $(document).ready(function () {
         var nowDate = new Date();
         $("#reserve_day").datetimepicker({
             timepicker:false,
+            beforeShowDay: $.datepicker.noWeekends,
             formatDate:'d/m/Y',
             lang:'th',
-            minDate: nowDate.setDate( nowDate.getDate() + 2 ),
+            minDate: (function () {
+                var today = new Date().getDay(), add = 2;
+                switch (today) {
+                    case 4:
+                        add = 5;
+                        break;
+                    case 5:
+                        add = 6;
+                        break;
+                    case 3:
+                    case 6:
+                        add = 4;
+                        break;
+                    case 0:
+                        add = 3;
+                        break;
+                }
+                return nowDate.setDate( nowDate.getDate() + add );
+            })(),
             mask:true,
             scrollInput: false,
-            format:'d/m/Y',
-            beforeShowDay: function(date) {
-                var day = date.getDay();
-                if(openday.charAt(day) == 0){
-                    return [false, ''];
-                } else {
-                    return [true, ''];
-                }
-            }
+            format:'d/m/Y'
         });
         $("#reserve_time").datetimepicker({
             datepicker:false,

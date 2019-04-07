@@ -30,14 +30,21 @@
 							    	</tr>
 							  	</thead>
 							  	<tbody id="cart_list"></tbody>
+								<tfoot>
+									<tr>
+										<th colspan="4" class="text-right"><span class="amount">ราคาสินค้า :</span></th>
+										<th colspan="2" class="text-right"><span class="amount" id="order_total_cost"></span></th>
+									</tr>
+									<tr>
+										<th colspan="4" class="text-right"><span class="amount">ราคาค่าขนส่ง :</span></th>
+										<th colspan="2" class="text-right"><span class="amount" id="order_total_delivery"></span></th>
+									</tr>
+									<tr>
+										<th colspan="4" class="text-right"><span class="amount">ราคารวม :</span></th>
+										<th colspan="2" class="text-right"><span class="amount" id="order_total_amount"></span></th>
+									</tr>
+								</tfoot>
 							</table>
-                        </div>
-                        <!-- <div class="underline-line "></div> -->
-                        <div class="col-12">
-                        	<div class="content text-md-right">
-								<span class="text-title"> ราคารวม :</span>
-								<span class="amount" id="order_total_amount"></span>
-							</div>
                         </div>
                         
 					</div>

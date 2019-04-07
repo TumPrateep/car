@@ -183,6 +183,21 @@
       return $result;
     }
 
+    function getCaracessoryId($orderdetail){
+      $CI = get_instance();
+      $CI->load->model("orders");
+      $arrData['spare'] = [];
+      $arrData['tire'] = [];
+      $arrData['lubricator'] = [];
+      foreach ($orderdetail as $row) {
+        $row = (object) $row;
+        $arrData[$row->group][] = getDataForOrderDetail($row->productId, $row->group);
+      }
+
+      $result = $CI->orders->CheckCar_accessories($arrData);
+      return $result;
+    }
+
     function getCostTireForOrderDetail($caraccessoryId, $productDetail){
       $CI = get_instance();
       $CI->load->model("tireproduct");
@@ -312,6 +327,27 @@
       ];
       $result->picture = getPictureSpare($option);
       return $result;
+  }
+
+  function getDeliveryCost($caraccessoryId, $cartData){
+    $total = 0;
+    $number = 0;
+    foreach ($cartData as $index => $row) {
+      if($row->group == "spare"){
+        if($caraccessoryId == null){
+          $total += (ceil($row->quantity/3.0) * 50);
+        }
+        $number += $row->quantity;
+      }else if($row->group == "tire"){
+        $total += (100*$row->quantity);
+      }else{
+        $total += 0;
+      }
+    }
+    if($caraccessoryId != null){
+      $total += (ceil($number/3.0) * 50);
+    }
+    return $total;
   }
       
 ?>
