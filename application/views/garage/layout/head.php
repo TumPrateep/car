@@ -23,9 +23,7 @@
     <link href="<?=base_url("/public/css/responsive.dataTables.min.css") ?>" rel="stylesheet">
     <link href="<?=base_url()?>public/themes/garage/css/style.css" rel="stylesheet">
 
-    <link href="https://fullcalendar.io/releases/core/4.0.2/main.min.css" rel="stylesheet">
-    <link href="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.css" rel="stylesheet">
-    <link href="https://fullcalendar.io/releases/timegrid/4.0.1/main.min.css" rel="stylesheet">
+    <link href="<?=base_url()?>public/css/fullcalendar.css" rel="stylesheet">
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

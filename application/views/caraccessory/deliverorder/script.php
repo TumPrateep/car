@@ -19,7 +19,7 @@
                 }
             },
             "responsive": true,
-            "bLengthChange": true,
+            "bLengthChange": false,
             "searching": false,
             "processing": true,
             "serverSide": true,

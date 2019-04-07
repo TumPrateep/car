@@ -23,8 +23,6 @@
     <script src="<?=base_url("/public/js/currency.min.js") ?>"></script>
     <script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
 
-    <script src="https://fullcalendar.io/releases/core/4.0.2/main.min.js"></script>
-    <script src="https://fullcalendar.io/releases/interaction/4.0.2/main.min.js"></script>
-    <script src="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.js"></script>
-    <script src="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.js"></script>
+    <script src="<?=base_url("/public/js/fullcalendar.js") ?>"></script>
+    <script src='<?=base_url("/public/js/locale-all.js") ?>'></script>
     
