@@ -6,12 +6,12 @@
                 <nav class="sidebar-nav bg-sidebar">
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
-                        <li class="nav-label">-</li>
+                        <li class="nav-label"></li>
                         <li><a class="garage-white " href="<?=base_url("garage/Managegarage"); ?>">
-                            <i class="fa fa-address-card-o garage-white"></i>จัดการข้อมูลอู่</a>
+                            <i class="fa fa-address-card-o garage-white"></i><span class="hide-menu">จัดการข้อมูลอู่</span></a>
                         </li>
                         <li><a class="garage-white " href="<?=base_url("garage/Mechanic"); ?>">
-                            <i class="fa fa-address-card-o garage-white"></i>ข้อมูลช่าง</a>
+                            <i class="fa fa-address-card-o garage-white"></i><span class="hide-menu">ข้อมูลช่าง</span></a>
                         </li>
                         <li><a class="has-arrow garage-white " href="#" aria-expanded="false">
                             <i class="fa fa-usd garage-white"></i><span class="hide-menu">ราคาค่าบริการ</span></a>
@@ -23,13 +23,13 @@
                             </ul>
                         </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/Reserve"); ?>">
-                            <i class="fa fa-handshake-o garage-white"></i>การจอง</a>
+                            <i class="fa fa-handshake-o garage-white"></i><span class="hide-menu">การจอง</span></a>
                         </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/Orderdetail/show"); ?>">
-                            <i class="fa fa-truck garage-white"></i>รายการสินค้า</a>
+                            <i class="fa fa-truck garage-white"></i><span class="hide-menu">รายการสินค้า</span></a>
                         </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/Orderreceive/show"); ?>">
-                        <i class="fa fa-check-square-o" aria-hidden="true"></i>รับสินค้า</a>
+                        <i class="fa fa-check-square-o garage-white" aria-hidden="true"></i><span class="hide-menu">รับสินค้า</span></a>
                         </li>
                     </ul>
                 </nav>

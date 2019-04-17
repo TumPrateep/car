@@ -64,6 +64,9 @@
         .sidebar-nav ul li a:hover {
         color: #ffffff !important;
         }
+        .sidebar-nav ul li a {
+        color: #e6e6e6 !important;
+        }
         .sidebar-nav > ul > li > a.active {
         background-color: #666666 !important;
         color: #ffffff !important;
