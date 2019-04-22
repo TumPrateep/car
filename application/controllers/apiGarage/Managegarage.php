@@ -48,7 +48,8 @@ class Managegarage extends BD_Controller {
         
         $this->load->model("managegarages");
         $config['upload_path'] = 'public/image/garage/';
-        $img = $this->post("garagePicture");
+        // $img = $this->post("garagePicture");
+        $img = $this->post("picture");
         $success = true;
         $file = null;
         $imageName = null; 
@@ -88,11 +89,11 @@ class Managegarage extends BD_Controller {
             'openingtime' => $openingtime,
             'closingtime' => $closingtime,
             
-            "garagePicture"=> $imageName
+            "picture"=> $imageName
         );
         $oldImage = null;
         if($data_check_update != null){
-            $oldImage = $config['upload_path'].$data_check_update->garagePicture;
+            $oldImage = $config['upload_path'].$data_check_update->picture;
         }
 
 
@@ -158,7 +159,6 @@ class Managegarage extends BD_Controller {
     function getmanagegarage_post(){
 
         $garageId = $this->session->userdata['logged_in']['garageId'];
-
         $data_check = $this->managegarages->getmanagegaragesById($garageId);
         $data_check->owner = $this->mechanics->getOwnerGarage($garageId);
         if($data_check != null){

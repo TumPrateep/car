@@ -206,7 +206,7 @@ class Mechanic extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
         $config['upload_path'] = 'public/image/mechanic/';
         $mechanicId = $this->post("mechanicId");
-        $titleName = $this->post("titleName_user");
+        $titleName = $this->post("titleName");
         $firstName = $this->post("firstName");
         $lastName = $this->post("lastName");
         $nickName = $this->post("nickName");
@@ -245,7 +245,7 @@ class Mechanic extends BD_Controller {
             'titleName' => $titleName,
             'exp' => $exp,
             'phone' => $phone,
-            'skill' => $skill,
+            // 'skill' => $skill,
             'personalid' => $idCard,
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time()),

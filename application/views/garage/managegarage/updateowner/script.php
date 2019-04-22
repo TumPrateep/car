@@ -94,8 +94,9 @@
                 $("#personalid").val(result.personalid);
                 $("#titleName_user").val(result.titleName);
                 $("#phone").val(result.phone);
-                // $("#skill").val(result.skill);
+                $("#job").val(result.job);
                 $("#mechanicId").val(result.mechanicId);
+                $("#titleName").val(result.titleName);
                 setBrandPicture(result.picture);
             }
             

@@ -45,7 +45,7 @@
 																										<div class="cropit-preview"></div>
 																										<div class="image-size-label">ปรับขนาด</div>
 																										<input type="range" class="cropit-image-zoom-input">
-																										<input type="hidden" name="garagePicture" id="garagePicture" class="hidden-image-data" />
+																										<input type="hidden" name="picture" id="picture" class="hidden-image-data" />
 																									</div>
 																								</div>
 																							</div>

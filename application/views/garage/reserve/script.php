@@ -69,7 +69,7 @@
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return $.format.date(new Date(data.reserveDate), "dd~MM~yyyy");
+                        return $.format.date(new Date(data.reserveDate), "dd~MM~yyyy"); // code ในการแปลงเวลา
                     }
                 },{
                     "targets": 5,

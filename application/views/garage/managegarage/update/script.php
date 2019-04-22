@@ -33,7 +33,7 @@
                 $("#openingtime").val(result.openingtime);
                 $("#closingtime").val(result.closingtime);
                 $("#option_outher").val(result.option_outher);
-                setBrandPicture(result.garagePicture);
+                setBrandPicture(result.picture);
             }
 
             loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);

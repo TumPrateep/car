@@ -42,7 +42,7 @@
 											<div class="col-md-2">
 												<div class="form-group">
 													<label class="form-label" for="mechanic">คำนำหน้า</label><span class="error">*</span>
-													<select class="form-control" name="titleName_user" id="titleName_user">
+													<select class="form-control" name="titleName" id="titleName">
 														<option value=""></option>
 														<option value="นาย">นาย</option>
 														<option value="นาง">นาง</option>
@@ -79,7 +79,7 @@
 											<div class="col-lg-4">
 												<div class="form-group">
 													<label for="mobile">ความเชี่ยวชาญด้านรถ</label><span class="error">*</span>
-													<select class="form-control" name="skill" id="skill" placeholder="ความเชี่ยวชาญด้านรถ" >
+													<select class="form-control" name="job" id="job" placeholder="ความเชี่ยวชาญด้านรถ" >
 														<option value="">เลือกความชำนาญ</option>
 														<option value="Honda">Honda</option>
 														<option value="Isuzu">Isuzu</option>

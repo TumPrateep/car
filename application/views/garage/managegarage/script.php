@@ -40,7 +40,7 @@
                     height: 200,
                     type: 'image',
                     imageState: {
-                        src: picturePath+"garage/"+result.garagePicture
+                        src: picturePath+"garage/"+result.picture
                     }
                 });
 
@@ -50,8 +50,8 @@
                 $("#phone").val(ownerData.phone);
                 $("#exp").val(ownerData.exp);
                 // $("#skill").val(ownerData.skill);
-                // $("#skill").val(ownerData.skill);
-                // $("#titleName").val(result.titleName);
+                $("#job").val(ownerData.job);
+                $("#titleName").val(result.titleName);
                 $("#flName").val(ownerData.titleName+ownerData.firstName+" "+ownerData.lastName);
                 $('#owner.image-editor').cropit({
                         allowDragNDrop: false,
