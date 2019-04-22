@@ -92,10 +92,10 @@
                 result = data.data;
                 $("#firstName").val(result.firstName);
                 $("#lastName").val(result.lastName);
+                $("#nickName").val(result.nickName);
                 $("#exp").val(result.exp);
                 $("#personalid").val(result.personalid);
-                
-                $("#phone").val(result.phone);
+                $("#phone").val(result.phone); 
                 $("#job").val(result.job);
                 setBrandPicture(result.picture);
             }
