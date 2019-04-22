@@ -60,16 +60,6 @@ class Deliverorder extends BD_Controller {
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;
-                
-                // $data[$index] = $nestedData;
-                // if($count >= 3){
-                //     $count = -1;
-                //     $index++;
-                //     $nestedData = [];
-                // }
-                
-                // $count++;
-
             }
         }
 
@@ -92,6 +82,10 @@ class Deliverorder extends BD_Controller {
             $data_check->provinceName = $this->location->getProvinceNameByProvinceId($data_check->provinceId);
             $data_check->districtName = $this->location->getDistrictNameByDistrictId($data_check->districtId);
             $data_check->subdistrictName = $this->location->getSubDistrictBySubDistrictId($data_check->subdistrictId);
+
+            $data_check->carprovinceName = $this->location->getProvinceNameByProvinceId($data_check->carprovinceId);
+            $data_check->cardistrictName = $this->location->getDistrictNameByDistrictId($data_check->cardistrictId);
+            $data_check->carsubdistrictName = $this->location->getSubDistrictBySubDistrictId($data_check->carsubdistrictId);
         }
         $option = [
             "data_check" => $data_check
@@ -99,25 +93,6 @@ class Deliverorder extends BD_Controller {
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
 
-    // function getexportforgarage_post(){
-        
-    //     $orderId = $this->post('orderId');
-    //     $exportgarage = $this->deliverorders->exportgarage($orderId);
-    //     $option = [
-    //         "data_check" => $exportgarage
-    //     ];
-    //     $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
-    // }
-
-    // function getexportsum_post(){
-    //     $data_check = $this->deliverorders->getDeliverordersById($orderId);
-    //     $data_check->exportgarage = $this->deliverorders->exportgarage($orderId);
-
-    //     $option = [
-    //         "data_check" => $data_check
-    //     ];
-    //     $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
-    // }
 
     function getorder_get(){
         $lubricator_dataId = $this->get('lubricator_dataId');
@@ -152,36 +127,93 @@ class Deliverorder extends BD_Controller {
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
-    public function updatetraking_post(){
+    // public function updatetraking_post(){
+    //     $orderId = $this->post('orderId');
+    //     // $tracking_number = $this->post('tracking-number');
+    //     $userId = $this->session->userdata['logged_in']['id'];
+    //     $config['upload_path'] = 'public/image/deliverorder/';
+    //     $img = $this->post("picture");
+    //     $success = true;
+    //     $file = null;
+    //     $imageName = null; 
+    //     if(!empty($img)){
+    //         $img = str_replace('data:image/png;base64,', '', $img);
+    //         $img = str_replace(' ', '+', $img);
+    //         $data = base64_decode($img);
+
+    //         $imageName = uniqid().'.png';
+    //         $file = $config['upload_path']. '/'. $imageName;
+    //         $success = file_put_contents($file, $data);
+    //     }
+    //     if (!$success){
+    //         unlink($file);
+    //         $output["message"] = REST_Controller::MSG_ERROR;
+    //         $this->set_response($output, REST_Controller::HTTP_OK);
+    //     }else{
+    //     $data_check_update = $this->deliverorders->getorderById($orderId);
+    //     $data_check = $this->deliverorders->data_check_update($orderId);
+    //     $data = array(
+    //         'orderId' => $orderId,
+    //         'status' => 4,
+    //         'picture_tracking'=> $imageName
+    //         // 'number_tracking'  => $tracking_number
+    //     );
+
+    //     $oldImage = null;
+    //     if($data_check_update != null){
+    //         $oldImage = $config['upload_path'].$data_check_update->picture;
+    //     }
+
+    //     $option = [
+    //         "data_check_update" => $data_check_update,
+    //         "data_check" => $data_check,
+    //         "data" => $data,
+    //         "model" => $this->deliverorders,
+    //         "image_path" => $file,
+    //         "old_image_path" => $oldImage
+    //     ];
+
+    //     $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+    //     }
+    // }
+
+    function updateimgtraking_post(){
         $orderId = $this->post('orderId');
-        $tracking_number = $this->post('tracking-number');
+        $status = $this->post('status');
+        // $config['upload_path'] = 'public/image/deliverorder/';
+        $config['upload_path'] = 'public/image/deliverorder/';
         $userId = $this->session->userdata['logged_in']['id'];
-        // $car_accessoriesId = $this->session->userdata['logged_in']['car_accessoriesId'];
+        $img = $this->post('picture_tracking');
+        $img = str_replace('data:image/png;base64,', '', $img);
+	    $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
 
-        // $data_check_update = $this->lubricatorchangegarages->getLubricatorChangeById($lubricator_change_garageId,$garageId);
-        // $data_check = $this->lubricatorchangegarages->data_check_update($lubricator_change_garageId,$garageId);
+        $imageName = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName;
+        $success = file_put_contents($file, $data);
+		if (!$success){
+            $output["message"] = REST_Controller::MSG_ERROR;
+			$this->set_response($output, REST_Controller::HTTP_OK);
+		}else{
+            $image =  $imageName;
+            $data_check = $this->brand->data_check_create($brandName);
+            $data = array(
+                "orderId" => $orderId,
+                "picture_tracking"=> $imageName,
+                "status" => 4,
+                "update_at" => date('Y-m-d H:i:s',time())
+            );
+            $option = [
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->deliverorders,
+                "image_path" => $file
+            ];
+    
+            $this->set_response(user_decision_update($option), REST_Controller::HTTP_OK);
 
-        $data_check_update = $this->deliverorders->getorderById($orderId);
-        // $data_check = $this->deliverorders->data_check_update($lubricator_change_garageId,$garageId);
-
-        $data = array(
-            'orderId' => $orderId,
-            'status' => 4,
-            'number_tracking'  => $tracking_number
-        );
-
-        $option = [
-            "data_check_update" => $data_check_update,
-            "data_check" => null,
-            "data" => $data,
-            "model" => $this->deliverorders,
-            "image_path" => null,
-            "old_image_path" => null,
-        ];
-
-        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+        }       
     }
-
 }
 
 

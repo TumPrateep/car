@@ -38,7 +38,7 @@
                 null,
                 null,
                 // { "data": "orderId" },
-                { "data": "reserveDate" },
+                null,
                 { "data": "reservetime" },
                 { "data": "name" },
                 null,
@@ -64,6 +64,12 @@
                         html+='<a href="'+base_url+'garage/OrderDetail/show/'+data.orderId+'">#'+data.orderId+'</a><br>';
                      
                         return html;
+                    }
+                },{
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return $.format.date(new Date(data.reserveDate), "dd~MM~yyyy");
                     }
                 },{
                     "targets": 5,

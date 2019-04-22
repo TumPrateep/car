@@ -120,10 +120,16 @@ class Orderdetails extends CI_Model{
         
     }
     function getSummaryCostFromOrderDetail($orderId, $userId){
-        $this->db->select("sum(cost) as cost, sum(charge) as charge, sum(chargeGarage) as chargeGarage, sum(costCaraccessories) as costCaraccessories");
+        $this->db->select("sum(cost*quantity) as cost, sum(charge*quantity) as charge, sum(chargeGarage*quantity) as chargeGarage, sum(costCaraccessories*quantity) as costCaraccessories");
         $this->db->where("orderId", $orderId);
         $result = $this->db->get("orderdetail");
         return $result->row();
+    }
+
+    function getSummarycostDelivery($orderId){
+        $this->db->where("orderId", $orderId);
+        $result = $this->db->get("order");
+        return $result->row('costDelivery');
     }
 
     function orders_search_count($orderId){

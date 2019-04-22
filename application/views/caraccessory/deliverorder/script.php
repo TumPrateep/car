@@ -131,24 +131,6 @@
                
             ]	 
     });
-   
-    // $("#form-search").submit(function(){
-    //     event.preventDefault();
-    //     table.ajax.reload();
-    // })
-
-    //  function updateStatus(lubricator_typeId,status){
-    //     $.post(base_url+"api/LubricatorType/changeStatus",{
-    //         "lubricator_typeId": lubricator_typeId,
-    //         "status": status
-    //     },function(data){
-    //         if(data.message == 200){
-    //             showMessage(data.message,"admin/LubricatorType");
-    //         }else{
-    //             showMessage(data.message);
-    //         }
-    //     });
-    // }
 
     $("#btn-search").click(function(){
         event.preventDefault();
@@ -186,23 +168,86 @@
         $("#tracking-order").modal("show");
     }
 
-    function updatetrakingnumber(){
-        event.preventDefault();
-        var isValid = $("#update-traking-number").valid();
+    // function updatetrakingnumber(){
+    //     event.preventDefault();
+    //     var isValid = $("#update-traking-number").valid();
 
-        if(isValid){
-            var data = $("#update-traking-number").serialize();
+    //     if(isValid){
+    //         var data = $("#update-traking-number").serialize();
            
-            $.post(base_url+"apiCaraccessories/Deliverorder/updatetraking",data,
-            function(data){
-                if(data.message == 200){
-                    showMessage(data.message,"caraccessory/deliverorder");
-                }else{
-                    showMessage(data.message);
-                }
-            });
+    //         $.post(base_url+"apiCaraccessories/Deliverorder/updatetraking",data,
+    //         function(data){
+    //             if(data.message == 200){
+    //                 showMessage(data.message,"caraccessory/deliverorder");
+    //             }else{
+    //                 showMessage(data.message);
+    //             }
+    //         });
+    //     }
+    // }
+   
+
+    // function updateimagetracking(){
+    //     event.preventDefault();
+    //     var isValid = $("#submit").valid();
+        
+        
+    //     if(isValid){
+    //         var imageData = $('.image-editor').cropit('export');
+    //         $('.hidden-image-data').val(imageData);
+    //         var myform = document.getElementById("submit");
+    //         var formData = new FormData(myform);
+
+    //         $.ajax({
+    //         url: base_url+"apiCaraccessories/Deliverorder/updatetraking",
+    //         data: formData,
+    //         processData: false,
+    //         contentType: false,
+    //         type: 'POST',
+    //         success: function(data){
+    //             if(data.message == 200){
+    //                 showMessage(data.message,"caraccessory/deliverorder");
+    //             }else{
+    //                 showMessage(data.message);
+    //             }
+    //         }
+    //         });
+    //     }
+    // };
+
+
+        $("#submit").submit(function(){
+            updateimagetracking();
+        })
+
+        function updateimagetracking(){
+            event.preventDefault();
+            var isValid = $("#submit").valid();
+            
+            if(isValid){
+                var imageData = $('.image-editor').cropit('export');
+                $('.hidden-image-data').val(imageData);
+                var data = $("#submit").serialize();
+                
+                $.post(base_url+"apiCaraccessories/Deliverorder/updateimgtraking",data,
+                function(data){
+                    
+                    if(data.message == 200){
+                        showMessage(data.message,"caraccessory/deliverorder");
+                    }else{
+                        showMessage(data.message);
+                    }
+                });
+                
+            }
         }
-    }
+
+        $('.image-editor').cropit({
+        allowDragNDrop: false,
+        width: 200,
+        height: 200,
+        type: 'image/jpeg'
+    });
 
 </script>
 

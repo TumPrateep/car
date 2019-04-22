@@ -41,7 +41,7 @@
                     minlength: 10,
                     maxlength: 10
                 },
-                skill: {
+                job: {
                     required: true
                 
                 },
@@ -68,7 +68,7 @@
                     minlength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ",
                     maxlength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ"
                 },
-                skill: {
+                job: {
                     required: "กรุณาเลือกความชำนาญ"
                 
                 },

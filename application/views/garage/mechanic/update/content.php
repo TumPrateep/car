@@ -68,7 +68,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="mobile">ตำแหน่งช่าง</label><span class="error">*</span>
-                                            <select class="form-control" name="skill" id="skill" placeholder="ตำแหน่งช่าง" >
+                                            <select class="form-control" name="job" id="job" placeholder="ตำแหน่งช่าง" >
                                                   <option value="">เลือกตำแหน่ง</option>
                                                   <option value="ช่างเครื่อง">ช่างเครื่อง</option>
                                                   <option value="ช่างช่วงล่าง">ช่างช่วงล่าง</option>
@@ -84,7 +84,7 @@
                                         <div class="form-group">
                                         <label class="control-label">รูปช่าง</label>
                                             <div class="image-editor">
-                                                <input type="file" class="cropit-image-input" name="tempImage" required>
+                                                <input type="file" class="cropit-image-input" name="tempImage">
                                                 <div class="cropit-preview"></div>
                                                 <div class="image-size-label">ปรับขนาด</div>
                                                 <input type="range" class="cropit-image-zoom-input">

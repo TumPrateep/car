@@ -94,7 +94,7 @@
 										<div class="row">
 											<div class="col-md-3">
 												<div class="form-group">
-													<button type="submit" class="btn btn-info m-b-10 m-l-5">บันทึก</button>
+													<button type="submit" class="btn btn-info m-b-10 m-l-5">ปริ้น</button>
 												</div>
 											</div>
 										</div>

@@ -133,7 +133,7 @@
         <div class="modal-dialog modal-lg model-Width-sm" id="maxWidthSelect" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">กรอกข้อมูลหมายเลขติดตาม</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">กรอกรูปติดตาม</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -142,21 +142,30 @@
                     <form id="update-traking-number">
                         <div class="row">
                             <div class="col-md-12">
-                            
                                 <input type="hidden" name="orderId" id="orderId">
-
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <!-- <label class="form-label " for="order">อักษรนำหน้า</label> -->
-                                            <!-- <input type="textarea" class="form-control" id="character_plate" name="character_plate" placeholder="อักษร"> -->
-                                            <textarea class="form-control sm-text-a" name="tracking-number" id="tracking-number" rows="3"></textarea>
+                                         <textarea class="form-control sm-text-a" name="tracking-number" id="tracking-number" rows="3"></textarea>
                                         </div>
                                     </div>
-                                </div>
-                                
+                                </div> -->
+                                <div class="row p-t-20">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                        <!-- <label class="control-label"></label> -->
+                                            <div class="image-editor">
+                                                <input type="file" class="cropit-image-input" name="tempImage" required>
+                                                <div class="cropit-preview"></div>
+                                                <div class="image-size-label">ปรับขนาด</div>
+                                                <input type="range" class="cropit-image-zoom-input">
+                                                <input type="hidden" name="picture_tracking" id="picture_tracking" class="hidden-image-data" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
                                 <div class="modal-footer">
-                                    <button type="button" onclick="updatetrakingnumber()" class="btn btn-success"> บันทึก</button>
+                                    <button type="submit"  class="btn btn-success"> บันทึก</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal"> ปิด</button>
                                 </div>
                             </div>

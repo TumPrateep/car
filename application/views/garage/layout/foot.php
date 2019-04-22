@@ -25,4 +25,6 @@
 
     <script src="<?=base_url("/public/js/fullcalendar.js") ?>"></script>
     <script src='<?=base_url("/public/js/locale-all.js") ?>'></script>
+
+    <script src="<?=base_url("/public/js/jquery-dateformat.min.js") ?>"></script>
     

@@ -87,6 +87,7 @@ class Order extends BD_Controller {
                 $nestedData['create_by'] = $post->userId;
                 $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
                 $nestedData['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
+                $nestedData['costDelivery'] = $this->orderdetails->getSummarycostDelivery($post->orderId);
                 $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
                 $data[] = $nestedData;
             }
