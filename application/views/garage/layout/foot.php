@@ -28,3 +28,14 @@
 
     <script src="<?=base_url("/public/js/jquery-dateformat.min.js") ?>"></script>
     
+
+    <script>
+        function substr(str) {
+            // var str = null;
+            var res = str.substring(0, 13);
+            if(str.length >= 13){
+                res += "...";
+            }
+            return res;
+        }
+    </script>
