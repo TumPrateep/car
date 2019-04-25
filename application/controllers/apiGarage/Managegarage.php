@@ -33,7 +33,7 @@ class Managegarage extends BD_Controller {
         $option_outher = $this->post('option_outher');
         $openingtime = $this->post('openingtime');
         $closingtime = $this->post('closingtime');
-        
+        $brandId = $this->post('brandId');
         $this->load->model("managegarages");
         $config['upload_path'] = 'public/image/garage/';
         // $img = $this->post("garagePicture");
@@ -76,7 +76,7 @@ class Managegarage extends BD_Controller {
             'option_outher' => $option_outher,
             'openingtime' => $openingtime,
             'closingtime' => $closingtime,
-            
+            'brandId' => $brandId,
             "picture"=> $imageName
         );
         $oldImage = null;
