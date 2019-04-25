@@ -63,17 +63,24 @@
                                         </div>
                                     </div>
                                 </div>
+                                <span>ตำแหน่งช่าง</span>
                                 <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="mobile">ตำแหน่งช่าง</label><span class="error">*</span>
-                                            <select class="form-control" name="job" id="job" placeholder="ตำแหน่งช่าง" >
-                                                  <option value="">เลือกตำแหน่ง</option>
-                                                  <option value="ช่างเครื่อง">ช่างเครื่อง</option>
-                                                  <option value="ช่างช่วงล่าง">ช่างช่วงล่าง</option>
-                                                  <option value="ช่างตั้งศูนย์">ช่างตั้งศูนย์</option> 
-                                                  <option value="ช่างยางรถยนต์">ช่างยางรถยนต์</option>
-                                            </select>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <label class="form-check-label" >
+                                            <input class="form-check-input" name="job1" id="job1" value="1" type="checkbox">ช่างเครื่อง</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <label class="form-check-label" >
+                                            <input class="form-check-input" name="job2" id="job2" value="2" type="checkbox">ช่างช่วงล่าง</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <label class="form-check-label" >
+                                            <input class="form-check-input" name="job3" id="job3" value="3" type="checkbox">ช่างยางรถยนต์</label>
                                         </div>
                                     </div>
                                 </div>
