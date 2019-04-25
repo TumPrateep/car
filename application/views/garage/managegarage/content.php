@@ -76,12 +76,6 @@
                                                                         <input type="text" class="form-control" name="exp" id="exp" readonly>
                                                                     </div>
                                                                 </div><br>
-                                                                <div class="row">
-                                                                    <div class="col-sm-6">
-                                                                            <label for="garage">ความเชี่ยวชาญด้านรถ</label>
-                                                                            <input type="text" class="form-control" name="job" id="job" readonly>
-                                                                    </div>
-                                                                </div><br>
                                                             </div>  
                                                         </div><br>
                                                         <div class="row">
@@ -148,12 +142,12 @@
                                                                         <input type="text" class="form-control" name="dateSE"  id="dateSE"  readonly>
                                                                     </div>
                                                                 </div><br>
-                                                                <!-- <div class="row">
-                                                                    <div class="col-sm">
-                                                                        <label for="comment">ข้อมูลเพิ่มเติม:</label>
-                                                                        <textarea class="form-control" rows="5" id="comment" readonly></textarea>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                            <label for="garage">ความเชี่ยวชาญด้านรถ</label>
+                                                                            <input type="text" class="form-control" name="job" id="job" readonly>
                                                                     </div>
-                                                                </div><br> -->
+                                                                </div><br>
                                                             </div>  
                                                         </div>
                                                         <div class="row">

@@ -39,3 +39,15 @@
             return res;
         }
     </script>
+
+    <script>
+        function unD(un) {;
+            var newun = null;
+            if(un == undefined){
+                newun = "-";
+            }else{
+                return un; 
+            }
+            return newun;
+        }
+    </script>

@@ -60,7 +60,7 @@
 
 
         function loadProvinceGarage(provinceId, districtId,subdistrictId){
-            $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
+            $.post(base_url+"service/LocationforRegister/getProvince",{},
                 function(data){
                 var province = data.data;
                 $.each(province, function( index, value ) {
@@ -78,13 +78,13 @@
             loadDistrictGarage(provinceId);
             });
 
-            function loadDistrictGarage(provinceId, districtId,subdistrictId){
+        function loadDistrictGarage(provinceId, districtId,subdistrictId){
             districtDropdownGarage.html("");
             districtDropdownGarage.append('<option value="">เลือกอำเภอ</option>');
             subdistrictDropdownGarage.html("");
             subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
+            $.post(base_url+"service/LocationforRegister/getDistrict",{
                 provinceId: provinceId
             },
                 function(data){
@@ -104,11 +104,11 @@
             loadSubdistrictGarage(districtId);
             });
 
-            function loadSubdistrictGarage(districtId,subdistrictId){
+        function loadSubdistrictGarage(districtId,subdistrictId){
             subdistrictDropdownGarage.html("");
             subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
                 
-            $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
+            $.post(base_url+"service/LocationforRegister/getSubdistrict",{
                 districtId: districtId
             },
                 function(data){

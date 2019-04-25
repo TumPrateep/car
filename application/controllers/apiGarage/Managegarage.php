@@ -13,18 +13,6 @@ class Managegarage extends BD_Controller {
         $this->load->model("location");
         
     }
-      
-    // function getUpdate_get(){
-    //     $garageId = $this->session->userdata['logged_in']['garageId'];
-    //     $lubricator_change_garageId = $this->get('lubricator_change_garageId');
-    //     $data_check = $this->lubricatorchangegarages->getUpdate($lubricator_change_garageId,$garageId);
-        
-    //     $option = [
-    //         "data_check" => $data_check
-    //     ];
-
-    //     $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
-    // }
 
     public function update_post(){
         
@@ -109,52 +97,6 @@ class Managegarage extends BD_Controller {
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
         }
     }
-
-
-    // function searchLubricatorChange_post(){
-    //     $columns = array( 
-    //         0 => null,
-    //         1 => 'garageId'
-
-    //     );
-    //     $garageId = $this->session->userdata['logged_in']['garageId'];
-    //     $limit = $this->post('length');
-    //     $start = $this->post('start');
-    //     $order = $columns[$this->post('order')[0]['column']];
-    //     $dir = $this->post('order')[0]['dir'];
-    //     $totalData = $this->lubricatorchangegarages->allLubricatorschanges_count($garageId);
-    //     $totalFiltered = $totalData; 
-    //     if(empty($this->post('price')))
-    //     {            
-    //         $posts = $this->lubricatorchangegarages->allLubricatorchanges($limit,$start,$order,$dir,$garageId);
-    //     }
-    //     else {
-    //         $search = $this->post('price');
-    //         $status = null;
-    //         $posts =  $this->lubricatorchangegarages->lubricatorchanges_search($limit,$start,$search,$order,$dir,$status,$garageId);
-    //         $totalFiltered = $this->lubricatorchangegarages->lubricatorchanges_search_count($search,$status,$garageId);
-    //     }
-    //     $data = array();
-    //     if(!empty($posts))
-    //     {
-    //         foreach ($posts as $post)
-    //         {
-    //             $nestedData['lubricator_change_garageId'] = $post->lubricator_change_garageId;
-    //             $nestedData['garageId'] = $post->garageId;
-    //             $nestedData['lubricator_price'] = $post->lubricator_price;
-    //             $nestedData['status'] = $post->status;
-    //             $data[] = $nestedData;
-    //         }
-    //     }
-    //     $json_data = array(
-    //         "draw"            => intval($this->post('draw')),  
-    //         "recordsTotal"    => intval($totalData),  
-    //         "recordsFiltered" => intval($totalFiltered), 
-    //         "data"            => $data   
-            
-    //     );
-    //     $this->set_response($json_data);
-    // }
 
     function getmanagegarage_post(){
 
