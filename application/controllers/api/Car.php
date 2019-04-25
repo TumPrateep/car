@@ -423,6 +423,12 @@ class Car extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
+    function getAllBrandgarage_get(){
+        $result = $this->brand->getAllBrandgarage();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
     function getAllModel_get(){
         $brandId = $this->get("brandId");
         $result = $this->model->getAllModelByBrandId($brandId);

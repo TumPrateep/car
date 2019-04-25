@@ -180,6 +180,25 @@
             }
         };
 
+    var brand = $("#brandId");
+
+    init();
+
+    function init(){
+        getBrand();
+    }
+
+    function getBrand(brandId = null){
+        $.get(base_url+"api/Car/getAllBrandgarage",{},
+            function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    brand.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');
+                });
+            }
+        );
+    }
+
 </script>
 
 </body>
