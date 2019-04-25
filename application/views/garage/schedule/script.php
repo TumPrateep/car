@@ -11,8 +11,18 @@
             buttonIcons: true, // show the prev/next text
             weekNumbers: false,
             navLinks: true, // can click day/week names to navigate views
-            editable: true,
-            eventLimit: true
+            editable: false,
+            displayEventTime: false,
+            eventLimit: true,
+            eventClick: function(event){
+                console.log(event);
+                $("#eventOrder").html(event.orderId);
+                $("#eventStart").html(event.start.toISOString());
+                $("#eventPlate").html(event.plate);
+                $("#eventName").html(event.name);
+                $("#eventLink").html('<a href="'+event.orderId+'">คลิก</a>');
+                $("#eventModal").modal('show');
+            }
         })
 
         init();

@@ -14,16 +14,20 @@ class Schedule extends BD_Controller {
 
     function getEvent_get(){
         $garageId = $this->session->userdata['logged_in']['garageId'];
-        $data = $this->schedules->getorderdata($orderId);
-        // $data = [];
-        // for ($i=0; $i < 5; $i++) { 
-        //     $data[$i] = [
-        //         'title' => "test",
-        //         'start' => '2019-04-17T13:13:55.008',
-        //         'end' => '2019-04-19T13:13:55.008',
-        //         'color' => '#378006'
-        //     ];
-        // }
+        $reserve = $this->schedules->getAllEventByMonth(null, $garageId);
+        $data = [];
+        $i = 0;
+        foreach($reserve as $row) { 
+            $data[$i] = [
+                'title' => "#".$row->orderId." ".$row->plate,
+                'plate' => $row->plate,
+                'start' => $row->reserveDate.'T'.$row->reservetime,
+                'color' => '#378006', // แก้สี
+                'orderId' => $row->orderId,
+                'name' => "test test"
+            ];
+            $i++;
+        }
         $option = [
             "data_check" => $data
         ];
