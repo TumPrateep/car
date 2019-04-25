@@ -96,6 +96,8 @@
                 $("#garageName").val(result.garageName);
                 $("#phonegarage").val(result.phonegarage);
                 $("#addressgarage").val(result.hno+"  หมู่ที่"+result.village+"  ถนน"+result.road+"  ซอย"+result.alley+"  ตำบล"+result.subdistrictName+"  อำเภอ"+result.districtName+"  จังหวัด"+result.provinceName+"  รหัสไปรษณีย์"+result.postCode);
+                $("#addresscar").val(result.hno+"  หมู่ที่"+result.village+"  ถนน"+result.road+"  ซอย"+result.alley+"  ตำบล"+result.carsubdistrictName+"  อำเภอ"+result.cardistrictName+"  จังหวัด"+result.carprovinceName+"  รหัสไปรษณีย์"+result.postCode);
+                // $("#addresscar").val(result.addresscar);
             }
             
         });

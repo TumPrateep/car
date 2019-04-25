@@ -17,9 +17,9 @@
                         
                         <span><img src="<?=base_url()?>public/themes/garage/images/logo-text.png" alt="homepage" class="dark-logo" /></span> -->
 
-                        <b><i class="fa fa-car" alt="homepage"></i></b>
+                        <b><i class="fa fa-car garage-white" alt="homepage"></i></b>
                         
-                        <span>Carjaidee</span>
+                        <span class="garage-white">Carjaidee</span>
 
                     </a>
                 </div>

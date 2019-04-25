@@ -3,7 +3,8 @@
 class Deliverorders extends CI_Model {
  
     function getDeliverordersById($orderId){
-        $this->db->select("order.orderId, car_accessories.car_accessoriesName, (car_accessories.phone) as phonecar, car_accessories.address, reserve.garageId, garage.garageName, (garage.phone) as phonegarage, garage.hno, garage.Alley, garage.road, garage.village, garage.postCode, garage.subdistrictId, garage.districtId, garage.provinceId");
+        $this->db->select("order.orderId, car_accessories.car_accessoriesName, (car_accessories.phone) as phonecar, car_accessories.address, reserve.garageId, garage.garageName, (garage.phone) as phonegarage, garage.hno, garage.Alley, garage.road, garage.village, garage.postCode, garage.subdistrictId, garage.districtId, garage.provinceId
+        , car_accessories.postCode as carpostCode, car_accessories.provinceId as carprovinceId, car_accessories.districtId as cardistrictId, car_accessories.subdistrictId as carsubdistrictId");
         $this->db->from('order');
         $this->db->join('car_accessories','car_accessories.userId = order.car_accessoriesId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
@@ -95,4 +96,12 @@ class Deliverorders extends CI_Model {
 
     }
     
+    function data_check_update($orderId){
+        // $this->db->select("personalid");
+        $this->db->from("order");
+        $this->db->where('orderId', $orderId);
+        // $this->db->where_not_in('garageId', $garageId);
+        $result = $this->db->get();
+        return $result->row();
+    }
 }

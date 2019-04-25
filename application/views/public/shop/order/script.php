@@ -57,7 +57,8 @@
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return currency(data.summary, {  precision: 0 }).format() + " บาท";
+                        var costDelivery = parseInt(data.costDelivery);
+                        return currency(data.summary+costDelivery, {  precision: 0 }).format() + " บาท";
                     }
                 }
                 // ,{

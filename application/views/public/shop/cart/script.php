@@ -465,7 +465,7 @@ $(document).ready(function () {
                         add = 4;
                         break;
                     case 0:
-                        add = 3;
+                        add = 4;
                         break;
                 }
                 return nowDate.setDate( nowDate.getDate() + add );

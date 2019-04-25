@@ -45,7 +45,7 @@
 																										<div class="cropit-preview"></div>
 																										<div class="image-size-label">ปรับขนาด</div>
 																										<input type="range" class="cropit-image-zoom-input">
-																										<input type="hidden" name="garagePicture" id="garagePicture" class="hidden-image-data" />
+																										<input type="hidden" name="picture" id="picture" class="hidden-image-data" />
 																									</div>
 																								</div>
 																							</div>
@@ -63,6 +63,14 @@
 																						<div class="form-group">
 																							<label for="garage">หมายเลขทะเบียนการค้า</label><span class="error">*</span>
 																							<input type="number" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า">
+																						</div>
+																						<div class="form-group">
+																							<label class="control-label">ความชำนาญยี่ห้อรถ</label><span class="error">*</span> <label id="brandId-error" class="error" for="brandId"></label>
+																							<div class="input-group input-group-default">
+																								<select class="form-control" id="brandId" name="brandId">
+																									<option value="">เลือกยี่ห้อรถ</option>
+																								</select>
+																							</div>
 																						</div>
 																					</div>
 																				</div>
