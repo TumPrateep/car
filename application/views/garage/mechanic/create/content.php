@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="last_name">ชื่อเล่น</label><span class="error">*</span>
+                                            <label for="last_name">ชื่อเล่น</label>
                                             <input type="text" class="form-control" name="nickName" id="nickName" placeholder="ชื่อเล่น" >
                                         </div>
                                     </div>

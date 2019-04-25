@@ -34,7 +34,8 @@
                     THEN: true
                 },
                 exp: {
-                    required: true
+                    required: true,
+                    maxlength: 2
                 },
                 phone: {
                     required: true,
@@ -58,12 +59,13 @@
                     THEN: "กรอกข้อมูลไม่ถูกต้อง"
                 },
                 exp: {
-                    required: "กรุณากรอกประสบการณ์(ปี)"
+                    required: "กรุณากรอกประสบการณ์(ปี)",
+                    maxlength: "กรอกข้อมูลไม่ถูกต้อง"
                 },
                 phone: {
                     required: "กรุณากรอกเบอร์โทรศัพท์",
                     minlength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ",
-                    maxlength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ"
+                    maxlength: "กรอกข้อมูลไม่ถูกต้อง"
                 },
                 skill: {
                     required: "กรุณาเลือกความชำนาญ"
@@ -71,6 +73,7 @@
                 personalid: {
                     required: "กรุณาใส่บัตรประชาชน",
                     pid: "กรุณากรอกเลขบัตรประชาชนให้ถูกต้อง"
+                  
                 }
             }
         });

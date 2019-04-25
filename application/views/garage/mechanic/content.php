@@ -17,7 +17,7 @@
                 <div class="card col-lg-12">
                     <div class="row justify-content-between">
                         <div class="col-lg-2">
-                            <a  href="<?=base_url("garage/mechanic/create") ?>"><button type="button" class="btn btn-info btn-block" ><i class="fa fa-plus"></i>  สร้าง</button></a>  
+                            <a  href="<?=base_url("garage/mechanic/create") ?>"><button type="button" class="btn btn-info btn-block" ><i class="fa fa-plus"></i>  เพิ่มข้อมูลช่าง</button></a>  
                         </div>
                         
                         <div class="col-lg-3 offset-lg-2 mt-8">
