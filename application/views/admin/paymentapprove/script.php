@@ -61,13 +61,13 @@
                         var html = '';
                         html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.orderId+'">#'+data.orderId+'</a><br>';
                         if(data.status==1){
-                            html+='<span class="badge badge-warning">รออนุมัติ</span>';
+                            html+='<span class="badge badge-warning">รอตรวจสอบการโอนเงิน</span>';
                         }else if(data.status==2){
-                            html+='<span class="badge badge-success">อนุมัติ</span>';
+                            html+='<span class="badge badge-success">โอนเงินเเล้ว</span>';
                         }else if(data.status==3){
                             html+='<span class="badge badge-danger">ยกเลิกการจอง</span>';
                         }else{
-                            html+='<span class="badge badge-default">รอมัดจำ</span>';
+                            html+='<span class="badge badge-default">รอโอนเงิน</span>';
                         }
                         return html;
                     }
@@ -75,8 +75,13 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        
-                        return currency(data.summary, {  precision: 0 }).format()+' บาท';
+                        if(data.summary == null){
+                            return '<small><i class="gray">ไม่มีมัดจำ</i></small>';  
+                        }else if(data.summary != null){
+                            return currency(data.summary, {  precision: 0 }).format()+' บาท';
+                        }else {
+                            return '<small><i class="gray">รอจ่ายมัดจำ</i></small>';
+                        }
                     }
                 },{
                     "targets": 4,
@@ -85,7 +90,7 @@
                         if(data.money != null){
                             return currency(data.money, {  precision: 0 }).format()+' บาท';
                         }else {
-                            return '<small><i class="gray">รอจ่ายมัดจำ</i></small>';
+                            return '<small><i class="gray">รอจ่ายเงิน</i></small>';
                         }
                         
                     }
@@ -103,8 +108,8 @@
                         if(data.status == null){
                             disable = "disabled";
                         }
-                        return '<button type="button" class="btn btn-success" '+disable+'  onclick="confirmStatus('+data.paymentId+')">ยืนยัน</button> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.paymentId+')">ยกเลิก</button>';
+                        return '<button type="button" class="btn btn-success" '+disable+'  onclick="confirmStatus('+data.paymentId+')">ยืนยันการโอนเงิน</button> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.paymentId+')">ยกเลิกรายการสั่งซื้อ</button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}

@@ -8,6 +8,8 @@ class Cart extends BD_Controller {
     {
         parent::__construct();
         $this->load->model("carts");
+  
+        $this->load->model('orderdetails');
     }
 
     function cartDetail_post(){
@@ -169,7 +171,8 @@ class Cart extends BD_Controller {
         ];
 
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
-        
     }
 
+    
+    
 }

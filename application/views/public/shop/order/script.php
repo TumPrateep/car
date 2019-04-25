@@ -88,7 +88,7 @@
                     "render": function ( data, type, full, meta ) {
                         html = "";
                         if(data.status == "1"){
-                            html += '<a href="'+base_url+"shop/payment/"+data.orderId+'"><button type="button" class="btn btn-danger">จ่ายเงิน</button>'
+                            html += '<a href="'+base_url+"shop/payment/"+data.orderId+'"><button type="button" class="btn btn-primary">จ่ายเงิน</button>'
                         }
                         else if(data.status == "3"){
                             html +='<a href="#"><button type="button" class="btn btn-warning">รับบริการ</button> '

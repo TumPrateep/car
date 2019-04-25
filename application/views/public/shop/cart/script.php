@@ -11,6 +11,7 @@
 <script src="<?=base_url("public/themes/shop-cart/");?>js/main.js"></script>
 <script>
 
+var money = 0;
 function createCarConfirm(){
     var userId = localStorage.getItem("userId");
     var hasCaraccessory = null;
@@ -113,6 +114,7 @@ function showCart(){
 }
 
 function setTotalAmount(){
+    
     var total = 0;
     var deliveryCost = 0;
     var deliveryData = [];
@@ -128,10 +130,15 @@ function setTotalAmount(){
             }
         }
     });
+
+   
+    money = total;
+   
     deliveryCost = calculateDeliveryCost(deliveryData);
     $("#order_total_cost").html(currency(total, {  precision: 0 }).format() + " บาท");
     $("#order_total_delivery").html(currency(deliveryCost, {  precision: 0 }).format() + " บาท");
     $("#order_total_amount").html(currency(total+deliveryCost, {  precision: 0 }).format() + " บาท");
+    $("#money").html("ราคารวม "+currency(money+deliveryCost, {  precision: 0 }).format() + " บาท");
 }
 
 function calculateDeliveryCost(deliveryData){
@@ -312,7 +319,7 @@ $(document).ready(function () {
                 isvalid = form.valid();
                 getCartList();
             }
-            if(currentIndex == 1){
+            if(currentIndex == 2){
                 isvalid = $("#image-picker-car").val() != "";
                 if(!isvalid){
                     $(".alert").show();

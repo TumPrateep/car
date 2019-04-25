@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url("public/css/");?>custom.css">
 <link rel="stylesheet" href="<?=base_url("/public/css/jquery.datetimepicker.min.css") ?>">
 
+
 <style type="text/css">
 	img.star{
 		height: 25px!important;

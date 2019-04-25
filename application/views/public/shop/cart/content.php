@@ -13,8 +13,8 @@
                 </h3>
                 <fieldset>
                     <legend>
-                        <span class="step-heading">เลือกสินค้าที่ต้องการ: </span>
-                        <span class="step-number">Step 1 / 3</span>
+                        <span class="step-heading">เลือกสินค้าที่ต้องการ:	 </span>
+                        <span class="step-number">Step 1 / 4</span>
                     </legend>
                     <div class="row">
 						<div class="col-12">
@@ -49,8 +49,38 @@
                         
 					</div>
                 </fieldset>
-
 				<!-- Step 2 -->
+				<h3>
+					<span class="icon"><i class="fa fa-credit-card"></i></span>
+					<span class="title_text">การจ่ายเงิน</span>
+				</h3>
+				<fieldset>
+					<legend>
+						<span class="step-heading">เลือกรูปแบบการจ่ายเงินที่ต้องการ: </span>
+						<span class="step-number">Step 2 / 4</span>
+					</legend>
+					<div class="row">
+						<div class="col-12">
+							<table class="table table-hover" id="cart-table">
+								<tbody id="cart_list"></tbody>
+								<tfoot><hr>
+								<div class="btn-group offset-md-3" data-toggle="buttons">
+									<label class="btn btn-outline-secondary">
+										<input type="radio" name="options" id="option1" ><span class="icon">จ่ายเงินเต็มจำนวน</span><br>
+										<!-- <span class="amount" id="money"> -->
+									</label>
+									<label class="btn btn-outline-secondary">
+										<input type="radio" name="options" id="option2" ><span class="icon">จ่ายเงินแบบมัดจำ</span><br>
+										<!-- <span class="amount" id="depositmoney"> -->
+									</label>
+								</div><hr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</fieldset>
+
+				<!-- Step 3 -->
                 <h3>
                     <span class="icon"><i class="fa fa-car"></i></span>
                     <span class="title_text">รถยนต์</span>
@@ -58,7 +88,7 @@
                 <fieldset>
                     <legend>
                         <span class="step-heading">เลือกรถยนต์ที่ต้องการ: </span>
-						<span class="step-number">Step 2 / 3</span>
+						<span class="step-number">Step 3 / 4</span>
 					</legend>
 					<div class="alert alert-danger hide" role="alert">
 						<strong>คำเตือน!</strong> เลือกรถยนต์ที่ต้องการ
@@ -110,7 +140,7 @@
 					</div>
                 </fieldset>
 
-				<!-- Step 3  -->
+				<!-- Step 4  -->
                 <h3>
                     <span class="icon"><i class="fa fa-cog"></i></span>
                     <span class="title_text">อู่ซ่อมรถ</span>
@@ -118,7 +148,7 @@
                 <fieldset>
                     <legend>
                         <span class="step-heading">เลือกอู่ที่จะเข้าใช้บริการ: </span>
-                        <span class="step-number">Step 3 / 3</span>
+                        <span class="step-number">Step 4 / 4</span>
                     </legend>
                     <div class="row ">
                         <div class="col-lg-4 offset-lg-5 mt-8">

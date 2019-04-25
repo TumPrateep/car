@@ -68,9 +68,5 @@ class Paymentss extends BD_Controller {
         $output['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
         $this->set_response($output, REST_Controller::HTTP_OK);
     }  
-
-  
-    
-
    
 }

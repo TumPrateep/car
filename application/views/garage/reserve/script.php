@@ -72,11 +72,11 @@
                         var html = '';
                         // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
                         if(data.status==1){
-                            html+='<span class="badge badge-warning">รออนุมัติ</span>';
+                            html+='<span class="badge badge-warning">รอนัดซ่อม</span>';
                         }else if(data.status==2){
-                            html+='<span class="badge badge-success">อนุมัติ</span>';
+                            html+='<span class="badge badge-success">รับนัดซ่อมเเล้ว</span>';
                         }else if(data.status==3){
-                            html+='<span class="badge badge-danger">ยกเลิกการจอง</span>';
+                            html+='<span class="badge badge-danger">ยกเลิกนัดซ่อม</span>';
                         }else{
                             html+='<span class="badge badge-danger">ผิดพลาด</span>';
                         }
@@ -87,8 +87,8 @@
                     "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<button type="button" class="btn btn-success"  onclick="confirmStatus('+data.reserveId+')">ยืนยัน</button>'
-                            +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.reserveId+')">ยกเลิก</button>';
+                        return '<button type="button" class="btn btn-success"  title="รับนัด" onclick="confirmStatus('+data.reserveId+')">รับนัดซ่อม</button>'
+                            +" "+'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.reserveId+')">ยกเลิกนัด</button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}

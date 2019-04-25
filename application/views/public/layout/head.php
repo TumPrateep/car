@@ -14,4 +14,5 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/user/");?>plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/user/");?>styles/jquery-confirm.min.css">
 <link href="<?=base_url("/public/css/loading.css") ?>" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
