@@ -82,6 +82,23 @@ class PaymentApprove extends BD_Controller {
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
+    function changeStatusOrder_get(){
+        $orderId = $this->get("orderId");
+        $status = $this->get("status");
+        $data = array(
+            'orderId' => $orderId,
+            'status' => $status
+          
+        );
+        $data_check_update = $this->paymentapproves->getOrderById($orderId);
 
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->paymentapproves
+        ];
+
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
+    }
 
 }

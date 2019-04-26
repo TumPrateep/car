@@ -39,17 +39,17 @@
                 // { "data": "orderId" },
                 { "data": "name" },
                 null,
-                null,
+                null
                 // { "data": "reserveStatus" },
                 // { "data": "paymentStatus" },
-                null,
-                null
+                // null,
+                // null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,6]
+                    "targets": [0,5]
                 },{
                     "targets": 0,
                     "data": null,
@@ -69,22 +69,24 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return paymenttStatus(data.reserveStatus);
+                        return paymenttStatus(data.paymentStatus);
                     }
                 },{
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return paymenttStatus(data.paymentStatus);
+                        return paymenttStatus(data.reserveStatus);
                     }
-                },{
+                },
+                // {
+                //     "targets": 5,
+                //     "data": null,
+                //     "render": function ( data, type, full, meta ) {
+                //         return approveStatus(data.status);
+                //     }
+                // },
+                {
                     "targets": 5,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return approveStatus(data.status);
-                    }
-                },{
-                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var disable = "";
@@ -102,7 +104,7 @@
                 { "width": "8%", "targets": 0 },
                 { "width": "18%", "targets": 1 },
                 { "width": "15%", "targets": 2 },
-                { "width": "15%", "targets": 3 },
+                { "width": "20%", "targets": 3 },
                 { "width": "20%", "targets": 4 }
             ]	 
     });
