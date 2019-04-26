@@ -31,7 +31,7 @@
                 $("#latitude").val(result.latitude);
                 $("#longtitude").val(result.longtitude);
                 $("#timeSE").val(result.openingtime+" ถึง "+result.closingtime);
-                // $("#closingtime").val(result.closingtime);
+                $("#brandId").val(result.brandName);
                 $("#address").val(unD(result.hno)+"  หมู่ที่"+unD(result.village)+"  ถนน"+unD(result.road)+"  ซอย"+unD(result.alley)+"  ตำบล"+unD(result.subdistrictName)+"  อำเภอ"+unD(result.districtName)+"  จังหวัด"+result.provinceName+"  รหัสไปรษณีย์"+result.postCode+"  ละติจูด"+result.latitude+"  ลองติจูด"+result.longtitude);
                 $("#dateSE").val(changeStringToDay(result.dayopenhour));
                 $('#garage.image-editor').cropit({

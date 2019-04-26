@@ -2,7 +2,12 @@
 class Managegarages extends CI_Model {
    
     function getmanagegaragesById($garageId){
-        return $this->db->where('garageId',$garageId)->get("garage")->row();
+        // $this->db->select('brand.brandName');
+        $this->db->from('garage');//ถ้ามีfrom แล้ว ใน get() ตอน return ไม่ต้อวใส่ ค่า ว่าเราเอามาจากไหนแล้ว
+        $this->db->join('brand','brand.brandId = garage.brandId');
+        return $this->db->where('garageId',$garageId)->get()->row();
+        // $query = $this->db->get();
+        // return $query->result();
     }
   
     function allmanagegarages_count()
@@ -15,7 +20,8 @@ class Managegarages extends CI_Model {
     }
 
     function allmanagegarages($limit,$start,$col,$dir)
-    {   
+    {  
+ 
         $query = $this
             ->db
             ->limit($limit,$start)
