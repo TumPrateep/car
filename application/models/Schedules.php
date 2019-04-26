@@ -34,6 +34,23 @@ class Schedules extends CI_Model{
         return $result->row();
     }
 
+    function getAllEventByMonth($month, $garageId){
+        $this->db->select("order.*,reserve.reserveDate,reserve.reservetime,concat(car_profile.character_plate,' ',car_profile.number_plate,' ',provinceforcar.provinceforcarName) as plate");
+        $this->db->from('order');
+        $this->db->join('users','order.userId = users.id');
+        $this->db->join('payment','payment.orderId = order.orderId');
+        $this->db->join('reserve', 'reserve.orderId = order.orderId');
+        $this->db->join('car_profile','order.car_profileId = car_profile.car_profileId');
+        $this->db->join('provinceforcar','car_profile.province_plate = provinceforcar.provinceforcarId');
+        $this->db->join('brand','car_profile.brandId = brand.brandId');
+        $this->db->join('model','car_profile.modelId = model.modelId');
+        $this->db->join('modelofcar','car_profile.modelofcarId = modelofcar.modelofcarId');
+        $this->db->where('payment.status',2);
+        $this->db->where('reserve.garageId',$garageId);
+        $result = $this->db->get();
+        return $result->result();
+    }
+
     // function getOrderDetailByOrderId($orderId){
   
     //     $this->db->where("orderId", $orderId);

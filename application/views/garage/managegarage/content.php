@@ -145,7 +145,7 @@
                                                                 <div class="row">
                                                                     <div class="col-sm-6">
                                                                             <label for="garage">ความเชี่ยวชาญด้านรถ</label>
-                                                                            <input type="text" class="form-control" name="job" id="job" readonly>
+                                                                            <input type="text" class="form-control" name="brandId" id="brandId" readonly>
                                                                     </div>
                                                                 </div><br>
                                                             </div>  
