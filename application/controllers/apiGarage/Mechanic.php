@@ -26,12 +26,25 @@ class Mechanic extends BD_Controller {
         $firstName = $this->post("firstname");
         $lastName = $this->post("lastname");
         $nickName = $this->post("nickName");
-        $job = $this->post("job");
+        // $job = $this->post("job");
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $data_check = $this->mechanics->data_check_create($idCard,$garageId);
+
+        $่jopsum = "";
+
+		$job1 = $this->post('job1');
+		$่jopsum .= (isset($job1) ? 1 : 0 );
+		
+		$job2 = $this->post('job2');
+		$่jopsum .= (isset($job2) ? 1 : 0 );
+		
+		$job3 = $this->post('job3');
+		$่jopsum .= (isset($job3) ? 1 : 0 );
+
+		$job = $่jopsum;
         // $skill = $this->post("skill");
         $config['upload_path'] = 'public/image/mechanic/';
         $img = $this->post("picture");
@@ -145,7 +158,21 @@ class Mechanic extends BD_Controller {
         $exp       = $this->post("exp");
         $phone     = $this->post("phone");
         $idCard = $this->post("personalid");
-        $job = $this->post("job");
+        // $job = $this->post("job");
+
+        $่jopsum = "";
+
+		$job1 = $this->post('job1');
+		$่jopsum .= (isset($job1) ? 1 : 0 );
+		
+		$job2 = $this->post('job2');
+		$่jopsum .= (isset($job2) ? 1 : 0 );
+		
+		$job3 = $this->post('job3');
+		$่jopsum .= (isset($job3) ? 1 : 0 );
+
+		$job = $่jopsum;
+
         $img = $this->post("picture");
         $success = true;
         $file = null;
@@ -181,7 +208,6 @@ class Mechanic extends BD_Controller {
             'update_at' => date('Y-m-d H:i:s',time()),
             'garageId' => $garageId,
             'job' => $job,
-            // 'skill' => $skill,
             "picture"=> $imageName,
             "status"=>2
         );

@@ -2,12 +2,11 @@
 class Managegarages extends CI_Model {
    
     function getmanagegaragesById($garageId){
-        // $this->db->select('brand.brandName');
-        $this->db->from('garage');//ถ้ามีfrom แล้ว ใน get() ตอน return ไม่ต้อวใส่ ค่า ว่าเราเอามาจากไหนแล้ว
-        $this->db->join('brand','brand.brandId = garage.brandId');
+       //ถ้ามีfrom แล้ว ใน get() ตอน return ไม่ต้อวใส่ ค่า ว่าเราเอามาจากไหนแล้ว
+        $this->db->from('garage');
+        $this->db->join('brand','brand.brandId = garage.brandId','left');
         return $this->db->where('garageId',$garageId)->get()->row();
-        // $query = $this->db->get();
-        // return $query->result();
+      
     }
   
     function allmanagegarages_count()
@@ -51,34 +50,5 @@ class Managegarages extends CI_Model {
         $result = $this->db->update('garage', $data);
         return $result;
     }
-
-    // function mechanics_search($limit,$start,$col,$dir,$firstname,$skill)
-    // {
-    //     $this->db->like('firstName',$firstname);
-    //     if($skill != null){
-    //         $this->db->where("skill", $skill);
-    //     }
-    //     $query = $this->db->limit($limit,$start)
-    //             ->order_by($col,$dir)
-    //             ->get('mechanic');
-        
-    //     if($query->num_rows()>0)
-    //     {
-    //         return $query->result();  
-    //     }
-    //     else
-    //     {
-    //         return null;
-    //     }
-        
-    // }
-    // function mechanics_search_count($firstname,$skill){
-    //     $this->db->like('firstName',$firstname);
-    //     if($skill != null){
-    //         $this->db->where("skill", $skill);
-    //     }
-    //     $query = $this->db->get('mechanic');
-    //     return $query->num_rows();
-    // }
     
 }
