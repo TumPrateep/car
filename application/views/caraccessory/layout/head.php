@@ -37,5 +37,56 @@
         .model-Width-sm{
             width: 400px;
         }
+        .header .top-navbar .navbar-nav > .nav-item > .nav-link{
+            color: #ffffff !important;
+        }
+        .navbar-bg-Orange, .dark-logo , .header .top-navbar .navbar-header{
+            background-color: #ff471a !important;
+        }
+        .bg-o-footer{
+            background-color: #ffb380;
+            color: #ffffff;
+        }
+        .ft-white{
+            color: #e62e00 !important;
+        }
+        .pad-bot{
+            padding-top: : 7px!important;
+        }
+        .bg-sidebar{
+            background-color: #1a1a1a;
+        }
+        .bg-container{
+            background-color: #f2f2f2;
+        }
+        .garage-white i.garage-white{
+            color: #cccccc !important;
+        }
+        .sidebar-nav > ul > li.active > a {
+            color: #cccccc !important;
+        }
+        .sidebar-nav ul li a:hover {
+            color: #ffffff !important;
+        }
+        .sidebar-nav ul li a {
+            color: #e6e6e6 !important;
+        }
+        .sidebar-nav > ul > li > a.active {
+            background-color: #333333 !important;
+            color: #ffffff !important;
+        }
+        .sidebar-nav > ul > li > ul > li > a.active {
+            background-color: #333333 !important;
+            color: #ffffff !important;
+        }
+        .sidebar-nav > ul > li.active > a:hover {
+            color: #ffffff !important;
+        }
+        .sidebar-nav ul li.nav-label{
+            color: #ffffff !important;
+        }
+        .navbar-light .navbar-brand{
+            color: #ffffff
+        }
     </style>
 </head>

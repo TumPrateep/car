@@ -1,11 +1,14 @@
 </div>
-<footer class="sticky-footer">
+    <!-- <footer class="sticky-footer bg-o-footer">
       <div class="container">
         <div class="text-center">
           <small>Copyright © Your Website 2018</small> <small>Version <?= version(); ?></small>
         </div>
       </div>
-    </footer>
+    </footer> -->
+            <footer class="footer bg-o-footer"> © 2018 All rights reserved. Template designed by 
+              <a class="ft-white" href="https://colorlib.com">Colorlib</a>
+            </footer>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>

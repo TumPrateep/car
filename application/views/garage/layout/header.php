@@ -14,11 +14,9 @@
                     <a class="navbar-brand" href="<?=base_url("garage/schedule"); ?>">
                         <!-- Logo icon -->
                         <!-- <b><img src="<?=base_url()?>public/themes/garage/images/logo.png" alt="homepage" class="dark-logo" /></b>
-                        
                         <span><img src="<?=base_url()?>public/themes/garage/images/logo-text.png" alt="homepage" class="dark-logo" /></span> -->
 
                         <b><i class="fa fa-car garage-white" alt="homepage"></i></b>
-                        
                         <span class="garage-white">Carjaidee</span>
 
                     </a>

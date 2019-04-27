@@ -8,10 +8,10 @@
     <div id="main-wrapper">
         <!-- header header  -->
         <div class="header">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light navbar-bg-Orange">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="http://localhost/car/admin">
+                    <a class="navbar-brand" href="#">
                         <b><i class="fa fa-codiepie dark-logo"></i></b>
                        
                         <span class="dark-logo">CarJaidee</span>

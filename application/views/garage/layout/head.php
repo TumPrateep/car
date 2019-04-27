@@ -50,7 +50,7 @@
             padding-top: : 7px!important;
         }
         .bg-sidebar{
-            background-color: #4d4d4d;
+            background-color: #1a1a1a;
         }
         .bg-container{
             background-color: #f2f2f2;
@@ -68,11 +68,11 @@
         color: #e6e6e6 !important;
         }
         .sidebar-nav > ul > li > a.active {
-        background-color: #666666 !important;
+        background-color: #333333 !important;
         color: #ffffff !important;
         }
         .sidebar-nav > ul > li > ul > li > a.active {
-        background-color: #666666 !important;
+        background-color: #333333 !important;
         color: #ffffff !important;
         }
         .sidebar-nav > ul > li.active > a:hover {
@@ -94,6 +94,10 @@
         }
         .text-font-model{
             font-size: 18px;
+        }
+
+        .navbar-light .navbar-brand{
+            color: #ffffff
         }
 
       
