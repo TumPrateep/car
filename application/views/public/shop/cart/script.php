@@ -175,6 +175,7 @@ function deleteCart(index){
                     cartData.splice(index, 1);
                     localStorage.setItem("data", JSON.stringify(cartData));
                     showCart();
+                    getImagePicker();
                 }
             },
             cancle: {
@@ -262,6 +263,96 @@ function getspare(value, index){
     return html;
 }
 
+function getImagePicker(){
+    var pickerData = null;
+    $.post(base_url+"service/Garages/getAllGarage", {"dataType": getTypeOfProduct()},
+        function (data, textStatus, jqXHR) {
+            pickerData = data;
+            var imagePickerHtml = '<option value=""></option>';
+            // var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
+            $.each(data, function (index, val) { 
+                // html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
+                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<div class=\'text-center\'><strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span></div>" value="'+val.garageId+'" data-openday="'+val.dayopenhour+'">'+val.garageName+'</option>';                
+            });
+            // $("#garage").html(html);
+            $("#image-picker").html(imagePickerHtml);
+            showImagePicker();
+        }
+    );
+}
+
+function getTypeOfProduct(){
+    var data = {
+        "tire": 0,
+        "spare": 0,
+        "lubricator": 0
+    };
+    $.each(cartData, function (index, val) { 
+        data[val.group] = 1;                
+    });
+    return data;
+}
+
+function showImagePicker(){
+    $("#image-picker").imagepicker({
+        hide_select : true,
+        show_label  : true,
+        selected: function(select, picker, option, event){
+            var picker = $("#image-picker option:selected");
+            var dayopen = picker.data("openday");
+            disableDay(dayopen.toString());
+            $("#reserve_day, #reserve_time").val("");
+        },
+        clicked:function(select, picker, option, event){
+            var picker = $("#image-picker option:selected");
+            if(picker.val() == ""){
+                $("#reserve_day, #reserve_time").datetimepicker("destroy");
+                $("#reserve_day, #reserve_time").val("");
+            }
+        },
+    });
+}
+
+function disableDay(openday){
+    console.log(openday);
+    $.datetimepicker.setLocale('th');
+    var nowDate = new Date();
+    $("#reserve_day").datetimepicker({
+        timepicker:false,
+        beforeShowDay: $.datepicker.noWeekends,
+        formatDate:'d/m/Y',
+        lang:'th',
+        minDate: (function () {
+            var today = new Date().getDay(), add = 2;
+            switch (today) {
+                case 4:
+                    add = 5;
+                    break;
+                case 5:
+                    add = 6;
+                    break;
+                case 3:
+                case 6:
+                    add = 4;
+                    break;
+                case 0:
+                    add = 4;
+                    break;
+            }
+            return nowDate.setDate( nowDate.getDate() + add );
+        })(),
+        mask:true,
+        scrollInput: false,
+        format:'d/m/Y'
+    });
+    $("#reserve_time").datetimepicker({
+        datepicker:false,
+        formatTime:'H:i',
+        mask:true,
+        scrollInput: false,
+        format:'H:i'
+    });
+}
 
 $(document).ready(function () {
 
@@ -406,82 +497,7 @@ $(document).ready(function () {
             show_label  : true
         });
     }
-
-    var pickerData = null;
-    $.get(base_url+"service/Garages/getAllGarage", {},
-        function (data, textStatus, jqXHR) {
-            pickerData = data;
-            var imagePickerHtml = '<option value=""></option>';
-            // var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
-            $.each(data, function (index, val) { 
-                // html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
-                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<div class=\'text-center\'><strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span></div>" value="'+val.garageId+'" data-openday="'+val.dayopenhour+'">'+val.garageName+'</option>';                
-            });
-            // $("#garage").html(html);
-            $("#image-picker").html(imagePickerHtml);
-            showImagePicker();
-        }
-    );
-    function showImagePicker(){
-        $("#image-picker").imagepicker({
-            hide_select : true,
-            show_label  : true,
-            selected: function(select, picker, option, event){
-                var picker = $("#image-picker option:selected");
-                var dayopen = picker.data("openday");
-                disableDay(dayopen.toString());
-                $("#reserve_day, #reserve_time").val("");
-            },
-            clicked:function(select, picker, option, event){
-                var picker = $("#image-picker option:selected");
-                if(picker.val() == ""){
-                    $("#reserve_day, #reserve_time").datetimepicker("destroy");
-                    $("#reserve_day, #reserve_time").val("");
-                }
-            },
-        });
-    }
-
-    function disableDay(openday){
-        console.log(openday);
-        $.datetimepicker.setLocale('th');
-        var nowDate = new Date();
-        $("#reserve_day").datetimepicker({
-            timepicker:false,
-            beforeShowDay: $.datepicker.noWeekends,
-            formatDate:'d/m/Y',
-            lang:'th',
-            minDate: (function () {
-                var today = new Date().getDay(), add = 2;
-                switch (today) {
-                    case 4:
-                        add = 5;
-                        break;
-                    case 5:
-                        add = 6;
-                        break;
-                    case 3:
-                    case 6:
-                        add = 4;
-                        break;
-                    case 0:
-                        add = 4;
-                        break;
-                }
-                return nowDate.setDate( nowDate.getDate() + add );
-            })(),
-            mask:true,
-            scrollInput: false,
-            format:'d/m/Y'
-        });
-        $("#reserve_time").datetimepicker({
-            datepicker:false,
-            formatTime:'H:i',
-            mask:true,
-            scrollInput: false,
-            format:'H:i'
-        });
-    }
+    getImagePicker();
 
 });
 

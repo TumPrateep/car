@@ -63,6 +63,22 @@ class Garage extends CI_Model {
         }
     }
 
+    function getAllGarageByDataType($dataType){
+        $this->db->select('garageId, garageName, picture, dayopenhour');
+        $this->db->where('status', 1);
+        if($dataType["spare"] == 1){
+            $this->db->where("garageService like '1__'");
+        }
+        if($dataType["tire"] == 1){
+            $this->db->where("garageService like '_1_'");
+        }
+        if($dataType["lubricator"] == 1){
+            $this->db->where("garageService like '__1'");
+        }
+        $query = $this->db->get("garage");
+        return $query->result();
+    }
+
     function getAllGarage(){
         $this->db->select('garageId, garageName, picture, dayopenhour');
         $this->db->where('status', 1);

@@ -16,6 +16,12 @@ class Garages extends BD_Controller {
         $this->set_response($data, REST_Controller::HTTP_OK);
     }
 
+    function getAllGarage_post(){
+        $dataType = $this->post("dataType");
+        $data = $this->garage->getAllGarageByDataType($dataType);
+        $this->set_response($data, REST_Controller::HTTP_OK);
+    }
+
    
     function searchgarage_post(){
 
