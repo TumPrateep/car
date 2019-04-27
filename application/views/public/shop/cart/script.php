@@ -272,7 +272,7 @@ function getImagePicker(){
             // var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
             $.each(data, function (index, val) { 
                 // html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
-                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<div class=\'text-center\'><strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span></div>" value="'+val.garageId+'" data-openday="'+val.dayopenhour+'">'+val.garageName+'</option>';                
+                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<div class=\'text-center\'><strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span></div>" value="'+val.garageId+'" data-openday="'+val.dayopenhour+'" data-open="'+val.openingtime+'" data-close="'+val.closingtime+'">'+val.garageName+'</option>';                
             });
             // $("#garage").html(html);
             $("#image-picker").html(imagePickerHtml);
@@ -300,7 +300,9 @@ function showImagePicker(){
         selected: function(select, picker, option, event){
             var picker = $("#image-picker option:selected");
             var dayopen = picker.data("openday");
-            disableDay(dayopen.toString());
+            var open = picker.data("open");
+            var close = picker.data("close");
+            disableDay(dayopen.toString(), open, close);
             $("#reserve_day, #reserve_time").val("");
         },
         clicked:function(select, picker, option, event){
@@ -313,7 +315,7 @@ function showImagePicker(){
     });
 }
 
-function disableDay(openday){
+function disableDay(openday, open, close){
     console.log(openday);
     $.datetimepicker.setLocale('th');
     var nowDate = new Date();
@@ -350,7 +352,9 @@ function disableDay(openday){
         formatTime:'H:i',
         mask:true,
         scrollInput: false,
-        format:'H:i'
+        format:'H:i',
+        minTime: open,
+        maxTime: close
     });
 }
 
@@ -410,16 +414,20 @@ $(document).ready(function () {
                 isvalid = form.valid();
                 getCartList();
             }
-            if(currentIndex == 4){
+            if(currentIndex == 1){
                 isvalid = $("#image-picker-car").val() != "";
                 if(!isvalid){
                     $(".alert").show();
                     $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
                 }
             }
-            // if(currentIndex == 2){
-            //     console.log($("#image-picker").val());
-            // }
+            if(currentIndex == 2){
+                isvalid = $("#image-picker").val() != "";
+                if(!isvalid){
+                    $(".alert").show();
+                    $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
+                }
+            }
             return isvalid;
         },
         onFinishing: function (event, currentIndex)
