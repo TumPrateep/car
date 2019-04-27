@@ -61,7 +61,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '';
-                        html+='<a href="'+base_url+'garage/OrderDetail/show/'+data.orderId+'">#'+data.orderId+'</a><br>';
+                        html+='<a href="'+base_url+'garage/reservedetail/reservedetail/'+data.orderId+'">#'+data.orderId+'</a><br>';
                      
                         return html;
                     }

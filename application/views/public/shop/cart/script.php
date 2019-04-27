@@ -319,7 +319,7 @@ $(document).ready(function () {
                 isvalid = form.valid();
                 getCartList();
             }
-            if(currentIndex == 2){
+            if(currentIndex == 4){
                 isvalid = $("#image-picker-car").val() != "";
                 if(!isvalid){
                     $(".alert").show();

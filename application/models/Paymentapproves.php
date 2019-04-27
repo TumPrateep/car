@@ -11,15 +11,6 @@ class Paymentapproves extends CI_Model{
         return $result->row();
     }
 
-    
-    function getOrderById($orderId){
-        $this->db->select("orderId");
-        $this->db->where('orderId',$orderId);
-        $result = $this->db->get("order");
-        return $result->row();
-    }
-
-
     function insert($data){
         return $this->db->insert('payment',$data);
     }

@@ -50,35 +50,7 @@
 					</div>
                 </fieldset>
 				<!-- Step 2 -->
-				<h3>
-					<span class="icon"><i class="fa fa-credit-card"></i></span>
-					<span class="title_text">การจ่ายเงิน</span>
-				</h3>
-				<fieldset>
-					<legend>
-						<span class="step-heading">เลือกรูปแบบการจ่ายเงินที่ต้องการ: </span>
-						<span class="step-number">Step 2 / 4</span>
-					</legend>
-					<div class="row">
-						<div class="col-12">
-							<table class="table table-hover" id="cart-table">
-								<tbody id="cart_list"></tbody>
-								<tfoot><hr>
-								<div class="btn-group offset-md-3" data-toggle="buttons">
-									<label class="btn btn-outline-secondary">
-										<input type="radio" name="options" id="option1" ><span class="icon">จ่ายเงินเต็มจำนวน</span><br>
-										<!-- <span class="amount" id="money"> -->
-									</label>
-									<label class="btn btn-outline-secondary">
-										<input type="radio" name="options" id="option2" ><span class="icon">จ่ายเงินแบบมัดจำ</span><br>
-										<!-- <span class="amount" id="depositmoney"> -->
-									</label>
-								</div><hr>
-								</tfoot>
-							</table>
-						</div>
-					</div>
-				</fieldset>
+				
 
 				<!-- Step 3 -->
                 <h3>
@@ -88,7 +60,7 @@
                 <fieldset>
                     <legend>
                         <span class="step-heading">เลือกรถยนต์ที่ต้องการ: </span>
-						<span class="step-number">Step 3 / 4</span>
+						<span class="step-number">Step 2 / 4</span>
 					</legend>
 					<div class="alert alert-danger hide" role="alert">
 						<strong>คำเตือน!</strong> เลือกรถยนต์ที่ต้องการ
@@ -148,7 +120,7 @@
                 <fieldset>
                     <legend>
                         <span class="step-heading">เลือกอู่ที่จะเข้าใช้บริการ: </span>
-                        <span class="step-number">Step 4 / 4</span>
+                        <span class="step-number">Step 3 / 4</span>
                     </legend>
                     <div class="row ">
                         <div class="col-lg-4 offset-lg-5 mt-8">
@@ -175,18 +147,48 @@
 					<div class="row justify-content-md-center">
 						<div class="col-lg-3">
 							<div class="form-group">
-								<label class="form-label required" for="garage">เลือกวันทำการ</label>
+								<label class="form-label required" for="garage">เลือกวันที่จอง</label>
 								<input type="text" class="form-control" id="reserve_day" name="reserve_day" placeholder="เลือกวันทำการ" readonly>
 							</div>
 						</div>
 						<div class="col-lg-3">
 							<div class="form-group">
-								<label class="form-label required" for="garage">เลือกเวลาทำการ</label>
+								<label class="form-label required" for="garage">เลือกเวลาเข้าใช้บริการ</label>
 								<input type="text" class="form-control" id="reserve_time" name="reserve_time" placeholder="เลือกเวลาทำการ" readonly>
 							</div>
 						</div>
 					</div>
                 </fieldset>
+
+				<h3>
+					<span class="icon"><i class="fa fa-credit-card"></i></span>
+					<span class="title_text">การจ่ายเงิน</span>
+				</h3>
+				<fieldset>
+					<legend>
+						<span class="step-heading">เลือกรูปแบบการจ่ายเงินที่ต้องการ: </span>
+						<span class="step-number">Step 4 / 4</span>
+					</legend>
+					<div class="row">
+						<div class="col-12">
+							<table class="table table-hover" id="cart-table">
+								<tbody id="cart_list"></tbody>
+								<tfoot><hr>
+								<div class="btn-group offset-md-3" data-toggle="buttons">
+									<label class="btn btn-outline-secondary">
+										<input type="radio" name="options" id="option1" ><span class="icon">จ่ายเงินเต็มจำนวน</span><br>
+										<!-- <span class="amount" id="money"> -->
+									</label>
+									<label class="btn btn-outline-secondary">
+										<input type="radio" name="options" id="option2" ><span class="icon">จ่ายเงินแบบมัดจำ</span><br>
+										<!-- <span class="amount" id="depositmoney"> -->
+									</label>
+								</div><hr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</fieldset>
 
                     
             </form>

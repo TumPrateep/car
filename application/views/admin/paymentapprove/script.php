@@ -129,21 +129,14 @@
     }   
 
     function cancelStatus(paymentId,orderId){
-        var option1 = {
+        var option = {
             url: "/PaymentApprove/changeStatus?paymentId="+paymentId,
             label: "ยกเลิกรายการชำระเงิน",
             status: 3,
             content: "คุณต้องการยกเลิกรายการชำระเงินนี้ ใช่หรือไม่",
             gotoUrl: "admin/paymentapprove"
         }
-        var option2 = {
-            url: "/PaymentApprove/changeStatusOrder?orderId="+orderId,
-            label: "ยกเลิกรายการชำระเงิน",
-            status: 4,
-            content: "คุณต้องการยกเลิกรายการชำระเงินนี้ ใช่หรือไม่",
-            gotoUrl: "admin/paymentapprove"
-        }
-        fnConfirm(option1,option2);
+        fnConfirm(option);
     }
 
 
