@@ -34,6 +34,34 @@ class Managegarage extends BD_Controller {
         $openingtime = $this->post('openingtime');
         $closingtime = $this->post('closingtime');
         $brandId = $this->post('brandId');
+        $Wifi = $this->post('Wifi');
+		$roomfan = $this->post('roomfan');
+		$roomAir = $this->post('roomAir');
+		$snack = $this->post('snack');
+
+        $openDay = "";
+		$daym = $this->post('monday');
+		$openDay .= (isset($daym) ? 1 : 0 );
+		
+		$dayt = $this->post('tuesday');
+		$openDay .= (isset($dayt) ? 1 : 0 );
+
+		$dayw = $this->post('wednesday');
+		$openDay .= (isset($dayw) ? 1 : 0 );
+
+		$dayth = $this->post('thursday');
+		$openDay .= (isset($dayth) ? 1 : 0 );
+
+		$dayf = $this->post('friday');
+		$openDay .= (isset($dayf) ? 1 : 0 );
+
+		$dayst = $this->post('saturday');
+        $openDay .= (isset($dayst) ? 1 : 0 );
+        
+        $days = $this->post('sunday');
+		$openDay .= (isset($days) ? 1 : 0 );
+
+		$dayopenhour = $openDay;
 
         $this->load->model("managegarages");
         $config['upload_path'] = 'public/image/garage/';
@@ -79,7 +107,11 @@ class Managegarage extends BD_Controller {
             'closingtime' => $closingtime,
             'brandId' => $brandId,
             "picture"=> $imageName,
-            // 'jop' => $jop
+            'option1' => $Wifi,
+			'option2' => $roomfan,
+			'option3' => $roomAir,
+			'option4' => $snack,
+            'dayopenhour' => $dayopenhour
         );
         $oldImage = null;
         if($data_check_update != null){

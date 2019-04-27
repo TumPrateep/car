@@ -174,9 +174,6 @@ class Users extends BD_Controller {
 
 
 		$openDay = "";
-		$days = $this->post('sunday');
-		$openDay .= (isset($days) ? 1 : 0 );
-		
 		$daym = $this->post('monday');
 		$openDay .= (isset($daym) ? 1 : 0 );
 		
@@ -194,6 +191,9 @@ class Users extends BD_Controller {
 
 		$dayst = $this->post('saturday');
 		$openDay .= (isset($dayst) ? 1 : 0 );
+
+		$days = $this->post('sunday');
+		$openDay .= (isset($days) ? 1 : 0 );
 
 		$dayopenhour = $openDay;
 
