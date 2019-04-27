@@ -73,21 +73,9 @@
 											<div class="col-md-4">
 												<div class="form-group">
 													<label for="garage">เลขรหัสบัตรประชาชน</label><span class="error">*</span>
-													<input type="text" class="form-control" name="personalid" id="personalid" placeholder="เลขรหัสบัตรประชาชน">
+													<input type="number" class="form-control" name="personalid" id="personalid" placeholder="เลขรหัสบัตรประชาชน">
 												</div>
 											</div>
-											<!-- <div class="col-lg-4">
-												<div class="form-group">
-													<label for="mobile">ความเชี่ยวชาญด้านรถ</label><span class="error">*</span>
-													<select class="form-control" name="job" id="job" placeholder="ความเชี่ยวชาญด้านรถ" >
-														<option value="">เลือกความชำนาญ</option>
-														<option value="Honda">Honda</option>
-														<option value="Isuzu">Isuzu</option>
-														<option value="Mazda">Mazda</option> 
-														<option value="Toyota">Toyota</option>
-													</select>
-												</div>
-											</div -->
 											<div class="col-md-4">
 												<div class="form-group">
 													<label class="form-label" for="mechanic">เบอร์โทรศัพท์</label><span class="error">*</span>

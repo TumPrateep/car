@@ -35,7 +35,8 @@
                 },
                 exp: {
                     required: true,
-                    maxlength: 2
+                    maxlength: 2,
+                    max: 50
                 },
                 phone: {
                     required: true,
@@ -49,6 +50,9 @@
                 personalid: {
                     required: true,
                     pid: true
+                },
+                nickName:{
+                    THEN: true
                 }
             },messages:{
                 firstname: {
@@ -61,7 +65,8 @@
                 },
                 exp: {
                     required: "กรุณากรอกประสบการณ์(ปี)",
-                    maxlength:  "กรอกข้อมูลไม่ถูกต้อง"
+                    maxlength:  "กรุณากรอกข้อมูลตามจริง",
+                    max: "กรุณากรอกข้อมูลตามจริง"
                 },
                 phone: {
                     required: "กรุณากรอกเบอร์โทรศัพท์",
@@ -75,6 +80,9 @@
                 personalid: {
                     required: "กรุณาใส่บัตรประชาชน",
                     pid: "กรุณากรอกเลขบัตรประชาชนให้ถูกต้อง"
+                },
+                nickName:{
+                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
                 }
              
             }

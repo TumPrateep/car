@@ -35,7 +35,8 @@
                 },
                 exp: {
                     required: true,
-                    maxlength: 2
+                    maxlength: 2,
+                    max: 50
                 },
                 phone: {
                     required: true,
@@ -60,7 +61,8 @@
                 },
                 exp: {
                     required: "กรุณากรอกประสบการณ์(ปี)",
-                    maxlength: "กรอกข้อมูลไม่ถูกต้อง"
+                    maxlength: "กรุณากรอกข้อมูลตามจริง",
+                    max: "กรุณากรอกข้อมูลตามจริง"
                 },
                 phone: {
                     required: "กรุณากรอกเบอร์โทรศัพท์",

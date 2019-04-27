@@ -1,37 +1,34 @@
-<div class="page-wrapper">
-            <!-- Bread crumb -->
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">รายละเอียดการจอง</h3> </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">หน้าหลัก</a></li>
-                        <li class="breadcrumb-item active">รายละเอียดการจอง</li>
-                    </ol>
+
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="<?=base_url("admin/") ?>">หน้าหลัก</a>
+        </li>
+        <li class="breadcrumb-item active">รายละเอียดสินค้า</li>
+      </ol>
+      <!-- Icon Cards-->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="card">
+              <!-- <h4 class="orange">หมายเลขสั่งซื้อ: <?=$orderId ?></h4> -->
+                <input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">
+                    <table class="table">
+                      <thead>
+                          <tr>
+                              <th scope="col">รูป</th>
+                              <th scope="col">ชื่อสินค้า</th>
+                              <th scope="col">จำนวน</th>
+                              <th scope="col">ราคา</th>
+                            </tr>
+                        </thead>
+                      <tbody id="showOrder"></tbody>
+                    </table>
                 </div>
-            </div>
-            <!-- End Bread crumb -->
-            <!-- Container fluid  -->
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="card col-lg-12">
-                    <div class="row ">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
-                                        <thead>
-                                        <th>ลำดับ</th>
-                                        <th>รายละเอียด</th>
-                                        <th>จำนวน</th>
-                                        </thead>	
-                                    </table>
-                                </div>
-                            </div> 
-                        </div>
-                    
-                    </div>  			
-                </div>
-                <!-- End PAge Content -->
-            </div>
-            <!-- End Container fluid  -->
+              </div>
+          </div>
+        </div>
+      </section>
+    </div>

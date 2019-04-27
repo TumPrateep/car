@@ -87,9 +87,25 @@ class Paymentapproves extends CI_Model{
     } 
 
     function update($data){
-        $this->db->where('paymentId',$data['paymentId']);
-        $result = $this->db->update('payment',$data);
-        return $result;
+        $this->db->trans_begin();
+            $this->db->where('paymentId',$data['paymentId']);
+            $this->db->update('payment',$data);
+
+            if($data['status'] == 3){
+                $orderData = [
+                    "status" => 4
+                ];
+                $this->db->where('orderId',$data['orderId']);
+                $this->db->update('order',$orderData);
+            }
+        
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
     }
    
    

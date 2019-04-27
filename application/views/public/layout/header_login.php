@@ -19,7 +19,7 @@
 								<ul class="standard_dropdown top_bar_dropdown">
 									<li>
 										<a href="#">
-											<div><span class="fas fa-user-circle"></span> <?=now_user() ?></div>
+											<div><span class="fas fa-user-circle"></span> <?=now_user()?> | <span class=" fas fa-chevron-down"></span></div>
 										</a>
 										<ul>
 											<li><a href="<?=base_url("shop/order"); ?>"><span class="fas fa-bars"></span>  รายการสั่งซื้อ</a></li>

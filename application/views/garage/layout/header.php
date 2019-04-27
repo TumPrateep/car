@@ -67,8 +67,8 @@
                             <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?=base_url()?>public/themes/garage/images/users/5.jpg" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
-                                    <li><a href="#"><i class="ti-settings"></i> Setting</a></li>
-                                    <li><a href="#" onclick="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="#"><i class="ti-settings"></i> ตั้งค่า</a></li>
+                                    <li><a href="#" onclick="logout()"><i class="fa fa-power-off"></i> ออกจากระบบ</a></li>
                                 </ul>
                             </div>
                         </li>
