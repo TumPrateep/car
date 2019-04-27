@@ -1240,7 +1240,7 @@ CREATE TABLE `garage` (
 --
 
 INSERT INTO `garage` (`garageId`, `comment`, `businessRegistration`, `garageName`, `phone`, `dayopenhour`, `openingtime`, `closingtime`, `hno`, `Alley`, `road`, `village`, `postCode`, `latitude`, `longtitude`, `subdistrictId`, `districtId`, `provinceId`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `option1`, `option2`, `option3`, `option4`, `option_outher`, `picture`, `userId`, `garageService`, `brandId`) VALUES
-(1, NULL, '1111111111111', 'garagesives0', '0833969512', '0111110', '08:30:00', '19:30:00', '128-126/10', NULL, NULL, NULL, '10236', '8.064029', '100.176328', 2412, 108, 63, 13, 13, '2019-01-16 07:13:30', '2019-01-15 05:13:08', 1, NULL, NULL, NULL, NULL, NULL, 'example.png', 12, '', 0),
+(1, NULL, '1111111111111', 'garagesives0', '0833969512', '0111110', '08:30:00', '19:30:00', '128-126/10', NULL, NULL, NULL, '10236', '8.064029', '100.176328', 7744, 850, 63, 13, 13, '2019-01-16 07:13:30', '2019-01-15 05:13:08', 1, NULL, NULL, NULL, NULL, NULL, 'example.png', 12, '', 0),
 (2, NULL, '1234567856788', 'โชคชัย4 ', '0812382928', '0110111', '07:00:00', '17:00:00', '12', '', '', '', '80000', '8.641506699999999', '99.8915236', 7744, 850, 63, 30, NULL, '2019-04-07 15:06:03', NULL, 1, 1, 2, 3, NULL, '', '5ca9af6b7dcc3.png', 30, '100', 0),
 (3, NULL, '1234567856789', 'เปรตติน', '0812382928', '0011100', '19:00:00', '20:00:00', '1234/11', '', '', '', '80000', '8.641548', '99.8915323', 7677, 844, 63, 31, NULL, '2019-04-22 16:32:24', NULL, 1, 1, NULL, 3, NULL, '', '5cc1855780dd8.png', 31, '010', 15);
 
