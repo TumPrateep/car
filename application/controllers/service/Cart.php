@@ -148,21 +148,23 @@ class Cart extends BD_Controller {
 
     function createCart_post(){
         $cartData = $this->post("cartData");
-        $this->set_response($cartData, REST_Controller::HTTP_OK);
-        $userId = $this->session->userdata['logged_in']['id'];
-        $index = 0;
+        // $this->set_response($cartData, REST_Controller::HTTP_OK);
         $data = [];
-        if($cartData != null){
-            foreach ($cartData as $val) {
-                $data[$index]["productId"] = $val['productId'];
-                $data[$index]["group"] = $val['group'];
-                $data[$index]["quantity"] = $val['number'];
-                $data[$index]["create_at"] = date('Y-m-d H:i:s',time());
-                $data[$index]["create_by"] = $userId;
-                $index++;
-            }   
+        $isLogin = !empty($this->session->userdata['logged_in']);
+        if($isLogin){
+            $userId = $this->session->userdata['logged_in']['id'];
+            $index = 0;
+            if($cartData != null){
+                foreach ($cartData as $val) {
+                    $data[$index]["productId"] = $val['productId'];
+                    $data[$index]["group"] = $val['group'];
+                    $data[$index]["quantity"] = $val['number'];
+                    $data[$index]["create_at"] = date('Y-m-d H:i:s',time());
+                    $data[$index]["create_by"] = $userId;
+                    $index++;
+                }   
+            }
         }
-
         $option = [
             "data_check" => null,
             "data" => $data,

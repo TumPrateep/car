@@ -142,6 +142,13 @@ class Brand extends CI_Model {
         return $query->result();
     }
 
+    function getAllBrandNoStatus(){
+        $this->db->select("brandId,brandName");
+        $this->db->order_by('brandName', 'ASC');
+        $query = $this->db->get("brand");
+        return $query->result();
+    }
+
     function getAllBrandgarage(){
         $this->db->select("brandId,brandName");
         // $this->db->where('status','1');

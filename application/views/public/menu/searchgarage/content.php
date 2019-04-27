@@ -16,26 +16,26 @@
                     <div class="form-group">
                         <label for="garageSearch">จังหวัด</label>
 						<select class="form-control" name="provinceIdSearch" id="provinceIdSearch">
-							<option>จังหวัด</option>
+							<option value="">เลือกจังหวัด</option>
 						</select>
                     </div>
 
                     <div class="form-group">
                         <label for="user_profile">อำเภอ</label>
 						<select class="form-control" name="districtIdSearch" id="districtIdSearch">
-							<option>อำเภอ</option>
+							<option value="">เลือกอำเภอ</option>
 						</select>
                     </div>
 
                     <div class="form-group">
                         <label for="user_profile">ตำบล</label>
 						<select class="form-control" name="subdistrictIdSearch" id="subdistrictIdSearch">
-							<option>ตำบล</option>
+							<option value="">เลือกตำบล</option>
 						</select>
                     </div>
 
 					<div class="form-group">
-                        <label class="control-label">ยี่ห้อรถ</label>
+                        <label class="control-label">ความชำนาญ</label>
                         <select class="form-control input-default" name="brandId" id="brandId">
                             <option value="">เลือกยี่ห้อรถ</option>
                         </select>
@@ -44,9 +44,9 @@
                         <label class="control-label">การบริการ</label>
 	                    <select class="form-control input-default" name="Service" id="Service">
 	                        <option value="">เลือกการบริการ</option>
-	                        <option value="">เปลี่ยนน้ำมันเครื่อง</option>
-	                        <option value="">เปลี่ยนอะไหล่ช่วงล่าง</option>
-	                        <option value="">เปลี่ยนยาง</option>
+	                        <option value="1">เปลี่ยนอะไหล่ช่วงล่าง</option>
+	                        <option value="2">เปลี่ยนยาง</option>
+							<option value="3">เปลี่ยนน้ำมันเครื่อง</option>
 	                    </select>
                     </div>
 
@@ -56,21 +56,11 @@
                         	<input type="text" class="form-control" id="garagename" name="garagename" placeholder="ชื่ออู่ซ่อมรถ">
                     	</div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
-                        <select class="form-control valid" id="can_change" name="can_change" aria-required="true" aria-invalid="false">
-							<option value="1">เปลี่ยนทันที</option>
-							<option value="2">สั่งจอง</option>
-						</select>
-                    </div>
                     
 					<br>
-					<div class="col-lg-12 ">
-                        <button type="button" id="btn-search" class="btn-create btn btn-orange btn-block">
-                            <i class="ti-search"> ค้นหา</i>
-                        </button>
-                    </div>
+					<button type="button" id="btn-search" class="btn-create btn btn-orange btn-block">
+						<i class="ti-search"> ค้นหา</i>
+					</button>
 
 				</div>
             </div>
@@ -87,7 +77,7 @@
 									<select class="form-control input-default" name="sort" id="sort">
 										<option value="1" selected>เรียงลำดับจาก ก-ฮ</option>
 										<option value="2">เรียงลำดับจาก ฮ-ก</option>
-										<option value="3">เรียงลำดับจาก สถานะ</option>
+										<option value="3">ระยะทางน้อย-มาก</option>
 									</select>
 								</div>
 							</div>
@@ -102,6 +92,8 @@
 										<th></th>
 									</tr>
 								</thead>
+								<tbody>
+								</tbody>
 							</table>
 						</div>
 				</div>

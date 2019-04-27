@@ -24,4 +24,10 @@ class BrandCar extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
+
+    function getAllBrand_get(){
+        $result = $this->brand->getAllBrandNoStatus();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 }

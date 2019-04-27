@@ -22,33 +22,37 @@ class Garages extends BD_Controller {
         // $columns = array( 
         //     0 => 'garageName'
         // );
+        $latitude = $this->post('latitude');
+        $longitude = $this->post('longitude');
 
-        $column = "garageId";
+        $column = "garageName";
         $sort = "asc";
-        if($this->post('column') == 3){
-            $column = "status";
-        }else if($this->post('column') == 2){
+        if($this->post('sort') == 2){
             $sort = "desc";
-        }else{
-            $sort = "asc";
+        }else if($this->post('sort') == 3){
+            $column = "distance";
         }
 
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
-        $totalData = $this->searchgarages->allgarage_count();
+        $totalData = $this->searchgarages->allgarage_count($latitude,$longitude);
         $totalFiltered = $totalData; 
-        // if(empty($this->post('garageName'))&& empty($this->post('businessRegistration')))
-        // {            
-            $posts = $this->searchgarages->allgarage($limit,$start,$order,$dir);
-        // }
-        // else {
-        //     $garageName = $this->post('garageName'); 
-        //     $businessRegistration = $this->post('businessRegistration');
-        //     $posts =  $this->searchgarages->garage_search($limit,$start,$order,$dir,$garageName,$businessRegistration);
-        //     $totalFiltered = $this->searchgarages->garage_search_count($garageName,$businessRegistration);
-        // }
+        if(empty($this->post('garagename')) && empty($this->post('provinceIdSearch')) && empty($this->post('districtIdSearch')) &&
+            empty($this->post('subdistrictIdSearch')) && empty($this->post('brandId')) && empty($this->post('service')))
+        {            
+            $posts = $this->searchgarages->allgarage($limit,$start,$order,$dir,$latitude,$longitude);
+        } else {
+            $garageName = $this->post('garagename');
+            $provinceId = $this->post('provinceIdSearch'); 
+            $districtId = $this->post('districtIdSearch'); 
+            $subdistrictId = $this->post('subdistrictIdSearch');
+            $brandId = $this->post('brandId');
+            $service = $this->post('service');
+            $posts =  $this->searchgarages->garage_search($limit,$start,$order,$dir,$garageName,$provinceId,$districtId,$subdistrictId,$brandId,$service,$latitude,$longitude);
+            $totalFiltered = $this->searchgarages->garage_search_count($garageName,$provinceId,$districtId,$subdistrictId,$brandId,$service,$latitude,$longitude);
+        }
         $data = array();
         if(!empty($posts))
         {
@@ -59,16 +63,14 @@ class Garages extends BD_Controller {
                 
                 $nestedData[$count]['garageId'] = $post->garageId;
                 $nestedData[$count]['garageName'] = $post->garageName;
-                $nestedData[$count]['businessRegistration'] = $post->businessRegistration;
-                $nestedData[$count]['skill'] = $post->skill;
-                // $nestedData[$count]['garageAddress'] = $post->garageAddress;
-                // $nestedData[$count]['postCode'] = $post->postCode;
-                // $nestedData[$count]['subdistrictId'] = $post->subdistrictId;
-                // $nestedData[$count]['districtId'] = $post->districtId;
-                // $nestedData[$count]['provinceId'] = $post->provinceId;
-                // $nestedData[$count]['latitude'] = $post->latitude;
-                // $nestedData[$count]['longtitude'] = $post->longtitude;
-
+                $nestedData[$count]['dayopenhour'] = $post->dayopenhour;
+                $nestedData[$count]['opentime'] = $post->openingtime." - ".$post->closingtime;
+                $nestedData[$count]['picture'] = $post->picture;
+                $nestedData[$count]['latitude'] = (float) $post->latitude;
+                $nestedData[$count]['longitude'] = (float) $post->longtitude;
+                if(!empty($post->distance)){
+                    $nestedData[$count]['distance'] = (float) $post->distance;
+                }                
                 $data[$index] = $nestedData;
                 if($count >= 3){
                     $count = -1;

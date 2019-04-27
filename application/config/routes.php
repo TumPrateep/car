@@ -85,6 +85,7 @@ $route['shop/payment/(\d+)'] = function ( $id)
     return 'public/Payment/Payments/'. $id;
 };
 $route['shop/order'] = 'public/Order/Orders';
+$route['garagesearch'] = 'public/menu/searchgarage';
 
 // user route
 // $route['page/(:any)'] = 'main/Main/(:any)';

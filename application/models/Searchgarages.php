@@ -9,35 +9,26 @@ class Searchgarages extends CI_Model {
         return $this->db->where('garageId',$garageId)->get("garage")->row();
     }
 
-    // function alllubricatordata_count($userId){
-    //     $this->db->where("lubricator_data.create_by", $userId);
-    //     $query = $this->db->get('lubricator_data');
-     
-    //      return $query->num_rows();
-    // }
-
-    function allgarage_count(){   
-        $query = $this
-                ->db
-                ->get('garage');
-    
+    function allgarage_count($latitude,$longitude){
+        if(!empty($latitude) && !empty($longitude)){
+            $this->db->select("2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) as distance, garage.*");
+        }   
+        $query = $this->db->get('garage');
         return $query->num_rows();  
     }
 
-    function allgarage($limit,$start,$col,$dir){   
-        $query = $this
-            ->db
-            ->limit($limit,$start)
-            ->order_by($col,$dir)
+    function allgarage($limit,$start,$col,$dir,$latitude,$longitude){   
+        if(!empty($latitude) && !empty($longitude)){
+            $this->db->select("2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) as distance, garage.*");
+        }
+        $query = $this->db->limit($limit,$start)->order_by($col,$dir)
             ->get('garage');
-            if($query->num_rows()>0)
-            {
-                return $query->result(); 
-            }
-            else
-            {
-                return null;
-            }   
+        
+        if($query->num_rows()>0){
+            return $query->result(); 
+        }else{
+            return null;
+        }   
     }
 
       
@@ -63,36 +54,67 @@ class Searchgarages extends CI_Model {
                                                                                                                                                                                                 
     // }
     
-    function garage_search($limit,$start,$col,$dir,$garageName,$businessRegistration)
+    function garage_search($limit,$start,$col,$dir,$garageName,$provinceId,$districtId,$subdistrictId,$brandId,$service,$latitude,$longitude)
     {
+        if(!empty($latitude) && !empty($longitude)){
+            $this->db->select("2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) as distance, garage.*");
+        }
         $this->db->like('garageName',$garageName);
-        if($skill != null){
-            $this->db->where("businessRegistration", $businessRegistration);
+        if($provinceId != null){
+            $this->db->where("provinceId", $provinceId);
+        }
+        if($districtId != null){
+            $this->db->where("districtId", $districtId);
+        }
+        if($subdistrictId != null){
+            $this->db->where("subdistrictId", $subdistrictId);
+        }
+        if($brandId != null){
+            $this->db->where("brandId", $brandId);
+        }
+        if($service != null){
+            if($service == 1){
+                $this->db->where("garageService like '1__'");
+            }else if($service == 2){
+                $this->db->where("garageService like '_1_'");
+            }else{
+                $this->db->where("garageService like '__1'");
+            }
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('garage');
         
-        if($query->num_rows()>0)
-        {
+        if($query->num_rows()>0){
             return $query->result();  
-        }
-        else
-        {
+        }else{
             return null;
         }
         
     }
 
-    function garage_search_count($garageName,$businessRegistration){
+    function garage_search_count($garageName,$provinceId,$districtId,$subdistrictId,$brandId,$service,$latitude,$longitude){
+        if(!empty($latitude) && !empty($longitude)){
+            $this->db->select("2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) as distance, garage.*");
+        }
         $this->db->like('garageName',$garageName);
-        if($skill != null){
-            $this->db->where("businessRegistration", $businessRegistration);
+        if($provinceId != null){
+            $this->db->where("provinceId", $provinceId);
+        }
+        if($districtId != null){
+            $this->db->where("districtId", $districtId);
+        }
+        if($subdistrictId != null){
+            $this->db->where("subdistrictId", $subdistrictId);
+        }
+        if($brandId != null){
+            $this->db->where("brandId", $brandId);
+        }
+        if($service != null){
+            $this->db->where("garageService", $service);
         }
         $query = $this->db->get('garage');
         return $query->num_rows();
     }
-
-  
 
 }

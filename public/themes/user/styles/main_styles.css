@@ -3965,3 +3965,15 @@ select option
   .hide{
 	  display: none;
   }
+
+.garage-name {
+    font-size: 16px;
+    font-weight: 1000;
+    margin-top: 45px;
+    color: #708090;
+}
+
+.distance{
+	color: #8a8a8a;
+	text-align: end;
+}
