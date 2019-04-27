@@ -12,6 +12,8 @@
 <script>
 
 var money = 0;
+var fullMoney = 0;
+var deliveryCost = 0;
 function createCarConfirm(){
     var userId = localStorage.getItem("userId");
     var hasCaraccessory = null;
@@ -56,6 +58,18 @@ function minus(role, index){
         localStorage.setItem("data", JSON.stringify(cartData));
         showCart();
     }
+}
+
+function getCartList(){
+    var productData = [];
+    $('#cart-table td:first-child').each(function() {
+        var product = $(this).find("input");
+        var isCheck = product.is(':checked');
+        if(isCheck){
+            productData.push(product.attr("data-productId"));
+        }
+    });
+    return JSON.stringify(productData);
 }
 
 function setNumber(index, number){
@@ -116,7 +130,7 @@ function showCart(){
 function setTotalAmount(){
     
     var total = 0;
-    var deliveryCost = 0;
+    deliveryCost = 0;
     var deliveryData = [];
     var table = $("#cart-table > tbody");
     $("#cart-table > tbody  > tr").each(function(index, val) {
@@ -135,10 +149,12 @@ function setTotalAmount(){
     money = total;
    
     deliveryCost = calculateDeliveryCost(deliveryData);
+    fullMoney = money+deliveryCost;
     $("#order_total_cost").html(currency(total, {  precision: 0 }).format() + " บาท");
     $("#order_total_delivery").html(currency(deliveryCost, {  precision: 0 }).format() + " บาท");
     $("#order_total_amount").html(currency(total+deliveryCost, {  precision: 0 }).format() + " บาท");
-    $("#money").html("ราคารวม "+currency(money+deliveryCost, {  precision: 0 }).format() + " บาท");
+    $("#money").html("ราคารวม "+currency(fullMoney, {  precision: 0 }).format() + " บาท");
+    $("#fullMoney").html(currency(fullMoney, {  precision: 0 }).format()+" บาท");
 }
 
 function calculateDeliveryCost(deliveryData){
@@ -358,6 +374,14 @@ function disableDay(openday, open, close){
     });
 }
 
+function getDeposit(){
+    $.post(base_url+"service/Order/calAllDeposit", {"productData":getCartList(),"garageId": $("#image-picker").val()},
+        function (data, textStatus, jqXHR) {
+            $("#halfMoney").html(currency(data.sum, {  precision: 0 }).format() + " บาท");
+        }
+    );
+}
+
 $(document).ready(function () {
 
     var form = $("#rigister");
@@ -394,6 +418,18 @@ $(document).ready(function () {
             } 
         }
     });
+
+    $("#paymentForm").validate({
+        rules:{
+            options: {
+                required: true
+            }
+        },messages:{
+            options: {
+                required: ""
+            } 
+        }
+    });
     
     form.steps({
         headerTag: "h3",
@@ -422,10 +458,17 @@ $(document).ready(function () {
                 }
             }
             if(currentIndex == 2){
-                isvalid = $("#image-picker").val() != "";
+                isvalid = ($("#image-picker").val() != "" && form.valid());
                 if(!isvalid){
                     $(".alert").show();
                     $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
+                }else{
+                    if(fullMoney < 2000){
+                        $("#selectOption2").hide();
+                    }else{
+                        $("#selectOption2").show();
+                        getDeposit();
+                    }
                 }
             }
             return isvalid;
@@ -441,6 +484,7 @@ $(document).ready(function () {
               if(isValid){
                 var data = form.serializeArray();
                 data[data.length] = { name: "productData", value: getCartList() };
+                data[data.length] = { name: "isDeposit", value: $("#option2").is(":checked") };
                 $.post(base_url+"service/Order/createOrderDetail", data,
                     function (data, textStatus, jqXHR) {
                         if(data.message == 200){
@@ -461,18 +505,6 @@ $(document).ready(function () {
         //     event.append('demo');
         // }
     });
-
-    function getCartList(){
-        var productData = [];
-        $('#cart-table td:first-child').each(function() {
-            var product = $(this).find("input");
-            var isCheck = product.is(':checked');
-            if(isCheck){
-                productData.push(product.attr("data-productId"));
-            }
-        });
-        return JSON.stringify(productData);
-    }
 
     // var form = $("#submit");
     // var confirmForm = $("#confirm");

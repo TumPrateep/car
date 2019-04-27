@@ -12,6 +12,19 @@ class Order extends BD_Controller {
         $this->load->model('orderdetails');
     }
 
+    function calAllDeposit_post(){
+        $userId = $this->session->userdata['logged_in']['id'];
+        $productData = json_decode($this->post("productData"));
+        $garageId = $this->post("garageId");
+        $orderdetail = $this->orders->getAllCartByUserIdAndProductId($userId, $productData);
+        $caraccessoryId = getCaracessoryId($orderdetail);
+        $costDelivery = getDeliveryCost($caraccessoryId, $orderdetail);
+
+        $sum = $this->orders->callDeposit($garageId, $costDelivery, $caraccessoryId, $orderdetail);
+
+        $this->set_response(["sum" => $sum], REST_Controller::HTTP_OK);
+    }
+
     function createOrderDetail_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $garageId = $this->post("garageId");
@@ -19,6 +32,7 @@ class Order extends BD_Controller {
         $reserve_time = $this->post("reserve_time");
         $carProfileId = $this->post("carProfileId");
         $productData = json_decode($this->post("productData"));
+        $isDeposit = $this->post("isDeposit");
 
         $data = array();
         $orderdetail = $this->orders->getAllCartByUserIdAndProductId($userId, $productData);
@@ -43,7 +57,8 @@ class Order extends BD_Controller {
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
             'activeflag' =>1,
-            'costDelivery' => $costDelivery
+            'costDelivery' => $costDelivery,
+            'depositflag' => ($isDeposit == "true")? 1 : 0
         );
 
         $data['orderdetail'] = $orderdetail;
@@ -84,6 +99,7 @@ class Order extends BD_Controller {
                 $nestedData['orderId'] = $post->orderId;
                 $nestedData['create_at'] = $post->create_at;
                 $nestedData['status'] = $post->status;
+                $nestedData['depositflag'] = $post->depositflag;
                 $nestedData['create_by'] = $post->userId;
                 $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
                 $nestedData['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
