@@ -121,7 +121,10 @@
                     <legend>
                         <span class="step-heading">เลือกอู่ที่จะเข้าใช้บริการ: </span>
                         <span class="step-number">Step 3 / 4</span>
-                    </legend>
+					</legend>
+					<div class="alert alert-danger hide" role="alert">
+						<strong>คำเตือน!</strong> เลือกอู่ที่ต้องการ
+					</div>
                     <div class="row ">
                         <div class="col-lg-4 offset-lg-5 mt-8">
                             <div class="input-group mb-3">

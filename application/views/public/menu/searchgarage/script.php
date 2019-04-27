@@ -20,10 +20,12 @@ $(document).ready(function () {
     }
 
     function getLocation() {
+        $("#sort option[value='3']").remove();
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position){
                 latitude = position.coords.latitude;
                 longitude = position.coords.longitude;
+                $("#sort").append('<option value="3">ระยะทางน้อย-มาก</option>');
                 lenderTable();
             }, function(error) {
                 latitude = null;
@@ -33,6 +35,7 @@ $(document).ready(function () {
             },{timeout:5000});
         } else {
             alert("ไม่สามารถดึงตำแหน่งปัจจุบันได้");
+            lenderTable();
         }
     }
 
