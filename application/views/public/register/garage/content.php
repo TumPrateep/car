@@ -392,7 +392,7 @@
 						<div class="col-md-3">
 							<div class="form-check">
 								<label class="form-check-label" for="garage">
-								<input class="form-check-input" name="snack" id="snack" value="4" type="checkbox">ของว่าง</label>
+								<input class="form-check-input" name="snack" id="snack" value="4" type="checkbox">ห้องน้ำ</label>
 							</div>
 						</div>
 					</div>
