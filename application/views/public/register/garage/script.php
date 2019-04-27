@@ -559,11 +559,64 @@
     });
 
     $("#personalid").on('input', function () {
-    
         var value = $(this).val();
-        
-        if ((value !== '') && (value.indexOf('.') === -1)) {
-            
+        if ((value !== '') && (value.indexOf('.') === -1)) {  
+            $(this).val(Math.max(Math.min(value, 9999999999999), 0));
+        }
+    });
+
+    $("#exp").on('input', function () {
+        var value = $(this).val();
+        if ((value !== '') && (value.indexOf('.') === -1)) { 
+            $(this).val(Math.max(Math.min(value, 50), 0));
+        }
+    });
+
+    $("#postCode_user").on('input', function () {
+        var value = $(this).val();
+        if ((value !== '') && (value.indexOf('.') === -1)) { 
+            $(this).val(Math.max(Math.min(value, 99999), 0));
+        }
+    });
+
+    $("#postCode_garage").on('input', function () {
+        var value = $(this).val();
+        if ((value !== '') && (value.indexOf('.') === -1)) { 
+            $(this).val(Math.max(Math.min(value, 99999), 0));
+        }
+    });
+
+    $("#phone").on('input', function () {
+        var value = $(this).val();
+        if ((value !== '') && (value.indexOf('.') === -1)) { 
+            $(this).val(Math.max(Math.min(value, 9999999999), 0));
+        }
+    });
+
+    $("#phone1").on('input', function () {
+        var value = $(this).val();
+        if ((value !== '') && (value.indexOf('.') === -1)) { 
+            $(this).val(Math.max(Math.min(value, 9999999999), 0));
+        }
+    });
+
+    $("#phone2").on('input', function () {
+        var value = $(this).val();
+        if ((value !== '') && (value.indexOf('.') === -1)) { 
+            $(this).val(Math.max(Math.min(value, 9999999999), 0));
+        }
+    });
+
+    $("#phone_garage").on('input', function () {
+        var value = $(this).val();
+        if ((value !== '') && (value.indexOf('.') === -1)) { 
+            $(this).val(Math.max(Math.min(value, 9999999999), 0));
+        }
+    });
+
+    $("#businessRegistration").on('input', function () {
+        var value = $(this).val();
+        if ((value !== '') && (value.indexOf('.') === -1)) {  
             $(this).val(Math.max(Math.min(value, 9999999999999), 0));
         }
     });

@@ -1,31 +1,49 @@
+<script src="<?=base_url("public/themes/register/");?>vendor/jquery-steps/jquery.steps.min.js"></script>
+<script src="<?=base_url("public/themes/register/");?>vendor/minimalist-picker/dobpicker.js"></script>
+<!-- <script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.full.min.js"></script> -->
+<!-- <script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script> -->
+<script src="<?=base_url("public/themes/register/");?>js/main.js"></script>
+<script src="<?=base_url("public/themes/register/");?>js/setcheckbox.js"></script>
+
 <script>
+
+  function getLocation() {
+    navigator.geolocation.getCurrentPosition(function(location) {
+      // console.log(location.coords.latitude);
+      // console.log(location.coords.longitude);
+      console.log(location.coords.accuracy);
+      document.getElementById("latitude").value = (location.coords.latitude);
+      document.getElementById("longtitude").value = (location.coords.longitude);
+    });
+  };
+
 $(document).ready(function() {
-    var register = $("#submit");
+    var register = $("#rigister");
     jQuery.validator.addMethod("username", function(value, element) {
       return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
     }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
     
     register.validate({
         rules: {
-          titleName:{
+          titleName_user:{
             required: true
           },
-          firstname1:{
+          firstname_user:{
             required: true
           },
-          lastname: {
+          lastname_user: {
             required: true
           },
-          address:{
+          hno_user:{
             required: true
-          },  
-          provinceId:{
-            required: true
-          },
-          districtId: {
+          }, 
+          provinceId_user:{
             required: true
           },
-          subdistrictId: {
+          districtId_user: {
+            required: true
+          },
+          subdistrictId_user: {
             required: true
           },
           phone1: {
@@ -35,24 +53,33 @@ $(document).ready(function() {
           phone2: {
             minlength: 9
           },
-          postCode:{
+          postCode_user:{
             required: true
-          }
-          ,
-          car_accessoriesName:{
+          },
+          sparepartname:{
               required: true
             },
           businessRegistration:{
             required: true
           },
-          firstname:{
+          titleName_sparepart:{
             required: true
           },
-          idcard:{
+          firstname_sparepart:{
+            required: true
+          },
+          lastname_sparepart:{
+            required: true
+          },
+          personalid:{
             required: true,
             pid: true
           },
-          address1:{
+          phone_sparepart: {
+            minlength: 9,
+            required: true 
+          },
+          hno_sparepart:{
             required: true
           },
           sparepart_provinceId:{
@@ -64,13 +91,13 @@ $(document).ready(function() {
           sparepart_subdistrictId:{
             required: true
           },
-          postCode1:{
+          postCode_sparepart:{
             required: true
           },
           latitude:{
             required: true
           },
-          longitude:{
+          longtitude:{
             required: true
           },
           username:{
@@ -91,27 +118,30 @@ $(document).ready(function() {
           },
         },
         messages: {
-          titleName:{
+          titleName_user:{
             required: "คำนำหน้า"
           }
           ,
-          firstname1:{
+          firstname_user:{
             required: "ชื่อ"
           },
-          lastname: {
+          lastname_user: {
             required: "นามสกุล"
           },
-          address:{
-            required: "ที่อยู่"
+          hno_user:{
+            required: "บ้านเลขที่"
           },
-          provinceId:{
+          provinceId_user:{
             required: "จังหวัด"
           },
-          districtId: {
+          districtId_user: {
             required: "อำเภอ"
           },
-          subdistrictId: {
+          subdistrictId_user: {
             required: "ตำบล"
+          },
+          postCode_user:{
+            required: "กรุณากรอกรหัสไปรษณี"
           },
           phone1: {
             minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
@@ -120,21 +150,27 @@ $(document).ready(function() {
           phone2: {
             minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว"
           },
-          car_accessoriesName:{
+          sparepartname:{
               required: "ชื่อร้านอะไหล่"
             },
           businessRegistration:{
             required: "หมายเลขทะเบียนการค้า"
           },
-          firstname:{
+          titleName_sparepart:{
             required: "ชื่อ"
           },
-          idcard:{
+          firstname_sparepart:{
+            required: "ชื่อ"
+          },
+          lastname_sparepart:{
+            required: "ชื่อ"
+          },
+          personalid:{
             required: "รหัสบัตรประชาชน",
             pid: "รหัสบัตรประชาชนให้ถูกต้อง"
           },
-          address1:{
-            required: "ที่อยู่"
+          hno_sparepart:{
+            required: "บ้านเลขที่"
           },
           sparepart_provinceId:{
             required: "จังวัด"
@@ -145,13 +181,17 @@ $(document).ready(function() {
           sparepart_subdistrictId:{
             required: "ตำบล"
           },
-          postCode1:{
+          phone_sparepart: {
+            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            required: "เบอร์โทรศัพท์"
+          },
+          postCode_sparepart:{
             required: "กรุณากรอกรหัสไปรษณี"
           },
           latitude:{
             required: "กรุุณากรอกละติจูด"
           },
-          longitude:{
+          longtitude:{
             required: "ลองจิจูด"
           },
           username:{
@@ -173,8 +213,95 @@ $(document).ready(function() {
             postCode: {
               required: "รหัสไปรณี"
             }
+        },
+        onfocusout: function(element) {
+            $(element).valid();
+        },
+        highlight : function(element, errorClass, validClass) {
+            $(element.register).find('.actions').addClass('form-error');
+            $(element).removeClass('valid');
+            $(element).addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element.register).find('.actions').removeClass('form-error');
+            $(element).removeClass('error');
+            $(element).addClass('valid');
         }
     });
+
+    register.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "fade",
+        labels: {
+            previous : 'ก่อนหน้า',
+            next : 'ถัดไป',
+            finish : 'บันทึก',
+            current : ''
+        },
+        titleTemplate : '<span class="title">#title#</span>',
+        onStepChanging: function (event, currentIndex, newIndex)
+        {
+            register.validate().settings.ignore = ":disabled,:hidden";
+            return register.valid();
+        },
+        onFinishing: function (event, currentIndex)
+        {
+            register.validate().settings.ignore = ":disabled";
+            return register.valid();
+        },
+        onFinished: function (event, currentIndex)
+        {
+            // register.submit(function (e) { 
+            //   e.preventDefault();
+            //   var isValid = register.valid();
+            //   if(isValid){
+            //     var data = register.serialize();
+            //     $.post(base_url+"apiUser/Users/create", data,
+            //       function (data, textStatus, jqXHR) {
+            //         console.log(data);
+            //         if(data.message == 200){
+            //           window.location = base_url+"login";
+            //         }else if(data.message == 3001){
+            //          showMessage(data.message);
+            //         }
+            //       }
+            //     );
+            //   }      
+            // });
+
+
+            event.preventDefault();
+            var isValid = register.valid();
+            if(isValid){
+              // var imageData = $('.image-editor').cropit('export');
+              // $('.hidden-image-data').val(imageData);
+              var myform = document.getElementById("rigister");
+              var formData = new FormData(myform);
+
+              // var data = form.serialize();
+              $.ajax({
+                url: base_url+"service/Users/create",
+                data: formData,
+                      processData: false,
+                      contentType: false,
+                      type: 'POST',
+                  success:function (data, textStatus, jqXHR) {
+                  console.log(data);
+                  if(data.message == 200){
+                    window.location = base_url+"login";
+                  }else if(data.message == 3001){
+                  showMessage(data.message);
+                  }
+                }
+              });
+            }
+        },
+        // onInit : function (event, currentIndex) {
+        //     event.append('demo');
+        // }
+    });
+
     
     function checkID(id) {
         if(id.length != 13) return false;
@@ -185,17 +312,19 @@ $(document).ready(function() {
         return true;
     }
 
-      jQuery.validator.addMethod("pid", function(value, element) {
-        return checkID(value);
-      }, 'เลขบัตรประชาชนให้ถูกต้อง');
+    jQuery.validator.addMethod("pid", function(value, element) {
+      return checkID(value);
+    }, 'เลขบัตรประชาชนให้ถูกต้อง');
+
+
         
-      var provinceDropdown = $("#provinceId");
+      var provinceDropdown = $("#provinceId_user");
       provinceDropdown.append('<option value="">เลือกจังหวัด</option>');
 
-      var districtDropdown = $('#districtId');
+      var districtDropdown = $('#districtId_user');
       districtDropdown.append('<option value="">เลือกอำเภอ</option>');
 
-      var subdistrictDropdown = $('#subdistrictId');
+      var subdistrictDropdown = $('#subdistrictId_user');
       subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
       function onLoad(){
@@ -203,8 +332,9 @@ $(document).ready(function() {
         loadSparepartProvince();
       }
         onLoad();  
+
       function loadProvince(){
-        $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
+        $.post(base_url+"service/LocationforRegister/getProvince",{},
           function(data){
             var province = data.data;
             $.each(province, function( index, value ) {
@@ -225,7 +355,7 @@ $(document).ready(function() {
       subdistrictDropdown.html("");
       subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-      $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
+      $.post(base_url+"service/LocationforRegister/getDistrict",{
         provinceId: provinceId
       },
         function(data){
@@ -247,7 +377,7 @@ $(document).ready(function() {
       subdistrictDropdown.html("");
       subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
       
-      $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
+      $.post(base_url+"service/LocationforRegister/getSubdistrict",{
         districtId: districtId
       },
         function(data){
@@ -268,7 +398,7 @@ $(document).ready(function() {
     sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
     function loadSparepartProvince(){
-      $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
+      $.post(base_url+"service/LocationforRegister/getProvince",{},
         function(data){
           var province = data.data;
           $.each(province, function( index, value ) {
@@ -289,7 +419,7 @@ $(document).ready(function() {
       sparepartSubdistrictDropdown.html("");
       sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-      $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
+      $.post(base_url+"service/LocationforRegister/getDistrict",{
         provinceId: provinceId
       },
         function(data){
@@ -311,7 +441,7 @@ $(document).ready(function() {
       sparepartSubdistrictDropdown.html("");
       sparepartSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
       
-      $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
+      $.post(base_url+"service/LocationforRegister/getSubdistrict",{
         districtId: districtId
       },
         function(data){
@@ -323,23 +453,23 @@ $(document).ready(function() {
       );
     }
 
-    register.submit(function (e) { 
-      e.preventDefault();
-      var isValid = register.valid();
-      if(isValid){
-        var data = register.serialize();
-        $.post(base_url+"apiUser/Users/create", data,
-          function (data, textStatus, jqXHR) {
-            console.log(data);
-            if(data.message == 200){
-              window.location = base_url+"login";
-            }else if(data.message == 3001){
-             showMessage(data.message);
-            }
-          }
-        );
-      }      
-    });
+    // register.submit(function (e) { 
+    //   e.preventDefault();
+    //   var isValid = register.valid();
+    //   if(isValid){
+    //     var data = register.serialize();
+    //     $.post(base_url+"apiUser/Users/create", data,
+    //       function (data, textStatus, jqXHR) {
+    //         console.log(data);
+    //         if(data.message == 200){
+    //           window.location = base_url+"login";
+    //         }else if(data.message == 3001){
+    //          showMessage(data.message);
+    //         }
+    //       }
+    //     );
+    //   }      
+    // });
 
   }); 
     

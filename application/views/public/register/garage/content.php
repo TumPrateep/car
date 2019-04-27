@@ -21,9 +21,9 @@
 								<label class="form-label required" for="user_profile">คำนำหน้า</label>
 								<select class="form-control" name="titleName_user" id="titleName_user">
 									<option value="">คำนำหน้า</option>
-									<option value="1">นาย</option>
-									<option value="2">นาง</option>
-									<option value="3">นางสาว</option>
+									<option value="นาย">นาย</option>
+									<option value="นาง">นาง</option>
+									<option value="นางสาว">นางสาว</option>
 								</select>
 							</div>
 						</div>
@@ -44,13 +44,13 @@
 						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="mechanic">เลขรหัสบัตรประชาชน</label>
-								<input type="number" class="form-control" name="personalid" id="personalid"  placeholder="เลขรหัสบัตรประชาชน">
+								<input type="number" class="form-control" name="personalid" id="personalid" max="9999999999999" placeholder="เลขรหัสบัตรประชาชน">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="mechanic">ประสบการณ์</label>
-								<input type="number" class="form-control" name="exp" id="exp" placeholder="ประสบการณ์(ปี)">
+								<input type="number" class="form-control" name="exp" id="exp" max="50" placeholder="ประสบการณ์(ปี)">
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -118,7 +118,7 @@
 						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">รหัสไปรษณีย์</label>
-								<input type="number" class="form-control" name="postCode_user" id="postCode_user" placeholder="รหัสไปรษณีย์">
+								<input type="number" class="form-control" name="postCode_user" id="postCode_user" maxlength="5" placeholder="รหัสไปรษณีย์">
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -166,7 +166,7 @@
 		                <div class="col-md-6 ">
 							<div class="form-group">
 								<label class="form-label required" for="garage">ชื่ออู่ซ่อมรถ</label>
-								<input type="text" class="form-control" name="garagename" id="garagename" placeholder="ชื่ออู่ซ่อมรถ">
+								<input type="text" class="form-control" name="garagename" id="garagename" maxlength="30" placeholder="ชื่ออู่ซ่อมรถ">
 							</div>
 							<div class="form-group">
 								<label class="form-label required" for="garage">เบอร์โทรศัพท์</label>
@@ -278,25 +278,25 @@
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">บ้านเลขที่</label>
-								<input type="text" class="form-control" name="hno_garage" id="hno_garage" placeholder="บ้านเลขที่">
+								<input type="text" class="form-control" name="hno_garage" id="hno_garage" maxlength="20" placeholder="บ้านเลขที่">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="garage">ซอย</label>
-								<input type="text" class="form-control" name="alley_garage" id="alley_garage" placeholder="ซอย">
+								<input type="text" class="form-control" name="alley_garage" id="alley_garage" maxlength="20" placeholder="ซอย">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="garage">ถนน</label>
-								<input type="text" class="form-control" name="road_garage" id="road_garage" placeholder="ถนน">
+								<input type="text" class="form-control" name="road_garage" id="road_garage" maxlength="20" placeholder="ถนน">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="garage">หมู่ที่</label>
-								<input type="text" class="form-control" name="village_garage" id="village_garage" placeholder="หมู่ที่">
+								<input type="text" class="form-control" name="village_garage" id="village_garage" maxlength="20" placeholder="หมู่ที่">
 							</div>
 						</div>
 					</div>
@@ -419,7 +419,7 @@
 	                    <form id="login">
 						<div class="form-group">
 							<label class="form-label required" for="users">ชื่อผู้ใช้งาน</label>
-							<input type="text" class="form-control" name="username" id="username" placeholder="ชื่อผู้ใช้งาน">
+							<input type="text" class="form-control" name="username" id="username" maxlength="30" placeholder="ชื่อผู้ใช้งาน">
 						</div>
 						<div class="form-group">
 							<label class="form-label required" for="users">เบอร์โทรศัพท์</label>
@@ -427,15 +427,15 @@
 						</div>
 						<div class="form-group">
 							<label class="form-label required" for="users">อีเมล์</label>
-							<input type="email" class="form-control" name="email" id="email" placeholder="อีเมล์">
+							<input type="email" class="form-control" name="email" id="email" maxlength="30" placeholder="อีเมล์">
 						</div>
 						<div class="form-group">
 							<label class="form-label required" for="users">รหัสผ่าน</label>
-							<input type="password" class="form-control" name="password" id="password" placeholder="รหัสผ่าน">
+							<input type="password" class="form-control" name="password" id="password" maxlength="30" placeholder="รหัสผ่าน">
 						</div>
 						<div class="form-group">
 							<label class="form-label required" for="users">ยืนยันรหัสผ่าน</label>
-							<input type="password" class="form-control" name="checkpassword" id="checkpassword" placeholder="ยืนยันรหัสผ่าน">
+							<input type="password" class="form-control" name="checkpassword" id="checkpassword" maxlength="30" placeholder="ยืนยันรหัสผ่าน">
 						</div>
 						<!-- <button type="submit" class="btn btn-success btn-block">บันทึก</button> -->
 						</form>
