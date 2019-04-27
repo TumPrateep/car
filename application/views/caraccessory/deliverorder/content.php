@@ -139,7 +139,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="update-traking-number">
+                    <form id="submit">
                         <div class="row">
                             <div class="col-md-12">
                                 <input type="hidden" name="orderId" id="orderId">

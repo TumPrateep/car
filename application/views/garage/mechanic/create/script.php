@@ -81,17 +81,6 @@
         });
 
 
-
-        // form.submit(function (e) { 
-        //     e.preventDefault();
-        //     var isValid = form.valid();
-        //     if(isValid){
-        //         alert("pass");
-        //     }else{
-        //         alert("unpass");
-        //     }
-        // });
-
     form.submit(function(){
         createMechanic();
     })

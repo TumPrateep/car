@@ -168,74 +168,33 @@
         $("#tracking-order").modal("show");
     }
 
-    // function updatetrakingnumber(){
-    //     event.preventDefault();
-    //     var isValid = $("#update-traking-number").valid();
-
-    //     if(isValid){
-    //         var data = $("#update-traking-number").serialize();
-           
-    //         $.post(base_url+"apiCaraccessories/Deliverorder/updatetraking",data,
-    //         function(data){
-    //             if(data.message == 200){
-    //                 showMessage(data.message,"caraccessory/deliverorder");
-    //             }else{
-    //                 showMessage(data.message);
-    //             }
-    //         });
-    //     }
-    // }
-   
-
-    // function updateimagetracking(){
-    //     event.preventDefault();
-    //     var isValid = $("#submit").valid();
-        
-        
-    //     if(isValid){
-    //         var imageData = $('.image-editor').cropit('export');
-    //         $('.hidden-image-data').val(imageData);
-    //         var myform = document.getElementById("submit");
-    //         var formData = new FormData(myform);
-
-    //         $.ajax({
-    //         url: base_url+"apiCaraccessories/Deliverorder/updatetraking",
-    //         data: formData,
-    //         processData: false,
-    //         contentType: false,
-    //         type: 'POST',
-    //         success: function(data){
-    //             if(data.message == 200){
-    //                 showMessage(data.message,"caraccessory/deliverorder");
-    //             }else{
-    //                 showMessage(data.message);
-    //             }
-    //         }
-    //         });
-    //     }
-    // };
+    $("#submit").submit(function(){
+        createteimg();
+    })
 
 
-        $("#submit").submit(function(){
-            updateimagetracking();
-        })
-
-        function updateimagetracking(){
+        function createteimg(){
             event.preventDefault();
             var isValid = $("#submit").valid();
             
             if(isValid){
                 var imageData = $('.image-editor').cropit('export');
                 $('.hidden-image-data').val(imageData);
-                var data = $("#submit").serialize();
-                
-                $.post(base_url+"apiCaraccessories/Deliverorder/updateimgtraking",data,
-                function(data){
-                    
-                    if(data.message == 200){
-                        showMessage(data.message,"caraccessory/deliverorder");
-                    }else{
-                        showMessage(data.message);
+                var myform = document.getElementById("submit");
+                var formData = new FormData(myform);
+                $.ajax({
+                    url: base_url+"apiCaraccessories/Deliverorder/createteimgtraking",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    success: function (data) {
+                        if(data.message == 200){
+                            showMessage(data.message,"caraccessory/deliverorder");
+                        }else{
+                            showMessage(data.message);
+                        }
+                        console.log(data);
                     }
                 });
                 

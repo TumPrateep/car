@@ -1,6 +1,10 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
 class Deliverorders extends CI_Model {
+
+    function insert($data){
+        return $this->db->insert('numbertracking', $data);
+    }
  
     function getDeliverordersById($orderId){
         $this->db->select("order.orderId, car_accessories.car_accessoriesName, (car_accessories.phone) as phonecar, car_accessories.address, reserve.garageId, garage.garageName, (garage.phone) as phonegarage, garage.hno, garage.Alley, garage.road, garage.village, garage.postCode, garage.subdistrictId, garage.districtId, garage.provinceId
@@ -101,6 +105,14 @@ class Deliverorders extends CI_Model {
         $this->db->from("order");
         $this->db->where('orderId', $orderId);
         // $this->db->where_not_in('garageId', $garageId);
+        $result = $this->db->get();
+        return $result->row();
+    }
+
+    function data_check_create($orderId) {
+        // $this->db->select("personalid");
+        $this->db->from("numbertracking");
+        $this->db->where('orderId',$orderId);
         $result = $this->db->get();
         return $result->row();
     }
