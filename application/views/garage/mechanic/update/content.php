@@ -48,19 +48,19 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="phone">เบอร์โทรศัพท์</label><span class="error">*</span>
-                                            <input type="text" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" >
+                                            <input type="number" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" >
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="phone">เลขบัตรประชาชน</label><span class="error">*</span>
-                                            <input type="text" class="form-control" name="personalid" id="personalid" placeholder="เลขบัตรประชาชน" >
+                                            <input type="number" class="form-control" name="personalid" id="personalid" placeholder="เลขบัตรประชาชน" >
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="phone">ประสบการณ์(ปี)</label><span class="error">*</span>
-                                            <input type="text" class="form-control" name="exp" id="exp" placeholder=" ปี" >
+                                            <input type="number" class="form-control" name="exp" id="exp" placeholder=" ปี" >
                                         </div>
                                     </div>
                                 </div>
