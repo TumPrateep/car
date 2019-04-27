@@ -44,6 +44,7 @@
                 null,
                 null,
                 null,
+                null,
                 // null,
                 // null,
                 null
@@ -52,13 +53,26 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,2,3,4]
+                    "targets": [0,3,4,5]
                 },{
-                    "targets": 2,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var costDelivery = parseInt(data.costDelivery);
                         return currency(data.summary+costDelivery, {  precision: 0 }).format() + " บาท";
+                    }
+                },
+                {
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.depositflag == "0"){
+                            return "-";
+                        }else{
+                            var costDelivery = parseInt(data.costDelivery);
+                            return currency(data.deposit+costDelivery, {  precision: 0 }).format() + " บาท";
+                        }
+                        
                     }
                 }
                 // ,{
@@ -84,7 +98,7 @@
                         return jQuery.format.date(data.create_at, "dd/MM/yyyy HH:mm:ss");
                     }
                 },{
-                    "targets": 4,
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         html = "";
@@ -99,7 +113,7 @@
                     }
                 },
                 {
-                    "targets":3,
+                    "targets":4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var  orderstatus = "<span>";

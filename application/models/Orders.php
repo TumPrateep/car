@@ -102,6 +102,27 @@ class Orders extends CI_Model{
         return $charge;
     }
 
+    function callDeposit($garageId, $costDelivery, $caraccessoryId, $orderdetail){
+        $sum = 0;
+        foreach ($orderdetail as $val) {
+            $cost =  $this->getCost($val->productId, $val->group);
+            $productDetail = getDataForOrderDetail($val->productId, $val->group);
+            $tempCaraccessoryId = null;
+            if($caraccessoryId == null){
+                $tempCaraccessoryId = $this->getCarassoryId($productDetail, $val->group);
+            }else{
+                $tempCaraccessoryId = $caraccessoryId;
+            }
+
+            $costCaraccessories = getCostFromProductDetail($tempCaraccessoryId, $productDetail, $val->group);
+            $charge =  $this->getCharge($val->productId, $val->group);
+            $chargeGarage =  $this->getGarageCharge($val->productId, $val->group);
+            $quantity = $val->quantity;
+            $sum += calDeposit($cost,$charge,$chargeGarage,$costCaraccessories)*$quantity;
+        }
+        return $sum+$costDelivery;
+    }
+
     function insert($data){
         $this->db->trans_begin();
             $userId = $this->session->userdata['logged_in']['id'];
