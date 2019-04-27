@@ -20,18 +20,6 @@ $(document).ready(function () {
                     content = val.spares_undercarriageName; 
                     quantity = val.quantity;
                 }
-
-                // html += '<tr>';
-                //     html += '<td>';
-                //     html += '<img src="'+picture+'" />';
-                //     html += '</td>';
-                //     html += '<td>';
-                //     html += content;
-                //     html += '</td>';
-                //     html += '<td>';
-                //     html += quantity;
-                //     html += '</td>';
-                // html += '</tr>';
                 html += '<tr>'
                             +'<td><img src="'+picture+'" width="80"/></td>'
                             +'<td>'+content+'</td>'

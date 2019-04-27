@@ -127,44 +127,6 @@ class Deliverorder extends BD_Controller {
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
-    
-    function updateimgtraking_post(){
-        $orderId = $this->post('orderId');
-        $status = $this->post('status');
-        // $config['upload_path'] = 'public/image/deliverorder/';
-        $config['upload_path'] = 'public/image/deliverorder/';
-        $userId = $this->session->userdata['logged_in']['id'];
-        $img = $this->post('picture_tracking');
-        $img = str_replace('data:image/png;base64,', '', $img);
-	    $img = str_replace(' ', '+', $img);
-        $data = base64_decode($img);
-
-        $imageName = uniqid().'.png';
-        $file = $config['upload_path']. '/'. $imageName;
-        $success = file_put_contents($file, $data);
-		if (!$success){
-            $output["message"] = REST_Controller::MSG_ERROR;
-			$this->set_response($output, REST_Controller::HTTP_OK);
-		}else{
-            $image =  $imageName;
-            $data_check = $this->brand->data_check_create($brandName);
-            $data = array(
-                "orderId" => $orderId,
-                "picture_tracking"=> $imageName,
-                "status" => 4,
-                "update_at" => date('Y-m-d H:i:s',time())
-            );
-            $option = [
-                "data_check" => $data_check,
-                "data" => $data,
-                "model" => $this->deliverorders,
-                "image_path" => $file
-            ];
-    
-            $this->set_response(user_decision_update($option), REST_Controller::HTTP_OK);
-
-        }       
-    }
     function createteimgtraking_post(){
         $orderId = $this->post('orderId');
         $config['upload_path'] = 'public/image/deliverorder/';
@@ -191,7 +153,8 @@ class Deliverorder extends BD_Controller {
                 "create_by" => $userId,
                 "update_at" => null,
                 "update_by" => null,
-                "status" => null
+                "status" => null,
+                "orderId" => $orderId
 
             );
             $option = [
