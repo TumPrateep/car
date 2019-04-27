@@ -66,10 +66,13 @@ class PaymentApprove extends BD_Controller {
     function changeStatus_get(){
         $paymentId = $this->get("paymentId");
         $status = $this->get("status");
+        $orderId = $this->get("orderId");
+        $userId = $this->session->userdata['logged_in']['id'];
+
         $data = array(
             'paymentId' => $paymentId,
+            'orderId' => $orderId,
             'status' => $status
-          
         );
         $data_check_update = $this->paymentapproves->getPaymentApproveById($paymentId);
 

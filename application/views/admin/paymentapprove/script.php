@@ -109,7 +109,7 @@
                             disable = "disabled";
                         }
                         return '<button type="button" class="btn btn-success" '+disable+'  onclick="confirmStatus('+data.paymentId+')">ยืนยันการโอนเงิน</button> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.paymentId+')">ยกเลิกรายการสั่งซื้อ</button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.paymentId+','+data.orderId+')">ยกเลิกรายการสั่งซื้อ</button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}
@@ -130,7 +130,7 @@
 
     function cancelStatus(paymentId,orderId){
         var option = {
-            url: "/PaymentApprove/changeStatus?paymentId="+paymentId,
+            url: "/PaymentApprove/changeStatus?paymentId="+paymentId+"&orderId="+orderId,
             label: "ยกเลิกรายการชำระเงิน",
             status: 3,
             content: "คุณต้องการยกเลิกรายการชำระเงินนี้ ใช่หรือไม่",
