@@ -1,4 +1,9 @@
 <script>
+    function showSlip(image){
+        image = base_url+"public/image/payment/"+image;
+        $("#slipImage").attr("src", image);
+        $("#slipModal").modal('show');
+    }
     var table = $('#brand-table').DataTable({
         "language": {
                 "aria": {
@@ -98,7 +103,8 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<button type="button" class="btn btn-info"><i class="fa fa-file-image-o" aria-hidden="true"></i></button>';
+                        var disable = (data != null)?"":"disabled";
+                        return '<button type="button" class="btn btn-info" onclick="showSlip(\''+data+'\')" '+disable+'><i class="fa fa-file-image-o" aria-hidden="true"></i></button>';
                     }
                 },{
                     "targets": 6,

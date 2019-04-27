@@ -58,4 +58,14 @@
               </div>
             </div>
       	</div>		
-      </div>
+    </div>
+
+    <div id="slipModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="" id="slipImage" class="img-responsive" width="100%">
+                </div>
+            </div>
+        </div>
+    </div>
