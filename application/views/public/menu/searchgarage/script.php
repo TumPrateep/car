@@ -202,7 +202,7 @@ $(document).ready(function () {
                                                     + '<div>'+serviceall+'</div>'
                                                     + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
                                                     // + '<div>'+value.option1+''+value.option2+''+value.option3+''+value.option4+'</div>'
-                                                    + '<div>'+option+'</div>'
+                                                    // + '<div>'+option+'</div>'
                                                     + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
                                                     + '<div class="distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
                                                 + '</div>'
