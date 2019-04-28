@@ -123,9 +123,9 @@
 
     });
 
-    function confirmStatus(paymentId){
+    function confirmStatus(paymentId, orderId){
         var option = {
-            url: "/PaymentApprove/changeStatus?paymentId="+paymentId,
+            url: "/PaymentApprove/changeStatus?paymentId="+paymentId+"&orderId="+orderId,
             label: "ยืนยันรายการชำระเงิน",
             status: 2,
             content: "คุณต้องการยืนยันรายการชำระเงินนี้ ใช่หรือไม่",
