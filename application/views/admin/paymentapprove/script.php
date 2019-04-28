@@ -114,7 +114,7 @@
                         if(data.status == null){
                             disable = "disabled";
                         }
-                        return '<button type="button" class="btn btn-success" '+disable+'  onclick="confirmStatus('+data.paymentId+')">ยืนยันการโอนเงิน</button> '
+                        return '<button type="button" class="btn btn-success" '+disable+'  onclick="confirmStatus('+data.paymentId+','+data.orderId+')">ยืนยันการโอนเงิน</button> '
                             +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.paymentId+','+data.orderId+')">ยกเลิกรายการสั่งซื้อ</button>';
                     }
                 },
