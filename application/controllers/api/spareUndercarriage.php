@@ -66,14 +66,14 @@ class SpareUndercarriage extends BD_Controller {
     function createspareUndercarriage_post(){
 
         $spares_undercarriageName = $this->post("spares_undercarriageName");
-        $modelId = $this->post("detail");
+        // $modelId = $this->post("detail");
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check = $this->sparesundercarriages->data_check_create($spares_undercarriageName,$modelId);
+        $data_check = $this->sparesundercarriages->data_check_create($spares_undercarriageName);
 
         $data = array(
             'spares_undercarriageId' => null,
             'spares_undercarriageName' => $spares_undercarriageName,
-            "modelId"=> $modelId,
+            // "modelId"=> $modelId,
             'status' => 1,
             'activeFlag' => 1,
             'create_at' => date('Y-m-d H:i:s',time()),
@@ -114,7 +114,7 @@ class SpareUndercarriage extends BD_Controller {
 
         $spares_undercarriageId = $this->post('spares_undercarriageId');
         $spares_undercarriageName = $this->post('spares_undercarriageName');
-        $modelId = $this->post('modelId');
+        // $modelId = $this->post('modelId');
         $userId = $this->session->userdata['logged_in']['id'];
 
         $data_check_update = $this->sparesundercarriages->getUpdate($spares_undercarriageId);
@@ -123,7 +123,7 @@ class SpareUndercarriage extends BD_Controller {
         $data = array(
             'spares_undercarriageId' => $spares_undercarriageId,
             'spares_undercarriageName' => $spares_undercarriageName,
-            'modelId'  => $modelId,
+            // 'modelId'  => $modelId,
             'status' => 1,
             'update_at' => date('Y-m-d H:i:s',time()),
             'update_by' => $userId
