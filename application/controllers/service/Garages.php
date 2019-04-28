@@ -72,6 +72,7 @@ class Garages extends BD_Controller {
                 $nestedData[$count]['dayopenhour'] = $post->dayopenhour;
                 $nestedData[$count]['opentime'] = $post->openingtime." - ".$post->closingtime;
                 $nestedData[$count]['picture'] = $post->picture;
+                $nestedData[$count]['garageService'] = $post->garageService;
                 $nestedData[$count]['option1'] = $post->option1;
                 $nestedData[$count]['option2'] = $post->option2;
                 $nestedData[$count]['option3'] = $post->option3;

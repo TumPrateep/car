@@ -158,25 +158,38 @@ $(document).ready(function () {
                 {
                     "targets": 0,
                     "data": null,
-                    "render": function ( data, type, full, meta, value ) {
+                    "render": function ( data, type, full, meta ) {
                         var html = '<div class="row">';
                         var imagePath = base_url+"/public/image/garage/";
 
-                        var  orderstatus = '111';
-                        
-                            // if(value.option1 ==1){
-                            //     orderstatus +='88';
-                            // }else if(data.option1 == null){
-                            //     orderstatus +='99';
-                            // }
-
-                            // orderstatus += '</span>';
-                        console.log(data.option1);
-                           
-                        
-
                         $.each(data, function( index, value ) {
-                        html += '<div class="col-md-4">'
+                            
+                            var serviceall = '';
+                            var servicetype = ['อะไหล่','ยาง','น้ำมันเครื่อง'];
+                            var servicegarage = value.garageService ;
+
+                            for(var i=0;i<servicegarage.length;i++){
+                                if(servicegarage.charAt(i) == "1"){
+                                    serviceall += " •"+servicetype[i] ;
+                                }
+                            }
+
+                            var option = '';
+                        
+                                if(value.option1 ==1){
+                                    option +='<button class="btn btn-orange btn-sm"><i class="fas fa-wifi"></i></button>';
+                                }else if(value.option == null){option +='';}
+                                if(value.option2 ==2){
+                                    option +='<button class="btn btn-orange btn-sm"><i class="fab fa-yelp"></i></button>';
+                                }else if(value.option2 == null){option +='';}
+                                if(value.option3 ==3){
+                                    option +='<button class="btn btn-orange btn-sm"><i class="far fa-snowflake"></i></button>';
+                                }else if(value.option3 == null){option +='';}
+                                if(value.option4 ==4){
+                                    option +='<button class="btn btn-orange btn-sm"><i class="fas fa-toilet"></i></button>';
+                                }else if(value.option4 == null){option +='';}
+
+                            html += '<div class="col-md-4">'
                                 + '<div class="slick-active" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel">'
                                     + '<div>'
                                         + '<div class="" style="width: 100%; display: inline-block;">'
@@ -186,17 +199,11 @@ $(document).ready(function () {
                                             + '<div class="product_content">'
                                                 + '<div onclick="">'
                                                     + '<div class="garage-name">'+value.garageName+'</div>'
-                                                    + '<div>ซ่อมๆๆ</div>'
+                                                    + '<div>'+serviceall+'</div>'
                                                     + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
-                                                    + '<div>'+value.option1+''+value.option2+''+value.option3+''+value.option4+'</div>'
-
-                                                    // if(value.option1 == 1){
-                                                    //     + ' 1111'
-                                                    // }else if(value.option1 == null){
-                                                    //     + '3333'
-                                                    // }
-
-                                                    + '<div> 222'+orderstatus+'</div>'
+                                                    // + '<div>'+value.option1+''+value.option2+''+value.option3+''+value.option4+'</div>'
+                                                    + '<div>'+option+'</div>'
+                                                    + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
                                                     + '<div class="distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
                                                 + '</div>'
                                                 + '<div class="product_extras"><button class="product_cart_button" tabindex="0" onclick=""><i class="fas fa-shopping-bag"></i> รายละเอียด</button></div>'
