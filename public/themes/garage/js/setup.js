@@ -105,3 +105,14 @@ function changeStringToDay(str){
     }
     return html.substring(0, html.length - 2);
 }
+function changeStringjop(str){
+    var html = "";
+    var job = ["ช่างเครื่อง","ช่างช่วงล่าง","ช่างยางรถยนต์"];
+
+    for(var i=0;i<str.length;i++){   // 1111011
+        if(str.charAt(i) == "1"){
+            html += job[i]+", ";
+        }
+    }
+    return html.substring(0, html.length);
+}
