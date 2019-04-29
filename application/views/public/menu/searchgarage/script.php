@@ -19,6 +19,10 @@ $(document).ready(function () {
         getAllBrand();
     }
 
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+
     function getLocation() {
         $("#sort option[value='3']").remove();
         if (navigator.geolocation) {
@@ -177,16 +181,16 @@ $(document).ready(function () {
                             var option = '';
                         
                                 if(value.option1 ==1){
-                                    option +='<button class="btn btn-dark btn-sm"><i class="fas fa-wifi"></i></button>';
+                                    option +='<span class="border-option btn-sm" data-toggle="tooltip" data-placement="top" title="มี Wifi"><i class="fas fa-wifi"></i></span>';
                                 }else if(value.option == null){option +='';}
                                 if(value.option2 ==2){
-                                    option +='<button class="btn btn-dark btn-sm"><i class="fab fa-yelp"></i></button>';
+                                    option +='<span class="border-option btn-sm"><i class="fab fa-yelp"></i></span>';
                                 }else if(value.option2 == null){option +='';}
                                 if(value.option3 ==3){
-                                    option +='<button class="btn btn-dark btn-sm"><i class="far fa-snowflake"></i></button>';
+                                    option +='<span class="border-option btn-sm"><i class="far fa-snowflake"></i></span>';
                                 }else if(value.option3 == null){option +='';}
                                 if(value.option4 ==4){
-                                    option +='<button class="btn btn-dark btn-sm"><i class="fas fa-toilet"></i></button>';
+                                    option +='<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fas fa-toilet-paper"></i></button>';
                                 }else if(value.option4 == null){option +='';}
 
                             html += '<div class="col-md-4">'
@@ -202,7 +206,7 @@ $(document).ready(function () {
                                                     + '<div>'+serviceall+'</div>'
                                                     + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
                                                     
-                                                    // + '<div>'+option+'</div>'
+                                                    + '<div>'+option+'</div>'
                                                     // + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
 
                                                     + '<div class="distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
