@@ -34,6 +34,7 @@ class PaymentApprove extends BD_Controller {
         }
         else {
             $search = $this->post('orderId');
+            $status = null;
             $posts =  $this->paymentapproves->PaymentApprove_search($limit,$start,$search,$order,$dir,$status);
             $totalFiltered = $this->paymentapproves->PaymentApprove_search($search,$status);
         }
