@@ -2,16 +2,18 @@
 
 class Sparechanges extends CI_Model{
 
-    function data_check_create($spares_undercarriageId){
+    function data_check_create($spares_undercarriageId, $brandId){
         $this->db->from("spares_change");
         $this->db->where('spares_undercarriageId',$spares_undercarriageId);
+        $this->db->where('brandId',$brandId);
         $result = $this->db->get();
         return $result->row();
     }
 
-    function data_check_update($spares_changeId,$spares_undercarriageId){
+    function data_check_update($spares_changeId,$spares_undercarriageId, $brandId){
         $this->db->from("spares_change");
         $this->db->where('spares_undercarriageId',$spares_undercarriageId);
+        $this->db->where('brandId',$brandId);
         $this->db->where_not_in('spares_changeId',$spares_changeId);
         $result = $this->db->get();
         return $result->row();
