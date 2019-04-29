@@ -63,7 +63,7 @@
                         return  data +' นิ้ว';
                     }
                 },{
-                    "targets": 3,
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+'admin/Tires/updatetirechange/'+data.tire_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -71,7 +71,7 @@
                     }
                 },
                 {
-                    "targets": 4,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
