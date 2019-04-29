@@ -4,10 +4,11 @@ class Spareschangegarages extends CI_Model{
     function insert($data){
         return $this->db->insert('spares_change_garage',$data);
     }
-    function data_check_create($garageId,$spares_undercarriageId){
+    function data_check_create($garageId,$spares_undercarriageId,$brandId){
         $this->db->from("spares_change_garage");
         $this->db->where("garageId",$garageId);
         $this->db->where("spares_undercarriageId",$spares_undercarriageId);
+        $this->db->where("brandId",$brandId);
         $result = $this->db->get();
         return $result->row();
     }
