@@ -165,28 +165,28 @@ $(document).ready(function () {
                         $.each(data, function( index, value ) {
                             
                             var serviceall = '';
-                            var servicetype = ['อะไหล่','ยาง','น้ำมันเครื่อง'];
+                            var servicetype = ['<div><span class="text-service">•</span> ซ่อมช่วงล่าง',' <span class="text-service">•</span> เปลี่ยนยางรถ</div>','<div><span class="text-service">•</span> เปลี่ยนถ่ายน้ำมันเครื่อง</div>'];
                             var servicegarage = value.garageService ;
 
                             for(var i=0;i<servicegarage.length;i++){
                                 if(servicegarage.charAt(i) == "1"){
-                                    serviceall += " •"+servicetype[i] ;
+                                    serviceall += servicetype[i] ;
                                 }
                             }
 
                             var option = '';
                         
                                 if(value.option1 ==1){
-                                    option +='<button class="btn btn-orange btn-sm"><i class="fas fa-wifi"></i></button>';
+                                    option +='<button class="btn btn-dark btn-sm"><i class="fas fa-wifi"></i></button>';
                                 }else if(value.option == null){option +='';}
                                 if(value.option2 ==2){
-                                    option +='<button class="btn btn-orange btn-sm"><i class="fab fa-yelp"></i></button>';
+                                    option +='<button class="btn btn-dark btn-sm"><i class="fab fa-yelp"></i></button>';
                                 }else if(value.option2 == null){option +='';}
                                 if(value.option3 ==3){
-                                    option +='<button class="btn btn-orange btn-sm"><i class="far fa-snowflake"></i></button>';
+                                    option +='<button class="btn btn-dark btn-sm"><i class="far fa-snowflake"></i></button>';
                                 }else if(value.option3 == null){option +='';}
                                 if(value.option4 ==4){
-                                    option +='<button class="btn btn-orange btn-sm"><i class="fas fa-toilet"></i></button>';
+                                    option +='<button class="btn btn-dark btn-sm"><i class="fas fa-toilet"></i></button>';
                                 }else if(value.option4 == null){option +='';}
 
                             html += '<div class="col-md-4">'
@@ -201,8 +201,8 @@ $(document).ready(function () {
                                                     + '<div class="garage-name">'+value.garageName+'</div>'
                                                     + '<div>'+serviceall+'</div>'
                                                     + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
-                                                    // + '<div>'+value.option1+''+value.option2+''+value.option3+''+value.option4+'</div>'
-                                                    // + '<div>'+option+'</div>'
+                                                    
+                                                    + '<div>'+option+'</div>'
                                                     + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
                                                     + '<div class="distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
                                                 + '</div>'
