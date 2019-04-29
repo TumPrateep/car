@@ -1,4 +1,12 @@
 <script>
+    function getLocation() {
+        navigator.geolocation.getCurrentPosition(function(location) {
+          console.log(location.coords.accuracy);
+          document.getElementById("latitude").value = (location.coords.latitude);
+          document.getElementById("longtitude").value = (location.coords.longitude);
+        });
+    };
+
     $(document).ready(function () {
         
         var form = $("#update-member-form"); 
