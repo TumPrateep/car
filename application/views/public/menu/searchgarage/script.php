@@ -203,10 +203,12 @@ $(document).ready(function () {
                                                     + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
                                                     
                                                     + '<div>'+option+'</div>'
-                                                    + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
+                                                    // + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
+
                                                     + '<div class="distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
+                                                    + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
                                                 + '</div>'
-                                                + '<div class="product_extras"><button class="product_cart_button" tabindex="0" onclick=""><i class="fas fa-shopping-bag"></i> รายละเอียด</button></div>'
+                                                // + '<div class="product_extras"><button class="product_cart_button" tabindex="0" onclick=""><i class="fas fa-shopping-bag"></i> รายละเอียด</button></div>'
                                             + '</div>'
                                             + '</div>'
                                         + '</div>'

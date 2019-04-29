@@ -24,7 +24,7 @@ $(document).ready(function () {
                             +'<td><img src="'+picture+'" width="80"/></td>'
                             +'<td>'+content+'</td>'
                             +'<td>'+quantity+'</td>'
-                            +'<td>'+currency((val.cost), {  precision: 0 }).format()+' บาท</td>'
+                            // +'<td>'+currency((val.cost), {  precision: 0 }).format()+' บาท</td>'
                             +'</tr>';
             });
             table.html(html);
@@ -36,3 +36,6 @@ $(document).ready(function () {
 
 </body>
 </html>
+
+
+
