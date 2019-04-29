@@ -101,17 +101,7 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        var html = "";
-                        var productData = data.data;
-                        var group = data.group;
-                        if(group == "tire"){
-                            html += productData.price;
-                        }else if(group == "lubricator"){
-                            html += productData.price;
-                        }else{
-                            html += productData.price;
-                        }
-                        return html;
+                        return data.costCaraccessories;
                     }
                 }
                 // ,{

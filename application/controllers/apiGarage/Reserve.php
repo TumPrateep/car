@@ -63,10 +63,11 @@ class Reserve extends BD_Controller {
     function changeStatus_get(){
         $reserveId = $this->get("reserveId");
         $status = $this->get("status");
+        $orderId = $this->get("orderId");
         $data = array(
             'reserveId' => $reserveId,
-            'status' => $status
-          
+            'status' => $status,
+            'orderId' => $orderId
         );
         $data_check_update = $this->reserves->getReserveById($reserveId);
 

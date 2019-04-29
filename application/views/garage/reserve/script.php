@@ -93,7 +93,7 @@
                     "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<button type="button" class="btn btn-success"  title="รับนัด" onclick="confirmStatus('+data.reserveId+')">รับนัดซ่อม</button>'
+                        return '<button type="button" class="btn btn-success"  title="รับนัด" onclick="confirmStatus('+data.reserveId+','+data.orderId+')">รับนัดซ่อม</button>'
                             +" "+'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.reserveId+')">ยกเลิกนัด</button>';
                     }
                 },
@@ -101,9 +101,9 @@
             ]	 
     });
 
-    function confirmStatus(reserveId){
+    function confirmStatus(reserveId, orderId){
         var option = {
-            url: "/Reserve/changeStatus?reserveId="+reserveId,
+            url: "/Reserve/changeStatus?reserveId="+reserveId+"&orderId="+orderId,
             label: "ยืนยันการทำรายการการจอง",
             status: 2,
             content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",

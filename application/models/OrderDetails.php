@@ -37,7 +37,7 @@ class Orderdetails extends CI_Model{
     }
 
 
-    function allorders_count()
+    function allorders_count($garageId)
     {   
         
         $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName,spares_change_garage.spares_price,tire_change_garage.tire_price,lubricator_change_garage.lubricator_price");
@@ -57,14 +57,18 @@ class Orderdetails extends CI_Model{
         $this->db->join('tire_change_garage','garage.garageId = tire_change_garage.garageId');
         $this->db->join('lubricator_change_garage','garage.garageId = lubricator_change_garage.garageId');
 
+        $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
+
         $this->db->where('order.status', 4);
+        $this->db->where('orderdetail.status', 2);
+        // $this->db->where('numbertracking.garageId', $garageId);
 
         $query = $this->db->get();
         return $query->num_rows();  
      
     }
 
-    function allorders($limit,$start,$order,$dir)//$limit,$start,$col,$dir,$order
+    function allorders($limit,$start,$order,$dir,$garageId)//$limit,$start,$col,$dir,$order
     {   
         $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName,spares_change_garage.spares_price,tire_change_garage.tire_price,lubricator_change_garage.lubricator_price");
         $this->db->from('order');
@@ -83,7 +87,11 @@ class Orderdetails extends CI_Model{
         $this->db->join('tire_change_garage','garage.garageId = tire_change_garage.garageId');
         $this->db->join('lubricator_change_garage','garage.garageId = lubricator_change_garage.garageId');
 
+        $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
+
         $this->db->where('order.status', 4);
+        $this->db->where('orderdetail.status', 2);
+        // $this->db->where('numbertracking.garageId', $garageId);
         $this->db->limit($limit,$start)->order_by($order,$dir);
 
         $query = $this->db->get();

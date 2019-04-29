@@ -18,8 +18,8 @@ class Paymentapproves extends CI_Model{
     function allPaymentApprove($limit,$start,$col,$dir){
         $this->db->select(' order.orderId, order.userId, payment.money,payment.slip	,concat(user_profile.firstname ," ",user_profile.lastname) as name,payment.status,payment.paymentId');
         $this->db->from('order');
-        $this->db->join('payment', 'order.orderId = payment.orderId', 'left');
-        $this->db->join('user_profile', 'order.userId = user_profile.userId');
+        $this->db->join('payment', 'order.orderId = payment.orderId');
+        $this->db->join('user_profile', 'order.userId = user_profile.userId', 'left');
         // $this->db->where('reserve.garageId',$garageId);
 
 
@@ -45,12 +45,12 @@ class Paymentapproves extends CI_Model{
         
         $this->db->select(' order.orderId, order.userId, payment.money,payment.slip	,concat(user_profile.firstname ," ",user_profile.lastname) as name,payment.status,payment.paymentId');
         $this->db->from('order');
-        $this->db->join('payment', 'order.orderId = payment.orderId', 'left');
-        $this->db->join('user_profile', 'order.userId = user_profile.userId');
+        $this->db->join('payment', 'order.orderId = payment.orderId');
+        $this->db->join('user_profile', 'order.userId = user_profile.userId', 'left');
         // $this->db->where('reserve.garageId',$garageId);
      
 
-        $this->db->like('rim.rimName',$search);
+        // $this->db->like('rim.rimName',$search);
         // if($status != null){
         //     $this->db->where("tire_change_garage.status", $status);
         // }
@@ -73,12 +73,12 @@ class Paymentapproves extends CI_Model{
         $this->db->select(' order.orderId, order.userId, payment.money,payment.slip	,concat(user_profile.firstname ," ",user_profile.lastname) as name,payment.status,payment.paymentId');
         $this->db->from('order');
         $this->db->join('payment', 'order.orderId = payment.orderId');
-        $this->db->join('user_profile', 'order.userId = user_profile.userId');
+        $this->db->join('user_profile', 'order.userId = user_profile.userId', 'left');
         // $this->db->where('reserve.garageId',$garageId);
 
-        if($search != null){
-            $this->db->where("payment.paymentId",$search);
-        }
+        // if($search != null){
+        //     $this->db->where("payment.paymentId",$search);
+        // }
         // if($status != null){
         //     $this->db->where("order.status", $status);
         // }
@@ -91,9 +91,9 @@ class Paymentapproves extends CI_Model{
             $this->db->where('paymentId',$data['paymentId']);
             $this->db->update('payment',$data);
 
-            if($data['status'] == 3){
+            if($data['status'] == "2"){
                 $orderData = [
-                    "status" => 4
+                    "status" => 3
                 ];
                 $this->db->where('orderId',$data['orderId']);
                 $this->db->update('order',$orderData);

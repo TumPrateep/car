@@ -22,22 +22,22 @@ class Orderdetail extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-       
-        $totalData = $this->orderdetails->allorders_count();
+        $garageId = $this->session->userdata['logged_in']['garageId'];
+        $totalData = $this->orderdetails->allorders_count($garageId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('orderId')))
-        {            
-            $posts = $this->orderdetails->allorders($limit,$start,$order,$dir);
-        }else{
+        // if(empty($this->post('orderId')))
+        // {            
+        $posts = $this->orderdetails->allorders($limit,$start,$order,$dir,$garageId);
+        // }else{
 
-            $status = $this->post('status');
-            $productId = $this->post('productId');
+        //     $status = $this->post('status');
+        //     $productId = $this->post('productId');
             
-            $status = null; 
-            $posts =  $this->orderdetails->orders_search($limit,$start,$order,$dir,$status,$orderId);
-            $totalFiltered = $this->orderdetails->orders_search_count($orderId);
+        //     $status = null; 
+        //     $posts =  $this->orderdetails->orders_search($limit,$start,$order,$dir,$status,$orderId);
+        //     $totalFiltered = $this->orderdetails->orders_search_count($orderId);
                 
-        }
+        // }
 
             
         $data = array();

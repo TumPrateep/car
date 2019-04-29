@@ -72,19 +72,6 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label><span class="error">*</span>
-                                        <div class="input-group input-group-default">
-                                            <select class="form-control" id="can_change" name="can_change">
-                                                <option value="1">เปลี่ยนทันที</option>
-                                                <option value="2">สั่งจอง</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row p-t-20">
-                                <div class="col-md-3">
-                                    <div class="form-group">
                                         <label class="control-label">การรับประกัน-ปี</label>
                                         <div class="input-group input-group-default">
                                             <select class="form-control" id="warranty_year" name="warranty_year">
@@ -118,7 +105,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>               
+                            </div>          
                         </div>
                         
                         <div class="row p-t-20">
@@ -128,9 +115,8 @@
                                 <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                 </a>
                             </div>
-                        </div>
-                                
-                        </div>
+                        </div>      
+                    </div>
                 </div>
             </div>
         </div>

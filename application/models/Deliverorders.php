@@ -3,7 +3,20 @@
 class Deliverorders extends CI_Model {
 
     function insert($data){
-        return $this->db->insert('numbertracking', $data);
+        $this->db->trans_begin();
+            $this->db->insert('numbertracking', $data);
+
+            $this->db->where('orderId',$data['orderId']);
+            $this->db->where('car_accessoriesId',$data['create_by']);
+            $this->db->update('orderdetail',["status"=>2]);
+        
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
     }
  
     function getDeliverordersById($orderId){
@@ -18,27 +31,32 @@ class Deliverorders extends CI_Model {
         
     }
     
-    function allDeliverorders_count()
+    function allDeliverorders_count($userId)
     {   
         $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId, garage.garageName");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
         $this->db->join('garage','garage.garageId = reserve.garageId');
-        $this->db->where('order.status', 3);
+        $this->db->where('order.status', 4);
+        $this->db->where('orderdetail.status', 1);
+        $this->db->where('orderdetail.car_accessoriesId', $userId);
         $query = $this->db->get();
+    
         return $query->num_rows();  
         
     }
 
-    function allDeliverorders($limit,$start,$order,$dir)//$limit,$start,$col,$dir,$order
+    function allDeliverorders($limit,$start,$order,$dir,$userId)//$limit,$start,$col,$dir,$order
     {   
-        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName");
+        $this->db->select("order.orderId, orderdetail.quantity, orderdetail.costCaraccessories, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
         $this->db->join('garage','garage.garageId = reserve.garageId');
-        $this->db->where('order.status', 3);
+        $this->db->where('order.status', 4);
+        $this->db->where('orderdetail.status', 1);
+        $this->db->where('orderdetail.car_accessoriesId', $userId);
         $this->db->limit($limit,$start)->order_by($order,$dir);
         $query = $this->db->get();
 
@@ -53,38 +71,38 @@ class Deliverorders extends CI_Model {
         
     }
 
-    function Deliverorders_search($limit,$start,$col,$dir)
-    {
-        $this->db->where('status', 2);
-        $this->db->like('firstName',$firstname);
-        if($brandId != null){
-            $this->db->where("brandId", $brandId);
-        }
-        $query = $this->db->limit($limit,$start)
-                ->order_by($col,$dir)
-                ->get('order');
+    // function Deliverorders_search($limit,$start,$col,$dir)
+    // {
+    //     $this->db->where('status', 2);
+    //     $this->db->like('firstName',$firstname);
+    //     if($brandId != null){
+    //         $this->db->where("brandId", $brandId);
+    //     }
+    //     $query = $this->db->limit($limit,$start)
+    //             ->order_by($col,$dir)
+    //             ->get('order');
         
-        if($query->num_rows()>0)
-        {
-            return $query->result();  
-        }
-        else
-        {
-            return null;
-        }
+    //     if($query->num_rows()>0)
+    //     {
+    //         return $query->result();  
+    //     }
+    //     else
+    //     {
+    //         return null;
+    //     }
         
-    }
+    // }
 
-    function Deliverorders_search_count($orderId){
-        // $this->db->where('status', 2);
-        // $this->db->where("garageId", $garageId);
-        // $this->db->like('firstName',$firstname);
-        if($orderId != null){
-            $this->db->where("$orderId", $$orderId);
-        }
-        $query = $this->db->get('order');
-        return $query->num_rows();
-    }
+    // function Deliverorders_search_count($orderId){
+    //     // $this->db->where('status', 2);
+    //     // $this->db->where("garageId", $garageId);
+    //     // $this->db->like('firstName',$firstname);
+    //     if($orderId != null){
+    //         $this->db->where("$orderId", $$orderId);
+    //     }
+    //     $query = $this->db->get('order');
+    //     return $query->num_rows();
+    // }
 
     function update($data){
         $this->db->where('orderId',$data['orderId']);

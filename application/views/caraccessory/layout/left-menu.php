@@ -6,7 +6,7 @@
                 <nav class="sidebar-nav bg-sidebar">
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
-                        <li class="nav-label">ข้อมูลทั่วไป</li>
+                        <!-- <li class="nav-label">ข้อมูลทั่วไป</li> -->
                         <!-- <li><a class="garage-white" href="<?=base_url("caraccessory/car"); ?>"><i class="fa fa-tachometer garage-white"></i>
                         <span class="hide-menu">การจัดการยี่ห้อ/รุ่นรถ</span></a></li> -->
                         <!-- <li> <a class="has-arrow garage-white" href="#" aria-expanded="false"><i class="fa fa-tachometer garage-white"></i><span class="hide-menu">ข้อมูลอะไหล่ </span></a> -->

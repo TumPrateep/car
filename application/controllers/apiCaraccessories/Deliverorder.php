@@ -24,25 +24,27 @@ class Deliverorder extends BD_Controller {
             $sort = "asc";
         }
 
+        $userId = $this->session->userdata['logged_in']['id'];
+
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
-        $totalData = $this->deliverorders->allDeliverorders_count();
+        $totalData = $this->deliverorders->allDeliverorders_count($userId);
         $totalFiltered = $totalData; 
-        if(empty($this->post('orderId')))
-        {            
-            $posts = $this->deliverorders->allDeliverorders($limit,$start,$order,$dir);
-        }else{
+        // if(empty($this->post('orderId')))
+        // {            
+        $posts = $this->deliverorders->allDeliverorders($limit,$start,$order,$dir,$userId);
+        // }else{
 
-            $status = $this->post('status');
-            $productId = $this->post('productId');
+        //     // $status = $this->post('status');
+        //     $orderId = $this->post('orderId');
             
-            $status = null; 
-            $posts =  $this->deliverorders->Deliverorders_search($limit,$start,$order,$dir,$status,$orderId);
-            $totalFiltered = $this->deliverorders->Deliverorders_search_count($orderId);
+        //     $status = null; 
+        //     $posts =  $this->deliverorders->Deliverorders_search($limit,$start,$order,$dir,$status,$orderId);
+        //     $totalFiltered = $this->deliverorders->Deliverorders_search_count($orderId);
                 
-        }
+        // }
             
         $data = array();
         if(!empty($posts))
@@ -57,6 +59,7 @@ class Deliverorder extends BD_Controller {
                 $nestedData['group'] = $post->group;
                 $nestedData['productId'] = $post->productId;
                 $nestedData['garageName'] = $post->garageName;
+                $nestedData['costCaraccessories'] = $post->costCaraccessories;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;

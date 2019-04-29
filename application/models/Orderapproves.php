@@ -14,7 +14,7 @@ class Orderapproves extends CI_Model{
     function allOrderApproves($limit,$start,$col,$dir){
         $this->db->select('user_profile.userId,order.orderId, concat(user_profile.firstname," ",user_profile.lastname) as name, reserve.status as reserveStatus, payment.status as paymentStatus, order.status');
         $this->db->from('order');
-        $this->db->join('user_profile', 'order.userId = user_profile.userId');
+        $this->db->join('user_profile', 'order.userId = user_profile.userId', 'left');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('payment', 'order.orderId = payment.orderId');
         // $this->db->where('reserve.garageId',$garageId);
@@ -41,7 +41,7 @@ class Orderapproves extends CI_Model{
         
         $this->db->select('user_profile.userId');
         $this->db->from('order');
-        $this->db->join('user_profile', 'order.userId = user_profile.userId');
+        $this->db->join('user_profile', 'order.userId = user_profile.userId', 'left');
         // $this->db->where('reserve.garageId',$garageId);
 
        
@@ -65,7 +65,7 @@ class Orderapproves extends CI_Model{
     function OrderApproves_search_count($search,$status){
         $this->db->select('user_profile.userId');
         $this->db->from('order');
-        $this->db->join('user_profile', 'order.userId = user_profile.userId');
+        $this->db->join('user_profile', 'order.userId = user_profile.userId', 'left');
         // $this->db->where('reserve.garageId',$garageId);
 
         if($search != null){
