@@ -69,7 +69,7 @@
                             <div class="form-group">
                             <label class="control-label">รูปอะไหล่ชาวงล่าง</label>
                                 <div class="image-editor">
-                                    <input type="file" class="cropit-image-input" name="tempImage" required>
+                                    <input type="file" class="cropit-image-input" name="tempImage">
                                     <div class="cropit-preview"></div>
                                     <div class="image-size-label">ปรับขนาด</div>
                                     <input type="range" class="cropit-image-zoom-input">
