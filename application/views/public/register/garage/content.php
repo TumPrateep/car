@@ -27,16 +27,22 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-5">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">ชื่อ</label>
 								<input type="text" class="form-control" name="firstname_user" id="firstname_user" maxlength="35" placeholder="ชื่อ">
 							</div>
 						</div>
-						<div class="col-md-5">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">นามสกุล</label>
 								<input type="text" class="form-control" name="lastname_user" id="lastname_user" maxlength="35" placeholder="นามสกุล">
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label class="form-label required" for="mechanic">ประสบการณ์</label>
+								<input type="number" class="form-control" name="exp" id="exp" max="50" placeholder="ประสบการณ์">
 							</div>
 						</div>
 					</div>
@@ -44,23 +50,22 @@
 						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="mechanic">เลขรหัสบัตรประชาชน</label>
-								<input type="number" class="form-control" name="personalid" id="personalid" max="9999999999999" placeholder="เลขรหัสบัตรประชาชน">
+								<input type="number" class="form-control" name="personalid" id="personalid" maxlength="13"  placeholder="เลขรหัสบัตรประชาชน">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label class="form-label required" for="mechanic">ประสบการณ์</label>
-								<input type="number" class="form-control" name="exp" id="exp" max="50" placeholder="ประสบการณ์(ปี)">
+								<label class="form-label required" for="user_profile">เบอร์โทรศัพท์ที่สามารถติดต่อได้</label>
+								<input type="number" class="form-control" name="phone1" id="phone1" minlength="9" placeholder="เบอร์โทรศัพท์">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label class="form-label required" for="mechanic">ความเชี่ยวชาญรถ</label>
-								<select class="form-control" name="brandCar" id="brandCar">
-									<!-- <option>ความเชี่ยวชาญรถ</option> -->
-								</select>
+								<label for="user_profile">เบอร์โทรศัพท์</label>
+								<input type="number" class="form-control" name="phone2" id="phone2" placeholder="เบอร์โทรศัพท์">
 							</div>
 						</div>
+						
 					</div>
 					<div class="row">
 						<div class="col-md-3">
@@ -89,7 +94,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">จังหวัด</label>
 								<select class="form-control" name="provinceId_user" id="provinceId_user">
@@ -97,7 +102,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">อำเภอ</label>
 								<select class="form-control" name="districtId_user" id="districtId_user">
@@ -105,7 +110,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">ตำบล</label>
 								<select class="form-control" name="subdistrictId_user" id="subdistrictId_user">
@@ -113,24 +118,10 @@
 								</select>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="user_profile">รหัสไปรษณีย์</label>
 								<input type="number" class="form-control" name="postCode_user" id="postCode_user" maxlength="5" placeholder="รหัสไปรษณีย์">
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label class="form-label required" for="user_profile">เบอร์โทรศัพท์ที่สามารถติดต่อได้</label>
-								<input type="number" class="form-control" name="phone1" id="phone1" placeholder="เบอร์โทรศัพท์">
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="user_profile">เบอร์โทรศัพท์</label>
-								<input type="number" class="form-control" name="phone2" id="phone2" placeholder="เบอร์โทรศัพท์">
 							</div>
 						</div>
 					</div>
@@ -147,7 +138,7 @@
                         <span class="step-number">Step 2 / 3</span>
                     </legend>
                     <div class="row">
-						<div class="col-md-6">
+						<div class="col-md-5">
 							<div class="row p-t-20">
 			                	<div class="col-md-12">
 			             			<div class="form-group">
@@ -163,20 +154,25 @@
 			           			</div>
 			                </div>
 		                </div>
-		                <div class="col-md-6 ">
+		                <div class="col-md-5 ml-auto">
 							<div class="form-group">
 								<label class="form-label required" for="garage">ชื่ออู่ซ่อมรถ</label>
 								<input type="text" class="form-control" name="garagename" id="garagename" maxlength="30" placeholder="ชื่ออู่ซ่อมรถ">
+							</div>
+							<div class="form-group">
+								<label class="form-label required" for="garage">หมายเลขทะเบียนการค้า</label>
+								<input type="number" class="form-control" name="businessRegistration" id="businessRegistration" maxlength="13" placeholder="หมายเลขทะเบียนการค้า">
 							</div>
 							<div class="form-group">
 								<label class="form-label required" for="garage">เบอร์โทรศัพท์</label>
 								<input type="number" class="form-control" name="phone_garage" id="phone_garage" placeholder="เบอร์โทรศัพท์">
 							</div>
 							<div class="form-group">
-								<label class="form-label required" for="garage">หมายเลขทะเบียนการค้า</label>
-								<input type="number" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า">
+								<label class="form-label required" for="mechanic">ความเชี่ยวชาญรถ</label>
+								<select class="form-control" name="brandCar" id="brandCar">
+									<!-- <option>ความเชี่ยวชาญรถ</option> -->
+								</select>
 							</div>
-
 							<div class="form-group">
 								<label class="for-time-date" for="garage"><h4>การบริการ</h4></label>
 							</div>
@@ -194,6 +190,18 @@
 							</div>
 						
 						</div>
+						<!-- <div class="col-md-4 ">
+							<div class="form-group">
+								<label class="form-label required" for="garage">เบอร์โทรศัพท์</label>
+								<input type="number" class="form-control" name="phone_garage" id="phone_garage" placeholder="เบอร์โทรศัพท์">
+							</div>
+							<div class="form-group">
+								<label class="form-label required" for="mechanic">ความเชี่ยวชาญรถ</label>
+								<select class="form-control" name="brandCar" id="brandCar">
+									
+								</select>
+							</div>
+						</div> -->
 					</div>
 					<div class="row">
 						<div class="col-md-4">
@@ -301,7 +309,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">จังหวัด</label>
 								<select class="form-control" name="provinceId_garage" id="provinceId_garage">
@@ -309,7 +317,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">อำเภอ</label>
 								<select class="form-control" name="districtId_garage" id="districtId_garage">
@@ -317,7 +325,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">ตำบล</label>
 								<select class="form-control" name="subdistrictId_garage" id="subdistrictId_garage">
@@ -325,14 +333,14 @@
 								</select>
 							</div>
 						</div>
-					</div>
-					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">รหัสไปรษณีย์</label>
 								<input class="form-control" type="number" name="postCode_garage" id="postCode_garage" placeholder="รหัสไปรษณีย์">
 							</div>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">ละติจูด</label>

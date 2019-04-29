@@ -60,7 +60,7 @@ class SpareChange extends BD_Controller {
         $spares_price = $this->post('spares_price');
         $userId = $this->session->userdata['logged_in']['id'];
 
-        $data_check = $this->sparechanges->data_check_create($spares_undercarriageId);
+        $data_check = $this->sparechanges->data_check_create($spares_undercarriageId,$brandId);
         $data = array(
             'brandId' => $brandId,
             'spares_undercarriageId' => $spares_undercarriageId,
@@ -99,7 +99,7 @@ class SpareChange extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
 
         $data_check_update = $this->sparechanges->getSpareChangeById($spares_changeId);
-        $data_check = $this->sparechanges->data_check_update($spares_changeId,$spares_undercarriageId);
+        $data_check = $this->sparechanges->data_check_update($spares_changeId,$spares_undercarriageId, $brandId);
         $data = array(
             'spares_changeId' => $spares_changeId,
             'brandId' => $brandId,

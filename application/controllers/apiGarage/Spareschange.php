@@ -18,7 +18,7 @@ class Spareschange extends BD_Controller {
         
         $userId = $this->session->userdata['logged_in']['id'];
         $garageId = $this->session->userdata['logged_in']['garageId'];
-        $data_check = $this->spareschangegarages->data_check_create($garageId,$spares_undercarriageId);
+        $data_check = $this->spareschangegarages->data_check_create($garageId,$spares_undercarriageId,$brandId);
         $data = array(
             'spares_changeId' => null,
             'brandId'  => $brandId,
