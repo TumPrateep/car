@@ -22,6 +22,10 @@
 	.size-text-user{
 		font-size: 19px;
 	}
+	.text-service{
+		font-size: 20px;
+		color: red;
+	}
 </style>
 
 </head>

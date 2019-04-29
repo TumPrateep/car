@@ -288,14 +288,14 @@ label.error {
   display: block;
   top: 0px;
   right: 0; }
-  label.error:after {
+  /*label.error:after {
     font-family: 'themify';
     position: absolute;
     content: '\e717';
     right: 20px;
     top: 40px;
     font-size: 13px;
-    color: #ff1212; }
+    color: #ff1212; }*/
 
 input.error {
   border: 1px solid #ff1212; }

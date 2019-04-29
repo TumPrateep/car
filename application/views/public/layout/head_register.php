@@ -24,6 +24,16 @@
 	.for-time-date{
 		padding-top: 20px;
 	}
+	input.error, select.error, input.valid{
+		border:1px solid #b3b3b3 !important;
+	}
+	select.error{
+		color: #666!important;
+	}
+	.cropit-preview{
+		margin-left: auto;
+		margin-right: auto;
+	}
 </style>
 
 </head>
