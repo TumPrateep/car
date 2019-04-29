@@ -51,9 +51,9 @@ class Paymentapproves extends CI_Model{
      
 
         $this->db->like('rim.rimName',$search);
-        if($status != null){
-            $this->db->where("tire_change_garage.status", $status);
-        }
+        // if($status != null){
+        //     $this->db->where("tire_change_garage.status", $status);
+        // }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get();
@@ -79,9 +79,9 @@ class Paymentapproves extends CI_Model{
         if($search != null){
             $this->db->where("payment.paymentId",$search);
         }
-        if($status != null){
-            $this->db->where("order.status", $status);
-        }
+        // if($status != null){
+        //     $this->db->where("order.status", $status);
+        // }
         $query = $this->db->get();
         return $query->num_rows();
     } 
