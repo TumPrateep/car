@@ -41,8 +41,7 @@
       <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
-          <th><i class="fa fa-toggle-left"></i>  ล้อหน้า</th>
-          <th><i class="fa fa-toggle-right"></i>  ล้อหลัง</th>
+          <th><i class="fa fa-toggle-left"></i>  ราคาค่าบริการ</th>
           <th><i class="fa fa-circle-o"></i>  ขอบยาง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>

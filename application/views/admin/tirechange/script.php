@@ -35,8 +35,7 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "tire_front" },
-                { "data": "tire_back" },
+                { "data": "tire_price" },
                 { "data": "rimName" },
                 null,
                 null
@@ -45,7 +44,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5]
+                    "targets": [0,4]
                 },{
                     "targets": 0,
                     "data": null,
@@ -53,23 +52,18 @@
                         return meta.row + 1;
                     }
                 },{ "targets": 1,
-                    "data": "tire_front",
-                    "render": function ( data, type, full, meta ) {
-                        return currency(data, { useVedic: true }).format();
-                    }             
-                },{ "targets": 2,
-                    "data": "tire_back",
+                    "data": "tire_price",
                     "render": function ( data, type, full, meta ) {
                         return currency(data, { useVedic: true }).format();
                     }             
                 },{
-                    "targets": 3,
+                    "targets": 2,
                     "data": "rimName",
                     "render": function ( data, type, full, meta ) {
                         return  data +' นิ้ว';
                     }
                 },{
-                    "targets": 5,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+'admin/Tires/updatetirechange/'+data.tire_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -97,12 +91,11 @@
                 },
                 { "orderable": false, "targets": 0 },
                 // {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,2,3,4,5]},
+                {"className": "dt-center", "targets": [0,1,2,3,4]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 1 },
                 { "width": "20%", "targets": 2 },
-                { "width": "20%", "targets": 3 },
-                { "width": "12%", "targets": 4 }
+                { "width": "12%", "targets": 3 }
             ]	 
     });
 
