@@ -143,11 +143,11 @@
 			                	<div class="col-md-12">
 			             			<div class="form-group">
 			                            <label class="control-label">รูปร้านอู่ซ่อมรถ</label>
-			                         	<div class="image-editor">
-			                            	<input type="file" class="cropit-image-input" name="tempImage">
+			                         	<div class="image-editor border-image">
+			                            	<input type="file" class="cropit-image-input border-input" name="tempImage">
 			                            	<div class="cropit-preview"></div>
-			                          		<div class="image-size-label">ปรับขนาด</div>
-			                    			<input type="range" class="cropit-image-zoom-input">
+			                          		<div class="image-size-label"><span class="pad-right"></span>ปรับขนาด</div>
+			                    			<input type="range" class="cropit-image-zoom-input border-input">
 			                 				<input type="hidden" name="garagePicture" id="garagePicture" class="hidden-image-data" />
 			                  			</div>
 			             			</div>
@@ -309,7 +309,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="garage">จังหวัด</label>
 								<select class="form-control" name="provinceId_garage" id="provinceId_garage">
@@ -317,7 +317,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="garage">อำเภอ</label>
 								<select class="form-control" name="districtId_garage" id="districtId_garage">
@@ -325,7 +325,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="garage">ตำบล</label>
 								<select class="form-control" name="subdistrictId_garage" id="subdistrictId_garage">
@@ -333,14 +333,14 @@
 								</select>
 							</div>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">รหัสไปรษณีย์</label>
 								<input class="form-control" type="number" name="postCode_garage" id="postCode_garage" placeholder="รหัสไปรษณีย์">
 							</div>
 						</div>
-					</div>
-					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label required" for="garage">ละติจูด</label>
@@ -353,7 +353,7 @@
 								<input class="form-control" type="text" name="longtitude" id="longtitude" placeholder="ลองติจูด">
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-2">
 							<div class="form-group">
 								<label class="form-label required" for="garage">ดึงพิกัด</label>
 								<button type="button" class="btn btn-primary" id="coordinates" name="coordinates" onclick="getLocation()">ดึงพิกัด</button>
