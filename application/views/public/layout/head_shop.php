@@ -26,6 +26,16 @@
 		font-size: 20px;
 		color: red;
 	}
+	.border-option{
+		border:1px solid #ff471a !important;
+		border-radius: 5px;
+		/*background-color: #1a1a1a;*/
+		color: #ff471a;
+	}
+	title{
+		background-color: #ff471a;
+		color: #ffffff;
+	}
 </style>
 
 </head>

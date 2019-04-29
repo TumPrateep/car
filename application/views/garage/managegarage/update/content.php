@@ -59,7 +59,7 @@
 														<label class="control-label">ความชำนาญยี่ห้อรถ</label><span class="error">*</span> <label id="brandId-error" class="error" for="brandId"></label>
 														<div class="input-group input-group-default">
 															<select class="form-control" id="brandId" name="brandId">
-																<option value="">เลือกยี่ห้อรถ</option>
+																<option>เลือกยี่ห้อรถ</option>
 															</select>
 														</div>
 													</div>

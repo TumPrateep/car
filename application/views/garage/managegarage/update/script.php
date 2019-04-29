@@ -28,6 +28,7 @@
                 $("#phone").val(result.phone);
                 $("#businessRegistration").val(result.businessRegistration);
                 $("#personalid").val(result.personalid);
+                // $("#brandId").val(result.brandId);
                 $("#hno").val(result.hno);
                 $("#alley").val(result.alley);
                 $("#road").val(result.road);
@@ -41,6 +42,58 @@
                 $("#openingtime").val(result.openingtime);
                 $("#closingtime").val(result.closingtime);
                 $("#option_outher").val(result.option_outher);
+                if(result.option1 == 1){
+                    $('#Wifi').each(function() {
+                        this.checked = true;                        
+                    });
+                }
+                if(result.option2 == 2){
+                    $('#roomfan').each(function() {
+                        this.checked = true;                        
+                    });
+                }
+                if(result.option3 == 3){
+                    $('#roomAir').each(function() {
+                        this.checked = true;                        
+                    });
+                }
+                if(result.option4 == 4){
+                    $('#snack').each(function() {
+                        this.checked = true;                        
+                    });
+                }
+                var dayall = result.dayopenhour;
+
+                for(var i=0;i<6;i++){   
+                    if(dayall.charAt(i) == "1" && i==0){
+                        $('#monday').each(function() {this.checked = true; });
+                    }else if(dayall.charAt(i) == "1" && i==1){
+                        $('#tuesday').each(function() {this.checked = true; });
+                    }else if(dayall.charAt(i) == "1" && i==2){
+                        $('#wednesday').each(function() {this.checked = true; });
+                    }else if(dayall.charAt(i) == "1" && i==3){
+                        $('#thursday').each(function() {this.checked = true; });
+                    }else if(dayall.charAt(i) == "1" && i==4){
+                        $('#friday').each(function() {this.checked = true; });
+                    }else if(dayall.charAt(i) == "1" && i==5){
+                        $('#saturday').each(function() {this.checked = true; });
+                    }else if(dayall.charAt(i) == "1" && i==6){
+                        $('#sunday').each(function() {this.checked = true; });
+                    }
+                }
+
+                var Service = result.garageService;
+
+                for(var i=0;i<2;i++){   
+                    if(Service.charAt(i) == "1" && i==0){
+                        $('#change_spare').each(function() {this.checked = true; });
+                    }else if(dayall.charAt(i) == "1" && i==1){
+                        $('#change_tire').each(function() {this.checked = true; });
+                    }else if(dayall.charAt(i) == "1" && i==2){
+                        $('#change_lubricator').each(function() {this.checked = true; });
+                    }
+                }
+
                 setBrandPicture(result.picture);
             }
 
@@ -60,11 +113,11 @@
             subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
 
 
-    //     function onLoad(){
-    //    // loadProvinceUser();
+        // function onLoad(){
+        //     loadProvinceUser();
         
-    //     }
-    //     onLoad();
+        // }
+        // onLoad();
 
 
         function loadProvinceGarage(provinceId, districtId,subdistrictId){

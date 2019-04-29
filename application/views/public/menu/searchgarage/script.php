@@ -19,6 +19,10 @@ $(document).ready(function () {
         getAllBrand();
     }
 
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+
     function getLocation() {
         $("#sort option[value='3']").remove();
         if (navigator.geolocation) {
@@ -177,16 +181,16 @@ $(document).ready(function () {
                             var option = '';
                         
                                 if(value.option1 ==1){
-                                    option +='<button class="btn btn-dark btn-sm"><i class="fas fa-wifi"></i></button>';
+                                    option +='<span class="border-option btn-sm" data-toggle="tooltip" data-placement="top" title="มี Wifi"><i class="fas fa-wifi"></i></span>';
                                 }else if(value.option == null){option +='';}
                                 if(value.option2 ==2){
-                                    option +='<button class="btn btn-dark btn-sm"><i class="fab fa-yelp"></i></button>';
+                                    option +='<span class="border-option btn-sm"><i class="fab fa-yelp"></i></span>';
                                 }else if(value.option2 == null){option +='';}
                                 if(value.option3 ==3){
-                                    option +='<button class="btn btn-dark btn-sm"><i class="far fa-snowflake"></i></button>';
+                                    option +='<span class="border-option btn-sm"><i class="far fa-snowflake"></i></span>';
                                 }else if(value.option3 == null){option +='';}
                                 if(value.option4 ==4){
-                                    option +='<button class="btn btn-dark btn-sm"><i class="fas fa-toilet"></i></button>';
+                                    option +='<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fas fa-toilet-paper"></i></button>';
                                 }else if(value.option4 == null){option +='';}
 
                             html += '<div class="col-md-4">'

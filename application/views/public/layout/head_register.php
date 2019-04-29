@@ -27,12 +27,22 @@
 	input.error, select.error, input.valid{
 		border:1px solid #b3b3b3 !important;
 	}
+	input.border-input{
+		border:1px solid #ffffff !important;
+	}
+	.border-image{
+		border:1px solid #bebebe !important;
+		border-radius: 5px;
+	}
 	select.error{
 		color: #666!important;
 	}
 	.cropit-preview{
 		margin-left: auto;
 		margin-right: auto;
+	}
+	.pad-right{
+		padding-right: 20px;
 	}
 </style>
 

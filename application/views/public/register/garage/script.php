@@ -68,10 +68,15 @@
 
   $(document).ready(function() {
 
+    var letters = /^[ก-๙a-zA-Z]+$/; 
     var form = $("#rigister");
-    jQuery.validator.addMethod("username", function(value, element) {
-      return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
-    }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
+    // jQuery.validator.addMethod("username", function(value, element) {
+    //   return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
+    // }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
+
+    jQuery.validator.addMethod("THEN", function(value, element) {
+      return this.optional(element) || /^[ก-๙a-zA-Z]+$/.test(value);
+    }, 'asasas');
 
     form.validate({
 
@@ -83,10 +88,12 @@
             required: true
           },
           firstname_user:{
-            required: true
+            required: true,
+            THEN: true
           },
           lastname_user: {
-            required: true
+            required: true,
+            THEN: true
           },
           personalid:{
             required: true,
@@ -116,16 +123,19 @@
           },
           phone1: {
             minlength: 9,
+            maxlength: 10,
             required: true 
           },
           garagename:{
-            required: true
+            required: true,
+            THEN: true
           },
           phone_garage:{
             required: true
           },
           businessRegistration:{
-            required: true
+            required: true,
+            maxlength: 13
           },
           timestart:{
             required: true
@@ -160,6 +170,7 @@
             },
           phone: {
               required: true,
+              maxlength: 10,
               minlength:9
           },
           email: {
@@ -176,97 +187,104 @@
         },
         messages: {
           titleName_user:{
-            required: "คำนำหน้า"
+            required: "กรุณาเลือกคำนำหน้า"
           },
           firstname_user:{
-            required: "ชื่อ"
+            required: "กรุณากรอกชื่อ",
+            THEN: "กรอกข้อมูลไม่ถูกต้อง"
           },
           lastname_user: {
-            required: "นามสกุล"
+            required: "กรุณากรอกนามสกุล",
+            THEN: "กรอกข้อมูลไม่ถูกต้อง"
           },
           personalid:{
-            required: "รหัสบัตรประชาชน",
-            pid: "รหัสบัตรประชาชนให้ถูกต้อง"
+            required: "กรุณากรอกรหัสบัตรประชาชน",
+            pid: "กรุณากรอกรหัสบัตรประชาชนให้ถูกต้อง",
+            maxlength: "กรุณากรอกตัวเลขเเค่ 13 หลัก"
           },
           exp:{
-            required: "ประสบการณ์"
+            required: "กรุณากรอกประสบการณ์"
           },
           skill:{
-            required: "ความชำนาญ"
+            required: "กรุณาเลือกความชำนาญ"
           },
           hno_user:{
-            required: "บ้านเลขที่"
+            required: "กรุณากรอกบ้านเลขที่"
           },
           provinceId_user:{
-            required: "จังหวัด"
+            required: "กรุณาเลือกจังหวัด"
           },
           districtId_user: {
-            required: "อำเภอ"
+            required: "กรุณาเลือกอำเภอ"
           },
           subdistrictId_user: {
-            required: "ตำบล"
+            required: "กรุณาเลือกตำบล"
           },
           postCode_user: {
-            required: "รหัสไปรษณีย์"
+            required: "กรุณากรอกรหัสไปรษณีย์"
           },
           phone1: {
-            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-            required: "เบอร์โทรศัพท์"
+            minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            maxlength: "กรุณากรอกเบอร์โทรศัพท์ไม่มากกว่า 10 ตัว",
+            required: "กรุณากรอกเบอร์โทรศัพท์"
           },
           
           garagename:{
-            required: "ชื่ออู่ซ่อมรภ"
+            required: "กรุณากรอกชื่ออู่ซ่อมรภ",
+            THEN: "กรอกข้อมูลไม่ถูกต้อง"
           },
           phone_garage:{
-            required: "เบอร์โทรศัพท์"
+            required: "กรุณากรอกเบอร์โทรศัพท์"
           },
           businessRegistration:{
-            required: "หมายเลขทะเบียนการค้า"
+            required: "กรุณากรอกหมายเลขทะเบียนการค้า",
+            maxlength: "กรุณากรอกตัวเลขเเค่ 13 หลัก"
           },
           timestart:{
-            required: "เวลาที่เปิด"
+            required: "กรุณาเลือกเวลาที่เปิด"
           },
           timeend:{
-            required: "เวลาที่ปิด"
+            required: "กรุณาเลือกเวลาที่ปิด"
           },
           hno_garage:{
-            required: "บ้านเลขที่"
+            required: "กรุณากรอกบ้านเลขที่"
           },
           provinceId_garage:{
-            required: "จังหวัด"
+            required: "กรุณาเลือกจังหวัด"
           },
           districtId_garage:{
-            required: "อำเภอ"
+            required: "กรุณาเลือกอำเภอ"
           },
           subdistrictId_garage:{
-            required: "ตำบล"
+            required: "กรุณาเลือกตำบล"
           },
           postCode_garage:{
-            required: "รหัสไปรษณีย์"
+            required: "กรุณากรอกรหัสไปรษณีย์"
           },
           latitude:{
-            required: "ละติจูด"
+            required: "กรุณากรอกละติจูด"
           },
           longtitude:{
-            required: "ลองติจูด"
+            required: "กรุณากรอกลองติจูด"
           },
           username:{
-            required: "ชื่อผู้ใช้งาน",
-            minlength:"ชื่อผู้ใช้อย่างน้อย 6 ตัวอักษร"
+            required: "กรุณากรอกชื่อผู้ใช้งาน",
+            minlength:"กรุณากรอกชื่อผู้ใช้อย่างน้อย 6 ตัวอักษร"
           },
           phone: {
-            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-            required: "เบอร์โทรศัพท์"
+            minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            maxlength: "กรุณากรอกเบอร์โทรศัพท์ไม่มากกว่า 10 ตัว",
+            required: "กรุณากรอกเบอร์โทรศัพท์"
           },
           email: {
-              required: "อีเมลล์"
+              required: "กรุณากรอกอีเมลล์"
           },
           password: {
-            required: "รหัสผ่าน",
-            minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
+            required: "กรุณากรอกรหัสผ่าน",
+            minlength: "กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัวอักษร"
           },
           checkpassword: {
-            required: "รหัสผ่านอีกครั้ง",
+            required: "กรุณากรอกรหัสผ่านอีกครั้ง",
             equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
           }
         },
@@ -558,66 +576,10 @@
         format:'H:i'
     });
 
-    $("#personalid").on('input', function () {
-        var value = $(this).val();
-        if ((value !== '') && (value.indexOf('.') === -1)) {  
-            $(this).val(Math.max(Math.min(value, 9999999999999), 0));
-        }
-    });
-
     $("#exp").on('input', function () {
         var value = $(this).val();
         if ((value !== '') && (value.indexOf('.') === -1)) { 
             $(this).val(Math.max(Math.min(value, 50), 0));
-        }
-    });
-
-    $("#postCode_user").on('input', function () {
-        var value = $(this).val();
-        if ((value !== '') && (value.indexOf('.') === -1)) { 
-            $(this).val(Math.max(Math.min(value, 99999), 0));
-        }
-    });
-
-    $("#postCode_garage").on('input', function () {
-        var value = $(this).val();
-        if ((value !== '') && (value.indexOf('.') === -1)) { 
-            $(this).val(Math.max(Math.min(value, 99999), 0));
-        }
-    });
-
-    $("#phone").on('input', function () {
-        var value = $(this).val();
-        if ((value !== '') && (value.indexOf('.') === -1)) { 
-            $(this).val(Math.max(Math.min(value, 9999999999), 0));
-        }
-    });
-
-    $("#phone1").on('input', function () {
-        var value = $(this).val();
-        if ((value !== '') && (value.indexOf('.') === -1)) { 
-            $(this).val(Math.max(Math.min(value, 9999999999), 0));
-        }
-    });
-
-    $("#phone2").on('input', function () {
-        var value = $(this).val();
-        if ((value !== '') && (value.indexOf('.') === -1)) { 
-            $(this).val(Math.max(Math.min(value, 9999999999), 0));
-        }
-    });
-
-    $("#phone_garage").on('input', function () {
-        var value = $(this).val();
-        if ((value !== '') && (value.indexOf('.') === -1)) { 
-            $(this).val(Math.max(Math.min(value, 9999999999), 0));
-        }
-    });
-
-    $("#businessRegistration").on('input', function () {
-        var value = $(this).val();
-        if ((value !== '') && (value.indexOf('.') === -1)) {  
-            $(this).val(Math.max(Math.min(value, 9999999999999), 0));
         }
     });
         
