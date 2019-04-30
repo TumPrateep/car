@@ -6,6 +6,8 @@
 <script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.full.min.js"></script>
 <script src="<?php echo base_url() ?>public/js/image-picker.js"></script>
 
+<script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
+
 <script src="<?=base_url("public/themes/shop-cart/");?>vendor/jquery-steps/jquery.steps.min.js"></script>
 <script src="<?=base_url("public/themes/shop-cart/");?>vendor/minimalist-picker/dobpicker.js"></script>
 <script src="<?=base_url("public/themes/shop-cart/");?>js/main.js"></script>
@@ -637,20 +639,18 @@ $(document).ready(function () {
             });
         });
     });
-
-
+    
     var createcar = $("#submit-create-car-profile");
-    var datacar = $("#submit-create-car-profile").serialize();
+    var datacar = createcar.serialize();
     createcar.submit(function (e) { 
       e.preventDefault();
       var isValid = createcar.valid();
       if(isValid){
         var imageData = $('.image-editor').cropit('export');
         $('.hidden-image-data').val(imageData);
-        var myform = document.getElementById("rigister");
+        var myform = document.getElementById("submit-create-car-profile");
         var formData = new FormData(myform);
-
-        // var data = form.serialize();
+        
         $.ajax({
           url: base_url+"service/Carprofile/createCarProfile",datacar,
           data: formData,
@@ -660,7 +660,9 @@ $(document).ready(function () {
             success:function (data, textStatus, jqXHR) {
             console.log(data);
             if(data.message == 200){
-              window.location = base_url+"shop/cart";
+                showMessage(data.message,"shop/cart");
+              // window.location = base_url+"shop/cart";
+              // $("#selectcar").modal("hide");
             }else if(data.message == 3001){
              showMessage(data.message);
             }
@@ -669,36 +671,13 @@ $(document).ready(function () {
       }      
     });
 
-    form.submit(function(){
-        createcarprofile();
-    })
-    function createcarprofile(){
-        event.preventDefault();
-        var data = $("#submit").serialize();
-        var isValid = form.valid();
-        
-        if(isValid){
-            var imageData = $('.image-editor').cropit('export');
-            $('.hidden-image-data').val(imageData);
-            var myform = document.getElementById("submit");
-            var formData = new FormData(myform);
-            $.ajax({
-            url: base_url+"service/Carprofile/createCarProfile",data,
-            data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                success: function(data){
-                    if(data.message == 200){
-                        showMessage(data.message,"public/carprofile");
-                    }else{
-                        showMessage(data.message);
-                    }
-                    console.log(data);
-                }
-          });
-        }
-    }
+    $('.image-editor').cropit({
+        allowDragNDrop: false,
+        width: 200,
+        height: 200,
+        type: 'image/jpeg'
+    });
+
 
 
 

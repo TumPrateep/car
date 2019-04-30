@@ -217,7 +217,6 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form id="confirm">
 					<div class="row">
 						<div class="col-md-12" id="selectGarage">
 						<!-- add new car -->
@@ -229,12 +228,12 @@
 					                	<div class="col-md-12">
 					             			<div class="form-group">
 					                            <label class="control-label">รูปรถยน์</label>
-					                         	<div class="image-editor border-image">
-					                            	<input type="file" class="cropit-image-input border-input" name="tempImage">
+					                         	<div class="image-editor ">
+					                            	<input type="file" class="cropit-image-input" name="tempImage">
 					                            	<div class="cropit-preview"></div>
-					                          		<div class="image-size-label"><span class="pad-right"></span>ปรับขนาด</div>
-					                    			<input type="range" class="cropit-image-zoom-input border-input">
-					                 				<input type="hidden" name="Picture" id="Picture" class="hidden-image-data" />
+					                          		<div class="image-size-label">ปรับขนาด</div>
+					                    			<input type="range" class="cropit-image-zoom-input">
+					                 				<input type="hidden" name="picture" id="picture" class="hidden-image-data" />
 					                  			</div>
 					             			</div>
 					           			</div>
