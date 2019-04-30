@@ -83,6 +83,7 @@ class Orderapproves extends CI_Model{
         $result = $this->db->update('order',$data);
         return $result;
     }
+
    
 
 }

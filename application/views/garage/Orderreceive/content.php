@@ -55,8 +55,8 @@
         </div>  
 
 
-        <div class="modal fade size-sm-model" id="tracking-order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
-            <div class="modal-dialog modal-lg model-Width-sm" id="maxWidthSelect" role="document">
+        <div class="modal fade" id="tracking-order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+            <div class="modal-dialog modal-lg model-Width-sm size-sm-model" id="maxWidthSelect" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="exampleModalLabel">รายละเอียดข้อมูลลูกค้า</h4>

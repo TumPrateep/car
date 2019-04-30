@@ -123,7 +123,7 @@
         var option = {
             url: "/Orderapprove/changeStatus?orderId="+orderId,
             label: "ยืนยันรายการสั่งซื้อ",
-            status: 3,
+            status: 4,
             content: "คุณต้องการยืนยันรายการสั่งซื้อนี้ ใช่หรือไม่",
             gotoUrl: "admin/orderapprove"
         }
@@ -134,7 +134,7 @@
         var option = {
             url: "/Orderapprove/changeStatus?orderId="+orderId,
             label: "ยกเลิกรายการสั่งซื้อ",
-            status: 4,
+            status: 3,
             content: "คุณต้องการยกเลิกรายการสั่งซื้อนี้ ใช่หรือไม่",
             gotoUrl: "admin/orderapprove"
         }
