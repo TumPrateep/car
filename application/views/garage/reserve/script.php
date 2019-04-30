@@ -69,7 +69,13 @@
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return $.format.date(new Date(data.reserveDate), "dd~MM~yyyy"); // code ในการแปลงเวลา
+                        return $.format.date(new Date(data.reserveDate), "dd/MM/yyyy"); // code ในการแปลงเวลา
+                    }
+                },{
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return data+" น."; // code ในการแปลงเวลา
                     }
                 },{
                     "targets": 5,
