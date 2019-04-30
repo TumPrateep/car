@@ -211,21 +211,21 @@
         $("#show-search").show(100);
     });
 
-        $("#price").slider({
-        range: true,
-        min: 0,
-        max: 10000,
-        value: [1000, 7000],
-        formatter: function formatter(val) {
-            // console.log(val);
-            if (Array.isArray(val)) {
-                var start = currency(val[0], { useVedic: true }).format();
-                var end = currency(val[1], { useVedic: true }).format();
-                $("#start").text(start);
-                $("#end").text(end);
-            }
-        },
-    });
+    //     $("#price").slider({
+    //     range: true,
+    //     min: 0,
+    //     max: 10000,
+    //     value: [1000, 7000],
+    //     formatter: function formatter(val) {
+    //         // console.log(val);
+    //         if (Array.isArray(val)) {
+    //             var start = currency(val[0], { useVedic: true }).format();
+    //             var end = currency(val[1], { useVedic: true }).format();
+    //             $("#start").text(start);
+    //             $("#end").text(end);
+    //         }
+    //     },
+    // });
 
 
     function tracking_order(orderId){
@@ -255,8 +255,6 @@
      
         });
     }
-
-    
 
 </script>
 
