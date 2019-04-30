@@ -213,13 +213,13 @@
 						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="garage">ช่วงเวลาเปิด </label>
-								<input type="text" class="form-control" name="timestart" id="timestart" placeholder="00 : 00">
+								<input type="text" class="form-control" name="timestart" id="timestart" placeholder="06:00" value="06:00">
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label required" for="garage">ช่วงเวลาปิด </label>
-								<input type="text" class="form-control" name="timeend" id="timeend" placeholder="00 : 00">
+								<input type="text" class="form-control" name="timeend" id="timeend" placeholder="22:00" value="22:00">
 							</div>
 						</div>
 					</div>

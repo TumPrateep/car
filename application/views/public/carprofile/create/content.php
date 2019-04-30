@@ -10,6 +10,7 @@
 				</nav>
 			</div>
 		</div>
+        
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="shop_sidebar">	

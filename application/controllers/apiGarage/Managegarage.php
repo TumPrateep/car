@@ -133,7 +133,6 @@ class Managegarage extends BD_Controller {
     }
 
     function getmanagegarage_post(){
-
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $data_check = $this->managegarages->getmanagegaragesById($garageId);
         $data_check->owner = $this->mechanics->getOwnerGarage($garageId);
@@ -142,6 +141,12 @@ class Managegarage extends BD_Controller {
             $data_check->districtName = $this->location->getDistrictNameByDistrictId($data_check->districtId);
             $data_check->subdistrictName = $this->location->getSubDistrictBySubDistrictId($data_check->subdistrictId);
         }
+
+        $date=date_create($data_check->openingtime);
+        $data_check->openingtime = date_format($date,"H:i");
+
+        $date=date_create($data_check->closingtime);
+        $data_check->closingtime = date_format($date,"H:i");
 
         $option = [
             "data_check" => $data_check

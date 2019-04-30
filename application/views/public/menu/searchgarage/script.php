@@ -8,6 +8,8 @@ $(document).ready(function () {
     var district = $("#districtIdSearch");
     var subdistrict = $("#subdistrictIdSearch");
 
+    $('[data-toggle="tooltip"]').tooltip()
+
     var latitude = null;
     var longitude = null;
     
@@ -18,10 +20,6 @@ $(document).ready(function () {
         getProvince();
         getAllBrand();
     }
-
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
 
     function getLocation() {
         $("#sort option[value='3']").remove();
@@ -60,7 +58,10 @@ $(document).ready(function () {
     });
 
     function getDistrict(provinceId){
-        district.html("<option value=''>เลือกอำเภอ</option>");
+        district.html("");
+        district.append('<option value="">เลือกอำเภอ</option>');
+        subdistrict.html("");
+        subdistrict.append('<option value="">เลือกตำบล</option>');
         $.post(base_url + "service/Location/getDistrict", {
             provinceId: provinceId
         },function(data) {
@@ -181,16 +182,16 @@ $(document).ready(function () {
                             var option = '';
                         
                                 if(value.option1 ==1){
-                                    option +='<span class="border-option btn-sm" data-toggle="tooltip" data-placement="top" title="มี Wifi"><i class="fas fa-wifi"></i></span>';
+                                    option +='<span class="border-option btn-sm " data-toggle="tooltip" data-placement="top" title="มี Wifi"><i class="fas fa-wifi"></i></span>';
                                 }else if(value.option == null){option +='';}
                                 if(value.option2 ==2){
-                                    option +='<span class="border-option btn-sm"><i class="fab fa-yelp"></i></span>';
+                                    option +='<span class="border-option btn-sm" data-toggle="tooltip" data-placement="top" title="มีห้องพักพัดม"><i class="fab fa-yelp"></i></span>';
                                 }else if(value.option2 == null){option +='';}
                                 if(value.option3 ==3){
-                                    option +='<span class="border-option btn-sm"><i class="far fa-snowflake"></i></span>';
+                                    option +='<span class="border-option btn-sm" data-toggle="tooltip" data-placement="top" title="มีห้องพักเเอร์"><i class="far fa-snowflake"></i></span>';
                                 }else if(value.option3 == null){option +='';}
                                 if(value.option4 ==4){
-                                    option +='<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fas fa-toilet-paper"></i></button>';
+                                    option +='<span class="border-option btn-sm"      data-toggle="tooltip" data-placement="top" title="มีห้องน้ำ"><i class="fas fa-bath"></i></span><div></div>';
                                 }else if(value.option4 == null){option +='';}
 
                             html += '<div class="col-md-4">'
