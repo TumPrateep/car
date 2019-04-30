@@ -57,6 +57,15 @@ class Payments extends CI_Model {
         return $result->row();
     }
 
+    
+    function getDepositflag($orderId){
+        $this->db->select("depositflag,costDelivery");
+        $this->db->where('orderId',$orderId);
+        $result = $this->db->get("order");
+        return $result->row();
+    }
+ 
+
     function insert($data){
         $this->db->trans_begin();
             $userId = $this->session->userdata['logged_in']['id'];

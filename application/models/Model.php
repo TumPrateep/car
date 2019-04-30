@@ -261,4 +261,23 @@ class Model extends CI_Model{
         return $query->result();
     }
 
+    function getAllYearanddetailforcar($modelName){
+        $this->db->select("modelId, yearStart, yearEnd, detail");
+        $this->db->where("modelName", $modelName);
+        // $this->db->where('status','1');
+        $this->db->order_by("detail","asc");
+        $query = $this->db->get("model");
+        return $query->result();
+    }
+
+    function getAllmodelforcar($brandId){
+        $this->db->select("modelId,modelName,yearStart,yearEnd");
+        $this->db->where("brandId", $brandId);
+        // $this->db->where('status','1');
+        $this->db->group_by('modelName');
+        $this->db->order_by("modelName","asc");
+        $query = $this->db->get("model");
+        return $query->result();
+    }
+
 }

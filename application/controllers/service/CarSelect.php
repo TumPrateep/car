@@ -13,21 +13,21 @@ class CarSelect extends BD_Controller {
     }
 
     function getCarBrand_get(){
-        $result = $this->brand->getAllBrandforSelect();
+        $result = $this->brand->getAllBrandofRegister();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
     function getCarModel_get(){
         $brandId = $this->get("brandId");
-        $result = $this->model->getAllmodel($brandId);
+        $result = $this->model->getAllmodelforcar($brandId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
     function getCarYear_get(){
         $modelName = $this->get("modelName");
-        $result = $this->model->getAllYearForSelect($modelName);
+        $result = $this->model->getAllYearanddetailforcar($modelName);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }

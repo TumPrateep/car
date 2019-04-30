@@ -13,7 +13,7 @@ class BrandCar extends BD_Controller {
     function getBrandcar_post(){
 
         $output["status"] = true;
-        $result = $this->brand->getAllBrand();
+        $result = $this->brand->getAllBrandofRegister();
         if($result != null){
             $output["data"] = $result;
             $output["message"] = REST_Controller::MSG_SUCCESS;

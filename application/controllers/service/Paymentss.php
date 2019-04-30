@@ -63,10 +63,16 @@ class Paymentss extends BD_Controller {
     function getCost_get(){
         $orderId = $this->get("orderId");
         $userId = $this->session->userdata['logged_in']['id'];
+        $orderData = $this->payments-> getDepositflag($orderId);
+        $depositflag = $orderData->depositflag;
+        $costDelivery = $orderData->costDelivery;
         $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($orderId, $userId);
-        $output['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
+        $output['depositflag'] = $depositflag;
+        $output['totallm'] = $depositflag;
+        $output['summary'] = calSummary($orderdetail->cost, $orderdetail->charge)+$costDelivery;
         $output['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
         $this->set_response($output, REST_Controller::HTTP_OK);
     }  
-   
+
+ 
 }

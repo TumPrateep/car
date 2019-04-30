@@ -43,6 +43,9 @@ class Reserve extends BD_Controller {
                 // $nestedData['garageId'] = $post->garageId;
                 $nestedData['orderId'] = $post->orderId;
                 $nestedData['reserveDate'] = $post->reserveDate;
+
+                $date=date_create($post->reservetime);
+                $post->reservetime = date_format($date,"H:i");
                 $nestedData['reservetime'] = $post->reservetime;
                 $nestedData['userId'] = $post->userId;
                 $nestedData['status'] = $post->status;
