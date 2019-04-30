@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2019 at 05:50 PM
+-- Generation Time: Apr 30, 2019 at 05:59 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `create_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
   `group` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=227 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2353,7 +2353,14 @@ CREATE TABLE IF NOT EXISTS `numbertracking` (
   `status` int(11) DEFAULT NULL,
   `orderId` int(11) DEFAULT NULL,
   `garageId` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `numbertracking`
+--
+
+INSERT INTO `numbertracking` (`numbertrakingId`, `numbertrakingName`, `create_by`, `update_by`, `create_at`, `update_at`, `status`, `orderId`, `garageId`) VALUES
+(5, '5cc8709aed9d9.png', 50, NULL, '2019-04-30 22:58:19', NULL, NULL, 10001, NULL);
 
 -- --------------------------------------------------------
 
@@ -2373,7 +2380,14 @@ CREATE TABLE IF NOT EXISTS `order` (
   `costDelivery` double DEFAULT NULL,
   `picture_tracking` varchar(100) DEFAULT NULL,
   `depositflag` double DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10001 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10002 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`orderId`, `activeflag`, `userId`, `create_by`, `status`, `create_at`, `car_profileId`, `car_accessoriesId`, `costDelivery`, `picture_tracking`, `depositflag`) VALUES
+(10001, '1', 51, 51, '4', '2019-04-30 22:55:35', 1, NULL, 150, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -2397,7 +2411,16 @@ CREATE TABLE IF NOT EXISTS `orderdetail` (
   `group` varchar(20) NOT NULL,
   `orderselect_status` int(11) NOT NULL,
   `car_accessoriesId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orderdetail`
+--
+
+INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `quantity`, `charge`, `chargeGarage`, `cost`, `costCaraccessories`, `status`, `activeflag`, `create_at`, `group`, `orderselect_status`, `car_accessoriesId`) VALUES
+(1, 10001, 51, 1, 1, 700, 400, 780, 780, 2, 1, '2019-04-30 22:55:35', 'spare', 0, 50),
+(2, 10001, 51, 5, 1, 200, 100, 950, 950, 2, 1, '2019-04-30 22:55:35', 'lubricator', 0, 50),
+(3, 10001, 51, 4, 1, 700, 400, 3500, 3500, 2, 1, '2019-04-30 22:55:35', 'tire', 0, 50);
 
 -- --------------------------------------------------------
 
@@ -2418,7 +2441,14 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `created_at` datetime NOT NULL,
   `deposit` double DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`paymentId`, `date`, `time`, `bank`, `transfer`, `money`, `slip`, `orderId`, `created_by`, `created_at`, `deposit`, `status`) VALUES
+(1, '2019-05-02', '08:00:00', 'ออมสิน', 'suppanut', 7503, '5cc8702a2f8f6.png', 10001, 51, '2019-04-30 22:56:26', NULL, '2');
 
 -- --------------------------------------------------------
 
@@ -2632,7 +2662,14 @@ CREATE TABLE IF NOT EXISTS `reserve` (
   `garageId` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `created_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `reserve`
+--
+
+INSERT INTO `reserve` (`reserveId`, `status`, `reserveDate`, `reservetime`, `orderId`, `garageId`, `created_at`, `created_by`) VALUES
+(1, '2', '2019-05-03', '08:00:00', 10001, 5, '2019-04-30 22:55:35', 51);
 
 -- --------------------------------------------------------
 
@@ -11476,7 +11513,7 @@ MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=212;
+MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=227;
 --
 -- AUTO_INCREMENT for table `car_accessories`
 --
@@ -11571,22 +11608,22 @@ MODIFY `modelofcarId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=135;
 -- AUTO_INCREMENT for table `numbertracking`
 --
 ALTER TABLE `numbertracking`
-MODIFY `numbertrakingId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `numbertrakingId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10001;
+MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10002;
 --
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-MODIFY `paymentId` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `paymentId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `province`
 --
@@ -11596,7 +11633,7 @@ MODIFY `provinceId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=78;
 -- AUTO_INCREMENT for table `reserve`
 --
 ALTER TABLE `reserve`
-MODIFY `reserveId` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `reserveId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `rim`
 --
