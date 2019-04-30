@@ -105,16 +105,8 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        var html = "";
-                        var group = data.group;
-                        if(group == "tire"){
-                            html += data.tire_price;
-                        }else if(group == "lubricator"){
-                            html += data.lubricator_price;
-                        }else{
-                            html += data.spares_price;
-                        }
-                        return html;
+
+                        return data.cost*data.quantity;
                     }
                 },{
                     "targets": 5,
@@ -140,12 +132,12 @@
                     "render": function ( data, type, full, meta ) {
                         var html = '';
 
-                        if(data.status==1){
+                        if(data.status==2){
                             return '<button type="button" class="btn btn-success"  onclick="confirmStatus('+data.orderDetailId+')">รับ</button>'
                             +'<button type="button" class="btn btn-danger"  onclick="returnStatus('+data.orderDetailId+')">คืน</button>';
-                        }else if(data.status==2){
-                            return html;
                         }else if(data.status==3){
+                            return html;
+                        }else{
                             return html;
                         }
       

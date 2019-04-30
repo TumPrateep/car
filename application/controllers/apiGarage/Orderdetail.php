@@ -8,7 +8,8 @@ class Orderdetail extends BD_Controller {
 
         parent::__construct();
         $this->auth();
-        $this->load->model("orderdetails");
+        $this->load->model("orderdetails"); 
+        $this->load->model("orders");
     }
 
     function searchorder_post(){
@@ -24,22 +25,9 @@ class Orderdetail extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $totalData = $this->orderdetails->allorders_count($garageId);
-        $totalFiltered = $totalData; 
-        // if(empty($this->post('orderId')))
-        // {            
+        $totalFiltered = $totalData;  
         $posts = $this->orderdetails->allorders($limit,$start,$order,$dir,$garageId);
-        // }else{
-
-        //     $status = $this->post('status');
-        //     $productId = $this->post('productId');
-            
-        //     $status = null; 
-        //     $posts =  $this->orderdetails->orders_search($limit,$start,$order,$dir,$status,$orderId);
-        //     $totalFiltered = $this->orderdetails->orders_search_count($orderId);
-                
-        // }
-
-            
+    
         $data = array();
         if(!empty($posts))
         {
@@ -54,25 +42,22 @@ class Orderdetail extends BD_Controller {
                 $nestedData['group'] = $post->group;
                 $nestedData['status'] = $post->status;
                 $nestedData['productId'] = $post->productId;
-                $nestedData['car_accessoriesName'] = $post->car_accessoriesName;
-                $nestedData['titleName'] = $post->titleName;
-                $nestedData['firstname'] = $post->firstname;
-                $nestedData['lastname'] = $post->lastname;
-
-                $nestedData['character_plate'] = $post->character_plate;
-                $nestedData['number_plate'] = $post->number_plate;
-                $nestedData['provinceforcarName'] = $post->provinceforcarName;
-                $nestedData['brandName'] = $post->brandName;
-                $nestedData['modelName'] = $post->modelName;
-                $nestedData['yearStart'] = $post->yearStart;
-                $nestedData['yearEnd'] = $post->yearEnd;
-                $nestedData['modelofcarName'] = $post->modelofcarName;
-              
-                $nestedData['lubricator_price'] = $post->lubricator_price;
-                $nestedData['spares_price'] = $post->spares_price;
-                $nestedData['tire_price'] = $post->tire_price;
-                
-      
+                $nestedData['cost'] = $this->orders->getGarageCharge($post->productId, $post->group);
+                // $nestedData['car_accessoriesName'] = $post->car_accessoriesName;
+                // $nestedData['titleName'] = $post->titleName;
+                // $nestedData['firstname'] = $post->firstname;
+                // $nestedData['lastname'] = $post->lastname;
+                // $nestedData['character_plate'] = $post->character_plate;
+                // $nestedData['number_plate'] = $post->number_plate;
+                // $nestedData['provinceforcarName'] = $post->provinceforcarName;
+                // $nestedData['brandName'] = $post->brandName;
+                // $nestedData['modelName'] = $post->modelName;
+                // $nestedData['yearStart'] = $post->yearStart;
+                // $nestedData['yearEnd'] = $post->yearEnd;
+                // $nestedData['modelofcarName'] = $post->modelofcarName;
+                // $nestedData['lubricator_price'] = $post->lubricator_price;
+                // $nestedData['spares_price'] = $post->spares_price;
+                // $nestedData['tire_price'] = $post->tire_price;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;

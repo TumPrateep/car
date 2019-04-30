@@ -32,19 +32,8 @@ class Deliverorder extends BD_Controller {
         $dir = $sort;
         $totalData = $this->deliverorders->allDeliverorders_count($userId);
         $totalFiltered = $totalData; 
-        // if(empty($this->post('orderId')))
-        // {            
+             
         $posts = $this->deliverorders->allDeliverorders($limit,$start,$order,$dir,$userId);
-        // }else{
-
-        //     // $status = $this->post('status');
-        //     $orderId = $this->post('orderId');
-            
-        //     $status = null; 
-        //     $posts =  $this->deliverorders->Deliverorders_search($limit,$start,$order,$dir,$status,$orderId);
-        //     $totalFiltered = $this->deliverorders->Deliverorders_search_count($orderId);
-                
-        // }
             
         $data = array();
         if(!empty($posts))
