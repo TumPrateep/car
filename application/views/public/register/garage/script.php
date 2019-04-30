@@ -566,18 +566,26 @@
     $("#timestart").datetimepicker({
         datepicker:false,
         formatTime:'H:i',
-        // mask:true,
-        // scrollInput: false,
-        format:'H:i'
+        format:'H:i',
+        minTime: "06:00",
+        maxTime: "22:01"
+    });
+
+    $("#timestart").change(function(){
+      $('#timeend').datetimepicker({minTime: $(this).val()});
     });
 
     $("#timeend").datetimepicker({
         datepicker:false,
         formatTime:'H:i',
-        // mask:true,
-        // scrollInput: false,
-        format:'H:i'
+        format:'H:i',
+        minTime: "06:00",
+        maxTime: "22:01"
     });
+
+    $("#timeend").change(function(){
+      $('#timestart').datetimepicker({maxTime: $(this).val()});
+    })
 
     $("#exp").on('input', function () {
         var value = $(this).val();
