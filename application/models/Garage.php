@@ -64,7 +64,7 @@ class Garage extends CI_Model {
     }
 
     function getAllGarageByDataType($dataType){
-        $this->db->select('garageId, garageName, picture, dayopenhour, openingtime, closingtime');
+        $this->db->select('garageId, garageName, picture, dayopenhour, openingtime, closingtime, garageService');
         $this->db->where('status', 1);
         if($dataType["spare"] == 1){
             $this->db->where("garageService like '1__'");

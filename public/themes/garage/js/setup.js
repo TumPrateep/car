@@ -116,3 +116,14 @@ function changeStringjop(str){
     }
     return html.substring(0, html.length);
 }
+function changeStringGarageService(str){
+    var html = "";
+    var job = ["อะไหล่","ยาง","น้ำมันเครื่อง"];
+
+    for(var i=0;i<str.length;i++){   // 1111011
+        if(str.charAt(i) == "1"){
+            html += job[i]+", ";
+        }
+    }
+    return html.substring(0, html.length);
+}
