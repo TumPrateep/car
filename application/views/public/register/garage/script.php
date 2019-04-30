@@ -360,13 +360,12 @@
                     contentType: false,
                     type: 'POST',
                 success:function (data, textStatus, jqXHR) {
-                console.log(data);
-                if(data.message == 200){
-                  window.location = base_url+"login";
-                }else if(data.message == 3001){
-                showMessage(data.message);
+                  if(data.message == 200){
+                    showMessage(data.message,"login");
+                  }else{
+                    showMessage(data.message);
+                  }
                 }
-              }
             });
           }
     },
