@@ -30,7 +30,7 @@
                 $("#subdistrictId").val(result.subdistrictId);
                 $("#latitude").val(result.latitude);
                 $("#longtitude").val(result.longtitude);
-                $("#timeSE").val(result.openingtime+" ถึง "+result.closingtime);
+                $("#timeSE").val(result.openingtime+" - "+result.closingtime+" นาฬิกา");
                 $("#brandId").val(unD(result.brandName));
                 // $("#brandId").val(result.brandId);
                 $("#address").val(unD(result.hno)+"  หมู่ที่"+unD(result.village)+"  ถนน"+unD(result.road)+"  ซอย"+unD(result.alley)+"  ตำบล"+unD(result.subdistrictName)+"  อำเภอ"+unD(result.districtName)+"  จังหวัด"+result.provinceName+"  รหัสไปรษณีย์"+result.postCode+"  ละติจูด"+result.latitude+"  ลองติจูด"+result.longtitude);
@@ -49,11 +49,11 @@
                 var ownerData = result.owner;
                 $("#personalid").val(ownerData.personalid);
                 $("#phone").val(ownerData.phone);
-                $("#exp").val(ownerData.exp);
+                $("#exp").val(ownerData.exp+" ปี");
                 // $("#skill").val(ownerData.skill);
                 $("#job").val(ownerData.job);
                 $("#titleName").val(result.titleName);
-                $("#flName").val(ownerData.titleName+ownerData.firstName+" "+ownerData.lastName);
+                $("#flName").val(ownerData.titleName+" "+ownerData.firstName+"  "+ownerData.lastName);
                 $('#owner.image-editor').cropit({
                         allowDragNDrop: false,
                         width: 200,
