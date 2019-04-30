@@ -70,7 +70,7 @@
                             <button type="button" class="btn btn-create" onclick="createCarConfirm()" ><i class="fa fa-plus"></i>  สร้าง</button>  
                         </div>
                         
-                        <div class="col-lg-3 offset-lg-2 mt-8">
+                        <!-- <div class="col-lg-3 offset-lg-2 mt-8">
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="ยี่ห้อรถ" id="namemechanic">
                                 <div class="input-group-append">
@@ -88,7 +88,7 @@
                         </div>
                         <div class="col-lg-2">
                             <button type="button" class="btn btn-orange" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
-                        </div>
+                        </div> -->
                     </div>
 
 					<div class="row">
@@ -221,25 +221,36 @@
 							<!-- <h4 class="underline">เพิ่มข้อมูลรถยนต์ที่ต้องการใช้บริการ</h4> -->
 							<form id="submit-create-car-profile">
 							<div class="row">
-								<div class="col-md-4">
+                                <div class="col-md-7">
+									<div class="row p-t-20">
+					                	<div class="col-md-12">
+					             			<div class="form-group">
+					                            <label class="control-label">รูปรถยน์</label>
+					                         	<div class="image-editor border-image">
+					                            	<input type="file" class="cropit-image-input border-input" name="tempImage">
+					                            	<div class="cropit-preview"></div>
+					                          		<div class="image-size-label"><span class="pad-right"></span>ปรับขนาด</div>
+					                    			<input type="range" class="cropit-image-zoom-input border-input">
+					                 				<input type="hidden" name="Picture" id="Picture" class="hidden-image-data" />
+					                  			</div>
+					             			</div>
+					           			</div>
+					                </div>
+				                </div>
+                                
+								<div class="col-md-5">
 									<div class="form-group">
 										<label class="form-label required" for="car-profile">อักษรนำหน้า</label>
 										<input type="text" class="form-control" id="character_plate" name="character_plate" placeholder="อักษร">
 									</div>
-								</div>
-								<div class="col-md-4">
 									<div class="form-group">
 										<label class="form-label required" for="car-profile">หมายเลข</label>
 										<input type="number" class="form-control" id="number_plate" name="number_plate" placeholder="หมายเลข">
 									</div>
-								</div>
-								<div class="col-md-4">
 									<div class="form-group">
 										<label class="form-label required" for="car-profile">จังหวัด</label>
 										<select class="form-control input-default" name="province_plate" id="province_plate">
-											<option value="">เลือกจังหวัด</option>
-											<option value="1">ตรัง</option>
-											<option value="2">นครศรีธรรมราช</option>
+											
 										</select>
 									</div>
 								</div>
@@ -250,7 +261,7 @@
 										<label class="form-label required">ยี่ห้อรถ</label>
 										<select class="form-control input-default" name="brandId" id="brandId">
 											<option value="">เลือกยี่ห้อรถ</option>
-											<option value="toyota">toyota</option>
+											<!-- <option value="toyota">toyota</option> -->
 										</select>
 									</div>
 								</div>
@@ -259,7 +270,7 @@
 										<label class="form-label required">รุ่นรถ</label>
 										<select class="form-control input-default" name="modelId" id="modelId">
 											<option value="">เลือกรุ่นรถ</option>
-											<option value="มังกรไฟ">มังกรไฟ</option>
+											<!-- <option value="มังกรไฟ">มังกรไฟ</option> -->
 										</select>
 									</div>
 								</div>
@@ -270,7 +281,7 @@
 										<label class="form-label required">โฉมรถยนต์</label>
 										<select class="form-control input-default" name="detail" id="detail">
 											<option value="">เลือกปีที่ผลิต</option>
-											<option value="2012">2012</option>
+											<!-- <option value="2012">2012</option> -->
 										</select>
 									</div>
 								</div>
@@ -279,7 +290,7 @@
 										<label class="form-label required">รายละเอียดรุ่น</label>
 										<select class="form-control input-default" name="modelofcarId" id="modelofcarId">
 											<option value="">เลือกโฉมรถ</option>
-											<option value="95">95</option>
+											<!-- <option value="95">95</option> -->
 										</select>
 									</div>
 								</div>
