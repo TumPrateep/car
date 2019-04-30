@@ -15,7 +15,10 @@
                     <legend>
                         <span class="step-heading">เลือกสินค้าที่ต้องการ:	 </span>
                         <span class="step-number">Step 1 / 4</span>
-                    </legend>
+					</legend>
+					<div class="alert alert-danger hide" role="alert">
+						<strong>คำเตือน!</strong> เลือกสินค้าที่ต้องการ
+					</div>
                     <div class="row">
 						<div class="col-12">
                         	<table class="table table-hover" id="cart-table">

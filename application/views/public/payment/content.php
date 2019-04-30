@@ -19,13 +19,19 @@
                     <img src="<?=base_url("public/themes/user/images/bank.jpg") ?>" class="img-fluid">
                 </div>
                 <div class="card col-lg-6"><br>
-                    <div class="form-group row">
+                <div class="form-group row">
+                        <label class="col-lg-3" >จำนวนเงิน</label>
+                         <div class="col-sm-8">
+                            <input type="text" class="form-control" name="totallmoney" id="totallmoney" disabled>
+                        </div>
+                    </div> 
+                    <!-- <div class="form-group row">
                         <label class="col-lg-3" >จำนวนเงินรวม</label>
                          <div class="col-sm-8">
                             <input type="text" class="form-control" name="summoney" id="summoney" disabled>
                         </div>
                     </div> 
-                    <!-- <div class="form-group row">
+                    <div class="form-group row">
                         <label class="col-lg-3" >จำนวนเงินมัดจำ</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="depositmoney" id="depositmoney" disabled>
@@ -56,7 +62,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">จำนวนเงิน</label>
+                        <label class="col-sm-3 col-form-label">จำนวนเงินที่จ่าย</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="money" id="money" placeholder="จำนวนเงิน">
                         </div>

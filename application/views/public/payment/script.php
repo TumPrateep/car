@@ -78,12 +78,21 @@
         }
     }
 
-
+    
     $.get(base_url+"service/Paymentss/getCost", {orderId: $("#orderId").val()},
         function (data, textStatus, jqXHR) {
             console.log(data);
-            $("#summoney").val(data.summary);
-            $("#depositmoney").val(data.deposit);
+            var Checkdepositflag = data.depositflag;
+            // $("#totallmoney").val(data.summary);
+            // // $("#totallmoney").val(data.deposit);
+            if(Checkdepositflag == '0'){
+                $("#totallmoney").val(data.summary);
+                $("#money").val(data.summary);
+            }else{
+                $("#totallmoney").val(data.deposit);
+                $("#money").val(data.deposit);
+            }
+                      
         }
     );
      $('.image-editor').cropit({

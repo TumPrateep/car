@@ -447,7 +447,11 @@ $(document).ready(function () {
             var isvalid = true;
             // form.validate().settings.ignore = ":disabled,:hidden";
             if(currentIndex == 0){
-                isvalid = form.valid();
+                if(fullMoney <= 0){
+                    isvalid = false;
+                    $(".alert").show();
+                    $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
+                }
                 getCartList();
             }
             if(currentIndex == 1){
