@@ -75,22 +75,6 @@
                         
                     }
                 }
-                // ,{
-                //     "targets": 3,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         return currency(data.deposit, {  precision: 0 }).format() + " บาท";
-                //     }
-
-                // }
-                // ,{
-                //     "targets": 4,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         return currency(data.summary - data.deposit, {  precision: 0 }).format() + " บาท";
-                //     }
-
-                // }
                 ,{
                     "targets": 1,
                     "data": null,
@@ -124,6 +108,8 @@
                             else if(data.status == "2"){
                                 orderstatus +="รออนุมัติ";
                             }else if(data.status == "3"){
+                                orderstatus +="ชำระเงินแล้ว";
+                            }else{
                                 orderstatus +="เข้าใช้บริการ";
                             }
 
