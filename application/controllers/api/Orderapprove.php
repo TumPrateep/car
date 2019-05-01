@@ -41,6 +41,7 @@ class Orderapprove extends BD_Controller {
                 $nestedData['reserveStatus'] = $post->reserveStatus;
                 // $nestedData['garageId'] = $post->garageId;
                 $nestedData['orderId'] = $post->orderId;
+                $nestedData['reserveId'] = $post->reserveId;
                
                 $nestedData['name'] = $post->name;
                 $nestedData['paymentStatus'] = $post->paymentStatus;
@@ -60,13 +61,14 @@ class Orderapprove extends BD_Controller {
     }
 
     function changeStatus_get(){
+        $reserveId = $this->get("reserveId");
         $orderId = $this->get("orderId");
         $status = $this->get("status");
       
         $data = array(
+            'reserveId' => $reserveId,
             'orderId' => $orderId,
-            'status' => $status,
-            'activeFlag' => 1
+            'status' => $status
         );
         $data_check_update = $this->orderapproves->getOrderApprovesById($orderId);
 

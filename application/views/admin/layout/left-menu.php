@@ -168,7 +168,7 @@
         <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/orderapprove") ?>">
             <i class="fa fa-check-square-o" aria-hidden="true"></i>
-            <span class="nav-link-text">ยืนยันการสั่งซื่อ</span>
+            <span class="nav-link-text">ยืนยันการจอง</span>
           </a>
         </li>
 

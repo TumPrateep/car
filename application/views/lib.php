@@ -95,5 +95,18 @@
         }
         return html;
     }
+    function AdminapproveStatus(status){
+        var html = '';
+        if(status==1){
+            html+='<span class="badge badge-warning">รออนุมัติ</span>';
+        }else if(status==4){
+            html+='<span class="badge badge-success">อนุมัติ</span>';
+        }else {
+            html+='<span class="badge badge-success">ยกเลิก</span>';
+        }
+        return html;
+    }
+
+
 
 </script>
