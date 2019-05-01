@@ -52,7 +52,7 @@
                     if ( last !== data.orderId ) {
                         $(rows).eq( i ).before(
                             // '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+ " "+"ลูกค้า"+" "+'<a href="'+base_url+"garage/Orderreceive/userdata/"+data.orderId+'"><u>'+ data.firstname+'</u></td></tr>'
-                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+ " " +'<button type="button" class="btn btn-secondary"  onclick="tracking_order('+data.orderId+')">ข้อมูลลูกค้า</button></td></tr>'
+                            '<tr class="group"><td colspan="2"><span class="order-left"> หมายเลขสั่งซื้อ '+data.orderId+ " " +'<button type="button" class="btn btn-secondary"  onclick="tracking_order('+data.orderId+')">ข้อมูลลูกค้า</button></span></td></tr>'
                         );
     
                         last = data.orderId;
