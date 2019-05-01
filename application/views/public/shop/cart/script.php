@@ -290,7 +290,7 @@ function getImagePicker(){
             // var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
             $.each(data, function (index, val) { 
                 // html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
-                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<div class=\'text-center\'><strong>'+val.garageName+'</strong><br><span>ความชำนาญ</span>'+val.garageService+'</div>" value="'+val.garageId+'" data-openday="'+val.dayopenhour+'" data-open="'+val.openingtime+'" data-close="'+val.closingtime+'">'+val.garageName+'</option>';                
+                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<div class=\'text-center\'><strong>'+val.garageName+'</strong><br><span></span></div>" value="'+val.garageId+'" data-openday="'+val.dayopenhour+'" data-open="'+val.openingtime+'" data-close="'+val.closingtime+'">'+val.garageName+'</option>';                
             });
             // $("#garage").html(html);
             $("#image-picker").html(imagePickerHtml);

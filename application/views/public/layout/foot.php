@@ -161,3 +161,14 @@
 <script src="<?=base_url("/public/themes/user/js/shop.js") ?>"></script>
 <script src="<?=base_url("/public/themes/user/js/setup.js") ?>"></script>
 
+    <script>
+        function unD(un) {;
+            var newun = null;
+            if(un == undefined){
+                newun = "-";
+            }else{
+                return un; 
+            }
+            return newun;
+        }
+    </script>
