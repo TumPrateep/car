@@ -75,7 +75,16 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return paymenttStatus(data.reserveStatus);
+                        var html = '';
+                        if(data.reserveStatus=='1'){
+                            html+='<span class="badge badge-warning">รออนุมัติ</span>';
+                        }else if(data.reserveStatus=='2'){
+                            html+='<span class="badge badge-success">อนุมัติ</span>';
+                        }else {
+                            html+='<span class="badge badge-success">ยกเลิก</span>';
+                        }
+                        return html;
+                        // return AdminapproveStatus(data.reserveStatus);
                     }
                 },
                 // {
@@ -93,7 +102,7 @@
                         if(data.paymentStatus != 2 && data.reserveStatus != 3){
                             disable = "disabled";
                         }
-                        return '<button type="button" class="btn btn-success" '+disable+' onclick="confirmStatus('+data.orderId+')">ยืนยัน</button> '
+                        return '<button type="button" class="btn btn-success" '+disable+' onclick="confirmStatus('+data.orderId+','+data.reserveId+')">ยืนยัน</button> '
                             +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.orderId+')">ยกเลิก</button>';
                     }
                 },
@@ -119,11 +128,11 @@
         fnDelete(option);
     }
 
-    function confirmStatus(orderId){
+    function confirmStatus(orderId, reserveId){
         var option = {
-            url: "/Orderapprove/changeStatus?orderId="+orderId,
-            label: "ยืนยันรายการสั่งซื้อ",
-            status: 4,
+            url: "/Orderapprove/changeStatus?orderId="+orderId+"&reserveId="+reserveId,
+            label: "ยืนยันรายการจอง",
+            status: 2,
             content: "คุณต้องการยืนยันรายการสั่งซื้อนี้ ใช่หรือไม่",
             gotoUrl: "admin/orderapprove"
         }

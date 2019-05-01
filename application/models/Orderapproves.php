@@ -12,7 +12,7 @@ class Orderapproves extends CI_Model{
     }
 
     function allOrderApproves($limit,$start,$col,$dir){
-        $this->db->select('user_profile.userId,order.orderId, concat(user_profile.firstname," ",user_profile.lastname) as name, reserve.status as reserveStatus, payment.status as paymentStatus, order.status');
+        $this->db->select('user_profile.userId,reserve.reserveId, order.orderId, concat(user_profile.firstname," ",user_profile.lastname) as name, reserve.status as reserveStatus, payment.status as paymentStatus, order.status');
         $this->db->from('order');
         $this->db->join('user_profile', 'order.userId = user_profile.userId', 'left');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
@@ -78,11 +78,34 @@ class Orderapproves extends CI_Model{
         return $query->num_rows();
     } 
 
+    // function update($data){
+    //     $this->db->where('orderId',$data['orderId']);
+    //     $result = $this->db->update('order',$data);
+    //     return $result;
+    // }
+
     function update($data){
-        $this->db->where('orderId',$data['orderId']);
-        $result = $this->db->update('order',$data);
-        return $result;
+        $this->db->trans_begin();
+            $this->db->where('reserveId',$data['reserveId']);
+            $result = $this->db->update('reserve',$data);
+
+            if($data['status'] == "2"){
+                $orderData = [
+                    "status" => 4
+                ];
+                $this->db->where('orderId',$data['orderId']);
+                $this->db->update('order',$orderData);
+            }
+        
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
     }
+   
 
    
 
