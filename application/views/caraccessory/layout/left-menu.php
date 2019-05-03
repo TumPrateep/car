@@ -54,6 +54,19 @@
                                 <span class="hide-menu">การจัดการส่งสินค้า</span>
                             </a>
                         </li>
+                        <li>
+                            <a class="garage-white" href="<?=base_url("caraccessory/showorder"); ?>">
+                                <i class="fa fa-tachometer garage-white"></i>
+                                <span class="hide-menu">รายสินค้าที่ส่งแล้ว</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="garage-white" href="<?=base_url("#"); ?>">
+                                <i class="fa fa-tachometer garage-white"></i>
+                                <span class="hide-menu">รายสินค้ารับคืน</span>
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -61,3 +74,4 @@
             <!-- End Sidebar scroll-->
         </div>
         <!-- End Left Sidebar  -->
+                          

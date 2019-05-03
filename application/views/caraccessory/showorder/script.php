@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiCaraccessories/Deliverorder/searchorder",
+                "url": base_url+"apiCaraccessories/Deliverorder/searchshoworder",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -47,7 +47,7 @@
                 api.rows({page:'current'} ).data().each( function ( data, i ) {
                     if ( last !== data.orderId ) {
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' ชื่อร้านอู่ '+data.garageName+' <button type="button" class="btn btn-warning"  onclick="tracking_order('+data.orderId+')"><i class="fa fa-paper-plane" ></i></button> <a href="'+base_url+"caraccessory/exportorder/show/"+data.orderId+'"><button type="button" class="btn btn-warning"><i class="fa fa-print" aria-hidden="true" ></i></button></a></td></tr>'
+                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' ชื่อร้านอู่ '+data.garageName+'</td></tr>'
                         );
     
                         last = data.orderId;
@@ -65,21 +65,6 @@
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
-                // },{
-                //     "targets": 1,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         var imgPath = picturePath;
-                //         var group = data.group;
-                //         if(group == "tire"){
-                //             imgPath += "tireproduct/";
-                //         }else if(group == "lubricator"){
-                //             imgPath += "lubricatorproduct/";
-                //         }else{
-                //             imgPath += "spareproduct/";
-                //         }
-                //         return '<img src="'+imgPath+data.data.picture+'" width="100" />';
-                //     }
                 },{
                     "targets": 1,
                     "data": null,
@@ -113,7 +98,7 @@
                 // }
 
                 // { "orderable": false, "targets": 0 },
-                // {"className": "dt-center", "targets": [0,1,2,3]},
+                // {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
                 // { "width": "8%", "targets": 0 },
                 // { "width": "20%", "targets": [2,3] },
                 // { "width": "12%", "targets": [4,5] },  

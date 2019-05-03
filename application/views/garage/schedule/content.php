@@ -31,7 +31,7 @@
         วันเวลาเข้าใช้บริการ : <span id="eventStart"></span><br>
         ทะเบียนรถ : <span id="eventPlate"></span><br>
         ผู้เข้าใช้บริการ : <span id="eventName"></span><br>
-        รายละเอียด : <span id="eventLink"></span>
+        <!-- รายละเอียด : <span id="eventLink"></span> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -19,7 +19,7 @@
                 $("#eventOrder").html(event.orderId);
                 $("#eventStart").html(event.start.toISOString());
                 $("#eventPlate").html(event.plate);
-                $("#eventName").html(event.name);
+                $("#eventName").html("ศุภณัฐ คุ้มปิยะผล");
                 $("#eventLink").html('<a href="'+event.orderId+'">คลิก</a>');
                 $("#eventModal").modal('show');
             }

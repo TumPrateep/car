@@ -32,9 +32,59 @@ class Deliverorder extends BD_Controller {
         $dir = $sort;
         $totalData = $this->deliverorders->allDeliverorders_count($userId);
         $totalFiltered = $totalData; 
-             
-        $posts = $this->deliverorders->allDeliverorders($limit,$start,$order,$dir,$userId);
-            
+        $posts = $this->deliverorders->allDeliverorders($limit,$start,$order,$dir,$userId);  
+        $data = array();
+        if(!empty($posts))
+        {
+            $index = 0;
+            $count = 0;
+            foreach ($posts as $post)
+            {
+                $nestedData['orderId'] = $post->orderId;
+                $nestedData['quantity'] = $post->quantity;
+                $nestedData['garageId'] = $post->garageId;
+                $nestedData['group'] = $post->group;
+                $nestedData['productId'] = $post->productId;
+                $nestedData['garageName'] = $post->garageName;
+                $nestedData['costCaraccessories'] = $post->costCaraccessories;
+                $nestedData['data'] = getProductDetail($post->productId, $post->group);
+
+                $data[] = $nestedData;
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+
+        $this->set_response($json_data);
+
+    }
+
+    function searchshoworder_post(){
+        $column = "	orderId";
+
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
+
+        $userId = $this->session->userdata['logged_in']['id'];
+
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $column;
+        $dir = $sort;
+        $totalData = $this->deliverorders->allShoworders_count($userId);
+        $totalFiltered = $totalData; 
+        $posts = $this->deliverorders->allShoworders($limit,$start,$order,$dir,$userId);  
         $data = array();
         if(!empty($posts))
         {

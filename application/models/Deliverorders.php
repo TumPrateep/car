@@ -71,38 +71,45 @@ class Deliverorders extends CI_Model {
         
     }
 
-    // function Deliverorders_search($limit,$start,$col,$dir)
-    // {
-    //     $this->db->where('status', 2);
-    //     $this->db->like('firstName',$firstname);
-    //     if($brandId != null){
-    //         $this->db->where("brandId", $brandId);
-    //     }
-    //     $query = $this->db->limit($limit,$start)
-    //             ->order_by($col,$dir)
-    //             ->get('order');
+    function allShoworders_count($userId)
+    {   
+        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId, garage.garageName");
+        $this->db->from('order');
+        $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
+        $this->db->join('reserve','order.orderId = reserve.orderId');
+        $this->db->join('garage','garage.garageId = reserve.garageId');
+        $this->db->where('order.status', 4);
+        $this->db->where('orderdetail.status', 2);
+        $this->db->where('orderdetail.car_accessoriesId', $userId);
+        $query = $this->db->get();
+    
+        return $query->num_rows();  
         
-    //     if($query->num_rows()>0)
-    //     {
-    //         return $query->result();  
-    //     }
-    //     else
-    //     {
-    //         return null;
-    //     }
-        
-    // }
+    }
 
-    // function Deliverorders_search_count($orderId){
-    //     // $this->db->where('status', 2);
-    //     // $this->db->where("garageId", $garageId);
-    //     // $this->db->like('firstName',$firstname);
-    //     if($orderId != null){
-    //         $this->db->where("$orderId", $$orderId);
-    //     }
-    //     $query = $this->db->get('order');
-    //     return $query->num_rows();
-    // }
+    function allShoworders($limit,$start,$order,$dir,$userId)//$limit,$start,$col,$dir,$order
+    {   
+        $this->db->select("order.orderId, orderdetail.quantity, orderdetail.costCaraccessories, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName");
+        $this->db->from('order');
+        $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
+        $this->db->join('reserve','order.orderId = reserve.orderId');
+        $this->db->join('garage','garage.garageId = reserve.garageId');
+        $this->db->where('order.status', 4);
+        $this->db->where('orderdetail.status', 2);
+        $this->db->where('orderdetail.car_accessoriesId', $userId);
+        $this->db->limit($limit,$start)->order_by($order,$dir);
+        $query = $this->db->get();
+
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
 
     function update($data){
         $this->db->where('orderId',$data['orderId']);
