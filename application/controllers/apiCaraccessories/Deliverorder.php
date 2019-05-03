@@ -115,6 +115,58 @@ class Deliverorder extends BD_Controller {
         $this->set_response($json_data);
 
     }
+
+    function searchrepatriateorder_post(){
+        $column = "	orderId";
+
+        $sort = "asc";
+        if($this->post('column') == 3){
+            $column = "status";
+        }else if($this->post('column') == 2){
+            $sort = "desc";
+        }else{
+            $sort = "asc";
+        }
+
+        $userId = $this->session->userdata['logged_in']['id'];
+
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $column;
+        $dir = $sort;
+        $totalData = $this->deliverorders->allRepatriateorder_count($userId);
+        $totalFiltered = $totalData; 
+        $posts = $this->deliverorders->allRepatriateorder($limit,$start,$order,$dir,$userId);  
+        $data = array();
+        if(!empty($posts))
+        {
+            $index = 0;
+            $count = 0;
+            foreach ($posts as $post)
+            {
+                $nestedData['orderId'] = $post->orderId;
+                $nestedData['quantity'] = $post->quantity;
+                $nestedData['garageId'] = $post->garageId;
+                $nestedData['group'] = $post->group;
+                $nestedData['productId'] = $post->productId;
+                $nestedData['garageName'] = $post->garageName;
+                $nestedData['costCaraccessories'] = $post->costCaraccessories;
+                $nestedData['data'] = getProductDetail($post->productId, $post->group);
+
+                $data[] = $nestedData;
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+
+        $this->set_response($json_data);
+
+    }
     
     function getexport_post(){
         // $garageId = $this->session->userdata['logged_in']['garageId'];

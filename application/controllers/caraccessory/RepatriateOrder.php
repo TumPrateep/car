@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ShowOrder extends CI_Controller {
+class RepatriateOrder extends CI_Controller {
 
 	function __construct()
     {
@@ -15,10 +15,10 @@ class ShowOrder extends CI_Controller {
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/showorder/content");
+		$this->load->view("caraccessory/repatriateorder/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
-		$this->load->view("caraccessory/showorder/script");
+		$this->load->view("caraccessory/repatriateorder/script");
 	}
 
 }
