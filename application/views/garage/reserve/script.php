@@ -87,8 +87,8 @@
                             html+='<span class="badge badge-warning">รอนัดซ่อม</span>';
                         }else if(data.status==2){
                             html+='<span class="badge badge-success">รับนัดซ่อมเเล้ว</span>';
-                        }else if(data.status==3){
-                            html+='<span class="badge badge-danger">ยกเลิกนัดซ่อม</span>';
+                        }else if(data.status==9){
+                            html+='<span class="badge badge-info">ยกเลิกนัดซ่อม</span>';
                         }else{
                             html+='<span class="badge badge-danger">ผิดพลาด</span>';
                         }
@@ -100,7 +100,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<button type="button" class="btn btn-success"  title="รับนัด" onclick="confirmStatus('+data.reserveId+','+data.orderId+')">รับนัดซ่อม</button>'
-                            +" "+'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.reserveId+')">ยกเลิกนัด</button>';
+                            +" "+'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.reserveId+','+data.orderId+')">ยกเลิกนัด</button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}
@@ -118,11 +118,11 @@
         fnConfirm(option);
     }   
 
-    function cancelStatus(reserveId){
+    function cancelStatus(reserveId, orderId){
         var option = {
-            url: "/Reserve/changeStatus?reserveId="+reserveId,
+            url: "/Reserve/changeStatus?reserveId="+reserveId+"&orderId="+orderId,
             label: "ยกเลิกการทำรายการการจอง",
-            status: 3,
+            status: 9,
             content: "คุณต้องการยกเลิกการทำรายการการจองนี้ ใช่หรือไม่",
             gotoUrl: "garage/Reserve"
         }

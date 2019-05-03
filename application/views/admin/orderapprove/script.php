@@ -81,7 +81,7 @@
                         }else if(data.reserveStatus=='2'){
                             html+='<span class="badge badge-success">อนุมัติ</span>';
                         }else {
-                            html+='<span class="badge badge-success">ยกเลิก</span>';
+                            html+='<span class="badge badge-info">ยกเลิกการจอง</span>';
                         }
                         return html;
                         // return AdminapproveStatus(data.reserveStatus);
@@ -103,7 +103,7 @@
                             disable = "disabled";
                         }
                         return '<button type="button" class="btn btn-success" '+disable+' onclick="confirmStatus('+data.orderId+','+data.reserveId+')">ยืนยัน</button> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.orderId+')">ยกเลิก</button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.orderId+','+data.reserveId+')">ยกเลิก</button>';
                     }
                 },
                 
@@ -139,11 +139,11 @@
         fnConfirm(option);
     }   
 
-    function cancelStatus(orderId){
+    function cancelStatus(orderId, reserveId){
         var option = {
-            url: "/Orderapprove/changeStatus?orderId="+orderId,
+            url: "/Orderapprove/changeStatus?orderId="+orderId+"&reserveId="+reserveId,
             label: "ยกเลิกรายการสั่งซื้อ",
-            status: 3,
+            status: 9,
             content: "คุณต้องการยกเลิกรายการสั่งซื้อนี้ ใช่หรือไม่",
             gotoUrl: "admin/orderapprove"
         }

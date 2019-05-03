@@ -96,6 +96,12 @@ class Reserves extends CI_Model{
                 ];
                 $this->db->where('orderId',$data['orderId']);
                 $this->db->update('order',$orderData);
+            }else  if($data['status'] == "9"){
+                $orderData = [
+                    "status" => 9
+                ];
+                $this->db->where('orderId',$data['orderId']);
+                $this->db->update('order',$orderData);
             }
         
         if ($this->db->trans_status() === FALSE){
