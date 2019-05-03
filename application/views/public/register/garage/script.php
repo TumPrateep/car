@@ -81,230 +81,238 @@
       return this.optional(element) || /^[0-9]+$/.test(value);
     }, 'asasas');
 
-    // form.validate({
+    form.validate({
 
-    //     // errorPlacement: function errorPlacement(error, element) {
-    //     //      element.before(error); 
-    //     // },
-    //     rules: {
-    //       titleName_user:{
-    //         required: true
-    //       },
-    //       firstname_user:{
-    //         required: true,
-    //         THEN: true
-    //       },
-    //       lastname_user: {
-    //         required: true,
-    //         THEN: true
-    //       },
-    //       personalid:{
-    //         required: true,
-    //         pid: true
-    //       },
-    //       exp:{
-    //         required: true
-    //       },
-    //       skill:{
-    //         required: true
-    //       },
-    //       hno_user:{
-    //         required: true
-    //       },
-    //       provinceId_user:{
-    //         required: true
-    //       },
-    //       districtId_user: {
-    //         required: true
-    //       },
-    //       subdistrictId_user: {
-    //         required: true
-    //       },
-    //       postCode_user:{
-    //         minlength: 5,
-    //         required: true
-    //       },
-    //       phone1: {
-    //         minlength: 9,
-    //         maxlength: 10,
-    //         required: true 
-    //       },
-    //       garagename:{
-    //         required: true,
-    //         THEN: true
-    //       },
-    //       phone_garage:{
-    //         required: true
-    //       },
-    //       businessRegistration:{
-    //         required: true,
-    //         maxlength: 13
-    //       },
-    //       timestart:{
-    //         required: true
-    //       },
-    //       timeend:{
-    //         required: true
-    //       },
-    //       hno_garage:{
-    //         required: true
-    //       },
-    //       provinceId_garage:{
-    //         required: true
-    //       },
-    //       districtId_garage:{
-    //         required: true
-    //       },
-    //       subdistrictId_garage:{
-    //         required: true
-    //       },
-    //       postCode_garage:{
-    //         required: true
-    //       },
-    //       latitude:{
-    //         required: true
-    //       },
-    //       longtitude:{
-    //         required: true
-    //       },
-    //       username:{
-    //         minlength:6,
-    //         required:true
-    //         },
-    //       phone: {
-    //           required: true,
-    //           maxlength: 10,
-    //           minlength:9
-    //       },
-    //       email: {
-    //           required: true
-    //       },      
-    //       password: {
-    //         required: true,
-    //         minlength:6
-    //       },
-    //       checkpassword: { 
-    //         required: true,
-    //         equalTo: "#password"
-    //       },
-    //     },
-    //     messages: {
-    //       titleName_user:{
-    //         required: "กรุณาเลือกคำนำหน้า"
-    //       },
-    //       firstname_user:{
-    //         required: "กรุณากรอกชื่อ",
-    //         THEN: "กรอกข้อมูลไม่ถูกต้อง"
-    //       },
-    //       lastname_user: {
-    //         required: "กรุณากรอกนามสกุล",
-    //         THEN: "กรอกข้อมูลไม่ถูกต้อง"
-    //       },
-    //       personalid:{
-    //         required: "กรุณากรอกรหัสบัตรประชาชน",
-    //         pid: "กรุณากรอกรหัสบัตรประชาชนให้ถูกต้อง",
-    //         maxlength: "กรุณากรอกตัวเลขเเค่ 13 หลัก"
-    //       },
-    //       exp:{
-    //         required: "กรุณากรอกประสบการณ์"
-    //       },
-    //       skill:{
-    //         required: "กรุณาเลือกความชำนาญ"
-    //       },
-    //       hno_user:{
-    //         required: "กรุณากรอกบ้านเลขที่"
-    //       },
-    //       provinceId_user:{
-    //         required: "กรุณาเลือกจังหวัด"
-    //       },
-    //       districtId_user: {
-    //         required: "กรุณาเลือกอำเภอ"
-    //       },
-    //       subdistrictId_user: {
-    //         required: "กรุณาเลือกตำบล"
-    //       },
-    //       postCode_user: {
-    //         required: "กรุณากรอกรหัสไปรษณีย์"
-    //       },
-    //       phone1: {
-    //         minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-    //         maxlength: "กรุณากรอกเบอร์โทรศัพท์ไม่มากกว่า 10 ตัว",
-    //         required: "กรุณากรอกเบอร์โทรศัพท์"
-    //       },
+        // errorPlacement: function errorPlacement(error, element) {
+        //      element.before(error); 
+        // },
+        rules: {
+          titleName_user:{
+            required: true
+          },
+          firstname_user:{
+            required: true,
+            THEN: true
+          },
+          lastname_user: {
+            required: true,
+            THEN: true
+          },
+          personalid:{
+            required: true,
+            pid: true
+          },
+          exp:{
+            required: true
+          },
+          skill:{
+            required: true
+          },
+          hno_user:{
+            required: true
+          },
+          provinceId_user:{
+            required: true
+          },
+          districtId_user: {
+            required: true
+          },
+          subdistrictId_user: {
+            required: true
+          },
+          postCode_user:{
+            minlength: 5,
+            required: true
+          },
+          phone1: {
+            minlength: 9,
+            maxlength: 10,
+            required: true 
+          },
+          garagename:{
+            required: true,
+            THEN: true
+          },
+          phone_garage:{
+            required: true
+          },
+          brandCar:{
+            required: true
+          },
+          businessRegistration:{
+            required: true,
+            minlength: 13,
+            maxlength: 13
+          },
+          timestart:{
+            required: true
+          },
+          timeend:{
+            required: true
+          },
+          hno_garage:{
+            required: true
+          },
+          provinceId_garage:{
+            required: true
+          },
+          districtId_garage:{
+            required: true
+          },
+          subdistrictId_garage:{
+            required: true
+          },
+          postCode_garage:{
+            required: true
+          },
+          latitude:{
+            required: true
+          },
+          longtitude:{
+            required: true
+          },
+          username:{
+            minlength:6,
+            required:true
+            },
+          phone: {
+              required: true,
+              maxlength: 10,
+              minlength:9
+          },
+          email: {
+              required: true
+          },      
+          password: {
+            required: true,
+            minlength:6
+          },
+          checkpassword: { 
+            required: true,
+            equalTo: "#password"
+          },
+        },
+        messages: {
+          titleName_user:{
+            required: "กรุณาเลือกคำนำหน้า"
+          },
+          firstname_user:{
+            required: "กรุณากรอกชื่อ",
+            THEN: "กรอกข้อมูลไม่ถูกต้อง"
+          },
+          lastname_user: {
+            required: "กรุณากรอกนามสกุล",
+            THEN: "กรอกข้อมูลไม่ถูกต้อง"
+          },
+          personalid:{
+            required: "กรุณากรอกรหัสบัตรประชาชน",
+            pid: "กรุณากรอกรหัสบัตรประชาชนให้ถูกต้อง",
+            maxlength: "กรุณากรอกตัวเลขเเค่ 13 หลัก"
+          },
+          exp:{
+            required: "กรุณากรอกประสบการณ์"
+          },
+          skill:{
+            required: "กรุณาเลือกความชำนาญ"
+          },
+          hno_user:{
+            required: "กรุณากรอกบ้านเลขที่"
+          },
+          provinceId_user:{
+            required: "กรุณาเลือกจังหวัด"
+          },
+          districtId_user: {
+            required: "กรุณาเลือกอำเภอ"
+          },
+          subdistrictId_user: {
+            required: "กรุณาเลือกตำบล"
+          },
+          postCode_user: {
+            required: "กรุณากรอกรหัสไปรษณีย์"
+          },
+          phone1: {
+            minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            maxlength: "กรุณากรอกเบอร์โทรศัพท์ไม่มากกว่า 10 ตัว",
+            required: "กรุณากรอกเบอร์โทรศัพท์"
+          },
           
-    //       garagename:{
-    //         required: "กรุณากรอกชื่ออู่ซ่อมรภ",
-    //         THEN: "กรอกข้อมูลไม่ถูกต้อง"
-    //       },
-    //       phone_garage:{
-    //         required: "กรุณากรอกเบอร์โทรศัพท์"
-    //       },
-    //       businessRegistration:{
-    //         required: "กรุณากรอกหมายเลขทะเบียนการค้า",
-    //         maxlength: "กรุณากรอกตัวเลขเเค่ 13 หลัก"
-    //       },
-    //       timestart:{
-    //         required: "กรุณาเลือกเวลาที่เปิด"
-    //       },
-    //       timeend:{
-    //         required: "กรุณาเลือกเวลาที่ปิด"
-    //       },
-    //       hno_garage:{
-    //         required: "กรุณากรอกบ้านเลขที่"
-    //       },
-    //       provinceId_garage:{
-    //         required: "กรุณาเลือกจังหวัด"
-    //       },
-    //       districtId_garage:{
-    //         required: "กรุณาเลือกอำเภอ"
-    //       },
-    //       subdistrictId_garage:{
-    //         required: "กรุณาเลือกตำบล"
-    //       },
-    //       postCode_garage:{
-    //         required: "กรุณากรอกรหัสไปรษณีย์"
-    //       },
-    //       latitude:{
-    //         required: "กรุณากรอกละติจูด"
-    //       },
-    //       longtitude:{
-    //         required: "กรุณากรอกลองติจูด"
-    //       },
-    //       username:{
-    //         required: "กรุณากรอกชื่อผู้ใช้งาน",
-    //         minlength:"กรุณากรอกชื่อผู้ใช้อย่างน้อย 6 ตัวอักษร"
-    //       },
-    //       phone: {
-    //         minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-    //         maxlength: "กรุณากรอกเบอร์โทรศัพท์ไม่มากกว่า 10 ตัว",
-    //         required: "กรุณากรอกเบอร์โทรศัพท์"
-    //       },
-    //       email: {
-    //           required: "กรุณากรอกอีเมลล์"
-    //       },
-    //       password: {
-    //         required: "กรุณากรอกรหัสผ่าน",
-    //         minlength: "กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัวอักษร"
-    //       },
-    //       checkpassword: {
-    //         required: "กรุณากรอกรหัสผ่านอีกครั้ง",
-    //         equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
-    //       }
-    //     },
-    //     onfocusout: function(element) {
-    //         $(element).valid();
-    //     },
-    //     highlight : function(element, errorClass, validClass) {
-    //         $(element.form).find('.actions').addClass('form-error');
-    //         $(element).removeClass('valid');
-    //         $(element).addClass('error');
-    //     },
-    //     unhighlight: function(element, errorClass, validClass) {
-    //         $(element.form).find('.actions').removeClass('form-error');
-    //         $(element).removeClass('error');
-    //         $(element).addClass('valid');
-    //     }
-    // });
+          garagename:{
+            required: "กรุณากรอกชื่ออู่ซ่อมรภ",
+            THEN: "กรอกข้อมูลไม่ถูกต้อง"
+          },
+          phone_garage:{
+            required: "กรุณากรอกเบอร์โทรศัพท์"
+          },
+          brandCar:{
+            required: "กรุณาเลือกความเชี่ยวชาญรถ"
+          },
+          businessRegistration:{
+            required: "กรุณากรอกหมายเลขทะเบียนการค้า",
+            maxlength: "กรุณากรอกตัวเลขเเค่ 13 หลัก",
+            minlength: "กรุณากรอกตัวเลขอย่างน้อย 13 หลัก"
+          },
+          timestart:{
+            required: "กรุณาเลือกเวลาที่เปิด"
+          },
+          timeend:{
+            required: "กรุณาเลือกเวลาที่ปิด"
+          },
+          hno_garage:{
+            required: "กรุณากรอกบ้านเลขที่"
+          },
+          provinceId_garage:{
+            required: "กรุณาเลือกจังหวัด"
+          },
+          districtId_garage:{
+            required: "กรุณาเลือกอำเภอ"
+          },
+          subdistrictId_garage:{
+            required: "กรุณาเลือกตำบล"
+          },
+          postCode_garage:{
+            required: "กรุณากรอกรหัสไปรษณีย์"
+          },
+          latitude:{
+            required: "กรุณากรอกละติจูด"
+          },
+          longtitude:{
+            required: "กรุณากรอกลองติจูด"
+          },
+          username:{
+            required: "กรุณากรอกชื่อผู้ใช้งาน",
+            minlength:"กรุณากรอกชื่อผู้ใช้อย่างน้อย 6 ตัวอักษร"
+          },
+          phone: {
+            minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            maxlength: "กรุณากรอกเบอร์โทรศัพท์ไม่มากกว่า 10 ตัว",
+            required: "กรุณากรอกเบอร์โทรศัพท์"
+          },
+          email: {
+              required: "กรุณากรอกอีเมลล์"
+          },
+          password: {
+            required: "กรุณากรอกรหัสผ่าน",
+            minlength: "กรุณากรอกรหัสผ่านอย่างน้อย 6 ตัวอักษร"
+          },
+          checkpassword: {
+            required: "กรุณากรอกรหัสผ่านอีกครั้ง",
+            equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
+          }
+        },
+        onfocusout: function(element) {
+            $(element).valid();
+        },
+        highlight : function(element, errorClass, validClass) {
+            $(element.form).find('.actions').addClass('form-error');
+            $(element).removeClass('valid');
+            $(element).addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element.form).find('.actions').removeClass('form-error');
+            $(element).removeClass('error');
+            $(element).addClass('valid');
+        }
+    });
 
     jQuery.validator.addMethod("pid", function(value, element) {
         return checkID(value);

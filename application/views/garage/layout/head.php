@@ -100,6 +100,10 @@
             color: #ffffff
         }
 
+        .order-left{
+            margin-left: auto;
+        }
+
       
     </style>
 </head>

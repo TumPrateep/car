@@ -103,14 +103,17 @@
                         var  orderstatus = "<span>";
                         
                             if(data.status == "1"){
-                                orderstatus +="รอชำระเงิน";
+                                orderstatus +='<span class="badge badge-warning">รอชำระเงิน</span>';
                             }
                             else if(data.status == "2"){
-                                orderstatus +="รออนุมัติ";
+                                orderstatus +='<span class="badge badge-warning">รออนุมัติ</span>';
                             }else if(data.status == "3"){
-                                orderstatus +="ชำระเงินแล้ว";
-                            }else{
-                                orderstatus +="เข้าใช้บริการ";
+                                orderstatus +='<span class="badge badge-info">ชำระเงินเเล้ว</span>';
+                            
+                            }else if(data.status == "9"){
+                                orderstatus +='<span class="badge badge-danger">ยกเลิกการจอง</span>';
+                            } else{
+                                orderstatus +='<span class="badge badge-success">เข้าใช้บริการ</span>';
                             }
 
                             orderstatus += "</span>";

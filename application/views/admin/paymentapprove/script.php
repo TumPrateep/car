@@ -69,8 +69,8 @@
                             html+='<span class="badge badge-warning">รอตรวจสอบการโอนเงิน</span>';
                         }else if(data.status==2){
                             html+='<span class="badge badge-success">โอนเงินเเล้ว</span>';
-                        }else if(data.status==3){
-                            html+='<span class="badge badge-danger">ยกเลิกการจอง</span>';
+                        }else if(data.status==9){
+                            html+='<span class="badge badge-info">ยกเลิกการจอง</span>';
                         }else{
                             html+='<span class="badge badge-default">รอโอนเงิน</span>';
                         }
@@ -138,7 +138,7 @@
         var option = {
             url: "/PaymentApprove/changeStatus?paymentId="+paymentId+"&orderId="+orderId,
             label: "ยกเลิกรายการชำระเงิน",
-            status: 3,
+            status: 9,
             content: "คุณต้องการยกเลิกรายการชำระเงินนี้ ใช่หรือไม่",
             gotoUrl: "admin/paymentapprove"
         }

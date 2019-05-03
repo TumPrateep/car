@@ -95,6 +95,10 @@
         .text-font-model{
             font-size: 18px;
         }
+
+        .navbar-light .navbar-brand{
+            color: #ffffff
+        }
       
     </style>
 </head>
