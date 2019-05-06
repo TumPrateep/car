@@ -90,6 +90,8 @@ class Spareundercarriage extends BD_Controller {
                 $nestedData[$count]['brandName'] = $post->brandName;
                 $nestedData[$count]['modelName'] = $post->modelName;
                 $nestedData[$count]['spares_brandPicture'] = $post->spares_brandPicture;
+                $nestedData[$count]['modelofcarName'] = $post->modelofcarName;
+                $nestedData[$count]['machineSize'] = $post->machineSize;
                 if($post->yearEnd != null){
                     $nestedData[$count]['year'] = $post->yearStart."-".$post->yearEnd;
                 }else{

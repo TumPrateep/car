@@ -16,6 +16,7 @@ class Lubricator extends BD_Controller {
         $this->load->model("brand");
         $this->load->model("model");
         $this->load->model("modelofcars");
+        // $this->load->model("lubricator_type");
         
 
         
@@ -85,6 +86,8 @@ class Lubricator extends BD_Controller {
                 $nestedData[$count]['lubricator_gear'] = $post->lubricator_gear;
                 $nestedData[$count]['lubricator_typeSize'] = $post->lubricator_typeSize;
                 $nestedData[$count]['capacity'] = $post->capacity;
+                $nestedData[$count]['lubricator_typeName'] = $post->lubricator_typeName;
+                $nestedData[$count]['lubricatortypeFormachine'] = $post->lubricatortypeFormachine;
                 $nestedData[$count]['lubricator_brandPicture'] = $post->lubricator_brandPicture;
                 
                 $option = [

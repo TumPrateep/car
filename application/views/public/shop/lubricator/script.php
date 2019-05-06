@@ -78,6 +78,8 @@
                                                                     +'<div><a href="product.html" tabindex="0"><strong> '+value.lubricator_brandName+' '+value.lubricatorName+' </strong></a></div>'
                                                                     +'<ul>'+value.capacity+' ลิตร</ul>'
                                                                     +'<ul> '+value.lubricator_number+'</ul>'
+                                                                    +'<ul> '+value.lubricator_typeName+'</ul>'
+                                                                    +'<ul> '+value.lubricatortypeFormachine+'</ul>'
                                                                 +'</div>'
                                                             +'</div>'
                                                             +'<div class="product_extras">'

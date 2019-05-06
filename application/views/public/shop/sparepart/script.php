@@ -83,6 +83,7 @@
                                                                 +'<ul>'+value.brandName+' '+ value.modelName +' </ul>'
                                                                 // +'<ul>'+value.year+'-'+value.yearEnd+'</ul>'
                                                                 +'<ul>'+value.year+'</ul>'
+                                                                +'<ul>'+value.machineSize+value.modelofcarName+'</ul>'
                                                             +'</div>'
                                                             +'</div>'
                                                             +'<div class="product_extras">'
