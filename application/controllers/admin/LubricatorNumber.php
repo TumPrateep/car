@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class LubricatorNumber extends CI_Controller {
+class Lubricatornumber extends CI_Controller {
 
 	function __construct()
     {
