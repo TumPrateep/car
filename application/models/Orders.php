@@ -120,7 +120,7 @@ class Orders extends CI_Model{
             $quantity = $val->quantity;
             $sum += calDeposit($cost,$charge,$chargeGarage,$costCaraccessories)*$quantity;
         }
-        return $sum+$costDelivery;
+        return $sum;
     }
 
     function insert($data){

@@ -15,6 +15,7 @@ class Paymentss extends BD_Controller {
     function createPaymentDetail_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $data = array();
+        $bank_carjaidee = $this->payments->getฺBank($bankId);
         $orderId = $this->post("orderId");
         $date = $this->post("date");
         $time = $this->post("time");
@@ -36,6 +37,7 @@ class Paymentss extends BD_Controller {
         }
         $data = array(
             'orderId' => $orderId,
+            'bank_carjaidee' => $bank_carjaidee,
             'paymentId' => null,
             'created_by' =>$userId ,
             'date' => $date,

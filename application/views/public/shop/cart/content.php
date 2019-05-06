@@ -55,7 +55,7 @@
 				<!-- Step 2 -->
 				
 
-				<!-- Step 3 -->
+				<!-- Step 2 -->
                 <h3>
                     <span class="icon"><i class="fa fa-car"></i></span>
                     <span class="title_text">รถยนต์</span>
@@ -115,7 +115,7 @@
 					</div>
                 </fieldset>
 
-				<!-- Step 4  -->
+				<!-- Step 3  -->
                 <h3>
                     <span class="icon"><i class="fa fa-cog"></i></span>
                     <span class="title_text">อู่ซ่อมรถ</span>

@@ -64,6 +64,13 @@ class Payments extends CI_Model {
         $result = $this->db->get("order");
         return $result->row();
     }
+
+    function getฺBank($bankId){
+        $this->db->select("bankName");
+        $this->db->where('bankId',$bankId);
+        $result = $this->db->get("bank_carjaidee");
+        return $result->row();
+    }
  
 
     function insert($data){
