@@ -57,13 +57,13 @@
                         <li>
                             <a class="garage-white" href="<?=base_url("caraccessory/showorder"); ?>">
                                 <i class="fa fa-tachometer garage-white"></i>
-                                <span class="hide-menu">รายสินค้าที่ส่งแล้ว</span>
+                                <span class="hide-menu">รายการสินค้าที่ส่งแล้ว</span>
                             </a>
                         </li>
                         <li>
                             <a class="garage-white" href="<?=base_url("caraccessory/repatriateorder"); ?>">
                                 <i class="fa fa-tachometer garage-white"></i>
-                                <span class="hide-menu">รายสินค้ารับคืน</span>
+                                <span class="hide-menu">รายการสินค้ารับคืน</span>
                             </a>
                         </li>
 

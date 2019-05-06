@@ -79,7 +79,7 @@ class Deliverorders extends CI_Model {
         $this->db->join('reserve','order.orderId = reserve.orderId');
         $this->db->join('garage','garage.garageId = reserve.garageId');
         $this->db->where('order.status', 4);
-        $this->db->where('orderdetail.status', 2);
+        $this->db->where('orderdetail.status !=', 1);
         $this->db->where('orderdetail.car_accessoriesId', $userId);
         $query = $this->db->get();
     
@@ -95,7 +95,7 @@ class Deliverorders extends CI_Model {
         $this->db->join('reserve','order.orderId = reserve.orderId');
         $this->db->join('garage','garage.garageId = reserve.garageId');
         $this->db->where('order.status', 4);
-        $this->db->where('orderdetail.status', 2);
+        $this->db->where('orderdetail.status !=', 1);
         $this->db->where('orderdetail.car_accessoriesId', $userId);
         $this->db->limit($limit,$start)->order_by($order,$dir);
         $query = $this->db->get();
@@ -119,7 +119,7 @@ class Deliverorders extends CI_Model {
         $this->db->join('reserve','order.orderId = reserve.orderId');
         $this->db->join('garage','garage.garageId = reserve.garageId');
         $this->db->where('order.status', 4);
-        $this->db->where('orderdetail.status', 2);
+        $this->db->where('orderdetail.status', 9);
         $this->db->where('orderdetail.car_accessoriesId', $userId);
         $query = $this->db->get();
     
@@ -135,7 +135,7 @@ class Deliverorders extends CI_Model {
         $this->db->join('reserve','order.orderId = reserve.orderId');
         $this->db->join('garage','garage.garageId = reserve.garageId');
         $this->db->where('order.status', 4);
-        $this->db->where('orderdetail.status', 2);
+        $this->db->where('orderdetail.status', 9);
         $this->db->where('orderdetail.car_accessoriesId', $userId);
         $this->db->limit($limit,$start)->order_by($order,$dir);
         $query = $this->db->get();

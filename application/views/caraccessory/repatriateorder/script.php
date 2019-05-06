@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiCaraccessories/Deliverorder/searchshoworder",
+                "url": base_url+"apiCaraccessories/Deliverorder/searchrepatriateorder",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
