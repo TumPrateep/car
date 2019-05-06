@@ -94,7 +94,7 @@
                         
                     }
                 },{
-                    "targets":6,
+                    "targets":5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var  orderstatus = "<span>";
@@ -136,11 +136,11 @@
                         }
                     }
                 },{
-                    "targets": 5,
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         html = "";
-                        return html += '<a href="'+base_url+"public/Orderdetail/Orderdetails/"+data.orderId+'">'+"#"+ data.orderId
+                        return html += '<a href="'+base_url+"public/Orderdetail/Orderdetails/"+data.orderId+'"><button type="button" class="btn btn-warning" title="ดูรายละเอียดเพิ่มเติม"><i class="fa fa-search" "></i></button> '
                     }
                 },
                 
