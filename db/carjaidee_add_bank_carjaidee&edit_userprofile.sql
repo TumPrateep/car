@@ -11705,6 +11705,12 @@ ALTER TABLE `user_profile`
 --
 
 --
+-- AUTO_INCREMENT for table `bank_carjaidee`
+--
+ALTER TABLE `bank_carjaidee`
+  MODIFY `bankId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
