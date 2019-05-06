@@ -76,7 +76,20 @@ class User extends CI_Model{
     }
 
 	function insert_user($data){
-		return $this->db->insert('users', $data);
+		// return $this->db->insert('users', $data);
+        $this->db->trans_begin();
+        $this->db->insert('users', $data['users']);
+        $userId = $this->db->insert_id();
+        $data['profile']['userId'] = $userId;
+        $this->db->insert('user_profile', $data['profile']);
+
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
     }
     
     function data_check_create($username,$phone){

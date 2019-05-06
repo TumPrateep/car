@@ -5,6 +5,7 @@
 <script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
 <script src="<?=base_url("public/themes/register/");?>js/main.js"></script>
 <script src="<?=base_url("public/themes/register/");?>js/setcheckbox.js"></script>
+<script src="<?=base_url("public/themes/register/");?>vendor/jquery-validation/dist/jquery.validate_register.js"></script>
 
 <script>
   function getLocation() {
@@ -77,9 +78,9 @@
     jQuery.validator.addMethod("THEN", function(value, element) {
       return this.optional(element) || /^[ก-๙a-zA-Z]+$/.test(value);
     }, 'asasas');
-    jQuery.validator.addMethod("NUMBER", function(value, element) {
+    jQuery.validator.addMethod("NUMBERCHECK", function(value, element) {
       return this.optional(element) || /^[0-9]+$/.test(value);
-    }, 'asasas');
+    }, 'กรอกเฉพาะตัวเลข');
 
     form.validate({
 
@@ -100,7 +101,8 @@
           },
           personalid:{
             required: true,
-            pid: true
+            pid: true,
+            NUMBERCHECK: true
           },
           exp:{
             required: true
@@ -128,6 +130,10 @@
             minlength: 9,
             maxlength: 10,
             required: true 
+          },
+          phone2: {
+            minlength: 9,
+            maxlength: 10 
           },
           garagename:{
             required: true,
@@ -198,7 +204,7 @@
           },
           firstname_user:{
             required: "กรุณากรอกชื่อ",
-            THEN: "กรอกข้อมูลไม่ถูกต้อง"
+            THEN: "กรุณากรอกข้อมูลเฉพาะตัวอักษร"
           },
           lastname_user: {
             required: "กรุณากรอกนามสกุล",
@@ -228,14 +234,19 @@
             required: "กรุณาเลือกตำบล"
           },
           postCode_user: {
-            required: "กรุณากรอกรหัสไปรษณีย์"
+            required: "กรุณากรอกรหัสไปรษณีย์",
+            minlength: "กรุณากรอกรหัสไปรษณีย์อย่างน้อย 5 ตัว",
+            NUMBERCHECK: "กรุณากรอกเฉพาะตัวเลข"
           },
           phone1: {
             minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
             maxlength: "กรุณากรอกเบอร์โทรศัพท์ไม่มากกว่า 10 ตัว",
             required: "กรุณากรอกเบอร์โทรศัพท์"
           },
-          
+          phone2: {
+            minlength: "กรุณากรอกเบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            maxlength: "กรุณากรอกเบอร์โทรศัพท์ไม่มากกว่า 10 ตัว"
+          },
           garagename:{
             required: "กรุณากรอกชื่ออู่ซ่อมรภ",
             THEN: "กรอกข้อมูลไม่ถูกต้อง"

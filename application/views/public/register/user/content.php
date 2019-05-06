@@ -40,6 +40,14 @@
 				<div id="error-message" class="alert alert-warning" role="alert"></div>
 				<form id="register">
 					<div class="form-group">
+						<label>ชื่อ</label><span class="error">*</span>
+						<input type="text" name="firstname" id="firstname" class="form-control" placeholder="ชื่อ">
+					</div>
+					<div class="form-group">
+						<label>นามสกุล</label><span class="error">*</span>
+						<input type="text" name="lastname" id="lastname" class="form-control" placeholder="นามสกุล">
+					</div>
+					<div class="form-group">
 						<label>ชื่อผู้ใช้งาน</label><span class="error">*</span>
 						<input type="text" name="username" class="form-control" placeholder="ชื่อผู้ใช้งาน">
 					</div>

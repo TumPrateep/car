@@ -40,7 +40,7 @@
                             <div class="form-group col-md-2">
                                 <label>คำนำหน้า</label> 
                                 <select class="form-control" name="titleName" id="titleName" >
-                                    <option value=""> </option >
+                                    <option value="">คำนำหน้า</option>
                                     <option value="นาย">นาย</option>
                                     <option value="นาง">นาง</option>
                                     <option value="นางสาว">นางสาว</option>

@@ -19,9 +19,12 @@ class Register extends BD_Controller {
         $password = $this->post('password');
         $p = password_hash($password, PASSWORD_BCRYPT);
 
+        $firstname = $this->post('firstname');
+        $lastname = $this->post('lastname');
+
         $isCheck = $this->user->data_check_create($username,$phone);
         if($isCheck == null){
-            $data = array(
+            $data['users'] = array(
                 'id' => null,
                 'username' => $username,
                 'email' => (empty($email))?null:$email,
@@ -30,6 +33,29 @@ class Register extends BD_Controller {
                 'category' => 4,
                 'status' => 1,
                 'create_at' => date('Y-m-d H:i:s',time())
+            );
+            $data['profile'] = array(
+                'user_profile' => null,
+                'titleName' => null,
+                'firstName' => $firstname,
+                'lastname' => $lastname,
+                'hno' => null,
+                'alley' => null,
+                'road' => null,
+                'village' => null,
+                'provinceId' => null,
+                'districtId' => null,
+                'subdistrictId' => null,
+                'postCodes' => null,
+                'phone1' => null,
+                'phone2' => null,
+                'create_by' => null,
+                'update_by' => null,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'update_at' => null,
+                'userId' => null,
+                'status' => 1,
+                'activeFlag' => 1
             );
             $result = $this->user->insert_user($data);
             if($result){
