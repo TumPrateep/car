@@ -19,8 +19,8 @@
                 $("#eventOrder").html(event.orderId);
                 $("#eventStart").html(event.start.toISOString());
                 $("#eventPlate").html(event.plate);
-                $("#eventName").html("ศุภณัฐ คุ้มปิยะผล");
-                $("#eventLink").html('<a href="'+event.orderId+'">คลิก</a>');
+                $("#eventName").html(event.nameuser);
+                $("#eventLink").html('<a href="'+base_url+'garage/reservedetail/reservedetail/'+event.orderId+'">คลิก</a>');
                 $("#eventModal").modal('show');
             }
         })

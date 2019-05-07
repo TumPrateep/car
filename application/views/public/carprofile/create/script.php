@@ -1,20 +1,6 @@
 <script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
+
 <script>
-
-        //  function checkID(id) {
-        //     if(id.length != 13) return false;
-        //     for(i=0, sum=0; i < 12; i++)
-        //         sum += parseFloat(id.charAt(i))*(13-i);
-        //     if((11-sum%11)%10!=parseFloat(id.charAt(12)))
-        //         return false;
-        //     return true;
-        // }
-
-        // jQuery.validator.addMethod("pid", function(value, element) {
-        //   return checkID(value);
-        // }, 'กรุณากรอกเลขที่บัตรประชาชนให้ถูกต้อง');
-
-
     $(document).ready(function () {
 
         var form = $("#submit");

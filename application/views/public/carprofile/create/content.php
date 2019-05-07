@@ -81,8 +81,6 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label class="form-label required" for="garage">โฉมรถยนต์</label>
@@ -91,6 +89,8 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="row">     
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label class="form-label required" for="garage">รายละเอียดรุ่น</label>
@@ -99,18 +99,16 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label for="color">เลขไมค์</label><span class="error">*</span>
-                                                    <input type="number" class="form-control" name="mileage" id="mileage" placeholder="เลขไมค์" >
-                                                </div>
-                                            </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="phone">สี</label><span class="error">*</span>
                                                     <input type="text" class="form-control" name="color" id="color" placeholder=" สี" >
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label for="color">เลขไมค์</label><!-- <span class="error">*</span> -->
+                                                    <input type="number" class="form-control" name="mileage" id="mileage" placeholder="เลขไมค์" >
                                                 </div>
                                             </div>
                                         </div>
