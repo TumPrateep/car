@@ -84,15 +84,15 @@ class Payments extends CI_Model {
         }
     }
 
-    function getIdData($orderId){
-        $this->db->select("bank_carjaidee.bankId");
-        $this->db->from('order');
-        $this->db->join('payment','order.orderId  = payment.orderId');
-        $this->db->join('bank_carjaidee','payment.bankId  = bank_carjaidee.bankId');
-        $this->db->where('order.orderId',$orderId);
-        $result = $this->db->get();
-        return $result->row();  
-    }
+    // function getIdData($orderId){
+    //     $this->db->select("bank_carjaidee.bankId");
+    //     $this->db->from('order');
+    //     $this->db->join('payment','order.orderId  = payment.orderId');
+    //     $this->db->join('bank_carjaidee','payment.bankId  = bank_carjaidee.bankId');
+    //     $this->db->where('order.orderId',$orderId);
+    //     $result = $this->db->get();
+    //     return $result->row();  
+    // }
 
     function getฺBank($bankId){
         $this->db->select("bankName");

@@ -32,6 +32,21 @@
 								      	<th width="10%" scope="col"></th>
 							    	</tr>
 							  	</thead>
+							  	<tbody id="cart_list"></tbody>
+								<tfoot>
+									<tr>
+										<th colspan="4" class="text-right"><span class="amount">ราคาสินค้า :</span></th>
+										<th colspan="2" class="text-right"><span class="amount" id="order_total_cost"></span></th>
+									</tr>
+									<tr>
+										<th colspan="4" class="text-right"><span class="amount">ราคาค่าขนส่ง :</span></th>
+										<th colspan="2" class="text-right"><span class="amount" id="order_total_delivery"></span></th>
+									</tr>
+									<tr>
+										<th colspan="4" class="text-right"><span class="amount">ราคารวม :</span></th>
+										<th colspan="2" class="text-right"><span class="amount" id="order_total_amount"></span></th>
+									</tr>
+								</tfoot>
 							</table>
                         </div>
                         
@@ -208,7 +223,7 @@
 							<!-- <h4 class="underline">เพิ่มข้อมูลรถยนต์ที่ต้องการใช้บริการ</h4> -->
 							<form id="submit-create-car-profile">
 							<div class="row">
-                                <div class="col-md-7">
+                                <div class="col-md-6">
 									<div class="row p-t-20">
 					                	<div class="col-md-12">
 					             			<div class="form-group">
@@ -225,21 +240,25 @@
 					                </div>
 				                </div>
                                 
-								<div class="col-md-5">
-									<div class="form-group">
-										<label class="form-label required" for="car-profile">อักษรนำหน้า</label>
-										<input type="text" class="form-control" id="character_plate" name="character_plate" placeholder="อักษร">
-									</div>
-									<div class="form-group">
-										<label class="form-label required" for="car-profile">หมายเลข</label>
-										<input type="number" class="form-control" id="number_plate" name="number_plate" placeholder="หมายเลข">
-									</div>
-									<div class="form-group">
-										<label class="form-label required" for="car-profile">จังหวัด</label>
-										<select class="form-control input-default" name="province_plate" id="province_plate">
-											
-										</select>
-									</div>
+								<div class="card col-md-6">
+									<div class="row">
+										<div class="col-sm-6">
+											<label class="form-label required" for="car-profile">อักษรนำหน้า</label>
+											<input type="text" class="form-control" id="character_plate" name="character_plate" placeholder="อักษร">
+										</div>
+										<div class="col-sm-6">
+											<label class="form-label required" for="car-profile">หมายเลข</label>
+											<input type="number" class="form-control" id="number_plate" name="number_plate" placeholder="หมายเลข">
+										</div>
+									</div><br>
+									<div class="row">
+										<div class="col-sm-12">
+											<label class="form-label required" for="car-profile">จังหวัด</label>
+											<select class="form-control input-default" name="province_plate" id="province_plate">
+												
+											</select>
+										</div>
+									</div><br>
 								</div>
 							</div>
 							<div class="row">

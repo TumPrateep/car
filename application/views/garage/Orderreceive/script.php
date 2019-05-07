@@ -114,11 +114,11 @@
                     "render": function ( data, type, full, meta ) {
                         var html = '';
                         // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
-                        if(data.status==1){
+                        if(data.status==2){
                             html+='<span class="badge badge-warning">รอการตอบรับ</span>';
-                        }else if(data.status==2){
-                            html+='<span class="badge badge-success">รับสินค้า</span>';
                         }else if(data.status==3){
+                            html+='<span class="badge badge-success">รับสินค้า</span>';
+                        }else if(data.status==9){
                             html+='<span class="badge badge-danger">คืนสินค้า</span>';
                         }else{
                             html+='<span class="badge badge-danger">ผิดพลาด</span>';
@@ -179,7 +179,7 @@
         var option = {
             url: "/Orderdetail/changeStatus?orderDetailId="+orderDetailId,
             label: "ยืนยันการรับสินค้า",
-            status: 2,
+            status: 3,
             content: "คุณต้องการยืนยันการรับสินค้า ใช่หรือไม่",
             gotoUrl: "garage/Orderreceive/show"
         }
@@ -190,7 +190,7 @@
         var option = {
             url: "/Orderdetail/changeStatus?orderDetailId="+orderDetailId,
             label: "ยืนยันการคืนสินค้า",
-            status: 3,
+            status: 9,
             content: "คุณต้องการยืนยันการคืนสินค้า ใช่หรือไม่",
             gotoUrl: "garage/Orderreceive/show"
         }
