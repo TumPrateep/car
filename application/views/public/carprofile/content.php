@@ -36,17 +36,6 @@
 					    <div class="col-lg-2">
 							<a  href="<?=base_url("public/carprofile/create") ?>"><button type="button" class="btn btn-info btn-block" ><i class="fa fa-plus"></i>  สร้าง</button></a>  
 						</div>
-						<!-- <thead>
-							<tr>
-								<th>คำสั่งซื้อ</th>
-								<th>วันที่สั่ง</th>
-								<th>จำนวนเงินรวม</th>
-								<th>จำนวนเงินมัดจำ</th>
-								<th>จำนวนเงินคงเหลือ</th>
-								<th>สถานะ</th>
-								<th>รายการ</th>
-							</tr>									
-						</thead> -->
 					</table>
 				</div>
 			</div>					
