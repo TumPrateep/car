@@ -15,7 +15,6 @@ class Paymentss extends BD_Controller {
     function createPaymentDetail_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $data = array();
-        $bank_carjaidee = $this->payments->getฺBank($bankId);
         $orderId = $this->post("orderId");
         $date = $this->post("date");
         $time = $this->post("time");
@@ -37,7 +36,6 @@ class Paymentss extends BD_Controller {
         }
         $data = array(
             'orderId' => $orderId,
-            'bank_carjaidee' => $bank_carjaidee,
             'paymentId' => null,
             'created_by' =>$userId ,
             'date' => $date,
@@ -74,7 +72,21 @@ class Paymentss extends BD_Controller {
         $output['summary'] = calSummary($orderdetail->cost, $orderdetail->charge)+$costDelivery;
         $output['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
         $this->set_response($output, REST_Controller::HTTP_OK);
-    }  
+    } 
+    
+    function getbankt_get(){
+        $orderId = $this->get("orderId");
+        $userId = $this->session->userdata['logged_in']['id'];
+        $bank = $this->payments->getIdData($orderId);
+        $data["bank_carjaidee"] = $this->payments->getฺBank($bank->bankId);    
+        // $output['totallm'] = $depositflag;
+        // $output['summary'] = calSummary($orderdetail->cost, $orderdetail->charge)+$costDelivery;
+        // $output['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    } 
+
+
+  
 
  
 }

@@ -155,4 +155,35 @@ class Orderdetails extends CI_Model{
         $result = $this->db->update('orderdetail',$data);
         return $result;
     }
+
+    function getDatagarage($garageId){
+        $this->db->select("picture, garageName, dayopenhour");
+        $this->db->where('garageId',$garageId);
+        $result = $this->db->get("garage");
+        return $result->row();
+    }
+
+    function getDatareserve($reserveId){
+        $this->db->select("reserveDate, reservetime");
+        $this->db->where('reserveId',$reserveId);
+        $result = $this->db->get("reserve");
+        return $result->row();
+    }
+
+    function getDatacarprofile($car_profileId){
+        $this->db->select("pictureFront, character_plate, number_plate, province_plate");
+        $this->db->where('car_profileId',$car_profileId);
+        $result = $this->db->get("car_profile");
+        return $result->row();
+    }
+
+    function getIdData($orderId){
+        $this->db->select("reserve.garageId, order.car_profileId, reserve.reserveId");
+        $this->db->from('order');
+        $this->db->join('reserve','order.orderId  = reserve.orderId');
+        $this->db->where('order.orderId',$orderId);
+        $result = $this->db->get();
+        return $result->row();  
+    }
+
 }

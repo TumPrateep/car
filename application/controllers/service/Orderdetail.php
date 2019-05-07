@@ -60,8 +60,13 @@ class Orderdetail extends BD_Controller {
         $lubricatorData = $this->getLubricator($orderDetailData, $orderId);
         $tireData = $this->getTire($orderDetailData, $orderId);
         $spareData = $this->getSpare($orderDetailData, $orderId);
+        $data["orderDetail"] = $this->getCartData($lubricatorData, $tireData, $spareData);
+        $alldata = $this->orderdetails->getIdData($orderId);    
+        $data["garage"] = $this->orderdetails->getDatagarage($alldata->garageId);    
+        $data["reserve"] = $this->orderdetails->getDatareserve($alldata->reserveId);
+        $data["car_profile"] = $this->orderdetails->getDatacarprofile($alldata->car_profileId);
 
-        $this->set_response($this->getCartData($lubricatorData, $tireData, $spareData), REST_Controller::HTTP_OK);
+        $this->set_response($data, REST_Controller::HTTP_OK);
     }
 
     function getCartData($lubricatorData, $tireData, $spareData){

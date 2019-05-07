@@ -32,6 +32,7 @@
 			<div class="col-lg-9">
 				<h4 class="orange">หมายเลขสั่งซื้อ: <?=$orderId ?></h4>
 				<input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">
+				
 				<table class="table">
 					<thead>
 						<tr>

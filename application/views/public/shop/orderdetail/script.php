@@ -12,7 +12,7 @@
         $.get(base_url+"service/Orderdetail/orderDetail?orderId="+orderId, {},
             function (data, textStatus, jqXHR) {
                 var html = '';
-                $.each(data, function (index, val) { 
+                $.each(data.orderDetail, function (index, val) { 
                     var picture = "";
                     var content = "";
                     var quantity = "";
