@@ -99,8 +99,12 @@
                     "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<button type="button" class="btn btn-success"  title="รับนัด" onclick="confirmStatus('+data.reserveId+','+data.orderId+')">รับนัดซ่อม</button>'
-                            +" "+'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.reserveId+','+data.orderId+')">ยกเลิกนัด</button>';
+                        var disable = "";
+                        if(data.status == 9 || data.status == 2 ){
+                            disable = "disabled";
+                        }
+                        return '<button type="button" class="btn btn-success"  title="รับนัด" '+disable+' onclick="confirmStatus('+data.reserveId+','+data.orderId+')">รับนัดซ่อม</button>'
+                            +" "+'<button type="button" class="delete btn btn-danger" '+disable+' onclick="cancelStatus('+data.reserveId+','+data.orderId+')">ยกเลิกนัด</button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}

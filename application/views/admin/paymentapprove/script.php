@@ -111,11 +111,11 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var disable = "";
-                        if(data.status == null){
+                        if(data.status == 9 || data.status == 2 ){
                             disable = "disabled";
                         }
                         return '<button type="button" class="btn btn-success" '+disable+'  onclick="confirmStatus('+data.paymentId+','+data.orderId+')">ยืนยันการโอนเงิน</button> '
-                            +'<button type="button" class="delete btn btn-danger"  onclick="cancelStatus('+data.paymentId+','+data.orderId+')">ยกเลิกรายการสั่งซื้อ</button>';
+                            +'<button type="button" class="delete btn btn-danger" '+disable+' onclick="cancelStatus('+data.paymentId+','+data.orderId+')">ยกเลิกรายการสั่งซื้อ</button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}

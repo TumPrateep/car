@@ -99,11 +99,11 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var disable = "";
-                        if(data.paymentStatus != 2 && data.reserveStatus != 3){
+                        if(data.reserveStatus == 2 || data.reserveStatus == 9){
                             disable = "disabled";
                         }
                         return '<button type="button" class="btn btn-success" '+disable+' onclick="confirmStatus('+data.orderId+','+data.reserveId+')">ยืนยัน</button> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="cancelStatus('+data.orderId+','+data.reserveId+')">ยกเลิก</button>';
+                            +'<button type="button" class="delete btn btn-danger" '+disable+' onclick="cancelStatus('+data.orderId+','+data.reserveId+')">ยกเลิก</button>';
                     }
                 },
                 

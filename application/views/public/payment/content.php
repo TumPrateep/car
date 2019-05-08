@@ -49,12 +49,13 @@
                             <input type="time" class="form-control" name="time" id="time">
                         </div>
                     </div> 
-                    <!-- <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">ชื่อธนาคารผู้โอน</label>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">ชื่อธนาคาร</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="bank" id="bank" placeholder="ชื่อธนาคารที่โอน">
                         </div>
-                    </div> -->
+                    </div>
+<!-- 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">ชื่อธนาคารผู้โอน</label> 
                         <div class="input-group input-group-default col-sm-8">
@@ -62,21 +63,18 @@
                                 <option>เลือกธนาคาร</option>
                             </select>
                         </div>
-                    </div>
-                    <!-- <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">ชื่อธนาคารผู้รับ</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" name="bank" id="bank" placeholder="ชื่อธนาคารที่โอน">
-                        </div>
                     </div> -->
-                    <div class="form-group row">
+
+
+                    <!-- <div class="form-group row">
                         <label class="col-sm-3 col-form-label">ชื่อธนาคารผู้รับ</label> 
                         <div class="input-group input-group-default col-sm-8">
                             <select class="form-control" id="bankName" name="bankName">
                                 <option>เลือกธนาคาร</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
+
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">ชื่อผู้โอน</label>
                         <div class="col-sm-8">
