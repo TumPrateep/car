@@ -119,20 +119,28 @@
                                                             <h3>ข้อมูลทั่วไป</h3>
                                                                 <div class="row">
                                                                     <div class="col-sm">
-                                                                        <label for="garage">หมายเลขทะเบียนการค้า</label>
-                                                                        <input type="number" class="form-control" name="businessRegistration" id="businessRegistration" readonly>
-                                                                    </div>
-                                                                    <div class="col-sm">
-                                                                    </div>
-                                                                </div><br>
-                                                                <div class="row">
-                                                                    <div class="col-sm">
                                                                         <label for="garage">ชื่ออู่ซ่อมรถ</label>
                                                                         <input type="text" class="form-control" name="garageName" id="garageName" readonly>
                                                                     </div>
                                                                     <div class="col-sm">
+                                                                        <label for="garage">หมายเลขทะเบียนการค้า</label>
+                                                                        <input type="number" class="form-control" name="businessRegistration" id="businessRegistration" readonly>
+                                                                    </div>
+                                                                </div><br>
+                                                                <div class="row">
+                                                                    <div class="col-sm">
                                                                         <label for="garage">เบอร์โทรศัพท์</label>
                                                                         <input type="number" class="form-control" name="phoned" id="phoned"  readonly>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label for="garage">ความเชี่ยวชาญด้านรถ</label>
+                                                                        <input type="text" class="form-control" name="brandId" id="brandId" readonly>
+                                                                    </div>
+                                                                </div><br>
+                                                                <div class="row">
+                                                                    <div class="col-sm">
+                                                                        <label for="garage">การบริการ</label>
+                                                                        <input type="number" class="form-control" name="garageService" id="	garageService"  readonly>
                                                                     </div>
                                                                 </div><br>
                                                                 <div class="row">
@@ -145,12 +153,12 @@
                                                                         <input type="text" class="form-control" name="dateSE"  id="dateSE"  readonly>
                                                                     </div>
                                                                 </div><br>
-                                                                <div class="row">
+                                                                <!-- <div class="row">
                                                                     <div class="col-sm-6">
-                                                                            <label for="garage">ความเชี่ยวชาญด้านรถ</label>
-                                                                            <input type="text" class="form-control" name="brandId" id="brandId" readonly>
+                                                                        <label for="garage">ความเชี่ยวชาญด้านรถ</label>
+                                                                        <input type="text" class="form-control" name="brandId" id="brandId" readonly>
                                                                     </div>
-                                                                </div><br>
+                                                                </div><br> -->
                                                             </div>  
                                                         </div>
                                                         <div class="row">
