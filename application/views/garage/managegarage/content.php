@@ -76,19 +76,22 @@
                                                                         <input type="text" class="form-control" name="exp" id="exp" readonly>
                                                                     </div>
                                                                 </div><br>
+                                                                <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <div class="form-group">
+                                                                        <a  href="<?=base_url("garage/managegarage/updateowner") ?>"><button type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไข</button></a>
+                                                                    </div>
+                                                                 </div>
+                                                                </div><br>
                                                             </div>  
                                                         </div><br>
-                                                        <div class="row">
-                                                            <!-- <div class="card col-md-12"> 
-                                                            <h3>ข้อมูลเพิ่มเติม</h3>
-                                                                <textarea class="form-control" rows="5" id="garageowneraddress" readonly></textarea>
-                                                            </div> -->
+                                                        <!-- <div class="row">
 															<div class="col-md-2">
                                                                 <div class="form-group">
                                                             		<a  href="<?=base_url("garage/managegarage/updateowner") ?>"><button type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไข</button></a>
 															    </div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>					
                                             </form>

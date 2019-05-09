@@ -104,6 +104,13 @@
             margin-left: auto;
         }
 
+        td{
+            color: #000000 !important;
+        }
+
+        a{
+            color: #000000 !important;
+        }
       
     </style>
 </head>

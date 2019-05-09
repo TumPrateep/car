@@ -88,5 +88,8 @@
         .navbar-light .navbar-brand{
             color: #ffffff
         }
+        td{
+            color: #000000 !important;
+        }
     </style>
 </head>
