@@ -66,6 +66,24 @@ class Orderdetail extends BD_Controller {
         $data["reserve"] = $this->orderdetails->getDatareserve($alldata->reserveId);
         $data["car_profile"] = $this->orderdetails->getDatacarprofile($alldata->car_profileId);
 
+        $date=date_create($data["garage"]->openingtime);
+        $data["garage"]->openingtime = date_format($date,"H:i");
+
+        $date=date_create($data["garage"]->closingtime);
+        $data["garage"]->closingtime = date_format($date,"H:i");
+
+        $date=date_create($data["reserve"]->reservetime);
+        $data["reserve"]->reservetime = date_format($date,"H:i");
+
+        $date=date_create($data["reserve"]->reserveDate);
+        $data["reserve"]->reserveDateDay = date_format($date,"d/");
+
+        $date=date_create($data["reserve"]->reserveDate);
+        $data["reserve"]->reserveDateMonth = date_format($date,"m");
+
+        $date=date_create($data["reserve"]->reserveDate);
+        $data["reserve"]->reserveDateYear = date_format($date,"/Y");
+
         $this->set_response($data, REST_Controller::HTTP_OK);
     }
 

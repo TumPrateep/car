@@ -32,6 +32,75 @@
 			<div class="col-lg-9">
 				<h4 class="orange">หมายเลขสั่งซื้อ: <?=$orderId ?></h4>
 				<input type="hidden" id="orderId" name="orderId" value="<?=$orderId ?>">
+
+				<div class="row">
+					<div class="col-md-4">
+	                    <div class="row p-t-20">
+	                        <div class="col-md-12">
+	                            <div class="form-group">
+	                                <div class="image-editor" id="garage">
+									<div class="cropit-preview"></div>
+	                                    <input type="hidden" name="pictures" id="pictures" class="hidden-image-data" />
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-md-8">
+	                	<div class="card" >
+	                		<div class="card-body"> 
+			                    <div class="row ">
+		                            <div class="col-md-3 "><label class="txt-S-s">ชื่ออู่</label></div>
+		                            <div class="col-md-8">
+		                                <label class="txt-S-s"  name="garageName" id="garageName">: </label>
+		                            </div>
+		                        </div>
+			                    <div class="row ">
+		                            <div class=" col-md-3 "><label class="txt-S-s">วันที่เปิด</label></div>
+		                            <div class="col-md-8">
+		                                <label class="txt-S-s"  name="dayopen" id="dayopen">: </label>
+		                            </div>
+		                        </div>
+		                        <div class="row ">
+		                            <div class="col-md-3 "><label class="txt-S-s">เวลาที่เปิด</label></div>
+		                            <div class="col-md-8">
+		                                <label class="txt-S-s"  name="timeopen" id="timeopen">:</label>
+		                            </div>
+		                        </div>
+		                        <div class="row ">
+		                            <div class="col-md-3 "><label class="txt-S-s">วันที่จอง</label></div>
+		                            <div class="col-md-8">
+		                            	<label class="txt-S-s " >:</label>
+		                                <label class="txt-S-s text-red" name="reserveday" id="reserveday"></label>
+		                            </div>
+		                        </div>
+	                        </div>
+                        </div>
+	                </div>  
+	            </div>
+	            <div class="row">
+					<div class="col-md-4">
+	                    <div class="row p-t-20">
+	                        <div class="col-md-12">
+	                            <div class="form-group">
+	                                <div class="image-editor" id="caruser">
+									<div class="cropit-preview"></div>
+	                                    <input type="hidden" name="pictures" id="pictures" class="hidden-image-data" />
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-md-3 txt-cen-order cen-card">
+	                	<label class="txt-S-s">ป้ายทะเบียน</label>
+                        <div class="card card-border" >
+						  	<div class="card-body-plate ">
+						    	<label class="txt-S-m"  name="plate" id="plate"> </label><br>
+						    	<label class="txt-S-s"  name="provinceplate" id="provinceplate"> </label>
+						  	</div>
+						</div>   
+	                </div>  
+	            </div>
 				
 				<table class="table">
 					<thead>
@@ -44,6 +113,38 @@
 					</thead>
 					<tbody id="showOrder"></tbody>
 				</table>
+
+				<div class="row ">
+                    <div class="col-md-3 "><label>ราคาสินค้า :</label></div>
+                    <div class="col-md-8">
+                        <label name="deposit" id="deposit"> </label>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-3 "><label>ราคาค่าขนส่ง :</label></div>
+                    <div class="col-md-8">
+                        <label name="money" id="money"> </label>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-3 "><label>ราคารวม :</label></div>
+                    <div class="col-md-8">
+                        <label name="money" id="money"> </label>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-3 "><label>เงินมัดจำ :</label></div>
+                    <div class="col-md-8">
+                        <label name="deposit" id="deposit"> </label>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-3 "><label>เงินคงเหลือ :</label></div>
+                    <div class="col-md-8">
+                        <label name="money" id="money"> </label>
+                    </div>
+                </div>  
+
 			</div>				
         </div>
 	</div>

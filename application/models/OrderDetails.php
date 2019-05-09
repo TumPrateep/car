@@ -157,7 +157,7 @@ class Orderdetails extends CI_Model{
     }
 
     function getDatagarage($garageId){
-        $this->db->select("picture, garageName, dayopenhour");
+        $this->db->select("picture, garageName, dayopenhour,openingtime,closingtime");
         $this->db->where('garageId',$garageId);
         $result = $this->db->get("garage");
         return $result->row();
@@ -171,9 +171,11 @@ class Orderdetails extends CI_Model{
     }
 
     function getDatacarprofile($car_profileId){
-        $this->db->select("pictureFront, character_plate, number_plate, province_plate");
-        $this->db->where('car_profileId',$car_profileId);
-        $result = $this->db->get("car_profile");
+        $this->db->select("car_profile.pictureFront, car_profile.character_plate, car_profile.number_plate, provinceforcar.provinceforcarName");
+        $this->db->from('car_profile');
+        $this->db->join('provinceforcar','car_profile.province_plate  = provinceforcar.provinceforcarId');
+        $this->db->where('car_profile.car_profileId',$car_profileId);
+        $result = $this->db->get();
         return $result->row();
     }
 

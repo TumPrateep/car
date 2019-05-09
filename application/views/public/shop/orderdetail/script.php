@@ -5,13 +5,70 @@
 <script src="<?php echo base_url() ?>public/js/datatable-responsive.js"></script>
 <script src="<?php echo base_url() ?>public/js/jquery-dateformat.min.js"></script>
 
+<script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
+
 <script>
+    function changeStringToDay(str){
+        var html = "";
+        var day = ["จ","อ","พ","พฤ","ศ","ส","อา"];
+
+        for(var i=0;i<str.length;i++){
+            if(str.charAt(i) == "1"){
+                html += day[i]+", ";
+            }
+        }
+        return html.substring(0, html.length - 2);
+    }
+
+    // function changeStringToMonth(month){
+    //     var html = "";
+    //     var day = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+    //     console.log(month)
+    //     for(var i=1;i<13;i++){
+    //         if(month == i){
+    //             html += day[i-1];
+    //         }
+    //     }
+    //     return html;
+    // }
+    
     $(document).ready(function () {
+
         var table = $("#showOrder");
         var orderId = $("#orderId").val();
+        var picturePath = base_url+'public/image/';
         $.get(base_url+"service/Orderdetail/orderDetail?orderId="+orderId, {},
             function (data, textStatus, jqXHR) {
                 var html = '';
+                garagedata = data.garage;
+                caruserdata = data.car_profile;
+                reservedata = data.reserve;
+                $('#garage.image-editor').cropit({
+                    allowDragNDrop: false,
+                    width: 200,
+                    height: 200,
+                    type: 'image',
+                    imageState: {
+                        src: picturePath+"garage/"+garagedata.picture
+                    }
+                });
+                $("#garageName").html(": "+garagedata.garageName);
+                $("#dayopen").html(": "+changeStringToDay(garagedata.dayopenhour));
+                $("#timeopen").html(": "+garagedata.openingtime+" - "+garagedata.closingtime+" น.");
+                $("#reserveday").html(" วันที่ "+reservedata.reserveDateDay+reservedata.reserveDateMonth+reservedata.reserveDateYear+" เวลา "+reservedata.reservetime+" น.");
+                $('#caruser.image-editor').cropit({
+                    allowDragNDrop: false,
+                    width: 200,
+                    height: 200,
+                    type: 'image',
+                    imageState: {
+                        src: picturePath+"carprofile/"+caruserdata.pictureFront
+                    }
+                });
+                $("#plate").html(caruserdata.character_plate+" "+caruserdata.number_plate);
+                $("#provinceplate").html(caruserdata.provinceforcarName);
+
+
                 $.each(data.orderDetail, function (index, val) { 
                     var picture = "";
                     var content = "";
