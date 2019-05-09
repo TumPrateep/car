@@ -677,9 +677,14 @@ $(document).ready(function () {
         height: 200,
         type: 'image/jpeg'
     });
-
-
-
+    
+    $(function(){
+    $("#character_plate").keyup(function(event){
+        var input_data=$("#character_plate").val();
+        alert(input_data);      
+    });
+});
+   
 
         
 </script>
