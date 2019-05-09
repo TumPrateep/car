@@ -182,15 +182,112 @@
             );
             }
 
+        var letters = /^[ก-๙a-zA-Z]+$/;  
+        
+        jQuery.validator.addMethod("THEN", function(value, element) {
+            return this.optional(element) || /^[ก-๙a-zA-Z]+$/.test(value);
+        }, 'asasas');
+
+        jQuery.validator.addMethod("NUMBERCHECK", function(value, element) {
+            return this.optional(element) || /^[0-9]+$/.test(value);
+        }, 'กรอกเฉพาะตัวเลข');
+
+
         $("#submit").validate({
                 rules: {
-                    firstName: {
+                    garageName: {
+                        required: true,
+                        THEN: true
+                    },
+                    phone: {
+                        required: true,
+                        minlength: 9,
+                        maxlength: 10
+                    },
+                    businessRegistration: {
+                        required: true,
+                        minlength: 13,
+                        maxlength: 13
+                    },
+                    brandId: {
                         required: true
-                    }
+                    },
+                    openingtime: {
+                        required: true
+                    },
+                    closingtime: {
+                        required: true
+                    },
+                    hno: {
+                        required: true
+                    },
+                    provinceId: {
+                        required: true
+                    },
+                    districtId: {
+                        required: true
+                    },
+                    subdistrictId: {
+                        required: true
+                    },
+                    postCode: {
+                        required: true
+                    },
+                    coordinates: {
+                        required: true
+                    },
+                    option_outher:  {
+                        THEN: true
+                    },
                 },
                 messages: {
-                    firstName: {
+                    garageName: {
+                        required: "กรุณากรอกชื่ออู่",
+                        THEN: "กรอกข้อมูลไม่ถูกต้อง"
+                    },
+                    phone: {
+                        required: "กรุณากรอกเบอร์โทรศัพท์",
+                        minlength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ",
+                        maxlength: "กรอกข้อมูลไม่ถูกต้อง",
+                        min: "กรอกข้อมูลไม่ถูกต้อง"
+                    },
+                    businessRegistration: {
+                        required: "กรุณากรอกหมายเลขทะเบียนการค้า",
+                        maxlength: "กรุณากรอกตัวเลขเเค่ 13 หลัก",
+                        minlength: "กรุณากรอกตัวเลขอย่างน้อย 13 หลัก",
+                        min: "กรอกข้อมูลไม่ถูกต้อง"
+                    },
+                    brandId: {
                         required: "กรุณากรอกชื่อ"
+                    },
+                    openingtime: {
+                        required: "กรุณาเลือกเวลา"
+                    },
+                    closingtime: {
+                        required: "กรุณาเลือกเวลา"
+                    },
+                    hno: {
+                        required: "กรุณากรอกบ้านเลขที่"
+                    },
+                    provinceId: {
+                        required: "กรุณาเลือกจังหวัด"
+                    },
+                    districtId: {
+                        required: "กรุณาเลือกอำเภอ"
+                    },
+                    subdistrictId: {
+                        required: "กรุณาเลือกตำบล"
+                    },
+                    postCode: {
+                        required: "กรุณากรอกรหัสไปรษณีย์",
+                        minlength: "กรุณากรอกรหัสไปรษณีย์อย่างน้อย 5 ตัว",
+                        NUMBERCHECK: "กรุณากรอกเฉพาะตัวเลข"
+                    },
+                    coordinates: {
+                        required: "กรุณาดึงพิกัด"
+                    },
+                    option_outher:  {
+                        THEN: "กรอกข้อมูลไม่ถูกต้อง"
                     }
                 }
         });
