@@ -24,11 +24,12 @@
                         	<table class="table table-hover" id="cart-table">
 							  	<thead class="orange-table">
 							    	<tr >
-							      		<th width="10%" scope="col"></th>
-								      	<th width="20%" scope="col">รูปสินค้า</th>
-								      	<th width="25%" scope="col">ชื่อสินค้า</th>
+							      		<th width="5%" scope="col"></th>
+								      	<th width="10%" scope="col">รูปสินค้า</th>
+								      	<th width="20%" scope="col">ชื่อสินค้า</th>
+										<th width="15%" scope="col">ราคาต่อหน่วย</th>
 								      	<th width="20%" scope="col">จำนวน</th>
-								      	<th width="15%" scope="col">ราคา</th>
+								      	<th width="15%" scope="col">ราคารวม</th>
 								      	<th width="10%" scope="col"></th>
 							    	</tr>
 							  	</thead>
