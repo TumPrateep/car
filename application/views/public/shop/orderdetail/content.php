@@ -91,7 +91,50 @@
 	                        </div>
 	                    </div>
 	                </div>
-	                <div class="col-md-3 txt-cen-order cen-card">
+	                <div class="col-md-8">
+	                	<div class="card" >
+	                		<div class="card-body">
+	                			<div class="row "> 
+				                    <div class="col-md-4 txt-cen-order cen-card">
+					                	<label class="txt-S-s">ป้ายทะเบียน</label>
+				                        <div class="card card-border" >
+										  	<div class="card-body-plate ">
+										    	<label class="txt-S-m"  name="plate" id="plate"> </label><br>
+										    	<label class="txt-S-s"  name="provinceplate" id="provinceplate"> </label>
+										  	</div>
+										</div>   
+					                </div>
+					                <div class="col-md-7 ">
+					                	<div class="row ">
+				                            <div class=" col-md-4 "><label class="txt-S-s">ยี่ห้อ</label></div>
+				                            <div class="col-md-8">
+				                                <label class="txt-S-s"  name="brand_car" id="brand_car">: </label>
+				                            </div>
+				                        </div>
+				                        <div class="row ">
+				                            <div class=" col-md-4 "><label class="txt-S-s">รุ่นรถ</label></div>
+				                            <div class="col-md-8">
+				                                <label class="txt-S-s"  name="model_car" id="model_car">: </label>
+				                            </div>
+				                        </div>
+				                        <div class="row ">
+				                            <div class=" col-md-4 "><label class="txt-S-ss">โฉมรถยนต์</label></div>
+				                            <div class="col-md-8">
+				                                <label class="txt-S-ss"  name="detail_car" id="detail_car">: </label>
+				                            </div>
+				                        </div> 
+				                        <div class="row ">
+				                            <div class=" col-md-4 "><label class="txt-S-ss">รายละเอียด<!-- รุ่น --></label></div>
+				                            <div class="col-md-8">
+				                                <label class="txt-S-ss"  name="model_of_car" id="model_of_car">: </label>
+				                            </div>
+				                        </div>    
+					                </div>
+				                </div>  
+	                        </div>
+                        </div>
+	                </div>  
+	                <!-- <div class="col-md-3 txt-cen-order cen-card">
 	                	<label class="txt-S-s">ป้ายทะเบียน</label>
                         <div class="card card-border" >
 						  	<div class="card-body-plate ">
@@ -99,7 +142,7 @@
 						    	<label class="txt-S-s"  name="provinceplate" id="provinceplate"> </label>
 						  	</div>
 						</div>   
-	                </div>  
+	                </div>  --> 
 	            </div>
 				
 				<table class="table">

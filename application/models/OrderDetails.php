@@ -170,10 +170,23 @@ class Orderdetails extends CI_Model{
         return $result->row();
     }
 
+    // function getDatacarprofile($car_profileId){
+    //     $this->db->select("car_profile.pictureFront, car_profile.character_plate, car_profile.number_plate, provinceforcar.provinceforcarName");
+    //     $this->db->from('car_profile');
+    //     $this->db->join('provinceforcar','car_profile.province_plate  = provinceforcar.provinceforcarId');
+    //     $this->db->where('car_profile.car_profileId',$car_profileId);
+    //     $result = $this->db->get();
+    //     return $result->row();
+    // }
+
     function getDatacarprofile($car_profileId){
-        $this->db->select("car_profile.pictureFront, car_profile.character_plate, car_profile.number_plate, provinceforcar.provinceforcarName");
+        $this->db->select("car_profile.pictureFront, car_profile.character_plate, car_profile.number_plate, provinceforcar.provinceforcarName, brand.brandName, model.modelName, model.yearStart, model.yearEnd, model.detail, modelofcar.modelofcarName, modelofcar.machineSize");
         $this->db->from('car_profile');
         $this->db->join('provinceforcar','car_profile.province_plate  = provinceforcar.provinceforcarId');
+        $this->db->join('brand','car_profile.brandId  = brand.brandId');
+        $this->db->join('model','car_profile.modelId  = model.modelId');
+        $this->db->join('modelofcar','car_profile.modelofcarId  = modelofcar.modelofcarId');
+
         $this->db->where('car_profile.car_profileId',$car_profileId);
         $result = $this->db->get();
         return $result->row();
