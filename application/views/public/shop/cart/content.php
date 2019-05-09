@@ -223,7 +223,7 @@
 							<!-- <h4 class="underline">เพิ่มข้อมูลรถยนต์ที่ต้องการใช้บริการ</h4> -->
 							<form id="submit-create-car-profile">
 							<div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-7">
 									<div class="row p-t-20">
 					                	<div class="col-md-12">
 					             			<div class="form-group">
@@ -240,25 +240,29 @@
 					                </div>
 				                </div>
                                 
-								<div class="card col-md-6">
-									<div class="row">
-										<div class="col-sm-6">
-											<label class="form-label required" for="car-profile">อักษรนำหน้า</label>
-											<input type="text" class="form-control" id="character_plate" name="character_plate" placeholder="อักษร">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="form-label " for="car-profile">หมายเลขป้ายทะเบียน</label>
+										<input type="text" class="form-control" id="character_plate" name="character_plate" placeholder="หมายเลขป้ายทะเบียน">
+									</div>
+									<!-- <div class="form-group">
+										<label class="form-label required" for="car-profile">หมายเลข</label>
+										<input type="number" class="form-control" id="number_plate" name="number_plate" placeholder="หมายเลข">
+									</div> -->
+									<div class="form-group">
+										<label class="form-label required" for="car-profile">จังหวัด</label>
+										<select class="form-control input-default" name="province_plate" id="province_plate">
+											
+										</select>
+									</div>
+									<div class="card border-black">
+										<div class="form-group">
+											<span id="characterofcar" name="characterofcar"></span>
 										</div>
-										<div class="col-sm-6">
-											<label class="form-label required" for="car-profile">หมายเลข</label>
-											<input type="number" class="form-control" id="number_plate" name="number_plate" placeholder="หมายเลข">
+										<div class="form-group">
+											<span id="numberofcar" name="numberofcar"></span>
 										</div>
-									</div><br>
-									<div class="row">
-										<div class="col-sm-12">
-											<label class="form-label required" for="car-profile">จังหวัด</label>
-											<select class="form-control input-default" name="province_plate" id="province_plate">
-												
-											</select>
-										</div>
-									</div><br>
+									</div>
 								</div>
 							</div>
 							<div class="row">
