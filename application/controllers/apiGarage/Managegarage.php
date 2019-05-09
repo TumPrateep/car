@@ -61,7 +61,20 @@ class Managegarage extends BD_Controller {
         $days = $this->post('sunday');
 		$openDay .= (isset($days) ? 1 : 0 );
 
-		$dayopenhour = $openDay;
+        $dayopenhour = $openDay;
+        
+        $Servicegarage = "";
+
+		$change_spare = $this->post('change_spare');
+		$Servicegarage .= (isset($change_spare) ? 1 : 0 );
+		
+		$change_tire = $this->post('change_tire');
+		$Servicegarage .= (isset($change_tire) ? 1 : 0 );
+		
+		$change_lubricator = $this->post('change_lubricator');
+		$Servicegarage .= (isset($change_lubricator) ? 1 : 0 );
+
+		$garageService = $Servicegarage;
 
         $this->load->model("managegarages");
         $config['upload_path'] = 'public/image/garage/';
@@ -111,7 +124,9 @@ class Managegarage extends BD_Controller {
 			'option2' => $roomfan,
 			'option3' => $roomAir,
 			'option4' => $snack,
-            'dayopenhour' => $dayopenhour
+            'dayopenhour' => $dayopenhour,
+            'garageService' => $garageService
+
         );
         $oldImage = null;
         if($data_check_update != null){

@@ -52,3 +52,17 @@
             return newun;
         }
     </script>
+
+    <script>
+        function changeStringGS(str){
+            var html = "";
+            var job = ["บริการเปลี่ยนอะไหล่","บริการเปลี่ยนยางรถ","บริการเปลี่ยนน้ำมันเครื่อง"];
+
+            for(var i=0;i<str.length;i++){   // 1111011
+                if(str.charAt(i) == "1"){
+                    html += job[i]+", ";
+                }
+            }
+            return html.substring(0, html.length);
+        }
+    </script>
