@@ -102,6 +102,25 @@
         type: 'image/jpeg'
     });
 
+    var bank = $("#bankNameReceive");
+
+    init();
+
+    function init(){
+        getBank();
+    }
+
+        function getBank(bankId = null){
+        $.get(base_url+"service/Paymentss/getAllBank",{},
+            function(data){
+                var bankData = data.data;
+                $.each( bankData, function( key, value ) {
+                    bank.append('<option value="' + value.bankId + '">' + value.bankName + '</option>');
+                });
+            }
+        );
+    }
+
   });
 </script>
 

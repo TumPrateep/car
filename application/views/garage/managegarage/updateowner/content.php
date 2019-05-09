@@ -65,7 +65,7 @@
 											<div class="col-md-2 ">
 												<div class="form-group">
 													<label class="form-label" for="mechanic">ประสบการณ์</label><span class="error">*</span>
-													<input type="number" class="form-control" name="exp" id="exp" placeholder="ประสบการณ์(ปี)">
+													<input type="number" class="form-control" name="exp" id="exp" placeholder="ประสบการณ์(ปี)" min=0>
 												</div>
 											</div>
 										</div>
@@ -79,7 +79,7 @@
 											<div class="col-md-4">
 												<div class="form-group">
 													<label class="form-label" for="mechanic">เบอร์โทรศัพท์</label><span class="error">*</span>
-													<input type="number" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์">
+													<input type="number" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" min=0>
 												</div>
 											</div>
 										</div>
