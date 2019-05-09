@@ -29,6 +29,25 @@
 	.btn-white{
 		color: #ffffff;
 	}
-	
+	.txt-cen-order{
+		/*align-content: center;*/
+		text-align: center;
+	}
+	.cen-card{
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+	.card-body-plate{
+		padding-right: 10px;
+		padding-left: 10px;
+		padding-top: 5px;
+		padding-bottom: 3px;
+	}
+	.card-border{
+		border: 2px solid #000000;
+	}
+	.text-red{
+		color: red;
+	}
 </style>
 </head>
