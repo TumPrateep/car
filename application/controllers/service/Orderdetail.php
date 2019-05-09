@@ -76,13 +76,7 @@ class Orderdetail extends BD_Controller {
         $data["reserve"]->reservetime = date_format($date,"H:i");
 
         $date=date_create($data["reserve"]->reserveDate);
-        $data["reserve"]->reserveDateDay = date_format($date,"d/");
-
-        $date=date_create($data["reserve"]->reserveDate);
-        $data["reserve"]->reserveDateMonth = date_format($date,"m");
-
-        $date=date_create($data["reserve"]->reserveDate);
-        $data["reserve"]->reserveDateYear = date_format($date,"/Y");
+        $data["reserve"]->reserveDate = date_format($date,"d/m/Y");
 
         $this->set_response($data, REST_Controller::HTTP_OK);
     }

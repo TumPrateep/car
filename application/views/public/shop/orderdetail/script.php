@@ -55,7 +55,7 @@
                 $("#garageName").html(": "+garagedata.garageName);
                 $("#dayopen").html(": "+changeStringToDay(garagedata.dayopenhour));
                 $("#timeopen").html(": "+garagedata.openingtime+" - "+garagedata.closingtime+" น.");
-                $("#reserveday").html(" วันที่ "+reservedata.reserveDateDay+reservedata.reserveDateMonth+reservedata.reserveDateYear+" เวลา "+reservedata.reservetime+" น.");
+                $("#reserveday").html(" วันที่ "+reservedata.reserveDate+" เวลา "+reservedata.reservetime+" น.");
                 $('#caruser.image-editor').cropit({
                     allowDragNDrop: false,
                     width: 200,
@@ -67,7 +67,10 @@
                 });
                 $("#plate").html(caruserdata.character_plate+" "+caruserdata.number_plate);
                 $("#provinceplate").html(caruserdata.provinceforcarName);
-
+                $("#brand_car").html(": "+caruserdata.brandName);
+                $("#model_car").html(": "+caruserdata.modelName);
+                $("#detail_car").html(": (ปี "+caruserdata.yearStart+"-"+caruserdata.yearEnd+")"+caruserdata.detail);
+                $("#model_of_car").html(": "+caruserdata.machineSize+" "+caruserdata.modelofcarName);
 
                 $.each(data.orderDetail, function (index, val) { 
                     var picture = "";
