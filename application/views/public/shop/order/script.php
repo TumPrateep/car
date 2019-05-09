@@ -90,6 +90,9 @@
                         else if(data.status == "3"){
                             html +='<a href="#"><button type="button" class="btn btn-warning">รับบริการ</button> '
                         }
+                        else if(data.status == "10"){
+                            html +='<a href="#"><button type="button" class="btn btn-primary">เสร็จสิ้น</button> '
+                        }
                         return html 
                         
                     }
