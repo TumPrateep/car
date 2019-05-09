@@ -185,12 +185,12 @@
 								<div class="btn-group offset-md-3" data-toggle="buttons">
 									<label class="btn btn-outline-secondary" id="selectOption1">
 										<input type="radio" name="options" id="option1" ><span class="icon">จ่ายเงินเต็มจำนวน</span><br>
-										<span id="fullMoney"></span>
+										<h4><span class="text-danger" id="fullMoney"></span></h4>
 										<!-- <span class="amount" id="money"> -->
 									</label>
 									<label class="btn btn-outline-secondary" id="selectOption2">
 										<input type="radio" name="options" id="option2" ><span class="icon">จ่ายเงินแบบมัดจำ</span><br>
-										<span id="halfMoney"></span>
+										<h4><span class="text-danger txt-money" id="halfMoney"></span></h4>
 										<!-- <span class="amount" id="depositmoney"> -->
 									</label>
 								</div><hr>
