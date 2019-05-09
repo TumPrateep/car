@@ -17,21 +17,6 @@
         createlubricatorchangegarage();
     })
 
-    // var tire_rim = $("#tire_rimId");
-
-    // getRim();
-
-    // function getRim(rimId = null){
-    //     $.get(base_url+"api/Rim/getAllRims",{},
-    //         function(data){
-    //             var brandData = data.data;
-    //             $.each( brandData, function( key, value ) {
-    //                 tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>');
-    //             });
-    //         }
-    //     );
-    // }
-
     function createlubricatorchangegarage(){
         event.preventDefault();
         var isValid = $("#submit").valid();

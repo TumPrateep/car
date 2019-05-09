@@ -111,14 +111,7 @@
 
             var subdistrictDropdownGarage = $('#subdistrictId');
             subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
-
-
-        // function onLoad(){
-        //     loadProvinceUser();
-        
-        // }
-        // onLoad();
-
+            
 
         function loadProvinceGarage(provinceId, districtId,subdistrictId){
             $.post(base_url+"service/LocationforRegister/getProvince",{},
@@ -219,7 +212,7 @@
                         required: true
                     },
                     hno: {
-                        required: true
+                        // required: true
                     },
                     provinceId: {
                         required: true
@@ -267,7 +260,7 @@
                         required: "กรุณาเลือกเวลา"
                     },
                     hno: {
-                        required: "กรุณากรอกบ้านเลขที่"
+                        // required: "กรุณากรอกบ้านเลขที่"
                     },
                     provinceId: {
                         required: "กรุณาเลือกจังหวัด"

@@ -200,6 +200,26 @@
         table.ajax.reload();
     })
 
+        $("#submit").submit(function(){
+            createcomment();
+    })
+
+    function createcomment(){
+        event.preventDefault();
+        var isValid = $("#submit").valid();
+        if(isValid){
+            var data = $("#submit").serialize();
+            $.post(base_url+"service/Commentuser/createCommentuser",data,
+            function(data){
+                if(data.message == 200){
+                    showMessage(data.message,"shop/order");
+                }else{
+                    showMessage(data.message,);
+                }
+            });
+        }
+    }
+
 </script>
 
 </body>

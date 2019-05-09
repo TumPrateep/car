@@ -64,7 +64,7 @@
 					<div class="row">
 						<div class="col-md-12" id="selectGarage">
 						<!-- add comment -->
-						<form id="create-comment">
+						<form id="submit">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group" id="rating-ability-wrapper">
@@ -97,7 +97,7 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label class="form-label required">คอมเมนต์</label>
-										<textarea class="form-control" id="commentUser" rows="3"></textarea>
+										<textarea class="form-control" id="commentUser" name="commentUser" rows="3"></textarea>
 									</div>
 								</div>
 								
