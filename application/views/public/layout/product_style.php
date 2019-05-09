@@ -49,5 +49,8 @@
 	.text-red{
 		color: red;
 	}
+	.txt-S-ss{
+		font-size: 14px;
+	}
 </style>
 </head>
