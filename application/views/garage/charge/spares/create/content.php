@@ -62,7 +62,7 @@
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label>ราคาค่าบริการ</label> <span class="error">*</span>
-                                        <input type="number" class="form-control" placeholder="ราคาค่าบริการ" name="spares_price" id="spares_price">
+                                        <input type="number" class="form-control" placeholder="ราคาค่าบริการ" name="spares_price" id="spares_price" min=0 >
                                     </div>
                                 </div>
                             </div>

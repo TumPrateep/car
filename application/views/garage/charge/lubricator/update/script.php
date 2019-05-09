@@ -7,7 +7,8 @@
         },
         messages: {
             lubricator_price: {
-                required: "กรอกราคาค่าบริการ"
+                required: "กรอกราคาค่าบริการ",
+                min: "กรุณากรอกราคาเต็มจำนวน"
             }
         },
     });

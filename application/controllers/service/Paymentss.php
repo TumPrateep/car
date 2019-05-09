@@ -18,7 +18,8 @@ class Paymentss extends BD_Controller {
         $orderId = $this->post("orderId");
         $date = $this->post("date");
         $time = $this->post("time");
-        $bank = $this->post("bank");
+        $btransfer = $this->post("bankNameTransfer");
+        $breceive = $this->post("bankNameReceive");
         $money = $this->post("money");
         $transfer = $this->post("transfer");
         $paymentdetail = $this->payments-> getPaymentId($orderId);
@@ -41,12 +42,12 @@ class Paymentss extends BD_Controller {
             'date' => $date,
             'time' => $time,
             'created_at' => date('Y-m-d H:i:s',time()),
-            'bank' => $bank,
+            'receivebank' => $btransfer,
+            'transferbankId' => $breceive,
             'transfer' => $transfer,
-            'money' => $money,
             // 'slipimage' => NULL,
             'status' => 1,
-            // 'activeflag' =>1
+            
             "slip"=> $imageName
         );
       
@@ -74,17 +75,11 @@ class Paymentss extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     } 
     
-    // function getbankt_get(){
-    //     $orderId = $this->get("orderId");
-    //     $userId = $this->session->userdata['logged_in']['id'];
-    //     $bank = $this->payments->getIdData($orderId);
-    //     $data["bank_carjaidee"] = $this->payments->getฺBank($bank->bankId);    
-    //     // $output['totallm'] = $depositflag;
-    //     // $output['summary'] = calSummary($orderdetail->cost, $orderdetail->charge)+$costDelivery;
-    //     // $output['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
-    //     $this->set_response($output, REST_Controller::HTTP_OK);
-    // } 
-
+    function getAllBank_get(){
+        $result = $this->payments->getฺBank();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 
   
 

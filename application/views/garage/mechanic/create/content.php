@@ -47,7 +47,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="phone">เบอร์โทรศัพท์</label><span class="error">*</span>
-                                            <input type="number" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" >
+                                            <input type="number" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" min=0 >
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -59,7 +59,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="phone">ประสบการณ์(ปี)</label><span class="error">*</span>
-                                            <input type="number" class="form-control" name="exp" id="exp" placeholder=" ปี" >
+                                            <input type="number" class="form-control" name="exp" id="exp" placeholder=" ปี" min=0 >
                                         </div>
                                     </div>
                                 </div>

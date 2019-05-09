@@ -38,7 +38,7 @@
                           <div class="form-group">
                               <div class="form-group">
                                   <label>ราคาค่าบริการเปลี่ยนขอบยาง</label><span class="error">*</span>
-                                  <input type="number" class="form-control"  name="tire_price" id="tire_price" placeholder="กรุณากรอกราคาค่าบริการเปลี่ยนขอบยาง">
+                                  <input type="number" class="form-control"  name="tire_price" id="tire_price" placeholder="กรุณากรอกราคาค่าบริการเปลี่ยนขอบยาง" min=0 >
                               </div>
                           </div>
                         </div>

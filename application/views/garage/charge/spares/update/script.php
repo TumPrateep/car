@@ -14,7 +14,8 @@
             brandName: {
                 required: "กรอกยี่ห้อรถ"
             },spares_price: {
-                required: "กรอกราคาค่าบริการ"
+                required: "กรอกราคาค่าบริการ",
+                min: "กรุณากรอกราคาเต็มจำนวน"
             },
             spares_undercarriageId: {
                 required: "เลือกรายการอะไหล่ช่วงล่าง"

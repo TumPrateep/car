@@ -27,7 +27,7 @@
                                     <form id="submit">
                                         <div class="form-group">
                                             <label>ราคาเปลี่ยนน้ำมันเครื่อง</label><span class="error">*</span>
-                                            <input type="number" class="form-control input-default " id="lubricator_price" name="lubricator_price" placeholder="ราคาค่าบริการ">
+                                            <input type="number" class="form-control input-default " id="lubricator_price" name="lubricator_price" placeholder="ราคาค่าบริการ" min=0 >
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-info ">บันทึก</button>

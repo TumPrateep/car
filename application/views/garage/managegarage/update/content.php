@@ -49,11 +49,11 @@
 													</div>
 													<div class="form-group">
 														<label for="garage">เบอร์โทรศัพท์</label><span class="error">*</span>
-														<input type="number" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์">
+														<input type="number" class="form-control" name="phone" id="phone" placeholder="เบอร์โทรศัพท์" min=0 >
 													</div>
 													<div class="form-group">
 														<label for="garage">หมายเลขทะเบียนการค้า</label><span class="error">*</span>
-														<input type="number" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า">
+														<input type="number" class="form-control" name="businessRegistration" id="businessRegistration" placeholder="หมายเลขทะเบียนการค้า" min=0 >
 													</div>
 													<div class="form-group">
 														<label class="control-label">ความชำนาญยี่ห้อรถ</label><span class="error">*</span> <label id="brandId-error" class="error" for="brandId"></label>
@@ -167,13 +167,13 @@
 												<div class="col-md-3">
 													<div class="form-group">
 														<label for="garage">บ้านเลขที่</label><span class="error">*</span>
-														<input type="text" class="form-control" name="hno" id="hno" placeholder="บ้านเลขที่">
+														<input type="text" class="form-control" name="hno" id="hno" placeholder="บ้านเลขที่" min=0 >
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label for="garage">ซอย</label>
-														<input type="text" class="form-control" name="alley" id="alley" placeholder="หมู่ที่">
+														<input type="text" class="form-control" name="alley" id="alley" placeholder="หมู่ที่" min=0 >
 													</div>
 												</div>
 												<div class="col-md-3">
@@ -185,7 +185,7 @@
 												<div class="col-md-3">
 													<div class="form-group">
 														<label for="garage">หมู่ที่</label>
-														<input type="text" class="form-control" name="village" id="village" placeholder="หมู่ที่">
+														<input type="text" class="form-control" name="village" id="village" placeholder="หมู่ที่" min=0 >
 													</div>
 												</div>
 											</div>
@@ -219,7 +219,7 @@
 												<div class="col-md-4">
 													<div class="form-group">
 														<label for="garage">รหัสไปรษณีย์</label><span class="error">*</span>
-														<input class="form-control" type="number" name="postCode" id="postCode" placeholder="รหัสไปรษณีย์">
+														<input class="form-control" type="number" name="postCode" id="postCode" placeholder="รหัสไปรษณีย์" min=0 >
 													</div>
 												</div>
 												<div class="col-md-8">
