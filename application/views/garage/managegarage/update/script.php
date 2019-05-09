@@ -28,7 +28,7 @@
                 $("#phone").val(result.phone);
                 $("#businessRegistration").val(result.businessRegistration);
                 $("#personalid").val(result.personalid);
-                // $("#brandId").val(result.brandId);
+                $("#brandId").val(result.brandId);
                 $("#hno").val(result.hno);
                 $("#alley").val(result.alley);
                 $("#road").val(result.road);
@@ -64,7 +64,7 @@
                 }
                 var dayall = result.dayopenhour;
 
-                for(var i=0;i<6;i++){   
+                for(var i=0;i<7;i++){   
                     if(dayall.charAt(i) == "1" && i==0){
                         $('#monday').each(function() {this.checked = true; });
                     }else if(dayall.charAt(i) == "1" && i==1){
@@ -84,12 +84,12 @@
 
                 var Service = result.garageService;
 
-                for(var i=0;i<2;i++){   
-                    if(Service.charAt(i) == "1" && i==0){
+                for(var j=0;j<3;j++){   
+                    if(Service.charAt(j) == "1" && j==0){
                         $('#change_spare').each(function() {this.checked = true; });
-                    }else if(dayall.charAt(i) == "1" && i==1){
+                    }else if(Service.charAt(j) == "1" && j==1){
                         $('#change_tire').each(function() {this.checked = true; });
-                    }else if(dayall.charAt(i) == "1" && i==2){
+                    }else if(Service.charAt(j) == "1" && j==2){
                         $('#change_lubricator').each(function() {this.checked = true; });
                     }
                 }
@@ -98,20 +98,32 @@
             }
 
             loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);
+            getBrand(result.brandId);
             
         });
 
+        var brand = $("#brandId");
 
+        function getBrand(brandId){
+            $.get(base_url+"api/Car/getAllBrandgarage",{},
+                function(data){
+                    var brandData = data.data;
+                    $.each( brandData, function( key, value ) {
+                        brand.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');
+                    });
+                    brand.val(brandId);
+                }
+            );
+        }
         
-            var provinceDropdownGarage = $("#provinceId");
-            provinceDropdownGarage.append('<option value="">เลือกจังหวัด</option>');
+        var provinceDropdownGarage = $("#provinceId");
+        provinceDropdownGarage.append('<option value="">เลือกจังหวัด</option>');
 
-            var districtDropdownGarage = $('#districtId');
-            districtDropdownGarage.append('<option value="">เลือกอำเภอ</option>');
+        var districtDropdownGarage = $('#districtId');
+        districtDropdownGarage.append('<option value="">เลือกอำเภอ</option>');
 
-            var subdistrictDropdownGarage = $('#subdistrictId');
-            subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
-            
+        var subdistrictDropdownGarage = $('#subdistrictId');
+        subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');     
 
         function loadProvinceGarage(provinceId, districtId,subdistrictId){
             $.post(base_url+"service/LocationforRegister/getProvince",{},
@@ -331,24 +343,7 @@
             }
         };
 
-    var brand = $("#brandId");
-
-    init();
-
-    function init(){
-        getBrand();
-    }
-
-    function getBrand(brandId = null){
-        $.get(base_url+"api/Car/getAllBrandgarage",{},
-            function(data){
-                var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    brand.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');
-                });
-            }
-        );
-    }
+    
 
 </script>
 
