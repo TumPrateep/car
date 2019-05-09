@@ -34,13 +34,17 @@
                 required: "กรุณากรอกขนาดยาง"
             },
             price: {
-                required: "กรุณากรอกราคา"
+                required: "กรุณากรอกราคา",
+                min: "กรอกข้อมูลไม่ถูกต้อง"
             },
             price: {
                 required: "กรุณากรอกราคา"
             },
             can_change:{
                 required: "กรุณาเลือก Fitted or Mail order"
+            },
+            warranty_distance: {
+                min: "กรอกข้อมูลไม่ถูกต้อง"
             }
         }  
     });

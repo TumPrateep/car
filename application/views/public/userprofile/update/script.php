@@ -97,11 +97,77 @@ $(document).ready(function() {
         rules: {
             firstName: {
                 required: true
+            },
+            lastname: {
+                required: true
+            },
+            hno: {
+                required: true
+            },
+            village: {
+                required: true
+            },
+            road: {
+                required: true
+            },
+            Alley: {
+                required: true
+            },
+            provinceId: {
+                required: true
+            },
+            districtId: {
+                required: true
+            },
+            postCodes: {
+                required: true
+            },
+            phone1: {
+                required: true
+            },
+            phone2: {
+                required: true
             }
         },
         messages: {
             firstName: {
                 required: "กรุณากรอกชื่อ"
+            },
+            lastname: {
+                required: "กรุณากรอกนามสกุล"
+            },
+            hno: {
+                required: "กรุณากรอกบ้านเลขที่"
+            },
+            village: {
+                required: "กรุณากรอกหมู่ที่"
+            },
+            road: {
+                required: "กรุณากรอกถนน"
+            },
+            Alley: {
+                required: "กรุณากรอกซอย"
+            },
+            provinceId: {
+                required: "กรุณากรอกจังหวัด"
+            },
+            districtId: {
+                required: "กรุณากรอกอำเภอ"
+            },
+            subdistrictId: {
+                required: "กรุณากรอกตำบล"
+            },
+            postCodes: {
+                required: "กรุณากรอกรหัสไปรษณีย์",
+                min: "กรอกข้อมูลไม่ถูกต้อง"
+            },
+            phone1: {
+                required: "กรุณากรอกเบอร์โทรศัพท์",
+                min: "กรอกข้อมูลไม่ถูกต้อง"
+            },
+            phone2: {
+                required: "กรุณากรอกเบอร์โทรศัพท์ที่สามารถติดต่อได้",
+                min: "กรอกข้อมูลไม่ถูกต้อง"
             }
         }
     });

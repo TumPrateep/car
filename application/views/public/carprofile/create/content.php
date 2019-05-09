@@ -52,7 +52,7 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="last_name">หมายเลข</label><span class="error">*</span>
-                                                    <input type="number" class="form-control" name="number_plate" id="number_plate" placeholder="หมายเลข" >
+                                                    <input type="number" class="form-control" name="number_plate" id="number_plate" placeholder="หมายเลข" min=0 >
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -108,7 +108,7 @@
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="color">เลขไมค์</label><!-- <span class="error">*</span> -->
-                                                    <input type="number" class="form-control" name="mileage" id="mileage" placeholder="เลขไมค์" >
+                                                    <input type="number" class="form-control" name="mileage" id="mileage" placeholder="เลขไมค์"  min=0>
                                                 </div>
                                             </div>
                                         </div>

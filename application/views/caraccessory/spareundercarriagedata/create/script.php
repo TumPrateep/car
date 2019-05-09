@@ -23,9 +23,13 @@
             },
             price: {
                 required: "กรุณากรอกราคา"
+                min: "กรอกข้อมูลไม่ถูกต้อง"
             },
             tempImage: {
                 required: ""
+            },
+            warranty_distance: {
+                min: "กรอกข้อมูลไม่ถูกต้อง"
             }
         },
     });

@@ -66,7 +66,7 @@
                                     <div class="form-group">
                                         <label class="control-label">ราคา</label><span class="error">*</span> <label id="price-error" class="error" for="price"></label>
                                         <div class="input-group input-group-default">
-                                            <input type="number" class="form-control" id="price" name="price" placeholder="ราคา">
+                                            <input type="number" class="form-control" id="price" name="price" placeholder="ราคา" min=0>
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                                     <div class="form-group">
                                         <label class="control-label">การรับประกัน-ระยะทาง (กิโลเมตร)</label>
                                         <div class="input-group input-group-default">
-                                            <input type="number" class="form-control" id="warranty_distance" name="warranty_distance" placeholder="ระยะทาง (กิโลเมตร)">
+                                            <input type="number" class="form-control" id="warranty_distance" name="warranty_distance" placeholder="ระยะทาง (กิโลเมตร)" min=0>
                                         </div>
                                     </div>
                                 </div>
