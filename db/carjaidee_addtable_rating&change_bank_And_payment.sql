@@ -1268,14 +1268,14 @@ INSERT INTO `lubricator` (`lubricatorId`, `lubricatorName`, `lubricator_brandId`
 
 CREATE TABLE `lubricatortypeformachine` (
   `lubricatortypeFormachineId` int(11) NOT NULL,
-  `lubricatortypeFormachine` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `lubricatortypeFormachine` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `create_by` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
-  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2'
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+  `status` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '2',
+  `activeFlag` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '2'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `lubricatortypeformachine`
@@ -1323,9 +1323,9 @@ CREATE TABLE `lubricator_change` (
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2'
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+  `status` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `activeFlag` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '2'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `lubricator_change`
@@ -1543,16 +1543,16 @@ INSERT INTO `lubricator_type` (`lubricator_typeId`, `lubricator_typeName`, `lubr
 
 CREATE TABLE `machinetype` (
   `machinetypeId` int(11) NOT NULL,
-  `machinetype` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `machinetype` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `modelofcar_modelofcarId` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
-  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
-  `gear` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+  `status` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '2',
+  `activeFlag` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '2',
+  `gear` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `machinetype`
@@ -2211,19 +2211,19 @@ INSERT INTO `model` (`modelId`, `modelName`, `brandId`, `create_at`, `update_at`
 
 CREATE TABLE `modelofcar` (
   `modelofcarId` int(11) NOT NULL,
-  `modelofcarName` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `modelofcarName` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `brandId` int(11) NOT NULL,
   `modelId` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) COLLATE utf16_unicode_ci NOT NULL,
-  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
-  `machineCode` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `bodyCode` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `machineSize` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+  `status` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `activeFlag` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '2',
+  `machineCode` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bodyCode` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `machineSize` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `modelofcar`
@@ -2813,10 +2813,10 @@ CREATE TABLE `spares_change` (
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime NOT NULL,
   `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
+  `status` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `activeFlag` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '2',
   `brandId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `spares_change`
@@ -2947,12 +2947,12 @@ CREATE TABLE `spares_undercarriagedata` (
   `warranty_distance` double DEFAULT NULL,
   `warranty_year` int(11) DEFAULT NULL,
   `price` double DEFAULT NULL,
-  `spares_undercarriageDataPicture` varchar(255) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `spares_undercarriageDataPicture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `modelId` int(11) DEFAULT NULL,
   `brandId` int(11) DEFAULT NULL,
   `modelofcarId` int(11) DEFAULT NULL,
-  `machineSize` varchar(255) COLLATE utf16_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+  `machineSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `spares_undercarriagedata`
@@ -10769,9 +10769,9 @@ CREATE TABLE `tire_change` (
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2'
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+  `status` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `activeFlag` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '2'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tire_change`
@@ -10872,10 +10872,10 @@ CREATE TABLE `tire_matching` (
   `update_by` int(11) DEFAULT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
-  `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `activeFlag` varchar(45) COLLATE utf16_unicode_ci NOT NULL DEFAULT '2',
+  `status` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `activeFlag` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '2',
   `modelofcarId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tire_matching`
@@ -10973,17 +10973,17 @@ INSERT INTO `tire_model` (`tire_modelId`, `tire_modelName`, `tire_brandId`, `cre
 
 CREATE TABLE `tire_need` (
   `tire_needId` int(11) NOT NULL,
-  `tire_front` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `tire_back` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `create_at` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `update_at` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `status` varchar(45) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `tire_front` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tire_back` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `create_at` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `update_at` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `activeFlag` int(11) NOT NULL DEFAULT '2',
   `rimId` int(11) NOT NULL,
   `garageId` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
   `update_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
