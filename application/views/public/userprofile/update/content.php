@@ -90,15 +90,15 @@
                         <div class="form-group row ">
                             <div class="form-group col-md-4">
                                 <label>รหัสไปรษณีย์</label>
-                                <input type="text" name="postCodes" id="postCodes" class="form-control" placeholder="รหัสไปรษณีย์">
+                                <input type="text" name="postCodes" id="postCodes" class="form-control" placeholder="รหัสไปรษณีย์" min=0>
                             </div>
                             <div class="form-group col-md-4">
                                 <label>เบอร์โทรศัพท์</label>
-                                <input type="text" name="phone1" id="phone1" class="form-control" placeholder="เบอร์โทรศัพท์">
+                                <input type="text" name="phone1" id="phone1" class="form-control" placeholder="เบอร์โทรศัพท์" min=0>
                             </div>
                             <div class="form-group col-md-4">
                                 <label>เบอร์โทรศัพท์ที่สามารถติดต่อได้</label><span class="error">*</span>
-                                <input type="text" name="phone2" id="phone2" class="form-control" placeholder="เบอร์โทรศัพท์ที่สามารถติดต่อได้">
+                                <input type="text" name="phone2" id="phone2" class="form-control" placeholder="เบอร์โทรศัพท์ที่สามารถติดต่อได้" min=0>
                             </div>
                         </div>
                         <div class="form-group row ">

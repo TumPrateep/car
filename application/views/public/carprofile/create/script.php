@@ -5,57 +5,71 @@
 
         var form = $("#submit");
 
-        // form.validate({
-        //     rules:{
-        //         firstName: {
-        //             required: true
-        //         },
-        //         lastName: {
-        //             required: true
-        //         },
-        //         exp: {
-        //             required: true
-        //         },
-        //         phone: {
-        //             required: true,
-        //             minlength: 10,
-        //             maxlength: 10
-        //         },
-        //         skill: {
-        //             required: true
+        form.validate({
+            rules:{
+                character_plate: {
+                    required: true
+                },
+                number_plate: {
+                    required: true
+                },
+                province_plate: {
+                    required: true
+                },
+                brandId: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                modelId: {
+                    required: true
                 
-        //         },
-        //         personalid: {
-        //             required: true,
-        //             pid: true
-                   
+                },
+                detail: {
+                    required: true,
+                    pid: true
+                },
+                modelofcarId: {
+                    required: true
+                }
+                color: {
+                    required: true 
+                },
+                mileage: {
+                    required: true 
+                }
+            },messages:{
+                character_plate: {
+                    required: "กรุณากรอกอักษรนำหน้า"
+                },
+                number_plate: {
+                    required: "กรุณากรอกหมายเลข",
+                    min: "กรอกข้อมูลไม่ถูกต้อง"
+                },
+                province_plate: {
+                    required: "กรุณากรอกจังหวัด"
+                },
+                brandId: {
+                    required: "กรุณากรอกยี่ห้อ"
+                },
+                modelId: {
+                    required: "กรุณาเลือกรุ่นรถ"
                 
-        //         }
-        //     },messages:{
-        //         firstName: {
-        //             required: "กรุณากรอกชื่อ"
-        //         },
-        //         lastName: {
-        //             required: "กรุณากรอกนามสกุล"
-        //         },
-        //         exp: {
-        //             required: "กรุณากรอกประสบการณ์(ปี)"
-        //         },
-        //         phone: {
-        //             required: "กรุณากรอกเบอร์โทรศัพท์",
-        //             minlength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ",
-        //             maxlength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ"
-        //         },
-        //         skill: {
-        //             required: "กรุณาเลือกความชำนาญ"
-                
-        //         },
-        //         personalid: {
-        //             required: "กรุณาใส่บัตรประชาชน",
-        //             pid: "กรุณากรอกเลขบัตรประชาชนให้ถูกต้อง"
-        //         }
-        //     }
-        // });
+                },
+                detail: {
+                    required: "กรุณาเลือกโฉมรถยนต์"
+                },
+                modelofcarId: {
+                    required: "กรุณาเลือกรายละเอียดรุ่น"
+                }
+                color: {
+                    required: "กรุณากรอกสี" 
+                },
+                mileage: {
+                    min: "กรอกข้อมูลไม่ถูกต้อง"
+                }
+            }
+        });
 
         // form.submit(function (e) { 
         //     e.preventDefault();

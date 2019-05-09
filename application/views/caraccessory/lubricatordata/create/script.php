@@ -22,10 +22,14 @@
                 required: "กรุณาเลือกรุ่นน้ำมันเครื่อง"
             },
             price: {
-                required: "กรุณากรอกราคา"
+                required: "กรุณากรอกราคา",
+                min: "กรอกข้อมูลไม่ถูกต้อง"
             },
             tempImage: {
                 required: ""
+            },
+            warranty_distance: {
+                min: "กรอกข้อมูลไม่ถูกต้อง"
             }
         },
     });
