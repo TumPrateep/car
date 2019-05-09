@@ -140,7 +140,7 @@
                                                                 <div class="row">
                                                                     <div class="col-sm">
                                                                         <label for="garage">การบริการ</label>
-                                                                        <input type="number" class="form-control" name="garageService" id="	garageService"  readonly>
+                                                                        <input type="text" class="form-control" name="garageService" id="garageService"  readonly>
                                                                     </div>
                                                                 </div><br>
                                                                 <div class="row">
