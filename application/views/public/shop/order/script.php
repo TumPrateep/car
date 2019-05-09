@@ -91,7 +91,7 @@
                             html +='<a href="#"><button type="button" class="btn btn-warning">รับบริการ</button> '
                         }
                         else if(data.status == "10"){
-                            html +='<a href="#"><button type="button" class="btn btn-primary">เสร็จสิ้น</button> '
+                            html +='<a href="#"><button type="button" onclick="commetrating()" class="btn btn-primary">เสร็จสิ้น</button> '
                         }
                         return html 
                         
@@ -156,6 +156,43 @@
                 // { "width": "20%", "targets": 3 }
             ]	 
 
+    });
+
+    function commetrating(){
+        var userId = localStorage.getItem("userId");
+        var hasCaraccessory = null;
+        if(userId != null){
+            $("#comment-rating").modal("show");
+        }else{
+            alert("login!!!");
+        }
+    }
+
+    // jQuery for rating
+    jQuery(document).ready(function($){
+        
+        $(".btnrating").on('click',(function(e) {
+        
+        var previous_value = $("#selected_rating").val();
+        
+        var selected_value = $(this).attr("data-attr");
+        $("#selected_rating").val(selected_value);
+        
+        $(".selected-rating").empty();
+        $(".selected-rating").html(selected_value);
+        
+        for (i = 1; i <= selected_value; ++i) {
+        $("#rating-star-"+i).toggleClass('btn-warning');
+        $("#rating-star-"+i).toggleClass('btn-default');
+        }
+        
+        for (ix = 1; ix <= previous_value; ++ix) {
+        $("#rating-star-"+ix).toggleClass('btn-warning');
+        $("#rating-star-"+ix).toggleClass('btn-default');
+        }
+        
+        }));
+             
     });
 
     $("#form-search").submit(function(){
