@@ -76,19 +76,22 @@
                                                                         <input type="text" class="form-control" name="exp" id="exp" readonly>
                                                                     </div>
                                                                 </div><br>
+                                                                <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <div class="form-group">
+                                                                        <a  href="<?=base_url("garage/managegarage/updateowner") ?>"><button type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไข</button></a>
+                                                                    </div>
+                                                                 </div>
+                                                                </div><br>
                                                             </div>  
                                                         </div><br>
-                                                        <div class="row">
-                                                            <!-- <div class="card col-md-12"> 
-                                                            <h3>ข้อมูลเพิ่มเติม</h3>
-                                                                <textarea class="form-control" rows="5" id="garageowneraddress" readonly></textarea>
-                                                            </div> -->
+                                                        <!-- <div class="row">
 															<div class="col-md-2">
                                                                 <div class="form-group">
                                                             		<a  href="<?=base_url("garage/managegarage/updateowner") ?>"><button type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไข</button></a>
 															    </div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>					
                                             </form>
@@ -116,20 +119,28 @@
                                                             <h3>ข้อมูลทั่วไป</h3>
                                                                 <div class="row">
                                                                     <div class="col-sm">
-                                                                        <label for="garage">หมายเลขทะเบียนการค้า</label>
-                                                                        <input type="number" class="form-control" name="businessRegistration" id="businessRegistration" readonly>
-                                                                    </div>
-                                                                    <div class="col-sm">
-                                                                    </div>
-                                                                </div><br>
-                                                                <div class="row">
-                                                                    <div class="col-sm">
                                                                         <label for="garage">ชื่ออู่ซ่อมรถ</label>
                                                                         <input type="text" class="form-control" name="garageName" id="garageName" readonly>
                                                                     </div>
                                                                     <div class="col-sm">
+                                                                        <label for="garage">หมายเลขทะเบียนการค้า</label>
+                                                                        <input type="number" class="form-control" name="businessRegistration" id="businessRegistration" readonly>
+                                                                    </div>
+                                                                </div><br>
+                                                                <div class="row">
+                                                                    <div class="col-sm">
                                                                         <label for="garage">เบอร์โทรศัพท์</label>
                                                                         <input type="number" class="form-control" name="phoned" id="phoned"  readonly>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label for="garage">ความเชี่ยวชาญด้านรถ</label>
+                                                                        <input type="text" class="form-control" name="brandId" id="brandId" readonly>
+                                                                    </div>
+                                                                </div><br>
+                                                                <div class="row">
+                                                                    <div class="col-sm">
+                                                                        <label for="garage">การบริการ</label>
+                                                                        <input type="number" class="form-control" name="garageService" id="	garageService"  readonly>
                                                                     </div>
                                                                 </div><br>
                                                                 <div class="row">
@@ -142,12 +153,12 @@
                                                                         <input type="text" class="form-control" name="dateSE"  id="dateSE"  readonly>
                                                                     </div>
                                                                 </div><br>
-                                                                <div class="row">
+                                                                <!-- <div class="row">
                                                                     <div class="col-sm-6">
-                                                                            <label for="garage">ความเชี่ยวชาญด้านรถ</label>
-                                                                            <input type="text" class="form-control" name="brandId" id="brandId" readonly>
+                                                                        <label for="garage">ความเชี่ยวชาญด้านรถ</label>
+                                                                        <input type="text" class="form-control" name="brandId" id="brandId" readonly>
                                                                     </div>
-                                                                </div><br>
+                                                                </div><br> -->
                                                             </div>  
                                                         </div>
                                                         <div class="row">
