@@ -36,6 +36,12 @@
 		background-color: #ff471a;
 		color: #ffffff;
 	}
+	/* p{
+		color: #000000 !important;
+	}
+	a{
+		color: #828282 !important;
+	} */
 	
 </style>
 
