@@ -343,6 +343,7 @@ function disableDay(openday, open, close){
     $("#reserve_day").datetimepicker({
         timepicker:false,
         beforeShowDay: $.datepicker.noWeekends,
+        inline:true,
         formatDate:'d/m/Y',
         lang:'th',
         minDate: (function () {
@@ -372,6 +373,7 @@ function disableDay(openday, open, close){
         datepicker:false,
         formatTime:'H:i',
         mask:true,
+        inline:true,
         scrollInput: false,
         format:'H:i',
         minTime: open,

@@ -73,43 +73,20 @@
                         <div class="col-lg-2">
                             <button type="button" class="btn btn-create" onclick="createCarConfirm()" ><i class="fa fa-plus"></i>  สร้าง</button>  
                         </div>
-                        
-                        <!-- <div class="col-lg-3 offset-lg-2 mt-8">
+						<div class="col-lg-3 mt-8">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="ยี่ห้อรถ" id="namemechanic">
+                                <input type="text" class="form-control" placeholder="ความเชี่ยวชาญด้านรถ" id="skillmechanic">
                                 <div class="input-group-append">
-                                    <button type="button" class="btn btn-light-orange" ><i class="fa fa-plus"></i></button>
+                                    <span class="input-group-text"><i class="fa fa-star" aria-hidden="true"></i></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 mt-8">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="" id="skillmechanic">
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-light-orange" ><i class="fa fa-plus"></i></button>
-                                </div>
-                            </div>
+						<div class="col-lg-2">
+                            <button type="button" class="btn btn-info btn-block" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
                         </div>
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-orange" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
-                        </div> -->
                     </div>
 
 					<div class="row">
-						<!-- <div class="col-md-3">
-						  	<div class="card">
-						    	<img src="/public/image/icon/741407.png"  class="cart_car_image">
-						    	<div class="card-body">
-						      		<div class="card border-black mb-3" >
-									    <div class=" text-center"><h4>นก 5555</h4></div>
-									    <div class=" text-center">เลย</div>
-									</div>
-						    	</div>
-						    	<div class="card-footer">
-						      		<a href="#"><small class="text-muted underline-text">รายละเอียด</small></a>
-						    	</div>
-						  	</div>
-						</div> -->
 						<div class="col-md-12">
 							<select class="image-picker show-html" id="image-picker-car" name="carProfileId"></select>
 						</div>
@@ -154,14 +131,16 @@
 					<div class="row justify-content-md-center">
 						<div class="col-lg-3">
 							<div class="form-group">
-								<label class="form-label required" for="garage">เลือกวันที่จอง</label>
-								<input type="text" class="form-control" id="reserve_day" name="reserve_day" placeholder="เลือกวันทำการ" readonly>
+								<!-- <label class="form-label required" for="garage">เลือกวันที่จอง</label> -->
+								<!-- <input type="" class="form-control" id="reserve_day" name="reserve_day" placeholder="เลือกวันทำการ" readonly> -->
+								<div id="reserve_day"></div>
 							</div>
 						</div>
 						<div class="col-lg-3">
 							<div class="form-group">
-								<label class="form-label required" for="garage">เลือกเวลาเข้าใช้บริการ</label>
-								<input type="text" class="form-control" id="reserve_time" name="reserve_time" placeholder="เลือกเวลาทำการ" readonly>
+								<!-- <label class="form-label required" for="garage">เลือกเวลาเข้าใช้บริการ</label>
+								<input type="text" class="form-control" id="reserve_time" name="reserve_time" placeholder="เลือกเวลาทำการ" readonly> -->
+								<div id="reserve_time"></div>
 							</div>
 						</div>
 					</div>
