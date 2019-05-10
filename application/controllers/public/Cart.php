@@ -23,6 +23,6 @@ class Cart extends CI_Controller {
         $this->load->view("public/layout/copyright");        
         $this->load->view("public/layout/foot");
         $this->load->view("public/singleproduct/lubricatordetail/script");
-    }
+	}
 
 }
