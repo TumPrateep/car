@@ -13,15 +13,19 @@ class Commentuser extends BD_Controller {
       
     public function createCommentuser_post(){
         $userId = $this->session->userdata['logged_in']['id'];
-        // $garageId = $this->session->userdata['logged_in']['garageId'];
-        $data_check = $this->commentusers->data_check_create();
+        $orderId = $this->post("orderId");        
+        $data_check = $this->commentusers->data_check_create($orderId);
+        $order = $this->commentusers->getorderById($orderId);//รูปแบบที่ไม่ใช้กรอก  แต่ดึงมาแล้วบันทึก
         $commentuser = $this->post("commentUser");
+		$rating = $this->post('selected_rating');
 
         $data = array(
             'ratingId' => null,
             'commentuser'  => $commentuser,
+            'scorerating' => $rating,
             'create_by' => $userId,
-            // 'garageId' => $garageId,
+            'orderId' => $orderId,
+            'garageId' => $order->garageId,//ข้อมูลมาเป็นก้อน แล้วมาชี้เอาเฉพาะตัว
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1
         );

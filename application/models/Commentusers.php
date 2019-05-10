@@ -4,10 +4,17 @@ class Commentusers extends CI_Model{
     function insert($data){
         return $this->db->insert('rating',$data);
     }
-    function data_check_create(){
 
+    function getorderById($orderId){
+        $this->db->select("*");
+        $this->db->where("orderId",$orderId);
+        $result = $this->db->get('reserve');// reserve คือตารางการจอง
+        return $result->row();
+    }
+
+    function data_check_create($orderId){
         $this->db->from("rating");
-        // $this->db->where("garageId",$garageId);
+        $this->db->where("orderId",$orderId);
         $result = $this->db->get();
         return $result->row();
     }

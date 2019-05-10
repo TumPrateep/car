@@ -91,7 +91,7 @@
                             html +='<a href="#"><button type="button" class="btn btn-warning">รับบริการ</button> '
                         }
                         else if(data.status == "10"){
-                            html +='<a href="#"><button type="button" onclick="commetrating()" class="btn btn-primary">เสร็จสิ้น</button> '
+                            html +='<a href="#"><button type="button" onclick="commetrating('+data.orderId+')" class="btn btn-primary">เสร็จสิ้น</button> '
                         }
                         return html 
                         
@@ -158,10 +158,11 @@
 
     });
 
-    function commetrating(){
+    function commetrating(orderId){
         var userId = localStorage.getItem("userId");
         var hasCaraccessory = null;
         if(userId != null){
+            $("#orderId").val(orderId);
             $("#comment-rating").modal("show");
         }else{
             alert("login!!!");
