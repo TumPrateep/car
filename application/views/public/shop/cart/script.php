@@ -682,11 +682,16 @@ $(document).ready(function () {
     });
     
     $(function(){
-    $("#character_plate").keyup(function(event){
-        var input_data=$("#character_plate").val();
-        alert(input_data);      
+            $("#character_plate").keyup(function(event){
+                var input_data=$("#character_plate").val();
+            $("#characterofcar").html(input_data);      
+        });
+
+        $("#province_plate").change(function(event){
+                var input_data=$("#province_plate :selected").text();
+            $("#provincecar").html(input_data);      
+        });
     });
-});
    
 
         

@@ -258,10 +258,10 @@
 									</div>
 									<div class="card border-black">
 										<div class="form-group">
-											<span id="characterofcar" name="characterofcar"></span>
+											<h3><span id="characterofcar" name="characterofcar"></span></h3>
 										</div>
 										<div class="form-group">
-											<span id="numberofcar" name="numberofcar"></span>
+											<h4><span id="provincecar" name="provincecar"></span></h4>
 										</div>
 									</div>
 								</div>
@@ -325,15 +325,12 @@
 									<a href="#">วิธีการดูข้อมูลรถ</a>
 								</div>
 							</div>
-							
 							<div class="modal-footer">
 								<button type="submit" class="btn btn-orange"><span class="fas fa-save"></span> บันทึก</button>
 								<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="fas fa-times"></span> ปิด</button>
 							</div>
 						</div>
 						</form>
-					
-						
 					</div>
 				</div>
 			</div>
