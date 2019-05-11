@@ -151,6 +151,13 @@
           </ul>
         </li>
 
+        <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link text-white" href="<?=base_url("admin/bank") ?>">
+            <i class="fa fa-credit-card" aria-hidden="true"></i>
+            <span class="nav-link-text">เพิ่มข้อมูลบัญชีธนาคาร</span>
+          </a>
+        </li>
+
          <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/garages") ?>">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
