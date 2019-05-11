@@ -24,6 +24,7 @@ class Commentuser extends BD_Controller {
             'commentuser'  => $commentuser,
             'scorerating' => $rating,
             'create_by' => $userId,
+            'userId' => $userId,
             'orderId' => $orderId,
             'garageId' => $order->garageId,//ข้อมูลมาเป็นก้อน แล้วมาชี้เอาเฉพาะตัว
             'create_at' => date('Y-m-d H:i:s',time()),
