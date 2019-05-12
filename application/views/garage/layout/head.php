@@ -78,7 +78,6 @@
         .sidebar-nav > ul > li.active > a:hover {
         color: #ffffff !important;
         }
-
         .brand-image{
             width: 80%;
             height: 80%;
@@ -86,7 +85,6 @@
             margin-right: auto;
             margin-top: auto;
         }
-
         .size-sm-model{
             width: 1000px;
             margin-left: auto;
@@ -95,22 +93,58 @@
         .text-font-model{
             font-size: 18px;
         }
-
         .navbar-light .navbar-brand{
-            color: #ffffff
+            color: #ffffff;
         }
-
         .order-left{
             margin-left: auto;
         }
-
-        td{
+        td a{
             color: #000000 !important;
         }
-
-        a{
-            color: #000000 !important;
+        .card-rating{
+            border: 1px solid #ff6600;
+            border-radius: 5px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            padding-right: 10px;
+            padding-left: 10px;
         }
-      
+        .card-comment{
+            border: 1px solid #bfbfbf;
+            border-radius: 3px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        .progress-hgt{
+            height: 6px;
+        }
+        .progress-center{
+            padding-top: 6px !important;
+        }
+        .score-top{
+            padding-top: 10px;
+        }
+        .txt-rating{
+            height: 35px;
+            font-size: 80px;
+        }
+        .txt-score{
+            /*height: 20px;*/
+            font-size: 40px;
+        }
+        .Yellow-star{
+            color: #ffff33;
+        }
+        .textarea-l{
+            height: 100px;
+        }
+        .modal-size-l{
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
