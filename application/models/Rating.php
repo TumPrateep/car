@@ -13,7 +13,7 @@ class Rating extends CI_Model{
     }
 
     function update($data){
-        $this->db->where('ratingId',$data['ratingId']);
+        $this->db->where('ratingId',$d4ata['ratingId']);
         $result = $this->db->update('rating', $data);
         return $result;
     }

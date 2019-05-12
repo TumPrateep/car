@@ -298,7 +298,7 @@
                     <div class="row">
                         <div class="col-md-12">
                         <!-- add comment -->
-                        <form id="reply-comment">
+                        <form id="submit">
                             <div class="row">
                                 <input type="hidden" id="replyrating" name="replyrating" value="">
                             </div>

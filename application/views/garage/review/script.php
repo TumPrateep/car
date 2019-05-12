@@ -3,27 +3,54 @@
 		$("#replyrating").val(ratingId);
         $("#comment-garage").modal("show");
     }
-    $("#reply-comment").submit(function(){
-        createCommentgarage();
+
+    // $("#reply-comment").submit(function(){
+    //     createCommentgarage();
+    // })
+    
+    // function createCommentgarage(){
+    //     event.preventDefault();
+    //     var isValid = $("#reply-comment").valid();
+    //     if(isValid){
+    //         var data = $("#reply-comment").serialize();
+    //         $.post(base_url+"apiGarage/Review/update",data,
+    //         function(data){
+    //             if(data.message == 200){
+    //                 showMessage(data.message,"garage/review");
+    //             }else{
+    //                 showMessage(data.message,);
+    //             }
+    //         });
+    //     }
+    // }
+
+    function updatecommentratingId(ratingId){
+		$("#updaterating").val(ratingId);
+        $("#comment-update").modal("show");
+    }
+
+
+    $("#submit").submit(function(){
+        updatecomment();
+        
     })
-    function createCommentgarage(){
+
+
+    function updatecomment(){
         event.preventDefault();
-        var isValid = $("#reply-comment").valid();
+        var isValid = $("#submit").valid();
+
         if(isValid){
-            var data = $("#reply-comment").serialize();
-            $.post(base_url+"apiGarage/Review/createCommentgarage",data,
+            var data = $("#submit").serialize();
+            $.post(base_url+"apiGarage/Review/update",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"garage/review");
                 }else{
-                    showMessage(data.message,);
+                    showMessage(data.message);
                 }
             });
         }
-    }
-    function updatecommentratingId(ratingId){
-		$("#updaterating").val(ratingId);
-        $("#comment-update").modal("show");
     }
 
     $(document).ready(function () {
