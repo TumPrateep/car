@@ -18,11 +18,11 @@ class CarSelect extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    // function getCarBrand_get(){
-    //     $result = $this->brand->getAllBrandofRegister();
-    //     $output["data"] = $result;
-    //     $this->set_response($output, REST_Controller::HTTP_OK);
-    // }
+    function getCarBrand_get(){
+        $result = $this->brand->getAllBrandofRegister();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 
     function getCarModel_get(){
         $brandId = $this->get("brandId");

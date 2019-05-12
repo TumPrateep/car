@@ -51,7 +51,7 @@ class Carprofiles extends CI_Model {
     }
 
     function getCarProfileByUserIdAndCarprofileId($userId,$car_profileId){
-        $this->db->select('car_profileId,number_plate,character_plate,province_plate,mileage,color,pictureFront,brandId,modelId,modelofcarId');
+        // $this->db->select('car_profileId,number_plate,character_plate,province_plate,mileage,color,pictureFront,brandId,modelId,modelofcarId');
         $this->db->from('car_profile');
         $this->db->where("userId", $userId);
         $this->db->where("car_profileId", $car_profileId);

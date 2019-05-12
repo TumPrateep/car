@@ -127,20 +127,14 @@
 						</div>
 					</div>
 					<br>
-					<h4 class="underline text-center">เลือกเวลาที่ต้องการใช้บริการ</h4>
-					<div class="row justify-content-md-center">
-						<div class="col-lg-3">
-							<div class="form-group">
-								<label class="form-label required" for="garage">เลือกวันที่จอง</label>
-								<input type="" class="form-control" id="reserve_day" name="reserve_day" placeholder="เลือกวันทำการ" readonly>
-								<!-- <div id="reserve_day"></div> -->
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="form-group">
-								<label class="form-label required" for="garage">เลือกเวลาเข้าใช้บริการ</label>
-								<input type="text" class="form-control" id="reserve_time" name="reserve_time" placeholder="เลือกเวลาทำการ" readonly>
-								<!-- <div id="reserve_time"></div> -->
+					<div id="showReserve" class="hidden">
+						<h4 class="underline text-center">เลือกเวลาที่ต้องการใช้บริการ</h4>
+						<div class="row justify-content-md-center">
+							<div class="col-lg-5">
+								<div class="form-group">
+									<label class="form-label required">เลือกวันเวลาที่จอง</label>
+									<input type="text" class="form-control" id="reserve" name="reserve" placeholder="เลือกวันทำการ">
+								</div>
 							</div>
 						</div>
 					</div>

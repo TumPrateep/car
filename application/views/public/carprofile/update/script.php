@@ -71,6 +71,7 @@
             }
         });
         var car_profileId = $("#car_profileId").val();
+        
         $.post(base_url+"service/Carprofile/getCarProfile",{
             "car_profileId" : car_profileId
         },function(data){

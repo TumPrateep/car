@@ -329,8 +329,9 @@ function showImagePicker(){
         clicked:function(select, picker, option, event){
             var picker = $("#image-picker option:selected");
             if(picker.val() == ""){
-                $("#reserve_day, #reserve_time").datetimepicker("destroy");
-                $("#reserve_day, #reserve_time").val("");
+                $("#showReserve").slideUp("slow",function(){
+                    $(this).hide();
+                });
             }
         },
     });
@@ -338,13 +339,21 @@ function showImagePicker(){
 
 function disableDay(openday, open, close){
     console.log(openday);
+    $("#showReserve").slideDown("slow");
     $.datetimepicker.setLocale('th');
     var nowDate = new Date();
-    $("#reserve_day").datetimepicker({
-        timepicker:false,
-        beforeShowDay: $.datepicker.noWeekends,
+    $("#reserve").datetimepicker({
+        beforeShowDay: function(date) {
+            var day = date.getDay();
+            if(openday.charAt(day) == 0){
+                return [false, ''];
+            } else {
+                return [true, ''];
+            }
+        },
         inline:true,
         formatDate:'d/m/Y',
+        formatTime:'H:i',
         lang:'th',
         minDate: (function () {
             var today = new Date().getDay(), add = 2;
@@ -365,17 +374,7 @@ function disableDay(openday, open, close){
             }
             return nowDate.setDate( nowDate.getDate() + add );
         })(),
-        mask:true,
         scrollInput: false,
-        format:'d/m/Y'
-    });
-    $("#reserve_time").datetimepicker({
-        datepicker:false,
-        formatTime:'H:i',
-        mask:true,
-        inline:true,
-        scrollInput: false,
-        format:'H:i',
         minTime: open,
         maxTime: close
     });
@@ -390,7 +389,7 @@ function getDeposit(){
 }
 
 $(document).ready(function () {
-
+    
     var form = $("#rigister");
     jQuery.validator.addMethod("username", function(value, element) {
       return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
@@ -469,7 +468,8 @@ $(document).ready(function () {
                 }
             }
             if(currentIndex == 2){
-                isvalid = ($("#image-picker").val() != "" && form.valid());
+                var reserve = $("#reserve").val();
+                isvalid = ($("#image-picker").val() != "" && form.valid() && reserve != "");
                 if(!isvalid){
                     $(".alert").show();
                     $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
@@ -493,9 +493,14 @@ $(document).ready(function () {
         {
               var isValid = form.valid();
               if(isValid){
+                var reserve = $("#reserve").val();
+                var reserveArr = reserve.split(' ');
+                console.log(reserve);
                 var data = form.serializeArray();
                 data[data.length] = { name: "productData", value: getCartList() };
                 data[data.length] = { name: "isDeposit", value: $("#option2").is(":checked") };
+                data[data.length] = { name: "reserve_day", value: reserveArr[0] };
+                data[data.length] = { name: "reserve_time", value: reserveArr[1] };
                 $.post(base_url+"service/Order/createOrderDetail", data,
                     function (data, textStatus, jqXHR) {
                         if(data.message == 200){
