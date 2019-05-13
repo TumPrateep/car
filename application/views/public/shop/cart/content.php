@@ -8,13 +8,50 @@
             <form  id="rigister" class="signup-form">
 				<!-- Step 1 -->
                 <h3>
+                    <span class="icon"><i class="fa fa-car"></i></span>
+                    <span class="title_text">รถยนต์</span>
+                </h3>
+                <fieldset>
+                    <legend>
+                        <span class="step-heading">เลือกรถยนต์ที่ต้องการ: </span>
+						<span class="step-number">Step 1 / 4</span>
+					</legend>
+					<div class="alert alert-danger hide" role="alert">
+						<strong>คำเตือน!</strong> เลือกรถยนต์ที่ต้องการ
+					</div>
+                    <div class="row ">
+                        <div class="col-lg-2">
+                            <button type="button" class="btn btn-create" onclick="createCarConfirm()" ><i class="fa fa-plus"></i>  สร้าง</button>  
+                        </div>
+						<div class="col-lg-3 mt-8">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="ความเชี่ยวชาญด้านรถ" id="skillmechanic">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                        </div>
+						<div class="col-lg-2">
+                            <button type="button" class="btn btn-info btn-block" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
+                        </div>
+                    </div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<select class="image-picker show-html" id="image-picker-car" name="carProfileId"></select>
+						</div>
+					</div>
+                </fieldset>				
+
+				<!-- Step 2 -->
+				<h3>
                     <span class="icon"><i class="fa fa-shopping-cart"></i></span>
                     <span class="title_text">สินค้า</span>
                 </h3>
                 <fieldset>
                     <legend>
                         <span class="step-heading">เลือกสินค้าที่ต้องการ:	 </span>
-                        <span class="step-number">Step 1 / 4</span>
+                        <span class="step-number">Step 2 / 4</span>
 					</legend>
 					<div class="alert alert-danger hide" role="alert">
 						<strong>คำเตือน!</strong> เลือกสินค้าที่ต้องการ
@@ -53,46 +90,7 @@
                         
 					</div>
                 </fieldset>
-				<!-- Step 2 -->
-				
-
-				<!-- Step 2 -->
-                <h3>
-                    <span class="icon"><i class="fa fa-car"></i></span>
-                    <span class="title_text">รถยนต์</span>
-                </h3>
-                <fieldset>
-                    <legend>
-                        <span class="step-heading">เลือกรถยนต์ที่ต้องการ: </span>
-						<span class="step-number">Step 2 / 4</span>
-					</legend>
-					<div class="alert alert-danger hide" role="alert">
-						<strong>คำเตือน!</strong> เลือกรถยนต์ที่ต้องการ
-					</div>
-                    <div class="row ">
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-create" onclick="createCarConfirm()" ><i class="fa fa-plus"></i>  สร้าง</button>  
-                        </div>
-						<div class="col-lg-3 mt-8">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="ความเชี่ยวชาญด้านรถ" id="skillmechanic">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                </div>
-                            </div>
-                        </div>
-						<div class="col-lg-2">
-                            <button type="button" class="btn btn-info btn-block" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
-                        </div>
-                    </div>
-
-					<div class="row">
-						<div class="col-md-12">
-							<select class="image-picker show-html" id="image-picker-car" name="carProfileId"></select>
-						</div>
-					</div>
-                </fieldset>
-
+                
 				<!-- Step 3  -->
                 <h3>
                     <span class="icon"><i class="fa fa-cog"></i></span>
