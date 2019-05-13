@@ -49,7 +49,7 @@
 	                <div class="col-md-8">
 	                	<div class="card" >
 	                		<div class="card-body"> 
-							<h4><label ><u>อู่ที่เข้าใช้ยริการ</u></label></h4>
+							<h4><label ><u>อู่ที่เข้าใช้บริการ</u></label></h4>
 			                    <div class="row ">
 		                            <div class="col-md-3 "><label class="txt-S-s">ชื่ออู่</label></div>
 		                            <div class="col-md-8">
