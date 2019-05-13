@@ -2,13 +2,19 @@
 <script src="<?php echo base_url() ?>public/js/jquery.datetimepicker.full.min.js"></script>
 
 <script>
-    $("#time").datetimepicker({
-        datepicker:false,
-        formatTime:'H:i',
-        // mask:true,
-        // scrollInput: false,
-        format:'H:i'
-    });
+    // $("#time").datetimepicker({
+    //     datepicker:false,
+    //     formatTime:'H:i',
+    //     // mask:true,
+    //     scrollInput: false,
+    //     format:'H:i'
+    // });
+
+    // $("#date").datetimepicker({
+    //     datepicker:false,
+    //     formatDate:'d/m/Y',
+    //     // format:'H:i'
+    // });
 
     $(document).ready(function () {
 
@@ -120,6 +126,12 @@
             }
         );
     }
+
+    $.datetimepicker.setLocale('th');
+    var nowDate = new Date();
+    $("#date").datetimepicker({
+        maxtDate: new Date()
+    });
 
   });
 </script>
