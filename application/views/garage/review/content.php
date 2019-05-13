@@ -344,7 +344,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label required">คอมเมนต์</label>
-                                        <textarea class="form-control textarea-l" id="upcommentgarage" name="upcommentgarage" rows="3"></textarea>
+                                        <textarea class="form-control textarea-l" id="editcommentgarage" name="editcommentgarage" rows="3"></textarea>
                                     </div>
                                 </div> 
                             </div>
