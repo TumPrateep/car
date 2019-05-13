@@ -1,40 +1,38 @@
 <script>
-	function commentrating(ratingId){
-		$("#replyrating").val(ratingId);
-        $("#comment-garage").modal("show");
-    }
-
-    // $("#reply-comment").submit(function(){
-    //     createCommentgarage();
-    // })
-    
-    // function createCommentgarage(){
-    //     event.preventDefault();
-    //     var isValid = $("#reply-comment").valid();
-    //     if(isValid){
-    //         var data = $("#reply-comment").serialize();
-    //         $.post(base_url+"apiGarage/Review/update",data,
-    //         function(data){
-    //             if(data.message == 200){
-    //                 showMessage(data.message,"garage/review");
-    //             }else{
-    //                 showMessage(data.message,);
-    //             }
-    //         });
-    //     }
-    // }
-
-    function updatecommentratingId(ratingId){
-		$("#updaterating").val(ratingId);
+    function editcommentratingId(ratingId){
+        $("#updaterating").val(ratingId);
         $("#comment-update").modal("show");
     }
 
+    $("#update-comment").submit(function(){
+        editCommentgarage();
+    })
+    
+    function editCommentgarage(){
+        event.preventDefault();
+        var isValid = $("#update-comment").valid();
+        if(isValid){
+            var data = $("#update-comment").serialize();
+            $.post(base_url+"apiGarage/Review/editupdate",data,
+            function(data){
+                if(data.message == 200){
+                    showMessage(data.message,"garage/review");
+                }else{
+                    showMessage(data.message,);
+                }
+            });
+        }
+    }
+
+    function commentrating(ratingId){
+        $("#replyrating").val(ratingId);
+        $("#comment-garage").modal("show");
+    }
 
     $("#submit").submit(function(){
         updatecomment();
         
     })
-
 
     function updatecomment(){
         event.preventDefault();
@@ -56,10 +54,6 @@
     $(document).ready(function () {
 
     	var comment = $("#show-comment");
-
-        // var orderId = $("#orderId").val();
-        // var picturePath = base_url+'public/image/';
-
         $.post(base_url+"apiGarage/Review/getdatarating", {},
             function (data, textStatus, jqXHR) {
                 var html = '';
@@ -79,7 +73,7 @@
                     if(val.status == 1){
                         botcomment += '<button type="button" class="btn btn-success" onclick="commentrating('+val.ratingId+')" id="search"><i class="fa fa-comments"></i>  ตอบกลับ</i></button>';
                     }else if(val.status == 2){
-                        botcomment += '<button type="button" class="btn btn-warning" onclick="updatecomment('+val.ratingId+')" id="search"><i class="fa fa-comments"></i>  เเก้ไข</i></button>';   
+                        botcomment += '<button type="button" class="btn btn-warning" onclick="editcommentratingId('+val.ratingId+')" id="search"><i class="fa fa-comments"></i>  เเก้ไข</i></button>';   
                     }
 
                     var replygarage = '';
