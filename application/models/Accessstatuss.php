@@ -2,8 +2,6 @@
 
 class Accessstatuss extends CI_Model{
 
-
-
     function getOrderById($orderId){
         $this->db->select("orderId");
         $this->db->where('orderId',$orderId);
@@ -16,11 +14,11 @@ class Accessstatuss extends CI_Model{
     }
 
     function allaccessstatuss($limit,$start,$col,$dir,$garageId){
-        $this->db->select('reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,reserve.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
+        $this->db->select('reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,order.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
         $this->db->from('order');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
-        $this->db->where('reserve.garageId',$garageId);
+        $this->db->where('order.status', 4);
 
         $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
         if($query->num_rows()>0){
@@ -41,11 +39,11 @@ class Accessstatuss extends CI_Model{
     }
 
     function accessstatuss_search($limit,$start,$search,$col,$dir,$status){
-        $this->db->select('reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,reserve.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
+        $this->db->select('reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,order.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
         $this->db->from('order');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
-        $this->db->where('reserve.garageId',$garageId);
+        $this->db->where('order.status', 4);
      
 
         $this->db->like('rim.rimName',$search);
@@ -66,13 +64,13 @@ class Accessstatuss extends CI_Model{
         }
     }
 
-    function reserve_search_count($search,$status){
+    function accessstatuss_search_count($search,$status){
        
-        $this->db->select('reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,reserve.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
+        $this->db->select('reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,order.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
         $this->db->from('order');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
-        $this->db->where('reserve.garageId',$garageId);
+        $this->db->where('order.status', 4);
 
         if($search != null){
             $this->db->where("reserve.reserveId",$search);
@@ -105,7 +103,5 @@ class Accessstatuss extends CI_Model{
             return true;
         }
     }
-   
-   
 
 }

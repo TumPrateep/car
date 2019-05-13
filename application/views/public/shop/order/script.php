@@ -35,7 +35,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    // data.status = $("#status").val()
+                    data.status = $("#status").val()
                 }
             },
             "order": [[ 1, "desc" ]],

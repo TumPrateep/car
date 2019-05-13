@@ -31,7 +31,7 @@
                     data.date = $("#date").val(),
                     data.reservename = $("#reservename").val(),
                     data.status = $("#status").val(),
-                    data.statussuccess = $("#statusSuccess").val()
+                    data.statusSuccess = $("#statusSuccess").val()
                 }
             },
             "order": [[ 1, "asc" ]],
@@ -84,9 +84,9 @@
                     "render": function ( data, type, full, meta ) {
                         var html = '';
                         // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
-                        if(data.status==2){
+                        if(data.status==4 && data.statusSuccess==1){
                             html+='<span class="badge badge-warning">รอดำเนินกาซ่อม</span>';
-                        }else if(data.statussuccess==2){
+                        }else if(data.status==4 && data.statusSuccess==2){
                             html+='<span class="badge badge-success">ซ่อมเสร็จสิ้น</span>';
                         }
                         return html;
@@ -97,7 +97,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var disable = "";
-                        if(data.statussuccess == 2 ){
+                        if(data.statusSuccess == 2 ){
                             disable = "disabled";
                         }
                         return '<button type="button" class="btn btn-success"  title="ซ่อมเสร็จสิ้น" '+disable+' onclick="confirmStatus('+data.orderId+')">ซ่อมเสร็จสิ้น</button>';

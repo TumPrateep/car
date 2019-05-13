@@ -288,5 +288,12 @@ class Orders extends CI_Model{
         $result = $this->db->get();
         return $result->row('create_by');
     }
+
+    // function getstatusSuccess($orderId){
+    //     $this->db->select("statusSuccess");
+    //     $this->db->where('orderId',$orderId);
+    //     $result = $this->db->get("order");
+    //     return $result->row();
+    // }
     
 }

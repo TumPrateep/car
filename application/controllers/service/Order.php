@@ -97,6 +97,7 @@ class Order extends BD_Controller {
             foreach ($posts as $post)
             {
                 $nestedData['orderId'] = $post->orderId;
+                // $nestedData['statusSuccess'] = $this->Orders->getstatusSuccess($orderId);
                 $nestedData['create_at'] = $post->create_at;
                 $nestedData['status'] = $post->status;
                 $nestedData['depositflag'] = $post->depositflag;
