@@ -56,14 +56,5 @@
             });
         }
     }
-    // var lubricator_changeId = $("#lubricator_changeId").val();
-
-    // $.get(base_url+"api/LubricatorChange/getUpdate",{
-    //     "lubricator_changeId": lubricator_changeId
-    // },function(data){
-    //     var lubricatorChange = data.data;
-    //     $("#lubricator_price").val(lubricatorChange.lubricator_price);
-    // });
-
     
 </script>

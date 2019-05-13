@@ -3977,3 +3977,7 @@ select option
 	color: #8a8a8a;
 	text-align: end;
 }
+
+.hidden{
+	display: none;
+}
