@@ -158,23 +158,23 @@
 					</thead>
 					<tbody id="showOrder"></tbody>
 				</table>
-
+				<table class="table" id="orderdetail-table">
 				<div class="row ">
-                    <div class="col-md-3 "><label>ราคาสินค้า :</label></div>
+                    <div class="col-md-3 "><label>ราคาสินค้ารวม :</label></div>
                     <div class="col-md-8">
-                        <label name="deposit" id="deposit"> </label>
+                        <label name="cost" id="cost"> </label>
                     </div>
                 </div>
                 <div class="row ">
                     <div class="col-md-3 "><label>ราคาค่าขนส่ง :</label></div>
                     <div class="col-md-8">
-                        <label name="money" id="money"> </label>
+                        <label name="costDelivery" id="costDelivery"> </label>
                     </div>
                 </div>
                 <div class="row ">
-                    <div class="col-md-3 "><label>ราคารวม :</label></div>
+                    <div class="col-md-3 "><label>ราคาสินค้ารวมค่าขนส่ง :</label></div>
                     <div class="col-md-8">
-                        <label name="money" id="money"> </label>
+                        <label name="summoney" id="summoney"> </label>
                     </div>
                 </div>
                 <div class="row ">
@@ -186,10 +186,10 @@
                 <div class="row ">
                     <div class="col-md-3 "><label>เงินคงเหลือ :</label></div>
                     <div class="col-md-8">
-                        <label name="money" id="money"> </label>
+                        <label name="ttmoney" id="ttmoney"> </label>
                     </div>
                 </div>  
-
+				</table>
 			</div>				
         </div>
 	</div>

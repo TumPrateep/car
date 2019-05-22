@@ -9,6 +9,7 @@ class Orderdetail extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         $this->load->model('orderdetails');
+        $this->load->model('orders');
     }
 
     function search_post(){
@@ -56,7 +57,7 @@ class Orderdetail extends BD_Controller {
     function orderDetail_get(){
         $orderId = $this->get("orderId");
         $orderDetailData = $this->orderdetails->getOrderDetailByOrderId($orderId);
-        
+        $userId = $this->session->userdata['logged_in']['id'];
         $lubricatorData = $this->getLubricator($orderDetailData, $orderId);
         $tireData = $this->getTire($orderDetailData, $orderId);
         $spareData = $this->getSpare($orderDetailData, $orderId);
@@ -65,6 +66,12 @@ class Orderdetail extends BD_Controller {
         $data["garage"] = $this->orderdetails->getDatagarage($alldata->garageId);    
         $data["reserve"] = $this->orderdetails->getDatareserve($alldata->reserveId);
         $data["car_profile"] = $this->orderdetails->getDatacarprofile($alldata->car_profileId);
+        $data["order"] = $this->orders->getorderByorderId($orderId);
+        $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($orderId, $userId);
+        $data['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
+        $data['costDelivery'] = (float)($this->orderdetails->getSummarycostDelivery($orderId));
+        $data['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
+
 
         $date=date_create($data["garage"]->openingtime);
         $data["garage"]->openingtime = date_format($date,"H:i");

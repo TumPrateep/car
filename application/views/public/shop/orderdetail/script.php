@@ -43,6 +43,12 @@
                 garagedata = data.garage;
                 caruserdata = data.car_profile;
                 reservedata = data.reserve;
+                // costDeliverydata = parseInt(data.costDelivery); ใช้ในกรณี string
+                costDeliverydata = data.costDelivery;
+                summarydata = data.summary;
+                depositdata = data.deposit;
+                // sumdata = data.summarydata+data.costDeliverydata;
+
                 $('#garage.image-editor').cropit({
                     allowDragNDrop: false,
                     width: 200,
@@ -91,31 +97,25 @@
                         quantity = val.quantity;
                     }
 
-                    // html += '<tr>';
-                    //     html += '<td>';
-                    //     html += '<img src="'+picture+'" />';
-                    //     html += '</td>';
-                    //     html += '<td>';
-                    //     html += content;
-                    //     html += '</td>';
-                    //     html += '<td>';
-                    //     html += quantity;
-                    //     html += '</td>';
-                    // html += '</tr>';
-
                     html += '<tr>'
                             +'<td><img src="'+picture+'" width="80"/></td>'
                             +'<td>'+content+'</td>'
                             +'<td>'+quantity+'</td>'
                             +'<td>'+currency((val.cost), {  precision: 0 }).format()+' บาท</td>'
                             +'</tr>';
+                            
+                        $("#cost").html(summarydata+' บาท');
+                        $("#costDelivery").html(costDeliverydata+' บาท');
+                        $("#summoney").html(summarydata+costDeliverydata+' บาท');
+                        $("#deposit").html(depositdata+' บาท');
+                        $("#ttmoney").html(summarydata-depositdata+' บาท');
+
                 });
                 table.html(html);
             }
         );
+        
     });
-    
-
 </script>
 
 </body>
