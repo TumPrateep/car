@@ -31,7 +31,7 @@
                 },
                 modelofcarId: {
                     required: true
-                }
+                },
                 color: {
                     required: true 
                 },

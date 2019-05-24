@@ -5,7 +5,7 @@
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="<?=base_url() ?>">หน้าหลัก</a></li>
-						<li class="breadcrumb-item active" aria-current="page">รายการสั่งซื้อ</li>
+						<li class="breadcrumb-item active" aria-current="page">สร้างข้อมูลรถ</li>
 					</ol>
 				</nav>
 			</div>
