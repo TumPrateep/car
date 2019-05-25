@@ -191,7 +191,7 @@ $(document).ready(function () {
                                     option +='<span class="border-option btn-sm" data-toggle="tooltip" data-placement="top" title="มีห้องพักเเอร์"><i class="far fa-snowflake"></i></span>';
                                 }else if(value.option3 == null){option +='';}
                                 if(value.option4 ==4){
-                                    option +='<span class="border-option btn-sm"      data-toggle="tooltip" data-placement="top" title="มีห้องน้ำ"><i class="fas fa-bath"></i></span><div></div>';
+                                    option +='<span class="border-option btn-sm"      data-toggle="tooltip" data-placement="top" title="มีห้องน้ำ"><i class="fa fa-female"></i></span><div></div>';
                                 }else if(value.option4 == null){option +='';}
 
                             html += '<div class="col-md-4">'
@@ -199,6 +199,7 @@ $(document).ready(function () {
                                     + '<div>'
                                         + '<div class="" style="width: 100%; display: inline-block;">'
                                             + '<div class="border_active active"></div>'
+                                            + '<div class="distance ">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
                                             + '<div class="product_item d-flex flex-column align-items-center justify-content-center text-center">'
                                             + '<div class="product_image d-flex flex-column align-items-center justify-content-center" onclick=""><img src="'+imagePath+value.picture+'"></div>'
                                             + '<div class="product_content">'
@@ -210,7 +211,7 @@ $(document).ready(function () {
                                                     + '<div>'+option+'</div>'
                                                     // + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
 
-                                                    + '<div class="distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
+                                                    // + '<div class="distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
                                                     + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
                                                 + '</div>'
                                                 // + '<div class="product_extras"><button class="product_cart_button" tabindex="0" onclick=""><i class="fas fa-shopping-bag"></i> รายละเอียด</button></div>'

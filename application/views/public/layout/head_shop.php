@@ -42,6 +42,9 @@
 	a{
 		color: #828282 !important;
 	} */
+	.distance-txt{
+		font-size: 22px;
+	}
 	
 </style>
 

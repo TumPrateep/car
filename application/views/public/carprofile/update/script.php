@@ -31,7 +31,7 @@
                 },
                 modelofcarId: {
                     required: true
-                }
+                },
                 color: {
                     required: true 
                 },
@@ -61,7 +61,7 @@
                 },
                 modelofcarId: {
                     required: "กรุณาเลือกรายละเอียดรุ่น"
-                }
+                },
                 color: {
                     required: "กรุณากรอกสี" 
                 },
@@ -89,10 +89,11 @@
                 $("#color").val(result.color);
                 setBrandPicture(result.pictureFront);
                 setProvincePlate(result.province_plate);
-                $("#brandId").val(result.brandId);
+                // $("#brandId").val(result.brandId);
                 // getbrand(result.brandId);
+                
             }
-            
+            getbrand(result.brandId,modelId,modelofcarId);
         });
 
         function setBrandPicture(picture){
@@ -191,11 +192,11 @@
 
         function onLoad(){
           setProvincePlate();
-          getbrand();
+          // getbrand();
         }
         onLoad();
 
-        function getbrand(brandId = null ){
+        function getbrand(brandId = null,modelId = null,modelofcarId = null ){
             
             brand.append('<option value="">เลือกยี่ห้อรถ</option>');
             $.post(base_url+"service/CarSelect/getCarBrand",{},
@@ -204,6 +205,7 @@
                     $.each( brandData, function( key, value ) {
                         brand.append('<option data-thumbnail="images/icon-chrome.png" value="' + value.brandId + '">' + value.brandName + '</option>');
                     });
+                    brand.val(brandId);
                 }
             );
         }
@@ -221,6 +223,7 @@
                     $.each( modelData, function( key, value ) {
                         model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
                     });
+                    model.val(modelId);
                 }
             );
         });
