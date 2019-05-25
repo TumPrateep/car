@@ -61,7 +61,7 @@
                 },
                 modelofcarId: {
                     required: "กรุณาเลือกรายละเอียดรุ่น"
-                }
+                },
                 color: {
                     required: "กรุณากรอกสี" 
                 },

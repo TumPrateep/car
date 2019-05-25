@@ -18,7 +18,18 @@ class Carprofile extends CI_Controller {
     //      }    
         $this->load->view("public/layout/head");
 		$this->load->view("public/layout/product_style");
-        $this->load->view("public/layout/header_login");
+        // $this->load->view("public/layout/header_login");
+        if(isset($this->session->userdata['logged_in'])){
+            $isUser = $this->session->userdata['logged_in']['isUser'];
+            if(!$isUser){
+                $this->load->view("public/layout/header");
+            }else{
+                $this->load->view("public/layout/header_login");
+            }
+        }
+        else{
+            $this->load->view("public/layout/header");
+        }
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
         $this->load->view("public/carprofile/content");
@@ -31,7 +42,17 @@ class Carprofile extends CI_Controller {
     {
         $this->load->view("public/layout/head");
         $this->load->view("public/layout/head_shop");
-        $this->load->view("public/layout/header");
+        if(isset($this->session->userdata['logged_in'])){
+            $isUser = $this->session->userdata['logged_in']['isUser'];
+            if(!$isUser){
+                $this->load->view("public/layout/header");
+            }else{
+                $this->load->view("public/layout/header_login");
+            }
+        }
+        else{
+            $this->load->view("public/layout/header");
+        }
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
         $this->load->view("public/carprofile/create/content");
@@ -45,7 +66,17 @@ class Carprofile extends CI_Controller {
         $data["car_profileId"] = $car_profileId;
         $this->load->view("public/layout/head");
         $this->load->view("public/layout/head_shop");
-        $this->load->view("public/layout/header");
+        if(isset($this->session->userdata['logged_in'])){
+            $isUser = $this->session->userdata['logged_in']['isUser'];
+            if(!$isUser){
+                $this->load->view("public/layout/header");
+            }else{
+                $this->load->view("public/layout/header_login");
+            }
+        }
+        else{
+            $this->load->view("public/layout/header");
+        }
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
         $this->load->view("public/carprofile/update/content", $data);
