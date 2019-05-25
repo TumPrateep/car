@@ -26,7 +26,7 @@
                             </ul>
                         </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/review"); ?>">
-                            <i class="fa fa-commenting-o garage-white"></i><span class="hide-menu">เรตติ้ง</span></a>
+                            <i class="fa fa-commenting-o garage-white"></i><span class="hide-menu">คะแนนและความคิดเห็น</span></a>
                         </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/Reserve"); ?>">
                             <i class="fa fa-handshake-o garage-white"></i><span class="hide-menu">การจอง</span></a>
