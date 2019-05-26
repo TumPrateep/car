@@ -51,11 +51,11 @@
 
     var tire_dataId = $("#tire_dataId").val();
     
-    $.get(base_url+"apiCaraccessories/TireData/getTireData",{
+    $.get(base_url+"apicaraccessories/Tiredata/getTireData",{
         "tire_dataId": tire_dataId
     },function(data){
         if(data.message != 200){
-            showMessage(data.message,"caraccessory/Tiredata");
+            showMessage(data.message,"caraccessory/tiredata");
         }else{
             result = data.data;
             console.log(result);
@@ -87,7 +87,7 @@
     }
 
     function getTireBrand(brandId, modelId){
-        $.get(base_url+"apiCaraccessories/Tirebrand/getAllTireBrand",{},
+        $.get(base_url+"apicaraccessories/Tirebrand/getAllTireBrand",{},
             function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
@@ -101,7 +101,7 @@
 
     function getTireModel(modelId=null){
         var tireBrandId = tireBrand.val();
-        $.get(base_url+"apiCaraccessories/Tiremodel/getAllTireModel",{
+        $.get(base_url+"apicaraccessories/Tiremodel/getAllTireModel",{
             tire_brandId: tireBrandId
         },function(data){
                 var tireModelData = data.data;
@@ -119,7 +119,7 @@
     });
 
     function getRim(rimId,tireSizeId){
-        $.get(base_url+"apiCaraccessories/TireRim/getAllTireRims",{},
+        $.get(base_url+"apicaraccessories/Tirerim/getAllTireRims",{},
             function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
@@ -133,7 +133,7 @@
 
     function getTireSize(tireSizeId = null){
         var tire_rimId = tire_rim.val();
-        $.get(base_url+"apiCaraccessories/Tiresize/getAllTireSize",{
+        $.get(base_url+"apicaraccessories/Tiresize/getAllTireSize",{
             tire_rimId: tire_rimId
         },function(data){
                 var brandData = data.data;
@@ -177,14 +177,14 @@
             var formData = new FormData(myform);
             
             $.ajax({
-                url: base_url+"apiCaraccessories/TireData/update",
+                url: base_url+"apicaraccessories/Tiredata/update",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/Tiredata");
+                        showMessage(data.message,"caraccessory/tiredata");
                     }else{
                         showMessage(data.message);
                     }

@@ -66,16 +66,11 @@ class Garages extends BD_Controller {
             $count = 0;
             foreach ($posts as $post)
             {
-                $date=date_create($post->openingtime);
-                $post->openingtime = date_format($date,"H:i");
-
-                $date=date_create($post->closingtime);
-                $post->closingtime = date_format($date,"H:i");
-
+                
                 $nestedData[$count]['garageId'] = $post->garageId;
                 $nestedData[$count]['garageName'] = $post->garageName;
                 $nestedData[$count]['dayopenhour'] = $post->dayopenhour;
-                $nestedData[$count]['opentime'] = $post->openingtime." - ".$post->closingtime." น.";
+                $nestedData[$count]['opentime'] = $post->openingtime." - ".$post->closingtime;
                 $nestedData[$count]['picture'] = $post->picture;
                 $nestedData[$count]['garageService'] = $post->garageService;
                 $nestedData[$count]['option1'] = $post->option1;

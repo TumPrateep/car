@@ -7,9 +7,9 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Car"); ?>">ยี่ห้อรถ</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/CarModelAccessory/index1/$modelId"); ?>">รุ่นรถ</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Modelofcar/index/$brandId/$modelId"); ?>">ชื่อรุ่นรถ</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/car"); ?>">ยี่ห้อรถ</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/carmodelaccessory/index1/$modelId"); ?>">รุ่นรถ</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/modelofcar/index/$brandId/$modelId"); ?>">ชื่อรุ่นรถ</a></li>
                 <li class="breadcrumb-item active">แก้ไขข้อมูลชื่อของรุ่นรถ</li>
             </ol>
         </div>
@@ -36,7 +36,7 @@
                                 <div class="row p-t-20">
                                     <div class="col-md-12 card-grid">
                                         <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                        <a href="<?=base_url("caraccessory/Modelofcar/index/$brandId/$modelId"); ?>">
+                                        <a href="<?=base_url("caraccessory/modelofcar/index/$brandId/$modelId"); ?>">
                                         <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                         </a>
                                     </div>

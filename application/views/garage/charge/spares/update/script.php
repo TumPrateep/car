@@ -27,7 +27,7 @@
     var spares_changeId = $("#spares_changeId");
 
     function init(){
-        $.get(base_url+"api/SpareUndercarriage/getAllSparespartcarUndercarriage",{},
+        $.get(base_url+"api/Spareundercarriage/getAllSparespartcarUndercarriage",{},
             function(data){
                 var spareData = data.data;
                 $.each( spareData, function( key, value ) {
@@ -40,7 +40,7 @@
     }
 
     function getUpdate(){
-        $.get(base_url+"apiGarage/Spareschange/getUpdate",{"spares_changeId": spares_changeId.val()},
+        $.get(base_url+"apigarage/Spareschange/getUpdate",{"spares_changeId": spares_changeId.val()},
             function(data){
                 var spareData = data.data;
                 $("#spares_undercarriageId").val(spareData.spares_undercarriageId);
@@ -65,7 +65,7 @@
 
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiGarage/Spareschange/update",data,
+            $.post(base_url+"apigarage/Spareschange/update",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"garage/charge/spares");
@@ -84,7 +84,7 @@
         var brandDropdown = $("#brandId");
             brandDropdown.append('<option value="">เลือกยี่ห้อรถ</option>');
             
-            $.post(base_url + "apiGarage/Spareschange/getBrand", {},
+            $.post(base_url + "apigarage/Spareschange/getBrand", {},
                 function(data) {
                     var Brand = data.data;
                     $.each(Brand, function(index, value) {

@@ -2,7 +2,7 @@
     var lubricatorTypeId = $("#lubricator_typeId");
     var lubricatorGear = $("#lubricator_gear");
 
-    $.post(base_url+"api/LubricatorType/getAllLubricatorType",{},
+    $.post(base_url+"api/Lubricatortype/getAllLubricatorType",{},
         function(result){
             var data = result.data;
             if(data != null){
@@ -64,10 +64,10 @@
         
         if(isValid){
             var data = $("#create-lubricatornumber").serialize();
-            $.post(base_url+"api/LubricatorNumber/createLubricatorNumber",data,
+            $.post(base_url+"api/Lubricatornumber/createLubricatorNumber",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/LubricatorNumber");
+                    showMessage(data.message,"admin/lubricatornumber");
                 }else{
                     showMessage(data.message,);
                 }

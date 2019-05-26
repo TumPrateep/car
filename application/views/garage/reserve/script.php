@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiGarage/Reserve/searchReserve",
+                "url": base_url+"apigarage/Reserve/searchReserve",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -117,7 +117,7 @@
             label: "ยืนยันการทำรายการการจอง",
             status: 2,
             content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
-            gotoUrl: "garage/Reserve"
+            gotoUrl: "garage/reserve"
         }
         fnConfirm(option);
     }   
@@ -128,7 +128,7 @@
             label: "ยกเลิกการทำรายการการจอง",
             status: 9,
             content: "คุณต้องการยกเลิกการทำรายการการจองนี้ ใช่หรือไม่",
-            gotoUrl: "garage/Reserve"
+            gotoUrl: "garage/reserve"
         }
         fnConfirm(option);
     }

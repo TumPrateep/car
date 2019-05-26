@@ -7,8 +7,8 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Car"); ?>">ยี่ห้อรถ</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/CarModelAccessory/index1/$brandId"); ?>">รายการรุ่นรถ</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/car"); ?>">ยี่ห้อรถ</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/carmodelaccessory/index1/$brandId"); ?>">รายการรุ่นรถ</a></li>
                 <li class="breadcrumb-item active">แก้ไขข้อมูล</li>
             </ol>
         </div>
@@ -44,7 +44,7 @@
                             </div>
                             </div>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                <a href="<?=base_url("caraccessory/CarModelAccessory/index1/$brandId"); ?>">
+                                <a href="<?=base_url("caraccessory/carmodelaccessory/index1/$brandId"); ?>">
                                 <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                 </a>
                             </form>

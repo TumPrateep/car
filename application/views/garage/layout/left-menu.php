@@ -26,7 +26,7 @@
                             </ul>
                         </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/review"); ?>">
-                            <i class="fa fa-commenting-o garage-white"></i><span class="hide-menu">คะแนนและความคิดเห็น</span></a>
+                            <i class="fa fa-commenting-o garage-white"></i><span class="hide-menu">เรตติ้ง</span></a>
                         </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/Reserve"); ?>">
                             <i class="fa fa-handshake-o garage-white"></i><span class="hide-menu">การจอง</span></a>
@@ -34,7 +34,7 @@
                         <li ><a class="garage-white " href="<?=base_url("garage/Acessstatus"); ?>">
                             <i class="fa fa-wrench garage-white"></i><span class="hide-menu">ยืนยันการซ่อม</span></a>
                         </li>
-                        <!-- <li ><a class="garage-white " href="<?=base_url("garage/Orderdetail/show"); ?>">
+                        <!-- <li ><a class="garage-white " href="<?=base_url("garage/orderdetail/show"); ?>">
                             <i class="fa fa-truck garage-white"></i><span class="hide-menu">รายการสินค้า</span></a>
                         </li> -->
                         <li ><a class="garage-white " href="<?=base_url("garage/Orderreceive/show"); ?>">

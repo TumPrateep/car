@@ -88,7 +88,7 @@
 
         var mechanicId = $("#mechanicId").val();
 
-        $.get(base_url+"apiGarage/Mechanic/getOwner",{},function(data){
+        $.get(base_url+"apigarage/Mechanic/getOwner",{},function(data){
             if(data.message!=200){
                 showMessage(data.message,"garage/managegarage");
             }
@@ -138,7 +138,7 @@
                 var formData = new FormData(myform);
 
                 $.ajax({
-                url: base_url+"apiGarage/Mechanic/updateOwner",
+                url: base_url+"apigarage/Mechanic/updateOwner",
                 data: formData,
                 processData: false,
                 contentType: false,

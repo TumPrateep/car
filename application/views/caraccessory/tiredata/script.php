@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/TireData/search",
+                "url": base_url+"apicaraccessories/Tiredata/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -80,7 +80,7 @@
                                             +'</div>'
                                         +'</div>'
                                         + '<div class="text-center">'
-                                            + '<a href="'+base_url+"caraccessory/TireData/updatetiredata/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                            + '<a href="'+base_url+"caraccessory/tiredata/updatetiredata/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                             + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.tire_dataId+'\', \''+value.tire_modelName+'/'+value.tire_brandName+' '+value.tire_size+'\')"><i class="ti-trash"></i> ลบ</button>'
                                         + '</div>'
                                     + '</div>'
@@ -129,7 +129,7 @@
     init();
 
     function getTireBrand(brandId = null){
-        $.get(base_url+"apiCaraccessories/Tirebrand/getAllTireBrand",{},
+        $.get(base_url+"apicaraccessories/Tirebrand/getAllTireBrand",{},
             function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
@@ -142,7 +142,7 @@
     tireBrand.change(function(){
         var tireBrandId = tireBrand.val();
         tireModel.html('<option value="">เลือกรุ่นยาง</option>');
-        $.get(base_url+"apiCaraccessories/Tiremodel/getAllTireModel",{
+        $.get(base_url+"apicaraccessories/Tiremodel/getAllTireModel",{
             tire_brandId: tireBrandId
         },function(data){
                 var tireModelData = data.data;
@@ -156,7 +156,7 @@
     tire_rim.change(function(){
         var tire_rimId = tire_rim.val();
         tire_size.html('<option value="">เลือกขนาดยาง</option>');
-        $.get(base_url+"apiCaraccessories/Tiresize/getAllTireSize",{
+        $.get(base_url+"apicaraccessories/Tiresize/getAllTireSize",{
             tire_rimId: tire_rimId
         },function(data){
                 var brandData = data.data;
@@ -168,7 +168,7 @@
     });
 
     function getRim(rimId = null){
-        $.get(base_url+"apiCaraccessories/TireRim/getAllTireRims",{},
+        $.get(base_url+"apicaraccessories/Tirerim/getAllTireRims",{},
             function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
@@ -198,12 +198,12 @@
         fnDelete(option);
     }
     function updateStatus(tire_dataId,status){
-        $.post(base_url+"apiCaraccessories/TireData/changeStatus",{
+        $.post(base_url+"apicaraccessories/Tiredata/changeStatus",{
             "tire_dataId": tire_dataId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"/caraccessory/Tiredata/");
+                showMessage(data.message,"/caraccessory/tiredata/");
             }else{
                 showMessage(data.message);
             }

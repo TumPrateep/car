@@ -5,7 +5,7 @@
         "rimId" : rimId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/Tires");
+            showMessage(data.message,"admin/tires");
         }
     });
 
@@ -65,7 +65,7 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Tires/updatetiresize/"+data.rimId+"/"+data.tire_sizeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/tires/updatetiresize/"+data.rimId+"/"+data.tire_sizeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deletetrie_size('+data.tire_sizeId+',\''+data.tire_size+'\',\''+data.rimId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -122,7 +122,7 @@
             "rimId": rimId
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Tires/tiresize/"+rimId);
+                showMessage(data.message,"admin/tires/tiresize/"+rimId);
             }else{
                 showMessage(data.message);
             }

@@ -39,11 +39,11 @@
             
             if(isValid){
                 var data = $("#group").serialize();
-                $.post(base_url+"api/UserManagement/create",data,
+                $.post(base_url+"api/Usermanagement/create",data,
                 function(data){
                     if(data.message == 200){
                         var username = $("#username").val();
-                        showMessage(data.message,"admin/UserManagement");
+                        showMessage(data.message,"admin/usermanagement");
                     }else{
                         showMessage(data.message);
                     }

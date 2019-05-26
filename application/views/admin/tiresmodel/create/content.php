@@ -4,10 +4,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tiresbrand/") ?>">การจัดการยี่ห้อ</a>
+          <a href="<?=base_url("admin/tires/tiresbrand/") ?>">การจัดการยี่ห้อ</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tiresmodel/$tire_brandId") ?>">รุ่นยาง</a>
+          <a href="<?=base_url("admin/tires/tiresmodel/$tire_brandId") ?>">รุ่นยาง</a>
         </li>
         <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
       </ol>

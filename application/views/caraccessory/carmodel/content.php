@@ -8,8 +8,8 @@ Page wrapper  -->
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Car"); ?>">ยี่ห้อรถ</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/CarModelAccessory/index1/$brandId"); ?>">รุ่นรถ</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/car"); ?>">ยี่ห้อรถ</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/carmodelaccessory/index1/$brandId"); ?>">รุ่นรถ</a></li>
                 <li class="breadcrumb-item active">เเก้ไข</li>
             </ol>
         </div>
@@ -21,7 +21,7 @@ Page wrapper  -->
         <input type="hidden" id="brandId" value="<?=$brandId ?>">
         <div class="row p-30">
             <div class="col-lg-4 div-right">
-                <a href="<?=base_url("caraccessory/CarModelAccessory/createModelCar/$brandId") ?>">
+                <a href="<?=base_url("caraccessory/carmodelaccessory/createModelCar/$brandId") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>

@@ -13,8 +13,8 @@
             <span class="nav-link-text">การจัดการยี่ห้อ/รุ่นรถ</span>
           </a>
         </li>
-        <li class="nav-item <?= activate_menu('UserManagement'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link text-white" href="<?=base_url("admin/UserManagement") ?>">
+        <li class="nav-item <?= activate_menu('usermanagement'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link text-white" href="<?=base_url("admin/usermanagement") ?>">
             <i class="fa fa-user-plus"></i>
             <span class="nav-link-text">การจัดการผู้ใช้งาน</span>
           </a>
@@ -25,8 +25,8 @@
             <span class="nav-link-text">เมนูอะไหล่</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li class="<?= activate_menu('SparePartCar'); ?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/SparePartCar") ?>">
+            <li class="<?= activate_menu('sparepartcar'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/sparepartcar") ?>">
                 <i class="fa fa-cog"></i>
                 <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
               </a>
@@ -36,14 +36,14 @@
               <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti2">
               <i class="fa fa-tint"></i> น้ำมันเครื่อง</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                <li class="<?= activate_menu('LubricatorType'); ?>">
-                  <a class="nav-link text-white" href="<?=base_url("admin/LubricatorType") ?>">
+                <li class="<?= activate_menu('lubricatortype'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/lubricatortype") ?>">
                     <i class="fa fa-tachometer"></i>
                     <span class="nav-link-text">ประเภทน้ำมันเครื่อง</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('LubricatorNumber'); ?>">
-                  <a class="nav-link text-white" href="<?=base_url("admin/LubricatorNumber") ?>">
+                <li class="<?= activate_menu('Lubricatornumber'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/lubricatornumber") ?>">
                     <i class="fa fa-safari"></i>
                     <span class="nav-link-text">เบอร์น้ำมันเครื่อง</span>
                   </a>
@@ -55,7 +55,7 @@
                   </a>
                 </li>
                 <li class="<?= activate_menu('LubricatortypeFormachine'); ?>">
-                  <a class="nav-link text-white" href="<?=base_url("admin/LubricatortypeFormachine") ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/lubricatortypeformachine") ?>">
                     <i class="fa fa-cogs"></i>
                     <span class="nav-link-text">ประเภทน้ำมันเครื่องตามเครื่องยนต์</span>
                   </a>
@@ -73,20 +73,20 @@
                     <span class="nav-link-text">ขอบยางรถยนต์</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('tires/TiresBrand/'); ?>">
-                  <a class="nav-link text-white" href="<?=base_url("admin/tires/TiresBrand/") ?>">
+                <li class="<?= activate_menu('tires/tiresbrand/'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/tires/tiresbrand/") ?>">
                     <i class="fa fa-futbol-o"></i>
                     <span class="nav-link-text">ยี่ห้อยางรถยนต์</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('tires/TiresMatching/'); ?>">
-                  <a class="nav-link text-white" href="<?=base_url("admin/tires/TiresMatching/") ?>">
+                <li class="<?= activate_menu('tires/tiresmatching/'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/tires/tiresmatching/") ?>">
                     <i class="fa fa-arrows-h"></i>
                     <span class="nav-link-text">ขนาดยางตามยี่ห้อ</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('tires/TireChange/'); ?>">
-                  <a class="nav-link text-white" href="<?=base_url("admin/tires/TireChange/") ?>">
+                <li class="<?= activate_menu('tires/tirechange/'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/tires/tirechange/") ?>">
                     <i class="fa fa-usd"></i>
                     <span class="nav-link-text">ราคาเปลี่ยนยาง</span>
                   </a>
@@ -130,20 +130,20 @@
             <span class="nav-link-text">ราคาค่าบริการ</span>
           </a>
           <ul class="sidenav-second-level collapse" id="serviceCharge">
-            <li class="<?= activate_menu('Charge/SpareCharge/'); ?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/Charge/SpareCharge") ?>">
+            <li class="<?= activate_menu('charge/sparecharge/'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/charge/sparecharge") ?>">
                 <i class="fa fa-cog"></i>
                 <span class="nav-link-text">ราคาค่าบริการเปลี่ยนอะไหล่ช่วงล่าง</span>
               </a>
             </li>
-            <li class="<?= activate_menu('Charge/LubricatorCharge/'); ?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/Charge/LubricatorCharge") ?>">
+            <li class="<?= activate_menu('charge/lubricatorcharge/'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/charge/lubricatorcharge") ?>">
                 <i class="fa fa-rebel"></i>
                 <span class="nav-link-text">ราคาค่าบริการเปลี่ยนน้ำมันเครื่อง</span>
               </a>
             </li>
-            <li class="<?= activate_menu('Charge/TiresCharge/'); ?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/Charge/TiresCharge") ?>">
+            <li class="<?= activate_menu('charge/tirescharge/'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/charge/tirescharge") ?>">
                 <i class="fa fa-life-ring"></i>
                 <span class="nav-link-text">ราคาค่าบริการเปลี่ยนยางรถ</span>
               </a>
@@ -189,12 +189,12 @@
         
         
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="#">
             <i class="fa fa-fw fa-link"></i>
             <span class="nav-link-text">Link</span>
           </a>
-        </li>
+        </li> -->
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

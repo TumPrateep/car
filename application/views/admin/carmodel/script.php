@@ -53,7 +53,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/car/machinetype/"+data.brandId+'/'+data.modelId+'/'+data.modelofcarId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"admin/car/updateCarmodel/"+data.brandId+'/'+data.modelId+'/'+data.modelofcarId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"admin/car/updatecarmodel/"+data.brandId+'/'+data.modelId+'/'+data.modelofcarId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteCarModel('+data.modelofcarId+',\''+data.modelofcarName+'\',\''+data.brandId+'\',\''+data.modelId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },

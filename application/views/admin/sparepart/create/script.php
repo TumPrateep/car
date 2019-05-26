@@ -43,11 +43,11 @@
             var imageData = $('.image-editor').cropit('export');
             $('.hidden-image-data').val(imageData);
             var data = $("#createsparesBrand").serialize();
-            $.post(base_url+"api/SparePartCar/createSpareBrand",data,
+            $.post(base_url+"api/Sparepartcar/createSpareBrand",data,
             function(data){
                 var spares_undercarriageId = $("#spares_undercarriageId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"admin/SparePartCar/sparepart/"+spares_undercarriageId);
+                    showMessage(data.message,"admin/sparepartcar/sparepart/"+spares_undercarriageId);
                 }else{
                     showMessage(data.message);
                 }

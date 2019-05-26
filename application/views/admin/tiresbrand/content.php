@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tiresbrand") ?>">ยี่ห้อยาง</a>
+          <a href="<?=base_url("admin/tires/tiresbrand") ?>">ยี่ห้อยาง</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
@@ -12,7 +12,7 @@
     <div class="card-tools one">
       <form id="form-search">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/Tires/createtiresbrand/") ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtiresbrand/") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
 

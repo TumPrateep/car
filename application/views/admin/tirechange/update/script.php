@@ -35,10 +35,10 @@
 
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/TireChange/update",data,
+            $.post(base_url+"api/Tirechange/update",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/tirechange");
+                    showMessage(data.message,"admin/tires/tirechange");
                 }else{
                     showMessage(data.message);
                 }
@@ -47,7 +47,7 @@
         }
     }
 
-    $.get(base_url+"api/TireChange/getTireChange",{
+    $.get(base_url+"api/Tirechange/getTireChange",{
         "tire_changeId": tire_changeId
     },function(data){
         var tireChange = data.data;

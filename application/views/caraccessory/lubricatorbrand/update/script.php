@@ -17,7 +17,7 @@ var lubricator_brandId = $("#lubricator_brandId");
         "lubricator_brandId": lubricator_brandId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"caraccessory/BrandLubricator");
+            showMessage(data.message,"caraccessory/brandLubricator");
         }else{
             result = data.data;
             $("#lubricator_brandName").val(result.lubricator_brandName);
@@ -51,14 +51,14 @@ var lubricator_brandId = $("#lubricator_brandId");
             var myform = document.getElementById("update-lubricatorbrand");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"apiCaraccessories/Lubricatorbrand/updateLubricatorbrands",
+                url: base_url+"apicaraccessories/Lubricatorbrand/updateLubricatorbrands",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/Lubricator");
+                        showMessage(data.message,"caraccessory/lubricator");
                     }else{
                         showMessage(data.message);
                     }

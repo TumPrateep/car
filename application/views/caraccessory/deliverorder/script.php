@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiCaraccessories/Deliverorder/searchorder",
+                "url": base_url+"apicaraccessories/deliverorder/searchorder",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -172,7 +172,7 @@
                 var myform = document.getElementById("submit");
                 var formData = new FormData(myform);
                 $.ajax({
-                    url: base_url+"apiCaraccessories/Deliverorder/createteimgtraking",
+                    url: base_url+"apicaraccessories/deliverorder/createteimgtraking",
                     data: formData,
                     processData: false,
                     contentType: false,

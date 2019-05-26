@@ -107,7 +107,7 @@
             var myform = document.getElementById("submit");
             var formData = new FormData(myform);
             $.ajax({
-            url: base_url+"apiGarage/Mechanic/createMechanic",data,
+            url: base_url+"apigarage/Mechanic/createMechanic",data,
             data: formData,
                 processData: false,
                 contentType: false,

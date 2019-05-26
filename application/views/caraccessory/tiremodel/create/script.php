@@ -34,12 +34,12 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/Tiremodel/createTireModel",data,
+            $.post(base_url+"apicaraccessories/Tiremodel/createTireModel",data,
             function(data){
                 var tire_modelName = $("#tire_modelName").val();
                 var tire_brandId = $("#tire_brandId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/TireModel/index/"+tire_brandId);
+                    showMessage(data.message,"caraccessory/tiremodel/index/"+tire_brandId);
                 }else{
                     showMessage(data.message,);
                 }

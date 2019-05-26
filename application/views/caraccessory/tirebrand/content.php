@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireBrand"); ?>">ยี่ห้อยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/tirebrand"); ?>">ยี่ห้อยาง</a></li>
                 <li class="breadcrumb-item active">ค้นหา</li>
             </ol>
         </div>
@@ -18,7 +18,7 @@
         
         <div class="row p-30">
             <div class="col-lg-4 div-right">
-                <a href="<?=base_url("caraccessory/TireBrand/createtirebrand") ?>">
+                <a href="<?=base_url("caraccessory/tirebrand/createtirebrand") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>

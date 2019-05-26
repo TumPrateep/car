@@ -29,7 +29,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/PaymentApprove/searchPaymentApprove",
+                "url": base_url+"api/Paymentapprove/searchPaymentApprove",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -64,7 +64,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '';
-                        html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.orderId+'">#'+data.orderId+'</a><br>';
+                        html+='<a href="'+base_url+'admin/orderdetail/show/'+data.orderId+'">#'+data.orderId+'</a><br>';
                         if(data.status==1){
                             html+='<span class="badge badge-warning">รอตรวจสอบการโอนเงิน</span>';
                         }else if(data.status==2){
@@ -125,7 +125,7 @@
 
     function confirmStatus(paymentId, orderId){
         var option = {
-            url: "/PaymentApprove/changeStatus?paymentId="+paymentId+"&orderId="+orderId,
+            url: "/Paymentapprove/changeStatus?paymentId="+paymentId+"&orderId="+orderId,
             label: "ยืนยันรายการชำระเงิน",
             status: 2,
             content: "คุณต้องการยืนยันรายการชำระเงินนี้ ใช่หรือไม่",
@@ -136,7 +136,7 @@
 
     function cancelStatus(paymentId,orderId){
         var option = {
-            url: "/PaymentApprove/changeStatus?paymentId="+paymentId+"&orderId="+orderId,
+            url: "/Paymentapprove/changeStatus?paymentId="+paymentId+"&orderId="+orderId,
             label: "ยกเลิกรายการชำระเงิน",
             status: 9,
             content: "คุณต้องการยกเลิกรายการชำระเงินนี้ ใช่หรือไม่",

@@ -26,12 +26,12 @@
     var rimId = $("#rimId").val();
     var tire_sizeId = $("#tire_sizeId").val();
 
-    $.post(base_url+"api/Triesize/getiresizeById",{
+    $.post(base_url+"api/triesize/getiresizeById",{
         "rimId": rimId,
         "tire_sizeId" : tire_sizeId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"caraccessory/TireSize/index/"+rimId);
+            showMessage(data.message,"caraccessory/tiresize/index/"+rimId);
         }else{
             result = data.data;
             $("#tire_size").val(result.tire_size);
@@ -53,11 +53,11 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/TireSize/updatetrieSize",data,
+            $.post(base_url+"apicaraccessories/Tiresize/updatetrieSize",data,
             function(data){
                 //var rimId = $("#rimId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/TireSize/index/"+rimId);
+                    showMessage(data.message,"caraccessory/tiresize/index/"+rimId);
                 }else{
                     showMessage(data.message,);
                 }

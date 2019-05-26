@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/SpareundercarriageData/search",
+                "url": base_url+"apicaraccessories/spareundercarriagedata/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -89,7 +89,7 @@
                                             + '</div>'
                                         + '</div>'
                                         + '<div class="text-center">'
-                                            + '<a href="'+base_url+"caraccessory/SpareundercarriesData/updateSpareundercarriesData/"+value.spares_undercarriageDataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                            + '<a href="'+base_url+"caraccessory/spareundercarriesdata/updateSpareundercarriesData/"+value.spares_undercarriageDataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                             + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.spares_undercarriageDataId+'\',\''+value.spares_brandName+'/'+value.spares_undercarriageName+'\')"><i class="ti-trash"></i> ลบ</button>'
                                         + '</div>'
                                     + '</div>'
@@ -135,7 +135,7 @@
     }
 
     function getSparesUndercarriage(){
-        $.get(base_url+"apiCaraccessories/CarSpareUndercarriage/getAllSpareundercarriage",{},
+        $.get(base_url+"apicaraccessories/carspareundercarriage/getAllSpareundercarriage",{},
             function(data){
                 var sparesUndercarriageData = data.data;
                 $.each(sparesUndercarriageData, function( key, value ) {
@@ -147,7 +147,7 @@
 
     spares_undercarriage.change(function(){
         spares_brand.html('<option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>');
-        $.get(base_url+"apiCaraccessories/SpareBrand/getAllSpareBrand",{
+        $.get(base_url+"apicaraccessories/sparebrand/getAllSpareBrand",{
             spares_undercarriageId: $(this).val()
         },function(data){
                 var sparesBrandData = data.data;
@@ -170,7 +170,7 @@
 
     function deletetiredata(spares_undercarriageDataId,data_name){
         var option = {
-            url: "/SpareundercarriageData/delete?spares_undercarriageDataId="+spares_undercarriageDataId,
+            url: "/spareundercarriagedata/delete?spares_undercarriageDataId="+spares_undercarriageDataId,
             label: "ลบข้อมอะไหล่",
             content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
             gotoUrl: "/caraccessory/SpareundercarriesData"
@@ -178,12 +178,12 @@
         fnDelete(option);
     }
     function updateStatus(spares_undercarriageDataId,status){
-        $.post(base_url+"apiCaraccessories/SpareundercarriageData/changeStatus",{
+        $.post(base_url+"apicaraccessories/spareundercarriagedata/changeStatus",{
             "spares_undercarriageDataId": spares_undercarriageDataId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"/caraccessory/SpareundercarriesData/");
+                showMessage(data.message,"/caraccessory/spareundercarriesdata/");
             }else{
                 showMessage(data.message);
             }

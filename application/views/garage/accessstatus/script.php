@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiGarage/Accessstatus/searchAccessstatus",
+                "url": base_url+"apigarage/Accessstatus/searchAccessstatus",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -113,7 +113,7 @@
             label: "ยืนยันการทำรายการการจอง",
             statussuccess: 2,
             content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
-            gotoUrl: "garage/Acessstatus"
+            gotoUrl: "garage/acessstatus"
         }
         fnConfirm(option);
     }   

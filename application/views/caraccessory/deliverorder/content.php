@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Lubricatordata"); ?>">ข้อมูลการจัดส่งสินค้า</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/lubricatordata"); ?>">ข้อมูลการจัดส่งสินค้า</a></li>
                 <li class="breadcrumb-item active">ค้นหา</li>
             </ol>
         </div>
@@ -103,7 +103,7 @@
 
             <div class="row">
                 <div class="col-lg-12 pt-20 ml-8">
-                    <!-- <a href="<?=base_url("caraccessory/LubricatorData/create") ?>">
+                    <!-- <a href="<?=base_url("caraccessory/lubricatordata/create") ?>">
                         <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                         <i class="fa fa-plus"> สร้าง</i></button>
                     </a> -->

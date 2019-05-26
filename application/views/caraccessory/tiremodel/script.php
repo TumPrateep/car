@@ -29,7 +29,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/Tiremodel/searchTireModel",
+                "url": base_url+"apicaraccessories/Tiremodel/searchTireModel",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -91,10 +91,10 @@
 
     function deleteTireModel(tire_brandId, tire_modelId,tire_modelName){
         var option = {
-            url: "/Tiremodel/deleteTireModel?tire_modelId="+tire_modelId,
+            url: "/tiremodel/deleteTireModel?tire_modelId="+tire_modelId,
             label: "ลบรุ่นยาง",
             content: "คุณต้องการลบ "+tire_modelName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/TireModel/index/"+tire_brandId
+            gotoUrl: "caraccessory/tiremodel/index/"+tire_brandId
             
         }
         fnDelete(option);

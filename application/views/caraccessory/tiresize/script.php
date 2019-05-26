@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/Tiresize/searchTiresize",
+                "url": base_url+"apicaraccessories/Tiresize/searchTiresize",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -86,10 +86,10 @@
    
     function deleteTireSize(tire_sizeId, tire_size,tire_series,rim,rimId){
         var option = {
-            url: "/Tiresize/deletetriesize?tire_sizeId="+tire_sizeId,
+            url: "/tiresize/deletetriesize?tire_sizeId="+tire_sizeId,
             label: "ลบอะไหล่ช่วงล่าง",
             content: "คุณต้องการลบ "+tire_size+'/'+tire_series+'/'+rim+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/TireSize/index/"+rimId
+            gotoUrl: "caraccessory/tiresize/index/"+rimId
         }
         fnDelete(option);
     }

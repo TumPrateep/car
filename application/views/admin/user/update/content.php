@@ -2,7 +2,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/UserManagement") ?>">ข้อมูลผู้ใช้งาน</a>
+          <a href="<?=base_url("admin/usermanagement") ?>">ข้อมูลผู้ใช้งาน</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขผู้ใช้งาน</li>
       </ol>

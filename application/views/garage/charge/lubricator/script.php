@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiGarage/Lubricatorchange/searchLubricatorChange",
+                "url": base_url+"apigarage/Lubricatorchange/searchLubricatorChange",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {

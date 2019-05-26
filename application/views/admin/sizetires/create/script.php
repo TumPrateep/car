@@ -38,7 +38,7 @@
             function(data){
                 var rimId = $("#rimId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/tiresize/"+rimId);
+                    showMessage(data.message,"admin/tires/tiresize/"+rimId);
                 }else{
                     showMessage(data.message,);
                 }

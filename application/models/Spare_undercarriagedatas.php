@@ -10,21 +10,21 @@ class Spare_undercarriagedatas extends CI_Model{
         return $query->num_rows();
     }
     function allSpareData($limit,$start,$order,$dir,$userId){
-        $this->db->select('spares_undercarriageData.spares_undercarriageDataId,
-        spares_undercarriageData.status,spares_brand.spares_brandName,
-        spares_undercarriage.spares_undercarriageName,spares_undercarriageData.price,
-        spares_undercarriageData.warranty,spares_undercarriageData.warranty_distance,
-        spares_undercarriageData.warranty_year,
-        spares_undercarriageData.spares_undercarriageDataPicture,
+        $this->db->select('spares_undercarriagedata.spares_undercarriageDataId,
+        spares_undercarriagedata.status,spares_brand.spares_brandName,
+        spares_undercarriage.spares_undercarriageName,spares_undercarriagedata.price,
+        spares_undercarriagedata.warranty,spares_undercarriagedata.warranty_distance,
+        spares_undercarriagedata.warranty_year,
+        spares_undercarriagedata.spares_undercarriageDataPicture,
         brand.brandName,model.modelName,model.yearStart,model.yearEnd,
         modelofcar.modelofcarName,modelofcar.machineSize,spares_undercarriage.spares_undercarriageId,
         spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,spares_brand.spares_brandPicture');
         $this->db->from('spares_undercarriagedata');
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarriagedata.spares_brandId');
-        $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriageData.spares_undercarriageId');
-        $this->db->join('brand','brand.brandId = spares_undercarriageData.brandId');
-        $this->db->join('model','model.modelId = spares_undercarriageData.modelId');
-        $this->db->join('modelofcar','modelofcar.modelofcarId = spares_undercarriageData.modelofcarId');
+        $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriagedata.spares_undercarriageId');
+        $this->db->join('brand','brand.brandId = spares_undercarriagedata.brandId');
+        $this->db->join('model','model.modelId = spares_undercarriagedata.modelId');
+        $this->db->join('modelofcar','modelofcar.modelofcarId = spares_undercarriagedata.modelofcarId');
         
         
         $this->db->where("spares_undercarriagedata.create_by", $userId);
@@ -40,26 +40,26 @@ class Spare_undercarriagedatas extends CI_Model{
 
     function SpareData_search($limit,$start,$order,$dir,$status,$spares_undercarriageId, $spares_brandId, $price, $userId){
         $price = explode(",",$price);
-        $this->db->select('spares_undercarriageData.spares_undercarriageDataId,
-        spares_undercarriageData.status,spares_brand.spares_brandName,
-        spares_undercarriage.spares_undercarriageName,spares_undercarriageData.price,
-        spares_undercarriageData.warranty,spares_undercarriageData.warranty_distance,
-        spares_undercarriageData.warranty_year,
-        spares_undercarriageData.spares_undercarriageDataPicture,
+        $this->db->select('spares_undercarriagedata.spares_undercarriageDataId,
+        spares_undercarriagedata.status,spares_brand.spares_brandName,
+        spares_undercarriage.spares_undercarriageName,spares_undercarriagedata.price,
+        spares_undercarriagedata.warranty,spares_undercarriagedata.warranty_distance,
+        spares_undercarriagedata.warranty_year,
+        spares_undercarriagedata.spares_undercarriageDataPicture,
         brand.brandName,model.modelName,model.yearStart,model.yearEnd,
         modelofcar.modelofcarName,modelofcar.machineSize,spares_undercarriage.spares_undercarriageId,
         spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,spares_brand.spares_brandPicture');
         $this->db->from('spares_undercarriagedata');
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarriagedata.spares_brandId');
-        $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriageData.spares_undercarriageId');
-        $this->db->like('spares_undercarriageData.spares_brandId',$spares_brandId);
-        $this->db->like('spares_undercarriageData.spares_undercarriageId',$spares_undercarriageId);
-        $this->db->where('spares_undercarriageData.price >=',$price[0]);
-        $this->db->where('spares_undercarriageData.price <=',$price[1]);
+        $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriagedata.spares_undercarriageId');
+        $this->db->like('spares_undercarriagedata.spares_brandId',$spares_brandId);
+        $this->db->like('spares_undercarriagedata.spares_undercarriageId',$spares_undercarriageId);
+        $this->db->where('spares_undercarriagedata.price >=',$price[0]);
+        $this->db->where('spares_undercarriagedata.price <=',$price[1]);
         $this->db->where("spares_undercarriagedata.create_by", $userId);
 
         if($status != null){
-            $this->db->where("spares_undercarriageData.status", $status);
+            $this->db->where("spares_undercarriagedata.status", $status);
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($order,$dir)
@@ -76,26 +76,26 @@ class Spare_undercarriagedatas extends CI_Model{
     }
     function SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price, $userId){
         $price = explode(",",$price);
-        $this->db->select('spares_undercarriageData.spares_undercarriageDataId,
-        spares_undercarriageData.status,spares_brand.spares_brandName,
-        spares_undercarriage.spares_undercarriageName,spares_undercarriageData.price,
-        spares_undercarriageData.warranty,spares_undercarriageData.warranty_distance,
-        spares_undercarriageData.warranty_year,
-        spares_undercarriageData.spares_undercarriageDataPicture,
+        $this->db->select('spares_undercarriagedata.spares_undercarriageDataId,
+        spares_undercarriagedata.status,spares_brand.spares_brandName,
+        spares_undercarriage.spares_undercarriageName,spares_undercarriagedata.price,
+        spares_undercarriagedata.warranty,spares_undercarriagedata.warranty_distance,
+        spares_undercarriagedata.warranty_year,
+        spares_undercarriagedata.spares_undercarriageDataPicture,
         brand.brandName,model.modelName,model.yearStart,model.yearEnd,
         modelofcar.modelofcarName,modelofcar.machineSize,spares_undercarriage.spares_undercarriageId,
         spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,spares_brand.spares_brandPicture');
         $this->db->from('spares_undercarriagedata');
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarriagedata.spares_brandId');
-        $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriageData.spares_undercarriageId');
-        $this->db->like('spares_undercarriageData.spares_brandId',$spares_brandId);
-        $this->db->like('spares_undercarriageData.spares_undercarriageId',$spares_undercarriageId);
-        $this->db->where('spares_undercarriageData.price >=',$price[0]);
-        $this->db->where('spares_undercarriageData.price <=',$price[1]);
+        $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriagedata.spares_undercarriageId');
+        $this->db->like('spares_undercarriagedata.spares_brandId',$spares_brandId);
+        $this->db->like('spares_undercarriagedata.spares_undercarriageId',$spares_undercarriageId);
+        $this->db->where('spares_undercarriagedata.price >=',$price[0]);
+        $this->db->where('spares_undercarriagedata.price <=',$price[1]);
         $this->db->where("spares_undercarriagedata.create_by", $userId);
         
         if($status != null){
-            $this->db->where("spares_undercarriageData.status", $status);
+            $this->db->where("spares_undercarriagedata.status", $status);
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
@@ -103,36 +103,36 @@ class Spare_undercarriagedatas extends CI_Model{
         return $query->num_rows();   
     }
     function data_check_create($spares_brandId,$spares_undercarriageId,$brandId,$modelId,$modelofcarId,$userId){
-        $this->db->from('spares_undercarriageData');
-        $this->db->where('spares_undercarriageData.spares_brandId',$spares_brandId);
+        $this->db->from('spares_undercarriagedata');
+        $this->db->where('spares_undercarriagedata.spares_brandId',$spares_brandId);
         $this->db->where('brandId', $brandId);
         $this->db->where('modelId', $modelId);
         $this->db->where('modelofcarId', $modelofcarId);
-        $this->db->where('spares_undercarriageData.spares_undercarriageId',$spares_undercarriageId);
-        $this->db->where('spares_undercarriageData.create_by',$userId);
+        $this->db->where('spares_undercarriagedata.spares_undercarriageId',$spares_undercarriageId);
+        $this->db->where('spares_undercarriagedata.create_by',$userId);
         $result = $this->db->get();
         return $result->row();
     }
     function insert($data){
-       return $this->db->insert('spares_undercarriageData',$data);
+       return $this->db->insert('spares_undercarriagedata',$data);
     }
     function data_check_update($spares_brandId,$spares_undercarriageId,$brandId,$modelId,$modelofcarId,$userId,$spares_undercarriageDataId){
-        $this->db->from('spares_undercarriageData');
+        $this->db->from('spares_undercarriagedata');
         $this->db->where('brandId', $brandId);
         $this->db->where('modelId', $modelId);
         $this->db->where('modelofcarId', $modelofcarId);
-        $this->db->where('spares_undercarriageData.spares_undercarriageId',$spares_undercarriageId);
-        $this->db->where('spares_undercarriageData.create_by',$userId);
-        $this->db->where_not_in('spares_undercarriageData.spares_undercarriageDataId',$spares_undercarriageDataId);
+        $this->db->where('spares_undercarriagedata.spares_undercarriageId',$spares_undercarriageId);
+        $this->db->where('spares_undercarriagedata.create_by',$userId);
+        $this->db->where_not_in('spares_undercarriagedata.spares_undercarriageDataId',$spares_undercarriageDataId);
         $result = $this->db->get();
         return $result->row();
     }
     function checkStatus($userId,$spares_undercarriageDataId){
-        $this->db->from('spares_undercarriageData');
-        $this->db->where('spares_undercarriageData.create_by',$userId);
-        $this->db->where('spares_undercarriageData.spares_undercarriageDataId',$spares_undercarriageDataId);
-        $this->db->where('spares_undercarriageData.status',2);
-        $this->db->where('spares_undercarriageData.activeFlag',2);
+        $this->db->from('spares_undercarriagedata');
+        $this->db->where('spares_undercarriagedata.create_by',$userId);
+        $this->db->where('spares_undercarriagedata.spares_undercarriageDataId',$spares_undercarriageDataId);
+        $this->db->where('spares_undercarriagedata.status',2);
+        $this->db->where('spares_undercarriagedata.activeFlag',2);
         $result = $this->db->count_all_results();
         if($result > 0){
             return false;
@@ -141,15 +141,15 @@ class Spare_undercarriagedatas extends CI_Model{
     }
     function update($data){
         $this->db->where('spares_undercarriageDataId',$data['spares_undercarriageDataId']);
-        $result = $this->db->update('spares_undercarriageData', $data);
+        $result = $this->db->update('spares_undercarriagedata', $data);
         return $result;
     }
     function getspares_undercarriageDatabyId($spares_undercarriageDataId){
-        return $this->db->where('spares_undercarriageDataId',$spares_undercarriageDataId)->get("spares_undercarriageData")->row();
+        return $this->db->where('spares_undercarriageDataId',$spares_undercarriageDataId)->get("spares_undercarriagedata")->row();
     }
 
     function checkSpareUndercarriageData($spares_undercarriageDataId) {
-        $this->db->from('spares_undercarriageData');
+        $this->db->from('spares_undercarriagedata');
         $this->db->where('spares_undercarriageDataId',$spares_undercarriageDataId);
         $result = $this->db->count_all_results();
 
@@ -164,11 +164,11 @@ class Spare_undercarriagedatas extends CI_Model{
     function getupdate($spares_undercarriageDataId){
         $this->db->select("price,spares_brandId,spares_undercarriageDataId,spares_undercarriageDataPicture,spares_undercarriageId,status,warranty,warranty_distance,warranty_year,modelId,brandId,modelofcarId,machineSize");
         $this->db->where('spares_undercarriageDataId',$spares_undercarriageDataId);
-        $result = $this->db->get('spares_undercarriageData')->row();
+        $result = $this->db->get('spares_undercarriagedata')->row();
         return $result;
     }
     function delete($spares_undercarriageDataId){
-        return $this->db->delete('spares_undercarriageData',array('spares_undercarriageDataId' => $spares_undercarriageDataId));
+        return $this->db->delete('spares_undercarriagedata',array('spares_undercarriageDataId' => $spares_undercarriageDataId));
     }
 
     function getSpareDatasById($spares_undercarriageDataId){
@@ -179,13 +179,13 @@ class Spare_undercarriagedatas extends CI_Model{
         if($spares_undercarriageDataIdArray == null){
             return null;
         }
-        $this->db->select('spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,spares_undercarriageData.spares_undercarriageDataId,spares_undercarriage.spares_undercarriageId,spares_undercarriageData.status,spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_undercarriageData.price,spares_undercarriageData.warranty,spares_undercarriageData.warranty_distance,spares_undercarriageData.warranty_year,spares_undercarriageData.spares_undercarriageDataPicture,brand.brandName,model.modelName,concat(model.yearStart,"-",model.yearEnd) as year,modelofcar.modelofcarName,modelofcar.machineSize');
+        $this->db->select('spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,spares_undercarriagedata.spares_undercarriageDataId,spares_undercarriage.spares_undercarriageId,spares_undercarriagedata.status,spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_undercarriagedata.price,spares_undercarriagedata.warranty,spares_undercarriagedata.warranty_distance,spares_undercarriagedata.warranty_year,spares_undercarriagedata.spares_undercarriageDataPicture,brand.brandName,model.modelName,concat(model.yearStart,"-",model.yearEnd) as year,modelofcar.modelofcarName,modelofcar.machineSize');
         $this->db->from('spares_undercarriagedata');
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarriagedata.spares_brandId');
-        $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriageData.spares_undercarriageId');
-        $this->db->join('modelofcar','modelofcar.modelofcarId = spares_undercarriageData.modelofcarId');
-        $this->db->join('brand','brand.brandId = spares_undercarriageData.brandId');
-        $this->db->join('model','model.modelId = spares_undercarriageData.modelId');
+        $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriagedata.spares_undercarriageId');
+        $this->db->join('modelofcar','modelofcar.modelofcarId = spares_undercarriagedata.modelofcarId');
+        $this->db->join('brand','brand.brandId = spares_undercarriagedata.brandId');
+        $this->db->join('model','model.modelId = spares_undercarriagedata.modelId');
         $this->db->where_in('spares_undercarriageDataId',$spares_undercarriageDataIdArray);
         $result = $this->db->get();
         if($result->num_rows()>0){
@@ -199,14 +199,14 @@ class Spare_undercarriagedatas extends CI_Model{
         if($spares_undercarriageDataIdArray == null){
             return null;
         }
-        $this->db->select('spares_undercarriageData.spares_undercarriageDataId as productId,spares_undercarriage.spares_undercarriageId,spares_undercarriageData.status,spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_undercarriageData.warranty,spares_undercarriageData.warranty_distance,spares_undercarriageData.warranty_year,spares_undercarriageData.spares_undercarriageDataPicture,brand.brandName,model.modelName,concat(model.yearStart,"-",model.yearEnd) as year,modelofcar.modelofcarName,modelofcar.machineSize, orderdetail.quantity, spares_undercarriagedata.spares_undercarriageDataPicture as picture, orderdetail.cost, orderdetail.charge, spares_brand.spares_brandId, brand.brandId, model.modelId, modelofcar.modelofcarId');
+        $this->db->select('spares_undercarriagedata.spares_undercarriageDataId as productId,spares_undercarriage.spares_undercarriageId,spares_undercarriagedata.status,spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_undercarriagedata.warranty,spares_undercarriagedata.warranty_distance,spares_undercarriagedata.warranty_year,spares_undercarriagedata.spares_undercarriageDataPicture,brand.brandName,model.modelName,concat(model.yearStart,"-",model.yearEnd) as year,modelofcar.modelofcarName,modelofcar.machineSize, orderdetail.quantity, spares_undercarriagedata.spares_undercarriageDataPicture as picture, orderdetail.cost, orderdetail.charge, spares_brand.spares_brandId, brand.brandId, model.modelId, modelofcar.modelofcarId');
         $this->db->from('spares_undercarriagedata');
         $this->db->join('orderdetail','orderdetail.productId = spares_undercarriagedata.spares_undercarriageDataId');
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarriagedata.spares_brandId');
-        $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriageData.spares_undercarriageId');
-        $this->db->join('modelofcar','modelofcar.modelofcarId = spares_undercarriageData.modelofcarId');
-        $this->db->join('brand','brand.brandId = spares_undercarriageData.brandId');
-        $this->db->join('model','model.modelId = spares_undercarriageData.modelId');
+        $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriagedata.spares_undercarriageId');
+        $this->db->join('modelofcar','modelofcar.modelofcarId = spares_undercarriagedata.modelofcarId');
+        $this->db->join('brand','brand.brandId = spares_undercarriagedata.brandId');
+        $this->db->join('model','model.modelId = spares_undercarriagedata.modelId');
         $this->db->where_in('spares_undercarriageDataId',$spares_undercarriageDataIdArray);
         $this->db->where('orderdetail.group', $group);
         if($orderId != null){

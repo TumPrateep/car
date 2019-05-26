@@ -23,7 +23,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/SpareUndercarriage/searchspareUndercarriage",
+                "url": base_url+"api/Spareundercarriage/searchspareUndercarriage",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -65,8 +65,8 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/SparePartCar/sparepart/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"admin/SparePartCar/updatetypespare/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/sparepartcar/sparepart/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"admin/sparepartcar/updatetypespare/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteTypeSpares('+data.spares_undercarriageId+',\''+data.spares_undercarriageName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -89,10 +89,10 @@
     
     function deleteTypeSpares(spares_undercarriageId,spares_undercarriageName){
         var option = {
-            url: "/SpareUndercarriage/deletespareUndercarriage?spares_undercarriageId="+spares_undercarriageId,
+            url: "/Spareundercarriage/deletespareUndercarriage?spares_undercarriageId="+spares_undercarriageId,
             label: "ลบยี่ห้ออะไหล่",
             content: "คุณต้องการลบ "+spares_undercarriageName+" ใช่หรือไม่",
-            gotoUrl: "admin/SparePartCar/"
+            gotoUrl: "admin/sparepartcar/"
         }
         fnDelete(option);
     }
@@ -104,12 +104,12 @@
 
     
     function updateStatus(spares_undercarriageId,status){
-        $.post(base_url+"api/SpareUndercarriage/changeStatus",{
+        $.post(base_url+"api/Spareundercarriage/changeStatus",{
             "spares_undercarriageId": spares_undercarriageId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/SparePartCar");
+                showMessage(data.message,"admin/sparepartcar");
             }else{
                 showMessage(data.message);
             }

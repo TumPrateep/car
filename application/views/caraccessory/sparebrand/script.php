@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/SpareBrand/searchSpares",
+                "url": base_url+"apicaraccessories/sparebrand/searchSpares",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -67,7 +67,7 @@
                                  
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/SpareBrand/updateSpareBrand/"+value.spares_undercarriageId+"/"+value.spares_brandId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button></a> '
+                                html += '<a href="'+base_url+"caraccessory/sparebrand/updateSpareBrand/"+value.spares_undercarriageId+"/"+value.spares_brandId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button></a> '
                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletesparebrand(\''+value.spares_brandId+'\',\''+value.spares_brandName+'\',\''+value.spares_undercarriageId+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  
@@ -100,10 +100,10 @@
 
     function deletesparebrand(spares_brandId, spares_brandName, spares_undercarriageId){
         var option = {
-            url: "/SpareBrand/deleteSpareBrand?spares_brandId="+spares_brandId,
+            url: "/sparebrand/deleteSpareBrand?spares_brandId="+spares_brandId,
             label: "ลบอะไหล่ช่วงล่าง",
             content: "คุณต้องการลบ "+spares_brandName+" ใช่หรือไม่",
-            gotoUrl: "/caraccessory/SpareBrand/index/"+spares_undercarriageId
+            gotoUrl: "/caraccessory/sparebrand/index/"+spares_undercarriageId
         }
         fnDelete(option);
     }

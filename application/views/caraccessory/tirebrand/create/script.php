@@ -47,14 +47,14 @@
             var myform = document.getElementById("submit");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"apiCaraccessories/Tirebrand/createBrand",
+                url: base_url+"apicaraccessories/tirebrand/createBrand",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/TireBrand");
+                        showMessage(data.message,"caraccessory/tirebrand");
                     }else{
                         showMessage(data.message);
                     }

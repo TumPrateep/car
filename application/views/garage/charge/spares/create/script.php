@@ -26,7 +26,7 @@
     var sparePartCar = $("#spares_undercarriageId");
 
     function init(){
-        $.get(base_url+"api/SpareUndercarriage/getAllSparespartcarUndercarriage",{},
+        $.get(base_url+"api/Spareundercarriage/getAllSparespartcarUndercarriage",{},
             function(data){
                 var spareData = data.data;
                 $.each( spareData, function( key, value ) {
@@ -47,7 +47,7 @@
         var isValid = $("#submit").valid();
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiGarage/Spareschange/createLubricatorchangegarage",data,
+            $.post(base_url+"apigarage/Spareschange/createLubricatorchangegarage",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"garage/charge/spares");
@@ -64,7 +64,7 @@
         var brandDropdown = $("#brandId");
             brandDropdown.append('<option value="">เลือกยี่ห้อรถ</option>');
             
-            $.post(base_url + "api/SpareChange/getBrand", {},
+            $.post(base_url + "api/Sparechange/getBrand", {},
                 function(data) {
                     var Brand = data.data;
                     $.each(Brand, function(index, value) {

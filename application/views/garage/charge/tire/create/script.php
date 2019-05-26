@@ -46,7 +46,7 @@
         var isValid = $("#submit").valid();
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiGarage/TireChangegarage/createtirechange",data,
+            $.post(base_url+"apigarage/Tirechangegarage/createtirechange",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"garage/charge/tire/");

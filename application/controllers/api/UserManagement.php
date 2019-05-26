@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserManagement extends BD_Controller {
+class Usermanagement extends BD_Controller {
     function __construct()
     {
         // Construct the parent class

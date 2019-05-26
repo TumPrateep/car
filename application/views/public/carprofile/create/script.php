@@ -31,7 +31,7 @@
                 },
                 modelofcarId: {
                     required: true
-                },
+                }
                 color: {
                     required: true 
                 },
@@ -61,7 +61,7 @@
                 },
                 modelofcarId: {
                     required: "กรุณาเลือกรายละเอียดรุ่น"
-                },
+                }
                 color: {
                     required: "กรุณากรอกสี" 
                 },
@@ -160,7 +160,7 @@
     onLoad();
 
     function getbrand(brandId = null ){
-        $.get(base_url+"service/CarSelect/getCarBrand",{},
+        $.get(base_url+"service/Carselect/getCarBrand",{},
         function(data){
             var brandData = data.data;
                 $.each( brandData, function( key, value ) {
@@ -176,7 +176,7 @@
         detail.html('<option value="">เลือกโฉมรถยนต์</option>');
         // year.html('<option value="">เลือกปีผลิต</option>');
         modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-        $.get(base_url+"service/CarSelect/getCarModel",{
+        $.get(base_url+"service/Carselect/getCarModel",{
             brandId : brandId
         },function(data){
             var modelData = data.data;
@@ -192,7 +192,7 @@
         detail.html('<option value="">เลือกโฉมรถยนต์</option>');
         // year.html('<option value="">เลือกปีผลิต</option>');
         modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');            
-        $.get(base_url+"service/CarSelect/getCarYear",{
+        $.get(base_url+"service/Carselect/getCarYear",{
             modelName : modelName
         },function(data){
             var detailData = data.data;
@@ -206,7 +206,7 @@
         // var modelId = model.val();
         // var detail = $("#detail").val();
         modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-        $.get(base_url+"service/CarSelect/getCarDetail",{
+        $.get(base_url+"service/Carselect/getCarDetail",{
             modelId : detail.val()
         },function(data){
             var carModelData = data.data;

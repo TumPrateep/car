@@ -8,7 +8,7 @@ class lubricatortypeformachines extends CI_Model{
     }
     function getLubricatortypeFormachinesById($lubricatortypeFormachineId){
         $this->db->where('lubricatortypeFormachineId',$lubricatortypeFormachineId);
-        $result = $this->db->get('lubricatortypeFormachine');
+        $result = $this->db->get('lubricatortypeformachine');
         return $result->row();
     }
     function getUpdate($lubricatortypeformachineId){
@@ -19,7 +19,7 @@ class lubricatortypeformachines extends CI_Model{
     }
     function data_check_create($lubricatortypeFormachine){
         $this->db->select('lubricatortypeFormachine');
-        $this->db->from('lubricatortypeFormachine');
+        $this->db->from('lubricatortypeformachine');
         $this->db->where('lubricatortypeFormachine',$lubricatortypeFormachine);
         $result = $this->db->get();
         
@@ -27,7 +27,7 @@ class lubricatortypeformachines extends CI_Model{
     }
     function data_check_update($lubricatortypeformachineId, $lubricatortypeFormachine){
         $this->db->select('lubricatortypeFormachine');
-        $this->db->from('lubricatortypeFormachine');
+        $this->db->from('lubricatortypeformachine');
         $this->db->where('lubricatortypeFormachine',$lubricatortypeFormachine);
         $this->db->where_not_in('lubricatortypeformachineId',$lubricatortypeformachineId);
         $result = $this->db->get();
@@ -102,7 +102,7 @@ class lubricatortypeformachines extends CI_Model{
         return $query->num_rows();
     }  
     function delete($lubricatortypeFormachineId){
-        return $this->db->delete('lubricatortypeFormachine', array('lubricatortypeFormachineId' => $lubricatortypeFormachineId));
+        return $this->db->delete('lubricatortypeformachine', array('lubricatortypeFormachineId' => $lubricatortypeFormachineId));
     } 
 
 

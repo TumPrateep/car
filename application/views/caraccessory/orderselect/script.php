@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiCaraccessories/Orderselect/search",
+                "url": base_url+"apicaraccessories/orderselect/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -112,7 +112,7 @@
     });
 
     function updateStatus(orderId,status){
-        $.post(base_url+"apiCaraccessories/orderselect/changeStatus",{
+        $.post(base_url+"apicaraccessories/orderselect/changeStatus",{
             "orderId": orderId,
             "status": status
         },function(data){

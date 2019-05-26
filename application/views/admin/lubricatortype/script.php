@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/LubricatorType/searchLubricatorType",
+                "url": base_url+"api/Lubricatortype/searchLubricatorType",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -49,7 +49,7 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/LubricatorType/updatelubricatortype/"+data.lubricator_typeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/lubricatortype/updatelubricatortype/"+data.lubricator_typeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricatorType('+data.lubricator_typeId+',\''+data.lubricator_typeName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{
@@ -104,12 +104,12 @@
     })
 
      function updateStatus(lubricator_typeId,status){
-        $.post(base_url+"api/LubricatorType/changeStatus",{
+        $.post(base_url+"api/lubricatortype/changeStatus",{
             "lubricator_typeId": lubricator_typeId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/LubricatorType");
+                showMessage(data.message,"admin/lubricatortype");
             }else{
                 showMessage(data.message);
             }
@@ -118,7 +118,7 @@
    
     function deleteLubricatorType(lubricator_typeId,lubricator_typeName){
         var option = {
-            url: "/LubricatorType/deleteLubricatorType?lubricator_typeId="+lubricator_typeId,
+            url: "/Lubricatortype/deleteLubricatorType?lubricator_typeId="+lubricator_typeId,
             label: "ลบประเภทน้ำมัน",
             content: "คุณต้องการลบ "+lubricator_typeName+" ใช่หรือไม่",
             gotoUrl: "admin/LubricatorType"

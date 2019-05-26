@@ -3,7 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 use \Firebase\JWT\JWT;
 
-class CarSelect extends BD_Controller {
+class Carselect extends BD_Controller {
     function __construct()
     {
         parent::__construct();

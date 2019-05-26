@@ -39,7 +39,7 @@
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/Tires/tiresbrand");
+                        showMessage(data.message,"admin/tires/tiresbrand");
                     }else{
                         showMessage(data.message);
                     }

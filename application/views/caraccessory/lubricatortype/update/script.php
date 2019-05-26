@@ -1,10 +1,10 @@
 <script>
      var lubricator_typeId = $("#lubricator_typeId").val();
-    $.post(base_url+"api/LubricatorType/getLubricatorType",{
+    $.post(base_url+"api/Lubricatortype/getLubricatorType",{
         "lubricator_typeId": lubricator_typeId,
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"caraccessory/Lubricatortype");
+            showMessage(data.message,"caraccessory/lubricatortype");
         }else{
             result = data.data;
             $("#lubricator_typeName").val(result.lubricator_typeName);
@@ -43,11 +43,11 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/LubricatorType/updateLubricatorType",data,
+            $.post(base_url+"apicaraccessories/lubricatortype/updateLubricatorType",data,
             function(data){
                 var lubricator_typeId = $("#lubricator_typeId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/Lubricatortype");
+                    showMessage(data.message,"caraccessory/lubricatortype");
                 }else{
                     showMessage(data.message,);
                 }

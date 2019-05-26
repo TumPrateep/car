@@ -44,7 +44,7 @@
             subdistrictDropdownUser.append('<option value="">เลือกตำบล</option>');
 
         function loadProvinceUser(provinceId, districtId,subdistrictId){
-            $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
+            $.post(base_url+"apiUser/Locationforregister/getProvince",{},
                 function(data){
                 var province = data.data;
                 $.each(province, function( index, value ) {
@@ -64,7 +64,7 @@
             districtDropdownUser.append('<option value="">เลือกอำเภอ</option>');
             subdistrictDropdownUser.html("");
             subdistrictDropdownUser.append('<option value="">เลือกตำบล</option>');
-            $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
+            $.post(base_url+"apiUser/Locationforregister/getDistrict",{
                 provinceId: provinceId
             },
                 function(data){
@@ -85,7 +85,7 @@
             subdistrictDropdownUser.html("");
             subdistrictDropdownUser.append('<option value="">เลือกตำบล</option>');
                 
-            $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
+            $.post(base_url+"apiUser/Locationforregister/getSubdistrict",{
                 districtId: districtId
             },
                 function(data){

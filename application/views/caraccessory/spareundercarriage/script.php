@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/CarSpareUndercarriage/searchspareUndercarriage",
+                "url": base_url+"apicaraccessories/carspareundercarriage/searchspareUndercarriage",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -68,7 +68,7 @@
                                 + '</a>'
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/Spareundercarries/updatespareUndercarriage/"+value.spares_undercarriageId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                html += '<a href="'+base_url+"caraccessory/spareundercarries/updatespareUndercarriage/"+value.spares_undercarriageId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteModel(\''+value.spares_undercarriageId+'\',\''+value.spares_undercarriageName+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  
@@ -88,10 +88,10 @@
 
     function deleteModel(spares_undercarriageId, spares_undercarriageName){
         var option = {
-            url: "/CarSpareUndercarriage/deletespareUndercarriage?spares_undercarriageId="+spares_undercarriageId,
+            url: "/carspareundercarriage/deletespareUndercarriage?spares_undercarriageId="+spares_undercarriageId,
             label: "ลบอะไหล่ช่วงล่าง",
             content: "คุณต้องการลบ "+spares_undercarriageName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/Spareundercarries"
+            gotoUrl: "caraccessory/spareundercarries"
         }
         fnDelete(option);
     }

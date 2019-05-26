@@ -12,7 +12,7 @@
     <div class="card-tools one">
       <form id="form-search">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/car/createBrand") ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/car/createbrand") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
         <!-- <div class="input-group input-group-sm float-right"> -->

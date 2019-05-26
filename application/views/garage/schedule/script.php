@@ -29,7 +29,7 @@
 
         function init(){
 
-            $.get(base_url+"apiGarage/Schedule/getEvent", {},
+            $.get(base_url+"apigarage/Schedule/getEvent", {},
                 function (data, textStatus, jqXHR) {
                     calendar.fullCalendar( 'addEventSource', data.data );
                 }

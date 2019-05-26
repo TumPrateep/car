@@ -6,7 +6,7 @@
         "rimId" : rimId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/Tires");
+            showMessage(data.message,"admin/tires");
         }
 
         if(data.message == 200){
@@ -45,7 +45,7 @@
             $.post(base_url+"api/Rim/updaterim",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/");
+                    showMessage(data.message,"admin/tires/");
                 }else{
                     showMessage(data.message);
                 }

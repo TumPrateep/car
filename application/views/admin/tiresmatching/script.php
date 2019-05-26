@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/TireMatching/searchTirematching",
+                "url": base_url+"api/Tirematching/searchTirematching",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -58,7 +58,7 @@
                     "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Tires/updatetiresmatching/"+data.tire_matchingId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/tires/updatetiresmatching/"+data.tire_matchingId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteTireMatcing(\''+data.tire_matchingId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -98,7 +98,7 @@
     })
     function deleteTireMatcing(tire_matchingId){
         var option = {
-            url: "/TireMatching/delete?tire_matchingId="+tire_matchingId,
+            url: "/Tirematching/delete?tire_matchingId="+tire_matchingId,
             label: "ลบขนาดยางตามยี่ห้อ",
             content: "คุณต้องการลบขนาดยางตามยี่ห้อ ใช่หรือไม่",
             gotoUrl: "admin/Tires/tiresmatching"
@@ -107,12 +107,12 @@
     }
 
     function updateStatus(tire_matchingId,status){
-        $.post(base_url+"api/TireMatching/changeStatus",{
+        $.post(base_url+"api/Tirematching/changeStatus",{
             "tire_matchingId": tire_matchingId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Tires/tiresmatching/");
+                showMessage(data.message,"admin/tires/tiresmatching/");
             }else{
                 showMessage(data.message);
             }

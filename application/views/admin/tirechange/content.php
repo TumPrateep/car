@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tirechange") ?>">ราคาเปลี่ยนยางนอก</a>
+          <a href="<?=base_url("admin/tires/tirechange") ?>">ราคาเปลี่ยนยางนอก</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
@@ -13,7 +13,7 @@
     <div class="card-tools one">
       <form id="form-search">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/Tires/createTireChange") ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtirechange") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
 

@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/CarAccessory/search",
+                "url": base_url+"apicaraccessories/Caraccessory/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -98,10 +98,10 @@
 
     function deleteBrand(brandId,brandName){
         var option = {
-            url: "/CarAccessory/delete?brandId="+brandId,
+            url: "/Caraccessory/delete?brandId="+brandId,
             label: "ลบยี่ห้อรถ",
             content: "คุณต้องการลบ "+brandName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/Car"
+            gotoUrl: "caraccessory/car"
         }
         fnDelete(option);
     }

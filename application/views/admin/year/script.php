@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/car/searchYear",
+                "url": base_url+"api/Car/searchYear",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {

@@ -7,8 +7,8 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("/caraccessory/TireBrand"); ?>">ยี่ห้อยาง</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireModel/index/$tire_brandId"); ?>">รุ่นยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("/caraccessory/tirebrand"); ?>">ยี่ห้อยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/tiremodel/index/$tire_brandId"); ?>">รุ่นยาง</a></li>
                 <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
             </ol>
         </div>

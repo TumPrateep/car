@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/LubricatortypeFormachine") ?>">รายการประเภทน้ำมันเครื่องตามเครื่องยนต์</a>
+        <a href="<?=base_url("admin/lubricatortypeformachine") ?>">รายการประเภทน้ำมันเครื่องตามเครื่องยนต์</a>
         </li>
         <li class="breadcrumb-item active">เพิ่มรายการประเภทน้ำมันเครื่องตามเครื่องยนต์</li>
       </ol>

@@ -16,7 +16,7 @@
 
         var garageId = $("#garageId").val();
 
-        $.post(base_url+"apiGarage/Managegarage/getmanagegarage",{
+        $.post(base_url+"apigarage/Managegarage/getmanagegarage",{
             "garageId" : garageId
         },function(data){
             if(data.message!=200){
@@ -126,7 +126,7 @@
         subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');     
 
         function loadProvinceGarage(provinceId, districtId,subdistrictId){
-            $.post(base_url+"service/LocationforRegister/getProvince",{},
+            $.post(base_url+"service/Locationforregister/getProvince",{},
                 function(data){
                 var province = data.data;
                 $.each(province, function( index, value ) {
@@ -150,7 +150,7 @@
             subdistrictDropdownGarage.html("");
             subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url+"service/LocationforRegister/getDistrict",{
+            $.post(base_url+"service/Locationforregister/getDistrict",{
                 provinceId: provinceId
             },
                 function(data){
@@ -174,7 +174,7 @@
             subdistrictDropdownGarage.html("");
             subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
                 
-            $.post(base_url+"service/LocationforRegister/getSubdistrict",{
+            $.post(base_url+"service/Locationforregister/getSubdistrict",{
                 districtId: districtId
             },
                 function(data){
@@ -327,14 +327,14 @@
                 var formData = new FormData(myform);
 
                 $.ajax({
-                url: base_url+"apiGarage/Managegarage/update",
+                url: base_url+"apigarage/Managegarage/update",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function(data){
                     if(data.message == 200){
-                        showMessage(data.message,"garage/Managegarage/");
+                        showMessage(data.message,"garage/managegarage/");
                     }else{
                         showMessage(data.message);
                     }

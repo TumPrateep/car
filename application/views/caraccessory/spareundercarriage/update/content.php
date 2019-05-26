@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Spareundercarries"); ?>">อะไหล่ช่วงล่วง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/spareundercarries"); ?>">อะไหล่ช่วงล่วง</a></li>
                 <li class="breadcrumb-item active">เเก้ไขข้อมูลอะไหล่ช่วงล่าง</li>
             </ol>
         </div>
@@ -35,7 +35,7 @@
                     
                 <div class="form-actions">
                     <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                    <a href="<?=base_url("caraccessory/Spareundercarries"); ?>">
+                    <a href="<?=base_url("caraccessory/spareundercarries"); ?>">
                     <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                     </a>
                 </div>

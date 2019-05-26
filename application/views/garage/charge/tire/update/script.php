@@ -33,7 +33,7 @@
 
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiGarage/TireChangegarage/update",data,
+            $.post(base_url+"apigarage/Tirechangegarage/update",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"garage/charge/tire");
@@ -45,7 +45,7 @@
         }
     }
 
-    $.get(base_url+"apiGarage/TireChangegarage/getTireChange",{
+    $.get(base_url+"apigarage/Tirechangegarage/getTireChange",{
         "tire_changeId": tire_changeId
     },function(data){
         var tireChange = data.data;

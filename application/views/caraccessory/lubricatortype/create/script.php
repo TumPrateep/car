@@ -28,11 +28,11 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/LubricatorType/createLubricatorType",data,
+            $.post(base_url+"apicaraccessories/lubricatortype/createLubricatorType",data,
             function(data){
                 var lubricator_typeId = $("#lubricator_typeId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/Lubricatortype");
+                    showMessage(data.message,"caraccessory/lubricatortype");
                 }else{
                     showMessage(data.message,);
                 }

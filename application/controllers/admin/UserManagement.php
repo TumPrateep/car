@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class UserManagement extends CI_Controller {
+class Usermanagement extends CI_Controller {
 
 	function __construct()
     {

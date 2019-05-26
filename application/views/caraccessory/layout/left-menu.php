@@ -30,14 +30,14 @@
                         </li>
                         <li class="nav-label">ส่วนของร้านอะไหล่</li>
                         <li>
-                            <a class="garage-white" href="<?=base_url("caraccessory/SpareundercarriesData"); ?>">
+                            <a class="garage-white" href="<?=base_url("caraccessory/Spareundercarriesdata"); ?>">
                                 <i class="fa fa-tachometer garage-white"></i>
                                 <span class="hide-menu">ข้อมูลอะไหล่ช่วงล่าง</span>
                             </a>
                         </li>
-                        <li><a class="garage-white" href="<?=base_url("caraccessory/LubricatorData"); ?>"><i class="fa fa-tachometer garage-white"></i><span class="hide-menu">ข้อมูลน้ำมันเครื่อง</span></a></li>
+                        <li><a class="garage-white" href="<?=base_url("caraccessory/Lubricatordata"); ?>"><i class="fa fa-tachometer garage-white"></i><span class="hide-menu">ข้อมูลน้ำมันเครื่อง</span></a></li>
                         <li>
-                            <a class="garage-white" href="<?=base_url("caraccessory/TireData"); ?>">
+                            <a class="garage-white" href="<?=base_url("caraccessory/Tiredata"); ?>">
                                 <i class="fa fa-tachometer garage-white"></i><span class="hide-menu">ข้อมูลยาง</span>
                             </a>
                         </li>
@@ -51,19 +51,19 @@
                         <li>
                             <a class="garage-white" href="<?=base_url("caraccessory/deliverorder"); ?>">
                                 <i class="fa fa-tachometer garage-white"></i>
-                                <span class="hide-menu">การจัดการส่งสินค้า <span class="badge badge-danger">9</span></span>
+                                <span class="hide-menu">การจัดการส่งสินค้า</span>
                             </a>
                         </li>
                         <li>
                             <a class="garage-white" href="<?=base_url("caraccessory/showorder"); ?>">
                                 <i class="fa fa-tachometer garage-white"></i>
-                                <span class="hide-menu">รายการสินค้าที่ส่งแล้ว <span class="badge badge-danger">9</span></span>
+                                <span class="hide-menu">รายการสินค้าที่ส่งแล้ว</span>
                             </a>
                         </li>
                         <li>
                             <a class="garage-white" href="<?=base_url("caraccessory/repatriateorder"); ?>">
                                 <i class="fa fa-tachometer garage-white"></i>
-                                <span class="hide-menu">รายการสินค้ารับคืน <span class="badge badge-danger">9</span></span>
+                                <span class="hide-menu">รายการสินค้ารับคืน</span>
                             </a>
                         </li>
 

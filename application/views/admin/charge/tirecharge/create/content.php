@@ -3,7 +3,7 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/Charge/TiresCharge") ?>">ราคาเปลี่ยนยาง</a>
+        <a href="<?=base_url("admin/charge/tirescharge") ?>">ราคาเปลี่ยนยาง</a>
       </li>
       <li class="breadcrumb-item active">เพิ่มข้อมูลราคาเปลี่ยนยาง</li>
     </ol>

@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiGarage/TireChangegarage/searchTireChange",
+                "url": base_url+"apigarage/Tirechangegarage/searchTireChange",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -81,7 +81,7 @@
 
     function deletetirechanges(tire_changeId){
         var option = {
-            url: "/TireChangegarage/deletetirechange?tire_changeId="+tire_changeId,
+            url: "/Tirechangegarage/deletetirechange?tire_changeId="+tire_changeId,
             label: "ลบราคาเปลี่ยนยางนอก",
             content: "คุณต้องการลบข้อมูลนี้ ใช่หรือไม่",
             gotoUrl: "garage/charge/tire/"

@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/CarModel/searchModel",
+                "url": base_url+"apicaraccessories/carmodel/searchModel",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -76,14 +76,14 @@
                                  + '<h6 class="card-subtitle mb-2">'+ $showyear+'</h6>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<a href="'+base_url+"caraccessory/Modelofcar/index/"+value.brandId+'/'+value.modelId+'">'
+                                 + '<a href="'+base_url+"caraccessory/modelofcar/index/"+value.brandId+'/'+value.modelId+'">'
                                  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '</a>'
                                 
                                 
                             
                             if(isShow){
-                                html +=  '<a href="'+base_url+"caraccessory/CarModelAccessory/updateModelCar/"+value.brandId+'/'+value.modelId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>' 
+                                html +=  '<a href="'+base_url+"caraccessory/carmodelaccessory/updateModelCar/"+value.brandId+'/'+value.modelId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>' 
                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletecarModel(\''+value.modelId+'\',\''+value.modelName+'\',\''+value.brandId+'\')"><i class="ti-trash"></i> ลบ</button>'
                              }
 
@@ -109,10 +109,10 @@
 
     function deletecarModel(modelId, modelName,brandId){
         var option = {
-            url: "/CarModel/deleteModel?modelId="+modelId,
+            url: "/carmodel/deleteModel?modelId="+modelId,
             label: "ลบรุ่นรถ",
             content: "คุณต้องการลบ "+modelName+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/CarModelAccessory/index1/"+brandId
+            gotoUrl: "caraccessory/carmodelaccessory/index1/"+brandId
             
         }
         fnDelete(option);

@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/LubricatorChange/searchLubricatorChange",
+                "url": base_url+"api/Lubricatorchange/searchLubricatorChange",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -78,7 +78,7 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+'admin/Charge/updateLubricatorCharge/'+data.lubricator_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+'admin/charge/updatelubricatorcharge/'+data.lubricator_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deletelubricatorchange('+data.lubricator_changeId+',\''+data.lubricator_price+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -94,7 +94,7 @@
 
     function deletelubricatorchange(lubricator_changeId){
         var option = {
-            url: "/LubricatorChange/deletelubricatorchange?lubricator_changeId="+lubricator_changeId,
+            url: "/Lubricatorchange/deletelubricatorchange?lubricator_changeId="+lubricator_changeId,
             label: "ลบราคาเปลี่ยนยางนอก",
             content: "คุณต้องการลบข้อมูลนี้ ใช่หรือไม่",
             gotoUrl: "admin/Charge/LubricatorCharge"
@@ -108,12 +108,12 @@
     })
 
     function updateStatus(lubricator_changeId,status){
-        $.post(base_url+"api/LubricatorChange/changeStatus",{
+        $.post(base_url+"api/Lubricatorchange/changeStatus",{
             "lubricator_changeId": lubricator_changeId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Charge/LubricatorCharge");
+                showMessage(data.message,"admin/charge/lubricatorcharge");
             }else{
                 showMessage(data.message);
             }

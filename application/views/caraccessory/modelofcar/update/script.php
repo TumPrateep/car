@@ -16,13 +16,13 @@
     var brandId = $("#brandId").val();
     var modelId = $("#modelId").val();
     var modelofcarName = $("#modelofcarName").val();
-    $.post(base_url+"apiCaraccessories/Modelofcar/getallmodelofcar",{
+    $.post(base_url+"apicaraccessories/modelofcar/getallmodelofcar",{
         "modelofcarId": modelofcarId,
         "modelId" : modelId,
         "brandId" : brandId,
     },function(data){
             if(data.message!=200){
-                showMessage(data.message,"caraccessory/Modelofcar/index/"+brandId+'/'+modelId);
+                showMessage(data.message,"caraccessory/modelofcar/index/"+brandId+'/'+modelId);
             }
              if(data.message == 200){
                 result = data.data;
@@ -42,10 +42,10 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/Modelofcar/update",data,
+            $.post(base_url+"apicaraccessories/modelofcar/update",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/Modelofcar/index/"+brandId+'/'+modelId);
+                    showMessage(data.message,"caraccessory/modelofcar/index/"+brandId+'/'+modelId);
                 }else{
                     showMessage(data.message);
                 }

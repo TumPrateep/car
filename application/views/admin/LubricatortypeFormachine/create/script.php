@@ -26,7 +26,7 @@
             function(data){
                 var lubricatortypeFormachineId = $("#lubricatortypeFormachineId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"admin/LubricatortypeFormachine/");
+                    showMessage(data.message,"admin/lubricatortypeformachine/");
                 }else{
                     showMessage(data.message,);
                 }

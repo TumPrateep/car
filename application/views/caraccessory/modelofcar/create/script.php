@@ -23,13 +23,13 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/Modelofcar/create",data,
+            $.post(base_url+"apicaraccessories/modelofcar/create",data,
             function(data){
                 var modelofcarName = $("#modelofcarName").val();
                 var modelId = $("#modelId").val();
                 var brandId = $("#brandId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/Modelofcar/index/"+brandId+'/'+modelId);
+                    showMessage(data.message,"caraccessory/modelofcar/index/"+brandId+'/'+modelId);
                 }else{
                     showMessage(data.message);
                 }

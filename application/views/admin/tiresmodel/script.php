@@ -4,7 +4,7 @@
         "tire_brandId": tire_brandId
     },function(data){
         if(data.message != 200){
-            showMessage(data.message,"admin/Tires/tiresbrand");
+            showMessage(data.message,"admin/tires/tiresbrand");
         }
     });
     var table = $('#model-table').DataTable({
@@ -57,7 +57,7 @@
                         "targets": 3,
                         "data": null,
                         "render": function ( data, type, full, meta ) {
-                            return '<a href="'+base_url+"admin/Tires/updatetiresmodel/"+data.tire_brandId+"/"+data.tire_modelId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            return '<a href="'+base_url+"admin/tires/updatetiresmodel/"+data.tire_brandId+"/"+data.tire_modelId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                                 +'<button type="button" class="delete btn btn-danger" onclick="deletetriemodel('+data.tire_modelId+',\''+data.tire_modelName+'\',\''+data.tire_brandId+'\')"><i class="fa fa-trash"></i></button>';
                         }
                     },
@@ -113,7 +113,7 @@
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Tires/tiresmodel/"+tire_modelId);
+                showMessage(data.message,"admin/tires/tiresmodel/"+tire_modelId);
             }else{
                 showMessage(data.message);
             }

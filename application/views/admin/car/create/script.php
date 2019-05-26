@@ -42,7 +42,7 @@
             var myform = document.getElementById("create-brand");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/car/createBrand",
+                url: base_url+"api/Car/createBrand",
                 data: formData,
                 processData: false,
                 contentType: false,

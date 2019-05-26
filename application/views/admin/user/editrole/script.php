@@ -43,7 +43,7 @@
         });
 
         function loadProvince() {
-            $.post(base_url + "api/location/getProvince", {},
+            $.post(base_url + "api/Location/getProvince", {},
                 function(data) {
                     var province = data.data;
                     $.each(province, function(index, value) {
@@ -68,7 +68,7 @@
             subdistrictDropdown.html("");
             subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url + "api/location/getDistrict", {
+            $.post(base_url + "api/Location/getDistrict", {
                 provinceId: provinceId
             }, function(data) {
                 var district = data.data;
@@ -95,7 +95,7 @@
             subdistrictDropdown.html("");
             subdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url + "api/location/getSubdistrict", {
+            $.post(base_url + "api/Location/getSubdistrict", {
                 districtId: districtId
             }, function(data) {
                 var subDistrict = data.data;
@@ -509,7 +509,7 @@
         garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
         function loadGarageProvince() {
-            $.post(base_url + "api/location/getProvince", {},
+            $.post(base_url + "api/Location/getProvince", {},
                 function(data) {
                     var province = data.data;
                     $.each(province, function(index, value) {
@@ -748,14 +748,14 @@
                 }
 
                 $.ajax({
-                    url: base_url + "api/UserManagement/userTypeAndData",
+                    url: base_url + "api/Usermanagement/userTypeAndData",
                     data: formData,
                     processData: false,
                     contentType: false,
                     type: 'POST',
                     success: function(data) {
                         if (data.message == 200) {
-                            showMessage(data.message, "admin/UserManagement");
+                            showMessage(data.message, "admin/usermanagement");
                         } else {
                             showMessage(data.message);
                         }
@@ -786,11 +786,11 @@
         var userId = $("#userId").val();
         // var category = $("#category").val();
 
-        $.post(base_url + "api/UserManagement/getusers", {
+        $.post(base_url + "api/Usermanagement/getusers", {
             "userId": userId
         }, function(data) {
             if (data.message != 200) {
-                showMessage(data.message, "admin/UserManagement");
+                showMessage(data.message, "admin/usermanagement");
             }
 
             if (data.message == 200) {

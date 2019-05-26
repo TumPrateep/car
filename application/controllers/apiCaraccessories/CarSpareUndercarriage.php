@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CarSpareUndercarriage extends BD_Controller {
+class Carspareundercarriage extends BD_Controller {
     function __construct()
     {
         // Construct the parent class

@@ -6,7 +6,7 @@ var rimId = $("#rimId").val();
         "rimId" : rimId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/Tires");
+            showMessage(data.message,"admin/tires");
         }
 
         if(data.message == 200){
@@ -39,11 +39,11 @@ $("#submit").validate({
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/TireRim/updaterim",data,
+            $.post(base_url+"apicaraccessories/Tirerim/updaterim",data,
             function(data){
                 var rimId = $("#rimId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/TireRim/");
+                    showMessage(data.message,"caraccessory/tirerim/");
                 }else{
                     showMessage(data.message,);
                 }

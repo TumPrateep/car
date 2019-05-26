@@ -24,7 +24,7 @@
   
 
     function getUpdate(){
-        $.get(base_url+"api/SpareChange/getUpdate",{"spares_changeId": spares_changeId.val()},
+        $.get(base_url+"api/Sparechange/getUpdate",{"spares_changeId": spares_changeId.val()},
             function(data){
                 var spareData = data.data;
                 $("#spares_undercarriageId").val(spareData.spares_undercarriageId);
@@ -48,10 +48,10 @@
 
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/SpareChange/update",data,
+            $.post(base_url+"api/Sparechange/update",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Charge/SpareCharge/");
+                    showMessage(data.message,"admin/charge/sparecharge/");
                 }else{
                     showMessage(data.message);
                 }
@@ -67,7 +67,7 @@
         var brandDropdown = $("#brandId");
             brandDropdown.append('<option value="">เลือกยี่ห้อรถ</option>');
             
-            $.post(base_url + "apiGarage/Spareschange/getBrand", {},
+            $.post(base_url + "apigarage/Spareschange/getBrand", {},
                 function(data) {
                     var Brand = data.data;
                     $.each(Brand, function(index, value) {

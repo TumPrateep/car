@@ -7,8 +7,8 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Spareundercarries"); ?>">อะไหล่</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/SpareBrand/index/$spares_undercarriageId"); ?>">ยี่ห้ออะไหล่</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/spareundercarries"); ?>">อะไหล่</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/sparebrand/index/$spares_undercarriageId"); ?>">ยี่ห้ออะไหล่</a></li>
                 <li class="breadcrumb-item active">เพิ่มข้อมูลห้ออะไหล่</li>
             </ol>
         </div>
@@ -33,7 +33,7 @@
                                 <div class="row p-t-20">
                                     <div class="col-md-12 card-grid">
                                         <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                        <a href="<?=base_url("caraccessory/SpareBrand/index/$spares_undercarriageId"); ?>">
+                                        <a href="<?=base_url("caraccessory/sparebrand/index/$spares_undercarriageId"); ?>">
                                         <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                         </a>
                                     </div>

@@ -36,10 +36,10 @@
         var isValid = $("#submit").valid();
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/LubricatorChange/createlubricatorchange",data,
+            $.post(base_url+"api/Lubricatorchange/createlubricatorchange",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Charge/LubricatorCharge");
+                    showMessage(data.message,"admin/charge/lubricatorcharge");
                 }else{
                     showMessage(data.message,);
                 }

@@ -7,8 +7,8 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireRim"); ?>">ขอบยาง</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireSize/index/$rimId"); ?>">ขนาดยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/tirerim"); ?>">ขอบยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/tiresize/index/$rimId"); ?>">ขนาดยาง</a></li>
                 <li class="breadcrumb-item active">ค้นหา</li>
             </ol>
         </div>
@@ -20,7 +20,7 @@
         
         <div class="row p-30">
             <div class="col-lg-4 div-right">
-                <a href="<?=base_url("caraccessory/TireSize/createTireSize/$rimId") ?>">
+                <a href="<?=base_url("caraccessory/tiresize/createTireSize/$rimId") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>

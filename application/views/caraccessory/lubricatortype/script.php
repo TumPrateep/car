@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/LubricatorType/searchLubricatorType",
+                "url": base_url+"apicaraccessories/lubricatortype/searchLubricatorType",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -73,7 +73,7 @@
                             
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/Lubricatortype/updatelubricatortype/"+value.lubricator_typeId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                html += '<a href="'+base_url+"caraccessory/lubricatortype/updatelubricatortype/"+value.lubricator_typeId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletelubricator_type(\''+value.lubricator_typeId+'\',\''+value.lubricator_typeName+'\')"><i class="ti-trash"></i> ลบ</button>'
                             }
                                  
@@ -96,7 +96,7 @@
 
     function deletelubricator_type(lubricator_typeId, lubricator_typeName){
         var option = {
-            url: "/LubricatorType/deleteLubricatorTypes?lubricator_typeId="+lubricator_typeId,
+            url: "/lubricatortype/deleteLubricatorTypes?lubricator_typeId="+lubricator_typeId,
             label: "ลบประเภทน้ำมันเครื่อง",
             content: "คุณต้องการลบ "+lubricator_typeName+" ใช่หรือไม่",
             gotoUrl: "caraccessory/lubricatortype"

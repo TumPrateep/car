@@ -30,11 +30,11 @@
 
     var id = $("#id").val();
 
-    $.post(base_url+"api/UserManagement/getuser",{
+    $.post(base_url+"api/Usermanagement/getuser",{
         "id": id
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/UserManagement");
+            showMessage(data.message,"admin/usermanagement");
         }
 
         if(data.message == 200){
@@ -56,10 +56,10 @@
         var data = $("#group").serialize();
         if(isValid){
             var data = $("#group").serialize();
-            $.post(base_url+"api/UserManagement/updateUser",data,
+            $.post(base_url+"api/Usermanagement/updateUser",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/UserManagement");
+                    showMessage(data.message,"admin/usermanagement");
                 }else{
                     showMessage(data.message);
                 }

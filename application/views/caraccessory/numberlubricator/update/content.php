@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Numberlubricator"); ?>">น้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/numberlubricator"); ?>">น้ำมันเครื่อง</a></li>
                 <li class="breadcrumb-item active">เเก้ไขข้อมูล</li>
             </ol>
         </div>
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-                                <a href="<?=base_url("caraccessory/Numberlubricator"); ?>">
+                                <a href="<?=base_url("caraccessory/numberlubricator"); ?>">
                                 <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                 </a>
                             </form>

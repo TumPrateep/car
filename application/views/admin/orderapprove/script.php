@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/OrderApprove/searchOrderApprove",
+                "url": base_url+"api/Orderapprove/searchOrderApprove",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -61,7 +61,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = '';
-                        html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.orderId+'">#'+data.orderId+'</a><br>';
+                        html+='<a href="'+base_url+'admin/orderdetail/show/'+data.orderId+'">#'+data.orderId+'</a><br>';
                      
                         return html;
                     }
@@ -120,7 +120,7 @@
 
     function deletetirechange(tire_changeId){
         var option = {
-            url: "/TireChange/deletetirechange?tire_changeId="+tire_changeId,
+            url: "/Tirechange/deletetirechange?tire_changeId="+tire_changeId,
             label: "ลบราคาเปลี่ยนยางนอก",
             content: "คุณต้องการลบข้อมูลนี้ ใช่หรือไม่",
             gotoUrl: "admin/Tires/tirechange/"
@@ -156,12 +156,12 @@
     })
 
     function updateStatus(tire_changeId,status){
-        $.post(base_url+"api/TireChange/changeStatus",{
+        $.post(base_url+"api/Tirechange/changeStatus",{
             "tire_changeId": tire_changeId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Tires/tirechange/");
+                showMessage(data.message,"admin/tires/tirechange/");
             }else{
                 showMessage(data.message);
             }

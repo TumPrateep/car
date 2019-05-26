@@ -81,7 +81,7 @@
 
         var orderId = $("#orderId").val();
 
-        $.post(base_url+"apiCaraccessories/Deliverorder/getexport",{
+        $.post(base_url+"apicaraccessories/deliverorder/getexport",{
             "orderId" : orderId
         },function(data){
             // console.log(data.data);
@@ -114,7 +114,7 @@
 
 
         function loadProvinceGarage(provinceId, districtId,subdistrictId){
-            $.post(base_url+"apiUser/LocationforRegister/getProvince",{},
+            $.post(base_url+"apiuser/locationforregister/getProvince",{},
                 function(data){
                 var province = data.data;
                 $.each(province, function( index, value ) {
@@ -138,7 +138,7 @@
             subdistrictDropdownGarage.html("");
             subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url+"apiUser/LocationforRegister/getDistrict",{
+            $.post(base_url+"apiuser/locationforregister/getDistrict",{
                 provinceId: provinceId
             },
                 function(data){
@@ -162,7 +162,7 @@
             subdistrictDropdownGarage.html("");
             subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
                 
-            $.post(base_url+"apiUser/LocationforRegister/getSubdistrict",{
+            $.post(base_url+"apiuser/locationforregister/getSubdistrict",{
                 districtId: districtId
             },
                 function(data){

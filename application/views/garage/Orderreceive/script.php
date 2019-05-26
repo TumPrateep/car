@@ -25,7 +25,7 @@
             "serverSide": true,
             "ajax":{
                 // "url": base_url+"apiCaraccessories/Deliverorder/searchorder",
-                "url": base_url+"apiGarage/Orderdetail/searchorder",
+                "url": base_url+"apigarage/Orderdetail/searchorder",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -181,7 +181,7 @@
             label: "ยืนยันการรับสินค้า",
             status: 3,
             content: "คุณต้องการยืนยันการรับสินค้า ใช่หรือไม่",
-            gotoUrl: "garage/Orderreceive/show"
+            gotoUrl: "garage/orderreceive/show"
         }
         fnConfirm(option);
     }
@@ -192,7 +192,7 @@
             label: "ยืนยันการคืนสินค้า",
             status: 9,
             content: "คุณต้องการยืนยันการคืนสินค้า ใช่หรือไม่",
-            gotoUrl: "garage/Orderreceive/show"
+            gotoUrl: "garage/orderreceive/show"
         }
         fnConfirm(option);
     }      
@@ -235,7 +235,7 @@
 
         var orderId = $("#orderId").val();
 
-        $.post(base_url+"apiGarage/Orderdetail/getuserdata",{
+        $.post(base_url+"apigarage/Orderdetail/getuserdata",{
             "orderId" : orderId
         },function(data){
             if(data.message!=200){

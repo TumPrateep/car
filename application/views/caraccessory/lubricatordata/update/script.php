@@ -34,11 +34,11 @@
     var lubricator = $("#lubricatorId");
     var lubricatorGear = $("#lubricator_gear");
 
-    $.get(base_url+"apiCaraccessories/LubricatorData/getlubricatordata",{
+    $.get(base_url+"apicaraccessories/lubricatorData/getlubricatordata",{
         "lubricator_dataId": lubricator_dataId
     },function(data){
         if(data.message != 200){
-            showMessage(data.message,"caraccessory/Lubricatordata");
+            showMessage(data.message,"caraccessory/lubricatordata");
         }else{
             result = data.data;
             // console.log(result);
@@ -55,7 +55,7 @@
 
 
     function getLubracatorBrand(lubricator_brandId=null, lubricatorId=null){
-        $.get(base_url+"apiCaraccessories/Lubricatorbrand/getAllLubricatorBrand",{},
+        $.get(base_url+"apicaraccessories/lubricatorbrand/getAllLubricatorBrand",{},
             function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
@@ -70,7 +70,7 @@
     }
 
     function getLubricator(lubricatorId){
-        $.get(base_url+"apiCaraccessories/Lubricator/getAllLubricator",{
+        $.get(base_url+"apicaraccessories/lubricator/getAllLubricator",{
             lubricator_brandId: lubricatorBrand.val(),
             lubricator_gear: lubricatorGear.val()
         },function(data){
@@ -125,7 +125,7 @@
             var formData = new FormData(myform);
             
             $.ajax({
-                url: base_url+"apiCaraccessories/Lubricatordata/update",
+                url: base_url+"apicaraccessories/lubricatordata/update",
                 data: formData,
                 processData: false,
                 contentType: false,

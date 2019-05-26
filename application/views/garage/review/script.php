@@ -13,7 +13,7 @@
         var isValid = $("#update-comment").valid();
         if(isValid){
             var data = $("#update-comment").serialize();
-            $.post(base_url+"apiGarage/Review/editupdate",data,
+            $.post(base_url+"apigarage/Review/editupdate",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"garage/review");
@@ -40,7 +40,7 @@
 
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiGarage/Review/update",data,
+            $.post(base_url+"apigarage/Review/update",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"garage/review");
@@ -54,7 +54,7 @@
     $(document).ready(function () {
 
     	var comment = $("#show-comment");
-        $.post(base_url+"apiGarage/Review/getdatarating", {},
+        $.post(base_url+"apigarage/Review/getdatarating", {},
             function (data, textStatus, jqXHR) {
                 var html = '';
                 

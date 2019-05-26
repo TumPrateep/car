@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tirechange") ?>">ยืนยันการสั่งซื่อ</a>
+          <a href="<?=base_url("admin/tires/tirechange") ?>">ยืนยันการสั่งซื่อ</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>

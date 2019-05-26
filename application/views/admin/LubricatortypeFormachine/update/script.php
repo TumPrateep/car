@@ -19,7 +19,7 @@ $.post(base_url+"api/Lubricatortypeformachine/getUpdate",{
     "lubricatortypeFormachineId": $("#lubricatortypeFormachineId").val()
 },function(data){
     if(data.message!=200){
-        showMessage(data.message,"admin/LubricatortypeFormachine/");
+        showMessage(data.message,"admin/lubricatortypeformachine/");
     }
 
     if(data.message == 200){
@@ -45,7 +45,7 @@ function updatelubricatortypeFormachine(){
         $.post(base_url+"api/Lubricatortypeformachine/updateLubricatortypeformachine",data,
         function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/LubricatortypeFormachine/");
+                showMessage(data.message,"admin/lubricatortypeformachine/");
             }else{
                 showMessage(data.message);
             }

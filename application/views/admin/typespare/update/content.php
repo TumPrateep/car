@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/SparePartCar") ?>">รายการอะไหล่</a>
+          <a href="<?=base_url("admin/sparepartcar") ?>">รายการอะไหล่</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขรายการอะไหล่</li>
       </ol>

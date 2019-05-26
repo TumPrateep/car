@@ -93,7 +93,7 @@
 
         var mechanicId = $("#mechanicId").val();
 
-        $.post(base_url+"apiGarage/Mechanic/getMechanic",{
+        $.post(base_url+"apigarage/Mechanic/getMechanic",{
             "mechanicId" : mechanicId
         },function(data){
             if(data.message!=200){
@@ -157,7 +157,7 @@
                 var formData = new FormData(myform);
 
                 $.ajax({
-                url: base_url+"apiGarage/Mechanic/updateMechanic",
+                url: base_url+"apigarage/Mechanic/updateMechanic",
                 data: formData,
                 processData: false,
                 contentType: false,

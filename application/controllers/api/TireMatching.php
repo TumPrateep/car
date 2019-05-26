@@ -1,7 +1,7 @@
 <?php
 //ยี่ห้อยาง นะ
 defined('BASEPATH') OR exit('No direct script access allowed');
-class TireMatching extends BD_Controller {
+class Tirematching extends BD_Controller {
     function __construct()
     {
         // Construct the parent class

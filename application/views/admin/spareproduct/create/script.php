@@ -20,7 +20,7 @@
         }
 
         function getSparesUndercarriage(){
-            $.get(base_url+"api/SpareUndercarriage/getAllSpareundercarriage",{},
+            $.get(base_url+"api/Spareundercarriage/getAllSpareundercarriage",{},
                 function(data){
                     var sparesUndercarriageData = data.data;
                     $.each(sparesUndercarriageData, function( key, value ) {
@@ -32,7 +32,7 @@
 
         spares_undercarriage.change(function(){
             spares_brand.html('<option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>');
-            $.get(base_url+"api/SpareUndercarriage/getAllSpareBrand",{
+            $.get(base_url+"api/Spareundercarriage/getAllSpareBrand",{
                 spares_undercarriageId: $(this).val()
             },function(data){
                     var sparesBrandData = data.data;
@@ -44,7 +44,7 @@
         });
 
         function getbrand(brandId = null ){
-            $.get(base_url+"api/CarSelect/getCarBrand",{},
+            $.get(base_url+"api/Carselect/getCarBrand",{},
             function(data){
                 var brandData = data.data;
                     $.each( brandData, function( key, value ) {
@@ -60,7 +60,7 @@
             detail.html('<option value="">เลือกโฉมรถยนต์</option>');
             // year.html('<option value="">เลือกปีผลิต</option>');
             modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-            $.get(base_url+"api/CarSelect/getCarModel",{
+            $.get(base_url+"api/Carselect/getCarModel",{
                 brandId : brandId
             },function(data){
                 var modelData = data.data;
@@ -76,7 +76,7 @@
             detail.html('<option value="">เลือกโฉมรถยนต์</option>');
             // year.html('<option value="">เลือกปีผลิต</option>');
             modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');            
-            $.get(base_url+"api/CarSelect/getCarYear",{
+            $.get(base_url+"api/Carselect/getCarYear",{
                 modelName : modelName
             },function(data){
                 var detailData = data.data;
@@ -89,7 +89,7 @@
         detail.change(function(){
            
             modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-            $.get(base_url+"api/CarSelect/getCarDetail",{
+            $.get(base_url+"api/Carselect/getCarDetail",{
                 modelId : detail.val()
             },function(data){
                 var carModelData = data.data;

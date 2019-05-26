@@ -26,7 +26,7 @@
 
     function init(){
         lubricator_numberId.html('<option value="">เลือกเบอร์น้ำมันเครื่อง</option>');
-        $.post(base_url+"api/LubricatorNumber/getAllLubricatorNumber",{
+        $.post(base_url+"api/Lubricatornumber/getAllLubricatorNumber",{
             lubricator_gear: lubricator_gear.val()
         },function(result){
                 var data = result.data;
@@ -54,11 +54,11 @@
         
         if(isValid){
             var data = $("#create-lubricator").serialize();
-            $.post(base_url+"apiCaraccessories/Lubricator/createlubricator/",data,
+            $.post(base_url+"apicaraccessories/Lubricator/createlubricator/",data,
             function(data){
                 var lubricator_brandId = $("#lubricator_brandId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/Lubricator/lubricators/"+lubricator_brandId);
+                    showMessage(data.message,"caraccessory/lubricator/lubricators/"+lubricator_brandId);
                 }else{
                     showMessage(data.message,);
                 }

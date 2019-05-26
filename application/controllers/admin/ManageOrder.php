@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ManageOrder extends CI_Controller {
+class Manageorder extends CI_Controller {
 
 	function __construct(){
         // Construct the parent class

@@ -7,8 +7,8 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Spareundercarries"); ?>">อะไหล่</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/SpareBrand/index/$spares_undercarriageId"); ?>">ยี่ห้ออะไหล่</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/spareundercarries"); ?>">อะไหล่</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/sparebrand/index/$spares_undercarriageId"); ?>">ยี่ห้ออะไหล่</a></li>
                 <li class="breadcrumb-item active">ค้นหา</li>
             </ol>
         </div>
@@ -20,7 +20,7 @@
         
         <div class="row p-30">
             <div class="col-lg-4 div-right">
-                <a href="<?=base_url("caraccessory/SpareBrand/createSpareBrand/$spares_undercarriageId") ?>">
+                <a href="<?=base_url("caraccessory/sparebrand/createSpareBrand/$spares_undercarriageId") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>

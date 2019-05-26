@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SpareundercarriageData extends BD_Controller {
+class Spareundercarriagedata extends BD_Controller {
     function __construct()
     {
         // Construct the parent class

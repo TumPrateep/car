@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SingleProduct extends CI_Controller {
+class Singleproduct extends CI_Controller {
 
     public function solution(){
         $this->load->view("public/menu/solution");

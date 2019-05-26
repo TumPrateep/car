@@ -7,8 +7,8 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Lubricator"); ?>">ยี่ห้อน้ำมันเครื่อง</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/Lubricator/Lubricators/$lubricator_brandId"); ?>">น้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/lubricator"); ?>">ยี่ห้อน้ำมันเครื่อง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/lubricator/lubricators/$lubricator_brandId"); ?>">น้ำมันเครื่อง</a></li>
                 <li class="breadcrumb-item active">ค้นหา</li>
             </ol>
         </div>
@@ -20,7 +20,7 @@
     <input type="hidden" id="lubricator_brandId" value="<?=$lubricator_brandId ?>">
         <div class="row p-30">
             <div class="col-lg-3 div-right">
-                <a href="<?=base_url("caraccessory/Lubricator/createlubricator/$lubricator_brandId") ?>">
+                <a href="<?=base_url("caraccessory/lubricator/createlubricator/$lubricator_brandId") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>

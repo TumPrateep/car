@@ -44,7 +44,7 @@
 
     function init(){
         lubricator_number.html('<option value="">เลือกเบอร์น้ำมันเครื่อง</option>');
-        $.post(base_url+"api/LubricatorNumber/getAllLubricatorNumber",{
+        $.post(base_url+"api/Lubricatornumber/getAllLubricatorNumber",{
             lubricator_gear: lubricator_gear.val()
         },function(result){
                 var data = result.data;
@@ -92,7 +92,7 @@
             function(data){
                 var lubricator_brandId = $("#lubricator_brandId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Lubricator/lubricators/"+lubricator_brandId);
+                    showMessage(data.message,"admin/lubricator/lubricators/"+lubricator_brandId);
                 }else{
                     showMessage(data.message,);
                 }

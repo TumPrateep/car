@@ -34,7 +34,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiGarage/Mechanic/searchMechanic",
+                "url": base_url+"apigarage/Mechanic/searchMechanic",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {

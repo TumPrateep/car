@@ -28,7 +28,7 @@
         if(isValid){
             var data = $("#submit").serialize();
            
-            $.post(base_url+"apiGarage/Lubricatorchange/update",data,
+            $.post(base_url+"apigarage/Lubricatorchange/update",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"garage/charge/lubricator");
@@ -40,7 +40,7 @@
     }
       
     // ดึงข้อมูลมาเเสดงเพื่อแก้ไข #lubricatorChange เป็นชื่อที่ตั้งไว้เองไม่ได้เอามาจากหน้าไหน
-    $.get(base_url+"apiGarage/Lubricatorchange/getUpdate",{
+    $.get(base_url+"apigarage/Lubricatorchange/getUpdate",{
         "lubricator_change_garageId": lubricator_change_garageId
     },function(data){
         var lubricatorChange = data.data;  

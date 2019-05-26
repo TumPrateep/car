@@ -41,12 +41,12 @@
     var tire_matchingId = $("#tire_matchingId").val();
     var modelofcar = $("#modelofcarId");
 
-    $.get(base_url+"api/TireMatching/getTireMatching",{
+    $.get(base_url+"api/Tirematching/getTireMatching",{
         "tire_matchingId": tire_matchingId
     },function(data){
         var result = data.data;
         if(data.message!=200){
-            showMessage(data.message,"admin/Tires/tiresmatching/");
+            showMessage(data.message,"admin/tires/tiresmatching/");
         }else{
             init(result.brandId, result.modelId, result.rimId, result.tire_sizeId, result.modelofcarId);
         }
@@ -90,7 +90,7 @@
     }
 
     function getModelofcar(brandId = null,modelId = null, modelofcarId=null){
-        $.post(base_url+"apiCaraccessories/Modelofcar/getallmodelofcar",{
+        $.post(base_url+"apicaraccessories/Modelofcar/getallmodelofcar",{
             "brandId": brandId,
             "modelId": modelId
         },function(data){
@@ -163,10 +163,10 @@
         var isValid = $("#update-tiresmatching").valid();
         if(isValid){
             var data = $("#update-tiresmatching").serialize();
-            $.post(base_url+"api/TireMatching/update",data,
+            $.post(base_url+"api/Tirematching/update",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/tiresmatching");
+                    showMessage(data.message,"admin/tires/tiresmatching");
                 }else{
                     showMessage(data.message,);
                 }

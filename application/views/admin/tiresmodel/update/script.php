@@ -21,7 +21,7 @@
         "tire_modelId" : tire_modelId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/Tires/tiresmodel/"+tire_brandId);
+            showMessage(data.message,"admin/tires/tiresmodel/"+tire_brandId);
         }else{
             result = data.data;
             $("#tire_modelName").val(result.tire_modelName);
@@ -44,7 +44,7 @@
             $.post(base_url+"api/Triemodel/updateTireModel",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/tiresmodel/"+tire_brandId);
+                    showMessage(data.message,"admin/tires/tiresmodel/"+tire_brandId);
                 }else{
                     showMessage(data.message);
                 }

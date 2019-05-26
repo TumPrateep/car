@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class TireSize extends CI_Controller {
+class Tiresize extends CI_Controller {
 
 	function __construct()
     {

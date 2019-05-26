@@ -26,10 +26,10 @@
 
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/LubricatorChange/update",data,
+            $.post(base_url+"api/Lubricatorchange/update",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Charge/LubricatorCharge");
+                    showMessage(data.message,"admin/charge/lubricatorcharge");
                 }else{
                     showMessage(data.message);
                 }
@@ -37,7 +37,7 @@
         }
     }
 
-    $.get(base_url+"api/LubricatorChange/getUpdate",{
+    $.get(base_url+"api/Lubricatorchange/getUpdate",{
         "lubricator_changeId": lubricator_changeId
     },function(data){
         var lubricatorChange = data.data;

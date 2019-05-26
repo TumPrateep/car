@@ -3,10 +3,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/SparePartCar") ?>">รายการอะไหล่</a>
+        <a href="<?=base_url("admin/sparepartcar") ?>">รายการอะไหล่</a>
         </li>
         <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/SparePartCar/sparepart/$spares_undercarriageId") ?>">ยี่ห้ออะไหล่</a>
+        <a href="<?=base_url("admin/sparepartcar/sparepart/$spares_undercarriageId") ?>">ยี่ห้ออะไหล่</a>
         </li>
         <li class="breadcrumb-item active">เพิ่มยี่ห้ออะไหล่</li>
       </ol>

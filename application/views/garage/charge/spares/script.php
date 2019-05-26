@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apiGarage/Spareschange/searchSpareChange",
+                "url": base_url+"apigarage/Spareschange/searchSpareChange",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {

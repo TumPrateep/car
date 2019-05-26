@@ -2,10 +2,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Lubricator") ?>">ยี่ห้อน้ำมันเครื่อง</a>
+          <a href="<?=base_url("admin/lubricator") ?>">ยี่ห้อน้ำมันเครื่อง</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Lubricator/lubricators/$lubricator_brandId") ?>">น้ำมันเครื่อง</a>
+          <a href="<?=base_url("admin/lubricator/lubricators/$lubricator_brandId") ?>">น้ำมันเครื่อง</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>        
       </ol>
@@ -14,7 +14,7 @@
     <div class="card-tools one">
       <form id="form-search">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/Lubricator/createlubricator/$lubricator_brandId") ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/lubricator/createlubricator/$lubricator_brandId") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
         <!-- <div class="input-group input-group-sm float-right"> -->

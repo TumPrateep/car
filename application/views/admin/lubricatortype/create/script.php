@@ -46,14 +46,14 @@
             var formData = new FormData(myform);
             
             $.ajax({
-                url: base_url+"api/LubricatorType/createtrieSize",
+                url: base_url+"api/Lubricatortype/createtrieSize",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/LubricatorType");
+                        showMessage(data.message,"admin/lubricatortype");
                     }else{
                         showMessage(data.message);
                     }

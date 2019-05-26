@@ -49,7 +49,7 @@
 
     function getLubricatorNumber(lubricator_numberId = ""){
         lubricator_number.html('<option value="">เลือกเบอร์น้ำมันเครื่อง</option>');
-        $.post(base_url+"api/LubricatorNumber/getAllLubricatorNumber",{
+        $.post(base_url+"api/Lubricatornumber/getAllLubricatorNumber",{
             lubricator_gear: lubricator_gear.val()
         },function(result){
                 var data = result.data;

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ShowOrder extends CI_Controller {
+class Showorder extends CI_Controller {
 
 	function __construct()
     {

@@ -422,7 +422,7 @@
     onLoad();
 
     function loadBrandCar(){
-      $.post(base_url+"service/BrandCar/getBrandcar",{},
+      $.post(base_url+"service/Brandcar/getBrandcar",{},
         function(data){
           var brand = data.data;
           $.each(brand, function( index, value ) {
@@ -433,7 +433,7 @@
     }
 
     function loadProvinceUser(){
-      $.post(base_url+"service/LocationforRegister/getProvince",{},
+      $.post(base_url+"service/Locationforregister/getProvince",{},
         function(data){
           var province = data.data;
           $.each(province, function( index, value ) {
@@ -454,7 +454,7 @@
       subdistrictDropdownUser.html("");
       subdistrictDropdownUser.append('<option value="">เลือกตำบล</option>');
 
-      $.post(base_url+"service/LocationforRegister/getDistrict",{
+      $.post(base_url+"service/Locationforregister/getDistrict",{
         provinceId: provinceId
       },
         function(data){
@@ -476,7 +476,7 @@
       subdistrictDropdownUser.html("");
       subdistrictDropdownUser.append('<option value="">เลือกตำบล</option>');
         
-      $.post(base_url+"service/LocationforRegister/getSubdistrict",{
+      $.post(base_url+"service/Locationforregister/getSubdistrict",{
         districtId: districtId
       },
         function(data){
@@ -489,7 +489,7 @@
     }
 
     function loadProvinceGarage(){
-      $.post(base_url+"service/LocationforRegister/getProvince",{},
+      $.post(base_url+"service/Locationforregister/getProvince",{},
         function(data){
           var province = data.data;
           $.each(province, function( index, value ) {
@@ -510,7 +510,7 @@
       subdistrictDropdownGarage.html("");
       subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
 
-      $.post(base_url+"service/LocationforRegister/getDistrict",{
+      $.post(base_url+"service/Locationforregister/getDistrict",{
         provinceId: provinceId
       },
         function(data){
@@ -532,7 +532,7 @@
       subdistrictDropdownGarage.html("");
       subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
         
-      $.post(base_url+"service/LocationforRegister/getSubdistrict",{
+      $.post(base_url+"service/Locationforregister/getSubdistrict",{
         districtId: districtId
       },
         function(data){

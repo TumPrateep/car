@@ -2,11 +2,11 @@
 
         var spares_undercarriageId = $("#spares_undercarriageId").val();
 
-        $.post(base_url+"api/SpareUndercarriage/getsparesUndercarriage",{
+        $.post(base_url+"api/Spareundercarriage/getsparesUndercarriage",{
             "spares_undercarriageId" : spares_undercarriageId
         },function(data){
             if(data.message!=200){
-                showMessage(data.message,"admin/SparePartCar/sparepart");
+                showMessage(data.message,"admin/sparepartcar/sparepart");
             }
 
             if(data.message == 200){
@@ -42,10 +42,10 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/CarSpareUndercarriage/updateSpareUnderCarriages",data,
+            $.post(base_url+"apicaraccessories/carspareundercarriage/updateSpareUnderCarriages",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/Spareundercarries");
+                    showMessage(data.message,"caraccessory/spareundercarries");
                 }else{
                     showMessage(data.message);
                 }

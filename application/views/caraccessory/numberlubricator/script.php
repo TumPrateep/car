@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/LubricatorNumber/searchLubricatornumber",
+                "url": base_url+"apicaraccessories/lubricatornumber/searchLubricatornumber",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -74,7 +74,7 @@
                                 + '</a>'
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/NumberLubricator/updatelubricatorNumber/"+value.lubricator_numberId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                html += '<a href="'+base_url+"caraccessory/numberlubricator/updatelubricatorNumber/"+value.lubricator_numberId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                  + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteNumberLubricator(\''+value.lubricator_numberId+'\',\''+value.lubricator_number+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  
@@ -93,10 +93,10 @@
 
     function deleteNumberLubricator(lubricator_numberId, lubricator_number){
         var option = {
-            url: "/Lubricatornumber/delete?lubricator_numberId="+lubricator_numberId,
+            url: "/lubricatornumber/delete?lubricator_numberId="+lubricator_numberId,
             label: "ลบยี่ห้อยาง",
             content: "คุณต้องการลบ "+lubricator_number+" ใช่หรือไม่",
-            gotoUrl: "caraccessory/NumberLubricator"
+            gotoUrl: "caraccessory/numberlubricator"
             
         }
         fnDelete(option);

@@ -38,7 +38,7 @@
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/Lubricator");
+                        showMessage(data.message,"admin/lubricator");
                     }else{
                         showMessage(data.message);
                     }

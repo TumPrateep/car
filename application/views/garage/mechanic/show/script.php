@@ -48,7 +48,7 @@
         // });
     });
         var mechanicId = $("#mechanicId").val();
-        $.post(base_url+"apiGarage/Mechaniccreates/getMechaniccreates",{
+        $.post(base_url+"apigarage/Mechaniccreates/getMechaniccreates",{
             "mechanicId" : mechanicId
         },function(data){
             if(data.message!=200){
@@ -86,7 +86,7 @@
             
             if(isValid){
                 var data = $("#submit").serialize();
-                $.post(base_url+"apiGarage/Mechaniccreates/updateMechaniccreates",data,
+                $.post(base_url+"apigarage/Mechaniccreates/updateMechaniccreates",data,
                 function(data){
                     if(data.message == 200){
                         showMessage(data.message,"garage/mechanic/");

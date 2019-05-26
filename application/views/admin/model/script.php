@@ -2,7 +2,7 @@
 
     var brandId = $("#brandId").val();
 
-    $.post(base_url+"api/car/getBrand",{
+    $.post(base_url+"api/Car/getBrand",{
         "brandId": brandId
     },function(data){
         if(data.message == 200){
@@ -45,7 +45,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/car/searchModel",
+                "url": base_url+"api/Car/searchModel",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -85,7 +85,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/car/carmodel/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"admin/car/updateModel/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"admin/car/updatemodel/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteModel('+data.modelId+',\''+data.modelName+'\',\''+data.brandId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -126,7 +126,7 @@
 
     function deleteModel(modelId,modelName,brandId){
         var option = {
-            url: "/car/deleteModel?modelId="+modelId,
+            url: "/Car/deleteModel?modelId="+modelId,
             label: "ลบรุ่นรถ",
             content: "คุณต้องการลบ "+modelName+" ใช่หรือไม่",
             gotoUrl: "admin/car/model/"+brandId

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class BrandCar extends BD_Controller {
+class Brandcar extends BD_Controller {
     
     function __construct()
     {

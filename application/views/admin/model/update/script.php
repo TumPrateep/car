@@ -3,7 +3,7 @@
     var modelId = $("#modelId").val();
     var brandId = $("#brandId").val();
 
-    $.post(base_url+"api/car/getModel",{
+    $.post(base_url+"api/Car/getModel",{
         "modelId": $("#modelId").val(),
         "detail": $("#detail").val()
     },function(data){
@@ -94,7 +94,7 @@
             
             if(isValid){
                 var data = $("#submit").serialize();
-                $.post(base_url+"api/car/updateModel",data,
+                $.post(base_url+"api/Car/updateModel",data,
                 function(data){
                     var brandId = $("#brandId").val();
                     if(data.message == 200){

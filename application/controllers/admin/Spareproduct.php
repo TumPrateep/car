@@ -13,10 +13,10 @@ class Spareproduct extends CI_Controller {
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/Spareproduct/content");
+		$this->load->view("admin/spareproduct/content");
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/Spareproduct/script");
+		$this->load->view("admin/spareproduct/script");
 	}
 
 	public function create()

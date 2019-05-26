@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/UserManagement/search",
+                "url": base_url+"api/Usermanagement/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -62,8 +62,8 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         if(data.category == null){
-                            return '<a href="'+base_url+"admin/UserManagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
-                            + '<a href="'+base_url+"admin/UserManagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            return '<a href="'+base_url+"admin/Usermanagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
+                            + '<a href="'+base_url+"admin/Usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             + '<button type="button" class="delete btn btn-danger" onclick="deleteUser('+data.id+',\''+data.username+'\')"><i class="fa fa-trash"></i></button>';
                         }
 
@@ -71,9 +71,9 @@
                             return '<small><i class="gray">ห้ามแก้ไข</i></small>';
                         }
 
-                        return '<a href="'+base_url+"admin/UserManagement/view/"+data.id+'"><button type="button" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
-                            + '<a href="'+base_url+"admin/UserManagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
-                            + '<a href="'+base_url+"admin/UserManagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/Usermanagement/view/"+data.id+'"><button type="button" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button></a> '
+                            + '<a href="'+base_url+"admin/Usermanagement/editrole/"+data.id+'"><button type="button" class="btn btn-dark"><i class="fa fa-user-plus" aria-hidden="true"></i></button></a> '
+                            + '<a href="'+base_url+"admin/Usermanagement/updateUser/"+data.id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             + '<button type="button" class="delete btn btn-danger" onclick="deleteUser('+data.id+',\''+data.username+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{
@@ -117,10 +117,10 @@
 
     function deleteUser(id,username){
         var option = {
-            url: "/UserManagement/delete?id="+id,
+            url: "/Usermanagement/delete?id="+id,
             label: "ลบข้อมูลผู้ใช้งาน",
             content: "คุณต้องการลบ "+username+" ใช่หรือไม่",
-            gotoUrl: "admin/UserManagement"
+            gotoUrl: "admin/Usermanagement"
         }
         fnDelete(option);
     }
@@ -132,12 +132,12 @@
     })
 
     function updateStatus(id,status){
-        $.post(base_url+"api/UserManagement/changeStatus",{
+        $.post(base_url+"api/Usermanagement/changeStatus",{
             "id": id,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/UserManagement");
+                showMessage(data.message,"admin/Usermanagement");
             }else{
                 showMessage(data.message);
             }

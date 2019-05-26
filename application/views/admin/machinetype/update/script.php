@@ -51,7 +51,7 @@
             
             if(isValid){
                 var data = $("#submit").serialize();
-                $.post(base_url+"api/machinetype/update",data,
+                $.post(base_url+"api/Machinetype/update",data,
                 function(data){
                     if(data.message == 200){
                         showMessage(data.message,"admin/car/machinetype/"+brandId+"/"+modelId+"/"+modelofcarId);

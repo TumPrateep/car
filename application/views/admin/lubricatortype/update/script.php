@@ -1,10 +1,10 @@
 <script>
      var lubricator_typeId = $("#lubricator_typeId").val();
-    $.post(base_url+"api/LubricatorType/getLubricatorType",{
+    $.post(base_url+"api/Lubricatortype/getLubricatorType",{
         "lubricator_typeId": lubricator_typeId,
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/LubricatorType");
+            showMessage(data.message,"admin/lubricatortype");
         }else{
             result = data.data;
             $("#lubricator_typeName").val(result.lubricator_typeName);
@@ -60,14 +60,14 @@
             var formData = new FormData(myform);
 
             $.ajax({
-                url: base_url+"api/LubricatorType/updateLubricatorType",
+                url: base_url+"api/Lubricatortype/updateLubricatorType",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/LubricatorType");
+                        showMessage(data.message,"admin/lubricatortype");
                     }else{
                         showMessage(data.message);
                     }

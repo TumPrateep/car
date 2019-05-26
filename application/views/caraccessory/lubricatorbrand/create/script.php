@@ -32,7 +32,7 @@ var lubricator_brandId = $("#lubricator_brandId");
             var myform = document.getElementById("create-lubricatorbrand");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"apiCaraccessories/Lubricatorbrand/createLubricatorbrand",
+                url: base_url+"apicaraccessories/Lubricatorbrand/createLubricatorbrand",
                 data: formData,
                 processData: false,
                 contentType: false,
@@ -40,7 +40,7 @@ var lubricator_brandId = $("#lubricator_brandId");
                 success: function (data) {
                     var lubricator_brandId = $("#lubricator_brandId");
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/Lubricator");
+                        showMessage(data.message,"caraccessory/lubricator");
                     }else{
                         showMessage(data.message);
                     }

@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/LubricatorData/searchLubricatordata",
+                "url": base_url+"apicaraccessories/Lubricatordata/searchLubricatordata",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -84,7 +84,7 @@
                                             +'</div>'
                                         +'</div>'
                                         + '<div class="text-center">'
-                                            + '<a href="'+base_url+"caraccessory/Lubricatordata/update/"+value.lubricator_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                            + '<a href="'+base_url+"caraccessory/lubricatordata/update/"+value.lubricator_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                             + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.lubricator_dataId+'\', \''+value.lubricator_brandName+'/'+value.lubricatorName+'\')"><i class="ti-trash"></i> ลบ</button>'
                                         + '</div>'
                                     + '</div>'
@@ -116,10 +116,10 @@
 
     function deletetiredata(lubricator_dataId,data_name){
         var option = {
-            url: "/LubricatorData/delete?lubricator_dataId="+lubricator_dataId,
+            url: "/lubricatordata/delete?lubricator_dataId="+lubricator_dataId,
             label: "ลบข้อมูลน้ำมันเครื่อง",
             content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
-            gotoUrl: "/caraccessory/Lubricatordata"
+            gotoUrl: "/caraccessory/lubricatordata"
         }
         fnDelete(option);
     }
@@ -129,7 +129,7 @@
     var lubricator_gear = $("#lubricator_gear");
 
     function getLubracatorBrand(){
-        $.get(base_url+"apiCaraccessories/Lubricatorbrand/getAllLubricatorBrand",{},
+        $.get(base_url+"apicaraccessories/lubricatorbrand/getAllLubricatorBrand",{},
             function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
@@ -149,7 +149,7 @@
 
     lubricator_brand.change(function(){
         lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
-        $.get(base_url+"apiCaraccessories/Lubricator/getAllLubricator",{
+        $.get(base_url+"apicaraccessories/Lubricator/getAllLubricator",{
             lubricator_brandId: $(this).val(),
             lubricator_gear: lubricator_gear.val()
         },function(data){
@@ -177,12 +177,12 @@
         },
     });
     function updateStatus(lubricator_dataId,status){
-        $.post(base_url+"apiCaraccessories/LubricatorData/changeStatus",{
+        $.post(base_url+"apicaraccessories/lubricatorData/changeStatus",{
             "lubricator_dataId": lubricator_dataId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"/caraccessory/Lubricatordata/");
+                showMessage(data.message,"/caraccessory/lubricatordata/");
             }else{
                 showMessage(data.message);
             }

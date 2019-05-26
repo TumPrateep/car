@@ -4,10 +4,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tiresbrand/") ?>">ยี่ห้อยาง</a>
+          <a href="<?=base_url("admin/tires/tiresbrand/") ?>">ยี่ห้อยาง</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tiresmodel/$tire_brandId/$tire_modelId") ?>">รุ่นยาง</a>
+          <a href="<?=base_url("admin/tires/tiresmodel/$tire_brandId/$tire_modelId") ?>">รุ่นยาง</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขข้อมูล</li>
       </ol>

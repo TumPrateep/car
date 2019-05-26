@@ -48,14 +48,14 @@
             var myform = document.getElementById("create-lubricatordata");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"apiCaraccessories/LubricatorData/create",
+                url: base_url+"apicaraccessories/lubricatordata/create",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/Lubricatordata");
+                        showMessage(data.message,"caraccessory/lubricatordata");
                     }else{
                         showMessage(data.message);
                     }
@@ -83,7 +83,7 @@
     }
 
     function getLubracatorBrand(){
-        $.get(base_url+"apiCaraccessories/Lubricatorbrand/getAllLubricatorBrand",{},
+        $.get(base_url+"apicaraccessories/cubricatorbrand/getAllLubricatorBrand",{},
             function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
@@ -100,7 +100,7 @@
 
     lubricator_brand.change(function(){
         lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
-        $.get(base_url+"apiCaraccessories/Lubricator/getAllLubricator",{
+        $.get(base_url+"apicaraccessories/cubricator/getAllLubricator",{
             lubricator_brandId: $(this).val(),
             lubricator_gear: lubricator_gear.val()
         },function(data){

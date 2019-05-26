@@ -26,7 +26,7 @@
                 function(data){
                     var tire_brandId = $("#tire_brandId").val();
                     if(data.message == 200){
-                        showMessage(data.message,"admin/Tires/tiresmodel/"+tire_brandId);
+                        showMessage(data.message,"admin/tires/tiresmodel/"+tire_brandId);
                     }else{
                         showMessage(data.message);
                     }

@@ -1,7 +1,7 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-class PaymentApprove extends BD_Controller {
+class Paymentapprove extends BD_Controller {
 
     function __construct()
     {

@@ -7,7 +7,7 @@
         "tire_brandId": tire_brandId,
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/Tires/tiresbrand/");
+            showMessage(data.message,"admin/tires/tiresbrand/");
         }
 
         if(data.message == 200){
@@ -63,7 +63,7 @@
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/Tires/tiresbrand");
+                        showMessage(data.message,"admin/tires/tiresbrand");
                     }else{
                         showMessage(data.message);
                     }

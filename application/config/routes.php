@@ -53,21 +53,21 @@ $route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
 
-$route['admin'] = 'admin/admin';
-$route['user'] = 'user/user';
-$route['caraccessory'] = 'caraccessory/CarAccessory';
-$route['garage'] = 'garage/home';
+$route['admin'] = 'admin/Admin';
+$route['user'] = 'user/User';
+$route['caraccessory'] = 'caraccessory/Caraccessory';
+$route['garage'] = 'garage/Home';
 
 $route['register/sparepart'] = 'public/Register/sparepart';
 $route['register/garage'] = 'public/Register/garage';
 $route['register'] = 'public/Register/user';
 
-$route['shop/lubricator'] = 'public/menu/lubricator';
-$route['shop/sparepart'] = 'public/menu/sparepart';
-$route['shop/tire'] = 'public/menu/tire';
-$route['shop/showshop'] = 'public/menu/showshop';
+$route['shop/lubricator'] = 'public/Menu/lubricator';
+$route['shop/sparepart'] = 'public/Menu/sparepart';
+$route['shop/tire'] = 'public/Menu/tire';
+$route['shop/showshop'] = 'public/Menu/showshop';
 
-$route['shop/cart'] = 'public/menu/cart';
+$route['shop/cart'] = 'public/Menu/cart';
 $route['shop/detail/([a-zA-Z]+)/(\d+)'] = function ($group, $id)
 {
     if($group == "lubricator"){
@@ -85,7 +85,7 @@ $route['shop/payment/(\d+)'] = function ( $id)
     return 'public/Payment/Payments/'. $id;
 };
 $route['shop/order'] = 'public/Order/Orders';
-$route['garagesearch'] = 'public/menu/searchgarage';
+$route['garagesearch'] = 'public/Menu/searchgarage';
 
 // user route
 // $route['page/(:any)'] = 'main/Main/(:any)';

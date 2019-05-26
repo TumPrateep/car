@@ -82,7 +82,7 @@
 
     function deletebank(bankId){
         var option = {
-            url: "/bank/deletebank?bankId="+bankId,
+            url: "/Bank/deletebank?bankId="+bankId,
             label: "ลบบัญชีธนาคาร",
             content: "คุณต้องการลบข้อมูลนี้ ใช่หรือไม่",
             gotoUrl: "admin/bank"

@@ -34,14 +34,14 @@
             var myform = document.getElementById("submit");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"apiCaraccessories/CarAccessory/create",
+                url: base_url+"apicaraccessories/carcccessory/create",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/Car");
+                        showMessage(data.message,"caraccessory/car");
                     }else{
                         showMessage(data.message);
                     }

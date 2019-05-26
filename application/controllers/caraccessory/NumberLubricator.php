@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class NumberLubricator extends CI_Controller {
+class Numberlubricator extends CI_Controller {
 
 	function __construct()
     {
@@ -14,10 +14,10 @@ class NumberLubricator extends CI_Controller {
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/numberLubricator/content");
+		$this->load->view("caraccessory/numberlubricator/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
-		$this->load->view("caraccessory/numberLubricator/script");
+		$this->load->view("caraccessory/numberlubricator/script");
 	}
 
 	public function createnumberlubricator()
@@ -25,10 +25,10 @@ class NumberLubricator extends CI_Controller {
 		$this->load->view("caraccessory/layout/head");
 		$this->load->view("caraccessory/layout/header");
 		$this->load->view("caraccessory/layout/left-menu");
-		$this->load->view("caraccessory/numberLubricator/create/content");
+		$this->load->view("caraccessory/numberlubricator/create/content");
 		$this->load->view("caraccessory/layout/footer");
 		$this->load->view("caraccessory/layout/foot");
-		$this->load->view("caraccessory/numberLubricator/create/script");
+		$this->load->view("caraccessory/numberlubricator/create/script");
 	}
 
 	public function updatelubricatorNumber($lubricator_numberId){
@@ -36,10 +36,10 @@ class NumberLubricator extends CI_Controller {
 	$this->load->view("caraccessory/layout/head");
 	$this->load->view("caraccessory/layout/header");
 	$this->load->view("caraccessory/layout/left-menu");
-	$this->load->view("caraccessory/numberLubricator/update/content",$data);
+	$this->load->view("caraccessory/numberlubricator/update/content",$data);
 	$this->load->view("caraccessory/layout/footer");
 	$this->load->view("caraccessory/layout/foot");
-	$this->load->view("caraccessory/numberLubricator/update/script");
+	$this->load->view("caraccessory/numberlubricator/update/script");
 }
 	
 

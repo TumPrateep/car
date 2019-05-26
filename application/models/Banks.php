@@ -58,27 +58,6 @@ class Banks extends CI_Model{
         
     }
 
-    // function lubricatorchanges_search($limit,$start,$search,$col,$dir,$status){
-        
-    //     $this->db->select('lubricator_change.lubricator_changeId, lubricator_change.lubricator_price, lubricator_change.status');
-    //     $this->db->from('lubricator_change');
-    //     if($search != null){
-    //         $this->db->where("lubricator_change.lubricator_changeId",$search);
-    //     }
-    //     if($status != null){
-    //         $this->db->where("lubricator_change.status", $status);
-    //     }
-    //     $query = $this->db->limit($limit,$start)
-    //             ->order_by($col,$dir)
-    //             ->get();
-                
-    //     if($query->num_rows()>0){
-    //         return $query->result();  
-    //     }else{
-    //         return null;
-    //     }
-    // }
-
     function Bank_search_count($search,$status){
        
         $this->db->select('bank_carjaidee.bankName, bank_carjaidee.status');
@@ -99,12 +78,5 @@ class Banks extends CI_Model{
         $result = $this->db->get("bank_carjaidee")->row();
         return $result;
     }
-
-
-    // function getLubricatorChangePrice(){
-    //     $this->db->select('lubricator_price');
-    //     $result = $this->db->get("lubricator_change");
-    //     return $result->row();
-    // }
 
 }

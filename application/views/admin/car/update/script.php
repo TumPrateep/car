@@ -2,7 +2,7 @@
 
     var brandId = $("#brandId").val();
 
-    $.post(base_url+"api/car/getBrandforupdate",{
+    $.post(base_url+"api/Car/getBrandforupdate",{
         "brandId": brandId,
         
     },function(data){
@@ -58,7 +58,7 @@
             var myform = document.getElementById("update-brand");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/car/updateBrand",
+                url: base_url+"api/Car/updateBrand",
                 data: formData,
                 processData: false,
                 contentType: false,

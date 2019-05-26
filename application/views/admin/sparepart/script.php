@@ -23,7 +23,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/SparePartCar/searchSpares",
+                "url": base_url+"api/Sparepartcar/searchSpares",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -66,7 +66,7 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/SparePartCar/updatespare/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/sparepartcar/updatespare/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareBrand('+data.spares_brandId+',\''+data.spares_brandName+'\',\''+data.spares_undercarriageId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -99,7 +99,7 @@
 
     function deleteSpareBrand(spares_brandId,spares_brandName,spares_undercarriageId){
         var option = {
-            url: "/SparePartCar/deleteSpareBrand?spares_brandId="+spares_brandId,
+            url: "/Sparepartcar/deleteSpareBrand?spares_brandId="+spares_brandId,
             label: "ลบยี่ห้ออะไหล่",
             content: "คุณต้องการลบ "+spares_brandName+" ใช่หรือไม่",
             gotoUrl: "admin/SparePartCar/sparepart/"+spares_undercarriageId
@@ -113,7 +113,7 @@
     })
 
     function updateStatus(spares_brandId,status,spares_undercarriageId){
-        $.post(base_url+"api/SparePartCar/changeStatus",{
+        $.post(base_url+"api/Sparepartcar/changeStatus",{
             "spares_brandId": spares_brandId,
             "status": status
         },function(data){

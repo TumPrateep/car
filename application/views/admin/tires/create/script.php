@@ -26,7 +26,7 @@ $("#submit").validate({
             $.post(base_url+"api/Rim/createRim",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires");
+                    showMessage(data.message,"admin/tires");
                 }else{
                     showMessage(data.message);
                 }

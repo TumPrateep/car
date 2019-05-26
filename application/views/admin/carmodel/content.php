@@ -27,7 +27,7 @@
         <input type="hidden" name="brandId" value="<?=$brandId ?>">
         <input type="hidden" name="modelId" value="<?=$modelId ?>">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/car/createCarModel/$brandId/$modelId") ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/car/createcarmodel/$brandId/$modelId") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
 

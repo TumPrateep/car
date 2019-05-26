@@ -26,7 +26,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/SpareChange/searchspares",
+                "url": base_url+"api/Sparechange/searchspares",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -89,7 +89,7 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+'admin/Charge/updateSpareCharge/'+data.spares_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+'admin/charge/updatesparecharge/'+data.spares_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deletesparechange('+data.spares_changeId+',\''+data.spares_undercarriageName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -100,7 +100,7 @@
 
     function deletesparechange(spares_changeId, spares_undercarriageName){
         var option = {
-            url: "/SpareChange/deleteSpareChange?spares_changeId="+spares_changeId,
+            url: "/Sparechange/deleteSpareChange?spares_changeId="+spares_changeId,
             label: "ลบราคาเปลี่ยนอะไหล่ช่วงล่าง",
             content: "คุณต้องการลบราคาเปลี่ยน "+spares_undercarriageName+" ข้อมูลนี้ใช่หรือไม่",
             gotoUrl: "admin/Charge/SpareCharge/"

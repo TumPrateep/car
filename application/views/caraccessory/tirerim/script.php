@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/TireRim/searchrim",
+                "url": base_url+"apicaraccessories/Tirerim/searchrim",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -63,12 +63,12 @@
                                  + '<h5 class="card-title">'+value.rimName+" นิ้ว"+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<a href="'+base_url+"caraccessory/TireSize/index/"+value.rimId+'">'
+                                 + '<a href="'+base_url+"caraccessory/tiresize/index/"+value.rimId+'">'
                                  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '</a>'
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/TireRim/updatetirerim/"+value.rimId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
+                                html += '<a href="'+base_url+"caraccessory/tirerim/updatetirerim/"+value.rimId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button> </a>'
                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deleteTirerim(\''+value.rimId+'\',\''+value.rimName+'\')"><i class="ti-trash"></i> ลบ</button>'
                             }
                                  
@@ -91,7 +91,7 @@
 
     function deleteTirerim(rimId, rimName){
         var option = {
-            url: "/TireRim/deleteRim?rimId="+rimId,
+            url: "/tirerim/deleteRim?rimId="+rimId,
             label: "ลบขอบยาง",
             content: "คุณต้องการลบ "+rimName+" ใช่หรือไม่",
             gotoUrl: "caraccessory/tirerim"

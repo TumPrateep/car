@@ -87,7 +87,7 @@
     garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
         function loadGarageProvince() {
-            $.post(base_url + "api/location/getProvince", {},
+            $.post(base_url + "api/Location/getProvince", {},
                 function(data) {
                     var province = data.data;
                     $.each(province, function(index, value) {
@@ -119,7 +119,7 @@
             garageSubdistrictDropdown.html("");
             garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url + "api/location/getDistrict", {
+            $.post(base_url + "api/Location/getDistrict", {
                     provinceId: provinceId
                 },
                 function(data) {
@@ -149,7 +149,7 @@
             garageSubdistrictDropdown.html("");
             garageSubdistrictDropdown.append('<option value="">เลือกตำบล</option>');
 
-            $.post(base_url + "api/location/getSubdistrict", {
+            $.post(base_url + "api/Location/getSubdistrict", {
                     districtId: districtId
                 },
                 function(data) {

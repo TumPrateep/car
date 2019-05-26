@@ -34,11 +34,11 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/TireSize/createtrieSize",data,
+            $.post(base_url+"apicaraccessories/Tiresize/createtrieSize",data,
             function(data){
                 var rimId = $("#rimId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/TireSize/index/"+rimId);
+                    showMessage(data.message,"caraccessory/tiresize/index/"+rimId);
                 }else{
                     showMessage(data.message,);
                 }

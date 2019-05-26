@@ -7,8 +7,8 @@
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?=base_url("/caraccessory/TireNeed"); ?>">ราคาเปลี่ยนยาง</a></li>
-                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/TireNeed/index/$tire_needId"); ?>">ความต้องการราคาเปลี่ยนยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("/caraccessory/tireneed"); ?>">ราคาเปลี่ยนยาง</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url("caraccessory/tireneed/index/$tire_needId"); ?>">ความต้องการราคาเปลี่ยนยาง</a></li>
                 <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
             </ol>
         </div>
@@ -58,7 +58,7 @@
                         <div class="row p-t-20">
                             <div class="col-md-12 card-grid">
                                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> บันทึก</button>
-                                <a href="<?=base_url("caraccessory/TireModel/index/$tire_brandId"); ?>">
+                                <a href="<?=base_url("caraccessory/tiremodel/index/$tire_brandId"); ?>">
                                 <button type="button" class="btn btn-inverse"><i class="fa fa-close"></i> ยกเลิก</button>
                                 </a>
                             </div>

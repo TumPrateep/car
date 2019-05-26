@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/lubricatortypeformachine/searchlubricatortypeFormachine",
+                "url": base_url+"api/Lubricatortypeformachine/searchlubricatortypeFormachine",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -101,7 +101,7 @@
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/LubricatortypeFormachine");
+                showMessage(data.message,"admin/lubricatortypeformachine");
             }else{
                 showMessage(data.message);
             }

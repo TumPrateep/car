@@ -115,10 +115,10 @@
         var isValid = $("#create-tiresmatching").valid();
         if(isValid){
             var data = $("#create-tiresmatching").serialize();
-            $.post(base_url+"api/TireMatching/create",data,
+            $.post(base_url+"api/Tirematching/create",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/tiresmatching");
+                    showMessage(data.message,"admin/tires/tiresmatching");
                 }else{
                     showMessage(data.message,);
                 }

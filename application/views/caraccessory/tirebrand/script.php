@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/Tirebrand/searchTirebrand",
+                "url": base_url+"apicaraccessories/Tirebrand/searchTirebrand",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -63,7 +63,7 @@
                                  + '<h5 class="card-title">'+value.tire_brandName+'</h5>'
                                  + '</div>'
                                  + '<div class="card-body text-center card-bottom">'
-                                 + '<a href="'+base_url+"caraccessory/TireModel/index/"+value.tire_brandId+'">'
+                                 + '<a href="'+base_url+"caraccessory/tiremodel/index/"+value.tire_brandId+'">'
                                  + '<button type="button" class="btn btn-success btn-sm  m-b-10 m-l-5 card-button"><i class="ti-zoom-in"></i> ข้อมูล</button> '
                                  + '</a>'
 
@@ -95,7 +95,7 @@
 
     function deleteTireBrand(tire_brandId, tire_brandName){
         var option = {
-            url: "/Tirebrand/deleteTireBrand?tire_brandId="+tire_brandId,
+            url: "/tirebrand/deleteTireBrand?tire_brandId="+tire_brandId,
             label: "ลบยี่ห้อยาง",
             content: "คุณต้องการลบ "+tire_brandName+" ใช่หรือไม่",
             gotoUrl: "caraccessory/TireBrand"

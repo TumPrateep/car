@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class CarModelAccessory extends CI_Controller {
+class Carmodelaccessory extends CI_Controller {
 
 	function __construct()
     {

@@ -19,7 +19,7 @@
         "tire_modelId" : tire_modelId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"caraccessory/TireModel/index/"+tire_brandId);
+            showMessage(data.message,"caraccessory/tiremodel/index/"+tire_brandId);
         }else{
             result = data.data;
             $("#tire_modelName").val(result.tire_modelName);
@@ -37,10 +37,10 @@
         
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"apiCaraccessories/Tiremodel/updateTireModel",data,
+            $.post(base_url+"apicaraccessories/Tiremodel/updateTireModel",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"caraccessory/TireModel/index/"+tire_brandId);
+                    showMessage(data.message,"caraccessory/tiremodel/index/"+tire_brandId);
                 }else{
                     showMessage(data.message,);
                 }

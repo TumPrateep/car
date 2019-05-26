@@ -3,11 +3,11 @@
 
         hide();
         var userId = $("#userId").val();
-        $.post(base_url + "api/UserManagement/getusers", {
+        $.post(base_url + "api/Usermanagement/getusers", {
             "userId": userId
         }, function(data) {
             if (data.message != 200) {
-                showMessage(data.message, "admin/UserManagement");
+                showMessage(data.message, "admin/usermanagement");
             }else{
                 $("#avatar").attr("src", base_url+"public/image/role/"+data.role+".jpg");
                 $("#role-name").text(roleNameLib[data.role]);

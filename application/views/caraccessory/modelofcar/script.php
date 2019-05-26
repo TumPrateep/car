@@ -27,7 +27,7 @@
             "orderable": false,
             "pageLength": 12,
             "ajax":{
-                "url": base_url+"apiCaraccessories/Modelofcar/search",
+                "url": base_url+"apicaraccessories/modelofcar/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -69,7 +69,7 @@
                                  
                             
                             if(isShow){
-                                html += '<a href="'+base_url+"caraccessory/Modelofcar/update/"+value.brandId+"/"+value.modelId+"/"+value.modelofcarId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button></a> '
+                                html += '<a href="'+base_url+"caraccessory/modelofcar/update/"+value.brandId+"/"+value.modelId+"/"+value.modelofcarId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button"><i class="ti-pencil"></i> แก้ไข</button></a> '
                                 + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5" onclick="deletemodelofcar(\''+value.modelofcarId+'\',\''+value.modelofcarName+'\',\''+value.brandId+'\',\''+value.modelId+'\')"><i class="ti-trash"></i> ลบ</button>';
                             }
                                  

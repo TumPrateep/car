@@ -32,7 +32,7 @@
         "tire_sizeId" : tire_sizeId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/Tires/tiresize/"+rimId+"/"+tire_sizeId);
+            showMessage(data.message,"admin/tires/tiresize/"+rimId+"/"+tire_sizeId);
         }else{
             result = data.data;
             $("#tire_size").val(result.tire_size);
@@ -56,7 +56,7 @@
             $.post(base_url+"api/Triesize/updatetriesize",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Tires/tiresize/"+rimId);
+                    showMessage(data.message,"admin/tires/tiresize/"+rimId);
                 }else{
                     showMessage(data.message);
                 }

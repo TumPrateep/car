@@ -1,7 +1,7 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-class SpareChange extends BD_Controller {
+class Sparechange extends BD_Controller {
     function __construct()
     {
         // Construct the parent class

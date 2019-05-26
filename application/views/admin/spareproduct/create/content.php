@@ -4,7 +4,7 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/Charge/SpareCharge") ?>">ราคาเปลี่ยนอะไหล่ช่วงล่าง</a>
+        <a href="<?=base_url("admin/charge/sparecharge") ?>">ราคาเปลี่ยนอะไหล่ช่วงล่าง</a>
       </li>
       <li class="breadcrumb-item active" >เพิ่มข้อมูลราคาเปลี่ยนอะไหล่ช่วงล่าง</li>
     </ol>

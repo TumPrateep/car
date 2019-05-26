@@ -54,11 +54,11 @@
                 $('.hidden-image-data').val(imageData);
                 var data = $("#submit").serialize();
                 
-                $.post(base_url+"apiCaraccessories/CarAccessory/updateBrand",data,
+                $.post(base_url+"apicaraccessories/caraccessory/updateBrand",data,
                 function(data){
                     
                     if(data.message == 200){
-                        showMessage(data.message,"caraccessory/Car");
+                        showMessage(data.message,"caraccessory/car");
                     }else{
                         showMessage(data.message);
                     }

@@ -3,10 +3,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tiresbrand/") ?>">ยี่ห้อยาง</a>
+          <a href="<?=base_url("admin/tires/tiresbrand/") ?>">ยี่ห้อยาง</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/Tires/tiresmodel/$tire_brandId") ?>">รุ่นยาง</a>
+          <a href="<?=base_url("admin/tires/tiresmodel/$tire_brandId") ?>">รุ่นยาง</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
@@ -18,7 +18,7 @@
         </div> -->
       <form id="form-search">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/Tires/createtiresmodel/$tire_brandId") ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtiresmodel/$tire_brandId") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
 
