@@ -25,9 +25,6 @@
                                 <li><a class="garage-white " href="<?=base_url("garage/charge/spares"); ?>">ค่าบริการเปลี่ยนอะไหล่ช่วงล่าง</a></li>
                             </ul>
                         </li>
-                        <li ><a class="garage-white " href="<?=base_url("garage/review"); ?>">
-                            <i class="fa fa-commenting-o garage-white"></i><span class="hide-menu">เรตติ้ง</span></a>
-                        </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/Reserve"); ?>">
                             <i class="fa fa-handshake-o garage-white"></i><span class="hide-menu">การจอง</span></a>
                         </li>
@@ -38,7 +35,10 @@
                             <i class="fa fa-truck garage-white"></i><span class="hide-menu">รายการสินค้า</span></a>
                         </li> -->
                         <li ><a class="garage-white " href="<?=base_url("garage/Orderreceive/show"); ?>">
-                        <i class="fa fa-check-square-o garage-white" aria-hidden="true"></i><span class="hide-menu">รับสินค้า</span></a>
+                            <i class="fa fa-check-square-o garage-white" aria-hidden="true"></i><span class="hide-menu">รับสินค้า</span></a>
+                        </li>
+                        <li ><a class="garage-white " href="<?=base_url("garage/review"); ?>">
+                            <i class="fa fa-commenting-o garage-white"></i><span class="hide-menu">คะแนนและความคิดเห็น</span></a>
                         </li>
                     </ul>
                 </nav>
