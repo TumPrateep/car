@@ -89,8 +89,9 @@
                 $("#color").val(result.color);
                 setBrandPicture(result.pictureFront);
                 setProvincePlate(result.province_plate);
-                $("#brandId").val(result.brandId);
-                // getbrand(result.brandId);
+                // $("#brandId").val(result.brandId);
+                $("#brandId").val(result.brandName);
+                // getbrand(result.brandId);  province_plate
             }
             
         });

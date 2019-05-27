@@ -84,16 +84,8 @@ class Accessstatuss extends CI_Model{
 
     function update($data){
         $this->db->trans_begin();
-            $this->db->where('orderId',$data['orderId']);
-            $result = $this->db->update('order',$data);
-
-            if($data['statusSuccess'] == "1"){
-                $orderData = [
-                    "statusSuccess" => 2
-                ];
                 $this->db->where('orderId',$data['orderId']);
-                $this->db->update('order',$orderData);
-            }
+                $this->db->update('order',$data);
         
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();

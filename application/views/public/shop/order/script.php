@@ -36,6 +36,7 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.status = $("#status").val()
+                    data.statusSuccess = $("#statusSuccess").val()
                 }
             },
             "order": [[ 1, "desc" ]],
@@ -90,7 +91,8 @@
                         else if(data.status == "3"){
                             html +='<a href="#"><button type="button" class="btn btn-warning">รับบริการ</button> '
                         }
-                        else if(data.status == "10"){
+                        
+                        else if(data.statusSuccess == "2"){
                             html +='<a href="#"><button type="button" onclick="commetrating('+data.orderId+')" class="btn btn-primary">เสร็จสิ้น</button> '
                         }
                         return html 

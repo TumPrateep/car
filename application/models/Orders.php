@@ -290,10 +290,11 @@ class Orders extends CI_Model{
     }
 
     function getorderByorderId($orderId){
-        // $this->db->select("statusSuccess");
         $this->db->where('orderId',$orderId);
         $result = $this->db->get("order");
         return $result->row();
     }
+
+    
     
 }

@@ -65,13 +65,13 @@ class Accessstatus extends BD_Controller {
     }
 
     function changeStatus_get(){
-        // $reserveId = $this->get("reserveId");
-        $statusSuccess = $this->get("statusSuccess");
+        
+        $status = $this->get("status");
         $orderId = $this->get("orderId");
         $data = array(
-            // 'reserveId' => $reserveId,
-            'orderId' => $orderId,
-            'statusSuccess' => $statusSuccess
+            
+            'orderId' => $orderId,  
+            'statusSuccess' => $status
         );
         $data_check_update = $this->accessstatuss->getOrderById($orderId);
 
