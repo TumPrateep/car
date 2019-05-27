@@ -56,6 +56,7 @@ class Order extends BD_Controller {
             'car_profileId' => $carProfileId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
+            'statusSuccess' => 1,
             'activeflag' =>1,
             'costDelivery' => $costDelivery,
             'depositflag' => ($isDeposit == "true")? 1 : 0
