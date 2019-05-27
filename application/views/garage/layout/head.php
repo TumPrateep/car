@@ -119,7 +119,7 @@
             padding-left: 10px;
         }
         .progress-hgt{
-            height: 6px;
+            height: 8px;
         }
         .progress-center{
             padding-top: 6px !important;
@@ -145,6 +145,13 @@
             width: 500px;
             margin-left: auto;
             margin-right: auto;
+        }
+        .bg-Orange{
+            background-color: #ff751a;
+        }
+        .size-star{
+            height: 20px;
+            width: 19px;
         }
     </style>
 </head>

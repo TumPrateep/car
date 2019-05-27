@@ -76,5 +76,17 @@ class Review extends BD_Controller {
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
     
+    function searchScoreRating_get(){
+        
+        $garageId = $this->session->userdata['logged_in']['garageId'];
+        $score['all'] = $this->commentusers->allScoreAll_count($garageId);
+        $score['one'] = $this->commentusers->allScoreOne_count($garageId);
+        $score['two'] = $this->commentusers->allScoreTwo_count($garageId);
+        $score['three'] = $this->commentusers->allScoreThree_count($garageId);
+        $score['four'] = $this->commentusers->allScoreFour_count($garageId);
+        $score['five'] = $this->commentusers->allScorefive_count($garageId);
+       
+        $this->set_response($score, REST_Controller::HTTP_OK);
+    }
 
 }

@@ -53,6 +53,80 @@
 
     $(document).ready(function () {
 
+        var rating = $("#show-rating");
+        $.get(base_url+"apigarage/Review/searchScoreRating", {},
+            function (data, textStatus, jqXHR) {
+                var score = '';
+                var rat_star = '';
+                scoreall = data;
+                averagescore = ((scoreall.five*5)+(scoreall.four*4)+(scoreall.three*3)+(scoreall.two*2)+(scoreall.one*1))/scoreall.all;
+                averagescorerating = averagescore.toFixed( 1 );
+                scorerating = Math.floor(averagescore);
+
+                    for(var i=0;i<scorerating;i++){
+                       rat_star += '<i class="fa fa-star Yellow-star size-star" ></i>';
+                    }
+                    for(var i=5;scorerating<i;scorerating++){
+                       rat_star += '<i class="fa fa-star" ></i>';
+                    }
+                score += '<label>คะเเนนเเละรีวิว</label>'
+                        + ' <div class="row">'
+                            + '<div class="col-md-4 "><br>'
+                                + '<div class="text-center"><span class="txt-rating">'+averagescorerating+'</span></div>'
+                                + '<div class="text-center ">'
+                                    + rat_star
+                                + '</div>'
+                                + '<div class="text-center"><span>'+scoreall.all+'</span></div>'
+                            + '</div>'
+                            + '<div class="col-md-8">'
+                                + '<div class="row">'
+                                    + '<div class="col-md-2"><span>5</span></div>'
+                                    + '<div class="col-md-10 progress-center" >'
+                                        + '<div class="progress progress-hgt">'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.five*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>'
+                                + '<div class="row">'
+                                    + '<div class="col-md-2"><span>4</span></div>'
+                                    + '<div class="col-md-10 progress-center" >'
+                                        + '<div class="progress progress-hgt">'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.four*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>'
+                                + '<div class="row">'
+                                    + '<div class="col-md-2"><span>3</span></div>'
+                                    + '<div class="col-md-10 progress-center" >'
+                                        + '<div class="progress progress-hgt">'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.three*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>'
+                                + '<div class="row">'
+                                    + '<div class="col-md-2"><span>2</span></div>'
+                                    + '<div class="col-md-10 progress-center" >'
+                                        + '<div class="progress progress-hgt">'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.two*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>'
+                                + '<div class="row">'
+                                    + '<div class="col-md-2"><span>1</span></div>'
+                                    + '<div class="col-md-10 progress-center" >'
+                                        + '<div class="progress progress-hgt">'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.one*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>'
+                            + '</div>'
+                        + '</div>';
+
+                rating.html(score);
+            }
+        );
+
+
     	var comment = $("#show-comment");
         $.post(base_url+"apigarage/Review/getdatarating", {},
             function (data, textStatus, jqXHR) {
