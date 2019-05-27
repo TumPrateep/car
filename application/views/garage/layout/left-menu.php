@@ -7,7 +7,7 @@
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
                         <li class="nav-label"></li>
-                        <li><a class="garage-white " href="<?=base_url("garage/schedule"); ?>">
+                        <li><a class="garage-white " href="<?=base_url("garage"); ?>">
                             <i class="fa fa-calendar-check-o garage-white"></i><span class="hide-menu">ปฎิทินงาน</span></a>
                         </li>
                         <li><a class="garage-white " href="<?=base_url("garage/Managegarage"); ?>">
