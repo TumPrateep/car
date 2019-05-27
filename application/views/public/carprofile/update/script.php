@@ -31,7 +31,7 @@
                 },
                 modelofcarId: {
                     required: true
-                }
+                },
                 color: {
                     required: true 
                 },
@@ -61,7 +61,7 @@
                 },
                 modelofcarId: {
                     required: "กรุณาเลือกรายละเอียดรุ่น"
-                }
+                },
                 color: {
                     required: "กรุณากรอกสี" 
                 },
@@ -89,8 +89,9 @@
                 $("#color").val(result.color);
                 setBrandPicture(result.pictureFront);
                 setProvincePlate(result.province_plate);
-                $("#brandId").val(result.brandId);
-                // getbrand(result.brandId);
+                // $("#brandId").val(result.brandId);
+                $("#brandId").val(result.brandName);
+                // getbrand(result.brandId);  province_plate
             }
             
         });
@@ -106,30 +107,6 @@
                         }
                     });
                 }
-
-
-        // $("#submit").submit(function(){
-        //     updatecarprofile();
-        // })
-
-
-        // function updatecarprofile(){
-        //     event.preventDefault();
-        //     var isValid = $("#submit").valid();
-            
-        //     if(isValid){
-        //         var data = $("#submit").serialize();
-        //         $.post(base_url+"service/Carprofile/updateCarProfile",data,
-        //         function(data){
-        //             if(data.message == 200){
-        //                 showMessage(data.message,"public/carprofilepublic");
-        //             }else{
-        //                 showMessage(data.message);
-        //             }
-        //         });
-                
-        //     }
-        // };
 
 
         $("#submit").submit(function(){
