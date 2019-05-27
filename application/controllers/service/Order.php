@@ -90,14 +90,14 @@ class Order extends BD_Controller {
         $totalData = $this->orders->all_count($userId);
         $totalFiltered = $totalData; 
         $posts = $this->orders->searchAllOrder($limit,$start,$order,$dir,$userId);
-
+        
         $data = array();
         if(!empty($posts))
         {
             foreach ($posts as $post)
             {
                 $nestedData['orderId'] = $post->orderId;
-                // $nestedData['statusSuccess'] = $this->Orders->getstatusSuccess($orderId);
+                $nestedData['statusSuccess'] = $post->statusSuccess;
                 $nestedData['create_at'] = $post->create_at;
                 $nestedData['status'] = $post->status;
                 $nestedData['depositflag'] = $post->depositflag;
