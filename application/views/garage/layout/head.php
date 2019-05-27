@@ -119,10 +119,10 @@
             padding-left: 10px;
         }
         .progress-hgt{
-            height: 8px;
+            height: 14px;
         }
         .progress-center{
-            padding-top: 6px !important;
+            padding-top: 4px !important;
         }
         .score-top{
             padding-top: 10px;
@@ -150,8 +150,10 @@
             background-color: #ff751a;
         }
         .size-star{
-            height: 20px;
-            width: 19px;
+            font-size: 20px;
+        }
+        .pad-star{
+            padding-top: 10px;
         }
     </style>
 </head>

@@ -67,13 +67,13 @@
                        rat_star += '<i class="fa fa-star Yellow-star size-star" ></i>';
                     }
                     for(var i=5;scorerating<i;scorerating++){
-                       rat_star += '<i class="fa fa-star" ></i>';
+                       rat_star += '<i class="fa fa-star size-star" ></i>';
                     }
                 score += '<label>คะเเนนเเละรีวิว</label>'
                         + ' <div class="row">'
                             + '<div class="col-md-4 "><br>'
                                 + '<div class="text-center"><span class="txt-rating">'+averagescorerating+'</span></div>'
-                                + '<div class="text-center ">'
+                                + '<div class="text-center pad-star">'
                                     + rat_star
                                 + '</div>'
                                 + '<div class="text-center"><span>'+scoreall.all+'</span></div>'
@@ -83,7 +83,7 @@
                                     + '<div class="col-md-2"><span>5</span></div>'
                                     + '<div class="col-md-10 progress-center" >'
                                         + '<div class="progress progress-hgt">'
-                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.five*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.five*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreall.five+'</div>'
                                         + '</div>'
                                     + '</div>'
                                 + '</div>'
@@ -91,7 +91,7 @@
                                     + '<div class="col-md-2"><span>4</span></div>'
                                     + '<div class="col-md-10 progress-center" >'
                                         + '<div class="progress progress-hgt">'
-                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.four*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.four*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreall.four+'</div>'
                                         + '</div>'
                                     + '</div>'
                                 + '</div>'
@@ -99,7 +99,7 @@
                                     + '<div class="col-md-2"><span>3</span></div>'
                                     + '<div class="col-md-10 progress-center" >'
                                         + '<div class="progress progress-hgt">'
-                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.three*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.three*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreall.three+'</div>'
                                         + '</div>'
                                     + '</div>'
                                 + '</div>'
@@ -107,7 +107,7 @@
                                     + '<div class="col-md-2"><span>2</span></div>'
                                     + '<div class="col-md-10 progress-center" >'
                                         + '<div class="progress progress-hgt">'
-                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.two*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.two*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreall.two+'</div>'
                                         + '</div>'
                                     + '</div>'
                                 + '</div>'
@@ -115,7 +115,7 @@
                                     + '<div class="col-md-2"><span>1</span></div>'
                                     + '<div class="col-md-10 progress-center" >'
                                         + '<div class="progress progress-hgt">'
-                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.one*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.one*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreall.one+'</div>'
                                         + '</div>'
                                     + '</div>'
                                 + '</div>'
