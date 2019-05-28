@@ -45,10 +45,10 @@ class Spareundercarriage extends BD_Controller {
             && empty($this->post('price'))
             && empty($this->post('can_change')))
         {            
-            $posts = $this->spareundercarriageproduct->allSpareData($limit,$start,$order,$dir);
+        
+            // $posts = $this->spareundercarriageproduct->allSpareData($limit,$start,$order,$dir);
         }
         else {
-            
             $spares_brandId = $this->post('spares_brandId');
             $spares_undercarriageId = $this->post('spares_undercarriageId');
             $modelId =$this->post('modelId');
@@ -60,7 +60,7 @@ class Spareundercarriage extends BD_Controller {
             
             $posts =  $this->spareundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
 
-            $totalFiltered = $this->spareundercarriageproduct->SpareDatas_search_count($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
+            $totalFiltered = $this->spareundercarriageproduct->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
         }
 
         $this->load->model("sparechanges");

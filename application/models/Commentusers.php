@@ -2,7 +2,20 @@
 class Commentusers extends CI_Model{
     // insert
     function insert($data){
-        return $this->db->insert('rating',$data);
+        $this->db->trans_begin();
+                $userId = $this->session->userdata['logged_in']['id'];
+                $this->db->insert('rating',$data);
+
+                $this->db->where('orderId',$data['orderId']);
+                $result = $this->db->update('order',['statusSuccess'=> 3]);
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
+        
     }
 
     function getorderById($orderId){

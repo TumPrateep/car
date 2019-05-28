@@ -189,12 +189,16 @@
       $arrData['spare'] = [];
       $arrData['tire'] = [];
       $arrData['lubricator'] = [];
+
       foreach ($orderdetail as $row) {
         $row = (object) $row;
         $arrData[$row->group][] = getDataForOrderDetail($row->productId, $row->group);
       }
 
-      $result = $CI->orders->CheckCar_accessories($arrData);
+      $result = null;
+      if(count($arrData['spare']) || count($arrData['tire']) || count($arrData['lubricator'])){
+        $result = $CI->orders->CheckCar_accessories($arrData);
+      }
       return $result;
     }
 

@@ -9,6 +9,7 @@ class Garages extends BD_Controller {
         parent::__construct();
         $this->load->model("searchgarages");
         $this->load->model("garage");
+        $this->load->model("commentusers");
     }
 
     function getAllGarage_get(){
@@ -109,5 +110,24 @@ class Garages extends BD_Controller {
             "data_check" => $data_check
         ];
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
+
+    function commentandreview_get(){
+        $garageId = $this->get("garageId");
+        $score['all'] = $this->commentusers->allScoreAll_count($garageId);
+        $score['one'] = $this->commentusers->allScoreOne_count($garageId);
+        $score['two'] = $this->commentusers->allScoreTwo_count($garageId);
+        $score['three'] = $this->commentusers->allScoreThree_count($garageId);
+        $score['four'] = $this->commentusers->allScoreFour_count($garageId);
+        $score['five'] = $this->commentusers->allScorefive_count($garageId);
+       
+        $this->set_response($score, REST_Controller::HTTP_OK);
+    }
+
+    function getdatacommentgarage_get(){
+        $garageId = $this->get("garageId");
+        $data["review"] = $this->commentusers->getDataReviewForRating($garageId);
+        
+        $this->set_response($data, REST_Controller::HTTP_OK);
     }
 }

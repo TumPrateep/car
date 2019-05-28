@@ -95,6 +95,9 @@
                         else if(data.statusSuccess == "2"){
                             html +='<a href="#"><button type="button" onclick="commetrating('+data.orderId+')" class="btn btn-primary">เสร็จสิ้น</button> '
                         }
+                        else if(data.statusSuccess == "3"){
+                            html +=''
+                        }
                         return html 
                         
                     }
@@ -223,7 +226,9 @@
         }
     }
 
+
 </script>
 
 </body>
 </html>
+lo
