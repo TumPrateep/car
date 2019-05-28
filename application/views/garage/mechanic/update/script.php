@@ -108,7 +108,18 @@
                 $("#exp").val(result.exp);
                 $("#personalid").val(result.personalid);
                 $("#phone").val(result.phone); 
-                $("#job").val(result.job);
+                // $("#job").val(result.job);
+                var jobmechnic = result.job;
+
+                for(var j=0;j<3;j++){   
+                    if(jobmechnic.charAt(j) == "1" && j==0){
+                        $('#job1').each(function() {this.checked = true; });
+                    }else if(jobmechnic.charAt(j) == "1" && j==1){
+                        $('#job2').each(function() {this.checked = true; });
+                    }else if(jobmechnic.charAt(j) == "1" && j==2){
+                        $('#job3').each(function() {this.checked = true; });
+                    }
+                }
                 setBrandPicture(result.picture);
             }
             
