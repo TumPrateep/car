@@ -89,8 +89,10 @@
                 $("#color").val(result.color);
                 setBrandPicture(result.pictureFront);
                 setProvincePlate(result.province_plate);
-                // $("#brandId").val(result.brandId);
-                $("#brandId").val(result.brandName);
+                $("#brandId").val(result.brandId);
+                $("#modelId").val(result.modelId);
+                $("#detail").val(result.detail);
+                $("#modelofcarId").val(result.modelofcarId);
                 // getbrand(result.brandId);  province_plate
             }
             
