@@ -14,6 +14,9 @@ class Cart extends BD_Controller {
 
     function cartDetail_post(){
         $cartData = $this->post('cartData');
+        if($cartData == null){
+            $cartData = [];
+        }
         $lubricatorData = $this->getLubricator($cartData);
         $tireData = $this->getTire($cartData);
         $spareData = $this->getSpare($cartData);

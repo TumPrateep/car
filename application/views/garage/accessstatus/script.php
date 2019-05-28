@@ -111,23 +111,14 @@
         var option = {
             url: "/Accessstatus/changeStatus?orderId="+orderId,
             label: "ยืนยันการทำรายการการจอง",
-            statussuccess: 2,
+            status: 2,
             content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
             gotoUrl: "garage/acessstatus"
         }
         fnConfirm(option);
     }   
 
-    // function cancelStatus(reserveId, orderId){
-    //     var option = {
-    //         url: "/Reserve/changeStatus?reserveId="+reserveId+"&orderId="+orderId,
-    //         label: "ยกเลิกการทำรายการการจอง",
-    //         status: 9,
-    //         content: "คุณต้องการยกเลิกการทำรายการการจองนี้ ใช่หรือไม่",
-    //         gotoUrl: "garage/Reserve"
-    //     }
-    //     fnConfirm(option);
-    // }
+    
 
     $("#search").click(function(){
         event.preventDefault();

@@ -49,4 +49,57 @@ class Commentusers extends CI_Model{
         $result = $this->db->get();
         return $result->row();
     }
+
+    function allScoreAll_count($garageId){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
+
+    function allScoreOne_count($garageId){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $this->db->where('scorerating',1);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
+
+    function allScoreTwo_count($garageId){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $this->db->where('scorerating',2);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
+
+    function allScoreThree_count($garageId){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $this->db->where('scorerating',3);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
+
+    function allScoreFour_count($garageId){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $this->db->where('scorerating',4);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
+
+    function allScorefive_count($garageId){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $this->db->where('scorerating',5);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
 }

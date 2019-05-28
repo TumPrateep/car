@@ -36,6 +36,7 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.status = $("#status").val()
+                    data.statusSuccess = $("#statusSuccess").val()
                 }
             },
             "order": [[ 1, "desc" ]],
@@ -90,7 +91,8 @@
                         else if(data.status == "3"){
                             html +='<a href="#"><button type="button" class="btn btn-warning">รับบริการ</button> '
                         }
-                        else if(data.status == "10"){
+                        
+                        else if(data.statusSuccess == "2"){
                             html +='<a href="#"><button type="button" onclick="commetrating('+data.orderId+')" class="btn btn-primary">เสร็จสิ้น</button> '
                         }
                         return html 
@@ -210,6 +212,7 @@
         var isValid = $("#submit").valid();
         if(isValid){
             var data = $("#submit").serialize();
+            updateStatus();
             $.post(base_url+"service/Commentuser/createCommentuser",data,
             function(data){
                 if(data.message == 200){
@@ -221,7 +224,18 @@
         }
     }
 
+    function updateStatus(orderId,statusSuccess){
+            $.post(base_url+"service/Order/changeStatus",{
+                "orderId": orderId,
+                "statusSuccess": statusSuccess
+            }
+        );
+    }
+
+
+
 </script>
 
 </body>
 </html>
+lo

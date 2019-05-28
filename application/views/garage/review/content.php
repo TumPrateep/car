@@ -2,11 +2,11 @@
     <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">คะแนนและความคิดเห็น</h3> </div>
+            <h3 class="text-primary">คะแนนและรีวิว</h3> </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">หน้าหลัก</a></li>
-                <li class="breadcrumb-item active">คะแนนและความคิดเห็น</li>
+                <li class="breadcrumb-item active">คะแนนและรีวิว</li>
             </ol>
         </div>
     </div>
@@ -59,63 +59,9 @@
                     <!-- rating all -->
                     <div class="col-lg-6">
                         <div class="card-rating">
-                            <label>คะเเนนเเละรีวิว</label>
-                            <div class="row">
-                                <div class="col-md-4 ">
-                                    <br>
-                                    <div class="text-center"><span class="txt-rating">4</span></div>
-                                    <div class="text-center">
-                                        <i class="fa fa-star Yellow-star" ></i>
-                                        <i class="fa fa-star Yellow-star" ></i>
-                                        <i class="fa fa-star Yellow-star" ></i>
-                                        <i class="fa fa-star Yellow-star" ></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="text-center"><span>396,582</span></div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="row">
-                                        <div class="col-md-2"><span>5</span></div>
-                                        <div class="col-md-10 progress-center" >
-                                            <div class="progress progress-hgt">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 64.35%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"><span>4</span></div>
-                                        <div class="col-md-10 progress-center" >
-                                            <div class="progress progress-hgt">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 28.36%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"><span>3</span></div>
-                                        <div class="col-md-10 progress-center" >
-                                            <div class="progress progress-hgt">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 7.8%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"><span>2</span></div>
-                                        <div class="col-md-10" style="padding-top: 6px;">
-                                            <div class="progress progress-hgt">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 1.9%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"><span>1</span></div>
-                                        <div class="col-md-10" style="padding-top: 6px;">
-                                            <div class="progress progress-hgt">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 3.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>  
-                                </div>
-                            </div>
+                            <span id="show-rating">
+                                        
+                            </span>
                         </div>
                     </div>
                     <!-- rating of month -->

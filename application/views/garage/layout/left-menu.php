@@ -38,7 +38,7 @@
                             <i class="fa fa-check-square-o garage-white" aria-hidden="true"></i><span class="hide-menu">รับ-คืนสินค้า</span></a>
                         </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/review"); ?>">
-                            <i class="fa fa-commenting-o garage-white"></i><span class="hide-menu">คะแนนและความคิดเห็น</span></a>
+                            <i class="fa fa-commenting-o garage-white"></i><span class="hide-menu">คะแนนและรีวิว</span></a>
                         </li>
                     </ul>
                 </nav>

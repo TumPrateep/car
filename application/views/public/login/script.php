@@ -1,5 +1,4 @@
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="<?=base_url("public/themes/user/");?>js/sdk.js"></script>
+<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};HandleGoogleApiLibrary()" onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
 <script>
     var errorMessage = $("#error-message");
     $(document).ready(function () {
@@ -52,36 +51,77 @@
         });
     });
 
-    function onSignin(googleUser){
-        var profile = googleUser.getBasicProfile();
-        var data = {
-            "name": profile.ig,
-            "firstname": profile.ofa,
-            "lastname": profile.wea,
-            "email": profile.U3
-        };
-        $.post(base_url+"service/Auth/googleAuth/", data,
-            function (data, textStatus, jqXHR) {
-                signOutGoogle();
-                successLogin(data);
+    // Called when Google Javascript API Javascript is loaded
+    function HandleGoogleApiLibrary() {
+        // Load "client" & "auth2" libraries
+        gapi.load('client:auth2', {
+            callback: function() {
+                // Initialize client library
+                // clientId & scope is provided => automatically initializes auth2 library
+                gapi.client.init({
+                    apiKey: 'AIzaSyB35TEuf1rNhUFy17glysZ5AVOCknVX8-o',
+                    clientId: '26870870058-s1cptuqcdgpei6dp38g246006k3kd2kd.apps.googleusercontent.com',
+                    scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.me'
+                }).then(
+                    // On success
+                    function(success) {
+                        // After library is successfully loaded then enable the login button
+                        $("#login-button").removeAttr('disabled');
+                    }, 
+                    // On error
+                    function(error) {
+                        alert('Error : Failed to Load Library');
+                    }
+                );
+            },
+            onerror: function() {
+                // Failed to load libraries
             }
-        );
+        });
     }
 
-    function onSigninFacebook(facebookUser){
-        var data = {
-            "name": facebookUser.name,
-            "firstname": facebookUser.first_name,
-            "lastname": facebookUser.last_name,
-            "email": facebookUser.email
-        };
-        $.post(base_url+"service/Auth/facebookAuth/", data,
-            function (data, textStatus, jqXHR) {
-                logout();
-                successLogin(data);
+    // Click on login button
+    $("#login-button").on('click', function() {
+        $("#login-button").attr('disabled', 'disabled');
+                
+        // API call for Google login
+        gapi.auth2.getAuthInstance().signIn().then(
+            // On success
+            function(success) {
+                // API call to get user information
+                gapi.client.request({ path: 'https://www.googleapis.com/plus/v1/people/me' }).then(
+                    // On success
+                    function(success) {
+                        var user_info = JSON.parse(success.body);
+                        var data = {
+                            "name": user_info.displayName,
+                            "firstname": user_info.name.familyName,
+                            "lastname": user_info.name.givenName,
+                            "email": user_info.emails[0].value
+                        };
+
+                        $.post(base_url+"service/Auth/googleAuth/", data,
+                            function (data, textStatus, jqXHR) {
+                                successLogin(data);
+                            }
+                        );
+                        
+                        $("#login-button").hide();
+                    },
+                    // On error
+                    function(error) {
+                        $("#login-button").removeAttr('disabled');
+                        alert('Error : Failed to get user user information');
+                    }
+                );
+            },
+            // On error
+            function(error) {
+                $("#login-button").removeAttr('disabled');
+                alert('Error : Login Failed');
             }
         );
-    }
+    });
 
     function successLogin(data){
         var message = data.message;
@@ -93,62 +133,6 @@
             errorMessage.html("เกิดข้อผิดพลาด <a href='"+base_url+"register"+"'>ลงทะเบียน</a>");
             errorMessage.show();
         }
-    }
-
-    function statusChangeCallback(response){
-        if(response.authResponse != null){
-            if(bFbStatus == false){
-                fbID = response.authResponse.userID;
-
-                if (response.status == 'connected') {
-                    getCurrentUserInfo(response)
-                } else {
-                    FB.login(function(response) {
-                        if (response.authResponse){
-                            getCurrentUserInfo(response)
-                        } else {
-                            console.log('Auth cancelled.')
-                        }
-                    }, { scope: 'email' });
-                }
-            }
-
-            bFbStatus = true;
-        }
-    }
-
-    function getCurrentUserInfo() {
-        FB.api('/me?fields=name,email,first_name,last_name', function(userInfo) {
-            onSigninFacebook(userInfo);
-        });
-    }
-
-    function checkLoginState() {
-        FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
-        });
-    }
-
-    $("#faceebook-login").click(function (e) { 
-        e.preventDefault();
-        FB.login(function(response) {
-            if (response.authResponse) {
-                checkLoginState();
-            }
-        }, {scope: 'email,public_profile', return_scopes: true});
-    });
-
-    function logout(){
-        FB.logout(function(response){
-            FB.Auth.setAuthResponse(null,'unknown');
-        });
-    }
-
-    function signOutGoogle() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-        console.log('User signed out.');
-        });
     }
 
 </script>

@@ -55,7 +55,7 @@
 		<div class="modal-dialog modal-lg mw-500" id="maxWidthSelect" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">รีวิวเเละคอมเมนต์</h5>
+					<h3 class="modal-title" id="exampleModalLabel"><b>คะแนนและรีวิว</b></h3>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -97,7 +97,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="form-label required">คอมเมนต์</label>
+										<label class="form-label required"><h4><b>รายละเอียดเพิ่มเติม</b></h4></label>
 										<textarea class="form-control" id="commentUser" name="commentUser" rows="3"></textarea>
 									</div>
 								</div>

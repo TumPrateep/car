@@ -193,6 +193,7 @@ function deleteCart(index){
                     cartData.splice(index, 1);
                     localStorage.setItem("data", JSON.stringify(cartData));
                     showCart();
+                    synchroData();
                     getImagePicker();
                 }
             },
@@ -507,6 +508,7 @@ $(document).ready(function () {
                             localStorage.setItem("data",JSON.stringify([]));
                             cartData = [];
                             synCartData();
+                            synchroData();
                             showMessage(data.message,"shop/order");
                         }else{
                             showMessage(data.message);
