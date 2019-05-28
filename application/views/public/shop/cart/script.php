@@ -212,7 +212,7 @@ function getLubricator(value, index){
     var totalCost = (product.price*value.number);
     var html = '<tr>'
         +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()" data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'"></div></td>'
-        +'<td><a href="'+base_url+'shop/detail/lubricator/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/lubricatordata/'+product.picture+'" alt=""></a></td>'
+        +'<td><a href="'+base_url+'shop/detail/lubricator/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/lubricatorproduct/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/lubricator/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.lubricatorNumber+' ขนาด '+product.capacity+' ลิตร</a></td>'
         +'<td><span class="buy-price">'+currency((product.price),{  precision: 0 }).format()+' บาท</span></td>'
         +'<td><div class="col-md-12">'
@@ -238,7 +238,7 @@ function getTire(value, index){
     var totalCost = (product.price*value.number);
     var html = '<tr>'
         +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'"></div></td>'
-        +'<td><a href="'+base_url+'shop/detail/tire/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/tirebranddata/'+product.picture+'" alt=""></a></td>'
+        +'<td><a href="'+base_url+'shop/detail/tire/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/tireproduct/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/tire/'+value.productId+'">'+product.brandName+' '+product.name+' '+product.number+'</a></td>'
         +'<td><span class="buy-price">'+currency((product.price),{  precision: 0 }).format()+' บาท</span></td>'
         +'<td><div class="col-md-12">'
@@ -264,7 +264,7 @@ function getspare(value, index){
     var totalCost = (product.price*value.number);
     var html = '<tr>'
         +'<td><div class="form-check top"><input class="form-check-input size-check" type="checkbox" value="" checked onchange="setTotalAmount()"  data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'"></div></td>'
-        +'<td><a href="'+base_url+'shop/detail/spare/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/spareundercarriage/'+product.picture+'" alt=""></a></td>'
+        +'<td><a href="'+base_url+'shop/detail/spare/'+value.productId+'"><img class="cart_item_image" src="'+base_url+'public/image/spareproduct/'+product.picture+'" alt=""></a></td>'
         +'<td><a class="produst-name" href="'+base_url+'shop/detail/spare/'+value.productId+'">'+product.spares_brandName+' '+product.spares_undercarriageName+' '+product.brandName+' '+product.modelName+' '+product.year+'</a></td>'
         +'<td><span class="buy-price">'+currency((product.price),{  precision: 0 }).format()+' บาท</span></td>'
         +'<td><div class="col-md-12">'
@@ -294,7 +294,7 @@ function getImagePicker(){
             // var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
             $.each(data, function (index, val) { 
                 // html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
-                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<div class=\'text-center\'><strong>'+val.garageName+'</strong><br><span>'+"ช่วงเวลาทำการ : "+''+val.openingtime+'</span>'+"-"+'<span>'+val.closingtime+'</span><br><span>'+"การให้บริการ : "+''+changeStringToDay(val.garageService)+'</span><br><span>'+"สิ่งอำนวยความสะดวก : "+''+val.option1+''+val.option2+''+val.option3+''+val.option4+'</span><span></span></div>" value="'+val.garageId+'" data-openday="'+val.dayopenhour+'" data-open="'+val.openingtime+'" data-close="'+val.closingtime+'">'+val.garageName+'</option>';                
+                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<div class=\'text-center\'><strong>'+val.garageName+'</strong><br><span>'+"ช่วงเวลาทำการ : "+''+val.openingtime+'</span>'+"-"+'<span>'+val.closingtime+'</span><br><span>'+"การให้บริการ : "+''+changeStringToDay(val.garageService)+'</span><br><span>'+"สิ่งอำนวยความสะดวก : "+"</br>"+''+changeStringTooption(val.option1)+''+changeStringTooption(val.option2)+''+changeStringTooption(val.option3)+''+changeStringTooption(val.option4)+'</span><span></span></div>" value="'+val.garageId+'" data-openday="'+val.dayopenhour+'" data-open="'+val.openingtime+'" data-close="'+val.closingtime+'">'+val.garageName+'</option>';                
             });
             // $("#garage").html(html);
             $("#image-picker").html(imagePickerHtml);
