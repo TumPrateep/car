@@ -59,18 +59,17 @@ class Mechanics extends CI_Model {
         $result = $this->db->update('mechanic', $data);
         return $result;
     }
-    function mechanics_search($limit,$start,$col,$dir,$firstname,$garageId,$brandId)
+    function mechanics_search($limit,$start,$col,$dir,$firstname,$garageId)
     {
         $this->db->where("garageId", $garageId);
         $this->db->where('status', 2);
         $this->db->like('firstName',$firstname);
-        if($brandId != null){
-            $this->db->where("brandId", $brandId);
-        }
+        // if($brandId != null){
+        //     $this->db->where("brandId", $brandId);
+        // }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('mechanic');
-        
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -81,13 +80,13 @@ class Mechanics extends CI_Model {
         }
         
     }
-    function mechanics_search_count($firstname,$brandId,$garageId){
+    function mechanics_search_count($firstname,$garageId){
         $this->db->where('status', 2);
         $this->db->where("garageId", $garageId);
         $this->db->like('firstName',$firstname);
-        if($brandId != null){
-            $this->db->where("brandId", $brandId);
-        }
+        // if($brandId != null){
+        //     $this->db->where("brandId", $brandId);
+        // }
         $query = $this->db->get('mechanic');
         return $query->num_rows();
     }

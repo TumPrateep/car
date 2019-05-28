@@ -81,12 +81,12 @@
         height: 14px;
     }
     .progress-center{
-        padding-top: 2px !important;
+        padding-top: 5px !important;
         padding-bottom: 2px !important;
     }
     .txt-rating{
         /*height: 30px;*/
-        font-size: 60px;
+        font-size: 70px;
     }
     .Yellow-star{
         color: #ffff33;
@@ -96,6 +96,12 @@
     }
     .size-star{
         font-size: 20px;
+    }
+    .txt-score{
+        font-size: 25px;
+    }
+    .txt-progress{
+        font-size: 17px;
     }
     
 	
