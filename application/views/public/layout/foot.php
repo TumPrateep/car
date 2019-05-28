@@ -187,14 +187,20 @@
     </script>
 
     <script>
-        function changeStringToDay(str){
+        function changeStringTooption(str){
         var html = "";
-        var day = ["จ","อ","พ","พฤ","ศ","ส","อา"];
-        for(var i=0;i<str.length;i++){   // 1111011
-            if(str.charAt(i) == "1"){
-                html += day[i]+", ";
-            }
+
+        if(str==1){
+          html = "Wifi"+", ";
+        }else if(str==2){
+          html = "ห้องพักพัดลม"+", ";
+        }else if(str==3){
+          html = "ห้องพักเเอร์"+", ";
+        }else if(str==4){
+          html = "ห้องน้ำ";
+        }else{
+          html = "-"+", ";
         }
-        return html.substring(0, html.length - 2);
+        return html.substring();
     }
     </script>

@@ -94,6 +94,8 @@ class Mechanic extends BD_Controller {
             0 => 'firstname'
         );
         $garageId = $this->session->userdata['logged_in']['garageId'];
+
+        // var_dump($this->session->userdata['logged_in']);
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
@@ -106,9 +108,9 @@ class Mechanic extends BD_Controller {
         }
         else {
             $firstname = $this->post('firstName'); 
-            $skill = $this->post('skill');
-            $posts =  $this->mechanics->mechanics_search($limit,$start,$order,$dir,$firstname,$skill,$garageId);
-            $totalFiltered = $this->mechanics->mechanics_search_count($firstname,$skill,$garageId);
+            $brandId = $this->post('skill');
+            $posts =  $this->mechanics->mechanics_search($limit,$start,$order,$dir,$firstname,$garageId);
+            $totalFiltered = $this->mechanics->mechanics_search_count($firstname,$garageId);
         }
         $data = array();
         if(!empty($posts))

@@ -28,14 +28,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 mt-8">
+                        <!-- <div class="col-lg-3 mt-8">
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="ความเชี่ยวชาญด้านรถ" id="skillmechanic">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-star" aria-hidden="true"></i></span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-lg-2">
                             <button type="button" class="btn btn-info btn-block" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
                         </div>
