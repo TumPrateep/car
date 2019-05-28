@@ -95,6 +95,9 @@
                         else if(data.statusSuccess == "2"){
                             html +='<a href="#"><button type="button" onclick="commetrating('+data.orderId+')" class="btn btn-primary">เสร็จสิ้น</button> '
                         }
+                        else if(data.statusSuccess == "3"){
+                            html +=''
+                        }
                         return html 
                         
                     }
@@ -212,7 +215,6 @@
         var isValid = $("#submit").valid();
         if(isValid){
             var data = $("#submit").serialize();
-            updateStatus();
             $.post(base_url+"service/Commentuser/createCommentuser",data,
             function(data){
                 if(data.message == 200){
@@ -223,15 +225,6 @@
             });
         }
     }
-
-    function updateStatus(orderId,statusSuccess){
-            $.post(base_url+"service/Order/changeStatus",{
-                "orderId": orderId,
-                "statusSuccess": statusSuccess
-            }
-        );
-    }
-
 
 
 </script>

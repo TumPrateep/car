@@ -119,32 +119,4 @@ class Order extends BD_Controller {
         $this->set_response($json_data);
     }
 
-    function changeStatus_post(){
-        $orderId = $this->post("orderId");
-        $statusSuccess = $this->post("statusSuccess");
-        if($statusSuccess == 2){
-            $statusSuccess = 3;
-        }else{
-            $status = 2;
-        }
-
-        $data_check_update = $this->orders->getorderByorderId($orderId);
-        $data = array(
-            'orderId' => $orderId,
-            'statusSuccess' => $statusSuccess
-        );
-
-        $option = [
-            "data_check_update" => $data_check_update,
-            "data" => $data,
-            "model" => $this->orders
-        ];
-
-        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
-    }
-
-
-    
-    
-   
 }

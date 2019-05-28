@@ -30,6 +30,10 @@ class Commentuser extends BD_Controller {
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1
         );
+
+       
+        
+
         $option = [
             "data_check" => $data_check,
             "data" => $data,
