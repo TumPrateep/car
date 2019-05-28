@@ -212,6 +212,7 @@
         var isValid = $("#submit").valid();
         if(isValid){
             var data = $("#submit").serialize();
+            updateStatus();
             $.post(base_url+"service/Commentuser/createCommentuser",data,
             function(data){
                 if(data.message == 200){
@@ -223,7 +224,18 @@
         }
     }
 
+    function updateStatus(orderId,statusSuccess){
+            $.post(base_url+"service/Order/changeStatus",{
+                "orderId": orderId,
+                "statusSuccess": statusSuccess
+            }
+        );
+    }
+
+
+
 </script>
 
 </body>
 </html>
+lo
