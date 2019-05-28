@@ -91,4 +91,11 @@ class Garage extends CI_Model {
         return $this->db->get("garage")->row("garageId");
     }
 
+    function getGarageporfile($garageId){
+        $this->db->select('garageId, garageName, picture, dayopenhour, openingtime, closingtime, phone');
+        $this->db->where("garageId", $garageId);
+        $query = $this->db->get("garage");
+        return $query->row();
+    }
+
 }

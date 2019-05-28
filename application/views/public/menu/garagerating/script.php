@@ -1,5 +1,6 @@
 <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
 <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
+<script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
 <script>
 $(document).ready(function () {
 
@@ -26,11 +27,11 @@ $(document).ready(function () {
                             + '<div class="text-center">'
                                 + rat_star
                             + '</div>'
-                            + '<div class="text-center"><span>'+scoreall.all+'</span></div>'
+                            + '<div class="text-center"><span class="txt-score">'+scoreall.all+'</span></div>'
                         + '</div>'
                         + '<div class="col-md-8">'
                             + '<div class="row">'
-                                + '<div class="col-md-2"><span>5</span></div>'
+                                + '<div class="col-md-2"><span class="txt-progress">5</span></div>'
                                 + '<div class="col-md-10 progress-center" >'
                                     + '<div class="progress progress-hgt">'
                                         + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.five*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreall.five+'</div>'
@@ -38,7 +39,7 @@ $(document).ready(function () {
                                 + '</div>'
                             + '</div>'
                             + '<div class="row">'
-                                + '<div class="col-md-2"><span>4</span></div>'
+                                + '<div class="col-md-2"><span class="txt-progress">4</span></div>'
                                 + '<div class="col-md-10 progress-center" >'
                                     + '<div class="progress progress-hgt">'
                                         + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.four*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreall.four+'</div>'
@@ -46,7 +47,7 @@ $(document).ready(function () {
                                 + '</div>'
                             + '</div>'
                             + '<div class="row">'
-                                + '<div class="col-md-2"><span>3</span></div>'
+                                + '<div class="col-md-2"><span class="txt-progress">3</span></div>'
                                 + '<div class="col-md-10 progress-center" >'
                                     + '<div class="progress progress-hgt">'
                                         + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.three*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreall.three+'</div>'
@@ -54,7 +55,7 @@ $(document).ready(function () {
                                 + '</div>'
                             + '</div>'
                             + '<div class="row">'
-                                + '<div class="col-md-2"><span>2</span></div>'
+                                + '<div class="col-md-2"><span class="txt-progress">2</span></div>'
                                 + '<div class="col-md-10 progress-center" >'
                                     + '<div class="progress progress-hgt">'
                                         + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.two*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreall.two+'</div>'
@@ -62,7 +63,7 @@ $(document).ready(function () {
                                 + '</div>'
                             + '</div>'
                             + '<div class="row">'
-                                + '<div class="col-md-2"><span>1</span></div>'
+                                + '<div class="col-md-2"><span class="txt-progress">1</span></div>'
                                 + '<div class="col-md-10 progress-center" >'
                                     + '<div class="progress progress-hgt">'
                                         + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreall.one*100)/scoreall.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreall.one+'</div>'
@@ -127,6 +128,28 @@ $(document).ready(function () {
                       +'</div>';
             });
             comment.html(html);
+        }
+    );
+
+    // var garageprofile = $("#show-garage");
+    $.get(base_url+"service/Garages/getdatagarageprofile", {garageId: $("#garageId").val()},
+        function (data, textStatus, jqXHR) {
+            var picturePath = base_url+'public/image/';
+            garagedata = data.garage;
+            // console.log(garagedata.garageName)
+            $('#garage.image-editor').cropit({
+                allowDragNDrop: false,
+                width: 200,
+                height: 200,
+                type: 'image',
+                imageState: {
+                    src: picturePath+"garage/"+garagedata.picture
+                }
+            });
+            $("#garageName").html(": "+garagedata.garageName);
+            $("#dayopen").html(": "+changeStringToDay(garagedata.dayopenhour));
+            $("#timeopen").html(": "+garagedata.openingtime+" - "+garagedata.closingtime+" น.");
+            $("#phonegarage").html(": "+garagedata.phone);
         }
     );
 });

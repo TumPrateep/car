@@ -127,6 +127,19 @@ class Garages extends BD_Controller {
     function getdatacommentgarage_get(){
         $garageId = $this->get("garageId");
         $data["review"] = $this->commentusers->getDataReviewForRating($garageId);
+
+        $this->set_response($data, REST_Controller::HTTP_OK);
+    }
+
+    function getdatagarageprofile_get(){
+        $garageId = $this->get("garageId");
+        $data["garage"] = $this->garage->getGarageporfile($garageId);
+        
+        $date=date_create($data["garage"]->openingtime);
+        $data["garage"]->openingtime = date_format($date,"H:i");
+
+        $date=date_create($data["garage"]->closingtime);
+        $data["garage"]->closingtime = date_format($date,"H:i");
         
         $this->set_response($data, REST_Controller::HTTP_OK);
     }
