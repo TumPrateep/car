@@ -203,14 +203,15 @@ $(document).ready(function () {
                                             + '<div class="product_image d-flex flex-column align-items-center justify-content-center" onclick=""><img src="'+imagePath+value.picture+'"></div>'
                                             + '<div class="product_content">'
                                                 + '<div onclick="">'
-                                                    + '<div class="garage-name">'+value.garageName+'</div>'
+                                                    + '<div class="garage-distance distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
+                                                    + '<div class="garage-name-txt">'+value.garageName+'</div>'
+
                                                     + '<div>'+serviceall+'</div>'
                                                     + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
                                                     
-                                                    + '<div>'+option+'</div>'
+                                                    + '<div class="option-garage">'+option+'</div>'
                                                     // + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
-
-                                                    + '<div class="distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
+                                                    + '<a href="'+base_url+"comment/"+value.garageId+'" target="_blank"><button class="btn btn-info btn-sm rat-garage">คะเเนนเเละรีวิว</button></a>'
                                                     + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
                                                 + '</div>'
                                                 // + '<div class="product_extras"><button class="product_cart_button" tabindex="0" onclick=""><i class="fas fa-shopping-bag"></i> รายละเอียด</button></div>'

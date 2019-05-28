@@ -36,12 +36,68 @@
 		background-color: #ff471a;
 		color: #ffffff;
 	}
-	/* p{
-		color: #000000 !important;
+	.garage-name-txt {
+	    font-size: 16px;
+	    font-weight: 1000;
+	    color: #708090;
 	}
-	a{
-		color: #828282 !important;
-	} */
+	.garage-distance {
+	    font-size: 14px;
+	    font-weight: 700;
+	    margin-top: 45px;
+	    margin-right: 12px;
+	    color: #708090;
+	}
+	.option-garage{
+		margin-top: 5px;
+		margin-bottom: 10px;
+	}
+	.rat-garage{
+		margin-right: 5px;
+	}
+	.distance-txt{
+		font-size: 22px;
+	}
+	.container-comment{
+		width: 1000px!important;
+	}
+	.card-rating{
+        border: 1px solid #ff6600;
+        border-radius: 5px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .card-comment{
+        border: 1px solid #bfbfbf;
+        border-radius: 3px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .progress-hgt{
+        height: 14px;
+    }
+    .progress-center{
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+    }
+    .txt-rating{
+        /*height: 30px;*/
+        font-size: 60px;
+    }
+    .Yellow-star{
+        color: #ffff33;
+    }
+    .bg-Orange{
+        background-color: #ff751a;
+    }
+    .size-star{
+        font-size: 20px;
+    }
+    
 	
 </style>
 

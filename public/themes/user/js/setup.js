@@ -103,7 +103,7 @@ $.wait = function( callback, seconds){
 function distance(lat1, lon1, lat2, lon2, unit) {
     if(lat1>0 && lat2>0 && lon1>0 && lon2>0){
         if ((lat1 == lat2) && (lon1 == lon2)) {
-            return "ประมาณ "+0+" กม.";
+            return "ประมาณ "+'<span class="distance-txt">'+0+'</span>'+" กม.";
         }
         else {
             var radlat1 = Math.PI * lat1/180;

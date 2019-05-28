@@ -208,4 +208,26 @@ class Menu extends CI_Controller {
         $this->load->view("public/contact/script");
     }
 
+    public function garagerating($garageId){
+    	$data["garageId"] = $garageId;
+        $this->load->view("public/layout/head");
+		$this->load->view("public/layout/head_shop");
+		if(isset($this->session->userdata['logged_in'])){
+			$isUser = $this->session->userdata['logged_in']['isUser'];
+			if(!$isUser){
+				$this->load->view("public/layout/header");
+			}else{
+				$this->load->view("public/layout/header_login");
+			}
+		}else{
+			$this->load->view("public/layout/header");
+		}
+        $this->load->view("public/layout/wishlist");
+        $this->load->view("public/layout/menu");
+        $this->load->view("public/menu/garagerating/content",$data);
+        $this->load->view("public/layout/copyright");        
+        $this->load->view("public/layout/foot");
+        $this->load->view("public/menu/garagerating/script");
+    }
+
 }
