@@ -40,7 +40,7 @@ class Tire extends BD_Controller {
         $totalFiltered = $totalData; 
         if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')) && empty($this->post('brandId'))&& empty($this->post('modelId'))&& empty($this->post('modelofcarId')))
         {            
-            $posts = $this->tireproduct->allTires($limit,$start,$order,$dir);
+            // $posts = $this->tireproduct->allTires($limit,$start,$order,$dir);
         }
         else {
              
@@ -62,7 +62,7 @@ class Tire extends BD_Controller {
             
             // $status = null; 
             $posts =  $this->tireproduct->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$brandId,$modelId,$modelofcarId,$yearStart,$yearEnd,$tire_matchingId);
-            $totalFiltered = $this->tireproduct->TireDatas_search_count($limit,$start,$order,$dir,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$status,$brandId,$modelId,$modelofcarId,$yearStart,$yearEnd,$tire_matchingId);
+            $totalFiltered = $this->tireproduct->TireDatas_search_count($tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$status,$brandId,$modelId,$modelofcarId,$yearStart,$yearEnd,$tire_matchingId);
         }
 
         $this->load->model("tirechanges");
