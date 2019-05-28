@@ -294,7 +294,7 @@ function getImagePicker(){
             // var html = '<option value="">เลือกอู่ซ่อมรถ</option>';
             $.each(data, function (index, val) { 
                 // html += '<option value="'+val.garageId+'">'+val.garageName+'</option>';
-                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<div class=\'text-center\'><strong>'+val.garageName+'</strong><br><span>'+"ช่วงเวลาทำการ : "+''+val.openingtime+'</span>'+"-"+'<span>'+val.closingtime+'</span><br><span>'+"การให้บริการ : "+''+val.garageService+'</span><br><span>'+"สิ่งอำนวยความสะดวก : "+''+val.option1+''+val.option2+''+val.option3+''+val.option4+'</span><span></span></div>" value="'+val.garageId+'" data-openday="'+val.dayopenhour+'" data-open="'+val.openingtime+'" data-close="'+val.closingtime+'">'+val.garageName+'</option>';                
+                imagePickerHtml += '<option data-img-src="'+base_url+'public/image/garage/'+val.picture+'" data-img-class="garage-width" data-img-label="<div class=\'text-center\'><strong>'+val.garageName+'</strong><br><span>'+"ช่วงเวลาทำการ : "+''+val.openingtime+'</span>'+"-"+'<span>'+val.closingtime+'</span><br><span>'+"การให้บริการ : "+''+changeStringToDay(val.garageService)+'</span><br><span>'+"สิ่งอำนวยความสะดวก : "+''+val.option1+''+val.option2+''+val.option3+''+val.option4+'</span><span></span></div>" value="'+val.garageId+'" data-openday="'+val.dayopenhour+'" data-open="'+val.openingtime+'" data-close="'+val.closingtime+'">'+val.garageName+'</option>';                
             });
             // $("#garage").html(html);
             $("#image-picker").html(imagePickerHtml);
