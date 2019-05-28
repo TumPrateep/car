@@ -2,7 +2,7 @@
     .sorting_asc{
         display:none;
     }
-    .select{
+    .selected{
         background-color: #ffae75;
     }
 </style>
@@ -383,15 +383,15 @@ function getCarProfile(){
 }
 
 function selectCarProfile(carProfileId, select){
-    var hasClass = $(select).find(".card").hasClass("select");
+    var hasClass = $(select).children().hasClass("selected");
     var profileId = $("#image-picker-car").val();
     var hasSame = (profileId == carProfileId) || (profileId == "");
     if(hasSame){
         if(hasClass){
-            $(select).find(".card").removeClass("select");
+            $(select).children().removeClass("selected");
             $("#image-picker-car").val("");
         }else{
-            $(select).find(".card").addClass("select");
+            $(select).children().addClass("selected");
             $("#image-picker-car").val(carProfileId);
         }
     }
@@ -531,19 +531,19 @@ function getAllGarage(){
     }
 
 function selectGarage(selectGarageId, dayopen, select, open, close){
-    var hasClass = $(select).find(".card").hasClass("select");
+    var hasClass = $(select).find(".card").hasClass("selected");
     var garageId = $("#image-picker").val();
     var hasSame = (garageId == selectGarageId) || (garageId == "");
     if(hasSame){
         if(hasClass){
-            $(select).find(".card").removeClass("select");
+            $(select).find(".card").removeClass("selected");
             $("#image-picker").val("");
             $("#reserve_day, #reserve_time").val("");
             $("#showReserve").slideUp("slow",function(){
                 $(this).hide();
             });
         }else{
-            $(select).find(".card").addClass("select");
+            $(select).find(".card").addClass("selected");
             $("#image-picker").val(selectGarageId);
             disableDay(dayopen.toString(), open, close);
             $("#reserve_day, #reserve_time").val("");
