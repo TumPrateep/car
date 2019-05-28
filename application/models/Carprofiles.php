@@ -10,21 +10,23 @@ class Carprofiles extends CI_Model {
 		return $this->db->insert('car_profile', $data);
     }
 
-    function allprofile_count()
+    function allprofile_count($userId)
     {   
+        $this->db->where("userId", $userId);
         $query = $this
                 ->db
                 ->get('car_profile');
     
         return $query->num_rows();  
     }
-    function allprofile($limit,$start,$col,$dir)
+
+    function allprofile($limit,$start,$col,$dir,$userId)
     {   
-        $query = $this
-            ->db
+        $this->db->join("provinceforcar","provinceforcar.provinceforcarId = car_profile.province_plate");
+        $this->db->where("userId", $userId);
+        $query = $this->db
             ->limit($limit,$start)
             ->order_by($col,$dir)
-            ->join("provinceforcar","provinceforcar.provinceforcarId = car_profile.province_plate")
             ->get('car_profile');
             
             // ->where('car_profile.status', 1);
@@ -38,6 +40,35 @@ class Carprofiles extends CI_Model {
                 return null;
             }
         
+    }
+
+    function carprofile_search_count($character_plate, $number_plate, $province_plate, $userId){
+        $this->db->like('character_plate',$character_plate);
+        $this->db->like('number_plate',$number_plate);
+        $this->db->like('province_plate',$province_plate);
+        $this->db->where("userId", $userId);
+        $query = $this->db->get('car_profile');
+        return $query->num_rows();
+    }
+
+    function profileSearrch($limit,$start,$order,$dir,$character_plate, $number_plate, $province_plate, $provinceforcarName,$userId){
+        $this->db->join("provinceforcar","provinceforcar.provinceforcarId = car_profile.province_plate");
+        $this->db->where("car_profile.userId", $userId);
+        $this->db->like('car_profile.character_plate',$character_plate);
+        $this->db->like('car_profile.number_plate',$number_plate);
+        $this->db->like('car_profile.province_plate',$province_plate);
+        $query = $this->db->limit($limit,$start)
+            ->order_by($order,$dir)
+            ->get('car_profile');
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
     }
 
     function getCarProfileByUserId($userId,$car_profileId){
@@ -122,16 +153,6 @@ class Carprofiles extends CI_Model {
             return null;
         }
         
-    }
-    function carprofile_search_count($character_plate, $number_plate, $province_plate){
-        $this->db->like('character_plate',$character_plate);
-        $this->db->like('number_plate',$number_plate);
-        $this->db->like('province_plate',$province_plate);
-        // if($skill != null){
-        //     $this->db->where("skill", $skill);
-        // }
-        $query = $this->db->get('car_profile');
-        return $query->num_rows();
     }
 
     function getBrandCar(){

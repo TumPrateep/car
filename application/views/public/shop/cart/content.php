@@ -37,8 +37,13 @@
                     </div>
 
 					<div class="row">
+						
 						<div class="col-md-12">
-							<select class="image-picker show-html" id="image-picker-car" name="carProfileId"></select>
+							<input type="hidden" name="carProfileId" id="image-picker-car">
+							<div class="table-responsive" >
+								<table class="table table-bordered" id="order-table" width="100%" cellspacing="0"></table>
+							</div>
+							<!-- <select class="image-picker show-html" id="image-picker-car" name="carProfileId"></select> -->
 						</div>
 					</div>
                 </fieldset>				
@@ -121,7 +126,8 @@
 
                     <div class="row">
 						<div class="col-md-12">
-							<select class="image-picker show-html" id="image-picker" name="garageId"></select>
+							<input type="hidden" id="image-picker" name="garageId">
+							<table class="table table-bordered" id="search-table" width="100%" cellspacing="0"></table>
 						</div>
 					</div>
 					<br>

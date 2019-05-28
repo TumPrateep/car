@@ -31,7 +31,7 @@
                 },
                 modelofcarId: {
                     required: true
-                }
+                },
                 color: {
                     required: true 
                 },
@@ -61,7 +61,7 @@
                 },
                 modelofcarId: {
                     required: "กรุณาเลือกรายละเอียดรุ่น"
-                }
+                },
                 color: {
                     required: "กรุณากรอกสี" 
                 },
