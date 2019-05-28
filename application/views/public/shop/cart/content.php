@@ -19,23 +19,22 @@
 					<div class="alert alert-danger hide" role="alert">
 						<strong>คำเตือน!</strong> เลือกรถยนต์ที่ต้องการ
 					</div>
-                    <div class="row ">
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-create" onclick="createCarConfirm()" ><i class="fa fa-plus"></i>  สร้าง</button>  
-                        </div>
-						<div class="col-lg-3 mt-8">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="ค้นหารถ" id="searchCar">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                </div>
-                            </div>
-                        </div>
-						<div class="col-lg-2">
-                            <button type="submit" class="btn btn-info btn-block" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
-                        </div>
+                    <div class="row justify-content-between">
+						<div class="col col-lg-2">
+							<button type="button" class="btn btn-create btn-block" onclick="createCarConfirm()"><i class="fa fa-plus"></i>  สร้าง</button>
+						</div>
+						<div class="col col-lg-6">
+							<div class="row">
+								<div class="col-md-auto">
+									<input type="text" class="form-control" placeholder="ค้นหารถ" id="searchCar">
+								</div>
+								<div class="col col-lg-5">
+									<button type="button" class="btn btn-info btn-block" id="search-car"><i class="fa fa-search"></i>  ค้นหา</i></button>
+								</div>
+							</div>
+						</div>
                     </div>
-
+					<br>
 					<div class="row">
 						
 						<div class="col-md-12">
@@ -109,21 +108,22 @@
 					<div class="alert alert-danger hide" role="alert">
 						<strong>คำเตือน!</strong> เลือกอู่ที่ต้องการ
 					</div>
-                    <div class="row ">
-                        <div class="col-lg-4 offset-lg-5 mt-8">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="ขื่ออู่ซ่อมรถ" id="skillmechanic">
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-orange" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-2 mt-8">
-                            <button type="button" class="btn btn-orang-y" id="search"><i class="fa fa-search"></i>  ค้นหาอู่ใกล้เคียง</i></button>
-                        </div>
-                    </div>
+                    <div class="row justify-content-between">
 
+						<div class="col col-lg-2"></div>
+						<div class="col col-lg-6">
+							<div class="row">
+								<div class="col-md-auto">
+									<input type="text" class="form-control" placeholder="ค้นหาอู่" id="garagename">
+								</div>
+								<div class="col col-lg-5">
+									<button type="button" class="btn btn-info btn-block" id="btn-search-garage"><i class="fa fa-search"></i>  ค้นหา</i></button>
+								</div>
+							</div>
+						</div>
+
+                    </div>
+					<br>
                     <div class="row">
 						<div class="col-md-12">
 							<input type="hidden" id="image-picker" name="garageId">

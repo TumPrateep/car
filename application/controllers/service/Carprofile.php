@@ -181,17 +181,16 @@ class Carprofile extends BD_Controller {
         $totalData = $this->carprofiles->allprofile_count($userId);
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('character_plate'))&& empty($this->post('number_plate'))&& empty($this->post('province_plate')))
-        {            
+        if(empty($this->post('search'))){            
             $posts = $this->carprofiles->allprofile($limit,$start,$order,$dir,$userId);
-        }
-        else {
-            $character_plate = $this->post('character_plate'); 
-            $number_plate = $this->post('number_plate');
-            $province_plate = $this->post('province_plate');
-            $provinceforcarName = $this->post('provinceforcarName');
-            $posts =  $this->carprofiles->profileSearrch($limit,$start,$order,$dir,$character_plate, $number_plate, $province_plate, $provinceforcarName,$userId);
-            $totalFiltered = $this->carprofiles->carprofile_search_count($character_plate, $number_plate, $province_plate,$userId);
+        } else {
+            // $character_plate = $this->post('character_plate'); 
+            // $number_plate = $this->post('number_plate');
+            // $province_plate = $this->post('province_plate');
+            // $provinceforcarName = $this->post('provinceforcarName');
+            $search = $this->post("search");
+            $posts =  $this->carprofiles->profileSearch($limit,$start,$order,$dir,$search,$userId);
+            $totalFiltered = $this->carprofiles->carprofile_search_count($search,$userId);
         }
         $data = array();
         if(!empty($posts))

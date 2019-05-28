@@ -333,7 +333,7 @@ function getCarProfile(){
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    // data.firstName = $("#namemechanic").val()
+                    data.search = $("#searchCar").val()
                     // data.skill = $("#skillmechanic").val()
                     //data.status = $("#status").val()
                 }
@@ -381,11 +381,6 @@ function getCarProfile(){
     });
     
 }
-
-$("#search").click(function(){
-    event.preventDefault();
-    table.ajax.reload();
-})
 
 function selectCarProfile(carProfileId, select){
     var hasClass = $(select).find(".card").hasClass("select");
@@ -450,14 +445,14 @@ function getAllGarage(){
                 "type": "POST",
                 "data": function ( data ) {
                     data.garagename = $("#garagename").val();
-                    data.provinceIdSearch =$("#provinceIdSearch").val();
-                    data.districtIdSearch= $("#districtIdSearch").val();
-                    data.subdistrictIdSearch = $("#subdistrictIdSearch").val();
-                    data.brandId = $("#brandId").val();
-                    data.service = $("#Service").val();
-                    data.latitude = latitude;
-                    data.longitude = longitude;
-                    data.sort = $("#sort").val();
+                    // data.provinceIdSearch =$("#provinceIdSearch").val();
+                    // data.districtIdSearch= $("#districtIdSearch").val();
+                    // data.subdistrictIdSearch = $("#subdistrictIdSearch").val();
+                    // data.brandId = $("#brandId").val();
+                    // data.service = $("#Service").val();
+                    // data.latitude = latitude;
+                    // data.longitude = longitude;
+                    // data.sort = $("#sort").val();
                 }
             },
             "columns": [
@@ -576,11 +571,6 @@ function selectGarage(selectGarageId, dayopen, select, open, close){
     //     },
     // });
 }
-
-$("#btn-search-garage").click(function(){
-    event.preventDefault();
-    garagetable.ajax.reload();
-})
 
 function disableDay(openday, open, close){
     console.log(openday);
@@ -780,6 +770,17 @@ $(document).ready(function () {
 
     getCarProfile();
     getAllGarage();
+
+    $("#search-car").click(function(){
+        event.preventDefault();
+        table.ajax.reload();
+    })
+
+    $("#btn-search-garage").click(function(){
+        event.preventDefault();
+        garagetable.ajax.reload();
+    })
+
 
 });
 

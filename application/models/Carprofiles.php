@@ -42,24 +42,25 @@ class Carprofiles extends CI_Model {
         
     }
 
-    function carprofile_search_count($character_plate, $number_plate, $province_plate, $userId){
-        $this->db->like('character_plate',$character_plate);
-        $this->db->like('number_plate',$number_plate);
-        $this->db->like('province_plate',$province_plate);
-        $this->db->where("userId", $userId);
-        $query = $this->db->get('car_profile');
+    function carprofile_search_count($search, $userId){
+        // $this->db->select("concat(character_plate,' ',number_plate) as plate, car_profile.*, provinceforcar.*");
+        $this->db->from("car_profile");
+        $this->db->join("provinceforcar","provinceforcar.provinceforcarId = car_profile.province_plate");
+        $this->db->where("car_profile.userId", $userId);
+        $this->db->like("concat(character_plate,' ',number_plate)", $search);
+        $query = $this->db->get();
         return $query->num_rows();
     }
 
-    function profileSearrch($limit,$start,$order,$dir,$character_plate, $number_plate, $province_plate, $provinceforcarName,$userId){
+    function profileSearch($limit,$start,$order,$dir,$search,$userId){
+        // $this->db->select("concat(character_plate,' ',number_plate) as plate, car_profile.*, provinceforcar.*");
+        $this->db->from("car_profile");
         $this->db->join("provinceforcar","provinceforcar.provinceforcarId = car_profile.province_plate");
         $this->db->where("car_profile.userId", $userId);
-        $this->db->like('car_profile.character_plate',$character_plate);
-        $this->db->like('car_profile.number_plate',$number_plate);
-        $this->db->like('car_profile.province_plate',$province_plate);
+        $this->db->like("concat(character_plate,' ',number_plate)", $search);
         $query = $this->db->limit($limit,$start)
             ->order_by($order,$dir)
-            ->get('car_profile');
+            ->get();
         
         if($query->num_rows()>0)
         {
