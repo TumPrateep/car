@@ -59,10 +59,16 @@
                 var score = '';
                 var rat_star = '';
                 scoreall = data;
-                averagescore = ((scoreall.five*5)+(scoreall.four*4)+(scoreall.three*3)+(scoreall.two*2)+(scoreall.one*1))/scoreall.all;
-                averagescorerating = averagescore.toFixed( 1 );
-                scorerating = Math.floor(averagescore);
-
+                if(scoreall.all != 0){
+                    averagescore = ((scoreall.five*5)+(scoreall.four*4)+(scoreall.three*3)+(scoreall.two*2)+(scoreall.one*1))/scoreall.all;
+                    averagescorerating = averagescore.toFixed( 1 );
+                    scorerating = Math.floor(averagescore);
+                }else{
+                    averagescore = 0;
+                    averagescorerating = 0;
+                    scorerating = 0;
+                }
+                
                     for(var i=0;i<scorerating;i++){
                        rat_star += '<i class="fa fa-star Yellow-star size-star" ></i>';
                     }
@@ -136,10 +142,15 @@
                 var scorebymonth = '';
                 var rat_starbymonth = '';
                 scoreallbymonth = data;
-                console.log(scoreallbymonth.all);
-                averagescorebymonth = ((scoreallbymonth.five*5)+(scoreallbymonth.four*4)+(scoreallbymonth.three*3)+(scoreallbymonth.two*2)+(scoreallbymonth.one*1))/scoreallbymonth.all;
-                averagescoreratingbymonth = averagescorebymonth.toFixed( 1 );
-                scoreratingbymonth = Math.floor(averagescorebymonth);
+                if(scoreallbymonth.all != 0){
+                    averagescorebymonth = ((scoreallbymonth.five*5)+(scoreallbymonth.four*4)+(scoreallbymonth.three*3)+(scoreallbymonth.two*2)+(scoreallbymonth.one*1))/scoreallbymonth.all;
+                    averagescoreratingbymonth = averagescorebymonth.toFixed( 1 );
+                    scoreratingbymonth = Math.floor(averagescorebymonth);
+                }else{
+                    averagescorebymonth = 0;
+                    averagescoreratingbymonth = 0;
+                    scoreratingbymonth = 0;
+                }
 
                     for(var i=0;i<scoreratingbymonth;i++){
                        rat_starbymonth += '<i class="fa fa-star Yellow-star size-star" ></i>';
