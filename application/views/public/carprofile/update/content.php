@@ -60,8 +60,8 @@
                                                     <label class="form-label required" for="garage">จังหวัด</label>
                                                     <select class="form-control input-default" name="province_plate" id="province_plate">
                                                         <option value="">เลือกจังหวัด</option>
-                                                        <option value="1">ตรัง</option>
-                                                        <option value="2">นครศรีธรรมราช</option>
+                                                        <!-- <option value="1">ตรัง</option>
+                                                        <option value="2">นครศรีธรรมราช</option> -->
                                                     </select>
                                                 </div>
                                             </div>

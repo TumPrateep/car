@@ -381,7 +381,8 @@
                 success:function (data, textStatus, jqXHR) {
                   if(data.message == 200){
                     showMessage(data.message,"login");
-                  }else{
+                  }else {
+                    errorMessage.html("ชื่อผู้ใช้งานหรือเบอร์โทรนี้ถูกใช้งานแล้ว");
                     showMessage(data.message);
                   }
                 }

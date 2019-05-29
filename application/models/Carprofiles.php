@@ -83,7 +83,7 @@ class Carprofiles extends CI_Model {
     }
 
     function getCarProfileByUserIdAndCarprofileId($userId,$car_profileId){
-        $this->db->select('car_profile.car_profileId,car_profile.number_plate,car_profile.character_plate,car_profile.province_plate,car_profile.mileage,car_profile.color,car_profile.pictureFront,car_profile.brandId,car_profile.modelId,car_profile.modelofcarId,brand.brandName,model.detail');
+        $this->db->select('car_profile.car_profileId,car_profile.number_plate,car_profile.character_plate,car_profile.province_plate,car_profile.mileage,car_profile.color,car_profile.pictureFront,car_profile.brandId,car_profile.modelId,car_profile.modelofcarId,brand.brandName,model.modelName,model.yearStart,model.modelId as modelnumber,model.yearEnd,model.detail,modelofcar.machineSize,modelofcar.modelofcarName');
         $this->db->from('car_profile');
         $this->db->join('brand', 'car_profile.brandId = brand.brandId');
         $this->db->join('model', 'car_profile.modelId = model.modelId');

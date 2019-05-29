@@ -55,9 +55,10 @@
                 errorMessage.hide();
                 $.post(base_url+"api/register/register", data,
                     function (data, textStatus, jqXHR) {
-                        if(data.message == 200){
-                            alert("บันทึกสำเร็จ");
-                        }
+                        // if(data.message == 200){
+                        //     alert("บันทึกสำเร็จ");
+                        // }
+                        showMessage(data.message,"login");
                     }
                 ).fail(function(data) {
                     if(data.responseJSON.message == 3001){

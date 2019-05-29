@@ -899,6 +899,59 @@ $(document).ready(function () {
     });
     
     var createcar = $("#submit-create-car-profile");
+    createcar.validate({
+        rules:{
+            character_plate: {
+                required: true
+            },
+            number_plate: {
+                required: true
+            },
+            province_plate: {
+                required: true
+            },
+            brandId: {
+                required: true
+            },
+            modelId: {
+                required: true
+            },
+            detail: {
+                required: true
+            },
+            modelofcarId: {
+                required: true
+            },
+            color: {
+                required: true
+            }  
+        },messages:{
+            character_plate: {
+                required: "กรุณากรอกอัษร"
+            },
+            number_plate:{
+                required: "กรุณากรอกหมายเลข"
+            },
+            province_plate: {
+                required: "กรุณาเลือกจังหวัด"
+            },
+            brandId:{
+                required: "กรุณาเลือกยี่ห้อรถ"
+            },
+            modelId: {
+                required: "กรุณาเลือกรุ่นรถ"
+            },
+            detail:{
+                required: "กรุณาเลือกรายละเอียดรถ"
+            },
+            modelofcarId: {
+                required: "กรุณาเลือกโฉมรถ"
+            },
+            color: {
+                required: "กรุณากรอกสีรถ"
+            } 
+        }
+    });
     var datacar = createcar.serialize();
     createcar.submit(function (e) { 
       e.preventDefault();
