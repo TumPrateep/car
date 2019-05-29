@@ -108,7 +108,7 @@ class Mechanic extends BD_Controller {
         }
         else {
             $firstname = $this->post('firstName'); 
-            $brandId = $this->post('skill');
+            // $brandId = $this->post('skill');
             $posts =  $this->mechanics->mechanics_search($limit,$start,$order,$dir,$firstname,$garageId);
             $totalFiltered = $this->mechanics->mechanics_search_count($firstname,$garageId);
         }

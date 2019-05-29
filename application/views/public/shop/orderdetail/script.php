@@ -92,7 +92,7 @@
                         content = val.lubricator+" "+val.lubricator_number+" "+val.capacity+" ลิตร";
                         quantity = val.quantity;
                     }else if(val.group == "spare"){
-                        picture = base_url+'public/image/spareundercarriage/'+val.picture;
+                        picture = base_url+'public/image/spareproduct/'+val.picture;
                         content = val.spares_undercarriageName+" "+val.brandName+" "+val.modelName+" "+val.machineSize+" "+val.modelofcarName; 
                         quantity = val.quantity;
                     }

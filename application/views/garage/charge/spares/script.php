@@ -28,7 +28,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spa = $("#spa").val()
+                    data.spares_undercarriageName = $("#spares_undercarriageName").val()
                 }
             },
             "order": [[ 1, "asc" ]],

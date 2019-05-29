@@ -14,7 +14,9 @@ $(document).ready(function () {
                 if(val.group == "tire"){
 
                 }else if(val.group == "lubricator"){
-
+                    picture = base_url+'public/image/lubricatorproduct/'+val.picture;
+                    content = val.spares_undercarriageName; 
+                    quantity = val.quantity;
                 }else if(val.group == "spare"){
                     picture = base_url+'public/image/spareundercarriage/'+val.picture;
                     content = val.spares_undercarriageName; 

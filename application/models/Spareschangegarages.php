@@ -72,7 +72,7 @@ class Spareschangegarages extends CI_Model{
                                                                                                                                                                                                 
     }
 
-    function spareschanges_search($limit,$start,$search,$col,$dir,$status,$garageId){
+    function spareschanges_search($limit,$start,$search,$col,$dir,$status,$garageId,$spares_undercarriageName){
         
         $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName,brand.brandName,brand.brandId');
         $this->db->from('spares_change_garage');
@@ -95,7 +95,7 @@ class Spareschangegarages extends CI_Model{
             return null;
         }
     }
-    function spareschanges_search_count($search,$status,$garageId){
+    function spareschanges_search_count($search,$status,$garageId,$spares_undercarriageName){
        
         $this->db->select('spares_change_garage.spares_changeId,spares_change_garage.spares_price,spares_change_garage.status,spares_change_garage.garageId,spares_undercarriage.spares_undercarriageName,brand.brandName,brand.brandId');
         $this->db->from('spares_change_garage');

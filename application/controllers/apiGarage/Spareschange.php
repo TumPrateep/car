@@ -103,7 +103,7 @@ class Spareschange extends BD_Controller {
         $columns = array( 
             0 => null,
             1 => 'brandName',
-            2 => 'spares_undercarriageId',
+            2 => 'spares_undercarriageName',
             3 => 'spares_price'
         );
         $garageId = $this->session->userdata['logged_in']['garageId'];
@@ -119,8 +119,9 @@ class Spareschange extends BD_Controller {
         }else {
             $search = $this->post('spa');
             $status = null;
-            $posts =  $this->spareschangegarages->spareschanges_search($limit,$start,$search,$order,$dir,$status,$garageId);
-            $totalFiltered = $this->spareschangegarages->spareschanges_search_count($search,$status,$garageId);
+            $spares_undercarriageName = $this->post('spares_undercarriageName');
+            $posts =  $this->spareschangegarages->spareschanges_search($limit,$start,$search,$order,$dir,$status,$garageId,$spares_undercarriageName);
+            $totalFiltered = $this->spareschangegarages->spareschanges_search_count($search,$status,$garageId,$spares_undercarriageName);
         }
         $data = array();
         if(!empty($posts))

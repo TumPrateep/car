@@ -24,7 +24,7 @@
                             
                             <div class="col-lg-3 offset-lg-5 mt-8">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="spa" placeholder="อะไหล่ช่วงล่าง">
+                                    <input type="text" class="form-control" id="spares_undercarriageName" placeholder="อะไหล่ช่วงล่าง">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-usd" aria-hidden="true"></i></span>
                                     </div>
