@@ -126,6 +126,84 @@
             }
         );
 
+        var ratingbymonth = $("#show-ratingbymonth");
+        $.get(base_url+"apigarage/Review/searchScoreRatingbyMonth", {},
+            function (data, textStatus, jqXHR) {
+                
+                data.brandName = $("#ratmonth").val()
+                data.status = $("#ratyear").val()
+
+                var scorebymonth = '';
+                var rat_starbymonth = '';
+                scoreallbymonth = data;
+                console.log(scoreallbymonth.all);
+                averagescorebymonth = ((scoreallbymonth.five*5)+(scoreallbymonth.four*4)+(scoreallbymonth.three*3)+(scoreallbymonth.two*2)+(scoreallbymonth.one*1))/scoreallbymonth.all;
+                averagescoreratingbymonth = averagescorebymonth.toFixed( 1 );
+                scoreratingbymonth = Math.floor(averagescorebymonth);
+
+                    for(var i=0;i<scoreratingbymonth;i++){
+                       rat_starbymonth += '<i class="fa fa-star Yellow-star size-star" ></i>';
+                    }
+                    for(var i=5;scoreratingbymonth<i;scoreratingbymonth++){
+                       rat_starbymonth += '<i class="fa fa-star size-star" ></i>';
+                    }
+                scorebymonth += '<label>คะเเนนเเละรีวิว รายเดือน 02/2019</label>'
+                        + ' <div class="row">'
+                            + '<div class="col-md-4 "><br>'
+                                + '<div class="text-center"><span class="txt-rating">'+averagescoreratingbymonth+'</span></div>'
+                                + '<div class="text-center pad-star">'
+                                    + rat_starbymonth
+                                + '</div>'
+                                + '<div class="text-center"><span>'+scoreallbymonth.all+'</span></div>'
+                            + '</div>'
+                            + '<div class="col-md-8">'
+                                + '<div class="row">'
+                                    + '<div class="col-md-2"><span>5</span></div>'
+                                    + '<div class="col-md-10 progress-center" >'
+                                        + '<div class="progress progress-hgt">'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreallbymonth.five*100)/scoreallbymonth.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreallbymonth.five+'</div>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>'
+                                + '<div class="row">'
+                                    + '<div class="col-md-2"><span>4</span></div>'
+                                    + '<div class="col-md-10 progress-center" >'
+                                        + '<div class="progress progress-hgt">'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreallbymonth.four*100)/scoreallbymonth.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreallbymonth.four+'</div>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>'
+                                + '<div class="row">'
+                                    + '<div class="col-md-2"><span>3</span></div>'
+                                    + '<div class="col-md-10 progress-center" >'
+                                        + '<div class="progress progress-hgt">'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreallbymonth.three*100)/scoreallbymonth.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreallbymonth.three+'</div>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>'
+                                + '<div class="row">'
+                                    + '<div class="col-md-2"><span>2</span></div>'
+                                    + '<div class="col-md-10 progress-center" >'
+                                        + '<div class="progress progress-hgt">'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreallbymonth.two*100)/scoreallbymonth.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreallbymonth.two+'</div>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>'
+                                + '<div class="row">'
+                                    + '<div class="col-md-2"><span>1</span></div>'
+                                    + '<div class="col-md-10 progress-center" >'
+                                        + '<div class="progress progress-hgt">'
+                                            + '<div class="progress-bar bg-Orange" role="progressbar" style="width: '+((scoreallbymonth.one*100)/scoreallbymonth.all)+'%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">'+scoreallbymonth.one+'</div>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>'
+                            + '</div>'
+                        + '</div>';
+
+                ratingbymonth.html(scorebymonth);
+            }
+        );
+
 
     	var comment = $("#show-comment");
         $.post(base_url+"apigarage/Review/getdatarating", {},

@@ -83,6 +83,7 @@
                     "targets": 7,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
+                        var disable = "";
                         html = "";
                         if(data.status == "1"){
                             html += '<a href="'+base_url+"shop/payment/"+data.orderId+'"><button type="button" class="btn btn-success">จ่ายเงิน</button>'
@@ -92,10 +93,10 @@
                         }
                         
                         else if(data.statusSuccess == "2"){
-                            html +='<a href="#"><button type="button" onclick="commetrating('+data.orderId+')" class="btn btn-primary">เสร็จสิ้น</button> '
+                            html +='<a href="#"><button type="button" title="กดเพื่อให้คะเเนนการให้บริการ" onclick="commetrating('+data.orderId+')" class="btn btn-info"><i class="far fa-thumbs-up"></i></button> '
                         }
                         else if(data.statusSuccess == "3"){
-                            html +=''
+                            html +='';
                         }
                         return html 
                         
@@ -113,10 +114,14 @@
                                 orderstatus +='<span class="badge badge-warning">รออนุมัติ</span>';
                             }else if(data.status == "3"){
                                 orderstatus +='<span class="badge badge-info">ชำระเงินเเล้ว</span>';
-                            
                             }else if(data.status == "9"){
                                 orderstatus +='<span class="badge badge-danger">ยกเลิกการจอง</span>';
-                            } else{
+                            }else if(data.statusSuccess == "2"){
+                                orderstatus +='<span class="badge badge-info">ให้คะเเนนและรีวิว</span>';
+                            } else if(data.statusSuccess == "3"){
+                                orderstatus +='<span class="badge badge-primary">ขอบคุนที่ใช้บริการ</span>';
+                            }
+                             else{
                                 orderstatus +='<span class="badge badge-success">เข้าใช้บริการ</span>';
                             }
 
