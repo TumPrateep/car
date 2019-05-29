@@ -41,7 +41,7 @@ class Spareundercarriage extends BD_Controller {
             && empty($this->post('spares_undercarriageId')) 
             && empty($this->post('modelId')) 
             && empty($this->post('brandId'))
-            && empty($this->post('year'))
+            && empty($this->post('modelofcarId'))
             && empty($this->post('price'))
             && empty($this->post('can_change')))
         {            
@@ -53,14 +53,14 @@ class Spareundercarriage extends BD_Controller {
             $spares_undercarriageId = $this->post('spares_undercarriageId');
             $modelId =$this->post('modelId');
             $brandId =$this->post('brandId');
-            $year =$this->post('year');
+            $modelofcarId =$this->post('modelofcarId');
             $can_change =$this->post('can_change');
             $price = $this->post('price');
             $status = $this->post('status');
             
-            $posts =  $this->spareundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
+            $posts =  $this->spareundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change);
 
-            $totalFiltered = $this->spareundercarriageproduct->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change);
+            $totalFiltered = $this->spareundercarriageproduct->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change);
         }
 
         $this->load->model("sparechanges");

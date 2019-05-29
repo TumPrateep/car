@@ -1,3 +1,11 @@
+<style>
+	.border-search{
+		border: 1px solid #cfcfcf;
+		border-radius: 3px;
+		padding: 15px;
+	}
+</style>
+
 <div class="shop">
 	<div class="container">
         <div class="row">
@@ -13,54 +21,68 @@
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="shop_sidebar">
-                    <div class="form-group">
-                        <label class="control-label">ยี่ห้อรถ</label>
-                        <select class="form-control input-default" name="brandId" id="brandId">
-                            <option value="">เลือกยี่ห้อรถ</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">รุ่นรถ</label>
-                        <select class="form-control input-default" name="modelId" id="modelId">
-                            <option value="">เลือกรุ่นรถ</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">โฉมรถยนต์</label>
-                        <select class="form-control input-default" name="detail" id="detail">
-                            <option value="">เลือกโฉมรถยนต์</option>
-                        </select>
-                    </div>
-
-					<div class="form-group">
-                        <label class="control-label">รายละเอียดรุ่น</label>
-                        <select class="form-control input-default" name="modelofcarId" id="modelofcarId">
-                            <option value="">เลือกรายละเอียดรุ่น</option>
-                        </select>
+					<div class="border-search" id="carprofile-box">
+						<div class="form-group">
+							<label class="control-label">ทะเบียนรถ</label>
+							<select class="form-control input-default" name="carprofileId" id="carprofileId">
+								<option value="">เลือกทะเบียนรถ</option>
+							</select>
+						</div>
 					</div>
-                    <div class="form-group">
-                        <label class="control-label">อะไหล่ช่วงล่าง</label>
-                        <select class="form-control input-default" name="spares_undercarriageId" id="spares_undercarriageId">
-                            <option value="">เลือกอะไหล่ช่วงล่าง</option>
-                        </select>
-                    </div>
+					<br>
+					<div class="border-search">
+						<div class="form-group">
+							<label class="control-label">ยี่ห้อรถ</label>
+							<select class="form-control input-default" name="brandId" id="brandId">
+								<option value="">เลือกยี่ห้อรถ</option>
+							</select>
+						</div>
 
-                    <div class="form-group">
-                        <label class="control-label">ยี่ห้ออะไหล่ช่วงล่าง</label>
-                        <select class="form-control input-default" name="spares_brandId" id="spares_brandId">
-                            <option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>
-                        </select>
-                    </div>
+						<div class="form-group">
+							<label class="control-label">รุ่นรถ</label>
+							<select class="form-control input-default" name="modelId" id="modelId">
+								<option value="">เลือกรุ่นรถ</option>
+							</select>
+						</div>
 
-                    <div class="form-group">
+						<div class="form-group">
+							<label class="control-label">โฉมรถยนต์</label>
+							<select class="form-control input-default" name="detail" id="detail">
+								<option value="">เลือกโฉมรถยนต์</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label">รายละเอียดรุ่น</label>
+							<select class="form-control input-default" name="modelofcarId" id="modelofcarId">
+								<option value="">เลือกรายละเอียดรุ่น</option>
+							</select>
+						</div>
+					
+					</div>
+					<br>
+					<div class="border-search">
+						<div class="form-group">
+							<label class="control-label">อะไหล่ช่วงล่าง</label>
+							<select class="form-control input-default" name="spares_undercarriageId" id="spares_undercarriageId">
+								<option value="">เลือกอะไหล่ช่วงล่าง</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label">ยี่ห้ออะไหล่ช่วงล่าง</label>
+							<select class="form-control input-default" name="spares_brandId" id="spares_brandId">
+								<option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>
+							</select>
+						</div>
+					</div>
+                    <!-- <div class="form-group">
                         <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
                         <select class="form-control valid" id="can_change" name="can_change" aria-required="true" aria-invalid="false">
 							<option value="1">เปลี่ยนทันที</option>
 							<option value="2">สั่งจอง</option>
 						</select>
-                    </div>
+                    </div> -->
 
                     
                     <div class="sidebar_section filter_by_section">
