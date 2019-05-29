@@ -40,6 +40,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
+                    data.search = "";
                     // data.firstName = $("#namemechanic").val()
                     // data.skill = $("#skillmechanic").val()
                     //data.status = $("#status").val()
