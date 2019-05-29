@@ -942,6 +942,11 @@ $(document).ready(function () {
             $("#characterofcar").html(input_data);      
         });
 
+        $("#number_plate").keyup(function(event){
+                var input_data=$("#number_plate").val();
+            $("#numberofcar").html(input_data);      
+        });
+
         $("#province_plate").change(function(event){
                 var input_data=$("#province_plate :selected").text();
             $("#provincecar").html(input_data);      

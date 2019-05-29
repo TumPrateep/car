@@ -132,11 +132,11 @@
 					</div>
 					<br>
 					<div id="showReserve" class="hidden">
-						<!-- <h4 class="underline text-center">เลือกเวลาที่ต้องการใช้บริการ</h4> -->
+						<h4 class="underline text-center">เลือกเวลาที่ต้องการใช้บริการ</h4>
 						<div class="row justify-content-md-center">
 							<div class="col-lg-5">
 								<div class="form-group">
-									<label class="form-label"><h4>เลือกวันและเวลาเข้าใช้บริการ</h4></label>
+									<label class="form-label required">เลือกวันเวลาที่จอง</label>
 									<input type="text" class="form-control" id="reserve" name="reserve" placeholder="เลือกวันทำการ">
 								</div>
 							</div>
@@ -220,28 +220,34 @@
                                 
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="form-label " for="car-profile">หมายเลขป้ายทะเบียน</label>
-										<input type="text" class="form-control" id="character_plate" name="character_plate" placeholder="หมายเลขป้ายทะเบียน">
+										<label class="form-label " for="car-profile">ตัวอักษร</label>
+										<input type="text" class="form-control" id="character_plate" name="character_plate" placeholder="ตัวอักษร">
 									</div>
-									<!-- <div class="form-group">
+									<div class="form-group">
 										<label class="form-label required" for="car-profile">หมายเลข</label>
 										<input type="number" class="form-control" id="number_plate" name="number_plate" placeholder="หมายเลข">
-									</div> -->
+									</div>
 									<div class="form-group">
 										<label class="form-label required" for="car-profile">จังหวัด</label>
 										<select class="form-control input-default" name="province_plate" id="province_plate">
 											
 										</select>
 									</div>
-									<div class="card border-black-plate">
-										<div class="form-group text-center from-padding">
-											<h3><span id="characterofcar" name="characterofcar"></span></h3>
+									<div class="card border-black-plate from-padding">
+										<div class="form-group text-center">
+											<span class="txt-S-m" id="characterofcar" name="characterofcar"></span>
+											<span class="txt-S-m" id="numberofcar" name="numberofcar"></span>
 										</div>
 										<div class="form-group text-center">
 											<h4><span id="provincecar" name="provincecar"></span></h4>
 										</div>
 									</div>
-									<div class="form-group from-padding">
+
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
 										<label class="form-label required">ยี่ห้อรถ</label>
 										<select class="form-control input-default" name="brandId" id="brandId">
 											<option value="">เลือกยี่ห้อรถ</option>
@@ -249,8 +255,6 @@
 										</select>
 									</div>
 								</div>
-							</div>
-							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label required">รุ่นรถ</label>
@@ -260,6 +264,8 @@
 										</select>
 									</div>
 								</div>
+							</div>
+							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label required">โฉมรถยนต์</label>
@@ -269,8 +275,6 @@
 										</select>
 									</div>
 								</div>
-							</div>
-							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label required">รายละเอียดรุ่น</label>
@@ -280,26 +284,14 @@
 										</select>
 									</div>
 								</div>
-								<!-- <div class="col-md-6">
-									<div class="form-group">
-										<label class="form-label required" for="garage">ชนิดเครื่องยน์</label>
-										<input type="text" class="form-control" id="lubricatorMachine" name="lubricatorMachine" placeholder="ชนิดน้ำมันเครื่อง">
-									</div>
-								</div> -->
+							</div>
+							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label required" for="garage">สีรถ</label>
 										<input type="text" class="form-control" id="color" name="color" placeholder="สีรถ">
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<!-- <div class="col-md-6">
-									<div class="form-group">
-										<label class="form-label required" for="garage">สีรถ</label>
-										<input type="text" class="form-control" id="color" name="color" placeholder="สีรถ">
-									</div>
-								</div> -->
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label" for="garage">เลขไมล์</label>
