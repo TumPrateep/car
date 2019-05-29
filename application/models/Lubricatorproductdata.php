@@ -87,6 +87,7 @@ class Lubricatorproductdata extends CI_Model{
         // $this->db->where("lubricator_number.lubricator_gear", $lubricator_gear);
         $this->db->order_by("lubricator.lubricatorName","ASC");
         $query = $this->db->get();
+        
         return $query->result();
     }
 }

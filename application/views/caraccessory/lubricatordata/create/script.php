@@ -83,7 +83,7 @@
     }
 
     function getLubracatorBrand(){
-        $.get(base_url+"apicaraccessories/cubricatorbrand/getAllLubricatorBrand",{},
+        $.get(base_url+"apicaraccessories/lubricatorbrand/getAllLubricatorBrand",{},
             function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
@@ -100,7 +100,7 @@
 
     lubricator_brand.change(function(){
         lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
-        $.get(base_url+"apicaraccessories/cubricator/getAllLubricator",{
+        $.get(base_url+"apicaraccessories/lubricator/getAllLubricator",{
             lubricator_brandId: $(this).val(),
             lubricator_gear: lubricator_gear.val()
         },function(data){

@@ -1,8 +1,140 @@
 <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
 <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
 <script>
+
+    var carprofile = $("#carprofileId");
+    var carprofileData = [];
+    var brand =$("#brandId");
+    var model = $("#modelId");
+    var modelofcar =$("#modelofcarId");
+    var detail = $("#detail");
+    var table;
+
+    function getProfile(){
+        var userId = localStorage.userId;
+        console.log(userId);
+        if(userId != undefined || userId != null){
+            var html = '<option value="">เลือกทะเบียนรถ</option>';
+            carprofileData = [];
+            $.get(base_url+"service/Carprofile/getAllCarProfileByUserId", {},
+                function (data, textStatus, jqXHR) {
+                    $.each(data, function (i, v) { 
+                        html += '<option value="'+v.car_profileId+'">'+v.character_plate+' '+v.number_plate+' '+v.provinceforcarName+'</option>';
+                        carprofileData[v.car_profileId] = v;
+                    });
+
+                    carprofile.html(html);
+                }
+            );
+            getbrand();
+        }else{
+            $("#carprofile-box").hide();
+            getbrand();
+        }
+    }
+
+    carprofile.change(function(){
+        var carprofileId = $(this).val();
+        
+        if(carprofileData.length > 0 && carprofileId != ""){
+            getbrand(carprofileData[carprofileId]);
+        }else{
+            getbrand();
+        }
+    });
+
+    function getbrand(carprofile = null){
+            brand.html('<option value="">เลือกยี่ห้อรถ</option>');
+            model.html('<option value="">เลือกรุ่นรถ</option>');
+            detail.html('<option value="">เลือกโฉมรถยนต์</option>');
+            modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
+            $.get(base_url+"service/Carselect/getCarBrand",{},
+            function(data){
+                var brandData = data.data;
+                    $.each( brandData, function( key, value ) {
+                        brand.append('<option data-thumbnail="images/icon-chrome.png" value="' + value.brandId + '">' + value.brandName + '</option>');
+                    });
+
+                    if(carprofile != null){
+                        brand.val(carprofile.brandId);
+                        getModel(carprofile);
+                    }
+                }
+            );
+        }
+
+        brand.change(function(){
+            getModel();
+        });
+
+        function getModel(carprofile = null){
+            var brandId = brand.val();
+            model.html('<option value="">เลือกรุ่นรถ</option>');
+            detail.html('<option value="">เลือกโฉมรถยนต์</option>');
+            modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
+            $.get(base_url+"service/Carselect/getCarModel",{
+                brandId : brandId
+            },function(data){
+                var modelData = data.data;
+                    $.each( modelData, function( key, value ) {
+                        model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
+                    });
+
+                    if(carprofile != null){
+                        model.val(carprofile.modelId);
+                        getDetail(carprofile);
+                    }
+                }
+            );
+        }
+
+        model.change(function(){
+            getDetail();
+        });
+
+        function getDetail(carprofile = null){
+            var modelName = $("#modelId option:selected").text();
+            detail.html('<option value="">เลือกโฉมรถยนต์</option>');
+            // year.html('<option value="">เลือกปีผลิต</option>');
+            modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');            
+            $.get(base_url+"service/Carselect/getCarYear",{
+                modelName : modelName
+            },function(data){
+                var detailData = data.data;
+                $.each( detailData, function( key, value ) {
+                    detail.append('<option value="' + value.modelId+'">'+'(ปี ' + value.yearStart + '-'+value.yearEnd+') '+value.detail+'</option>');
+                });
+                if(carprofile != null){
+                    detail.val(carprofile.modelId);
+                    getModelOfCar(carprofile);
+                }
+            });
+        }
+        
+        detail.change(function(){
+            getModelOfCar();
+        });
+
+        function getModelOfCar(carprofile = null){
+            modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
+            $.get(base_url+"service/Carselect/getCarDetail",{
+                modelId : detail.val()
+            },function(data){
+                var carModelData = data.data;
+                console.log(carModelData);
+                $.each( carModelData, function( key, value ) {
+                    modelofcar.append('<option value="' + value.modelofcarId+'">' + value.machineSize + ' '+ value.modelofcarName +'</option>');
+                });
+                if(carprofile != null){
+                    modelofcar.val(carprofile.modelofcarId);
+                    table.ajax.reload();
+                }
+            });
+        }
+
     $(document).ready(function () {
-        var table = $('#brand-table').DataTable({
+
+        table = $('#brand-table').DataTable({
             "language": {
                     "aria": {
                         "sortAscending": ": activate to sort column ascending",
@@ -35,7 +167,7 @@
                     "type": "POST",
                     "data": function ( data ) {
                         data.lubricatortypeFormachineId = $("#lubricatortypeFormachineId").val();
-                        data.lubricator_gear = $("#lubricator_gear").val();
+                        data.lubricator_gear = ($("#lubricator_gear").val() != "")? $("#lubricator_gear").val(): 1;
                         data.lubricator_brandId = $("#lubricator_brandId").val();
                         data.lubricatorId = $("#lubricatorId").val();
                         data.price = $("#amount").val();
@@ -76,8 +208,7 @@
                                                                 +'<div class="product_price">'+currency(value.price, {  precision: 0 }).format()+' บาท</div>'
                                                                 +'<div class="product_name">'
                                                                     +'<div><a href="product.html" tabindex="0"><strong> '+value.lubricator_brandName+' '+value.lubricatorName+' </strong></a></div>'
-                                                                    +'<ul>'+value.capacity+' ลิตร</ul>'
-                                                                    +'<ul> '+value.lubricator_number+'</ul>'
+                                                                    +'<ul>'+value.lubricator_number+' '+value.capacity+' ลิตร</ul>'
                                                                     +'<ul> '+value.lubricator_typeName+'</ul>'
                                                                     +'<ul> '+value.lubricatortypeFormachine+'</ul>'
                                                                 +'</div>'
@@ -105,15 +236,11 @@
             table.ajax.reload();
         })
 
-
-        
-       
-
         function init(){
             getLubracatorBrand();
-            getlubricatortypeFormachine();
-            getbrand();
-            
+            getProfile();
+            // getlubricatortypeFormachine();
+            // getbrand();
         }
         init();
 
@@ -121,12 +248,8 @@
         var lubricator = $("#lubricatorId");
         var lubricator_gear = $("#lubricator_gear");
         var lubricatortypeFormachine = $("#lubricatortypeFormachineId");
-        var brand =$("#brandId");
-        var model = $("#modelId");
-        var modelofcar =$("#modelofcarId");
         var year = $("#yearStart");
         var YearEnd = $("#YearEnd");
-        var detail = $("#detail");
         var modelName = $("modelName");
         var modelId = $("modelId");
 
@@ -154,7 +277,7 @@
             lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
             $.get(base_url+"service/Lubricator/getAllLubricator",{
                 lubricator_brandId: $(this).val(),
-                // lubricator_gear: lubricator_gear.val()
+                lubricator_gear: lubricator_gear.val()
             },function(data){
                     var lubricatorData = data.data;
                     $.each( lubricatorData, function( key, value ) {
@@ -164,80 +287,16 @@
             );
         });
 
-        function getlubricatortypeFormachine(){
-            $.get(base_url+"service/Lubricator/getAlllubricatortypeFormachine",{},
-                function(data){
-                    var brandData = data.data;
-                    $.each( brandData, function( key, value ) {
-                        lubricatortypeFormachine.append('<option value="' + value.lubricatortypeFormachineId + '">' + value.lubricatortypeFormachine + '</option>');
-                    });
-                }
-            );
-        }
-        function getbrand(brandId = null ){
-            $.get(base_url+"service/Carselect/getCarBrand",{},
-            function(data){
-                var brandData = data.data;
-                    $.each( brandData, function( key, value ) {
-                        brand.append('<option data-thumbnail="images/icon-chrome.png" value="' + value.brandId + '">' + value.brandName + '</option>');
-                    });
-                }
-            );
-        }
-
-        brand.change(function(){
-            var brandId = brand.val();
-            model.html('<option value="">เลือกรุ่นรถ</option>');
-            detail.html('<option value="">เลือกโฉมรถยนต์</option>');
-            // year.html('<option value="">เลือกปีผลิต</option>');
-            modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-            $.get(base_url+"service/Carselect/getCarModel",{
-                brandId : brandId
-            },function(data){
-                var modelData = data.data;
-                    $.each( modelData, function( key, value ) {
-                        model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
-                    });
-                }
-            );
-        });
-
-        model.change(function(){
-            var modelName = $("#modelId option:selected").text();
-            detail.html('<option value="">เลือกโฉมรถยนต์</option>');
-            // year.html('<option value="">เลือกปีผลิต</option>');
-            modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');            
-            $.get(base_url+"service/Carselect/getCarYear",{
-                modelName : modelName
-            },function(data){
-                var detailData = data.data;
-                $.each( detailData, function( key, value ) {
-                    detail.append('<option value="' + value.modelId+'">'+'(ปี ' + value.yearStart + '-'+value.yearEnd+') '+value.detail+'</option>');
-                });
-            });
-        });
-        
-        detail.change(function(){
-            // var modelId = model.val();
-            // var detail = $("#detail").val();
-            modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-            $.get(base_url+"service/Carselect/getCarDetail",{
-                modelId : detail.val()
-            },function(data){
-                var carModelData = data.data;
-                console.log(carModelData);
-                $.each( carModelData, function( key, value ) {
-                    modelofcar.append('<option value="' + value.modelofcarId+'">' + value.machineSize + ' '+ value.modelofcarName +'</option>');
-                });
-            });
-        });
         var lubricatorGear = $(".lubricator_gear");
         var lubricatorClass = $(".lubricator");
         lubricatorGear.hide();
         $("input[name='options']").change(function(){
             var option = $(this).val();
-            var html = '<option value="">เลือกชนิดน้ำมันเครื่อง</option>';
+            var html = '';
             lubricator.val("");
+            lubricator_brand.html('<option value="">เลือกยี่ห้อน้ำมันเครื่อง</option>');
+            lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
+            getLubracatorBrand();
             if(option == "on"){
                 html = '<option value="1">น้ำมันเครื่อง</option>';
                 lubricatorGear.hide();

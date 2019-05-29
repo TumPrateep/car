@@ -73,7 +73,17 @@ class Lubricator extends BD_Controller {
             {
                 
                 $nestedData[$count]['lubricator_dataId'] = $post->lubricator_dataId;
-                $nestedData[$count]['lubricator_typeName'] = $post->lubricator_typeName;
+                $lubicatorType = "";
+                if($post->lubricator_typeName != null){
+                    $lubicatorType = $post->lubricator_typeName;
+                }else{
+                    if((int)$post->lubricator_gear == 2){
+                        $lubicatorType = "น้ำมันเกียร์ธรรมดา";
+                    }else{
+                        $lubicatorType = "น้ำมันเกียร์ออโต";
+                    }
+                }
+                $nestedData[$count]['lubricator_typeName'] = $lubicatorType;
                 $nestedData[$count]['lubricator_brandName'] = $post->lubricator_brandName;
                 $nestedData[$count]['lubricatorName'] = $post->lubricatorName;
                 $nestedData[$count]['lubricator_number'] = $post->lubricator_number;
@@ -86,7 +96,7 @@ class Lubricator extends BD_Controller {
                 $nestedData[$count]['lubricator_gear'] = $post->lubricator_gear;
                 $nestedData[$count]['lubricator_typeSize'] = $post->lubricator_typeSize;
                 $nestedData[$count]['capacity'] = $post->capacity;
-                $nestedData[$count]['lubricator_typeName'] = $post->lubricator_typeName;
+                // $nestedData[$count]['lubricator_typeName'] = $post->lubricator_typeName;
                 $nestedData[$count]['lubricatortypeFormachine'] = $post->lubricatortypeFormachine;
                 $nestedData[$count]['lubricator_brandPicture'] = $post->lubricator_brandPicture;
                 
@@ -125,7 +135,8 @@ class Lubricator extends BD_Controller {
 
     function getAllLubricator_get(){
         $lubricator_brandId = $this->get("lubricator_brandId");
-        $result = $this->lubricators->getAllLubricator($lubricator_brandId);
+        $lubricator_gear = $this->get("lubricator_gear");
+        $result = $this->lubricators->getAllLubricator($lubricator_brandId, $lubricator_gear);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
