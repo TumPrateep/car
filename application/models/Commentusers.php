@@ -115,4 +115,69 @@ class Commentusers extends CI_Model{
         $query = $this->db->get();
         return $query->num_rows();                            
     }
+
+    function allScoreAllbymonth_count($garageId,$ratmonth,$ratyear){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $this->db->where('month(create_at)',$ratmonth);
+        $this->db->where('year(create_at)',$ratyear);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
+
+    function allScoreOnebymonth_count($garageId,$ratmonth,$ratyear){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $this->db->where('month(create_at)',$ratmonth);
+        $this->db->where('year(create_at)',$ratyear);
+        $this->db->where('scorerating',1);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
+
+    function allScoreTwobymonth_count($garageId,$ratmonth,$ratyear){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $this->db->where('month(create_at)',$ratmonth);
+        $this->db->where('year(create_at)',$ratyear);
+        $this->db->where('scorerating',2);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
+
+    function allScoreThreebymonth_count($garageId,$ratmonth,$ratyear){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $this->db->where('month(create_at)',$ratmonth);
+        $this->db->where('year(create_at)',$ratyear);
+        $this->db->where('scorerating',3);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
+
+    function allScoreFourbymonth_count($garageId,$ratmonth,$ratyear){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $this->db->where('month(create_at)',$ratmonth);
+        $this->db->where('year(create_at)',$ratyear);
+        $this->db->where('scorerating',4);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
+
+    function allScorefivebymonth_count($garageId,$ratmonth,$ratyear){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $this->db->where('month(create_at)',$ratmonth);
+        $this->db->where('year(create_at)',$ratyear);
+        $this->db->where('scorerating',5);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
 }
