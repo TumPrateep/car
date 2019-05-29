@@ -94,6 +94,34 @@
 	    margin-left: auto;
   		margin-right: auto;
 	}
+
+	.garage-name-txt {
+	    font-size: 16px;
+	    font-weight: 1000;
+	    color: #708090;
+	}
+	.garage-distance {
+	    font-size: 14px;
+	    font-weight: 700;
+	    margin-top: 45px;
+	    margin-right: 12px;
+	    color: #708090;
+	}
+	.distance-txt{
+		font-size: 22px;
+	}
+	.option-garage{
+		margin-top: 5px;
+		margin-bottom: 10px;
+	}
+	.border-option{
+		border:1px solid #ff471a !important;
+		border-radius: 5px;
+		color: #ff471a;
+	}
+	.form-div{
+		padding-bottom: 10px;
+	}
 	
 
 </style>

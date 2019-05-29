@@ -526,18 +526,18 @@ function getAllGarage(){
 
                                                     + '<div>'+serviceall+'</div>'
                                                     + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
-                                                    
                                                     + '<div class="option-garage">'+option+'</div>'
-                                                    // + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
-                                                    + '<a href="'+base_url+"comment/"+value.garageId+'" target="_blank"><button class="btn btn-info btn-sm rat-garage">คะเเนนเเละรีวิว</button></a>'
-                                                    + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
+                                                    + '<div class="form-div">'
+                                                        + '<a href="'+base_url+"comment/"+value.garageId+'" target="_blank"><button class="btn btn-info btn-sm rat-garage">คะเเนนเเละรีวิว</button></a>'
+                                                        + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
+                                                    + '</div>'
                                                 + '</div>'
-                                                // + '<div class="product_extras"><button class="product_cart_button" tabindex="0" onclick=""><i class="fas fa-shopping-bag"></i> รายละเอียด</button></div>'
                                             + '</div>'
                                             + '</div>'
                                         + '</div>'
                                     + '</div>'
                                 + '</div>'
+                            + '</div>'
                             + '</div>'
                         });
 
