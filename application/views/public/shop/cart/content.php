@@ -132,11 +132,11 @@
 					</div>
 					<br>
 					<div id="showReserve" class="hidden">
-						<h4 class="underline text-center">เลือกเวลาที่ต้องการใช้บริการ</h4>
+						<!-- <h4 class="underline text-center">เลือกเวลาที่ต้องการใช้บริการ</h4> -->
 						<div class="row justify-content-md-center">
 							<div class="col-lg-5">
 								<div class="form-group">
-									<label class="form-label required">เลือกวันเวลาที่จอง</label>
+									<label class="form-label"><h4>เลือกวันและเวลาเข้าใช้บริการ</h4></label>
 									<input type="text" class="form-control" id="reserve" name="reserve" placeholder="เลือกวันทำการ">
 								</div>
 							</div>

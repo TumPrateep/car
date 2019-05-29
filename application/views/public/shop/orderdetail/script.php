@@ -47,8 +47,8 @@
                 costDeliverydata = data.costDelivery;
                 summarydata = data.summary;
                 depositdata = data.deposit;
-                // sumdata = data.summarydata+data.costDeliverydata;
-
+                orderdata = data.order;
+                depositflagdata = data.depositflag; 
                 $('#garage.image-editor').cropit({
                     allowDragNDrop: false,
                     width: 200,
@@ -107,9 +107,22 @@
                         $("#cost").html(summarydata+' บาท');
                         $("#costDelivery").html(costDeliverydata+' บาท');
                         $("#summoney").html(summarydata+costDeliverydata+' บาท');
-                        $("#deposit").html(depositdata+' บาท');
                         $("#ttmoney").html(summarydata-depositdata+' บาท');
 
+                    
+                        if(orderdata.depositflag == "0"){
+                            $("#deposit").html("-");
+                        }else{
+                            $("#deposit").html(depositdata+' บาท');
+                            
+                        }
+
+                        if(orderdata.depositflag == "1"){
+                            $("#ttmoney").html(summarydata-depositdata+' บาท');
+                        }else{
+                            $("#ttmoney").html("-");
+                        }
+     
                 });
                 table.html(html);
             }
