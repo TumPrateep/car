@@ -90,7 +90,7 @@
 	    background-color: #ffffff;
 	    border-color: #000000;
 	    border: 3px solid ;
-	    width: 120px;
+	    width: 140px;
 	    margin-left: auto;
   		margin-right: auto;
 	}
@@ -122,7 +122,29 @@
 	.form-div{
 		padding-bottom: 10px;
 	}
-	
+	.picture-center{
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.from-padding{
+		padding-top: 12px;
+	}
+	.border-black-plate{
+		color: #000000;
+	    background-color: #ffffff;
+	    border-color: #000000;
+	    border: 3px solid ;
+	    width: 140px;
+	    height: 110px;
+	    margin-left: auto;
+  		margin-right: auto;
+	}
+	.txt-S-m{
+		font-size: 25px;
+	}
+	.txt-S-s{
+		font-size: 17px;
+	}
 
 </style>
 
