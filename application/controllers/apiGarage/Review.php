@@ -89,4 +89,20 @@ class Review extends BD_Controller {
         $this->set_response($score, REST_Controller::HTTP_OK);
     }
 
+    function searchScoreRatingbyMonth_get(){
+        
+        $garageId = $this->session->userdata['logged_in']['garageId'];
+        $ratmonth = date("m");
+        $ratyear = date("Y");
+        $score['all'] = $this->commentusers->allScoreAllbymonth_count($garageId,$ratmonth,$ratyear);
+        $score['one'] = $this->commentusers->allScoreOnebymonth_count($garageId,$ratmonth,$ratyear);
+        $score['two'] = $this->commentusers->allScoreTwobymonth_count($garageId,$ratmonth,$ratyear);
+        $score['three'] = $this->commentusers->allScoreThreebymonth_count($garageId,$ratmonth,$ratyear);
+        $score['four'] = $this->commentusers->allScoreFourbymonth_count($garageId,$ratmonth,$ratyear);
+        $score['five'] = $this->commentusers->allScorefivebymonth_count($garageId,$ratmonth,$ratyear);
+        $score['month'] = date("m/Y");
+
+        $this->set_response($score, REST_Controller::HTTP_OK);
+    }
+
 }

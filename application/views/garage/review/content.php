@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="input-group mb-2 mr-sm-2">
-                                    <input type="text" class="form-control"  placeholder=เดือน>
+                                    <input type="text" class="form-control"  placeholder=เดือน name="ratmonth" id="ratmonth">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fa fa-calendar-o"></i></div>
                                     </div>
@@ -41,14 +41,14 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="input-group mb-2 mr-sm-2">
-                                    <input type="text" class="form-control"  placeholder="ปี">
+                                    <input type="text" class="form-control"  placeholder="ปี" name="ratyear" id="ratyear">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fa fa-calendar-o"></i></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-info btn-block" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
+                                <button type="submit" class="btn btn-info btn-block" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
                             </div>
                         </div>
                     </div>
@@ -67,63 +67,10 @@
                     <!-- rating of month -->
                     <div class="col-lg-6">
                         <div class="card-rating">
-                            <label>คะเเนนเเละรีวิว รายเดือน 02/2019</label>
-                            <div class="row">
-                                <div class="col-md-4 ">
-                                    <br>
-                                    <div class="text-center"><span class="txt-rating">3</span></div>
-                                    <div class="text-center">
-                                        <i class="fa fa-star Yellow-star" ></i>
-                                        <i class="fa fa-star Yellow-star" ></i>
-                                        <i class="fa fa-star Yellow-star" ></i>
-                                        <i class="fa fa-star" ></i>
-                                        <i class="fa fa-star" ></i>
-                                    </div>
-                                    <div class="text-center"><span>28,895</span></div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="row">
-                                        <div class="col-md-2"><span>5</span></div>
-                                        <div class="col-md-10 progress-center" >
-                                            <div class="progress progress-hgt">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 23.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"><span>4</span></div>
-                                        <div class="col-md-10 progress-center" >
-                                            <div class="progress progress-hgt">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 18.9%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"><span>3</span></div>
-                                        <div class="col-md-10 progress-center" >
-                                            <div class="progress progress-hgt">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 42.35%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"><span>2</span></div>
-                                        <div class="col-md-10" style="padding-top: 6px;">
-                                            <div class="progress progress-hgt">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 11.1%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2"><span>1</span></div>
-                                        <div class="col-md-10" style="padding-top: 6px;">
-                                            <div class="progress progress-hgt">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 5.3%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>  
-                                </div>
-                            </div>
+                            <span id="show-ratingbymonth">
+                                        
+                            </span>
+                            
                         </div>
                     </div>
                 </div>
