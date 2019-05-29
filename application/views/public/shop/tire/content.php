@@ -1,3 +1,11 @@
+<style>
+	.border-search{
+		border: 1px solid #cfcfcf;
+		border-radius: 3px;
+		padding: 15px;
+	}
+</style>
+
 <div class="shop">
 	<div class="container">
 		<div class="row">
@@ -14,7 +22,7 @@
 			<div class="col-lg-3">
 				<div class="shop_sidebar">
 					
-				<div class="form-group">
+					<!-- <div class="form-group">
                         <label class="control-label">ยี่ห้อรถ</label>
                         <select class="form-control input-default" name="brandId" id="brandId">
                             <option value="">เลือกยี่ห้อรถ</option>
@@ -40,54 +48,48 @@
                         <select class="form-control input-default" name="modelofcarId" id="modelofcarId">
                             <option value="">เลือกรายละเอียดรุ่น</option>
                         </select>
-					</div>
+					</div> -->
+					<div class="border-search">
 
-					<div class="form-group">
-                            <label class="control-label">ยี่ห้อยาง</label>
-                            <select class="form-control input-default" name="tire_brandId" id="tire_brandId">
-                                <option value="">เลือกยี่ห้อยาง</option>
-                            </select>
-					</div>
-
-					<div class="form-group">
-                        <label class="control-label">รุ่นยาง</label>
-                        <select class="form-control input-default" name="tire_modelId" id="tire_modelId">
-                            <option value="">เลือกรุ่นยาง</option>
-                        </select>
-                    </div>
-				
-					
-					<div class="form-group">
-						<label class="control-label">ขอบยาง</label>
-						<select class="form-control input-default" name="rimId" id="rimId">
-							<option value="">เลือกขอบยาง</option>
-						</select>
-					</div>
-					
-					<div class="form-group">
-						<label class="control-label">ขนาดยาง</label>
-						<select class="form-control input-default" name="tire_sizeId" id="tire_sizeId">
-							<option value="">เลือกขนาดยาง</option>
-						</select>
-					</div>
-
-                    <div class="form-group">
-                        <label class="control-label">สั่งจองหรือเปลี่ยนทันที</label>
-                        <select class="form-control input-default" name="can_change" id="can_change">
-							<option value=""></option>
-                            <option value="1">เปลี่ยนทันที</option>
-                            <option value="2">สั่งจอง</option>
-                        </select>
-                    </div>
-
-					<div class="sidebar_section filter_by_section">
-						<div class="sidebar_title">ช่วงราคา</div>
-						<div class="filter_price">
-							<div id="slider-range" class="slider_range" ></div>
-							<p>ช่วงราคา: </p>
-							<p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+						<div class="form-group">
+								<label class="control-label">ยี่ห้อยาง</label>
+								<select class="form-control input-default" name="tire_brandId" id="tire_brandId">
+									<option value="">เลือกยี่ห้อยาง</option>
+								</select>
 						</div>
-                    </div>
+
+						<div class="form-group">
+							<label class="control-label">รุ่นยาง</label>
+							<select class="form-control input-default" name="tire_modelId" id="tire_modelId">
+								<option value="">เลือกรุ่นยาง</option>
+							</select>
+						</div>
+					
+						
+						<div class="form-group">
+							<label class="control-label">ขอบยาง</label>
+							<select class="form-control input-default" name="rimId" id="rimId">
+								<option value="">เลือกขอบยาง</option>
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label">ขนาดยาง</label>
+							<select class="form-control input-default" name="tire_sizeId" id="tire_sizeId">
+								<option value="">เลือกขนาดยาง</option>
+							</select>
+						</div>
+
+
+						<div class="sidebar_section filter_by_section">
+							<div class="sidebar_title">ช่วงราคา</div>
+							<div class="filter_price">
+								<div id="slider-range" class="slider_range" ></div>
+								<p>ช่วงราคา: </p>
+								<p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+							</div>
+						</div>
+					</div>
                     <br>
                     <!-- <div class="row"> -->
                     <div class="col-lg-12 ">
