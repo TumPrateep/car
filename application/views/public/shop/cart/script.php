@@ -34,6 +34,24 @@ var garagetable;
 var latitude = null;
 var longitude = null;
 
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position){
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            getAllGarage();
+        }, function(error) {
+            latitude = null;
+            longitude = null;
+            getAllGarage();
+            // alert('ไม่สามารถดึงตำแหน่งปัจจุบันได้');         
+        },{timeout:5000});
+    } else {
+        // alert("ไม่สามารถดึงตำแหน่งปัจจุบันได้");
+        getAllGarage();
+    }
+}
+
 function createCarConfirm(){
     var userId = localStorage.getItem("userId");
     var hasCaraccessory = null;
@@ -445,6 +463,7 @@ function getAllGarage(){
                 "type": "POST",
                 "data": function ( data ) {
                     data.garagename = $("#garagename").val();
+                    data.dataType = getTypeOfProduct();
                     // data.provinceIdSearch =$("#provinceIdSearch").val();
                     // data.districtIdSearch= $("#districtIdSearch").val();
                     // data.subdistrictIdSearch = $("#subdistrictIdSearch").val();
@@ -769,7 +788,7 @@ $(document).ready(function () {
     );
 
     getCarProfile();
-    getAllGarage();
+    getLocation();
 
     $("#search-car").click(function(){
         event.preventDefault();
