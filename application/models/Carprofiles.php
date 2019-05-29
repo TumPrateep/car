@@ -82,6 +82,10 @@ class Carprofiles extends CI_Model {
         return $query->result();
     }
 
+    function getCarDeleteById($car_profileId){
+        return $this->db->where('car_profileId',$car_profileId)->get("car_profile")->row();
+    }
+
     function getCarProfileByUserIdAndCarprofileId($userId,$car_profileId){
         $this->db->select('car_profile.car_profileId,car_profile.number_plate,car_profile.character_plate,car_profile.province_plate,car_profile.mileage,car_profile.color,car_profile.pictureFront,car_profile.brandId,car_profile.modelId,car_profile.modelofcarId,brand.brandName,model.modelName,model.yearStart,model.modelId as modelnumber,model.yearEnd,model.detail,modelofcar.machineSize,modelofcar.modelofcarName');
         $this->db->from('car_profile');
