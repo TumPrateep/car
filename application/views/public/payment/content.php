@@ -38,17 +38,17 @@
                         </div>
                     </div>  -->
                     <div class="form-group row">
-                        <label class="col-lg-3">วันที่</label>
+                        <label class="col-lg-3">วันที่ - เวลา</label>
                         <div class="col-sm-8" >
                             <input type="text" class="form-control" name="date" id="date">
                         </div>
                     </div> 
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label class="col-lg-3">เวลา</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="time" id="time">
                         </div>
-                    </div> 
+                    </div>  -->
                     <!-- <div class="form-group row">
                         <label class="col-sm-3 col-form-label">ชื่อธนาคาร</label>
                         <div class="col-sm-8">

@@ -25,9 +25,9 @@
                 date: {
                     required: true
                 },
-                time: {
-                    required: true
-                },
+                // time: {
+                //     required: true
+                // },
                 bank: {
                     required: true
                 },
@@ -38,9 +38,9 @@
                 date: {
                     required: "กรุณาระบุวันที่"
                 },
-                time: {
-                    required: "กรุณาระบุเวลาดำเนินการ"
-                },
+                // time: {
+                //     required: "กรุณาระบุเวลาดำเนินการ"
+                // },
                 bank: {
                     required: "กรุณาระบุชื่อธนาคารที่โอน"
                 },

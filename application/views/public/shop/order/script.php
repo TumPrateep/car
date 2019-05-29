@@ -71,8 +71,7 @@
                         }else{
                             var costDelivery = parseInt(data.costDelivery);
                             return currency(data.deposit, {  precision: 0 }).format() + " บาท";
-                        }
-                        
+                        }  
                     }
                 },{
                     "targets": 1,
@@ -138,7 +137,8 @@
                     "render": function ( data, type, full, meta ) {
                         if(data.depositflag == "1"){
                             var costDelivery = parseInt(data.costDelivery);
-                            return currency(data.summary-data.deposit, {  precision: 0 }).format() + " บาท";
+                            var summaryandcost = data.summary+costDelivery;
+                            return currency(summaryandcost-data.deposit, {  precision: 0 }).format() + " บาท";
                         }else{
                             return "-";
                         }
