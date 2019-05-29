@@ -40,7 +40,7 @@ class Spareundercarriageproduct extends CI_Model{
     //     }
     // }
     //แบบที่ถูก
-    function SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change){
+    function SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change){
         $price = explode("-",$price);
         
         $this->db->select('spares_undercarriagedata.spares_undercarriageDataId,spares_undercarriage.spares_undercarriageId,spares_undercarriagedata.status,spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_undercarriagedata.warranty,spares_undercarriagedata.warranty_distance,spares_undercarriagedata.warranty_year,spares_undercarriagedata.spares_undercarriageDataPicture,brand.brandName,model.modelName,model.yearStart,model.yearEnd,spares_brand.spares_brandPicture, spares_undercarriagedata.price,
@@ -53,20 +53,26 @@ class Spareundercarriageproduct extends CI_Model{
         $this->db->join('model','model.modelId = spares_undercarriagedata.modelId');
         $this->db->join('modelofcar','modelofcar.modelofcarId = spares_undercarriagedata.modelofcarId');
        
-        if($year != null){
-            $this->db->group_start();
-            $this->db->group_start();
-                $this->db->where('model.yearStart <=' ,$year)
-                ->where('model.yearEnd >=' ,$year);
-            $this->db->group_end();
-                $this->db->or_where('model.yearStart' ,$year);
-            $this->db->group_end();
+        if($brandId != null){
+            $this->db->where('spares_undercarriagedata.brandId',$brandId);
         }
-        // $this->db->like('spares_undercarriageData.can_change',$can_change);
-        $this->db->like('spares_undercarriagedata.modelId',$modelId);
-        $this->db->like('spares_undercarriagedata.brandId',$brandId);
-        $this->db->like('spares_undercarriagedata.spares_brandId',$spares_brandId);
-        $this->db->like('spares_undercarriagedata.spares_undercarriageId',$spares_undercarriageId);
+
+        if($modelId != null){
+            $this->db->where('spares_undercarriagedata.modelId',$modelId);
+        }
+        
+        if($modelofcarId != null){
+            $this->db->where('spares_undercarriagedata.modelofcarId',$modelofcarId);
+        }
+
+        if($spares_brandId != null){
+            $this->db->where('spares_undercarriagedata.spares_brandId',$spares_brandId);
+        }
+
+        if($spares_undercarriageId != null){
+            $this->db->where('spares_undercarriagedata.spares_undercarriageId',$spares_undercarriageId);
+        }
+        
         $this->db->where('spares_undercarriagedata.price >=',$price[0]);
         $this->db->where('spares_undercarriagedata.price <=',$price[1]);
         
@@ -84,7 +90,7 @@ class Spareundercarriageproduct extends CI_Model{
             return null;
         }
     }
-    function SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$year,$can_change){
+    function SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change){
         $price = explode("-",$price);
         
         $this->db->select('spares_undercarriagedata.spares_undercarriageDataId,spares_undercarriage.spares_undercarriageId,spares_undercarriagedata.status,spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_undercarriagedata.warranty,spares_undercarriagedata.warranty_distance,spares_undercarriagedata.warranty_year,spares_undercarriagedata.spares_undercarriageDataPicture,brand.brandName,model.modelName,model.yearStart,model.yearEnd,spares_brand.spares_brandPicture, spares_undercarriagedata.price,
@@ -97,20 +103,26 @@ class Spareundercarriageproduct extends CI_Model{
         $this->db->join('model','model.modelId = spares_undercarriagedata.modelId');
         $this->db->join('modelofcar','modelofcar.modelofcarId = spares_undercarriagedata.modelofcarId');
        
-        if($year != null){
-            $this->db->group_start();
-            $this->db->group_start();
-                $this->db->where('model.yearStart <=' ,$year)
-                ->where('model.yearEnd >=' ,$year);
-            $this->db->group_end();
-                $this->db->or_where('model.yearStart' ,$year);
-            $this->db->group_end();
+        if($brandId != null){
+            $this->db->where('spares_undercarriagedata.brandId',$brandId);
         }
-        // $this->db->like('spares_undercarriageData.can_change',$can_change);
-        $this->db->like('spares_undercarriagedata.modelId',$modelId);
-        $this->db->like('spares_undercarriagedata.brandId',$brandId);
-        $this->db->like('spares_undercarriagedata.spares_brandId',$spares_brandId);
-        $this->db->like('spares_undercarriagedata.spares_undercarriageId',$spares_undercarriageId);
+
+        if($modelId != null){
+            $this->db->where('spares_undercarriagedata.modelId',$modelId);
+        }
+        
+        if($modelofcarId != null){
+            $this->db->where('spares_undercarriagedata.modelofcarId',$modelofcarId);
+        }
+
+        if($spares_brandId != null){
+            $this->db->where('spares_undercarriagedata.spares_brandId',$spares_brandId);
+        }
+
+        if($spares_undercarriageId != null){
+            $this->db->where('spares_undercarriagedata.spares_undercarriageId',$spares_undercarriageId);
+        }
+        
         $this->db->where('spares_undercarriagedata.price >=',$price[0]);
         $this->db->where('spares_undercarriagedata.price <=',$price[1]);
         

@@ -70,7 +70,7 @@
                     }, 
                     // On error
                     function(error) {
-                        alert('Error : Failed to Load Library');
+                        $("#login-button").hide();
                     }
                 );
             },
