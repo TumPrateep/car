@@ -159,36 +159,39 @@
 					<tbody id="showOrder"></tbody>
 				</table>
 				<table class="table" id="orderdetail-table">
-				<div class="row ">
-                    <div class="col-md-3 "><label>ราคาสินค้ารวม :</label></div>
-                    <div class="col-md-8">
-                        <label name="cost" id="cost"> </label>
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col-md-3 "><label>ราคาค่าขนส่ง :</label></div>
-                    <div class="col-md-8">
-                        <label name="costDelivery" id="costDelivery"> </label>
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col-md-3 "><label>ราคาสินค้ารวมค่าขนส่ง :</label></div>
-                    <div class="col-md-8">
-                        <label name="summoney" id="summoney"> </label>
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col-md-3 "><label>เงินมัดจำ :</label></div>
-                    <div class="col-md-8">
-                        <label name="deposit" id="deposit"> </label>
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col-md-3 "><label>เงินคงเหลือ :</label></div>
-                    <div class="col-md-8">
-                        <label name="ttmoney" id="ttmoney"> </label>
-                    </div>
-                </div>  
+					<div class="card col-md-12 ">
+					<h4><label><u>รายละเอียดค่าบริการ</u></label></h4>
+						<div class="row">
+							<div class="col-md-3 offset-md-1"><label><b>ราคาสินค้ารวม :</b></label></div>
+							<div class="col-md-8 ">
+								<label name="cost" id="cost"> </label>
+							</div>
+						</div>
+						<div class="row ">
+							<div class="col-md-3 offset-md-1"><label><b>ราคาค่าขนส่ง :</b></label></div>
+							<div class="col-md-8">
+								<label name="costDelivery" id="costDelivery"> </label>
+							</div>
+						</div>
+						<div class="row ">
+							<div class="col-md-3 offset-md-1"><label><b>ราคาสินค้ารวมค่าขนส่ง :</b></label></div>
+							<div class="col-md-8">
+								<label name="summoney" id="summoney"> </label>
+							</div>
+						</div>
+						<div class="row ">
+							<div class="col-md-3 offset-md-1"><label><b>เงินมัดจำ :</b></label></div>
+							<div class="col-md-8">
+								<label name="deposit" id="deposit"> </label>
+							</div>
+						</div>
+						<div class="row ">
+							<div class="col-md-3 offset-md-1"><label><b>เงินคงเหลือ :</b></label></div>
+							<div class="col-md-8">
+								<label name="ttmoney" id="ttmoney"> </label>
+							</div>
+						</div>  
+					</div>
 				</table>
 			</div>				
         </div>
