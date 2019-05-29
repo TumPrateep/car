@@ -41,7 +41,7 @@ class Carprofile extends BD_Controller {
 
     function deleteCarProfile_get(){
         $car_profileId = $this->get('car_profileId');
-        $data_check = $this->carprofiles->getCarProfileByUserId($car_profileId);        
+        $data_check = $this->carprofiles->getCarDeleteById($car_profileId);        
         $option = [
             "data_check_delete" => $data_check,
             "data" => $car_profileId,
