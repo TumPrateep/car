@@ -201,14 +201,14 @@
 							<!-- <h4 class="underline">เพิ่มข้อมูลรถยนต์ที่ต้องการใช้บริการ</h4> -->
 							<form id="submit-create-car-profile">
 							<div class="row">
-                                <div class="col-md-7">
+                                <div class="col-md-6">
 									<div class="row p-t-20">
 					                	<div class="col-md-12">
 					             			<div class="form-group">
 					                            <label class="control-label">รูปรถยน์</label>
 					                         	<div class="image-editor ">
 					                            	<input type="file" class="cropit-image-input" name="tempImage">
-					                            	<div class="cropit-preview"></div>
+					                            	<div class="cropit-preview picture-center"></div>
 					                          		<div class="image-size-label">ปรับขนาด</div>
 					                    			<input type="range" class="cropit-image-zoom-input">
 					                 				<input type="hidden" name="picture" id="picture" class="hidden-image-data" />
@@ -218,7 +218,7 @@
 					                </div>
 				                </div>
                                 
-								<div class="col-md-5">
+								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label " for="car-profile">หมายเลขป้ายทะเบียน</label>
 										<input type="text" class="form-control" id="character_plate" name="character_plate" placeholder="หมายเลขป้ายทะเบียน">
@@ -233,19 +233,15 @@
 											
 										</select>
 									</div>
-									<div class="card border-black">
-										<div class="form-group">
+									<div class="card border-black-plate">
+										<div class="form-group text-center from-padding">
 											<h3><span id="characterofcar" name="characterofcar"></span></h3>
 										</div>
-										<div class="form-group">
+										<div class="form-group text-center">
 											<h4><span id="provincecar" name="provincecar"></span></h4>
 										</div>
 									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
+									<div class="form-group from-padding">
 										<label class="form-label required">ยี่ห้อรถ</label>
 										<select class="form-control input-default" name="brandId" id="brandId">
 											<option value="">เลือกยี่ห้อรถ</option>
@@ -253,6 +249,8 @@
 										</select>
 									</div>
 								</div>
+							</div>
+							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label required">รุ่นรถ</label>
@@ -262,8 +260,6 @@
 										</select>
 									</div>
 								</div>
-							</div>
-							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label required">โฉมรถยนต์</label>
@@ -273,6 +269,8 @@
 										</select>
 									</div>
 								</div>
+							</div>
+							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label required">รายละเอียดรุ่น</label>
@@ -282,17 +280,29 @@
 										</select>
 									</div>
 								</div>
-							</div>
-							<div class="row">
+								<!-- <div class="col-md-6">
+									<div class="form-group">
+										<label class="form-label required" for="garage">ชนิดเครื่องยน์</label>
+										<input type="text" class="form-control" id="lubricatorMachine" name="lubricatorMachine" placeholder="ชนิดน้ำมันเครื่อง">
+									</div>
+								</div> -->
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label required" for="garage">สีรถ</label>
 										<input type="text" class="form-control" id="color" name="color" placeholder="สีรถ">
 									</div>
 								</div>
+							</div>
+							<div class="row">
+								<!-- <div class="col-md-6">
+									<div class="form-group">
+										<label class="form-label required" for="garage">สีรถ</label>
+										<input type="text" class="form-control" id="color" name="color" placeholder="สีรถ">
+									</div>
+								</div> -->
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="form-label required" for="garage">เลขไมล์</label>
+										<label class="form-label" for="garage">เลขไมล์</label>
 										<input type="text" class="form-control" id="mileage" name="mileage" placeholder="เลขไมล์">
 									</div>
 								</div>

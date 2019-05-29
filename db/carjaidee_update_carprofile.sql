@@ -169,7 +169,7 @@ CREATE TABLE `car_profile` (
   `update_by` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL,
   `character_plate` varchar(45) NOT NULL,
-  `number_plate` varchar(45) NOT NULL,
+  `number_plate` varchar(45) DEFAULT NULL,
   `province_plate` int(11) NOT NULL,
   `color` varchar(255) DEFAULT NULL,
   `brandId` int(11) DEFAULT NULL,
@@ -2627,7 +2627,6 @@ INSERT INTO `orderdetail` (`orderDetailId`, `orderId`, `userId`, `productId`, `q
 CREATE TABLE `payment` (
   `paymentId` int(11) NOT NULL,
   `date` date NOT NULL,
-  `time` time NOT NULL,
   `receivebank` varchar(45) NOT NULL,
   `transfer` varchar(100) NOT NULL,
   `money` double NOT NULL,
@@ -2644,8 +2643,8 @@ CREATE TABLE `payment` (
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`paymentId`, `date`, `time`, `receivebank`, `transfer`, `money`, `slip`, `orderId`, `created_by`, `created_at`, `deposit`, `status`, `transferbankId`) VALUES
-(1, '2019-05-02', '08:00:00', 'ออมสิน', 'suppanut', 7503, '5cc8702a2f8f6.png', 10001, 51, '2019-04-30 22:56:26', NULL, '2', NULL);
+INSERT INTO `payment` (`paymentId`, `date`, `receivebank`, `transfer`, `money`, `slip`, `orderId`, `created_by`, `created_at`, `deposit`, `status`, `transferbankId`) VALUES
+(1, '2019-05-02', 'ออมสิน', 'suppanut', 7503, '5cc8702a2f8f6.png', 10001, 51, '2019-04-30 22:56:26', NULL, '2', NULL);
 
 -- --------------------------------------------------------
 
