@@ -254,7 +254,7 @@
                 });
                 if(carprofile != null){
                     modelofcar.val(carprofile.modelofcarId);
-                    table.ajax.reload();
+                    // table.ajax.reload();
                 }
             });
         }
