@@ -205,7 +205,7 @@ $(document).ready(function () {
                                                         + '<div onclick="">'
                                                             + '<div class="garage-distance distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
                                                             + '<div class="garage-name-txt">'+value.garageName+'</div>'
-
+                                                            + '<div>'+value.phone+'</div>'
                                                             + '<div>'+serviceall+'</div>'
                                                             + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
                                                             + '<div class="option-garage">'+option+'</div>'

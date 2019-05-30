@@ -26,7 +26,7 @@
                       <div class="col-lg-4">
                           <div class="form-group">
                             <div class="form-group">
-                            <label>ชื่อขอบยาง</label> <span class="error">*</span>
+                            <label>ขนาดขอบยาง</label> <span class="error">*</span>
                               <select class="form-control" name="tire_rimId" id="tire_rimId">
                                   <option value="">กรุณาเลือกขอบยาง</option>
                               </select>
@@ -36,7 +36,7 @@
                         <div class="col-lg-4">
                           <div class="form-group">
                               <div class="form-group">
-                                  <label>ราคาค่าบริการเปลี่ยนขอบยาง</label><span class="error">*</span>
+                                  <label>ราคาค่าบริการเปลี่ยนขอบยาง (บาท)</label><span class="error">*</span>
                                   <input type="number" class="form-control"  name="tire_price" id="tire_price" placeholder="กรุณากรอกราคาค่าบริการเปลี่ยนขอบยาง" min=0 >
                               </div>
                           </div>

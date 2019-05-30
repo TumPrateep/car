@@ -76,10 +76,14 @@ class Searchgarages extends CI_Model {
                                                                                                                                                                                                 
     // }
     
-    function garage_search($limit,$start,$col,$dir,$garageName,$provinceId,$districtId,$subdistrictId,$brandId,$service,$latitude,$longitude,$dataType=null)
+    function garage_search($limit,$start,$col,$dir,$phone,$garageName,$provinceId,$districtId,$subdistrictId,$brandId,$service,$latitude,$longitude,$dataType=null)
     {
         if(!empty($latitude) && !empty($longitude)){
             $this->db->select("2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) as distance, garage.*");
+        }
+        $this->db->like('phone',$phone);
+        if($phone != null){
+            $this->db->where("phone", $phone);
         }
         $this->db->like('garageName',$garageName);
         if($provinceId != null){

@@ -119,8 +119,8 @@
                 <thead>
                   <th><i class="fa fa-sort"></i> ลำดับ</th>
                   <th><i class="fa fa-bars"></i>  รายละเอียดสินค้า</th>
-                  <th><i class="fa fa-plus"></i>  จำนวน</th>
-                  <th><i class="fa fa-usd"></i>  ราคา</th>
+                  <th> จำนวน</th>
+                  <th>  ราคา (บาท)</th>
                   <!-- <th><i class="fa fa-user-circle"></i>  สถานะ</th> -->
                   <!-- <th></th> -->
                 </thead>

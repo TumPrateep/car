@@ -100,7 +100,8 @@
                         if(data.statusSuccess == 2 ){
                             disable = "disabled";
                         }
-                        return '<button type="button" class="btn btn-success"  title="ซ่อมเสร็จสิ้น" '+disable+' onclick="confirmStatus('+data.orderId+')">ซ่อมเสร็จสิ้น</button>';
+                        return '<button type="button" class="btn btn-success"  title="" '+disable+' onclick="update_mileage('+data.orderId+')">ซ่อมเสร็จสิ้น</button>';
+                        // return '<button type="button" class="btn btn-success"  title="ซ่อมเสร็จสิ้น" '+disable+' onclick="confirmStatus('+data.orderId+')">ซ่อมเสร็จสิ้น</button>';
                     }
                 },
                 {"className": "dt-center", "targets": [0,1,2,3,4,5,6]}
@@ -124,5 +125,11 @@
         event.preventDefault();
         table.ajax.reload();
     })
+
+    function update_mileage(orderId){
+        
+        $("#orderId").val(orderId);
+        $("#update-mileage").modal("show");
+    }
 
 </script>

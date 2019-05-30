@@ -47,7 +47,7 @@
                   <th><i class="fa fa-picture-o"></i> รูปสินค้า</th>
                   <th><i class="fa fa-rebel"></i>  รายละเอียดสินค้า</th>
                   <th><!-- <i class="fa fa-rebel"></i> -->  จำนวน</th>
-                  <th><!-- <i class="fa fa-rebel"></i> -->  ค่าเเรง</th>
+                  <th><!-- <i class="fa fa-rebel"></i> -->  ค่าเเรง (บาท)</th>
                   <th><i class="fa fa-user-circle"></i>  สถานะ</th>
                   <th></th>
                 </thead>
