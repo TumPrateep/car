@@ -41,7 +41,7 @@ class Carprofile extends BD_Controller {
 
     function deleteCarProfile_get(){
         $car_profileId = $this->get('car_profileId');
-        $data_check = $this->carprofiles->getCarProfileByUserId($car_profileId);        
+        $data_check = $this->carprofiles->getCarDeleteById($car_profileId);        
         $option = [
             "data_check_delete" => $data_check,
             "data" => $car_profileId,
@@ -54,7 +54,7 @@ class Carprofile extends BD_Controller {
     function createCarProfile_post(){
         $userId = $this->session->userdata['logged_in']['id'];
         $character_plate = $this->post("character_plate");
-        // $number_plate = $this->post("number_plate");
+        $number_plate = $this->post("number_plate");
         $province_plate = $this->post("province_plate");
         $brandId = $this->post("brandId");
         $modelId = $this->post("modelId");
@@ -88,7 +88,7 @@ class Carprofile extends BD_Controller {
             'create_by' => $userId,
             'status' => 1,
             'character_plate' => $character_plate,
-            'number_plate' => null,
+            'number_plate' => $number_plate,
             'province_plate' => $province_plate,
             'brandId' => $brandId,
             'modelId' => $modelId,

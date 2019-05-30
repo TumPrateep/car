@@ -145,6 +145,12 @@
 	.txt-S-s{
 		font-size: 17px;
 	}
+	input.error, select.error, input.valid{
+		border:1px solid #b3b3b3 !important;
+	}
+	select.error{
+		color: #666!important;
+	}
 
 </style>
 

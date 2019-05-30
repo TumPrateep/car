@@ -5,6 +5,12 @@
 
         register.validate({
             rules:{
+                firstname: {
+                    required: true
+                },
+                lastname: {
+                    required: true
+                },
                 username: {
                     required: true,
                     minlength: 5
@@ -14,6 +20,7 @@
                     minlength: 10
                 },
                 email: {
+                    required: true,
                     email:true
                 },
                 password: {
@@ -25,6 +32,12 @@
                     equalTo: "#password"
                 }
             },messages:{
+                firstname: {
+                    required: "กรอกชื่อ"
+                },
+                lastname: {
+                    required: "กรอกนามสกุล"
+                },
                 username: {
                     required: "กรอกชื่อผู้ใช้งานหรือเบอร์โทรศัพท์",
                     minlength: "กรอกชื่อผู้ใช้งานมากกว่า 5 ตัว"
@@ -34,6 +47,7 @@
                     minlength: "กรอกเบอร์โทรให้ครบถ้วน"
                 },
                 email: {
+                    required: "กรอกอีเมล์",
                     email:"รูปแบบอีเมล์ไม่ถูกต้อง"
                 },
                 password: {
@@ -55,9 +69,10 @@
                 errorMessage.hide();
                 $.post(base_url+"api/register/register", data,
                     function (data, textStatus, jqXHR) {
-                        if(data.message == 200){
-                            alert("บันทึกสำเร็จ");
-                        }
+                        // if(data.message == 200){
+                        //     alert("บันทึกสำเร็จ");
+                        // }
+                        showMessage(data.message,"login");
                     }
                 ).fail(function(data) {
                     if(data.responseJSON.message == 3001){

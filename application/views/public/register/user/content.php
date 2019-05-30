@@ -56,7 +56,7 @@
 						<input type="number" name="phone" class="form-control" placeholder="เบอร์โทรศัพท์">
 					</div>
 					<div class="form-group">
-						<label>อีเมล์</label>
+						<label>อีเมล์</label><span class="error">*</span>
 						<input type="email" name="email" class="form-control" placeholder="อีเมล์">
 					</div>
 					<div class="form-group">
