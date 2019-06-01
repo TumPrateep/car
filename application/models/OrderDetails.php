@@ -45,17 +45,6 @@ class Orderdetails extends CI_Model{
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
         $this->db->join('garage','reserve.garageId = garage.garageId');
-        // $this->db->join('car_accessories','order.car_accessoriesId = car_accessories.userId');
-        // $this->db->join('users','order.userId = users.id');
-        // $this->db->join('user_profile','users.id = user_profile.userId');
-        // $this->db->join('car_profile','order.car_profileId = car_profile.car_profileId');
-        // $this->db->join('provinceforcar','car_profile.province_plate = provinceforcar.provinceforcarId');
-        // $this->db->join('brand','car_profile.brandId = brand.brandId');
-        // $this->db->join('model','car_profile.modelId = model.modelId');
-        // $this->db->join('modelofcar','car_profile.modelofcarId = modelofcar.modelofcarId');
-        // $this->db->join('spares_change_garage','garage.garageId = spares_change_garage.garageId');
-        // $this->db->join('tire_change_garage','garage.garageId = tire_change_garage.garageId');
-        // $this->db->join('lubricator_change_garage','garage.garageId = lubricator_change_garage.garageId');
         $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
 
         $this->db->where('order.status', 4);
@@ -75,21 +64,56 @@ class Orderdetails extends CI_Model{
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
         $this->db->join('garage','reserve.garageId = garage.garageId');
-        // $this->db->join('car_accessories','order.car_accessoriesId = car_accessories.userId');
-        // $this->db->join('users','order.userId = users.id');
-        // $this->db->join('user_profile','users.id = user_profile.userId');
-        // $this->db->join('car_profile','order.car_profileId = car_profile.car_profileId');
-        // $this->db->join('provinceforcar','car_profile.province_plate = provinceforcar.provinceforcarId');
-        // $this->db->join('brand','car_profile.brandId = brand.brandId');
-        // $this->db->join('model','car_profile.modelId = model.modelId');
-        // $this->db->join('modelofcar','car_profile.modelofcarId = modelofcar.modelofcarId');
-        // $this->db->join('spares_change_garage','garage.garageId = spares_change_garage.garageId');
-        // $this->db->join('tire_change_garage','garage.garageId = tire_change_garage.garageId');
-        // $this->db->join('lubricator_change_garage','garage.garageId = lubricator_change_garage.garageId');
         $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
 
         $this->db->where('order.status', 4);
         $this->db->where('orderdetail.status', 2);
+        // $this->db->where('numbertracking.garageId', $garageId);
+        $this->db->limit($limit,$start)->order_by($order,$dir);
+
+        $query = $this->db->get();
+
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    function allreturnorders_count($garageId)
+    {   
+        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.group, orderdetail.productId, orderdetail.quantity, garage.garageId, orderdetail.status");
+        // $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName,spares_change_garage.spares_price,tire_change_garage.tire_price,lubricator_change_garage.lubricator_price");
+        $this->db->from('order');
+        $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
+        $this->db->join('reserve','order.orderId = reserve.orderId');
+        $this->db->join('garage','reserve.garageId = garage.garageId');
+        $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
+
+        $this->db->where('order.status', 4);
+        $this->db->where('orderdetail.status', 9);
+        // $this->db->where('numbertracking.garageId', $garageId);
+
+        $query = $this->db->get();
+        return $query->num_rows();  
+     
+    }
+
+    function allreturnorders($limit,$start,$order,$dir,$garageId)//$limit,$start,$col,$dir,$order
+    {   
+        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.group, orderdetail.productId, orderdetail.quantity, garage.garageId, orderdetail.status");
+        // $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName,spares_change_garage.spares_price,tire_change_garage.tire_price,lubricator_change_garage.lubricator_price");
+        $this->db->from('order');
+        $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
+        $this->db->join('reserve','order.orderId = reserve.orderId');
+        $this->db->join('garage','reserve.garageId = garage.garageId');
+        $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
+
+        $this->db->where('order.status', 4);
+        $this->db->where('orderdetail.status', 9);
         // $this->db->where('numbertracking.garageId', $garageId);
         $this->db->limit($limit,$start)->order_by($order,$dir);
 
@@ -169,15 +193,6 @@ class Orderdetails extends CI_Model{
         $result = $this->db->get("reserve");
         return $result->row();
     }
-
-    // function getDatacarprofile($car_profileId){
-    //     $this->db->select("car_profile.pictureFront, car_profile.character_plate, car_profile.number_plate, provinceforcar.provinceforcarName");
-    //     $this->db->from('car_profile');
-    //     $this->db->join('provinceforcar','car_profile.province_plate  = provinceforcar.provinceforcarId');
-    //     $this->db->where('car_profile.car_profileId',$car_profileId);
-    //     $result = $this->db->get();
-    //     return $result->row();
-    // }
 
     function getDatacarprofile($car_profileId){
         $this->db->select("car_profile.pictureFront, car_profile.character_plate, car_profile.number_plate, provinceforcar.provinceforcarName, brand.brandName, model.modelName, model.yearStart, model.yearEnd, model.detail, modelofcar.modelofcarName, modelofcar.machineSize");

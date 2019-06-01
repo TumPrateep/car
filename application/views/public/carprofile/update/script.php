@@ -11,65 +11,62 @@
                     required: true
                 },
                 number_plate: {
-                    required: true
+                    required: true,
+                    maxlength: true
                 },
                 province_plate: {
                     required: true
                 },
                 brandId: {
-                    required: true,
-                    minlength: 10,
-                    maxlength: 10
+                    required: true
                 },
                 modelId: {
                     required: true
-                
                 },
                 detail: {
-                    required: true,
-                    pid: true
+                    required: true
                 },
                 modelofcarId: {
                     required: true
                 },
                 color: {
-                    required: true 
+                    required: true
                 },
                 mileage: {
-                    required: true 
-                }
+                    required: true
+                }  
             },messages:{
                 character_plate: {
-                    required: "กรุณากรอกอักษรนำหน้า"
+                    required: "กรุณากรอกอัษร"
                 },
-                number_plate: {
+                number_plate:{
                     required: "กรุณากรอกหมายเลข",
-                    min: "กรอกข้อมูลไม่ถูกต้อง"
+                    maxlength: "กรุณากรอกหมายเลขให้ถูกต้อง"
                 },
                 province_plate: {
-                    required: "กรุณากรอกจังหวัด"
+                    required: "กรุณาเลือกจังหวัด"
                 },
-                brandId: {
-                    required: "กรุณากรอกยี่ห้อ"
+                brandId:{
+                    required: "กรุณาเลือกยี่ห้อรถ"
                 },
                 modelId: {
                     required: "กรุณาเลือกรุ่นรถ"
-                
                 },
-                detail: {
-                    required: "กรุณาเลือกโฉมรถยนต์"
+                detail:{
+                    required: "กรุณาเลือกรายละเอียดรถ"
                 },
                 modelofcarId: {
-                    required: "กรุณาเลือกรายละเอียดรุ่น"
+                    required: "กรุณาเลือกโฉมรถ"
                 },
                 color: {
-                    required: "กรุณากรอกสี" 
+                    required: "กรุณากรอกสีรถ"
                 },
                 mileage: {
-                    min: "กรอกข้อมูลไม่ถูกต้อง"
-                }
+                    required: "กรุณากรอกเลขไมล์"
+                }  
             }
         });
+        
         var car_profileId = $("#car_profileId").val();
         
         $.post(base_url+"service/Carprofile/getCarProfile",{
