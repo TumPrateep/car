@@ -52,7 +52,7 @@
                             <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
                                 <thead>
                                 <th>ลำดับ</th>
-                                <th>หมายเลขสั่งซื้อ</th>
+                                <th>หมายเลขการซ่อม</th>
                                 <th>วันที่จอง</th>
                                 <th>เวลา</th>
                                 <th>ผู้จอง</th>
