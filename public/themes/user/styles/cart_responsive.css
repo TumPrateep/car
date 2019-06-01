@@ -335,7 +335,11 @@
 	p{font-size: 13px;}
 	.top_bar
 	{
-		display: none;
+		display: show;
+	}
+	.top_bar.top-bar-mobile
+	{
+		display: show;
 	}
 	.logo_container, .wishlist_cart
 	{

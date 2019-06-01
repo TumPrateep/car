@@ -1,7 +1,12 @@
 /* @extend display-flex; */
-display-flex, .form-row, ul, .title, .actions ul li a, .form-date-item .select-icon, .form-date-item .select-icon i, .form-date-group {
+display-flex, .form-row, .title, .actions ul li a, .form-date-item .select-icon, .form-date-item .select-icon i, .form-date-group {
   display: flex;
   display: -webkit-flex; }
+
+.steps ul, .actions ul{
+  display: flex;
+  display: -webkit-flex; }
+}
 
 /* @extend list-type-ulli; */
 list-type-ulli, ul {

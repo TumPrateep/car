@@ -6,7 +6,7 @@
 					<!-- Logo -->
 					<div class="col-lg-3 col-sm-3 col-3 order-1">
 						<div class="logo_container">
-							<div class="logo"><a href="<?=base_url();?>"><img src="<?=base_url("public/image/logo/notofficiallogo2.PNG");?>" alt=""></a></div>
+							<div class="logo"><a href="<?=base_url();?>"><img class="img-logo-car" src="<?=base_url("public/image/logo/notofficiallogo2.PNG");?>" alt=""></a></div>
 						</div>
 					</div>
 
@@ -19,7 +19,7 @@
 										<input type="search" required="required" class="header_search_input" placeholder="ค้นหาสินค้า...">
 										<div class="custom_dropdown">
 											<div class="custom_dropdown_list">
-												<span class="custom_dropdown_placeholder clc">ทุกหมวดหมู่</span>
+												<span class="custom_dropdown_placeholder clc">สินค้า</span>
 												<i class="fas fa-chevron-down"></i>
 												<ul class="custom_list clc">
 													<li><a class="clc" href="#">อะไหล่ช่วงล่าง</a></li>

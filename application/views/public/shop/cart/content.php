@@ -1,5 +1,5 @@
 <div class="shop">
-	<div class="container">
+	<div class="container container-mobile">
 		<!-- <h3>จองซ่อมอู่</h3> -->
 		<div class="row">
 			
@@ -19,17 +19,28 @@
 					<div class="alert alert-danger hide" role="alert">
 						<strong>คำเตือน!</strong> เลือกรถยนต์ที่ต้องการ
 					</div>
-                    <div class="row justify-content-between">
-						<div class="col col-lg-2">
-							<button type="button" class="btn btn-create btn-block" onclick="createCarConfirm()"><i class="fa fa-plus"></i>  สร้าง</button>
-						</div>
-						<div class="col col-lg-6">
-							<div class="row">
-								<div class="col-md-auto">
-									<input type="text" class="form-control" placeholder="ค้นหารถ" id="searchCar">
+                    <!-- <div class="row justify-content-between"> -->
+                    <div class="row ">
+						<div class="col-lg-6">
+							<div class="row ">
+								<div class="col-lg-4">
+									<div class="form-group">
+										<button type="button" class="btn btn-create btn-block" onclick="createCarConfirm()"><i class="fa fa-plus"></i>  สร้าง</button>
+									</div>
 								</div>
-								<div class="col col-lg-5">
-									<button type="button" class="btn btn-info btn-block" id="search-car"><i class="fa fa-search"></i>  ค้นหา</i></button>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="ค้นหารถ" id="searchCar">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<button type="button" class="btn btn-info btn-block" id="search-car"><i class="fa fa-search"></i>  ค้นหา</i></button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -62,34 +73,36 @@
 					</div>
                     <div class="row">
 						<div class="col-12">
-                        	<table class="table table-hover" id="cart-table">
-							  	<thead class="orange-table">
-							    	<tr >
-							      		<th width="5%" scope="col"></th>
-								      	<th width="10%" scope="col">รูปสินค้า</th>
-								      	<th width="20%" scope="col">ชื่อสินค้า</th>
-										<th width="15%" scope="col">ราคาต่อหน่วย</th>
-								      	<th width="20%" scope="col">จำนวน</th>
-								      	<th width="15%" scope="col">ราคารวม</th>
-								      	<th width="10%" scope="col"></th>
-							    	</tr>
-							  	</thead>
-							  	<tbody id="cart_list"></tbody>
-								<tfoot>
-									<tr>
-										<th colspan="4" class="text-right"><span class="amount">ราคาสินค้า :</span></th>
-										<th colspan="2" class="text-right"><span class="amount" id="order_total_cost"></span></th>
-									</tr>
-									<tr>
-										<th colspan="4" class="text-right"><span class="amount">ราคาค่าขนส่ง :</span></th>
-										<th colspan="2" class="text-right"><span class="amount" id="order_total_delivery"></span></th>
-									</tr>
-									<tr>
-										<th colspan="4" class="text-right"><span class="amount">ราคารวม :</span></th>
-										<th colspan="2" class="text-right"><span class="amount" id="order_total_amount"></span></th>
-									</tr>
-								</tfoot>
-							</table>
+							<div class="table-responsive">
+	                        	<table class="table table-hover" id="cart-table">
+								  	<thead class="orange-table">
+								    	<tr >
+								      		<th width="5%" scope="col"></th>
+									      	<th width="10%" scope="col">รูปสินค้า</th>
+									      	<th width="20%" scope="col">ชื่อสินค้า</th>
+											<th width="15%" scope="col">ราคาต่อหน่วย</th>
+									      	<th width="20%" scope="col">จำนวน</th>
+									      	<th width="15%" scope="col">ราคารวม</th>
+									      	<th width="10%" scope="col"></th>
+								    	</tr>
+								  	</thead>
+								  	<tbody id="cart_list"></tbody>
+									<tfoot>
+										<tr>
+											<th colspan="4" class="text-right"><span class="amount">ราคาสินค้า :</span></th>
+											<th colspan="2" class="text-right"><span class="amount" id="order_total_cost"></span></th>
+										</tr>
+										<tr>
+											<th colspan="4" class="text-right"><span class="amount">ราคาค่าขนส่ง :</span></th>
+											<th colspan="2" class="text-right"><span class="amount" id="order_total_delivery"></span></th>
+										</tr>
+										<tr>
+											<th colspan="4" class="text-right"><span class="amount">ราคารวม :</span></th>
+											<th colspan="2" class="text-right"><span class="amount" id="order_total_amount"></span></th>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
                         </div>
                         
 					</div>
@@ -109,15 +122,18 @@
 						<strong>คำเตือน!</strong> เลือกอู่ที่ต้องการ
 					</div>
                     <div class="row justify-content-between">
-
-						<div class="col col-lg-2"></div>
-						<div class="col col-lg-6">
+						<!-- <div class="col col-lg-2"></div> -->
+						<div class="col-lg-6">
 							<div class="row">
-								<div class="col-md-auto">
-									<input type="text" class="form-control" placeholder="ค้นหาอู่" id="garagename">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="ค้นหาอู่" id="garagename">
+									</div>
 								</div>
-								<div class="col col-lg-5">
-									<button type="button" class="btn btn-info btn-block" id="btn-search-garage"><i class="fa fa-search"></i>  ค้นหา</i></button>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<button type="button" class="btn btn-info btn-block" id="btn-search-garage"><i class="fa fa-search"></i>  ค้นหา</i></button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -159,18 +175,28 @@
 								<tbody id="cart_list"></tbody>
 								<tfoot><hr>
 								<form id="paymentForm">
-								<div class="btn-group offset-md-3" data-toggle="buttons">
-									<label class="btn btn-outline-secondary" id="selectOption1">
-										<input type="radio" name="options" id="option1" ><span class="icon">จ่ายเงินเต็มจำนวน</span><br>
-										<h4><span class="text-danger" id="fullMoney"></span></h4>
-										<!-- <span class="amount" id="money"> -->
-									</label>
-									<label class="btn btn-outline-secondary" id="selectOption2">
-										<input type="radio" name="options" id="option2" ><span class="icon">จ่ายเงินแบบมัดจำ</span><br>
-										<h4><span class="text-danger txt-money" id="halfMoney"></span></h4>
-										<!-- <span class="amount" id="depositmoney"> -->
-									</label>
-								</div><hr>
+									<div class="btn-group offset-md-3" data-toggle="buttons">
+										<div class="row">
+											<div class="col-lg-6">
+												<div class="form-group form-group-money">
+													<label class="btn btn-outline-secondary" id="selectOption1">
+														<input class="money-radio-in" type="radio" name="options" id="option1" ><span class="icon">จ่ายเงินเต็มจำนวน</span><br>
+														<h4><span class="text-danger" id="fullMoney"></span></h4>
+														<!-- <span class="amount" id="money"> -->
+													</label>
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<div class="form-group form-group-money">
+													<label class="btn btn-outline-secondary" id="selectOption2">
+														<input class="money-radio-in" type="radio" name="options" id="option2" ><span class="icon">จ่ายเงินแบบมัดจำ</span><br>
+														<h4><span class="text-danger txt-money" id="halfMoney"></span></h4>
+														<!-- <span class="amount" id="depositmoney"> -->
+													</label>
+												</div>
+											</div>
+										</div>
+									</div><hr>
 								</form>
 								</tfoot>
 							</table>

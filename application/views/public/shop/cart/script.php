@@ -17,6 +17,7 @@
 
 <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
 <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
+<script src="<?php echo base_url() ?>public/js/datatable-responsive.js"></script>
 
 <script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
 
@@ -157,12 +158,19 @@ function showCart(){
             html += getspare(value, index);
         }
     });
-
+    getshopCartforDataTable();
     setNumberOfCart();
     
     cartList.html(html);
     setTotalAmount();
     // $("#order_total_amount").html(currency(totalCost, {  precision: 0 }).format() + " บาท");
+}
+
+function getshopCartforDataTable(){
+    // $('#cart-table').DataTable({
+    //         "responsive": true
+    // });
+    
 }
 
 function setTotalAmount(){

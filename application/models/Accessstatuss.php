@@ -3,7 +3,7 @@
 class Accessstatuss extends CI_Model{
 
     function getOrderById($orderId){
-        $this->db->select("orderId");
+        $this->db->select("orderId,car_profileId");
         $this->db->where('orderId',$orderId);
         $result = $this->db->get("order");
         return $result->row();
@@ -14,10 +14,11 @@ class Accessstatuss extends CI_Model{
     }
 
     function allaccessstatuss($limit,$start,$col,$dir,$garageId){
-        $this->db->select('reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,order.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
+        $this->db->select('car_profile.car_profileId, car_profile.mileage, order.mileage_carprofile, reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,order.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
         $this->db->from('order');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
+        $this->db->join('car_profile', 'order.car_profileId = car_profile.car_profileId');
         $this->db->where('order.status', 4);
 
         $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
@@ -39,10 +40,11 @@ class Accessstatuss extends CI_Model{
     }
 
     function accessstatuss_search($limit,$start,$search,$col,$dir,$status){
-        $this->db->select('reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,order.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
+        $this->db->select('car_profile.car_profileId, car_profile.mileage, order.mileage_carprofile, reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,order.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
         $this->db->from('order');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
+        $this->db->join('car_profile', 'order.car_profileId = car_profile.car_profileId');
         $this->db->where('order.status', 4);
      
 
@@ -66,10 +68,11 @@ class Accessstatuss extends CI_Model{
 
     function accessstatuss_search_count($search,$status){
        
-        $this->db->select('reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,order.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
+        $this->db->select('car_profile.car_profileId, car_profile.mileage, order.mileage_carprofile, reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,order.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
         $this->db->from('order');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
+        $this->db->join('car_profile', 'order.car_profileId = car_profile.car_profileId');
         $this->db->where('order.status', 4);
 
         if($search != null){
@@ -84,8 +87,11 @@ class Accessstatuss extends CI_Model{
 
     function update($data){
         $this->db->trans_begin();
-                $this->db->where('orderId',$data['orderId']);
-                $this->db->update('order',$data);
+        $this->db->where('orderId',$data['order']['orderId']);
+        $this->db->update('order',$data['order']);
+
+        $this->db->where('car_profileId',$data['car_profile']['car_profileId']);
+        $this->db->update('car_profile',$data['car_profile']);
         
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
@@ -95,5 +101,17 @@ class Accessstatuss extends CI_Model{
             return true;
         }
     }
+
+    function data_check_update($mileage_carprofile,$orderId){
+        $this->db->from("order");
+        $this->db->where("orderId",$orderId);
+        $this->db->where("mileage_carprofile",$mileage_carprofile);
+        $this->db->where_not_in('orderId',$orderId);
+        $result = $this->db->get();
+        return $result->row();
+    }
+ 
+
+   
 
 }
