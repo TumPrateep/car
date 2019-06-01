@@ -16,6 +16,7 @@ class Auth extends BD_Controller {
         // $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
         $this->load->model('tempuser');
         $this->load->model("user");
+        $this->load->model("userprofiles");
     }
 
     public function googleAuth_post(){
@@ -23,11 +24,20 @@ class Auth extends BD_Controller {
         $name = $this->post('name');
         $firstname = $this->post('firstname');
         $lastname = $this->post('lastname');
-        $data = [
+
+        $data["users"] = [
             "email" => $email,
-            "name" => $name,
+            "username" => $email,
+            "status" => 1,
+            "category" => "4",
+            "create_at" => date('Y-m-d H:i:s',time())
+        ];
+
+        $data["profile"] = [
             "firstname" => $firstname,
             "lastname" => $lastname,
+            "status" => 1,
+            "activeFlag" => 1,
             "create_at" => date('Y-m-d H:i:s',time())
         ];
 
@@ -35,19 +45,19 @@ class Auth extends BD_Controller {
         if($userData != null){
             $this->login($userData);
         }else{
-            $tempUserData = $this->checkTempUser($email);
-            if($tempUserData != null){
-                $this->tempLogin($tempUserData);
-            }else{
-                $isTrue = $this->tempuser->insert($data);
+            // $tempUserData = $this->checkTempUser($email);
+            // if($tempUserData != null){
+            //     $this->tempLogin($tempUserData);
+            // }else{
+                $isTrue = $this->user->insert_user($data);
                 if($isTrue){
-                    $tempUserData = $this->checkTempUser($email);
-                    $this->tempLogin($tempUserData);
+                    $userData = $this->checkUser($email);
+                    $this->login($userData);
                 }else{
-                    $invalidLogin['message'] = REST_Controller::MSG_LOGIN_NOT_HAVE;
-                    $this->set_response($invalidLogin, REST_Controller::HTTP_OK);
+                    $output['message'] = REST_Controller::MSG_LOGIN_NOT_HAVE;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
                 }
-            }
+            // }
         }
 
     }
@@ -87,7 +97,7 @@ class Auth extends BD_Controller {
     }
 
     public function checkTempUser($email){
-        return $this->tempuser->getTempUserByEmail($email);
+        return $this->user->getUserByEmail($email);
     }
 
     public function checkUser($email){
@@ -123,11 +133,13 @@ class Auth extends BD_Controller {
         $output['token'] = JWT::encode($token,$kunci); //This is the output token
         $output['userId'] = $data->id;
 
+        $userprofile = $this->userprofiles->getUserProfileDataByUserId($data->id);
+
         $sess_array = array(
             'id' => $data->id,
             'username' => $data->username,
             'role' => (int)$data->category,
-            'name' => $data->username,
+            'name' => $userprofile->firstname." ".$userprofile->lastname,
             'isUser' => ((int)$data->category != 4)?false:true
         );
         $this->session->set_userdata('logged_in', $sess_array);

@@ -9,6 +9,10 @@ class Userprofiles extends CI_Model {
         return $this->db->where('userId',$userId)->where('status', 1)->get("user_profile")->row("user_profile");
     }
 
+    function getUserProfileDataByUserId($userId){
+        return $this->db->where('userId',$userId)->where('status', 1)->get("user_profile")->row();
+    }
+
     function getuserProfileById($user_profile){
         return $this->db->where('user_profile',$user_profile)->get("user_profile")->row();
     }
