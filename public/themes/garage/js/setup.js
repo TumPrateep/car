@@ -19,7 +19,7 @@ function fnDelete(option) {
    $("#lebel-delete").html(option.label);
    $("#content-delete").html(option.content);
    $("#delete-modal").modal("show");
-   deleteUrl = base_url+"apiGarage"+option.url;
+   deleteUrl = base_url+"apigarage"+option.url;
    modalUrl = option.gotoUrl;
 }
 
@@ -91,7 +91,7 @@ function fnConfirm(option){
     $("#lebel-confirm").html(option.label);
     $("#content-confirm").html(option.content);
     $("#confirm-modal").modal("show");
-    confirmUrl = base_url+"apiGarage"+option.url;
+    confirmUrl = base_url+"apigarage"+option.url;
     modalUrl = option.gotoUrl;
 }
 function changeStringToDay(str){

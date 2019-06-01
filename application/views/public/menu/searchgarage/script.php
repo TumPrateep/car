@@ -169,15 +169,15 @@ $(document).ready(function () {
 
                         $.each(data, function( index, value ) {
                             
-                            var serviceall = '';
-                            var servicetype = ['<div><span class="text-service">•</span> ซ่อมช่วงล่าง',' <span class="text-service">•</span> เปลี่ยนยางรถ</div>','<div><span class="text-service">•</span> เปลี่ยนถ่ายน้ำมันเครื่อง</div>'];
-                            var servicegarage = value.garageService ;
+                            // var serviceall = '';
+                            // var servicetype = ['<div><span class="text-service">•</span> ซ่อมช่วงล่าง',' <span class="text-service">•</span> เปลี่ยนยางรถ</div>','<div><span class="text-service">•</span> เปลี่ยนถ่ายน้ำมันเครื่อง</div>'];
+                            // var servicegarage = value.garageService ;
 
-                            for(var i=0;i<servicegarage.length;i++){
-                                if(servicegarage.charAt(i) == "1"){
-                                    serviceall += servicetype[i] ;
-                                }
-                            }
+                            // for(var i=0;i<servicegarage.length;i++){
+                            //     if(servicegarage.charAt(i) == "1"){
+                            //         serviceall += servicetype[i] ;
+                            //     }
+                            // }
 
                             var option = '';
                         
@@ -206,7 +206,8 @@ $(document).ready(function () {
                                                             + '<div class="garage-distance distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
                                                             + '<div class="garage-name-txt">'+value.garageName+'</div>'
 
-                                                            + '<div>'+serviceall+'</div>'
+                                                            + '<div><span title="'+changeStringGS(value.garageService)+'">'+substr(changeStringGS(value.garageService))+'</span></div>'
+                                                            // + '<div>'+serviceall+'</div>'
                                                             + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
                                                             + '<div class="option-garage">'+option+'</div>'
                                                             // + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
@@ -215,7 +216,7 @@ $(document).ready(function () {
                                                         + '</div>'
                                                         // + '<div class="product_extras"><button class="product_cart_button" tabindex="0" onclick=""><i class="fas fa-shopping-bag"></i> รายละเอียด</button></div>'
                                                     + '</div>'
-                                                + '</div>'
+                                                // + '</div>'
                                             + '</div>'
                                         + '</div>'
                                     + '</div>'

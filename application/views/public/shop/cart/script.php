@@ -490,7 +490,9 @@ function getAllGarage(){
                         $.each(data, function( index, value ) {
                             
                             var serviceall = '';
-                            var servicetype = ['<div><span class="text-service">•</span> ซ่อมช่วงล่าง',' <span class="text-service">•</span> เปลี่ยนยางรถ</div>','<div><span class="text-service">•</span> เปลี่ยนถ่ายน้ำมันเครื่อง</div>'];
+                            var servicetype = ['<span class="text-service">•</span> ซ่อมช่วงล่าง',
+                            					'<span class="text-service">•</span> เปลี่ยนยางรถ',
+                            					'<span class="text-service">•</span> เปลี่ยนถ่ายน้ำมันเครื่อง'];
                             var servicegarage = value.garageService ;
 
                             for(var i=0;i<servicegarage.length;i++){
@@ -525,16 +527,15 @@ function getAllGarage(){
                                                 + '<div onclick="">'
                                                     + '<div class="garage-distance distance">'+distance(value.latitude, value.longitude, latitude, longitude, "K")+'</div>'
                                                     + '<div class="garage-name-txt">'+value.garageName+'</div>'
-
-                                                    + '<div>'+serviceall+'</div>'
+                                                    + '<div><span title="'+changeStringGS(value.garageService)+'">'+substr(changeStringGS(value.garageService))+'</span></div>'
+                                                    // + '<div>'+serviceall+'</div>'
                                                     + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
                                                     + '<div class="option-garage">'+option+'</div>'
                                                     + '<div class="form-div">'
                                                         + '<a href="'+base_url+"comment/"+value.garageId+'" target="_blank"><button class="btn btn-info btn-sm rat-garage">คะเเนนเเละรีวิว</button></a>'
                                                         + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
                                                     + '</div>'
-                                                + '</div>'
-                                            + '</div>'
+                                            	+ '</div>'
                                             + '</div>'
                                         + '</div>'
                                     + '</div>'

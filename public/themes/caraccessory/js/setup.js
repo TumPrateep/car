@@ -9,6 +9,7 @@ $.ajaxSetup({
 
 $body = $("body");
 
+
 $(document).on({
     ajaxStart: function() { $body.addClass("loading-modal"); },
     ajaxStop: function() { $body.removeClass("loading-modal"); }    
@@ -20,7 +21,7 @@ function fnDelete(option) {
    $("#lebel-delete").html(option.label);
    $("#content-delete").html(option.content);
    $("#delete-modal").modal("show");
-   deleteUrl = base_url+"apiCaraccessories"+option.url;
+   deleteUrl = base_url+"apicaraccessories"+option.url;
    modalUrl = option.gotoUrl;
 }
 
