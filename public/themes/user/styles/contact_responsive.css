@@ -299,7 +299,7 @@
 	p{font-size: 13px;}
 	.top_bar
 	{
-		display: none;
+		display: show;
 	}
 	.logo_container, .wishlist_cart
 	{

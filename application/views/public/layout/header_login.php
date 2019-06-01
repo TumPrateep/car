@@ -4,11 +4,11 @@
 	
 	<!-- Header -->
 	
-	<header class="header" style="background-image: url('<?=base_url("public/themes/user/");?>images/top_background.jpg');">
+	<header class="header header-height" style="background-image: url('<?=base_url("public/themes/user/");?>images/top_background.jpg');">
 
 		<!-- Top Bar -->
 
-		<div class="top_bar">
+		<div class="top_bar top-bar-mobile">
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
@@ -18,9 +18,7 @@
 							<div class="top_bar_menu">
 								<ul class="standard_dropdown top_bar_dropdown">
 									<li>
-										<a href="#">
-											<div><span class="fas fa-user-circle"></span> <?=now_user()?> | <span class=" fas fa-chevron-down"></span></div>
-										</a>
+										<a><span class="fas fa-user-circle"></span> <?=now_user()?> | <span class=" fas fa-chevron-down"></span></a>
 										<ul>
 											<li><a href="<?=base_url("shop/order"); ?>"><span class="fas fa-bars"></span>  รายการสั่งซื้อ</a></li>
 											<li><a href="<?=base_url("public/userprofile"); ?>"><span class="fa fa-user"></span>  ข้อมูลผู้ใช้งาน</a></li>

@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/user/");?>styles/product_responsive.css">
 <link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/user/");?>styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/user/");?>styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="<?=base_url("public/themes/user/");?>styles/custom_responsive.css">
 <style type="text/css">
 	.border-black{
 		color: #000000;

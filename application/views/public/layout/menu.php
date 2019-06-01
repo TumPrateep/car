@@ -12,9 +12,8 @@
 							<div class="cat_menu_container">
 								<div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
 									<div class="cat_burger"><span></span><span></span><span></span></div>
-									<div class="cat_menu_text">หมวดหมู่</div>
+									<div class="cat_menu_text">สินค้า</div>
 								</div>
-
 								<ul class="cat_menu">
 									<li><a href="<?=base_url("shop/sparepart");?>">อะไหล่ช่วงล่าง<i class="fas fa-chevron-right ml-auto"></i></a></li>
 									<li><a href="<?=base_url("shop/lubricator");?>">น้ำมันเครื่อง<i class="fas fa-chevron-right"></i></a></li>
@@ -27,16 +26,8 @@
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
 									<li><a href="<?=base_url();?>">หน้าหลัก<i class="fas fa-chevron-down"></i></a></li>
-									<li class="hassubs">
-										<a href="#">สินค้า<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href="<?=base_url("shop/sparepart");?>">อะไหล่ช่วงล่าง<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="<?=base_url("shop/lubricator");?>">น้ำมันเครื่อง<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="<?=base_url("shop/tire");?>">ยางรถยนต์<i class="fas fa-chevron-down"></i></a></li>
-										</ul>
-									</li> 
-									<!-- <li><a href="<?=base_url("public/menu/solution/");?>">ขั้นตอนการใช้งาน<i class="fas fa-chevron-down"></i></a></li> -->
 									<li><a href="<?=base_url("public/step/");?>">ขั้นตอนการใช้งาน<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="#">กระทู้<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="<?=base_url("garagesearch");?>">ค้นหาศูนย์บริการ<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="<?=base_url("public/menu/contact/");?>">ติดต่อ<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
@@ -73,23 +64,14 @@
 									<input type="search" required="required" class="page_menu_search_input" placeholder="ค้นหาสินค้า...">
 								</form>
 							</div>
-							<ul class="page_menu_nav">
+							<ul class="page_menu_nav munu-nav">
 								<li class="page_menu_item">
-									<a href="#">หน้าหลัก<i class="fa fa-angle-down"></i></a>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="<?=base_url();?>">สินค้า<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="<?=base_url("shop/sparepart");?>">อะไหล่ช่วงล่าง<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="<?=base_url("shop/lubricator");?>">น้ำมันเครื่อง<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="<?=base_url("shop/tire");?>">ยางรถยนต์<i class="fa fa-angle-down"></i></a></li>
-									</ul>
+									<a href="<?=base_url();?>">หน้าหลัก<i class="fa fa-angle-down"></i></a>
 								</li>
 								<li class="page_menu_item"><a href="<?=base_url("public/menu/solution/");?>">ขั้นตอนการใช้งาน<i class="fa fa-angle-down"></i></a></li>
+								<li class="page_menu_item"><a href="#">กระทู้<i class="fa fa-angle-down"></i></a></li>
 								<li class="page_menu_item"><a href="<?=base_url("garagesearch");?>">ค้นหาศูนย์บริการ<i class="fa fa-angle-down"></i></a></li>
 								<li class="page_menu_item"><a href="<?=base_url("public/menu/solution/");?>">ติดต่อ<i class="fa fa-angle-down"></i></a></li>
-								<li class="page_menu_item"><a href="<?=base_url("register");?>">ลงทะเบียน<i class="fa fa-angle-down"></i></a></li>
-								<li class="page_menu_item"><a href="<?=base_url("login");?>">ลงชื่อเข้าใช้งาน<i class="fa fa-angle-down"></i></a></li>
 							</ul>
 							
 							<div class="menu_contact">

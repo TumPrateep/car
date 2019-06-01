@@ -134,6 +134,9 @@
 	{
 		/*display: none;*/
 	}
+	.top_bar.top-bar-mobile{
+		height: 50px;
+	}
 	.header_search
 	{
 		height: 50px;
@@ -186,9 +189,16 @@
 	{
 		width: 70%;
 	}
-	.top_bar_menu
+	/*.top_bar_menu
 	{
 		display: none;
+	}*/
+	.top_bar_contact_item{
+		display: none;
+	}
+	div.top_bar_menu ul li a.top_bar_regis {
+		font-size: 12px;
+		line-height: 40px;
 	}
 	.top_bar_user a
 	{
@@ -383,10 +393,10 @@
 {
 	h2{font-size: 24px;}
 	p{font-size: 13px;}
-	.top_bar
+	/*.top_bar
 	{
 		display: none;
-	}
+	}*/
 	.logo_container, .wishlist_cart
 	{
 		height: 72px;

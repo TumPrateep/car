@@ -4,7 +4,7 @@
 	
 	<!-- Header -->
 	
-	<header class="header" style="background-image: url('<?=base_url("public/themes/user/");?>images/top_background.jpg');">
+	<header class="header header-height" style="background-image: url('<?=base_url("public/themes/user/");?>images/top_background.jpg');">
 
 		<!-- Top Bar -->
 
@@ -18,7 +18,7 @@
 							<div class="top_bar_menu">
 								<ul class="standard_dropdown top_bar_dropdown">
 									<li>
-										<a href="#">ลงทะเบียนร้านค้าร่วม<i class="fas fa-chevron-down"></i></a>
+										<a class="top_bar_regis" href="#">ลงทะเบียนร้านค้าร่วม<i class="fas fa-chevron-down"></i></a>
 										<ul>
 											<li><a href="<?=base_url("register/garage"); ?>">อู่</a></li>
 											<li><a href="<?=base_url("register/sparepart"); ?>">ร้านอะไหล่</a></li>
