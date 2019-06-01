@@ -17,6 +17,7 @@ class Auth extends BD_Controller {
         $this->load->model('m_main');
         $this->load->model("profile");
         $this->load->model("garage");
+        $this->load->model("userprofiles");
     }
     
     public function login_post()
@@ -47,12 +48,12 @@ class Auth extends BD_Controller {
             $output['token'] = JWT::encode($token,$kunci); //This is the output token
             $output['userId'] = $val->id;
 
-            // $profile = $this->profile->findUserProfileById($val->id);
+            $userprofile = $this->userprofiles->getUserProfileDataByUserId($val->id);
             $sess_array = array(
                 'id' => $val->id,
                 'username' => $val->username,
                 'role' => (int)$val->category,
-                'name' => $val->username,
+                'name' => $userprofile->firstname." ".$userprofile->lastname,
                 'isUser' => ((int)$val->category != 4)?false:true,
             );
             $garageId = $this->garage->findGarageByUserId($val->id);
