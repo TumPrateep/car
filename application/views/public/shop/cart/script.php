@@ -541,6 +541,7 @@ function getAllGarage(){
                                     + '</div>'
                                 + '</div>'
                             + '</div>'
+                            + '</div>'
                         });
 
                         html += '</div>';
@@ -905,7 +906,8 @@ $(document).ready(function () {
                 required: true
             },
             number_plate: {
-                required: true
+                required: true,
+                maxlength: 6
             },
             province_plate: {
                 required: true
@@ -930,7 +932,8 @@ $(document).ready(function () {
                 required: "กรุณากรอกอัษร"
             },
             number_plate:{
-                required: "กรุณากรอกหมายเลข"
+                required: "กรุณากรอกหมายเลข",
+                maxlength: "กรุณากรอกหมายเลขให้ถูกต้อง"
             },
             province_plate: {
                 required: "กรุณาเลือกจังหวัด"

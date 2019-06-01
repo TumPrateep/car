@@ -95,7 +95,7 @@ $(document).ready(function() {
     }
     $("#submit").validate({
         rules: {
-            firstName: {
+            firstname: {
                 required: true
             },
             lastname: {
@@ -130,7 +130,7 @@ $(document).ready(function() {
             }
         },
         messages: {
-            firstName: {
+            firstname: {
                 required: "กรุณากรอกชื่อ"
             },
             lastname: {
