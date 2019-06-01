@@ -15,16 +15,16 @@
 				<div class="shop_sidebar">	
 					<ul class="nav flex-column nav-control">
 						<li class="nav-item">
-							<a class="nav-link active" href="#">รายการสั่งซื้อ</a>
+							<a class="nav-link active" href="<?=base_url("shop/order"); ?>">รายการสั่งซื้อ</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">ข้อมูลรถ</a>
+							<a class="nav-link " href="<?=base_url("public/carprofile"); ?>">ข้อมูลรถ</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">ข้อมูลส่วนตัว</a>
+							<a class="nav-link" href="<?=base_url("public/userprofile"); ?>">ข้อมูลส่วนตัว</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">ออกจากระบบ</a>
+							<a class="nav-link" href="#" onclick="logout()">ออกจากระบบ</a>
 						</li>
 					</ul>
 				</div>

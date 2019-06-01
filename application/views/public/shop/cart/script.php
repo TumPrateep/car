@@ -541,7 +541,6 @@ function getAllGarage(){
                                     + '</div>'
                                 + '</div>'
                             + '</div>'
-                            + '</div>'
                         });
 
                         html += '</div>';
