@@ -95,8 +95,8 @@
                         var user_info = JSON.parse(success.body);
                         var data = {
                             "name": user_info.displayName,
-                            "firstname": user_info.name.familyName,
-                            "lastname": user_info.name.givenName,
+                            "lastname": user_info.name.familyName,
+                            "firstname": user_info.name.givenName,
                             "email": user_info.emails[0].value
                         };
 

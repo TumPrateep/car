@@ -71,7 +71,7 @@
         <div class="modal-dialog modal-lg model-Width-sm" id="maxWidthSelect" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><b>อัพเดทหมายเลขไมล์</b></h5>
+                    <h3 class="modal-title" id="exampleModalLabel"><b>ยืนยันการซ่อม</b></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -80,23 +80,20 @@
                     <form id="submit">
                         <div class="row">
                             <div class="col-md-12">
-                                <!-- <input type="hidden" name="orderId" id="orderId"> -->
-                              
+                                <input type="hidden" name="orderId" id="orderId">
                                 <div class="row p-t-20">
                                     <div class="col-md-12">
                                         <div class="form-group">
+                                        <span><h5><b>ระบุเลขไมล์</b></h5></span><br>
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control"  id="mileage">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"></span>
-                                                </div>
+                                                <input type="text" class="form-control"  id="mileage_carprofile" name="mileage_carprofile">
                                             </div>
                                         </div>
                                     </div>
                                 </div> 
                                 <div class="modal-footer">
                                     <button type="submit"  class="btn btn-success"> บันทึก</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal"> ปิด</button>
+                                    <button type="button" class="btn btn-default" onclick="confirmStatus('+data.orderId+') data-dismiss="modal"> ปิด</button>
                                 </div>
                             </div>
                         </div>

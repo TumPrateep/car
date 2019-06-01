@@ -35,6 +35,9 @@
                         <li ><a class="garage-white " href="<?=base_url("garage/Orderreceive/show"); ?>">
                             <i class="fa fa-check-square-o garage-white" aria-hidden="true"></i><span class="hide-menu">รับ-คืนสินค้า</span></a>
                         </li>
+                        <li ><a class="garage-white " href="<?=base_url("garage/Returnorder/show"); ?>">
+                            <i class="fa fa-check-square-o garage-white" aria-hidden="true"></i><span class="hide-menu">สินค้าที่ส่งคืนแล้ว</span></a>
+                        </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/Acessstatus"); ?>">
                             <i class="fa fa-wrench garage-white"></i><span class="hide-menu">ยืนยันการซ่อม</span></a>
                         </li>

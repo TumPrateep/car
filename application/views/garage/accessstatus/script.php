@@ -108,17 +108,17 @@
             ]	 
     });
 
-    function confirmStatus(orderId){
-        var option = {
-            url: "/Accessstatus/changeStatus?orderId="+orderId,
-            label: "ยืนยันการทำรายการการจอง",
-            status: 2,
-            content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
-            gotoUrl: "garage/acessstatus"
-        }
-        fnConfirm(option);
-    }   
-
+    // function confirmStatus(orderId){
+    //     var option = {
+    //         url: "/Accessstatus/changeStatus?orderId="+orderId,
+    //         label: "ยืนยันการทำรายการการจอง",
+    //         status: 2,
+    //         content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
+    //         gotoUrl: "garage/acessstatus"
+    //     }
+    //     fnConfirm(option);
+    // }   
+  
     
 
     $("#search").click(function(){
@@ -131,5 +131,28 @@
         $("#orderId").val(orderId);
         $("#update-mileage").modal("show");
     }
+
+    $("#submit").submit(function(){
+        updatemileage();
+    })
+
+    function updatemileage(){
+        event.preventDefault();
+        var isValid = $("#submit").valid();
+
+        if(isValid){
+            var data = $("#submit").serialize();
+           
+            $.post(base_url+"apigarage/Accessstatus/update",data,
+            function(data){
+                if(data.message == 200){
+                    showMessage(data.message,"garage/Acessstatus");
+                }else{
+                    showMessage(data.message);
+                }
+            });
+        }
+    }
+
 
 </script>

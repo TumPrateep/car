@@ -50,6 +50,8 @@ class Accessstatus extends BD_Controller {
                 $nestedData['userId'] = $post->userId;
                 $nestedData['status'] = $post->status;
                 $nestedData['statusSuccess'] = $post->statusSuccess;
+                $nestedData['car_profileId'] = $post->car_profileId;
+                $nestedData['mileage'] = $post->mileage;
 
                 $data[] = $nestedData;
             }
@@ -64,23 +66,57 @@ class Accessstatus extends BD_Controller {
         $this->set_response($json_data);
     }
 
-    function changeStatus_get(){
+    // function changeStatus_get(){
         
-        $status = $this->get("status");
-        $orderId = $this->get("orderId");
-        $data = array(
+    //     $status = $this->get("status");
+    //     $orderId = $this->get("orderId");
+    //     $data = array(
             
-            'orderId' => $orderId,  
-            'statusSuccess' => $status
-        );
-        $data_check_update = $this->accessstatuss->getOrderById($orderId);
+    //         'orderId' => $orderId,  
+    //         'statusSuccess' => $status
+    //     );
+    //     $data_check_update = $this->accessstatuss->getOrderById($orderId);
 
+    //     $option = [
+    //         "data_check_update" => $data_check_update,
+    //         "data" => $data,
+    //         "model" => $this->accessstatuss
+    //     ];
+    //     $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
+    // }
+
+    public function update_post(){
+        // $userId = $this->session->userdata['logged_in']['id'];
+        $orderId = $this->post('orderId');
+        // $car_profileId = $this->post('car_profileId');
+        $mileage_carprofile = $this->post('mileage_carprofile');
+        $garageId = $this->session->userdata['logged_in']['garageId'];
+
+        $data_check_update = $this->accessstatuss->getOrderById($orderId);
+        $data_check = null;
+
+        $data['order'] = array(
+            'orderId' => $orderId,
+            'mileage_carprofile'  => $mileage_carprofile,
+            'statusSuccess'  => 2
+            
+        );
+
+        $data['car_profile'] = array(
+            'car_profileId' => $data_check_update->car_profileId,
+            'mileage'  => $mileage_carprofile
+        );
+        
         $option = [
             "data_check_update" => $data_check_update,
+            "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->accessstatuss
+            "model" => $this->accessstatuss,
+            "image_path" => null,
+            "old_image_path" => null,
         ];
-        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
+
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
 
 }
