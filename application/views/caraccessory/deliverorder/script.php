@@ -65,21 +65,6 @@
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
-                // },{
-                //     "targets": 1,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         var imgPath = picturePath;
-                //         var group = data.group;
-                //         if(group == "tire"){
-                //             imgPath += "tireproduct/";
-                //         }else if(group == "lubricator"){
-                //             imgPath += "lubricatorproduct/";
-                //         }else{
-                //             imgPath += "spareproduct/";
-                //         }
-                //         return '<img src="'+imgPath+data.data.picture+'" width="100" />';
-                //     }
                 },{
                     "targets": 1,
                     "data": null,
@@ -103,20 +88,6 @@
                         return data.costCaraccessories;
                     }
                 }
-                // ,{
-                //     "targets": 5,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         return '<a href="'+base_url+"caraccessory/deliverorder"+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
-                          
-                //     }
-                // }
-
-                // { "orderable": false, "targets": 0 },
-                // {"className": "dt-center", "targets": [0,1,2,3]},
-                // { "width": "8%", "targets": 0 },
-                // { "width": "20%", "targets": [2,3] },
-                // { "width": "12%", "targets": [4,5] },  
                
             ]	 
     });

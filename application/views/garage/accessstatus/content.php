@@ -52,7 +52,7 @@
                             <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
                                 <thead>
                                 <th>ลำดับ</th>
-                                <th>หมายเลขสั่งซื้อ</th>
+                                <th>หมายเลขการซ่อม</th>
                                 <th>วันที่จอง</th>
                                 <th>เวลา</th>
                                 <th>ผู้จอง</th>
@@ -68,7 +68,7 @@
     </div>
     <!-- Pop-up -->
     <div class="modal fade" id="update-mileage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
-        <div class="modal-dialog modal-lg model-Width-sm" id="maxWidthSelect" role="document">
+        <div class="modal-dialog modal-lg model-Width-sm appove" id="maxWidthSelect" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title" id="exampleModalLabel"><b>ยืนยันการซ่อม</b></h3>

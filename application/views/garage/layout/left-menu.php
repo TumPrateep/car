@@ -17,12 +17,12 @@
                             <i class="fa fa-address-card-o garage-white"></i><span class="hide-menu">ข้อมูลช่าง</span></a>
                         </li>
                         <li><a class="has-arrow garage-white " href="#" aria-expanded="false">
-                            <i class="fa fa-usd garage-white"></i><span class="hide-menu">ราคาค่าบริการ</span></a>
+                            <i class="fa fa-usd garage-white"></i><span class="hide-menu">ราคาค่าแรง</span></a>
 
                             <ul aria-expanded="false" class="collapse">
-                                <li><a class="garage-white " href="<?=base_url("garage/charge/lubricator"); ?>">ค่าบริการเปลี่ยนน้ำมันเครื่อง</a></li>
-                                <li><a class="garage-white " href="<?=base_url("garage/charge/tire"); ?>">ค่าบริการเปลี่ยนยาง</a></li>
-                                <li><a class="garage-white " href="<?=base_url("garage/charge/spares"); ?>">ค่าบริการเปลี่ยนอะไหล่ช่วงล่าง</a></li>
+                                <li><a class="garage-white " href="<?=base_url("garage/charge/lubricator"); ?>">ค่าแรงเปลี่ยนน้ำมันเครื่อง</a></li>
+                                <li><a class="garage-white " href="<?=base_url("garage/charge/tire"); ?>">ค่าแรงเปลี่ยนยาง</a></li>
+                                <li><a class="garage-white " href="<?=base_url("garage/charge/spares"); ?>">ค่าแรงเปลี่ยนอะไหล่ช่วงล่าง</a></li>
                             </ul>
                         </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/Reserve"); ?>">
@@ -43,6 +43,9 @@
                         </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/review"); ?>">
                             <i class="fa fa-commenting-o garage-white"></i><span class="hide-menu">คะแนนและรีวิว</span></a>
+                        </li>
+                        <li ><a class="garage-white" href="#" onclick="logout()">
+                            <i class="fa fa-sign-out garage-white"></i><span class="hide-menu">ออกจากระบบ</span></a>
                         </li>
                     </ul>
                 </nav>
