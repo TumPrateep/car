@@ -99,7 +99,7 @@
         .order-left{
             margin-left: auto;
         }
-        td a{
+        tbody tr td a{
             color: #000000 !important;
         }
         .card-rating{

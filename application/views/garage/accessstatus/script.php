@@ -34,7 +34,7 @@
                     data.statusSuccess = $("#statusSuccess").val()
                 }
             },
-            "order": [[ 1, "asc" ]],
+            "order": [[ 1, "desc" ]],
             "columns": [
                 null,
                 null,
