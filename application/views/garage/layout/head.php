@@ -155,5 +155,23 @@
         .pad-star{
             padding-top: 10px;
         }
+        .modal-dialog.appove{
+            width: 500px;
+        }
+
+        /************
+         575px
+        ************/
+
+        @media only screen and (max-width: 575px)
+        {
+            .modal-dialog.appove{
+                margin-top: -50px;
+                width: 70%;
+            }
+            .btn.btn-model{
+                width: 100%;
+            }
+        }
     </style>
 </head>
