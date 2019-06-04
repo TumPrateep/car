@@ -110,6 +110,9 @@
 	.shop_sidebar > .flex-column.nav-control > li > a.active{
 		background-color: : #fff;
 	}
+	.gray-star{
+        color: #d9d9d9;
+    }
     
 	
 </style>

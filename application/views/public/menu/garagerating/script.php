@@ -24,7 +24,7 @@ $(document).ready(function () {
                    rat_star += '<i class="fa fa-star Yellow-star size-star" ></i>';
                 }
                 for(var i=5;scorerating<i;scorerating++){
-                   rat_star += '<i class="fa fa-star size-star" ></i>';
+                   rat_star += '<i class="fa fa-star gray-star size-star" ></i>';
                 }
             score += '<label>คะเเนนเเละรีวิว</label>'
                     + ' <div class="row">'

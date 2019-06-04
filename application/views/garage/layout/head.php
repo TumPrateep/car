@@ -136,7 +136,7 @@
             font-size: 40px;
         }
         .Yellow-star{
-            color: #ffff33;
+            color: #ffff00;
         }
         .textarea-l{
             height: 100px;
@@ -157,6 +157,9 @@
         }
         .modal-dialog.appove{
             width: 500px;
+        }
+        .gray-star{
+            color: #d9d9d9;
         }
 
         /************
