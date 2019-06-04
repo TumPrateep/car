@@ -36,6 +36,7 @@
             "columns": [
                 null,
                 null,
+                null,
                 {"data" : "quantity"},
                 null
             ],
@@ -82,20 +83,20 @@
                         return html;
                     }
                 },{
-                    "targets": 3,
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return data.costCaraccessories;
                     }
                 }
-                // ,{
-                //     "targets": 5,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         return '<a href="'+base_url+"caraccessory/deliverorder"+'"><button type="button" class="btn btn-warning"><i class="fa fa-paper-plane" aria-hidden="true"></i></button></a> '
+                ,{
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return data.create_at;
                           
-                //     }
-                // }
+                    }
+                }
 
                 // { "orderable": false, "targets": 0 },
                 // {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},

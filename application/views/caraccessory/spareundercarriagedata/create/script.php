@@ -117,7 +117,7 @@
 
 
     function getBrand(brandId = null){
-        $.get(base_url+"api/Car/getAllBrand",{},
+        $.get(base_url+"api/car/getAllBrand",{},
             function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
@@ -133,7 +133,7 @@
         detail.html('<option value="">เลือกโฉมรถยนต์</option>');
         // year.html('<option value="">เลือกปีผลิต</option>');
         modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-        $.get(base_url+"api/CarSelect/getCarModel",{
+        $.get(base_url+"api/carselect/getCarModel",{
             brandId : brandId
         },function(data){
             var modelData = data.data;
@@ -149,7 +149,7 @@
         detail.html('<option value="">เลือกโฉมรถยนต์</option>');
         // year.html('<option value="">เลือกปีผลิต</option>');
         modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');            
-        $.get(base_url+"api/Carselect/getCarYear",{
+        $.get(base_url+"api/carselect/getCarYear",{
             modelName : modelName
         },function(data){
             var detailData = data.data;
@@ -161,7 +161,7 @@
         
     detail.change(function(){  
         modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-        $.get(base_url+"api/Carselect/getCarDetail",{
+        $.get(base_url+"api/carselect/getCarDetail",{
             modelId : detail.val()
         },function(data){
             var carModelData = data.data;

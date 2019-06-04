@@ -93,12 +93,13 @@ class Deliverorder extends BD_Controller {
             foreach ($posts as $post)
             {
                 $nestedData['orderId'] = $post->orderId;
-                $nestedData['quantity'] = $post->quantity;
+                $nestedData['quantity'] = $post->quantity; 
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['group'] = $post->group;
                 $nestedData['productId'] = $post->productId;
                 $nestedData['garageName'] = $post->garageName;
                 $nestedData['costCaraccessories'] = $post->costCaraccessories;
+                $nestedData['create_at'] = $post->create_at;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;

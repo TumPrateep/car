@@ -119,6 +119,7 @@
                 <thead>
                   <th><i class="fa fa-sort"></i> ลำดับ</th>
                   <th><i class="fa fa-bars"></i>  รายละเอียดสินค้า</th>
+                  <th>  วันที่-เวลาส่งสินค้า</th>
                   <th>  จำนวน</th>
                   <th>  ราคา (บาท)</th>
                   <!-- <th><i class="fa fa-user-circle"></i>  สถานะ</th> -->

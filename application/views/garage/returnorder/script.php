@@ -45,12 +45,11 @@
             "drawCallback": function ( settings ) {
                 var api = this.api();
                 var rows = api.rows( {page:'current'} ).nodes();
-                var last=null;
+                var last = null;
                 
                 api.rows({page:'current'} ).data().each( function ( data, i ) {
                     if ( last !== data.orderId ) {
                         $(rows).eq( i ).before(
-                            // '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+ " "+"ลูกค้า"+" "+'<a href="'+base_url+"garage/Orderreceive/userdata/"+data.orderId+'"><u>'+ data.firstname+'</u></td></tr>'
                             '<tr class="group"><td colspan="2"><span class="order-left"> หมายเลขสั่งซื้อ '+data.orderId+ " " +'<button type="button" class="btn btn-secondary"  onclick="tracking_order('+data.orderId+')">ข้อมูลลูกค้า</button></span></td></tr>'
                         );
     
@@ -58,6 +57,11 @@
                     }
                 });
             },
+            // "createdRow": function ( row, data, index ) {
+            //     for(var i = 0;i<data.length;i++){
+            //         $('td', row).eq(i).addClass(data[i]);
+            //     }
+            // },
             "columnDefs": [
                 {
                     "searchable": false,
@@ -67,7 +71,9 @@
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return meta.row + 1;
+                        var num = '';
+                        var numsum = num+1;
+                        return numsum;
                     }
                 },{
                     "targets": 1,
