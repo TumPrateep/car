@@ -1,41 +1,10 @@
-<div class="shop">
-	<div class="container">
-        <div class="row">
-			<div class="col-lg-12">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="<?=base_url() ?>">หน้าหลัก</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">ข้อมูลส่วนตัว</li>
-						<li class="breadcrumb-item active" aria-current="page">แก้ไขข้อมูลส่วนตัว</li>
-					</ol>
-				</nav>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-3">
-				<div class="shop_sidebar">	
-					<ul class="nav flex-column nav-control">
-                        <li class="nav-item">
-							<a class="nav-link " href="<?=base_url("shop/order"); ?>">รายการสั่งซื้อ</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link " href="<?=base_url("public/carprofile"); ?>">ข้อมูลรถ</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link active" href="<?=base_url("public/userprofile"); ?>">ข้อมูลส่วนตัว</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#" onclick="logout()">ออกจากระบบ</a>
-						</li>
-					</ul>
-				</div>
-            </div>
+
             <div class="row col-md-9">
                 <div class="card col-lg-12">
                     <form id="submit">
                     <input type="hidden" id="car_profileId" name="car_profileId" value="<?=$car_profileId ?>">
                         <div class="card-body ">
-                        <h3 class="text-primary">สร้างข้อมูลรถ</h3>
+                        <h3 class="text-primary">เเก้ไขข้อมูลรถ</h3>
                         <div class="form-group row ">
                             <div class="form-group col-md-4">
                                 <label>อักษรนำหน้า</label><span class="error">*</span>

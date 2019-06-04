@@ -73,7 +73,7 @@
                        rat_star += '<i class="fa fa-star Yellow-star size-star" ></i>';
                     }
                     for(var i=5;scorerating<i;scorerating++){
-                       rat_star += '<i class="fa fa-star size-star" ></i>';
+                       rat_star += '<i class="fa fa-star gray-star size-star" ></i>';
                     }
                 score += '<label>คะเเนนเเละรีวิว</label>'
                         + ' <div class="row">'
@@ -156,7 +156,7 @@
                        rat_starbymonth += '<i class="fa fa-star Yellow-star size-star" ></i>';
                     }
                     for(var i=5;scoreratingbymonth<i;scoreratingbymonth++){
-                       rat_starbymonth += '<i class="fa fa-star size-star" ></i>';
+                       rat_starbymonth += '<i class="fa fa-star gray-star size-star" ></i>';
                     }
                 scorebymonth += '<label>คะเเนนเเละรีวิว รายเดือน 02/2019</label>'
                         + ' <div class="row">'
@@ -229,7 +229,7 @@
 			           star += '<i class="fa fa-star Yellow-star" ></i>';
 			        }
 			        for(var i=5;score<i;score++){
-			           star += '<i class="fa fa-star" ></i>';
+			           star += '<i class="fa fa-star gray-star" ></i>';
 			        }
                    
                    	var botcomment = '';

@@ -229,3 +229,17 @@
             return html.substring(0, html.length);
         }
     </script>
+
+    <script>
+        var menu = document.getElementById("left-menu-users");
+        var navli = menu.getElementsByClassName("nav-link");
+        for (var i = 0; i < navli.length; i++) {
+          navli[i].addEventListener("click", function() {
+          var current = document.getElementsByClassName("active");
+          if (current.length > 0) { 
+            current[0].className = current[0].className.replace(" active", "");
+          }
+          this.className += " active";
+          });
+        }
+    </script>

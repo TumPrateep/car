@@ -104,6 +104,15 @@
     .txt-progress{
         font-size: 17px;
     }
+    .shop_sidebar > .flex-column.nav-control > li.active > a{
+		background-color: : #000;
+	}
+	.shop_sidebar > .flex-column.nav-control > li > a.active{
+		background-color: : #fff;
+	}
+	.gray-star{
+        color: #d9d9d9;
+    }
     
 	
 </style>

@@ -208,6 +208,7 @@ $(document).ready(function () {
                                                             + '<div><span title="'+changeStringGS(value.garageService)+'">'+substr(changeStringGS(value.garageService))+'</span></div>'
                                                             // + '<div>'+serviceall+'</div>'
                                                             + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
+                                                            + '<div class="option-garage">'+"เบอร์โทรติดต่อ: "+''+ +''+value.phone+'</div>'
                                                             + '<div class="option-garage">'+option+'</div>'
                                                             // + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
                                                              + '<a href="'+base_url+"comment/"+value.garageId+'" target="_blank"><button class="btn btn-info btn-sm rat-garage">คะเเนนเเละรีวิว</button></a>'

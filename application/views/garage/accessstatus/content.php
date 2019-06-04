@@ -68,7 +68,7 @@
     </div>
     <!-- Pop-up -->
     <div class="modal fade" id="update-mileage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
-        <div class="modal-dialog modal-lg model-Width-sm" id="maxWidthSelect" role="document">
+        <div class="modal-dialog modal-lg model-Width-sm appove" id="maxWidthSelect" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title" id="exampleModalLabel"><b>ยืนยันการซ่อม</b></h3>
