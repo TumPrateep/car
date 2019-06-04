@@ -30,6 +30,8 @@ class Userprofile extends CI_Controller {
 		}
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
+        $this->load->view("public/userprofile/breadcrumb");
+        $this->load->view("public/layout/left-menu");
         $this->load->view("public/userprofile/content",$data);
         $this->load->view("public/layout/copyright");        
         $this->load->view("public/layout/foot");
@@ -56,6 +58,8 @@ class Userprofile extends CI_Controller {
 		}
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
+        $this->load->view("public/userprofile/update/breadcrumb");
+        $this->load->view("public/layout/left-menu");
         $this->load->view("public/userprofile/update/content",$data);
         $this->load->view("public/layout/copyright");        
         $this->load->view("public/layout/foot");

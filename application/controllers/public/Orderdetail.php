@@ -17,6 +17,8 @@ class Orderdetail extends CI_Controller {
         $this->load->view("public/layout/header_login");
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
+        $this->load->view("public/shop/orderdetail/breadcrumb");
+        $this->load->view("public/layout/left-menu");
         $this->load->view("public/shop/orderdetail/content",$data);
         $this->load->view("public/layout/copyright");        
         $this->load->view("public/layout/foot");
