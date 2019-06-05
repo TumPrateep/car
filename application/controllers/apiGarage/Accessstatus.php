@@ -51,7 +51,7 @@ class Accessstatus extends BD_Controller {
                 $nestedData['status'] = $post->status;
                 $nestedData['statusSuccess'] = $post->statusSuccess;
                 $nestedData['car_profileId'] = $post->car_profileId;
-                $nestedData['mileage'] = $post->mileage;
+                // $nestedData['mileage'] = $post->mileage;
 
                 $data[] = $nestedData;
             }

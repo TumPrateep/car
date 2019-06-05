@@ -1,7 +1,8 @@
 <script>
     var lastOrder = 0;
     var lastCounter = 0;
-    var table = $('#dome-table').DataTable({
+    var sum = 0;
+    var table = $('#do-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -21,12 +22,13 @@
                 }
             },
             "responsive": true,
-            "bLengthChange": false,
+            "bLengthChange": true,
             "searching": false,
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"apicaraccessories/deliverorder/searchorder",
+                // "url": base_url+"apiCaraccessories/Deliverorder/searchorder",
+                "url": base_url+"apigarage/Orderdetail/searchreturnorder",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -34,28 +36,29 @@
                     // data.status = $("#status").val()
                 }
             },
-            "order": [[ 2, "dsc" ]],
+            // "order": [[ 2, "asc" ]],
             "columns": [
                 null,
                 null,
-                {"data" : "quantity"},
+                // null,
+                // {"data" : "quantity"},
                 null
             ],
             "drawCallback": function ( settings ) {
                 var api = this.api();
                 var rows = api.rows( {page:'current'} ).nodes();
-                var last=null;
-                
+                var last = null;
                 api.rows({page:'current'} ).data().each( function ( data, i ) {
+                    console.log(data);
                     if ( last !== data.orderId ) {
-                        $(rows).eq( i ).before(
-                            '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ '+data.orderId+' ชื่อร้านอู่ '+data.garageName+' <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="กรอกรูปภาพหมายเลขติดตาม"  onclick="tracking_order('+data.orderId+')"><span>ส่งสินค้า</span></button> <a href="'+base_url+"caraccessory/exportorder/show/"+data.orderId+'"><button type="button" data-toggle="tooltip" data-placement="top" title="ใบปะหน้าส่งสินค้า" class="btn btn-warning"><span>พิมพ์ใบปะหน้า</span></button></a></td></tr>'
+                        $(rows).eq( i ).before(        
+                            '<tr class="group"><td colspan="2"><span class="order-left"> หมายเลขสั่งซื้อ '+data.orderId+ " " +'<button type="button" class="btn btn-secondary"  onclick="tracking_order('+data.orderId+')">ข้อมูลลูกค้า</button></span></td><td colspan="4"><span id="total-'+data.orderId+'"></span></td></tr>'
                         );
-    
                         last = data.orderId;
                     }
                 });
             },
+      
             "columnDefs": [
                 {
                     "searchable": false,
@@ -70,11 +73,29 @@
                         }else{
                             lastOrder = data.orderId;
                             lastCounter = 1;
+                            sum = 0;
                         }
+                        sum += parseInt(data.cost*data.quantity);
+                        $("#total-"+data.orderId).html("ค่าแรงที่จะได้รับจากรายการนี้"+" "+sum);
                         return lastCounter;
                     }
                 },{
                     "targets": 1,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var imgPath = picturePath;
+                        var group = data.group;
+                        if(group == "tire"){
+                            imgPath += "tireproduct/";
+                        }else if(group == "lubricator"){
+                            imgPath += "lubricatorproduct/";
+                        }else{
+                            imgPath += "spareproduct/";
+                        }
+                        return '<img src="'+imgPath+data.data.picture+'" width="100" />';
+                    }
+                },{
+                    "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var html = "";
@@ -89,16 +110,28 @@
                         }
                         return html;
                     }
-                },{
-                    "targets": 3,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return data.costCaraccessories;
-                    }
-                }
+                },
+                // {
+                //     "targets": 4,
+                //     "data": null,
+                //     "render": function ( data, type, full, meta ) {
+
+                //         return data.cost*data.quantity;
+                //     }
+                // },
+
+                { "width": "10%", "targets": 0 },
+                { "width": "15%", "targets": 1 },
+                { "width": "35%", "targets": 2 },
+                // { "width": "10%", "targets": 3 },
+                // { "width": "10%", "targets": 4 },
+                // { "width": "10%", "targets": 5 },
+                // { "width": "10%", "targets": 6 },
+
+                
                
             ]	 
-    });
+    });    
 
     $("#btn-search").click(function(){
         event.preventDefault();
@@ -114,67 +147,33 @@
         $("#show-search").show(100);
     });
 
-    $("#price").slider({
-        range: true,
-        min: 0,
-        max: 10000,
-        value: [1000, 7000],
-        formatter: function formatter(val) {
-            // console.log(val);
-            if (Array.isArray(val)) {
-                var start = currency(val[0], { useVedic: true }).format();
-                var end = currency(val[1], { useVedic: true }).format();
-                $("#start").text(start);
-                $("#end").text(end);
-            }
-        },
-    });
-
     function tracking_order(orderId){
         
         $("#orderId").val(orderId);
         $("#tracking-order").modal("show");
-    }
 
-    $("#submit").submit(function(){
-        createteimg();
-    })
+        var orderId = $("#orderId").val();
 
-
-        function createteimg(){
-            event.preventDefault();
-            var isValid = $("#submit").valid();
-            
-            if(isValid){
-                var imageData = $('.image-editor').cropit('export');
-                $('.hidden-image-data').val(imageData);
-                var myform = document.getElementById("submit");
-                var formData = new FormData(myform);
-                $.ajax({
-                    url: base_url+"apicaraccessories/deliverorder/createteimgtraking",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    type: 'POST',
-                    success: function (data) {
-                        if(data.message == 200){
-                            showMessage(data.message,"caraccessory/deliverorder");
-                        }else{
-                            showMessage(data.message);
-                        }
-                        console.log(data);
-                    }
-                });
-                
+        $.post(base_url+"apigarage/Orderdetail/getuserdata",{
+            "orderId" : orderId
+        },function(data){
+            if(data.message!=200){
+                showMessage(data.message,"garage/orderreceive");
             }
-        }
-
-        $('.image-editor').cropit({
-        allowDragNDrop: false,
-        width: 200,
-        height: 200,
-        type: 'image/jpeg'
-    });
+            if(data.message == 200){
+                result = data.data;
+                // $("#name").val(result.titleName+" "+result.firstname+" "+result.lastname);
+                $("#name").html(": "+result.titleName+" "+result.firstname+" "+result.lastname);
+                $("#car_plate").html(": "+result.character_plate+" "+result.number_plate+" "+result.provinceforcarName);
+                $("#brandName").html(": "+result.brandName);
+                $("#modelName").html(": "+result.modelName);
+                $("#yearCar").html(": ปี "+result.yearStart+" - "+result.yearEnd);
+                $("#modelofcarName").html(": "+result.modelofcarName);
+              
+            }
+     
+        });
+    }
 
 </script>
 
