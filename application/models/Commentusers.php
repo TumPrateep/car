@@ -180,4 +180,20 @@ class Commentusers extends CI_Model{
         $query = $this->db->get();
         return $query->num_rows();                            
     }
+
+    function allScoresearchgarage_count($garageId){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
+
+    function allScoresearchgarage_sum($garageId){  
+        $this->db->select('garageId');
+        $this->db->from('rating');
+        $this->db->where('garageId',$garageId);
+        $query = $this->db->get();
+        return $query->num_rows();                            
+    }
 }

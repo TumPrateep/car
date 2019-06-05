@@ -96,7 +96,7 @@ $(document).ready(function () {
 		           star += '<i class="fa fa-star Yellow-star" ></i>';
 		        }
 		        for(var i=5;score<i;score++){
-		           star += '<i class="fa fa-star" ></i>';
+		           star += '<i class="fa fa-star gray-star" ></i>';
 		        }
 
                 var replygarage = '';
@@ -117,7 +117,7 @@ $(document).ready(function () {
                         			+'<div class="text-center">'
                         				+star
                         			+'</div>'
-                        			+'<div class="text-center"><span>'+val.create_at+'</span></div>'
+                        			+'<div class="text-center"><span>'+getsetdatecomment(val.create_at)+'</span></div>'
                         			+'</span>'
                         		+'</div>'
                         		+'<div class="col-md-9">'
@@ -159,6 +159,30 @@ $(document).ready(function () {
         }
     );
 });
+
+    function getsetdatecomment(createat){
+        
+        var datecomment = new Date(createat);
+        var day = datecomment.getUTCDate();
+        var daytostring = day.toString();
+        var d = daytostring.length;
+        if(d == 1){
+            date = "0"+day;
+        }else{
+            date = day;
+        }
+        var month = datecomment.getUTCMonth()+1;
+        var monthtostring = month.toString();
+        var m = monthtostring.length;
+        if(m == 1){
+            datemonth = "0"+month;
+        }else{
+            datemonth = month;
+        }
+        var year = datecomment.getUTCFullYear();
+        var daterating = date+"/"+datemonth+"/"+year;
+        return daterating;   
+    }
 </script>
 
 </body>

@@ -76,7 +76,7 @@ class Garages extends BD_Controller {
                 $nestedData[$count]['dayopenhour'] = $post->dayopenhour;
                 $nestedData[$count]['openingtime'] = $post->openingtime;
                 $nestedData[$count]['closingtime'] = $post->closingtime;
-                $nestedData[$count]['opentime'] = $post->openingtime." - ".$post->closingtime;
+                // $nestedData[$count]['opentime'] = $post->openingtime." - ".$post->closingtime." น.";
                 $nestedData[$count]['picture'] = $post->picture;
                 $nestedData[$count]['garageService'] = $post->garageService;
                 $nestedData[$count]['option1'] = $post->option1;
@@ -145,6 +145,18 @@ class Garages extends BD_Controller {
 
         $date=date_create($data["garage"]->closingtime);
         $data["garage"]->closingtime = date_format($date,"H:i");
+        
+        $this->set_response($data, REST_Controller::HTTP_OK);
+    }
+
+    function getallsumscoreratingbygarageId_get($garageId){
+        $garageId = $this->get("garageId");
+        
+        $this->set_response($data, REST_Controller::HTTP_OK);
+    }
+
+    function getcountscoreratingbygarageId_get($garageId){
+        $garageId = $this->get("garageId");
         
         $this->set_response($data, REST_Controller::HTTP_OK);
     }
