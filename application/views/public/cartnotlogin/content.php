@@ -38,7 +38,7 @@
                     </div>
                 </div><br>
                 <div class="col-12 offset-md-10">
-                    <button type="#" class="btn btn-orange"> ดำเนินการต่อ</button>
+                    <a  href="<?=base_url("login") ?>"><button type="#" class="btn btn-orange"> ดำเนินการต่อ</button></a> 
                 </div>
             </div>
 		</div>

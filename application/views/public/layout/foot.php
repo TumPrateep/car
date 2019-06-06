@@ -117,6 +117,27 @@
         </div>
       </div>
     </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="test">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+				<div class="modal-header">
+					<!-- <h5 class="modal-title">Modal title</h5> -->
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>จะเลือกสินค้าต่อหรือไม่</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">เลือกสินค้าต่อ</button>
+          <a  href="<?=base_url("shop/cart") ?>"><button type="button" class="btn btn-info btn-block" > ยืนยันการสั่งสินค้า</button></a> 
+					<!-- <button type="button" class="btn btn-primary" >ยืนยันการสั่งสินค้า</button> -->
+				</div>
+				</div>
+			</div>
+		</div>
     
 <script>var base_url = "<?=base_url();?>";</script>
 <script src="<?=base_url("public/themes/user/");?>js/jquery-3.3.1.min.js"></script>

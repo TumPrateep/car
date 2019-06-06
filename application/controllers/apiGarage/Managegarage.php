@@ -78,8 +78,10 @@ class Managegarage extends BD_Controller {
 
         $this->load->model("managegarages");
         $config['upload_path'] = 'public/image/garage/';
-        // $img = $this->post("garagePicture");
         $img = $this->post("picture");
+        $img1 = $this->post("garagePicture1");
+        
+        // $img2 = $this->post("garagePicture2");
         $success = true;
         $file = null;
         $imageName = null; 
@@ -90,6 +92,16 @@ class Managegarage extends BD_Controller {
 
             $imageName = uniqid().'.png';
             $file = $config['upload_path']. '/'. $imageName;
+            $success = file_put_contents($file, $data);
+        }
+
+        if(!empty($img1)){
+            $img1 = str_replace('data:image/png;base64,', '', $img1);
+            $img1 = str_replace(' ', '+', $img1);
+            $data = base64_decode($img1);
+
+            $imageName1 = uniqid().'.png';
+            $file1 = $config['upload_path']. '/'. $imageName1;
             $success = file_put_contents($file, $data);
         }
         if (!$success){
@@ -120,6 +132,7 @@ class Managegarage extends BD_Controller {
             'closingtime' => $closingtime,
             'brandId' => $brandId,
             "picture"=> $imageName,
+            "garagePicture1" => $imageName1,
             'option1' => $Wifi,
 			'option2' => $roomfan,
 			'option3' => $roomAir,
@@ -140,9 +153,11 @@ class Managegarage extends BD_Controller {
             "data" => $data,
             "model" => $this->managegarages,
             "image_path" => $file,
+            "image_path" => $file1,
             "old_image_path" => $oldImage
+            
         ];
-
+        // dd($oldImage);
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
         }
     }

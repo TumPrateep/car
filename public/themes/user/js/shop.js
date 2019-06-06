@@ -140,6 +140,8 @@
                     // imgtodrag.detach()
                 });
             }
+
+            $("#test").modal('show');
         }
     };
 
