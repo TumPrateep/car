@@ -100,7 +100,7 @@ class Review extends BD_Controller {
         $score['three'] = $this->commentusers->allScoreThreebymonth_count($garageId,$ratmonth,$ratyear);
         $score['four'] = $this->commentusers->allScoreFourbymonth_count($garageId,$ratmonth,$ratyear);
         $score['five'] = $this->commentusers->allScorefivebymonth_count($garageId,$ratmonth,$ratyear);
-        $score['month'] = date("m/Y");
+        $score['month'] = date("m ปี Y");
 
         $this->set_response($score, REST_Controller::HTTP_OK);
     }

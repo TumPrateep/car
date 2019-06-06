@@ -1,4 +1,6 @@
 <script>
+    var lastOrder = 0;
+    var lastCounter = 0;
     var table = $('#do-table').DataTable({
         "language": {
                 "aria": {
@@ -50,18 +52,14 @@
                 api.rows({page:'current'} ).data().each( function ( data, i ) {
                     if ( last !== data.orderId ) {
                         $(rows).eq( i ).before(
-                            '<tr class="group"><td colspan="2"><span class="order-left"> หมายเลขสั่งซื้อ '+data.orderId+ " " +'<button type="button" class="btn btn-secondary"  onclick="tracking_order('+data.orderId+')">ข้อมูลลูกค้า</button></span></td></tr>'
+                            '<tr class="group"><td colspan="2"><span class="order-left"> หมายเลขสั่งซื้อ '+data.orderId+ " " +'<button type="button" class="btn btn-secondary"  onclick="tracking_order('+data.orderId+')">ข้อมูลลูกค้า</button></span></td><td colspan="4"></td></tr>'
                         );
     
                         last = data.orderId;
                     }
                 });
             },
-            // "createdRow": function ( row, data, index ) {
-            //     for(var i = 0;i<data.length;i++){
-            //         $('td', row).eq(i).addClass(data[i]);
-            //     }
-            // },
+         
             "columnDefs": [
                 {
                     "searchable": false,
@@ -71,9 +69,13 @@
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        var num = '';
-                        var numsum = num+1;
-                        return numsum;
+                        if(data.orderId == lastOrder){
+                            lastCounter++;
+                        }else{
+                            lastOrder = data.orderId;
+                            lastCounter = 1;
+                        }
+                        return lastCounter;
                     }
                 },{
                     "targets": 1,

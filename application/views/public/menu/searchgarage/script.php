@@ -207,8 +207,8 @@ $(document).ready(function () {
                                                             + '<div class="garage-name-txt">'+value.garageName+'</div>'
                                                             + '<div><span title="'+changeStringGS(value.garageService)+'">'+substr(changeStringGS(value.garageService))+'</span></div>'
                                                             // + '<div>'+serviceall+'</div>'
-                                                            + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
-                                                            + '<div class="option-garage">'+"เบอร์โทรติดต่อ: "+''+ +''+value.phone+'</div>'
+                                                            + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+settimegarage(value.openingtime)+" - "+settimegarage(value.closingtime)+" น."+'</div>'
+                                                            + '<div class="option-garage">'+"เบอร์โทรติดต่อ: "+value.phone+'</div>'
                                                             + '<div class="option-garage">'+option+'</div>'
                                                             // + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
                                                              + '<a href="'+base_url+"comment/"+value.garageId+'" target="_blank"><button class="btn btn-info btn-sm rat-garage">คะเเนนเเละรีวิว</button></a>'
@@ -237,6 +237,29 @@ $(document).ready(function () {
         table.ajax.reload();
     })
 });
+
+    function settimegarage(timegarage){
+        var time = "2001-01-01 "+timegarage;
+        var datetime = new Date(time);
+        var htime = datetime.getHours();
+        var htostring = htime.toString();
+        var h = htostring.length;
+        if(h == 1){
+            hours = "0"+htime;
+        }else{
+            hours = htime;
+        }
+        var mtime = datetime.getMinutes();
+        var mtostring = mtime.toString();
+        var m = mtostring.length;
+        if(m == 1){
+            minutes = "0"+mtime;
+        }else{
+            minutes = mtime;
+        }
+        var settime = hours+":"+minutes;
+        return settime;   
+    }
 </script>
 
 </body>

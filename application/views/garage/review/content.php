@@ -204,7 +204,7 @@
                                 </div> 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-orange"><i class="fa fa-floppy-o"></i> บันทึก</button>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> บันทึก</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> ปิด</button>
                             </div>
                         </div>
@@ -242,7 +242,7 @@
                                 </div> 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-orange"><i class="fa fa-floppy-o"></i> บันทึก</button>
+                                <button type="submit" class="btn btn-warning"><i class="fa fa-floppy-o"></i> บันทึก</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> ปิด</button>
                             </div>
                         </div>

@@ -1,6 +1,7 @@
 <script>
-    function editcommentratingId(ratingId){
+    function editcommentratingId(ratingId,commentgarage){
         $("#updaterating").val(ratingId);
+        $("#editcommentgarage").val(commentgarage);
         $("#comment-update").modal("show");
     }
 
@@ -158,7 +159,7 @@
                     for(var i=5;scoreratingbymonth<i;scoreratingbymonth++){
                        rat_starbymonth += '<i class="fa fa-star gray-star size-star" ></i>';
                     }
-                scorebymonth += '<label>คะเเนนเเละรีวิว รายเดือน 02/2019</label>'
+                scorebymonth += '<label>คะเเนนเเละรีวิว รายเดือน '+scoreallbymonth.month+'</label>'
                         + ' <div class="row">'
                             + '<div class="col-md-4 "><br>'
                                 + '<div class="text-center"><span class="txt-rating">'+averagescoreratingbymonth+'</span></div>'
@@ -236,7 +237,7 @@
                     if(val.status == 1){
                         botcomment += '<button type="button" class="btn btn-success" onclick="commentrating('+val.ratingId+')" id="search"><i class="fa fa-comments"></i>  ตอบกลับ</i></button>';
                     }else if(val.status == 2){
-                        botcomment += '<button type="button" class="btn btn-warning" onclick="editcommentratingId('+val.ratingId+')" id="search"><i class="fa fa-comments"></i>  เเก้ไข</i></button>';   
+                        botcomment += '<button type="button" class="btn btn-warning" onclick="editcommentratingId('+val.ratingId+","+"'"+val.commentgarage+"'"+')" id="search"><i class="fa fa-comments"></i>  เเก้ไข</i></button>';   
                     }
 
                     var replygarage = '';
@@ -258,7 +259,7 @@
                             			+'<div class="text-center">'
                             				+star
                             			+'</div>'
-                            			+'<div class="text-center"><span>'+val.create_at+'</span></div>'
+                            			+'<div class="text-center"><span>'+getsetdatecomment(val.create_at)+'</span></div>'
                             			+'</span>'
                             		+'</div>'
                             		+'<div class="col-md-10">'
@@ -288,4 +289,31 @@
             }
         );
     });
+    
+
+    function getsetdatecomment(createat){
+        
+        var datecomment = new Date(createat);
+        var day = datecomment.getUTCDate();
+        var daytostring = day.toString();
+        var d = daytostring.length;
+        console.log(day);
+        if(d == 1){
+            date = "0"+day;
+        }else{
+            date = day;
+        }
+        var month = datecomment.getUTCMonth()+1;
+        var monthtostring = month.toString();
+        var m = monthtostring.length;
+        if(m == 1){
+            datemonth = "0"+month;
+        }else{
+            datemonth = month;
+        }
+        var year = datecomment.getUTCFullYear();
+        var daterating = date+"/"+datemonth+"/"+year;
+        return daterating;   
+    }
+
 </script>

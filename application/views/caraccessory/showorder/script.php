@@ -1,4 +1,6 @@
 <script>
+    var lastOrder = 0;
+    var lastCounter = 0;
     var table = $('#dome-table').DataTable({
         "language": {
                 "aria": {
@@ -64,7 +66,13 @@
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return meta.row + 1;
+                        if(data.orderId == lastOrder){
+                            lastCounter++;
+                        }else{
+                            lastOrder = data.orderId;
+                            lastCounter = 1;
+                        }
+                        return lastCounter;
                     }
                 },{
                     "targets": 1,

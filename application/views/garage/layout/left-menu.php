@@ -41,6 +41,9 @@
                         <li ><a class="garage-white " href="<?=base_url("garage/Acessstatus"); ?>">
                             <i class="fa fa-wrench garage-white"></i><span class="hide-menu">ยืนยันการซ่อม</span></a>
                         </li>
+                        <li ><a class="garage-white " href="<?=base_url("garage/Effort"); ?>">
+                            <i class="fa fa-wrench garage-white"></i><span class="hide-menu">ค่าแรงที่จะได้รับ</span></a>
+                        </li>
                         <li ><a class="garage-white " href="<?=base_url("garage/review"); ?>">
                             <i class="fa fa-commenting-o garage-white"></i><span class="hide-menu">คะแนนและรีวิว</span></a>
                         </li>

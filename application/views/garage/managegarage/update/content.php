@@ -275,6 +275,40 @@
 												</div>
 											</div>
 											<div class="row">
+												<div class="col-md-6">
+													<div class="row p-t-20">
+														<div class="col-md-12">
+															<div class="form-group">
+																<label class="control-label">รูปภายในอู่ซ่อมรถ</label>
+																<div class="image-editor">
+																	<input type="file" class="cropit-image-input" name="tempImage">
+																	<div class="cropit-preview"></div>
+																	<div class="image-size-label">ปรับขนาด</div>
+																	<input type="range" class="cropit-image-zoom-input">
+																	<input type="hidden" name="picture" id="picture" class="hidden-image-data" />
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="row p-t-20">
+														<div class="col-md-12">
+															<div class="form-group">
+																<label class="control-label">รูปภายในอู่ซ่อมรถ</label>
+																<div class="image-editor">
+																	<input type="file" class="cropit-image-input" name="tempImage">
+																	<div class="cropit-preview"></div>
+																	<div class="image-size-label">ปรับขนาด</div>
+																	<input type="range" class="cropit-image-zoom-input">
+																	<input type="hidden" name="picture" id="picture" class="hidden-image-data" />
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
 												<!-- <div class="col-md-2">
 													<div class="form-group">
 														<button type="submit" class="btn btn-success btn-block">ก่อนหน้า</button>
