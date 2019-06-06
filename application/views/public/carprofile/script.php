@@ -80,6 +80,7 @@
                                                         +'<div class=" col-lg-12">'
                                                             +'<a href="'+base_url+"public/carprofile/update/"+value.car_profileId+'"><button type="button" class="btn btn-warning btn-white  d1 " id="#"><i class="fas fa-pen-square" title="แก้ไข" ></i></button></a>' 
                                                             +'<button type="button" class="delete btn  btn btn-danger  d1"  onclick="deleteCarProfile('+value.car_profileId+')"><i class="fa fa-trash" title="ลบ"></i></button>'
+                                                            +'<a href="'+base_url+"public/Servicehistory/"+value.car_profileId+'"><button type="button" class="btn btn-warning btn-white  d1 " id="#"><i class="fas fa-pen-square" title="แก้ไข" ></i></button></a>'
                                                         +'</div>'
                                                     +'</div><br>'
                                                 + '</div>'

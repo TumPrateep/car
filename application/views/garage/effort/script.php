@@ -28,7 +28,7 @@
             "serverSide": true,
             "ajax":{
                 // "url": base_url+"apiCaraccessories/Deliverorder/searchorder",
-                "url": base_url+"apigarage/Orderdetail/searchreturnorder",
+                "url": base_url+"apigarage/Orderdetail/searceffort",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
