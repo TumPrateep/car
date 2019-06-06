@@ -12,6 +12,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="<?=base_url("public/carprofile"); ?>">ข้อมูลรถ</a>
 					</li>
+					<!-- <li class="nav-item">
+						<a class="nav-link" href="<?=base_url("public/Servicehistory"); ?>">ประวัติการซ่อม</a>
+					</li> -->
 					
 					<li class="nav-item">
 						<a class="nav-link " href="#" onclick="logout()">ออกจากระบบ</a>
