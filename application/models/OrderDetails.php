@@ -129,6 +129,49 @@ class Orderdetails extends CI_Model{
         }
     }
 
+    function alleffort_count($garageId)
+    {   
+        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.group, orderdetail.productId, orderdetail.quantity, garage.garageId, orderdetail.status");
+        $this->db->from('order');
+        $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
+        $this->db->join('reserve','order.orderId = reserve.orderId');
+        $this->db->join('garage','reserve.garageId = garage.garageId');
+        $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
+
+        // $this->db->where('order.status', 4);
+        $this->db->where('order.statusSuccess', 3);
+
+        $query = $this->db->get();
+        return $query->num_rows();  
+     
+    }
+
+    function alleffort($limit,$start,$order,$dir,$garageId)//$limit,$start,$col,$dir,$order
+    {   
+        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.group, orderdetail.productId, orderdetail.quantity, garage.garageId, orderdetail.status");
+        $this->db->from('order');
+        $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
+        $this->db->join('reserve','order.orderId = reserve.orderId');
+        $this->db->join('garage','reserve.garageId = garage.garageId');
+        $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
+
+        // $this->db->where('order.status', 4);
+        $this->db->where('order.statusSuccess', 3);
+        // $this->db->where('numbertracking.garageId', $garageId);
+        $this->db->limit($limit,$start)->order_by($order,$dir);
+
+        $query = $this->db->get();
+
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     function orders_search($limit,$start,$col,$dir,$orderId)
     {
         $this->db->where('status', 2);

@@ -112,6 +112,56 @@ class Orderdetail extends BD_Controller {
 
     }
 
+    function searceffort_post(){
+      
+
+        $columns = array( 
+            0 => null
+        );
+        
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $garageId = $this->session->userdata['logged_in']['garageId'];
+        $totalData = $this->orderdetails->alleffort_count($garageId);
+        $totalFiltered = $totalData;  
+        $posts = $this->orderdetails->alleffort($limit,$start,$order,$dir,$garageId);
+    
+        $data = array();
+        if(!empty($posts))
+        {
+            $index = 0;
+            $count = 0;
+            foreach ($posts as $post)
+            {
+                $nestedData['orderId'] = $post->orderId;
+                $nestedData['orderDetailId'] = $post->orderDetailId;
+                $nestedData['quantity'] = $post->quantity;
+                $nestedData['garageId'] = $post->garageId;
+                $nestedData['group'] = $post->group;
+                $nestedData['status'] = $post->status;
+                $nestedData['productId'] = $post->productId;
+                $nestedData['cost'] = $this->orders->getGarageCharge($post->productId, $post->group);
+                $nestedData['data'] = getProductDetail($post->productId, $post->group);
+
+                $data[] = $nestedData;
+   
+
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+
+        $this->set_response($json_data);
+
+    }
+
     function getuserdata_post(){
         // $garageId = $this->session->userdata['logged_in']['garageId'];
         $orderId = $this->post('orderId');
