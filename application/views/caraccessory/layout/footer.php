@@ -6,8 +6,7 @@
         </div>
       </div>
     </footer> -->
-            <footer class="footer bg-o-footer"> © 2018 All rights reserved. Template designed by 
-              <a class="ft-white" href="https://colorlib.com">Colorlib</a>
+            <footer class="footer bg-o-footer"> © 2019
             </footer>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
