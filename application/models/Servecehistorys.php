@@ -5,215 +5,29 @@ class Servecehistorys extends CI_Model{
         parent::__construct(); 
     }
 
-
-    function getorderDetailById($orderDetailId){
-        $this->db->select("orderDetailId");
-        $this->db->where('orderDetailId',$orderDetailId);
-        $result = $this->db->get("orderdetail");
-        return $result->row();
-    }
-
-    function getorderdata($orderId){
-        $this->db->select("order.orderId,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName");
-        $this->db->from('order');
-        $this->db->join('users','order.userId = users.id');
-        $this->db->join('user_profile','users.id = user_profile.userId');
-        $this->db->join('car_profile','order.car_profileId = car_profile.car_profileId');
-        $this->db->join('provinceforcar','car_profile.province_plate = provinceforcar.provinceforcarId');
-        $this->db->join('brand','car_profile.brandId = brand.brandId');
-        $this->db->join('model','car_profile.modelId = model.modelId');
-        $this->db->join('modelofcar','car_profile.modelofcarId = modelofcar.modelofcarId');
-        $this->db->where('order.orderId',$orderId);
-        $this->db->where('order.status', 4);
-        $result = $this->db->get("orderdetail");
-        return $result->row();
-    }
-
-    function getOrderDetailByOrderId($orderId){
-  
-        $this->db->where("orderId", $orderId);
-        $query = $this->db->get("orderdetail");
-        return $query->result();
-    }
-
-
-    function allorders_count($garageId)
+    function searchAllOrder($limit,$start,$col,$dir,$userId)
     {   
-        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.group, orderdetail.productId, orderdetail.quantity, garage.garageId, orderdetail.status");
-        // $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName,spares_change_garage.spares_price,tire_change_garage.tire_price,lubricator_change_garage.lubricator_price");
+        $this->db->select("order.orderId,order.create_at, reserve.garageId, reserve.reserveDate,reserve.reservetime, orderdetail.group, orderdetail.productId, garage.garageName, car_profile.character_plate, car_profile.number_plate, car_profile.province_plate, province.provinceName");
         $this->db->from('order');
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
-        $this->db->join('garage','reserve.garageId = garage.garageId');
-        $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
-
-        $this->db->where('order.status', 4);
-        $this->db->where('orderdetail.status', 2);
-        // $this->db->where('numbertracking.garageId', $garageId);
-
-        $query = $this->db->get();
-        return $query->num_rows();  
-     
-    }
-
-    function allorders($limit,$start,$order,$dir,$garageId)//$limit,$start,$col,$dir,$order
-    {   
-        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.group, orderdetail.productId, orderdetail.quantity, garage.garageId, orderdetail.status");
-        // $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName,spares_change_garage.spares_price,tire_change_garage.tire_price,lubricator_change_garage.lubricator_price");
-        $this->db->from('order');
-        $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
-        $this->db->join('reserve','order.orderId = reserve.orderId');
-        $this->db->join('garage','reserve.garageId = garage.garageId');
-        $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
-
-        $this->db->where('order.status', 4);
-        $this->db->where('orderdetail.status', 2);
-        // $this->db->where('numbertracking.garageId', $garageId);
-        $this->db->limit($limit,$start)->order_by($order,$dir);
-
-        $query = $this->db->get();
-
-        if($query->num_rows()>0)
-        {
-            return $query->result(); 
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    function allreturnorders_count($garageId)
-    {   
-        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.group, orderdetail.productId, orderdetail.quantity, garage.garageId, orderdetail.status");
-        // $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName,spares_change_garage.spares_price,tire_change_garage.tire_price,lubricator_change_garage.lubricator_price");
-        $this->db->from('order');
-        $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
-        $this->db->join('reserve','order.orderId = reserve.orderId');
-        $this->db->join('garage','reserve.garageId = garage.garageId');
-        $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
-
-        $this->db->where('order.status', 4);
-        $this->db->where('orderdetail.status', 9);
-        // $this->db->where('numbertracking.garageId', $garageId);
-
-        $query = $this->db->get();
-        return $query->num_rows();  
-     
-    }
-
-    function allreturnorders($limit,$start,$order,$dir,$garageId)//$limit,$start,$col,$dir,$order
-    {   
-        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.group, orderdetail.productId, orderdetail.quantity, garage.garageId, orderdetail.status");
-        // $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName,spares_change_garage.spares_price,tire_change_garage.tire_price,lubricator_change_garage.lubricator_price");
-        $this->db->from('order');
-        $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
-        $this->db->join('reserve','order.orderId = reserve.orderId');
-        $this->db->join('garage','reserve.garageId = garage.garageId');
-        $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
-
-        $this->db->where('order.status', 4);
-        $this->db->where('orderdetail.status', 9);
-        // $this->db->where('numbertracking.garageId', $garageId);
-        $this->db->limit($limit,$start)->order_by($order,$dir);
-
-        $query = $this->db->get();
-
-        if($query->num_rows()>0)
-        {
-            return $query->result(); 
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    function orders_search($limit,$start,$col,$dir,$orderId)
-    {
-        $this->db->where('status', 2);
-        $this->db->like('firstName',$firstname);
-        if($brandId != null){
-            $this->db->where("brandId", $brandId);
-        }
-        $query = $this->db->limit($limit,$start)
-                ->order_by($col,$dir)
-                ->get('order');
+        $this->db->join('garage','garage.garageId = reserve.garageId');
+        $this->db->join('car_profile','car_profile.car_profileId = order.car_profileId');
+        $this->db->join('province','province.provinceId = car_profile.province_plate');
         
-        if($query->num_rows()>0)
-        {
-            return $query->result();  
-        }
-        else
-        {
-            return null;
-        }
+        $this->db->where('order.statusSuccess', 3);
+        $this->db->where('order.create_by',$userId);
+        $this->db->limit($limit,$start)->order_by($col,$dir);
+        $query = $this->db->get();
+            if($query->num_rows()>0)
+            {
+                return $query->result(); 
+            }
+            else
+            {
+                return null;
+            }
         
-    }
-    function getSummaryCostFromOrderDetail($orderId, $userId){
-        $this->db->select("sum(cost*quantity) as cost, sum(charge*quantity) as charge, sum(chargeGarage*quantity) as chargeGarage, sum(costCaraccessories*quantity) as costCaraccessories");
-        $this->db->where("orderId", $orderId);
-        $result = $this->db->get("orderdetail");
-        return $result->row();
-    }
-
-    function getSummarycostDelivery($orderId){
-        $this->db->where("orderId", $orderId);
-        $result = $this->db->get("order");
-        return $result->row('costDelivery');
-    }
-
-    function orders_search_count($orderId){
-        $this->db->where('status', 2);
-        $this->db->where("garageId", $garageId);
-        $this->db->like('firstName',$firstname);
-        if($orderId != null){
-            $this->db->where("$orderId", $$orderId);
-        }
-        $query = $this->db->get('order');
-        return $query->num_rows();
-    }
-
-    function update($data){
-        $this->db->where('orderDetailId',$data['orderDetailId']);
-        $result = $this->db->update('orderdetail',$data);
-        return $result;
-    }
-
-    function getDatagarage($garageId){
-        $this->db->select("picture, garageName, dayopenhour,openingtime,closingtime");
-        $this->db->where('garageId',$garageId);
-        $result = $this->db->get("garage");
-        return $result->row();
-    }
-
-    function getDatareserve($reserveId){
-        $this->db->select("reserveDate, reservetime");
-        $this->db->where('reserveId',$reserveId);
-        $result = $this->db->get("reserve");
-        return $result->row();
-    }
-
-    function getDatacarprofile($car_profileId){
-        $this->db->select("car_profile.pictureFront, car_profile.character_plate, car_profile.number_plate, provinceforcar.provinceforcarName, brand.brandName, model.modelName, model.yearStart, model.yearEnd, model.detail, modelofcar.modelofcarName, modelofcar.machineSize");
-        $this->db->from('car_profile');
-        $this->db->join('provinceforcar','car_profile.province_plate  = provinceforcar.provinceforcarId');
-        $this->db->join('brand','car_profile.brandId  = brand.brandId');
-        $this->db->join('model','car_profile.modelId  = model.modelId');
-        $this->db->join('modelofcar','car_profile.modelofcarId  = modelofcar.modelofcarId');
-
-        $this->db->where('car_profile.car_profileId',$car_profileId);
-        $result = $this->db->get();
-        return $result->row();
-    }
-
-    function getIdData($orderId){
-        $this->db->select("reserve.garageId, order.car_profileId, reserve.reserveId");
-        $this->db->from('order');
-        $this->db->join('reserve','order.orderId  = reserve.orderId');
-        $this->db->where('order.orderId',$orderId);
-        $result = $this->db->get();
-        return $result->row();  
     }
 
 }

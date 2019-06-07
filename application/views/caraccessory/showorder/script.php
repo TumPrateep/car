@@ -96,8 +96,7 @@
                     "render": function ( data, type, full, meta ) {
                         return data.costCaraccessories;
                     }
-                }
-                ,{
+                },{
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
