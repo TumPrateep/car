@@ -34,7 +34,7 @@
     var lubricator = $("#lubricatorId");
     var lubricatorGear = $("#lubricator_gear");
 
-    $.get(base_url+"apicaraccessories/lubricatorData/getlubricatordata",{
+    $.get(base_url+"apicaraccessories/lubricatordata/getlubricatordata",{
         "lubricator_dataId": lubricator_dataId
     },function(data){
         if(data.message != 200){

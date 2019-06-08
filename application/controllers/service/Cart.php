@@ -88,7 +88,7 @@ class Cart extends BD_Controller {
                     // 'spares_brandPicture' => $value->spares_brandPicture
                 ];
                 $data["spare"][$value->spares_undercarriageDataId]['picture'] = getPictureSpare($option);
-                $data["spare"][$value->spares_undercarriageDataId]["spares_brandPicture"] = $value->spares_brandPicture;
+                // $data["spare"][$value->spares_undercarriageDataId]["spares_brandPicture"] = $value->spares_brandPicture;
                 $data["spare"][$value->spares_undercarriageDataId]["brandName"] = $value->brandName;
                 $data["spare"][$value->spares_undercarriageDataId]["modelName"] = $value->modelName;
                 $data["spare"][$value->spares_undercarriageDataId]["year"] = $value->year;
