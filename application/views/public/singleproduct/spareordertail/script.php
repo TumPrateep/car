@@ -11,10 +11,10 @@
 
     function setProductDetail(data){
         var baseImage = base_url+"/public/image/";
-        var imagePath = baseImage+"spareundercarriage/";
-        // $("#brand").html(data.tire_brandName);
-        $("#productImage").attr("src", imagePath+data.spares_undercarriageDataPicture);
-        // $("#brandImage").attr("src", baseImage+"spareundercarriage/"+data.tire_brandPicture);
+        var imagePath = baseImage+"spareproduct/";
+        $("#brand").html(data.tire_brandName);
+        $("#brandImage").attr("src", baseImage+"sparesbrand/"+data.spares_brandPicture);
+        $("#productImage").attr("src", imagePath+data.picture);
         $("#productName").html(data.spares_brandName+" "+data.spares_undercarriageName );
         $("#showBrand").html(data.spares_brandName);
         $("#showModel").html(data.spares_undercarriageName);

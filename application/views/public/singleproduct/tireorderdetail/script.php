@@ -11,9 +11,9 @@
 
     function setProductDetail(data){
         var baseImage = base_url+"/public/image/";
-        var imagePath = baseImage+"tirebranddata/";
+        var imagePath = baseImage+"tireproduct/";
         $("#brand").html(data.tire_brandName);
-        $("#productImage").attr("src", imagePath+data.tire_picture);
+        $("#productImage").attr("src", imagePath+data.picture);
         $("#brandImage").attr("src", baseImage+"tire_brand/"+data.tire_brandPicture);
         $("#productName").html(data.tire_brandName+" "+data.tire_modelName+" "+data.tire_size );
         $("#showBrand").html(data.tire_brandName);

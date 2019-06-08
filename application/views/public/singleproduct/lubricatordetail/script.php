@@ -10,11 +10,11 @@
     );
 
     function setProductDetail(data){
-        var baseImage = base_url+"/public/image/";
-        var imagePath = baseImage+"lubricatordata/";
+        var baseImage = base_url+"/public/image/";  
+        var imagePath = baseImage+"lubricatorproduct/";//"/public/image/lubricatordata
         $("#brand").html(data.lubricator_brandName);
-        $("#productImage").attr("src", imagePath+data.lubricator_dataPicture);
         $("#brandImage").attr("src", baseImage+"lubricator_brand/"+data.lubricator_brandPicture);
+        $("#productImage").attr("src", imagePath+data.picture);
         $("#productName").html(data.lubricator_brandName+" "+data.lubricatorName+" "+data.lubricator_number+" ขนาด "+data.capacity+" ลิตร");
         $("#showBrand").html(data.lubricator_brandName);
         $("#showModel").html(data.lubricatorName);
