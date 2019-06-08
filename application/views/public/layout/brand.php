@@ -1,28 +1,109 @@
 
-	<!-- Brands -->
-
 	<div class="brands">
 		<div class="container">
-			<div class="row">
-				<div class="col">
+			<div class="row-md-12">
+				<div class="col-md-12">
 					<div class="brands_slider_container">
-						
-						<!-- Brands Slider -->
+					
+					<div class="row">
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-two">
+										<header>
+											<div class="avatar">
+											<img src="<?=base_url("public/");?>image/carprofile/5cf23d319b096.png" alt="">
+											</div>
+										</header>
 
-						<div class="owl-carousel owl-theme brands_slider">
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc1765f17f81.png" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc170725f8b8.png" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc17116744b2.png" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc1709a5cc29.png" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc1765f17f81.png" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc170c2ebd15.png" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc171b207a0a.png" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?=base_url("public/");?>image/brand/5bc175c1a3eec.png" alt=""></div></div>
+										<h3>Allison Walker</h3>
+										<!-- <div class="desc">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit et cupiditate deleniti.
+										</div> -->
+										<div class="contacts">
+											<a href=""><i class="fa fa-plus"></i></a>
+											<a href=""><i class="fa fa-whatsapp"></i></a>
+											<a href=""><i class="fa fa-envelope"></i></a>
+											<div class="clear"></div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						
-						<!-- Brands Slider Navigation -->
-						<div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
-						<div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-two">
+										<header>
+											<div class="avatar">
+											<img src="<?=base_url("public/");?>image/carprofile/5ceeac3d4a763.png" alt="">
+											</div>
+										</header>
+
+										<h3>Allison Walker</h3>
+										<!-- <div class="desc">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit et cupiditate deleniti.
+										</div> -->
+										<div class="contacts">
+											<a href=""><i class="fa fa-plus"></i></a>
+											<a href=""><i class="fa fa-whatsapp"></i></a>
+											<a href=""><i class="fa fa-envelope"></i></a>
+											<div class="clear"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-two">
+										<header>
+											<div class="avatar">
+											<img src="<?=base_url("public/");?>image/carprofile/5cf288c67251a.png" alt="">
+											</div>
+										</header>
+
+										<h3>Allison Walker</h3>
+										<!-- <div class="desc">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit et cupiditate deleniti.
+										</div> -->
+										<div class="contacts">
+											<a href=""><i class="fa fa-plus"></i></a>
+											<a href=""><i class="fa fa-whatsapp"></i></a>
+											<a href=""><i class="fa fa-envelope"></i></a>
+											<div class="clear"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-two">
+										<header>
+											<div class="avatar">
+											<img src="<?=base_url("public/");?>image/carprofile/5ced55a7e630d.png" alt="">
+											</div>
+										</header>
+
+										<h3>Allison Walker</h3>
+										<!-- <div class="desc">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit et cupiditate deleniti.
+										</div> -->
+										<div class="contacts">
+											<a href=""><i class="fa fa-plus"></i></a>
+											<a href=""><i class="fa fa-whatsapp"></i></a>
+											<a href=""><i class="fa fa-envelope"></i></a>
+											<div class="clear"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 
 					</div>
 				</div>

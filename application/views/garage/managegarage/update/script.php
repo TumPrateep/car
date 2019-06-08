@@ -310,17 +310,17 @@
                     });
                 }
 
-        function setBrandPicturegarage(garagePicture1){
-                    $('.image-editorgarage').cropit({
-                        allowDragNDrop: false,
-                        width: 200,
-                        height: 200,
-                        type: 'image',
-                        imageState: {
-                            src: picturePath+"garage/"+garagePicture1
-                        }
-                    });
-                }
+        // function setBrandPicturegarage(garagePicture1){
+        //             $('.image-editorgarage').cropit({
+        //                 allowDragNDrop: false,
+        //                 width: 200,
+        //                 height: 200,
+        //                 type: 'image',
+        //                 imageState: {
+        //                     src: picturePath+"garage/"+garagePicture1
+        //                 }
+        //             });
+        //         }
 
         $("#submit").submit(function(){
             updategarage();
