@@ -134,7 +134,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         html = "";
-                        return html += '<a href="'+base_url+"public/Orderdetail/Orderdetails/"+data.orderId+'">'+"#"+ data.orderId
+                        return data.orderId;
                     }
                 },{
                     "targets": 3,
