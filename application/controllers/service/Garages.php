@@ -77,6 +77,9 @@ class Garages extends BD_Controller {
                 $nestedData[$count]['openingtime'] = $post->openingtime;
                 $nestedData[$count]['closingtime'] = $post->closingtime;
                 // $nestedData[$count]['opentime'] = $post->openingtime." - ".$post->closingtime." น.";
+                $summuryscore = $this->getallsumscoreratingbygarageId($post->garageId);
+                ($summuryscore->scorerating == null)?$nestedData[$count]['scoresummury'] = 0:$nestedData[$count]['scoresummury'] = (int)$summuryscore->scorerating ;
+                $nestedData[$count]['scoreall'] = $this->getcountscoreratingbygarageId($post->garageId);
                 $nestedData[$count]['picture'] = $post->picture;
                 $nestedData[$count]['garageService'] = $post->garageService;
                 $nestedData[$count]['option1'] = $post->option1;
@@ -149,15 +152,13 @@ class Garages extends BD_Controller {
         $this->set_response($data, REST_Controller::HTTP_OK);
     }
 
-    function getallsumscoreratingbygarageId_get($garageId){
-        $garageId = $this->get("garageId");
-        
-        $this->set_response($data, REST_Controller::HTTP_OK);
+    function getallsumscoreratingbygarageId($garageId){
+        $data = $this->commentusers->allScoresearchgarage_sum($garageId);
+        return $data; 
     }
 
-    function getcountscoreratingbygarageId_get($garageId){
-        $garageId = $this->get("garageId");
-        
-        $this->set_response($data, REST_Controller::HTTP_OK);
+    function getcountscoreratingbygarageId($garageId){
+        $data = $this->commentusers->allScoresearchgarage_count($garageId);
+        return $data; 
     }
 }

@@ -178,6 +178,22 @@ $(document).ready(function () {
                             //         serviceall += servicetype[i] ;
                             //     }
                             // }
+                            var rating_star = '';
+                            if(value.scoreall != 0){
+                                averagescore = (value.scoresummury/value.scoreall);
+                                averagescorerating = averagescore.toFixed( 1 );
+                                scorerating = Math.floor(averagescore);
+                            }else{
+                                averagescore = 0;
+                                averagescorerating = 0;
+                                scorerating = 0;
+                            }
+                                for(var i=0;i<scorerating;i++){
+                                   rating_star += '<i class="fa fa-star Yellow-star size-star" ></i>';
+                                }
+                                for(var i=5;scorerating<i;scorerating++){
+                                   rating_star += '<i class="fa fa-star gray-star size-star" ></i>';
+                                }
 
                             var option = '';
                         
@@ -209,6 +225,9 @@ $(document).ready(function () {
                                                             // + '<div>'+serviceall+'</div>'
                                                             + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+settimegarage(value.openingtime)+" - "+settimegarage(value.closingtime)+" น."+'</div>'
                                                             + '<div class="option-garage">'+"เบอร์โทรติดต่อ: "+value.phone+'</div>'
+                                                            + '<div class="text-center">'
+                                                                + rating_star
+                                                            + '</div>'
                                                             + '<div class="option-garage">'+option+'</div>'
                                                             // + '<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'" target="_blank"><button class="btn btn-danger btn-sm"><i class="fas fa-location-arrow"></i>...Maps</button></a>'
                                                              + '<a href="'+base_url+"comment/"+value.garageId+'" target="_blank"><button class="btn btn-info btn-sm rat-garage">คะเเนนเเละรีวิว</button></a>'
