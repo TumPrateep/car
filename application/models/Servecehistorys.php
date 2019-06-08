@@ -15,7 +15,7 @@ class Servecehistorys extends CI_Model{
         $this->db->join('car_profile','car_profile.car_profileId = order.car_profileId');
         $this->db->join('province','province.provinceId = car_profile.province_plate');
         
-        $this->db->where('order.statusSuccess', 3);
+        $this->db->where('order.statusSuccess', 2);
         $this->db->where('order.create_by',$userId);
         $this->db->limit($limit,$start)->order_by($col,$dir);
         $query = $this->db->get();

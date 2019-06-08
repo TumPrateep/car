@@ -86,7 +86,7 @@
 
         <div class="row">
             <div class="col-lg-12 pt-20 ml-8">
-                <a href="<?=base_url("caraccessory/spareundercarriesdata/createSpareundercarriesData") ?>">
+                <a href="<?=base_url("caraccessory/spareundercarriesdata/createspareundercarriesdata") ?>">
                     <button type="button" class="btn-create btn btn-success btn-md m-b-10 m-l-5">
                     <i class="fa fa-plus"> สร้าง</i></button>
                 </a>

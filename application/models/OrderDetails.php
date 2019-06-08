@@ -139,7 +139,7 @@ class Orderdetails extends CI_Model{
         $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
 
         // $this->db->where('order.status', 4);
-        $this->db->where('order.statusSuccess', 3);
+        $this->db->where('order.statusSuccess', 2);
 
         $query = $this->db->get();
         return $query->num_rows();  
@@ -156,7 +156,7 @@ class Orderdetails extends CI_Model{
         $this->db->join('numbertracking','numbertracking.orderId = order.orderId');
 
         // $this->db->where('order.status', 4);
-        $this->db->where('order.statusSuccess', 3);
+        $this->db->where('order.statusSuccess', 2);
         // $this->db->where('numbertracking.garageId', $garageId);
         $this->db->limit($limit,$start)->order_by($order,$dir);
 
