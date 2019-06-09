@@ -278,7 +278,8 @@ $(document).ready(function () {
         }
         var settime = hours+":"+minutes;
         return settime;   
-    }
+    } 
+    
 </script>
 
 </body>

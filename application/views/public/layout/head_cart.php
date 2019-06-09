@@ -152,6 +152,15 @@
 	select.error{
 		color: #666!important;
 	}
+	.Yellow-star{
+        color: #ffff33;
+    }
+    .size-star{
+        font-size: 20px;
+    }
+    .gray-star{
+        color: #d9d9d9;
+    }
 
 </style>
 

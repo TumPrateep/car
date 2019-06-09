@@ -496,6 +496,23 @@ function getAllGarage(){
                         var imagePath = base_url+"/public/image/garage/";
 
                         $.each(data, function( index, value ) {
+
+                            var rating_star = '';
+                            if(value.scoreall != 0){
+                                averagescore = (value.scoresummury/value.scoreall);
+                                averagescorerating = averagescore.toFixed( 1 );
+                                scorerating = Math.floor(averagescore);
+                            }else{
+                                averagescore = 0;
+                                averagescorerating = 0;
+                                scorerating = 0;
+                            }
+                                for(var i=0;i<scorerating;i++){
+                                   rating_star += '<i class="fa fa-star Yellow-star size-star" ></i>';
+                                }
+                                for(var i=5;scorerating<i;scorerating++){
+                                   rating_star += '<i class="fa fa-star gray-star size-star" ></i>';
+                                }
                             
                             var serviceall = '';
                             var servicetype = ['<span class="text-service">•</span> ซ่อมช่วงล่าง',
@@ -537,7 +554,11 @@ function getAllGarage(){
                                                     + '<div class="garage-name-txt">'+value.garageName+'</div>'
                                                     + '<div><span title="'+changeStringGS(value.garageService)+'">'+substr(changeStringGS(value.garageService))+'</span></div>'
                                                     // + '<div>'+serviceall+'</div>'
-                                                    + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
+                                                    // + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+value.opentime+'</div>'
+                                                    + '<div><span class="error">เปิด</span> '+changeStringToDay(value.dayopenhour)+'<br>'+settimegarage(value.openingtime)+" - "+settimegarage(value.closingtime)+" น."+'</div>'
+                                                    + '<div class="text-center">'
+                                                        + rating_star
+                                                    + '</div>'
                                                     + '<div class="option-garage">'+option+'</div>'
                                                     + '<div class="form-div">'
                                                         + '<a href="'+base_url+"comment/"+value.garageId+'" target="_blank"><button class="btn btn-info btn-sm rat-garage">คะเเนนเเละรีวิว</button></a>'
@@ -558,6 +579,29 @@ function getAllGarage(){
                 }
             ]
         });
+    }
+
+    function settimegarage(timegarage){
+        var time = "2001-01-01 "+timegarage;
+        var datetime = new Date(time);
+        var htime = datetime.getHours();
+        var htostring = htime.toString();
+        var h = htostring.length;
+        if(h == 1){
+            hours = "0"+htime;
+        }else{
+            hours = htime;
+        }
+        var mtime = datetime.getMinutes();
+        var mtostring = mtime.toString();
+        var m = mtostring.length;
+        if(m == 1){
+            minutes = "0"+mtime;
+        }else{
+            minutes = mtime;
+        }
+        var settime = hours+":"+minutes;
+        return settime;   
     }
 
 function selectGarage(selectGarageId, dayopen, select, open, close){
