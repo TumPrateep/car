@@ -42,14 +42,14 @@
     </script>
 
     <script>
-        function unD(un) {;
-            var newun = null;
-            if(un == undefined){
-                newun = "-";
+        function changeUndefind(str) {;
+            var newstr = null;
+            if(str == undefined || str == null || str == ""){
+                newstr = "-";
             }else{
-                return un; 
+                return str; 
             }
-            return newun;
+            return newstr;
         }
     </script>
 

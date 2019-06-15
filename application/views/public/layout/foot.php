@@ -182,17 +182,18 @@
 <script src="<?=base_url("/public/themes/user/js/shop.js") ?>"></script>
 <script src="<?=base_url("/public/themes/user/js/setup.js") ?>"></script>
 
-    <script>
-        function unD(un) {;
-            var newun = null;
-            if(un == undefined){
-                newun = "-";
+     <script>
+        function changeUndefind(str) {;
+            var newstr = null;
+            if(str == undefined || str == null || str == ""){
+                newstr = "-";
             }else{
-                return un; 
+                return str; 
             }
-            return newun;
+            return newstr;
         }
     </script>
+    
     <script>
         function changeStringToDay(str){
         var html = "";
@@ -264,3 +265,21 @@
           });
         }
     </script>
+
+    <script>
+      checksize();
+
+      $( window ).resize(function() {
+        checksize();
+      });
+
+      function checksize(){
+        var width = $( window ).width();
+        if(width <= 991){
+          $(".container").attr('class', 'container-fluid');
+        }else{
+          $(".container-fluid").attr('class', 'container');
+        }
+      }
+    </script>
+

@@ -107,12 +107,12 @@ $(document).ready(function() {
             village: {
                 required: true
             },
-            road: {
-                required: true
-            },
-            Alley: {
-                required: true
-            },
+            // road: {
+            //     required: true
+            // },
+            // Alley: {
+            //     required: true
+            // },
             provinceId: {
                 required: true
             },
@@ -122,9 +122,9 @@ $(document).ready(function() {
             postCodes: {
                 required: true
             },
-            phone1: {
-                required: true
-            },
+            // phone1: {
+            //     required: true
+            // },
             phone2: {
                 required: true
             }
@@ -142,12 +142,12 @@ $(document).ready(function() {
             village: {
                 required: "กรุณากรอกหมู่ที่"
             },
-            road: {
-                required: "กรุณากรอกถนน"
-            },
-            Alley: {
-                required: "กรุณากรอกซอย"
-            },
+            // road: {
+            //     required: "กรุณากรอกถนน"
+            // },
+            // Alley: {
+            //     required: "กรุณากรอกซอย"
+            // },
             provinceId: {
                 required: "กรุณากรอกจังหวัด"
             },
@@ -161,10 +161,10 @@ $(document).ready(function() {
                 required: "กรุณากรอกรหัสไปรษณีย์",
                 min: "กรอกข้อมูลไม่ถูกต้อง"
             },
-            phone1: {
-                required: "กรุณากรอกเบอร์โทรศัพท์",
-                min: "กรอกข้อมูลไม่ถูกต้อง"
-            },
+            // phone1: {
+            //     required: "กรุณากรอกเบอร์โทรศัพท์",
+            //     min: "กรอกข้อมูลไม่ถูกต้อง"
+            // },
             phone2: {
                 required: "กรุณากรอกเบอร์โทรศัพท์ที่สามารถติดต่อได้",
                 min: "กรอกข้อมูลไม่ถูกต้อง"

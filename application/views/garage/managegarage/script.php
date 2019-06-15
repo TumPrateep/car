@@ -31,9 +31,9 @@
                 $("#latitude").val(result.latitude);
                 $("#longtitude").val(result.longtitude);
                 $("#timeSE").val(result.openingtime+" น."+" - "+result.closingtime+" น.");
-                $("#brandId").val(unD(result.brandName));
+                $("#brandId").val(changeUndefind(result.brandName));
                 $("#garageService").val(changeStringGS(result.garageService));
-                $("#address").val(unD(result.hno)+"  หมู่ที่ "+unD(result.village)+"  ถนน "+unD(result.road)+"  ซอย "+unD(result.alley)+"  ตำบล"+unD(result.subdistrictName)+"  อำเภอ"+unD(result.districtName)+"  จังหวัด"+result.provinceName+"  รหัสไปรษณีย์ "+result.postCode+"  ละติจูด "+result.latitude+"  ลองติจูด "+result.longtitude);
+                $("#address").val(changeUndefind(result.hno)+"  หมู่ที่ "+changeUndefind(result.village)+"  ถนน "+changeUndefind(result.road)+"  ซอย "+changeUndefind(result.alley)+"  ตำบล"+changeUndefind(result.subdistrictName)+"  อำเภอ"+changeUndefind(result.districtName)+"  จังหวัด"+result.provinceName+"  รหัสไปรษณีย์ "+result.postCode+"  ละติจูด "+result.latitude+"  ลองติจูด "+result.longtitude);
                 $("#dateSE").val(changeStringToDay(result.dayopenhour));
                 $('#garage.image-editor').cropit({
                     allowDragNDrop: false,

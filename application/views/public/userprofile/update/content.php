@@ -34,11 +34,11 @@
                                 <input type="text" name="village" id="village" class="form-control" placeholder="หมู่ที่">
                             </div>
                             <div class="form-group col-md-3">
-                                <label>ถนน</label><span class="error">*</span>
+                                <label>ถนน</label>
                                 <input type="text" name="road" id="road" class="form-control" placeholder="ถนน">
                             </div>
                             <div class="form-group col-md-3">
-                                <label>ซอย</label><span class="error">*</span>
+                                <label>ซอย</label>
                                 <input type="text" name="Alley" id="Alley" class="form-control" placeholder="ซอย">
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-group row ">
                             <div class="form-group col-md-4">
-                                <label>รหัสไปรษณีย์</label>
+                                <label>รหัสไปรษณีย์</label><span class="error">*</span>
                                 <input type="text" name="postCodes" id="postCodes" class="form-control" placeholder="รหัสไปรษณีย์" min=0>
                             </div>
                             <div class="form-group col-md-4">
