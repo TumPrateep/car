@@ -40,11 +40,11 @@ class Spareundercarriageproduct extends CI_Model{
     //     }
     // }
     //แบบที่ถูก
-    function SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change){
+    function SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change, $modelName=null){
         $price = explode("-",$price);
         
         $this->db->select('spares_undercarriagedata.spares_undercarriageDataId,spares_undercarriage.spares_undercarriageId,spares_undercarriagedata.status,spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_undercarriagedata.warranty,spares_undercarriagedata.warranty_distance,spares_undercarriagedata.warranty_year,spares_undercarriagedata.spares_undercarriageDataPicture,brand.brandName,model.modelName,model.yearStart,model.yearEnd,spares_brand.spares_brandPicture, spares_undercarriagedata.price,
-        spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,modelofcar.modelofcarName,modelofcar.machineSize');
+        spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,modelofcar.modelofcarName,modelofcar.machineSize, model.detail');
         $this->db->from('spares_undercarriagedata');
         $this->db->where('`spares_undercarriagedata`.`spares_undercarriageDataId` IN (SELECT (SELECT `spares_undercarriageDataId` FROM `spares_undercarriagedata` `rd` WHERE `spares_undercarriageId` = `re`.`spares_undercarriageId` and `spares_brandId` = `re`.`spares_brandId` and `modelId` = `re`.`modelId` and `brandId` = `re`.`brandId` and `modelofcarId` = `re`.`modelofcarId` ORDER BY `price` DESC LIMIT 1) as `spares_undercarriageDataId` FROM `spares_undercarriagedata` `re` GROUP BY `spares_undercarriageId`, `spares_brandId`, `modelId`, `brandId`, `modelofcarId`)', NULL, FALSE);
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarriagedata.spares_brandId');
@@ -59,6 +59,10 @@ class Spareundercarriageproduct extends CI_Model{
 
         if($modelId != null){
             $this->db->where('spares_undercarriagedata.modelId',$modelId);
+        }
+
+        if($modelName != null){
+            $this->db->where('model.modelName',$modelName);
         }
         
         if($modelofcarId != null){
@@ -90,7 +94,7 @@ class Spareundercarriageproduct extends CI_Model{
             return null;
         }
     }
-    function SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change){
+    function SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change, $modelName=null){
         $price = explode("-",$price);
         
         $this->db->select('spares_undercarriagedata.spares_undercarriageDataId,spares_undercarriage.spares_undercarriageId,spares_undercarriagedata.status,spares_brand.spares_brandName,spares_undercarriage.spares_undercarriageName,spares_undercarriagedata.warranty,spares_undercarriagedata.warranty_distance,spares_undercarriagedata.warranty_year,spares_undercarriagedata.spares_undercarriageDataPicture,brand.brandName,model.modelName,model.yearStart,model.yearEnd,spares_brand.spares_brandPicture, spares_undercarriagedata.price,
@@ -109,6 +113,10 @@ class Spareundercarriageproduct extends CI_Model{
 
         if($modelId != null){
             $this->db->where('spares_undercarriagedata.modelId',$modelId);
+        }
+        
+        if($modelName != null){
+            $this->db->where('model.modelName',$modelName);
         }
         
         if($modelofcarId != null){

@@ -36,9 +36,9 @@ class Main extends CI_Controller {
 		$this->load->view("public/layout/footer");
 		$this->load->view("public/layout/copyright");
 		$this->load->view("public/layout/foot");
-		if($isUser){
+		// if($isUser){
 			$this->load->view("public/layout/script");
-		}
+		// }
     }
 
 }

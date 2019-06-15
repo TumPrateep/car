@@ -92,31 +92,33 @@
 			</h3>
 			<br>
 			<?php } ?>
-			<div class="form-row main-search">
-				<div class="form-group col-md-2">
-					<label class="control-label">ยี่ห้อรถ</label>
-					<select class="form-control input-default" name="brandId" id="brandId"><option value="">เลือกยี่ห้อรถ</option><option data-thumbnail="images/icon-chrome.png" value="11">AUDI</option><option data-thumbnail="images/icon-chrome.png" value="1">CHEVROLET</option><option data-thumbnail="images/icon-chrome.png" value="4">FORD</option><option data-thumbnail="images/icon-chrome.png" value="2">HONDA</option><option data-thumbnail="images/icon-chrome.png" value="3">ISUZU</option><option data-thumbnail="images/icon-chrome.png" value="9">KIA</option><option data-thumbnail="images/icon-chrome.png" value="5">MAZDA</option><option data-thumbnail="images/icon-chrome.png" value="12">MERCEDEZ BENZ</option><option data-thumbnail="images/icon-chrome.png" value="7">MISHUBISHI</option><option data-thumbnail="images/icon-chrome.png" value="8">NISSAN</option><option data-thumbnail="images/icon-chrome.png" value="6">TOYOTA</option><option data-thumbnail="images/icon-chrome.png" value="10">VOLKSWAGEN</option></select>
-				</div>
-				
-				<div class="form-group col-md-2">
-					<label class="control-label">รุ่นรถ</label>
-					<select class="form-control input-default" name="modelId" id="modelId"><option value="">เลือกรุ่นรถ</option></select>
-				</div>
-				
-				<div class="form-group col-md-3">
-					<label class="control-label">โฉมรถยนต์</label>
-					<select class="form-control input-default" name="detail" id="detail"><option value="">เลือกโฉมรถยนต์</option></select>
-				</div>
+			<form id="cardata">
+				<div class="form-row main-search">
+					<div class="form-group col-md-2">
+						<label class="control-label">ยี่ห้อรถ</label>
+						<select class="form-control input-default" name="brandId" id="brandId"><option value="">เลือกยี่ห้อรถ</option></select>
+					</div>
+					
+					<div class="form-group col-md-2">
+						<label class="control-label">รุ่นรถ</label>
+						<select class="form-control input-default" name="modelId" id="modelId"><option value="">เลือกรุ่นรถ</option></select>
+					</div>
+					
+					<div class="form-group col-md-3">
+						<label class="control-label">โฉมรถยนต์</label>
+						<select class="form-control input-default" name="detail" id="detail"><option value="">เลือกโฉมรถยนต์</option></select>
+					</div>
 
-				<div class="form-group col-md-3">
-					<label class="control-label">รายละเอียดรุ่น</label>
-					<select class="form-control input-default" name="modelofcarId" id="modelofcarId"><option value="">เลือกรายละเอียดรุ่น</option></select>
-				</div>
+					<div class="form-group col-md-3">
+						<label class="control-label">รายละเอียดรุ่น</label>
+						<select class="form-control input-default" name="modelofcarId" id="modelofcarId"><option value="">เลือกรายละเอียดรุ่น</option></select>
+					</div>
 
-				<div class="form-group col-md-2">
-					<label class="control-label v-hide">.</label>
-					<button type="button" class="btn btn-orange btn-block">ค้นหา</button>
+					<div class="form-group col-md-2">
+						<label class="control-label v-hide">.</label>
+						<button type="submit" class="btn btn-orange btn-block">ค้นหา</button>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>

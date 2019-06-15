@@ -2,8 +2,28 @@
 <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
 
 <script>
+    var spares_undercarriage = $("#spares_undercarriageId");
+    var spares_brand = $("#spares_brandId");
+    var brand =$("#brandId");
+    var model = $("#modelId");
+    // var dropdownStart = $("#year");
+    // var dropdownStop = $("#yearEnd");
+    // var nowYear = (new Date).getFullYear();
+    // var startYear = 1990;
+    var modelofcar = $("#modelofcarId");
+    var year = $("#yearStart");
+    var YearEnd = $("#YearEnd");
+    var detail = $("#detail");
+    var modelName = $("modelName");
+    var modelId = $("modelId");
 
     $(document).ready(function () {
+        var cardata = JSON.parse('<?=$cardata?>');
+        
+        if(!$.isArray(cardata)){
+            getbrand(cardata);
+        }
+
         var carprofile = $("#carprofileId");
         var carprofileData = [];
         var table = $('#brand-table').DataTable({
@@ -40,9 +60,10 @@
                     "data": function ( data ) {
                         data.spares_brandId = $("#spares_brandId").val();
                         data.spares_undercarriageId =$("#spares_undercarriageId").val();
-                        data.modelId= $("#modelId").val();
+                        data.modelId= $("#detail").val();
                         data.brandId = $("#brandId").val();
                         data.modelofcarId = $("#modelofcarId").val();
+                        data.modelName= $("#modelId").val();
                         // data.year = $("#year").val();
                         data.price = $("#amount").val();
                         // data.can_change = $("#can_change").val();
@@ -112,30 +133,14 @@
             table.ajax.reload();
         })
 
-        
-
-        var spares_undercarriage = $("#spares_undercarriageId");
-        var spares_brand = $("#spares_brandId");
-        var brand =$("#brandId");
-        var model = $("#modelId");
-        // var dropdownStart = $("#year");
-        // var dropdownStop = $("#yearEnd");
-        // var nowYear = (new Date).getFullYear();
-        // var startYear = 1990;
-        var modelofcar = $("#modelofcarId");
-        var year = $("#yearStart");
-        var YearEnd = $("#YearEnd");
-        var detail = $("#detail");
-        var modelName = $("modelName");
-        var modelId = $("modelId");
-
-
-
         init();
 
         function init(){
             getSparesUndercarriage();
             getProfile();
+            if($.isArray(cardata)){
+                getbrand();
+            }
             // year();
         }
 
@@ -204,11 +209,11 @@
             },function(data){
                 var modelData = data.data;
                     $.each( modelData, function( key, value ) {
-                        model.append('<option value="' + value.modelId + '">' + value.modelName + '</option>');
+                        model.append('<option value="' + value.modelName + '">' + value.modelName + '</option>');
                     });
 
                     if(carprofile != null){
-                        model.val(carprofile.modelId);
+                        model.val(carprofile.detail);
                         getDetail(carprofile);
                     }
                 }
@@ -254,7 +259,7 @@
                 });
                 if(carprofile != null){
                     modelofcar.val(carprofile.modelofcarId);
-                    // table.ajax.reload();
+                    table.ajax.reload();
                 }
             });
         }
@@ -283,12 +288,18 @@
                         });
 
                         carprofile.html(html);
+
+                        var carId = $("#carId").val();
+                        if(carId != null){
+                            carprofile.val(carId);
+                            getbrand(carprofileData[carId]);
+                        }
                     }
                 );
-                getbrand();
+                // getbrand();
             }else{
                 $("#carprofile-box").hide();
-                getbrand();
+                // getbrand();
             }
         }
 

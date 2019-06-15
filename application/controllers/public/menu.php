@@ -49,7 +49,7 @@ class Menu extends CI_Controller {
         $this->load->view("public/shop/lubricator/script");
     }
 
-    public function sparepart(){
+    public function sparepart($brandId = null, $model = null, $detail = null, $modelofcar = null){
         $this->load->view("public/layout/head");
 		$this->load->view("public/layout/head_shop");
 		if(isset($this->session->userdata['logged_in'])){
@@ -62,9 +62,22 @@ class Menu extends CI_Controller {
 		}else{
 			$this->load->view("public/layout/header");
 		}
+
+		$cardata = [];
+		if($brandId != null && $detail != null  && $model != null && $modelofcar != null){
+			$cardata = [
+				"brandId" => $brandId,
+				"detail" => $model,
+				"modelId" => $modelofcar,
+				"modelofcarId" => $detail,
+			];
+		}
+		$data["cardata"] = json_encode($cardata);
+		$data["isLogin"] = !empty($this->session->userdata['logged_in']);
+		$data["carProfileIid"] = $this->input->get("carProfileId");
         $this->load->view("public/layout/wishlist");
         $this->load->view("public/layout/menu");
-        $this->load->view("public/shop/sparepart/content");
+        $this->load->view("public/shop/sparepart/content", $data);
         $this->load->view("public/layout/copyright");        
         $this->load->view("public/layout/foot");
         $this->load->view("public/shop/sparepart/script");

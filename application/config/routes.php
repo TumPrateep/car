@@ -64,6 +64,7 @@ $route['register'] = 'public/Register/user';
 
 $route['shop/lubricator'] = 'public/Menu/lubricator';
 $route['shop/sparepart'] = 'public/Menu/sparepart';
+$route['shop/sparepart/(\d+)/(:any)/(\d+)/(\d+)'] = 'public/Menu/sparepart/$1/$2/$3/$4';
 $route['shop/tire'] = 'public/Menu/tire';
 $route['shop/showshop'] = 'public/Menu/showshop';
 

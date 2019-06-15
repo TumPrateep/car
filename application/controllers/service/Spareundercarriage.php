@@ -53,14 +53,15 @@ class Spareundercarriage extends BD_Controller {
             $spares_undercarriageId = $this->post('spares_undercarriageId');
             $modelId =$this->post('modelId');
             $brandId =$this->post('brandId');
+            $modelName =$this->post('modelName');
             $modelofcarId =$this->post('modelofcarId');
             $can_change =$this->post('can_change');
             $price = $this->post('price');
             $status = $this->post('status');
             
-            $posts =  $this->spareundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change);
+            $posts =  $this->spareundercarriageproduct->SpareData_search($limit,$start,$order,$dir,$spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change,$modelName);
 
-            $totalFiltered = $this->spareundercarriageproduct->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change);
+            $totalFiltered = $this->spareundercarriageproduct->SpareDatas_search_count($spares_undercarriageId, $spares_brandId, $price,$modelId,$brandId,$modelofcarId,$can_change,$modelName);
         }
 
         $this->load->model("sparechanges");
@@ -93,9 +94,9 @@ class Spareundercarriage extends BD_Controller {
                 $nestedData[$count]['modelofcarName'] = $post->modelofcarName;
                 $nestedData[$count]['machineSize'] = $post->machineSize;
                 if($post->yearEnd != null){
-                    $nestedData[$count]['year'] = $post->yearStart."-".$post->yearEnd;
+                    $nestedData[$count]['year'] = $post->yearStart."-".$post->yearEnd ." ".$post->detail;
                 }else{
-                    $nestedData[$count]['year'] = $post->yearStart;
+                    $nestedData[$count]['year'] = $post->yearStart." ".$post->detail;
                 }
 
                 //picture

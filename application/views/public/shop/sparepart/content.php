@@ -21,6 +21,8 @@
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="shop_sidebar">
+					<?php if($isLogin){ ?>
+					<input type="hidden" name="carId" id="carId" value="<?=$carProfileIid ?>">
 					<div class="border-search" id="carprofile-box">
 						<div class="form-group">
 							<label class="control-label">ทะเบียนรถ</label>
@@ -30,6 +32,7 @@
 						</div>
 					</div>
 					<br>
+					<?php } ?>
 					<div class="border-search">
 						<div class="form-group">
 							<label class="control-label">ยี่ห้อรถ</label>
@@ -96,7 +99,7 @@
 					<br>
 					<div class="col-lg-12 ">
                         <button type="button" id="btn-search" class="btn-create btn btn-orange btn-block">
-                            <i class="ti-search"> ค้นหา</i>
+                            <span class="ti-search"> ค้นหา</span>
                         </button>
                     </div>
 
