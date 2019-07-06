@@ -16,7 +16,8 @@ class Spareundercarriage extends BD_Controller {
         $columns = array( 
             0 => null,
             1 => 'spares_undercarriageName',
-            2 => 'status'
+            2 => 'status_free',
+            3 => 'status'
         );
 
         $limit = $this->post('length');
@@ -49,6 +50,7 @@ class Spareundercarriage extends BD_Controller {
                 $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
                 $nestedData['spares_undercarriageName'] = $post->spares_undercarriageName;
                 $nestedData['status'] = $post->status;
+                $nestedData['status_free'] = $post->status_free;
                 $data[] = $nestedData;
             }
         }
@@ -177,6 +179,28 @@ class Spareundercarriage extends BD_Controller {
         $data = array(
             'status' => $status,
             'activeFlag' => 1
+        );
+        $result = $this->sparesundercarriages->updateStatus($spares_undercarriageId,$data);
+        if($result){
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+    }
+
+    function changeFreeStatus_post(){
+        $spares_undercarriageId = $this->post("spares_undercarriageId");
+        $status = $this->post("status");
+        $userId = $this->session->userdata['logged_in']['id'];
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'status_free' => $status
         );
         $result = $this->sparesundercarriages->updateStatus($spares_undercarriageId,$data);
         if($result){

@@ -118,7 +118,7 @@
       </div>
     </div>
 
-    <div class="modal" tabindex="-1" role="dialog" id="test">
+    <div class="modal" tabindex="-1" role="dialog" id="modal-cart">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 				<div class="modal-header">
@@ -128,11 +128,11 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<p>จะเลือกสินค้าต่อหรือไม่</p>
+					<p class="text-center"><i class="far fa-check-circle correct-logo"></i> <br>สินค้าถูกหยิบใส่ตะกร้าแล้ว</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">เลือกสินค้าต่อ</button>
-          <a  href="<?=base_url("shop/cart") ?>"><button type="button" class="btn btn-info btn-block" > ยืนยันการสั่งสินค้า</button></a> 
+          <a  href="<?=base_url("shop/cart") ?>"><button type="button" class="btn btn-orange btn-block" > ยืนยันการสั่งสินค้า</button></a> 
 					<!-- <button type="button" class="btn btn-primary" >ยืนยันการสั่งสินค้า</button> -->
 				</div>
 				</div>
@@ -156,6 +156,7 @@
 <script src="<?=base_url("public/themes/user/");?>js/shop_custom.js"></script>
 <script src="<?=base_url("public/themes/user/");?>js/jquery-confirm.min.js"></script>
 <script src="<?=base_url("/public/js/currency.min.js") ?>"></script>
+<script src="<?=base_url("/public/js/jquery-dateformat.min.js") ?>"></script>
 
 <script>
     function choosewarranty(warranty){

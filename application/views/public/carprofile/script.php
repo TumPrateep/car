@@ -62,6 +62,7 @@
 
                                          + '<div class="card">'
                                             + '<div class="card-body">'
+                                                + '<div class="brand-icon"><img src="'+value.brandpicture+'" width="60px"></div>'
                                                 + '<div class="card-two">'
                                                     + '<header>'
                                                         + '<div class="avatar img-pandding ">'
@@ -72,16 +73,11 @@
                                                         +'<span class="text-center txt-S-m">'+value.character_plate+'  '+value.number_plate+'</span>'                                                        
                                                         +'<span class="text-center txt-S-s">'+value.provinceforcarName+'</span>'
                                                     + '</div><br>'
-
-                                                    + '<span class="text-center txt-S-m">เลขไมค์ : '+value.mileage+'</span> <br> '
-                                                    + '<span class="text-center txt-S-m">สีของรถ : '+value.color+'</span> <br>'
-
+                                                    + '<h5 class="text-center">ประวัติการซ่อม</h5>'
                                                     +'<div class="row btn-center">'
                                                         +'<div class=" col-lg-12">'
-                                                            +'<a href="'+base_url+"public/carprofile/update/"+value.car_profileId+'"><button type="button" class="btn btn-warning btn-white  d1 " id="#"><i class="fas fa-pen-square" title="แก้ไข" ></i></button></a>' 
-                                                            +'<button type="button" class="delete btn  btn btn-danger  d1"  onclick="deleteCarProfile('+value.car_profileId+')"><i class="fa fa-trash" title="ลบ"></i></button>'
-                                                            // +'<a href="'+base_url+"public/Servicehistory/"+value.car_profileId+'"><button type="button" class="btn btn-warning btn-white  d1 " id="#"><i class="fas fa-pen-square" title="แก้ไข" ></i></button></a>'
-                                                            // +'<a  href="<?=base_url("public/Servicehistory") ?>"><button type="button" class="btn btn-info btn-block" ><i class="fa fa-plus"></i>  เพิ่มข้อมูลช่าง</button></a>'
+                                                            +'<a href="'+base_url+"public/carprofile/update/"+value.car_profileId+'"><button type="button" class="btn btn-warning btn-white  d1 w-50p" id="#"><i class="fas fa-pen-square" title="แก้ไข" ></i></button></a>' 
+                                                            +'<button type="button" class="delete btn  btn btn-danger d1 w-50p"  onclick="deleteCarProfile('+value.car_profileId+')"><i class="fa fa-trash" title="ลบ"></i></button>'
                                                         +'</div>'
                                                     +'</div><br>'
                                                 + '</div>'

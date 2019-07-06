@@ -70,7 +70,7 @@
 		<div class="container">
 		
 			<?php if($isUser){ ?>
-			<div class="container-fluid">
+			<!-- <div class="container-fluid"> -->
 				<h2 class="text-center mb-3">เลือกรถหรือค้นหาจากข้อมูลรถ</h2>
 				<div id="myCarousel" class="carousel slide main-search" data-ride="carousel">
 					<div class="carousel-inner row w-100 mx-auto main-carousel" id="carprofile">
@@ -84,8 +84,9 @@
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="sr-only">Next</span>
 					</a>
+					<br>
 				</div>
-			</div>
+			<!-- </div> -->
 			<br><br>
 			<h3 class="text-center">
 				<span class="round-circle">หรือ</span>
@@ -118,7 +119,44 @@
 						<label class="control-label v-hide">.</label>
 						<button type="submit" class="btn btn-orange btn-block">ค้นหา</button>
 					</div>
+
+					<div class="form-group col-md-2">
+						<label class="control-label orange"><strong>วิธีการดูข้อมูลรถ</strong></label>
+					</div>
 				</div>
 			</form>
+		</div>
+	</div>
+
+	<div class="how-to bg-orange">
+		<div class="container">
+			<h2 class="center text-shadow">ขั้นตอนการสั่งซื้อสินค้า</h2>
+			<div class="row justify-content-md-center text-center">
+				<div class="col-6 col-md-2"> 
+					<img src="<?=base_url("public/image/how_to/1.gif")?>" width="80%"> 
+					<h4 class="text-shadow">เลือกสินค้า</h4>
+					<span>อะไหล่ช่วงล่าง, ยาง,<br> น้ำมันเครื่อง</span>
+				</div>
+				<div class="col-6 col-md-2"> 
+					<img src="<?=base_url("public/image/how_to/2.gif")?>" width="80%">  
+					<h4 class="text-shadow">เลือกสถานที่ติดตั้ง</h4>
+					<span>และยัดหมายวันที่ต้องการเข้าใช้บริการ</span>
+				</div>
+				<div class="col-6 col-md-2">
+					<img src="<?=base_url("public/image/how_to/3.gif")?>" width="80%">  
+					<h4 class="text-shadow">ประเมินค่าใช้จ่าย</h4>
+					<span></span>
+				</div>
+				<div class="col-6 col-md-2">
+					<img src="<?=base_url("public/image/how_to/4.gif")?>" width="80%">  
+					<h4 class="text-shadow">ชำระเงิน</h4>
+					<span>ไม่มีค่าใช้จ่ายเพิ่มเติม</span>
+				</div>
+				<div class="col-6 col-md-2"> 
+					<img src="<?=base_url("public/image/how_to/5.gif")?>" width="80%">  
+					<h4 class="text-shadow">อะไหล่ถูกจัดส่ง</h4>
+					<span>ไปยังสถานที่ติดตั้งตามที่นัดหมาย</span>
+				</div>
+			</div>
 		</div>
 	</div>

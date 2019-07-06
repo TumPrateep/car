@@ -194,9 +194,9 @@ class Carprofile extends BD_Controller {
             // $number_plate = $this->post('number_plate');
             // $province_plate = $this->post('province_plate');
             // $provinceforcarName = $this->post('provinceforcarName');
-            $search = $this->post("search");
-            $posts =  $this->carprofiles->profileSearch($limit,$start,$order,$dir,$search,$userId);
-            $totalFiltered = $this->carprofiles->carprofile_search_count($search,$userId);
+            // $search = $this->post("search");
+            // $posts =  $this->carprofiles->profileSearch($limit,$start,$order,$dir,$search,$userId);
+            // $totalFiltered = $this->carprofiles->carprofile_search_count($search,$userId);
         }
         $data = array();
         if(!empty($posts))
@@ -214,8 +214,9 @@ class Carprofile extends BD_Controller {
                 $nestedData[$count]['mileage'] = $post->mileage;
                 $nestedData[$count]['color'] = $post->color;
                 $nestedData[$count]['picture'] = $post->pictureFront;
+                $nestedData[$count]['brandpicture'] = base_url()."public/image/brand/".$post->brandPicture;
                 $data[$index] = $nestedData;
-                if($count >= 3){
+                if($count >= 2){
                     $count = -1;
                     $index++;
                     $nestedData = [];

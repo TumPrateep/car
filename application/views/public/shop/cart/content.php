@@ -73,32 +73,24 @@
 					</div>
                     <div class="row">
 						<div class="col-12">
-							<div class="table-responsive">
+							<div class="">
 	                        	<table class="table table-hover" id="cart-table">
 								  	<thead class="orange-table">
 								    	<tr >
 								      		<th width="5%" scope="col"></th>
-									      	<th width="10%" scope="col">รูปสินค้า</th>
-									      	<th width="20%" scope="col">ชื่อสินค้า</th>
-											<th width="15%" scope="col">ราคาต่อหน่วย</th>
-									      	<th width="20%" scope="col">จำนวน</th>
-									      	<th width="15%" scope="col">ราคารวม</th>
-									      	<th width="10%" scope="col"></th>
+									      	<th scope="col"></th>
 								    	</tr>
 								  	</thead>
 								  	<tbody id="cart_list"></tbody>
 									<tfoot>
 										<tr>
-											<th colspan="4" class="text-right"><span class="amount">ราคาสินค้า :</span></th>
-											<th colspan="2" class="text-right"><span class="amount" id="order_total_cost"></span></th>
+											<th colspan="2" class="text-right"><div class="row"><div class="col-7"><span class="amount">ราคาสินค้า : </span></div><div class="col"><span class="amount" id="order_total_cost"></span></div></div></th>
 										</tr>
 										<tr>
-											<th colspan="4" class="text-right"><span class="amount">ราคาค่าขนส่ง :</span></th>
-											<th colspan="2" class="text-right"><span class="amount" id="order_total_delivery"></span></th>
+											<th colspan="2" class="text-right"><div class="row"><div class="col-7"><span class="amount">ราคาค่าขนส่ง : </span></div><div class="col"><span class="amount" id="order_total_delivery"></span></div></div></th>
 										</tr>
 										<tr>
-											<th colspan="4" class="text-right"><span class="amount">ราคารวม :</span></th>
-											<th colspan="2" class="text-right"><span class="amount" id="order_total_amount"></span></th>
+											<th colspan="2" class="text-right"><div class="row"><div class="col-7"><span class="amount">ราคารวม : </span></div><div class="col"><span class="amount" id="order_total_amount"></span></div></div></th>
 										</tr>
 									</tfoot>
 								</table>
@@ -150,7 +142,7 @@
 					<div id="showReserve" class="hidden">
 						<h4 class="underline text-center">เลือกเวลาที่ต้องการใช้บริการ</h4>
 						<div class="row justify-content-md-center">
-							<div class="col-lg-5">
+							<div class="col-lg-6">
 								<div class="form-group">
 									<label class="form-label required">เลือกวันเวลาที่จอง</label>
 									<input type="text" class="form-control" id="reserve" name="reserve" placeholder="เลือกวันทำการ">
@@ -171,35 +163,80 @@
 					</legend>
 					<div class="row">
 						<div class="col-12">
-							<table class="table table-hover" id="cart-table">
-								<tbody id="cart_list"></tbody>
-								<tfoot><hr>
-								<form id="paymentForm">
-									<div class="btn-group offset-md-3" data-toggle="buttons">
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="form-group form-group-money">
-													<label class="btn btn-outline-secondary" id="selectOption1">
-														<input class="money-radio-in" type="radio" name="options" id="option1" ><span class="icon">จ่ายเงินเต็มจำนวน</span><br>
-														<h4><span class="text-danger" id="fullMoney"></span></h4>
-														<!-- <span class="amount" id="money"> -->
-													</label>
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group form-group-money">
-													<label class="btn btn-outline-secondary" id="selectOption2">
-														<input class="money-radio-in" type="radio" name="options" id="option2" ><span class="icon">จ่ายเงินแบบมัดจำ</span><br>
-														<h4><span class="text-danger txt-money" id="halfMoney"></span></h4>
-														<!-- <span class="amount" id="depositmoney"> -->
-													</label>
+							<div class="row">
+								<div class="col-md-2">
+									<div class="row p-t-20">
+										<div class="col-md-12">
+											<div class="form-group">
+												<div class="" id="garage">
+													<img src="http://localhost/car//public/image/carprofile/5cef545b621a3.png" width="100%">
 												</div>
 											</div>
 										</div>
-									</div><hr>
-								</form>
-								</tfoot>
-							</table>
+									</div>
+								</div>
+								<div class="col-md-10">
+									<div class="card">
+										<div class="card-body"> 
+										<h4><label><u>อู่ที่เข้าใช้บริการ</u></label></h4>
+											<div class="row ">
+												<div class="col-md-3 "><label class="txt-S-s">ชื่ออู่</label></div>
+												<div class="col-md-8">
+													<label class="txt-S-s" id="o-garageName"></label>
+												</div>
+											</div>
+											<div class="row ">
+												<div class="col-md-3 "><label class="txt-S-s">วันที่จอง</label></div>
+												<div class="col-md-8">
+													<label class="txt-S-s text-red" id="o-reserveday"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>  
+							</div>
+							<div class="row">
+								<div class="col-md-2">
+									<div class="row p-t-20">
+										<div class="col-md-12">
+											<div class="form-group">
+												<img id="carpicture" src="" width="100%">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-10">
+									<div class="card">
+										<div class="card-body">
+											<div class="row "> 
+												<div class="col-md-3">
+													<h4><label><u>รถที่เข้าใช้บริการ</u></label></h4>
+												</div>
+												<div class="col-md-4 txt-cen-order cen-card">
+													<div class="card card-border text-center">
+														<div class="card-body-plate ">
+															<label class="txt-S-m" name="plate" id="plate">กด 123</label>
+															<label class="txt-S-s" name="provinceplate" id="provinceplate">กรุงเทพมหานคร</label>
+														</div>
+													</div>   
+												</div>
+											</div>  
+										</div>
+									</div>
+								</div> 
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-12">
+									<table class="table">
+										<tfoot>
+											<tr>
+												<th colspan="4" class="text-right"><div class="row"><div class="col-7"><span class="amount">ราคารวม : </span></div><div class="col"><span class="amount" id="o_total_amount"></span></div></div></th>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</fieldset>

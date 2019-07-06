@@ -13,7 +13,7 @@
                 },
                 number_plate: {
                     required: true,
-                    maxlength: true
+                    min: true
                 },
                 province_plate: {
                     required: true
@@ -42,7 +42,8 @@
                 },
                 number_plate:{
                     required: "กรุณากรอกหมายเลข",
-                    maxlength: "กรุณากรอกหมายเลขให้ถูกต้อง"
+                    min: "กรุณากรอกหมายเลขให้ถูกต้อง",
+                    number: "กรุณากรอกหมายเลขให้ถูกต้อง"
                 },
                 province_plate: {
                     required: "กรุณาเลือกจังหวัด"

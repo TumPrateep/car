@@ -6,32 +6,24 @@
             <!-- <h2>SIGN UP OFFICE EMPLYEE ACCOUNT</h2> -->
             <div class="col-md-12">  
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 signup-form">
                         <table class="table table-hover" id="cart-table">
                             <thead class="orange-table">
                                 <tr >
                                     <th width="5%" scope="col"></th>
-                                    <th width="10%" scope="col">รูปสินค้า</th>
-                                    <th width="20%" scope="col">ชื่อสินค้า</th>
-                                    <th width="15%" scope="col">ราคาต่อหน่วย</th>
-                                    <th width="20%" scope="col">จำนวน</th>
-                                    <th width="15%" scope="col">ราคารวม</th>
-                                    <th width="10%" scope="col"></th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody id="cart_list"></tbody>
                             <tfoot>
                                 <tr>
-                                    <th colspan="4" class="text-right"><span class="amount">ราคาสินค้า :</span></th>
-                                    <th colspan="2" class="text-right"><span class="amount" id="order_total_cost"></span></th>
+                                    <th colspan="2" class="text-right"><div class="row"><div class="col-9"><span class="amount">ราคาสินค้า : </span></div><div class="col"><span class="amount" id="order_total_cost"></span></div></div></th>
                                 </tr>
                                 <tr>
-                                    <th colspan="4" class="text-right"><span class="amount">ราคาค่าขนส่ง :</span></th>
-                                    <th colspan="2" class="text-right"><span class="amount" id="order_total_delivery"></span></th>
+                                    <th colspan="2" class="text-right"><div class="row"><div class="col-9"><span class="amount">ราคาค่าขนส่ง : </span></div><div class="col"><span class="amount" id="order_total_delivery"></span></div></div></th>
                                 </tr>
                                 <tr>
-                                    <th colspan="4" class="text-right"><span class="amount">ราคารวม :</span></th>
-                                    <th colspan="2" class="text-right"><span class="amount" id="order_total_amount"></span></th>
+                                    <th colspan="2" class="text-right"><div class="row"><div class="col-9"><span class="amount">ราคารวม : </span></div><div class="col"><span class="amount" id="order_total_amount"></span></div></div></th>
                                 </tr>
                             </tfoot>
                         </table>

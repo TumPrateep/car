@@ -8,7 +8,7 @@ class Cart extends BD_Controller {
     {
         parent::__construct();
         $this->load->model("carts");
-  
+        $this->load->model('carprofiles');
         $this->load->model('orderdetails');
     }
 
@@ -98,6 +98,66 @@ class Cart extends BD_Controller {
         }
 
         return $data;
+    }
+
+    function searchCarProfile_post(){
+        $userId = $this->session->userdata['logged_in']['id'];
+        $columns = array( 
+            0 => 'character_plate'
+        );
+        $limit = $this->post('length');
+        $start = $this->post('start');
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
+        $totalData = $this->carprofiles->allprofile_count($userId);
+        $totalFiltered = $totalData; 
+
+        if(empty($this->post('search'))){            
+            $posts = $this->carprofiles->allprofile($limit,$start,$order,$dir,$userId);
+        } else {
+            // $character_plate = $this->post('character_plate'); 
+            // $number_plate = $this->post('number_plate');
+            // $province_plate = $this->post('province_plate');
+            // $provinceforcarName = $this->post('provinceforcarName');
+            // $search = $this->post("search");
+            // $posts =  $this->carprofiles->profileSearch($limit,$start,$order,$dir,$search,$userId);
+            // $totalFiltered = $this->carprofiles->carprofile_search_count($search,$userId);
+        }
+        $data = array();
+        if(!empty($posts))
+        {
+            $index = 0;
+            $count = 0;
+            foreach ($posts as $post)
+            {
+                
+                $nestedData[$count]['car_profileId'] = $post->car_profileId;
+                $nestedData[$count]['character_plate'] = $post->character_plate;
+                $nestedData[$count]['number_plate'] = $post->number_plate;
+                $nestedData[$count]['province_plate'] = $post->province_plate;
+                $nestedData[$count]['provinceforcarName'] = $post->provinceforcarName;
+                $nestedData[$count]['mileage'] = $post->mileage;
+                $nestedData[$count]['color'] = $post->color;
+                $nestedData[$count]['picture'] = $post->pictureFront;
+                $nestedData[$count]['brandpicture'] = base_url()."public/image/brand/".$post->brandPicture;
+                $data[$index] = $nestedData;
+                if($count >= 3){
+                    $count = -1;
+                    $index++;
+                    $nestedData = [];
+                }
+                
+                $count++;
+
+            }
+        }
+        $json_data = array(
+            "draw"            => intval($this->post('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+        );
+        $this->set_response($json_data);
     }
 
     function getLubricator($data){

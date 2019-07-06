@@ -22,6 +22,7 @@ class Carprofiles extends CI_Model {
 
     function allprofile($limit,$start,$col,$dir,$userId)
     {   
+        $this->db->join("brand","brand.brandId = car_profile.brandId");
         $this->db->join("provinceforcar","provinceforcar.provinceforcarId = car_profile.province_plate");
         $this->db->where("userId", $userId);
         $query = $this->db

@@ -18,6 +18,7 @@
                     "sLast": "หน้าสุดท้าย" // This is the link to the last page
                 }
             },
+            "responsive": true,
             "bLengthChange": true,
             "searching": false,
             "processing": true,
@@ -35,6 +36,7 @@
             "columns": [
                 null,
                 { "data": "spares_undercarriageName" },
+                null,
                 null
                 
             ],
@@ -42,9 +44,27 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,3]
+                    "targets": [0,4]
                 },{
                     "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var switchVal = "true";
+                        var active = " active";
+                        if(data.status_free == null){
+                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                        }else if(data.status_free != "1"){
+                            switchVal = "false";
+                            active = "";
+                        }
+                        return '<div>'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateFreeStatus('+data.spares_undercarriageId+','+data.status_free+')">'
+                        +'<div class="handle"></div>'
+                        +'</button>'
+                        +'</div>';
+                    }
+                },{
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -62,7 +82,7 @@
                         +'</div>';
                     }
                 },{
-                    "targets": 3,
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/sparepartcar/sparepart/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
@@ -79,7 +99,7 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [1]},
-                {"className": "dt-center", "targets": [0,2,3]},
+                {"className": "dt-center", "targets": [0,2,3,4]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 2 }
                 
@@ -105,6 +125,19 @@
     
     function updateStatus(spares_undercarriageId,status){
         $.post(base_url+"api/Spareundercarriage/changeStatus",{
+            "spares_undercarriageId": spares_undercarriageId,
+            "status": status
+        },function(data){
+            if(data.message == 200){
+                showMessage(data.message,"admin/sparepartcar");
+            }else{
+                showMessage(data.message);
+            }
+        });
+    }
+
+    function updateFreeStatus(spares_undercarriageId,status){
+        $.post(base_url+"api/Spareundercarriage/changeFreeStatus",{
             "spares_undercarriageId": spares_undercarriageId,
             "status": status
         },function(data){

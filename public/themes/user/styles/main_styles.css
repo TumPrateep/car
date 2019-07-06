@@ -3321,7 +3321,7 @@ select option
 	width: 100%;
 	padding-top: 90px;
 	padding-bottom: 90px;
-	background-color: white;
+	background-color: #ffffff30;
 }
 .brands_slider_container
 {
@@ -3523,6 +3523,7 @@ select option
 {
 	padding-top: 52px;
 	padding-bottom: 40px;
+	padding-left: 15px;
 }
 .footer .logo_container
 {
@@ -3650,10 +3651,10 @@ select option
 {
 	font-weight: 500;
 }
-.logos
+/* .logos
 {
 	
-}
+} */
 .logos_list li
 {
 	display: inline-block;
@@ -4008,10 +4009,11 @@ select option
 .main-search{
 	border: 2px solid #f16410;
 	border-radius: 12px;
-	padding: 15px;
+	padding: 15px 15px 0px 15px;
 	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 	box-shadow: 7px 10px 5px 0px rgba(191, 191, 191, 0.75);
+	background-color: white;
 }
 
 .round-circle{
@@ -4027,4 +4029,109 @@ select option
 
 .cursor-hand{
 	cursor: pointer;
+}
+
+.footer-logo{
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.footer-logo a{
+	color: #000000;
+}
+
+.correct-logo{
+    color: lawngreen;
+    font-size: 100px;
+}
+
+.bg-orange{
+	background-color: #f6af37;
+}
+
+.how-to{
+    padding-top: 40px;
+	padding-bottom: 40px;
+	color: white;;
+}
+
+.text-shadow{
+	text-shadow: 2px 2px 4px #000000 !important
+}
+
+.brand-icon{
+	
+}
+
+.brand-icon > img {
+	position: absolute;
+	z-index: 100;
+	background-color: #ffffff45;
+}
+
+.w-50p{
+	width: 50%;
+}
+
+.quantity {
+    float: left;
+    margin-right: 15px;
+    background-color: #eee;
+    position: relative;
+    width: 80px;
+    overflow: hidden
+}
+
+.quantity input {
+    margin: 0;
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    float: right;
+    color: #000;
+    font-size: 20px;
+    border: 0;
+    outline: 0;
+    background-color: #F6F6F6
+}
+
+.quantity input.qty {
+    position: relative;
+    border: 0;
+    width: 100%;
+    height: 40px;
+    padding: 10px 25px 10px 10px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 15px;
+    border-radius: 0;
+    background-clip: padding-box
+}
+
+.quantity .minus, .quantity .plus {
+    line-height: 0;
+    background-clip: padding-box;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-background-size: 6px 30px;
+    -moz-background-size: 6px 30px;
+    color: #bbb;
+    font-size: 20px;
+    position: absolute;
+    height: 50%;
+    border: 0;
+    right: 0;
+    padding: 0;
+    width: 25px;
+    z-index: 3
+}
+
+.quantity .minus:hover, .quantity .plus:hover {
+    background-color: #dad8da
+}
+
+.quantity .minus {
+    bottom: 0
 }

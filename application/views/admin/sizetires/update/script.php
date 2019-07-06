@@ -3,24 +3,26 @@
         rules: {
             tire_size: {
                 required: true
-            },
-            tire_series: {
-                required: true
-            },
-            rim: {
-                required: true
             }
+            // ,
+            // tire_series: {
+            //     required: true
+            // },
+            // rim: {
+            //     required: true
+            // }
         },
         messages: {
             tire_size: {
                 required: "กรุณากรอกขนาดยาง"
-            },
-            tire_series: {
-                required: "กรุณากรอกซีรี่ย์ยาง"
-            },
-            rim: {
-                required: "กรุณากรอกขนาดกะทะล้อ"
             }
+            // ,
+            // tire_series: {
+            //     required: "กรุณากรอกซีรี่ย์ยาง"
+            // },
+            // rim: {
+            //     required: "กรุณากรอกขนาดกะทะล้อ"
+            // }
         },
     });
     

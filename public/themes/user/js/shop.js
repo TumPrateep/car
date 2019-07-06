@@ -141,7 +141,7 @@
                 });
             }
 
-            $("#test").modal('show');
+            $("#modal-cart").modal('show');
         }
     };
 
