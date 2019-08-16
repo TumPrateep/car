@@ -41,7 +41,7 @@
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
           <th><i class="fa fa-cog"></i>  รายการอะไหล่</th>
-          <th><i class="fa fa-ticket"></i>  รายการอะไหล่ฟรี</th>
+          <!-- <th><i class="fa fa-ticket"></i>  รายการอะไหล่ฟรี</th> -->
           <th><i class="fa fa-user-circle"></i>  สถานะอะไหล่</th>
           <th></th>
         </thead>	

@@ -39,14 +39,33 @@ class Sparechanges extends CI_Model{
     }
 
     function insert($data){
-        return $this->db->insert('spares_change',$data);
+        $this->db->trans_begin();
+            $brandId = $data["data"]["brandId"];
+            $this->db->delete('spares_change', array('brandId' => $brandId));
+            
+            foreach ($data["data"]["spares_undercarriageId"] as $key => $row) {
+                $tempData = $data["simple"];
+                $tempData["spares_undercarriageId"] = $row;
+                $tempData["brandId"] = $brandId;
+                $tempData["spares_price"] = $data["data"]["spares_price"][$key];
+                $this->db->insert('spares_change',$tempData);
+            }
+
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
     }
 
-    function allSparechanges($limit,$start,$col,$dir){
+    function allSparechanges($limit,$start,$col,$dir,$brandId){
         $this->db->select('spares_change.spares_changeId, spares_change.spares_price, spares_undercarriage.spares_undercarriageName, spares_change.status,brand.brandName,brand.brandId');
         $this->db->from('spares_change');
         $this->db->join('spares_undercarriage', 'spares_undercarriage.spares_undercarriageId = spares_change.spares_undercarriageId');
         $this->db->join('brand', 'brand.brandId = spares_change.brandId');
+        $this->db->where('brand.brandId', $brandId);
         $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
         if($query->num_rows()>0){
             return $query->result(); 
@@ -56,11 +75,12 @@ class Sparechanges extends CI_Model{
         
     }
 
-    function allSparechanges_count(){  
+    function allSparechanges_count($brandId){  
         $this->db->select('spares_change.spares_changeId, spares_change.spares_price, spares_undercarriage.spares_undercarriageName, spares_change.status,brand.brandName,brand.brandId');
         $this->db->from('spares_change');
         $this->db->join('spares_undercarriage', 'spares_undercarriage.spares_undercarriageId = spares_change.spares_undercarriageId');
         $this->db->join('brand','brand.brandId = spares_change.brandId');
+        $this->db->where('brand.brandId', $brandId);
         $query = $this->db->get();
         return $query->num_rows();  
                                                                                                                                                                                                 
@@ -124,5 +144,15 @@ class Sparechanges extends CI_Model{
         $result = $this->db->get();
         return $result->result();
 
+    }
+
+    function getAllSpareCharge($brandId){
+        $this->db->select('spares_change.spares_changeId, spares_change.spares_price, spares_undercarriage.spares_undercarriageId, spares_undercarriage.spares_undercarriageName, spares_change.status,brand.brandName,brand.brandId');
+        $this->db->from("spares_undercarriage");
+        $this->db->join('spares_change', 'spares_undercarriage.spares_undercarriageId = spares_change.spares_undercarriageId and spares_change.brandId = '.$brandId, "left");
+        $this->db->join('brand','brand.brandId = spares_change.brandId', "left");
+        // $this->db->where('brand.brandId', $brandId);
+        $query = $this->db->get();
+        return $query->result();
     }
 }

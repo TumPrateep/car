@@ -23,4 +23,22 @@ if(!function_exists('active_link')) {
     $CI =& get_instance();
     return $CI->session->userdata['logged_in']['name'];
   }
+
+  function gear_type_dropdown(){
+    $CI =& get_instance();
+    $CI->load->model("geartypes");
+
+    $gearTypeData = $CI->geartypes->getAllGearType();
+                            
+    $html = '<select name="gear" id="gear" class="form-control valid" aria-required="true" aria-invalid="false">';
+    
+    foreach($gearTypeData as $geartype){
+        $html .= '<option value="'.$geartype->gearname.'">'.$geartype->gearname.'</option>';
+    }
+
+    return $html .= '</select>';
+
+  }
+
+
 }?>

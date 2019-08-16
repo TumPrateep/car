@@ -7,32 +7,58 @@
     </button>
     <div class="collapse navbar-collapse " id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav bg-green " id="exampleAccordion" >
+        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#datasetting" data-parent="#exampleAccordion">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+            <span class="nav-link-text">ตั้งค่า </span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="datasetting">
+            <li class="<?= activate_menu('geartype'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/geartype") ?>">
+                <i class="fa fa-list" aria-hidden="true"></i>
+                <span class="nav-link-text">ประเภทเกียร์</span>
+              </a>
+            </li>
+          </ul>
+        </li> -->
         <li class="nav-item <?= activate_menu('car'); ?>" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link text-white" href="<?=base_url("admin/car") ?>">
             <i class="fa fa-fw fa-car"></i>
             <span class="nav-link-text">การจัดการยี่ห้อ/รุ่นรถ</span>
           </a>
         </li>
-        <li class="nav-item <?= activate_menu('usermanagement'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+        <!-- <li class="nav-item <?= activate_menu('usermanagement'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/usermanagement") ?>">
             <i class="fa fa-user-plus"></i>
             <span class="nav-link-text">การจัดการผู้ใช้งาน</span>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">เมนูอะไหล่</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li class="<?= activate_menu('sparepartcar'); ?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/sparepartcar") ?>">
-                <i class="fa fa-cog"></i>
-                <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
-              </a>
+            <li>
+              <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti3">
+              <i class="fa fa-tint"></i> อะไหล่ช่วงล่าง</a>
+              <ul class="sidenav-third-level collapse" id="collapseMulti3">
+                <li class="<?= activate_menu('sparepartcar'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/sparepartcar") ?>">
+                    <i class="fa fa-tachometer"></i>
+                    <span class="nav-link-text">รายการอะไหล่ช่วงล่าง</span>
+                  </a>
+                </li>
+                <li class="<?= activate_menu('sparepartcar/sparepart/'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/sparepartcar/sparepart/") ?>">
+                    <i class="fa fa-safari"></i>
+                    <span class="nav-link-text">ยี่ห้ออะไหล่ช่วงล่าง</span>
+                  </a>
+                </li>
+              </ul>
             </li>
 
-            <li>
+            <!-- <li>
               <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti2">
               <i class="fa fa-tint"></i> น้ำมันเครื่อง</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
@@ -42,7 +68,7 @@
                     <span class="nav-link-text">ประเภทน้ำมันเครื่อง</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('Lubricatornumber'); ?>">
+                <li class="<?= activate_menu('lubricatornumber'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricatornumber") ?>">
                     <i class="fa fa-safari"></i>
                     <span class="nav-link-text">เบอร์น้ำมันเครื่อง</span>
@@ -54,7 +80,7 @@
                     <span class="nav-link-text">ยี่ห้อน้ำมันเครื่อง</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('LubricatortypeFormachine'); ?>">
+                <li class="<?= activate_menu('lubricatortypeformachine'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricatortypeformachine") ?>">
                     <i class="fa fa-cogs"></i>
                     <span class="nav-link-text">ประเภทน้ำมันเครื่องตามเครื่องยนต์</span>
@@ -92,7 +118,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> -->
             
           </ul>
         </li>
@@ -109,7 +135,7 @@
                 <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
               </a>
             </li>
-            <li class="<?= activate_menu('lubricatorproduct'); ?>">
+            <!-- <li class="<?= activate_menu('lubricatorproduct'); ?>">
               <a class="nav-link text-white" href="<?=base_url("admin/lubricatorproduct") ?>">
                 <i class="fa fa-rebel"></i>
                 <span class="nav-link-text">น้ำมันเครื่อง</span>
@@ -120,18 +146,18 @@
                 <i class="fa fa-life-ring"></i>
                 <span class="nav-link-text">ยางรถ</span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </li>
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#serviceCharge" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-dollar"></i>
             <span class="nav-link-text">ราคาค่าบริการ</span>
           </a>
           <ul class="sidenav-second-level collapse" id="serviceCharge">
-            <li class="<?= activate_menu('charge/sparecharge/'); ?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/charge/sparecharge") ?>">
+            <li class="<?= activate_menu('charge/brand/'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/charge/brand") ?>">
                 <i class="fa fa-cog"></i>
                 <span class="nav-link-text">ราคาค่าบริการเปลี่ยนอะไหล่ช่วงล่าง</span>
               </a>
@@ -149,35 +175,35 @@
               </a>
             </li>
           </ul>
-        </li>
+        </li> -->
 
-         <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+         <!-- <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/garages") ?>">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
             <span class="nav-link-text">ที่ตั้งอู่</span>
           </a>
-        </li>
+        </li> -->
         
-        <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+        <!-- <li class="nav-item <?= activate_menu('paymentapprove'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/paymentapprove") ?>">
             <i class="fa fa-credit-card" aria-hidden="true"></i>
-            <span class="nav-link-text">ยืนยันค่ามัดจำ</span>
+            <span class="nav-link-text">ยืนยันการจ่ายเงิน</span>
           </a>
         </li>
 
-        <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+        <li class="nav-item <?= activate_menu('orderapprove'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/orderapprove") ?>">
             <i class="fa fa-check-square-o" aria-hidden="true"></i>
             <span class="nav-link-text">จัดการการจอง</span>
           </a>
         </li>
 
-        <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+        <li class="nav-item <?= activate_menu('manageorder'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/manageorder") ?>">
           <i class="fa fa-shopping-bag" aria-hidden="true"></i>
             <span class="nav-link-text">จัดการการสั่งสินค้า</span>
           </a>
-        </li>
+        </li> -->
         
         
         

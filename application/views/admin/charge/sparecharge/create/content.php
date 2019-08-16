@@ -2,11 +2,16 @@
     <div class="container-fluid">
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/charge/sparecharge") ?>">ราคาเปลี่ยนอะไหล่ช่วงล่าง</a>
-      </li>
+        <li class="breadcrumb-item">
+          <a href="<?=base_url("admin/charge/brand") ?>">ราคาเปลี่ยนอะไหล่ช่วงล่าง-ยี่ห้อรถ</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="<?=base_url("admin/charge/sparecharge/").$brandId ?>">ราคาเปลี่ยนอะไหล่ช่วงล่าง</a>
+        </li>
       <li class="breadcrumb-item active">เพิ่มข้อมูลราคาเปลี่ยนอะไหล่ช่วงล่าง</li>
     </ol>
+
+    
     <!-- Icon Cards-->
     <section class="content">
       <div class="container-fluid">
@@ -19,30 +24,9 @@
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form id="submit">
+                  <input type="hidden" name="brandId" value="<?=$brandId?>" id="brandId">
                   <div class="card-body black bg-light">
-                    <div class="form-group row">
-                      <div class="col-lg-4">
-                          <div class="form-group">
-                              <div class="form-group">
-                                  <label>ยี่ห้อรถ</label> <span class="error">*</span>
-                                  <select class="form-control" name="brandId" id="brandId">
-                                  
-                                  </select>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <label>รายการอะไหล่ช่วงล่าง</label> <span class="error">*</span>
-                          <select class="form-control" name="spares_undercarriageId" id="spares_undercarriageId">
-                              <option value="">เลือกรายการอะไหล่ช่วงล่าง</option>
-                          </select>
-                      </div>
-                      <div class="col-md-4">
-                          <label>ราคาค่าบริการ</label> <span class="error">*</span>
-                          <input type="number" class="form-control" placeholder="ราคาค่าบริการ" name="spares_price" id="spares_price">
-                      </div>
-                    </div>
-                    
+                    <span id="render"></span>
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary">บันทึก</button>
                     </div>

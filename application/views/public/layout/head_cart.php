@@ -91,7 +91,7 @@
 	    background-color: #ffffff;
 	    border-color: #000000;
 	    border: 3px solid ;
-	    width: 140px;
+	    width: 100%;
 	    margin-left: auto;
   		margin-right: auto;
 	}

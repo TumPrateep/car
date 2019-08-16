@@ -78,74 +78,81 @@ class Sparesundercarriages extends CI_Model{
     }
 
     function data_check_update($spares_undercarriageId,$spares_undercarriageName){
-            $this->db->select("spares_undercarriageName");
-            $this->db->from("spares_undercarriage");
-            $this->db->where('spares_undercarriageName', $spares_undercarriageName);
-            $this->db->where_not_in('spares_undercarriageId', $spares_undercarriageId);
-            $result = $this->db->get();
-            return $result->row();
-        }
+        $this->db->select("spares_undercarriageName");
+        $this->db->from("spares_undercarriage");
+        $this->db->where('spares_undercarriageName', $spares_undercarriageName);
+        $this->db->where_not_in('spares_undercarriageId', $spares_undercarriageId);
+        $result = $this->db->get();
+        return $result->row();
+    }
 
-        function update($data){
-                $this->db->where('spares_undercarriageId',$data['spares_undercarriageId']);
-                $result = $this->db->update('spares_undercarriage', $data);
-                return $result;
-            }
-
-        
-        function updateStatus($spares_undercarriageId,$data){
-            $this->db->where('spares_undercarriageId',$spares_undercarriageId);
+    function update($data){
+            $this->db->where('spares_undercarriageId',$data['spares_undercarriageId']);
             $result = $this->db->update('spares_undercarriage', $data);
-            return $result; 
+            return $result;
         }
-        function checkUserIdFromSpareUnderCarriages($userId){
-            $this->db->select("*");
-            $this->db->from("spares_undercarriage");
-            $this->db->where('create_by', $userId);
-            $result = $this->db->count_all_results();
+
     
-            if($result > 0){
-                return false;
-            }
+    function updateStatus($spares_undercarriageId,$data){
+        $this->db->where('spares_undercarriageId',$spares_undercarriageId);
+        $result = $this->db->update('spares_undercarriage', $data);
+        return $result; 
+    }
+    function checkUserIdFromSpareUnderCarriages($userId){
+        $this->db->select("*");
+        $this->db->from("spares_undercarriage");
+        $this->db->where('create_by', $userId);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return false;
+        }
+        return true;
+    }
+    function checkStatusFromSpareUnderCarriages($spares_undercarriageId,$status,$userId){
+        
+        $this->db->from("spares_undercarriage");
+        $this->db->where('status', $status);
+        $this->db->where('create_by', $userId);
+        $this->db->where('spares_undercarriageId', $spares_undercarriageId);
+        $this->db->where('activeFlag',2);
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
             return true;
         }
-        function checkStatusFromSpareUnderCarriages($spares_undercarriageId,$status,$userId){
-           
-            $this->db->from("spares_undercarriage");
-            $this->db->where('status', $status);
-            $this->db->where('create_by', $userId);
-            $this->db->where('spares_undercarriageId', $spares_undercarriageId);
-            $this->db->where('activeFlag',2);
-            $result = $this->db->count_all_results();
-    
-            if($result > 0){
-                return true;
-            }
-            return false;
+        return false;
+    }
+
+    function getAllSpareundercarriage(){
+        $this->db->select("spares_undercarriageId,spares_undercarriageName");
+        $this->db->where('status','1');
+        $this->db->order_by("spares_undercarriageName","ASC");
+        $query = $this->db->get("spares_undercarriage");
+        return $query->result();
+    }
+
+    function checksparesUndercarriage($spares_undercarriageId){
+        $this->db->select("spares_undercarriageId");
+        $this->db->from("spares_undercarriage");
+        $result = $this->db->count_all_results();
+
+        if($result > 0){
+            return true;
         }
+        return false;
+    }
 
-       function getAllSpareundercarriage(){
-            $this->db->select("spares_undercarriageId,spares_undercarriageName");
-            $this->db->where('status','1');
-            $this->db->order_by("spares_undercarriageName","ASC");
-            $query = $this->db->get("spares_undercarriage");
-            return $query->result();
-       }
+    function getUpdate($spares_undercarriageId){
+        $this->db->select("spares_undercarriageId,spares_undercarriageName");
+        return $this->db->where('spares_undercarriageId',$spares_undercarriageId)->get("spares_undercarriage")->row();
+    }
 
-        function checksparesUndercarriage($spares_undercarriageId){
-            $this->db->select("spares_undercarriageId");
-            $this->db->from("spares_undercarriage");
-            $result = $this->db->count_all_results();
-
-            if($result > 0){
-                return true;
-            }
-            return false;
-        }
-
-        function getUpdate($spares_undercarriageId){
-            $this->db->select("spares_undercarriageId,spares_undercarriageName");
-            return $this->db->where('spares_undercarriageId',$spares_undercarriageId)->get("spares_undercarriage")->row();
-        }
+    function getAllSpare(){
+        $this->db->select("spares_undercarriageId,spares_undercarriageName");
+        $this->db->order_by("spares_undercarriageName","ASC");
+        $query = $this->db->get("spares_undercarriage");
+        return $query->result();
+    }
 
 }

@@ -82,7 +82,7 @@
         });
         numberOfCart = count;
         cartCount.html(numberOfCart);
-        // synchroData();
+        synchroData();
     }
 
     $(document).ready(function () {

@@ -45,9 +45,8 @@
             var data = $("#createsparesBrand").serialize();
             $.post(base_url+"api/Sparepartcar/createSpareBrand",data,
             function(data){
-                var spares_undercarriageId = $("#spares_undercarriageId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"admin/sparepartcar/sparepart/"+spares_undercarriageId);
+                    showMessage(data.message,"admin/sparepartcar/sparepart/");
                 }else{
                     showMessage(data.message);
                 }

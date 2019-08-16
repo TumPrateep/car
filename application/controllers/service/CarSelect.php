@@ -45,4 +45,11 @@ class Carselect extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
+    function getMultiCarDetail_post(){
+        $modelId = $this->post("modelId");
+        $result = $this->modelofcars->getAllCarModelForMultiSelect($modelId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
 }

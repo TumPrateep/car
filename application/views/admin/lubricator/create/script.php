@@ -43,6 +43,11 @@
     init();
 
     function init(){
+        getAllLubricatorNumber();
+        // getAllLubricatortypeformachine();
+    }
+
+    function getAllLubricatorNumber(){
         lubricator_number.html('<option value="">เลือกเบอร์น้ำมันเครื่อง</option>');
         $.post(base_url+"api/Lubricatornumber/getAllLubricatorNumber",{
             lubricator_gear: lubricator_gear.val()
@@ -55,8 +60,6 @@
                 }
             }
         );
-
-        getAllLubricatortypeformachine();
     }
 
     var lubricatortypeFormachine = $("#lubricatortypeFormachineId");
@@ -75,7 +78,7 @@
 
     lubricator_gear.change(function(){
         var lubricator_brandId = $("#lubricator_brandId").val();
-        init();
+        getAllLubricatorNumber();
     });
 
     $("#create-lubricator").submit(function(){
@@ -100,6 +103,22 @@
             
         }
     }
+
+    $("#lubricatortypeFormachineId").change(function(){
+        var machineType = $(this).val();
+        var html = '<option value="">เลือกความจุ</option>';
+        if(machineType == 1){
+            html += '<option value="1">1 ลิตร</option>';
+            html += '<option value="4">4 ลิตร</option>';
+            html += '<option value="4+1">4+1 ลิตร</option>';
+        }else{
+            html += '<option value="1">1 ลิตร</option>';
+            html += '<option value="6">6 ลิตร</option>';
+            html += '<option value="6+1">6+1 ลิตร</option>';
+        }
+
+        $("#capacity").html(html);
+    })
 </script>
 
 </body>

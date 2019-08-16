@@ -1,6 +1,6 @@
 
 
-	<footer class="footer">
+	<!-- <footer class="footer">
 		<div class="container">
 			<div class="row">
 
@@ -16,7 +16,7 @@
 							<p>Grester London NW18JR, UK</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 				<!-- <div class="col-xs-3">
 					<div class="footer_column">
@@ -48,8 +48,8 @@
 					</div>
 				</div> -->
 
-			</div>
+			<!-- </div>
 		</div>
 
 	</footer>
-
+ -->

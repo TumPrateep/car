@@ -434,7 +434,7 @@ function getCarProfile(){
                         var picturePath = base_url+"/public/image/";
                         $.each(data, function( index, value ) {
                             carProfileData[value.car_profileId] = value;
-                            html+= '<div class="col-md-3" onclick="selectCarProfile('+value.car_profileId+', this)">'
+                            html+= '<div class="col-lg-3" onclick="selectCarProfile('+value.car_profileId+', this)">'
                                          + '<div class="card">'
                                             + '<div class="card-body">'
                                                 + '<div class="card-two">'
@@ -601,7 +601,7 @@ function getAllGarage(){
                                     option +='<span class="border-option btn-sm"      data-toggle="tooltip" data-placement="top" title="มีห้องน้ำ"><i class="fas fa-bath"></i></span><div></div>';
                                 }else if(value.option4 == null){option +='';}
 
-                            html += '<div class="col-md-4" onclick="selectGarage('+value.garageId+','+value.dayopenhour+', this, \''+value.openingtime+'\',\''+value.closingtime+'\')">'
+                            html += '<div class="col-lg-4" onclick="selectGarage('+value.garageId+','+value.dayopenhour+', this, \''+value.openingtime+'\',\''+value.closingtime+'\')">'
                                 + '<div class="card">'
                                     + '<div class="card-body">'
                                         + '<div class="" style="width: 100%; display: inline-block;">'
@@ -769,8 +769,6 @@ function setCartShowDetail(){
     reserve = subDate[2]+"/"+subDate[1]+"/"+subDate[0];
     $("#o-garageName").html(garage.garageName);
     $("#o-reserveday").html("วันที่ "+reserve+" เวลา "+subReserve[1]+":00");
-
-
 
 }
 

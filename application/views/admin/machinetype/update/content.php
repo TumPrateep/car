@@ -50,10 +50,7 @@
                         <div class="col-md-4">
                           <div class="form-group">
                             <label>เกียร์</label> <span class="error">*</span>
-                            <select name="gear" id="gear" class="form-control">
-                              <option value="AT">AT</option>
-                              <option value="MT">MT</option>
-                            </select>
+                            <?=gear_type_dropdown() ?>
                           </div>
                         </div>
                       </div>

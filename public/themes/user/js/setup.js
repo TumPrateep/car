@@ -20,7 +20,7 @@ function fnDelete(option) {
    $("#lebel-delete").html(option.label);
    $("#content-delete").html(option.content);
    $("#delete-modal").modal("show");
-   deleteUrl = base_url+"api"+option.url;
+   deleteUrl = base_url+"service"+option.url;
    modalUrl = option.gotoUrl;
 }
 
@@ -29,7 +29,7 @@ function fnConfirm(option){
     $("#lebel-confirm").html(option.label);
     $("#content-confirm").html(option.content);
     $("#confirm-modal").modal("show");
-    confirmUrl = base_url+"api"+option.url;
+    confirmUrl = base_url+"service"+option.url;
     modalUrl = option.gotoUrl;
 }
 

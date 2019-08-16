@@ -12,18 +12,18 @@ class Order extends BD_Controller {
         $this->load->model('orderdetails');
     }
 
-    function calAllDeposit_post(){
-        $userId = $this->session->userdata['logged_in']['id'];
-        $productData = json_decode($this->post("productData"));
-        $garageId = $this->post("garageId");
-        $orderdetail = $this->orders->getAllCartByUserIdAndProductId($userId, $productData);
-        $caraccessoryId = getCaracessoryId($orderdetail);
-        $costDelivery = getDeliveryCost($caraccessoryId, $orderdetail);
+    // function calAllDeposit_post(){
+    //     $userId = $this->session->userdata['logged_in']['id'];
+    //     $productData = json_decode($this->post("productData"));
+    //     $garageId = $this->post("garageId");
+    //     $orderdetail = $this->orders->getAllCartByUserIdAndProductId($userId, $productData);
+    //     $caraccessoryId = getCaracessoryId($orderdetail);
+    //     $costDelivery = getDeliveryCost($caraccessoryId, $orderdetail);
 
-        $sum = $this->orders->callDeposit($garageId, $costDelivery, $caraccessoryId, $orderdetail);
+    //     $sum = $this->orders->callDeposit($garageId, $costDelivery, $caraccessoryId, $orderdetail);
 
-        $this->set_response(["sum" => $sum], REST_Controller::HTTP_OK);
-    }
+    //     $this->set_response(["sum" => $sum], REST_Controller::HTTP_OK);
+    // }
 
     function createOrderDetail_post(){
         $userId = $this->session->userdata['logged_in']['id'];

@@ -120,34 +120,39 @@
         });
     }
 
-    form.submit(function(){
-            createBrand();
-        });
+    $("#create-lubricatordata").submit(function(){
+        createBrand();
+    });
 
-        function createBrand(){
-            event.preventDefault();
-            var isValid = form.valid();
-            if(isValid){
-                var imageData = $('.image-editor').cropit('export');
-                $('.hidden-image-data').val(imageData);
-                var myform = document.getElementById("submit");
-                var formData = new FormData(myform);
-                $.ajax({
-                    url: base_url+"api/Spareproduct/create",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    type: 'POST',
-                    success: function (data) {
-                        if(data.message == 200){
-                            showMessage(data.message,"admin/spareproduct");
-                        }else{
-                            showMessage(data.message);
-                        }
+    function createBrand(){
+        event.preventDefault();
+        var isValid = form.valid();
+        if(isValid){
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
+            var myform = document.getElementById("submit");
+            var formData = new FormData(myform);
+            $.ajax({
+                url: base_url+"api/Spareproduct/create",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (data) {
+                    if(data.message == 200){
+                        showMessage(data.message,"admin/spareproduct");
+                    }else{
+                        showMessage(data.message);
                     }
-                });
-            }
+                }
+            });
         }
+    }
+
+    $('.form-control-chosen-required').chosen({
+        allow_single_deselect: false,
+        width: '100%'
+    });
 
 </script>
 

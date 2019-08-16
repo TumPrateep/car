@@ -4041,7 +4041,7 @@ select option
 }
 
 .correct-logo{
-    color: lawngreen;
+    color: #229e27;
     font-size: 100px;
 }
 
@@ -4134,4 +4134,13 @@ select option
 
 .quantity .minus {
     bottom: 0
+}
+
+.point{
+	background-color: #ef9016;
+    padding: 5px 13px 5px 13px;
+    border-radius: 15px;
+    color: white;
+	font-weight: 500;
+	margin-bottom: 5px;
 }

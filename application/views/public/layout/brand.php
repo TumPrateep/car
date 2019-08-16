@@ -64,7 +64,10 @@
 				/* visibility: visible; */
 			}
 		}
-
+		.mg-lb-15{
+			margin-left: 15px;
+    		margin-bottom: 10px;
+		}
 	</style>
 	<div class="brands">
 		<div class="container">
@@ -73,6 +76,11 @@
 			<!-- <div class="container-fluid"> -->
 				<h2 class="text-center mb-3">เลือกรถหรือค้นหาจากข้อมูลรถ</h2>
 				<div id="myCarousel" class="carousel slide main-search" data-ride="carousel">
+					<div class="mg-lb-15">
+						<a href="http://localhost/car/public/carprofile/create">
+							<button type="button" class="btn btn-orange"><i class="fa fa-plus"></i>  สร้าง</button>
+						</a>
+					</div>
 					<div class="carousel-inner row w-100 mx-auto main-carousel" id="carprofile">
 					
 					</div>
@@ -84,6 +92,11 @@
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="sr-only">Next</span>
 					</a>
+					<br>
+					<div class="text-center">
+						<a class="btn btn-outline-secondary prev" href="#myCarousel" data-slide="prev"><i class="fa fa-lg fa-chevron-left"></i></a>
+						<a class="btn btn-outline-secondary next" href="#myCarousel" data-slide="next"><i class="fa fa-lg fa-chevron-right"></i></a>
+					</div>
 					<br>
 				</div>
 			<!-- </div> -->

@@ -6,7 +6,17 @@ class Charge extends CI_Controller {
         // Construct the parent class
 		parent::__construct();
 		$this->load->view("lib");
-    }
+	}
+	
+	function brand(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/charge/brand/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/charge/brand/script");
+	}
 
     function LubricatorCharge()
 	{
@@ -72,22 +82,28 @@ class Charge extends CI_Controller {
 		$this->load->view("admin/charge/tirecharge/update/script");
 	}
 
-    function SpareCharge()
+    function SpareCharge($brandId)
 	{
+		$data["brandId"] = $brandId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/charge/sparecharge/content");
+		$this->load->view("admin/charge/sparecharge/content", $data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/charge/sparecharge/script");
 	}
 	
-	public function createSpareCharge(){
+	public function createSpareCharge($brandId){
+		$this->load->model("sparesundercarriages");
+
+		$data['brandId'] = $brandId;
+		// $data['spares'] = $this->sparesundercarriages->getAllSpare();
+
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/charge/sparecharge/create/content");
+		$this->load->view("admin/charge/sparecharge/create/content", $data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/charge/sparecharge/create/script");

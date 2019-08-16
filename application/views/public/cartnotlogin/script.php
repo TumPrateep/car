@@ -185,7 +185,7 @@ function deleteCart(index){
                     cartData.splice(index, 1);
                     localStorage.setItem("data", JSON.stringify(cartData));
                     showCart();
-                    getImagePicker();
+                    // getImagePicker();
                 }
             },
             cancle: {
@@ -422,13 +422,13 @@ function getTypeOfProduct(){
 //     });
 // }
 
-function getDeposit(){
-    $.post(base_url+"service/Order/calAllDeposit", {"productData":getCartList(),"garageId": $("#image-picker").val()},
-        function (data, textStatus, jqXHR) {
-            $("#halfMoney").html(currency(data.sum, {  precision: 0 }).format() + " บาท");
-        }
-    );
-}
+// function getDeposit(){
+//     $.post(base_url+"service/Order/calAllDeposit", {"productData":getCartList(),"garageId": $("#image-picker").val()},
+//         function (data, textStatus, jqXHR) {
+//             $("#halfMoney").html(currency(data.sum, {  precision: 0 }).format() + " บาท");
+//         }
+//     );
+// }
 
 $(document).ready(function () {
 

@@ -9,20 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico">
     <title>CarJaidee</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url("/public/vendor/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/themes/caraccessory/css/lib/bootstrap/bootstrap.min.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/themes/caraccessory/css/lib/dropzone/dropzone.css") ?>" rel="stylesheet">
-    <link href="<?=base_url("/public/themes/caraccessory/css/style.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/themes/caraccessory/css/custom.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/themes/caraccessory/css/lib/data-table/dataTables.bootstrap.min.css") ?>" rel="stylesheet">
-    
+    <link href="<?=base_url("/public/themes/caraccessory/css/component-chosen.min.css") ?>" rel="stylesheet">
+
     <link href="<?=base_url("/public/css/select2-bootstrap.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/css/select2.min.css") ?>" rel="stylesheet">
     <link href="<?=base_url("/public/css/bootstrap-slider.css") ?>" rel="stylesheet"> 
     <link href="<?=base_url("/public/css/toggle-switch.css") ?>" rel="stylesheet">   
+    <link href="<?=base_url("/public/themes/caraccessory/css/style.css") ?>" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -89,7 +90,7 @@
             color: #ffffff
         }
         td{
-            color: #000000 !important;
+            color: #636769 !important;
         }
     </style>
 </head>

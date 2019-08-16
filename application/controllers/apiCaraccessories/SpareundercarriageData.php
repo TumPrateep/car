@@ -11,20 +11,18 @@ class Spareundercarriagedata extends BD_Controller {
         $this->load->model("spare_undercarriagedatas");
     }
     public function search_post(){
-        $column = "spares_undercarriageDataId";
-        $sort = "asc";
-        if($this->post('column') == 3){
-            $column = "status";
-        }else if($this->post('column') == 2){
-            $sort = "desc";
-        }else{
-            $sort = "asc";
-        }
+        
+        $columns = array( 
+            0 => null,
+            1 => 'spares_undercarriageName', 
+            2 => null,
+            3 => 'brandName'
+        );
 
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $column;
-        $dir = $sort;
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
 
         $userId = $this->session->userdata['logged_in']['id'];
         $totalData = $this->spare_undercarriagedatas->allSpareData_count($userId);
@@ -49,46 +47,47 @@ class Spareundercarriagedata extends BD_Controller {
         if(!empty($posts))
         {
             $index = 0;
-            $count = 0;
+            // $count = 0;
             foreach ($posts as $post)
             { 
-                $nestedData[$count]['spares_undercarriageDataId'] = $post->spares_undercarriageDataId;
-                $nestedData[$count]['spares_brandName'] = $post->spares_brandName;
-                $nestedData[$count]['spares_undercarriageName'] = $post->spares_undercarriageName;
-                $nestedData[$count]['status'] = $post->status;
-                $nestedData[$count]['price'] = $post->price;
-                $nestedData[$count]['warranty_year'] = $post->warranty_year;
-                $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
-                $nestedData[$count]['warranty'] = $post->warranty;
-                $nestedData[$count]['spares_undercarriageDataPicture'] = $post->spares_undercarriageDataPicture;
-                $nestedData[$count]['brandName'] = $post->brandName;
-                $nestedData[$count]['modelName'] = $post->modelName;
-                $nestedData[$count]['spares_brandPicture'] = $post->spares_brandPicture;
+                $nestedData['spares_undercarriageDataId'] = $post->spares_undercarriageDataId;
+                $nestedData['spares_brandName'] = $post->spares_brandName;
+                $nestedData['spares_undercarriageName'] = $post->spares_undercarriageName;
+                $nestedData['status'] = $post->status;
+                $nestedData['price'] = $post->price;
+                $nestedData['warranty_year'] = $post->warranty_year;
+                $nestedData['warranty_distance'] = $post->warranty_distance;
+                $nestedData['warranty'] = $post->warranty;
+                $nestedData['spares_undercarriageDataPicture'] = $post->spares_undercarriageDataPicture;
+                $nestedData['brandName'] = $post->brandName;
+                $nestedData['modelName'] = $post->modelName;
+                $nestedData['spares_brandPicture'] = $post->spares_brandPicture;
+                $nestedData['detail'] = $post->detail;
                 if($post->yearEnd != null){
-                    $nestedData[$count]['year'] = $post->yearStart."-".$post->yearEnd;
+                    $nestedData['year'] = $post->yearStart."-".$post->yearEnd;
                 }else{
-                    $nestedData[$count]['year'] = $post->yearStart;
+                    $nestedData['year'] = $post->yearStart;
                 }
-                $nestedData[$count]['modelofcarName'] = $post->modelofcarName;
-                $nestedData[$count]['machineSize'] = $post->machineSize;
+                $nestedData['modelofcarName'] = $post->modelofcarName;
+                $nestedData['machineSize'] = $post->machineSize;
 
                 //picture
-                $option = [
-                    'spares_undercarriageId' => $post->spares_undercarriageId,
-                    'spares_brandId' => $post->spares_brandId,
-                    'brandId' => $post->brandId,
-                    'modelId' => $post->modelId,
-                    'modelofcarId' => $post->modelofcarId
-                ];
-                $nestedData[$count]['picture'] = getPictureSpare($option);
+                // $option = [
+                //     'spares_undercarriageId' => $post->spares_undercarriageId,
+                //     'spares_brandId' => $post->spares_brandId,
+                //     'brandId' => $post->brandId,
+                //     'modelId' => $post->modelId,
+                //     'modelofcarId' => $post->modelofcarId
+                // ];
+                // $nestedData[$count]['picture'] = getPictureSpare($option);
                 $data[$index] = $nestedData;
-                if($count >= 3){
-                    $count = -1;
+                // if($count >= 3){
+                //     $count = -1;
                     $index++;
-                    $nestedData = [];
-                }
+                //     $nestedData = [];
+                // }
                 
-                $count++;
+                // $count++;
             }
         }
 
@@ -109,33 +108,35 @@ class Spareundercarriagedata extends BD_Controller {
         $warranty = $this->post('warranty');
         $warranty_year = $this->post('warranty_year');
         $warranty_distance = $this->post('warranty_distance');
-        $modelId = $this->post("modelId");
+        // $modelId = $this->post("modelId");
         $brandId = $this->post("brandId");
         $modelofcarId = $this->post("modelofcarId");
         $machineSize = $this->post("machineSize");
        
        
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check = $this->spare_undercarriagedatas->data_check_create($spares_brandId,$spares_undercarriageId,$brandId,$modelId,$modelofcarId,$userId);
-    
+        // $data_check = $this->spare_undercarriagedatas->data_check_create($spares_brandId,$spares_undercarriageId,$brandId,$modelId,$modelofcarId,$userId);
+        $data_check = null;
+
         $data = array(
-        'spares_undercarriageDataId' => null,
-        'spares_brandId' => $spares_brandId,
-        'spares_undercarriageId' =>$spares_undercarriageId,
-        'status' => 1,
-        'create_at' => date('Y-m-d H:i:s',time()),
-        'create_by' => $userId,
-        "activeFlag" => 1,
-        'price' => $price,
-        'warranty' => $warranty,
-        'warranty_year' => $warranty_year,
-        'warranty_distance' => $warranty_distance,
-        // 'spares_undercarriageDataPicture' => $image,
-        'modelId' => $modelId,
-        'brandId' => $brandId,
-        'modelofcarId' => $modelofcarId,
-        'machineSize' => $machineSize
+            'price' => $price,
+            'warranty' => $warranty,
+            'warranty_year' => $warranty_year,
+            'warranty_distance' => $warranty_distance,
+            'modelofcarId' => $modelofcarId,
+            'spares_undercarriageId' => $spares_undercarriageId
         );
+
+        $data["model"] = array(
+            'spares_undercarriageDataId' => null,
+            'spares_brandId' => $spares_brandId,
+            'status' => 1,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'create_by' => $userId,
+            "activeFlag" => 1,
+            'brandId' => $brandId
+        );
+        
         $option = [
             "data_check" => $data_check,
             "data" => $data,
@@ -240,4 +241,5 @@ class Spareundercarriagedata extends BD_Controller {
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
+    
 }

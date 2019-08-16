@@ -104,18 +104,18 @@
                             +'<td>'+currency((val.cost), {  precision: 0 }).format()+' บาท</td>'
                             +'</tr>';
                             
-                        $("#cost").html(summarydata+' บาท');
-                        $("#costDelivery").html(costDeliverydata+' บาท');
-                        $("#summoney").html(summarydata+costDeliverydata+' บาท');
-                        $("#ttmoney").html(summarydata-depositdata+' บาท');
+                        $("#cost").html(currency(summarydata, {  precision: 0 }).format() + " บาท");
+                        $("#costDelivery").html(currency(costDeliverydata, {  precision: 0 }).format() + " บาท");
+                        $("#summoney").html(currency(summarydata+costDeliverydata, {  precision: 0 }).format() + " บาท");
+                        // $("#ttmoney").html(summarydata-depositdata+' บาท');
 
                     
-                        if(orderdata.depositflag == "0"){
-                            $("#deposit").html("-");
-                        }else{
-                            $("#deposit").html(depositdata+' บาท');
+                        // if(orderdata.depositflag == "0"){
+                        //     $("#deposit").html("-");
+                        // }else{
+                        //     $("#deposit").html(depositdata+' บาท');
                             
-                        }
+                        // }
 
                         if(orderdata.depositflag == "1"){
                             $("#ttmoney").html(summarydata-depositdata+' บาท');

@@ -44,7 +44,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,4]
+                    "targets": [0,3]
                 },{
                     "targets": 2,
                     "data": null,
@@ -63,30 +63,31 @@
                         +'</button>'
                         +'</div>';
                     }
-                },{
+                },
+                // {
+                //     "targets": 3,
+                //     "data": null,
+                //     "render": function ( data, type, full, meta ) {
+                //         var switchVal = "true";
+                //         var active = " active";
+                //         if(data.status == null){
+                //             return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
+                //         }else if(data.status != "1"){
+                //             switchVal = "false";
+                //             active = "";
+                //         }
+                //         return '<div>'
+                //         +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.spares_undercarriageId+','+data.status+')">'
+                //         +'<div class="handle"></div>'
+                //         +'</button>'
+                //         +'</div>';
+                //     }
+                // },
+                {
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        var switchVal = "true";
-                        var active = " active";
-                        if(data.status == null){
-                            return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
-                        }else if(data.status != "1"){
-                            switchVal = "false";
-                            active = "";
-                        }
-                        return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.spares_undercarriageId+','+data.status+')">'
-                        +'<div class="handle"></div>'
-                        +'</button>'
-                        +'</div>';
-                    }
-                },{
-                    "targets": 4,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/sparepartcar/sparepart/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"admin/sparepartcar/updatetypespare/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/sparepartcar/updatetypespare/"+data.spares_undercarriageId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteTypeSpares('+data.spares_undercarriageId+',\''+data.spares_undercarriageName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -99,7 +100,7 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [1]},
-                {"className": "dt-center", "targets": [0,2,3,4]},
+                {"className": "dt-center", "targets": [0,2,3]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 2 }
                 

@@ -24,20 +24,20 @@ class Sparepartcar extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
-        $spares_undercarriageId = $this->post("spares_undercarriageId");
-        $totalData = $this->sparesbrand->allSpares_brand_count($spares_undercarriageId);
+        // $spares_undercarriageId = $this->post("spares_undercarriageId");
+        $totalData = $this->sparesbrand->allSpares_brand_count();
 
         $totalFiltered = $totalData; 
 
         if(empty($this->post('spares_brandName'))  && empty($this->post('status')))
         {            
-            $posts = $this->sparesbrand->allSpares_brand($limit,$start,$order,$dir, $spares_undercarriageId);
+            $posts = $this->sparesbrand->allSpares_brand($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('spares_brandName'); 
             $status = $this->post('status'); 
-            $posts =  $this->sparesbrand->spares_brand_search($limit,$start,$search,$order,$dir, $spares_undercarriageId, $status);
-            $totalFiltered = $this->sparesbrand->spares_brand_search_count($search, $spares_undercarriageId, $status);
+            $posts =  $this->sparesbrand->spares_brand_search($limit,$start,$search,$order,$dir, $status);
+            $totalFiltered = $this->sparesbrand->spares_brand_search_count($search, $status);
         }
 
         $data = array();
@@ -46,7 +46,7 @@ class Sparepartcar extends BD_Controller {
             foreach ($posts as $post)
             {
                 $nestedData['spares_brandId'] = $post->spares_brandId;
-                $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
+                // $nestedData['spares_undercarriageId'] = $post->spares_undercarriageId;
                 $nestedData['spares_brandPicture'] = $post->spares_brandPicture;
                 $nestedData['spares_brandName'] = $post->spares_brandName;
                 $nestedData['status'] = $post->status;
@@ -69,7 +69,7 @@ class Sparepartcar extends BD_Controller {
     function createSpareBrand_post(){
         $config['upload_path'] = 'public/image/sparesbrand/';
         $spares_brandName = $this->post("spares_brandName");
-        $spares_undercarriageId = $this->post("spares_undercarriageId");
+        // $spares_undercarriageId = $this->post("spares_undercarriageId");
         $img = $this->post("spares_brandPicture");
         $img = str_replace('data:image/png;base64,', '', $img);
 	    $img = str_replace(' ', '+', $img);
@@ -79,13 +79,13 @@ class Sparepartcar extends BD_Controller {
         $success = file_put_contents($file, $data);
 
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check = $this->sparesbrand->data_check_create($spares_brandName,$spares_undercarriageId);
+        $data_check = $this->sparesbrand->data_check_create($spares_brandName);
         $data = array(
             'spares_brandId' => null,
             'spares_brandName' => $spares_brandName,
             "spares_brandPicture"=> $imageName,
             'status' => 1,
-            'spares_undercarriageId' => $spares_undercarriageId,
+            // 'spares_undercarriageId' => $spares_undercarriageId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'create_by' => $userId,
             'activeFlag' => 1
@@ -105,10 +105,10 @@ class Sparepartcar extends BD_Controller {
 
         $spares_brandId = $this->post('spares_brandId');
         $spares_brandName = $this->post('spares_brandName');
-        $spares_undercarriageId = $this->post('spares_undercarriageId');
+        // $spares_undercarriageId = $this->post('spares_undercarriageId');
         $userId = $this->session->userdata['logged_in']['id'];
         $data_check_update = $this->sparesbrand-> getSpareBrandbyId($spares_brandId);
-        $data_check = $this->sparesbrand->data_check_update($spares_brandId,$spares_brandName,$spares_undercarriageId);
+        $data_check = $this->sparesbrand->data_check_update($spares_brandId,$spares_brandName);
 
         $config['upload_path'] = 'public/image/sparesbrand/';
         $img = $this->post("spares_brandPicture");
@@ -135,7 +135,6 @@ class Sparepartcar extends BD_Controller {
                 'spares_brandName' => $spares_brandName,
                 'spares_brandPicture' => $imageName,
                 'status' => 1,
-                'spares_undercarriageId' => $spares_undercarriageId,
                 'update_at' => date('Y-m-d H:i:s',time()),
                 'update_by' => $userId
             );
@@ -148,8 +147,8 @@ class Sparepartcar extends BD_Controller {
                 "data_check" => $data_check,
                 "data" => $data,
                 "model" => $this->sparesbrand,
-                "image_path" => null,
-                "old_image_path" => null,
+                "image_path" => $file,
+                "old_image_path" => $oldImage,
             ];
     
             $this->set_response(decision_update($option), REST_Controller::HTTP_OK);

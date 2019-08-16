@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                <a href="<?=base_url("admin/paymentapprove") ?>">ยืนยันค่ามัดจำ</a>
+                <a href="<?=base_url("admin/paymentapprove") ?>">จัดการการสั่งสินค้า</a>
                 </li>
                 <li class="breadcrumb-item active">ค้นหา</li>        
             </ol>

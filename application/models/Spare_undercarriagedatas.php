@@ -16,9 +16,9 @@ class Spare_undercarriagedatas extends CI_Model{
         spares_undercarriagedata.warranty,spares_undercarriagedata.warranty_distance,
         spares_undercarriagedata.warranty_year,
         spares_undercarriagedata.spares_undercarriageDataPicture,
-        brand.brandName,model.modelName,model.yearStart,model.yearEnd,
-        modelofcar.modelofcarName,modelofcar.machineSize,spares_undercarriage.spares_undercarriageId,
-        spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,spares_brand.spares_brandPicture');
+        brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.machineSize,spares_undercarriage.spares_undercarriageId,
+        spares_brand.spares_brandId,brand.brandId,model.modelId,modelofcar.modelofcarId,spares_brand.spares_brandPicture')->select("IFNULL(`detail`, '') AS `detail`", false)->select("IFNULL(`modelofcarName`, '') AS `modelofcarName`", false);
+
         $this->db->from('spares_undercarriagedata');
         $this->db->join('spares_brand','spares_brand.spares_brandId = spares_undercarriagedata.spares_brandId');
         $this->db->join('spares_undercarriage','spares_undercarriage.spares_undercarriageId = spares_undercarriagedata.spares_undercarriageId');
@@ -114,7 +114,29 @@ class Spare_undercarriagedatas extends CI_Model{
         return $result->row();
     }
     function insert($data){
-       return $this->db->insert('spares_undercarriagedata',$data);
+        $this->db->trans_begin();
+            foreach ($data["spares_undercarriageId"] as $key => $sparesId) {
+                foreach ($data["modelofcarId"] as $val) {
+                    $spareData = $data["model"];
+                    $modelOfCarData = $this->db->where("modelofcarId",$val)->get("modelofcar")->row();
+                    $spareData["modelId"] = $modelOfCarData->modelId;
+                    $spareData["modelofcarId"] = $val;
+                    $spareData["machineSize"] = $modelOfCarData->machineSize;
+                    $spareData["spares_undercarriageId"] = $sparesId;
+                    $spareData["price"] = $data["price"][$key];
+                    $spareData["warranty"] = $data["warranty"][$key];
+                    $spareData["warranty_year"] = $data["warranty_year"][$key];
+                    $spareData["warranty_distance"] = $data["warranty_distance"][$key];
+                    $this->db->insert('spares_undercarriagedata',$spareData);
+                } 
+            }
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
     }
     function data_check_update($spares_brandId,$spares_undercarriageId,$brandId,$modelId,$modelofcarId,$userId,$spares_undercarriageDataId){
         $this->db->from('spares_undercarriagedata');

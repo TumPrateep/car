@@ -3,10 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/sparepartcar") ?>">รายการอะไหล่</a>
-        </li>
-        <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/sparepartcar/sparepart/$spares_undercarriageId") ?>">ยี่ห้ออะไหล่</a>
+        <a href="<?=base_url("admin/sparepartcar/sparepart/") ?>">ยี่ห้ออะไหล่</a>
         </li>
         <li class="breadcrumb-item active">เพิ่มยี่ห้ออะไหล่</li>
       </ol>
@@ -17,13 +14,11 @@
             <div class="col-md-10">
               <div class="card text-white bg-success">
                   <div class="card-header">
-
                     <h3 class="card-title"><i class="fa fa fa-wrench"></i> เพิ่มยี่ห้ออะไหล่</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form id="createsparesBrand">
-                  <input type="hidden" id="spares_undercarriageId" name="spares_undercarriageId" value="<?=$spares_undercarriageId ?>">
                     <div class="card-body black bg-light">
                       <div class="row">
                         <div class="col-md-12">

@@ -2,18 +2,21 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/charge/sparecharge") ?>">ราคาเปลี่ยนอะไหล่ช่วงล่าง</a>
+          <a href="<?=base_url("admin/charge/brand") ?>">ราคาเปลี่ยนอะไหล่ช่วงล่าง-ยี่ห้อรถ</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="<?=base_url("admin/charge/sparecharge/").$brandId ?>">ราคาเปลี่ยนอะไหล่ช่วงล่าง</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
 
       <!-- Example DataTables Card-->
-
+    <input type="hidden" name="brandId" value="<?=$brandId?>" id="brandId">
     <div class="card-tools one">
       <form id="form-search">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/charge/createsparecharge") ?>">
-          <i class="fa fa-plus">  สร้าง</i>
+        <a class="btn btn-primary create" href="<?=base_url("admin/charge/createsparecharge/").$brandId ?>">
+          <i class="fa fa-plus">  กำหนดค่าบริการ</i>
         </a>
 
         <div class="input-group float-right">
@@ -46,7 +49,7 @@
           <th><i class="fa fa-toggle-left"></i>  อะไหล่ช่วงล่าง</th>
           <th><i class="fa fa-toggle-right"></i>  ค่าบริการ</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
-          <th></th>
+          <!-- <th></th> -->
         </thead>	
       </table>
     </div>

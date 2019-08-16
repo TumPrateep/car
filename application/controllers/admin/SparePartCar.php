@@ -40,30 +40,29 @@ class SparePartCar extends CI_Controller {
 		$this->load->view("admin/typespare/update/script");
 	}
 
-	public function sparepart($spares_undercarriageId){
-		$data['spares_undercarriageId'] = $spares_undercarriageId;
+	public function sparepart(){
+		// $data['spares_undercarriageId'] = $spares_undercarriageId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/sparepart/content",$data);
+		$this->load->view("admin/sparepart/content");
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/sparepart/script");
 	}
-	public function createspare($spares_undercarriageId){
-		$data['spares_undercarriageId'] = $spares_undercarriageId;
+	public function createspare(){
+		// $data['spares_undercarriageId'] = $spares_undercarriageId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/sparepart/create/content",$data);
+		$this->load->view("admin/sparepart/create/content");
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/sparepart/create/script");
 	}
 
-	public function updatespare($spares_undercarriageId,$spares_brandId){
+	public function updatespare($spares_brandId){
 		$data['spares_brandId'] = $spares_brandId;
-		$data['spares_undercarriageId'] = $spares_undercarriageId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");

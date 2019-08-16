@@ -27,15 +27,12 @@
                 detail: {
                     required: true
                 },
-                modelofcarId: {
-                    required: true
-                },
+                // modelofcarId: {
+                //     required: true
+                // },
                 color: {
                     required: true
-                },
-                mileage: {
-                    required: true
-                }  
+                }
             },messages:{
                 character_plate: {
                     required: "กรุณากรอกอัษร"
@@ -57,15 +54,12 @@
                 detail:{
                     required: "กรุณาเลือกรายละเอียดรถ"
                 },
-                modelofcarId: {
-                    required: "กรุณาเลือกโฉมรถ"
-                },
+                // modelofcarId: {
+                //     required: "กรุณาเลือกโฉมรถ"
+                // },
                 color: {
                     required: "กรุณากรอกสีรถ"
-                },
-                mileage: {
-                    required: "กรุณากรอกเลขไมล์"
-                }  
+                } 
             }
         });
 
@@ -79,8 +73,12 @@
         var isValid = form.valid();
         
         if(isValid){
-            var imageData = $('.image-editor').cropit('export');
-            $('.hidden-image-data').val(imageData);
+            var imageData = $('.image-editor-front').cropit('export');
+            $('.hidden-image-front').val(imageData);
+            var imageData = $('.image-editor-back').cropit('export');
+            $('.hidden-image-back').val(imageData);
+            var imageData = $('.image-editor-form').cropit('export');
+            $('.hidden-image-form').val(imageData);
             var myform = document.getElementById("submit");
             var formData = new FormData(myform);
             $.ajax({
@@ -101,10 +99,24 @@
         }
     }
     
-    $('.image-editor').cropit({
+    $('.image-editor-front').cropit({
         allowDragNDrop: false,
         width: 200,
         height: 200,
+        type: 'image/jpeg'
+    });
+
+    $('.image-editor-back').cropit({
+        allowDragNDrop: false,
+        width: 200,
+        height: 200,
+        type: 'image/jpeg'
+    });
+
+    $('.image-editor-form').cropit({
+        allowDragNDrop: false,
+        width: 600,
+        height: 300,
         type: 'image/jpeg'
     });
 
@@ -166,20 +178,20 @@
         });
     });
     
-    detail.change(function(){
-        // var modelId = model.val();
-        // var detail = $("#detail").val();
-        modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-        $.get(base_url+"service/Carselect/getCarDetail",{
-            modelId : detail.val()
-        },function(data){
-            var carModelData = data.data;
-            console.log(carModelData);
-            $.each( carModelData, function( key, value ) {
-                modelofcar.append('<option value="' + value.modelofcarId+'">' + value.machineSize + ' '+ value.modelofcarName +'</option>');
-            });
-        });
-    });
+    // detail.change(function(){
+    //     // var modelId = model.val();
+    //     // var detail = $("#detail").val();
+    //     modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
+    //     $.get(base_url+"service/Carselect/getCarDetail",{
+    //         modelId : detail.val()
+    //     },function(data){
+    //         var carModelData = data.data;
+    //         console.log(carModelData);
+    //         $.each( carModelData, function( key, value ) {
+    //             modelofcar.append('<option value="' + value.modelofcarId+'">' + value.machineSize + ' '+ value.modelofcarName +'</option>');
+    //         });
+    //     });
+    // });
 
     function setProvincePlate(province=null){
         var provincePlateDropdown = $("#province_plate");

@@ -21,13 +21,13 @@
 	                		<div class="card-body"> 
 							<h4><label ><u>อู่ที่เข้าใช้บริการ</u></label></h4>
 			                    <div class="row ">
-		                            <div class="col-md-3 "><label class="txt-S-s">ชื่ออู่</label></div>
+		                            <div class="col-md-3"><label class="txt-S-s">ชื่ออู่</label></div>
 		                            <div class="col-md-8">
 		                                <label class="txt-S-s"  name="garageName" id="garageName">: </label>
 		                            </div>
 		                        </div>
 			                    <div class="row ">
-		                            <div class=" col-md-3 "><label class="txt-S-s">วันที่เปิด</label></div>
+		                            <div class="col-md-3"><label class="txt-S-s">วันที่เปิด</label></div>
 		                            <div class="col-md-8">
 		                                <label class="txt-S-s"  name="dayopen" id="dayopen">: </label>
 		                            </div>
@@ -130,6 +130,7 @@
 				</table>
 				<table class="table" id="orderdetail-table">
 					<div class="card col-md-12 ">
+					<br>
 					<h4><label><u>รายละเอียดค่าบริการ</u></label></h4>
 						<div class="row">
 							<div class="col-md-3 offset-md-1"><label><b>ราคาสินค้ารวม :</b></label></div>
@@ -149,7 +150,8 @@
 								<label name="summoney" id="summoney"> </label>
 							</div>
 						</div>
-						<div class="row ">
+						<br>
+						<!-- <div class="row ">
 							<div class="col-md-3 offset-md-1"><label><b>เงินมัดจำ :</b></label></div>
 							<div class="col-md-8">
 								<label name="deposit" id="deposit"> </label>
@@ -160,7 +162,7 @@
 							<div class="col-md-8">
 								<label name="ttmoney" id="ttmoney"> </label>
 							</div>
-						</div>  
+						</div>   -->
 					</div>
 				</table>
 			</div>				

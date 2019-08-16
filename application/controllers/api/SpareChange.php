@@ -16,15 +16,17 @@ class Sparechange extends BD_Controller {
             1 => 'spares_change.spares_undercarriageId', 
             2 => 'spares_price'
         );
+        $brandId = $this->post('brandId');
+
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $totalData = $this->sparechanges->allSparechanges_count();
+        $totalData = $this->sparechanges->allSparechanges_count($brandId);
         $totalFiltered = $totalData; 
         if(empty($this->post('spares_undercarriageId')) && empty($this->post('status')))
-        {            
-            $posts = $this->sparechanges->allSparechanges($limit,$start,$order,$dir);
+        {         
+            $posts = $this->sparechanges->allSparechanges($limit,$start,$order,$dir,$brandId);
         }
         else {
             $search = $this->post('spares_undercarriageId');
@@ -60,18 +62,21 @@ class Sparechange extends BD_Controller {
         $spares_price = $this->post('spares_price');
         $userId = $this->session->userdata['logged_in']['id'];
 
-        $data_check = $this->sparechanges->data_check_create($spares_undercarriageId,$brandId);
-        $data = array(
-            'brandId' => $brandId,
-            'spares_undercarriageId' => $spares_undercarriageId,
-            'spares_price'  => $spares_price,
+        $data["data"] = [
+            "brandId" => $brandId,
+            "spares_undercarriageId" => $spares_undercarriageId,
+            "spares_price" => $spares_price
+        ];
+
+        // $data_check = $this->sparechanges->data_check_create($spares_undercarriageId,$brandId);
+        $data["simple"] = array(
             'create_by' => $userId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
             'activeFlag' => 1
         );
         $option = [
-            "data_check" => $data_check,
+            "data_check" => null,
             "data" => $data,
             "model" => $this->sparechanges,
             "image_path" => null
@@ -149,6 +154,12 @@ class Sparechange extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-  
+    
+    function getAllSparespartcarUndercarriage_get(){
+        $brandId = $this->get("brandId");
+        $result = $this->sparechanges->getAllSpareCharge($brandId);
+
+        $this->set_response($result, REST_Controller::HTTP_OK);
+    }
 
 }

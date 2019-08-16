@@ -2,21 +2,15 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("/admin/sparepartcar") ?>">รายการอะไหล่</a>
-        </li>
-        <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/sparepartcar/sparepart/$spares_undercarriageId") ?>">ยี่ห้ออะไหล่</a>
+          <a href="<?=base_url("admin/sparepartcar/sparepart") ?>">ยี่ห้ออะไหล่</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
 
-      <!-- Example DataTables Card-->
-      <input type="hidden" id="spares_undercarriageId" value="<?=$spares_undercarriageId ?>">
-
     <div class="card-tools one">
       <form id="form-search">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/sparepartcar/createspare/$spares_undercarriageId") ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/sparepartcar/createspare") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
 

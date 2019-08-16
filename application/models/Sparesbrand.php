@@ -2,9 +2,9 @@
 
 class Sparesbrand extends CI_Model{
 
-    function allSpares_brand_count($spares_undercarriageId)
+    function allSpares_brand_count()
     {   
-        $this->db->where("spares_undercarriageId", $spares_undercarriageId);
+        // $this->db->where("spares_undercarriageId", $spares_undercarriageId);
         $query = $this
                 ->db
                 ->get('spares_brand');
@@ -13,9 +13,9 @@ class Sparesbrand extends CI_Model{
 
     }
     
-    function allSpares_brand($limit,$start,$col,$dir,$spares_undercarriageId)
+    function allSpares_brand($limit,$start,$col,$dir)
     {   
-       $this->db->where("spares_undercarriageId", $spares_undercarriageId);
+    //    $this->db->where("spares_undercarriageId", $spares_undercarriageId);
        $query = $this
                 ->db
                 ->limit($limit,$start)
@@ -33,14 +33,13 @@ class Sparesbrand extends CI_Model{
         
     }
    
-    function spares_brand_search($limit,$start,$search,$col,$dir,$spares_undercarriageId,$status)
+    function spares_brand_search($limit,$start,$search,$col,$dir,$status)
     {
         $this->db->like('spares_brandName',$search);
         if($status != null){
             $this->db->where("status", $status);
         }
-        $query = $this->db->where("spares_undercarriageId", $spares_undercarriageId)
-                ->limit($limit,$start)
+        $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('spares_brand');
         
@@ -55,9 +54,9 @@ class Sparesbrand extends CI_Model{
         
     }
 
-    function spares_brand_search_count($search, $spares_undercarriageId,$status)
+    function spares_brand_search_count($search,$status)
     {
-        $this->db->where("spares_undercarriageId", $spares_undercarriageId);
+        // $this->db->where("spares_undercarriageId", $spares_undercarriageId);
         $query = $this
                 ->db
                 ->like('spares_brandName',$search)
@@ -71,10 +70,10 @@ class Sparesbrand extends CI_Model{
         return $this->db->insert('spares_brand',$data);
     }
 
-    function data_check_create($spares_brandName,$spares_undercarriageId){
+    function data_check_create($spares_brandName){
         $this->db->from("spares_brand");
         $this->db->where('spares_brandName', $spares_brandName);
-        $this->db->where('spares_undercarriageId', $spares_undercarriageId);
+        // $this->db->where('spares_undercarriageId', $spares_undercarriageId);
         $result = $this->db->get();
         return $result->row();
     }
@@ -129,26 +128,26 @@ class Sparesbrand extends CI_Model{
         return false;
     }
 
-    function getAllSpareBrand($spares_undercarriageId){
-        $this->db->where("spares_undercarriageId", $spares_undercarriageId);
+    function getAllSpareBrand(){
+        // $this->db->where("spares_undercarriageId", $spares_undercarriageId);
         $this->db->where('status','1');
         $query = $this->db->get("spares_brand");
         return $query->result();
     }
 
-    function data_check_update($spares_brandId,$spares_brandName,$spares_undercarriageId){
+    function data_check_update($spares_brandId,$spares_brandName){
         $this->db->select("spares_brandName");
         $this->db->from("spares_brand");
         $this->db->where('spares_brandName', $spares_brandName);
-        $this->db->where('spares_undercarriageId', $spares_undercarriageId);
+        // $this->db->where('spares_undercarriageId', $spares_undercarriageId);
         $this->db->where_not_in('spares_brandId', $spares_brandId);
         $result = $this->db->get();
         return $result->row();
     }
-    function getUpdate($spares_brandId,$spares_undercarriageId){
+    function getUpdate($spares_brandId){
         $this->db->select("spares_brandId, spares_brandName, spares_brandPicture");
         $this->db->where('spares_brandId',$spares_brandId);
-        return $this->db->where('spares_undercarriageId',$spares_undercarriageId)->get("spares_brand")->row();
+        return $this->db->get("spares_brand")->row();
     }
 
     

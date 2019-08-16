@@ -63,6 +63,7 @@
                                          + '<div class="card">'
                                             + '<div class="card-body">'
                                                 + '<div class="brand-icon"><img src="'+value.brandpicture+'" width="60px"></div>'
+                                                + '<div class="float-right point">'+value.point+' ใจดี</div>'
                                                 + '<div class="card-two">'
                                                     + '<header>'
                                                         + '<div class="avatar img-pandding ">'

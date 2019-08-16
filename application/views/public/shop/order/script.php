@@ -46,8 +46,6 @@
                 null,
                 null,
                 null,
-                null,
-                null,
                 null
             ],
             "columnDefs": [
@@ -56,31 +54,33 @@
                     "orderable": false,
                     // "targets": [0,3,4,5]
                 },{
-                    "targets": 4,
+                    "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var costDelivery = parseInt(data.costDelivery);
                         return currency(data.summary+costDelivery, {  precision: 0 }).format() + " บาท";
                     }
-                },{
-                    "targets": 2,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        if(data.depositflag == "0"){
-                            return "-";
-                        }else{
-                            var costDelivery = parseInt(data.costDelivery);
-                            return currency(data.deposit, {  precision: 0 }).format() + " บาท";
-                        }  
-                    }
-                },{
+                },
+                // {
+                //     "targets": 2,
+                //     "data": null,
+                //     "render": function ( data, type, full, meta ) {
+                //         if(data.depositflag == "0"){
+                //             return "-";
+                //         }else{
+                //             var costDelivery = parseInt(data.costDelivery);
+                //             return currency(data.deposit, {  precision: 0 }).format() + " บาท";
+                //         }  
+                //     }
+                // },
+                {
                     "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return jQuery.format.date(data.create_at, "dd/MM/yyyy HH:mm:ss");
                     }
                 },{
-                    "targets": 7,
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var disable = "";
@@ -102,7 +102,7 @@
                         
                     }
                 },{
-                    "targets":5,
+                    "targets":3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var  orderstatus = "<span>";
@@ -136,20 +136,22 @@
                         html = "";
                         return data.orderId;
                     }
-                },{
-                    "targets": 3,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        if(data.depositflag == "1"){
-                            var costDelivery = parseInt(data.costDelivery);
-                            var summaryandcost = data.summary+costDelivery;
-                            return currency(summaryandcost-data.deposit, {  precision: 0 }).format() + " บาท";
-                        }else{
-                            return "-";
-                        }
-                    }
-                },{
-                    "targets": 6,
+                },
+                // {
+                //     "targets": 3,
+                //     "data": null,
+                //     "render": function ( data, type, full, meta ) {
+                //         if(data.depositflag == "1"){
+                //             var costDelivery = parseInt(data.costDelivery);
+                //             var summaryandcost = data.summary+costDelivery;
+                //             return currency(summaryandcost-data.deposit, {  precision: 0 }).format() + " บาท";
+                //         }else{
+                //             return "-";
+                //         }
+                //     }
+                // },
+                {
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         html = "";
@@ -159,7 +161,7 @@
                 
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": []},
-                {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
+                {"className": "dt-center", "targets": [0,1,2,3,4,5]},
                 // { "width": "12%", "targets": 0 },
                 // { "width": "20%", "targets": 1 },
                 // { "width": "20%", "targets": 2 },

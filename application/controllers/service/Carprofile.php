@@ -46,9 +46,13 @@ class Carprofile extends BD_Controller {
             "data_check_delete" => $data_check,
             "data" => $car_profileId,
             "model" => $this->carprofiles,
-            "image_path" => null
+            "image_path" => [
+                'public/image/carprofile/'.$data_check->pictureFront,
+                'public/image/carprofile/'.$data_check->pictureBack,
+                'public/image/carprofile/'.$data_check->circlePlate
+            ]
         ];
-        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
+        $this->set_response(decision_delete_mutiimg($option), REST_Controller::HTTP_OK);
     }
 
     function createCarProfile_post(){
@@ -64,12 +68,37 @@ class Carprofile extends BD_Controller {
         $color = $this->post("color");
 
         $config['upload_path'] = 'public/image/carprofile/';
-        $img = $this->post("picture");
+        
+        $img = $this->post("picture1");
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
         $data = base64_decode($img);
-        $imageName = uniqid().'.png';
-        $file = $config['upload_path']. '/'. $imageName;
+        $imageName1 = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName1;
+        $success = file_put_contents($file, $data);
+        if (!$success){
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+
+        $img = $this->post("picture2");
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $imageName2 = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName2;
+        $success = file_put_contents($file, $data);
+        if (!$success){
+            $output["message"] = REST_Controller::MSG_ERROR;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+
+        $img = $this->post("picture-form");
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $imageName3 = uniqid().'.png';
+        $file = $config['upload_path']. '/'. $imageName3;
         $success = file_put_contents($file, $data);
         if (!$success){
             $output["message"] = REST_Controller::MSG_ERROR;
@@ -80,9 +109,9 @@ class Carprofile extends BD_Controller {
 
         $data =array(
             'car_profileId' => null,
-            'pictureFront' => $imageName,
-            'pictureBack' => null,
-            'circlePlate' => null,
+            'pictureFront' => $imageName1,
+            'pictureBack' => $imageName2,
+            'circlePlate' => $imageName3,
             'userId' => $userId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'create_by' => $userId,
@@ -117,61 +146,110 @@ class Carprofile extends BD_Controller {
         $mileage = $this->post("mileage");
         $color = $this->post("color");
 
+        $brandId = $this->post("brandId");
+        $modelId = $this->post("detail");
+        $modelofcarId = $this->post("modelofcarId");
+
         $config['upload_path'] = 'public/image/carprofile/';
-        $img = $this->post("picture");
+        $img = $this->post("picture1");
         $success = true;
         $file = null;
-        $imageName = null; 
-        // $car_profileId = $this->session->userdata['logged_in']['car_profileId'];
-        // $data_check = $this->carprofiles->data_check_update($idCard,$car_profileId);
+        $imageName1 = null;
+        $imageName2 = null; 
+        $imageName3 = null;  
         $this->load->model("carprofiles");
         if(!empty($img)){
             $img = str_replace('data:image/png;base64,', '', $img);
             $img = str_replace(' ', '+', $img);
             $data = base64_decode($img);
-            $imageName = uniqid().'.png';
-            $file = $config['upload_path']. '/'. $imageName;
+            $imageName1 = uniqid().'.png';
+            $file = $config['upload_path']. '/'. $imageName1;
             $success = file_put_contents($file, $data);
         }
+
+        $img = $this->post("picture2");
+        if(!empty($img)){
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
+            $imageName2 = uniqid().'.png';
+            $file = $config['upload_path']. '/'. $imageName2;
+            $success = file_put_contents($file, $data);
+        }
+
+        $img = $this->post("picture-form");
+        if(!empty($img)){
+            $img = str_replace('data:image/png;base64,', '', $img);
+            $img = str_replace(' ', '+', $img);
+            $data = base64_decode($img);
+            $imageName3 = uniqid().'.png';
+            $file = $config['upload_path']. '/'. $imageName3;
+            $success = file_put_contents($file, $data);
+        }
+
         if (!$success){
             unlink($file);
             $output["message"] = REST_Controller::MSG_ERROR;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
 
-        $data_check_update = $this->carprofiles->getCarProfileByUserIdAndCarprofileId($userId,$car_profileId);
-        $data_check = $this->carprofiles->data_check_update($character_plate,$number_plate ,$province_plate, $userId,$car_profileId);
+            $data_check_update = $this->carprofiles->getCarProfileByUserIdAndCarprofileId($userId,$car_profileId);
+            $data_check = $this->carprofiles->data_check_update($character_plate,$number_plate ,$province_plate, $userId,$car_profileId);
 
-        $data =array(
-            'car_profileId' => $car_profileId,
-            'pictureFront' => $imageName,
-            'pictureBack' => null,
-            'circlePlate' => null,
-            'userId' => $userId,
-            'create_at' => date('Y-m-d H:i:s',time()),
-            'create_by' => $userId,
-            'status' => 1,
-            'character_plate' => $character_plate,
-            'number_plate' => $number_plate,
-            'province_plate' => $province_plate,
-            'mileage' => $mileage,
-            'color' => $color,
-            // "picture"=> $imageName
-        );
-        $oldImage = null;
-        if($data_check_update != null){
-            $oldImage = $config['upload_path'].$data_check_update->pictureFront;
-        }
-        $option = [
-            "data_check_update" => $data_check_update,
-            "data_check" => $data_check,
-            "data" => $data,
-            "model" => $this->carprofiles,
-            "image_path" => $file,
-            "old_image_path" => $oldImage
-        ];
+            $data =array(
+                'car_profileId' => $car_profileId,
+                'pictureFront' => $imageName1,
+                'pictureBack' => $imageName2,
+                'circlePlate' => $imageName3,
+                'userId' => $userId,
+                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_by' => $userId,
+                'status' => 1,
+                'character_plate' => $character_plate,
+                'number_plate' => $number_plate,
+                'province_plate' => $province_plate,
+                'mileage' => $mileage,
+                'color' => $color,
+                'brandId' => $brandId,
+                'modelId' => $modelId,
+                'modelofcarId' => $modelofcarId
+                // "picture"=> $imageName
+            );
+            $oldImage = null;
+            $newImage = null;
+            if($data_check_update != null){
+                $oldImage = [];
+                if($data_check_update->pictureFront != null){
+                    $oldImage[] = $config['upload_path'].$data_check_update->pictureFront;
+                }
+                if($data_check_update->pictureBack != null){
+                    $oldImage[] = $config['upload_path'].$data_check_update->pictureBack;
+                }
+                if($data_check_update->circlePlate != null){
+                    $oldImage[] = $config['upload_path'].$data_check_update->circlePlate;
+                }
 
-        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+                $newImage = [];
+                if($imageName1 != null){
+                    $newImage[] = $config['upload_path'].$imageName1;
+                }
+                if($imageName2 != null){
+                    $newImage[] = $config['upload_path'].$imageName2;
+                }
+                if($imageName3 != null){
+                    $newImage[] = $config['upload_path'].$imageName3;
+                }
+            }
+            $option = [
+                "data_check_update" => $data_check_update,
+                "data_check" => $data_check,
+                "data" => $data,
+                "model" => $this->carprofiles,
+                "image_path" => $newImage,
+                "old_image_path" => $oldImage
+            ];
+
+            $this->set_response(decision_update_multiimg($option), REST_Controller::HTTP_OK);
         }
     }
 
@@ -214,6 +292,7 @@ class Carprofile extends BD_Controller {
                 $nestedData[$count]['mileage'] = $post->mileage;
                 $nestedData[$count]['color'] = $post->color;
                 $nestedData[$count]['picture'] = $post->pictureFront;
+                $nestedData[$count]['point'] = $post->point;
                 $nestedData[$count]['brandpicture'] = base_url()."public/image/brand/".$post->brandPicture;
                 $data[$index] = $nestedData;
                 if($count >= 2){

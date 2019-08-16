@@ -3,10 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/sparepartcar") ?>">รายการอะไหล่</a>
-        </li>
-        <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/sparepartcar/sparepart/$spares_undercarriageId") ?>">ยี่ห้ออะไหล่</a>
+        <a href="<?=base_url("admin/sparepartcar/sparepart/") ?>">ยี่ห้ออะไหล่</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขยี่ห้ออะไหล่</li>
       </ol>
@@ -23,7 +20,6 @@
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form id="spares">
-                  <input type="hidden" id="spares_undercarriageId" name="spares_undercarriageId" value="<?=$spares_undercarriageId ?>">
                   <input type="hidden" id="spares_brandId" name="spares_brandId" value="<?=$spares_brandId ?>">
                     <div class="card-body black bg-light">
                       <div class="row">
@@ -38,9 +34,9 @@
                       <div class="form-group p-t-20">
                           <div class="col-md-12">
                               <div class="form-group">
-                              <label class="control-label">รูปยี่ห้อรถ</label>
+                              <label class="control-label">รูปยี่ห้ออะไหล่ช่วงล่าง</label>
                                   <div class="image-editor">
-                                      <input type="file" class="cropit-image-input" name="tempImage" required>
+                                      <input type="file" class="cropit-image-input" name="tempImage">
                                       <div class="cropit-preview"></div>
                                       <div class="image-size-label">
                                       ปรับขนาด

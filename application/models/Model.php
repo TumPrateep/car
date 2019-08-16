@@ -262,7 +262,7 @@ class Model extends CI_Model{
     }
 
     function getAllYearanddetailforcar($modelName){
-        $this->db->select("modelId, yearStart, yearEnd, detail");
+        $this->db->select("modelId, yearStart, yearEnd")->select("IFNULL(`detail`, '') AS `detail`", false);
         $this->db->where("modelName", $modelName);
         // $this->db->where('status','1');
         $this->db->order_by("detail","asc");

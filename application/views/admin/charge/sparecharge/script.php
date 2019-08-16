@@ -31,7 +31,8 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.spares_undercarriageId = sparePartCar.val(),
-                    data.status = $("#status").val()
+                    data.status = $("#status").val(),
+                    data.brandId = $("#brandId").val()
                 }
             },
             "order": [[ 1, "asc" ]],
@@ -40,14 +41,13 @@
                 { "data": "brandName"},
                 { "data": "spares_undercarriageName"},
                 { "data": "spares_price"},
-                null,
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5]
+                    "targets": [0]
                 },
                 {
                     "targets": 0,
@@ -85,16 +85,18 @@
                         +'</button>'
                         +'</div>';
                     }
-                },{
-                    "targets": 5,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+'admin/charge/updatesparecharge/'+data.spares_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletesparechange('+data.spares_changeId+',\''+data.spares_undercarriageName+'\')"><i class="fa fa-trash"></i></button>';
-                    }
                 },
+                // {
+                //     "targets": 5,
+                //     "data": null,
+                //     "render": function ( data, type, full, meta ) {
+                //         return '<a href="'+base_url+'admin/charge/updatesparecharge/'+data.spares_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                //             +'<button type="button" class="delete btn btn-danger" onclick="deletesparechange('+data.spares_changeId+',\''+data.spares_undercarriageName+'\')"><i class="fa fa-trash"></i></button>';
+                //     }
+                // },
                 { "orderable": false, "targets": 0 },
-                { "className": "dt-center", "targets": [0,2,3,4,5]}
+                { "className": "dt-center", "targets": [0,3,4]},
+                {"className": "dt-head-center", "targets": [1,2]}
             ]	 
     });
 

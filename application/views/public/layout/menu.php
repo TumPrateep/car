@@ -26,7 +26,7 @@
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
 									<li><a href="<?=base_url();?>">หน้าหลัก<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="<?=base_url("public/step/");?>">ขั้นตอนการใช้งาน<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="#">ขั้นตอนการใช้งาน<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="#">กระทู้<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="<?=base_url("garagesearch");?>">ค้นหาศูนย์บริการ<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="<?=base_url("public/menu/contact/");?>">ติดต่อ<i class="fas fa-chevron-down"></i></a></li>

@@ -28,7 +28,7 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.spares_brandName= $("#table-search").val(),
-                    data.spares_undercarriageId = $("#spares_undercarriageId").val(),
+                    // data.spares_undercarriageId = $("#spares_undercarriageId").val(),
                     data.status = $("#status").val()
                   }
             },
@@ -57,7 +57,7 @@
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.spares_brandId+','+data.status+','+data.spares_undercarriageId+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.spares_brandId+','+data.status+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
@@ -66,7 +66,7 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/sparepartcar/updatespare/"+data.spares_undercarriageId+"/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/sparepartcar/updatespare/"+data.spares_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareBrand('+data.spares_brandId+',\''+data.spares_brandName+'\',\''+data.spares_undercarriageId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -112,13 +112,13 @@
         table.ajax.reload();
     })
 
-    function updateStatus(spares_brandId,status,spares_undercarriageId){
+    function updateStatus(spares_brandId,status){
         $.post(base_url+"api/Sparepartcar/changeStatus",{
             "spares_brandId": spares_brandId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/sparepartcar/sparepart/"+spares_undercarriageId);
+                showMessage(data.message,"admin/sparepartcar/sparepart/");
             }else{
                 showMessage(data.message);
             }

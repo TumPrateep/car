@@ -23,14 +23,12 @@
 
 
     var spares_brandId = $("#spares_brandId").val();
-    var spares_undercarriageId = $("#spares_undercarriageId").val();
 
     $.post(base_url+"api/Sparepartcar/getBrand",{
-        "spares_brandId": spares_brandId,
-        "spares_undercarriageId" : spares_undercarriageId
+        "spares_brandId": spares_brandId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/sparepartcar/sparepart/"+spares_undercarriageId);
+            showMessage(data.message,"admin/sparepartcar/sparepart/");
         }
 
         if(data.message == 200){
@@ -70,7 +68,7 @@
             $.post(base_url+"api/Sparepartcar/updateSpareBrand",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/sparepartcar/sparepart/"+spares_undercarriageId);
+                    showMessage(data.message,"admin/sparepartcar/sparepart/");
                 }else{
                     showMessage(data.message);
                 }

@@ -183,7 +183,7 @@
 
   .btn.create{
     height: 38px;
-    width: 90px;
+    /* width: 90px; */
     padding-top: 0.55em;
   }
 
@@ -383,6 +383,10 @@
 
 p.centerheadpayment{
   text-align: center !important;
+}
+
+.mb-10{
+  margin-bottom: 10px;
 }
 
 

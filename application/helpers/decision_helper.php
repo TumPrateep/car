@@ -99,5 +99,65 @@
 
       return $output;
     }
+
+    function decision_delete_mutiimg($option) {
+      $output = [];
+      if($option["data_check_delete"] != null){
+        $result = $option["model"]->delete($option["data"]);
+        if($result){
+          if($option["image_path"] != null){
+            foreach ($option["image_path"] as $value) {
+              unlink($value);
+            }
+          }
+          $output["message"] = REST_Controller::MSG_SUCCESS;
+        }else{
+          $output["message"] = REST_Controller::MSG_BE_USED;
+        }
+      }else{
+        $output["message"] = REST_Controller::MSG_BE_DELETED;
+      }
+      return $output;
+    }
+
+    function decision_update_multiimg($option) {
+      $output = [];
+      if($option["data_check_update"] != null){
+        if($option["data_check"] == null){
+          $result = $option["model"]->update($option["data"]);
+          if($result){
+            if($option["old_image_path"] != null){
+              foreach ($option["old_image_path"] as $value) {
+                if($value != null){
+                  unlink($value);
+                }
+              }
+            }
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+          }else{
+            if($option["image_path"] != null){
+              foreach ($option["image_path"] as $value) {
+                if($value != null){
+                  unlink($value);
+                }
+              }
+            }
+            $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+          }
+        }else{
+          if($option["image_path"] != null){
+            unlink($option["image_path"]);
+          }
+          $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
+        }
+      }else{
+        if($option["image_path"] != null){
+          unlink($option["image_path"]);
+        }
+        $output["message"] = REST_Controller::MSG_BE_DELETED;
+      }
+
+      return $output;
+    }
       
 ?>

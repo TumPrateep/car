@@ -21,6 +21,7 @@
     <script src="<?=base_url("/public/js/select2.full.js") ?>"></script>
     <script src="<?=base_url("/public/js/bootstrap-slider.js") ?>"></script>
     <script src="<?=base_url("/public/js/currency.min.js") ?>"></script>
-
+    
+    <script src="<?=base_url("/public/themes/caraccessory/js/chosen.jquery.min.js") ?>"></script>
     <script src="<?=base_url("/public/themes/caraccessory/js/setup.js") ?>"></script>
     

@@ -70,7 +70,7 @@ class Orderdetail extends BD_Controller {
         $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($orderId, $userId);
         $data['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
         $data['costDelivery'] = (float)($this->orderdetails->getSummarycostDelivery($orderId));
-        $data['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
+        // $data['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
 
 
         $date=date_create($data["garage"]->openingtime);

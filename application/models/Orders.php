@@ -130,6 +130,8 @@ class Orders extends CI_Model{
             $this->db->insert("order",$data['order']);
             $orderId = $this->db->insert_id();
             $orderDetailData = $data['orderdetail'];
+            $carprofileId = $data['order']['car_profileId'];
+            $numberOfBonus = 0;
             $orderDetail = [];
             $arrProductId = [];
             foreach ($orderDetailData as $val) {
@@ -162,6 +164,11 @@ class Orders extends CI_Model{
                 ];
                 array_push($orderDetail, $temp);
                 array_push($arrProductId, $val->productId);
+
+                if($val->group == "lubricator"){
+                    $numberOfBonus +=  $val->quantity;
+                }
+
             }
             $data["reserve"]["orderId"] = $orderId;
             $this->db->insert("reserve",$data['reserve']);
@@ -171,6 +178,7 @@ class Orders extends CI_Model{
             $this->db->delete('cart');
 
             $this->db->insert_batch('orderdetail', $orderDetail);
+            $this->updateBonusCarprofile($carprofileId, $numberOfBonus);
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
             return false;
@@ -178,6 +186,14 @@ class Orders extends CI_Model{
             $this->db->trans_commit();
             return true;
         }
+    }
+
+    function updateBonusCarprofile($carprofileId, $numberOfBonus){
+        $this->db->where('car_profileId', $carprofileId);
+        $point = $this->db->get("car_profile")->row("point");
+
+        $this->db->where('car_profileId', $carprofileId);
+        $result = $this->db->update('car_profile', ["point"=>$point+$numberOfBonus]);
     }
 
     function all_count($userId)

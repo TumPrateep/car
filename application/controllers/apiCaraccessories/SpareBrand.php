@@ -157,7 +157,7 @@ class Sparebrand extends BD_Controller {
 
     function getAllSpareBrand_get(){
         $spares_undercarriageId = $this->get("spares_undercarriageId");
-        $result = $this->sparesbrand->getAllSpareBrand($spares_undercarriageId);
+        $result = $this->sparesbrand->getAllSpareBrand();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }

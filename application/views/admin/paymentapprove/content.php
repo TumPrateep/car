@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/paymentapprove") ?>">ยืนยันค่ามัดจำ</a>
+          <a href="<?=base_url("admin/paymentapprove") ?>">ยืนยันการจ่ายเงิน</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>        
       </ol>
@@ -50,9 +50,6 @@
                     <th>หมายเลขการสั่งซื้อ</th>
                     <th>ผู้สั่ง</th>
                     <th>เงินทั้งหมด</th>
-                    <th>เงินมัดจำ</th>
-                    <th>เงินที่จ่ายแล้ว</th>
-                    <th>คงเหลือ</th>
                     <th>ดูสลิป</th>
                     <th></th>
                   </thead>	
