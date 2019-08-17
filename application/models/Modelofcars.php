@@ -168,7 +168,7 @@ class Modelofcars extends CI_Model{
         $this->db->select("modelofcar.modelofcarId,modelofcar.machineSize,modelofcar.machineCode,model.yearStart,model.yearEnd,model.modelId")->select("IFNULL(`detail`, '') AS `detail`", false)->select("IFNULL(`modelofcarName`, '') AS `modelofcarName`", false);
         $this->db->join("model", "model.modelId = modelofcar.modelId");
         $this->db->where_in("modelofcar.modelId", $modelId);
-        // $this->db->where('status','1');
+        $this->db->where('modelofcar.status','1');
         $this->db->order_by('modelofcar.modelId', 'ASC');
         $this->db->order_by('modelofcar.modelofcarName', 'ASC');
         $query = $this->db->get("modelofcar");

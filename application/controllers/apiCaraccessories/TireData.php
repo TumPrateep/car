@@ -137,20 +137,18 @@ class Tiredata extends BD_Controller {
     }
 
     function search_post(){
-        $column = "tire_brandId";
-        $sort = "asc";
-        if($this->post('column') == 3){
-            $column = "status";
-        }else if($this->post('column') == 2){
-            $sort = "desc";
-        }else{
-            $sort = "asc";
-        }
+        $columns = array( 
+            0 => null,
+            1 => 'tire_brandName', 
+            2 => 'tire_modelName',
+            3 => 'tire_size',
+            4 => 'price'
+        );
 
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $column;
-        $dir = $sort;
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
         $userId = $this->session->userdata['logged_in']['id'];
 
         $totalData = $this->tiredatas->allTire_count($userId);
@@ -177,42 +175,34 @@ class Tiredata extends BD_Controller {
         $data = array();
         if(!empty($posts))
         {
-            $index = 0;
             $count = 0;
             foreach ($posts as $post)
             {
                 
-                $nestedData[$count]['tire_dataId'] = $post->tire_dataId;
-                $nestedData[$count]['rimName'] = $post->rimName;
-                $nestedData[$count]['tire_size'] = $post->tire_size;
-                $nestedData[$count]['tire_modelName'] = $post->tire_modelName;
-                $nestedData[$count]['tire_brandName'] = $post->tire_brandName;
-                $nestedData[$count]['status'] = $post->status;
-                $nestedData[$count]['price'] = $post->price;
-                $nestedData[$count]['warranty_year'] = $post->warranty_year;
-                $nestedData[$count]['can_change'] = $post->can_change;
-                $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
-                $nestedData[$count]['activeFlag'] = $post->activeFlag;
-                $nestedData[$count]['create_by'] = $post->create_by;
-                $nestedData[$count]['warranty'] = $post->warranty;
-                $nestedData[$count]['tire_picture'] = $post->tire_picture;
-                $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
+                $nestedData['tire_dataId'] = $post->tire_dataId;
+                $nestedData['rimName'] = $post->rimName;
+                $nestedData['tire_size'] = $post->tire_size;
+                $nestedData['tire_modelName'] = $post->tire_modelName;
+                $nestedData['tire_brandName'] = $post->tire_brandName;
+                $nestedData['status'] = $post->status;
+                $nestedData['price'] = $post->price;
+                $nestedData['warranty_year'] = $post->warranty_year;
+                $nestedData['can_change'] = $post->can_change;
+                $nestedData['warranty_distance'] = $post->warranty_distance;
+                $nestedData['activeFlag'] = $post->activeFlag;
+                $nestedData['create_by'] = $post->create_by;
+                $nestedData['warranty'] = $post->warranty;
+                $nestedData['tire_picture'] = $post->tire_picture;
+                $nestedData['tire_brandPicture'] = $post->tire_brandPicture;
 
-                $option = [
-                    'tire_brandId' => $post->tire_brandId,
-                    'tire_modelId' => $post->tire_modelId,
-                    'tire_sizeId' => $post->tire_sizeId,
-                    'rimId' => $post->rimId
-                ];
-                $nestedData[$count]['picture'] = getPictureTire($option);
-                
-                $data[$index] = $nestedData;
-                if($count >= 3){
-                    $count = -1;
-                    $index++;
-                    $nestedData = [];
-                }
-                
+                // $option = [
+                //     'tire_brandId' => $post->tire_brandId,
+                //     'tire_modelId' => $post->tire_modelId,
+                //     'tire_sizeId' => $post->tire_sizeId,
+                //     'rimId' => $post->rimId
+                // ];
+                // $nestedData['picture'] = getPictureTire($option);
+                $data[$count] = $nestedData;
                 $count++;
 
             }

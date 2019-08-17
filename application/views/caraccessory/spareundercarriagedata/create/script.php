@@ -58,7 +58,7 @@
             model.html('<option></option>');
             detail.html('<option></option>');
             modelofcar.html('<option></option>');
-            $.get(base_url+"service/Carselect/getCarBrand",{},
+            $.get(base_url+"service/Carselect/getActiveCarBrand",{},
             function(data){
                 var brandData = data.data;
                     $.each( brandData, function( key, value ) {
@@ -83,7 +83,7 @@
             model.html('<option></option>').trigger("chosen:updated");;
             detail.html('<option></option>').trigger("chosen:updated");;
             modelofcar.html('<option></option>').trigger("chosen:updated");;
-            $.get(base_url+"service/Carselect/getCarModel",{
+            $.get(base_url+"service/Carselect/getActiveCarModel",{
                 brandId : brandId
             },function(data){
                 var modelData = data.data;
@@ -109,7 +109,7 @@
             detail.html('<option></option>').trigger("chosen:updated");;
             // year.html('<option value="">เลือกปีผลิต</option>');
             modelofcar.html('<option></option>').trigger("chosen:updated");;            
-            $.get(base_url+"service/Carselect/getCarYear",{
+            $.get(base_url+"service/Carselect/getActiveCarYear",{
                 modelName : modelName
             },function(data){
                 var detailData = data.data;

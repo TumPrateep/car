@@ -127,7 +127,11 @@ class Spare_undercarriagedatas extends CI_Model{
                     $spareData["warranty"] = $data["warranty"][$key];
                     $spareData["warranty_year"] = $data["warranty_year"][$key];
                     $spareData["warranty_distance"] = $data["warranty_distance"][$key];
-                    $this->db->insert('spares_undercarriagedata',$spareData);
+
+                    $isTrue = $this->data_check_create($spareData["spares_brandId"],$spareData["spares_undercarriageId"],$spareData["brandId"],$spareData["modelId"],$spareData["modelofcarId"],$spareData["create_by"]);
+                    if(!$isTrue){
+                        $this->db->insert('spares_undercarriagedata',$spareData);
+                    }
                 } 
             }
         if ($this->db->trans_status() === FALSE){

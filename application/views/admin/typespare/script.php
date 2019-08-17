@@ -51,9 +51,9 @@
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
                         var active = " active";
-                        if(data.status_free == null){
+                        if(data.status == null){
                             return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
-                        }else if(data.status_free != "1"){
+                        }else if(data.status != "1"){
                             switchVal = "false";
                             active = "";
                         }

@@ -23,9 +23,7 @@
                                     <div class="form-group">
                                         <label class="control-label">ยี่ห้อยาง</label><span class="error">*</span> <label id="tire_brandId-error" class="error" for="tire_brandId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="tire_brandId" name="tire_brandId">
-                                                <option value="">เลือกยี่ห้อยาง</option>
-                                            </select>
+                                            <select class="form-control form-control-chosen-required" id="tire_brandId" name="tire_brandId" data-placeholder="เลือกยี่ห้อยาง" required></select>
                                         </div>
                                     </div>
                                 </div>
@@ -33,9 +31,7 @@
                                     <div class="form-group">
                                         <label class="control-label">รุ่นยาง</label><span class="error">*</span> <label id="tire_modelId-error" class="error" for="tire_modelId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="tire_modelId" name="tire_modelId">
-                                            <option value="">เลือกรุ่นยาง</option>
-                                            </select>
+                                            <select class="form-control form-control-chosen-required" id="tire_modelId" name="tire_modelId" data-placeholder="เลือกรุ่นยาง" required></select>
                                         </div>
                                     </div>
                                 </div>
@@ -43,9 +39,7 @@
                                     <div class="form-group">
                                         <label class="control-label">ขอบยาง</label><span class="error">*</span> <label id="rimId-error" class="error" for="rimId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="rimId" name="rimId">
-                                            <option value="">เลือกขอบยาง</option>
-                                            </select>
+                                            <select class="form-control form-control-chosen-required" id="rimId" name="rimId" data-placeholder="เลือกขอบยาง" required></select>
                                         </div>
                                     </div>
                                 </div>
@@ -53,9 +47,7 @@
                                     <div class="form-group">
                                         <label class="control-label">ขนาดยาง</label><span class="error">*</span> <label id="tire_sizeId-error" class="error" for="tire_sizeId"></label>
                                         <div class="input-group input-group-default">
-                                            <select class="form-control" id="tire_sizeId" name="tire_sizeId">
-                                            <option value="">เลือกขนาดยาง</option>
-                                            </select>
+                                            <select class="form-control form-control-chosen-required" id="tire_sizeId" name="tire_sizeId" data-placeholder="เลือกขนาดยาง" required></select>
                                         </div>
                                     </div>
                                 </div>      
