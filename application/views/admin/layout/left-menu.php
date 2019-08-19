@@ -7,7 +7,7 @@
     </button>
     <div class="collapse navbar-collapse " id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav bg-green " id="exampleAccordion" >
-        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#datasetting" data-parent="#exampleAccordion">
             <i class="fa fa-cog" aria-hidden="true"></i>
             <span class="nav-link-text">ตั้งค่า </span>
@@ -19,8 +19,14 @@
                 <span class="nav-link-text">ประเภทเกียร์</span>
               </a>
             </li>
+            <li class="<?= activate_menu('machine'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/machine") ?>">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                <span class="nav-link-text">ประเภทเครื่องยนต์</span>
+              </a>
+            </li>
           </ul>
-        </li> -->
+        </li>
         <li class="nav-item <?= activate_menu('car'); ?>" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link text-white" href="<?=base_url("admin/car") ?>">
             <i class="fa fa-fw fa-car"></i>
@@ -34,11 +40,11 @@
           </a>
         </li> -->
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+          <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#collapseComponents1" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">เมนูอะไหล่</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
+          <ul class="sidenav-second-level collapse" id="collapseComponents1">
             <li>
               <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti3">
               <i class="fa fa-tint"></i> อะไหล่ช่วงล่าง</a>
@@ -64,7 +70,7 @@
               </ul>
             </li>
 
-            <!-- <li>
+            <li>
               <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti2">
               <i class="fa fa-tint"></i> น้ำมันเครื่อง</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
@@ -72,6 +78,12 @@
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricatortype") ?>">
                     <i class="fa fa-tachometer"></i>
                     <span class="nav-link-text">ประเภทน้ำมันเครื่อง</span>
+                  </a>
+                </li>
+                <li class="<?= activate_menu('apilubricator'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/apilubricator") ?>">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <span class="nav-link-text">Api น้ำมันเครื่อง</span>
                   </a>
                 </li>
                 <li class="<?= activate_menu('lubricatornumber'); ?>">
@@ -86,19 +98,19 @@
                     <span class="nav-link-text">ยี่ห้อน้ำมันเครื่อง</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('lubricatortypeformachine'); ?>">
+                <!-- <li class="<?= activate_menu('lubricatortypeformachine'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricatortypeformachine") ?>">
                     <i class="fa fa-cogs"></i>
                     <span class="nav-link-text">ประเภทน้ำมันเครื่องตามเครื่องยนต์</span>
                   </a>
-                </li>
+                </li> -->
               </ul>
             </li>
 
             <li>
-              <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMulti3">
+              <a class="nav-link-collapse text-white collapsed" data-toggle="collapse" href="#collapseMultiTire">
               <i class="fa fa-life-ring"></i> ยางรถ</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti3">
+              <ul class="sidenav-third-level collapse" id="collapseMultiTire">
                 <li class="<?= activate_menu('tires'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/tires") ?>">
                     <i class="fa fa-circle-o"></i>
@@ -111,7 +123,7 @@
                     <span class="nav-link-text">ยี่ห้อยางรถยนต์</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('tires/tiresmatching/'); ?>">
+                <!-- <li class="<?= activate_menu('tires/tiresmatching/'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/tires/tiresmatching/") ?>">
                     <i class="fa fa-arrows-h"></i>
                     <span class="nav-link-text">ขนาดยางตามยี่ห้อ</span>
@@ -122,25 +134,25 @@
                     <i class="fa fa-usd"></i>
                     <span class="nav-link-text">ราคาเปลี่ยนยาง</span>
                   </a>
-                </li>
+                </li> -->
               </ul>
-            </li> -->
+            </li>
             
           </ul>
         </li>
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#dataProduct" data-parent="#exampleAccordion">
             <i class="fa fa-product-hunt"></i>
             <span class="nav-link-text">ข้อมูลสินค้า </span>
           </a>
-          <ul class="sidenav-second-level collapse" id="dataProduct">
-            <li class="<?= activate_menu('spareproduct'); ?>">
+          <ul class="sidenav-second-level collapse" id="dataProduct"> -->
+            <!-- <li class="<?= activate_menu('spareproduct'); ?>">
               <a class="nav-link text-white" href="<?=base_url("admin/spareproduct") ?>">
                 <i class="fa fa-cog"></i>
                 <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
               </a>
-            </li>
+            </li> -->
             <!-- <li class="<?= activate_menu('lubricatorproduct'); ?>">
               <a class="nav-link text-white" href="<?=base_url("admin/lubricatorproduct") ?>">
                 <i class="fa fa-rebel"></i>
@@ -153,10 +165,10 @@
                 <span class="nav-link-text">ยางรถ</span>
               </a>
             </li> -->
-          </ul>
-        </li>
+          <!-- </ul>
+        </li> -->
 
-        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#serviceCharge" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-dollar"></i>
             <span class="nav-link-text">ราคาค่าบริการ</span>
@@ -181,7 +193,7 @@
               </a>
             </li>
           </ul>
-        </li> -->
+        </li>
 
          <!-- <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/garages") ?>">

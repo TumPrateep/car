@@ -26,7 +26,7 @@
         "processing": true,
         "serverSide": true,
         "orderable": false,
-        "pageLength": 12,
+        "pageLength": 10,
         "ajax":{
             "url": base_url+"apicaraccessories/spareundercarriagedata/search",
             "dataType": "json",
@@ -37,7 +37,7 @@
             {"data":"spares_undercarriageName"},
             {"data":"spares_brandName"},
             null,
-            {"data":"price"}
+            null
         ],
         "order": [[ 1, "asc" ]],
         "columnDefs": [
@@ -59,9 +59,35 @@
                 "render": function ( data, type, full, meta ) {
                     return data.brandName+' '+data.modelName+' ('+data.year+')'+' '+data.detail+' '+data.machineSize+' '+data.modelofcarName;
                 }
-            }
+            },
+            {
+                "targets": 4,
+                "data": null,
+                "render": function ( data, type, full, meta ) {
+                    return currency(data.price, { precision: 0 }).format();
+                }
+            },
+            {
+                "targets": 5,
+                "data": null,
+                "render": function ( data, type, full, meta ) {
+                    return '<button class="btn btn-danger" onclick="deleteSpareData('+data.spares_undercarriageDataId+', \''+data.spares_undercarriageName+' '+data.spares_brandName+' '+data.brandName+' '+data.modelName+' ('+data.year+')'+' '+data.detail+' '+data.machineSize+' '+data.modelofcarName+'\')"><i class="fa fa-trash" aria-hidden="true"></i></button>';
+                }
+            },
+            {"className": "dt-head-center", "targets": [1,3]},
+            {"className": "dt-center", "targets": [0,4,5]}
         ]
     });
+
+    function deleteSpareData(spareId,data_name){
+        var option = {
+            url: "/spareundercarriagedata/delete?spares_undercarriageDataId="+spareId,
+            label: "ลบข้อมูลอะไหล่ช่วงล่าง",
+            content: "คุณต้องการลบ <strong>"+data_name+"</strong> นี้ ใช่หรือไม่",
+            gotoUrl: "caraccessory/Spareundercarriesdata"
+        }
+        fnDelete(option);
+    }
 
 </script>
 

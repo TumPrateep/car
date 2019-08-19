@@ -25,7 +25,7 @@
             "processing": true,
             "serverSide": true,
             "orderable": false,
-            "pageLength": 12,
+            "pageLength": 10,
             "ajax":{
                 "url": base_url+"apicaraccessories/Tiredata/search",
                 "dataType": "json",
@@ -40,174 +40,54 @@
                     data.sort = $("#sort").val();
                 }
             },
+            "order": [[ 1, "asc" ]],
             "columns": [
+                null,
+                {"data":"tire_brandName"},
+                {"data":"tire_modelName"},
+                {"data":"tire_size"},
                 null
             ],
             "columnDefs": [
                 {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": [0]
+                },
+                {
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        var html = '<div class="row">';
-
-                        $.each(data, function( index, value ) {
-
-                            var switchVal = "true";
-                            var active = " active";
-                            if(value.status == null){
-                                return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
-                            }else if(value.status != "1"){
-                                switchVal = "false";
-                                active = "";
-                            }
-
-                            html += '<div class="col-lg-3" col-md-8>'
-                                 + '<div class="card card-header-height">'
-                                    + '<div class="card-body">'
-                                        + '<div class="col-md-12">'
-                                            + '<img class="card-img-top" src="'+picturePath+"tire_brand/"+value.tire_brandPicture+'">'
-                                            + '<img class="card-img-top" src="'+picturePath+"tireproduct/"+value.picture+'">'
-                                        + '</div>'
-                                    + '</div>'
-                                    + '<div class="card-body float-right">'
-                                        +'<div class="row pt-10">'
-                                            +'<div class="col-md-12 font-black"><small>'
-                                            +'<center><span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' บาท</span><br></center>'
-                                                +'ยี่ห้อ <span class="text-lebel">'+value.tire_brandName+'</span> <br>'
-                                                +'ขนาด <span class="text-lebel">'+value.tire_size+'</span><br>'
-                                                +'รุ่น <span class="text-lebel">'+value.tire_modelName+'</span><br>'
-                                                +'ประกัน <span class="text-lebel">'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span><br></small>'
-                                            +'</div>'
-                                        +'</div>'
-                                        + '<div class="text-center">'
-                                            + '<a href="'+base_url+"caraccessory/tiredata/updatetiredata/"+value.tire_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                            + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.tire_dataId+'\', \''+value.tire_modelName+'/'+value.tire_brandName+' '+value.tire_size+'\')"><i class="ti-trash"></i> ลบ</button>'
-                                        + '</div>'
-                                    + '</div>'
-                                + '</div>'
-                            + '</div>';
-                        });
-
-                        html += '</div>';
-                        return html;
+                        return meta.row + 1;
                     }
-                }
+                },
+                {
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return currency(data.price, { precision: 0 }).format();
+                    }
+                },
+                {
+                    "targets": 5,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return '<button class="btn btn-danger" onclick="deleteTireData('+data.tire_dataId+', \''+data.tire_brandName+' '+data.tire_modelName+' '+data.tire_size+'\')"><i class="fa fa-trash" aria-hidden="true"></i></button>';
+                    }
+                },
+                {"className": "dt-head-center", "targets": [1]},
+                {"className": "dt-center", "targets": [0,3,4,5]}
             ]
     });
 
-    $("#btn-search").click(function(){
-        event.preventDefault();
-        table.ajax.reload();
-    })
-
-    $("#price").slider({
-        range: true,
-        min: 0,
-        max: 10000,
-        value: [1000, 7000],
-        formatter: function formatter(val) {
-            // console.log(val);
-            if (Array.isArray(val)) {
-                var start = currency(val[0], { useVedic: true }).format();
-                var end = currency(val[1], { useVedic: true }).format();
-                $("#start").text(start);
-                $("#end").text(end);
-            }
-        },
-    });
-
-    var tireBrand = $("#tire_brandId");
-    var tireModel = $("#tire_modelId");
-    var tire_rim = $("#rimId");
-    var tire_size = $("#tire_sizeId");
-
-    function init(){
-        getTireBrand();
-        getRim();
-    }
-    
-    init();
-
-    function getTireBrand(brandId = null){
-        $.get(base_url+"apicaraccessories/Tirebrand/getAllTireBrand",{},
-            function(data){
-                var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    tireBrand.append('<option value="' + value.tire_brandId + '">' + value.tire_brandName + '</option>');
-                });
-            }
-        );
-    }
-
-    tireBrand.change(function(){
-        var tireBrandId = tireBrand.val();
-        tireModel.html('<option value="">เลือกรุ่นยาง</option>');
-        $.get(base_url+"apicaraccessories/Tiremodel/getAllTireModel",{
-            tire_brandId: tireBrandId
-        },function(data){
-                var tireModelData = data.data;
-                $.each( tireModelData, function( key, value ) {
-                    tireModel.append('<option value="' + value.tire_modelId + '">' + value.tire_modelName + '</option>');
-                });
-            }
-        );
-    });
-
-    tire_rim.change(function(){
-        var tire_rimId = tire_rim.val();
-        tire_size.html('<option value="">เลือกขนาดยาง</option>');
-        $.get(base_url+"apicaraccessories/Tiresize/getAllTireSize",{
-            tire_rimId: tire_rimId
-        },function(data){
-                var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    tire_size.append('<option value="' + value.tire_sizeId + '">' + value.tiresize + '</option>');
-                });
-            }
-        );
-    });
-
-    function getRim(rimId = null){
-        $.get(base_url+"apicaraccessories/Tirerim/getAllTireRims",{},
-            function(data){
-                var brandData = data.data;
-                $.each( brandData, function( key, value ) {
-                    tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>');
-                });
-            }
-        );
-    }
-
-    $("#show-search").click(function(){
-        $(this).hide(100);
-        $("#search-form").slideDown();
-    });
-
-    $("#search-hide").click(function(){
-        $("#search-form").slideUp();
-        $("#show-search").show(100);
-    });
-
-    function deletetiredata(tire_dataId,data_name){
+    function deleteTireData(tireId, data_name){
         var option = {
-            url: "/tiredata/delete?tire_dataId="+tire_dataId,
+            url: "/Tiredata/delete?tire_dataId="+tireId,
             label: "ลบข้อมูลยาง",
-            content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
+            content: "คุณต้องการลบ <strong>"+data_name+"</strong> นี้ ใช่หรือไม่",
             gotoUrl: "caraccessory/Tiredata"
         }
         fnDelete(option);
-    }
-    function updateStatus(tire_dataId,status){
-        $.post(base_url+"apicaraccessories/Tiredata/changeStatus",{
-            "tire_dataId": tire_dataId,
-            "status": status
-        },function(data){
-            if(data.message == 200){
-                showMessage(data.message,"/caraccessory/tiredata/");
-            }else{
-                showMessage(data.message);
-            }
-        });
     }
 
 </script>

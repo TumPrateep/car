@@ -24,6 +24,26 @@ class Carselect extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
+    function getActiveCarBrand_get(){
+        $result = $this->brand->getAllBrandforSelect();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getActiveCarYear_get(){
+        $modelName = $this->get("modelName");
+        $result = $this->model->getAllActiveYearanddetailforcar($modelName);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getActiveCarModel_get(){
+        $brandId = $this->get("brandId");
+        $result = $this->model->getAllActiveModelforcar($brandId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
     function getCarModel_get(){
         $brandId = $this->get("brandId");
         $result = $this->model->getAllmodelforcar($brandId);

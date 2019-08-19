@@ -31,16 +31,17 @@
                         <li class="nav-label">ส่วนของร้านอะไหล่</li>
                         <li>
                             <a class="garage-white" href="<?=base_url("caraccessory/Spareundercarriesdata"); ?>">
-                                <i class="fa fa-tachometer garage-white"></i>
+                                <i class="fa fa-wrench garage-white" aria-hidden="true"></i>
                                 <span class="hide-menu">ข้อมูลอะไหล่ช่วงล่าง</span>
                             </a>
                         </li>
-                        <!-- <li><a class="garage-white" href="<?=base_url("caraccessory/Lubricatordata"); ?>"><i class="fa fa-tachometer garage-white"></i><span class="hide-menu">ข้อมูลน้ำมันเครื่อง</span></a></li>
+                        <!-- <li><a class="garage-white" href="<?=base_url("caraccessory/Lubricatordata"); ?>"><i class="fa fa-tachometer garage-white"></i><span class="hide-menu">ข้อมูลน้ำมันเครื่อง</span></a></li> -->
                         <li>
                             <a class="garage-white" href="<?=base_url("caraccessory/Tiredata"); ?>">
-                                <i class="fa fa-tachometer garage-white"></i><span class="hide-menu">ข้อมูลยาง</span>
+                                <i class="fa fa-circle-o garage-white" aria-hidden="true"></i>
+                                <span class="hide-menu">ข้อมูลยาง</span>
                             </a>
-                        </li> -->
+                        </li>
                         <!-- <li>
                             <a href="<?=base_url("caraccessory/orderselect"); ?>">
                                 <i class="fa fa-tachometer"></i><span class="hide-menu">เลือกสินค้า</span>
