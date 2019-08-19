@@ -55,6 +55,12 @@
                     <span class="nav-link-text">ยี่ห้ออะไหล่ช่วงล่าง</span>
                   </a>
                 </li>
+                <li class="<?= activate_menu('Sparespicture/index/'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/sparespicture/") ?>">
+                    <i class="fa fa-safari"></i>
+                    <span class="nav-link-text">รูปภาพอะไหล่สินค้า</span>
+                  </a>
+                </li>
               </ul>
             </li>
 
