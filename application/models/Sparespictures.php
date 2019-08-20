@@ -49,10 +49,10 @@ class Sparespictures extends CI_Model{
         return $result;
     }
 
-    // function getProductDataById($productId){
-    //     $query = $this->db->where("productId", $productId)->get("spare_product");
-    //     return $query->row();
-    // }
+    function getSparepictireById($spare_pictire_id){
+        $query = $this->db->where("spare_pictire_id", $spare_pictire_id)->get("spares_picture");
+        return $query->row();
+    }
 
 
     function getSpareById($spare_pictire_id){
@@ -74,6 +74,47 @@ class Sparespictures extends CI_Model{
         $this->db->where_not_in('spare_pictire_id',$spare_pictire_id);
         $result = $this->db->get();
         return $result->row();
+    }
+
+    function delete($spare_pictire_id){
+        return $this->db->delete('spares_picture', array('spare_pictire_id' => $spare_pictire_id));
+    }
+
+    function sparesUndercarriage_search($limit,$start,$search,$col,$dir,$spares_brandName)
+    {
+        $this->db->select("spares_picture.spare_pictire_id, spares_picture.picture, spares_undercarriage.spares_undercarriageName, spares_brand.spares_brandName");
+        $this->db->from('spares_picture');
+        $this->db->join('spares_undercarriage','spares_picture.spares_undercarriageId  = spares_undercarriage.spares_undercarriageId');
+        $this->db->join('spares_brand','spares_picture.spares_brandId = spares_brand.spares_brandId');
+
+        $this->db->like('spares_undercarriage.spares_undercarriageName',$search);
+        $this->db->like('spares_brand.spares_brandName',$spares_brandName);
+
+
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get();
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    }
+    function sparesUndercarriage_search_count($search, $spares_brandName)
+    {
+        $this->db->select("spares_picture.spare_pictire_id, spares_picture.picture, spares_undercarriage.spares_undercarriageName, spares_brand.spares_brandName");
+        $this->db->from('spares_picture');
+        $this->db->join('spares_undercarriage','spares_picture.spares_undercarriageId  = spares_undercarriage.spares_undercarriageId');
+        $this->db->join('spares_brand','spares_picture.spares_brandId = spares_brand.spares_brandId');
+
+        $this->db->like('spares_undercarriage.spares_undercarriageName',$search);
+        $this->db->like('spares_brand.spares_brandName',$spares_brandName);
+        $query = $this->db->get();
+        return $query->num_rows();
     }
 
 }

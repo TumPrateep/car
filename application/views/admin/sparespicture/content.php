@@ -15,17 +15,18 @@
         </a>
 
         <div class="input-group float-right">
-          <input id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้ออะไหล่">
+          <input id="table-search" class="form-control float-right" placeholder="รายการอะไหล่">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-cog"></i></button>
           </div>
-          <select class="form-control" name="status" id="status" >
+          <!-- <select class="form-control" name="status" id="status" >
             <option value>สถานะ</option>
             <option value =1>เปิด</option>
             <option value =2>ปิด</option>
-          </select>
+          </select> -->
+          <input id="table-searchs" class="form-control float-right" placeholder="ยี่ห้ออะไหล่">
           <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i></button>
+            <button class="btn btn-info inactive"><i class="fa fa-wrench"></i></button>
           </div>
           <div class="input-group-append">
             <button type="submit" id="btn-search" class="btn btn-success"><i class="fa fa-search"></i>  ค้นหา</button>
@@ -41,7 +42,7 @@
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
           <th><i class="fa fa-picture-o"></i> รูปยี่ห้อรถ</th>
           <th><i class="fa fa-cog">  รายการอะไหล่</th>
-          <th><i class="fa fa-user-circle"></i>  ยี่ห้ออะไหล่</th>
+          <th><i class="fa fa-wrench"></i>  ยี่ห้ออะไหล่</th>
           <th></th>
         </thead>	
       </table>

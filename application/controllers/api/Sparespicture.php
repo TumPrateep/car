@@ -28,15 +28,15 @@ class Sparespicture extends BD_Controller {
         $totalData = $this->sparespictures->allData_count();
 
         $totalFiltered = $totalData; 
-
-        if(empty($this->post('spares_undercarriage.spares_undercarriageId'))  && empty($this->post('spares_brand.spares_brandId')))
+        // order กับ col หน้า models มันอันเดี่ยวกัน อย่าลืม ตั้งให้มันตรงๆๆกัน
+        if(empty($this->post('spares_undercarriageName'))  && empty($this->post('spares_brandName')))// คืออยากรู้ว่า อิหาค่าไร รับ id มาก็หา id รับ name ก็หา name
         {            
             $posts = $this->sparespictures->allData($limit,$start,$order,$dir);
         } else {
-            // $search = $this->post('spares_brandName'); 
-            // $status = $this->post('status'); 
-            // $posts =  $this->sparesbrand->spares_brand_search($limit,$start,$search,$order,$dir, $status);
-            // $totalFiltered = $this->sparesbrand->spares_brand_search_count($search, $status);
+            $search = $this->post('spares_undercarriageName'); 
+            $searchbrandName = $this->post('spares_brandName');
+            $posts =  $this->sparespictures->sparesUndercarriage_search($limit,$start,$search,$order,$dir,$searchbrandName);
+            $totalFiltered = $this->sparespictures->sparesUndercarriage_search_count($search,$searchbrandName);
         }
 
         $data = array();
@@ -113,6 +113,20 @@ class Sparespicture extends BD_Controller {
         ];
 
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
+
+    function deleteSparesPictire_get(){
+        $spare_pictire_id = $this->get('spare_pictire_id');
+
+        $data_check = $this->sparespictures->getSparepictireById($spare_pictire_id);
+            
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $spare_pictire_id,
+            "model" => $this->sparespictures,
+            "image_path" => null
+        ];
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
 
     public function update_post(){

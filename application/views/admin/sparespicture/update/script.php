@@ -10,6 +10,28 @@
         // // var detail = $("#detail");
         // // var productId = $("#productId").val();
 
+        form.validate({
+            rules:{
+                spares_undercarriageId: {
+                    required: true,
+                    THEN: true
+                },
+                spares_brandId: {
+                    required: true,
+                    THEN: true
+                }
+            },messages:{
+                spares_undercarriageId: {
+                    required: "กรุณาเลือกรายการอะไหล่",
+                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
+                },
+                spares_brandId: {
+                    required: "กรุณาเลือกรายการยี่ห้ออะไหล่",
+                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
+                }
+             
+            }
+        });
 
         // // into();
 

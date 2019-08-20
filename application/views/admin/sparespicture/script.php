@@ -27,9 +27,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.spares_brandName= $("#table-search").val(),
-                    // data.spares_undercarriageId = $("#spares_undercarriageId").val(),
-                    data.status = $("#status").val()
+                    data.spares_undercarriageName = $("#table-search").val(),
+                    data.spares_brandName = $("#table-searchs").val()
                   }
             },
             "order": [[ 2, "asc" ]],
@@ -50,18 +49,10 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/sparespicture/updatesparespicture/"+data.spare_pictire_id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> ';
+                        return '<a href="'+base_url+"admin/sparespicture/updatesparespicture/"+data.spare_pictire_id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>'
+                        +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareBrand(\''+data.spare_pictire_id+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
-                // {
-                //     "targets": 1,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         var path = pathImage + "sparespicture/"+data.picture;
-                //         var imageHtml = '<img src="'+ path +'" class="rounded" width="100px">';
-                //         return imageHtml;
-                //     }
-                // },
                 {
                     "targets": 1,
                     "data": null,
@@ -86,6 +77,16 @@
             ]	 
 
     });
+
+    function deleteSpareBrand(spare_pictire_id){
+        var option = {
+            url: "/sparespicture/deleteSparesPictire?spare_pictire_id="+spare_pictire_id,
+            label: "ลบรูปรายการอะไหล่",
+            content: "คุณต้องการลบรูปรายการอะไหล่ ใช่หรือไม่",
+            gotoUrl: "admin/sparespicture/"
+        }
+        fnDelete(option);
+    }
 
     $("#form-search").submit(function(){
         event.preventDefault();
