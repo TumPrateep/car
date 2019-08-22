@@ -49,7 +49,7 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/sparespicture/updatesparespicture/"+data.spare_pictire_id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>'
+                        return '<a href="'+base_url+"admin/sparespicture/updatesparespicture/"+data.spare_pictire_id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> ' 
                         +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareBrand(\''+data.spare_pictire_id+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -57,7 +57,7 @@
                     "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<img src="'+picturePath+'sparespicture/'+data.picture+'" width="100" />';
+                        return '<img src="'+picturePath+'spare_picture/'+data.picture+'" width="100" />';
                     } 
                 },
                 {

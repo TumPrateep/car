@@ -68,7 +68,7 @@ class Sparespicture extends BD_Controller {
         $spares_brandId = $this->post("spares_brandId");
 
         $userId = $this->session->userdata['logged_in']['id'];
-        $config['upload_path'] = 'public/image/sparespicture/';
+        $config['upload_path'] = 'public/image/spare_picture/';
         $img = $this->post("picture");
         $img = str_replace('data:image/png;base64,', '', $img);
 	    $img = str_replace(' ', '+', $img);
@@ -106,7 +106,7 @@ class Sparespicture extends BD_Controller {
 
     function getUpdate_post(){
         $spare_pictire_id = $this->post('spare_pictire_id');
-        $data_check = $this->sparespictures->getUpdate($spare_pictire_id);
+        $data_check = $this->sparespictures->getSparepictireById($spare_pictire_id);
         
         $option = [
             "data_check" => $data_check
@@ -117,6 +117,7 @@ class Sparespicture extends BD_Controller {
 
     function deleteSparesPictire_get(){
         $spare_pictire_id = $this->get('spare_pictire_id');
+        $config['upload_path'] = 'public/image/spare_picture/';
 
         $data_check = $this->sparespictures->getSparepictireById($spare_pictire_id);
             
@@ -124,7 +125,7 @@ class Sparespicture extends BD_Controller {
             "data_check_delete" => $data_check,
             "data" => $spare_pictire_id,
             "model" => $this->sparespictures,
-            "image_path" => null
+            "image_path" => $config['upload_path'].$data_check->picture
         ];
         $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
@@ -135,7 +136,7 @@ class Sparespicture extends BD_Controller {
         $spares_undercarriageId = $this->post("spares_undercarriageId");
         $spares_brandId = $this->post("spares_brandId");
 
-        $config['upload_path'] = 'public/image/sparespicture/';
+        $config['upload_path'] = 'public/image/spare_picture/';
         $img = $this->post("picture");
         
         $file = null;

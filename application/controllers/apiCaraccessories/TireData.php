@@ -25,41 +25,41 @@ class Tiredata extends BD_Controller {
 
     public function create_post(){
         $rimId = $this->post('rimId');
-        $tire_sizeId = $this->post('tire_sizeId');
-        $tire_brandId = $this->post('tire_brandId');
-        $tire_modelId = $this->post('tire_modelId');
+        $tire_sizeId = $this->post('tireSizeId');
+        $tire_brandId = $this->post('tireBrandId');
+        $tire_modelId = $this->post('tireModelId');
         $price = $this->post('price');
         $warranty = $this->post('warranty');
         $warranty_year = $this->post('warranty_year');
         $warranty_distance = $this->post('warranty_distance');
-        $can_change = $this->post('can_change');
+
+        // $can_change = $this->post('can_change');
         $userId = $this->session->userdata['logged_in']['id'];
         $car_accessoriesId = $userId;
         
            
-        $data_check = $this->tiredatas->data_check_create($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
-        
-        $data = array(
-            'tire_dataId' => null,
-            'tire_brandId' => $tire_brandId,
-            'tire_modelId' => $tire_modelId,
+        // $data_check = $this->tiredatas->data_check_create($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
+        $data = [
             'tire_sizeId' => $tire_sizeId,
-            'rimId' => $rimId,
-            'car_accessoriesId' => $car_accessoriesId,
-            // 'tire_picture' => $image,
-            'status' => 1,
-            'activeFlag' => 1,
-            'create_by' => $userId,
-            'create_at'=>date('Y-m-d H:i:s',time()),
             'price' => $price,
             'warranty' => $warranty,
             'warranty_year' => $warranty_year,
             'warranty_distance' => $warranty_distance,
-            'warranty' => $warranty,
-            'can_change' =>$can_change
+            'warranty' => $warranty
+        ];
+
+        $data['model'] = array(
+            'tire_brandId' => $tire_brandId,
+            'tire_modelId' => $tire_modelId,
+            'rimId' => $rimId,
+            'car_accessoriesId' => $car_accessoriesId,
+            'status' => 1,
+            'activeFlag' => 1,
+            'create_by' => $userId,
+            'create_at'=>date('Y-m-d H:i:s',time())
         );
         $option = [
-            "data_check" => $data_check,
+            "data_check" => null,
             "data" => $data,
             "model" => $this->tiredatas,
             "image_path" => null

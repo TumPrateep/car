@@ -8,23 +8,24 @@
         form.validate({
             rules:{
                 spares_undercarriageId: {
-                    required: true,
-                    THEN: true
+                    required: true
                 },
                 spares_brandId: {
-                    required: true,
-                    THEN: true
+                    required: true
+                },
+                tempImage:{
+                    required: true
                 }
             },messages:{
                 spares_undercarriageId: {
-                    required: "กรุณาเลือกรายการอะไหล่",
-                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
+                    required: "เลือกรายการอะไหล่"
                 },
                 spares_brandId: {
-                    required: "กรุณาเลือกรายการยี่ห้ออะไหล่",
-                    THEN: "กรอกข้อมูลไม่ถูกต้อง"
+                    required: "เลือกรายการยี่ห้ออะไหล่"
+                },
+                tempImage:{
+                    required: "เลือกรูปภาพ"
                 }
-             
             }
         });
 
@@ -69,10 +70,10 @@
         }
 
         form.submit(function(){
-            createBrand();
+            create();
         });
 
-        function createBrand(){
+        function create(){
             event.preventDefault();
             var isValid = form.valid();
             if(isValid){

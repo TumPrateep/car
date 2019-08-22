@@ -23,13 +23,13 @@
                   <div class="card-body black bg-light ">
                     <div class="form-group row">
                         <div class="col-md-5">
-                            <label>รายการอะไหล่ช่วงล่าง</label> 
+                            <label>รายการอะไหล่ช่วงล่าง</label> <span class="error">*</span>
                             <select class="form-control" name="spares_undercarriageId" id="spares_undercarriageId">
                                 <option value="">เลือกรายการอะไหล่ช่วงล่าง</option>
                             </select>
                         </div>
                         <div class="col-md-5">
-                            <label>รายการยี่ห้ออะไหล่</label> 
+                            <label>รายการยี่ห้ออะไหล่</label> <span class="error">*</span>
                             <select class="form-control" name="spares_brandId" id="spares_brandId">
                                 <option value="">เลือกยี่ห้ออะไหล่ช่วงล่าง</option>
                             </select>
@@ -38,7 +38,7 @@
                     <div class="row p-t-20">
                         <div class="col-md-12">
                             <div class="form-group">
-                            <label class="control-label">รูปอะไหล่ช่วงล่าง</label>
+                            <label class="control-label">รูปอะไหล่ช่วงล่าง</label> <span class="error">*</span> <label id="tempImage-error" class="error" for="tempImage"></label>
                                 <div class="image-editor">
                                     <input type="file" class="cropit-image-input" name="tempImage">
                                     <div class="cropit-preview"></div>
