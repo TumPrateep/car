@@ -44,15 +44,15 @@
                               </select>
                           </div>
                           <div class="col-md-4 form-group">
-                            <label>API</label> <span class="error">*</span>
-                            <input type="text" class="form-control" placeholder="API" name="api" id="api">
-                          </div>
-                          <div class="col-md-4 form-group">
                             <label>ประเภทเครื่องยนต์</label> <span class="error">*</span>
                             <select class="form-control" name="lubricatortypeFormachineId" id="lubricatortypeFormachineId">
                               <option value="">เลือกประเภทเครื่องยนต์</option>
-                              <option value="1">เบนซิน</option>
-                              <option value="2">ดีเซล</option>
+                            </select>
+                          </div>
+                          <div class="col-md-4 form-group">
+                            <label>API</label> <span class="error">*</span>
+                            <select class="form-control" name="api" id="api">
+                              <option value="">เลือก API</option>
                             </select>
                           </div>
                           <div class="col-md-4 form-group">
