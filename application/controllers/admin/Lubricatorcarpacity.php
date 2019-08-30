@@ -46,8 +46,11 @@ class Lubricatorcarpacity extends CI_Controller {
 		$this->load->view("admin/lubricatorcarpacity/carpacity/create/script");
 	}
 	
-	function updatecarpacity($capacity_id){
+	function updatecarpacity($capacity_id,$machineId){
 		$data['capacity_id'] = $capacity_id;
+		$this->load->model("machines");
+		$data['machineId'] = $machineId;
+		$data['machine_type'] = $this->machines->getMachinesById($machineId)->machine_type;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");

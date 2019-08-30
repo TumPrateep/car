@@ -46,7 +46,8 @@ class Lubricatorcarpacity extends BD_Controller {
                 $nestedData['capacity_id'] = $post->capacity_id;
                 $nestedData['capacity'] = $post->capacity;
                 $nestedData['status'] = $post->status;
-                
+                $nestedData['machineId'] = $post->machineId;
+
                 $data[] = $nestedData;
 
             }

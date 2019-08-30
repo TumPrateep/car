@@ -51,7 +51,7 @@
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-cogs"></i> ความจุ</th>
+          <th><i class="fa fa-tint"></i> ความจุ</th>
           <th></th>
         </thead>	
       </table>

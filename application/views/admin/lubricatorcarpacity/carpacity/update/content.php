@@ -21,6 +21,7 @@
                   <!-- form start -->
                   <form id="submit">
                     <input type="hidden" id="capacity_id" name="capacity_id" value="<?=$capacity_id ?>" >
+                    <input type="hidden" id="machineId" name="machineId" value="<?=$machineId ?>" >
                     <div class="card-body black bg-light">
                       <div class="row">
                         <div class="col-md-12">

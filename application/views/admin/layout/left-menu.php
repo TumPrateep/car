@@ -100,7 +100,7 @@
                 </li>
                 <li class="<?= activate_menu('lubricatorcarpacity'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricatorcarpacity") ?>">
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-tint" aria-hidden="true"></i>
                     <span class="nav-link-text">ความจุน้ำมันเครื่อง</span>
                   </a>
                 </li>

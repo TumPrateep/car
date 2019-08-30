@@ -43,13 +43,14 @@
     function updateCapacity(){
         event.preventDefault();
         var isValid = $("#submit").valid();
+        var machineId = $('#machineId').val();
 
         if(isValid){
             var data = $("#submit").serialize();
             $.post(base_url+"api/lubricatorcarpacity/updatecapacity",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/lubricatorcarpacity");
+                    showMessage(data.message,"admin/lubricatorcarpacity/carpacity/"+machineId);
                 }else{
                     showMessage(data.message);
                 }
