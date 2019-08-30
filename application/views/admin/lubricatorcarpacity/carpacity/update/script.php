@@ -1,13 +1,13 @@
 <script>
     $("#submit").validate({
         rules: {
-            lubricator_price: {
+            lubricatorcarpacity: {
                 required: true
             }
         },
         messages: {
-            lubricator_price: {
-                required: "กรอกราคาค่าบริการ"
+            lubricatorcarpacity: {
+                required: "กรุณากรอกความจุ"
             }
         },
     });

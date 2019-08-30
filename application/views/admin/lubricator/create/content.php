@@ -45,7 +45,7 @@
                           </div>
                           <div class="col-md-4 form-group">
                             <label>ประเภทเครื่องยนต์</label> <span class="error">*</span>
-                            <select class="form-control" name="lubricatortypeFormachineId" id="lubricatortypeFormachineId">
+                            <select class="form-control" name="machineId" id="machineId">
                               <option value="">เลือกประเภทเครื่องยนต์</option>
                             </select>
                           </div>

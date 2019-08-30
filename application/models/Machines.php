@@ -48,6 +48,12 @@ class Machines extends CI_Model{
         return $query->num_rows();  
                                                                                                                                                                                                 
     }
+
+    function getAllMachine(){   
+        $this->db->select('machineId,machine_type');
+        $this->db->where('status','1');
+        return $this->db->get('machine')->result();
+    }
     
     function allMachines($limit,$start,$col,$dir)
     {   

@@ -160,4 +160,10 @@ class Lubricatorapi extends BD_Controller {
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
 
+    function getAllapi_post(){
+        $machineId = $this->post('machineId');
+        $output['data'] = $this->lubricatorapis->getAllapi($machineId);
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
 }

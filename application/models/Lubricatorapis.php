@@ -106,5 +106,14 @@ class Lubricatorapis extends CI_Model{
         return $this->db->delete('lubricator_api', array('apiId' => $apiId));
     } 
 
+    function getAllapi($machineId){   
+        $this->db->select('lubricator_api.apiId,lubricator_api.api,machine.machineId');
+        $this->db->from('lubricator_api');
+        $this->db->join('machine','machine.machineId = lubricator_api.machineId');
+        $this->db->where('lubricator_api.status','1');
+        $this->db->where('machine.machineId',$machineId);
+        $result = $this->db->get();
+        return $result->row();
+    }
 
 }

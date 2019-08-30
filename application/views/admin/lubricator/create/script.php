@@ -44,7 +44,7 @@
 
     function init(){
         getAllLubricatorNumber();
-        // getAllLubricatortypeformachine();
+        getAllMachine();
     }
 
     function getAllLubricatorNumber(){
@@ -62,24 +62,57 @@
         );
     }
 
-    var lubricatortypeFormachine = $("#lubricatortypeFormachineId");
+    lubricator_gear.change(function(){
+        var lubricator_brandId = $("#lubricator_brandId").val();
+        getAllLubricatorNumber();
+    });
 
-    function getAllLubricatortypeformachine(){
-        $.post(base_url+"api/Lubricatortypeformachine/getAllLubricatortypeformachine",{},
+
+    var machine = $("#machineId");
+    var capacity = $("#capacity");
+    var api = $("#api");
+
+    function getAllMachine(){
+        $.post(base_url+"api/Machine/getAllmachine",{},
         function(result){
             var data = result.data;
             if(data != null){
                 $.each( data, function( key, value ) {
-                    lubricatortypeFormachine.append('<option value="' + value.lubricatortypeFormachineId + '">' + value.lubricatortypeFormachine + '</option>');
+                    machine.append('<option value="' + value.machineId + '">' + value.machine_type + '</option>');
                 });
             }
         });
     }
 
-    lubricator_gear.change(function(){
-        var lubricator_brandId = $("#lubricator_brandId").val();
-        getAllLubricatorNumber();
+    machine.change(function(){
+        var machineId = machine.val();
+        api.html('<option value="">เลือกAPI</option>');
+        $.post(base_url+"api/Lubricatorapi/getAllapi",{
+            machineId: machineId
+        },function(data){
+                var machineData = data.data;
+                $.each( machineData, function( key, value ) {
+                    api.append('<option value="' + value.apiId + '">' + value.api + '</option>');
+                });
+            }
+        );
     });
+
+    machine.change(function(){
+        var machineId = machine.val();
+        capacity.html('<option value="">เลือกความจุ</option>');
+        $.post(base_url+"api/Lubricatorcarpacity/getAllcapacity",{
+            machineId: machineId
+        },function(data){
+                var machineData = data.data;
+                $.each( machineData, function( key, value ) {
+                    capacity.append('<option value="' + value.capacity_id + '">' + value.capacity + '</option>');
+                });
+            }
+        );
+    });
+
+
 
     $("#create-lubricator").submit(function(){
         createLubricator();

@@ -113,5 +113,10 @@ class Lubricatorcarpacitys extends CI_Model{
         return $this->db->delete('lubricator_capacity', array('capacity_id' => $capacity_id));
     } 
 
+    function getAllcapacity(){   
+        $this->db->select('capacity_id,capacity');
+        $this->db->where('status','1');
+        return $this->db->get('lubricator_capacity')->result();
+    }
 
 }
