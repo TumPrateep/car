@@ -113,7 +113,7 @@ class Lubricatorapis extends CI_Model{
         $this->db->where('lubricator_api.status','1');
         $this->db->where('machine.machineId',$machineId);
         $result = $this->db->get();
-        return $result->row();
+        return $result->result();
     }
 
 }

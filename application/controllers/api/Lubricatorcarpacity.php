@@ -139,9 +139,10 @@ class Lubricatorcarpacity extends BD_Controller {
     }
 
     function getAllcapacity_post(){
-        
-        $output['data'] = $this->lubricatorcarpacitys->getAllcapacity();
+        $machineId = $this->post('machineId');
+        $output['data'] = $this->lubricatorcarpacitys->getAllcapacity($machineId);
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
+    
 
 }

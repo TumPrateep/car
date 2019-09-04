@@ -85,6 +85,11 @@
     }
 
     machine.change(function(){
+        getAllLubricatorApi();
+        getLubricatorCapacity();
+    });
+
+    function getAllLubricatorApi(){
         var machineId = machine.val();
         api.html('<option value="">เลือกAPI</option>');
         $.post(base_url+"api/Lubricatorapi/getAllapi",{
@@ -96,9 +101,9 @@
                 });
             }
         );
-    });
+    }
 
-    machine.change(function(){
+    function getLubricatorCapacity(){
         var machineId = machine.val();
         capacity.html('<option value="">เลือกความจุ</option>');
         $.post(base_url+"api/Lubricatorcarpacity/getAllcapacity",{
@@ -110,9 +115,7 @@
                 });
             }
         );
-    });
-
-
+    }
 
     $("#create-lubricator").submit(function(){
         createLubricator();
