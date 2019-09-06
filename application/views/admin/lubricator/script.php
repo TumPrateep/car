@@ -41,7 +41,7 @@
                 { "data": "lubricator_number" },
                 { "data": "api" },
                 { "data": "capacity" },
-                { "data": "lubricatortypeFormachine"},
+                { "data": "machine_id"},
                 null,
                 null
             ],
