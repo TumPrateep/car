@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Lubricatorcarpacity extends CI_Controller {
+class Lubricatorcapacity extends CI_Controller {
 
 	function __construct()
     {
@@ -14,50 +14,50 @@ class Lubricatorcarpacity extends CI_Controller {
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/lubricatorcarpacity/content");
+		$this->load->view("admin/lubricatorcapacity/content");
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/lubricatorcarpacity/script");
+		$this->load->view("admin/lubricatorcapacity/script");
 	}
 
-	function carpacity($machineId){
+	function capacity($machineId){
 		$this->load->model("machines");
 		$data['machineId'] = $machineId;
 		$data['machine_type'] = $this->machines->getMachinesById($machineId)->machine_type;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/lubricatorcarpacity/carpacity/content", $data);
+		$this->load->view("admin/lubricatorcapacity/capacity/content", $data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/lubricatorcarpacity/carpacity/script");
+		$this->load->view("admin/lubricatorcapacity/capacity/script");
     }
     
-    function createcarpacity($machineId){
+    function createcapacity($machineId){
 		$this->load->model("machines");
 		$data['machineId'] = $machineId;
 		$data['machine_type'] = $this->machines->getMachinesById($machineId)->machine_type;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/lubricatorcarpacity/carpacity/create/content",$data);
+		$this->load->view("admin/lubricatorcapacity/capacity/create/content",$data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/lubricatorcarpacity/carpacity/create/script");
+		$this->load->view("admin/lubricatorcapacity/capacity/create/script");
 	}
 	
-	function updatecarpacity($capacity_id,$machineId){
+	function updatecapacity($capacity_id,$machineId){
 		$data['capacity_id'] = $capacity_id;
 		$this->load->model("machines");
 		$data['machineId'] = $machineId;
-		$data['machine_type'] = $this->machines->getMachinesById($machineId)->machine_type;
+		// $data['machine_type'] = $this->machines->getMachinesById($machineId)->machine_type;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/lubricatorcarpacity/carpacity/update/content",$data);
+		$this->load->view("admin/lubricatorcapacity/capacity/update/content",$data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/lubricatorcarpacity/carpacity/update/script");
+		$this->load->view("admin/lubricatorcapacity/capacity/update/script");
 	}
 
 }

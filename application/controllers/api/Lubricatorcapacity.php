@@ -1,13 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Lubricatorcarpacity extends BD_Controller {
+class Lubricatorcapacity extends BD_Controller {
 
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
         $this->auth();
-        $this->load->model("lubricatorcarpacitys");
+        $this->load->model("lubricatorcapacitys");
         $this->load->model("machines");
 	}
 	
@@ -24,18 +24,18 @@ class Lubricatorcarpacity extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
         $machineId = $this->post('machineId');
 
-        $totalData = $this->lubricatorcarpacitys->allCarpacity_count($machineId);
+        $totalData = $this->lubricatorcapacitys->allCarpacity_count($machineId);
         $totalFiltered = $totalData; 
 
         if(empty($this->post('capacity')) && empty($this->post('status')) )
         {            
-            $posts = $this->lubricatorcarpacitys->allCarpacity($limit,$start,$order,$dir,$machineId);
+            $posts = $this->lubricatorcapacitys->allCarpacity($limit,$start,$order,$dir,$machineId);
         }
         else {
             $search = $this->post('capacity');
             $status = $this->post('status');
-            $posts =  $this->lubricatorcarpacitys->Carpacity_search($limit,$start,$search,$dir,$order,$status,$machineId);
-            $totalFiltered = $this->lubricatorcarpacitys->Carpacity_search_count($search,$status,$machineId);
+            $posts =  $this->lubricatorcapacitys->Carpacity_search($limit,$start,$search,$dir,$order,$status,$machineId);
+            $totalFiltered = $this->lubricatorcapacitys->Carpacity_search_count($search,$status,$machineId);
         }
         $data = array();
         if(!empty($posts))
@@ -64,11 +64,11 @@ class Lubricatorcarpacity extends BD_Controller {
     }   
     
     function createcarpacity_post(){
-        $capacity = $this->post('lubricatorcarpacity');
+        $capacity = $this->post('lubricatorcapacity');
         $machineId = $this->post('machineId');
         $userId = $this->session->userdata['logged_in']['id'];
 
-        $data_check = $this->lubricatorcarpacitys->data_check_create($machineId,$capacity);
+        $data_check = $this->lubricatorcapacitys->data_check_create($machineId,$capacity);
         $data = array(
             'capacity_id' => null,
             'capacity'  => $capacity,
@@ -80,7 +80,7 @@ class Lubricatorcarpacity extends BD_Controller {
         $option = [
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->lubricatorcarpacitys,
+            "model" => $this->lubricatorcapacitys,
             "image_path" => null
         ];
 
@@ -90,7 +90,7 @@ class Lubricatorcarpacity extends BD_Controller {
     function getUpdate_post(){
 
         $capacity_id = $this->post('capacity_id');
-        $data_check = $this->lubricatorcarpacitys->getUpdate($capacity_id);
+        $data_check = $this->lubricatorcapacitys->getUpdate($capacity_id);
         $option = [
             "data_check" => $data_check
         ];
@@ -100,11 +100,11 @@ class Lubricatorcarpacity extends BD_Controller {
 
     function delete_get(){
         $capacity_id = $this->get('capacity_id');
-        $data_check = $this->lubricatorcarpacitys->getLubricatorcapacityById($capacity_id);
+        $data_check = $this->lubricatorcapacitys->getLubricatorcapacityById($capacity_id);
         $option = [
             "data_check_delete" => $data_check,
             "data" => $capacity_id,
-            "model" => $this->lubricatorcarpacitys,
+            "model" => $this->lubricatorcapacitys,
             "image_path" => null
         ];
 
@@ -113,11 +113,11 @@ class Lubricatorcarpacity extends BD_Controller {
 
     function updatecapacity_post(){
         $capacity_id = $this->post('capacity_id');
-        $capacity = $this->post('lubricatorcarpacity');
+        $capacity = $this->post('lubricatorcapacity');
         $machineId = $this->post('machineId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check_update = $this->lubricatorcarpacitys->getLubricatorcapacityById($capacity_id);
-        $data_check = $this->lubricatorcarpacitys->data_check_update($machineId,$capacity_id,$capacity);
+        $data_check_update = $this->lubricatorcapacitys->getLubricatorcapacityById($capacity_id);
+        $data_check = $this->lubricatorcapacitys->data_check_update($machineId,$capacity_id,$capacity);
         $data = array(
             'capacity_id' => $capacity_id,
             'capacity' => $capacity,
@@ -130,7 +130,7 @@ class Lubricatorcarpacity extends BD_Controller {
             "data_check_update" => $data_check_update,
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->lubricatorcarpacitys,
+            "model" => $this->lubricatorcapacitys,
             "image_path" => null,
             "old_image_path" => null,
         ];
@@ -140,7 +140,7 @@ class Lubricatorcarpacity extends BD_Controller {
 
     function getAllcapacity_post(){
         $machineId = $this->post('machineId');
-        $output['data'] = $this->lubricatorcarpacitys->getAllcapacity($machineId);
+        $output['data'] = $this->lubricatorcapacitys->getAllcapacity($machineId);
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
     

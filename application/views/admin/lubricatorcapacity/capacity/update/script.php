@@ -1,12 +1,12 @@
 <script>
     $("#submit").validate({
         rules: {
-            lubricatorcarpacity: {
+            lubricatorcapacity: {
                 required: true
             }
         },
         messages: {
-            lubricatorcarpacity: {
+            lubricatorcapacity: {
                 required: "กรุณากรอกความจุ"
             }
         },
@@ -15,16 +15,16 @@
 
         var capacity_id = $("#capacity_id").val();
 
-        $.post(base_url+"api/Lubricatorcarpacity/getUpdate",{
+        $.post(base_url+"api/Lubricatorcapacity/getUpdate",{
             "capacity_id" : capacity_id
         },function(data){
             if(data.message!=200){
-                showMessage(data.message,"admin/lubricatorcarpacity");
+                showMessage(data.message,"admin/lubricatorcapacity");
             }
 
             if(data.message == 200){
                 result = data.data;
-                $("#lubricatorcarpacity").val(result.capacity);
+                $("#lubricatorcapacity").val(result.capacity);
                 // $("#accountNumber").val(result.accountNumber);
                 // $("#fullName").val(result.fullName);
 
@@ -47,10 +47,10 @@
 
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/lubricatorcarpacity/updatecapacity",data,
+            $.post(base_url+"api/lubricatorcapacity/updatecapacity",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/lubricatorcarpacity/carpacity/"+machineId);
+                    showMessage(data.message,"admin/lubricatorcapacity/capacity/"+machineId);
                 }else{
                     showMessage(data.message);
                 }

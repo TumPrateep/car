@@ -25,7 +25,7 @@
             "serverSide": true,
             "ajax":{
                 //"url": base_url+"api/Lubricatorapi/search",
-                "url": base_url+"api/Lubricatorcarpacity/search",
+                "url": base_url+"api/Lubricatorcapacity/search",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -49,7 +49,7 @@
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/lubricatorcarpacity/updatecarpacity/"+data.capacity_id+"/   "+data.machineId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> ' 
+                        return '<a href="'+base_url+"admin/lubricatorcapacity/updatecapacity/"+data.capacity_id+"/   "+data.machineId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> ' 
                         +'<button type="button" class="delete btn btn-danger" onclick="deleteCapacity(\''+data.capacity_id+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{
@@ -73,10 +73,10 @@
 
     function deleteCapacity(capacity_id){
         var option = {
-            url: "/Lubricatorcarpacity/delete?capacity_id="+capacity_id,
+            url: "/Lubricatorcapacity/delete?capacity_id="+capacity_id,
             label: "ลบความจุ",
             content: "คุณต้องการลบความจุใช่หรือไม่",
-            gotoUrl: "admin/lubricatorcarpacity/"
+            gotoUrl: "admin/lubricatorcapacity/"
         }
         fnDelete(option);
     }
