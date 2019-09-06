@@ -127,6 +127,12 @@ class Lubricators extends CI_Model{
         return $this->db->delete('lubricator', array('lubricatorId' => $lubricatorId));
     }
 
+    // function getlubricatorbyId($lubricatorId){
+    //     $this->db->from('lubricator');
+    //     $this->db->where('lubricatorId',$lubricatorId);
+    //     $result = $this->db->get()->row();
+    //     return $result;
+    // }
     function getlubricatorbyId($lubricatorId){
         $this->db->select('lubricator.lubricatorId,lubricator.lubricatorName,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_numberId,lubricator.api,lubricator.capacity,lubricator.machine_id'); 
         $this->db->from('lubricator');
