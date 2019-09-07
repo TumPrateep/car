@@ -3,10 +3,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/lubricatorcarpacity") ?>">การจัดการความจุ</a>
+          <a href="<?=base_url("admin/lubricatorcapacity") ?>">การจัดการความจุ</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/lubricatorcarpacity/createcarpacity/".$machineId) ?>">ความจุประเภท (<?=$machine_type ?>)</a>
+          <a href="<?=base_url("admin/lubricatorcapacity/createcapacity/".$machineId) ?>">ความจุประเภท (<?=$machine_type ?>)</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
@@ -17,7 +17,7 @@
       <form id="form-search">
         <input type="hidden" name="machineId" id="machineId" value="<?=$machineId?>">
         <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/lubricatorcarpacity/createcarpacity/".$machineId) ?>">
+        <a class="btn btn-primary create" href="<?=base_url("admin/lubricatorcapacity/createcapacity/".$machineId) ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
         <!-- <div class="input-group input-group-sm float-right"> -->

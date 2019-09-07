@@ -1,23 +1,23 @@
 <script>
     $("#submit").validate({
         rules: {
-            lubricatorcarpacity: {
+            lubricatorcapacity: {
                 required: true
             },
         },
         messages: {
-            lubricatorcarpacity: {
+            lubricatorcapacity: {
                 required: "กรุณากรอกความจุ"
             }
         },
     });
     
     $("#submit").submit(function(){
-        carpacity();
+        capacity();
     })
 
 
-    function carpacity(){
+    function capacity(){
         event.preventDefault();
         var isValid = $("#submit").valid();
         var machineId = $('#machineId').val();
@@ -26,7 +26,7 @@
             $.post(base_url+"api/Lubricatorcarpacity/createcarpacity",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/lubricatorcarpacity/carpacity/"+machineId);//carpacity/"+data.machineId 
+                    showMessage(data.message,"admin/lubricatorcapacity/capacity/"+machineId);//capacity/"+data.machineId 
                 }else{
                     showMessage(data.message);
                 }

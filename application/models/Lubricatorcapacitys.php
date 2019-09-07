@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class Lubricatorcarpacitys extends CI_Model{
+class Lubricatorcapacitys extends CI_Model{
  
     function insert($data){
         $result = $this->db->insert('lubricator_capacity', $data);

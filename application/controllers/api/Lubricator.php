@@ -17,7 +17,7 @@ class Lubricator extends BD_Controller {
             2 =>'lubricator_number',
             3 =>'lubricator_gear',
             4 =>'status',
-            5 =>'lubricatortypeFormachine'
+            5 =>'machine_id'
         );
         $limit = $this->post('length');
         $start = $this->post('start');
@@ -94,11 +94,11 @@ class Lubricator extends BD_Controller {
         $lubricator_gear = $this->post("lubricator_gear");
         $api = $this->post('api');
         $capacity = $this->post('capacity');
-        $lubricatortypeFormachineId = $this->post('lubricatortypeFormachineId');
+        $machine_id = $this->post('machineId');
         
         $userId = $this->session->userdata['logged_in']['id'];
 
-        $data_check = $this->lubricators->checkLubricator($lubricatorName, $lubricator_brandId, $lubricator_gear, $lubricatortypeFormachineId, $lubricator_numberId, $capacity);
+        $data_check = $this->lubricators->checkLubricator($lubricatorName, $lubricator_brandId, $lubricator_gear, $machine_id, $lubricator_numberId, $capacity);
         $data = array(
             'lubricatorId' => null,
             'lubricatorName' => $lubricatorName,  
@@ -110,7 +110,7 @@ class Lubricator extends BD_Controller {
             'activeFlag' => 1,
             'capacity' => $capacity,
             'api' => $api,
-            'lubricatortypeFormachineId' => $lubricatortypeFormachineId
+            'machine_id' => $machine_id
         );
 
         $option = [
@@ -131,11 +131,11 @@ class Lubricator extends BD_Controller {
         $lubricator_gear = $this->post("lubricator_gear");
         $api = $this->post('api');
         $capacity = $this->post('capacity');
-        $lubricatortypeFormachineId = $this->post('lubricatortypeFormachineId');
+        $machine_id = $this->post('machineId');
        
         $userId = $this->session->userdata['logged_in']['id'];
         $data_check_update = $this->lubricators->getlubricatorbyId($lubricatorId);
-        $data_check = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear,$lubricatortypeFormachineId,$lubricator_numberId, $capacity);
+        $data_check = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear,$machine_id,$lubricator_numberId, $capacity);
         $data = array(
             'lubricatorId' => $lubricatorId,
             'lubricatorName' => $lubricatorName,
@@ -145,7 +145,7 @@ class Lubricator extends BD_Controller {
             'capacity' => $capacity,
             'api' => $api,
             'activeFlag' => 1,
-            'lubricatortypeFormachineId' => $lubricatortypeFormachineId
+            'machine_id' => $machine_id
         );
 
         $option = [

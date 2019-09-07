@@ -45,19 +45,21 @@
                               </select>
                           </div>
                           <div class="col-md-4 form-group">
-                              <label>APIน้ำมันเครื่อง</label>
-                              <input type="text" class="form-control" placeholder="APIน้ำมันเครื่อง" name="api" id="api">
-                              </select>
-                          </div>
-                          <div class="col-md-4 form-group">
-                              <label>ความจุน้ำมันเครื่อง</label>
-                              <input type="text" class="form-control" placeholder="เลือกความจุน้ำมันเครื่อง" name="capacity" id="capacity">
-                              </select>
-                          </div>
-                          <div class="col-md-4 form-group">
                             <label>ประเภทเครื่องยนต์</label> <span class="error">*</span>
-                            <select class="form-control" name="lubricatortypeFormachineId" id="lubricatortypeFormachineId">
+                            <select class="form-control" name="machineId" id="machineId">
                               <option value="">เลือกประเภทเครื่องยนต์</option>
+                            </select>
+                          </div>
+                          <div class="col-md-4 form-group">
+                            <label>API</label> <span class="error">*</span>
+                            <select class="form-control" name="api" id="api">
+                              <option value="">เลือก API</option>
+                            </select>
+                          </div>
+                          <div class="col-md-4 form-group">
+                            <label>ความจุ</label> <span class="error">*</span>
+                            <select class="form-control" name="capacity" id="capacity">
+                              <option value="">เลือกความจุ</option>
                             </select>
                           </div>
                       </div>
