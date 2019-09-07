@@ -86,8 +86,8 @@
                     <span class="nav-link-text">Api น้ำมันเครื่อง</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('lubricatorcarpacity'); ?>">
-                  <a class="nav-link text-white" href="<?=base_url("admin/lubricatorcarpacity") ?>">
+                <li class="<?= activate_menu('lubricatorcapacity'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/lubricatorcapacity") ?>">
                     <i class="fa fa-tint" aria-hidden="true"></i>
                     <span class="nav-link-text">ความจุน้ำมันเครื่อง</span>
                   </a>
