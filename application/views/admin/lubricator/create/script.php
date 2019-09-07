@@ -39,6 +39,9 @@
     
     var lubricator_number = $("#lubricator_number");
     var lubricator_gear = $("#lubricator_gear");
+    var machine = $("#machineId");
+    var capacity = $("#capacity");
+    var api = $("#api");
 
     init();
 
@@ -63,14 +66,26 @@
     }
 
     lubricator_gear.change(function(){
+        var lubricator_gear_id = $(this).val();
         var lubricator_brandId = $("#lubricator_brandId").val();
         getAllLubricatorNumber();
+        triggerLubricatorDetail(lubricator_gear_id);
     });
 
-
-    var machine = $("#machineId");
-    var capacity = $("#capacity");
-    var api = $("#api");
+    function triggerLubricatorDetail(lubricator_gear_id){
+        if(lubricator_gear_id != 1){
+            machine.val('');
+            machine.prop('disabled', true);
+            capacity.prop('disabled', true);
+            capacity.val('');
+            api.prop('disabled', true);
+            api.val('');
+        }else{
+            machine.prop('disabled', false);
+            capacity.prop('disabled', false);
+            api.prop('disabled', false);
+        }
+    }
 
     function getAllMachine(){
         $.post(base_url+"api/Machine/getAllmachine",{},
@@ -91,7 +106,7 @@
 
     function getAllLubricatorApi(){
         var machineId = machine.val();
-        api.html('<option value="">เลือกAPI</option>');
+        api.html('<option value="">เลือก API</option>');
         $.post(base_url+"api/Lubricatorapi/getAllapi",{
             machineId: machineId
         },function(data){
@@ -111,7 +126,7 @@
         },function(data){
                 var machineData = data.data;
                 $.each( machineData, function( key, value ) {
-                    capacity.append('<option value="' + value.capacity_id + '">' + value.capacity + '</option>');
+                    capacity.append('<option value="' + value.capacity_id + '">' + value.capacity + 'ลิตร</option>');
                 });
             }
         );
@@ -140,21 +155,21 @@
         }
     }
 
-    $("#lubricatortypeFormachineId").change(function(){
-        var machineType = $(this).val();
-        var html = '<option value="">เลือกความจุ</option>';
-        if(machineType == 1){
-            html += '<option value="1">1 ลิตร</option>';
-            html += '<option value="4">4 ลิตร</option>';
-            html += '<option value="4+1">4+1 ลิตร</option>';
-        }else{
-            html += '<option value="1">1 ลิตร</option>';
-            html += '<option value="6">6 ลิตร</option>';
-            html += '<option value="6+1">6+1 ลิตร</option>';
-        }
+    // $("#lubricatortypeFormachineId").change(function(){
+    //     var machineType = $(this).val();
+    //     var html = '<option value="">เลือกความจุ</option>';
+    //     if(machineType == 1){
+    //         html += '<option value="1">1 ลิตร</option>';
+    //         html += '<option value="4">4 ลิตร</option>';
+    //         html += '<option value="4+1">4+1 ลิตร</option>';
+    //     }else{
+    //         html += '<option value="1">1 ลิตร</option>';
+    //         html += '<option value="6">6 ลิตร</option>';
+    //         html += '<option value="6+1">6+1 ลิตร</option>';
+    //     }
 
-        $("#capacity").html(html);
-    })
+    //     $("#capacity").html(html);
+    // })
 </script>
 
 </body>

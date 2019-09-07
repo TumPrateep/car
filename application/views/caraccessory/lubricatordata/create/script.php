@@ -1,5 +1,6 @@
 <script>
-   $("#create-lubricatordata").validate({
+    $.validator.setDefaults({ ignore: ":hidden:not(select)" });
+    $("#create-lubricatordata").validate({
         rules: {
             lubricator_brandId: {
                 required: true
@@ -8,9 +9,6 @@
                 required: true
             },
             price: {
-                required: true
-            },
-            tempImage: {
                 required: true
             }
         },
@@ -25,51 +23,48 @@
                 required: "กรุณากรอกราคา",
                 min: "กรอกข้อมูลไม่ถูกต้อง"
             },
-            tempImage: {
-                required: ""
-            },
             warranty_distance: {
                 min: "กรอกข้อมูลไม่ถูกต้อง"
             }
         },
     });
 
-    $("#create-lubricatordata").submit(function(){
-        tiredata();
-    })
+//     $("#create-lubricatordata").submit(function(){
+//         tiredata();
+//     })
 
-    function tiredata(){
-        event.preventDefault();
-        var isValid = $("#create-lubricatordata").valid();
+//     function tiredata(){
+//         event.preventDefault();
+//         var isValid = $("#create-lubricatordata").valid();
         
-        if(isValid){
-            var imageData = $('.image-editor').cropit('export');
-            $('.hidden-image-data').val(imageData);
-            var myform = document.getElementById("create-lubricatordata");
-            var formData = new FormData(myform);
-            $.ajax({
-                url: base_url+"apicaraccessories/lubricatordata/create",
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                success: function (data) {
-                    if(data.message == 200){
-                        showMessage(data.message,"caraccessory/lubricatordata");
-                    }else{
-                        showMessage(data.message);
-                    }
-                }
-            });
-        }
-    }
+//         if(isValid){
+//             var imageData = $('.image-editor').cropit('export');
+//             $('.hidden-image-data').val(imageData);
+//             var myform = document.getElementById("create-lubricatordata");
+//             var formData = new FormData(myform);
+//             $.ajax({
+//                 url: base_url+"apicaraccessories/lubricatordata/create",
+//                 data: formData,
+//                 processData: false,
+//                 contentType: false,
+//                 type: 'POST',
+//                 success: function (data) {
+//                     if(data.message == 200){
+//                         showMessage(data.message,"caraccessory/lubricatordata");
+//                     }else{
+//                         showMessage(data.message);
+//                     }
+//                 }
+//             });
+//         }
+//     }
     
-    $('.image-editor').cropit({
-        allowDragNDrop: false,
-        width: 200,
-        height: 200,
-        type: 'image/jpeg'
-    });
+//     $('.image-editor').cropit({
+//         allowDragNDrop: false,
+//         width: 200,
+//         height: 200,
+//         type: 'image/jpeg'
+//     });
 
     var lubricator_brand = $("#lubricator_brandId");
     var lubricator = $("#lubricatorId");
@@ -79,72 +74,75 @@
 
     function init(){
         getLubracatorBrand();
-        initpicture();
+        // initpicture();
     }
 
     function getLubracatorBrand(){
+        lubricator_brand.html('<option></option>')
         $.get(base_url+"apicaraccessories/lubricatorbrand/getAllLubricatorBrand",{},
             function(data){
                 var brandData = data.data;
                 $.each( brandData, function( key, value ) {
                     lubricator_brand.append('<option value="' + value.lubricator_brandId + '">' + value.lubricator_brandName + '</option>');
                 });
+                lubricator_brand.trigger("chosen:updated");
             }
         );
     }
 
     lubricator_gear.change(function(){
         lubricator_brand.val(null);
-        lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
+        lubricator_brand.trigger('chosen:updated');
+        lubricator.val(null);
+        lubricator.trigger('chosen:updated');
+        // lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
     });
 
     lubricator_brand.change(function(){
-        lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
+        lubricator.html('<option></option>');
         $.get(base_url+"apicaraccessories/lubricator/getAllLubricator",{
             lubricator_brandId: $(this).val(),
             lubricator_gear: lubricator_gear.val()
         },function(data){
                 var lubricatorData = data.data;
                 $.each( lubricatorData, function( key, value ) {
-                    lubricator.append('<option value="' + value.lubricatorId + '">' + value.lubricatorName + " " + value.capacity + " ลิตร " + value.lubricator_number + '</option>');
+                    lubricator.append('<option value="' + value.lubricatorId + '">' + value.lubricatorName + ((value.capacity)?' | '+value.capacity+' ลิตร': '') + ((value.lubricator_number)?' | '+value.lubricator_number:'') + '</option>').trigger("chosen:updated");
                 });
+                lubricator.trigger('chosen:updated');
             }
         );
     });
-    function initpicture(){
-        $('.image-editor').cropit({
-            allowDragNDrop: false,
-            width: 200,
-            height: 200,
-            type: 'image/jpeg'
-        });
-    }
+    // function initpicture(){
+    //     $('.image-editor').cropit({
+    //         allowDragNDrop: false,
+    //         width: 200,
+    //         height: 200,
+    //         type: 'image/jpeg'
+    //     });
+    // }
 
     $("#create-lubricatordata").submit(function(){
-        createBrand();
+        tiredata();
     });
 
-    function createBrand(){
+    function tiredata(){
         event.preventDefault();
-        var isValid = form.valid();
+        var isValid =  $("#create-lubricatordata").valid();
         if(isValid){
-            var imageData = $('.image-editor').cropit('export');
-            $('.hidden-image-data').val(imageData);
-            var myform = document.getElementById("submit");
-            var formData = new FormData(myform);
-            $.ajax({
-                url: base_url+"api/Spareproduct/create",
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                success: function (data) {
-                    if(data.message == 200){
-                        showMessage(data.message,"admin/spareproduct");
-                    }else{
-                        showMessage(data.message);
-                    }
-                }
+            $.post(base_url+"apicaraccessories/lubricatordata/create", {
+                "lubricator_gear" : $("#lubricator_gear option:selected").val(),
+                "lubricator_brandId" : $("#lubricator_brandId option:selected").val(),
+                "lubricatorId" : $("#lubricatorId option:selected").val(),
+                "price": $("#price").val(),
+                "warranty_year": $("#warranty_year").val(),
+                "warranty": $("#warranty").val(),
+                "warranty_distance": $("#warranty_distance").val()
+            },function (data, textStatus, jqXHR) {
+                if(data.message == 200){
+                    showMessage(data.message,"caraccessory/lubricatordata");
+                }else{
+                    showMessage(data.message);
+                } 
             });
         }
     }

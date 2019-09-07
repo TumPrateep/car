@@ -25,77 +25,68 @@
             "processing": true,
             "serverSide": true,
             "orderable": false,
-            "pageLength": 12,
+            "pageLength": 10,
             "ajax":{
                 "url": base_url+"apicaraccessories/Lubricatordata/searchLubricatordata",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.lubricatorId = $("#lubricatorId").val();
-                    data.lubricator_brandId = $("#lubricator_brandId").val();
-                    data.lubricator_gear = $("#lubricator_gear").val();
-                    data.price = $("#price").val();
-                    // data.can_change = $("#can_change").val();
-                    data.sort = $("#sort").val();
+                
                 }
             },
+            "order": [[ 2, "asc" ]],
             "columns": [
+                null,
+                null,
+                {'data': 'lubricator_brandName'},
+                null,
+                {'data': 'machine_type'},
+                null,
                 null
             ],
             "columnDefs": [
                 {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": [0,6]
+                },
+                {
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        var html = '<div class="row">';
-
-                        $.each(data, function( index, value ) {
-                            var switchVal = "true";
-                            var active = " active";
-                            if(value.status == null){
-                                return '<small><i class="gray">ไม่พบข้อมูล</i></small>';
-                            }else if(value.status != "1"){
-                                switchVal = "false";
-                                active = "";
-                            }
-
-                            html += '<div class="col-lg-3" col-md-8>'
-                                 + '<div class="card card-header-height">'
-                                 + '<div class="text-right mg-15">'
-                                 	+ '<span class="badge badge-pill badge-'+lubricatorClass[value.lubricator_gear]+'">'+lubricatorLib[value.lubricator_gear];
-                                    if(value.lubricator_typeName != null){
-                                        html += value.lubricator_typeName;
-                                    }
-                                    html += '</span>'
-                                 + '</div>'
-                                    + '<div class="card-body text-center">'
-                                        +'<img class="card-img-top-50" src="'+picturePath+'lubricator_brand/'+value.lubricator_brandPicture+'">'
-                                        + '<img class="card-img-top img-80-p" src="'+picturePath+'lubricatorproduct/'+value.picture+'">'
-                                    + '</div>'
-                                    + '<div class="card-body">'
-                                        +'<div class="row pt-10">'
-                                            +'<div class="col-md-12 font-black"><small>'
-                                            +'<center><span class="top-margin">'+currency(value.price, {  precision: 0 }).format()+' บาท</span><br></center>'
-                                                +'ยี่ห้อ <span class="text-lebel">'+value.lubricator_brandName+'</span> <br>'
-                                                +'รุ่น <span class="text-lebel">'+value.lubricatorName+'</span><br>'
-                                                +'ความจุ <span class="text-lebel">'+value.capacity+' ลิตร</span><br>'
-                                                +'ระยะทาง <span class="text-lebel">'+currency(value.lubricator_typeSize, { precision: 0 }).format()+' กม.</span><br>'
-                                                +'รับประกัน <span class="text-lebel">'+warranty(value.warranty, value.warranty_year, value.warranty_distance)+'</span><br></small>'
-                                            +'</div>'
-                                        +'</div>'
-                                        + '<div class="text-center">'
-                                            + '<a href="'+base_url+"caraccessory/lubricatordata/update/"+value.lubricator_dataId+'"><button type="button" class="btn btn-warning btn-sm  m-b-10 m-l-5 card-button button-p-helf"><i class="ti-pencil"></i> แก้ไข</button> </a>'
-                                            + '<button type="button" class="btn btn-danger btn-sm  m-b-10 m-l-5 card-button button-p-helf" onclick="deletetiredata(\''+value.lubricator_dataId+'\', \''+value.lubricator_brandName+'/'+value.lubricatorName+'\')"><i class="ti-trash"></i> ลบ</button>'
-                                        + '</div>'
-                                    + '</div>'
-                                + '</div>'
-                            + '</div>';
-                        });
-
-                        html += '</div>';
-                        return html;
+                        return meta.row + 1;
                     }
-                }
+                },
+                {
+                    "targets": 1,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return lubricatorLib[data.lubricator_gear];
+                    }
+                },
+                {
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return  data.lubricatorName + ((data.capacity)?' <i class="fa fa-circle-o" aria-hidden="true"></i> '+data.capacity+' ลิตร': '') + ((data.lubricator_number)?' <i class="fa fa-circle-o" aria-hidden="true"></i> '+data.lubricator_number:'');
+                    }
+                },
+                {
+                    "targets": 5,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return currency(data.price, { precision: 0 }).format();
+                    }
+                },
+                {
+                    "targets": 6,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return '<button class="btn btn-danger" onclick="deleteLubricatorData('+data.lubricator_dataId+', \''+data.lubricator_brandName+' '+data.lubricatorName + ((data.capacity)?' '+data.capacity+' ลิตร': '') + ((data.lubricator_number)?' '+data.lubricator_number:'')+'\')"><i class="fa fa-trash" aria-hidden="true"></i></button>';
+                    }
+                },
+                {"className": "dt-head-center", "targets": [2,3]},
+                {"className": "dt-center", "targets": [0,4,5]}
             ]
     });
 
@@ -114,11 +105,11 @@
         $("#show-search").show(100);
     });
 
-    function deletetiredata(lubricator_dataId,data_name){
+    function deleteLubricatorData(lubricator_dataId,data_name){
         var option = {
             url: "/lubricatordata/delete?lubricator_dataId="+lubricator_dataId,
             label: "ลบข้อมูลน้ำมันเครื่อง",
-            content: "คุณต้องการลบ"+data_name+"นี้ ใช่หรือไม่",
+            content: "คุณต้องการลบ"+data_name+" นี้ ใช่หรือไม่",
             gotoUrl: "/caraccessory/lubricatordata"
         }
         fnDelete(option);

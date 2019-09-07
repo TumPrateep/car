@@ -37,7 +37,7 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "capacity" },                
+                null,                
                 null
             ],
             "columnDefs": [
@@ -45,6 +45,12 @@
                     "searchable": false,
                     "orderable": false,
                     "targets": [0]
+                },{
+                    "targets": 1,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return data.capacity+' ลิตร';
+                    }
                 },{
                     "targets": 2,
                     "data": null,

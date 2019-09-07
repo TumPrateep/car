@@ -46,7 +46,7 @@ class Lubricator extends BD_Controller {
                 $nestedData['lubricatorName'] = $post->lubricatorName;
                 // $nestedData['lubricator_numberId'] = $post->lubricator_numberId;
                 $nestedData['status'] = $post->status;
-                $nestedData['lubricatortypeFormachine'] = $post->lubricatortypeFormachine;
+                $nestedData['machine'] = $post->machine_type;
                 $nestedData['lubricator_number'] = $post->lubricator_number;
                 $nestedData['api'] = $post->api;
                 $nestedData['capacity'] = $post->capacity;

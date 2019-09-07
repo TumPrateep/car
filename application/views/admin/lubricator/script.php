@@ -41,7 +41,7 @@
                 { "data": "lubricator_number" },
                 { "data": "api" },
                 { "data": "capacity" },
-                { "data": "lubricatortypeFormachine"},
+                { "data": "machine"},
                 null,
                 null
             ],
@@ -55,7 +55,7 @@
                     "targets": 4,
                     "data": "capacity",
                     "render": function ( data, type, full, meta ) {
-                        return  data +' ลิตร';
+                        return  (data)? data +' ลิตร': '';
                     }
                 },
                 {

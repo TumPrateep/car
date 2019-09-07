@@ -26,20 +26,19 @@ class Lubricatordata extends BD_Controller {
     }
 
     function searchLubricatordata_post(){
-        $column = "lubricator_dataId";
-        $sort = "asc";
-        if($this->post('column') == 3){
-            $column = "status";
-        }else if($this->post('column') == 2){
-            $sort = "desc";
-        }else{
-            $sort = "asc";
-        }
+        $columns = array( 
+            0 => null,
+            1 => 'lubricator_gear',
+            2 => 'lubricatorName',
+            3 => 'lubricator_brandName',
+            4 => 'machine_type',
+            5 => 'price'
+        );
 
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $column;
-        $dir = $sort;
+        $order = $columns[$this->post('order')[0]['column']];
+        $dir = $this->post('order')[0]['dir'];
 
         $userId = $this->session->userdata['logged_in']['id'];
         $totalData = $this->lubricatordatas->allLubricatordata_count($userId);
@@ -63,41 +62,27 @@ class Lubricatordata extends BD_Controller {
         $data = array();
         if(!empty($posts))
         {
-            $index = 0;
-            $count = 0;
+
             foreach ($posts as $post)
             {
                 
-                $nestedData[$count]['lubricator_dataId'] = $post->lubricator_dataId;
-                $nestedData[$count]['lubricator_typeName'] = $post->lubricator_typeName;
-                $nestedData[$count]['lubricator_brandName'] = $post->lubricator_brandName;
-                $nestedData[$count]['lubricatorName'] = $post->lubricatorName;
-                $nestedData[$count]['lubricator_number'] = $post->lubricator_number;
-                $nestedData[$count]['status'] = $post->status;
-                $nestedData[$count]['price'] = $post->price;
-                $nestedData[$count]['warranty_year'] = $post->warranty_year;
-                $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
-                $nestedData[$count]['warranty'] = $post->warranty;
+                $nestedData['lubricator_dataId'] = $post->lubricator_dataId;
+                // $nestedData['lubricator_typeName'] = $post->lubricator_typeName;
+                $nestedData['lubricator_brandName'] = $post->lubricator_brandName;
+                $nestedData['lubricatorName'] = $post->lubricatorName;
+                $nestedData['lubricator_number'] = $post->lubricator_number;
+                $nestedData['status'] = $post->status;
+                $nestedData['price'] = $post->price;
+                $nestedData['warranty_year'] = $post->warranty_year;
+                $nestedData['warranty_distance'] = $post->warranty_distance;
+                $nestedData['warranty'] = $post->warranty;
                 
-                $nestedData[$count]['lubricator_gear'] = $post->lubricator_gear;
-                $nestedData[$count]['lubricator_typeSize'] = $post->lubricator_typeSize;
-                $nestedData[$count]['capacity'] = $post->capacity;
-                $nestedData[$count]['lubricator_brandPicture'] = $post->lubricator_brandPicture;
-                $nestedData[$count]['lubricator_dataPicture'] = $post->lubricator_dataPicture;
-                $option = [
-                    'lubricatorId' => $post->lubricatorId
-                ];
-                $nestedData[$count]['picture'] = getPictureLubricator($option);
+                $nestedData['lubricator_gear'] = $post->lubricator_gear;
+                // $nestedData['lubricator_typeSize'] = $post->lubricator_typeSize;
+                $nestedData['capacity'] = $post->capacity;
+                $nestedData['machine_type'] = $post->machine_type;
 
-                $data[$index] = $nestedData;
-                if($count >= 3){
-                    $count = -1;
-                    $index++;
-                    $nestedData = [];
-                }
-                
-                $count++;
-
+                $data[] = $nestedData;
             }
         }
 

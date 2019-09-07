@@ -11,10 +11,12 @@ class Lubricators extends CI_Model{
     
     function allLubricators($limit,$start,$col,$dir,$lubricator_brandId)
     {  
-        $this->db->select('lubricatortypeformachine.lubricatortypeFormachine,lubricator.lubricatorId,lubricator.lubricatorName,lubricator.capacity,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_number,lubricator.api,lubricator.capacity,lubricator.lubricator_picture'); 
+        $this->db->select('machine.machine_type,lubricator.lubricatorId,lubricator.lubricatorName,lubricator_capacity.capacity,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_number,lubricator_api.api,lubricator_capacity.capacity,lubricator.lubricator_picture'); 
         $this->db->from('lubricator');
         $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
-        $this->db->join('lubricatortypeformachine', 'lubricator.lubricatortypeFormachineId = lubricatortypeformachine.lubricatortypeFormachineId', 'left');
+        $this->db->join('machine', 'lubricator.machine_id = machine.machineId', 'left');
+        $this->db->join('lubricator_api', 'lubricator.api_id = lubricator_api.apiId', 'left');
+        $this->db->join('lubricator_capacity', 'lubricator.capacity_id = lubricator_capacity.capacity_id', 'left');
         $this->db->where("lubricator_brandId", $lubricator_brandId);
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
@@ -32,11 +34,13 @@ class Lubricators extends CI_Model{
     }
     function Lubricator_search($limit,$start,$search,$col,$dir,$status,$lubricator_brandId)
     {
-        $this->db->select('lubricatortypeformachine.lubricatortypeFormachine,lubricator.lubricatorId,lubricator.lubricatorName,lubricator.capacity,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_number,lubricator.api,lubricator.capacity,lubricator.lubricator_picture'); 
+        $this->db->select('machine.machine_type,lubricator.lubricatorId,lubricator.lubricatorName,lubricator_capacity.capacity,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_number,lubricator_api.api,lubricator_capacity.capacity,lubricator.lubricator_picture'); 
         $this->db->from('lubricator');
         $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
-        $this->db->join('lubricatortypeformachine', 'lubricator.lubricatortypeFormachineId = lubricatortypeformachine.lubricatortypeFormachineId', 'left');
-        $this->db->where("lubricator.lubricator_brandId", $lubricator_brandId);
+        $this->db->join('machine', 'lubricator.machine_id = machine.machineId', 'left');
+        $this->db->join('lubricator_api', 'lubricator.api_id = lubricator_api.apiId', 'left');
+        $this->db->join('lubricator_capacity', 'lubricator.capacity_id = lubricator_capacity.capacity_id', 'left');
+        $this->db->where("lubricator_brandId", $lubricator_brandId);
         $this->db->like('lubricator.lubricatorName',$search);
         if($status != null){
             $this->db->where("lubricator.status", $status);
@@ -137,9 +141,11 @@ class Lubricators extends CI_Model{
     }
 
     function getAllLubricator($lubricator_brandId, $lubricator_gear){
-        $this->db->select("lubricator.lubricatorId,lubricator.lubricatorName,lubricator.capacity, lubricator_number.lubricator_number");
+        $this->db->select("lubricator.lubricatorId,lubricator.lubricatorName,lubricator_capacity.capacity, lubricator_number.lubricator_number,lubricator_api.api");
         $this->db->from("lubricator");
         $this->db->join("lubricator_number", "lubricator_number.lubricator_numberId = lubricator.lubricator_numberId");
+        $this->db->join('lubricator_api', 'lubricator.api_id = lubricator_api.apiId', 'left');
+        $this->db->join('lubricator_capacity', 'lubricator.capacity_id = lubricator_capacity.capacity_id', 'left');
         $this->db->where("lubricator.lubricator_brandId", $lubricator_brandId);
         $this->db->where('lubricator.status','1');
         $this->db->where("lubricator_number.lubricator_gear", $lubricator_gear);
