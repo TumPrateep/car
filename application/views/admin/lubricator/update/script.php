@@ -12,23 +12,23 @@
         var capacity_y = $("#capacity");
         var api_i = $("#api");
 
-        // form.validate({
-        //     rules:{
-        //         spares_undercarriageId: {
-        //             required: true
-        //         },
-        //         spares_brandId: {
-        //             required: true
-        //         }
-        //     },messages:{
-        //         spares_undercarriageId: {
-        //             required: "เลือกรายการอะไหล่"
-        //         },
-        //         spares_brandId: {
-        //             required: "เลือกรายการยี่ห้ออะไหล่"
-        //         }
-        //     }
-        // });
+        form.validate({
+            rules:{
+                spares_undercarriageId: {
+                    required: true
+                },
+                spares_brandId: {
+                    required: true
+                }
+            },messages:{
+                spares_undercarriageId: {
+                    required: "เลือกรายการอะไหล่"
+                },
+                spares_brandId: {
+                    required: "เลือกรายการยี่ห้ออะไหล่"
+                }
+            }
+        });
 
         into();
 
@@ -43,10 +43,7 @@
                     var data = result.data;
                     $("#lubricatorName").val(data.lubricatorName);
                     getLubricatorNumber(data.lubricator_numberId);
-                    getAllMachine(data.machine_id);
-                    getAllLubricatorApi(data.api);
-                    getLubricatorCapacity(data.capacity);
-
+                    getAllMachine(data.machine_id, data.api, data.capacity);
                 } 
             });
         }
@@ -74,7 +71,7 @@
             getLubricatorNumber();
         });
 
-        function getAllMachine(machine_id = null){
+        function getAllMachine(machine_id = null, api = null, capacity = null){
             $.post(base_url+"api/Machine/getAllmachine",{},
             function(result){
                 var data = result.data;
@@ -83,7 +80,17 @@
                         machine.append('<option value="' + value.machineId + '">' + value.machine_type + '</option>');
                     });
 
-                    machine.val(machine_id);
+                    if(machine_id){
+                        machine.val(machine_id);
+                    }
+
+                    if(api){
+                        getAllLubricatorApi(api);
+                    }
+
+                    if(capacity){
+                        getLubricatorCapacity(capacity);
+                    }
                 }
             });
         }
@@ -95,7 +102,7 @@
 
         function getAllLubricatorApi(api = null){
             var machineId = machine.val();
-             api_i.html('<option value="">เลือกAPI</option>');
+             api_i.html('<option value="">เลือก API</option>');
             $.post(base_url+"api/Lubricatorapi/getAllapi",{
                 machineId: machineId
             },function(data){
@@ -112,7 +119,7 @@
         function getLubricatorCapacity(capacity = null){
             var machineId = machine.val();
             capacity_y.html('<option value="">เลือกความจุ</option>');
-            $.post(base_url+"api/Lubricatorcarpacity/getAllcapacity",{
+            $.post(base_url+"api/Lubricatorcapacity/getAllcapacity",{
                 machineId: machineId
             },function(data){
                     var machineData = data.data;
@@ -133,11 +140,11 @@
             event.preventDefault();
             var isValid = form.valid();
             if(isValid){
-            var data = $("#update-lubricator").serialize();
+            var data = form.serialize();
             $.post(base_url+"api/Lubricator/updatelubricator/",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Lubricator/lubricators/"+lubricator_brandId);
+                    showMessage(data.message,"admin/Lubricator/lubricators/"+$("#lubricator_brandId").val());
                 }else{
                     showMessage(data.message,);
                 }

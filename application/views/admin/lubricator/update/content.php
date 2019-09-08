@@ -21,7 +21,7 @@
                   <!-- /.card-header -->
                   <!-- form start -->
 
-                  <form id="update-lubricator" enctype="multipart/form-data" >
+                  <form id="submit" >
                   <input type="hidden" name="lubricatorId" id="lubricatorId" value="<?=$lubricatorId ?>" >
                   <input type="hidden" name="lubricator_brandId" id="lubricator_brandId" value="<?=$lubricator_brandId ?>" >
                   <div class="card-body black bg-light">
@@ -64,7 +64,7 @@
                           </div>
                       </div>
                       <div class="form-group"> 
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <button type="submit" id="submit" class="btn btn-primary">บันทึก</button>
                       </div>
                     </div>
                     
