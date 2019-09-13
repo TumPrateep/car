@@ -28,7 +28,7 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.modelName = $("#table-search").val(),
+                    data.tire_size = $("#table-search").val(),
                     data.status = $("#status").val()
                 }
             },
@@ -36,16 +36,17 @@
             "columns": [
                 null,
                 { "data": "brandName" },
-                { "data": "modelName" },
+                null,
+                null,
+                null,
                 { "data": "tire_size" },
-                { "data": "modelofcarName" },
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,6]
+                    "targets": [0,7]
                 },
                 {
                     "targets": 0,
@@ -55,7 +56,28 @@
                     }
                 },
                 {
-                    "targets": 6,
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return data.modelName;
+                    }
+                },
+                {
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return "(ปี"+" "+data.yearStart+"-"+data.yearEnd+" "+data.detail+")";
+                    }
+                },
+                {
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return data.machineSize+" "+data.modelofcarName;
+                    }
+                },
+                {
+                    "targets": 7,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/tires/updatetiresmatching/"+data.tire_matchingId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -63,7 +85,7 @@
                     }
                 },
                 {
-                    "targets": 5,
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -83,12 +105,13 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,4,3,5]},
+                {"className": "dt-center", "targets": [0,1,4,3,5,6]},
                 { "width": "10%", "targets": 0 },
                 { "width": "17%", "targets": 1 },
-                { "width": "17%", "targets": 2 },
+                { "width": "10%", "targets": 2 },
                 { "width": "17%", "targets": 3 },
-                { "width": "12%", "targets": 4 }
+                { "width": "12%", "targets": 4 },
+                { "width": "12%", "targets": 5 }
             ]	 
     });
 

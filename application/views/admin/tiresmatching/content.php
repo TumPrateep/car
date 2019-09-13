@@ -17,7 +17,7 @@
         </a>
 
         <div class="input-group float-right">
-          <input id="table-search" class="form-control float-right" placeholder="รุ่นรถ">
+          <input id="table-search" class="form-control float-right" placeholder="ขนาดยาง">
           <div class="input-group-append">
             <button class="btn btn-info inactive"><i class="fa fa-automobile"></i></button>
           </div>
@@ -41,9 +41,10 @@
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
           <th><i class="fa fa-get-pocket"></i>  ยี่ห้อรถ</th>
-          <th><i class="fa fa-automobile"></i>  รุ่นรถ</th>
+          <th><i class="fa fa-automobile"></i>  รุ่นรถ</th> 
+          <th><i class="fa fa-automobile"></i>  โฉมรถยนต์</th>
+          <th><i class="fa fa-automobile"></i>  รายละเอียดรุ่น</th>
           <th><i class="fa fa-arrows-h"></i>  ขนาดยางรถ</th>
-          <th><i class="fa fa-automobile"></i>  โมเดลรถ</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	

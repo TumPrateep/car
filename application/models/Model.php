@@ -140,6 +140,11 @@ class Model extends CI_Model{
 
     function getModelbyId($modelId){
         return $this->db->where('modelId',$modelId)->get('model')->row();
+        // $this->db->select("*");
+        // $this->db->where("modelId", $modelId);
+        // $this->db->where('brandId','1');
+        // $query = $this->db->get("model");
+        // return $query->result();
     }
 
     function delete($modelId){

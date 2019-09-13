@@ -41,9 +41,17 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label>โมเดลรถ</label> <span class="error">*</span> <label id="modelofcarId-error" class="error" for="brandId"></label>
+                            <label>โฉมรถยนต์</label> <span class="error">*</span> <label id="detail-error " class="error" for="brandId"></label>
+                            <select class="form-control" name="detail" id="detail">
+                              <option value="">เลือกโฉมรถยนต์</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>รายละเอียดรุ่น</label> <span class="error">*</span> <label id="modelofcarId-error" class="error" for="brandId"></label>
                             <select class="form-control" name="modelofcarId" id="modelofcarId">
-                              <option value="">เลือกโมเดลรถ</option>
+                              <option value="">เลือกรายละเอียดรุ่น</option>
                             </select>
                           </div>
                         </div>

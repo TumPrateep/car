@@ -129,7 +129,7 @@
                     <span class="nav-link-text">ยี่ห้อยางรถยนต์</span>
                   </a>
                 </li>
-                <!-- <li class="<?= activate_menu('tires/tiresmatching/'); ?>">
+                <li class="<?= activate_menu('tires/tiresmatching/'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/tires/tiresmatching/") ?>">
                     <i class="fa fa-arrows-h"></i>
                     <span class="nav-link-text">ขนาดยางตามยี่ห้อ</span>
@@ -140,7 +140,7 @@
                     <i class="fa fa-usd"></i>
                     <span class="nav-link-text">ราคาเปลี่ยนยาง</span>
                   </a>
-                </li> -->
+                </li>
               </ul>
             </li>
             

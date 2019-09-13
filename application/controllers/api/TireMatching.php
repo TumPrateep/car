@@ -25,13 +25,13 @@ class Tirematching extends BD_Controller {
         $dir = $this->post('order')[0]['dir'];
         $totalData = $this->tirematch->allTirematching_count();
         $totalFiltered = $totalData; 
-        $search = $this->post('modelName');
-        if(empty($this->post('modelName')) && empty($this->post('status')))
+        // $search = $this->post('tire_size');
+        if(empty($this->post('tire_size')) && empty($this->post('status')))
         {            
             $posts = $this->tirematch->allTirematching($limit,$start,$order,$dir);
         }
         else {
-            $search = $this->post('modelName');
+            $search = $this->post('tire_size');
             $status = $this->post('status');
             $posts =  $this->tirematch->tirematching_search($limit,$start,$search,$order,$dir,$status);
             $totalFiltered = $this->tirematch->tirematching_search_count($search,$status);
@@ -47,6 +47,10 @@ class Tirematching extends BD_Controller {
                 $nestedData['status'] = $post->status;
                 $nestedData['tire_matchingId'] = $post->tire_matchingId;
                 $nestedData['modelofcarName'] = $post->modelofcarName;
+                $nestedData['yearStart'] = $post->yearStart;
+                $nestedData['yearEnd'] = $post->yearEnd;   
+                $nestedData['machineSize'] = $post->machineSize;
+                $nestedData['detail'] = $post->detail;
                 $data[] = $nestedData;
             }
         }
@@ -105,7 +109,7 @@ class Tirematching extends BD_Controller {
     public function create_post(){
         $rimId = $this->post('tire_rimId');
         $brandId = $this->post('brandId');
-        $modelId = $this->post('modelId');
+        $modelId    = $this->post('detail');
         $tire_sizeId = $this->post('tire_sizeId');
         $modelofcarId = $this->post('modelofcarId');
         $userId = $this->session->userdata['logged_in']['id'];
@@ -136,7 +140,7 @@ class Tirematching extends BD_Controller {
         $tire_matchingId = $this->post('tire_matchingId');
         $rimId = $this->post('tire_rimId');
         $brandId = $this->post('brandId');
-        $modelId = $this->post('modelId');
+        $modelId = $this->post('detail');
         $modelofcarId = $this->post('modelofcarId');
         $tire_sizeId = $this->post('tire_sizeId');
         $userId = $this->session->userdata['logged_in']['id'];
