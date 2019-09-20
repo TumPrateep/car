@@ -88,95 +88,95 @@
         //      element.before(error); 
         // },
         rules: {
-          titleName_user:{
-            required: true
-          },
-          firstname_user:{
-            required: true,
-            THEN: true
-          },
-          lastname_user: {
-            required: true,
-            THEN: true
-          },
-          personalid:{
-            required: true,
-            pid: true,
-            NUMBERCHECK: true
-          },
-          exp:{
-            required: true
-          },
-          skill:{
-            required: true
-          },
-          hno_user:{
-            required: true
-          },
-          provinceId_user:{
-            required: true
-          },
-          districtId_user: {
-            required: true
-          },
-          subdistrictId_user: {
-            required: true
-          },
-          postCode_user:{
-            minlength: 5,
-            required: true
-          },
-          phone1: {
-            minlength: 9,
-            maxlength: 10,
-            required: true 
-          },
-          phone2: {
-            minlength: 9,
-            maxlength: 10 
-          },
-          garagename:{
-            required: true,
-            THEN: true
-          },
-          phone_garage:{
-            required: true
-          },
-          brandCar:{
-            required: true
-          },
-          businessRegistration:{
-            required: true,
-            minlength: 13,
-            maxlength: 13
-          },
-          timestart:{
-            required: true
-          },
-          timeend:{
-            required: true
-          },
-          hno_garage:{
-            required: true
-          },
-          provinceId_garage:{
-            required: true
-          },
-          districtId_garage:{
-            required: true
-          },
-          subdistrictId_garage:{
-            required: true
-          },
-          postCode_garage:{
-            required: true
-          },
-          latitude:{
-            required: true
-          },
-          longtitude:{
-            required: true
-          },
+          // titleName_user:{
+          //   required: true
+          // },
+          // firstname_user:{
+          //   required: true,
+          //   THEN: true
+          // },
+          // lastname_user: {
+          //   required: true,
+          //   THEN: true
+          // },
+          // personalid:{
+          //   required: true,
+          //   pid: true,
+          //   NUMBERCHECK: true
+          // },
+          // exp:{
+          //   required: true
+          // },
+          // skill:{
+          //   required: true
+          // },
+          // hno_user:{
+          //   required: true
+          // },
+          // provinceId_user:{
+          //   required: true
+          // },
+          // districtId_user: {
+          //   required: true
+          // },
+          // subdistrictId_user: {
+          //   required: true
+          // },
+          // postCode_user:{
+          //   minlength: 5,
+          //   required: true
+          // },
+          // phone1: {
+          //   minlength: 9,
+          //   maxlength: 10,
+          //   required: true 
+          // },
+          // phone2: {
+          //   minlength: 9,
+          //   maxlength: 10 
+          // },
+          // garagename:{
+          //   required: true,
+          //   THEN: true
+          // },
+          // phone_garage:{
+          //   required: true
+          // },
+          // brandCar:{
+          //   required: true
+          // },
+          // businessRegistration:{
+          //   required: true,
+          //   minlength: 13,
+          //   maxlength: 13
+          // },
+          // timestart:{
+          //   required: true
+          // },
+          // timeend:{
+          //   required: true
+          // },
+          // hno_garage:{
+          //   required: true
+          // },
+          // provinceId_garage:{
+          //   required: true
+          // },
+          // districtId_garage:{
+          //   required: true
+          // },
+          // subdistrictId_garage:{
+          //   required: true
+          // },
+          // postCode_garage:{
+          //   required: true
+          // },
+          // latitude:{
+          //   required: true
+          // },
+          // longtitude:{
+          //   required: true
+          // },
           username:{
             minlength:6,
             required:true

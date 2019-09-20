@@ -121,7 +121,7 @@
     function getLubricatorCapacity(){
         var machineId = machine.val();
         capacity.html('<option value="">เลือกความจุ</option>');
-        $.post(base_url+"api/Lubricatorcarpacity/getAllcapacity",{
+        $.post(base_url+"api/Lubricatorcapacity/getAllcapacity",{
             machineId: machineId
         },function(data){
                 var machineData = data.data;

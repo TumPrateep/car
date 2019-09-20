@@ -227,8 +227,9 @@ class Users extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
-		$data_check = $this->user->data_check_create($username,$phone_user);
-		$data_check = $this->user->data_check_garage_create($businessRegistration );
+		// $data_check = $this->user->data_check_create($username,$phone_user);
+		// $data_check = $this->user->data_check_garage_create($businessRegistration );
+		$data_check = null;
 		$data = null;
 		$data['users'] = array(
 			'id' => null,

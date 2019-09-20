@@ -109,7 +109,9 @@ class Lubricator extends BD_Controller {
             'create_by' => $userId,
             'activeFlag' => 1,
             'capacity' => $capacity,
+            'capacity_id' => $capacity,
             'api' => $api,
+            'api_id' => $api,
             'machine_id' => $machine_id
         );
 
@@ -143,7 +145,9 @@ class Lubricator extends BD_Controller {
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time()),
             'capacity' => $capacity,
+            'capacity_id' => $capacity,
             'api' => $api,
+            'api_id' => $api,
             'activeFlag' => 1,
             'machine_id' => $machine_id
         );
