@@ -26,12 +26,12 @@ class Tirematching extends BD_Controller {
         $totalData = $this->tirematch->allTirematching_count();
         $totalFiltered = $totalData; 
         // $search = $this->post('tire_size');
-        if(empty($this->post('tire_size')) && empty($this->post('status')))
+        if(empty($this->post('brandName')) && empty($this->post('status')))
         {            
             $posts = $this->tirematch->allTirematching($limit,$start,$order,$dir);
         }
         else {
-            $search = $this->post('tire_size');
+            $search = $this->post('brandName');
             $status = $this->post('status');
             $posts =  $this->tirematch->tirematching_search($limit,$start,$search,$order,$dir,$status);
             $totalFiltered = $this->tirematch->tirematching_search_count($search,$status);
@@ -44,6 +44,7 @@ class Tirematching extends BD_Controller {
                 $nestedData['brandName'] = $post->brandName;
                 $nestedData['modelName'] = $post->modelName;
                 $nestedData['tire_size'] = $post->tire_size;
+                // $nestedData['tiresize'] = $post->tiresize;
                 $nestedData['status'] = $post->status;
                 $nestedData['tire_matchingId'] = $post->tire_matchingId;
                 $nestedData['modelofcarName'] = $post->modelofcarName;
