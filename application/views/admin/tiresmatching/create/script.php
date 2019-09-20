@@ -59,15 +59,15 @@
     }
 
     function getbrand(){
-        brand.html('<option value="">เลือกยี่ห้อรถ</option>');
-        model.html('<option value="">เลือกรุ่นรถ</option>');
-        detail.html('<option value="">เลือกโฉมรถยนต์</option>');
+        brand.html('<option></option>');
+        model.html('<option></option>');
+        detail.html('<option></option>');
         modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
         $.get(base_url+"service/Carselect/getCarBrand",{},
         function(data){
             var brandData = data.data;
                 $.each( brandData, function( key, value ) {
-                    brand.append('<option data-thumbnail="images/icon-chrome.png" value="' + value.brandId + '">' + value.brandName + '</option>');
+                    brand.append('<option data-thumbnail="images/icon-chrome.png" value="' + value.brandId + '">' + value.brandName + '</option>').trigger("chosen:updated");
                 });
 
             }
@@ -80,7 +80,7 @@
 
     function getModel(){
         var brandId = brand.val();
-        model.html('<option value="">เลือกรุ่นรถ</option>');
+        model.html('<option></option>');
         detail.html('<option value="">เลือกโฉมรถยนต์</option>');
         modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
         $.get(base_url+"service/Carselect/getCarModel",{
@@ -88,7 +88,7 @@
         },function(data){
             var modelData = data.data;
                 $.each( modelData, function( key, value ) {
-                    model.append('<option value="' + value.modelName + '">' + value.modelName + '</option>');
+                    model.append('<option value="' + value.modelName + '">' + value.modelName + '</option>').trigger("chosen:updated");
                 });
 
    
@@ -174,6 +174,22 @@
             });        
         }
     }
+
+    $('.form-control-chosen-required').chosen({
+        allow_single_deselect: false,
+        width: '100%'
+    });
+
+    $('.form-control-chosen').chosen({
+        allow_single_deselect: true,
+        width: '100%'
+    });
+
+    $('.form-control-chosen-optgroup').chosen({
+        allow_single_deselect: true,
+        include_group_label_in_selected:true,
+        width: '100%'
+    });
 </script>
 
 </body>

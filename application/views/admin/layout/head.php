@@ -17,6 +17,8 @@
   <!-- Custom styles for this template-->
   <link href="<?=base_url("/public/css/sb-admin.css") ?>" rel="stylesheet">
 
+  <link href="<?=base_url("/public/themes/caraccessory/css/component-chosen.min.css") ?>" rel="stylesheet">
+
   <link href="<?=base_url("/public/css/custom.css") ?>" rel="stylesheet">
 
   <link href="<?=base_url("/public/css/loading.css") ?>" rel="stylesheet">
@@ -29,7 +31,6 @@
 
   <link href="<?=base_url("/public/css/glyphicon.min.css") ?>" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" type="text/css" href="<?=base_url("/public/css/jquery-confirm.min.css");?>">
-
 
 </head>
 

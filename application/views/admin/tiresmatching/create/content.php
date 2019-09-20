@@ -25,17 +25,13 @@
                         <div class="col-md-4">
                           <div class="form-group">
                             <label>ยี่ห้อรถ</label> <span class="error">*</span> <label id="brandId-error" class="error" for="brandId"></label>
-                            <select class="form-control" name="brandId" id="brandId">
-                              <option value="">เลือกยี่ห้อรถ</option>
-                            </select>
+                            <select class="form-control form-control-chosen-required" name="brandId" id="brandId" data-placeholder="เลือกยี่ห้อรถ" required></select>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
                             <label>รุ่นรถ</label> <span class="error">*</span> <label id="modelId-error" class="error" for="modelId"></label>
-                            <select class="form-control" name="modelId" id="modelId">
-                              <option value="">เลือกรุ่นรถ</option>
-                            </select>
+                            <select class="form-control form-control-chosen-required" name="modelId" id="modelId" data-placeholder="เลือกรุ่นรถ" required></select>
                           </div>
                         </div>
                         <div class="col-md-4">
