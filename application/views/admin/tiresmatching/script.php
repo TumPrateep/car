@@ -28,8 +28,8 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    // data.tiresize = $("#table-search").val(),
-                    data.brandName = $("#table-search").val(),
+                    data.tiresize = $("#table-search").val(),
+                    // data.brandName = $("#table-search").val(),
                     // data.tire_size = $("#table-search").val(),
                     data.status = $("#status").val()
                 }
@@ -41,7 +41,7 @@
                 null,
                 null,
                 null,
-                { "data": "tire_size" },
+                { "data": "tiresize" },
                 null
             ],
             "columnDefs": [
