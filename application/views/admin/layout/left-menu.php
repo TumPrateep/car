@@ -104,6 +104,12 @@
                     <span class="nav-link-text">ยี่ห้อน้ำมันเครื่อง</span>
                   </a>
                 </li>
+                <li class="<?= activate_menu('lubricatormatching'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/lubricatormatching") ?>">
+                    <i class="fa fa-tint"></i>
+                    <span class="nav-link-text">น้ำมันเครื่องตามข้อมูลรถ</span>
+                  </a>
+                </li>
                 <!-- <li class="<?= activate_menu('lubricatortypeformachine'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricatortypeformachine") ?>">
                     <i class="fa fa-cogs"></i>
