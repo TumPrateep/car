@@ -1,5 +1,6 @@
 <script> 
-      $("#update-lubricatormatching").validate({
+    $.validator.setDefaults({ ignore: ":hidden:not(select)" });
+     $("#update-lubricatormatching").validate({
         rules: {
             brandId: {
                 required: true
@@ -22,7 +23,7 @@
                 required: "กรุณาเลือกยี่ห้อรถ"
             },
             modelId: {
-                required: "กรุณารเลือกุ่นรถ"
+                required: "กรุณาเลือกรุ่นรถ"
             },
             lubricator_typeId: {
                 required: "กรุณาเลือกประเภทเครื่องยนต์"
@@ -40,6 +41,11 @@
     $('.form-control-chosen-required').chosen({
         allow_single_deselect: false,
         width: '100%'
+    });
+
+    $("#update-lubricatormatching").submit(function (e) { 
+        e.preventDefault();
+        $(this).valid();
     });
 </script>
 

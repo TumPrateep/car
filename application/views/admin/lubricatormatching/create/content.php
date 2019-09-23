@@ -22,25 +22,28 @@
                     <div class="card-body black bg-light">
                         <div class="row">
                             <div class="col-md-4">
-                            <div class="form-group">
-                                <label>ยี่ห้อรถ</label> <span class="error">*</span>
-                                <select class="form-control form-control-chosen-required" name="brandId" id="brandId" data-placeholder="เลือกยี่ห้อรถ">
-                                </select>                          
+                              <div class="form-group">
+                                  <label>ยี่ห้อรถ</label> <span class="error">*</span>
+                                  <select class="form-control form-control-chosen-required" name="brandId" id="brandId" data-placeholder="เลือกยี่ห้อรถ">
+                                  </select> 
+                                  <label id="brandId-error" class="error" for="brandId"></label>                         
                                 </div>
                             </div>
                             <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">รุ่นรถ</label><span class="error">*</span> 
-                                <select class="form-control form-control-chosen-required" id="modelId" name="modelId"  data-placeholder="เลือกรุ่นรถ">
-                                </select>
-                            </div>
+                              <div class="form-group">
+                                  <label>รุ่นรถ</label><span class="error">*</span> 
+                                  <select class="form-control form-control-chosen-required" id="modelId" name="modelId"  data-placeholder="เลือกรุ่นรถ">
+                                  </select>
+                                  <label id="modelId-error" class="error" for="modelId"></label>
+                              </div>
                             </div>
                             <div class="col-md-4">
-                            <div class="form-group">
-                                <label>ประเภทเครื่องยนต์</label> <span class="error">*</span>
-                                <select class="form-control form-control-chosen-required" id="lubricator_typeId" name="lubricator_typeId" data-placeholder="เลือกประเภทเครื่องยนต์">
-                                </select>
-                            </div>
+                              <div class="form-group">
+                                  <label>ประเภทเครื่องยนต์</label> <span class="error">*</span>
+                                  <select class="form-control form-control-chosen-required" id="lubricator_typeId" name="lubricator_typeId" data-placeholder="เลือกประเภทเครื่องยนต์">
+                                  </select>
+                                  <label id="lubricator_typeId-error" class="error" for="lubricator_typeId"></label>
+                              </div>
                             </div>
                         </div>
                         <div class="row">
@@ -52,6 +55,7 @@
                                     <option value="2">น้ำมันเกียร์ธรรมดา</option>
                                     <option value="3">น้ำมันเกียร์ออโต</option>
                                 </select>
+                                <label id="lubricator_gear-error" class="error" for="lubricator_gear"></label>
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -59,6 +63,7 @@
                                 <label>น้ำมันเครื่อง</label> <span class="error">*</span>
                                 <select class="form-control form-control-chosen-required" name="lubricatorId" id="lubricatorId" data-placeholder="เลือกน้ำมันเครื่อง">
                                 </select>
+                                <label id="lubricatorId-error" class="error" for="lubricatorId"></label>
                             </div>
                             </div>
                         </div>
@@ -66,7 +71,6 @@
                             <button type="submit" class="btn btn-primary">บันทึก</button>
                         </div>
                     </div>
-                
                   </form> 
                     <!-- /.card-body -->
                  

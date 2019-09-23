@@ -1,4 +1,5 @@
 <script> 
+ $.validator.setDefaults({ ignore: ":hidden:not(select)" });
       $("#create-lubricatormatching").validate({
         rules: {
             brandId: {
