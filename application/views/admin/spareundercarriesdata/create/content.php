@@ -2,7 +2,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/spareundercarriesdata/createspareundercarriesdata") ?>">ข้อมูลอะไหล่ช่วงล่างตามรถยนต์</a>
+          <a href="<?=base_url("admin/spareundercarriesdata") ?>">ข้อมูลอะไหล่ช่วงล่างตามรถยนต์</a>
         </li>
         <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
       </ol>

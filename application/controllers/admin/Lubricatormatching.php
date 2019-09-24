@@ -31,8 +31,8 @@ class Lubricatormatching extends CI_Controller {
 		$this->load->view("admin/lubricatormatching/create/script");
 	}
 
-	public function updatelubricatormatching($lubricatorId){
-		$data["lubricatorId"] = $lubricatorId;
+	public function updatelubricatormatching($lubricatormatchingId){
+		$data["lubricatormatchingId"] = $lubricatormatchingId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");

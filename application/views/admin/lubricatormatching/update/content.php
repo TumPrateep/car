@@ -2,7 +2,7 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/lubricatormatching/updatelubricatormatching") ?>">น้ำมันเครื่องตามข้อมูลรถ</a>
+        <a href="<?=base_url("admin/lubricatormatching") ?>">น้ำมันเครื่องตามข้อมูลรถ</a>
       </li>
       <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
     </ol>
@@ -19,7 +19,7 @@
                 <!-- form start -->
 
                 <form id="update-lubricatormatching" >
-                  <!-- <input type="hidden" id="lubricator_matchingId" name="lubricator_matchingId" value="<?=$lubricatormatchingId?>"> -->
+                  <input type="hidden" id="lubricator_matchingId" name="lubricator_matchingId" value="<?=$lubricatormatchingId?>">
                     <div class="card-body black bg-light">
                         <div class="row">
                             <div class="col-md-4">

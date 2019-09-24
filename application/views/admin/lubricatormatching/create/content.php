@@ -2,7 +2,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/lubricatormatching/createlubricatormatching") ?>">น้ำมันเครื่องตามข้อมูลรถ</a>
+          <a href="<?=base_url("admin/lubricatormatching") ?>">น้ำมันเครื่องตามข้อมูลรถ</a>
         </li>
         <li class="breadcrumb-item active">เพิ่มข้อมูล</li>
       </ol>

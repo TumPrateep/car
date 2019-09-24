@@ -10,24 +10,20 @@
          <!-- Example DataTables Card-->
     <div class="card-tools one">
       <form id="form-search">
-        
       <div class="form-row">
         <div class="col-lg-2">
           <a class="btn btn-primary create btn-block" href="<?=base_url("admin/lubricatormatching/createlubricatormatching") ?>">
             <i class="fa fa-plus">  สร้าง</i>
           </a>
         </div>
-
         <div class="col-lg-3">
         </div>
-
         <div class="col-lg-3">
           <div class="input-group-append">
             <input name="lubricatorId" id="table-search" class="form-control " placeholder="ชื่อน้ำมันเครื่องตามข้อมูลรถ">
             <button class="btn btn-info inactive"><i class="fa fa-rebel"></i></button>
           </div>
         </div>
-
         <div class="col-lg-2 ">
           <div class="input-group-append">
             <select class="form-control" name="status" id="status" >
@@ -39,7 +35,6 @@
               </button>
             </div>
         </div>
-        
         <div class="col-lg-2">
           <div class="input-group-append">
             <button type="submit" id="btn-search" class="btn btn-success btn-block">
@@ -49,75 +44,6 @@
         </div>
 
       </div>
-      <!-- <div class="row-md-12">
-          <div class="col-md-3">
-            <a class="btn btn-primary create" href="<?=base_url("admin/lubricatormatching/createlubricatormatching") ?>">
-              <i class="fa fa-plus">  สร้าง</i>
-            </a>
-          </div>
-
-          <div class="col-md-3">
-              <div class="input-group-append">
-                <input name="lubricatorId" id="table-search" class="form-control " placeholder="ชื่อน้ำมันเครื่องตามข้อมูลรถ">
-                <button class="btn btn-info inactive"><i class="fa fa-rebel"></i></button>
-              </div>
-          </div>
-
-
-          <div class="col-md-3">
-
-          <div class="input-group-append">
-            <select class="form-control" name="status" id="status" >
-              <option value>สถานะ</option>
-              <option value=1>เปิด</option>
-              <option value=2>ปิด</option>
-            </select>
-              <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i>
-              </button>
-            </div>
-
-          </div>
-          
-
-          <div class="col-md-3">
-            <div class="input-group-append">
-              <button type="submit" id="btn-search" class="btn btn-success">
-                <i class="fa fa-search"></i>  ค้นหา
-              </button>
-            </div>
-          </div>
-        </div>
-         -->
-
-
-
-         
-        
-          <!-- <div class="input-group input-group-sm float-right"> -->
-        <!-- <div class="input-group float-right">
-          <input name="lubricatorId" id="table-search" class="form-control float-right" placeholder="ชื่อน้ำมันเครื่องตามข้อมูลรถ">
-          <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-rebel"></i></button>
-          </div>
-
-          <select class="form-control" name="status" id="status" >
-            <option value>สถานะ</option>
-            <option value=1>เปิด</option>
-            <option value=2>ปิด</option>
-          </select>
-          
-          <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i>
-            </button>
-          </div>
-
-          <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-success">
-              <i class="fa fa-search"></i>  ค้นหา
-            </button>
-          </div>
-        </div> -->
-  
       </form>
     </div>
     
