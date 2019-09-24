@@ -1,5 +1,5 @@
 <script>
-    var table = $('#lubricator-table').DataTable({
+    var table = $('#sparepartcardata-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -18,8 +18,13 @@
                     "sLast": "หน้าสุดท้าย" // This is the link to the last page
                 }
             }
-        });
-            
+    });
+
+    
+    $('.form-control-chosen-required').chosen({
+        allow_single_deselect: false,
+        width: '100%'
+    });        
 
    
 </script>

@@ -67,6 +67,12 @@
                     <span class="nav-link-text">รูปภาพอะไหล่สินค้า</span>
                   </a>
                 </li>
+                <li class="<?= activate_menu('spareundercarriesdata'); ?>">
+                  <a class="nav-link text-white" href="<?=base_url("admin/spareundercarriesdata") ?>">
+                    <i class="fa fa-car"></i>
+                    <span class="nav-link-text">ข้อมูลอะไหล่ช่วงล่างตามรถยนต์</span>
+                  </a>
+                </li>
               </ul>
             </li>
 
