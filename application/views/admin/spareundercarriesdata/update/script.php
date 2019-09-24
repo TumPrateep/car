@@ -49,6 +49,11 @@
         },
     });
 
+
+    $('.form-control-chosen').chosen({
+            allow_single_deselect: true,
+            width: '100%'
+        });
    
     $('.form-control-chosen-required').chosen({
         allow_single_deselect: false,

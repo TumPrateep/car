@@ -59,7 +59,7 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                   <label>ปีผลิต</label> <span class="error">*</span>
-                                  <select class="form-control form-control-chosen-required" id="detail" name="detail" data-placeholder="เลือกปีผลิต">
+                                  <select class="form-control form-control-chosen" id="detail" name="detail" data-placeholder="เลือกปีผลิต" multiple>
                                   </select>
                                   <label id="detail-error" class="error" for="detail"></label>
                               </div>
@@ -69,7 +69,7 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                   <label>รายละเอียดรุ่น</label> <span class="error">*</span>
-                                  <select class="form-control form-control-chosen-required" name="modelofcarId" id="modelofcarId" data-placeholder="เลือกรายละเอียดรุ่น">
+                                  <select class="form-control form-control-chosen" name="modelofcarId" id="modelofcarId" data-placeholder="เลือกรายละเอียดรุ่น" multiple>
                                   </select>
                                   <label id="modelofcarId-error" class="error" for="modelofcarId"></label>
                               </div>

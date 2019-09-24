@@ -46,8 +46,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
+                        <div class="row p-t-20">
+                            <div class="col-xs-12 col-md-6">
                               <div class="form-group">
                                   <label>รุ่นรถ</label><span class="error">*</span> 
                                   <select class="form-control form-control-chosen-required" id="modelId" name="modelId"  data-placeholder="เลือกรุ่นรถ">
@@ -55,10 +55,10 @@
                                   <label id="modelId-error" class="error" for="modelId"></label>
                               </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-xs-12 col-md-6">
                               <div class="form-group">
                                   <label>ปีผลิต</label> <span class="error">*</span>
-                                  <select class="form-control form-control-chosen-required" id="detail" name="detail" data-placeholder="เลือกปีผลิต">
+                                  <select class="form-control form-control-chosen" id="detail" name="detail" data-placeholder="เลือกปีผลิต" multiple>
                                   </select>
                                   <label id="detail-error" class="error" for="detail"></label>
                               </div>
@@ -68,7 +68,7 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                   <label>รายละเอียดรุ่น</label> <span class="error">*</span>
-                                  <select class="form-control form-control-chosen-required" name="modelofcarId" id="modelofcarId" data-placeholder="เลือกรายละเอียดรุ่น">
+                                  <select class="form-control form-control-chosen" name="modelofcarId" id="modelofcarId" data-placeholder="เลือกรายละเอียดรุ่น" multiple>
                                   </select>
                                   <label id="modelofcarId-error" class="error" for="modelofcarId"></label>
                               </div>
