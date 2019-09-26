@@ -37,7 +37,7 @@
                         <div class="col-md-4">
                           <div class="form-group">
                             <label>โฉมรถยนต์</label> <span class="error">*</span> <label id="detail-error" class="error" for="brandId"></label>
-                            <select class="form-control form-control-chosen" name="detail" id="detail" data-placeholder="เลือกโฉมรถยนต์"></select>
+                            <select class="form-control form-control-chosen-required" name="detail" id="detail" data-placeholder="เลือกโฉมรถยนต์"></select>
                           </div>
                         </div>
                       </div>
@@ -45,19 +45,19 @@
                       <div class="col-md-4">
                           <div class="form-group">
                             <label>รายละเอียดรุ่น</label> <span class="error">*</span> <label id="modelofcarId-error" class="error" for="brandId"></label>
-                            <select class="form-control form-control-chosen-optgroup" name="modelofcarId" id="modelofcarId" data-placeholder="เลือกรายละเอียดรุ่น"></select>
+                            <select class="form-control form-control-chosen" name="modelofcarId" id="modelofcarId" data-placeholder="เลือกรายละเอียดรุ่น" multiple></select>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
                             <label>ขอบยาง</label> <span class="error">*</span> <label id="tire_rimId-error" class="error" for="tire_rimId"></label>
-                            <select class="form-control form-control-chosen" name="tire_rimId" id="tire_rimId" data-placeholder="เลือกขอบยาง"></select>
+                            <select class="form-control form-control-chosen-required" name="tire_rimId" id="tire_rimId" data-placeholder="เลือกขอบยาง"></select>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
                             <label>ขนาดยาง</label> <span class="error">*</span> <label id="tire_sizeId-error" class="error" for="tire_sizeId"></label>
-                            <select class="form-control form-control-chosen-optgroup" name="tire_sizeId" id="tire_sizeId" data-placeholder="เลือกขนาดยาง"></select>
+                            <select class="form-control form-control-chosen-optgroup" name="tire_sizeId" id="tire_sizeId" data-placeholder="เลือกขนาดยาง" multiple></select>
                           </div>
                         </div>
                       </div>
