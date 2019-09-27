@@ -114,21 +114,25 @@ class Tirematching extends BD_Controller {
         $tire_sizeId = $this->post('tire_sizeId');
         $modelofcarId = $this->post('modelofcarId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check = $this->tirematch->data_check_create($rimId,$brandId,$modelId,$tire_sizeId,$modelofcarId);
-            $data = array(
+        // $data_check = $this->tirematch->data_check_create($rimId,$brandId,$modelId,$tire_sizeId,$modelofcarId);
+
+            $data =[
+                'tire_sizeId' => $tire_sizeId,
+                'modelofcarId' => $modelofcarId
+            ];
+
+            $data['model'] = array(
                 'tire_matchingId' => null,
                 'rimId' => $rimId,
                 'brandId' => $brandId,
                 'modelId' => $modelId,
-                'tire_sizeId' => $tire_sizeId,
-                'modelofcarId' => $modelofcarId,
                 "status" => 1,
                 "create_at" => date('Y-m-d H:i:s',time()),
                 "create_by" => $userId,
                 "activeFlag" => 1
             );
             $option = [
-                "data_check" => $data_check,
+                "data_check" => null,
                 "data" => $data,
                 "model" => $this->tirematch,
                 "image_path" => null

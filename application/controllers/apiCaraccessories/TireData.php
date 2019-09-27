@@ -39,7 +39,7 @@ class Tiredata extends BD_Controller {
         
            
         // $data_check = $this->tiredatas->data_check_create($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
-        //  บันทึกยกชุด หมุนอาเรเอา
+        //  บันทึกยกชุด หมุนอาเรเอา 
         $data = [
             'tire_sizeId' => $tire_sizeId,
             'price' => $price,

@@ -1,5 +1,6 @@
 <script>
-   $("#create-tiresmatching").validate({
+    $.validator.setDefaults({ ignore: ":hidden:not(select)" });
+    $("#create-tiresmatching").validate({
         rules: {
             brandId: {
                 required: true

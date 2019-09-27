@@ -104,9 +104,36 @@ class Tirematch extends CI_Model{
     }
     
 
+    // function insert($data){
+    //     return $this->db->insert('tire_matching',$data);
+    // }
+
     function insert($data){
-        return $this->db->insert('tire_matching',$data);
+        $this->db->trans_begin();
+            foreach ($data["modelofcarId"] as $modelofcarId) {
+                foreach ($data["tire_sizeId"] as $key => $tireSizeId) {
+
+                    $tiredata = $data["model"];
+
+                    $tiredata["tire_sizeId"] = $tireSizeId;
+                    $tiredata["modelofcarId"] = $modelofcarId;
+
+                    $isTrue = $this->data_check_create($tiredata['rimId'],$tiredata['brandId'],$tireSizeId,$tiredata['modelId'],$tiredata['tire_matchingId']);
+                    if(!$isTrue){
+                        $this->db->insert('tire_matching',$tiredata);
+                    }
+                
+                }
+            }
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            return false;
+        }else{
+            $this->db->trans_commit();
+            return true;
+        }
     }
+
     function checkduplicateSameId($rimId,$brandId,$modelId,$tire_sizeId,$tire_matchingId){
         $this->db->select('tire_matching.tire_matchingId, tire_matching.status, brand.brandName, model.modelName, concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tiresize, modelofcar.modelofcarName');        
         $this->db->from('tire_matching');
