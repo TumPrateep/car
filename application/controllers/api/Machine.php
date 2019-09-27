@@ -157,7 +157,6 @@ class Machine extends BD_Controller {
     }
 
     function getAllmachine_post(){
-        
         $output['data'] = $this->machines->getAllMachine();
         $this->set_response($output, REST_Controller::HTTP_OK);
     }

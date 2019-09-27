@@ -51,9 +51,8 @@
       <table class="table table-bordered" id="lubricator-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-tint"></i>  ยี่ห้อรถ</th>
-          <th><i class="fa fa-safari"></i>  รุ่นรถ(SAE)</th>
-          <th><i class="fa fa-tint"></i>  ประเภทเครื่องยนต์</th>
+          <th><i class="fa fa-car"></i>  ข้อมูลรถยนต์</th>
+          <th><i class="fa fa-car"></i>  ประเภทเครื่องยนต์</th>
           <th><i class="fa fa-tint"></i>  ยี่ห้อน้ำมันเครื่อง</th>
           <th><i class="fa fa-tint"></i>  น้ำมันเครื่อง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>

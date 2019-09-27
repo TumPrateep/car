@@ -191,5 +191,18 @@ class Lubricator extends BD_Controller {
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
 
+    function getAlllubricator_post(){
+
+        $lubricator_gear = $this->post('lubricator_gear');
+        $lubricator_brandId = $this->post('lubricator_brandId');
+        $machine_id = $this->post('machine_id');
+
+        $data_check = $this->lubricators->getAllLubricatorBy($lubricator_brandId, $lubricator_gear, $machine_id);
+        $option = [
+            "data_check" => $data_check
+        ];
+
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
 
 }

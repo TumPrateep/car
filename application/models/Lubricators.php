@@ -194,5 +194,23 @@ class Lubricators extends CI_Model{
         return $result->row();
     }
 
+    function getAllLubricatorBy($lubricator_brandId, $lubricator_gear, $machine_id){
+        $this->db->select("lubricator.lubricatorId,lubricator.lubricatorName,lubricator_capacity.capacity, lubricator_number.lubricator_number,lubricator_api.api");
+        $this->db->from("lubricator");
+        $this->db->join("lubricator_number", "lubricator_number.lubricator_numberId = lubricator.lubricator_numberId");
+        $this->db->join('lubricator_api', 'lubricator.api_id = lubricator_api.apiId', 'left');
+        $this->db->join('lubricator_capacity', 'lubricator.capacity_id = lubricator_capacity.capacity_id', 'left');
+        $this->db->where_in("lubricator.lubricator_brandId", $lubricator_brandId);
+        $this->db->where('lubricator.status','1');
+        $this->db->where("lubricator_number.lubricator_gear", $lubricator_gear);
+
+        if($lubricator_gear == 1){
+            $this->db->where("lubricator.machine_id", $machine_id);
+        }
+        $this->db->order_by("lubricator.lubricatorName","ASC");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
 
 }
