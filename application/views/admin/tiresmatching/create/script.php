@@ -142,7 +142,7 @@
                 $.each( brandData, function( key, value ) {
                     tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>').trigger("chosen:updated");
                 });
-            }
+            } 
         );
     }
 
