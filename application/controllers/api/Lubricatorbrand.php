@@ -198,4 +198,14 @@ class Lubricatorbrand extends BD_Controller {
             $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
         }
 
+        function getAllLubricatorbrand_get(){
+            $data_check = $this->lubricatorbrands->getAllLubricatorBrand();
+            
+            $option = [
+                "data_check" => $data_check
+            ];
+    
+            $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+        }
+
 }
