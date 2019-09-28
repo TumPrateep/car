@@ -147,12 +147,12 @@
                     <span class="nav-link-text">ขนาดยางตามยี่ห้อ</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('tires/tirechange/'); ?>">
+                <!-- <li class="<?= activate_menu('tires/tirechange/'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/tires/tirechange/") ?>">
                     <i class="fa fa-usd"></i>
                     <span class="nav-link-text">ราคาเปลี่ยนยาง</span>
                   </a>
-                </li>
+                </li> -->
               </ul>
             </li>
             
