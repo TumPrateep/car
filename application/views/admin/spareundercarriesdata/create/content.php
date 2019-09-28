@@ -18,23 +18,25 @@
                   <!-- /.card-header -->
                   <!-- form start -->
 
-                  <form id="create-spareundercarriesdata" >
+                  <form id="create-sparematching" >
                     <div class="card-body black bg-light">
                         <div class="row">
                             <div class="col-md-4">
                               <div class="form-group">
-                                  <label>รายการอะไหล่ช่วงล่าง</label> <span class="error">*</span>
-                                  <select class="form-control form-control-chosen-required" name="spares_undercarriageId" id="spares_undercarriageId" data-placeholder="เลือกรายการอะไหล่ช่วงล่าง">
-                                  </select> 
-                                  <label id="spares_undercarriageId-error" class="error" for="spares_undercarriageId"></label>                         
-                                </div>
+                                  <label class="control-label">อะไหล่ช่วงล่าง</label><span class="error">*</span>
+                                  <div class="input-group input-group-default">
+                                      <select class="form-control form-control-chosen" id="spares_undercarriage_id" name="spares_undercarriage_id[]" data-placeholder="เลือกอะไหล่ช่วงล่าง" multiple required>
+                                      </select>
+                                      <label id="spares_undercarriage_id-error" class="error" for="spares_undercarriage_id"></label>
+                                  </div>
+                              </div>
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
-                                  <label>รุ่นอะไหล่</label> <span class="error">*</span>
-                                  <select class="form-control form-control-chosen-required" id="spares_modelId" name="spares_modelId" data-placeholder="เลือกรุ่นอะไหล่">
+                                  <label>ยี่ห้ออะไหล่</label> <span class="error">*</span>
+                                  <select class="form-control form-control-chosen-required" id="spares_brand_id" name="spares_brand_id" data-placeholder="เลือกรุ่นอะไหล่">
                                   </select>
-                                  <label id="spares_modelId-error" class="error" for="spares_modelId"></label>
+                                  <label id="spares_brand_id-error" class="error" for="spares_brand_id"></label>
                               </div>
                             </div>
                             <div class="col-md-4">
@@ -68,7 +70,7 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                   <label>รายละเอียดรุ่น</label> <span class="error">*</span>
-                                  <select class="form-control form-control-chosen" name="modelofcarId" id="modelofcarId" data-placeholder="เลือกรายละเอียดรุ่น" multiple>
+                                  <select class="form-control form-control-chosen" name="modelofcarId[]" id="modelofcarId" data-placeholder="เลือกรายละเอียดรุ่น" multiple>
                                   </select>
                                   <label id="modelofcarId-error" class="error" for="modelofcarId"></label>
                               </div>

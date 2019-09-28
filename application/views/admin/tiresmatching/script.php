@@ -68,7 +68,7 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return "(ปี"+" "+data.yearStart+"-"+data.yearEnd+" "+data.detail+")";
+                        return "ปี"+" "+data.yearStart+"-"+data.yearEnd+" <br>"+data.detail;
                     }
                 },
                 {
@@ -82,8 +82,7 @@
                     "targets": 7,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/tires/updatetiresmatching/"+data.tire_matchingId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteTireMatcing(\''+data.tire_matchingId+'\')"><i class="fa fa-trash"></i></button>';
+                        return '<button type="button" class="delete btn btn-danger" onclick="deleteTireMatcing(\''+data.tire_matchingId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {

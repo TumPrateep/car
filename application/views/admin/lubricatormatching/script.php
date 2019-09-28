@@ -95,6 +95,11 @@
                 {"className": "dt-head-center", "targets": [4]}
             ]	
         });
+
+        $("#form-search").submit(function(){
+            event.preventDefault();
+            table.ajax.reload();
+        })
             
         function deleteLubricatorMatching(lubricator_matching_id,lubricator_name){
             var option = {

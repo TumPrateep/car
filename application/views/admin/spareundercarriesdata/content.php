@@ -2,7 +2,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/spareundercarriesdata") ?>">น้ำมันเครื่องตามข้อมูลรถ</a>
+          <a href="<?=base_url("admin/spareundercarriesdata") ?>">อะไหล่ช่วงล่างตามข้อมูลรถ</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>        
       </ol>
@@ -60,13 +60,12 @@
     </div>
     
     <div class="table-responsive">
-      <table class="table table-bordered" id="lubricator-table" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="sparematching-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
           <th><i class="fa fa-tint"></i>  ยี่ห้อรถ</th>
           <th><i class="fa fa-tint"></i>  รายละเอียดรถ</th>
           <th><i class="fa fa-tint"></i>  รายการอะไหล่</th>
-          <th><i class="fa fa-tint"></i>  ยี่ห้ออะไหล่</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	

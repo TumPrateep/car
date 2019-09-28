@@ -34,12 +34,22 @@ class Lubricatormatchings extends CI_Model {
         }  
     }
 
+    function data_check_create($model_name, $lubricator_id){
+        $this->db->where("model_name", $model_name);
+        $this->db->where("lubricator_id", $lubricator_id);
+        $query = $this->db->get("lubricator_matching")->row();
+        return ($query == null)?false:true;
+    }
+
     function insert($data){
         $this->db->trans_begin();
             foreach ($data['lubricator_id'] as $key => $lubricator_id) {
                 $model = $data['model'];
                 $model['lubricator_id'] = $lubricator_id;
-                $this->db->insert('lubricator_matching', $model);
+                $isDuplicate = $this->data_check_create($model['model_name'], $lubricator_id);
+                if(!$isDuplicate){
+                    $this->db->insert('lubricator_matching', $model);
+                }
             }
 
         if ($this->db->trans_status() === FALSE){

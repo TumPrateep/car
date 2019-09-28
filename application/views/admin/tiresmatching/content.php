@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires/tiresmatching") ?>">ขนาดยางตามยี่ห้อรถ</a>
+          <a href="<?=base_url("admin/tires/tiresmatching") ?>">ขนาดยางตามข้อมูลรถ</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>

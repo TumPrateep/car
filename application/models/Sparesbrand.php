@@ -150,6 +150,4 @@ class Sparesbrand extends CI_Model{
         return $this->db->get("spares_brand")->row();
     }
 
-    
-
 }

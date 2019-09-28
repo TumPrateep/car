@@ -67,12 +67,6 @@
                     <span class="nav-link-text">รูปภาพอะไหล่สินค้า</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('spareundercarriesdata'); ?>">
-                  <a class="nav-link text-white" href="<?=base_url("admin/spareundercarriesdata") ?>">
-                    <i class="fa fa-car"></i>
-                    <span class="nav-link-text">ข้อมูลอะไหล่ช่วงล่างตามรถยนต์</span>
-                  </a>
-                </li>
               </ul>
             </li>
 
@@ -110,12 +104,6 @@
                     <span class="nav-link-text">ยี่ห้อน้ำมันเครื่อง</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('lubricatormatching'); ?>">
-                  <a class="nav-link text-white" href="<?=base_url("admin/lubricatormatching") ?>">
-                    <i class="fa fa-tint"></i>
-                    <span class="nav-link-text">น้ำมันเครื่องตามข้อมูลรถ</span>
-                  </a>
-                </li>
                 <!-- <li class="<?= activate_menu('lubricatortypeformachine'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/lubricatortypeformachine") ?>">
                     <i class="fa fa-cogs"></i>
@@ -141,12 +129,7 @@
                     <span class="nav-link-text">ยี่ห้อยางรถยนต์</span>
                   </a>
                 </li>
-                <li class="<?= activate_menu('tires/tiresmatching/'); ?>">
-                  <a class="nav-link text-white" href="<?=base_url("admin/tires/tiresmatching/") ?>">
-                    <i class="fa fa-arrows-h"></i>
-                    <span class="nav-link-text">ขนาดยางตามยี่ห้อ</span>
-                  </a>
-                </li>
+                
                 <!-- <li class="<?= activate_menu('tires/tirechange/'); ?>">
                   <a class="nav-link text-white" href="<?=base_url("admin/tires/tirechange/") ?>">
                     <i class="fa fa-usd"></i>
@@ -156,6 +139,33 @@
               </ul>
             </li>
             
+          </ul>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#matchingProduct" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-dollar"></i>
+            <span class="nav-link-text">ข้อมูลอะไหล่ตามข้อมูลรถยนต์</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="matchingProduct">
+            <li class="<?= activate_menu('spareundercarriesdata'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/spareundercarriesdata") ?>">
+                <i class="fa fa-car"></i>
+                <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
+              </a>
+            </li>
+            <li class="<?= activate_menu('lubricatormatching'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/lubricatormatching") ?>">
+                <i class="fa fa-tint"></i>
+                <span class="nav-link-text">น้ำมันเครื่อง</span>
+              </a>
+            </li>
+            <li class="<?= activate_menu('tires/tiresmatching/'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/tires/tiresmatching/") ?>">
+                <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                <span class="nav-link-text">ยางรถยนต์</span>
+              </a>
+            </li>
           </ul>
         </li>
 
@@ -186,7 +196,7 @@
           <!-- </ul>
         </li> -->
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#serviceCharge" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-dollar"></i>
             <span class="nav-link-text">ราคาค่าบริการ</span>
@@ -211,7 +221,7 @@
               </a>
             </li>
           </ul>
-        </li>
+        </li> -->
 
          <!-- <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/garages") ?>">
