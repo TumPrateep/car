@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Spareundercarriesdata extends CI_Controller {
+class spareundercarriesdata extends CI_Controller {
 
 	function __construct()
     {
@@ -13,20 +13,20 @@ class Spareundercarriesdata extends CI_Controller {
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/Spareundercarriesdata/content");
+		$this->load->view("admin/spareundercarriesdata/content");
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/Spareundercarriesdata/script");
+		$this->load->view("admin/spareundercarriesdata/script");
     }
 
 	public function createspareundercarriesdata(){
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/Spareundercarriesdata/create/content");
+		$this->load->view("admin/spareundercarriesdata/create/content");
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/Spareundercarriesdata/create/script");
+		$this->load->view("admin/spareundercarriesdata/create/script");
 	}
 	
 	public function updatespareundercarriesdata($sparesundercarriageDataId){
@@ -34,10 +34,10 @@ class Spareundercarriesdata extends CI_Controller {
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
-		$this->load->view("admin/Spareundercarriesdata/update/content",$data);
+		$this->load->view("admin/spareundercarriesdata/update/content",$data);
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/Spareundercarriesdata/update/script");
+		$this->load->view("admin/spareundercarriesdata/update/script");
     }
     
 }

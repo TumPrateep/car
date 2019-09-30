@@ -304,4 +304,40 @@ class Model extends CI_Model{
         return $query->result();
     }
 
+    function getMinFromModel($modelName){
+        $this->db->select("min(yearStart) as minYear");
+        $this->db->where("modelName", $modelName);
+        $this->db->where('status','1');
+        $this->db->order_by("detail","asc");
+        $query = $this->db->get("model");
+        return $query->row('minYear');
+    }
+
+    function getMaxFromModel($modelName){
+        $this->db->select("max(yearEnd) as maxYear");
+        $this->db->where("modelName", $modelName);
+        $this->db->where('status','1');
+        $this->db->order_by("detail","asc");
+        $query = $this->db->get("model");
+        return $query->row('maxYear');
+    }
+
+    function getModelOfCarByYear($brandId, $modelName, $year){
+        $this->db->from("modelofcar");
+        $this->db->join('model', 'modelofcar.modelId = model.modelId');
+        $this->db->where('modelofcar.status','1');
+        $this->db->where('modelofcar.brandId',$brandId);
+        $this->db->where("model.modelName", $modelName);
+        $this->db->group_start();
+            $this->db->group_start();
+                $this->db->where('model.yearStart <=' ,$year)
+                ->where('model.yearEnd >=' ,$year);
+            $this->db->group_end();
+                $this->db->or_where('model.yearStart' ,$year);
+            $this->db->group_end();
+        $query = $this->db->get();
+        
+        return $query->result();
+    }
+
 }

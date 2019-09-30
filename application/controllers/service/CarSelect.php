@@ -58,6 +58,15 @@ class Carselect extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
+    function getMaxMinYear_get(){
+        $modelName = $this->get("modelName");
+        $min = $this->model->getMinFromModel($modelName);
+        $max = $this->model->getMaxFromModel($modelName);
+        $output["max"] = $max;
+        $output["min"] = $min;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
     function getCarDetail_get(){
         $modelId = $this->get("modelId");
         $result = $this->modelofcars->getAllCarModelForSelect($modelId);
@@ -70,6 +79,16 @@ class Carselect extends BD_Controller {
         $result = $this->modelofcars->getAllCarModelForMultiSelect($modelId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getModelOfCarByYear_get(){
+        $brandId = $this->get("brandId");
+        $modelName = $this->get("modelName");
+        $year = $this->get("year");
+        $result = $this->model->getModelOfCarByYear($brandId, $modelName, $year);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+
     }
 
 }
