@@ -168,6 +168,14 @@
             </li>
           </ul>
         </li>
+        
+        <li class="nav-item <?= activate_menu('managepartsshop'); ?>" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link text-white" href="<?=base_url("admin/managepartsshop") ?>">
+            <i class="fa fa-vcard-o"></i>  
+            <!-- <i class="fas fa-store"></i> -->
+            <span class="nav-link-text">การจัดการร้านอะไหล่</span>
+          </a>
+        </li>
 
         <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#dataProduct" data-parent="#exampleAccordion">
