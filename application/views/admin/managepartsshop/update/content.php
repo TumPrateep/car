@@ -51,7 +51,7 @@
                                 <div class=row>
                                     <div class="col-md-2">
                                         <label class="form-label required" for="user_profile" aria-required="true">คำนำหน้า</label><span class="error">*</span>
-                                        <select class="form-control form-control-chosen-required" name="titleName_profile" id="titleName_profile" aria-required="true" aria-invalid="false">
+                                        <select class="form-control form-control-chosen-required" name="profile_titleName" id="profile_titleName" aria-required="true" aria-invalid="false">
                                             <option value="">คำนำหน้า</option>
                                             <option value="นาย">นาย</option>
                                             <option value="นาง">นาง</option>

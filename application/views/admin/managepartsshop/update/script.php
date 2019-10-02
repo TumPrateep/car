@@ -14,6 +14,9 @@
             profile_firstname: {
                 required: true
             },
+            profile_titleName: {
+                required: true
+            },
             profile_lastname: {
                 required: true
             },
@@ -32,6 +35,9 @@
             },
             shop_address: {
               required: "กรุณากรอกที่อยู่ร้าน"  
+            },
+            profile_titleName: {
+                required: "กรุณาเลือกคำนำหน้า"
             },
             profile_firstname: {
                 required: "กรุณากรอกชื่อ"
