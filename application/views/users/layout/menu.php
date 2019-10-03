@@ -9,7 +9,7 @@
 				<a href="#search" class="btn btn-main-md width-100p active" id="1">ยางรถยนต์</a>
 			</div>
 			<div class="col-6 col-lg-2">
-				<a href="<?=base_url("user/Lubicator") ?>" class="btn btn-main-md width-100p" id="2">น้ำมันเกียร์</a>
+				<a href="<?=base_url("search/lubricator") ?>" class="btn btn-main-md width-100p" id="2">น้ำมันเกียร์</a>
 			</div>
 			<div class="col-6 col-lg-2">
 				<a href="#search" class="btn btn-main-md width-100p" id="3">โช๊คอัพ</a>

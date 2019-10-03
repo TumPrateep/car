@@ -91,5 +91,7 @@ $route['comment/(\d+)'] = function ( $id)
 {
     return 'public/Menu/garagerating/'. $id;
 };
+
+$route['search/lubricator'] = 'user/Lubricator';
 // user route
 // $route['page/(:any)'] = 'main/Main/(:any)';
