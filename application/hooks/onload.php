@@ -16,7 +16,7 @@ class Onload{
             if(
                 // $controller != "auth" && 
                 $directory != "public/" && $directory != "api/" && $directory != "service/" && $controller != "main"
-                // && 
+                && $directory != "user/" // && 
                 // $directory != "apiCaraccessories/"
             ){
                 redirect("/");
