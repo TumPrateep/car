@@ -156,7 +156,7 @@
             <br>
             <div class="borderTB">
                 <div class="row row-border">
-                    <div class="pic col-md-3">
+                    <div class="pic col-md-3 text-center">
                         <img src="http://www.valvoline.co.th/media/Images/products/atf4.png">
                     </div>
                     <div class="detail col-md-3">
@@ -164,7 +164,7 @@
                         <div class="text"> เบอร์น้ำมันเครื่อง + ความจุ </div>
                         <div class="text"> ดีเซล สังเคราะห์แท้ </div>
                     </div>
-                    <div class="brand col-md-3">
+                    <div class="brand col-md-3 text-center">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/ENEOS_logo.svg">
                     </div>
                     <div class="detail col-md-3">
@@ -174,7 +174,7 @@
                     </div>
                 </div>
                 <div class="row row-border">
-                    <div class="pic col-md-3">
+                    <div class="pic col-md-3 text-center">
                         <img src="https://www.eneosthailand.com/images/img_upload/product_20181110102613.png">
                     </div>
                     <div class="detail col-md-3">
@@ -182,7 +182,7 @@
                         <div class="text"> เบอร์น้ำมันเครื่อง + ความจุ </div>
                         <div class="text"> ดีเซล สังเคราะห์แท้ </div>
                     </div>
-                    <div class="brand col-md-3">
+                    <div class="brand col-md-3 text-center">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/ENEOS_logo.svg">
                     </div>
                     <div class="detail col-md-3">
@@ -192,7 +192,7 @@
                     </div>
                 </div>
                 <div class="row row-border">
-                    <div class="pic col-md-3">
+                    <div class="pic col-md-3 text-center">
                         <img src="https://www.eneosthailand.com/images/img_upload/product_20181110101318.png">
                     </div>
                     <div class="detail col-md-3">
@@ -200,7 +200,7 @@
                         <div class="text"> เบอร์น้ำมันเครื่อง + ความจุ </div>
                         <div class="text"> ดีเซล สังเคราะห์แท้ </div>
                     </div>
-                    <div class="brand col-md-3">
+                    <div class="brand col-md-3 text-center">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/ENEOS_logo.svg">
                     </div>
                     <div class="detail col-md-3">
