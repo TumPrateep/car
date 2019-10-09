@@ -8,40 +8,39 @@
         <li class="breadcrumb-item active">ค้นหา</li>        
       </ol>
 
-      <!-- Example DataTables Card-->
-    <div class="card-tools one">
-      <form id="form-search">
-        <!-- <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/car/createbrand") ?>">
-          <i class="fa fa-plus">  สร้าง</i>
-        </a> -->
-        <!-- <div class="input-group input-group-sm float-right"> -->
-        <div class="input-group float-right">
-          <input name="car_search" id="table-search" class="form-control float-right" placeholder="ชื่อร้านอะไหล่">
-          <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
+
+          <!-- Example DataTables Card-->
+          <div class="card-tools one">
+              <form id="form-search">
+              <div class="form-row">
+                  <div class="col-md-3 offset-md-5">
+                  <div class="input-group-append">
+                      <input name="car_search" id="table-search" class="form-control float-right" placeholder="ชื่อร้านอะไหล่">
+                      <button class="btn btn-info inactive"><i class="fa fa-cogs"></i></button>
+                  </div>
+                  </div>
+                  <div class="col-md-2 ">
+                  <div class="input-group-append">
+                      <select class="form-control" name="status" id="status" >
+                      <option value>สถานะ</option>
+                      <option value=1>เปิด</option>
+                      <option value=2>ปิด</option>
+                      </select>
+                      <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i>
+                      </button>
+                      </div>
+                  </div>
+                  <div class="col-md-2">
+                  <div class="input-group-append">
+                      <button type="submit" id="btn-search" class="btn btn-success btn-block">
+                      <i class="fa fa-search"></i>  ค้นหา
+                      </button>
+                  </div>
+                  </div>
+              </div>
+              </form>
           </div>
 
-          <select class="form-control" name="status" id="status" >
-            <option value>สถานะ</option>
-            <option value=1>เปิด</option>
-            <option value=2>ปิด</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i>
-            </button>
-          </div>
-          <div class="input-group-append">
-            <button type="submit" id="btn-search" class="btn btn-success">
-              <i class="fa fa-search"></i>  ค้นหา
-            </button>
-          </div>
-
-        </div>
-      </form>
-    </div>
-
-    
     <div class="table-responsive">
       <table class="table table-bordered" id="shop-table" width="100%" cellspacing="0" style=margin-top:12>
         <thead>

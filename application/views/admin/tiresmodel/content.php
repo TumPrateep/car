@@ -1,49 +1,54 @@
-
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires/tiresbrand/") ?>">ยี่ห้อยาง</a>
-        </li>
-        <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires/tiresmodel/$tire_brandId") ?>">รุ่นยาง</a>
-        </li>
-        <li class="breadcrumb-item active">ค้นหา</li>
-      </ol>
-      
-    <div class="card-tools one">
-        <!-- <div class="input-group input-group-sm" >
-          <span id="tire_brandPicture"></span>
-          <h3 class="car-img" id="tire_brandName"></h3>
-        </div> -->
-      <form id="form-search">
-        <span class="left"></span>
-        <a class="btn btn-primary create" href="<?=base_url("admin/tires/createtiresmodel/$tire_brandId") ?>">
-          <i class="fa fa-plus">  สร้าง</i>
-        </a>
-
-        <div class="input-group float-right">
-          <input id="table-search" class="form-control float-right" placeholder="ชื่อรุ่นยางรถ">
-          <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-eercast"></i></button>
-          </div>
-          <select class="form-control" name="status" id="status" >
-            <option value>สถานะ</option>
-            <option value =1>เปิด</option>
-            <option value =2>ปิด</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i></button>
-          </div>
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-success"><i class="fa fa-search"></i>  ค้นหา</button>
-          </div>
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="<?=base_url("admin/tires/tiresbrand/") ?>">ยี่ห้อยาง</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="<?=base_url("admin/tires/tiresmodel/$tire_brandId") ?>">รุ่นยาง</a>
+    </li>
+    <li class="breadcrumb-item active">ค้นหา</li>
+  </ol>
+  
+  <!-- Example DataTables Card-->
+  <div class="card-tools one">
+    <form id="form-search">
+        <div class="form-row">
+            <div class="col-md-2">
+            <a class="btn btn-primary create btn-block" href="<?=base_url("admin/tires/createtiresmodel/$tire_brandId") ?>">
+                <i class="fa fa-plus">  สร้าง</i>
+            </a>
+            </div>
+            <div class="col-md-3 offset-md-3">
+                <div class="input-group-append">
+                    <input id="table-search" class="form-control float-right" placeholder="ชื่อรุ่นยางรถ">
+                    <button class="btn btn-info inactive"><i class="fa fa-eercast"></i></button>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+              <div class="input-group-append">
+                <select class="form-control" name="status" id="status" >
+                  <option value>สถานะ</option>
+                  <option value=1>เปิด</option>
+                  <option value=2>ปิด</option>
+                </select>
+                <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i>
+              </div>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group-append">
+                    <button type="submit" id="btn-search" class="btn btn-success btn-block">
+                    <i class="fa fa-search"></i>  ค้นหา
+                    </button>
+                </div>
+            </div>
         </div>
-      </form>
-    </div>
-    
-    <input type="hidden" id="tire_brandId" value="<?=$tire_brandId?>">
+    </form>
+  </div>
 
+  <input type="hidden" id="tire_brandId" value="<?=$tire_brandId?>">
+
+  <div class="row">
     <div class="table-responsive">
       <table class="table table-bordered" id="model-table" width="100%" cellspacing="0">
         <thead>
@@ -54,3 +59,5 @@
         </thead>	
       </table>
     </div>
+  </div>
+</div>

@@ -16,9 +16,7 @@
             <i class="fa fa-plus">  สร้าง</i>
           </a>
         </div>
-        <div class="col-lg-3">
-        </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 offset-md-3">
           <div class="input-group-append">
             <input name="lubricatorId" id="table-search" class="form-control " placeholder="ชื่อน้ำมันเครื่องตามข้อมูลรถ">
             <button class="btn btn-info inactive"><i class="fa fa-rebel"></i></button>
@@ -46,19 +44,20 @@
       </div>
       </form>
     </div>
-    
-    <div class="table-responsive">
-      <table class="table table-bordered" id="lubricator-table" width="100%" cellspacing="0">
-        <thead>
-          <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-car"></i>  ข้อมูลรถยนต์</th>
-          <th><i class="fa fa-car"></i>  ประเภทเครื่องยนต์</th>
-          <th><i class="fa fa-tint"></i>  ยี่ห้อน้ำมันเครื่อง</th>
-          <th><i class="fa fa-tint"></i>  น้ำมันเครื่อง</th>
-          <th><i class="fa fa-user-circle"></i>  สถานะ</th>
-          <th></th>
-        </thead>	
-      </table>
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="lubricator-table" width="100%" cellspacing="0">
+          <thead>
+            <th><i class="fa fa-sort"></i> ลำดับ</th>
+            <th><i class="fa fa-car"></i>  ข้อมูลรถยนต์</th>
+            <th><i class="fa fa-car"></i>  ประเภทเครื่องยนต์</th>
+            <th><i class="fa fa-tint"></i>  ยี่ห้อน้ำมันเครื่อง</th>
+            <th><i class="fa fa-tint"></i>  น้ำมันเครื่อง</th>
+            <th><i class="fa fa-user-circle"></i>  สถานะ</th>
+            <th></th>
+          </thead>	
+        </table>
+      </div>
     </div>
 
 </div>
