@@ -219,6 +219,7 @@
                         <div class="text"> Brio </div>
                         <div class="text"> 2019 </div>
                         <div class="text"> V CVT </div>
+                        <div class="text"> 175/65 R14 </div> 
                     </div>
                     <div class="brand col-md-3 text-center">
                         <img src="http://pluspng.com/img-png/bridgestone-png-it-is-not-just-its-history-but-its-offerings-that-sets-bridgestone-apart-from-the-rest-of-the-tyre-makers-its-tyres-have-stood-the-test-of-time-2263.png">
@@ -234,9 +235,11 @@
                         <img src="https://fv.lnwfile.com/_/fv/_raw/dd/1h/v4.png">
                     </div>
                     <div class="detail col-md-3">
-                        <div class="text"> ยี่ห้อน้ำมันเครื่อง + รุ่น </div>
-                        <div class="text"> เบอร์น้ำมันเครื่อง + ความจุ </div>
-                        <div class="text"> ดีเซล สังเคราะห์แท้ </div>
+                        <div class="text"> Honda </div>
+                        <div class="text"> Brio </div>
+                        <div class="text"> 2019 </div>
+                        <div class="text"> V CVT </div>
+                        <div class="text"> 175/65 R14 </div> 
                     </div>
                     <div class="brand col-md-3 text-center">
                         <img src="https://dki3ho7vp1wav.cloudfront.net/301.png?v=">
@@ -252,9 +255,11 @@
                         <img src="https://www.errolstyres.co.za/images/cmsimages/big/product_10247_3629_kumhokr26.jpg">
                     </div>
                     <div class="detail col-md-3">
-                        <div class="text"> ยี่ห้อน้ำมันเครื่อง + รุ่น </div>
-                        <div class="text"> เบอร์น้ำมันเครื่อง + ความจุ </div>
-                        <div class="text"> ดีเซล สังเคราะห์แท้ </div>
+                        <div class="text"> Honda </div>
+                        <div class="text"> Brio </div>
+                        <div class="text"> 2019 </div>
+                        <div class="text"> V CVT </div>
+                        <div class="text"> 175/65 R14 </div> 
                     </div>
                     <div class="brand col-md-3 text-center">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/KUMHO_TIRE_logo.png">
