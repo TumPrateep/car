@@ -215,10 +215,8 @@
                         <img src="https://www.tyremarket.com/images/products/EP150.jpg">
                     </div>
                     <div class="detail col-md-3">
-                        <div class="text"> Honda </div>
-                        <div class="text"> Brio </div>
-                        <div class="text"> 2019 </div>
-                        <div class="text"> V CVT </div>
+                        <div class="text"> Bridgestone </div>
+                        <div class="text"> EP150 </div>
                         <div class="text"> 175/65 R14 </div> 
                     </div>
                     <div class="brand col-md-3 text-center">
@@ -235,14 +233,12 @@
                         <img src="https://fv.lnwfile.com/_/fv/_raw/dd/1h/v4.png">
                     </div>
                     <div class="detail col-md-3">
-                        <div class="text"> Honda </div>
-                        <div class="text"> Brio </div>
-                        <div class="text"> 2019 </div>
-                        <div class="text"> V CVT </div>
-                        <div class="text"> 175/65 R14 </div> 
+                        <div class="text"> Giti </div>
+                        <div class="text"> T20 </div>
+                        <div class="text"> 175/65R14 </div> 
                     </div>
                     <div class="brand col-md-3 text-center">
-                        <img src="https://dki3ho7vp1wav.cloudfront.net/301.png?v=">
+                        <img src="https://www.carlogos.org/tire-brands-logos/Giti-Tire-logo-1920x1080.png">
                     </div>
                     <div class="detail col-md-3">
                         <div class="price"> ราคา 10000 ฿ </div>
@@ -255,11 +251,9 @@
                         <img src="https://www.errolstyres.co.za/images/cmsimages/big/product_10247_3629_kumhokr26.jpg">
                     </div>
                     <div class="detail col-md-3">
-                        <div class="text"> Honda </div>
-                        <div class="text"> Brio </div>
-                        <div class="text"> 2019 </div>
-                        <div class="text"> V CVT </div>
-                        <div class="text"> 175/65 R14 </div> 
+                        <div class="text"> Kumho </div>
+                        <div class="text"> Sense </div>
+                        <div class="text"> 175/65R14 </div> 
                     </div>
                     <div class="brand col-md-3 text-center">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/KUMHO_TIRE_logo.png">
