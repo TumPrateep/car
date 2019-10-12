@@ -21,7 +21,7 @@
 				<a href="#search" class="btn btn-main-md width-100p" id="5">ผ้าเบรค</a>
 			</div> -->
 			<div class="col-6 col-lg-2">
-				<a href="<?=base_url("search/caraccessory") ?>" class="btn btn-main-md width-100p" id="6">ค้นหาผู้ให้บริการ</a>
+				<a href="<?=base_url("search/garage") ?>" class="btn btn-main-md width-100p" id="6">ค้นหาผู้ให้บริการใกล้เคียง</a>
 			</div>
 		</div>
 	</div>

@@ -94,6 +94,6 @@ $route['comment/(\d+)'] = function ( $id)
 
 $route['search/lubricator'] = 'user/Lubricator';
 $route['search/tire'] = 'user/Tire';
-$route['search/caraccessory'] = 'user/Caraccessory';
+$route['search/garage'] = 'user/Garage';
 // user route
 // $route['page/(:any)'] = 'main/Main/(:any)';
