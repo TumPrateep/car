@@ -3,7 +3,7 @@
 class Tirematch extends CI_Model{
     
     function allTirematching_count(){  
-        $this->db->select('tire_matching.tire_matchingId, tire_matching.status, brand.brandName, model.modelName, concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tiresize, modelofcar.modelofcarName');        
+        $this->db->select('tire_matching.tire_matchingId, tire_matching.status, brand.brandName, model.modelName, concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tiresize, modelofcar.modelofcarName,model.yearStart, model.yearEnd, modelofcar.machineSize')->select("IFNULL(`detail`, '') AS `detail`", false);        
         $this->db->from('tire_matching');
         $this->db->join('model', 'tire_matching.modelId = model.modelId');
         $this->db->join('brand', 'model.brandId = brand.brandId');
@@ -11,6 +11,7 @@ class Tirematch extends CI_Model{
         $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_matching.tire_sizeId');
         $this->db->join('rim','rim.rimId = tire_matching.rimId');
         $query = $this->db->get();
+        dd($this->db->last_query());
         return $query->num_rows();  
                                                                                                                                                                                                 
     }

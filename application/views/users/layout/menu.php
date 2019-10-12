@@ -11,7 +11,7 @@
 			<div class="col-6 col-lg-2">
 				<a href="<?=base_url("search/lubricator") ?>" class="btn btn-main-md width-100p" id="2">น้ำมันเกียร์</a>
 			</div>
-			<div class="col-6 col-lg-2">
+			<!-- <div class="col-6 col-lg-2">
 				<a href="#search" class="btn btn-main-md width-100p" id="3">โช๊คอัพ</a>
 			</div>
 			<div class="col-6 col-lg-2">
@@ -19,7 +19,7 @@
 			</div>
 			<div class="col-6 col-lg-2">
 				<a href="#search" class="btn btn-main-md width-100p" id="5">ผ้าเบรค</a>
-			</div>
+			</div> -->
 			<div class="col-6 col-lg-2">
 				<a href="<?=base_url("search/garage") ?>" class="btn btn-main-md width-100p" id="6">ค้นหาผู้ให้บริการใกล้เคียง</a>
 			</div>
