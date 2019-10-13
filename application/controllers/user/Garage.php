@@ -10,9 +10,11 @@ class Garage extends CI_Controller {
 	}
 	
 	function index(){
+		$data = ['tire'=>'', 'lubricator' => '', 'garage' => 'active'];
+
 		$this->load->view('users/layout/head');
 		$this->load->view('users/layout/header');
-		$this->load->view('users/layout/menu');
+		$this->load->view('users/layout/menu', $data);
 		// $this->load->view('users/layout/banner');
 		$this->load->view('users/garage/content');
 		$this->load->view('users/layout/footer');

@@ -16,6 +16,7 @@
             $("#modelName").val(result.modelName);
             // $("#yearStart").val(result.yearStart);
             $("#detail").val(result.detail);
+            $("#car_type").val(result.car_type);
             init(result.yearStart, result.yearEnd);
         }
         

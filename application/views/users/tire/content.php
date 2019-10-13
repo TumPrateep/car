@@ -1,7 +1,19 @@
+<style>
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+    ul.pagination li a {
+        font-size: 13px;
+    }
+
+    table > thead {
+        display: none;
+    }
+</style>
 <section class="section pricing" id="search">
     <div class="container">
         <div id="boby"> 
-            <!-- id="content" show like old search tire -->
+            <!id="content" show like old search tire>
             <div class="row">
                     <div class="col-md-12">
                         <ul class="nav nav-tabs">
@@ -13,38 +25,44 @@
                             </li>
                         </ul>
                     <div class="tab-content">
+                    <input type="hidden" name="t_brandId" id="t_brandId" value="<?=$brandId?>">
+                    <input type="hidden" name="t_model_name" id="t_model_name" value="<?=$model_name?>">
+                    <input type="hidden" name="t_year" id="t_year" value="<?=$year?>">
+                    <input type="hidden" name="t_modelofcarId" id="t_modelofcarId" value="<?=$modelofcarId?>">
                         <div class="tab-pane fade show active" id="searchFromCar">
                             <br>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <select class="form-control main" id="modelofcarId">
-                                            <option>-- ยี่ห้อรถ --</option>
-                                        </select>
+                            <form id="car-search">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" id="brandId" name="brandId">
+                                                <option value="">ยี่ห้อรถ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" id="model_name" name="model_name">
+                                                <option value="">รุ่นรถ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" id="year" name="year"> 
+                                                <option value="">ปีที่ผลิต</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" id="modelofcarId" name="modelofcarId">
+                                                <option value="">รายละเอียดรุ่นรถ</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <select class="form-control main" id="modelofcarId">
-                                            <option>-- รุ่นรถ --</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <select class="form-control main" id="modelofcarId">
-                                            <option>-- ปีที่ผลิต --</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <select class="form-control main" id="modelofcarId">
-                                            <option>-- รายละเอียดรุ่นรถ --</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>    
+                            </form>    
                         </div>
                         <div class="tab-pane fade" id="searchFromTire">
                             <br>
@@ -52,28 +70,28 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <select class="form-control main" id="modelofcarId">
-                                            <option>-- ยี่ห้อยาง --</option>
+                                            <option>ยี่ห้อยาง</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <select class="form-control main" id="modelofcarId">
-                                            <option>-- รุ่นยาง --</option>
+                                            <option>รุ่นยาง</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <select class="form-control main" id="modelofcarId">
-                                            <option>-- ขอบยาง --</option>
+                                            <option>ขอบยาง</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <select class="form-control main" id="modelofcarId">
-                                            <option>-- ขนาดยาง --</option>
+                                            <option>ขนาดยาง</option>
                                         </select>
                                     </div>
                                 </div>
@@ -88,32 +106,32 @@
                     <div class="searchTag">
                         <div class="desc">
                             Honda
-                            <i class="fa fa-times-circle close" onClick=""></i>
+                            <i class="fa fa-times-circle close"></i>
                         </div>
                     </div>
                     <div class="searchTag">
                         <div class="desc">
                             Brio
-                            <i class="fa fa-times-circle close" onClick=""></i>
+                            <i class="fa fa-times-circle close"></i>
                         </div>
                     </div>
                     <div class="searchTag">
                         <div class="desc">
                             2019
-                            <i class="fa fa-times-circle close" onClick=""></i>
+                            <i class="fa fa-times-circle close"></i>
                         </div>
                     </div>
                     <div class="searchTag">
                         <div class="desc">
                             V CVT
-                            <i class="fa fa-times-circle close" onClick=""></i>
+                            <i class="fa fa-times-circle close"></i>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">    
                     <div class="justify-content-end">
                         <div class="text-right">
-                            <button class="btn btn-transparent-md"><i class="fa fa-search"></i> ค้นหา</button>
+                            <button class="btn btn-transparent-md" id="btn-car-search"><i class="fa fa-search"></i> ค้นหา</button>
                             <button class="btn btn-transparent-md"><i class="fa fa-eraser"></i>ล้างคำค้นหา</button>
                         </div>
                     </div>
@@ -124,7 +142,6 @@
                 <div class="col-md-12">
                     <div class="section-title">
                         <h3>ค้นหา<span class="alternate">ยางรถยนต์</span></h3> 
-                        <!-- id="title" show "ยางรถยนต์"-->
                     </div>
                 </div>
             </div>
@@ -144,7 +161,18 @@
                 </div>
             </div>
             <br>
+
             <div class="borderTB">
+<<<<<<< HEAD
+                <table class="" id="tire-table" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>  
+=======
                 <div class="row row-border">
                     <div class="pic col-md-3 text-center">
                         <img src="https://www.tyremarket.com/images/products/EP150.jpg">
@@ -200,6 +228,7 @@
                     </div>
                 </div>
             </div>    
+>>>>>>> 1f625a35227eeaf0704552f146f3f3d41e91d2be
         </div>
     </div>            
 </section>

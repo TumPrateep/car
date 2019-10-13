@@ -108,9 +108,11 @@ class Car extends BD_Controller {
     function searchModel_post(){
         $columns = array( 
             0 =>null, 
-            1 =>'modelName',
-            2 => 'yearStart',
-            3 => 'status'
+            1 => 'modelName',
+            2 => 'detail',
+            3 => 'yearStart',
+            4 => 'car_type',
+            5 => 'status'
         );
 
         $limit = $this->post('length');
@@ -150,6 +152,7 @@ class Car extends BD_Controller {
                 $nestedData['yearEnd'] = $post->yearEnd;
                 $nestedData['status'] = $post->status;
                 $nestedData['detail'] = $post->detail;
+                $nestedData['car_type'] = $post->car_type;
                 $data[] = $nestedData;
 
             }
@@ -216,6 +219,7 @@ class Car extends BD_Controller {
         $yearStart = $this->post('yearStart');
         $yearEnd = $this->post('yearEnd');
         $detail = $this->post("detail");
+        $car_type = $this->post("car_type");
         $userId = $this->session->userdata['logged_in']['id'];
         
         if($yearEnd == 0){
@@ -233,7 +237,8 @@ class Car extends BD_Controller {
             'status' => 1,
             'update_at' => date('Y-m-d H:i:s',time()),
             'update_by' => $userId,
-            'detail' => $detail
+            'detail' => $detail,
+            'car_type' => $car_type
         );
 
         $option = [

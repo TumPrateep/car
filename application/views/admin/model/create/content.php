@@ -53,6 +53,17 @@
                           </div>
                         </div>
                       </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>ประเภทรถยนต์</label>
+                            <select class="form-control" name="car_type" id="car_type">
+                              <option value="1">รถแก๊ง</option>
+                              <option value="2">รถกระบะ</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary">บันทึก</button>
                       </div>

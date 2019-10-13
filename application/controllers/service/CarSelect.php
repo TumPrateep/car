@@ -62,8 +62,10 @@ class Carselect extends BD_Controller {
         $modelName = $this->get("modelName");
         $min = $this->model->getMinFromModel($modelName);
         $max = $this->model->getMaxFromModel($modelName);
+        $car_type = $this->model->getCarTypeFromModel($modelName);
         $output["max"] = $max;
         $output["min"] = $min;
+        $output["car_type"] = $car_type;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
@@ -81,11 +83,28 @@ class Carselect extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
+    function getModelByYear_get(){
+        $brandId = $this->get("brandId");
+        $modelName = $this->get("modelName");
+        $year = $this->get("year");
+        $result = $this->model->getModelByYear($brandId, $modelName, $year);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
     function getModelOfCarByYear_get(){
         $brandId = $this->get("brandId");
         $modelName = $this->get("modelName");
         $year = $this->get("year");
         $result = $this->model->getModelOfCarByYear($brandId, $modelName, $year);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+
+    }
+
+    function getModelOfCarByModelId_get(){
+        $modelId = $this->get("modelId");
+        $result = $this->modelofcars->getAllCarModelForSelect($modelId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
 
