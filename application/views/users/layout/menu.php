@@ -6,10 +6,10 @@
 	<div class="container-fluid">
 		<div class="row justify-content-md-center">
 			<div class="col-6 col-lg-2">
-				<a href="<?=base_url("search/tire") ?>" class="btn btn-main-md width-100p active" id="1">ยางรถยนต์</a>
+				<a href="<?=base_url("search/tire") ?>" class="btn btn-main-md width-100p <?=$tire?>" id="1">ยางรถยนต์</a>
 			</div>
 			<div class="col-6 col-lg-2">
-				<a href="<?=base_url("search/lubricator") ?>" class="btn btn-main-md width-100p" id="2">น้ำมันเกียร์</a>
+				<a href="<?=base_url("search/lubricator") ?>" class="btn btn-main-md width-100p <?=$lubricator?>" id="2">น้ำมันเกียร์</a>
 			</div>
 			<!-- <div class="col-6 col-lg-2">
 				<a href="#search" class="btn btn-main-md width-100p" id="3">โช๊คอัพ</a>
@@ -21,7 +21,7 @@
 				<a href="#search" class="btn btn-main-md width-100p" id="5">ผ้าเบรค</a>
 			</div> -->
 			<div class="col-6 col-lg-2">
-				<a href="<?=base_url("search/garage") ?>" class="btn btn-main-md width-100p" id="6">ค้นหาผู้ให้บริการใกล้เคียง</a>
+				<a href="<?=base_url("search/garage") ?>" class="btn btn-main-md width-100p <?=$garage?>" id="6">ค้นหาผู้ให้บริการ</a>
 			</div>
 		</div>
 	</div>

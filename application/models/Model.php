@@ -322,6 +322,29 @@ class Model extends CI_Model{
         return $query->row('maxYear');
     }
 
+    function getCarTypeFromModel($modelName){
+        $this->db->where("modelName", $modelName);
+        $query = $this->db->get("model");
+        return $query->row('car_type');
+    }
+
+    function getModelByYear($brandId, $modelName, $year){
+        $this->db->from("model");
+        $this->db->where('model.status','1');
+        $this->db->where('model.brandId',$brandId);
+        $this->db->where("model.modelName", $modelName);
+        $this->db->group_start();
+            $this->db->group_start();
+                $this->db->where('model.yearStart <=' ,$year)
+                ->where('model.yearEnd >=' ,$year);
+            $this->db->group_end();
+                $this->db->or_where('model.yearStart' ,$year);
+            $this->db->group_end();
+        $query = $this->db->get();
+        
+        return $query->result();
+    }
+
     function getModelOfCarByYear($brandId, $modelName, $year){
         $this->db->from("modelofcar");
         $this->db->join('model', 'modelofcar.modelId = model.modelId');
@@ -335,6 +358,9 @@ class Model extends CI_Model{
             $this->db->group_end();
                 $this->db->or_where('model.yearStart' ,$year);
             $this->db->group_end();
+
+        $this->db->order_by('modelofcar.machineSize', 'ASC');
+        $this->db->order_by('modelofcar.modelofcarName', 'ASC');
         $query = $this->db->get();
         
         return $query->result();

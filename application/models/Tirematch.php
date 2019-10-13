@@ -11,7 +11,7 @@ class Tirematch extends CI_Model{
         $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_matching.tire_sizeId');
         $this->db->join('rim','rim.rimId = tire_matching.rimId');
         $query = $this->db->get();
-        dd($this->db->last_query());
+        // dd($this->db->last_query());
         return $query->num_rows();  
                                                                                                                                                                                                 
     }
@@ -254,5 +254,12 @@ class Tirematch extends CI_Model{
         $query = $this->db->get("tire_matching");
         return $query->result();
 
+    }
+
+    function getTireSizeByModelOfCarId($modelofcarId){
+        $this->db->from('tire_matching');
+        $this->db->where('modelofcarId', $modelofcarId);
+        $query = $this->db->get();
+        return $query->result();
     }
 }

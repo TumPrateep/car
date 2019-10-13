@@ -7,7 +7,10 @@
   <script src="<?=base_url('public/')?>plugins/bootstrap/js/bootstrap.min.js"></script>
   <!-- Smooth Scroll -->
   <script src="<?=base_url('public/')?>plugins/smoothscroll/SmoothScroll.min.js"></script>  
-  <!-- Custom Script -->
-  <script src="<?=base_url('public/')?>js/page.js"></script>
+  
+  <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
+
+  <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
+  <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
   
   <script>var base_url = '<?=base_url()?>'</script>

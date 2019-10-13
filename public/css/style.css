@@ -3620,7 +3620,7 @@ span.main>.click {
 
 div.borderTB {
     border-top: 3px solid #ded9d9;
-    border-bottom: 2px solid #ded9d9;
+    /* border-bottom: 2px solid #ded9d9; */
 }
 
 div.row-border {
@@ -3687,4 +3687,9 @@ span.text {
 
 select.sortby {
     width: auto;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
 }

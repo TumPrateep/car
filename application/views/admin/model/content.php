@@ -73,6 +73,7 @@
           <th><i class="fa fa-car"></i>  ชื่อรุ่น</th>
           <th><i class="fa fa-car"></i>  รายละเอียด</th>
           <th><i class="fa fa-calendar-check-o"></i>  ปีที่ผลิต</th>
+          <th><i class="fa fa-car"></i> ประเภทรถ</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>
         </thead>	

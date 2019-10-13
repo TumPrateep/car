@@ -64,13 +64,14 @@
                 { "data": "detail"},
                 null,
                 null,
+                null,
                 null
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,5]
+                    "targets": [0,6]
                 },{
                     "targets": 3,
                     "data": null,
@@ -81,7 +82,7 @@
                         return data.yearStart;
                     }
                 },{
-                    "targets": 5,
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/car/carmodel/"+data.brandId+"/"+data.modelId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
@@ -98,6 +99,13 @@
                 },
                 {
                     "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return (data.car_type == 1)? 'รถแก๊ง' : 'รถกระบะ';
+                    }
+                },
+                {
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -117,7 +125,7 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [1]},
-                {"className": "dt-center", "targets": [0,1,2,3,4,5]},
+                {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 2 }
             ]	 

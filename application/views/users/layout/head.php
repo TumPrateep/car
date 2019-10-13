@@ -16,6 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- PLUGINS CSS STYLE -->
   <!-- Bootstrap -->
   <link href="<?=base_url('public/')?>plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.css") ?>" rel="stylesheet">
   <!-- Themefisher Font -->  
   <!-- <link href="<?=base_url('public/')?>plugins/themefisher-font/style.css" rel="stylesheet"> -->
   <!-- Font Awesome -->
