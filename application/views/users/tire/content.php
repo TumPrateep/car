@@ -163,7 +163,6 @@
             <br>
 
             <div class="borderTB">
-<<<<<<< HEAD
                 <table class="" id="tire-table" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -172,63 +171,6 @@
                     </thead>
                 </table>
             </div>  
-=======
-                <div class="row row-border">
-                    <div class="pic col-md-3 text-center">
-                        <img src="https://www.tyremarket.com/images/products/EP150.jpg">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="text"> Bridgestone </div>
-                        <div class="text"> EP150 </div>
-                        <div class="text"> 175/65 R14 </div> 
-                    </div>
-                    <div class="brand col-md-3 text-center">
-                        <img src="http://pluspng.com/img-png/bridgestone-png-it-is-not-just-its-history-but-its-offerings-that-sets-bridgestone-apart-from-the-rest-of-the-tyre-makers-its-tyres-have-stood-the-test-of-time-2263.png">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="price"> ราคา 5000 ฿ </div>
-                        <br>
-                        <button class="btn btn-transparent-md"><i class="fa fa-shopping-cart"></i>สั่งซื้อ</button>
-                    </div>
-                </div>
-                <div class="row row-border">
-                    <div class="pic col-md-3 text-center">
-                        <img src="https://fv.lnwfile.com/_/fv/_raw/dd/1h/v4.png">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="text"> Giti </div>
-                        <div class="text"> T20 </div>
-                        <div class="text"> 175/65R14 </div> 
-                    </div>
-                    <div class="brand col-md-3 text-center">
-                        <img src="https://www.carlogos.org/tire-brands-logos/Giti-Tire-logo-1920x1080.png">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="price"> ราคา 10000 ฿ </div>
-                        <br>
-                        <button class="btn btn-transparent-md"><i class="fa fa-shopping-cart"></i>สั่งซื้อ</button>
-                    </div>
-                </div>
-                <div class="row row-border">
-                    <div class="pic col-md-3 text-center">
-                        <img src="https://www.errolstyres.co.za/images/cmsimages/big/product_10247_3629_kumhokr26.jpg">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="text"> Kumho </div>
-                        <div class="text"> Sense </div>
-                        <div class="text"> 175/65R14 </div> 
-                    </div>
-                    <div class="brand col-md-3 text-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/KUMHO_TIRE_logo.png">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="price"> ราคา 10500 ฿ </div>
-                        <br>
-                        <button class="btn btn-transparent-md"><i class="fa fa-shopping-cart"></i>สั่งซื้อ</button>
-                    </div>
-                </div>
-            </div>    
->>>>>>> 1f625a35227eeaf0704552f146f3f3d41e91d2be
         </div>
     </div>            
 </section>

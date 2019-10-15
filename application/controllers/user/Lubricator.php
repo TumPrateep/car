@@ -10,9 +10,10 @@ class Lubricator extends CI_Controller {
 	}
 	
 	function index(){
+		$data = ['tire'=>'', 'lubricator' => 'active', 'garage' => ''];
 		$this->load->view('users/layout/head');
 		$this->load->view('users/layout/header');
-		$this->load->view('users/layout/menu');
+		$this->load->view('users/layout/menu', $data);
 		// $this->load->view('users/layout/banner');
 		$this->load->view('users/lubricator/content');
 		$this->load->view('users/layout/footer');

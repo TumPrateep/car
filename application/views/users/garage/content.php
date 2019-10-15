@@ -194,7 +194,7 @@
                                     
                                 <br>
                                 <b>Rating: </b> 
-                                    <img src = "../../../../public/">
+                                    <i class="fa fa-star star"></i>
                                     <i class="fa fa-star star"></i>
                                     <i class="fa fa-star star"></i>
                                     <i class="fa fa-star"></i>
