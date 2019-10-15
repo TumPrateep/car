@@ -97,5 +97,6 @@ $route['search/tire'] = 'user/search/tire';
 $route['search/garage'] = 'user/Garage';
 
 $route['products/tire'] = 'user/tire';
+$route['products/lubricator'] = 'user/lubricator';
 // user route
 // $route['page/(:any)'] = 'main/Main/(:any)';
