@@ -1,4 +1,5 @@
 <script> 
+    $(document).ready(function () {
     //  $.validator.setDefaults({ ignore: ":hidden:not(select)" });
      $("#update-partsshop").validate({
         rules: {
@@ -52,11 +53,31 @@
         },
     });
 
+    into();
+
+    function into(){
+        $.post(base_url+"api/Managepartsshop/getUpdate",{
+            "car_accessoriesId" : car_accessoriesId
+        },function(data){
+            if(data.message!=200){
+                showMessage(data.message,"admin/managepartsshop");
+            }
+            if(data.message == 200){
+                result = data.data;
+                $("#car_accessoriesName").val(result.car_accessoriesName);
+                $("#car_accessories_phone").val(result.phone);
+                $("#profile_firstname").val(result.name);
+            }
+            
+        });
+    }
 
     $("#update-partsshop").submit(function (e) { 
         e.preventDefault();
         $(this).valid();
     });
+
+});
 </script>
 
 </body>
