@@ -163,16 +163,6 @@
             <br>
 
             <div class="borderTB">
-<<<<<<< HEAD
-                <table class="" id="tire-table" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>  
-=======
                 <div class="row row-border">
                     <div class="pic col-md-3 text-center">
                         <img src="https://www.tyremarket.com/images/products/EP150.jpg">
@@ -228,7 +218,6 @@
                     </div>
                 </div>
             </div>    
->>>>>>> 1f625a35227eeaf0704552f146f3f3d41e91d2be
-        </div>
+------------------        </div>
     </div>            
 </section>
