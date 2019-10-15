@@ -71,6 +71,11 @@
     div.card-block button{
         margin-bottom: 25px; 
     }
+    p.card-text img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
 </style>
 
 <section class="section pricing" id="search">
@@ -155,6 +160,11 @@
                                 <br>
                                 <b>เบอร์โทรติดต่อ: </b> 075-369852
                                 <br>
+                                <b>การให้บริการ: </b> 
+                                        <img src="<?=base_url('public/images/icon/wifi.png')?>" title="ไวไฟฟรี">
+                                        <img src="<?=base_url('public/images/icon/airconditioner.png')?>" title="มีเครื่องปรับอากาศ">
+                                        <img src="<?=base_url('public/images/icon/toilet.png')?>" title="มีสุขา">
+                                <br>
                                 <b>Rating: </b> 
                                     <i class="fa fa-star star"></i>
                                     <i class="fa fa-star star"></i>
@@ -171,11 +181,13 @@
                     <div class="card flex-row flex-wrap">
                         <div class="card-header col-md-5">
                             <img src="https://autoshops-i85mediainc.netdna-ssl.com/images/shops/0e560e/photos/auto-repair-san-diego-ca-1462478191.large.jpg">
+                            
+                            
                         </div>
                         <div class="card-block col-md-7">
                             <br>
                             <h4 class="card-title">ร้าน CarJaidee</h4>
-                            <p class="card-text ">
+                            <p class="card-text">
                                 <b>ชื่อ: </b> ร้าน CarJaidee 
                                 <br>
                                 <b>สถานที่: </b> ใกล้มหาวิทยาลัยวลัยลักษณ์
@@ -189,9 +201,9 @@
                                 <b>เบอร์โทรติดต่อ: </b> 075-369852
                                 <br>
                                 <b>การให้บริการ: </b> 
-                                    <i class="fa fa-wifi"></i>
-                                    <i class="fa fa-snowflake-o"></i>
-                                    
+                                <img src="<?=base_url('public/images/icon/wifi.png')?>" title="ไวไฟฟรี">
+                                        <img src="<?=base_url('public/images/icon/airconditioner.png')?>" title="มีเครื่องปรับอากาศ">
+                                        <img src="<?=base_url('public/images/icon/toilet.png')?>" title="มีสุขา">
                                 <br>
                                 <b>Rating: </b> 
                                     <i class="fa fa-star star"></i>
