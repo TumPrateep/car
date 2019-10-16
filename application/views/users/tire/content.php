@@ -18,18 +18,24 @@
                     <div class="col-md-12">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" data-target="#searchFromCar" data-toggle="tab" href="#searchFromCar">ค้นหาจากข้อมูลรถ</a>
+                                <a class="nav-link <?=$cardata?>" data-target="#searchFromCar" data-toggle="tab" href="#searchFromCar">ค้นหาจากข้อมูลรถ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-target="#searchFromTire" data-toggle="tab" href="#searchFromTire">ค้นหาจากข้อมูลยาง</a>
+                                <a class="nav-link <?=$tiredata?>" data-target="#searchFromTire" data-toggle="tab" href="#searchFromTire">ค้นหาจากข้อมูลยาง</a>
                             </li>
                         </ul>
                     <div class="tab-content">
-                    <input type="hidden" name="t_brandId" id="t_brandId" value="<?=$brandId?>">
-                    <input type="hidden" name="t_model_name" id="t_model_name" value="<?=$model_name?>">
-                    <input type="hidden" name="t_year" id="t_year" value="<?=$year?>">
-                    <input type="hidden" name="t_modelofcarId" id="t_modelofcarId" value="<?=$modelofcarId?>">
-                        <div class="tab-pane fade show active" id="searchFromCar">
+                        <input type="hidden" name="t_brandId" id="t_brandId" value="<?=$brandId?>">
+                        <input type="hidden" name="t_model_name" id="t_model_name" value="<?=$model_name?>">
+                        <input type="hidden" name="t_year" id="t_year" value="<?=$year?>">
+                        <input type="hidden" name="t_modelofcarId" id="t_modelofcarId" value="<?=$modelofcarId?>">
+
+                        <input type="hidden" name="t_tire_brandId" id="t_tire_brandId" value="<?=$tire_brandId?>">
+                        <input type="hidden" name="t_tire_modelId" id="t_tire_modelId" value="<?=$tire_modelId?>">
+                        <input type="hidden" name="t_rimId" id="t_rimId" value="<?=$rimId?>">
+                        <input type="hidden" name="t_tire_sizeId" id="t_tire_sizeId" value="<?=$tire_sizeId?>">
+
+                        <div class="tab-pane fade <?=(!empty($cardata)?'show active':'')?>" id="searchFromCar">
                             <br>
                             <form id="car-search">
                                 <div class="row">
@@ -64,38 +70,40 @@
                                 </div>
                             </form>    
                         </div>
-                        <div class="tab-pane fade" id="searchFromTire">
+                        <div class="tab-pane fade  <?=(!empty($tiredata)?'show active':'')?>" id="searchFromTire">
                             <br>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <select class="form-control main" id="modelofcarId">
-                                            <option>ยี่ห้อยาง</option>
-                                        </select>
+                            <form id="tire-search">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" name="tire_brandId" id="tire_brandId">
+                                                <option>ยี่ห้อยาง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" name="tire_modelId" id="tire_modelId">
+                                                <option>รุ่นยาง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" name="rimId" id="rimId">
+                                                <option>ขอบยาง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" name="tire_sizeId" id="tire_sizeId">
+                                                <option>ขนาดยาง</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <select class="form-control main" id="modelofcarId">
-                                            <option>รุ่นยาง</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <select class="form-control main" id="modelofcarId">
-                                            <option>ขอบยาง</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <select class="form-control main" id="modelofcarId">
-                                            <option>ขนาดยาง</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>    
+                            </form>    
                         </div>
                     </div>
                 </div>
@@ -103,36 +111,13 @@
             <br>
             <div class="row">
                 <div class="col-md-8">
-                    <div class="searchTag">
-                        <div class="desc">
-                            Honda
-                            <i class="fa fa-times-circle close"></i>
-                        </div>
-                    </div>
-                    <div class="searchTag">
-                        <div class="desc">
-                            Brio
-                            <i class="fa fa-times-circle close"></i>
-                        </div>
-                    </div>
-                    <div class="searchTag">
-                        <div class="desc">
-                            2019
-                            <i class="fa fa-times-circle close"></i>
-                        </div>
-                    </div>
-                    <div class="searchTag">
-                        <div class="desc">
-                            V CVT
-                            <i class="fa fa-times-circle close"></i>
-                        </div>
-                    </div>
+                    <div id="tag-show"></div>
                 </div>
                 <div class="col-md-4">    
                     <div class="justify-content-end">
                         <div class="text-right">
                             <button class="btn btn-transparent-md" id="btn-car-search"><i class="fa fa-search"></i> ค้นหา</button>
-                            <button class="btn btn-transparent-md"><i class="fa fa-eraser"></i>ล้างคำค้นหา</button>
+                            <button class="btn btn-transparent-md" id="btn-clear"><i class="fa fa-eraser"></i>ล้างคำค้นหา</button>
                         </div>
                     </div>
                 </div>

@@ -63,31 +63,33 @@
                             <div class="title">
                                 <h6>ค้นหาจากขนาดยาง</h6></div>
                         </div>
-                        <div class="pricing-body">
-                            <div class="form-group">
-                                <select class="form-control main">
-                                    <option>ยี่ห้อยาง</option>
-                                </select>
+                        <form id="tire-search">
+                            <div class="pricing-body">
+                                <div class="form-group">
+                                    <select class="form-control main" name="tire_brandId" id="tire_brandId">
+                                        <option>ยี่ห้อยาง</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control main" name="tire_modelId" id="tire_modelId">
+                                        <option>รุ่นยาง</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control main" name="rimId" id="rimId">
+                                        <option>ขอบยาง</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control main" name="tire_sizeId" id="tire_sizeId">
+                                        <option>ขนาดยาง</option>
+                                    </select>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-transparent-md"><i class="fa fa-search"></i> ค้นหา</button>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <select class="form-control main">
-                                    <option>รุ่นยาง</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control main">
-                                    <option>ขอบยาง</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control main" id="select-ticket">
-                                    <option>ขนาดยาง</option>
-                                </select>
-                            </div>
-                            <div class="text-center">
-                                <button class="btn btn-transparent-md"><i class="fa fa-search"></i> ค้นหา</button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
