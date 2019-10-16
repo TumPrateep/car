@@ -17,6 +17,13 @@
             model.val('');
             year.val('');
             modelofcar.val('');
+
+            $('#t_brandId').val('');
+            $('#t_model_name').val('');
+            $('#t_year').val('');
+            $('#t_modelofcarId').val('');
+
+            clearTag();
         }
 
         function clearTireData(){
@@ -24,6 +31,17 @@
             tireModel.val('');
             tire_rim.val('');
             tire_size.val('');
+
+            $('#t_tire_brandId').val('');
+            $('#t_tire_modelId').val('');
+            $('#t_rimId').val('');
+            $('#t_tire_sizeId').val('');
+
+            clearTag();
+        }
+
+        function clearTag(){
+            $("#tag-show").html('');
         }
 
         $("#btn-clear").click(function(){
@@ -214,7 +232,13 @@
         }
         
         function loadDataTable(){
-            showTag($("#car-search"));
+            var target = $('.nav-link.active').attr("data-target");
+            if(target == '#searchFromTire'){
+                showTag($("#tire-search"));
+            }else{
+                showTag($("#car-search"));
+            }
+            
             table = $('#tire-table').DataTable({
                 "language": {
                         "aria": {
@@ -325,10 +349,10 @@
             $.each(arrForm, function (i, v) { 
                 console.log(v.name);
                 html = '<div class="searchTag">'
-                        + '<div class="desc">'
+                        + '<div class="desc"> ' 
                             + $('#'+v.name+' :selected').text()
-                            + '<i class="fa fa-times-circle close"></i>'
-                        + '</div>'
+                            // + '<i class="fa fa-times-circle close"></i>'
+                        + ' </div>'
                     + '</div>';
                 $("#tag-show").append(html);
             });

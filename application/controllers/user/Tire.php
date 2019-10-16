@@ -29,6 +29,7 @@ class Tire extends CI_Controller {
 		$tire_brandId = $this->input->get('tire_brandId');
 		if(!empty($tire_brandId)){
 			$data['tiredata'] = 'active';
+			$data['cardata'] = '';
 			$data['tire_brandId'] = $this->input->get('tire_brandId');
 			$data['tire_modelId'] = $this->input->get('tire_modelId');
 			$data['rimId'] = $this->input->get('rimId');
