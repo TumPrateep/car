@@ -186,7 +186,7 @@
                 subdistrictDropdownGarage.val(subdistrictId);
                 }
             );
-            }
+        }
 
         var letters = /^[ก-๙a-zA-Z]+$/;  
         

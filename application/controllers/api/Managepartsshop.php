@@ -73,74 +73,62 @@ class Managepartsshop extends BD_Controller {
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
 
-    function deleteSparesPictire_get(){
-        $spare_pictire_id = $this->get('spare_pictire_id');
-        $config['upload_path'] = 'public/image/spare_picture/';
+    // function deleteSparesPictire_get(){
+    //     $spare_pictire_id = $this->get('spare_pictire_id');
+    //     $config['upload_path'] = 'public/image/spare_picture/';
 
-        $data_check = $this->sparespictures->getSparepictireById($spare_pictire_id);
+    //     $data_check = $this->sparespictures->getSparepictireById($spare_pictire_id);
             
-        $option = [
-            "data_check_delete" => $data_check,
-            "data" => $spare_pictire_id,
-            "model" => $this->sparespictures,
-            "image_path" => $config['upload_path'].$data_check->picture
-        ];
-        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
-    }
+    //     $option = [
+    //         "data_check_delete" => $data_check,
+    //         "data" => $spare_pictire_id,
+    //         "model" => $this->sparespictures,
+    //         "image_path" => $config['upload_path'].$data_check->picture
+    //     ];
+    //     $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
+    // }
 
     public function update_post(){
-        //$this->load->model("spareproductdata");
-        $spare_pictire_id = $this->post('spare_pictire_id');
-        $spares_undercarriageId = $this->post("spares_undercarriageId");
-        $spares_brandId = $this->post("spares_brandId");
-
-        $config['upload_path'] = 'public/image/spare_picture/';
-        $img = $this->post("picture");
         
-        $file = null;
-        $success = true;
-        $imageName = null;
+        $car_accessoriesId = $this->post('car_accessoriesId');
+        $car_accessoriesName = $this->post('car_accessoriesName');
+        $phone = $this->post('car_accessories_phone');
+        $titlename = $this->post('titlename');
+        $firstname = $this->post('firstname');
+        $lastname = $this->post('lastname');
+        $hno = $this->post('hno');
+        $alley = $this->post('alley');
+        $road = $this->post('road');
+        $village = $this->post('village');
         $userId = $this->session->userdata['logged_in']['id'];
-        if(!empty($img)){
-            $img = str_replace('data:image/png;base64,', '', $img);
-            $img = str_replace(' ', '+', $img);
-            $data = base64_decode($img);
+        $data_check_update = $this->managepartsshops->getUpdate($car_accessoriesId);
+        $data_check = $this->managepartsshops->data_check_update($car_accessoriesId,$car_accessoriesName);
+        $data = array(
+            'car_accessoriesId' => $car_accessoriesId,
+            'car_accessoriesName' => $car_accessoriesName,
+            'phone' => $phone,
+            'titlename' => $titlename,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'hno' => $hno,
+            'alley' => $alley,
+            'road' => $road,
+            'village' => $village,
+            'update_by' => $userId,
+            'update_at' =>date('Y-m-d H:i:s',time())
+        );
 
-            $imageName = uniqid().'.png';
-            $file = $config['upload_path']. '/'. $imageName;
-            $success = file_put_contents($file, $data);
-        }
-        if (!$success){
-            unlink($file);
-            $output["message"] = REST_Controller::MSG_ERROR;
-            $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
-            $data_check_update = $this->sparespictures->getSpareById($spare_pictire_id);
-            $data_check = $this->sparespictures->data_check_update($spare_pictire_id,$spares_undercarriageId);
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->managepartsshops,
+            "image_path" => null,
+            "old_image_path" => null,
+        ];
 
-            $data = array(
-                'spare_pictire_id' => $spare_pictire_id,
-                "spares_undercarriageId"=> $spares_undercarriageId,
-                "spares_brandId"=> $spares_brandId,
-                "picture" => $imageName,
-                'update_by' => $userId,
-                'update_at' => date('Y-m-d H:i:s',time())
-            );
-            $oldImage = null;
-            if($data_check_update != null){
-                $oldImage = $config['upload_path'].$data_check_update->picture;
-            }
-
-            $option = [
-                "data_check_update" => $data_check_update,
-                "data_check" => $data_check,
-                "data" => $data,
-                "model" => $this->sparespictures,
-                "image_path" => $file,
-                "old_image_path" => $oldImage,
-            ];
-
-            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
-        }
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
+
+
 }

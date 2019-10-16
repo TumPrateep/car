@@ -42,17 +42,17 @@ class Managepartsshops extends CI_Model{
         return $result->row();
     }
 
-    function getUpdate($spare_pictire_id){
-        $this->db->select('spare_pictire_id, spares_undercarriageId, spares_brandId, picture');
-        $this->db->where('spare_pictire_id',$spare_pictire_id);
-        $result = $this->db->get("spares_picture")->row();
+    function getUpdate($car_accessoriesId){
+        $this->db->select('car_accessoriesId, car_accessoriesName, phone, titlename, firstname, lastname, hno, alley, road, village');
+        $this->db->where('car_accessoriesId',$car_accessoriesId);
+        $result = $this->db->get("car_accessories")->row();
         return $result;
     }
 
-    function data_check_update($spare_pictire_id,$spares_undercarriageId){
-        $this->db->from("spares_picture");
-        $this->db->where('spares_undercarriageId',$spares_undercarriageId);
-        $this->db->where_not_in('spare_pictire_id',$spare_pictire_id);
+    function data_check_update($car_accessoriesId,$car_accessoriesName){
+        $this->db->from("car_accessories");
+        $this->db->where('car_accessoriesName',$car_accessoriesName);
+        $this->db->where_not_in('car_accessoriesId',$car_accessoriesId);
         $result = $this->db->get();
         return $result->row();
     }

@@ -39,11 +39,64 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class=row>
+                                <!-- <div class=row>
                                     <div class="col-md-12">
                                         <label>ที่อยู่</label><span class="error">*</span>
                                         <textarea class="form-control form-control-chosen-required" rows="3" id="shop_address" name="shop_address"></textarea>
                                         <label id="shop_address-error" class="error" for="shop_address"></label>
+                                    </div>
+                                </div> -->
+                                <h3>ที่อยู่</h3>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="garage">จังหวัด</label><span class="error">*</span>
+                                            <select class="form-control" name="provinceId" id="provinceId">
+                                                <!-- <option>จังหวัด</option> -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="garage">อำเภอ</label><span class="error">*</span>
+                                            <select class="form-control" name="districtId" id="districtId">
+                                                <!-- <option>อำเภอ</option> -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="garage">ตำบล</label><span class="error">*</span>
+                                            <select class="form-control" name="subdistrictId" id="subdistrictId">
+                                                <!-- <option>ตำบล</option> -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="garage">บ้านเลขที่</label><span class="error">*</span>
+                                            <input type="text" class="form-control" name="hno" id="hno" placeholder="บ้านเลขที่" min=0 >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="garage">ซอย</label>
+                                            <input type="text" class="form-control" name="alley" id="alley" placeholder="หมู่ที่" min=0 >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="garage">ถนน</label>
+                                            <input type="text" class="form-control" name="road" id="road" placeholder="ถนน">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="garage">หมู่ที่</label>
+                                            <input type="text" class="form-control" name="village" id="village" placeholder="หมู่ที่" min=0 >
+                                        </div>
                                     </div>
                                 </div>
                                 <br>
