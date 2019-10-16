@@ -55,7 +55,18 @@ class Tire extends BD_Controller {
                 $totalFiltered = 0;
             }
         }else{
-
+            $tire_sizeId = $this->post('tire_sizeId');
+            $tire_brandId = $this->post('tire_brandId');
+            $tire_modelId = $this->post('tire_modelId');
+            
+            if(!empty($tire_sizeId)){
+                $tire_size[] = $tire_sizeId;
+                $posts =  $this->tireproduct->tireDataByTireSize_search($limit,$start,$order,$dir,$tire_size,$tire_brandId,$tire_modelId);
+                $totalFiltered = $this->tireproduct->tireDataByTireSize_search_count($tire_size,$tire_brandId,$tire_modelId);
+            }else{
+                $posts = [];
+                $totalFiltered = 0;
+            }
         }
 
         // if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')) && empty($this->post('brandId'))&& empty($this->post('modelId'))&& empty($this->post('modelofcarId')))
