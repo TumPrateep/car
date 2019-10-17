@@ -13,20 +13,18 @@
             shop_address: {
                 required: true
             },
-            profile_firstname: {
+            firstname: {
                 required: true
             },
-            profile_titleName: {
+            titleName: {
                 required: true
             },
-            profile_lastname: {
+            lastname: {
                 required: true
             },
             phone1: {
                 required: true
             },
-
-            
         },
         messages: {
             car_accessoriesName: {
@@ -38,13 +36,13 @@
             shop_address: {
               required: "กรุณากรอกที่อยู่ร้าน"  
             },
-            profile_titleName: {
+            titleName: {
                 required: "กรุณาเลือกคำนำหน้า"
             },
-            profile_firstname: {
+            firstname: {
                 required: "กรุณากรอกชื่อ"
             },
-            profile_lastname: {
+            lastname: {
                 required: "กรุณากรอกนามสกุล"
             },
             phone1: {
@@ -68,9 +66,9 @@
                 $("#car_accessoriesName").val(result.car_accessoriesName);
                 $("#car_accessories_phone").val(result.phone);
                 // $("#shop_address").val(result.provinceId+" "+result.districtId+" "+result.subdistrictId+" "+result.hno+" "+result.Alley+" "+result.road+" "+result.village);
-                $("#profile_titleName").val(result.titlename);
-                $("#profile_firstname").val(result.firstname);
-                $("#profile_lastname").val(result.lastname);
+                $("#titleName").val(result.titlename);
+                $("#firstname").val(result.firstname);
+                $("#lastname").val(result.lastname);
                 // $("#phone1").val(result.name);
                 $("#hno").val(result.hno);
                 $("#alley").val(result.alley);
@@ -79,6 +77,7 @@
                 // $("#provinceId").val(result.provinceId);
                 // $("#districtId").val(result.districtId);
                 // $("#subdistrictId").val(result.subdistrictId);
+                loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);
             }
             
         });
@@ -161,16 +160,15 @@
     //     updateModel();
     // });
 
-    $("#submit").submit(function(){
+    $("#update-partsshop").submit(function(event){
+        event.preventDefault();
         updateModel();
     })
 
     function updateModel(){
-            event.preventDefault();
-            var isValid = $("#submit").valid();
-            
+            var isValid = $("#update-partsshop").valid();
             if(isValid){
-                var data = $("#submit").serialize();
+                var data = $("#update-partsshop").serialize();
                 $.post(base_url+"api/Managepartsshop/update",data,
                 function(data){
                     var car_accessoriesId = $("#car_accessoriesId").val();

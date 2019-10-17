@@ -7,7 +7,7 @@ class Managepartsshop extends BD_Controller {
         // Construct the parent class
         parent::__construct();
         $this->auth();
-        $this->load->model("managepartsshops");
+        $this->load->model("caraccessories");
 	}
 	
 	function search_post(){
@@ -23,18 +23,18 @@ class Managepartsshop extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
-        $totalData = $this->managepartsshops->allData_count();
+        $totalData = $this->caraccessories->allData_count();
 
         $totalFiltered = $totalData; 
         // order กับ col หน้า models มันอันเดี่ยวกัน อย่าลืม ตั้งให้มันตรงๆๆกัน
         if(empty($this->post('car_accessoriesName'))  && empty($this->post('status')))// คืออยากรู้ว่า อิหาค่าไร รับ id มาก็หา id รับ name ก็หา name
         {            
-            $posts = $this->managepartsshops->allData($limit,$start,$order,$dir);
+            $posts = $this->caraccessories->allData($limit,$start,$order,$dir);
         } else {
             $search = $this->post('car_accessoriesName'); 
             $status = $this->post('status');
-            $posts =  $this->managepartsshops->sparesUndercarriage_search($limit,$start,$search,$order,$dir,$status);
-            $totalFiltered = $this->managepartsshops->sparesUndercarriage_search_count($search,$status);
+            $posts =  $this->caraccessories->sparesUndercarriage_search($limit,$start,$search,$order,$dir,$status);
+            $totalFiltered = $this->caraccessories->sparesUndercarriage_search_count($search,$status);
         }
 
         $data = array();
@@ -64,7 +64,7 @@ class Managepartsshop extends BD_Controller {
 
     function getUpdate_post(){
         $car_accessoriesId = $this->post('car_accessoriesId');
-        $data_check = $this->managepartsshops->getSparepictireById($car_accessoriesId);
+        $data_check = $this->caraccessories->getSparepictireById($car_accessoriesId);
         
         $option = [
             "data_check" => $data_check
@@ -73,36 +73,25 @@ class Managepartsshop extends BD_Controller {
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
 
-    // function deleteSparesPictire_get(){
-    //     $spare_pictire_id = $this->get('spare_pictire_id');
-    //     $config['upload_path'] = 'public/image/spare_picture/';
-
-    //     $data_check = $this->sparespictures->getSparepictireById($spare_pictire_id);
-            
-    //     $option = [
-    //         "data_check_delete" => $data_check,
-    //         "data" => $spare_pictire_id,
-    //         "model" => $this->sparespictures,
-    //         "image_path" => $config['upload_path'].$data_check->picture
-    //     ];
-    //     $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
-    // }
-
     public function update_post(){
         
         $car_accessoriesId = $this->post('car_accessoriesId');
         $car_accessoriesName = $this->post('car_accessoriesName');
         $phone = $this->post('car_accessories_phone');
-        $titlename = $this->post('titlename');
+        $titlename = $this->post('titleName');
         $firstname = $this->post('firstname');
         $lastname = $this->post('lastname');
         $hno = $this->post('hno');
         $alley = $this->post('alley');
         $road = $this->post('road');
         $village = $this->post('village');
+        $provinceId = $this->post('provinceId');
+        $districtId = $this->post('districtId');
+        $subdistrictId = $this->post('subdistrictId');
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check_update = $this->managepartsshops->getUpdate($car_accessoriesId);
-        $data_check = $this->managepartsshops->data_check_update($car_accessoriesId,$car_accessoriesName);
+
+        $data_check_update = $this->caraccessories->getUpdate($car_accessoriesId);
+        $data_check = $this->caraccessories->data_check_update($car_accessoriesId,$car_accessoriesName);
         $data = array(
             'car_accessoriesId' => $car_accessoriesId,
             'car_accessoriesName' => $car_accessoriesName,
@@ -114,6 +103,9 @@ class Managepartsshop extends BD_Controller {
             'alley' => $alley,
             'road' => $road,
             'village' => $village,
+            'provinceId' => $provinceId,
+            'districtId' => $districtId,
+            'subdistrictId' => $subdistrictId,
             'update_by' => $userId,
             'update_at' =>date('Y-m-d H:i:s',time())
         );
@@ -122,7 +114,7 @@ class Managepartsshop extends BD_Controller {
             "data_check_update" => $data_check_update,
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->managepartsshops,
+            "model" => $this->caraccessories,
             "image_path" => null,
             "old_image_path" => null,
         ];
