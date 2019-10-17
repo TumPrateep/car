@@ -98,4 +98,90 @@ class Garage extends CI_Model {
         return $query->row();
     }
 
+    // เข้างลางเป็นของ Garagesmanagement
+
+    function allData_count(){
+        $query = $this->db->get('garage');
+        return $query->num_rows();  
+    }
+
+    function allData($limit,$start,$order,$dir){
+        $this->db->select('garage.garageId, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status');
+        $this->db->from('garage');
+        $this->db->join('mechanic','mechanic.garageId = garage.garageId');
+        $this->db->where('mechanic.status', 1);
+        
+
+        $this->db->limit($limit,$start)->order_by($order,$dir);
+        $query = $this->db->get();
+
+        if($query->num_rows()>0)
+        {
+            return $query->result(); 
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    function Garagesmanagement_search($limit,$start,$search,$col,$dir,$status)
+    {
+        $this->db->select('garage.garageId, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status');
+        $this->db->from('garage');
+        $this->db->join('mechanic','mechanic.garageId = garage.garageId');
+        $this->db->where('mechanic.status', 1);
+
+        $this->db->like('garage.garageName',$search);
+        $this->db->like('garage.status',$status);
+
+
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get();
+        
+        if($query->num_rows()>0)
+        {
+            return $query->result();  
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    function Garagesmanagement_search_count($search, $status)
+    {
+        $this->db->select('garage.garageId, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status');
+        $this->db->from('garage');
+        $this->db->join('mechanic','mechanic.garageId = garage.garageId');
+        $this->db->where('mechanic.status', 1);
+
+        $this->db->like('garage.garageName',$search);
+        $this->db->like('garage.status',$status);
+
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    function getGaragesmanagementById($garageId){
+        $query = $this->db->where("garageId", $garageId)->get("garage");
+        return $query->row();
+    }
+
+    function getUpdate($garageId){
+        $this->db->select('garageId, garageName, phone, hno, alley, road, village');
+        $this->db->where('garageId',$garageId);
+        $result = $this->db->get("garage")->row();
+        return $result;
+    }
+
+    function data_check_update($garageId,$garageName){
+        $this->db->from("garage");
+        $this->db->where('garageName',$garageName);
+        $this->db->where_not_in('garageId',$garageId);
+        $result = $this->db->get();
+        return $result->row();
+    }
+
 }

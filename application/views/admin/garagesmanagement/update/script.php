@@ -1,5 +1,7 @@
 <script> 
+    $(document).ready(function () {
     //  $.validator.setDefaults({ ignore: ":hidden:not(select)" });
+    var garageId = $("#garageId").val();
      $("#update-garagesmanagement").validate({
         rules: {
             titleName: {
@@ -51,10 +53,133 @@
         },
     });
 
+    into();
 
-    $("#update-garagesmanagement").submit(function (e) { 
-        e.preventDefault();
-        $(this).valid();
-    });
+    function into(){
+        $.post(base_url+"api/Garagesmanagement/getUpdate",{
+            "garageId" : garageId
+        },function(data){
+            if(data.message!=200){
+                showMessage(data.message,"admin/garagesmanagement");
+            }
+            if(data.message == 200){
+                result = data.data;
+                // $("#car_accessoriesName").val(result.car_accessoriesName);
+                // $("#car_accessories_phone").val(result.phone);
+                // $("#shop_address").val(result.provinceId+" "+result.districtId+" "+result.subdistrictId+" "+result.hno+" "+result.Alley+" "+result.road+" "+result.village);
+                // $("#titleName").val(result.titlename);
+                // $("#firstname").val(result.firstname);
+                // $("#lastname").val(result.lastname);
+                // $("#phone1").val(result.name);
+
+                $("#garageName").val(result.garageName);
+                $("#phone").val(result.phone);
+                $("#hno").val(result.hno);
+                $("#alley").val(result.alley);
+                $("#road").val(result.road);
+                $("#village").val(result.village);
+                loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);
+            }
+            
+        });
+    }
+
+        var provinceDropdownGarage = $("#provinceId");
+        provinceDropdownGarage.append('<option value="">เลือกจังหวัด</option>');
+
+        var districtDropdownGarage = $('#districtId');
+        districtDropdownGarage.append('<option value="">เลือกอำเภอ</option>');
+
+        var subdistrictDropdownGarage = $('#subdistrictId');
+        subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');     
+
+        function loadProvinceGarage(provinceId, districtId,subdistrictId){
+            $.post(base_url+"service/Locationforregister/getProvince",{},
+                function(data){
+                var province = data.data;
+                $.each(province, function( index, value ) {
+                    provinceDropdownGarage.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
+                });
+
+                provinceDropdownGarage.val(provinceId);
+                loadDistrictGarage(provinceId, districtId,subdistrictId);
+                }
+            );
+            }
+
+            provinceDropdownGarage.change(function(){
+            var provinceId = $(this).val();
+            loadDistrictGarage(provinceId);
+            });
+
+        function loadDistrictGarage(provinceId, districtId,subdistrictId){
+            districtDropdownGarage.html("");
+            districtDropdownGarage.append('<option value="">เลือกอำเภอ</option>');
+            subdistrictDropdownGarage.html("");
+            subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
+
+            $.post(base_url+"service/Locationforregister/getDistrict",{
+                provinceId: provinceId
+            },
+                function(data){
+                var district = data.data;
+                $.each(district, function( index, value ) {
+                    districtDropdownGarage.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+                });
+                districtDropdownGarage.val(districtId);
+                loadSubdistrictGarage(districtId,subdistrictId);
+                }
+            );
+
+            }
+
+            districtDropdownGarage.change(function(){
+            var districtId = $(this).val();
+            loadSubdistrictGarage(districtId);
+            });
+
+        function loadSubdistrictGarage(districtId,subdistrictId){
+            subdistrictDropdownGarage.html("");
+            subdistrictDropdownGarage.append('<option value="">เลือกตำบล</option>');
+                
+            $.post(base_url+"service/Locationforregister/getSubdistrict",{
+                districtId: districtId
+            },
+                function(data){
+                var subDistrict = data.data;
+                $.each(subDistrict, function( index, value ) {
+                    subdistrictDropdownGarage.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+                });
+                subdistrictDropdownGarage.val(subdistrictId);
+                }
+            );
+        }
+
+    // $("#update-garagesmanagement").submit(function (e) { 
+    //     e.preventDefault();
+    //     $(this).valid();
+    // });
+    $("#update-garagesmanagement").submit(function(event){
+        event.preventDefault();
+        updateModel();
+    })
+
+    function updateModel(){
+            var isValid = $("#update-garagesmanagement").valid();
+            if(isValid){
+                var data = $("#update-garagesmanagement").serialize();
+                $.post(base_url+"api/Garagesmanagement/update",data,
+                function(data){
+                    var garageId = $("#garageId").val();
+                    if(data.message == 200){
+                        showMessage(data.message,"admin/garagesmanagement");
+                    }else{
+                        showMessage(data.message);
+                    }
+                });
+                
+            }
+        }
+});
 </script>
 

@@ -14,7 +14,7 @@
           <div class="form-row">
               <div class="col-md-3 offset-md-5">
                   <div class="input-group-append">
-                      <input name="lubricatorId" id="table-search" class="form-control " placeholder="ชื่อผู้ให้บริการ">
+                      <input name="lubricatorId" id="table-search" class="form-control " placeholder="ชื่อร้านผู้ให้บริการ">
                       <button class="btn btn-info inactive"><i class="fa fa-cog"></i></button>
                   </div>
               </div>
