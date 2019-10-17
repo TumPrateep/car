@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ManagePartsShop extends CI_Controller {
+class Managepartsshop extends CI_Controller {
 
 	function __construct()
     {
@@ -20,7 +20,7 @@ class ManagePartsShop extends CI_Controller {
 		$this->load->view("admin/managepartsshop/script");
 	}
 	
-	public function updatePartsShop($car_accessoriesId){
+	public function update($car_accessoriesId){
 		$data['car_accessoriesId'] = $car_accessoriesId;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
