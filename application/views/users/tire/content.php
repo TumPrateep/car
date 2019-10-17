@@ -13,7 +13,7 @@
 <section class="section pricing" id="search">
     <div class="container">
         <div id="boby"> 
-            <!id="content" show like old search tire>
+            
             <div class="row">
                     <div class="col-md-12">
                         <ul class="nav nav-tabs">

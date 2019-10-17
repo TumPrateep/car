@@ -9,48 +9,30 @@ class Searchgarages extends CI_Model {
         return $this->db->where('garageId',$garageId)->get("garage")->row();
     }
 
-    function allgarage_count($latitude,$longitude,$dataType=null){
+    function allgarage_count($latitude,$longitude){
+        $number = 0;
         if(!empty($latitude) && !empty($longitude)){
-            $this->db->select("2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) as distance, garage.*");
+            $this->db->select("(2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) * 1.609344) as distance, garage.*");
+            $this->db->where("(2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) * 1.609344) <= ", 10);
+            $query = $this->db->get('garage');
+            $number = $query->num_rows();
         }   
-        if($dataType != null){
-            if($dataType["spare"] == 1){
-                $this->db->where("garageService like '1__'");
-            }
-            if($dataType["tire"] == 1){
-                $this->db->where("garageService like '_1_'");
-            }
-            if($dataType["lubricator"] == 1){
-                $this->db->where("garageService like '__1'");
-            }
-        }
-        $query = $this->db->get('garage');
-        return $query->num_rows();  
+        return $number;  
     }
 
-    function allgarage($limit,$start,$col,$dir,$latitude,$longitude,$dataType=null){   
+    function allgarage($limit,$start,$col,$dir,$latitude,$longitude){  
+        $result = null; 
         if(!empty($latitude) && !empty($longitude)){
-            $this->db->select("2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) as distance, garage.*");
-        }
-        if($dataType != null){
-            if($dataType["spare"] == 1){
-                $this->db->where("garageService like '1__'");
-            }
-            if($dataType["tire"] == 1){
-                $this->db->where("garageService like '_1_'");
-            }
-            if($dataType["lubricator"] == 1){
-                $this->db->where("garageService like '__1'");
-            }
-        }
-        $query = $this->db->limit($limit,$start)->order_by($col,$dir)
+            $this->db->select("(2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) * 1.609344) as distance, garage.*");
+            $this->db->where("(2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) * 1.609344) <= ", 10);
+            $query = $this->db->limit($limit,$start)->order_by($col,$dir)
             ->get('garage');
+            if($query->num_rows()>0){
+                $result = $query->result();
+            }
+        }
         
-        if($query->num_rows()>0){
-            return $query->result(); 
-        }else{
-            return null;
-        }   
+        return $result;
     }
 
       
@@ -76,24 +58,18 @@ class Searchgarages extends CI_Model {
                                                                                                                                                                                                 
     // }
     
-    function garage_search($limit,$start,$col,$dir,$phone,$garageName,$provinceId,$districtId,$subdistrictId,$brandId,$service,$latitude,$longitude,$dataType=null)
+    function garage_search($limit,$start,$col,$dir,$garageName,$provinceId,$districtId,$brandId,$service,$latitude,$longitude)
     {
         if(!empty($latitude) && !empty($longitude)){
-            $this->db->select("2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) as distance, garage.*");
+            $this->db->select("(2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) * 1.609344) as distance, garage.*");
         }
-        $this->db->like('phone',$phone);
-        if($phone != null){
-            $this->db->where("phone", $phone);
-        }
+        
         $this->db->like('garageName',$garageName);
         if($provinceId != null){
             $this->db->where("provinceId", $provinceId);
         }
         if($districtId != null){
             $this->db->where("districtId", $districtId);
-        }
-        if($subdistrictId != null){
-            $this->db->where("subdistrictId", $subdistrictId);
         }
         if($brandId != null){
             $this->db->where("brandId", $brandId);
@@ -107,17 +83,7 @@ class Searchgarages extends CI_Model {
                 $this->db->where("garageService like '__1'");
             }
         }
-        if($dataType != null){
-            if($dataType["spare"] == 1){
-                $this->db->where("garageService like '1__'");
-            }
-            if($dataType["tire"] == 1){
-                $this->db->where("garageService like '_1_'");
-            }
-            if($dataType["lubricator"] == 1){
-                $this->db->where("garageService like '__1'");
-            }
-        }
+        
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get('garage');
@@ -130,10 +96,11 @@ class Searchgarages extends CI_Model {
         
     }
 
-    function garage_search_count($garageName,$provinceId,$districtId,$subdistrictId,$brandId,$service,$latitude,$longitude,$dataType=null){
+    function garage_search_count($garageName,$provinceId,$districtId,$brandId,$service,$latitude,$longitude){
         if(!empty($latitude) && !empty($longitude)){
-            $this->db->select("2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) as distance, garage.*");
+            $this->db->select("(2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) * 1.609344) as distance, garage.*");
         }
+        
         $this->db->like('garageName',$garageName);
         if($provinceId != null){
             $this->db->where("provinceId", $provinceId);
@@ -141,23 +108,15 @@ class Searchgarages extends CI_Model {
         if($districtId != null){
             $this->db->where("districtId", $districtId);
         }
-        if($subdistrictId != null){
-            $this->db->where("subdistrictId", $subdistrictId);
-        }
         if($brandId != null){
             $this->db->where("brandId", $brandId);
         }
         if($service != null){
-            $this->db->where("garageService", $service);
-        }
-        if($dataType != null){
-            if($dataType["spare"] == 1){
+            if($service == 1){
                 $this->db->where("garageService like '1__'");
-            }
-            if($dataType["tire"] == 1){
+            }else if($service == 2){
                 $this->db->where("garageService like '_1_'");
-            }
-            if($dataType["lubricator"] == 1){
+            }else{
                 $this->db->where("garageService like '__1'");
             }
         }

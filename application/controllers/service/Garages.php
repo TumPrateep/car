@@ -31,7 +31,7 @@ class Garages extends BD_Controller {
         // );
         $latitude = $this->post('latitude');
         $longitude = $this->post('longitude');
-        $dataType = $this->post("dataType");
+        // $dataType = $this->post("dataType");
 
         $column = "garageName";
         $sort = "asc";
@@ -45,13 +45,12 @@ class Garages extends BD_Controller {
         $start = $this->post('start');
         $order = $column;
         $dir = $sort;
-        $totalData = $this->searchgarages->allgarage_count($latitude,$longitude,$dataType);
+        $totalData = $this->searchgarages->allgarage_count($latitude,$longitude);
         $totalFiltered = $totalData; 
 
-        if(empty($this->post('garagename')) && empty($this->post('provinceIdSearch')) && empty($this->post('districtIdSearch')) &&
-            empty($this->post('subdistrictIdSearch')) && empty($this->post('brandId')) && empty($this->post('service')))
+        if(empty($this->post('garagename')) && empty($this->post('provinceIdSearch')) && empty($this->post('districtIdSearch')) && empty($this->post('brandId')) && empty($this->post('service')))
         {            
-            $posts = $this->searchgarages->allgarage($limit,$start,$order,$dir,$latitude,$longitude,$dataType);
+            $posts = $this->searchgarages->allgarage($limit,$start,$order,$dir,$latitude,$longitude);
         } else {
             $garageName = $this->post('garagename');
             $provinceId = $this->post('provinceIdSearch'); 
@@ -59,8 +58,8 @@ class Garages extends BD_Controller {
             $subdistrictId = $this->post('subdistrictIdSearch');
             $brandId = $this->post('brandId');
             $service = $this->post('service');
-            $posts =  $this->searchgarages->garage_search($limit,$start,$order,$dir,$garageName,$provinceId,$districtId,$subdistrictId,$brandId,$service,$latitude,$longitude,$dataType);
-            $totalFiltered = $this->searchgarages->garage_search_count($garageName,$provinceId,$districtId,$subdistrictId,$brandId,$service,$latitude,$longitude,$dataType);
+            $posts =  $this->searchgarages->garage_search($limit,$start,$order,$dir,$garageName,$provinceId,$districtId,$brandId,$service,$latitude,$longitude);
+            $totalFiltered = $this->searchgarages->garage_search_count($garageName,$provinceId,$districtId,$brandId,$service,$latitude,$longitude);
         }
         $data = array();
         if(!empty($posts))
