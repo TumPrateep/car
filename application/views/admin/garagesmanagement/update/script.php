@@ -67,10 +67,10 @@
                 // $("#car_accessoriesName").val(result.car_accessoriesName);
                 // $("#car_accessories_phone").val(result.phone);
                 // $("#shop_address").val(result.provinceId+" "+result.districtId+" "+result.subdistrictId+" "+result.hno+" "+result.Alley+" "+result.road+" "+result.village);
-                // $("#titleName").val(result.titlename);
-                // $("#firstname").val(result.firstname);
-                // $("#lastname").val(result.lastname);
-                // $("#phone1").val(result.name);
+                $("#titleName").val(result.titleName);
+                $("#firstname").val(result.firstName);
+                $("#lastname").val(result.lastName);
+                $("#phone1").val(result.mechanicphone);
 
                 $("#garageName").val(result.garageName);
                 $("#phone").val(result.phone);
