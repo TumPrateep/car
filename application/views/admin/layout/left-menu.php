@@ -177,6 +177,13 @@
           </a>
         </li>
 
+        <li class="nav-item <?= activate_menu('garagesmanagement'); ?>" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link text-white" href="<?=base_url("admin/garagesmanagement") ?>">
+            <i class="fa fa-id-card"></i> 
+            <span class="nav-link-text">การจัดผู้ให้บริการ</span>
+          </a>
+        </li>
+
         <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#dataProduct" data-parent="#exampleAccordion">
             <i class="fa fa-product-hunt"></i>
