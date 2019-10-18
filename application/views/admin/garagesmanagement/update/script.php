@@ -64,7 +64,7 @@
             }
             if(data.message == 200){
                 result = data.data;
-                // $("#car_accessoriesName").val(result.car_accessoriesName);
+                $("#mechanicId").val(result.mechanicId);
                 // $("#car_accessories_phone").val(result.phone);
                 // $("#shop_address").val(result.provinceId+" "+result.districtId+" "+result.subdistrictId+" "+result.hno+" "+result.Alley+" "+result.road+" "+result.village);
                 $("#titleName").val(result.titleName);
@@ -78,6 +78,8 @@
                 $("#alley").val(result.alley);
                 $("#road").val(result.road);
                 $("#village").val(result.village);
+                $("#latitude").val(result.latitude);
+                $("#longtitude").val(result.longtitude);
                 loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);
             }
             

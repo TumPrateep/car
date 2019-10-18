@@ -8,6 +8,7 @@ class Garagesmanagement extends BD_Controller {
         parent::__construct();
         $this->auth();
         $this->load->model("garage");
+        $this->load->model("garagesmanagements");
 	}
 	
 	function search_post(){
@@ -88,20 +89,23 @@ class Garagesmanagement extends BD_Controller {
         $provinceId = $this->post('provinceId');
         $districtId = $this->post('districtId');
         $subdistrictId = $this->post('subdistrictId');
-        // $titlename = $this->post('titleName');
-        // $firstname = $this->post('firstname');
-        // $lastname = $this->post('lastname');
+        $latitude = $this->post('latitude');
+        $longtitude = $this->post('longtitude');
         $userId = $this->session->userdata['logged_in']['id'];
+
+        $mechanicId = $this->post('mechanicId');
+        $phone1 = $this->post('phone1');
+        $titlename = $this->post('titleName');
+        $firstname = $this->post('firstname');
+        $lastname = $this->post('lastname');
+
 
         $data_check_update = $this->garage->getUpdate($garageId);
         $data_check = $this->garage->data_check_update($garageId,$garageName);
-        $data = array(
+        $data['garagedata'] = array(
             'garageId' => $garageId,
             'garageName' => $garageName,
             'phone' => $phone,
-            // 'titlename' => $titlename,
-            // 'firstname' => $firstname,
-            // 'lastname' => $lastname,
             'hno' => $hno,
             'alley' => $alley,
             'road' => $road,
@@ -109,6 +113,17 @@ class Garagesmanagement extends BD_Controller {
             'provinceId' => $provinceId,
             'districtId' => $districtId,
             'subdistrictId' => $subdistrictId,
+            'latitude' => $latitude,
+            'longtitude' => $longtitude,
+            'update_by' => $userId,
+            'update_at' =>date('Y-m-d H:i:s',time())
+        );
+        $data['mechanicdata'] = array(
+            'mechanicId' => $mechanicId,
+            'phone' => $phone1,
+            'titleName' => $titlename,
+            'firstName' => $firstname,
+            'lastName' => $lastname,
             'update_by' => $userId,
             'update_at' =>date('Y-m-d H:i:s',time())
         );
@@ -117,7 +132,7 @@ class Garagesmanagement extends BD_Controller {
             "data_check_update" => $data_check_update,
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->garage,
+            "model" => $this->garagesmanagements,
             "image_path" => null,
             "old_image_path" => null,
         ];

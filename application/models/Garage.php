@@ -166,7 +166,8 @@ class Garage extends CI_Model {
 
     function getGaragesmanagementById($garageId){
         $this->db->select('garage.garageId, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status ,
-        garage.hno, garage.alley, garage.road, garage.village, garage.provinceId, garage.districtId, garage.subdistrictId, mechanic.phone AS mechanicphone');
+        garage.hno, garage.alley, garage.road, garage.village, garage.provinceId, garage.districtId, garage.subdistrictId, mechanic.phone AS mechanicphone, mechanic.mechanicId,
+        garage.latitude, garage.longtitude');
         $this->db->from('garage');
         $this->db->join('mechanic','mechanic.garageId = garage.garageId');
         $this->db->where('garage.garageId', $garageId);

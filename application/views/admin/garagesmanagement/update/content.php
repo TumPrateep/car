@@ -17,6 +17,7 @@
                         </div>
                         <form id="update-garagesmanagement">
                             <input type="hidden" id="garageId" name="garageId" value="<?=$garageId ?>">
+                            <input type="hidden" id="mechanicId" name="mechanicId" >
                             <div class="card col-md-12">
                                 <h3>ข้อมูลเจ้าของผู้ให้บริการ</h3>
                                 <div class="row">
@@ -112,6 +113,20 @@
                                             <select class="form-control" name="subdistrictId" id="subdistrictId">
                                                 <!-- <option>ตำบล</option> -->
                                             </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="garage">ละติจูด</label>
+                                            <input type="text" class="form-control" name="latitude" id="latitude" placeholder="ละติจูด" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="garage">ลองจิจูด</label>
+                                            <input type="text" class="form-control" name="longtitude" id="longtitude" placeholder="ลองจิจูด" >
                                         </div>
                                     </div>
                                 </div>
