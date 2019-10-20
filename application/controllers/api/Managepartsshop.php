@@ -8,6 +8,7 @@ class Managepartsshop extends BD_Controller {
         parent::__construct();
         $this->auth();
         $this->load->model("caraccessories");
+        $this->load->model("location");
 	}
 	
 	function search_post(){
@@ -120,6 +121,33 @@ class Managepartsshop extends BD_Controller {
         ];
 
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+    }
+
+    function getusers_post(){
+
+        $car_accessoriesId = $this->post('car_accessoriesId');
+        $accessories = $this->caraccessories->getSparepictireById($car_accessoriesId);
+        if($accessories != null){
+            $result = $this->caraccessories->getshowuser($car_accessoriesId);
+            // var_dump($result);
+            // exit();
+            if($result != null){
+                $result->provinceName = $this->location->getProvinceNameByProvinceId($result->provinceId);
+                $result->districtName = $this->location->getDistrictNameByDistrictId($result->districtId);
+                $result->subdistrictName = $this->location->getSubDistrictBySubDistrictId($result->subdistrictId);
+            }
+            $result->create_at = REST_Controller::DateThai($result->create_at);
+            $output["profile"] = $result;
+            // $output["role"] = $user->category;
+            $output["other"] = $this->caraccessories->getSparepictireById($car_accessoriesId);
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }else{
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_BE_DELETED;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        }
+
     }
 
 

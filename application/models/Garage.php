@@ -167,7 +167,7 @@ class Garage extends CI_Model {
     function getGaragesmanagementById($garageId){
         $this->db->select('garage.garageId, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status ,
         garage.hno, garage.alley, garage.road, garage.village, garage.provinceId, garage.districtId, garage.subdistrictId, mechanic.phone AS mechanicphone, mechanic.mechanicId,
-        garage.latitude, garage.longtitude');
+        garage.latitude, garage.longtitude, garage.businessRegistration, garage.postCode, mechanic.personalid');
         $this->db->from('garage');
         $this->db->join('mechanic','mechanic.garageId = garage.garageId');
         $this->db->where('garage.garageId', $garageId);
@@ -189,6 +189,25 @@ class Garage extends CI_Model {
         $this->db->where_not_in('garageId',$garageId);
         $result = $this->db->get();
         return $result->row();
+    }
+
+    function getshowuser($garageId){
+        $this->db->select('garage.garageId, user_profile.activeFlag, user_profile.create_at, user_profile.districtId, user_profile.firstname, user_profile.hno, user_profile.lastname,
+        user_profile.phone1, user_profile.phone2, user_profile.postCodes, user_profile.provinceId, user_profile.road, user_profile.status,
+        user_profile.subdistrictId, user_profile.titleName, user_profile.userId, user_profile.user_profile, user_profile.village');
+        $this->db->from('garage');
+        $this->db->join("user_profile","user_profile.userId = garage.userId");
+        $this->db->where("garage.garageId", $garageId);
+        $this->db->where("user_profile.status", 1);    
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    function getbygarageuser($garageId){
+        $this->db->from('garage');
+        $this->db->where("garageId", $garageId);
+        $query = $this->db->get();
+        return $query->row();
     }
 
 }

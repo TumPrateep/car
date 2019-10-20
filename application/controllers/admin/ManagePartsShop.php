@@ -30,6 +30,17 @@ class Managepartsshop extends CI_Controller {
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/managepartsshop/update/script");
 	}
+
+	public function view($car_accessoriesId){
+		$data['car_accessoriesId'] = $car_accessoriesId;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/managepartsshop/view/content", $data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/managepartsshop/view/script");
+	}
     
     
 

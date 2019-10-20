@@ -33,4 +33,15 @@ class Garagesmanagement extends CI_Controller {
 		$this->load->view("admin/garagesmanagement/update/script");
 	}
 
+	public function view($garageId){
+		$data['garageId'] = $garageId;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/garagesmanagement/view/content", $data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/garagesmanagement/view/script");
+	}
+
 }

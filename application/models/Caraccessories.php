@@ -102,4 +102,16 @@ class Caraccessories extends CI_Model {
         return $query->num_rows();
     }
 
+    function getshowuser($car_accessoriesId){
+        $this->db->select('car_accessories.car_accessoriesId, user_profile.activeFlag, user_profile.create_at, user_profile.districtId, user_profile.firstname, user_profile.hno, user_profile.lastname,
+        user_profile.phone1, user_profile.phone2, user_profile.postCodes, user_profile.provinceId, user_profile.road, user_profile.status,
+        user_profile.subdistrictId, user_profile.titleName, user_profile.userId, user_profile.user_profile, user_profile.village');
+        $this->db->from('car_accessories');
+        $this->db->join("user_profile","user_profile.userId = car_accessories.userId");
+        $this->db->where("car_accessories.car_accessoriesId", $car_accessoriesId);
+        $this->db->where("user_profile.status", 1);    
+        $query = $this->db->get();
+        return $query->row();
+    }
+
 }
