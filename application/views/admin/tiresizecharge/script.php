@@ -1,5 +1,25 @@
 <script>
-    var table = $('#changes-table').DataTable({
+    // var tire_changeId = $("#tire_changeId").val();
+    // var tire_size_chargeId = $("#tire_size_chargeId").val();
+    // $.post(base_url+"api/Tirechangessize/getTireCh",{
+    //     "tire_changeId" : tire_changeId
+    // },function(data){
+    //     if(data.message!=200){
+    //         showMessage(data.message,"admin/charge/tirescharge");
+    //     }
+    // });
+
+    var rimId = $("#rimId").val();
+    // var rimId = $("#rimId").val();
+    $.post(base_url+"api/Tirechangessize/getTireCh",{
+        "rimId" : rimId
+    },function(data){
+        if(data.message!=200){
+            showMessage(data.message,"admin/charge/tirescharge");
+        }
+    });
+
+    var table = $('#tiresize-table').DataTable({
         "language": {
                 "aria": {
                     "sortAscending": ": activate to sort column ascending",
@@ -24,19 +44,21 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/Tirechange/searchTireChange",
+                "url": base_url+"api/Tirechangessize/searchTriesize",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.rimName = $("#table-search").val(),
+                    data.tire_size = $("#table-search").val(),
+                    data.rimId = $("#rimId").val(),
                     data.status = $("#status").val()
                 }
             },
-            "order": [[ 3, "asc" ]],
+            "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                { "data": "rimName" },
-                { "data": "tire_price" },
+                // { "data": "tire_sizeId" },
+                null,
+                { "data": "tire_size_price" },
                 null,
                 null
             ],
@@ -44,24 +66,32 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,4]
-                },{
+                    "targets": [0,3]
+                },
+                {
+                    "targets": 1,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var html = data.tire_size;
+                        if(data.tire_series){
+                            html += "/"+data.tire_series;
+                        }
+                        return html+"R"+data.rim;
+                    }
+                },
+                {
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return '<a href="'+base_url+"admin/Charge/updatetiresizecharge/"+data.rimId+"/"+data.tire_sizeId+"/"+data.tire_size_chargeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletetrie_size('+data.tire_sizeId+',\''+data.tire_size+'\',\''+data.rimId+'\')"><i class="fa fa-trash"></i></button>';
+                    }
+                },
+                {
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
-                    }
-                },{
-                    "targets": 1,
-                    "data": "rimName",
-                    "render": function ( data, type, full, meta ) {
-                        return  data +' นิ้ว';
-                    }
-                },{
-                    "targets": 2,
-                    "data": "tire_price",
-                    "render": function ( data, type, full, meta ) {
-                        return  data +' บาท';
                     }
                 },{
                     "targets": 3,
@@ -76,54 +106,41 @@
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.tire_changeId+','+data.status+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.tire_sizeId+','+data.status+','+data.rimId+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
                     }
-                },{
-                    "targets": 4,
-                    "data": null,
-                    "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/charge/tiresizecharge/"+data.rimId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+'admin/charge/updatetirescharge/'+data.tire_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletetirechange('+data.tire_changeId+',\''+data.tire_front+'\',\''+data.tire_back+'\')"><i class="fa fa-trash"></i></button>';
-                    }
                 },
-               
                 { "orderable": false, "targets": 0 },
-                // {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,2,3,4]},
+                {"className": "dt-center", "targets": [0,1,2]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 1 },
-                { "width": "20%", "targets": 2 },
-                { "width": "20%", "targets": 3 },
-                { "width": "20%", "targets": 4 }
+                { "width": "25%", "targets": 2 },
+                { "width": "25%", "targets": 3 }
             ]	 
     });
-
-    function deletetirechange(tire_changeId){
-        var option = {
-            url: "/Tirechange/deletetirechange?tire_changeId="+tire_changeId,
-            label: "ลบราคาเปลี่ยนยางนอก",
-            content: "คุณต้องการลบข้อมูลนี้ ใช่หรือไม่",
-            gotoUrl: "admin/Tires/tirechange/"
-        }
-        fnDelete(option);
-    }
-
     $("#form-search").submit(function(){
         event.preventDefault();
         table.ajax.reload();
     })
-
-    function updateStatus(tire_changeId,status){
-        $.post(base_url+"api/Tirechange/changeStatus",{
-            "tire_changeId": tire_changeId,
-            "status": status
+    function deletetrie_size(tire_sizeId,tire_size,rimId){
+        var option = {
+            url: "/Triesize/deletetriesize?tire_sizeId="+tire_sizeId,
+            label: "ลบขอบยาง",
+            content: "คุณต้องการลบ "+tire_size+" ใช่หรือไม่",
+            gotoUrl: "admin/Tires/tiresize/"+rimId
+        }
+        fnDelete(option);
+    }
+    function updateStatus(tire_sizeId,status,rimId){
+        $.post(base_url+"api/Triesize/changeStatus",{
+            "tire_sizeId": tire_sizeId,
+            "status": status,
+            "rimId": rimId
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/tires/tirechange/");
+                showMessage(data.message,"admin/tires/tiresize/"+rimId);
             }else{
                 showMessage(data.message);
             }

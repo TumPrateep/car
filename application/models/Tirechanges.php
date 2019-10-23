@@ -44,7 +44,7 @@ class Tirechanges extends CI_Model{
     }
 
     function allTirechanges($limit,$start,$col,$dir){
-        $this->db->select('tire_change.tire_price,rim.rimName, tire_change.status, tire_change.tire_changeId, tire_change.status ');
+        $this->db->select('tire_change.tire_price,rim.rimName, tire_change.status, tire_change.tire_changeId, tire_change.status, rim.rimId');
         $this->db->from('tire_change');
         $this->db->join('rim', 'tire_change.rimId = rim.rimId');
 
@@ -138,4 +138,5 @@ class Tirechanges extends CI_Model{
         $result = $this->db->get("tire_change");
         return $result->result();
     }
+
 }

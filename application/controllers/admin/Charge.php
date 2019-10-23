@@ -82,6 +82,42 @@ class Charge extends CI_Controller {
 		$this->load->view("admin/charge/tirecharge/update/script");
 	}
 
+	public function tiresizecharge($rimId){
+		$data['rimId'] = $rimId;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/tiresizecharge/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/tiresizecharge/script");
+	}
+	
+	public function createtiresizecharge($rimId){
+		$data['rimId'] = $rimId;
+			
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/tiresizecharge/create/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/tiresizecharge/create/script");
+	}
+	
+	public function updatetiresizecharge($rimId, $tire_sizeId, $tire_size_chargeId){
+		$data['rimId'] = $rimId;
+		$data['tire_sizeId'] = $tire_sizeId;
+		$data['tire_size_chargeId'] = $tire_size_chargeId;		
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/tiresizecharge/update/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/tiresizecharge/update/script");
+	}
+
     function SpareCharge($brandId)
 	{
 		$data["brandId"] = $brandId;
@@ -119,4 +155,5 @@ class Charge extends CI_Controller {
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/charge/sparecharge/update/script");
 	}
+
 }

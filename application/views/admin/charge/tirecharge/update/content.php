@@ -33,6 +33,12 @@
                           <label>ราคาค่าบริการเปลี่ยนขอบยาง</label> <span class="error">*</span>
                           <input type="number" class="form-control" placeholder="กรุณากรอกราคาค่าบริการเปลี่ยนขอบยาง" name="tire_price" id="tire_price">
                       </div>
+                      <div class="col-md-4">
+                            <label>หน่วย</label> <span class="error">*</span>
+                            <select class="form-control" name="spares_undercarriageId" id="spares_undercarriageId">
+                                <option value="">เลือกหน่วย</option>
+                            </select>
+                        </div>
                     </div>
                     
                     <div class="form-group">

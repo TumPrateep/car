@@ -211,13 +211,13 @@
           <!-- </ul>
         </li> -->
 
-        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#serviceCharge" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-dollar"></i>
             <span class="nav-link-text">ราคาค่าบริการ</span>
           </a>
           <ul class="sidenav-second-level collapse" id="serviceCharge">
-            <li class="<?= activate_menu('charge/brand/'); ?>">
+            <!-- <li class="<?= activate_menu('charge/brand/'); ?>">
               <a class="nav-link text-white" href="<?=base_url("admin/charge/brand") ?>">
                 <i class="fa fa-cog"></i>
                 <span class="nav-link-text">ราคาค่าบริการเปลี่ยนอะไหล่ช่วงล่าง</span>
@@ -228,7 +228,7 @@
                 <i class="fa fa-rebel"></i>
                 <span class="nav-link-text">ราคาค่าบริการเปลี่ยนน้ำมันเครื่อง</span>
               </a>
-            </li>
+            </li> -->
             <li class="<?= activate_menu('charge/tirescharge/'); ?>">
               <a class="nav-link text-white" href="<?=base_url("admin/charge/tirescharge") ?>">
                 <i class="fa fa-life-ring"></i>
@@ -236,7 +236,7 @@
               </a>
             </li>
           </ul>
-        </li> -->
+        </li>
 
          <!-- <li class="nav-item <?= activate_menu('garages'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/garages") ?>">
