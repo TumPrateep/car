@@ -10,6 +10,9 @@
             },
             tire_rimId: {
                 required: true
+            },
+            tire_sizeId: {
+                required: true
             }
         },
         messages: {
@@ -20,7 +23,10 @@
                 required: "กรุณาเลือกหน่วย"
             },
             tire_rimId: {
-                required: "กรุณากรอกขนาดกะทะล้อ"
+                required: "กรุณาเลือกขอบยาง"
+            },
+            tire_sizeId: {
+                required: "กรุณาเลือกขนาดยาง"
             }
         },
     });

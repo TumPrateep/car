@@ -4,25 +4,29 @@ $.validator.setDefaults({ ignore: ":hidden:not(select)" });
         rules: {
             tire_change: {
                 required: true
-            }
-            ,
-            // tire_series: {
-            //     required: true
-            // },
+            },
+            unit_id: {
+                required: true
+            },
             tire_rimId: {
+                required: true
+            },
+            tire_sizeId: {
                 required: true
             }
         },
         messages: {
             tire_change: {
                 required: "กรุณากรอกราคาค่าบริการ"
-            }
-            ,
-            // tire_series: {
-            //     required: "กรุณากรอกซีรี่ย์ยาง"
-            // },
+            },
+            unit_id: {
+                required: "กรุณาเลือกหน่วย"
+            },
             tire_rimId: {
-                required: "กรุณากรอกขนาดกะทะล้อ"
+                required: "กรุณาเลือกขอบยาง"
+            },
+            tire_sizeId: {
+                required: "กรุณาเลือกขนาดยาง"
             }
         },
     });
