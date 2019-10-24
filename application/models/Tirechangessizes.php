@@ -71,13 +71,11 @@ class Tirechangessizes extends CI_Model{
         return $result;
     }
 
-    function geTiresizeFromTiresizeBytireId($tire_sizeId, $rimId){
-        $this->db->select("tire_size.tire_size,tire_size.tire_series,rim.rimName,rim.rimId,tire_size.tire_sizeId, tire_size.tire_size, tire_size.tire_series, tire_size.status, tire_size_charge.unit_id");    
-        $this->db->join('rim','rim.rimId = tire_size.rimId');
-        $this->db->join('tire_size_charge','rim.rimId = tire_size_charge.rimId');
-        $this->db->where('rim.rimId',$rimId);
-        $this->db->where('tire_size.tire_sizeId',$tire_sizeId);
-        $result = $this->db->get('tire_size')->row();
+    function geTiresizeFromTiresizeBytireId($tire_size_chargeId){
+       // $this->db->select("tire_size.tire_size,tire_size.tire_series,rim.rimName,rim.rimId,tire_size.tire_sizeId, tire_size.tire_size, tire_size.tire_series, tire_size.status, tire_size_charge.unit_id");    
+        // $this->db->select(""); 
+        $this->db->where('tire_size_chargeId',$tire_size_chargeId);
+        $result = $this->db->get('tire_size_charge')->row();
         return $result;
     }
 
@@ -94,28 +92,24 @@ class Tirechangessizes extends CI_Model{
         // $this->db->join('rim','tire_change.rimId = rim.rimId');
         $this->db->where('rimId',$rimId);
         $this->db->where('tire_sizeId',$tire_sizeId);
-        $this->db->where_not_in('tire_size_chargeId',$tire_changeId);
+        $this->db->where_not_in('tire_size_chargeId',$tire_size_chargeId);
         $result = $this->db->get();
         return $result->row();
     }
 
-/////
-
-
-
-
     function update($data){
-        $this->db->where('tire_changeId',$data['tire_changeId']);
-        $result = $this->db->update('tire_change', $data);
+        $this->db->where('tire_size_chargeId',$data['tire_size_chargeId']);
+        $result = $this->db->update('tire_size_charge', $data);
         return $result;
     }
+
+    function delete($tire_size_chargeId){
+        return $this->db->delete('tire_size_charge', array('tire_size_chargeId' => $tire_size_chargeId));
+    }
+
+/////
     function checkData($tire_changeId){
         $this->db->select("tire_price,rimId");
         return $this->db->where('tire_changeId',$tire_changeId)->get("tire_change")->row(); 
     }
-    function delete($tire_changeId){
-        return $this->db->delete('tire_change', array('tire_changeId' => $tire_changeId));
-    }
-
-
 }

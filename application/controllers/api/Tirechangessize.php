@@ -72,19 +72,19 @@ class Tirechangessize extends BD_Controller {
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
 
-    // public function deletetirechange_get(){
-    //     $tire_changeId = $this->get('tire_changeId');
-    //     $data_check = $this->tirechanges->getTireChangeById($tire_changeId);
+    public function deletetirechange_get(){
+        $tire_size_chargeId = $this->get('tire_size_chargeId');
+        $data_check = $this->tirechangessizes->getTireChangeById($tire_size_chargeId);
 
-    //     $option = [
-    //         "data_check_delete" => $data_check,
-    //         "data" => $tire_changeId,
-    //         "model" => $this->tirechanges,
-    //         "image_path" => null
-    //     ];
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $tire_size_chargeId,
+            "model" => $this->tirechangessizes,
+            "image_path" => null
+        ];
 
-    //     $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
-    // }
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
+    }
 
     // public function getalltirechange_post(){
     //     $tire_changeId = $this->post('tire_changeId');
@@ -151,30 +151,29 @@ class Tirechangessize extends BD_Controller {
         $this->set_response($json_data);
     }
 
-    // function changeStatus_post(){
-    //     $tire_changeId = $this->post('tire_changeId');
-    //     $status = $this->post("status");
-    //     if($status == 1){
-    //         $status = 2;
-    //     }else{
-    //         $status = 1;
-    //     }
+    function changeStatus_post(){
+        $tire_size_chargeId = $this->post('tire_size_chargeId');
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
 
-    //     $data_check_update = $this->tirechanges->getTireChangeById($tire_changeId);
-    //     $data = array(
-    //         'tire_changeId' => $tire_changeId,
-    //         'status' => $status,
-    //         'activeFlag' => 1
-    //     );
+        $data_check_update = $this->tirechangessizes->getTireChangeById($tire_size_chargeId);
+        $data = array(
+            'tire_size_chargeId' => $tire_size_chargeId,
+            'status' => $status
+        );
 
-    //     $option = [
-    //         "data_check_update" => $data_check_update,
-    //         "data" => $data,
-    //         "model" => $this->tirechanges
-    //     ];
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->tirechangessizes
+        ];
 
-    //     $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
-    // }  
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
+    }  
     
     // function getTireChange_get(){
     //     $tire_changeId = $this->get('tire_changeId');
@@ -206,19 +205,16 @@ class Tirechangessize extends BD_Controller {
 
     function getAllRims_get(){
         $rimId = $this->post('rimId');
-        // var_dump($rimId);
-        // exit();
         $result = $this->tirechangessizes->getAllRims($rimId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
     function getiresizeById_post(){
-        $tire_sizeId = $this->post('tire_sizeId');
-        $rimId = $this->post('rimId');
-       
-        $data_check = $this->tirechangessizes->geTiresizeFromTiresizeBytireId($tire_sizeId, $rimId);
-        
+        $tire_size_chargeId = $this->post('tire_size_chargeId');
+        $data_check = $this->tirechangessizes->geTiresizeFromTiresizeBytireId($tire_size_chargeId);
+        // var_dump($data_check);
+        // exit();
         $option = [
             "data_check" => $data_check
         ];

@@ -56,7 +56,6 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                // { "data": "tire_sizeId" },
                 null,
                 { "data": "tire_size_price" },
                 null,
@@ -84,7 +83,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/Charge/updatetiresizecharge/"+data.rimId+"/"+data.tire_sizeId+"/"+data.tire_size_chargeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletetrie_size('+data.tire_sizeId+',\''+data.tire_size+'\',\''+data.rimId+'\')"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletetrie_size('+data.tire_size_chargeId+',\''+data.tire_size+'\',\''+data.rimId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -106,7 +105,7 @@
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.tire_sizeId+','+data.status+','+data.rimId+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.tire_size_chargeId+','+data.status+','+data.rimId+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
@@ -124,23 +123,24 @@
         event.preventDefault();
         table.ajax.reload();
     })
-    function deletetrie_size(tire_sizeId,tire_size,rimId){
+    function deletetrie_size(tire_size_chargeId,tire_size,rimId){
         var option = {
-            url: "/Triesize/deletetriesize?tire_sizeId="+tire_sizeId,
+            url: "/Tirechangessize/deletetirechange?tire_size_chargeId="+tire_size_chargeId,
             label: "ลบขอบยาง",
-            content: "คุณต้องการลบ "+tire_size+" ใช่หรือไม่",
-            gotoUrl: "admin/Tires/tiresize/"+rimId
+            content: "คุณต้องการลบขอบยาง "+tire_size+" ใช่หรือไม่",
+            gotoUrl: "admin/charge/tiresizecharge/"+rimId
         }
         fnDelete(option);
     }
-    function updateStatus(tire_sizeId,status,rimId){
-        $.post(base_url+"api/Triesize/changeStatus",{
-            "tire_sizeId": tire_sizeId,
+
+    function updateStatus(tire_size_chargeId,status,rimId){
+        $.post(base_url+"api/Tirechangessize/changeStatus",{
+            "tire_size_chargeId": tire_size_chargeId,
             "status": status,
             "rimId": rimId
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/tires/tiresize/"+rimId);
+                showMessage(data.message,"admin/charge/tiresizecharge/"+rimId);
             }else{
                 showMessage(data.message);
             }

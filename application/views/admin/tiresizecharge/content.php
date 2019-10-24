@@ -2,9 +2,9 @@
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="<?=base_url("admin/tires") ?>">ขอบยาง</a>
+    <a href="<?=base_url("admin/charge/tirescharge") ?>">ราคาเปลี่ยนยางนอก</a>
     <li class="breadcrumb-item">
-      <a href="<?=base_url("admin/tires/tiresize/$rimId") ?>">ขนาดยาง</a>
+      <a href="<?=base_url("admin/charge/tiresizecharge/$rimId") ?>">ขนาดยาง</a>
     </li>
     <li class="breadcrumb-item active">ค้นหา</li>
   </ol>

@@ -1,27 +1,27 @@
 <script>
+ $.validator.setDefaults({ ignore: ":hidden:not(select)" });
  $("#submit").validate({
         rules: {
-            tire_size: {
+            tire_change: {
+                required: true
+            },
+            unit_id: {
+                required: true
+            },
+            tire_rimId: {
                 required: true
             }
-            // tire_series: {
-            //     required: true
-            // },
-            // rim: {
-            //     required: true
-            // }
         },
         messages: {
-            tire_size: {
-                required: "กรุณากรอกหน้ายาง"
+            tire_change: {
+                required: "กรุณากรอกราคาค่าบริการ"
+            },
+            unit_id: {
+                required: "กรุณาเลือกหน่วย"
+            },
+            tire_rimId: {
+                required: "กรุณากรอกขนาดกะทะล้อ"
             }
-            // ,
-            // tire_series: {
-            //     required: "กรุณากรอกซีรี่ย์ยาง"
-            // },
-            // rim: {
-            //     required: "กรุณากรอกขนาดกะทะล้อ"
-            // }
         },
     });
 

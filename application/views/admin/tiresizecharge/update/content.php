@@ -4,9 +4,9 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
        <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires") ?>">ขอบยาง</a>
+        <a href="<?=base_url("admin/charge/tirescharge") ?>">ราคาเปลี่ยนยางนอก</a>
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tires/tiresize/$rimId/$tire_sizeId") ?>">ขนาดยาง</a>
+          <a href="<?=base_url("admin/charge/tiresizecharge/$rimId/$tire_sizeId") ?>">ขนาดยาง</a>
         <li class="breadcrumb-item active">เเก้ไขข้อมูลขนาดยาง</li>
       </ol>
       <!-- Icon Cards-->
@@ -22,8 +22,6 @@
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form id="submit">
-                    <input type="hidden" id="rimId" name="rimId" value="<?=$rimId ?>">
-                    <input type="hidden" id="tire_sizeId" name="tire_sizeId" value="<?=$tire_sizeId ?>">
                     <input type="hidden" id="tire_size_chargeId" name="tire_size_chargeId" value="<?=$tire_size_chargeId ?>">
                     <div class="card-body black bg-light">
                       <div class="row">

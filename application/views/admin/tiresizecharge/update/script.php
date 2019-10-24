@@ -1,46 +1,44 @@
 <script>
+$.validator.setDefaults({ ignore: ":hidden:not(select)" });
  $("#submit").validate({
         rules: {
-            tire_size: {
+            tire_change: {
                 required: true
             }
-            // ,
+            ,
             // tire_series: {
             //     required: true
             // },
-            // rim: {
-            //     required: true
-            // }
+            tire_rimId: {
+                required: true
+            }
         },
         messages: {
-            tire_size: {
-                required: "กรุณากรอกขนาดยาง"
+            tire_change: {
+                required: "กรุณากรอกราคาค่าบริการ"
             }
-            // ,
+            ,
             // tire_series: {
             //     required: "กรุณากรอกซีรี่ย์ยาง"
             // },
-            // rim: {
-            //     required: "กรุณากรอกขนาดกะทะล้อ"
-            // }
+            tire_rimId: {
+                required: "กรุณากรอกขนาดกะทะล้อ"
+            }
         },
     });
     
-    var rimId = $("#rimId").val();
-    var tire_sizeId = $("#tire_sizeId").val();
+    var oldrimId;
+    // var tire_sizeId = $("#tire_sizeId").val();
 
     $.post(base_url+"api/Tirechangessize/getiresizeById",{
-        "rimId": rimId,
-        "tire_sizeId" : tire_sizeId
+        "tire_size_chargeId": $('#tire_size_chargeId').val()
     },function(data){
         if(data.message!=200){
-            // showMessage(data.message,"admin/tires/tiresize/"+rimId+"/"+tire_sizeId);
             showMessage(data.message,"admin/charge/tiresizecharge/"+rimId);  
         }else{
             result = data.data;
-            // $("#tire_size").val(result.tire_size);
-            // $("#tire_series").val(result.tire_series);
-            // $("#rim").val(result.rim);
+            oldrimId = result.rimId
+            $("#tire_change").val(result.tire_size_price);
             init(result.rimId, result.tire_sizeId, result.unit_id);
         }
     });
@@ -51,7 +49,7 @@
 
     
 
-    function init(rimId, tire_sizeId){
+    function init(rimId, tire_sizeId, unit_id){
         getunit(unit_id);
         getRim(rimId, tire_sizeId);
     }
@@ -78,7 +76,10 @@
                     tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>');
                 });
                 tire_rim.val(rimId);
-                tiresize(rimId,tire_sizeId);
+                if(rimId){
+                    tiresize(rimId,tire_sizeId);
+                }
+                // console.log(rimId,tire_sizeId);
             } 
         );
     }
@@ -93,11 +94,16 @@
         $.get(base_url+"service/Tire/getAllTireSize",{
             rimId: rimId
         },function(data){
-                var brandData = data.data;
+            var brandData = data.data;
+            // console.log(brandData);
                 $.each( brandData, function( key, value ) {
+                    console.log(brandData);
                     tire_size.append('<option value="' + value.tire_sizeId + '">' + value.tire_size + '</option>');
                 });
-                tire_size.val(tire_sizeId);
+
+                if(tire_sizeId){
+                    tire_size.val(tire_sizeId);
+                }
             }
         );
     }
@@ -118,7 +124,7 @@
             $.post(base_url+"api/Tirechangessize/update",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/charge/tiresizecharge"+rimId);
+                    showMessage(data.message,"admin/charge/tiresizecharge/"+oldrimId);
                 }else{
                     showMessage(data.message);
                 }
