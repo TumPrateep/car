@@ -137,6 +137,7 @@ class Tirechangessize extends BD_Controller {
                 $nestedData['tire_series'] = $post->tire_series;
                 $nestedData['rimId'] = $post->rimId;
                 $nestedData['rim'] = $post->rimName;
+                $nestedData['unit'] = $post->unit;
                 $nestedData['tire_size_price'] = $post->tire_size_price;
                 $nestedData['status'] = $post->status;
                 $data[] = $nestedData;

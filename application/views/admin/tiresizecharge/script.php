@@ -57,7 +57,8 @@
             "columns": [
                 null,
                 null,
-                { "data": "tire_size_price" },
+                null,
+                // { "data": "tire_size_price" },
                 null,
                 null
             ],
@@ -76,6 +77,13 @@
                             html += "/"+data.tire_series;
                         }
                         return html+"R"+data.rim;
+                    }
+                },
+                {
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return data.tire_size_price+" "+data.unit;
                     }
                 },
                 {
