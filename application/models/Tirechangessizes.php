@@ -108,15 +108,16 @@ class Tirechangessizes extends CI_Model{
         return $this->db->delete('tire_size_charge', array('tire_size_chargeId' => $tire_size_chargeId));
     }
 
-    function trie_size_search($limit,$start,$search,$col,$dir,$status)
+    function trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status)
     {
         // $this->db->select("tire_size_charge.tire_size_chargeId, tire_size_charge.tire_sizeId");
         $this->db->select("tire_size_charge.tire_size_chargeId, tire_size_charge.tire_sizeId, tire_size_charge.rimId, tire_size_charge.tire_size_price, 
         tire_size_charge.status, tire_size.tire_size, tire_size.tire_series, rim.rimName, unit.unit_id, unit.unit");
+        $this->db->from("tire_size_charge");
         $this->db->join('rim','rim.rimId = tire_size_charge.rimId');
         $this->db->join('tire_size','tire_size.tire_sizeId = tire_size_charge.tire_sizeId');
         $this->db->join('unit','unit.unit_id = tire_size_charge.unit_id');
-
+        $this->db->where("tire_size_charge.rimId", $rimId);
         $this->db->like('concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName)',$search);
         if($status != null){
             $this->db->where("tire_size_charge.status", $status);
@@ -136,23 +137,24 @@ class Tirechangessizes extends CI_Model{
         
     }
 
-    function trie_size_search_count($search, $status)
+    function trie_size_search_count($search,$rimId, $status)
     {
         // $this->db->select("tire_size_charge.tire_size_chargeId, tire_size_charge.tire_sizeId");
         $this->db->select("tire_size_charge.tire_size_chargeId, tire_size_charge.tire_sizeId, tire_size_charge.rimId, tire_size_charge.tire_size_price, 
         tire_size_charge.status, tire_size.tire_size, tire_size.tire_series, rim.rimName, unit.unit_id, unit.unit");
+        $this->db->from("tire_size_charge");
         $this->db->join('rim','rim.rimId = tire_size_charge.rimId');
         $this->db->join('tire_size','tire_size.tire_sizeId = tire_size_charge.tire_sizeId');
         $this->db->join('unit','unit.unit_id = tire_size_charge.unit_id');
-
+        $this->db->where("tire_size_charge.rimId", $rimId);
         $this->db->like('concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName)',$search);
         if($status != null){
             $this->db->where("tire_size_charge.status", $status);
         }
-        $query = $this->db->limit($limit,$start)
-                ->order_by($col,$dir)
-                ->get();
-        // $query = $this->db->get();
+        // $query = $this->db->limit($limit,$start)
+        //         ->order_by($col,$dir)
+        //         ->get();
+        $query = $this->db->get();
         return $query->num_rows();
     }
 
