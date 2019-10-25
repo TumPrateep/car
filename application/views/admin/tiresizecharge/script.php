@@ -66,7 +66,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,3]
+                    "targets": [0,3,4]
                 },
                 {
                     "targets": 1,
@@ -120,7 +120,7 @@
                     }
                 },
                 { "orderable": false, "targets": 0 },
-                {"className": "dt-center", "targets": [0,1,2]},
+                {"className": "dt-center", "targets": [0,1,2,3,4]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 1 },
                 { "width": "25%", "targets": 2 },

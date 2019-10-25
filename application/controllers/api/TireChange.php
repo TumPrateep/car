@@ -15,6 +15,7 @@ class Tirechange extends BD_Controller {
 
         $rimId = $this->post('tire_rimId');
         $tire_price = $this->post('tire_price');
+        $unit_id = $this->post('unit_id');
         $userId = $this->session->userdata['logged_in']['id'];
 
         $data_check = $this->tirechanges->data_check_create($rimId);
@@ -22,6 +23,7 @@ class Tirechange extends BD_Controller {
             'rimId' => $rimId,
             'tire_price' => $tire_price,
             'create_by' => $userId,
+            'unit_id' => $unit_id,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
             'activeFlag' => 1
@@ -40,6 +42,7 @@ class Tirechange extends BD_Controller {
         $rimId = $this->post('tire_rimId');
         $tire_price = $this->post('tire_price');
         $tire_changeId = $this->post('tire_changeId');
+        $unit_id = $this->post('unit_id');
         $userId = $this->session->userdata['logged_in']['id'];
 
         $data_check_update = $this->tirechanges->getTireChangeById($tire_changeId);
@@ -48,6 +51,7 @@ class Tirechange extends BD_Controller {
             'tire_changeId' => $tire_changeId,
             'tire_price' => $tire_price,
             'rimId' => $rimId,
+            'unit_id' => $unit_id,
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time())
         );
@@ -124,6 +128,7 @@ class Tirechange extends BD_Controller {
                 $nestedData['tire_changeId'] = $post->tire_changeId;
                 $nestedData['rimName'] = $post->rimName;
                 $nestedData['tire_price'] = $post->tire_price;
+                $nestedData['unit'] = $post->unit;
                 $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
             }

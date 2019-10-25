@@ -124,7 +124,7 @@ class Tirechangessize extends BD_Controller {
             $search = $this->post('tire_size'); 
             $status = $this->post('status'); 
             $posts =  $this->tirechangessizes->trie_size_search($limit,$start,$search,$order,$dir,$rimId,$status);
-            $totalFiltered = $this->tirechangessizes->trie_size_search_count($search, $rimId,$status);
+            $totalFiltered = $this->tirechangessizes->trie_size_search_count($search,$rimId,$status);
         }
         $data = array();
         if(!empty($posts))

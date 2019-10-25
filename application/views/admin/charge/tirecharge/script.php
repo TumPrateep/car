@@ -36,7 +36,8 @@
             "columns": [
                 null,
                 { "data": "rimName" },
-                { "data": "tire_price" },
+                // { "data": "tire_price" },
+                null,
                 null,
                 null
             ],
@@ -59,9 +60,9 @@
                     }
                 },{
                     "targets": 2,
-                    "data": "tire_price",
+                    "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return  data +' บาท';
+                        return  data.tire_price+" "+data.unit;
                     }
                 },{
                     "targets": 3,

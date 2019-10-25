@@ -110,24 +110,22 @@ class Tirechangessizes extends CI_Model{
 
     function trie_size_search($limit,$start,$search,$col,$dir,$rimId,$status)
     {
-        if($status != null){
-            $this->db->where("tire_size_charge.status", $status);
-        }
-        //$this->db->select("tire_size.tire_size,tire_size.tire_series,rim.rimName,rim.rimId,tire_size.tire_sizeId, tire_size.tire_size, tire_size.tire_series, tire_size.status");
+        // $this->db->select("tire_size_charge.tire_size_chargeId, tire_size_charge.tire_sizeId");
         $this->db->select("tire_size_charge.tire_size_chargeId, tire_size_charge.tire_sizeId, tire_size_charge.rimId, tire_size_charge.tire_size_price, 
         tire_size_charge.status, tire_size.tire_size, tire_size.tire_series, rim.rimName, unit.unit_id, unit.unit");
+        $this->db->from("tire_size_charge");
         $this->db->join('rim','rim.rimId = tire_size_charge.rimId');
         $this->db->join('tire_size','tire_size.tire_sizeId = tire_size_charge.tire_sizeId');
         $this->db->join('unit','unit.unit_id = tire_size_charge.unit_id');
-        $this->db->where("tire_size_charge.rimId", $rimId)
-            ->group_start()
-                ->like('tire_size.tire_size',$search)
-                ->or_like('tire_size.tire_series',$search)
-                ->or_like('rim.rimName',$search)
-            ->group_end()
-            ->limit($limit,$start)
-            ->order_by($col,$dir)
-            ->get('tire_size_charge');
+        $this->db->where("tire_size_charge.rimId", $rimId);
+        $this->db->like('concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName)',$search);
+        if($status != null){
+            $this->db->where("tire_size_charge.status", $status);
+        }
+        $query = $this->db->limit($limit,$start)
+                ->order_by($col,$dir)
+                ->get();   
+        // $query = $this->db->get();
         if($query->num_rows()>0)
         {
             return $query->result();  
@@ -139,24 +137,24 @@ class Tirechangessizes extends CI_Model{
         
     }
 
-    function trie_size_search_count($search, $rimId,$status)
+    function trie_size_search_count($search,$rimId, $status)
     {
-        if($status != null){
-            $this->db->where("tire_size_charge.status", $status);
-        }
+        // $this->db->select("tire_size_charge.tire_size_chargeId, tire_size_charge.tire_sizeId");
         $this->db->select("tire_size_charge.tire_size_chargeId, tire_size_charge.tire_sizeId, tire_size_charge.rimId, tire_size_charge.tire_size_price, 
         tire_size_charge.status, tire_size.tire_size, tire_size.tire_series, rim.rimName, unit.unit_id, unit.unit");
+        $this->db->from("tire_size_charge");
         $this->db->join('rim','rim.rimId = tire_size_charge.rimId');
         $this->db->join('tire_size','tire_size.tire_sizeId = tire_size_charge.tire_sizeId');
         $this->db->join('unit','unit.unit_id = tire_size_charge.unit_id');
-        $this->db->where("tire_size_charge.rimId", $rimId)
-            ->group_start()
-                ->like('tire_size',$search)
-                ->or_like('tire_series',$search)
-                ->or_like('rim',$search)
-            ->group_end()
-            ->get('tire_size_charge');
-    
+        $this->db->where("tire_size_charge.rimId", $rimId);
+        $this->db->like('concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName)',$search);
+        if($status != null){
+            $this->db->where("tire_size_charge.status", $status);
+        }
+        // $query = $this->db->limit($limit,$start)
+        //         ->order_by($col,$dir)
+        //         ->get();
+        $query = $this->db->get();
         return $query->num_rows();
     }
 
