@@ -308,9 +308,11 @@
                                         + '<img src="'+base_url+'public/image/tire_brand/'+data.tire_brandPicture+'">'
                                     + '</div>'
                                     + '<div class="detail col-md-3">'
-                                        + '<div class="price"> ราคา '+data.price+' ฿ </div>'
-                                        + '<br>'
-                                        + '<button class="btn btn-transparent-md"><i class="fa fa-shopping-cart"></i>สั่งซื้อ</button>'
+                                        + '<button class="btn btn-transparent-md btn-result">'
+                                        + 'ราคาดีที่สุด <br><br>'
+                                        + '<div class="btn btn-dark"> <i class="fa fa-shopping-cart"></i> '+data.price+' ฿ </div>'
+                                        + '<br><br> ค้นหาผู้ให้บริการ / สั่งสินค้า'
+                                        + '</button>'
                                     + '</div>'
                                 + '</div><br>';
                                 return html;
