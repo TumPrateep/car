@@ -44,10 +44,10 @@ class Tirechanges extends CI_Model{
     }
 
     function allTirechanges($limit,$start,$col,$dir){
-        $this->db->select('tire_change.tire_price,rim.rimName, tire_change.status, tire_change.tire_changeId, tire_change.status, rim.rimId');
+        $this->db->select('tire_change.tire_price,rim.rimName, tire_change.status, tire_change.tire_changeId, tire_change.status, rim.rimId, unit.unit');
         $this->db->from('tire_change');
         $this->db->join('rim', 'tire_change.rimId = rim.rimId');
-
+        $this->db->join('unit','unit.unit_id = tire_change.unit_id');
         $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
         
         if($query->num_rows()>0)
@@ -75,10 +75,10 @@ class Tirechanges extends CI_Model{
     
     function tirechanges_search($limit,$start,$search,$col,$dir,$status){
         
-        $this->db->select('tire_change.tire_price,rim.rimName, tire_change.status, tire_change.tire_changeId, tire_change.status ');
+        $this->db->select('tire_change.tire_price,rim.rimName, tire_change.status, tire_change.tire_changeId, tire_change.status, unit.unit ');
         $this->db->from('tire_change');
         $this->db->join('rim', 'tire_change.rimId = rim.rimId');
-
+        $this->db->join('unit','unit.unit_id = tire_change.unit_id');
         $this->db->like('rim.rimName',$search);
         if($status != null){
             $this->db->where("tire_change.status", $status);
@@ -99,10 +99,10 @@ class Tirechanges extends CI_Model{
 
     function tirechanges_search_count($search,$status){
        
-        $this->db->select('tire_change.tire_price,rim.rimName, tire_change.status, tire_change.tire_changeId, tire_change.status ');
+        $this->db->select('tire_change.tire_price,rim.rimName, tire_change.status, tire_change.tire_changeId, tire_change.status, unit.unit ');
         $this->db->from('tire_change');
         $this->db->join('rim', 'tire_change.rimId = rim.rimId');
-        
+        $this->db->join('unit','unit.unit_id = tire_change.unit_id');
         $this->db->like('rim.rimName',$search);
         if($status != null){
             $this->db->where("tire_change.status", $status);
@@ -120,7 +120,7 @@ class Tirechanges extends CI_Model{
     }
 
     function getUpdate($tire_changeId){
-        $this->db->select("tire_changeId,tire_price,rimId");
+        $this->db->select("tire_changeId,tire_price,rimId,unit_id");
         $this->db->where('tire_changeId',$tire_changeId);
         $result = $this->db->get("tire_change")->row();
         return $result;

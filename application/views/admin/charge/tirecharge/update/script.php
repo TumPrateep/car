@@ -53,12 +53,25 @@
         var tireChange = data.data;
 
         getRim(tireChange.rimId);
+        getunit(tireChange.unit_id);
         $("#tire_price").val(tireChange.tire_price);
     });
 
     var tire_rim = $("#tire_rimId");
+    var unitN = $("#unit_id");
 
-    
+    function getunit(unit_id = null){
+        unitN.html('<option value="">เลือกหน่วย</option>');
+        $.get(base_url+"api/tirechangessize/getAllunit",{},
+            function(data){
+                var unitData = data.data;
+                $.each( unitData, function( key, value ) {
+                    unitN.append('<option value="' + value.unit_id + '">' + value.unit + ' </option>');
+                });
+                unitN.val(unit_id);
+            } 
+        );
+    }
 
     function getRim(rimId = null){
         $.get(base_url+"api/Rim/getAllRims",{},

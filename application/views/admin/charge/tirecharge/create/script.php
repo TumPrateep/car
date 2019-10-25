@@ -29,8 +29,25 @@
     })
 
     var tire_rim = $("#tire_rimId");
+    var unit_id = $("#unit_id");
+    init();
 
-    getRim();
+    function init(){
+        getRim();
+        getunit();
+    }
+
+    function getunit(){
+        unit_id.html('<option value="">เลือกหน่วย</option>');
+        $.get(base_url+"api/tirechangessize/getAllunit",{},
+            function(data){
+                var unitData = data.data;
+                $.each( unitData, function( key, value ) {
+                    unit_id.append('<option value="' + value.unit_id + '">' + value.unit + ' </option>');
+                });
+            } 
+        );
+    }
 
     function getRim(rimId = null){
         $.get(base_url+"api/Rim/getAllRims",{},

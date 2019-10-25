@@ -34,11 +34,14 @@
                           <input type="number" class="form-control" placeholder="กรุณากรอกราคาค่าบริการเปลี่ยนขอบยาง" name="tire_price" id="tire_price">
                       </div>
                       <div class="col-md-4">
+                      <div class="form-group">
                             <label>หน่วย</label> <span class="error">*</span>
-                            <select class="form-control" name="spares_undercarriageId" id="spares_undercarriageId">
-                                <option value="">เลือกหน่วย</option>
+                            <select class="form-control" name="unit_id" id="unit_id">
+                              <option value="">เลือกหน่วย</option>
                             </select>
-                        </div>
+                            <label id="unit_id-error" class="error" for="unit_id"></label>
+                          </div>
+                      </div>
                     </div>
                     
                     <div class="form-group">
