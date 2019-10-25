@@ -43,7 +43,7 @@
     }
 
     function getunit(){
-        unit_id.html('<option>เลือกหน่วย</option>');
+        unit_id.html('<option value="">เลือกหน่วย</option>');
         $.get(base_url+"api/tirechangessize/getAllunit",{},
             function(data){
                 var unitData = data.data;
@@ -55,7 +55,7 @@
     }
 
     function getRim(){
-        tire_rim.html('<option>เลือกขอบยาง</option>');
+        tire_rim.html('<option value="">เลือกขอบยาง</option>');
         $.get(base_url+"api/tirechangessize/getAllRims",{},
             function(data){
                 var brandData = data.data;
@@ -68,7 +68,7 @@
 
     tire_rim.change(function(){
         var rimId = tire_rim.val();
-        tire_size.html('<option>เลือกขนาดยาง</option>');
+        tire_size.html('<option value="">เลือกขนาดยาง</option>');
         $.get(base_url+"service/Tire/getAllTireSize",{
             rimId: rimId
         },function(data){

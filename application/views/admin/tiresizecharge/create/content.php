@@ -35,28 +35,31 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label>หน่วย</label> <span class="error">*</span> <label id="unit_id-error" class="error" for="unit_id"></label>
+                            <label>หน่วย</label> <span class="error">*</span>
                             <select class="form-control" name="unit_id" id="unit_id">
                               <option value="">เลือกหน่วย</option>
                             </select>
+                            <label id="unit_id-error" class="error" for="unit_id"></label>
                           </div>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label>ขอบยาง</label> <span class="error">*</span> <label id="tire_rimId-error" class="error" for="tire_rimId"></label>
+                            <label>ขอบยาง</label> <span class="error">*</span> 
                             <select class="form-control" name="tire_rimId" id="tire_rimId">
                               <option value="">เลือกขอบยาง</option>
                             </select>
+                            <label id="tire_rimId-error" class="error" for="tire_rimId"></label>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label>ขนาดยาง</label> <span class="error">*</span> <label id="tire_sizeId-error" class="error" for="tire_sizeId"></label>
+                            <label>ขนาดยาง</label> <span class="error">*</span> 
                             <select class="form-control" name="tire_sizeId" id="tire_sizeId">
                               <option value="">เลือกขนาดยาง</option>
                             </select>
+                            <label id="tire_sizeId-error" class="error" for="tire_sizeId"></label>
                           </div>
                         </div>
                       </div>

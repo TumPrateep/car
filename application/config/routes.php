@@ -56,6 +56,7 @@ $route['translate_uri_dashes'] = false;
 $route['admin'] = 'admin/Admin';
 $route['user'] = 'user/User';
 $route['caraccessory'] = 'caraccessory/Caraccessory';
+$route['garage'] = 'garage/Home';
 $route['admin/garage'] = 'garage/Schedule';
 
 $route['register/sparepart'] = 'public/Register/sparepart';
@@ -94,6 +95,7 @@ $route['comment/(\d+)'] = function ( $id)
 
 $route['search/lubricator'] = 'user/search/lubricator';
 $route['search/tire'] = 'user/search/tire';
+$route['search/tire/resultgarage'] = 'user/resultgarage';
 $route['search/garage'] = 'user/Garage';
 
 $route['products/tire'] = 'user/tire';
