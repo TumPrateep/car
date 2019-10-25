@@ -47,7 +47,7 @@ class Tirematch extends CI_Model{
         $this->db->join('modelofcar', 'tire_matching.modelofcarId = modelofcar.modelofcarId');
         $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_matching.tire_sizeId');
         $this->db->join('rim','rim.rimId = tire_matching.rimId');
-
+//
         $this->db->like('concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName)',$search);
         if($status != null){
             $this->db->where("tire_matching.status", $status);
