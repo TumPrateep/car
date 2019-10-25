@@ -16,8 +16,16 @@
       <span class="main">คาร์ใจดี  "เรื่องรถ"  <span class="click">คลิกเดียวจบ</span></span>
       <ul class="navbar-nav mx-auto"></ul>
       <div>
-      	<button class="btn btn-main-md width-100p bg-orange">สมัครเป็นร้านค้า</button>
-      	<button class="btn btn-main-md width-100p bg-orange">สมัครเป็นอู่ให้บริการ</button>
+          <a href="<?=base_url('login')?>" class="btn btn-main-md width-100p bg-orange"><i class="fa fa-sign-in" aria-hidden="true"></i> เข้าสู่ระบบ/ลงทะเบียน</a>
+          <div class="dropdown">
+            <button class="btn btn-main-md width-100p bg-orange dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-registered" aria-hidden="true"></i> สมัครเป็นผู้ให้บริการ
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#"><i class="fa fa-car" aria-hidden="true"></i> ศูนย์บริการคาร์ใจดี</a>
+              <a class="dropdown-item" href="#"><i class="fa fa-truck" aria-hidden="true"></i> ร้านค้าส่งคาร์ใจดี</a>
+            </div>
+          </div>
       </div>
   </div>
 </nav>
