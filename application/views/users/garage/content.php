@@ -151,7 +151,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h3>ค้นหา<span class="alternate">ผู้ให้บริการใกล้เคียง</span></h3> 
+                        <h3>ค้นหา<span class="alternate">ศูนย์บริการคาร์ใจดี</span></h3> 
                         <!-- id="title" show "ยางรถยนต์"-->
                     </div>
                 </div>
