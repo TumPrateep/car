@@ -97,6 +97,7 @@ $route['search/lubricator'] = 'user/search/lubricator';
 $route['search/tire'] = 'user/search/tire';
 $route['search/tire/resultgarage'] = 'user/resultgarage';
 $route['search/garage'] = 'user/Garage';
+$route['checkout'] = 'user/checkout';
 
 $route['products/tire'] = 'user/tire';
 $route['products/lubricator'] = 'user/lubricator';
