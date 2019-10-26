@@ -68,7 +68,7 @@
                     <span class="mb-10"></span>
                     <div class="row">
                         <div class="col-12">
-                            <button class="btn btn-main-md width-100p bg-orange btn-lg"><i class="fa fa-shopping-bag" aria-hidden="true"></i> สั่งซื้อสินค้า </button>
+                            <a href="<?php echo base_url("checkout") ?>" class="btn btn-main-md width-100p bg-orange btn-lg"><i class="fa fa-shopping-bag" aria-hidden="true"></i> สั่งซื้อสินค้า </a>
                         </div>
                     </div>
                 </div>
