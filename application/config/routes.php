@@ -99,6 +99,7 @@ $route['search/tire/resultgarage/(\d+)/(\d+)/(\d+)'] = function ($tire_modelId, 
     return 'user/resultgarage/index/'.$tire_modelId.'/'.$tire_size_id.'/'.$tire_dataId;
 };
 $route['search/garage'] = 'user/Garage';
+$route['search/garage/detailgarage'] = 'user/detailgarage';
 $route['checkout'] = 'user/checkout';
 
 $route['products/tire'] = 'user/tire';
