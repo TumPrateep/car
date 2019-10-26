@@ -308,6 +308,7 @@
                                         + '<img src="'+base_url+'public/image/tire_brand/'+data.tire_brandPicture+'" width="100%">'
                                     + '</div>'
                                     + '<div class="detail col-md-3">'
+                                        + '<a href="'+base_url+'search/tire/resultgarage">'
                                         + '<div class="card pointer">'
                                         + '<div class="card-body order">'
                                         + 'ราคาต่ำสุด'
@@ -317,6 +318,7 @@
                                         + 'ค้นหาศูนย์บริการ / สั่งสินค้า'
                                         + '</div>'
                                         + '</div>'
+                                        + '</a>'
                                     + '</div>'
                                 + '</div>';
                                 return html;
