@@ -11,6 +11,7 @@ class Selectgarage extends BD_Controller {
         $this->load->model('triesizes');
         $this->load->model('tiredatas');
         $this->load->model('location');
+        $this->load->model('prices');
     }
 
     function search_post(){
@@ -41,10 +42,20 @@ class Selectgarage extends BD_Controller {
         // dd();
 
         $tireData = $this->tiredatas->getTireDataById($tire_dataId);
+        $carjaidee_change_data = $this->prices->getPriceCarjaidee($rimData->rimId, $tire_sizeId);
+        $carjaidee_price = 0;
+        if(!empty($carjaidee_change_data)){
+            $carjaidee_price = $carjaidee_change_data->price;
+            if($carjaidee_change_data->unit_id == 1){
+                $carjaidee_price = $tireData->price * $carjaidee_change_data->price / 100;
+            }
+        }
+        $tireData->price = $tireData->price + $carjaidee_price;
 
         $nestedData = array();
         $count = 0;
         // $index = 0;
+
         if(!empty($posts))
         {
             foreach ($posts as $post) {

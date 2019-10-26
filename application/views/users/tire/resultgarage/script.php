@@ -84,7 +84,7 @@
                                             +'<p>จังหวัด '+data.provinceName+'</p>'
                                         +'</div>'
                                         +'<div class="detail col-md-2">'
-                                            +'<div class="text">'+distance(data.latitude, data.longitude, latitude, longitude, "กม.")+'</div>'
+                                            +'<p class="text-center">'+distance(data.latitude, data.longitude, latitude, longitude, "กม.")+'</p>'
                                         +'</div>'
                                         +'<div class="col-md-2 address">'
                                             +'<p><strong>'+data.tireData.tire_brandName+'</strong></p>'
