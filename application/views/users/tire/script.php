@@ -305,16 +305,20 @@
                                         + '<div class="text"> <strong>'+data.tire_size+'</strong> </div>' 
                                     + '</div>'
                                     + '<div class="brand col-md-3 text-center">'
-                                        + '<img src="'+base_url+'public/image/tire_brand/'+data.tire_brandPicture+'">'
+                                        + '<img src="'+base_url+'public/image/tire_brand/'+data.tire_brandPicture+'" width="100%">'
                                     + '</div>'
                                     + '<div class="detail col-md-3">'
-                                        + '<button class="btn btn-transparent-md btn-result">'
-                                        + 'ราคาดีที่สุด <br><br>'
-                                        + '<div class="btn btn-dark"> <i class="fa fa-shopping-cart"></i> '+data.price+' ฿ </div>'
-                                        + '<br><br> ค้นหาผู้ให้บริการ / สั่งสินค้า'
-                                        + '</button>'
+                                        + '<div class="card pointer">'
+                                        + '<div class="card-body order">'
+                                        + 'ราคาต่ำสุด'
+                                        + '<h5>'+data.price+' บาท/เส้น</h5>'
+                                        + '</div>'
+                                        + '<div class="footer order">'
+                                        + 'ค้นหาศูนย์บริการ / สั่งสินค้า'
+                                        + '</div>'
+                                        + '</div>'
                                     + '</div>'
-                                + '</div><br>';
+                                + '</div>';
                                 return html;
                             }
                         }

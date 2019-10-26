@@ -12,6 +12,26 @@
     .btn-result{
         padding: 7px 7px 7px 7px;
     }
+    div.brand img {
+        margin: 45px 0px 0px 0px;
+        width: 100%;
+        height: auto;
+    }
+    .card-body.order{
+        background-color: #ff6600;
+        color: aliceblue;
+        padding: 0.5rem;
+    }
+    .card.pointer{
+        cursor: pointer;
+    }
+    .order > h5 {
+        color: white !important;
+    }
+    .footer.order {
+        background-color: #343a40;
+        color: white;
+    }
 </style>
 <section class="section pricing" id="search">
     <div class="container">
