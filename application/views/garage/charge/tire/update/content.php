@@ -12,12 +12,12 @@
             </ol>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid" style="min-height: 400px;">
       <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-title">
-                    <h4>เพิ่มข้อมูลราคาเปลี่ยนยาง</h4>
+                    <h4>เแก้ไขข้อมูลราคาเปลี่ยนยาง</h4>
 
                 </div>
                 <div class="card-body">
