@@ -167,8 +167,6 @@
                         <select class="form-control sortby justify-content-end" id="modelofcarId">
                             <option>ก - ฮ</option>
                             <option>ฮ - ก</option>
-                            <option>A - Z</option>
-                            <option>Z - A</option>
                             <option>ราคาต่ำไปสูง</option>
                             <option>ราคาสูงไปต่ำ</option>
                         </select>

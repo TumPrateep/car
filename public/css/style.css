@@ -3627,6 +3627,8 @@ div.row-border {
     border-bottom: 1px solid #ded9d9;
     margin-left: 0px;
     margin-right: 0px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 div.detail {
@@ -3692,4 +3694,8 @@ select.sortby {
 .error {
     color: red;
     font-size: 14px;
+}
+
+.mbt-5 {
+    margin-bottom: 5px;
 }

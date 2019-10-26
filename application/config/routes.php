@@ -95,7 +95,9 @@ $route['comment/(\d+)'] = function ( $id)
 
 $route['search/lubricator'] = 'user/search/lubricator';
 $route['search/tire'] = 'user/search/tire';
-$route['search/tire/resultgarage'] = 'user/resultgarage';
+$route['search/tire/resultgarage/(\d+)/(\d+)/(\d+)'] = function ($tire_modelId, $tire_size_id, $tire_dataId){
+    return 'user/resultgarage/index/'.$tire_modelId.'/'.$tire_size_id.'/'.$tire_dataId;
+};
 $route['search/garage'] = 'user/Garage';
 $route['checkout'] = 'user/checkout';
 

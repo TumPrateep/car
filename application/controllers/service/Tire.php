@@ -124,6 +124,9 @@ class Tire extends BD_Controller {
                 $nestedData[$count]['warranty'] = $post->warranty;
                 $nestedData[$count]['tire_picture'] = $post->tire_picture;
                 $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
+                $nestedData[$count]['tire_brandId'] = $post->tire_brandId;
+                $nestedData[$count]['tire_modelId'] = $post->tire_modelId;
+                $nestedData[$count]['tire_sizeId'] = $post->tire_sizeId;
                 
                 $option = [
                     'tire_brandId' => $post->tire_brandId,
