@@ -197,14 +197,11 @@
                   <!-- Loading Screen --> 
                   <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);"> <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg" /> </div>
                   <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
-                     <div> <img data-u="image" src="<?=base_url("test/img/001.jpg")?>" /> </div>
-                     <div> <img data-u="image" src="<?=base_url("test/img/002.jpg")?>" /> </div>
-                     <div> <img data-u="image" src="<?=base_url("test/img/003.jpg")?>" /> </div>
-                     <div> <img data-u="image" src="<?=base_url("test/img/004.jpg")?>" /> </div>
-                     <div> <img data-u="image" src="<?=base_url("test/img/005.jpg")?>" /> </div>
-                     <div> <img data-u="image" src="<?=base_url("test/img/006.jpg")?>" /> </div>
-                     <div> <img data-u="image" src="<?=base_url("test/img/007.jpg")?>" /> </div>
-                     <div> <img data-u="image" src="<?=base_url("test/img/009.jpg")?>" /> </div>
+                     <!-- <div> <img data-u="image" src="<?=base_url("test/img/01.png")?>" /> </div> -->
+                     <div> <img data-u="image" src="<?=base_url("test/img/02.png")?>" /> </div>
+                     <div> <img data-u="image" src="<?=base_url("test/img/03.png")?>" /> </div>
+                     <div> <img data-u="image" src="<?=base_url("test/img/04.png")?>" /> </div>
+                     <div> <img data-u="image" src="<?=base_url("test/img/05.png")?>" /> </div>
                   </div>
                   <!-- Bullet Navigator --> 
                   <div data-u="navigator" class="jssorb051" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">

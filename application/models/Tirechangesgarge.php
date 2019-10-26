@@ -67,14 +67,14 @@ class Tirechangesgarge extends CI_Model{
         
     }
 
-    function allTirechanges_count(){  
+    function allTirechanges_count($garageId){  
         $this->db->select('tire_change_garage.tire_price,rim.rimName, tire_change_garage.status, tire_change_garage.tire_change_garageId, tire_change_garage.status,tire_change_garage.garageId');
         $this->db->from('tire_change_garage');
         $this->db->join('rim', 'tire_change_garage.rimId = rim.rimId');
+        $this->db->where('tire_change_garage.garageId',$garageId);
         $query = $this->db->get();
     
-        return $query->num_rows();  
-                                                                                                                                                                                                
+        return $query->num_rows();                                                                                                                                                                          
     }
     
     function tirechanges_search($limit,$start,$search,$col,$dir,$status,$garageId){

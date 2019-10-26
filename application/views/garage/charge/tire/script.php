@@ -50,10 +50,11 @@
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
-                },{ "targets": 1,
+                },{ 
+                    "targets": 1,
                     "data": "rimName",
                     "render": function ( data, type, full, meta ) {
-                        return currency(data, { useVedic: true }).format();
+                        return data+" นิ้ว";
                     }             
                 },{ "targets": 2,
                     "data": "tire_price",
@@ -64,8 +65,7 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+'garage/charge/updatetire/'+data.tire_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletetirechanges('+data.tire_changeId+')"><i class="fa fa-trash"></i></button>';
+                        return '<a href="'+base_url+'garage/charge/updatetire/'+data.tire_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> ';
                     }
                 },
   

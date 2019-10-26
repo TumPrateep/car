@@ -12,7 +12,7 @@
             </ol>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid" style="min-height: 400px;">
       <div class="row">
         <div class="col-lg-12">
             <div class="card ">
