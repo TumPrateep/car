@@ -4,9 +4,9 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/tireproduct") ?>">ราคาเปลี่ยนยางรถ</a>
+        <a href="<?=base_url("admin/tireproduct") ?>">รูปภาพสินค้า</a>
       </li>
-      <li class="breadcrumb-item active" >เพิ่มข้อมูลราคาเปลี่ยนยางรถ</li>
+      <li class="breadcrumb-item active" >เพิ่มรูปภาพสินค้า</li>
     </ol>
     <!-- Icon Cards-->
     <section class="content">
@@ -15,7 +15,7 @@
           <div class="col-md-10">
             <div class="card text-white bg-success">
                 <div class="card-header">
-                  <h3 class="card-title" ><i class="fa fa fa-wrench"></i> เพิ่มข้อมูลราคาเปลี่ยนยางรถ</h3>
+                  <h3 class="card-title" ><i class="fa fa fa-wrench"></i> เพิ่มรูปภาพสินค้า</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -53,7 +53,7 @@
                     <div class="row p-t-20">
                         <div class="col-md-12">
                             <div class="form-group">
-                            <label class="control-label">รูปยางรถ</label>
+                            <label class="control-label">รูปภาพสินค้า</label>
                                 <div class="image-editor">
                                     <input type="file" class="cropit-image-input" name="tempImage" required>
                                     <div class="cropit-preview"></div>

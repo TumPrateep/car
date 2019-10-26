@@ -32,7 +32,7 @@
                     data.status = $("#status").val()
                 }
             },
-            "order": [[ 3, "asc" ]],
+            "order": [[ 1, "asc" ]],
             "columns": [
                 null,
                 { "data": "rimName" },

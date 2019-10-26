@@ -17,6 +17,7 @@ class Tire extends BD_Controller {
         $this->load->model("model");
         $this->load->model('modelofcars');
         $this->load->model('tirematch');
+        $this->load->model('prices');
     }
 
     function search_post(){
@@ -110,13 +111,28 @@ class Tire extends BD_Controller {
             $count = 0;
             foreach ($posts as $post)
             {
+                $tire_change_data = $this->prices->getPriceFromGarageByRimId($post->rimId);
+                $garage_price = 0;
+                if(!empty($tire_change_data)){
+                    $garage_price = $tire_change_data->tire_price;
+                }
+
+                $carjaidee_change_data = $this->prices->getPriceCarjaidee($post->rimId, $post->tire_sizeId);
+                $carjaidee_price = 0;
+                if(!empty($carjaidee_change_data)){
+                    $carjaidee_price = $carjaidee_change_data->price;
+                    if($carjaidee_change_data->unit_id == 1){
+                        $carjaidee_price = $post->price * $carjaidee_change_data->price / 100;
+                    }
+                }
+                
                 $nestedData[$count]['tire_dataId'] = $post->tire_dataId;
                 $nestedData[$count]['rimName'] = $post->rimName;
                 $nestedData[$count]['tire_size'] = $post->tire_size;
                 $nestedData[$count]['tire_modelName'] = $post->tire_modelName;
                 $nestedData[$count]['tire_brandName'] = $post->tire_brandName;
                 $nestedData[$count]['status'] = $post->status;
-                $nestedData[$count]['price'] = $post->price*1.1;
+                $nestedData[$count]['price'] = $post->price+$garage_price+$carjaidee_price;
                 $nestedData[$count]['warranty_year'] = $post->warranty_year;
                 $nestedData[$count]['can_change'] = $post->can_change;
                 $nestedData[$count]['warranty_distance'] = $post->warranty_distance;

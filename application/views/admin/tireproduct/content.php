@@ -2,7 +2,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/tireproduct") ?>">ข้อมูลสินค้า</a>
+          <a href="<?=base_url("admin/tireproduct") ?>">รูปภาพสินค้า</a>
         </li>
         <li class="breadcrumb-item active">ยางรถ</li>        
       </ol>
