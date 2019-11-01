@@ -156,4 +156,35 @@ class Charge extends CI_Controller {
 		$this->load->view("admin/charge/sparecharge/update/script");
 	}
 
+	public function tireservice(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/charge/tireservice/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/charge/tireservice/script");
+	}
+
+	public function createtireservice(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/charge/tireservice/create/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/charge/tireservice/create/script");
+	}
+
+	public function updatetireservice($tire_serviceId){
+		$data['tire_serviceId'] = $tire_serviceId;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/charge/tireservice/update/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/charge/tireservice/update/script");
+	}
+
 }

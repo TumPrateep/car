@@ -27,19 +27,28 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item <?= activate_menu('managepartsshop'); ?>" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link text-white" href="<?=base_url("admin/managepartsshop") ?>">
-            <i class="fa fa-vcard-o"></i>  
-            <!-- <i class="fas fa-store"></i> -->
-            <span class="nav-link-text">การจัดการร้านอะไหล่</span>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#user" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-user"></i>
+            <span class="nav-link-text">ผู้ใช้งาน</span>
           </a>
+          <ul class="sidenav-second-level collapse" id="user">
+            <li class="<?= activate_menu('garagesmanagement'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/garagesmanagement") ?>">
+                <i class="fa fa-id-card"></i> 
+                <span class="nav-link-text">ศูนย์บริการคาร์ใจดี</span>
+              </a>
+            </li>
+            <li class="<?= activate_menu('managepartsshop'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/managepartsshop") ?>">
+                <i class="fa fa-vcard-o"></i>  
+                <span class="nav-link-text">ร้านค้าส่งคาร์ใจดี</span>
+              </a>
+            </li>
+          </ul>
         </li>
-        <li class="nav-item <?= activate_menu('garagesmanagement'); ?>" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link text-white" href="<?=base_url("admin/garagesmanagement") ?>">
-            <i class="fa fa-id-card"></i> 
-            <span class="nav-link-text">การจัดผู้ให้บริการ</span>
-          </a>
-        </li>
+
         <li class="nav-item <?= activate_menu('car'); ?>" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link text-white" href="<?=base_url("admin/car") ?>">
             <i class="fa fa-fw fa-car"></i>
@@ -230,7 +239,22 @@
             <li class="<?= activate_menu('charge/tirescharge/'); ?>">
               <a class="nav-link text-white" href="<?=base_url("admin/charge/tirescharge") ?>">
                 <i class="fa fa-life-ring"></i>
-                <span class="nav-link-text">ราคาค่าบริการเปลี่ยนยางรถ</span>
+                <span class="nav-link-text">ยางรถ</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#service" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-dollar"></i>
+            <span class="nav-link-text">ราคาค่าจัดส่ง</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="service">
+            <li class="<?= activate_menu('charge/tireservice/'); ?>">
+              <a class="nav-link text-white" href="<?=base_url("admin/charge/tireservice") ?>">
+                <i class="fa fa-life-ring"></i>
+                <span class="nav-link-text">ยางรถ</span>
               </a>
             </li>
           </ul>

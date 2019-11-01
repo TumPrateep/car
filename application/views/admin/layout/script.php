@@ -1,4 +1,4 @@
-﻿<script>
+<script>
     var table = $('#user-table').DataTable({
         "language": {
                 "aria": {

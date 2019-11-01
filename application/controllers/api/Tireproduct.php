@@ -199,7 +199,7 @@ class Tireproduct extends BD_Controller {
             $this->set_response($output, REST_Controller::HTTP_OK);
         }else{
             $data_check_update = $this->tireproductdata->getProductDataById($productId);
-            $data_check = $this->tireproductdata->data_check_update($productId,$tire_brandId);
+            $data_check = $this->tireproductdata->data_check_update($productId,$tire_modelId,$tire_sizeId);
 
             $data = array(
                 'productId' => $productId,

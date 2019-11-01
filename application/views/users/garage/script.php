@@ -216,7 +216,7 @@
                                             +'</div>'
                                             +'<div class="card-block col-md-7">'
                                                 +'<br>'
-                                                +'<h4 class="card-title">'+value.garageName+'</h4>'
+                                                +'<h5 class="card-title">'+value.garageName+'</h5>'
                                                 +'<p class="card-text">'
                                                     +'<b><i class="fa fa-calendar" aria-hidden="true"></i></b> '+changeStringToDay(value.dayopenhour)
                                                     +'<br>'
