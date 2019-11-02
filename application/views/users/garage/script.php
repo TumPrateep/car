@@ -239,8 +239,9 @@
                                                      html += '</span>'
                                                     +'</p>'
                                                 +'</p>'
-                                                +'<br>'
-                                                +'<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'"  target="_blank" class="btn btn-transparent-md mb-20"><i class="fa fa-road"></i> แสดงเส้นทาง</a><br>'
+                                                +'<br><br>'
+                                                +'<a href="<?php echo base_url('search/garage/detailgarage') ?>" class="btn btn-transparent-md btn-detail"><i class="fa fa-search"></i> รายละเอียด</a>'                        
+                                                +'<a href="https://www.google.com/maps/?q='+value.latitude+','+value.longitude+'"  target="_blank" class="btn btn-transparent-md btn-detail"><i class="fa fa-road"></i> แสดงเส้นทาง</a><br>'
                                             +'</div>'
                                         +'</div>'
                                     +'</div>';

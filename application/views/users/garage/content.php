@@ -90,6 +90,10 @@
         padding-right: 0px;
         padding-left: 0px;
     }
+    a.btn-detail{
+        padding: 15px 15px;
+        margin: 3px;
+    }
 </style>
 
 <section class="section pricing" id="search">
