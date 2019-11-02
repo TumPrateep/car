@@ -149,17 +149,6 @@
                                     <span>3630</span>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-7">
-                                    <span>ค่าจัดส่ง</span>
-                                </div>
-                                <div class="col-1 text-center">
-                                    <span></span>
-                                </div>
-                                <div class="col-4 text-right">
-                                    <span>200</span>
-                                </div>
-                            </div>
                             <br>
                             <div class="row">
                                 <div class="col-7">
