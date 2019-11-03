@@ -1556,6 +1556,9 @@ select.form-control:not([size]):not([multiple]) {
     .schedule.two .schedule-tab ul li.nav-item a.active:after {
         content: none;
     }
+    .about {
+        padding: 100px 0px 15px 0px !important;
+    }
 }
 
 .schedule.two .schedule-contents {
@@ -3698,4 +3701,12 @@ select.sortby {
 
 .mbt-5 {
     margin-bottom: 5px;
+}
+
+.full-view {
+    width: 100%;
+}
+
+.about {
+    padding: 155px 0px 15px 0px;
 }

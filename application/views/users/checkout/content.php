@@ -22,24 +22,41 @@
                     </div>
                 </div>
             </div>
+
+            <input type="hidden" name="tire_dataId" id="tire_dataId" value="<?=$tire_dataId?>">
+            <input type="hidden" name="garageId" id="garageId" value="<?=$garageId?>">
+            <input type="hidden" name="number" id="number" value="<?=$number?>">
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-12 card">
                             <div class="card-body"> 
-                                <span>เลือกวันจอง</span>
-                                <button class="btn btn-block">ยืนยัน</button>
+                                <h5>เลือกวันที่จอง</h5>
+                                <hr>
+                                <form id="hire-form">
+                                    <div class="row">
+                                        <div class="col-md-12 form-group">
+                                            <label>วันที่จอง</label><span class="error">*</span>
+                                            <input type="text" class="form-control" name="hire_date" id="hire_date" placeholder="วันที่จอง">
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <label>เวลาจอง</label><span class="error">*</span>
+                                            <input type="text" class="form-control" name="hire_time" id="hire_time" placeholder="เวลาจอง">
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="checkbox" name="vehicle1" value="Bike"> ชำระเงินภายหลัง
+                            <input type="checkbox" name="next" id="next" value="next"> ชำระเงินภายหลัง
                         </div>
                     </div>
                     <br>
-                    <div class="row">
+                    <div class="row" id="bank">
                         <div class="col-md-12 card">
                             <div class="row card-body">
                                 <div class="col-3 text-center">
@@ -56,118 +73,115 @@
                         </div>
                     </div>
                     <br>    
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h5>รายละเอียดการสั่งสินค้า</h5>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>ชื่อ - นามสกุล</label><span class="error">*</span>
-                                    <input type="text" class="form-control form-control-chosen-required" placeholder="ชื่อ - นามสกุล">
-                                    <label id="firstname-error" class="error" for="firstname"></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>วัน - เวลา ชำระเงิน</label><span class="error">*</span>
-                                    <input type="text" class="form-control form-control-chosen-required" placeholder="วัน - เวลา ชำระเงิน">
-                                    <label id="firstname-error" class="error" for="firstname"></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <form>
-                                        <div class="form-group">
-                                            <label>รูปหลักฐานการจ่าย</label>
-                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <div class="row" id="payment">
+                        <div class="col-md-12 card"> 
+                            <div class="card-body">
+                                <h5>รายละเอียดการสั่งสินค้า</h5>
+                                <hr>
+                                <form id="slip">
+                                    <div class="row">
+                                        <div class="col-md-12 form-group">
+                                            <label>ชื่อ - นามสกุล</label><span class="error">*</span>
+                                            <input type="text" class="form-control" name="name" placeholder="ชื่อ - นามสกุล">
                                         </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a href="<?php echo base_url('search/tire/resultgarage') ?>" class="btn btn-main-md width-100p bg-secondary">ย้อนกลับ</a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="" class="btn btn-main-md width-100p bg-orange">ยืนยัน</a>
-                                </div>
-                            </div>
-                            <br>
-                        </div>
-                    </div>    
-                </div>
-                <div class="col-md-1">
-                </div>
-                <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h5>สรุปการสั่งซื้อ</h5>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span><strong>ศูนย์บริการคาร์ใจดี:</strong></span><br>
-                                    <span>ปั้มเชลล์ทุ่งแย้</span><br>
-                                    <span>ตำบล/แขวง โพธิ์เสด็จ อำเภอ/เขต เมืองนครศรีธรรมราช</span><br>
-                                    <span>จังหวัด นครศรีธรรมราช</span>
-                                    <hr>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="https://www.tyremarket.com/images/products/EP150.jpg" class="extire" alt="">
-                                </div>
-                                <div class="col-8 text-right">
-                                    <img src="<?php echo base_url('public/image/tire_brand/5cc6fb979371e.png') ?>" class="exbrand" alt=""><br>
-                                    <span><strong>Michelin</strong></span><br>
-                                    <span>XCD2</span><br>
-                                    <span>225/75R15</span>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-3">
-                                    <input type="number" class="form-control" value="1">
-                                </div>
-                                <div class="col-9 text-right">
-                                    <h4>3,830 ฿</h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <hr>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-7">
-                                    <span>ยางรถยนต์</span>
-                                </div>
-                                <div class="col-1 text-center">
-                                    <span>1</span>
-                                </div>
-                                <div class="col-4 text-right">
-                                    <span>3630</span>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-7">
-                                    <span><strong>รวมทั้งหมด</strong></span>
-                                </div>
-                                <div class="col-1 text-center">
-                                    <span><strong>1</strong></span>
-                                </div>
-                                <div class="col-4 text-right">
-                                    <span><strong>3,860 ฿</strong></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <hr>
-                                </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 form-group">
+                                            <label>วัน - เวลา ชำระเงิน</label><span class="error">*</span>
+                                            <input type="text" class="form-control" name="slipdate" placeholder="วัน - เวลา ชำระเงิน">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 form-group">
+                                            <div class="form-group">
+                                                <label>รูปหลักฐานการจ่าย</label>
+                                                <input type="file" class="form-control-file" name="file">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                    <br>  
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-12 card">
+                            <div class="card-body">
+                                <h5>สรุปการสั่งซื้อ</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span><strong>ศูนย์บริการคาร์ใจดี:</strong></span><br>
+                                        <span id="garage"></span>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <img src="https://www.tyremarket.com/images/products/EP150.jpg" class="extire" alt="">
+                                    </div>
+                                    <div class="col-8 text-right">
+                                        <span id="tire-data"></span>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <input type="number" id="number" class="form-control v-number" value="4" min="1">
+                                    </div>
+                                    <div class="col-9 text-right">
+                                        <h4 class="amount"></h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span>ยางรถยนต์</span>
+                                    </div>
+                                    <div class="col-2 text-center">
+                                        <span class="number"></span>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <span class="amount"></span>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span><strong>รวมทั้งหมด</strong></span>
+                                    </div>
+                                    <div class="col-2 text-center">
+                                        <span><strong class="number"></strong></span>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <span><strong class="amount"></strong></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <hr>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-main-md width-100p bg-secondary" onclick="window.history.back();">ย้อนกลับ</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-main-md width-100p bg-orange">ยืนยัน</button>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <br>
                 </div>
             </div>
         </div>

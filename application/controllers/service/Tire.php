@@ -125,14 +125,17 @@ class Tire extends BD_Controller {
                         $carjaidee_price = $post->price * $carjaidee_change_data->price / 100;
                     }
                 }
-                
+
+                $tire_service_data = $this->prices->getPriceService($post->rimId);
+                $service_price = $tire_service_data->price;
+
                 $nestedData[$count]['tire_dataId'] = $post->tire_dataId;
                 $nestedData[$count]['rimName'] = $post->rimName;
                 $nestedData[$count]['tire_size'] = $post->tire_size;
                 $nestedData[$count]['tire_modelName'] = $post->tire_modelName;
                 $nestedData[$count]['tire_brandName'] = $post->tire_brandName;
                 $nestedData[$count]['status'] = $post->status;
-                $nestedData[$count]['price'] = $post->price+$garage_price+$carjaidee_price;
+                $nestedData[$count]['price'] = $post->price+$garage_price+$carjaidee_price+$service_price;
                 $nestedData[$count]['warranty_year'] = $post->warranty_year;
                 $nestedData[$count]['can_change'] = $post->can_change;
                 $nestedData[$count]['warranty_distance'] = $post->warranty_distance;

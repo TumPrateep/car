@@ -26,7 +26,7 @@ class Garage extends CI_Model {
     }
 
     function getViewGarageByGarageId($garageId){
-        $this->db->select("garage.garageId,garage.businessRegistration,garage.garageName,garage.garageAddress,garage.latitude,garage.longtitude,garage.approve,garage.firstname,garage.lastname,province.provinceName,district.districtName,subdistrict.subdistrictName");
+        $this->db->select("garage.garageId,garage.businessRegistration,garage.garageName,garage.latitude,garage.longtitude,garage.firstname,garage.lastname,province.provinceName,district.districtName,subdistrict.subdistrictName");
         $this->db->from("garage");
         $this->db->join("province","province.provinceId = garage.provinceId");
         $this->db->join("district","district.districtId = garage.districtId");
@@ -37,8 +37,8 @@ class Garage extends CI_Model {
     }
 
     function getGarageByGarageId($garageId){
-        $this->db->select("garageId,comment,businessRegistration,garageName,garageAddress,postCode,latitude,longtitude,approve,subdistrictId,districtId,provinceId,
-                           option1,option2,option3,option4,option_outher,garagePicture,firstname,lastname,idcard,addressGarage,userId");
+        $this->db->select("garageId,comment,businessRegistration,garageName,postCode,latitude,longtitude,subdistrictId,districtId,provinceId,
+                           option1,option2,option3,option4,option_outher,garagePicture1,userId");
         $this->db->from("garage");
         $this->db->where("garageId" ,$garageId);
         $query = $this->db->get();

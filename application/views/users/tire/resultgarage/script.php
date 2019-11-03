@@ -73,7 +73,8 @@
 
                                 var html = '';
                                 // $.each(data, function (i, v) { 
-                                     html += '<div class="row row-border">'
+                                    var tire_dataId = $("#tire_dataId").val();
+                                    html += '<div class="row row-border">'
                                         +'<div class="pic col-md-2 text-center">'
                                             +'<img src="'+base_url+'public/image/garage/'+data.picture+'">'
                                         +'</div>'
@@ -94,16 +95,16 @@
                                         +'<div class="detail col-md-3">'
                                             +'<div class="row">'
                                                 +'<div class="col-5 mbt-5">'
-                                                    +'<small>จำนวน</small> <input type="number" class="form-control" value="1">'
+                                                    +'<small>จำนวน</small> <input type="number" class="form-control number-'+data.garageId+'" value="4" onchange="changeNumber('+data.garageId+','+(Number(data.tire_price)+Number(data.tireData.price))+')" min="1">'
                                                 +'</div>'
                                                 +'<div class="col-7">'
-                                                    +'<small>ราคา</small><h5><span class="alternate">'+currency((Number(data.tire_price)+Number(data.tireData.price)), {  precision: 0 }).format()+' บาท</span></h5>'
+                                                    +'<small>ราคา</small><h5><span class="alternate amount-'+data.garageId+'">'+currency((Number(data.tire_price)+Number(data.tireData.price)) * 4, {  precision: 0 }).format()+' บาท</span></h5>'
                                                 +'</div>'
                                             +'</div>'
                                             +'<span class="mb-10"></span>'
                                             +'<div class="row">'
                                                 +'<div class="col-12">'
-                                                    +'<a href="'+base_url+'checkout" class="btn btn-main-md width-100p bg-orange btn-lg"><i class="fa fa-shopping-bag" aria-hidden="true"></i> สั่งซื้อสินค้า </a>'
+                                                    +'<button onclick="gotolink('+tire_dataId+','+data.garageId+')" class="btn btn-main-md width-100p bg-orange btn-lg"><i class="fa fa-shopping-bag" aria-hidden="true"></i> สั่งซื้อสินค้า </button>'
                                                 +'</div>'
                                             +'</div>'
                                         +'</div>'
@@ -137,4 +138,17 @@
         }
 
     });
+
+    function changeNumber(garageId, price){
+        var numberId = $('.number-'+garageId);
+        var amountId = $('.amount-'+garageId);
+        
+        var number = numberId.val();
+        amountId.html(currency(number*price, {  precision: 0 }).format()+ ' บาท')
+    }
+
+    function gotolink(tire_dataId, garageId){
+        var number = $('.number-'+garageId).val();
+        window.location.href = base_url + 'checkout/' + tire_dataId + '/' + garageId + '/' + number;
+    }
 </script>

@@ -32,6 +32,9 @@
         background-color: #343a40;
         color: white;
     }
+    .detail{
+        width: -webkit-fill-available !important;
+    }
 </style>
 <section class="section pricing" id="search">
     <div class="container">

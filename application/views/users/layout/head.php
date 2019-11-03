@@ -15,7 +15,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   
   <!-- PLUGINS CSS STYLE -->
   <!-- Bootstrap -->
-  <link href="<?=base_url('public/')?>plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="<?=base_url('public/')?>plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
   <link href="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.css") ?>" rel="stylesheet">
   <!-- Themefisher Font -->  

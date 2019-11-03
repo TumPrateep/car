@@ -15,6 +15,9 @@
     table > thead {
         display: none;
     }
+    .detail{
+        width: -webkit-fill-available !important;
+    }
 
 </style>
 

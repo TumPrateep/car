@@ -37,4 +37,20 @@ class Prices extends CI_Model{
         return $data;
     }
 
+    function getPriceService($rimId){
+        $this->db->select("rimId,price");
+        $this->db->where('rimId', $rimId);
+        $result = $this->db->get("tire_service");
+        return $result->row();
+    }
+
+    function getPriceFromGarageByGarageId($rimId, $garageId){
+        $this->db->from("garage");
+        $this->db->join("tire_change_garage", "garage.garageId = tire_change_garage.garageId");
+
+        $this->db->where("tire_change_garage.rimId", $rimId);
+        $this->db->where("garage.garageId", $garageId);
+        $query = $this->db->get();
+        return $query->row();
+    }
 }   
