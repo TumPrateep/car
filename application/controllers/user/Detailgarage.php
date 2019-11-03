@@ -15,6 +15,7 @@ class Detailgarage extends CI_Controller {
 		$this->load->view('users/layout/header');
 		$this->load->view('users/layout/menu', $data);
 		$this->load->view('users/garage/detailgarage/content');
+		// $this->load->view('users/garage/detailgarage/script');
 		$this->load->view('users/layout/footer');
 		$this->load->view('users/layout/foot');
 		$this->load->view('users/layout/end');
