@@ -6,7 +6,7 @@ class Tireproduct extends CI_Model{
         $this->db->select('tire_data.tire_dataId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size,tire_data.status,tire_data.warranty_year,tire_data.warranty_distance,tire_data.can_change,tire_data.activeFlag,tire_data.create_by, tire_data.warranty, tire_data.tire_picture, tire_brand.tire_brandPicture, tire_brand.tire_brandId,rim.rimId,
         tire_brand.tire_brandId,tire_model.tire_modelId,tire_size.tire_sizeId,rim.rimId,tire_data.price');
         $this->db->from('tire_data');
-        $this->db->where('`tire_data`.`tire_dataId` IN (SELECT (SELECT `tire_dataId` FROM `tire_data` `rd` WHERE `tire_sizeId` = `re`.`tire_sizeId` AND `tire_brandId` = `re`.`tire_brandId` AND `tire_modelId` = `re`.`tire_modelId`ORDER BY `price` DESC LIMIT 1) as `tire_dataId` FROM `tire_data` `re` GROUP BY `rimId`)', NULL, FALSE);
+        $this->db->where('`tire_data`.`tire_dataId` IN (SELECT (SELECT `tire_dataId` FROM `tire_data` `rd` WHERE `tire_sizeId` = `re`.`tire_sizeId` AND `tire_brandId` = `re`.`tire_brandId` AND `tire_modelId` = `re`.`tire_modelId`ORDER BY `price` ASC LIMIT 1) as `tire_dataId` FROM `tire_data` `re` GROUP BY `rimId`)', NULL, FALSE);
         $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
         $this->db->join('tire_model','tire_model.tire_modelId = tire_data.tire_modelId');
         $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');
@@ -37,7 +37,7 @@ class Tireproduct extends CI_Model{
         $this->db->select('tire_data.tire_dataId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size,tire_data.status,tire_data.warranty_year,tire_data.warranty_distance,tire_data.can_change,tire_data.activeFlag,tire_data.create_by, tire_data.warranty, tire_data.tire_picture, tire_brand.tire_brandPicture, tire_brand.tire_brandId,rim.rimId,
         tire_brand.tire_brandId,tire_model.tire_modelId,tire_size.tire_sizeId,rim.rimId,tire_data.price');
         $this->db->from('tire_data');
-        $this->db->where('`tire_data`.`tire_dataId` IN (SELECT (SELECT `tire_dataId` FROM `tire_data` `rd` WHERE `tire_sizeId` = `re`.`tire_sizeId` AND `tire_brandId` = `re`.`tire_brandId` AND `tire_modelId` = `re`.`tire_modelId`ORDER BY `price` DESC LIMIT 1) as `tire_dataId` FROM `tire_data` `re` GROUP BY `rimId`)', NULL, FALSE);
+        $this->db->where('`tire_data`.`tire_dataId` IN (SELECT (SELECT `tire_dataId` FROM `tire_data` `rd` WHERE `tire_sizeId` = `re`.`tire_sizeId` AND `tire_brandId` = `re`.`tire_brandId` AND `tire_modelId` = `re`.`tire_modelId`ORDER BY `price` ASC LIMIT 1) as `tire_dataId` FROM `tire_data` `re` GROUP BY `rimId`)', NULL, FALSE);
         $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
         $this->db->join('tire_model','tire_model.tire_modelId = tire_data.tire_modelId');
         $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');

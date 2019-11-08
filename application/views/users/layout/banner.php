@@ -120,14 +120,17 @@
                            <img src="<?=base_url('test/img/test.png')?>" class="d-block w-100">
                         </div>
                         <div class="carousel-item">
-                           <img src="<?=base_url('test/img/test.png')?>" class="d-block w-100">
-                        </div>
-                        <!-- <div class="carousel-item">
-                           <img src="<?=base_url('test/img/03.png')?>" class="d-block w-100">
+                           <img src="<?=base_url('test/img/1.png')?>" class="d-block w-100">
                         </div>
                         <div class="carousel-item">
-                           <img src="<?=base_url('test/img/04.png')?>" class="d-block w-100">
-                        </div> -->
+                           <img src="<?=base_url('test/img/2.png')?>" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                           <img src="<?=base_url('test/img/3.png')?>" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                           <img src="<?=base_url('test/img/4.png')?>" class="d-block w-100">
+                        </div>
                      </div>
                      <a class="carousel-control-prev bg-gray" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
