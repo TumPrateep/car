@@ -34,6 +34,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- FAVICON -->
   <!-- <link href="<?=base_url('public/')?>images/favicon.png" rel="shortcut icon"> -->
 
+  <style>
+    .main-nav .navbar-brand {
+        padding: 0px 40px 0px 50px;
+    }
+    .about {
+        padding: 130px 0px 15px 0px;
+    }
+  </style>
+
 </head>
 
 <body class="body-wrapper">

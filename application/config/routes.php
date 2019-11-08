@@ -81,7 +81,7 @@ $route['shop/detail/([a-zA-Z]+)/(\d+)'] = function ($group, $id)
     }
 };
 
-$route['login'] = 'public/Auth/login';
+// $route['login'] = 'public/Auth/login';
 $route['shop/payment/(\d+)'] = function ( $id)
 {
     return 'public/Payment/Payments/'. $id;
@@ -107,7 +107,7 @@ $route['products/tire'] = 'user/tire';
 $route['products/lubricator'] = 'user/lubricator';
 // user route
 $route['register/caraccessory'] = 'user/register/caraccessory';
-$route['user/login'] = 'user/login';
+$route['login'] = 'user/login';
 
 
 // $route['page/(:any)'] = 'main/Main/(:any)';

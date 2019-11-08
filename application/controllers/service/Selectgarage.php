@@ -56,6 +56,8 @@ class Selectgarage extends BD_Controller {
 
         $tireData->price = $tireData->price + $carjaidee_price + $service_price;
 
+        // dd($carjaidee_price);
+
         $nestedData = array();
         $count = 0;
         // $index = 0;

@@ -13,17 +13,25 @@
       <span class="fa fa-bars"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-      <span class="main">คาร์ใจดี  "เรื่องรถ"  <span class="click">คลิกเดียวจบ</span></span>
-      <ul class="navbar-nav mx-auto"></ul>
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="<?=base_url("user/order")?>">รายการสั่งซื้อ <span>/</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?=base_url("user/servicehistory")?>">ประวัติการซ่อม <span>/</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?=base_url("user/carprofile")?>">ข้อมูลรถ</a>
+        </li>
+      </ul>
       <div>
-          <a href="<?=base_url('login')?>" class="btn btn-main-md width-100p bg-orange"><i class="fa fa-sign-in" aria-hidden="true"></i> เข้าสู่ระบบ/ลงทะเบียน</a>
-          <div class="dropdown">
+        <div class="dropdown">
             <button class="btn btn-main-md width-100p bg-orange dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-registered" aria-hidden="true"></i> สมัครเป็นผู้ให้บริการ
+              <i class="fa fa-user" aria-hidden="true"></i> สวัสดีคุณ ผู้ใช้งาน
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="<?=base_url('register/garage/')?>"><i class="fa fa-car" aria-hidden="true"></i> ศูนย์บริการคาร์ใจดี</a>
-              <a class="dropdown-item" href=""><i class="fa fa-truck" aria-hidden="true"></i> ร้านค้าส่งคาร์ใจดี</a>
+              <a class="dropdown-item" href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i> ข้อมูลผู้ใช้งาน</a>
+              <a class="dropdown-item" href="#" onclick="logout()"><i class="fa fa-sign-out"></i> ออกจากระบบ</a>
             </div>
           </div>
       </div>
