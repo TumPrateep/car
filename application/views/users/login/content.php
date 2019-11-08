@@ -66,13 +66,7 @@
                     </button>
                 </div>
             </div>            
-                        
-                        
-                        
-                    
-                   
-            
-            
+  
         </div>
         <div class="col-md-8 card-body leftline">
             <div class="row">
