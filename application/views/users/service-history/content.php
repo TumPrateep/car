@@ -10,19 +10,19 @@
                     <div class="schedule-tab">
                         <ul class="nav nav-pills text-center">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#nov20" data-toggle="pill">
+                            <a class="nav-link active" href="#nov1" data-toggle="pill">
                                 ยาง
                                 <!-- <span>20 November 2017</span> -->
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#nov21" data-toggle="pill">
+                            <a class="nav-link" href="#nov2" data-toggle="pill">
                                 น้ำมันเครื่อง
                                 <!-- <span>21 November 2017</span> -->
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#nov22" data-toggle="pill">
+                            <a class="nav-link" href="#nov3" data-toggle="pill">
                                 อะไหล่
                                 <!-- <span>22 November 2017</span> -->
                             </a>
@@ -30,8 +30,8 @@
                         </ul>
                     </div>
                     <div class="schedule-contents">
-                        <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active schedule-item" id="nov20">
+                        <div class="tab-content">
+                        <div class="tab-pane fade show active schedule-item" id="nov1">
                             <!-- Headings -->
                             <ul class="m-0 p-0">
                                 <li class="headings">
@@ -67,7 +67,7 @@
                                 <!-- Schedule Details -->
                             </ul>
                         </div>
-                        <div class="tab-pane fade schedule-item" id="nov21">
+                        <div class="tab-pane fade schedule-item" id="nov2">
                             <!-- Headings -->
                             <ul class="m-0 p-0">
                                 <li class="headings">
@@ -103,7 +103,7 @@
                                 <!-- Schedule Details -->
                             </ul>
                         </div>
-                        <div class="tab-pane fade schedule-item" id="nov22">
+                        <div class="tab-pane fade schedule-item" id="nov3">
                             <!-- Headings -->
                             <ul class="m-0 p-0">
                                 <li class="headings">
