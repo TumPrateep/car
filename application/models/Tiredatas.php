@@ -237,7 +237,7 @@ class Tiredatas extends CI_Model{
 
     function getTireDataById($tire_dataId){
     
-        $this->db->select('tire_data.tire_dataId as productId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size,tire_data.status,tire_data.warranty_year,tire_data.warranty_distance,tire_data.can_change,tire_data.activeFlag,tire_data.create_by, tire_data.warranty, tire_data.tire_picture, tire_brand.tire_brandPicture, tire_brand.tire_brandId,rim.rimId, tire_data.tire_picture as picture, tire_model.tire_modelId,tire_size.tire_sizeId, tire_data.price');
+        $this->db->select('tire_data.tire_dataId as productId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size,tire_data.status,tire_data.warranty_year,tire_data.warranty_distance,tire_data.can_change,tire_data.activeFlag,tire_data.create_by, tire_data.warranty, tire_data.tire_picture, tire_brand.tire_brandPicture, tire_brand.tire_brandId,rim.rimId, tire_data.tire_picture as picture, tire_model.tire_modelId,tire_size.tire_sizeId, tire_data.price, tire_data.car_accessoriesId');
         // $this->db->join('orderdetail','orderdetail.productId = tire_data.tire_dataId');
         $this->db->join('tire_brand','tire_brand.tire_brandId = tire_data.tire_brandId');
         $this->db->join('tire_model','tire_model.tire_modelId = tire_data.tire_modelId');

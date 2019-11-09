@@ -10,15 +10,21 @@
 
     $(document).ready(function () {
         var price_per_unit = 0;
+        var service_data = [];
 
         $('#slipdate').pickadate({
-            min: new Date(),
+            max: true,
             formatSubmit: 'yyyy-mm-dd',
-            close: 'ปิด'
+            close: 'ปิด',
+            // max: true
         });
+
         $('#sliptime').pickatime({
             format: 'HH:i',
-            formatSubmit: 'HH:i'
+            formatSubmit: 'HH:i:A',
+            max: true,
+            interval: 10,
+            editable: true
         });
 
         $("#next").click(function(){
@@ -42,6 +48,7 @@
                 // disableDay(data.garage_data);
                 showTireData(data.tire_data);
                 getCarProfile();
+                service_data = data.service;
             });
         }
 
@@ -167,9 +174,9 @@
             return html;
         }
 
-        // function disableDay(garage_data){
-        //     console.log(garage_data);
-        // }
+        $.validator.addMethod('filesize', function (value, element, param) {
+            return this.optional(element) || (element.files[0].size <= param)
+        }, 'ไฟล์ขนาดใหญ่กว่า {0}');
 
         $("#form-rent").validate({
             rules: {
@@ -188,8 +195,10 @@
                 sliptime: {
                     required: true
                 },
-                slipfile: {
-                    required: true
+                slipfile: { 
+                    required : true, 
+                    extension: "jpg,jpeg,png", 
+                    filesize: 1000000 
                 },
                 car_profile: {
                     required: true
@@ -212,7 +221,9 @@
                     required: "กรอกเวลาที่โอน"
                 },
                 slipfile: {
-                    required: "แนบไฟล์หลักฐานการจ่ายเงิน"
+                    required: "แนบไฟล์หลักฐานการจ่ายเงิน",
+                    extension: "ประเภทไฟล์ไม่ถูกต้อง", 
+                    filesize: "ไฟล์ขนาดใหญ่เกินไป"
                 },
                 car_profile: {
                     required: "เลือกรถเข้าใช้บริการ"
@@ -220,12 +231,43 @@
             }
         });
 
+        function readFile() {
+            if (this.files && this.files[0]) {
+                var FR= new FileReader();
+                FR.addEventListener("load", function(e) {
+                    $("#slip").val(e.target.result);
+                }); 
+                FR.readAsDataURL( this.files[0] );
+            }
+        }
+
+        document.getElementById("slipfile").addEventListener("change", readFile);
+
         $("#form-rent").submit(function (e) { 
             e.preventDefault();
             var isvalid = $(this).valid();
             if(isvalid){
-                var formData = new FormData(this);
-                console.log(formData);
+                var myform = document.getElementById("form-rent");
+                var formData = new FormData(myform);
+                $.each(service_data, function (i, v) { 
+                     formData.append(i, v);
+                     console.log(i,v);
+                });
+                $.ajax({
+                    url: base_url+"service/checkout/order",
+                    data: formData,
+                        processData: false,
+                        contentType: false,
+                        type: 'POST',
+                        success: function(data){
+                            if(data.message == 200){
+                                showMessage(data.message, "user/order");
+                            }else{
+                                showMessage(data.message);
+                            }
+                            // console.log(data);
+                        }
+                });
             }
         });
 

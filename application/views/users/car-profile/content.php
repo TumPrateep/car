@@ -25,19 +25,10 @@
      </div>
      <div class="row">
         <div class="col-md-2">
-            <div class="form-group">
-            <ul class="list-inline"> 
-                <li class="list-inline-item">
-                    
-                        <a href="http://localhost/car/user/carprofile/create" class="btn btn-main-md  bg-orange" ><i class="fa fa-plus"></i> เพิ่ม</a>
-                   
-                </li> 
-            </ul>
-            
-            </div>
+            <a href="http://localhost/car/user/carprofile/create" class="btn btn-main-md width-100p bg-orange" ><i class="fa fa-plus"></i> เพิ่ม</a>
         </div>
         <div class="col-md-4 form-group">
-            <input type="text" class="form-control main-md" placeholder="ป้ายทะเบียน" id="" name="">
+            <input type="text" class="form-control main-md btn-ga" placeholder="ป้ายทะเบียน" id="" name="">
         </div>
         <div class="col-md-4 form-group">
             <select class="form-control main-md" name="" id="">
@@ -46,7 +37,7 @@
             </select>
         </div>
         <div class="col-md-2">
-            <a href="#" class="btn btn-main-md  bg-orange"><i class="fa fa-search"></i> ค้นหา</a>
+            <a href="#" class="btn btn-main-md width-100p bg-orange"><i class="fa fa-search"></i> ค้นหา</a>
         </div>
      </div><br>
      <div class="row">

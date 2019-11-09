@@ -1,21 +1,23 @@
   <!-- JAVASCRIPTS -->
   <!-- jQuey -->
-  <script src="<?=base_url('public/')?>plugins/jquery/jquery.js"></script>
+  <script src="<?=base_url('public/plugins/jquery/jquery.js')?>"></script>
+  <script src="<?=base_url("/public/js/jquery.cropit.js") ?>"></script>
   <!-- Popper js -->
-  <script src="<?=base_url('public/')?>plugins/popper/popper.min.js"></script>
+  <script src="<?=base_url('public/plugins/popper/popper.min.js')?>"></script>
   <!-- Bootstrap 4 -->
-  <script src="<?=base_url('public/')?>plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script src="<?=base_url('public/plugins/bootstrap/js/bootstrap.min.js')?>"></script>
   <!-- Smooth Scroll -->
-  <script src="<?=base_url('public/')?>plugins/smoothscroll/SmoothScroll.min.js"></script>  
+  <script src="<?=base_url('public/plugins/smoothscroll/SmoothScroll.min.js')?>"></script>  
   
-  <script src="<?php echo base_url() ?>public/js/jquery.validate.min.js"></script>
+  <script src="<?=base_url('public/js/jquery.validate.min.js') ?>"></script>
+  <script src="<?=base_url('public/js/additional-methods.min.js') ?>"></script>
 
   <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js") ?>"></script>
   <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js") ?>"></script>
   <script src="<?=base_url("/public/js/currency.min.js") ?>"></script>
   
   <script>var base_url = '<?=base_url()?>';</script>
-
+  <script src="<?=base_url("/public/themes/user/js/setup.js") ?>"></script>
   <script>
     function distance(lat1, lon1, lat2, lon2, unit) {
       if(lat1>0 && lat2>0 && lon1>0 && lon2>0){

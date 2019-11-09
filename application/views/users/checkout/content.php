@@ -12,6 +12,8 @@
         height:80px;
     }
 </style>
+
+<section class="section pricing">
 <div class="container">
     <div class="container">
         <div id="boby">          
@@ -100,6 +102,7 @@
                                             <div class="form-group">
                                                 <label>รูปหลักฐานการจ่ายเงิน</label>
                                                 <input type="file" class="form-control-file" name="slipfile" id="slipfile">
+                                                <input type="hidden" name="slip" id="slip">
                                             </div>
                                         </div>
                                     </div>
@@ -159,7 +162,7 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-3">
-                                        <input type="number" id="number" class="form-control v-number" value="4" min="1">
+                                        <input type="number" name="quantity" class="form-control v-number" value="4" min="1">
                                     </div>
                                     <div class="col-9 text-right">
                                         <h4 class="amount"></h4>
@@ -224,3 +227,4 @@
         </div>
     </div>        
 </div>
+</section>
