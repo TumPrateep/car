@@ -50,26 +50,26 @@
                                                 <div class=" col-md-8">
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <label class="txt-S-s">ยี่ห้อ : </label>
-                                                            <label class="txt-S-s" name="brand_car" id="brand_car">HONDA</label>
+                                                            <label class="txt-S-s">ชื่ออู่ : </label>
+                                                            <label class="txt-S-s" name="garageName" id="garageName"> โอออโต้เซอร์วิส</label>
                                                         </div>
                                                     </div>
                                                     <div class="row">                                                       
                                                         <div class=" col-md-12">
-                                                            <label class="txt-S-s">รุ่นรถ : </label>
-                                                            <label class="txt-S-s" name="model_car" id="model_car">ACCORD</label>
+                                                            <label class="txt-S-s">วันที่เปิด : </label>
+                                                            <label class="txt-S-s" name="dayopen" id="dayopen"> จ, อ, พ, พฤ, ศ</label>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class=" col-md-12">
-                                                            <label class="txt-S-ss">โฉมรถยนต์ : </label>
-                                                            <label class="txt-S-ss" name="detail_car" id="detail_car">(ปี 2003-2007)ปลาวาฬ</label>
+                                                            <label class="txt-S-ss">เวลาที่เปิด : </label>
+                                                            <label class="txt-S-ss" name="timeopen" id="timeopen">06:00 - 22:00 น.</label>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class=" col-md-12">
-                                                            <label class="txt-S-ss">รายละเอียด : </label>
-                                                            <label class="txt-S-ss" name="model_of_car" id="model_of_car">2.0 S</label>
+                                                            <label class="txt-S-ss">วันที่จอง : </label>
+                                                            <label class="txt-S-ss" name="reserveday" id="reserveday"> วันที่ 11/07/2019 เวลา 11:00 น.</label>
                                                         </div>
                                                     </div>
                                                 </div>
