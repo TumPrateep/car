@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="<?=base_url("user/order")?>">รายการสั่งซื้อ <span>/</span></a>
+          <a class="nav-link" href="<?=base_url("user/order")?>">รายการสั่งซื้อ <span>/</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?=base_url("user/servicehistory")?>">ประวัติการซ่อม <span>/</span></a>
@@ -27,7 +27,7 @@
       <div>
         <div class="dropdown">
             <button class="btn btn-main-md width-100p bg-orange dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-user" aria-hidden="true"></i> สวัสดีคุณ ผู้ใช้งาน
+              <i class="fa fa-user" aria-hidden="true"></i> สวัสดีคุณ <?=$name?>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i> ข้อมูลผู้ใช้งาน</a>

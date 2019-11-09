@@ -11,8 +11,19 @@ class Main extends CI_Controller {
 	
 	function index(){
 		$data = ['tire'=>'active', 'lubricator' => '', 'garage' => ''];
+		
 		$this->load->view('users/layout/head');
-		$this->load->view('users/layout/header');
+		if(isset($this->session->userdata['logged_in'])){
+			$isUser = $this->session->userdata['logged_in']['isUser'];
+			if(!$isUser){
+				$this->load->view("users/layout/header");
+			}else{
+				$data['name'] = $this->session->userdata['logged_in']['name'];
+				$this->load->view("users/layout/header_user", $data);
+			}
+		}else{
+			$this->load->view("users/layout/header");
+        }
 		$this->load->view('users/layout/menu', $data);
 		$this->load->view('users/layout/banner');
 		$this->load->view('users/main-search/tire/content');

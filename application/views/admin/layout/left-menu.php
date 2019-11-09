@@ -267,7 +267,7 @@
           </a>
         </li> -->
         
-        <!-- <li class="nav-item <?= activate_menu('paymentapprove'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+        <li class="nav-item <?= activate_menu('paymentapprove'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/paymentapprove") ?>">
             <i class="fa fa-credit-card" aria-hidden="true"></i>
             <span class="nav-link-text">ยืนยันการจ่ายเงิน</span>
@@ -281,7 +281,7 @@
           </a>
         </li>
 
-        <li class="nav-item <?= activate_menu('manageorder'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
+        <!-- <li class="nav-item <?= activate_menu('manageorder'); ?>" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link text-white" href="<?=base_url("admin/manageorder") ?>">
           <i class="fa fa-shopping-bag" aria-hidden="true"></i>
             <span class="nav-link-text">จัดการการสั่งสินค้า</span>

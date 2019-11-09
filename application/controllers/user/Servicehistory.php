@@ -12,15 +12,8 @@ class Servicehistory extends CI_Controller {
 	function index(){
 		$data = ['tire'=>'', 'lubricator' => '', 'garage' => ''];
 
-		$this->load->view('users/layout/head');
-		$this->load->view('users/layout/header_user');
-		$this->load->view('users/layout/menu', $data);
-		// $this->load->view('users/layout/banner');
-		$this->load->view('users/service-history/content');
-		$this->load->view('users/layout/footer');
-		$this->load->view('users/layout/foot');
-		$this->load->view('users/service-history/script');
-		$this->load->view('users/layout/end');
+		load_user_view("users/service-history/content", 'users/service-history/script', $data);
+
     }
 
 }

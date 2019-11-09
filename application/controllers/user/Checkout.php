@@ -15,14 +15,8 @@ class Checkout extends CI_Controller {
 		$data['tire_dataId'] = $tire_dataId;
 		$data['garageId'] = $garageId;
 		$data['number'] = $number;
-		$this->load->view('users/layout/head');
-		$this->load->view('users/layout/header');
-		$this->load->view('users/layout/menu', $data);
-		$this->load->view('users/checkout/content');
-		$this->load->view('users/layout/footer');
-		$this->load->view('users/layout/foot');
-		$this->load->view('users/checkout/script');
-		$this->load->view('users/layout/end');
+
+		load_user_view("users/checkout/content", "users/checkout/script", $data);
     }
 
 }
