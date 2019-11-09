@@ -2,6 +2,7 @@
     $(document).ready(function () {
         var errorMessage = $("#error-message");
         var login = $("#login");
+        var register = $("#register");
 
         login.validate({
             rules:{
@@ -17,6 +18,55 @@
                 },
                 password: {
                     required: "กรอกรหัสผ่าน"
+                }
+            }
+        });
+
+        register.validate({
+            rules:{
+                name: {
+                    required: true
+                },
+                lastname:{
+                    required: true
+                },
+                phoneNumber:{
+                    required: true
+                },
+                email:{
+                    required: true
+                },
+                username:{
+                    required: true
+                },
+                password:{
+                    required: true
+                },
+                confirm:{
+                    required: true
+                }
+            },
+            messages:{
+                name:{
+                    required: "กรอกชื่อ"
+                },
+                lastname:{
+                    required: "กรอกนามสกุล"
+                },
+                phoneNumber:{
+                    required: "กรอกเบอร์โทรศัพท์"
+                },
+                email:{
+                    required: "กรอกอีเมล์"
+                },
+                username:{
+                    required: "กรอกชื่อผู้ใช้"
+                },
+                password:{
+                    required: "กรอกรหัสผ่าน"
+                },
+                confirmPassword:{
+                    required: "ยืนยันรหัสผ่านอีกครั้ง"
                 }
             }
         });
