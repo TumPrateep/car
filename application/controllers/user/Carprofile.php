@@ -13,6 +13,11 @@ class Carprofile extends CI_Controller {
 		$data = ['tire'=>'', 'lubricator' => '', 'garage' => ''];
 
 		load_user_view("users/car-profile/content", "users/car-profile/script", $data);
+	}
+	
+	function create(){
+		$data = ['tire'=>'', 'lubricator' => '', 'garage' => ''];
+		load_user_view("users/car-profile/create/content", "users/car-profile/create/script", $data);
     }
 
 }

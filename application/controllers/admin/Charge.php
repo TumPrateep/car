@@ -187,4 +187,35 @@ class Charge extends CI_Controller {
 		$this->load->view("admin/charge/tireservice/update/script");
 	}
 
+	public function lubricatorservice(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/charge/lubricatorservice/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/charge/lubricatorservice/script");
+	}
+
+	public function createlubricatorservice(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/charge/lubricatorservice/create/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/charge/lubricatorservice/create/script");
+	}
+
+	public function updatelubricatorservice($lubricator_serviceId){
+		$data['lubricator_serviceId'] = $lubricator_serviceId;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/charge/lubricatorservice/update/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/charge/lubricatorservice/update/script");
+	}
+
 }
