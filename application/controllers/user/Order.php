@@ -15,10 +15,11 @@ class Order extends CI_Controller {
 		load_user_view("users/order/content", "users/order/script", $data);
 	}
 	
-	function orderdetails(){
+	function orderdetails($orderId){
 		$data = ['tire'=>'', 'lubricator' => '', 'garage' => ''];
+		$data['orderId'] = $orderId;
 
-		load_user_view("users/orderdetails/content", "users/order/script", $data);
+		load_user_view("users/orderdetails/content", "users/orderdetails/script", $data);
 	}
 
 }

@@ -67,9 +67,9 @@ class Orderdetail extends BD_Controller {
         $data["reserve"] = $this->orderdetails->getDatareserve($alldata->reserveId);
         $data["car_profile"] = $this->orderdetails->getDatacarprofile($alldata->car_profileId);
         $data["order"] = $this->orders->getorderByorderId($orderId);
-        $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($orderId, $userId);
-        $data['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
-        $data['costDelivery'] = (float)($this->orderdetails->getSummarycostDelivery($orderId));
+        // $data['orderdetail'] = $orderDetailData;
+        $data['total'] = $this->orderdetails->getSummaryCostFromOrderDetail($orderId, $userId);
+        // $data['costDelivery'] = (float)($this->orderdetails->getSummarycostDelivery($orderId));
         // $data['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
 
 
@@ -107,7 +107,7 @@ class Orderdetail extends BD_Controller {
         if($tireData != null){
             foreach($tireData as $value){
                 $value->group = "tire";
-                $value->cost = calSummary($value->cost, $value->charge) * $value->quantity;
+                $value->cost = $value->price_per_unit * $value->quantity;
                 $value->charge = 0;
                 $option = [
                     'tire_brandId' => $value->tire_brandId,
