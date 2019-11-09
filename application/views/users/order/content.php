@@ -3,6 +3,16 @@
         background-color: #ff6600;
         padding:22px 40px;
     }
+    #order-table_wrapper{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    ul.pagination li a {
+        font-size: 13px;
+    }
+    table > thead {
+        display: none;
+    }
 </style>
 <section class="section pricing">
     <div class="container">
@@ -30,7 +40,9 @@
                                 </div>
                             </div>
                             <!-- Schedule Details -->
-                            <div class="row border-bottom  pb-2 pt-2">
+                            <table id="order-table" width="100%" cellspacing="0"></table>
+
+                            <!-- <div class="row border-bottom  pb-2 pt-2">
                                 <div class="col-md-2 text-center detail">
                                     #10016
                                 </div>
@@ -135,9 +147,9 @@
                                 <div class="col-md-2 text-center detail">
                                     <!-- <a href="#" class="btn btn-main-sm bg-orange btn-block">รับบริการ</a> -->
                                 </div>
-                            </div>      
+                            <!-- </div> 
                             
-                        </div>
+                        </div> -->
                         
                                 <!-- Schedule Details -->
                     

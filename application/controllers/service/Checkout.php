@@ -135,6 +135,7 @@ class Checkout extends BD_Controller {
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
             
+            $data['order']['status'] = 2; 
             $data["payments"] = [
                 "date" => $slipdate,
                 "time" => $sliptime,

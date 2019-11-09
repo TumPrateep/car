@@ -101,12 +101,12 @@ class Order extends BD_Controller {
                 $nestedData['statusSuccess'] = $post->statusSuccess;
                 $nestedData['create_at'] = $post->create_at;
                 $nestedData['status'] = $post->status;
-                $nestedData['depositflag'] = $post->depositflag;
+                // $nestedData['depositflag'] = $post->depositflag;
                 $nestedData['create_by'] = $post->userId;
-                $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
-                $nestedData['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
-                $nestedData['costDelivery'] = $this->orderdetails->getSummarycostDelivery($post->orderId);
-                $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
+                $nestedData['cost'] = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
+                // $nestedData['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
+                // $nestedData['costDelivery'] = $this->orderdetails->getSummarycostDelivery($post->orderId);
+                // $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
                 $data[] = $nestedData;
             }
         }
