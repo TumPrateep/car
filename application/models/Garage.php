@@ -38,7 +38,7 @@ class Garage extends CI_Model {
 
     function getGarageByGarageId($garageId){
         $this->db->select("garageId,comment,businessRegistration,garageName,postCode,latitude,longtitude,subdistrictId,districtId,provinceId,
-                           option1,option2,option3,option4,option_outher,garagePicture1,userId");
+                           option1,option2,option3,option4,option_outher,garagePicture1,userId,dayopenhour,openingtime,closingtime");
         $this->db->from("garage");
         $this->db->where("garageId" ,$garageId);
         $query = $this->db->get();

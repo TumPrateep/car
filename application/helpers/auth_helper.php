@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-if ( ! function_exists('isUser'))
+if ( ! function_exists('load_user_view'))
 {
 	
 	function load_user_view($content, $script = null, $data = [])
@@ -27,5 +27,21 @@ if ( ! function_exists('isUser'))
             $CI->load->view($script);
         }
 		$CI->load->view('users/layout/end');
+	}
+}
+
+if ( ! function_exists('isUser'))
+{
+	
+	function isUser()
+	{
+		$CI = get_instance();
+		$isUser = false;
+        if(isset($CI->session->userdata['logged_in'])){
+			$isUser = $CI->session->userdata['logged_in']['isUser'];	
+		}
+
+		return $isUser;
+		
 	}
 }

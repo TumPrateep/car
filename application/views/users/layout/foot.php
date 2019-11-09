@@ -42,4 +42,21 @@
             return "";
         }
     }
+
+    function logout(){
+        localStorage.clear();
+        window.location = base_url+"auth/logout";
+    }
+
+    function changeStringToDay(str){
+        var html = "";
+        var day = ["จ","อ","พ","พฤ","ศ","ส","อา"];
+
+        for(var i=0;i<str.length;i++){
+            if(str.charAt(i) == "1"){
+                html += day[i]+", ";
+            }
+        }
+        return html.substring(0, html.length - 2);
+    }
   </script>
