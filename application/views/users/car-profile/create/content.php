@@ -11,8 +11,6 @@
                     <form id="submit" novalidate="novalidate">
                     
                         <div class="card-body" >
-                        <!-- <h3 class="text-primary">สร้างข้อมูลรถ</h3> -->
-                        <!-- <h3>เพิ่ม<span class="alternate">ข้อมูลรถยนต์</span></h3> -->
                         <div class="form-group row ">
                             <div class="form-group col-md-3">
                                 <label>หมวดอักษร</label><span class="error">*</span>
