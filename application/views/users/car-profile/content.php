@@ -1,21 +1,5 @@
 <section class="section pricing">
 <div class="container">
-    
-    <!-- <div class="row flex-row flex-wrap">
-
-        <div class="col-md-5">
-            <input type="text" class="form-control main-md" placeholder="ป้ายทะเบียน" id="" name="">
-        </div>
-        <div class="col-md-5">
-            <select class="form-control main-md" name="provinceIdSearch" id="provinceIdSearch">
-                <option value="">จังหวัด</option>
-                
-            </select>
-        </div>
-        <div class="col-md-2">
-            <a href="#" class="btn btn-main-md  bg-orange"><i class="fa fa-search"></i> ค้นหา</a>
-        </div>
-    </div> -->
     <div class=" row ">
         <div class="col-md-12">
             <div class="section-title">
@@ -52,15 +36,15 @@
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <i class="fa fa-pencil"></i>
-                                <a href="#">แก้ไข</a>
+                                <a href="#" class="text-warning font-weight-bold">แก้ไข</a>
                             </li>
                             <li class="list-inline-item">
                                 <i class="fa fa-list-alt"></i>
-                                <a href="#">ประวัติการซ่อม</a>
+                                <a href="#" class="text-warning font-weight-bold">ประวัติการซ่อม</a>
                             </li>
                             <li class="list-inline-item">
                                 <i class="fa fa-trash-o"></i>
-                                <a href="#">ลบ</a>
+                                <a href="#" class="text-warning font-weight-bold">ลบ</a>
                             </li>
                         </ul>
                     </div>
@@ -78,15 +62,15 @@
                     <ul class="list-inline">
                         <li class="list-inline-item">
                             <i class="fa fa-pencil"></i>
-                            <a href="#">แก้ไข</a>
+                            <a href="#" class="text-warning font-weight-bold">แก้ไข</a>
                         </li>
                         <li class="list-inline-item">
                             <i class="fa fa-list-alt"></i>
-                            <a href="#">ประวัติการซ่อม</a>
+                            <a href="#" class="text-warning font-weight-bold">ประวัติการซ่อม</a>
                         </li>
                         <li class="list-inline-item">
                             <i class="fa fa-trash-o"></i>
-                            <a href="#">ลบ</a>
+                            <a href="#" class="text-warning font-weight-bold">ลบ</a>
                         </li>
                     </ul>
                 </div>
@@ -104,15 +88,15 @@
                     <ul class="list-inline">
                         <li class="list-inline-item">
                             <i class="fa fa-pencil"></i>
-                            <a href="#">แก้ไข</a>
+                            <a href="#" class="text-warning font-weight-bold">แก้ไข</a>
                         </li>
                         <li class="list-inline-item">
                             <i class="fa fa-list-alt"></i>
-                            <a href="#">ประวัติการซ่อม</a>
+                            <a href="#" class="text-warning font-weight-bold">ประวัติการซ่อม</a>
                         </li>
                         <li class="list-inline-item">
                             <i class="fa fa-trash-o"></i>
-                            <a href="#">ลบ</a>
+                            <a href="#" class="text-warning font-weight-bold">ลบ</a>
                         </li>
                     </ul>
                 </div>
@@ -133,15 +117,15 @@
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <i class="fa fa-pencil"></i>
-                                <a href="#">แก้ไข</a>
+                                <a href="#" class="text-warning font-weight-bold">แก้ไข</a>
                             </li>
                             <li class="list-inline-item">
                                 <i class="fa fa-list-alt"></i>
-                                <a href="#">ประวัติการซ่อม</a>
+                                <a href="#" class="text-warning font-weight-bold">ประวัติการซ่อม</a>
                             </li>
                             <li class="list-inline-item">
                                 <i class="fa fa-trash-o"></i>
-                                <a href="#">ลบ</a>
+                                <a href="#" class="text-warning font-weight-bold">ลบ</a>
                             </li>
                         </ul>
                     </div>
@@ -159,15 +143,15 @@
                     <ul class="list-inline">
                         <li class="list-inline-item">
                             <i class="fa fa-pencil"></i>
-                            <a href="#">แก้ไข</a>
+                            <a href="#" class="text-warning font-weight-bold">แก้ไข</a>
                         </li>
                         <li class="list-inline-item">
                             <i class="fa fa-list-alt"></i>
-                            <a href="#">ประวัติการซ่อม</a>
+                            <a href="#" class="text-warning font-weight-bold">ประวัติการซ่อม</a>
                         </li>
                         <li class="list-inline-item">
                             <i class="fa fa-trash-o"></i>
-                            <a href="#">ลบ</a>
+                            <a href="#" class="text-warning font-weight-bold">ลบ</a>
                         </li>
                     </ul>
                 </div>
