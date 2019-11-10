@@ -28,7 +28,7 @@
                                         </select>
                                     </div> -->
                                     <div class="col-md-4">
-                                        <label>ราคาค่าขนส่งนมค</label> <span class="error">*</span>
+                                        <label>ราคาค่าขนส่งน้ำมันเครื่อง</label> <span class="error">*</span>
                                         <input type="number" class="form-control" placeholder="ราคาค่าขนส่งน้ำมันเครื่อง" name="price" id="price">
                                     </div>
                                 </div>

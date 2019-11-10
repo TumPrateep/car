@@ -5,7 +5,6 @@
         <li class="breadcrumb-item">
           <a href="<?=base_url("admin/charge/lubricatorservice") ?>">ราคาค่าขนส่งน้ำมันเครื่อง</a>
         </li>
-        <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
 
       <!-- Example DataTables Card-->
@@ -18,17 +17,6 @@
               <i class="fa fa-plus">  สร้าง</i>
             </a>
           </div>
-          <!-- <div class="col-md-5">
-            <div class="input-group">
-              <input id="table-search" class="form-control float-right" placeholder="ขอบยาง">
-              <div class="input-group-append">
-                <button class="btn btn-info inactive"><i class="fa fa-circle-o"></i></button>
-              </div>
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-success"><i class="fa fa-search"></i>  ค้นหา</button>
-              </div>
-            </div>
-          </div> -->
         </div>
        
       </form>
@@ -39,8 +27,7 @@
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
           <th><i class="fa fa-usd" ></i>  ราคาค่าจัดส่ง</th>
-          <!-- <th><i class="fa fa-user-circle"></i>  สถานะ</th> -->
-          <th></th>
+          <th><i class="fa fa-pencil text-center"></i>  แก้ไข</th>
         </thead>	
       </table>
     </div>
