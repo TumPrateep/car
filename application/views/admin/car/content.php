@@ -18,20 +18,25 @@
         </a>
       </div>
       <div class="col-lg-3 offset-md-3">
-        <div class="input-group-append">
+        <div class="input-group">
           <input name="car_search" id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้อรถ">
-          <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
+          <div class="input-group-append">
+            <span class="input-group-text fa fa-car">
+            </span>
+          </div>
         </div>
       </div>
       <div class="col-lg-2 ">
-        <div class="input-group-append">
+        <div class="input-group">
           <select class="form-control" name="status" id="status" >
             <option value>สถานะ</option>
             <option value=1>เปิด</option>
             <option value=2>ปิด</option>
           </select>
-            <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i>
-            </button>
+          <div class="input-group-append">
+                    <span class="input-group-text fa fa-toggle-on">
+                    </span>
+                  </div>
           </div>
       </div>
       <div class="col-lg-2">
