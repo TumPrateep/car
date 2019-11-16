@@ -16,15 +16,19 @@
                 </a>
               </div>
               <div class="col-md-3 offset-md-3">
-                  <div class="input-group-append">
+                  <div class="input-group">
                       <input id="table-search" class="form-control float-right" placeholder="รายการอะไหล่">
-                      <button class="btn btn-info inactive"><i class="fa fa-cog"></i></button>
+                      <div class="input-group-append">
+                        <span class="input-group-text fa fa-list-alt"></span>
+                      </div>
                   </div>
               </div>
               <div class="col-md-2">
-                <div class="input-group-append">
+                <div class="input-group">
                     <input id="table-searchs" class="form-control float-right" placeholder="ยี่ห้ออะไหล่">
-                    <button class="btn btn-info inactive"><i class="fa fa-wrench"></i></button>
+                    <div class="input-group-append">
+                        <span class="input-group-text fa fa-wrench"></span>
+                      </div>
                 </div>
               </div>
               <div class="col-md-2">
@@ -43,7 +47,7 @@
           <thead>
             <th><i class="fa fa-sort"></i>  ลำดับ</th>
             <th><i class="fa fa-picture-o"></i> รูปยี่ห้อรถ</th>
-            <th><i class="fa fa-cog">  รายการอะไหล่</th>
+            <th><i class="fa fa-list-alt">  รายการอะไหล่</th>
             <th><i class="fa fa-wrench"></i>  ยี่ห้ออะไหล่</th>
             <th></th>
           </thead>	

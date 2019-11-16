@@ -20,19 +20,25 @@
               </a>
               </div>
               <div class="col-md-3 offset-md-3">
-                  <div class="input-group-append">
+                  <div class="input-group">
                       <input name="lubricatorName" id="table-search" class="form-control float-right" placeholder="ชื่อน้ำมันเครื่อง">
-                      <button class="btn btn-info inactive"><i class="fa fa-tint"></i></button>
+                      <div class="input-group-append">
+                        <span class="input-group-text fa fa-tint">
+                        </span>
+                      </div>
                   </div>
               </div>
               <div class="col-md-2 ">
-                <div class="input-group-append">
+                <div class="input-group">
                   <select class="form-control" name="status" id="status" >
                     <option value>สถานะ</option>
                     <option value=1>เปิด</option>
                     <option value=2>ปิด</option>
                   </select>
-                  <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i>
+                  <div class="input-group-append">
+                    <span class="input-group-text fa fa-toggle-on">
+                    </span>
+                  </div>
                 </div>
               </div>
               <div class="col-md-2">

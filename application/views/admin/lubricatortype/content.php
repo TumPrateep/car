@@ -17,20 +17,25 @@
           </a>
         </div>
         <div class="col-md-3 offset-md-3">
-          <div class="input-group-append">
-            <input id="table-search" class="form-control float-right" placeholder="ชื่อยี่ห้ออะไหล่">
-            <button class="btn btn-info inactive"><i class="fa fa-car"></i></button>
+          <div class="input-group">
+            <input id="table-search" class="form-control float-right" placeholder="ชื่อประเภทน้ำมันเครื่อง">
+            <div class="input-group-append">
+              <span class="input-group-text fa fa-tint">
+              </span>
+            </div>
           </div>
         </div>
         <div class="col-md-2 ">
-          <div class="input-group-append">
+          <div class="input-group">
             <select class="form-control" name="status" id="status" >
               <option value>สถานะ</option>
               <option value=1>เปิด</option>
               <option value=2>ปิด</option>
             </select>
-              <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i>
-              </button>
+              <div class="input-group-append">
+              <span class="input-group-text fa fa-toggle-on">
+              </span>
+            </div>
             </div>
         </div>
         <div class="col-md-2">
@@ -49,8 +54,8 @@
       <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i> ลำดับ</th>
-          <th><i class="fa fa-sort"></i> รูป</th>
-          <th><i class="fa fa-tachometer"></i>  ชื่อประเภทน้ำมันเครื่อง</th>
+          <th><i class="fa fa-picture-o"></i> รูป</th>
+          <th><i class="fa fa-tint"></i>  ชื่อประเภทน้ำมันเครื่อง</th>
           <th><i class="fa fa-road"></i>  ระยะทาง</th>
           <th><i class="fa fa-user-circle"></i>  สถานะ</th>
           <th></th>

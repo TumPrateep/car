@@ -12,27 +12,41 @@
 
     <div class="card-tools one">
       <form id="form-search">
-        <span class="left"></span>
+      <div class="form-row">
+      <div class="col-md-2">
         <a class="btn btn-primary create" href="<?=base_url("admin/charge/createtirescharge") ?>">
           <i class="fa fa-plus">  สร้าง</i>
         </a>
-
-        <div class="input-group float-right">
-          <input id="table-search" class="form-control float-right" placeholder="ขอบยาง">
-          <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-circle-o"></i></button>
-          </div>
+      </div>
+          <div class="col-md-3 offset-md-3">
+                <div class="input-group">
+                    <input id="table-search" class="form-control float-right" placeholder="ขอบยาง">
+                    <div class="input-group-append">
+                    <span class="input-group-text fa fa-circle-o">
+                    </span>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+              <div class="input-group">
           <select class="form-control" id="status" name="status" >
             <option value >สถานะ</option>
             <option value=1>เปิด</option>
             <option value=2>ปิด</option>
           </select>
           <div class="input-group-append">
-            <button class="btn btn-info inactive"><i class="fa fa-user-circle"></i></button>
+          <span class="input-group-text fa fa-toggle-on"></span>
           </div>
+        </div>
+        </div>
+        <div class="col-md-2">
           <div class="input-group-append">
-            <button type="submit" class="btn btn-success"><i class="fa fa-search"></i>  ค้นหา</button>
+          <button type="submit" id="btn-search" class="btn btn-success btn-block">
+                    <i class="fa fa-search"></i>  ค้นหา
+                    </button>
           </div>
+        </div>
+        </div>
         </div>
       </form>
     </div>
