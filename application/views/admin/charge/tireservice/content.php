@@ -22,9 +22,9 @@
             <div class="input-group">
               <input id="table-search" class="form-control float-right" placeholder="ขอบยาง">
               <div class="input-group-append">
-                <button class="btn btn-info inactive"><i class="fa fa-circle-o"></i></button>
+              <span class="input-group-text fa fa-circle-o"></span>
               </div>
-              <div class="input-group-append">
+              <div>
                 <button type="submit" class="btn btn-success"><i class="fa fa-search"></i>  ค้นหา</button>
               </div>
             </div>
