@@ -288,11 +288,6 @@
                         <input type="password" class="form-control main" name="checkpassword" id="checkpassword" placeholder="ยืนยันรหัสผ่าน">
                     </div>
                 </div>
-                <div class="col-md-6">  
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
-                    </div>
-                </div>
             </div>
         </form>
         <br>
