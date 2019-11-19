@@ -23,7 +23,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="<?=base_url('register/garage/')?>"><i class="fa fa-car" aria-hidden="true"></i> ศูนย์บริการคาร์ใจดี</a>
-              <a class="dropdown-item" href=""><i class="fa fa-truck" aria-hidden="true"></i> ร้านค้าส่งคาร์ใจดี</a>
+              <a class="dropdown-item" href="<?=base_url('register/caraccessory/')?>"><i class="fa fa-truck" aria-hidden="true"></i> ร้านค้าส่งคาร์ใจดี</a>
             </div>
           </div>
       </div>
