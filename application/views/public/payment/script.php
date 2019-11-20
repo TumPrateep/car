@@ -101,7 +101,8 @@
                       
         }
     );
-     $('.image-editor').cropit({
+    
+    $('.image-editor').cropit({
         allowDragNDrop: false,
         width: 200,
         height: 200,

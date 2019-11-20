@@ -1,34 +1,35 @@
-<?php if(!defined('BASEPATH')) exit('No direct script allowed');
+<?php if (!defined('BASEPATH')) {
+    exit('No direct script allowed');
+}
 
-class Checkouts extends CI_Model {
+class Checkouts extends CI_Model
+{
 
-    function insert($data){
-        // $this->db->trans_begin();
+    public function insert($data)
+    {
+        $this->db->trans_begin();
 
-        //     $this->db->insert('order', $data['order']);
-        //     $orderId = $this->db->insert_id();
+        $this->db->insert('order', $data['order']);
+        $orderId = $this->db->insert_id();
 
-        //     $data['orderdetail']['orderId'] = $orderId;
-        //     $this->db->insert('orderdetail', $data['orderdetail']);
+        $data['orderdetail']['orderId'] = $orderId;
+        $this->db->insert('orderdetail', $data['orderdetail']);
 
-        //     $data['reserve']['orderId'] = $orderId;
-        //     $this->db->insert('reserve', $data['reserve']);
+        $data['reserve']['orderId'] = $orderId;
+        $this->db->insert('reserve', $data['reserve']);
 
-        //     $data['reserve']['orderId'] = $orderId;
-        //     $this->db->insert('reserve', $data['reserve']);
+        if (!empty($data["payments"])) {
+            $data['payments']['orderId'] = $orderId;
+            $this->db->insert('payment', $data['payments']);
+        }
 
-        //     if(!empty($data["payments"])){
-        //         $data['payments']['orderId'] = $orderId;
-        //         $this->db->insert('payment', $data['payments']);
-        //     }
-
-        // if ($this->db->trans_status() === FALSE){
-        //     $this->db->trans_rollback();
-        //     return false;
-        // }else{
-        //     $this->db->trans_commit();
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
             return true;
-        // }
+        }
     }
 
 }

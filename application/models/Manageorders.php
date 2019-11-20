@@ -8,7 +8,7 @@ class Manageorders extends CI_Model{
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
         $this->db->join('garage','garage.garageId = reserve.garageId');
-        $this->db->where('order.status',3);
+        $this->db->where('order.status', 4);
         $query = $this->db->get();
         return $query->num_rows();  
     }
@@ -20,7 +20,7 @@ class Manageorders extends CI_Model{
         $this->db->join('orderdetail','order.orderId  = orderdetail.orderId');
         $this->db->join('reserve','order.orderId = reserve.orderId');
         $this->db->join('garage','garage.garageId = reserve.garageId');
-        $this->db->where('order.status', 3);
+        $this->db->where('order.status', 4);
         $this->db->limit($limit,$start)->order_by($order,$dir);
         $query = $this->db->get();
 

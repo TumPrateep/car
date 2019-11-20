@@ -45,11 +45,11 @@ class Paymentapprove extends BD_Controller {
             {
                 $nestedData['orderId'] = $post->orderId;
                 $nestedData['name'] = $post->name;
-                $nestedData['depositflag'] = $post->depositflag;
-                $orderdetail = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
-                $nestedData['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
-                $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
-                $nestedData['costDelivery'] = $this->orderdetails->getSummarycostDelivery($post->orderId);
+                // $nestedData['depositflag'] = $post->depositflag;
+                $nestedData['summary'] = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
+                // $nestedData['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
+                // $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
+                // $nestedData['costDelivery'] = $this->orderdetails->getSummarycostDelivery($post->orderId);
                 $nestedData['slip'] = $post->slip;
                 $nestedData['status'] = $post->status;
                 $nestedData['paymentId'] = $post->paymentId;

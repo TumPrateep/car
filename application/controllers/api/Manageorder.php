@@ -36,9 +36,9 @@ class Manageorder extends BD_Controller {
         //     $search = $this->post('brandName'); 
         //     $status = $this->post('status'); 
 
-        //     $posts =  $this->brand->brand_search($limit,$start,$search,$order,$dir,$status);
+            // $posts =  $this->brand->brand_search($limit,$start,$search,$order,$dir,$status);
 
-        //     $totalFiltered = $this->brand->brand_search_count($search,$status);
+            // $totalFiltered = $this->brand->brand_search_count($search,$status);
         }
 
         $data = array();

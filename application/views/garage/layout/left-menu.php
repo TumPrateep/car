@@ -25,9 +25,9 @@
                                 <!-- <li><a class="garage-white" href="<?=base_url("garage/charge/spares"); ?>">ค่าแรงเปลี่ยนอะไหล่ช่วงล่าง</a></li> -->
                             </ul>
                         </li>
-                        <!-- <li ><a class="garage-white " href="<?=base_url("garage/Reserve"); ?>">
+                        <li ><a class="garage-white " href="<?=base_url("garage/reserve"); ?>">
                             <i class="fa fa-calendar-plus-o garage-white"></i><span class="hide-menu">การจอง</span></a>
-                        </li> -->
+                        </li>
                         
                         <!-- <li ><a class="garage-white " href="<?=base_url("garage/orderdetail/show"); ?>">
                             <i class="fa fa-truck garage-white"></i><span class="hide-menu">รายการสินค้า</span></a>
