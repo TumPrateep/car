@@ -39,7 +39,7 @@
     <div class="container">
         <br>
         <div class="row justify-content-center">
-            <div class="col-md-5">
+            <div class="col-md-5 form-login">
                 <div class="card">
                     <div class="row">
                         <div class="col-md-12">
@@ -89,7 +89,8 @@
 
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <button class="btn btn-block" aria-haspopup="true" aria-expanded="false">
+                                        <button class="btn btn-block" aria-haspopup="true" aria-expanded="false"
+                                            onclick="register()">
                                             ลงทะเบียน
                                         </button>
                                     </div>
@@ -101,14 +102,14 @@
                 </div>
             </div>
 
-            <div class="col-md-7 hide">
+            <div class="col-md-7 hide form-register">
                 <div class="card">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h5>ลงทะเบียน</h5>
+                                        <h4 class="text-center">ลงทะเบียน</h4>
                                     </div>
                                 </div>
                                 <form id="register">
@@ -118,12 +119,12 @@
                                                 <div class="col-md-6">
                                                     <span>ชื่อ</span>
                                                     <input type="text" name="name" class="form-control main"
-                                                        placeholder="ชื่อ">
+                                                        placeholder="ชื่อ" required>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <span>นามสกุล</span>
                                                     <input type="text" name="lastname" class="form-control main"
-                                                        placeholder="นามสกุล">
+                                                        placeholder="นามสกุล" required>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -142,24 +143,35 @@
                                                 <div class="col-md-6">
                                                     <span>ชื่อผู้ใช้งาน</span>
                                                     <input type="text" name="username" class="form-control main"
-                                                        placeholder="ชื่อผู้ใช้งาน">
+                                                        placeholder="ชื่อผู้ใช้งาน" required>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <span>รหัสผ่าน</span>
                                                     <input type="text" name="password" class="form-control main"
-                                                        placeholder="รหัสผ่าน">
+                                                        placeholder="รหัสผ่าน" required>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <span>รหัสผ่านอีกครั้ง</span>
                                                     <input type="text" name="confirmPassword"
-                                                        class="form-control main btn-ga" placeholder="รหัสผ่านอีกครั้ง">
+                                                        class="form-control main btn-ga" placeholder="รหัสผ่านอีกครั้ง"
+                                                        required>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <button type="submit" class="btn btn-main-md width-100p bg-orange"
+                                                    <button type="submit"
+                                                        class="btn btn-outline-light width-100p bg-orange register"
                                                         aria-haspopup="true" aria-expanded="false">
                                                         ลงทะเบียน
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <button class="btn btn-block" aria-haspopup="true"
+                                                        aria-expanded="false" onclick="login()">
+                                                        เข้าสู่ระบบ
                                                     </button>
                                                 </div>
                                             </div>
