@@ -74,7 +74,8 @@
                                         //     + '</div>'
                                         // + '</div>'
                                             + '<div class="card">'
-                                            + ' <a href="#"><img class="card-img-top" src="https://img.kaidee.com/prd/20191023/351179519/b/702194e3-33b2-462c-b25b-dbace4490a41.jpg" width="100%" alt=""></a>'
+                                            + '<a href="' + base_url + "user/cardetail/" 
+                                            + '"><img class="card-img-top" src="https://img.kaidee.com/prd/20191023/351179519/b/702194e3-33b2-462c-b25b-dbace4490a41.jpg" width="100%" alt=""></a>'
                                             + '        <div class="card-body">'
                                             + '            <div>'
                                             + '                <p> <strong>ยี่ห้อ :</strong>  Benz E250 CDI Coupe</p> <p><strong>เลขทะเบียน :</strong> '+value.character_plate+'  '+value.number_plate+' '+value.provinceforcarName+'</p>'
