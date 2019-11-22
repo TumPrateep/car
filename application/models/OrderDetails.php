@@ -247,7 +247,7 @@ class Orderdetails extends CI_Model
         $this->db->join('provinceforcar', 'car_profile.province_plate  = provinceforcar.provinceforcarId');
         $this->db->join('brand', 'car_profile.brandId  = brand.brandId');
         $this->db->join('model', 'car_profile.modelId  = model.modelId');
-        $this->db->join('modelofcar', 'car_profile.modelofcarId  = modelofcar.modelofcarId');
+        $this->db->join('modelofcar', 'car_profile.modelofcarId  = modelofcar.modelofcarId', 'left');
 
         $this->db->where('car_profile.car_profileId', $car_profileId);
         $result = $this->db->get();

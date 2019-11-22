@@ -1,42 +1,52 @@
+<style>
+ul.pagination li a {
+    font-size: 13px;
+}
+
+table>thead {
+    display: none;
+}
+</style>
 <section class="section pricing">
-<div class="container">
-    <div class="row" id="">
-        <div class="col-md-12">
-            <div class="section-title">
-                <h3>ค้นหา<span class="alternate">ข้อมูลรถยนต์</span></h3>
+    <div class="container">
+        <div class="row" id="">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3>ค้นหา<span class="alternate">ข้อมูลรถยนต์</span></h3>
+                </div>
             </div>
         </div>
-     </div>
-     <div class="row">
-        <div class="col-md-2">
-            <a href="http://localhost/car/user/carprofile/create" class="btn btn-main-md width-100p bg-orange" ><i class="fa fa-plus"></i> เพิ่ม</a>
-        </div>
-        <div class="col-md-4 form-group">
-            <input type="text" class="form-control main-md btn-ga" placeholder="ป้ายทะเบียน" id="" name="">
-        </div>
-        <div class="col-md-4 form-group">
-            <select class="form-control main-md" name="" id="">
-                <option value="">จังหวัด</option>
-                
-            </select>
-        </div>
-        <div class="col-md-2">
-            <a href="#" class="btn btn-main-md width-100p bg-orange"><i class="fa fa-search"></i> ค้นหา</a>
-        </div>
-     </div>
+        <div class="row">
+            <div class="col-md-2">
+                <a href="http://localhost/car/user/carprofile/create" class="btn btn-main-md width-100p bg-orange"><i
+                        class="fa fa-plus"></i> เพิ่ม</a>
+            </div>
+            <div class="col-md-4 form-group">
+                <input type="text" class="form-control main-md btn-ga" placeholder="ป้ายทะเบียน" id="" name="">
+            </div>
+            <div class="col-md-4 form-group">
+                <select class="form-control main-md" name="" id="">
+                    <option value="">จังหวัด</option>
 
-     
-        <div >
+                </select>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="btn btn-main-md width-100p bg-orange"><i class="fa fa-search"></i> ค้นหา</a>
+            </div>
+        </div>
+
+
+        <div>
             <table id="order-table" width="100%">
-                
 
-                
+
+
             </table>
         </div>
-    	
 
 
-      <!--<div class="row">
+
+        <!--<div class="row">
         <div class="col-md-4" style="">
             <div class="card" id="order-table" width="100%">
             <a href="#"><img class="card-img-top" src="https://img.kaidee.com/prd/20191109/351549517/b/7a608e50-df29-4dba-95eb-b732a4370e79.jpg" width="100%" alt=""></a>
@@ -116,7 +126,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-md-4" style="">
             <div class="card">
@@ -170,8 +180,8 @@
             </div>
             </div>
         </div> -->
-        
+
     </div>
-</div>
+    </div>
 
 </section>
