@@ -2,12 +2,12 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Registercaraccessory extends BD_Controller {
+class Registergarage extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
-        $this->load->model("registercaraccessorys");
+        $this->load->model("registergarages");
     }
 
     function create_post(){
@@ -58,8 +58,8 @@ class Registercaraccessory extends BD_Controller {
         //set5
 
         $data_check = $this->registercaraccessorys->data_check_create($username,$personalid,$businessRegistration);
-        var_dump($data_check);
-        exit();
+        // echo $this->db->last_query();
+        // exit();
         $data['usersprofile'] = array(
 			'user_profile' => null,
 			'titleName' => $titleName_user,

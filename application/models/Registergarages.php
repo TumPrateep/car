@@ -2,7 +2,7 @@
 
 if(!defined('BASEPATH')) exit('No direct script allowed');
 
-class Registercaraccessorys extends CI_Model{
+class Registergarages extends CI_Model{
 
     function data_check_create($username,$personalid,$businessRegistration){
         $this->db->select("id");

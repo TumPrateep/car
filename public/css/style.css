@@ -3721,3 +3721,7 @@ select.sortby {
 .register {
     margin-top: 22px;
 }
+
+.hidden {
+    display: none;
+}

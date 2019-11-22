@@ -107,6 +107,7 @@ $route['products/tire'] = 'user/tire';
 $route['products/lubricator'] = 'user/lubricator';
 // user route
 $route['register/caraccessory'] = 'user/register/caraccessory';
+$route['register/garage'] = 'user/register/garage';
 $route['login'] = 'user/login';
 
 

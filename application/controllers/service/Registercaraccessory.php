@@ -58,8 +58,8 @@ class Registercaraccessory extends BD_Controller {
         //set5
 
         $data_check = $this->registercaraccessorys->data_check_create($username,$personalid,$businessRegistration);
-        var_dump($data_check);
-        exit();
+        // echo $this->db->last_query();
+        // exit();
         $data['usersprofile'] = array(
 			'user_profile' => null,
 			'titleName' => $titleName_user,
