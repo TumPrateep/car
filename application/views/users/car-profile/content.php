@@ -1,6 +1,6 @@
 <section class="section pricing">
 <div class="container">
-    <div class=" row ">
+    <div class="row" id="">
         <div class="col-md-12">
             <div class="section-title">
                 <h3>ค้นหา<span class="alternate">ข้อมูลรถยนต์</span></h3>
@@ -23,10 +23,22 @@
         <div class="col-md-2">
             <a href="#" class="btn btn-main-md width-100p bg-orange"><i class="fa fa-search"></i> ค้นหา</a>
         </div>
-     </div><br>
-     <div class="row">
+     </div>
+
+     
+        <div >
+            <table id="order-table" width="100%">
+                
+
+                
+            </table>
+        </div>
+    	
+
+
+      <!--<div class="row">
         <div class="col-md-4" style="">
-            <div class="card">
+            <div class="card" id="order-table" width="100%">
             <a href="#"><img class="card-img-top" src="https://img.kaidee.com/prd/20191109/351549517/b/7a608e50-df29-4dba-95eb-b732a4370e79.jpg" width="100%" alt=""></a>
                 <div class="card-body">
                     <div>
@@ -50,8 +62,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4" style="">
+        </div> -->
+        <!-- <div class="col-md-4" style="">
             <div class="card">
             <img class="card-img-top" src="https://img.kaidee.com/prd/20191023/351179519/b/702194e3-33b2-462c-b25b-dbace4490a41.jpg" width="100%" alt="">
             <div class="card-body">
@@ -157,7 +169,7 @@
                 </div>
             </div>
             </div>
-        </div>
+        </div> -->
         
     </div>
 </div>

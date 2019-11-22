@@ -8,7 +8,7 @@
             </div>
         </div>
                 <div class="card col-md-12">
-                    <form id="submit" novalidate="novalidate">
+                    <form id="submit">
                     
                         <div class="card-body" >
                         <div class="form-group row ">
@@ -49,24 +49,15 @@
                                     <label class="form-label required" for="garage" aria-required="true">ปีรถยนต์</label> <span class="error">*</span>
                                     <select class="form-control input-default" name="detail" id="detail">
                                         <option value="">เลือกปี</option>
-                                        <option value="1">2015</option><option value="2">2016</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <div class="form-group">
-                                    <label class="form-label required" for="garage" aria-required="true">รายละเอียดรุ่น</label> <span class="error">*</span>
-                                    <select class="form-control input-default" name="brandId" id="brandId">
-                                        <option value="">รายละเอียดรุ่น</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group col-md-3">
                                 <div class="form-group">
                                     <label class="form-label required" for="garage" aria-required="true">เชื้อเพลิง</label> <span class="error">*</span>
-                                    <select class="form-control input-default" name="brandId" id="brandId">
+                                    <select class="form-control input-default">
                                         <option value="">เลือกเชื้อเพลิง</option>
-                                    <option value="1">ดีเซล</option><option value="2">เบนซิน</option></select>
+                                        <option value="1">ดีเซล</option><option value="2">เบนซิน</option></select>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +77,7 @@
                                 <div class="form-group">
                                 <label class="control-label">รูปหน้ารถ</label>
                                     <div class="image-editor-front">
-                                        <input type="file" class="cropit-image-input" name="tempImage" required="" aria-required="true" accept="image/*">
+                                        <input type="file" class="cropit-image-input" name="tempImage1" required="" aria-required="true" accept="image/*">
                                         <div class="cropit-preview" style="position: relative; width: 200px; height: 200px;"><div class="cropit-preview-image-container" style="position: absolute; overflow: hidden; left: 0px; top: 0px; width: 100%; height: 100%;"><img class="cropit-preview-image" alt="" style="transform-origin: left top; will-change: transform;"></div></div>
                                         <div class="image-size-label">ปรับขนาด</div>
                                         <input type="range" class="cropit-image-zoom-input" min="0" max="1" step="0.01">
@@ -98,7 +89,7 @@
                                 <div class="form-group">
                                 <label class="control-label">รูปหลังรถ</label>
                                     <div class="image-editor-back">
-                                        <input type="file" class="cropit-image-input" name="tempImage" required="" aria-required="true" accept="image/*">
+                                        <input type="file" class="cropit-image-input" name="tempImage2" required="" aria-required="true" accept="image/*">
                                         <div class="cropit-preview" style="position: relative; width: 200px; height: 200px;"><div class="cropit-preview-image-container" style="position: absolute; overflow: hidden; left: 0px; top: 0px; width: 100%; height: 100%;"><img class="cropit-preview-image" alt="" style="transform-origin: left top; will-change: transform;"></div></div>
                                         <div class="image-size-label">ปรับขนาด</div>
                                         <input type="range" class="cropit-image-zoom-input" min="0" max="1" step="0.01">
@@ -112,7 +103,7 @@
                                 <div class="form-group">
                                 <label class="control-label">เล่มทะเบียนรถ</label>
                                     <div class="image-editor-form">
-                                        <input type="file" class="cropit-image-input" name="tempImage" required="" aria-required="true" accept="image/*">
+                                        <input type="file" class="cropit-image-input" name="tempImage3" required="" aria-required="true" accept="image/*">
                                         <div class="cropit-preview" style="position: relative; width: 600px; height: 300px;"><div class="cropit-preview-image-container" style="position: absolute; overflow: hidden; left: 0px; top: 0px; width: 100%; height: 100%;"><img class="cropit-preview-image" alt="" style="transform-origin: left top; will-change: transform;"></div></div>
                                         <div class="image-size-label">ปรับขนาด</div>
                                         <input type="range" class="cropit-image-zoom-input" min="0" max="1" step="0.01">
