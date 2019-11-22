@@ -84,7 +84,8 @@ var table = $('#order-table').DataTable({
                         '<a href="#"><button type="button" class="btn btn-main-md bg-orange">รับบริการ</button> '
                 } else if (data.status == "8") {
                     success_status +=
-                        '<a href="#"><button type="button" class="btn btn-main-md bg-orange">ศูนย์บริการ</button> '
+                        '<a href="' + base_url + "user/garageagain/" + 
+                        '"><button type="button" class="btn btn-main-md bg-orange">ศูนย์บริการ</button> '
                 } else if (data.statusSuccess == "2") {
                     success_status +=
                         '<a href="#"><button type="button" title="กดเพื่อให้คะเเนนการให้บริการ" onclick="commetrating(' +
