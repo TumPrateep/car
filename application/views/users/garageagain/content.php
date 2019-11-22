@@ -122,6 +122,7 @@
                                                                                     <p class="card-text"><b><i class="fa fa-calendar" aria-hidden="true"></i></b> จ, อ, พ, ส, อา
                                                                                         <br><b><i class="fa fa-clock-o" aria-hidden="true"></i></b> 07:00 - 21:00 น.
                                                                                         <br><b><i class="fa fa-phone" aria-hidden="true"></i></b> 0833969552
+                                                                                        <br><b><i class="fa fa-road" aria-hidden="true"></i></b> 365 กม.
                                                                                     </p>                                                                            
                                                                                     <a href="#" class="btn btn-block bg-orange text-white float-right">เลือก</a>
                                                                                 </div>
@@ -141,6 +142,7 @@
                                                                                     <p class="card-text"><b><i class="fa fa-calendar" aria-hidden="true"></i></b> จ, อ, พ, ส, อา
                                                                                         <br><b><i class="fa fa-clock-o" aria-hidden="true"></i></b> 07:00 - 21:00 น.
                                                                                         <br><b><i class="fa fa-phone" aria-hidden="true"></i></b> 0833969552
+                                                                                        <br><b><i class="fa fa-road" aria-hidden="true"></i></b> 365 กม.
                                                                                     </p>                                                                            
                                                                                     <a href="#" class="btn btn-block bg-orange text-white float-right">เลือก</a>
                                                                                 </div>
@@ -162,6 +164,7 @@
                                                                                     <p class="card-text"><b><i class="fa fa-calendar" aria-hidden="true"></i></b> จ, อ, พ, ส, อา
                                                                                         <br><b><i class="fa fa-clock-o" aria-hidden="true"></i></b> 07:00 - 21:00 น.
                                                                                         <br><b><i class="fa fa-phone" aria-hidden="true"></i></b> 0833969552
+                                                                                        <br><b><i class="fa fa-road" aria-hidden="true"></i></b> 365 กม.
                                                                                     </p>                                                                            
                                                                                     <a href="#" class="btn btn-block bg-orange text-white float-right">เลือก</a>
                                                                                 </div>
@@ -181,6 +184,7 @@
                                                                                     <p class="card-text"><b><i class="fa fa-calendar" aria-hidden="true"></i></b> จ, อ, พ, ส, อา
                                                                                         <br><b><i class="fa fa-clock-o" aria-hidden="true"></i></b> 07:00 - 21:00 น.
                                                                                         <br><b><i class="fa fa-phone" aria-hidden="true"></i></b> 0833969552
+                                                                                        <br><b><i class="fa fa-road" aria-hidden="true"></i></b> 365 กม.
                                                                                     </p>                                                                            
                                                                                     <a href="#" class="btn btn-block bg-orange text-white float-right">เลือก</a>
                                                                                 </div>
