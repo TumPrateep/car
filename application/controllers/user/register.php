@@ -14,4 +14,14 @@ class Register extends CI_Controller
 
     }
 
+    public function garage()
+    {
+        $data = [
+            'tire' => '', 'lubricator' => '', 'garage' => '',
+        ];
+
+        load_user_view("users/register/garage/content", "users/register/garage/script", $data);
+
+    }
+
 }

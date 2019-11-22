@@ -1,4 +1,12 @@
 <script>
+var form_counter = 0;
+function getLocation() {
+        navigator.geolocation.getCurrentPosition(function(location) {
+        console.log(location.coords.accuracy);
+        document.getElementById("latitude").value = (location.coords.latitude);
+        document.getElementById("longtitude").value = (location.coords.longitude);
+        });
+    }; 
 $(document).ready(function() {
     var register = $("#rigister");
     jQuery.validator.addMethod("username", function(value, element) {
@@ -195,32 +203,159 @@ $(document).ready(function() {
             postCode: {
               required: "รหัสไปรณี"
             }
-        },
-        onfocusout: function(element) {
-            $(element).valid();
-        },
-        highlight : function(element, errorClass, validClass) {
-            $(element.register).find('.actions').addClass('form-error');
-            $(element).removeClass('valid');
-            $(element).addClass('error');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element.register).find('.actions').removeClass('form-error');
-            $(element).removeClass('error');
-            $(element).addClass('valid');
         }
+        //,
+        // onfocusout: function(element) {
+        //     $(element).valid();
+        // },
+        // highlight : function(element, errorClass, validClass) {
+        //     $(element.register).find('.actions').addClass('form-error');
+        //     $(element).removeClass('valid');
+        //     $(element).addClass('error');
+        // },
+        // unhighlight: function(element, errorClass, validClass) {
+        //     $(element.register).find('.actions').removeClass('form-error');
+        //     $(element).removeClass('error');
+        //     $(element).addClass('valid');
+        // }
     });
 
-    this.register.submit(function(){
-        create();
+    init();
+    
+    function init(){
+        loadProvinceGarage();
+        showForm();
+    }
+        // user
+        var provinceDropdownuser= $("#provinceId_user");
+        provinceDropdownuser.append('<option value="">เลือกจังหวัด</option>');
+
+        var districtDropdownuser = $('#districtId_user');
+        districtDropdownuser.append('<option value="">เลือกอำเภอ</option>');
+
+        var subdistrictDropdownuser = $('#subdistrictId_user');
+        subdistrictDropdownuser.append('<option value="">เลือกตำบล</option>');     
+
+        //sparepart
+        var provinceDropdownsparepart = $("#sparepart_provinceId");
+        provinceDropdownsparepart.append('<option value="">เลือกจังหวัด</option>');
+
+        var districtDropdownsparepart = $('#sparepart_districtId');
+        districtDropdownsparepart.append('<option value="">เลือกอำเภอ</option>');
+
+        var subdistrictDropdownsparepart = $('#sparepart_subdistrictId');
+        subdistrictDropdownsparepart.append('<option value="">เลือกตำบล</option>'); 
+
+        function loadProvinceGarage(provinceId, districtId,subdistrictId){
+            $.post(base_url+"service/Locationforregister/getProvince",{},
+                function(data){
+                var province = data.data;
+                $.each(province, function( index, value ) {
+                    provinceDropdownuser.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
+                    provinceDropdownsparepart.append('<option value="'+value.provinceId+'">'+value.provinceName+'</option>');
+                });
+                }
+            );
+        }
+
+            provinceDropdownuser.change(function(){
+            var provinceId = $(this).val();
+            loadDistrictGarage(provinceId);
+            });
+
+            provinceDropdownsparepart.change(function(){
+            var provinceId = $(this).val();
+            loadDistrictsparepart(provinceId);
+            });
+
+        function loadDistrictGarage(provinceId, districtId,subdistrictId){
+            districtDropdownuser.html("");
+            districtDropdownuser.append('<option value="">เลือกอำเภอ</option>');
+            subdistrictDropdownuser.html("");
+            subdistrictDropdownuser.append('<option value="">เลือกตำบล</option>');
+
+            $.post(base_url+"service/Locationforregister/getDistrict",{
+                provinceId: provinceId
+            },
+                function(data){
+                var district = data.data;
+                $.each(district, function( index, value ) {
+                    districtDropdownuser.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+                });
+                }
+            );
+        }
+
+        function loadDistrictsparepart(provinceId, districtId,subdistrictId){
+            districtDropdownsparepart.html("");
+            districtDropdownsparepart.append('<option value="">เลือกอำเภอ</option>');
+            subdistrictDropdownsparepart.html("");
+            subdistrictDropdownsparepart.append('<option value="">เลือกตำบล</option>');
+
+            $.post(base_url+"service/Locationforregister/getDistrict",{
+                provinceId: provinceId
+            },
+                function(data){
+                var district = data.data;
+                $.each(district, function( index, value ) {
+                    districtDropdownsparepart.append('<option value="'+value.districtId+'">'+value.districtName+'</option>');
+                });
+                }
+            );
+        }
+
+            districtDropdownuser.change(function(){
+            var districtId = $(this).val();
+            loadSubdistrictGarage(districtId);
+            });
+
+            districtDropdownsparepart.change(function(){
+            var districtId = $(this).val();
+            loadSubdistrictsparepart(districtId);
+            });
+
+        function loadSubdistrictGarage(districtId,subdistrictId){
+            subdistrictDropdownuser.html("");
+            subdistrictDropdownuser.append('<option value="">เลือกตำบล</option>');
+                
+            $.post(base_url+"service/Locationforregister/getSubdistrict",{
+                districtId: districtId
+            },
+                function(data){
+                var subDistrict = data.data;
+                $.each(subDistrict, function( index, value ) {
+                    subdistrictDropdownuser.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+                });
+                }
+            );
+        }
+
+        function loadSubdistrictsparepart(districtId,subdistrictId){
+            subdistrictDropdownsparepart.html("");
+            subdistrictDropdownsparepart.append('<option value="">เลือกตำบล</option>');
+                
+            $.post(base_url+"service/Locationforregister/getSubdistrict",{
+                districtId: districtId
+            },
+                function(data){
+                var subDistrict = data.data;
+                $.each(subDistrict, function( index, value ) {
+                    subdistrictDropdownsparepart.append('<option value="'+value.subdistrictId+'">'+value.subdistrictName+'</option>');
+                });
+                }
+            );
+        }   
+
+    $("#rigister").submit(function(){
+      creates();
     })
 
-    function create(){
+    function creates(){
         event.preventDefault();
-        var isValid = $("#submit").valid();
+        var isValid = $("#rigister").valid();
         if(isValid){
-            var data = $("#submit").serialize();
-            $.post(base_url+"apiUser/Registercaraccessory/create",data,
+            var data = $("#rigister").serialize();
+            $.post(base_url+"service/Registercaraccessory/create",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"login/");
@@ -231,6 +366,21 @@ $(document).ready(function() {
         }
     }
 
+
 }); 
+
+function showForm(){
+    var html = '<div class="row justify-content-md-center">'
+        +'<div class="col-2">'
+            +'<button type="button" class="btn btn-main-md width-100p active" onclick="showForm()"><i class="fa fa-chevron-right" aria-hidden="true"></i> ถัดไป </button>'
+        +'</div>'
+    +'</div>';
+    // console.log(".form-show-"+form_counter);
+    $(".btn-show").hide("slow");
+    $(".form-show-"+form_counter).html(html);
+    $(".form-active-"+form_counter).show("slow");
+    $(".form-show-"+form_counter).show("slow");
+    form_counter++;
+}   
     
 </script>

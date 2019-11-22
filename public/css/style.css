@@ -3717,3 +3717,6 @@ select.sortby {
     line-height: 1.5;
     border-radius: .3rem;
 }
+.hidden{
+    display: none;
+}
