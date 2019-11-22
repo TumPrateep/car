@@ -25,49 +25,59 @@ $(document).ready(function() {
 
     register.validate({
         rules: {
-            name: {
+            firstname: {
                 required: true
             },
             lastname: {
                 required: true
             },
-            phoneNumber: {
-                required: true
+            username: {
+                required: true,
+                minlength: 5
+            },
+            phone: {
+                required: true,
+                minlength: 9
             },
             email: {
-                required: true
-            },
-            username: {
-                required: true
+                required: true,
+                email: true
             },
             password: {
-                required: true
+                required: true,
+                minlength: 6
             },
-            confirm: {
-                required: true
+            password_again: {
+                required: true,
+                equalTo: "#password"
             }
         },
         messages: {
-            name: {
+            firstname: {
                 required: "กรอกชื่อ"
             },
             lastname: {
                 required: "กรอกนามสกุล"
             },
-            phoneNumber: {
-                required: "กรอกเบอร์โทรศัพท์"
+            username: {
+                required: "กรอกชื่อผู้ใช้งานหรือเบอร์โทรศัพท์",
+                minlength: "กรอกชื่อผู้ใช้งานมากกว่า 5 ตัว"
+            },
+            phone: {
+                required: "กรอกเบอร์โทรศัพท์",
+                minlength: "กรอกเบอร์โทรให้ครบถ้วน"
             },
             email: {
-                required: "กรอกอีเมล์"
-            },
-            username: {
-                required: "กรอกชื่อผู้ใช้"
+                required: "กรอกอีเมล์",
+                email: "รูปแบบอีเมล์ไม่ถูกต้อง"
             },
             password: {
-                required: "กรอกรหัสผ่าน"
+                required: "กรอกรหัสผ่าน",
+                minlength: "กรอกรหัสผ่านมากกว่า 6 ตัว"
             },
-            confirmPassword: {
-                required: "ยืนยันรหัสผ่านอีกครั้ง"
+            password_again: {
+                required: "กรอกยืนยันรหัสผ่าน",
+                equalTo: "รหัสผ่านไม่ตรงกัน"
             }
         }
     });
@@ -108,9 +118,9 @@ $(document).ready(function() {
         if (isValid) {
             var data = register.serialize();
             errorMessage.hide();
-            $.post(base_url + "service/register/user", data,
+            $.post(base_url + "service/register/users", data,
                 function(data, textStatus, jqXHR) {
-                    showMessage(data.message, base_url + "login");
+                    showMessage(data.message, "login");
                 }
             ).fail(function(data) {
                 if (data.responseJSON.message == 3001) {
