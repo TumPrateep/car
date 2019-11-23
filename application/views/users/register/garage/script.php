@@ -42,203 +42,196 @@ $(document).ready(function() {
 
     register.validate({
         rules: {
-          check:{
-            required: true,
-            roles: true
+          titleName_user:{
+            required: true
           },
-        //   titleName_user:{
-        //     required: true
-        //   },
-        //   firstname_user:{
-        //     required: true
-        //   },
-        //   lastname_user: {
-        //     required: true
-        //   },
-        //   hno_user:{
-        //     required: true
-        //   }, 
-        //   provinceId_user:{
-        //     required: true
-        //   },
-        //   districtId_user: {
-        //     required: true
-        //   },
-        //   subdistrictId_user: {
-        //     required: true
-        //   },
-        //   phone1: {
-        //     minlength: 9,
-        //     required: true 
-        //   },
-        //   phone2: {
-        //     minlength: 9,
-        //     required: true
-        //   },
-        //   personalid:{
-        //     required: true,
-        //     pid: true
-        //   },
-        //   postCode_user:{
-        //     required: true
-        //   },
-        //   garagename:{
-        //       required: true
-        //   },
-        //   businessRegistration:{
-        //     required: true
-        //   },
-        //   phone_garage:{
-        //     required: true
-        //   },
-        //   brandId:{
-        //     required: true
-        //   },
-        //   timestart:{
-        //     required: true
-        //   },
-        //   timeend:{
-        //     required: true
-        //   },
-        //   hno_garage:{
-        //     required: true
-        //   },
-        //   provinceId_garage:{
-        //     required: true
-        //   },
-        //   districtId_garage:{
-        //     required: true
-        //   },
-        //   subdistrictId_garage:{
-        //     required: true
-        //   },
-        //   postCode_garage:{
-        //     required: true
-        //   },
-        //   latitude:{
-        //     required: true
-        //   },
-        //   longtitude:{
-        //     required: true
-        //   },
-        //   username:{
-        //     minlength:4,
-        //     required:true
-        //   },
-        //   phone: {
+          firstname_user:{
+            required: true
+          },
+          lastname_user: {
+            required: true
+          },
+          hno_user:{
+            required: true
+          }, 
+          provinceId_user:{
+            required: true
+          },
+          districtId_user: {
+            required: true
+          },
+          subdistrictId_user: {
+            required: true
+          },
+          phone1: {
+            minlength: 9,
+            required: true 
+          },
+          phone2: {
+            minlength: 9,
+            required: true
+          },
+          personalid:{
+            required: true,
+            pid: true
+          },
+          postCode_user:{
+            required: true
+          },
+          garagename:{
+              required: true
+          },
+          businessRegistration:{
+            required: true
+          },
+          phone_garage:{
+            required: true
+          },
+          brandId:{
+            required: true
+          },
+          timestart:{
+            required: true
+          },
+          timeend:{
+            required: true
+          },
+          hno_garage:{
+            required: true
+          },
+          provinceId_garage:{
+            required: true
+          },
+          districtId_garage:{
+            required: true
+          },
+          subdistrictId_garage:{
+            required: true
+          },
+          postCode_garage:{
+            required: true
+          },
+          latitude:{
+            required: true
+          },
+          longtitude:{
+            required: true
+          },
+          username:{
+            minlength:4,
+            required:true
+          },
+          phone: {
             
-        //     minlength:9,
-        //     required: true
-        //   },    
-        //   password: {
+            minlength:9,
+            required: true
+          },    
+          password: {
             
-        //     minlength:6,
-        //     required: true
-        //   },
-        //   confirmpassword: { 
-        //     required: true,
-        //     equalTo: "#password"
-        //   },
-        //   check: {
-        //     required: true, 
-        //     minlength: 1 
-        //   },
+            minlength:6,
+            required: true
+          },
+          checkpassword: { 
+            required: true,
+            equalTo: "#password"
+          },
+          check: {
+            required: true, 
+            minlength: 1 
+          },
         },
         messages: {
-          check:{
-            roles: "อิอิ"
-            }
-        //   titleName_user:{
-        //     required: "คำนำหน้า"
-        //   },
-        //   firstname_user:{
-        //     required: "ชื่อ"
-        //   },
-        //   lastname_user: {
-        //     required: "นามสกุล"
-        //   },
-        //   personalid:{
-        //     required: "รหัสบัตรประชาชน",
-        //     pid: "รหัสบัตรประชาชนให้ถูกต้อง"
-        //   },
-        //   hno_user:{
-        //     required: "บ้านเลขที่"
-        //   },
-        //   provinceId_user:{
-        //     required: "จังหวัด"
-        //   },
-        //   districtId_user: {
-        //     required: "อำเภอ"
-        //   },
-        //   subdistrictId_user: {
-        //     required: "ตำบล"
-        //   },
-        //   postCode_user:{
-        //     required: "กรุณากรอกรหัสไปรษณี"
-        //   },
-        //   phone1: {
-        //     minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-        //     required: "เบอร์โทรศัพท์"
-        //   },
-        //   phone2: {
-        //     minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว"
-        //   },
-        //   garagename:{
-        //     required: "ชื่อศูนย์บริการ"
-        //   },
-        //   businessRegistration:{
-        //     required: "หมายเลขทะเบียนการค้า"
-        //   },
-        //   phone_garage:{
-        //     minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-        //     required: "เบอร์โทรศัพท์"
-        //   },
-        //   brandId:{
-        //     required: "กรุณาเลือกความเชี่ยวชาญรถ"
-        //   },
-        //   hno_garage:{
-        //     required: "บ้านเลขที่"
-        //   },
-        //   provinceId_garage:{
-        //     required: "จังวัด"
-        //   },
-        //   districtId_garage:{
-        //     required: "อำเภอ"
-        //   },
-        //   subdistrictId_garage:{
-        //     required: "ตำบล"
-        //   },
-        //   postCode_garage:{
-        //     required: "กรุณากรอกรหัสไปรษณี"
-        //   },
-        //   latitude:{
-        //     required: "กรุุณากรอกละติจูด"
-        //   },
-        //   longtitude:{
-        //     required: "ลองจิจูด"
-        //   },
-        //   username:{
-        //     required: "ชื่อผู้ใช้งาน",
-        //     minlength:"ชื่อผู้ใช้อย่างน้อย 4 ตัวอักษร"
-        //   },
-        //   phone: {
-        //     minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-        //     required: "เบอร์โทรศัพท์"
-        //   },
-        //   password: {
-        //     required: "รหัสผ่าน",
-        //     minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
-        //   },
-        //   confirmpassword: {
-        //     required: "รหัสผ่านอีกครั้ง",
-        //     equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
-        //   },
-        //   postCode: {
-        //     required: "รหัสไปรณี"
-        //   },
-        //   check: {
-        //     required: "กรุณาเลือกการบริการ"
-        //   }
+          titleName_user:{
+            required: "คำนำหน้า"
+          },
+          firstname_user:{
+            required: "ชื่อ"
+          },
+          lastname_user: {
+            required: "นามสกุล"
+          },
+          personalid:{
+            required: "รหัสบัตรประชาชน",
+            pid: "รหัสบัตรประชาชนให้ถูกต้อง"
+          },
+          hno_user:{
+            required: "บ้านเลขที่"
+          },
+          provinceId_user:{
+            required: "จังหวัด"
+          },
+          districtId_user: {
+            required: "อำเภอ"
+          },
+          subdistrictId_user: {
+            required: "ตำบล"
+          },
+          postCode_user:{
+            required: "กรุณากรอกรหัสไปรษณี"
+          },
+          phone1: {
+            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            required: "เบอร์โทรศัพท์"
+          },
+          phone2: {
+            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว"
+          },
+          garagename:{
+            required: "ชื่อศูนย์บริการ"
+          },
+          businessRegistration:{
+            required: "หมายเลขทะเบียนการค้า"
+          },
+          phone_garage:{
+            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            required: "เบอร์โทรศัพท์"
+          },
+          brandId:{
+            required: "กรุณาเลือกความเชี่ยวชาญรถ"
+          },
+          hno_garage:{
+            required: "บ้านเลขที่"
+          },
+          provinceId_garage:{
+            required: "จังวัด"
+          },
+          districtId_garage:{
+            required: "อำเภอ"
+          },
+          subdistrictId_garage:{
+            required: "ตำบล"
+          },
+          postCode_garage:{
+            required: "กรุณากรอกรหัสไปรษณี"
+          },
+          latitude:{
+            required: "กรุุณากรอกละติจูด"
+          },
+          longtitude:{
+            required: "ลองจิจูด"
+          },
+          username:{
+            required: "ชื่อผู้ใช้งาน",
+            minlength:"ชื่อผู้ใช้อย่างน้อย 4 ตัวอักษร"
+          },
+          phone: {
+            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+            required: "เบอร์โทรศัพท์"
+          },
+          password: {
+            required: "รหัสผ่าน",
+            minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
+          },
+          checkpassword: {
+            required: "รหัสผ่านอีกครั้ง",
+            equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
+          },
+          postCode: {
+            required: "รหัสไปรณี"
+          },
+          check: {
+            required: "กรุณาเลือกการบริการ"
+          }
         }
     });
 

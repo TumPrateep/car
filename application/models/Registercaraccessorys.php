@@ -37,6 +37,7 @@ class Registercaraccessorys extends CI_Model{
         $userId = $this->db->insert_id();
 
         if( !empty($data['usersprofile']) ){
+            $data['usersprofile']['userId'] = $userId;
             $this->db->insert('user_profile', $data['usersprofile']);
         }
 

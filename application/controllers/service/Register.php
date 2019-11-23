@@ -198,23 +198,6 @@ class Register extends BD_Controller
         // $changeL = $this->post('change_lubricator');
         // $ServiceAll .= (isset($changeL) ? 1 : 0 );
         // $garageService = $ServiceAll;
-
-        // $test = $this->post('check');
-
-        // for($i = 0; $i <= $test.length; $i++){
-
-        //     if($test[$i] == 11){
-        //         var_dump("อิอิ");
-        //         exit();
-        //     }
-        //     // $ServiceAll .= (isset($test) ? 1 : 0 );
-        // }
-
-        // foreach ($test as $key => $value) {
-        //     # code...
-        // }
-        // var_dump($test);
-        // exit();
         //set4
 
         $timestart = $this->post('timestart');
@@ -301,7 +284,7 @@ class Register extends BD_Controller
                 'businessRegistration' => $businessRegistration,
                 'phone' => $phone_garage,
                 'brandId' => $brandId,
-                'picture' => $img,
+                'picture' => $imageName,
                 'garageService' => $garageService,
                 'openingtime' => $timestart,
                 'closingtime' => $timeend,

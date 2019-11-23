@@ -115,7 +115,7 @@ $(document).ready(function() {
             required: true,
             minlength:6
           },
-          confirmpassword: { 
+          checkpassword: { 
             required: true,
             equalTo: "#password"
           },
@@ -209,7 +209,7 @@ $(document).ready(function() {
              required: "รหัสผ่าน",
             minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
             },
-          confirmpassword: {
+            checkpassword: {
             required: "รหัสผ่านอีกครั้ง",
             equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
             },
