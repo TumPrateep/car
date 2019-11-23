@@ -19,8 +19,8 @@ class Registergarages extends CI_Model{
         if(!empty($result2)){
             return $result2;
         }
-        $this->db->select("car_accessoriesId");
-        $this->db->from("car_accessories");
+        $this->db->select("garageId");
+        $this->db->from("garage");
         $this->db->where("businessRegistration", $businessRegistration);
         $result3 = $this->db->get()->row();
         if(!empty($result3)){
@@ -36,14 +36,15 @@ class Registergarages extends CI_Model{
         $this->db->insert('users', $data['users']);
         $userId = $this->db->insert_id();
 
-        if( !empty($data['usersprofile']) ){
-            $this->db->insert('user_profile', $data['usersprofile']);
+        if( !empty($data['usersprofiles']) ){
+            $data['usersprofiles']['userId'] = $userId;
+            $this->db->insert('user_profile', $data['usersprofiles']);
         }
 
-        if( !empty($data['accessories']) ){
-            $data['accessories']['userId'] = $userId;
-            $data['accessories']['create_by'] = $userId;
-            $this->db->insert('car_accessories', $data['accessories']);
+        if( !empty($data['garages']) ){
+            $data['garages']['userId'] = $userId;
+            $data['garages']['create_by'] = $userId;
+            $this->db->insert('garage', $data['garages']);
         }
 
         if ($this->db->trans_status() === FALSE){

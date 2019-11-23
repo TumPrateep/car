@@ -1,3 +1,11 @@
+<link rel="stylesheet" href="<?=base_url('public/js/datepicker/themes/default.css')?>">
+<link rel="stylesheet" href="<?=base_url('public/js/datepicker/themes/default.date.css')?>">
+<link rel="stylesheet" href="<?=base_url('public/js/datepicker/themes/default.time.css')?>">
+
+<script src="<?=base_url('public/js/datepicker/picker.js')?>"></script>
+<script src="<?=base_url('public/js/datepicker/picker.date.js')?>"></script>
+<script src="<?=base_url('public/js/datepicker/picker.time.js')?>"></script>
+<script src="<?=base_url('public/js/datepicker/translations/th_TH.js')?>"></script>
 <script>
 var form_counter = 0;
 function getLocation() {
@@ -8,216 +16,230 @@ function getLocation() {
         });
     }; 
 $(document).ready(function() {
+  
     var register = $("#rigister");
     jQuery.validator.addMethod("username", function(value, element) {
       return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
     }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
     
+    // jQuery.validator.addMethod("roles", function(value, elem, param) {
+    //   return $(".roles:checkbox:checked").length > 0;
+    // },"gg");
+
+    function checkID(id) {
+            if(id.length != 13) return false;
+            for(i=0, sum=0; i < 12; i++)
+                sum += parseFloat(id.charAt(i))*(13-i);
+            if((11-sum%11)%10!=parseFloat(id.charAt(12)))
+                return false;
+            return true;
+        }
+
+    jQuery.validator.addMethod("pid", function(value, element) {
+        return checkID(value);
+      }, 'เลขบัตรประชาชนให้ถูกต้อง');
+    
+
     register.validate({
         rules: {
-          titleName_user:{
-            required: true
-          },
-          firstname_user:{
-            required: true
-          },
-          lastname_user: {
-            required: true
-          },
-          hno_user:{
-            required: true
-          }, 
-          provinceId_user:{
-            required: true
-          },
-          districtId_user: {
-            required: true
-          },
-          subdistrictId_user: {
-            required: true
-          },
-          phone1: {
-            minlength: 9,
-            required: true 
-          },
-          phone2: {
-            minlength: 9
-          },
-          postCode_user:{
-            required: true
-          },
-          sparepartname:{
-              required: true
-            },
-          businessRegistration:{
-            required: true
-          },
-          titleName_sparepart:{
-            required: true
-          },
-          firstname_sparepart:{
-            required: true
-          },
-          lastname_sparepart:{
-            required: true
-          },
-          personalid:{
+          check:{
             required: true,
-            pid: true
+            roles: true
           },
-          phone_sparepart: {
-            minlength: 9,
-            required: true 
-          },
-          hno_sparepart:{
-            required: true
-          },
-          sparepart_provinceId:{
-            required: true
-          },
-          sparepart_districtId:{
-            required: true
-          },
-          sparepart_subdistrictId:{
-            required: true
-          },
-          postCode_sparepart:{
-            required: true
-          },
-          latitude:{
-            required: true
-          },
-          longtitude:{
-            required: true
-          },
-          username:{
-            minlength:4,
-            required:true
-            },
-          phone: {
-              required: true,
-              minlength:9
-          },    
-          password: {
-            required: true,
-            minlength:6
-          },
-          confirmpassword: { 
-            required: true,
-            equalTo: "#password"
-          },
+        //   titleName_user:{
+        //     required: true
+        //   },
+        //   firstname_user:{
+        //     required: true
+        //   },
+        //   lastname_user: {
+        //     required: true
+        //   },
+        //   hno_user:{
+        //     required: true
+        //   }, 
+        //   provinceId_user:{
+        //     required: true
+        //   },
+        //   districtId_user: {
+        //     required: true
+        //   },
+        //   subdistrictId_user: {
+        //     required: true
+        //   },
+        //   phone1: {
+        //     minlength: 9,
+        //     required: true 
+        //   },
+        //   phone2: {
+        //     minlength: 9,
+        //     required: true
+        //   },
+        //   personalid:{
+        //     required: true,
+        //     pid: true
+        //   },
+        //   postCode_user:{
+        //     required: true
+        //   },
+        //   garagename:{
+        //       required: true
+        //   },
+        //   businessRegistration:{
+        //     required: true
+        //   },
+        //   phone_garage:{
+        //     required: true
+        //   },
+        //   brandId:{
+        //     required: true
+        //   },
+        //   timestart:{
+        //     required: true
+        //   },
+        //   timeend:{
+        //     required: true
+        //   },
+        //   hno_garage:{
+        //     required: true
+        //   },
+        //   provinceId_garage:{
+        //     required: true
+        //   },
+        //   districtId_garage:{
+        //     required: true
+        //   },
+        //   subdistrictId_garage:{
+        //     required: true
+        //   },
+        //   postCode_garage:{
+        //     required: true
+        //   },
+        //   latitude:{
+        //     required: true
+        //   },
+        //   longtitude:{
+        //     required: true
+        //   },
+        //   username:{
+        //     minlength:4,
+        //     required:true
+        //   },
+        //   phone: {
+            
+        //     minlength:9,
+        //     required: true
+        //   },    
+        //   password: {
+            
+        //     minlength:6,
+        //     required: true
+        //   },
+        //   confirmpassword: { 
+        //     required: true,
+        //     equalTo: "#password"
+        //   },
+        //   check: {
+        //     required: true, 
+        //     minlength: 1 
+        //   },
         },
         messages: {
-          titleName_user:{
-            required: "คำนำหน้า"
-          }
-          ,
-          firstname_user:{
-            required: "ชื่อ"
-          },
-          lastname_user: {
-            required: "นามสกุล"
-          },
-          hno_user:{
-            required: "บ้านเลขที่"
-          },
-          provinceId_user:{
-            required: "จังหวัด"
-          },
-          districtId_user: {
-            required: "อำเภอ"
-          },
-          subdistrictId_user: {
-            required: "ตำบล"
-          },
-          postCode_user:{
-            required: "กรุณากรอกรหัสไปรษณี"
-          },
-          phone1: {
-            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-            required: "เบอร์โทรศัพท์"
-          },
-          phone2: {
-            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว"
-          },
-          sparepartname:{
-              required: "ชื่อร้านอะไหล่"
-            },
-          businessRegistration:{
-            required: "หมายเลขทะเบียนการค้า"
-          },
-          titleName_sparepart:{
-            required: "ชื่อ"
-          },
-          firstname_sparepart:{
-            required: "ชื่อ"
-          },
-          lastname_sparepart:{
-            required: "ชื่อ"
-          },
-          personalid:{
-            required: "รหัสบัตรประชาชน",
-            pid: "รหัสบัตรประชาชนให้ถูกต้อง"
-          },
-          hno_sparepart:{
-            required: "บ้านเลขที่"
-          },
-          sparepart_provinceId:{
-            required: "จังวัด"
-          },
-          sparepart_districtId:{
-            required: "อำเภอ"
-          },
-          sparepart_subdistrictId:{
-            required: "ตำบล"
-          },
-          phone_sparepart: {
-            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-            required: "เบอร์โทรศัพท์"
-          },
-          postCode_sparepart:{
-            required: "กรุณากรอกรหัสไปรษณี"
-          },
-          latitude:{
-            required: "กรุุณากรอกละติจูด"
-          },
-          longtitude:{
-            required: "ลองจิจูด"
-          },
-          username:{
-            required: "ชื่อผู้ใช้งาน",
-            minlength:"ชื่อผู้ใช้อย่างน้อย 4 ตัวอักษร"
-          },
-          phone: {
-            minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
-            required: "เบอร์โทรศัพท์"
-          },
-          password: {
-             required: "รหัสผ่าน",
-            minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
-            },
-          confirmpassword: {
-            required: "รหัสผ่านอีกครั้ง",
-            equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
-            },
-            postCode: {
-              required: "รหัสไปรณี"
+          check:{
+            roles: "อิอิ"
             }
+        //   titleName_user:{
+        //     required: "คำนำหน้า"
+        //   },
+        //   firstname_user:{
+        //     required: "ชื่อ"
+        //   },
+        //   lastname_user: {
+        //     required: "นามสกุล"
+        //   },
+        //   personalid:{
+        //     required: "รหัสบัตรประชาชน",
+        //     pid: "รหัสบัตรประชาชนให้ถูกต้อง"
+        //   },
+        //   hno_user:{
+        //     required: "บ้านเลขที่"
+        //   },
+        //   provinceId_user:{
+        //     required: "จังหวัด"
+        //   },
+        //   districtId_user: {
+        //     required: "อำเภอ"
+        //   },
+        //   subdistrictId_user: {
+        //     required: "ตำบล"
+        //   },
+        //   postCode_user:{
+        //     required: "กรุณากรอกรหัสไปรษณี"
+        //   },
+        //   phone1: {
+        //     minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+        //     required: "เบอร์โทรศัพท์"
+        //   },
+        //   phone2: {
+        //     minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว"
+        //   },
+        //   garagename:{
+        //     required: "ชื่อศูนย์บริการ"
+        //   },
+        //   businessRegistration:{
+        //     required: "หมายเลขทะเบียนการค้า"
+        //   },
+        //   phone_garage:{
+        //     minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+        //     required: "เบอร์โทรศัพท์"
+        //   },
+        //   brandId:{
+        //     required: "กรุณาเลือกความเชี่ยวชาญรถ"
+        //   },
+        //   hno_garage:{
+        //     required: "บ้านเลขที่"
+        //   },
+        //   provinceId_garage:{
+        //     required: "จังวัด"
+        //   },
+        //   districtId_garage:{
+        //     required: "อำเภอ"
+        //   },
+        //   subdistrictId_garage:{
+        //     required: "ตำบล"
+        //   },
+        //   postCode_garage:{
+        //     required: "กรุณากรอกรหัสไปรษณี"
+        //   },
+        //   latitude:{
+        //     required: "กรุุณากรอกละติจูด"
+        //   },
+        //   longtitude:{
+        //     required: "ลองจิจูด"
+        //   },
+        //   username:{
+        //     required: "ชื่อผู้ใช้งาน",
+        //     minlength:"ชื่อผู้ใช้อย่างน้อย 4 ตัวอักษร"
+        //   },
+        //   phone: {
+        //     minlength: "เบอร์โทรศัพท์อย่างน้อย 9 ตัว",
+        //     required: "เบอร์โทรศัพท์"
+        //   },
+        //   password: {
+        //     required: "รหัสผ่าน",
+        //     minlength: "รหัสผ่านอย่างน้อย 6 ตัวอักษร"
+        //   },
+        //   confirmpassword: {
+        //     required: "รหัสผ่านอีกครั้ง",
+        //     equalTo: "กรุณาใส่รหัสผ่านให้ตรงกัน"
+        //   },
+        //   postCode: {
+        //     required: "รหัสไปรณี"
+        //   },
+        //   check: {
+        //     required: "กรุณาเลือกการบริการ"
+        //   }
         }
-        //,
-        // onfocusout: function(element) {
-        //     $(element).valid();
-        // },
-        // highlight : function(element, errorClass, validClass) {
-        //     $(element.register).find('.actions').addClass('form-error');
-        //     $(element).removeClass('valid');
-        //     $(element).addClass('error');
-        // },
-        // unhighlight: function(element, errorClass, validClass) {
-        //     $(element.register).find('.actions').removeClass('form-error');
-        //     $(element).removeClass('error');
-        //     $(element).addClass('valid');
-        // }
     });
 
     init();
@@ -225,6 +247,7 @@ $(document).ready(function() {
     function init(){
         loadProvinceGarage();
         showForm();
+        getbrand();
     }
         // user
         var provinceDropdownuser= $("#provinceId_user");
@@ -237,13 +260,13 @@ $(document).ready(function() {
         subdistrictDropdownuser.append('<option value="">เลือกตำบล</option>');     
 
         //sparepart
-        var provinceDropdownsparepart = $("#sparepart_provinceId");
+        var provinceDropdownsparepart = $("#provinceId_garage");
         provinceDropdownsparepart.append('<option value="">เลือกจังหวัด</option>');
 
-        var districtDropdownsparepart = $('#sparepart_districtId');
+        var districtDropdownsparepart = $('#districtId_garage');
         districtDropdownsparepart.append('<option value="">เลือกอำเภอ</option>');
 
-        var subdistrictDropdownsparepart = $('#sparepart_subdistrictId');
+        var subdistrictDropdownsparepart = $('#subdistrictId_garage');
         subdistrictDropdownsparepart.append('<option value="">เลือกตำบล</option>'); 
 
         function loadProvinceGarage(provinceId, districtId,subdistrictId){
@@ -344,14 +367,30 @@ $(document).ready(function() {
                 });
                 }
             );
-        }   
+        }  
 
     $('.image-editor').cropit({
         allowDragNDrop: false,
         width: 300,
         height: 300,
         type: 'image/jpeg'
-    });    
+    });  
+
+    $('#timestart').pickatime({
+        format: 'HH:i',
+        formatSubmit: 'HH:i:A',
+        max: true,
+        interval: 10,
+        editable: true
+    });
+
+    $('#timeend').pickatime({
+        format: 'HH:i',
+        formatSubmit: 'HH:i:A',
+        max: true,
+        interval: 10,
+        editable: true
+    });
 
     $("#rigister").submit(function(){
       creates();
@@ -359,22 +398,46 @@ $(document).ready(function() {
 
     function creates(){
         event.preventDefault();
+        var data = $("#rigister").serialize();
         var isValid = $("#rigister").valid();
+        
         if(isValid){
-            var data = $("#rigister").serialize();
-            $.post(base_url+"service/Registercaraccessory/create",data,
-            function(data){
-                if(data.message == 200){
-                    showMessage(data.message,"login/");
-                }else{
-                    showMessage(data.message,);
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
+            var myform = document.getElementById("rigister");
+            var formData = new FormData(myform);
+            $.ajax({
+            url: base_url+"service/Register/garages",data,
+            data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function(data){
+                    if(data.message == 200){
+                        showMessage(data.message,"login/");
+                    }else{
+                        showMessage(data.message);
+                    }
+                    console.log(data);
                 }
-            });
+          });
         }
     }
 
-
 }); 
+
+var brand =$("#brandId");
+function getbrand(){
+    brand.html('<option></option>');
+    $.get(base_url+"service/Carselect/getCarBrand",{},
+    function(data){
+        var brandData = data.data;
+            $.each( brandData, function( key, value ) {
+                brand.append('<option data-thumbnail="images/icon-chrome.png" value="' + value.brandId + '">' + value.brandName + '</option>').trigger("chosen:updated");
+            });
+        }
+    );
+}
 
 function showForm(){
     var html = '<div class="row justify-content-md-center">'

@@ -13,6 +13,19 @@ $(document).ready(function() {
       return this.optional( element  ) || /^[A-Za-z\d]+$/.test( value );
     }, 'ภาษาอังกฤษหรือตัวเลขเท่านั้น');
     
+    function checkID(id) {
+            if(id.length != 13) return false;
+            for(i=0, sum=0; i < 12; i++)
+                sum += parseFloat(id.charAt(i))*(13-i);
+            if((11-sum%11)%10!=parseFloat(id.charAt(12)))
+                return false;
+            return true;
+        }
+
+    jQuery.validator.addMethod("pid", function(value, element) {
+        return checkID(value);
+      }, 'เลขบัตรประชาชนให้ถูกต้อง');
+
     register.validate({
         rules: {
           titleName_user:{
@@ -355,7 +368,7 @@ $(document).ready(function() {
         var isValid = $("#rigister").valid();
         if(isValid){
             var data = $("#rigister").serialize();
-            $.post(base_url+"service/Registercaraccessory/create",data,
+            $.post(base_url+"service/Register/caraccessorys",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"login/");

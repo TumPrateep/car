@@ -40,13 +40,13 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="form-label required" for="user_profile">เบอร์โทรศัพท์ที่สามารถติดต่อได้</label><span class="error">*</span>
-                    <input type="number" class="form-control main-md btn-ga" name="phone1" id="phone1" placeholder="เบอร์โทรศัพท์">
+                    <input type="number" class="form-control main-md btn-ga" name="phone1" id="phone1" minlength="9" placeholder="เบอร์โทรศัพท์">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="user_profile">เบอร์โทรศัพท์</label>
-                    <input type="number" class="form-control main-md btn-ga" name="phone2" id="phone2" placeholder="เบอร์โทรศัพท์">
+                    <input type="number" class="form-control main-md btn-ga" name="phone2" id="phone2" minlength="9" placeholder="เบอร์โทรศัพท์">
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label class="form-label required" for="user_profile">บ้านเลขที่</label><span class="error">*</span>
-                        <input type="text" class="form-control main-md btn-ga" name="hno_user" id="hno_user" maxlength="20" placeholder="บ้านเลขที่">
+                        <input type="text" class="form-control main-md btn-ga" name="hno_user" id="hno_user"  maxlength="20" placeholder="บ้านเลขที่">
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -137,19 +137,19 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label required">ชื่ออู่ซ่อมรถ</label><span class="error">*</span>
-                    <input type="text" class="form-control main-md btn-ga" name="garagename" id="garagename" maxlength="35" placeholder="ชื่ออู่ซ่อมรถ">
+                    <input type="text" class="form-control main-md btn-ga" name="garagename" id="garagename"  placeholder="ชื่ออู่ซ่อมรถ">
                 </div>
                 <div class="form-group">
                     <label class="form-label required">หมายเลขทะเบียนการค้า</label><span class="error">*</span>
-                    <input type="text" class="form-control main-md btn-ga" name="businessRegistration" id="businessRegistration" maxlength="35" placeholder="หมายเลขทะเบียนการค้า">
+                    <input type="text" class="form-control main-md btn-ga" name="businessRegistration" id="businessRegistration"  placeholder="หมายเลขทะเบียนการค้า">
                 </div>
                 <div class="form-group">
                     <label class="form-label required">เบอร์โทรศัพท์</label><span class="error">*</span>
-                    <input type="text" class="form-control main-md btn-ga" name="phone_garage" id="phone_garage" maxlength="35" placeholder="เบอร์โทรศัพท์">
+                    <input type="text" class="form-control main-md btn-ga" name="phone_garage" id="phone_garage" minlength="9" placeholder="เบอร์โทรศัพท์">
                 </div>
                 <div class="form-group">
-                    <label class="form-label required">ความเชี่ยวชาญรถ</label><span class="error">*</span>
-                    <input type="text" class="form-control main-md btn-ga" name="businessRegistration" id="businessRegistration" maxlength="35" placeholder="ความเชี่ยวชาญรถ">
+                    <label>ความเชี่ยวชาญรถ</label><span class="error">*</span>
+                    <select class="form-control main" name="brandId" id="brandId"></select>
                 </div>
             </div>
         </div> 
@@ -158,45 +158,100 @@
         <br>
 
         <div class="hidden form-active-3">
-        <h4> การบริการและช่วงเวลาทำการของศูนย์บริการคาร์ใจดี </h4>
+        <h4> การบริการของศูนย์บริการคาร์ใจดี </h4>
         <br>
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <div class="form-check">
                         <label class="form-check-label" for="garage">
-                        <input class="form-check-input" name="change_spare" id="change_spare" type="checkbox" value="11">เปลี่ยนอะไหล่</label>
+                        <input class="form-check-input" name="check[]" id="change_spare"  type="checkbox" value="11">เปลี่ยนอะไหล่</label>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <div class="form-check">
                         <label class="form-check-label" for="garage">
-                        <input class="form-check-input" name="change_tire" id="change_tire" type="checkbox" value="12">เปลี่ยนยางรถ</label>
+                        <input class="form-check-input" name="check[]" id="change_tire"  type="checkbox" value="12">เปลี่ยนยางรถ</label>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <div class="form-check">
                         <label class="form-check-label" for="garage">
-                        <input class="form-check-input" name="change_lubricator" id="change_lubricator" type="checkbox" value="13">เปลี่ยนน้ำมันเครื่อง</label>
+                        <input class="form-check-input" name="check[]" id="change_lubricator"  type="checkbox" value="13">เปลี่ยนน้ำมันเครื่อง</label>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="garage">ถนน</label>
-                        <input type="text" class="form-control main-md btn-ga" name="road_garage" id="road_garage" placeholder="ถนน">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="garage">ถนน</label>
-                        <input type="text" class="form-control main-md btn-ga" name="road_garage" id="road_garage" placeholder="ถนน">
-                    </div>
-                </div>    
+                </div> 
             </div>
-        </div>
+        </div><br>
         <p class="form-show-3 btn-show"></p>
         <br>
 
         <div class="hidden form-active-4">
+        <h4> ช่วงเวลาของศูนย์บริการคาร์ใจดี </h4>
+        <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label required">ช่วงเวลาเปิด</label><span class="error">*</span>
+                        <input type="text" class="form-control main-md btn-ga" name="timestart" id="timestart" placeholder="06:00" value="06:00">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="garage">ช่วงเวลาปิด</label>
+                        <input type="text" class="form-control main-md btn-ga" name="timeend" id="timeend" placeholder="22:00" value="22:00">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label" for="garage">
+                        <input class="form-check-input" name="monday" id="monday" type="checkbox" value="1">จันทร์</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label"  for="garage">
+                        <input class="form-check-input" name="tuesday" id="tuesday" type="checkbox" value="2">อังคาร</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label" for="garage">
+                        <input class="form-check-input" name="wednesday" id="wednesday" type="checkbox" value="3">พุธ</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label" for="garage">
+                        <input class="form-check-input" name="thursday" id="thursday" type="checkbox" value="4">พฤหัสบดี</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label" for="garage">
+                        <input class="form-check-input" name="friday" id="friday" type="checkbox" value="5">ศุกร์</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label" for="garage">
+                        <input class="form-check-input" name="saturday" id="saturday" type="checkbox" value="6">เสาร์</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label" for="garage">
+                        <input class="form-check-input" name="sunday" id="sunday" type="checkbox" value="7">อาทิตย์</label>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <p class="form-show-4 btn-show"></p>
+        <br>
+
+        <div class="hidden form-active-5">
         <h4> ที่อยู่ศูนย์บริการคาร์ใจดี </h4>
         <br>
             <div class="row">
@@ -278,9 +333,50 @@
                 </div>
             </div>
         </div>
-        <p class="form-show-4 btn-show"></p>
+        <p class="form-show-5 btn-show"></p>
         <br>
-        <div class="hidden form-active-5">
+
+        <div class="hidden form-active-6">
+        <h4> สิ่งอำนวยความสะดวกของศูนย์บริการคาร์ใจดี </h4>
+        <br>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label" for="garage">
+                        <input class="form-check-input" name="Wifi" id="Wifi" value="1" type="checkbox">Wifi</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label"  for="garage">
+                        <input class="form-check-input" name="roomfan" id="roomfan" value="2" type="checkbox">ห้องพักพัดลม</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label" for="garage">
+                        <input class="form-check-input" name="roomAir" id="roomAir" value="3" type="checkbox">ห้องพักเเอร์</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <label class="form-check-label" for="garage">
+                        <input class="form-check-input" name="snack" id="snack" value="4" type="checkbox">ห้องน้ำ</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control main-md btn-ga" name="Otherfacilities" id="Otherfacilities" placeholder="สิ่งอำนวยความสะดวกอื่นๆ">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="form-show-6 btn-show"></p>
+        <br>
+
+        <div class="hidden form-active-7">
         <h4> สมัครใช้งานระบบ </h4>
         <br>
             <form id="login">

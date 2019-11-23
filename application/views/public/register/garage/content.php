@@ -190,18 +190,6 @@
 							</div>
 						
 						</div>
-						<!-- <div class="col-md-4 ">
-							<div class="form-group">
-								<label class="form-label required" for="garage">เบอร์โทรศัพท์</label>
-								<input type="number" class="form-control" name="phone_garage" id="phone_garage" placeholder="เบอร์โทรศัพท์">
-							</div>
-							<div class="form-group">
-								<label class="form-label required" for="mechanic">ความเชี่ยวชาญรถ</label>
-								<select class="form-control" name="brandCar" id="brandCar">
-									
-								</select>
-							</div>
-						</div> -->
 					</div>
 					<div class="row">
 						<div class="col-md-4">
@@ -268,12 +256,6 @@
 								<input class="form-check-input" name="sunday" id="sunday" type="checkbox" value="7">อาทิตย์</label>
 							</div>
 						</div>
-						<!-- <div class="col-md-3">
-							<div class="form-check">
-								<label class="form-check-label" for="garage">
-								<input class="form-check-input" name="allday" id="allday" type="checkbox" value="8" onclick="checkboxall()">ทุกวัน</label>
-							</div>
-						</div> -->
 					</div>
 					<div class="row">
 						<div class="col-md-4">
