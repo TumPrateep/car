@@ -159,10 +159,10 @@ class Register extends BD_Controller
         $config['upload_path'] = 'public/image/garage/';
         $img = $this->post("garagePicture");
         $img = str_replace('data:image/png;base64,', '', $img);
-	    $img = str_replace(' ', '+', $img);
+        $img = str_replace(' ', '+', $img);
         $imgdata = base64_decode($img);
-        $imageName = uniqid().'.png';
-        $file = $config['upload_path']. '/'. $imageName;
+        $imageName = uniqid() . '.png';
+        $file = $config['upload_path'] . '/' . $imageName;
         $success = file_put_contents($file, $imgdata);
         $garagename = $this->post('garagename');
         $businessRegistration = $this->post('businessRegistration');
@@ -170,16 +170,35 @@ class Register extends BD_Controller
         $brandId = $this->post('brandId');
         //set3
 
-        $ServiceAll = "";
-		// $changeS = $this->post('change_spare');
-		// $ServiceAll .= (isset($changeS) ? 1 : 0 );
-		// $changeT = $this->post('change_tire');
-		// $ServiceAll .= (isset($changeT) ? 1 : 0 );
-		// $changeL = $this->post('change_lubricator');
-		// $ServiceAll .= (isset($changeL) ? 1 : 0 );
+        $services = $this->post('check');
+        $arrService = [0, 0, 0];
+        foreach ($services as $key => $service) {
+            if ($service == 11) {
+                $arrService[0] = 1;
+            }
+
+            if ($service == 12) {
+                $arrService[1] = 1;
+            }
+
+            if ($service == 13) {
+                $arrService[2] = 1;
+            }
+        }
+
+        $garageService = "";
+        foreach ($arrService as $key => $service) {
+            $garageService .= $service;
+        }
+
+        // $changeS = $this->post('change_spare');
+        // $ServiceAll .= (isset($changeS) ? 1 : 0 );
+        // $changeT = $this->post('change_tire');
+        // $ServiceAll .= (isset($changeT) ? 1 : 0 );
+        // $changeL = $this->post('change_lubricator');
+        // $ServiceAll .= (isset($changeL) ? 1 : 0 );
         // $garageService = $ServiceAll;
 
-        
         // $test = $this->post('check');
 
         // for($i = 0; $i <= $test.length; $i++){
@@ -201,20 +220,20 @@ class Register extends BD_Controller
         $timestart = $this->post('timestart');
         $timeend = $this->post('timeend');
         $openDay = "";
-		$daym = $this->post('monday');
-		$openDay .= (isset($daym) ? 1 : 0 );
-		$dayt = $this->post('tuesday');
-		$openDay .= (isset($dayt) ? 1 : 0 );
-		$dayw = $this->post('wednesday');
-		$openDay .= (isset($dayw) ? 1 : 0 );
-		$dayth = $this->post('thursday');
-		$openDay .= (isset($dayth) ? 1 : 0 );
-		$dayf = $this->post('friday');
-		$openDay .= (isset($dayf) ? 1 : 0 );
-		$dayst = $this->post('saturday');
-		$openDay .= (isset($dayst) ? 1 : 0 );
-		$days = $this->post('sunday');
-		$openDay .= (isset($days) ? 1 : 0 );
+        $daym = $this->post('monday');
+        $openDay .= (isset($daym) ? 1 : 0);
+        $dayt = $this->post('tuesday');
+        $openDay .= (isset($dayt) ? 1 : 0);
+        $dayw = $this->post('wednesday');
+        $openDay .= (isset($dayw) ? 1 : 0);
+        $dayth = $this->post('thursday');
+        $openDay .= (isset($dayth) ? 1 : 0);
+        $dayf = $this->post('friday');
+        $openDay .= (isset($dayf) ? 1 : 0);
+        $dayst = $this->post('saturday');
+        $openDay .= (isset($dayst) ? 1 : 0);
+        $days = $this->post('sunday');
+        $openDay .= (isset($days) ? 1 : 0);
         $dayopenhour = $openDay;
         //set5
 
@@ -231,9 +250,9 @@ class Register extends BD_Controller
         //set6
 
         $Wifi = $this->post('Wifi');
-		$roomfan = $this->post('roomfan');
-		$roomAir = $this->post('roomAir');
-		$snack = $this->post('snack');
+        $roomfan = $this->post('roomfan');
+        $roomAir = $this->post('roomAir');
+        $snack = $this->post('snack');
         $Otherfacilities = $this->post('Otherfacilities');
         //set7
 
@@ -244,14 +263,14 @@ class Register extends BD_Controller
         $passwords = password_hash($password, PASSWORD_BCRYPT);
         // $checkpassword = $this->post('checkpassword');
         //set8
-        $data_check = $this->registergarages->data_check_create($username,$personalid,$businessRegistration);
+        $data_check = $this->registergarages->data_check_create($username, $personalid, $businessRegistration);
 
-        if (!$success){
+        if (!$success) {
             // var_dump("gg");
             // exit;
             $output["message"] = REST_Controller::MSG_ERROR;
-			$this->set_response($output, REST_Controller::HTTP_OK);
-		}else{
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        } else {
             $data['usersprofiles'] = array(
                 'user_profile' => null,
                 'titleName' => $titleName_user,
@@ -306,7 +325,7 @@ class Register extends BD_Controller
                 'update_by' => null,
                 'create_at' => date('Y-m-d H:i:s', time()),
                 'update_at' => null,
-                'status' => 1
+                'status' => 1,
             );
 
             $data['users'] = array(
@@ -327,7 +346,7 @@ class Register extends BD_Controller
                 "data_check" => $data_check,
                 "data" => $data,
                 "model" => $this->registergarages,
-                "image_path" => $file
+                "image_path" => $file,
             ];
             $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
         }
