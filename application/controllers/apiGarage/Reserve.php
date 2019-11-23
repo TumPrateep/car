@@ -1,9 +1,10 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
-class Reserve extends BD_Controller {
+defined('BASEPATH') or exit('No direct script access allowed');
+class Reserve extends BD_Controller
+{
 
-    function __construct()
+    public function __construct()
     {
         // Construct the parent class
         parent::__construct();
@@ -11,10 +12,11 @@ class Reserve extends BD_Controller {
         $this->load->model('reserves');
     }
 
-    function searchReserve_post(){
-        $columns = array( 
+    public function searchReserve_post()
+    {
+        $columns = array(
             0 => null,
-            1 => 'order.orderId'
+            1 => 'order.orderId',
 
         );
         $garageId = $this->session->userdata['logged_in']['garageId'];
@@ -23,29 +25,25 @@ class Reserve extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $totalData = $this->reserves->allReserve_count($garageId);
-        $totalFiltered = $totalData; 
-        if(empty($this->post('date,reservename,status')))
-        {            
-            $posts = $this->reserves->allReserve($limit,$start,$order,$dir,$garageId);
-        }
-        else {
+        $totalFiltered = $totalData;
+        if (empty($this->post('date,reservename,status'))) {
+            $posts = $this->reserves->allReserve($limit, $start, $order, $dir, $garageId);
+        } else {
             $search = $this->post('date,reservename,status');
-            $posts =  $this->reserves->reserves_search($limit,$start,$search,$order,$dir,$status,$garageId);
-            $totalFiltered = $this->reserves->reserves_search($search,$status,$garageId);
+            $posts = $this->reserves->reserves_search($limit, $start, $search, $order, $dir, $status, $garageId);
+            $totalFiltered = $this->reserves->reserves_search($search, $status, $garageId);
         }
         $data = array();
-        if(!empty($posts))
-        {
-            foreach ($posts as $post)
-            {
+        if (!empty($posts)) {
+            foreach ($posts as $post) {
                 $nestedData['name'] = $post->name;
                 $nestedData['reserveId'] = $post->reserveId;
                 // $nestedData['garageId'] = $post->garageId;
                 $nestedData['orderId'] = $post->orderId;
                 $nestedData['reserveDate'] = $post->reserveDate;
 
-                $date=date_create($post->reservetime);
-                $post->reservetime = date_format($date,"H:i");
+                $date = date_create($post->reservetime);
+                $post->reservetime = date_format($date, "H:i");
                 $nestedData['reservetime'] = $post->reservetime;
                 $nestedData['userId'] = $post->userId;
                 $nestedData['status'] = $post->status;
@@ -54,33 +52,33 @@ class Reserve extends BD_Controller {
             }
         }
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $data   
-            
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data,
+
         );
         $this->set_response($json_data);
     }
 
-    function changeStatus_get(){
+    public function changeStatus_get()
+    {
         $reserveId = $this->get("reserveId");
         $status = $this->get("status");
         $orderId = $this->get("orderId");
         $data = array(
             'reserveId' => $reserveId,
             'status' => $status,
-            'orderId' => $orderId
+            'orderId' => $orderId,
         );
-        $data_check_update = $this->reserves->getReserveById($reserveId);
+        $data_check_update = $this->reserveหs->getReserveById($reserveId);
 
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->reserves
+            "model" => $this->reserves,
         ];
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
-    
 
 }

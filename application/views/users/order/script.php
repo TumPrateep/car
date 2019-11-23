@@ -84,7 +84,7 @@ var table = $('#order-table').DataTable({
                         '<a href="#"><button type="button" class="btn btn-main-md bg-orange">รับบริการ</button> '
                 } else if (data.status == "8") {
                     success_status +=
-                        '<a href="' + base_url + "user/garageagain/" + 
+                        '<a href="' + base_url + "user/garageagain/" +
                         '"><button type="button" class="btn btn-main-md bg-orange">ศูนย์บริการ</button> '
                 } else if (data.statusSuccess == "2") {
                     success_status +=
@@ -98,7 +98,7 @@ var table = $('#order-table').DataTable({
                 ////
                 html = '<div class="row border-bottom  pb-2 pt-2">' +
                     '<div class="col-md-2 text-center detail">' +
-                    '#1' + data.orderId +
+                    '#' + data.orderId +
                     '</div>' +
                     '<div class="col-md-2 text-center detail">' +
                     jQuery.format.date(data.create_at, "dd/MM/yyyy <br> HH:mm:ss") +

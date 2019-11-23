@@ -1,8 +1,8 @@
 <style>
-    .headtb{
-        background-color: #ff6600;
-        padding:22px 40px;
-    }
+.headtb {
+    background-color: #ff6600;
+    padding: 22px 40px;
+}
 </style>
 <section class="section pricing">
     <div class="container">
@@ -16,24 +16,24 @@
                     </div>
                     <div class="schedule-tab">
                         <ul class="nav nav-pills text-center">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#nov1" data-toggle="pill">
-                                อู่ที่เข้าใช้บริการ
-                                <!-- <span>20 November 2017</span> -->
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#nov2" data-toggle="pill">
-                                ป้ายทะเบียน
-                                <!-- <span>21 November 2017</span> -->
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#nov3" data-toggle="pill">
-                                รายละเอียดค่าบริการ
-                                <!-- <span>21 November 2017</span> -->
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#nov1" data-toggle="pill">
+                                    ศูนย์บริการ
+                                    <!-- <span>20 November 2017</span> -->
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#nov2" data-toggle="pill">
+                                    ป้ายทะเบียน
+                                    <!-- <span>21 November 2017</span> -->
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#nov3" data-toggle="pill">
+                                    รายละเอียดค่าบริการ
+                                    <!-- <span>21 November 2017</span> -->
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="schedule-contents">
@@ -42,11 +42,11 @@
                                 <div class="card">
                                     <ul class="m-0 p-0">
                                         <li class="headings text-center">
-                                            <div class="text-left">อู่ที่เข้าใช้บริการ</div>
+                                            <div class="text-left">ศูนย์บริการ</div>
                                         </li>
                                     </ul>
                                     <div class="card-body">
-                                    <div class="col-md-12">
+                                        <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-2">
                                                     <div class="image" id="img-garage"></div>
@@ -54,11 +54,12 @@
                                                 <div class=" col-md-10">
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <label class="txt-S-s">ชื่ออู่ : </label>
-                                                            <label class="txt-S-s" name="garageName" id="garageName"></label>
+                                                            <label class="txt-S-s">ชื่อศูนย์บริการ : </label>
+                                                            <label class="txt-S-s" name="garageName"
+                                                                id="garageName"></label>
                                                         </div>
                                                     </div>
-                                                    <div class="row">                                                       
+                                                    <div class="row">
                                                         <div class=" col-md-12">
                                                             <label class="txt-S-s">วันที่เปิด : </label>
                                                             <label class="txt-S-s" name="dayopen" id="dayopen"></label>
@@ -67,13 +68,15 @@
                                                     <div class="row">
                                                         <div class=" col-md-12">
                                                             <label class="txt-S-ss">เวลาที่เปิด : </label>
-                                                            <label class="txt-S-ss" name="timeopen" id="timeopen"></label>
+                                                            <label class="txt-S-ss" name="timeopen"
+                                                                id="timeopen"></label>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class=" col-md-12">
                                                             <label class="txt-S-ss">วันที่จอง : </label>
-                                                            <label class="txt-S-ss" name="reserveday" id="reserveday"></label>
+                                                            <label class="txt-S-ss" name="reserveday"
+                                                                id="reserveday"></label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -90,7 +93,7 @@
                                         </li>
                                     </ul>
                                     <div class="card-body">
-                                        <div class="row"> 
+                                        <div class="row">
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-2">
@@ -100,38 +103,43 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <label class="txt-S-s">ยี่ห้อ : </label>
-                                                                <label class="txt-S-s" name="brand_car" id="brand_car"></label>
+                                                                <label class="txt-S-s" name="brand_car"
+                                                                    id="brand_car"></label>
                                                             </div>
                                                         </div>
-                                                        <div class="row">                                                       
+                                                        <div class="row">
                                                             <div class=" col-md-12">
                                                                 <label class="txt-S-s">รุ่นรถ : </label>
-                                                                <label class="txt-S-s" name="model_car" id="model_car"></label>
+                                                                <label class="txt-S-s" name="model_car"
+                                                                    id="model_car"></label>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class=" col-md-12">
                                                                 <label class="txt-S-ss">โฉมรถยนต์ : </label>
-                                                                <label class="txt-S-ss" name="detail_car" id="detail_car"></label>
+                                                                <label class="txt-S-ss" name="detail_car"
+                                                                    id="detail_car"></label>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class=" col-md-12">
                                                                 <label class="txt-S-ss">รายละเอียด : </label>
-                                                                <label class="txt-S-ss" name="model_of_car" id="model_of_car"></label>
+                                                                <label class="txt-S-ss" name="model_of_car"
+                                                                    id="model_of_car"></label>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class=" col-md-6">
                                                                 <label class="txt-S-s">ป้ายทะเบียน</label>
-                                                                    <label class="txt-S-m" name="plate" id="plate"></label>
-                                                                    <label class="txt-S-s" name="provinceplate" id="provinceplate"></label>
+                                                                <label class="txt-S-m" name="plate" id="plate"></label>
+                                                                <label class="txt-S-s" name="provinceplate"
+                                                                    id="provinceplate"></label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>  
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -144,13 +152,13 @@
                                         <div class="venue">ราคา</div>
                                     </li>
                                     <!-- Schedule Details -->
-                                    
+
                                     <!-- <div class="row">
                                         <div class="col-md-3 offset-md-9">
                                             <div class="card text-center">
                                                     <label><b>ราคาสินค้ารวม :</b> 10,100 บาท</label>
                                             </div>
-                                        </div> 
+                                        </div>
                                     </div>  -->
                                 </ul>
                             </div>
@@ -159,6 +167,6 @@
                 </section>
             </div>
         </div>
-       
+
     </div>
 </section>

@@ -1,4 +1,5 @@
 <script>
+
 var table = $('#order-table').DataTable({
     "language": {
         // "aria": {
@@ -95,7 +96,7 @@ var table = $('#order-table').DataTable({
                         '                <ul class="list-inline">' +
                         '                    <li class="list-inline-item">' +
                         '                        <i class="fa fa-pencil"></i>' +
-                        '                        <a href="#" class="text-warning font-weight-bold">แก้ไข</a>' +
+                        '                        <a href="'+base_url+"user/carprofile/update/"+value.car_profileId+'" class="text-warning font-weight-bold">แก้ไข</a>' +
                         '                    </li>' +
                         '                    <li class="list-inline-item">' +
                         '                        <i class="fa fa-list-alt"></i>' +
@@ -103,7 +104,7 @@ var table = $('#order-table').DataTable({
                         '                    </li>' +
                         '                    <li class="list-inline-item">' +
                         '                        <i class="fa fa-trash-o"></i>' +
-                        '                        <a href="#" class="text-warning font-weight-bold">ลบ</a>' +
+                        '                        <a href="url: "/Carprofile/deleteCarProfile?car_profileId="+car_profileId" onclick="deleteCarProfile('+value.car_profileId+')" class="text-warning font-weight-bold">ลบ</a>' +
                         '                    </li>' +
                         '                </ul>' +
                         '            </div>' +
@@ -126,4 +127,13 @@ $("#search").click(function() {
     event.preventDefault();
     table.ajax.reload();
 })
+function deleteCarProfile(car_profileId){
+        var option = {
+            url: "/Carprofile/deleteCarProfile?car_profileId="+car_profileId,
+            label: "ลบข้อมูลรถคันนี้",
+            // content: "คุณต้องการลบ "+firstName+" ใช่หรือไม่",
+            gotoUrl: "user/carprofile"
+        }
+        fnDelete(option);
+    }
 </script>
