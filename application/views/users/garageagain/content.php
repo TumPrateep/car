@@ -117,14 +117,15 @@
                                                                                 <img src="<?php echo base_url('public/image/garage/5cc92a96d1f70.png') ?>" class="card-img" alt="...">
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <div class="card-body">
-                                                                                    <h5 class="card-title">MYDAY</h5>
+                                                                            <div class="card-body">
+                                                                                    <strong>MYDAY</strong> 
                                                                                     <p class="card-text"><b><i class="fa fa-calendar" aria-hidden="true"></i></b> จ, อ, พ, ส, อา
                                                                                         <br><b><i class="fa fa-clock-o" aria-hidden="true"></i></b> 07:00 - 21:00 น.
                                                                                         <br><b><i class="fa fa-phone" aria-hidden="true"></i></b> 0833969552
                                                                                         <br><b><i class="fa fa-road" aria-hidden="true"></i></b> 365 กม.
                                                                                     </p>                                                                            
                                                                                     <a href="#" class="btn btn-block bg-orange text-white float-right">เลือก</a>
+                                                                                    <br>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -138,13 +139,14 @@
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="card-body">
-                                                                                    <h5 class="card-title">MYDAY</h5>
+                                                                                    <strong>MYDAY</strong> 
                                                                                     <p class="card-text"><b><i class="fa fa-calendar" aria-hidden="true"></i></b> จ, อ, พ, ส, อา
                                                                                         <br><b><i class="fa fa-clock-o" aria-hidden="true"></i></b> 07:00 - 21:00 น.
                                                                                         <br><b><i class="fa fa-phone" aria-hidden="true"></i></b> 0833969552
                                                                                         <br><b><i class="fa fa-road" aria-hidden="true"></i></b> 365 กม.
                                                                                     </p>                                                                            
                                                                                     <a href="#" class="btn btn-block bg-orange text-white float-right">เลือก</a>
+                                                                                    <br>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -160,13 +162,14 @@
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="card-body">
-                                                                                    <h5 class="card-title">MYDAY</h5>
+                                                                                    <strong>MYDAY</strong> 
                                                                                     <p class="card-text"><b><i class="fa fa-calendar" aria-hidden="true"></i></b> จ, อ, พ, ส, อา
                                                                                         <br><b><i class="fa fa-clock-o" aria-hidden="true"></i></b> 07:00 - 21:00 น.
                                                                                         <br><b><i class="fa fa-phone" aria-hidden="true"></i></b> 0833969552
                                                                                         <br><b><i class="fa fa-road" aria-hidden="true"></i></b> 365 กม.
                                                                                     </p>                                                                            
                                                                                     <a href="#" class="btn btn-block bg-orange text-white float-right">เลือก</a>
+                                                                                    <br>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -180,13 +183,14 @@
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="card-body">
-                                                                                    <h5 class="card-title">MYDAY</h5>
+                                                                                    <strong>MYDAY</strong> 
                                                                                     <p class="card-text"><b><i class="fa fa-calendar" aria-hidden="true"></i></b> จ, อ, พ, ส, อา
                                                                                         <br><b><i class="fa fa-clock-o" aria-hidden="true"></i></b> 07:00 - 21:00 น.
                                                                                         <br><b><i class="fa fa-phone" aria-hidden="true"></i></b> 0833969552
                                                                                         <br><b><i class="fa fa-road" aria-hidden="true"></i></b> 365 กม.
                                                                                     </p>                                                                            
                                                                                     <a href="#" class="btn btn-block bg-orange text-white float-right">เลือก</a>
+                                                                                    <br>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -233,9 +237,21 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <select name="car_profile" id="car_profile" class="form-control">
-                                                        <option value="">เลือกรถเข้าใช้บริการ</option>
-                                                    </select>
+                                                    <input type="text" class="form-control bg-light" placeholder="กฉ 4802 สงขลา" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <img src="http://new.carjaidee.com/public/image/carprofile/5d2070523b551.png" width="100%">
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <span id="img-carbrand"></span>
+                                                    <span id="carprofile-data">
+                                                        <br><strong>HONDA</strong>
+                                                        <br><span>Terra</span>
+                                                        <br><span>ปี 2018</span>
+                                                        <br><span>2.5 LT Z71 4WD</span>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <br>
