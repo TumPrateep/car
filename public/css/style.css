@@ -424,6 +424,9 @@ select.form-control:not([size]):not([multiple]) {
         margin-left: 0;
         margin-bottom: 30px;
     }
+    .sort-first {
+        order: -1;
+    }
 }
 
 .right {
