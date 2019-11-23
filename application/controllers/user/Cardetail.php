@@ -11,7 +11,7 @@ class Cardetail extends CI_Controller {
 	}
 	function index(){
 		$data = ['tire'=>'active', 'lubricator' => '', 'garage' => ''];
-		load_user_view("users/cardetail/content", null, $data);
+		load_user_view("users/cardetail/content","users/cardetail/script" , $data);
     }
 
 }
