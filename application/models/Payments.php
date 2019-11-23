@@ -1,96 +1,114 @@
+<?php if (!defined('BASEPATH')) {
+    exit('No direct script allowed');
+}
 
-<?php if(!defined('BASEPATH')) exit('No direct script allowed');
-
-class Payments extends CI_Model {
+class Payments extends CI_Model
+{
 
     // function delete($mechanicId){
     //     return $this->db->delete('mechanic', array('mechanicId' => $mechanicId));
     // }
 
-    function getPaymentId($orderId){
-        return $this->db->where('orderId',$orderId)->get("payment")->row();
+    public function getPaymentId($orderId)
+    {
+        return $this->db->where('orderId', $orderId)->get("payment")->row();
     }
 
     // function insert($data){
     //     return $this->db->insert('payment', $data);
     // }
 
-    function allpayment_count()
-    {   
-        $query = $this
-                ->db
-                ->get('payment');
-    
-        return $query->num_rows();  
-    }
-
-    function allpayment($limit,$start,$col,$dir)
-    {   
+    public function allpayment_count()
+    {
         $query = $this
             ->db
-            ->limit($limit,$start)
-            ->order_by($col,$dir)
             ->get('payment');
-            if($query->num_rows()>0)
-            {
-                return $query->result(); 
-            }
-            else
-            {
-                return null;
-            }
-        
+
+        return $query->num_rows();
     }
 
-    function data_check_create($paymentId) {
+    public function allpayment($limit, $start, $col, $dir)
+    {
+        $query = $this
+            ->db
+            ->limit($limit, $start)
+            ->order_by($col, $dir)
+            ->get('payment');
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+
+    }
+
+    public function data_check_create($paymentId)
+    {
         $this->db->select("paymentId");
         $this->db->from("payment");
-        $this->db->where('paymentId',$paymentId);
+        $this->db->where('paymentId', $paymentId);
         $result = $this->db->get();
         return $result->row();
     }
 
-    function getPaymentById($paymentId){
+    public function getPaymentById($paymentId)
+    {
         $this->db->select("paymentId");
-        $this->db->where('paymentId',$paymentId);
+        $this->db->where('paymentId', $paymentId);
         $result = $this->db->get("payment");
         return $result->row();
     }
 
-    
-    function getDepositflag($orderId){
+    public function getDepositflag($orderId)
+    {
         $this->db->select("depositflag,costDelivery");
-        $this->db->where('orderId',$orderId);
+        $this->db->where('orderId', $orderId);
         $result = $this->db->get("order");
         return $result->row();
     }
 
-   
-    function insert($data){
+    public function insert($data)
+    {
         $this->db->trans_begin();
-            $userId = $this->session->userdata['logged_in']['id'];
-            $this->db->insert('payment', $data);
+        $userId = $this->session->userdata['logged_in']['id'];
+        $this->db->insert('payment', $data);
 
-            $this->db->where('orderId',$data['orderId']);
-            $result = $this->db->update('order',['status'=> 2]);
+        $this->db->where('orderId', $data['orderId']);
+        $result = $this->db->update('order', ['status' => 2]);
 
-
-        if ($this->db->trans_status() === FALSE){
+        if ($this->db->trans_status() === false) {
             $this->db->trans_rollback();
             return false;
-        }else{
+        } else {
             $this->db->trans_commit();
             return true;
         }
     }
-    
-    function getฺBank(){
+
+    public function getฺBank()
+    {
         $this->db->select("bankId,bankName");
         $this->db->order_by('bankName', 'ASC');
         $query = $this->db->get("bank_carjaidee");
         return $query->result();
     }
 
+    public function update($data)
+    {
+        $this->db->trans_begin();
+        $this->db->where('orderId', $data['orderId']);
+        $this->db->update('payment', $data);
+
+        $this->db->where('orderId', $data['orderId']);
+        $this->db->update('order', ['status' => 2]);
+
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
+    }
 
 }
-   

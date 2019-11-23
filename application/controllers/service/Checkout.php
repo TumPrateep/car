@@ -205,13 +205,26 @@ class Checkout extends BD_Controller
             "slip" => $imageName,
         );
 
-        $option = [
-            "data_check" => $paymentdetail,
-            "data" => $data,
-            "model" => $this->payments,
-            "image_path" => $file,
-        ];
-        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
+        if (!empty($paymentdetail)) {
+            $option = [
+                "data_check_update" => $paymentdetail,
+                "data_check" => null,
+                "data" => $data,
+                "model" => $this->payments,
+                "image_path" => $file,
+                "old_image_path" => $config['upload_path'] . '/' . $paymentdetail->slip,
+            ];
+
+            $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+        } else {
+            $option = [
+                "data_check" => null,
+                "data" => $data,
+                "model" => $this->payments,
+                "image_path" => $file,
+            ];
+            $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
+        }
 
     }
 

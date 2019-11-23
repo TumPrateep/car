@@ -31,12 +31,6 @@ $(document).ready(function() {
             },
             tempImage1: {
                 required: true
-            },
-            tempImage2: {
-                required: true
-            },
-            tempImage3: {
-                required: true
             }
         },
         messages: {
@@ -154,7 +148,7 @@ $(document).ready(function() {
             function(data) {
                 var brandData = data.data;
                 $.each(brandData, function(key, value) {
-                    brand.append('<option data-thumbnail="images/icon-chrome.png" value="' + value
+                    brand.append('<option value="' + value
                         .brandId + '">' + value.brandName + '</option>');
                 });
             }

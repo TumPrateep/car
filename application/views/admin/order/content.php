@@ -16,9 +16,19 @@
             <div class="col-lg-12">
                 <div class="row justify-content-between">
 
-                    <div class="col-lg-3 offset-lg-7 mt-8">
+                    <div class="col-lg-3 offset-lg-4 mt-8">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="spa" placeholder="หมายเลขสั่งซื้อ">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-usd" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 mt-8">
+                        <div class="input-group mb-3">
+                            <select class="form-control" name="status" id="status">
+                                <option value="">เลือกสถานะ</option>
+                            </select>
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fa fa-usd" aria-hidden="true"></i></span>
                             </div>
@@ -38,7 +48,7 @@
                                     <th>รูป</th>
                                     <th>รายละเอียดสินค้า</th>
                                     <th>จำนวน</th>
-                                    <th> </th>
+                                    <th>สถานะ</th>
                                 </thead>
                             </table>
                         </div>

@@ -73,8 +73,14 @@ var table = $('#brand-table').DataTable({
                     html += '<span class="badge badge-warning">รอตรวจสอบการโอนเงิน</span>';
                 } else if (data.status == 2) {
                     html += '<span class="badge badge-success">โอนเงินเเล้ว</span>';
+                } else if (data.status == 8) {
+                    if (data.statusActive == 2) {
+                        html += '<span class="badge badge-danger">ยกเลิกชำระเงิน</span>';
+                    } else if (data.statusActive == 3) {
+                        html += '<span class="badge badge-danger">ยกเลิกการจอง</span>';
+                    }
                 } else if (data.status == 9) {
-                    html += '<span class="badge badge-info">ยกเลิกการจอง</span>';
+                    html += '<span class="badge badge-danger">ยกเลิกการจอง</span>';
                 } else {
                     html += '<span class="badge badge-default">รอโอนเงิน</span>';
                 }
@@ -109,7 +115,7 @@ var table = $('#brand-table').DataTable({
             "data": null,
             "render": function(data, type, full, meta) {
                 var disable = "";
-                if (data.status == 9 || data.status == 2) {
+                if (data.status == 8 || data.status == 9 || data.status == 2) {
                     disable = "disabled";
                 }
                 return '<button type="button" class="btn btn-success" ' + disable +
@@ -143,7 +149,7 @@ function cancelStatus(paymentId, orderId) {
     var option = {
         url: "/Paymentapprove/changeStatus?paymentId=" + paymentId + "&orderId=" + orderId,
         label: "ยกเลิกรายการชำระเงิน",
-        status: 9,
+        status: 8,
         content: "คุณต้องการยกเลิกรายการชำระเงินนี้ ใช่หรือไม่",
         gotoUrl: "admin/paymentapprove"
     }

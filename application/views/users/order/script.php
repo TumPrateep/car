@@ -64,7 +64,13 @@ var table = $('#order-table').DataTable({
                 } else if (data.status == "9") {
                     orderstatus += 'ยกเลิกการจอง';
                 } else if (data.status == "8") {
-                    orderstatus += 'ศูนย์บริการขอยกเลิก';
+                    if (data.statusActive == 2) {
+                        orderstatus += 'การชำระเงินไม่ถูกต้อง';
+                        // html += '<span class="badge badge-danger">ยกเลิกชำระเงิน</span>';
+                    } else if (data.statusActive == 3) {
+                        orderstatus += 'ศูนย์บริการขอยกเลิก';
+                        // html += '<span class="badge badge-danger">ยกเลิกการจอง</span>';
+                    }
                 } else if (data.statusSuccess == "2") {
                     orderstatus += 'ให้คะเเนนและรีวิว';
                 } else if (data.statusSuccess == "3") {
@@ -83,9 +89,15 @@ var table = $('#order-table').DataTable({
                     success_status +=
                         '<a href="#"><button type="button" class="btn btn-main-md bg-orange">รับบริการ</button> '
                 } else if (data.status == "8") {
-                    success_status +=
-                        '<a href="' + base_url + "user/garageagain/" +
-                        '"><button type="button" class="btn btn-main-md bg-orange">ศูนย์บริการ</button> '
+                    if (data.statusActive == 2) {
+                        success_status += '<a href="' + base_url + "user/order/payment/" + data
+                            .orderId +
+                            '"><button type="button" class="btn btn-main-md bg-orange">ชำระเงิน</button>'
+                    } else if (data.statusActive == 3) {
+                        success_status +=
+                            '<a href="' + base_url + "user/garageagain/" +
+                            '"><button type="button" class="btn btn-main-md bg-orange">ศูนย์บริการ</button> '
+                    }
                 } else if (data.statusSuccess == "2") {
                     success_status +=
                         '<a href="#"><button type="button" title="กดเพื่อให้คะเเนนการให้บริการ" onclick="commetrating(' +

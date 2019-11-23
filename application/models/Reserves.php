@@ -103,6 +103,7 @@ class Reserves extends CI_Model
         } else if ($data['status'] == "9") {
             $orderData = [
                 "status" => 8,
+                "statusSuccess" => 3,
             ];
             $this->db->where('orderId', $data['orderId']);
             $this->db->update('order', $orderData);

@@ -1,10 +1,10 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
-use \Firebase\JWT\JWT;
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Order extends BD_Controller {
-    function __construct()
+class Order extends BD_Controller
+{
+    public function __construct()
     {
         // Construct the parent class
         parent::__construct();
@@ -25,7 +25,8 @@ class Order extends BD_Controller {
     //     $this->set_response(["sum" => $sum], REST_Controller::HTTP_OK);
     // }
 
-    function createOrderDetail_post(){
+    public function createOrderDetail_post()
+    {
         $userId = $this->session->userdata['logged_in']['id'];
         $garageId = $this->post("garageId");
         $reserve_day = $this->post("reserve_day");
@@ -44,61 +45,55 @@ class Order extends BD_Controller {
             "reserveDate" => date('Y-m-d H:i:s', changeFormateDateToTime($reserve_day)),
             "reservetime" => $reserve_time,
             "garageId" => $garageId,
-            "created_at" => date('Y-m-d H:i:s',time()),
+            "created_at" => date('Y-m-d H:i:s', time()),
             "created_by" => $userId,
             "status" => 1,
-            "orderId" => ""
+            "orderId" => "",
         );
-       
+
         $data['order'] = array(
             'userId' => $userId,
             'create_by' => $userId,
             'car_profileId' => $carProfileId,
-            'create_at' => date('Y-m-d H:i:s',time()),
+            'create_at' => date('Y-m-d H:i:s', time()),
             'status' => 1,
             'statusSuccess' => 1,
-            'activeflag' =>1,
+            'activeflag' => 1,
             'costDelivery' => $costDelivery,
-            'depositflag' => ($isDeposit == "true")? 1 : 0
+            'depositflag' => ($isDeposit == "true") ? 1 : 0,
         );
 
         $data['orderdetail'] = $orderdetail;
-       
+
         $option = [
             "data_check" => null,
             "data" => $data,
             "model" => $this->orders,
-            "image_path" => null
+            "image_path" => null,
         ];
-        
+
         // $this->set_response($data, REST_Controller::HTTP_OK);
 
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
-        
+
     }
 
-    function search_post(){
-        $columns = array( 
-            0 => null,
-            1 => 'create_at',
-            2 => 'status',
-        );
+    public function search_post()
+    {
         $userId = $this->session->userdata['logged_in']['id'];
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $columns[$this->post('order')[0]['column']];
-        $dir = $this->post('order')[0]['dir'];
+        $order = 'create_at';
+        $dir = 'desc';
         $totalData = $this->orders->all_count($userId);
-        $totalFiltered = $totalData; 
-        $posts = $this->orders->searchAllOrder($limit,$start,$order,$dir,$userId);
-        
+        $totalFiltered = $totalData;
+        $posts = $this->orders->searchAllOrder($limit, $start, $order, $dir, $userId);
+
         $data = array();
-        if(!empty($posts))
-        {
-            foreach ($posts as $post)
-            {
+        if (!empty($posts)) {
+            foreach ($posts as $post) {
                 $nestedData['orderId'] = $post->orderId;
-                $nestedData['statusSuccess'] = $post->statusSuccess;
+                $nestedData['statusActive'] = $post->statusSuccess;
                 $nestedData['create_at'] = $post->create_at;
                 $nestedData['status'] = $post->status;
                 // $nestedData['depositflag'] = $post->depositflag;
@@ -111,10 +106,10 @@ class Order extends BD_Controller {
             }
         }
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $data   
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data,
         );
         $this->set_response($json_data);
     }

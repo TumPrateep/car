@@ -287,39 +287,46 @@
           </a>
         </li> -->
 
-                <li class="nav-item <?=activate_menu('paymentapprove');?>" data-toggle="tooltip" data-placement="right"
-                    title="Charts">
-                    <a class="nav-link text-white" href="<?=base_url("admin/paymentapprove")?>">
-                        <i class="fa fa-credit-card" aria-hidden="true"></i>
-                        <span class="nav-link-text">ยืนยันการจ่ายเงิน</span>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
+                        href="#manage_order">
+                        <i class="fa fa-fw fa-dollar"></i>
+                        <span class="nav-link-text">การสั่งซื้อสินค้า</span>
                     </a>
+                    <ul class="sidenav-second-level collapse" id="manage_order">
+                        <li class="<?=activate_menu('paymentapprove');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/paymentapprove")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">ยืนยันการจ่ายเงิน</span>
+                            </a>
+                        </li>
+                        <li class="<?=activate_menu('orderapprove');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/orderapprove")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">จัดการการจอง</span>
+                            </a>
+                        </li>
+                        <li class="<?=activate_menu('manageorder');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/manageorder")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">จัดการการสั่งสินค้า</span>
+                            </a>
+                        </li>
+                        <li class="<?=activate_menu('order');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/order")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">รายการสั่งซื้อสินค้า</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
-                <li class="nav-item <?=activate_menu('orderapprove');?>" data-toggle="tooltip" data-placement="right"
-                    title="Charts">
-                    <a class="nav-link text-white" href="<?=base_url("admin/orderapprove")?>">
-                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                        <span class="nav-link-text">จัดการการจอง</span>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-fw fa-link"></i>
+                        <span class="nav-link-text">Link</span>
                     </a>
                 </li>
-
-                <li class="nav-item <?=activate_menu('manageorder');?>" data-toggle="tooltip" data-placement="right"
-                    title="Charts">
-                    <a class="nav-link text-white" href="<?=base_url("admin/manageorder")?>">
-                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                        <span class="nav-link-text">จัดการการสั่งสินค้า</span>
-                    </a>
-                </li>
-
-
-
-
-                <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Link</span>
-          </a>
-        </li> -->
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">

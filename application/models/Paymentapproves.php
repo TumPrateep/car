@@ -20,7 +20,7 @@ class Paymentapproves extends CI_Model
 
     public function allPaymentApprove($limit, $start, $col, $dir)
     {
-        $this->db->select(' order.orderId, order.userId, payment.money,payment.slip	,concat(user_profile.firstname ," ",user_profile.lastname) as name,payment.status,payment.paymentId');
+        $this->db->select(' order.orderId, order.userId, payment.money,payment.slip	,concat(user_profile.firstname ," ",user_profile.lastname) as name,payment.status,payment.paymentId,order.statusSuccess');
         $this->db->from('order');
         $this->db->join('payment', 'order.orderId = payment.orderId');
         $this->db->join('user_profile', 'order.userId = user_profile.userId', 'left');
@@ -100,15 +100,16 @@ class Paymentapproves extends CI_Model
             ];
             $this->db->where('orderId', $data['orderId']);
             $this->db->update('order', $orderData);
-        } else if (($data['status'] == "9")) {
+        } else if (($data['status'] == "8")) {
             $orderData = [
-                "status" => 9,
+                "status" => 8,
+                "statusSuccess" => 2,
             ];
             $this->db->where('orderId', $data['orderId']);
             $this->db->update('order', $orderData);
 
-            $this->db->where('orderId', $data['orderId']);
-            $this->db->update('reserve', ['status' => 9]);
+            // $this->db->where('orderId', $data['orderId']);
+            // $this->db->update('reserve', ['status' => 9]);
         }
 
         if ($this->db->trans_status() === false) {

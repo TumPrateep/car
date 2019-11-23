@@ -1,15 +1,15 @@
 <?php
 
 defined('BASEPATH') or exit('No direct script access allowed');
-
-class Manageorder extends BD_Controller
+class Order extends BD_Controller
 {
+
     public function __construct()
     {
         // Construct the parent class
         parent::__construct();
-        $this->auth();
-        $this->load->model("manageorders");
+        // $this->auth();
+        $this->load->model('orders');
     }
 
     public function search_post()
@@ -27,12 +27,12 @@ class Manageorder extends BD_Controller
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
-        $totalData = $this->manageorders->allData_count();
+        $totalData = $this->orders->allData_count();
 
         $totalFiltered = $totalData;
 
         if (empty($this->post('status'))) {
-            $posts = $this->manageorders->allData($limit, $start, $order, $dir);
+            $posts = $this->orders->allData($limit, $start, $order, $dir);
         } else {
             //     $search = $this->post('brandName');
             //     $status = $this->post('status');
@@ -53,7 +53,7 @@ class Manageorder extends BD_Controller
                 $nestedData['garageName'] = $post->garageName;
                 $date = date_create($post->create_at);
                 $nestedData['create_at'] = date_format($date, "d/m/Y H:i");
-                // $nestedData['picture'] = $post->picture;
+                $nestedData['status'] = $post->status;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;
@@ -70,26 +70,21 @@ class Manageorder extends BD_Controller
         $this->set_response($json_data);
     }
 
-    public function changeStatus_post()
+    public function changeStatus_get()
     {
-        $orderId = $this->post("orderId");
-        $status = $this->post("status");
-        if ($status == 3) {
-            $status = 4;
-        } else {
-            $status = 3;
-        }
+        $orderId = $this->get("orderId");
+        $status = $this->get("status");
 
-        $data_check_update = $this->orderselects->getOrderDataById($orderId);
         $data = array(
             'orderId' => $orderId,
             'status' => $status,
         );
+        $data_check_update = $this->orders->getorderByorderId($orderId);
 
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->orderselects,
+            "model" => $this->orders,
         ];
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);

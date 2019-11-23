@@ -71,7 +71,7 @@ class Reserve extends BD_Controller
             'status' => $status,
             'orderId' => $orderId,
         );
-        $data_check_update = $this->reserveหs->getReserveById($reserveId);
+        $data_check_update = $this->reserves->getReserveById($reserveId);
 
         $option = [
             "data_check_update" => $data_check_update,

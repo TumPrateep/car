@@ -24,7 +24,7 @@ var table = $('#changes-table').DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": {
-        "url": base_url + "api/Manageorder/search",
+        "url": base_url + "api/Order/search",
         "dataType": "json",
         "type": "POST",
         "data": function(data) {
@@ -33,7 +33,7 @@ var table = $('#changes-table').DataTable({
         }
     },
     "order": [
-        [2, "asc"]
+        [2, "desc"]
     ],
     "columns": [
         null,
@@ -73,7 +73,7 @@ var table = $('#changes-table').DataTable({
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [0]
+            "targets": [0, 4]
         },
         {
             "targets": 0,
@@ -120,8 +120,23 @@ var table = $('#changes-table').DataTable({
             "targets": 4,
             "data": null,
             "render": function(data, type, full, meta) {
-                return '<button type="button" class="btn btn-warning" ' + '  onClick="updateStatus(' +
-                    data.orderId + ')">สั่งซื้อสินค้า</button> ';
+                var html = '';
+                if (data.status == 1) {
+                    html = '<span class="badge badge-info">รอชำระเงิน</span>';
+                } else if (data.status == 2) {
+                    html = '<span class="badge badge-warning">ตรวจสอบการโอนเงิน</span>';
+                } else if (data.status == 3) {
+                    html = '<span class="badge badge-success">โอนเงินเเล้ว</span>';
+                } else if (data.status == 4) {
+                    html = '<span class="badge badge-success">กำลังเตรียมจัดส่งสินค้า</span>';
+                } else if (data.status == 8) {
+                    html = '<span class="badge badge-warning">ระงับชั่วคราว</span>';
+                } else if (data.status == 9) {
+                    html = '<span class="badge badge-danger">ยกเลิก</span>';
+                } else {
+                    html = data.status;
+                }
+                return html;
             }
         },
         {
