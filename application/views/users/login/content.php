@@ -89,8 +89,8 @@
 
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <button class="btn btn-block" aria-haspopup="true" aria-expanded="false"
-                                            onclick="register()">
+                                        <button type="button" class="btn btn-block" aria-haspopup="true"
+                                            aria-expanded="false" onclick="register()">
                                             ลงทะเบียน
                                         </button>
                                     </div>
@@ -169,7 +169,7 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <button class="btn btn-block" aria-haspopup="true"
+                                                    <button type="button" class="btn btn-block" aria-haspopup="true"
                                                         aria-expanded="false" onclick="login()">
                                                         เข้าสู่ระบบ
                                                     </button>
