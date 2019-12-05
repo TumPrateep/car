@@ -1,40 +1,38 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Orderdetail extends BD_Controller {
-    function __construct()
+class Orderdetail extends BD_Controller
+{
+    public function __construct()
     {
-
         parent::__construct();
         $this->auth();
-        $this->load->model("orderdetails"); 
+        $this->load->model("orderdetails");
         $this->load->model("orders");
     }
 
-    function searchorder_post(){
-      
+    public function searchorder_post()
+    {
 
-        $columns = array( 
-            0 => null
+        $columns = array(
+            0 => null,
         );
-        
+
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $garageId = $this->session->userdata['logged_in']['garageId'];
-        $totalData = $this->orderdetails->allorders_count($garageId);
-        $totalFiltered = $totalData;  
-        $posts = $this->orderdetails->allorders($limit,$start,$order,$dir,$garageId);
-    
+        $totalData = $this->orderdetails->allReceiveOrders_count($garageId);
+        $totalFiltered = $totalData;
+        $posts = $this->orderdetails->allReceiveOrders($limit, $start, $order, $dir, $garageId);
+
         $data = array();
-        if(!empty($posts))
-        {
+        if (!empty($posts)) {
             $index = 0;
             $count = 0;
-            foreach ($posts as $post)
-            {
+            foreach ($posts as $post) {
                 $nestedData['orderId'] = $post->orderId;
                 $nestedData['orderDetailId'] = $post->orderDetailId;
                 $nestedData['quantity'] = $post->quantity;
@@ -46,45 +44,42 @@ class Orderdetail extends BD_Controller {
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;
-   
 
             }
         }
 
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $data   
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data,
         );
 
         $this->set_response($json_data);
 
     }
 
-    function searchreturnorder_post(){
-      
+    public function searchreturnorder_post()
+    {
 
-        $columns = array( 
-            0 => null
+        $columns = array(
+            0 => null,
         );
-        
+
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $totalData = $this->orderdetails->allreturnorders_count($garageId);
-        $totalFiltered = $totalData;  
-        $posts = $this->orderdetails->allreturnorders($limit,$start,$order,$dir,$garageId);
-    
+        $totalFiltered = $totalData;
+        $posts = $this->orderdetails->allreturnorders($limit, $start, $order, $dir, $garageId);
+
         $data = array();
-        if(!empty($posts))
-        {
+        if (!empty($posts)) {
             $index = 0;
             $count = 0;
-            foreach ($posts as $post)
-            {
+            foreach ($posts as $post) {
                 $nestedData['orderId'] = $post->orderId;
                 $nestedData['orderDetailId'] = $post->orderDetailId;
                 $nestedData['quantity'] = $post->quantity;
@@ -96,45 +91,42 @@ class Orderdetail extends BD_Controller {
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;
-   
 
             }
         }
 
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $data   
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data,
         );
 
         $this->set_response($json_data);
 
     }
 
-    function searceffort_post(){
-      
+    public function searceffort_post()
+    {
 
-        $columns = array( 
-            0 => null
+        $columns = array(
+            0 => null,
         );
-        
+
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $totalData = $this->orderdetails->alleffort_count($garageId);
-        $totalFiltered = $totalData;  
-        $posts = $this->orderdetails->alleffort($limit,$start,$order,$dir,$garageId);
-    
+        $totalFiltered = $totalData;
+        $posts = $this->orderdetails->alleffort($limit, $start, $order, $dir, $garageId);
+
         $data = array();
-        if(!empty($posts))
-        {
+        if (!empty($posts)) {
             $index = 0;
             $count = 0;
-            foreach ($posts as $post)
-            {
+            foreach ($posts as $post) {
                 $nestedData['orderId'] = $post->orderId;
                 $nestedData['orderDetailId'] = $post->orderDetailId;
                 $nestedData['quantity'] = $post->quantity;
@@ -146,51 +138,49 @@ class Orderdetail extends BD_Controller {
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;
-   
 
             }
         }
 
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $data   
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data,
         );
 
         $this->set_response($json_data);
 
     }
 
-    function getuserdata_post(){
+    public function getuserdata_post()
+    {
         // $garageId = $this->session->userdata['logged_in']['garageId'];
         $orderId = $this->post('orderId');
         $data_check = $this->orderdetails->getorderdata($orderId);
         $option = [
-            "data_check" => $data_check
+            "data_check" => $data_check,
         ];
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
 
-
-    function changeStatus_get(){
+    public function changeStatus_get()
+    {
         $orderDetailId = $this->get("orderDetailId");
         $status = $this->get("status");
         $data = array(
             'orderDetailId' => $orderDetailId,
-            'status' => $status
-          
+            'status' => $status,
+
         );
         $data_check_update = $this->orderdetails->getorderDetailById($orderDetailId);
 
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->orderdetails
+            "model" => $this->orderdetails,
         ];
-        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
+        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
 
 }
-
-

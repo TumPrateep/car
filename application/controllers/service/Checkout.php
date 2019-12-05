@@ -191,7 +191,6 @@ class Checkout extends BD_Controller
         }
         $data = array(
             'orderId' => $orderId,
-            'paymentId' => null,
             'created_by' => $userId,
             'date' => $date,
             'time' => $time,

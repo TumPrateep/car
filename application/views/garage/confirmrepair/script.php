@@ -24,13 +24,14 @@ var table = $('#changes-table').DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": {
-        "url": base_url + "apigarage/Reserve/searchReserve",
+        "url": base_url + "apigarage/confirmrepair/searchAccessstatus",
         "dataType": "json",
         "type": "POST",
         "data": function(data) {
             data.date = $("#date").val(),
                 data.reservename = $("#reservename").val(),
-                data.status = $("#status").val()
+                data.status = $("#status").val(),
+                data.statusSuccess = $("#statusSuccess").val()
         }
     },
     "order": [
@@ -89,14 +90,10 @@ var table = $('#changes-table').DataTable({
             "render": function(data, type, full, meta) {
                 var html = '';
                 // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
-                if (data.status == 1) {
-                    html += '<span class="badge badge-warning">รอนัดซ่อม</span>';
-                } else if (data.status == 2) {
-                    html += '<span class="badge badge-success">รับนัดซ่อมเเล้ว</span>';
-                } else if (data.status == 9) {
-                    html += '<span class="badge badge-info">ยกเลิกนัดซ่อม</span>';
-                } else {
-                    html += '<span class="badge badge-danger">ผิดพลาด</span>';
+                if (data.status == 4 && data.statusSuccess == 1) {
+                    html += '<span class="badge badge-warning">รอดำเนินกาซ่อม</span>';
+                } else if (data.status == 4 && data.statusSuccess == 2) {
+                    html += '<span class="badge badge-success">ซ่อมเสร็จสิ้น</span>';
                 }
                 return html;
                 // return data.status;
@@ -106,12 +103,12 @@ var table = $('#changes-table').DataTable({
             "data": null,
             "render": function(data, type, full, meta) {
                 var disable = "";
-                if (data.status == 9 || data.status == 2) {
+                if (data.statusSuccess == 2) {
                     disable = "disabled";
                 }
-                return '<button type="button" class="btn btn-success"  title="รับนัด" ' + disable +
-                    ' onclick="confirmStatus(' + data.reserveId + ',' + data.orderId +
-                    ')">รับนัดซ่อม</button>';
+                return '<button type="button" class="btn btn-success"  title="" ' + disable +
+                    ' onclick="update_mileage(' + data.orderId + ')">ซ่อมเสร็จสิ้น</button>';
+                // return '<button type="button" class="btn btn-success"  title="ซ่อมเสร็จสิ้น" '+disable+' onclick="confirmStatus('+data.orderId+')">ซ่อมเสร็จสิ้น</button>';
             }
         },
         {
@@ -121,30 +118,50 @@ var table = $('#changes-table').DataTable({
     ]
 });
 
-function confirmStatus(reserveId, orderId) {
-    var option = {
-        url: "/Reserve/changeStatus?reserveId=" + reserveId + "&orderId=" + orderId,
-        label: "ยืนยันการทำรายการการจอง",
-        status: 2,
-        content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
-        gotoUrl: "garage/reserve"
-    }
-    fnConfirm(option);
-}
-
-// function cancelStatus(reserveId, orderId) {
+// function confirmStatus(orderId){
 //     var option = {
-//         url: "/Reserve/changeStatus?reserveId=" + reserveId + "&orderId=" + orderId,
-//         label: "ยกเลิกการทำรายการการจอง",
-//         status: 8,
-//         content: "คุณต้องการยกเลิกการทำรายการการจองนี้ ใช่หรือไม่",
-//         gotoUrl: "garage/reserve"
+//         url: "/Accessstatus/changeStatus?orderId="+orderId,
+//         label: "ยืนยันการทำรายการการจอง",
+//         status: 2,
+//         content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
+//         gotoUrl: "garage/acessstatus"
 //     }
 //     fnConfirm(option);
 // }
+
+
 
 $("#search").click(function() {
     event.preventDefault();
     table.ajax.reload();
 })
+
+function update_mileage(orderId) {
+
+    $("#orderId").val(orderId);
+    $("#update-mileage").modal("show");
+}
+
+$("#submit").submit(function() {
+    updatemileage();
+})
+
+function updatemileage() {
+    event.preventDefault();
+    var isValid = $("#submit").valid();
+
+    if (isValid) {
+        var data = $("#submit").serialize();
+
+        $.post(base_url + "apigarage/confirmrepair/update", data,
+            function(data) {
+                if (data.message == 200) {
+                    showMessage(data.message, "garage/confirmrepair");
+                } else {
+                    showMessage(data.message);
+                }
+            }
+        );
+    }
+}
 </script>

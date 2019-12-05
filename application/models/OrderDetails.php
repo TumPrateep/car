@@ -87,6 +87,50 @@ class Orderdetails extends CI_Model
         }
     }
 
+    public function allReceiveOrders_count($garageId)
+    {
+        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.group, orderdetail.productId, orderdetail.quantity, garage.garageId, orderdetail.status");
+        // $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName,spares_change_garage.spares_price,tire_change_garage.tire_price,lubricator_change_garage.lubricator_price");
+        $this->db->from('order');
+        $this->db->join('orderdetail', 'order.orderId  = orderdetail.orderId');
+        $this->db->join('reserve', 'order.orderId = reserve.orderId');
+        $this->db->join('garage', 'reserve.garageId = garage.garageId');
+        $this->db->join('numbertracking', 'numbertracking.orderId = order.orderId');
+
+        $this->db->where('order.status', 5);
+        // $this->db->where('orderdetail.status', 2);
+        $this->db->where('reserve.garageId', $garageId);
+
+        $query = $this->db->get();
+        return $query->num_rows();
+
+    }
+
+    public function allReceiveOrders($limit, $start, $order, $dir, $garageId) //$limit,$start,$col,$dir,$order
+
+    {
+        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.group, orderdetail.productId, orderdetail.quantity, garage.garageId, orderdetail.status");
+        // $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.status, reserve.garageId, orderdetail.group, orderdetail.productId,car_accessories.car_accessoriesName,user_profile.firstname,user_profile.lastname,car_profile.character_plate,car_profile.number_plate,provinceforcar.provinceforcarName,brand.brandName,model.modelName,model.yearStart,model.yearEnd,modelofcar.modelofcarName,user_profile.titleName,spares_change_garage.spares_price,tire_change_garage.tire_price,lubricator_change_garage.lubricator_price");
+        $this->db->from('order');
+        $this->db->join('orderdetail', 'order.orderId  = orderdetail.orderId');
+        $this->db->join('reserve', 'order.orderId = reserve.orderId');
+        $this->db->join('garage', 'reserve.garageId = garage.garageId');
+        $this->db->join('numbertracking', 'numbertracking.orderId = order.orderId');
+
+        $this->db->where('order.status', 5);
+        // $this->db->where('orderdetail.status', 2);
+        $this->db->where('reserve.garageId', $garageId);
+        $this->db->limit($limit, $start)->order_by($order, $dir);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+    }
+
     public function allreturnorders_count($garageId)
     {
         $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.group, orderdetail.productId, orderdetail.quantity, garage.garageId, orderdetail.status");
@@ -217,6 +261,26 @@ class Orderdetails extends CI_Model
         return $query->num_rows();
     }
 
+    public function insert($data)
+    {
+        $this->db->trans_begin();
+
+        $this->db->where('orderDetailId', $data['orderDetailId']);
+        $this->db->update('orderdetail', $data);
+
+        $orderId = $this->getOrderId($data['orderDetailId']);
+        $this->db->where('orderId', $orderId);
+        $this->db->update('order', array('statusSuccess' => 2));
+
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
+    }
+
     public function update($data)
     {
         $this->db->where('orderDetailId', $data['orderDetailId']);
@@ -262,6 +326,13 @@ class Orderdetails extends CI_Model
         $this->db->where('order.orderId', $orderId);
         $result = $this->db->get();
         return $result->row();
+    }
+
+    public function getOrderId($orderDetailId)
+    {
+        $this->db->where('orderDetailId', $orderDetailId);
+        $query = $this->db->get('orderdetail');
+        return $query->result();
     }
 
 }

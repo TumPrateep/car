@@ -1,23 +1,26 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Orderselect extends BD_Controller {
-    function __construct()
+class Orderselect extends BD_Controller
+{
+    public function __construct()
     {
         // Construct the parent class
         parent::__construct();
         $this->auth();
         $this->load->model("orderselects");
+        $this->load->model("orders");
     }
 
-    function search_post(){
-		$columns = array( 
+    public function search_post()
+    {
+        $columns = array(
             0 => null,
             1 => null,
-            2 => 'order.orderId', 
+            2 => 'order.orderId',
             3 => 'orderdetail.quantity',
-			4 => 'reserve.garageId'
+            4 => 'reserve.garageId',
         );
 
         $limit = $this->post('length');
@@ -27,74 +30,69 @@ class Orderselect extends BD_Controller {
 
         $totalData = $this->orderselects->allData_count();
 
-        $totalFiltered = $totalData; 
+        $totalFiltered = $totalData;
 
-        if(empty($this->post('status')))
-        {            
-            $posts = $this->orderselects->allData($limit,$start,$order,$dir);
+        if (empty($this->post('status'))) {
+            $posts = $this->orderselects->allData($limit, $start, $order, $dir);
         } else {
-        //     $search = $this->post('brandName'); 
-        //     $status = $this->post('status'); 
+            //     $search = $this->post('brandName');
+            //     $status = $this->post('status');
 
-        //     $posts =  $this->brand->brand_search($limit,$start,$search,$order,$dir,$status);
+            //     $posts =  $this->brand->brand_search($limit,$start,$search,$order,$dir,$status);
 
-        //     $totalFiltered = $this->brand->brand_search_count($search,$status);
+            //     $totalFiltered = $this->brand->brand_search_count($search,$status);
         }
 
         $data = array();
-        if(!empty($posts))
-        {
-            foreach ($posts as $post)
-            {
+        if (!empty($posts)) {
+            foreach ($posts as $post) {
                 $nestedData['orderId'] = $post->orderId;
                 $nestedData['quantity'] = $post->quantity;
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['group'] = $post->group;
                 $nestedData['productId'] = $post->productId;
                 $nestedData['garageName'] = $post->garageName;
+                $nestedData['status'] = $post->status;
                 // $nestedData['picture'] = $post->picture;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
-          
+
                 $data[] = $nestedData;
             }
         }
 
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $data   
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data,
         );
 
         $this->set_response($json_data);
     }
 
-    
-    function changeStatus_post(){
+    public function changeStatus_post()
+    {
         $orderId = $this->post("orderId");
         $status = $this->post("status");
-        if($status == 3){
+        if ($status == 3) {
             $status = 4;
-        }else{
+        } else {
             $status = 3;
         }
 
         $data_check_update = $this->orderselects->getOrderDataById($orderId);
         $data = array(
             'orderId' => $orderId,
-            'status' => $status
+            'status' => $status,
         );
 
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->orderselects
+            "model" => $this->orders,
         ];
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
-    
 
 }
-
-

@@ -59,7 +59,7 @@ var table = $('#order-table').DataTable({
                     orderstatus += 'รอชำระเงิน';
                 } else if (data.status == "2") {
                     orderstatus += 'รออนุมัติ';
-                } else if (data.status == "3") {
+                } else if (data.status == "3" || data.status == "4" || data.status == "5") {
                     orderstatus += 'ชำระเงินเเล้ว';
                 } else if (data.status == "9") {
                     orderstatus += 'ยกเลิกการจอง';
@@ -71,12 +71,14 @@ var table = $('#order-table').DataTable({
                         orderstatus += 'ศูนย์บริการขอยกเลิก';
                         // html += '<span class="badge badge-danger">ยกเลิกการจอง</span>';
                     }
-                } else if (data.statusSuccess == "2") {
-                    orderstatus += 'ให้คะเเนนและรีวิว';
-                } else if (data.statusSuccess == "3") {
-                    orderstatus += 'ขอบคุณที่ใช้บริการ';
-                } else {
+                }
+                if (data.statusSuccess == "2") {
+                    orderstatus = "<span>";
                     orderstatus += 'เข้าใช้บริการ';
+                    // orderstatus += 'ให้คะเเนนและรีวิว';
+                } else if (data.statusSuccess == "3") {
+                    orderstatus = "<span>";
+                    orderstatus += 'ขอบคุณที่ใช้บริการ';
                 }
                 orderstatus += "</span>";
 
@@ -85,26 +87,26 @@ var table = $('#order-table').DataTable({
                 if (data.status == "1") {
                     success_status += '<a href="' + base_url + "user/order/payment/" + data.orderId +
                         '"><button type="button" class="btn btn-main-md bg-orange">ชำระเงิน</button>'
-                } else if (data.status == "3") {
+                } else if (data.status == "3" || data.status == "4" || data.status == "5") {
                     success_status +=
-                        '<a href="#"><button type="button" class="btn btn-main-md bg-orange">รับบริการ</button> '
+                        'รอเข้ารับบริการ'
                 } else if (data.status == "8") {
                     if (data.statusActive == 2) {
                         success_status += '<a href="' + base_url + "user/order/payment/" + data
                             .orderId +
                             '"><button type="button" class="btn btn-main-md bg-orange">ชำระเงิน</button>'
-                    } else if (data.statusActive == 3) {
-                        success_status +=
-                            '<a href="' + base_url + "user/garageagain/" +
-                            '"><button type="button" class="btn btn-main-md bg-orange">ศูนย์บริการ</button> '
                     }
-                } else if (data.statusSuccess == "2") {
-                    success_status +=
+                    //  else if (data.statusActive == 3) {
+                    //     success_status +=
+                    //         '<a href="' + base_url + "user/garageagain/" +
+                    //         '"><button type="button" class="btn btn-main-md bg-orange">ศูนย์บริการ</button> '
+                    // }
+                }
+                if (data.statusActive == "3") {
+                    success_status =
                         '<a href="#"><button type="button" title="กดเพื่อให้คะเเนนการให้บริการ" onclick="commetrating(' +
                         data.orderId +
-                        ')" class="btn btn-warning"><i class="far fa-thumbs-up"></i></button> '
-                } else if (data.statusSuccess == "3") {
-                    success_status += '';
+                        ')" class="btn btn-warning"><i class="fas fa-thumbs-up"></i></button> '
                 }
 
                 ////

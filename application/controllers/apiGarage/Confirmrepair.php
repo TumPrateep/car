@@ -1,20 +1,22 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
-class Accessstatus extends BD_Controller {
+defined('BASEPATH') or exit('No direct script access allowed');
+class Confirmrepair extends BD_Controller
+{
 
-    function __construct()
+    public function __construct()
     {
         // Construct the parent class
         parent::__construct();
         // $this->auth();
-        $this->load->model('accessstatuss');
+        $this->load->model('confirmrepairs');
     }
 
-    function searchAccessstatus_post(){
-        $columns = array( 
+    public function searchAccessstatus_post()
+    {
+        $columns = array(
             0 => null,
-            1 => 'order.orderId'
+            1 => 'order.orderId',
 
         );
         $garageId = $this->session->userdata['logged_in']['garageId'];
@@ -22,30 +24,26 @@ class Accessstatus extends BD_Controller {
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $totalData = $this->accessstatuss->allaccessstatuss_count($garageId);
-        $totalFiltered = $totalData; 
-        if(empty($this->post('date,reservename,status')))
-        {            
-            $posts = $this->accessstatuss->allaccessstatuss($limit,$start,$order,$dir,$garageId);
-        }
-        else {
-            $search = $this->post('date,reservename,status');
-            $posts =  $this->accessstatuss->accessstatuss_search($limit,$start,$search,$order,$dir,$status,$garageId);
-            $totalFiltered = $this->accessstatuss->accessstatuss_search($search,$status,$garageId);
-        }
+        $totalData = $this->confirmrepairs->allaccessstatuss_count($garageId);
+        $totalFiltered = $totalData;
+        // if (empty($this->post('date,reservename,status'))) {
+        $posts = $this->confirmrepairs->allaccessstatuss($limit, $start, $order, $dir, $garageId);
+        // } else {
+        //     $search = $this->post('date,reservename,status');
+        //     $posts = $this->confirmrepairs->accessstatuss_search($limit, $start, $search, $order, $dir, $status, $garageId);
+        //     $totalFiltered = $this->confirmrepairs->accessstatuss_search($search, $status, $garageId);
+        // }
         $data = array();
-        if(!empty($posts))
-        {
-            foreach ($posts as $post)
-            {
+        if (!empty($posts)) {
+            foreach ($posts as $post) {
                 $nestedData['name'] = $post->name;
                 $nestedData['reserveId'] = $post->reserveId;
                 // $nestedData['garageId'] = $post->garageId;
                 $nestedData['orderId'] = $post->orderId;
                 $nestedData['reserveDate'] = $post->reserveDate;
 
-                $date=date_create($post->reservetime);
-                $post->reservetime = date_format($date,"H:i");
+                $date = date_create($post->reservetime);
+                $post->reservetime = date_format($date, "H:i");
                 $nestedData['reservetime'] = $post->reservetime;
                 $nestedData['userId'] = $post->userId;
                 $nestedData['status'] = $post->status;
@@ -57,22 +55,22 @@ class Accessstatus extends BD_Controller {
             }
         }
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $data   
-            
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data,
+
         );
         $this->set_response($json_data);
     }
 
     // function changeStatus_get(){
-        
+
     //     $status = $this->get("status");
     //     $orderId = $this->get("orderId");
     //     $data = array(
-            
-    //         'orderId' => $orderId,  
+
+    //         'orderId' => $orderId,
     //         'statusSuccess' => $status
     //     );
     //     $data_check_update = $this->accessstatuss->getOrderById($orderId);
@@ -85,33 +83,33 @@ class Accessstatus extends BD_Controller {
     //     $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     // }
 
-    public function update_post(){
+    public function update_post()
+    {
         // $userId = $this->session->userdata['logged_in']['id'];
         $orderId = $this->post('orderId');
         // $car_profileId = $this->post('car_profileId');
         $mileage_carprofile = $this->post('mileage_carprofile');
         $garageId = $this->session->userdata['logged_in']['garageId'];
 
-        $data_check_update = $this->accessstatuss->getOrderById($orderId);
+        $data_check_update = $this->confirmrepairs->getOrderById($orderId);
         $data_check = null;
 
         $data['order'] = array(
             'orderId' => $orderId,
-            'mileage_carprofile'  => $mileage_carprofile,
-            'statusSuccess'  => 2
-            
+            'mileage_carprofile' => $mileage_carprofile,
+            'statusSuccess' => 3,
         );
 
         $data['car_profile'] = array(
             'car_profileId' => $data_check_update->car_profileId,
-            'mileage'  => $mileage_carprofile
+            'mileage' => $mileage_carprofile,
         );
-        
+
         $option = [
             "data_check_update" => $data_check_update,
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->accessstatuss,
+            "model" => $this->confirmrepairs,
             "image_path" => null,
             "old_image_path" => null,
         ];
