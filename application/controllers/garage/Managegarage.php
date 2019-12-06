@@ -30,17 +30,6 @@ class Managegarage extends CI_Controller {
 		$this->load->view("garage/managegarage/update/script");
 	}
 	    
-    // public function show($mechanicId)
-	// {
-	// 	$data["mechanicId"] = $mechanicId;
-	// 	$this->load->view("garage/layout/head");
-	// 	$this->load->view("garage/layout/header");
-    //  $this->load->view("garage/layout/left-menu");
-	// 	$this->load->view("garage/managegarage/show/content", $data);
-	// 	$this->load->view("garage/layout/footer");
-	// 	$this->load->view("garage/layout/foot");
-	// 	$this->load->view("garage/managegarage/show/script");
-	// }
 	public function test()
 	{
 		$this->load->view("garage/layout/head");
@@ -50,7 +39,18 @@ class Managegarage extends CI_Controller {
 		$this->load->view("garage/layout/footer");
 		$this->load->view("garage/layout/foot");
 		$this->load->view("garage/managegarage/test/script");
-    }
+	}
+	
+	// public function create()
+	// {
+	// 	$this->load->view("garage/layout/head");
+	// 	$this->load->view("garage/layout/header");
+    //  	$this->load->view("garage/layout/left-menu");
+	// 	$this->load->view("garage/managegarage/createowner/content");
+	// 	$this->load->view("garage/layout/footer");
+	// 	$this->load->view("garage/layout/foot");
+	// 	$this->load->view("garage/managegarage/createowner/script");
+	// }
 
     public function updateowner()//($mechanicId)
 	{

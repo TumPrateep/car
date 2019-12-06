@@ -29,14 +29,14 @@
                                 <div class="col-lg-12 push-lg-4">
                                     <ul class="nav nav-tabs">
                                         <li class="nav-item">
-                                            <a href="" data-target="#mechanic" data-toggle="tab" class="nav-link active">ข้อมูลเจ้าของอู่</a>
+                                            <a href="" data-target="#garage" data-toggle="tab" class="nav-link active">ข้อมูลอู่ซ่อมรถ</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="" data-target="#garage" data-toggle="tab" class="nav-link">ข้อมูลอู่ซ่อมรถ</a>
+                                            <a href="" data-target="#mechanic" data-toggle="tab" class="nav-link">ข้อมูลเจ้าของอู่</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content p-b-3">
-                                        <div class="tab-pane active" id="mechanic"><br>
+                                        <div class="tab-pane" id="mechanic"><br>
                                             <form id="registergarage">
                                                 <div class="shop">
                                                     <div class="container">
@@ -77,6 +77,11 @@
                                                                     </div>
                                                                 </div><br>
                                                                 <div class="row">
+                                                                <!-- <div class="col-md-2">
+                                                                    <div class="form-group">
+                                                                        <a  href="<?=base_url("garage/managegarage/create") ?>"><button type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>สร้าง</button></a>
+                                                                    </div>
+                                                                 </div> -->
                                                                 <div class="col-md-2">
                                                                     <div class="form-group">
                                                                         <a  href="<?=base_url("garage/managegarage/updateowner") ?>"><button type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไข</button></a>
@@ -97,7 +102,7 @@
                                             </form>
                                         </div>
 
-                                        <div class="tab-pane" id="garage"><br>
+                                        <div class="tab-pane active" id="garage"><br>
                                             <form id="registergarage">
                                                 <div class="shop">
                                                     <div class="container">
