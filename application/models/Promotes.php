@@ -1,6 +1,9 @@
-<?php if(!defined('BASEPATH')) exit('No direct script allowed');
+<?php if (!defined('BASEPATH')) {
+    exit('No direct script allowed');
+}
 
-class Promotes extends CI_Model{
+class Promotes extends CI_Model
+{
 
     public function insert($data)
     {
@@ -27,6 +30,7 @@ class Promotes extends CI_Model{
     }
 
     public function allPromotes($limit, $start, $order, $dir) //$limit,$start,$col,$dir,$order
+
     {
         $this->db->select("promoteId, image_url, status");
         $this->db->from('promote');
@@ -40,18 +44,28 @@ class Promotes extends CI_Model{
         }
     }
 
-    function delete($promoteId){
+    public function delete($promoteId)
+    {
         return $this->db->delete('promote', array('promoteId' => $promoteId));
     }
 
-    function getPromoteById($promoteId){
-        return $this->db->where('promoteId',$promoteId)->get("promote")->row();
+    public function getPromoteById($promoteId)
+    {
+        return $this->db->where('promoteId', $promoteId)->get("promote")->row();
     }
 
-    function update($data){
-        $this->db->where('promoteId',$data['promoteId']);
+    public function update($data)
+    {
+        $this->db->where('promoteId', $data['promoteId']);
         $result = $this->db->update('promote', $data);
         return $result;
+    }
+
+    public function getAllBannerWithStatus()
+    {
+        $this->db->where('status', 1);
+        $result = $this->db->get('promote');
+        return $result->result();
     }
 
 }
