@@ -79,7 +79,7 @@ class Deliverorders extends CI_Model
 
     public function allShoworders_count($userId)
     {
-        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId, garage.garageName, numbertracking.create_at");
+        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId, garage.garageName, numbertracking.create_at, order.statusSuccess");
         $this->db->from('order');
         $this->db->join('orderdetail', 'order.orderId  = orderdetail.orderId');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
@@ -97,7 +97,7 @@ class Deliverorders extends CI_Model
     public function allShoworders($limit, $start, $order, $dir, $userId) //$limit,$start,$col,$dir,$order
 
     {
-        $this->db->select("order.orderId, orderdetail.quantity, orderdetail.product_price, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName, numbertracking.create_at");
+        $this->db->select("order.orderId, orderdetail.quantity, orderdetail.product_price, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName, numbertracking.create_at, order.statusSuccess, orderdetail.status");
         $this->db->from('order');
         $this->db->join('orderdetail', 'order.orderId  = orderdetail.orderId');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');

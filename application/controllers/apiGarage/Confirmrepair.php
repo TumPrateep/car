@@ -97,7 +97,8 @@ class Confirmrepair extends BD_Controller
         $data['order'] = array(
             'orderId' => $orderId,
             'mileage_carprofile' => $mileage_carprofile,
-            'statusSuccess' => 3,
+            'statusSuccess' => 2,
+            'status' => 6,
         );
 
         $data['car_profile'] = array(

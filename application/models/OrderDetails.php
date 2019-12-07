@@ -268,9 +268,9 @@ class Orderdetails extends CI_Model
         $this->db->where('orderDetailId', $data['orderDetailId']);
         $this->db->update('orderdetail', $data);
 
-        $orderId = $this->getOrderId($data['orderDetailId']);
-        $this->db->where('orderId', $orderId);
-        $this->db->update('order', array('statusSuccess' => 2));
+        // $order = $this->getOrderId($data['orderDetailId']);
+        // $this->db->where('orderId', $order->orderId);
+        // $this->db->update('order', array('statusSuccess' => 2));
 
         if ($this->db->trans_status() === false) {
             $this->db->trans_rollback();
@@ -332,7 +332,7 @@ class Orderdetails extends CI_Model
     {
         $this->db->where('orderDetailId', $orderDetailId);
         $query = $this->db->get('orderdetail');
-        return $query->result();
+        return $query->row();
     }
 
 }

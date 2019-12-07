@@ -1,17 +1,20 @@
-<?php if(!defined('BASEPATH')) exit('No direct script allowed');
+<?php if (!defined('BASEPATH')) {
+    exit('No direct script allowed');
+}
 
-class Orderapproves extends CI_Model{
+class Orderapproves extends CI_Model
+{
 
-
-
-    function getOrderApprovesById($orderId){
+    public function getOrderApprovesById($orderId)
+    {
         $this->db->select("orderId");
-        $this->db->where('orderId',$orderId);
+        $this->db->where('orderId', $orderId);
         $result = $this->db->get("order");
         return $result->row();
     }
 
-    function allOrderApproves($limit,$start,$col,$dir){
+    public function allOrderApproves($limit, $start, $col, $dir)
+    {
         $this->db->select('user_profile.userId,reserve.reserveId, order.orderId, concat(user_profile.firstname," ",user_profile.lastname) as name, reserve.status as reserveStatus, payment.status as paymentStatus, order.status');
         $this->db->from('order');
         $this->db->join('user_profile', 'order.userId = user_profile.userId', 'left');
@@ -19,64 +22,63 @@ class Orderapproves extends CI_Model{
         $this->db->join('payment', 'order.orderId = payment.orderId');
         // $this->db->where('reserve.garageId',$garageId);
 
-        $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
-        if($query->num_rows()>0){
-            return $query->result(); 
-        }else{
+        $query = $this->db->limit($limit, $start)->order_by($col, $dir)->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
             return null;
         }
-        
+
     }
 
-    function allOrderApproves_count(){  
+    public function allOrderApproves_count()
+    {
         $this->db->select('orderId,status');
-        $this->db->from('order'); 
+        $this->db->from('order');
         // $this->db->where('order.garageId',$garageId);
         $query = $this->db->get();
-        return $query->num_rows();  
-                                                                                                                                                                                                
+        return $query->num_rows();
+
     }
 
-    function OrderApproves_search($limit,$start,$search,$col,$dir,$status){
-        
+    public function OrderApproves_search($limit, $start, $search, $col, $dir, $status)
+    {
+
         $this->db->select('user_profile.userId');
         $this->db->from('order');
         $this->db->join('user_profile', 'order.userId = user_profile.userId', 'left');
         // $this->db->where('reserve.garageId',$garageId);
 
-       
-        if($status != null){
+        if ($status != null) {
             $this->db->where("order.status", $status);
         }
-        $query = $this->db->limit($limit,$start)
-                ->order_by($col,$dir)
-                ->get();
-                
-        if($query->num_rows()>0)
-        {
-            return $query->result();  
-        }
-        else
-        {
+        $query = $this->db->limit($limit, $start)
+            ->order_by($col, $dir)
+            ->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
             return null;
         }
     }
 
-    function OrderApproves_search_count($search,$status){
+    public function OrderApproves_search_count($search, $status)
+    {
         $this->db->select('user_profile.userId');
         $this->db->from('order');
         $this->db->join('user_profile', 'order.userId = user_profile.userId', 'left');
         // $this->db->where('reserve.garageId',$garageId);
 
-        if($search != null){
-            $this->db->where("order.orderId",$search);
+        if ($search != null) {
+            $this->db->where("order.orderId", $search);
         }
-        if($status != null){
+        if ($status != null) {
             $this->db->where("order.status", $status);
         }
         $query = $this->db->get();
         return $query->num_rows();
-    } 
+    }
 
     // function update($data){
     //     $this->db->where('orderId',$data['orderId']);
@@ -84,35 +86,33 @@ class Orderapproves extends CI_Model{
     //     return $result;
     // }
 
-    function update($data){
+    public function update($data)
+    {
         $this->db->trans_begin();
-            $this->db->where('reserveId',$data['reserveId']);
-            $result = $this->db->update('reserve',$data);
+        $this->db->where('reserveId', $data['reserveId']);
+        $result = $this->db->update('reserve', $data);
 
-            if($data['status'] == "2"){
-                $orderData = [
-                    "status" => 4
-                ];
-                $this->db->where('orderId',$data['orderId']);
-                $this->db->update('order',$orderData);
-            }else if($data['status'] == "9"){
-                $orderData = [
-                    "status" => 9
-                ];
-                $this->db->where('orderId',$data['orderId']);
-                $this->db->update('order',$orderData);
-            }
-        
-        if ($this->db->trans_status() === FALSE){
+        if ($data['status'] == "2") {
+            $orderData = [
+                "status" => 3,
+            ];
+            $this->db->where('orderId', $data['orderId']);
+            $this->db->update('order', $orderData);
+        } else if ($data['status'] == "9") {
+            $orderData = [
+                "status" => 9,
+            ];
+            $this->db->where('orderId', $data['orderId']);
+            $this->db->update('order', $orderData);
+        }
+
+        if ($this->db->trans_status() === false) {
             $this->db->trans_rollback();
             return false;
-        }else{
+        } else {
             $this->db->trans_commit();
             return true;
         }
     }
-   
-
-   
 
 }

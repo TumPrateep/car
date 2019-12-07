@@ -58,7 +58,7 @@ var table = $('#order-table').DataTable({
                 if (data.status == "1") {
                     orderstatus += 'รอชำระเงิน';
                 } else if (data.status == "2") {
-                    orderstatus += 'รออนุมัติ';
+                    orderstatus += 'กำลังตรวจสอบการชำระเงิน';
                 } else if (data.status == "3" || data.status == "4" || data.status == "5") {
                     orderstatus += 'ชำระเงินเเล้ว';
                 } else if (data.status == "9") {
@@ -68,17 +68,17 @@ var table = $('#order-table').DataTable({
                         orderstatus += 'การชำระเงินไม่ถูกต้อง';
                         // html += '<span class="badge badge-danger">ยกเลิกชำระเงิน</span>';
                     } else if (data.statusActive == 3) {
-                        orderstatus += 'ศูนย์บริการขอยกเลิก';
+                        // orderstatus += 'ศูนย์บริการขอยกเลิก';
                         // html += '<span class="badge badge-danger">ยกเลิกการจอง</span>';
                     }
                 }
-                if (data.statusSuccess == "2") {
+                if (data.statusActive == "2") {
                     orderstatus = "<span>";
-                    orderstatus += 'เข้าใช้บริการ';
-                    // orderstatus += 'ให้คะเเนนและรีวิว';
-                } else if (data.statusSuccess == "3") {
+                    // orderstatus += 'เข้าใช้บริการ';
+                    orderstatus += 'ให้คะเเนนและรีวิว';
+                } else if (data.statusActive == "3") {
                     orderstatus = "<span>";
-                    orderstatus += 'ขอบคุณที่ใช้บริการ';
+                    orderstatus += 'การดำเนินการเสร็จสิ้น';
                 }
                 orderstatus += "</span>";
 
@@ -102,11 +102,11 @@ var table = $('#order-table').DataTable({
                     //         '"><button type="button" class="btn btn-main-md bg-orange">ศูนย์บริการ</button> '
                     // }
                 }
-                if (data.statusActive == "3") {
+                if (data.statusActive == "2") {
                     success_status =
-                        '<a href="#"><button type="button" title="กดเพื่อให้คะเเนนการให้บริการ" onclick="commetrating(' +
+                        '<button type="button" title="กดเพื่อให้คะเเนนการให้บริการ" onclick="commetrating(' +
                         data.orderId +
-                        ')" class="btn btn-warning"><i class="fas fa-thumbs-up"></i></button> '
+                        ')" class="btn btn-main-md bg-orange">ให้คะแนน</button> '
                 }
 
                 ////
@@ -223,10 +223,10 @@ function createcomment() {
     var isValid = $("#submit").valid();
     if (isValid) {
         var data = $("#submit").serialize();
-        $.post(base_url + "service/Commentuser/createCommentuser", data,
+        $.post(base_url + "service/commentuser/createCommentuser", data,
             function(data) {
                 if (data.message == 200) {
-                    showMessage(data.message, "shop/order");
+                    showMessage(data.message, "user/order");
                 } else {
                     showMessage(data.message, );
                 }

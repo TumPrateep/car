@@ -43,6 +43,7 @@ var table = $('#dt-table').DataTable({
         {
             "data": "quantity"
         },
+        null,
         null
     ],
     "drawCallback": function(settings) {
@@ -58,7 +59,7 @@ var table = $('#dt-table').DataTable({
             if (last !== data.orderId) {
                 $(rows).eq(i).before(
                     '<tr class="group"><td colspan="4"> หมายเลขสั่งซื้อ ' + data.orderId +
-                    ' ชื่อร้านอู่ ' + data.garageName +
+                    ' ชื่อร้านอู่ ' + data.garageName + ' ' +
                     '</td><td><button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
                     data.orderId + ')"><span>หลักฐานการส่ง</span></button></td></tr>'
                 );
@@ -108,6 +109,18 @@ var table = $('#dt-table').DataTable({
             "data": null,
             "render": function(data, type, full, meta) {
                 return data.product_price;
+            }
+        }, {
+            "targets": 4,
+            "data": null,
+            "render": function(data, type, full, meta) {
+                let htmlStatus = '';
+                if (data.status == '2') {
+                    htmlStatus = '<span class="badge badge-info">จัดส่งสินค้าแล้ว</span>';
+                } else if (data.status == '3') {
+                    htmlStatus = '<span class="badge badge-info">ได้รับสินค้าแล้ว</span>';
+                }
+                return htmlStatus;
             }
         }
 

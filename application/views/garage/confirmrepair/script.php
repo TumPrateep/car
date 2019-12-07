@@ -90,9 +90,9 @@ var table = $('#changes-table').DataTable({
             "render": function(data, type, full, meta) {
                 var html = '';
                 // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
-                if (data.status == 4 && data.statusSuccess == 1) {
+                if (data.status == 5 && data.statusSuccess == 1) {
                     html += '<span class="badge badge-warning">รอดำเนินกาซ่อม</span>';
-                } else if (data.status == 4 && data.statusSuccess == 2) {
+                } else if (data.status == 6 && (data.statusSuccess == 2 || data.statusSuccess == 3)) {
                     html += '<span class="badge badge-success">ซ่อมเสร็จสิ้น</span>';
                 }
                 return html;
@@ -102,12 +102,12 @@ var table = $('#changes-table').DataTable({
             "targets": 6,
             "data": null,
             "render": function(data, type, full, meta) {
-                var disable = "";
-                if (data.statusSuccess == 2) {
-                    disable = "disabled";
+                var html = "";
+                if (data.statusSuccess == 1) {
+                    html = '<button type="button" class="btn btn-success"  title="" ' +
+                        ' onclick="update_mileage(' + data.orderId + ')">ซ่อมเสร็จสิ้น</button>';
                 }
-                return '<button type="button" class="btn btn-success"  title="" ' + disable +
-                    ' onclick="update_mileage(' + data.orderId + ')">ซ่อมเสร็จสิ้น</button>';
+                return html;
                 // return '<button type="button" class="btn btn-success"  title="ซ่อมเสร็จสิ้น" '+disable+' onclick="confirmStatus('+data.orderId+')">ซ่อมเสร็จสิ้น</button>';
             }
         },

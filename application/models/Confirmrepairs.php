@@ -26,7 +26,8 @@ class Confirmrepairs extends CI_Model
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
         $this->db->join('car_profile', 'order.car_profileId = car_profile.car_profileId');
         $this->db->where('order.status', 5);
-        $this->db->where('order.statusSuccess', 2);
+        $this->db->or_where('order.status', 6);
+        // $this->db->where('order.statusSuccess', 2);
         $this->db->where('reserve.garageId', $garageId);
 
         $query = $this->db->limit($limit, $start)->order_by($col, $dir)->get();
@@ -46,7 +47,7 @@ class Confirmrepairs extends CI_Model
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
         $this->db->join('car_profile', 'order.car_profileId = car_profile.car_profileId');
         $this->db->where('order.status', 5);
-        $this->db->where('order.statusSuccess', 2);
+        // $this->db->where('order.statusSuccess', 2);
         $this->db->where('reserve.garageId', $garageId);
         $query = $this->db->get();
         return $query->num_rows();

@@ -236,6 +236,14 @@
                     </ul>
                 </li>
 
+                <li class="nav-item <?=activate_menu('promote');?>" data-toggle="tooltip" data-placement="right"
+                    title="Dashboard">
+                    <a class="nav-link text-white" href="<?=base_url("admin/promote")?>">
+                        <i class="fa fa-picture-o" aria-hidden="true"></i>
+                        <span class="nav-link-text">รูปภาพแบนเนอร์</span>
+                    </a>
+                </li>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
                         href="#serviceCharge" data-parent="#exampleAccordion">

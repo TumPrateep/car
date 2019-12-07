@@ -50,9 +50,10 @@
                         <!-- <li ><a class="garage-white " href="<?=base_url("garage/Effort");?>">
                             <i class="fa fa-handshake-o garage-white"></i><span class="hide-menu">ค่าแรงที่จะได้รับ</span></a>
                         </li> -->
-                        <!-- <li ><a class="garage-white " href="<?=base_url("garage/review");?>">
-                            <i class="fa fa-commenting-o garage-white"></i><span class="hide-menu">คะแนนและรีวิว</span></a>
-                        </li> -->
+                        <li><a class="garage-white " href="<?=base_url("garage/review");?>">
+                                <i class="fa fa-commenting-o garage-white"></i><span
+                                    class="hide-menu">คะแนนและรีวิว</span></a>
+                        </li>
                         <!-- <li ><a class="garage-white" href="#" onclick="logout()">
                             <i class="fa fa-sign-out garage-white"></i><span class="hide-menu">ออกจากระบบ</span></a>
                         </li> -->

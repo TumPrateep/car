@@ -173,12 +173,13 @@ class Orderdetail extends BD_Controller
             'status' => $status,
 
         );
-        $data_check_update = $this->orderdetails->getorderDetailById($orderDetailId);
+        // $data_check_create = $this->orderdetails->getorderDetailById($orderDetailId);
 
         $option = [
-            "data_check_update" => $data_check_update,
+            "data_check" => null,
             "data" => $data,
             "model" => $this->orderdetails,
+            "image_path" => null,
         ];
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
