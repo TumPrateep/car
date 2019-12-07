@@ -158,9 +158,9 @@ $(document).ready(function() {
     brand.change(function() {
         var brandId = brand.val();
         model.html('<option value="">เลือกรุ่นรถ</option>');
-        detail.html('<option value="">เลือกโฉมรถยนต์</option>');
+        detail.html('<option value="">เลือกปีที่ผลิต</option>');
         // year.html('<option value="">เลือกปีผลิต</option>');
-        modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
+        // modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
         $.get(base_url + "service/Carselect/getCarModel", {
             brandId: brandId
         }, function(data) {
@@ -174,18 +174,25 @@ $(document).ready(function() {
 
     model.change(function() {
         var modelName = $("#modelId option:selected").text();
-        detail.html('<option value="">เลือกโฉมรถยนต์</option>');
+        detail.html('<option value="">เลือกปีที่ผลิต</option>');
         // year.html('<option value="">เลือกปีผลิต</option>');
         modelofcar.html('<option value="">เลือกรายละเอียดรุ่น</option>');
-        $.get(base_url + "service/Carselect/getCarYear", {
+        $.get(base_url + "service/Carselect/getMaxMinYear", {
             modelName: modelName
         }, function(data) {
-            var detailData = data.data;
-            $.each(detailData, function(key, value) {
-                detail.append('<option value="' + value.modelId + '">' + '(ปี ' + value
-                    .yearStart + '-' + value.yearEnd + ') ' + value.detail +
-                    '</option>');
-            });
+            // var detailData = data.data;
+            // $.each(detailData, function(key, value) {
+            // $("#car_type").val(data.car_type);
+            if (!data.max) {
+                data.max = data.min;
+            }
+            for (let i = data.max; i >= data.min; i--) {
+                detail.append('<option value="' + i + '">' + i + '</option>');
+            }
+            // detail.append('<option value="' + value.modelId + '">' + '(ปี ' + value
+            //     .yearStart + '-' + value.yearEnd + ') ' + value.detail +
+            //     '</option>');
+            // });
         });
     });
 

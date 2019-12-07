@@ -16,6 +16,7 @@ class Carprofile extends BD_Controller
         $userId = $this->session->userdata['logged_in']['id'];
         $car_profileId = $this->post('car_profileId');
         $data_check = $this->carprofiles->getCarProfileByUserIdAndCarprofileId($userId, $car_profileId);
+        // dd();
         $option = [
             "data_check" => $data_check,
         ];
@@ -67,8 +68,8 @@ class Carprofile extends BD_Controller
         $province_plate = $this->post("province_plate");
         $brandId = $this->post("brandId");
         $modelId = $this->post("modelId");
-        // $detail = $this->post("detail");
-        $modelofcarId = $this->post("modelofcarId");
+        $year = $this->post("detail");
+        // $modelofcarId = $this->post("modelofcarId");
         $mileage = $this->post("mileage");
         $color = $this->post("color");
 
@@ -126,7 +127,7 @@ class Carprofile extends BD_Controller
             'province_plate' => $province_plate,
             'brandId' => $brandId,
             'modelId' => $modelId,
-            'modelofcarId' => $modelofcarId,
+            'year' => $year,
             'mileage' => $mileage,
             'color' => $color,
             // "picture"=> $imageName
@@ -153,8 +154,8 @@ class Carprofile extends BD_Controller
         $color = $this->post("color");
 
         $brandId = $this->post("brandId");
-        $modelId = $this->post("detail");
-        $modelofcarId = $this->post("modelofcarId");
+        $modelId = $this->post("modelId");
+        $year = $this->post("detail");
 
         $config['upload_path'] = 'public/image/carprofile/';
         $img = $this->post("picture1");
@@ -218,7 +219,7 @@ class Carprofile extends BD_Controller
                 'color' => $color,
                 'brandId' => $brandId,
                 'modelId' => $modelId,
-                'modelofcarId' => $modelofcarId,
+                'year' => $year,
                 // "picture"=> $imageName
             );
             $oldImage = null;
@@ -299,6 +300,7 @@ class Carprofile extends BD_Controller
                 $nestedData[$count]['color'] = $post->color;
                 $nestedData[$count]['picture'] = $post->pictureFront;
                 $nestedData[$count]['point'] = $post->point;
+                $nestedData[$count]['year'] = $post->year;
                 $nestedData[$count]['brandpicture'] = base_url() . "public/image/brand/" . $post->brandPicture;
                 $data[$index] = $nestedData;
                 if ($count >= 2) {

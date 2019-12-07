@@ -50,7 +50,8 @@ var table = $('#order-table').DataTable({
                     var car_profile = value.car_profile;
                     var brand = '';
                     if (car_profile != null) {
-                        brand += car_profile.brandName + ' ' + car_profile.modelName;
+                        brand += car_profile.brandName + ' ' + car_profile.modelName + ' ' +
+                            car_profile.year;
                     }
                     html += '<div class="col-md-4">'
 

@@ -306,12 +306,12 @@ class Orderdetails extends CI_Model
 
     public function getDatacarprofile($car_profileId)
     {
-        $this->db->select("car_profile.pictureFront, car_profile.character_plate, car_profile.number_plate, provinceforcar.provinceforcarName, brand.brandName, model.modelName, model.yearStart, model.yearEnd, model.detail, modelofcar.modelofcarName, modelofcar.machineSize");
+        $this->db->select("car_profile.pictureFront, car_profile.character_plate, car_profile.number_plate, provinceforcar.provinceforcarName, brand.brandName, model.modelName, model.yearStart, model.yearEnd, model.detail, car_profile.year");
         $this->db->from('car_profile');
         $this->db->join('provinceforcar', 'car_profile.province_plate  = provinceforcar.provinceforcarId');
         $this->db->join('brand', 'car_profile.brandId  = brand.brandId');
         $this->db->join('model', 'car_profile.modelId  = model.modelId');
-        $this->db->join('modelofcar', 'car_profile.modelofcarId  = modelofcar.modelofcarId', 'left');
+        // $this->db->join('modelofcar', 'car_profile.modelofcarId  = modelofcar.modelofcarId', 'left');
 
         $this->db->where('car_profile.car_profileId', $car_profileId);
         $result = $this->db->get();

@@ -314,12 +314,12 @@
                                 <span class="nav-link-text">จัดการการจอง</span>
                             </a>
                         </li>
-                        <li class="<?=activate_menu('manageorder');?>">
+                        <!-- <li class="<?=activate_menu('manageorder');?>">
                             <a class="nav-link text-white" href="<?=base_url("admin/manageorder")?>">
                                 <i class="fa fa-life-ring"></i>
                                 <span class="nav-link-text">จัดการการสั่งสินค้า</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="<?=activate_menu('order');?>">
                             <a class="nav-link text-white" href="<?=base_url("admin/order")?>">
                                 <i class="fa fa-life-ring"></i>
