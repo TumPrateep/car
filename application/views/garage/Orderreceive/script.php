@@ -60,7 +60,8 @@ var table = $('#do-table').DataTable({
                 $(rows).eq(i).before(
                     '<tr class="group"><td colspan="7"><span class="order-left"> หมายเลขสั่งซื้อ ' +
                     data.orderId + " " +
-                    '</span></td></tr>'
+                    '</span> <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
+                    data.orderId + ')"><span>หลักฐานการส่ง</span></button></td></tr>'
                 );
 
                 last = data.orderId;
@@ -238,6 +239,25 @@ $("#search-hide").click(function() {
     $("#show-search").show(100);
 });
 
+function tracking_order(orderId) {
+    $("#orderId").val(orderId);
+    getNumberTrackingData(orderId);
+}
+
+function getNumberTrackingData(orderId) {
+    $.get(base_url + "apicaraccessories/numbertracking/getNumbertracking", {
+            orderId: orderId
+        },
+        function(data, textStatus, jqXHR) {
+            console.log(data);
+            let tracking = data.data;
+            $("#time").val(tracking.time);
+            $('#file_url').attr('src', base_url + 'public/image/deliverorder/' + tracking.file_url);
+            $("#tracking-order").modal("show");
+        }
+    );
+}
+
 //     $("#price").slider({
 //     range: true,
 //     min: 0,
@@ -255,34 +275,34 @@ $("#search-hide").click(function() {
 // });
 
 
-function tracking_order(orderId) {
+// function tracking_order(orderId) {
 
-    $("#orderId").val(orderId);
-    $("#tracking-order").modal("show");
+//     $("#orderId").val(orderId);
+//     $("#tracking-order").modal("show");
 
-    var orderId = $("#orderId").val();
+//     var orderId = $("#orderId").val();
 
-    $.post(base_url + "apigarage/Orderdetail/getuserdata", {
-        "orderId": orderId
-    }, function(data) {
-        if (data.message != 200) {
-            showMessage(data.message, "garage/orderreceive");
-        }
-        if (data.message == 200) {
-            result = data.data;
-            // $("#name").val(result.titleName+" "+result.firstname+" "+result.lastname);
-            $("#name").html(": " + result.titleName + " " + result.firstname + " " + result.lastname);
-            $("#car_plate").html(": " + result.character_plate + " " + result.number_plate + " " + result
-                .provinceforcarName);
-            $("#brandName").html(": " + result.brandName);
-            $("#modelName").html(": " + result.modelName);
-            $("#yearCar").html(": ปี " + result.yearStart + " - " + result.yearEnd);
-            $("#modelofcarName").html(": " + result.modelofcarName);
+//     $.post(base_url + "apigarage/Orderdetail/getuserdata", {
+//         "orderId": orderId
+//     }, function(data) {
+//         if (data.message != 200) {
+//             showMessage(data.message, "garage/orderreceive");
+//         }
+//         if (data.message == 200) {
+//             result = data.data;
+//             // $("#name").val(result.titleName+" "+result.firstname+" "+result.lastname);
+//             $("#name").html(": " + result.titleName + " " + result.firstname + " " + result.lastname);
+//             $("#car_plate").html(": " + result.character_plate + " " + result.number_plate + " " + result
+//                 .provinceforcarName);
+//             $("#brandName").html(": " + result.brandName);
+//             $("#modelName").html(": " + result.modelName);
+//             $("#yearCar").html(": ปี " + result.yearStart + " - " + result.yearEnd);
+//             $("#modelofcarName").html(": " + result.modelofcarName);
 
-        }
+//         }
 
-    });
-}
+//     });
+// }
 </script>
 
 </body>

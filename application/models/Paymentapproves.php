@@ -103,7 +103,6 @@ class Paymentapproves extends CI_Model
         } else if (($data['status'] == "8")) {
             $orderData = [
                 "status" => 8,
-                "statusSuccess" => 2,
             ];
             $this->db->where('orderId', $data['orderId']);
             $this->db->update('order', $orderData);

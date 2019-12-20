@@ -163,10 +163,8 @@ $(document).ready(function() {
                 $('#carprofile-data').html('<br><strong>' + carprofile.brandName +
                     '</strong><br>' +
                     '<span>' + carprofile.modelName + '</span><br>' +
-                    '<span>ปี ' + changeStringToYear(carprofile.yearStart, null) +
-                    '</span><br>' +
-                    '<span>' + carprofile.machineSize + ' ' + carprofile.modelofcarName +
-                    '</span>');
+                    '<span>ปี ' + carprofile.year +
+                    '</span><br>');
             });
         } else {
             $('#img-carprofile').html('');

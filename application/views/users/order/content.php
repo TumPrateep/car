@@ -117,10 +117,11 @@ table>thead {
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-orange"><span class="fas fa-save"></span>
+                                    <button type="submit" class="btn btn-orange"><i class="fa fa-floppy-o"
+                                            aria-hidden="true"></i>
                                         บันทึก</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><span
-                                            class="fas fa-times"></span> ปิด</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                            class="fa fa-times-circle" aria-hidden="true"></i> ปิด</button>
                                 </div>
                         </div>
                         </form>

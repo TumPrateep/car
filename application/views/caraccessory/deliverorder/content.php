@@ -62,6 +62,15 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
+                                            <strong>ข้อมูลศูนย์บริการที่จัดส่ง</strong> <br>
+                                            <span id="garage-data"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
                                             <span>วันที่-เวลาส่ง</span><span class="error">*</span>
                                             <input type="text" class="form-control" id="time" name="time"
                                                 placeholder="วันที่-เวลาส่ง">

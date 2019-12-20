@@ -60,9 +60,8 @@ var table = $('#dt-table').DataTable({
                     '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ ' + data.orderId +
                     ' ชื่อร้านอู่ ' + data.garageName +
                     ' <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
-                    data.orderId + ')"><span>ส่งสินค้า</span></button> <!-- <a href="' +
-                    base_url + "caraccessory/exportorder/show/" + data.orderId +
-                    '"><button type="button" data-toggle="tooltip" data-placement="top" title="ใบปะหน้าส่งสินค้า" class="btn btn-warning"><span>พิมพ์ใบปะหน้า</span></button></a>--></td></tr>'
+                    data.orderId +
+                    ')"><span>ที่อยู่จัดส่งสินค้า</span></button></td></tr>'
                 );
 
                 last = data.orderId;
@@ -151,7 +150,17 @@ $("#price").slider({
 });
 
 function tracking_order(orderId) {
-
+    $.get(base_url + "apicaraccessories/garages/getGarageData", {
+            orderId: orderId
+        },
+        function(data, textStatus, jqXHR) {
+            let html = 'ศูนย์บริการ ' + data.garageName + ' ' + data.hno + ' ตำบล' + data.subdistrictName +
+                ' อำเภอ' + data
+                .districtName +
+                ' จังหวัด' + data.provinceName + ' ' + data.postCode;
+            $("#garage-data").html(html);
+        }
+    );
     $("#orderId").val(orderId);
     $("#tracking-order").modal("show");
 }

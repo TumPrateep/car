@@ -18,7 +18,7 @@
 
         <!-- <div class="row">
             <div class="card col-lg-12"> -->
-                <!-- <div class="row justify-content-between">
+        <!-- <div class="row justify-content-between">
 
                     <div class="col-lg-3 offset-lg-7 mt-8">
                         <div class="input-group mb-3">
@@ -33,22 +33,21 @@
                             ค้นหา</i></button>
                     </div>
                 </div><br> -->
-                <div class="row card">
-                    <div class="col-lg-12">
-                        <div class="table-responsive">
-                            <table class="table table-striped" id="changes-table" width="100%" cellspacing="0">
-                                <thead>
-                                    <th>ลำดับ</th>
-                                    <th>รูป</th>
-                                    <th>รายละเอียดสินค้า</th>
-                                    <th>จำนวน</th>
-                                    <th> </th>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            <!-- </div>
+        <div class="card">
+            <div class="card-body">
+
+                <table class="table table-striped" id="changes-table" width="100%" cellspacing="0">
+                    <thead>
+                        <th>ลำดับ</th>
+                        <th>รูป</th>
+                        <th>รายละเอียดสินค้า</th>
+                        <th>จำนวน</th>
+                        <th> </th>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!-- </div>
         </div> -->
         <!-- End PAge Content -->
     </div>

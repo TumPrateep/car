@@ -15,14 +15,12 @@ class Reserve extends BD_Controller
     public function searchReserve_post()
     {
         $columns = array(
-            0 => null,
-            1 => 'order.orderId',
-
+            0 => 'order.orderId',
         );
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = $columns[$this->post('order')[0]['column']];
+        $order = 'order.orderId';
         $dir = $this->post('order')[0]['dir'];
         $totalData = $this->reserves->allReserve_count($garageId);
         $totalFiltered = $totalData;

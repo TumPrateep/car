@@ -118,4 +118,13 @@ class Reserves extends CI_Model
         }
     }
 
+    public function getGarageDataFromOrderId($orderId)
+    {
+        $this->db->from('reserve');
+        // $this->db->join('garage', 'reserve.garageId = garage.garageId');
+        $this->db->where('reserve.orderId', $orderId);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
 }

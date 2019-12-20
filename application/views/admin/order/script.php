@@ -121,27 +121,37 @@ var table = $('#changes-table').DataTable({
             "data": null,
             "render": function(data, type, full, meta) {
                 var html = '';
-                if (data.status == 1) {
-                    html = '<span class="badge badge-info">รอชำระเงิน</span>';
-                } else if (data.status == 2) {
-                    html = '<span class="badge badge-warning">ตรวจสอบการโอนเงิน</span>';
-                } else if (data.status == 3) {
-                    html = '<span class="badge badge-success">โอนเงินเเล้ว</span>';
-                } else if (data.status == 4) {
-                    html = '<span class="badge badge-success">กำลังเตรียมจัดส่งสินค้า</span>';
-                } else if (data.status == 8) {
+
+                for (let i = 1; i <= data.status; i++) {
+                    if (i == 1) {
+                        html += '<span class="badge badge-warning">รอชำระเงิน</span><br>';
+                    } else if (i == 2) {
+                        html += '<span class="badge badge-warning">ตรวจสอบการโอนเงิน</span><br>';
+                    } else if (i == 3) {
+                        html += '<span class="badge badge-success">โอนเงินเเล้ว</span><br>';
+                    } else if (i == 4) {
+                        html += '<span class="badge badge-success">กำลังเตรียมจัดส่งสินค้า</span><br>';
+                    } else if (i == 5 && data.statusSuccess >= 2) {
+                        html += '<span class="badge badge-success">ส่งสินค้าแล้ว</span><br>';
+                    } else if (i == 6) {
+                        html += '<span class="badge badge-info">การดำเนินการเสร็จสิ้น</span><br>';
+                    }
+                }
+
+                if (data.status == 8) {
                     html = '<span class="badge badge-warning">ระงับชั่วคราว</span>';
                 } else if (data.status == 9) {
                     html = '<span class="badge badge-danger">ยกเลิก</span>';
-                } else {
-                    html = data.status;
                 }
                 return html;
             }
         },
         {
             "className": "dt-center",
-            "targets": [0, 1, 2, 3, 4]
+            "targets": [0, 1, 2, 3]
+        }, {
+            "className": "dt-head-center",
+            "targets": [4]
         }
     ]
 

@@ -1,10 +1,10 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
-use \Firebase\JWT\JWT;
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Orderdetail extends BD_Controller {
-    function __construct()
+class Orderdetail extends BD_Controller
+{
+    public function __construct()
     {
         // Construct the parent class
         parent::__construct();
@@ -12,8 +12,9 @@ class Orderdetail extends BD_Controller {
         $this->load->model('orders');
     }
 
-    function search_post(){
-        $columns = array( 
+    public function search_post()
+    {
+        $columns = array(
             0 => null,
             1 => 'create_by',
             2 => 'status',
@@ -24,14 +25,12 @@ class Orderdetail extends BD_Controller {
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $totalData = $this->orderdetails->all_count($userId);
-        $totalFiltered = $totalData; 
-        $posts = $this->orderdetails->searAllOrder($limit,$start,$order,$dir,$userId);
+        $totalFiltered = $totalData;
+        $posts = $this->orderdetails->searAllOrder($limit, $start, $order, $dir, $userId);
 
         $data = array();
-        if(!empty($posts))
-        {
-            foreach ($posts as $post)
-            {
+        if (!empty($posts)) {
+            foreach ($posts as $post) {
                 $nestedData['orderDetailId'] = $post->orderDetailId;
                 $nestedData['create_at'] = $post->create_at;
                 $nestedData['status'] = $post->status;
@@ -46,15 +45,16 @@ class Orderdetail extends BD_Controller {
             }
         }
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $data   
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data,
         );
         $this->set_response($json_data);
     }
 
-    function orderDetail_get(){
+    public function orderDetail_get()
+    {
         $orderId = $this->get("orderId");
         $orderDetailData = $this->orderdetails->getOrderDetailByOrderId($orderId);
         $userId = $this->session->userdata['logged_in']['id'];
@@ -62,65 +62,67 @@ class Orderdetail extends BD_Controller {
         $tireData = $this->getTire($orderDetailData, $orderId);
         $spareData = $this->getSpare($orderDetailData, $orderId);
         $data["orderDetail"] = $this->getCartData($lubricatorData, $tireData, $spareData);
-        $alldata = $this->orderdetails->getIdData($orderId);    
-        $data["garage"] = $this->orderdetails->getDatagarage($alldata->garageId);    
+        $alldata = $this->orderdetails->getIdData($orderId);
+        $data["garage"] = $this->orderdetails->getDatagarage($alldata->garageId);
         $data["reserve"] = $this->orderdetails->getDatareserve($alldata->reserveId);
         $data["car_profile"] = $this->orderdetails->getDatacarprofile($alldata->car_profileId);
         $data["order"] = $this->orders->getorderByorderId($orderId);
-        // $data['orderdetail'] = $orderDetailData;
         $data['total'] = $this->orderdetails->getSummaryCostFromOrderDetail($orderId, $userId);
         // $data['costDelivery'] = (float)($this->orderdetails->getSummarycostDelivery($orderId));
         // $data['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
 
+        $date = date_create($data["garage"]->openingtime);
+        $data["garage"]->openingtime = date_format($date, "H:i");
 
-        $date=date_create($data["garage"]->openingtime);
-        $data["garage"]->openingtime = date_format($date,"H:i");
+        $date = date_create($data["garage"]->closingtime);
+        $data["garage"]->closingtime = date_format($date, "H:i");
 
-        $date=date_create($data["garage"]->closingtime);
-        $data["garage"]->closingtime = date_format($date,"H:i");
+        $date = date_create($data["reserve"]->reservetime);
+        $data["reserve"]->reservetime = date_format($date, "H:i");
 
-        $date=date_create($data["reserve"]->reservetime);
-        $data["reserve"]->reservetime = date_format($date,"H:i");
-
-        $date=date_create($data["reserve"]->reserveDate);
-        $data["reserve"]->reserveDate = date_format($date,"d/m/Y");
+        $date = date_create($data["reserve"]->reserveDate);
+        $data["reserve"]->reserveDate = date_format($date, "d/m/Y");
 
         $this->set_response($data, REST_Controller::HTTP_OK);
     }
 
-    function getCartData($lubricatorData, $tireData, $spareData){
+    public function getCartData($lubricatorData, $tireData, $spareData)
+    {
         $data = [];
-        if($lubricatorData != null){
-
-            foreach ($lubricatorData as $value){
+        if ($lubricatorData != null) {
+            foreach ($lubricatorData as $value) {
                 $value->group = "lubricator";
                 $value->cost = calSummary($value->cost, $value->charge) * $value->quantity;
                 $value->charge = 0;
                 $option = [
-                    'lubricatorId' => $value->lubricatorId
+                    'lubricatorId' => $value->lubricatorId,
                 ];
                 $value->picture = getPictureLubricator($option);
-                array_push($data,$value);
+                array_push($data, $value);
             }
-    
+
         }
-        if($tireData != null){
-            foreach($tireData as $value){
+        if ($tireData != null) {
+            foreach ($tireData as $value) {
                 $value->group = "tire";
                 $value->cost = $value->price_per_unit * $value->quantity;
-                $value->charge = 0;
+                $value->product_price = $value->product_price * $value->quantity;
+                $value->charge_price = $value->charge_price * $value->quantity;
+                $value->delivery_price = $value->delivery_price * $value->quantity;
+                $value->garage_service_price = $value->garage_service_price * $value->quantity;
+
                 $option = [
                     'tire_brandId' => $value->tire_brandId,
                     'tire_modelId' => $value->tire_modelId,
                     'tire_sizeId' => $value->tire_sizeId,
-                    'rimId' => $value->rimId
+                    'rimId' => $value->rimId,
                 ];
                 $value->picture = getPictureTire($option);
-                array_push($data,$value);
+                array_push($data, $value);
             }
         }
-        if($spareData != null){
-            foreach($spareData as $value){
+        if ($spareData != null) {
+            foreach ($spareData as $value) {
                 $value->group = "spare";
                 $value->cost = calSummary($value->cost, $value->charge) * $value->quantity;
                 $value->charge = 0;
@@ -129,20 +131,21 @@ class Orderdetail extends BD_Controller {
                     'spares_brandId' => $value->spares_brandId,
                     'brandId' => $value->brandId,
                     'modelId' => $value->modelId,
-                    'modelofcarId' => $value->modelofcarId
+                    'modelofcarId' => $value->modelofcarId,
                 ];
                 $value->picture = getPictureSpare($option);
-                array_push($data,$value);
+                array_push($data, $value);
             }
         }
 
         return $data;
     }
 
-    function getLubricator($data, $orderId = null){
+    public function getLubricator($data, $orderId = null)
+    {
         $lubricatorArray = array_filter(
-            $data, function ($e) { 
-                return $e->group == "lubricator"; 
+            $data, function ($e) {
+                return $e->group == "lubricator";
             }
         );
         $productId = [];
@@ -153,9 +156,10 @@ class Orderdetail extends BD_Controller {
         return $this->lubricatordatas->getLubricatorDataForOrderByIdArray($productId, $orderId, "lubricator");
     }
 
-    function getTire($data, $orderId=null){
+    public function getTire($data, $orderId = null)
+    {
         $tireArray = array_filter(
-            $data, function ($e) { return $e->group == "tire"; }
+            $data, function ($e) {return $e->group == "tire";}
         );
         $productId = [];
         foreach ($tireArray as $key => $val) {
@@ -165,9 +169,10 @@ class Orderdetail extends BD_Controller {
         return $this->tiredatas->getTireDataForOrderByIdArray($productId, $orderId, "tire");
     }
 
-    function getSpare($data, $orderId=null){
+    public function getSpare($data, $orderId = null)
+    {
         $spareArray = array_filter(
-            $data, function ($e) { return $e->group == "spare"; }
+            $data, function ($e) {return $e->group == "spare";}
         );
         $productId = [];
         foreach ($spareArray as $key => $val) {

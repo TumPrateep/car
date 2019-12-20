@@ -17,13 +17,13 @@ class Role extends CI_Controller
         $role = $this->session->userdata['logged_in']['role'];
         if ($role == 1) {
             // Admin
-            redirect("admin");
+            redirect("admin/paymentapprove");
         } else if ($role == 2) {
             // ร้านอะไหล่
-            redirect("caraccessory");
+            redirect("caraccessory/orderselect");
         } else if ($role == 3) {
             // อู่
-            redirect("garage");
+            redirect("garage/reserve");
         } else if ($role == 4) {
             // ผู้ใช้งาน
             redirect("user/carprofile");

@@ -98,18 +98,18 @@ var table = $('#order-table').DataTable({
                         '                        <i class="fa fa-pencil"></i>' +
                         '                        <a href="' + base_url +
                         "user/carprofile/update/" + value.car_profileId +
-                        '" class="text-warning font-weight-bold">แก้ไข</a>' +
+                        '" class="text-orange">แก้ไข</a>' +
                         '                    </li>' +
                         '                    <li class="list-inline-item">' +
                         '                        <i class="fa fa-list-alt"></i>' +
                         '                        <a href="' + base_url +
-                        'user/history" class="text-warning font-weight-bold">ประวัติการซ่อม</a>' +
+                        'user/history" class="text-orange">ประวัติการซ่อม</a>' +
                         '                    </li>' +
                         '                    <li class="list-inline-item">' +
                         '                        <i class="fa fa-trash-o"></i>' +
-                        '                        <a href="url: "/Carprofile/deleteCarProfile?car_profileId="+car_profileId" onclick="deleteCarProfile(' +
+                        '                        <a href="#" onclick="deleteCarProfile(' +
                         value.car_profileId +
-                        ')" class="text-warning font-weight-bold">ลบ</a>' +
+                        ')" class="text-orange">ลบ</a>' +
                         '                    </li>' +
                         '                </ul>' +
                         '            </div>' +

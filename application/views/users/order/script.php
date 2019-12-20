@@ -64,13 +64,9 @@ var table = $('#order-table').DataTable({
                 } else if (data.status == "9") {
                     orderstatus += 'ยกเลิกการจอง';
                 } else if (data.status == "8") {
-                    if (data.statusActive == 2) {
-                        orderstatus += 'การชำระเงินไม่ถูกต้อง';
-                        // html += '<span class="badge badge-danger">ยกเลิกชำระเงิน</span>';
-                    } else if (data.statusActive == 3) {
-                        // orderstatus += 'ศูนย์บริการขอยกเลิก';
-                        // html += '<span class="badge badge-danger">ยกเลิกการจอง</span>';
-                    }
+
+                    orderstatus += 'การชำระเงินไม่ถูกต้อง';
+
                 }
                 if (data.statusActive == "2") {
                     orderstatus = "<span>";
@@ -91,11 +87,9 @@ var table = $('#order-table').DataTable({
                     success_status +=
                         'รอเข้ารับบริการ'
                 } else if (data.status == "8") {
-                    if (data.statusActive == 2) {
-                        success_status += '<a href="' + base_url + "user/order/payment/" + data
-                            .orderId +
-                            '"><button type="button" class="btn btn-main-md bg-orange">ชำระเงิน</button>'
-                    }
+                    success_status += '<a href="' + base_url + "user/order/payment/" + data
+                        .orderId +
+                        '"><button type="button" class="btn btn-main-md bg-orange">ชำระเงิน</button>'
                     //  else if (data.statusActive == 3) {
                     //     success_status +=
                     //         '<a href="' + base_url + "user/garageagain/" +
@@ -194,16 +188,17 @@ jQuery(document).ready(function($) {
 
         $(".selected-rating").empty();
         $(".selected-rating").html(selected_value);
-
+        $(".btnrating i").removeClass("text-orange");
+        $(".btnrating i").removeClass("text-default");
         for (i = 1; i <= selected_value; ++i) {
-            $("#rating-star-" + i).toggleClass('btn-warning');
-            $("#rating-star-" + i).toggleClass('btn-default');
+            $("#rating-star-" + i + ' i').addClass('text-orange');
+            // $("#rating-star-" + i + ' i').toggleClass('btn-default');
         }
 
-        for (ix = 1; ix <= previous_value; ++ix) {
-            $("#rating-star-" + ix).toggleClass('btn-warning');
-            $("#rating-star-" + ix).toggleClass('btn-default');
-        }
+        // for (ix = selected_value; ix <= 5; ++ix) {
+        //     // $("#rating-star-" + ix + ' i').toggleClass('btn-warning');
+        //     $("#rating-star-" + ix + ' i').addClass('text-default');
+        // }
 
     }));
 

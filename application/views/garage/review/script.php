@@ -289,7 +289,7 @@ $(document).ready(function() {
                     '<form id="update-comment-garage">' +
                     '<input type="hidden" id="ratingId" name="ratingId" value="' + val.ratingId +
                     '">' +
-                    '<label>หมายเลข order ' + val.orderId + '</label>' +
+                    '<label>หมายเลขการสั่งซื้อ #' + val.orderId + '</label>' +
                     '<div class="row">' +
                     '<div class="col-md-2">' +
                     '<span class="score-center">' +

@@ -3728,3 +3728,15 @@ select.sortby {
 .hidden {
     display: none;
 }
+
+.text-orange {
+    color: rgba(255, 102, 0, 1);
+}
+
+.text-default {
+    color: black;
+}
+
+a.text-orange {
+    color: rgba(255, 102, 0, 1);
+}

@@ -5,7 +5,7 @@
 class Orderselects extends CI_Model
 {
 
-    public function allData_count()
+    public function allData_count($userId)
     {
         $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName");
         $this->db->from('order');
@@ -14,11 +14,12 @@ class Orderselects extends CI_Model
         $this->db->join('garage', 'garage.garageId = reserve.garageId');
         $this->db->where('order.status', 3);
         $this->db->where('reserve.status', 2);
+        $this->db->where('orderdetail.car_accessoriesId', $userId);
         $query = $this->db->get();
         return $query->num_rows();
     }
 
-    public function allData($limit, $start, $order, $dir)
+    public function allData($limit, $start, $order, $dir, $userId)
     {
 
         $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName,order.status");
@@ -28,6 +29,7 @@ class Orderselects extends CI_Model
         $this->db->join('garage', 'garage.garageId = reserve.garageId');
         $this->db->where('order.status', 3);
         $this->db->where('reserve.status', 2);
+        $this->db->where('orderdetail.car_accessoriesId', $userId);
         $this->db->limit($limit, $start)->order_by($order, $dir);
         $query = $this->db->get();
 

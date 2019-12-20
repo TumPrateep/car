@@ -291,7 +291,8 @@ class Orderdetails extends CI_Model
     public function getDatagarage($garageId)
     {
         $this->db->select("picture, garageName, dayopenhour, openingtime, closingtime, phone");
-        $this->db->where('garageId', $garageId);
+        $this->db->join("reserve", "garage.garageId = reserve.garageId");
+        $this->db->where('garage.garageId', $garageId);
         $result = $this->db->get("garage");
         return $result->row();
     }
@@ -332,6 +333,12 @@ class Orderdetails extends CI_Model
     {
         $this->db->where('orderDetailId', $orderDetailId);
         $query = $this->db->get('orderdetail');
+        return $query->row();
+    }
+
+    public function getCaraccessory($car_accessoriesId)
+    {
+        $query = $this->db->where("car_accessoriesId", $car_accessoriesId)->get("car_accessories");
         return $query->row();
     }
 

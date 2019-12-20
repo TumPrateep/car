@@ -27,13 +27,13 @@ class Orderselect extends BD_Controller
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-
-        $totalData = $this->orderselects->allData_count();
+        $userId = $this->session->userdata['logged_in']['id'];
+        $totalData = $this->orderselects->allData_count($userId);
 
         $totalFiltered = $totalData;
 
         if (empty($this->post('status'))) {
-            $posts = $this->orderselects->allData($limit, $start, $order, $dir);
+            $posts = $this->orderselects->allData($limit, $start, $order, $dir, $userId);
         } else {
             //     $search = $this->post('brandName');
             //     $status = $this->post('status');

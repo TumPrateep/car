@@ -50,7 +50,6 @@ class Deliverorders extends CI_Model
         $this->db->where('orderdetail.status', 1);
         $this->db->where('orderdetail.car_accessoriesId', $userId);
         $query = $this->db->get();
-
         return $query->num_rows();
 
     }

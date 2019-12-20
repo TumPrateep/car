@@ -54,6 +54,7 @@ class Order extends BD_Controller
                 $date = date_create($post->create_at);
                 $nestedData['create_at'] = date_format($date, "d/m/Y H:i");
                 $nestedData['status'] = $post->status;
+                $nestedData['statusSuccess'] = $post->statusSuccess;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;

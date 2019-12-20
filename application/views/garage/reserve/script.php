@@ -38,12 +38,8 @@ var table = $('#changes-table').DataTable({
     ],
     "columns": [
         null,
-        null,
         // { "data": "orderId" },
         null,
-        {
-            "data": "reservetime"
-        },
         {
             "data": "name"
         },
@@ -54,15 +50,25 @@ var table = $('#changes-table').DataTable({
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [0, 6]
-        }, {
+            "targets": [4]
+        },
+        // {
+        //     responsivePriority: 1,
+        //     targets: 1
+        // },
+        // {
+        //     responsivePriority: 2,
+        //     targets: 4
+        // },
+        //  {
+        //     "targets": 0,
+        //     "data": null,
+        //     "render": function(data, type, full, meta) {
+        //         return meta.row + 1;
+        //     }
+        // },
+        {
             "targets": 0,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return meta.row + 1;
-            }
-        }, {
-            "targets": 1,
             "data": null,
             "render": function(data, type, full, meta) {
                 var html = '';
@@ -72,19 +78,14 @@ var table = $('#changes-table').DataTable({
                 return html;
             }
         }, {
-            "targets": 2,
+            "targets": 1,
             "data": null,
             "render": function(data, type, full, meta) {
-                return $.format.date(new Date(data.reserveDate), "dd/MM/yyyy"); // code ในการแปลงเวลา
+                return $.format.date(new Date(data.reserveDate), "dd/MM/yyyy") + ' ' + data
+                    .reservetime + " น."; // code ในการแปลงเวลา
             }
         }, {
             "targets": 3,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return data + " น."; // code ในการแปลงเวลา
-            }
-        }, {
-            "targets": 5,
             "data": null,
             "render": function(data, type, full, meta) {
                 var html = '';
@@ -102,7 +103,7 @@ var table = $('#changes-table').DataTable({
                 // return data.status;
             }
         }, {
-            "targets": 6,
+            "targets": 4,
             "data": null,
             "render": function(data, type, full, meta) {
                 var disable = "";
@@ -116,7 +117,7 @@ var table = $('#changes-table').DataTable({
         },
         {
             "className": "dt-center",
-            "targets": [0, 1, 2, 3, 4, 5, 6]
+            "targets": [0, 1, 2, 3, 4]
         }
     ]
 });

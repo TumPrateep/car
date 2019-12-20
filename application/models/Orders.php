@@ -23,7 +23,7 @@ class Orders extends CI_Model
 
     public function allData($limit, $start, $order, $dir)
     {
-        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName,order.create_at,order.status");
+        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName,order.create_at,order.status,order.statusSuccess");
         $this->db->from('order');
         $this->db->join('orderdetail', 'order.orderId  = orderdetail.orderId');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
