@@ -50,6 +50,12 @@
                                 <span class="nav-link-text">ร้านค้าส่งคาร์ใจดี</span>
                             </a>
                         </li>
+                        <li class="<?=activate_menu('usermanagement');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/usermanagement")?>">
+                                <i class="fa fa-user-plus"></i>
+                                <span class="nav-link-text">ผู้ใช้งาน</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -60,12 +66,6 @@
                         <span class="nav-link-text">การจัดการยี่ห้อ/รุ่นรถ</span>
                     </a>
                 </li>
-                <!-- <li class="nav-item <?=activate_menu('usermanagement');?>" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link text-white" href="<?=base_url("admin/usermanagement")?>">
-            <i class="fa fa-user-plus"></i>
-            <span class="nav-link-text">การจัดการผู้ใช้งาน</span>
-          </a>
-        </li> -->
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
                         href="#collapseComponents1" data-parent="#exampleAccordion">

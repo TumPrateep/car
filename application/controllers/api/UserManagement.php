@@ -1,9 +1,10 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Usermanagement extends BD_Controller {
-    function __construct()
+class Usermanagement extends BD_Controller
+{
+    public function __construct()
     {
         // Construct the parent class
         parent::__construct();
@@ -13,13 +14,13 @@ class Usermanagement extends BD_Controller {
         $this->load->model("location");
     }
 
-    function search_post(){
-        $columns = array( 
+    public function search_post()
+    {
+        $columns = array(
             0 => null,
-            1 =>'username', 
-            2 =>'phone',
-            3 =>'category',
-            4 =>'status' 
+            1 => 'username',
+            2 => 'phone',
+            3 => 'status',
         );
 
         $limit = $this->post('length');
@@ -29,37 +30,38 @@ class Usermanagement extends BD_Controller {
 
         $totalData = $this->user->allUser_count();
 
-        $totalFiltered = $totalData; 
-        
-        if(empty($this->post('search')) && empty($this->post('typeUser')) && empty($this->post('status')) )
-        {            
-            $posts = $this->user->allUser($limit,$start,$order,$dir);
-        }
-        else {
-            $search = $this->post('search'); 
+        $totalFiltered = $totalData;
+
+        if (empty($this->post('search')) && empty($this->post('typeUser')) && empty($this->post('status'))) {
+            $posts = $this->user->allUser($limit, $start, $order, $dir);
+        } else {
+            $search = $this->post('search');
             $userType = $this->post('typeUser');
             $status = $this->post('status');
 
-            $posts =  $this->user->user_search($limit,$start,$search, $userType, $status, $order,$dir);
+            $posts = $this->user->user_search($limit, $start, $search, $userType, $status, $order, $dir);
 
             $totalFiltered = $this->user->user_search_count($search, $userType, $status);
         }
 
         $data = array();
-        if(!empty($posts))
-        {
-            foreach ($posts as $post)
-            {
+        if (!empty($posts)) {
+            foreach ($posts as $post) {
                 $nestedData['id'] = $post->id;
                 $nestedData['username'] = $post->username;
                 $nestedData['phone'] = $post->phone;
                 $nestedData['email'] = $post->email;
-                switch($post->category){
-                    case 1 : $nestedData['category'] ="ผู้ดูแลระบบ";break;
-                    case 2 : $nestedData['category'] ="ร้านอะไหล่";break;
-                    case 3 : $nestedData['category'] ="อู่";break;
-                    case 4 : $nestedData['category'] ="ผู้ใช้งาน";break;
-                    default  : $nestedData['category'] = null;break;
+                switch ($post->category) {
+                    case 1:$nestedData['category'] = "ผู้ดูแลระบบ";
+                        break;
+                    case 2:$nestedData['category'] = "ร้านอะไหล่";
+                        break;
+                    case 3:$nestedData['category'] = "อู่";
+                        break;
+                    case 4:$nestedData['category'] = "ผู้ใช้งาน";
+                        break;
+                    default:$nestedData['category'] = null;
+                        break;
                 }
                 $nestedData['status'] = $post->status;
 
@@ -69,62 +71,62 @@ class Usermanagement extends BD_Controller {
         }
 
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $data   
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data,
         );
 
         $this->set_response($json_data);
     }
 
-    function delete_get(){
+    public function delete_get()
+    {
         $id = $this->get('id');
-    
+
         $user = $this->user->getUser($id);
-        if($user != null){
+        if ($user != null) {
             $isDelete = $this->user->delete($id);
-            if($isDelete){
+            if ($isDelete) {
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
+            } else {
                 $output["message"] = REST_Controller::MSG_BE_USED;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }else{
+        } else {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
 
-
-    function create_post(){
+    public function create_post()
+    {
 
         $username = $this->post('username');
         $email = $this->post('email');
         $phone = $this->post('phoneNumber');
         $password = password_hash("password", PASSWORD_BCRYPT);
 
-        $data_check = $this->user->data_check_create($username,$phone);
-        if($data_check == null){
+        $data_check = $this->user->data_check_create($username, $phone);
+        if ($data_check == null) {
             $data = array(
                 'id' => null,
                 'username' => $username,
-                'email' => (empty($email))?null:$email,
+                'email' => (empty($email)) ? null : $email,
                 'phone' => $phone,
-                'password' => $password, 
-                'category' => null
+                'password' => $password,
+                'category' => null,
             );
             $result = $this->user->insert_user($data);
-            if($result){
+            if ($result) {
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
+            } else {
                 $output["message"] = REST_Controller::MSG_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }
-        else{
+        } else {
             $output["status"] = false;
             $output["data"] = "username หรือ เบอร์โทรศัพท์ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
@@ -133,14 +135,15 @@ class Usermanagement extends BD_Controller {
 
     }
 
-    function userTypeAndData_post(){
-        $role = (int)$this->post("role");
+    public function userTypeAndData_post()
+    {
+        $role = (int) $this->post("role");
 
         $config['allowed_types'] = 'gif|jpg|png';
         // $config['max_size'] = '100';
-        $config['overwrite'] = TRUE;
-        $config['encrypt_name'] = TRUE;
-        $config['remove_spaces'] = TRUE;
+        $config['overwrite'] = true;
+        $config['encrypt_name'] = true;
+        $config['remove_spaces'] = true;
 
         $firstname = $this->post("firstname");
         $lastname = $this->post("lastname");
@@ -153,7 +156,7 @@ class Usermanagement extends BD_Controller {
         $titleName = $this->post("titleName");
         $userId = $this->post("userId");
         $currentUser = $this->session->userdata['logged_in']['id'];
-    
+
         $profileData = array(
             'user_profile' => null,
             'titleName' => $titleName,
@@ -161,18 +164,18 @@ class Usermanagement extends BD_Controller {
             'lastname' => $lastname,
             'status' => 1,
             'address' => $address,
-            'phone1' => $phone1, 
+            'phone1' => $phone1,
             'phone2' => $phone2,
-            'provinceId' => $provinceId, 
+            'provinceId' => $provinceId,
             'districtId' => $districtId,
             'subdistrictId' => $subdistrictId,
             'create_by' => $currentUser,
-            'create_at' => date('Y-m-d H:i:s',time()),
-            'userId' => $userId
+            'create_at' => date('Y-m-d H:i:s', time()),
+            'userId' => $userId,
         );
 
-        if($role == 3){
-            $path = 'public/image/garage/'.$userId;
+        if ($role == 3) {
+            $path = 'public/image/garage/' . $userId;
             // mkdir($path);
             $config['upload_path'] = $path;
 
@@ -201,26 +204,26 @@ class Usermanagement extends BD_Controller {
 
             $this->load->library('upload', $config);
 
-            if($garagePicture != "undefined"){
-                if ( ! $this->upload->do_upload("garagePicture")){
+            if ($garagePicture != "undefined") {
+                if (!$this->upload->do_upload("garagePicture")) {
                     $error = array('error' => $this->upload->display_errors());
                     $output["message"] = REST_Controller::MSG_ERROR;
                     $output["data"] = $error;
                     $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
+                } else {
                     $imageDetailArray = $this->upload->data();
-                    $garagePictureName =  $imageDetailArray['file_name'];
-                }      
+                    $garagePictureName = $imageDetailArray['file_name'];
+                }
             }
 
             $roleData = array(
                 'garageName' => $garageName,
                 'businessRegistration' => $businessRegistration,
-                'provinceId' => $gprovinceId, 
+                'provinceId' => $gprovinceId,
                 'districtId' => $gdistrictId,
                 'subdistrictId' => $gsubdistrictId,
                 'garageAddress' => $garageAddress,
-                'postCode'=> $postCode,
+                'postCode' => $postCode,
                 'latitude' => $latitude,
                 'longtitude' => $longtitude,
                 'comment' => $comment,
@@ -229,7 +232,7 @@ class Usermanagement extends BD_Controller {
                 'option3' => $option3,
                 'option4' => $option4,
                 'option_outher' => $option_outher,
-                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_at' => date('Y-m-d H:i:s', time()),
                 'update_at' => null,
                 'create_by' => $currentUser,
                 'update_by' => null,
@@ -240,9 +243,9 @@ class Usermanagement extends BD_Controller {
                 'lastname' => $lastnameGarage,
                 'idcard' => $idcardGarage,
                 'addressGarage' => $addressGarage,
-                'userId' => $userId
+                'userId' => $userId,
             );
-        }else if($role == 2){
+        } else if ($role == 2) {
             $car_accessoriesName = $this->post("car_accessoriesName");
             $businessRegistrationAccessories = $this->post("businessRegistrationAccessories");
             $sparepart_firstname = $this->post("sparepart-firstname");
@@ -258,7 +261,7 @@ class Usermanagement extends BD_Controller {
                 'car_accessoriesName' => $car_accessoriesName,
                 'businessRegistration' => $businessRegistrationAccessories,
                 'userId' => $userId,
-                'create_at' => date('Y-m-d H:i:s',time()),
+                'create_at' => date('Y-m-d H:i:s', time()),
                 'create_by' => $currentUser,
                 'update_at' => null,
                 'update_by' => null,
@@ -272,7 +275,7 @@ class Usermanagement extends BD_Controller {
                 'districtId' => $sparepart_districtId,
                 'subdistrictId' => $sparepart_subdistrictId,
             );
-        }else if($role == 4){
+        } else if ($role == 4) {
             $path = "public/image/profile/$userId";
             mkdir($path);
             $config['upload_path'] = $path;
@@ -290,39 +293,39 @@ class Usermanagement extends BD_Controller {
             $pictureFrontName = null;
             $pictureBackName = null;
             $circlePlateName = null;
-            if($frontPicture != "undefined"){
-                if ( ! $this->upload->do_upload("frontPicture")){
+            if ($frontPicture != "undefined") {
+                if (!$this->upload->do_upload("frontPicture")) {
                     $error = array('error' => $this->upload->display_errors());
                     $output["message"] = REST_Controller::MSG_ERROR;
                     $output["data"] = $error;
                     $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
+                } else {
                     $imageDetailArray = $this->upload->data();
-                    $pictureFrontName =  $imageDetailArray['file_name'];
-                }      
-            }
-
-            if($backPicture != "undefined"){
-                if ( ! $this->upload->do_upload("backPicture")){
-                    $error = array('error' => $this->upload->display_errors());
-                    $output["message"] = REST_Controller::MSG_ERROR;
-                    $output["data"] = $error;
-                    $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
-                    $imageDetailArray = $this->upload->data();
-                    $pictureBackName =  $imageDetailArray['file_name'];
+                    $pictureFrontName = $imageDetailArray['file_name'];
                 }
             }
 
-            if($circlesignPicture != "undefined"){
-                if ( ! $this->upload->do_upload("circlesignPicture")){
+            if ($backPicture != "undefined") {
+                if (!$this->upload->do_upload("backPicture")) {
                     $error = array('error' => $this->upload->display_errors());
                     $output["message"] = REST_Controller::MSG_ERROR;
                     $output["data"] = $error;
                     $this->set_response($output, REST_Controller::HTTP_OK);
-                }else{
+                } else {
                     $imageDetailArray = $this->upload->data();
-                    $circlePlateName =  $imageDetailArray['file_name'];
+                    $pictureBackName = $imageDetailArray['file_name'];
+                }
+            }
+
+            if ($circlesignPicture != "undefined") {
+                if (!$this->upload->do_upload("circlesignPicture")) {
+                    $error = array('error' => $this->upload->display_errors());
+                    $output["message"] = REST_Controller::MSG_ERROR;
+                    $output["data"] = $error;
+                    $this->set_response($output, REST_Controller::HTTP_OK);
+                } else {
+                    $imageDetailArray = $this->upload->data();
+                    $circlePlateName = $imageDetailArray['file_name'];
                 }
             }
             $roleData = array(
@@ -330,7 +333,7 @@ class Usermanagement extends BD_Controller {
                 "pictureFront" => $pictureFrontName,
                 "pictureBack" => $pictureBackName,
                 "circlePlate" => $circlePlateName,
-                "create_at" => date('Y-m-d H:i:s',time()),
+                "create_at" => date('Y-m-d H:i:s', time()),
                 "create_by" => $currentUser,
                 "userId" => $userId,
                 "update_at" => null,
@@ -339,14 +342,14 @@ class Usermanagement extends BD_Controller {
                 "character_plate" => $characterPlate,
                 "number_plate" => $numberPlate,
                 "province_plate" => $provincePlate,
-                "color" => $colorCar
+                "color" => $colorCar,
             );
-        }else{
+        } else {
             $roleData = null;
         }
 
         $result = $this->profile->saveProfileRoleUser($role, $userId, $profileData, $roleData);
-        if($result){
+        if ($result) {
             // $this->load->model("User");
             // $userData = $this->User->getuserById($currentUser);
             // $sess_array = array(
@@ -357,7 +360,7 @@ class Usermanagement extends BD_Controller {
             // );
             // $this->session->set_userdata('logged_in', $sess_array);
             $output["message"] = REST_Controller::MSG_SUCCESS;
-        }else{
+        } else {
             $output["message"] = REST_Controller::MSG_ERROR;
         }
         $output['userId'] = $userId;
@@ -365,92 +368,95 @@ class Usermanagement extends BD_Controller {
 
     }
 
-    function changeStatus_post(){
+    public function changeStatus_post()
+    {
         $id = $this->post("id");
         $status = $this->post("status");
-        if($status == 1){
+        if ($status == 1) {
             $status = 2;
-        }else{
+        } else {
             $status = 1;
         }
         $data = array(
-            'status' => $status
+            'status' => $status,
         );
-        $result = $this->user->updateStatus($id,$data);
-        if($result){
+        $result = $this->user->updateStatus($id, $data);
+        if ($result) {
             $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
+        } else {
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
-    function getuser_post(){
+    public function getuser_post()
+    {
 
         $id = $this->post('id');
         $isCheck = $this->user->check_User($id);
 
-        if($isCheck){
+        if ($isCheck) {
             $output["status"] = true;
             $result = $this->user->getuserById($id);
-            if($result != null){
+            if ($result != null) {
                 $output["data"] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
-            }else{
+            } else {
                 $output["status"] = false;
                 $output["message"] = REST_Controller::MSG_BE_DELETED;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }else{
+        } else {
             $output["status"] = false;
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
 
-    function updateUser_post(){
+    public function updateUser_post()
+    {
 
         $id = $this->post('id');
         $username = $this->post('username');
         $phone = $this->post('phone');
         $email = $this->post('email');
         $userId = $this->session->userdata['logged_in']['id'];
-        $result = $this->user->wherenotUser($id,$username);
+        $result = $this->user->wherenotUser($id, $username);
 
-        if($result){
+        if ($result) {
             $data = array(
                 'id' => $id,
                 'username' => $username,
                 'phone' => $phone,
                 'email' => $email,
-                'update_at' => date('Y-m-d H:i:s',time()),
-                'update_by' => $userId
+                'update_at' => date('Y-m-d H:i:s', time()),
+                'update_by' => $userId,
             );
             $result = $this->user->updateUser($data);
             $output["status"] = $result;
-            if($result){
+            if ($result) {
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
-            }
-            else{
+            } else {
                 $output["status"] = false;
                 $output["message"] = REST_Controller::MSG_NOT_UPDATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
-        }else{
+        } else {
             $output["message"] = REST_Controller::MSG_UPDATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_OK);
         }
     }
 
-    function getusers_post(){
+    public function getusers_post()
+    {
 
         $userId = $this->post('userId');
         $user = $this->user->getUser($userId);
-        if($user != null){
+        if ($user != null) {
             $result = $this->profile->findUserProfileByIdAndStatusActive($userId);
-            if($result != null){
+            if ($result != null) {
                 $result->provinceName = $this->location->getProvinceNameByProvinceId($result->provinceId);
                 $result->districtName = $this->location->getDistrictNameByDistrictId($result->districtId);
                 $result->subdistrictName = $this->location->getSubDistrictBySubDistrictId($result->subdistrictId);
@@ -459,10 +465,10 @@ class Usermanagement extends BD_Controller {
             // $result->create_at = date_format($date,"d/m/Y H:i:s");
             $output["profile"] = $result;
             $output["role"] = $user->category;
-            $output["other"] = $this->getUserData((int)$user->category, $userId);
+            $output["other"] = $this->getUserData((int) $user->category, $userId);
             $output["message"] = REST_Controller::MSG_SUCCESS;
             $this->set_response($output, REST_Controller::HTTP_OK);
-        }else{
+        } else {
             $output["status"] = false;
             $output["message"] = REST_Controller::MSG_BE_DELETED;
             $this->set_response($output, REST_Controller::HTTP_OK);
@@ -470,29 +476,30 @@ class Usermanagement extends BD_Controller {
 
     }
 
-    function getUserData($role, $userId){
+    public function getUserData($role, $userId)
+    {
         $this->load->model("garage");
         $this->load->model("caraccessories");
         $data = null;
-        if($role == 4){
+        if ($role == 4) {
             $data = $this->user->getdataCar_profileById($userId);
             $data->provincePlateName = $this->location->getProvinceNamePlateByProvinceId($data->province_plate);
-        }else if($role == 3){
+        } else if ($role == 3) {
             // อู่
             $data = $this->garage->getGarageFromGarageByUserId($userId);
             $data->provinceName = $this->location->getProvinceNameByProvinceId($data->provinceId);
             $data->districtName = $this->location->getDistrictNameByDistrictId($data->districtId);
             $data->subdistrictName = $this->location->getSubDistrictBySubDistrictId($data->subdistrictId);
-        }else if($role == 2){
+        } else if ($role == 2) {
             // ร้านอะไหล่
             $data = $this->caraccessories->getCarAccessoriesFromCarAccessoriesByUserId($userId);
             $data->provinceName = $this->location->getProvinceNameByProvinceId($data->provinceId);
             $data->districtName = $this->location->getDistrictNameByDistrictId($data->districtId);
             $data->subdistrictName = $this->location->getSubDistrictBySubDistrictId($data->subdistrictId);
-        }else{
+        } else {
             $data = null;
         }
         return $data;
     }
-     
+
 }
