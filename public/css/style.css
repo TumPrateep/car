@@ -576,9 +576,16 @@ select.form-control:not([size]):not([multiple]) {
     border-right: 1px solid #e5e5e5;
 }
 
+#ht-banner {
+    margin: -15px -15px -15px 0px;
+}
+
 @media (max-width: 1024px) {
     .main-nav .navbar-brand {
         padding: 20px 30px;
+    }
+    #ht-banner {
+        margin: 10px -15px -15px 0px;
     }
 }
 
@@ -3739,4 +3746,11 @@ select.sortby {
 
 a.text-orange {
     color: rgba(255, 102, 0, 1);
+}
+
+.pt-main-search {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
 }

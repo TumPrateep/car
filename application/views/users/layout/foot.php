@@ -19,7 +19,7 @@
   <script>
 var base_url = '<?=base_url()?>';
   </script>
-  <script src="<?=base_url("/public/themes/user/js/setup.js")?>"></script>
+  <script src="<?=base_url("/public/themes/user/js/setup.js")?>?<?php echo time(); ?>"></script>
   <script>
 function distance(lat1, lon1, lat2, lon2, unit) {
     if (lat1 > 0 && lat2 > 0 && lon1 > 0 && lon2 > 0) {

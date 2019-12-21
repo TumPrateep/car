@@ -11,6 +11,8 @@ $(document).ready(function() {
     var tire_rim = $("#rimId");
     var tire_size = $("#tire_sizeId");
 
+    focus('tire-search');
+
     $("#car-search").validate({
         rules: {
             brandId: {

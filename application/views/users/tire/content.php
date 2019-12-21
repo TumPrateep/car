@@ -1,55 +1,67 @@
 <style>
-    *, ::after, ::before {
-        box-sizing: border-box;
-    }
-    ul.pagination li a {
-        font-size: 13px;
-    }
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
 
-    table > thead {
-        display: none;
-    }
-    .btn-result{
-        padding: 7px 7px 7px 7px;
-    }
-    div.brand img {
-        margin: 45px 0px 0px 0px;
-        width: 100%;
-        height: auto;
-    }
-    .card-body.order{
-        background-color: #ff6600;
-        color: aliceblue;
-        padding: 0.5rem;
-    }
-    .card.pointer{
-        cursor: pointer;
-    }
-    .order > h5 {
-        color: white !important;
-    }
-    .footer.order {
-        background-color: #343a40;
-        color: white;
-    }
-    .detail{
-        width: -webkit-fill-available !important;
-    }
+ul.pagination li a {
+    font-size: 13px;
+}
+
+table>thead {
+    display: none;
+}
+
+.btn-result {
+    padding: 7px 7px 7px 7px;
+}
+
+div.brand img {
+    margin: 45px 0px 0px 0px;
+    width: 100%;
+    height: auto;
+}
+
+.card-body.order {
+    background-color: #ff6600;
+    color: aliceblue;
+    padding: 0.5rem;
+}
+
+.card.pointer {
+    cursor: pointer;
+}
+
+.order>h5 {
+    color: white !important;
+}
+
+.footer.order {
+    background-color: #343a40;
+    color: white;
+}
+
+.detail {
+    width: -webkit-fill-available !important;
+}
 </style>
 <section class="section pricing" id="search">
     <div class="container">
-        <div id="boby"> 
-            
+        <div id="boby">
+
             <div class="row">
-                    <div class="col-md-12">
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a class="nav-link <?=$cardata?>" data-target="#searchFromCar" data-toggle="tab" href="#searchFromCar">ค้นหาจากข้อมูลรถ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link <?=$tiredata?>" data-target="#searchFromTire" data-toggle="tab" href="#searchFromTire">ค้นหาจากข้อมูลยาง</a>
-                            </li>
-                        </ul>
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link <?=$cardata?>" data-target="#searchFromCar" data-toggle="tab"
+                                href="#searchFromCar">ค้นหาจากข้อมูลรถ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?=$tiredata?>" data-target="#searchFromTire" data-toggle="tab"
+                                href="#searchFromTire">ค้นหาจากข้อมูลยาง</a>
+                        </li>
+                    </ul>
                     <div class="tab-content">
                         <input type="hidden" name="t_brandId" id="t_brandId" value="<?=$brandId?>">
                         <input type="hidden" name="t_model_name" id="t_model_name" value="<?=$model_name?>">
@@ -61,7 +73,7 @@
                         <input type="hidden" name="t_rimId" id="t_rimId" value="<?=$rimId?>">
                         <input type="hidden" name="t_tire_sizeId" id="t_tire_sizeId" value="<?=$tire_sizeId?>">
 
-                        <div class="tab-pane fade <?=(!empty($cardata)?'show active':'')?>" id="searchFromCar">
+                        <div class="tab-pane fade <?=(!empty($cardata) ? 'show active' : '')?>" id="searchFromCar">
                             <br>
                             <form id="car-search">
                                 <div class="row">
@@ -81,7 +93,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <select class="form-control main" id="year" name="year"> 
+                                            <select class="form-control main" id="year" name="year">
                                                 <option value="">ปีที่ผลิต</option>
                                             </select>
                                         </div>
@@ -94,9 +106,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>    
+                            </form>
                         </div>
-                        <div class="tab-pane fade  <?=(!empty($tiredata)?'show active':'')?>" id="searchFromTire">
+                        <div class="tab-pane fade  <?=(!empty($tiredata) ? 'show active' : '')?>" id="searchFromTire">
                             <br>
                             <form id="tire-search">
                                 <div class="row">
@@ -129,7 +141,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>    
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -139,18 +151,20 @@
                 <div class="col-md-8">
                     <div id="tag-show"></div>
                 </div>
-                <div class="col-md-4">    
+                <div class="col-md-4">
                     <div class="justify-content-end">
                         <div class="text-right">
-                            <button class="btn btn-transparent-md" id="btn-car-search"><i class="fa fa-search"></i> ค้นหา</button>
-                            <button class="btn btn-transparent-md" id="btn-clear"><i class="fa fa-eraser"></i>ล้างคำค้นหา</button>
+                            <button class="btn btn-transparent-md" id="btn-car-search"><i class="fa fa-search"></i>
+                                ค้นหา</button>
+                            <button class="btn btn-transparent-md" id="btn-clear"><i
+                                    class="fa fa-eraser"></i>ล้างคำค้นหา</button>
                         </div>
                     </div>
                 </div>
-            </div>        
+            </div>
             <br>
             <!-- <div class="row">
-                <a href="<?=base_url("search/tire/resultgarage") ?>" class="btn btn-transparent-md">
+                <a href="<?=base_url("search/tire/resultgarage")?>" class="btn btn-transparent-md">
                     ราคาดีที่สุด <br><br>
                     <div class="btn btn-dark"> <i class="fa fa-shopping-cart"></i> xxxxx ฿ </div>
                     <br><br> ค้นหาผู้ให้บริการ / สั่งสินค้า
@@ -159,10 +173,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h3>ค้นหา<span class="alternate">ยางรถยนต์</span></h3> 
+                        <h3>ค้นหา<span class="alternate">ยางรถยนต์</span></h3>
                     </div>
                 </div>
             </div>
+
             <div class="row justify-content-end">
                 <span class="text"> จัดเรียง:</span>
                 <div class="col-md-2">
@@ -179,6 +194,7 @@
             <br>
 
             <div class="borderTB">
+                <a name="tire"></a>
                 <table class="" id="tire-table" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -186,7 +202,7 @@
                         </tr>
                     </thead>
                 </table>
-            </div>  
+            </div>
         </div>
-    </div>            
+    </div>
 </section>

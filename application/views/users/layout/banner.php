@@ -53,9 +53,9 @@ img {
     transition: background-color 0.6s ease;
 }
 
-.active {
+/* .active {
     background-color: #717171;
-}
+} */
 
 /* Fading animation */
 .fade {
@@ -136,7 +136,7 @@ img {
                 </div>
             </div>
             <div class="col-md-7">
-                <div class="row" style="margin: -15px -15px -15px 0px;">
+                <div class="row" id="ht-banner">
                     <div class="col-md-12 text-center">
                         <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
                             <div class="carousel-inner"></div>

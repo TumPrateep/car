@@ -11,7 +11,7 @@ $(document).ready(function() {
     var tire_size = $("#tire_sizeId");
 
     var table;
-
+    focus('tire-search');
     function clearCarData() {
         brand.val('');
         model.val('');
