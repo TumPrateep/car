@@ -1,29 +1,32 @@
 <?php
 //ยี่ห้อยาง นะ
-defined('BASEPATH') OR exit('No direct script access allowed');
-class Tiredata extends BD_Controller {
-    function __construct()
+defined('BASEPATH') or exit('No direct script access allowed');
+class Tiredata extends BD_Controller
+{
+    public function __construct()
     {
         // Construct the parent class
         parent::__construct();
         // $this->auth();
         $this->load->model("tiredatas");
     }
-    public function delete_get(){
+    public function delete_get()
+    {
         $tire_dataId = $this->get('tire_dataId');
         $data_check = $this->tiredatas->getTireDatasbyId($tire_dataId);
         $option = [
             "data_check_delete" => $data_check,
             "data" => $tire_dataId,
             "model" => $this->tiredatas,
-            "image_path" => null
+            "image_path" => null,
         ];
 
         $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
 
     }
 
-    public function create_post(){
+    public function create_post()
+    {
         $rimId = $this->post('rimId');
         $tire_sizeId = $this->post('tireSizeId');
         $tire_brandId = $this->post('tireBrandId');
@@ -36,17 +39,16 @@ class Tiredata extends BD_Controller {
         // $can_change = $this->post('can_change');
         $userId = $this->session->userdata['logged_in']['id'];
         $car_accessoriesId = $userId;
-        
-           
+
         // $data_check = $this->tiredatas->data_check_create($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId);
-        //  บันทึกยกชุด หมุนอาเรเอา 
+        //  บันทึกยกชุด หมุนอาเรเอา
         $data = [
             'tire_sizeId' => $tire_sizeId,
             'price' => $price,
             'warranty' => $warranty,
             'warranty_year' => $warranty_year,
             'warranty_distance' => $warranty_distance,
-            'warranty' => $warranty
+            'warranty' => $warranty,
         ];
 //$data['model']  model แค่ชื่อ index เฉย
         $data['model'] = array(
@@ -57,20 +59,21 @@ class Tiredata extends BD_Controller {
             'status' => 1,
             'activeFlag' => 1,
             'create_by' => $userId,
-            'create_at'=>date('Y-m-d H:i:s',time())
+            'create_at' => date('Y-m-d H:i:s', time()),
         );
         $option = [
             "data_check" => null,
             "data" => $data,
             "model" => $this->tiredatas,
-            "image_path" => null
+            "image_path" => null,
         ];
 
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
-        
+
     }
 
-    public function update_post(){
+    public function update_post()
+    {
         $tire_dataId = $this->post('tire_dataId');
         $rimId = $this->post('rimId');
         $tire_sizeId = $this->post('tire_sizeId');
@@ -96,7 +99,7 @@ class Tiredata extends BD_Controller {
 
         $userId = $this->session->userdata['logged_in']['id'];
         $data_check_update = $this->tiredatas->getTireDatasbyId($tire_dataId);
-        $data_check = $this->tiredatas->data_check_update($tire_brandId,$tire_modelId,$tire_sizeId,$rimId,$car_accessoriesId,$tire_dataId);
+        $data_check = $this->tiredatas->data_check_update($tire_brandId, $tire_modelId, $tire_sizeId, $rimId, $car_accessoriesId, $tire_dataId);
         $data = array(
             'tire_dataId' => $tire_dataId,
             'tire_brandId' => $tire_brandId,
@@ -105,13 +108,13 @@ class Tiredata extends BD_Controller {
             'rimId' => $rimId,
             'car_accessoriesId' => $car_accessoriesId,
             'update_by' => $userId,
-            'update_at'=>date('Y-m-d H:i:s',time()),
+            'update_at' => date('Y-m-d H:i:s', time()),
             'price' => $price,
             'warranty' => $warranty,
             'warranty_year' => $warranty_year,
             'warranty_distance' => $warranty_distance,
             'warranty' => $warranty,
-            'can_change' =>$can_change,
+            'can_change' => $can_change,
             // 'tire_picture' => $imageName
         );
 
@@ -121,29 +124,29 @@ class Tiredata extends BD_Controller {
             "data" => $data,
             "model" => $this->tiredatas,
             "image_path" => null,
-            "old_image_path" => null
+            "old_image_path" => null,
         ];
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
 
-        
     }
 
-    function getTireData_get(){
+    public function getTireData_get()
+    {
         $tire_dataId = $this->get('tire_dataId');
         $data_check = $this->tiredatas->getUpdate($tire_dataId);
         $option = [
-            "data_check" => $data_check
+            "data_check" => $data_check,
         ];
         $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
     }
 
-    function search_post(){
-        $columns = array( 
-            0 => null,
-            1 => 'tire_brandName', 
-            2 => 'tire_modelName',
-            3 => 'tire_size',
-            4 => 'price'
+    public function search_post()
+    {
+        $columns = array(
+            0 => 'tire_brandName',
+            1 => 'tire_modelName',
+            2 => 'tire_size',
+            3 => 'price',
         );
 
         $limit = $this->post('length');
@@ -153,33 +156,26 @@ class Tiredata extends BD_Controller {
         $userId = $this->session->userdata['logged_in']['id'];
 
         $totalData = $this->tiredatas->allTire_count($userId);
-        $totalFiltered = $totalData; 
-        if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')))
-        {            
-            $posts = $this->tiredatas->allTires($limit,$start,$order,$dir,$userId);
-        }
-        else {
-            // $search = $this->post('brandName'); 
+        $totalFiltered = $totalData;
+        if (empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('tire_size'))) {
+            $posts = $this->tiredatas->allTires($limit, $start, $order, $dir, $userId);
+        } else {
+            // $search = $this->post('brandName');
             $tire_brandId = $this->post('tire_brandId');
             $tire_modelId = $this->post('tire_modelId');
-            $rimId = $this->post('rimId');
-            $tire_sizeId = $this->post('tire_sizeId');
-            $price = $this->post('price');
-            $can_change = $this->post('can_change');
-            
-            $status = null; 
-            $posts =  $this->tiredatas->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$userId);
+            $tire_size = $this->post('tire_size');
 
-            $totalFiltered = $this->tiredatas->TireDatas_search_count($tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change, $userId);
+            $status = null;
+            $posts = $this->tiredatas->tireData_search($limit, $start, $order, $dir, $tire_brandId, $tire_modelId, $tire_size, $userId);
+
+            $totalFiltered = $this->tiredatas->TireDatas_search_count($tire_brandId, $tire_modelId, $tire_size, $userId);
         }
 
         $data = array();
-        if(!empty($posts))
-        {
+        if (!empty($posts)) {
             $count = 0;
-            foreach ($posts as $post)
-            {
-                
+            foreach ($posts as $post) {
+
                 $nestedData['tire_dataId'] = $post->tire_dataId;
                 $nestedData['rimName'] = $post->rimName;
                 $nestedData['tire_size'] = $post->tire_size;
@@ -210,35 +206,35 @@ class Tiredata extends BD_Controller {
         }
 
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $data   
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data,
         );
-
 
         $this->set_response($json_data);
 
     }
-    function changeStatus_post(){
+    public function changeStatus_post()
+    {
         $tire_dataId = $this->post("tire_dataId");
         $status = $this->post("status");
-        if($status == 1){
+        if ($status == 1) {
             $status = 2;
-        }else{
+        } else {
             $status = 1;
         }
 
         $data_check_update = $this->tiredatas->getTireDatasbyId($tire_dataId);
         $data = array(
             'tire_dataId' => $tire_dataId,
-            'status' => $status
+            'status' => $status,
         );
 
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->tiredatas
+            "model" => $this->tiredatas,
         ];
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);

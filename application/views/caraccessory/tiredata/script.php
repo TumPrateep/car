@@ -1,4 +1,42 @@
 <script>
+var tireBrand = $("#tire_brandId");
+var tireModel = $("#tire_modelId");
+
+getTireBrand();
+
+function getTireBrand() {
+    $.get(base_url + "apicaraccessories/Tirebrand/getAllTireBrand", {},
+        function(data) {
+            var brandData = data.data;
+            $.each(brandData, function(key, value) {
+                tireBrand.append('<option value="' + value.tire_brandId + '">' + value.tire_brandName +
+                    '</option>');
+            });
+            tireBrand.val();
+            getTireModel();
+        }
+    );
+}
+
+function getTireModel(modelId = null) {
+    var tireBrandId = tireBrand.val();
+    $.get(base_url + "apicaraccessories/Tiremodel/getAllTireModel", {
+        tire_brandId: tireBrandId
+    }, function(data) {
+        var tireModelData = data.data;
+        $.each(tireModelData, function(key, value) {
+            tireModel.append('<option value="' + value.tire_modelId + '">' + value.tire_modelName +
+                '</option>');
+        });
+        tireModel.val(modelId);
+    });
+}
+
+tireBrand.change(function() {
+    tireModel.html('<option value="">เลือกรุ่นยาง</option>');
+    getTireModel();
+});
+
 var table = $('#brand-table').DataTable({
     "language": {
         "aria": {
@@ -33,19 +71,13 @@ var table = $('#brand-table').DataTable({
         "data": function(data) {
             data.tire_brandId = $("#tire_brandId").val();
             data.tire_modelId = $("#tire_modelId").val();
-            data.rimId = $("#rimId").val();
-            data.tire_sizeId = $("#tire_sizeId").val();
-            data.price = $("#price").val();
-            data.can_change = $("#can_change").val();
-            data.sort = $("#sort").val();
+            data.tire_size = $("#tire_size").val();
         }
     },
     "order": [
-        [1, "asc"]
+        [0, "asc"]
     ],
-    "columns": [
-        null,
-        {
+    "columns": [{
             "data": "tire_brandName"
         },
         {
@@ -59,17 +91,10 @@ var table = $('#brand-table').DataTable({
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [0]
+            "targets": []
         },
         {
-            "targets": 0,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return meta.row + 1;
-            }
-        },
-        {
-            "targets": 4,
+            "targets": 3,
             "data": null,
             "render": function(data, type, full, meta) {
                 return currency(data.price, {
@@ -78,7 +103,7 @@ var table = $('#brand-table').DataTable({
             }
         },
         {
-            "targets": 5,
+            "targets": 4,
             "data": null,
             "render": function(data, type, full, meta) {
                 return '<a href="' + base_url + "caraccessory/tiredata/updatetiredata/" + data
@@ -91,11 +116,11 @@ var table = $('#brand-table').DataTable({
         },
         {
             "className": "dt-head-center",
-            "targets": [1]
+            "targets": [0]
         },
         {
             "className": "dt-center",
-            "targets": [0, 3, 4, 5]
+            "targets": [0, 2, 3, 4]
         }
     ]
 });
@@ -109,6 +134,11 @@ function deleteTireData(tireId, data_name) {
     }
     fnDelete(option);
 }
+
+$("#form-search").submit(function() {
+    event.preventDefault();
+    table.ajax.reload();
+})
 </script>
 
 </body>
