@@ -1,8 +1,8 @@
 <div class="page-wrapper">
-            <!-- Bread crumb -->
+    <!-- Bread crumb -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">ยืนยันการซ่อม</h3> 
+            <h3 class="text-primary">ยืนยันการซ่อม</h3>
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
@@ -16,7 +16,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="card col-lg-12">
-                <div class="row ">
+                <!-- <div class="row ">
                     <div class="col-lg-3 offset-lg-1 mt-8">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="วันที่" id="date">
@@ -42,32 +42,30 @@
                         </div>
                     </div>
                     <div class="col-lg-2">
-                        <button type="button" class="btn btn-info btn-block" id="search"><i class="fa fa-search"></i>  ค้นหา</i></button>
+                        <button type="button" class="btn btn-info btn-block" id="search"><i class="fa fa-search"></i>
+                            ค้นหา</i></button>
                     </div>
-                </div>
-            
+                </div> -->
+
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
                                 <thead>
-                                <th>ลำดับ</th>
-                                <th>หมายเลขการซ่อม</th>
-                                <th>วันที่จอง</th>
-                                <th>เวลา</th>
-                                <th>ผู้จอง</th>
-                                <th>สถานะ</th>
-                                <th></th>
-                                </thead>	
+                                    <th data-priority="1">หมายเลขสั่งซื้อ</th>
+                                    <th data-priority="3">วันที่จอง</th>
+                                    <th>ผู้จอง</th>
+                                    <th data-priority="2">สถานะ</th>
+                                </thead>
                             </table>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
-        </div>  			
+        </div>
     </div>
     <!-- Pop-up -->
-    <div class="modal fade" id="update-mileage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+    <div class="modal fade" id="update-mileage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog modal-lg model-Width-sm appove" id="maxWidthSelect" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -84,16 +82,20 @@
                                 <div class="row p-t-20">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                        <span><h5><b>ระบุเลขไมล์</b></h5></span><br>
+                                            <span>
+                                                <h5><b>ระบุเลขไมล์</b></h5>
+                                            </span><br>
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control"  id="mileage_carprofile" name="mileage_carprofile">
+                                                <input type="text" class="form-control" id="mileage_carprofile"
+                                                    name="mileage_carprofile">
                                             </div>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                                 <div class="modal-footer">
-                                    <button type="submit"  class="btn btn-success"> บันทึก</button>
-                                    <button type="button" class="btn btn-default" onclick="confirmStatus('+data.orderId+') data-dismiss="modal"> ปิด</button>
+                                    <button type="submit" class="btn btn-success"> บันทึก</button>
+                                    <button type="button" class="btn btn-default"
+                                        onclick="confirmStatus('+data.orderId+') data-dismiss=" modal"> ปิด</button>
                                 </div>
                             </div>
                         </div>
@@ -101,6 +103,6 @@
                 </div>
             </div>
         </div>
-    </div>           <!-- End PAge Content -->
+    </div> <!-- End PAge Content -->
 </div>
-            <!-- End Container fluid  -->
+<!-- End Container fluid  -->

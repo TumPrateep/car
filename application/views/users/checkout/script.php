@@ -239,22 +239,19 @@ $(document).ready(function() {
         }
     });
 
-    function readFile() {
-        if (this.files && this.files[0]) {
-            var FR = new FileReader();
-            FR.addEventListener("load", function(e) {
-                $("#slip").val(e.target.result);
-            });
-            FR.readAsDataURL(this.files[0]);
-        }
-    }
-
-    document.getElementById("slipfile").addEventListener("change", readFile);
+    $('.image-editor').cropit({
+        allowDragNDrop: false,
+        width: 300,
+        height: 533,
+        type: 'image/jpeg'
+    });
 
     $("#form-rent").submit(function(e) {
         e.preventDefault();
         var isvalid = $(this).valid();
         if (isvalid) {
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
             var myform = document.getElementById("form-rent");
             var formData = new FormData(myform);
             $.each(service_data, function(i, v) {

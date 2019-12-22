@@ -33,11 +33,9 @@ var table = $('#changes-table').DataTable({
         }
     },
     "order": [
-        [2, "asc"]
+        [0, "asc"]
     ],
     "columns": [
-        null,
-        null,
         null,
         {
             "data": "quantity"
@@ -67,31 +65,32 @@ var table = $('#changes-table').DataTable({
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [0, 1, 4]
+            "targets": [1, 2]
         },
+        // {
+        //     "targets": 0,
+        //     "data": null,
+        //     "render": function(data, type, full, meta) {
+        //         return meta.row + 1;
+        //     }
+        // }, {
+        //     "targets": 1,
+        //     "data": null,
+        //     "render": function(data, type, full, meta) {
+        //         var imgPath = picturePath;
+        //         var group = data.group;
+        //         if (group == "tire") {
+        //             imgPath += "tireproduct/";
+        //         } else if (group == "lubricator") {
+        //             imgPath += "lubricatorproduct/";
+        //         } else {
+        //             imgPath += "spareproduct/";
+        //         }
+        //         return '<img src="' + imgPath + data.data.picture + '" width="100" />';
+        //     }
+        // },
         {
             "targets": 0,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return meta.row + 1;
-            }
-        }, {
-            "targets": 1,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                var imgPath = picturePath;
-                var group = data.group;
-                if (group == "tire") {
-                    imgPath += "tireproduct/";
-                } else if (group == "lubricator") {
-                    imgPath += "lubricatorproduct/";
-                } else {
-                    imgPath += "spareproduct/";
-                }
-                return '<img src="' + imgPath + data.data.picture + '" width="100" />';
-            }
-        }, {
-            "targets": 2,
             "data": null,
             "render": function(data, type, full, meta) {
                 var html = "";
@@ -113,7 +112,7 @@ var table = $('#changes-table').DataTable({
                 return html;
             }
         }, {
-            "targets": 4,
+            "targets": 2,
             "data": null,
             "render": function(data, type, full, meta) {
                 return '<button type="button" class="btn btn-success" ' + '  onclick="updateStatus(' +
@@ -122,7 +121,7 @@ var table = $('#changes-table').DataTable({
         },
         {
             "className": "dt-center",
-            "targets": [0, 1, 2, 3, 4]
+            "targets": [0, 1, 2]
         }
     ]
 

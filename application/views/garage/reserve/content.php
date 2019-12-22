@@ -1,3 +1,4 @@
+<!-- Page wrapper  -->
 <div class="page-wrapper">
     <!-- Bread crumb -->
     <div class="row page-titles">
@@ -11,7 +12,6 @@
             </ol>
         </div>
     </div>
-    <!-- End Bread crumb -->
     <!-- Container fluid  -->
     <div class="container-fluid">
         <div class="row">
@@ -52,11 +52,10 @@
                         <div class="table-responsive">
                             <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
                                 <thead>
-                                    <th>หมายเลขสั่งซื้อ</th>
-                                    <th>วันที่-เวลาจอง</th>
+                                    <th data-priority="3">หมายเลขสั่งซื้อ</th>
+                                    <th data-priority="2">วันที่-เวลาจอง</th>
                                     <th>ผู้จอง</th>
-                                    <th>สถานะ</th>
-                                    <th></th>
+                                    <th data-priority="1">สถานะ</th>
                                 </thead>
                             </table>
                         </div>
@@ -68,3 +67,4 @@
         <!-- End PAge Content -->
     </div>
     <!-- End Container fluid  -->
+    </div>

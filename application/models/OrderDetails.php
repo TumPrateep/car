@@ -342,4 +342,12 @@ class Orderdetails extends CI_Model
         return $query->row();
     }
 
+    public function getDeliverStatus($orderId)
+    {
+        $this->db->where('orderId', $orderId);
+        $this->db->where('status', 3);
+        $query = $this->db->get('orderdetail');
+        return $query->row();
+    }
+
 }

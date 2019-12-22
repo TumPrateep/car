@@ -326,12 +326,12 @@
                                 <span class="nav-link-text">รายการสั่งซื้อสินค้า</span>
                             </a>
                         </li>
-                        <li class="<?=activate_menu('order');?>">
+                        <!-- <li class="<?=activate_menu('order');?>">
                             <a class="nav-link text-white" href="<?=base_url("admin/order")?>">
                                 <i class="fa fa-life-ring"></i>
                                 <span class="nav-link-text">รายการสั่งซื้อสินค้า</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
 

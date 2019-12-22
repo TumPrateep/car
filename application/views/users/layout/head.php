@@ -37,7 +37,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <style>
     .main-nav .navbar-brand {
-        padding: 0px 40px 0px 50px;
+        /* padding: 0px 40px 0px 50px; */
     }
 
     .about {

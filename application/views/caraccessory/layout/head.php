@@ -24,7 +24,7 @@
     <link href="<?=base_url("/public/css/bootstrap-slider.css")?>" rel="stylesheet">
     <link href="<?=base_url("/public/css/toggle-switch.css")?>" rel="stylesheet">
     <link rel="stylesheet" href="<?=base_url("/public/css/jquery.datetimepicker.min.css")?>">
-    <link href="<?=base_url("/public/themes/caraccessory/css/style.css")?>" rel="stylesheet">
+    <link href="<?=base_url("/public/themes/caraccessory/css/style.css")?>?<?php echo time(); ?>" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>

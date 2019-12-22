@@ -39,7 +39,6 @@ var table = $('#dt-table').DataTable({
     ],
     "columns": [
         null,
-        null,
         {
             "data": "quantity"
         },
@@ -71,29 +70,33 @@ var table = $('#dt-table').DataTable({
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [0, 1, 2, 3]
-        }, {
+            "targets": [0, 1, 2]
+        },
+        // {
+        //     "targets": 0,
+        //     "data": null,
+        //     "render": function(data, type, full, meta) {
+        //         if (data.orderId == lastOrder) {
+        //             lastCounter++;
+        //         } else {
+        //             lastOrder = data.orderId;
+        //             lastCounter = 1;
+        //         }
+        //         return lastCounter;
+        //     }
+        // },
+        {
             "targets": 0,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                if (data.orderId == lastOrder) {
-                    lastCounter++;
-                } else {
-                    lastOrder = data.orderId;
-                    lastCounter = 1;
-                }
-                return lastCounter;
-            }
-        }, {
-            "targets": 1,
             "data": null,
             "render": function(data, type, full, meta) {
                 var html = "";
                 var productData = data.data;
                 var group = data.group;
                 if (group == "tire") {
-                    html += "ยี่ห้อ " + productData.tire_brandName + " " + "ขนาด " + productData
-                        .tire_size + " " + "รุ่น " + productData.tire_modelName;
+                    html += productData.tire_brandName + " " + productData.tire_modelName +
+                        " <strong>" +
+                        productData
+                        .tire_size + "</strong>";
                 } else if (group == "lubricator") {
                     html += productData.lubricator_brandName + " " + productData.lubricatorName + " " +
                         productData.capacity + " ลิตร" + " " + productData.lubricator_number;
@@ -105,11 +108,17 @@ var table = $('#dt-table').DataTable({
                 return html;
             }
         }, {
-            "targets": 3,
+            "targets": 2,
             "data": null,
             "render": function(data, type, full, meta) {
-                return data.product_price;
+                return currency((data.product_price * data.quantity), {
+                    precision: 0
+                }).format();
             }
+        },
+        {
+            "className": "dt-center",
+            "targets": [1, 2]
         }
 
     ]

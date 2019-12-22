@@ -35,15 +35,13 @@ var table = $('#do-table').DataTable({
             // data.status = $("#status").val()
         }
     },
-    // "order": [[ 2, "asc" ]],
+    // "order": [],
     "columns": [
-        null,
         null,
         null,
         {
             "data": "quantity"
         },
-        null,
         null
     ],
     "drawCallback": function(settings) {
@@ -58,9 +56,12 @@ var table = $('#do-table').DataTable({
         }).data().each(function(data, i) {
             if (last !== data.orderId) {
                 $(rows).eq(i).before(
-                    '<tr class="group"><td colspan="7"><span class="order-left"> หมายเลขสั่งซื้อ ' +
-                    data.orderId + " " +
-                    '</span> <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
+                    '<tr class="group"><td colspan="6"><span class="order-left"><strong><a href="' +
+                    base_url + 'garage/reservedetail/reservedetail/' + data
+                    .orderId +
+                    '" class="text-orange">หมายเลขสั่งซื้อ #' + data.orderId +
+                    '</a></strong> ' +
+                    '</span> <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
                     data.orderId + ')"><span>หลักฐานการส่ง</span></button></td></tr>'
                 );
 
@@ -71,20 +72,22 @@ var table = $('#do-table').DataTable({
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [0, 1, 2, 3, 4, 5]
-        }, {
-            "targets": 0,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                if (data.orderId == lastOrder) {
-                    lastCounter++;
-                } else {
-                    lastOrder = data.orderId;
-                    lastCounter = 1;
-                }
-                return lastCounter;
-            }
-        }, {
+            "targets": [0, 1, 2, 3]
+        },
+        //  {
+        //     "targets": 0,
+        //     "data": null,
+        //     "render": function(data, type, full, meta) {
+        //         if (data.orderId == lastOrder) {
+        //             lastCounter++;
+        //         } else {
+        //             lastOrder = data.orderId;
+        //             lastCounter = 1;
+        //         }
+        //         return lastCounter;
+        //     }
+        // },
+        {
             "targets": 1,
             "data": null,
             "render": function(data, type, full, meta) {
@@ -100,7 +103,7 @@ var table = $('#do-table').DataTable({
                 return '<img src="' + imgPath + data.data.picture + '" width="100" />';
             }
         }, {
-            "targets": 2,
+            "targets": 0,
             "data": null,
             "render": function(data, type, full, meta) {
                 var html = "";
@@ -120,15 +123,16 @@ var table = $('#do-table').DataTable({
                 return html;
             }
         }, {
-            "targets": 4,
+            "targets": 3,
             "data": null,
             "render": function(data, type, full, meta) {
                 var html = '';
                 // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
                 if (data.status == 2) {
-                    html += '<span class="badge badge-warning">รอการตอบรับ</span>';
+                    html += '<button type="button" class="btn btn-info"  onclick="confirmStatus(' +
+                        data.orderDetailId + ')">รับสินค้า</button>';
                 } else if (data.status == 3) {
-                    html += '<span class="badge badge-success">รับสินค้า</span>';
+                    html += '<span class="badge badge-success">รับสินค้าแล้ว</span>';
                 } else if (data.status == 9) {
                     html += '<span class="badge badge-danger">คืนสินค้า</span>';
                 } else {
@@ -137,24 +141,15 @@ var table = $('#do-table').DataTable({
                 return html;
 
             }
-        }, {
-            "targets": 5,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                var html = '';
-
-                if (data.status == 2) {
-                    return '<button type="button" class="btn btn-success"  onclick="confirmStatus(' +
-                        data.orderDetailId + ')">รับสินค้า</button>';
-                } else if (data.status == 3) {
-                    return html;
-                } else {
-                    return html;
-                }
-
-            }
         },
-
+        {
+            "className": "dt-head-center",
+            "targets": [0]
+        },
+        {
+            "className": "dt-center",
+            "targets": [1, 2, 3]
+        },
         {
             "width": "10%",
             "targets": 0
@@ -170,17 +165,7 @@ var table = $('#do-table').DataTable({
         {
             "width": "10%",
             "targets": 3
-        },
-        {
-            "width": "10%",
-            "targets": 4
-        },
-        {
-            "width": "10%",
-            "targets": 5
         }
-
-
 
     ]
 });

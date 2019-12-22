@@ -16,11 +16,8 @@ class Orderselect extends BD_Controller
     public function search_post()
     {
         $columns = array(
-            0 => null,
-            1 => null,
-            2 => 'order.orderId',
-            3 => 'orderdetail.quantity',
-            4 => 'reserve.garageId',
+            0 => 'order.orderId',
+            1 => 'orderdetail.quantity',
         );
 
         $limit = $this->post('length');

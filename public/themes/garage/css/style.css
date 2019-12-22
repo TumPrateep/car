@@ -8357,3 +8357,7 @@ th.dt-head-center {
 .table-nobordered th {
     border: 0px solid #ffffff !important;
 }
+
+.text-orange {
+    color: #ff471a !important;
+}

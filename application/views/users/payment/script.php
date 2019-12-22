@@ -24,8 +24,8 @@ $(document).ready(function() {
 
     $('.image-editor').cropit({
         allowDragNDrop: false,
-        width: 250,
-        height: 350,
+        width: 300,
+        height: 533,
         type: 'image/jpeg'
     });
 

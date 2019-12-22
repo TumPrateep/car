@@ -32,13 +32,10 @@
                 <div class="table-responsive">
                     <table class="table table-bordered" id="do-table" width="100%" cellspacing="0">
                         <thead>
-                            <th><i class="fa fa-sort"></i> ลำดับ</th>
+                            <th data-priority="1"><i class="fa fa-rebel"></i> รายละเอียดสินค้า</th>
                             <th><i class="fa fa-picture-o"></i> รูปสินค้า</th>
-                            <th><i class="fa fa-rebel"></i> รายละเอียดสินค้า</th>
                             <th>จำนวน</th>
-
-                            <th><i class="fa fa-user-circle"></i> สถานะ</th>
-                            <th></th>
+                            <th data-priority="2"><i class="fa fa-user-circle"></i> สถานะ</th>
                         </thead>
                     </table>
                 </div>

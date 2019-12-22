@@ -59,8 +59,14 @@ var table = $('#order-table').DataTable({
                     orderstatus += 'รอชำระเงิน';
                 } else if (data.status == "2") {
                     orderstatus += 'กำลังตรวจสอบการชำระเงิน';
-                } else if (data.status == "3" || data.status == "4" || data.status == "5") {
+                } else if (data.status == "3") {
                     orderstatus += 'ชำระเงินเเล้ว';
+                } else if (data.status == "4") {
+                    orderstatus += 'อะไหล่กำลังถูกจัดส่ง';
+                } else if (data.status == "5" && data.deliver == 1) {
+                    orderstatus += 'อะไหล่กำลังถูกจัดส่ง';
+                } else if (data.status == "5" && data.deliver == 2) {
+                    orderstatus += 'อะไหล่ถูกจัดส่งแล้ว';
                 } else if (data.status == "9") {
                     orderstatus += 'ยกเลิกการจอง';
                 } else if (data.status == "8") {

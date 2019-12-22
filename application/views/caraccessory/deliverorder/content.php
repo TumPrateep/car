@@ -34,7 +34,6 @@
         <div class="table">
             <table class="table table-striped" id="dt-table" width="100%" cellspacing="0">
                 <thead>
-                    <th><i class="fa fa-sort"></i> ลำดับ</th>
                     <th><i class="fa fa-bars"></i> รายละเอียดสินค้า</th>
                     <th> จำนวน</th>
                     <th> ราคา (บาท)</th>

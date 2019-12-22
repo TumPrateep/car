@@ -43,14 +43,13 @@ var table = $('#changes-table').DataTable({
         {
             "data": "name"
         },
-        null,
         null
 
     ],
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [4]
+            "targets": []
         },
         // {
         //     responsivePriority: 1,
@@ -72,8 +71,9 @@ var table = $('#changes-table').DataTable({
             "data": null,
             "render": function(data, type, full, meta) {
                 var html = '';
-                html += '<a href="' + base_url + 'garage/reservedetail/reservedetail/' + data.orderId +
-                    '">#' + data.orderId + '</a><br>';
+                html += '<strong><a href="' + base_url + 'garage/reservedetail/reservedetail/' + data
+                    .orderId +
+                    '" class="text-orange">#' + data.orderId + '</a></strong><br>';
 
                 return html;
             }
@@ -84,40 +84,48 @@ var table = $('#changes-table').DataTable({
                 return $.format.date(new Date(data.reserveDate), "dd/MM/yyyy") + ' ' + data
                     .reservetime + " น."; // code ในการแปลงเวลา
             }
-        }, {
+        },
+        // {
+        //     "targets": 3,
+        //     "data": null,
+        //     "render": function(data, type, full, meta) {
+        //         var html = '';
+        //         // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
+        //         if (data.status == 1) {
+        //             html += '<span class="badge badge-warning">รอนัดซ่อม</span>';
+        //         } else if (data.status == 2) {
+        //             html += '<span class="badge badge-success">รับนัดซ่อมเเล้ว</span>';
+        //         } else if (data.status == 9) {
+        //             html += '<span class="badge badge-info">ยกเลิกนัดซ่อม</span>';
+        //         } else {
+        //             html += '<span class="badge badge-danger">ผิดพลาด</span>';
+        //         }
+        //         return html;
+        //         // return data.status;
+        //     }
+        // },
+        {
             "targets": 3,
             "data": null,
             "render": function(data, type, full, meta) {
-                var html = '';
-                // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
+                let html = '';
+
                 if (data.status == 1) {
-                    html += '<span class="badge badge-warning">รอนัดซ่อม</span>';
+                    html += '<button type="button" class="btn btn-success"  title="รับนัด" ' + disable +
+                        ' onclick="confirmStatus(' + data.reserveId + ',' + data.orderId +
+                        ')">รับนัดซ่อม</button>';
                 } else if (data.status == 2) {
                     html += '<span class="badge badge-success">รับนัดซ่อมเเล้ว</span>';
-                } else if (data.status == 9) {
-                    html += '<span class="badge badge-info">ยกเลิกนัดซ่อม</span>';
                 } else {
                     html += '<span class="badge badge-danger">ผิดพลาด</span>';
                 }
+
                 return html;
-                // return data.status;
-            }
-        }, {
-            "targets": 4,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                var disable = "";
-                if (data.status == 9 || data.status == 2) {
-                    disable = "disabled";
-                }
-                return '<button type="button" class="btn btn-success"  title="รับนัด" ' + disable +
-                    ' onclick="confirmStatus(' + data.reserveId + ',' + data.orderId +
-                    ')">รับนัดซ่อม</button>';
             }
         },
         {
             "className": "dt-center",
-            "targets": [0, 1, 2, 3, 4]
+            "targets": [0, 1, 2, 3]
         }
     ]
 });

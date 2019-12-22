@@ -35,85 +35,74 @@ var table = $('#changes-table').DataTable({
         }
     },
     "order": [
-        [1, "desc"]
+        [0, "desc"]
     ],
     "columns": [
-        null,
         null,
         // { "data": "orderId" },
         null,
         {
-            "data": "reservetime"
-        },
-        {
             "data": "name"
         },
-        null,
         null
 
     ],
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [0, 6]
-        }, {
+            "targets": [3]
+        },
+        {
             "targets": 0,
             "data": null,
             "render": function(data, type, full, meta) {
-                return meta.row + 1;
+                var html = '';
+                html += '<strong><a href="' + base_url + 'garage/reservedetail/reservedetail/' + data
+                    .orderId +
+                    '" class="text-orange">#' + data.orderId + '</a></strong><br>';
+
+                return html;
             }
         }, {
             "targets": 1,
             "data": null,
             "render": function(data, type, full, meta) {
-                var html = '';
-                html += '<a href="' + base_url + 'garage/reservedetail/reservedetail/' + data.orderId +
-                    '">#' + data.orderId + '</a><br>';
-
-                return html;
-            }
-        }, {
-            "targets": 2,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return $.format.date(new Date(data.reserveDate), "dd/MM/yyyy"); // code ในการแปลงเวลา
+                return $.format.date(new Date(data.reserveDate), "dd/MM/yyyy") + ' ' + data
+                    .reservetime +
+                    " น."; // code ในการแปลงเวลา
             }
         }, {
             "targets": 3,
             "data": null,
             "render": function(data, type, full, meta) {
-                return data + " น."; // code ในการแปลงเวลา
-            }
-        }, {
-            "targets": 5,
-            "data": null,
-            "render": function(data, type, full, meta) {
                 var html = '';
                 // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
                 if (data.status == 5 && data.statusSuccess == 1) {
-                    html += '<span class="badge badge-warning">รอดำเนินกาซ่อม</span>';
+                    html += '<button type="button" class="btn btn-info"  title="" ' +
+                        ' onclick="update_mileage(' + data.orderId + ')">ซ่อมเสร็จสิ้น</button>';
                 } else if (data.status == 6 && (data.statusSuccess == 2 || data.statusSuccess == 3)) {
                     html += '<span class="badge badge-success">ซ่อมเสร็จสิ้น</span>';
                 }
                 return html;
                 // return data.status;
             }
-        }, {
-            "targets": 6,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                var html = "";
-                if (data.statusSuccess == 1) {
-                    html = '<button type="button" class="btn btn-success"  title="" ' +
-                        ' onclick="update_mileage(' + data.orderId + ')">ซ่อมเสร็จสิ้น</button>';
-                }
-                return html;
-                // return '<button type="button" class="btn btn-success"  title="ซ่อมเสร็จสิ้น" '+disable+' onclick="confirmStatus('+data.orderId+')">ซ่อมเสร็จสิ้น</button>';
-            }
         },
+        // {
+        //     "targets": 3,
+        //     "data": null,
+        //     "render": function(data, type, full, meta) {
+        //         var html = "";
+        //         if (data.statusSuccess == 1) {
+        //             html = '<button type="button" class="btn btn-success"  title="" ' +
+        //                 ' onclick="update_mileage(' + data.orderId + ')">ซ่อมเสร็จสิ้น</button>';
+        //         }
+        //         return html;
+        //         // return '<button type="button" class="btn btn-success"  title="ซ่อมเสร็จสิ้น" '+disable+' onclick="confirmStatus('+data.orderId+')">ซ่อมเสร็จสิ้น</button>';
+        //     }
+        // },
         {
             "className": "dt-center",
-            "targets": [0, 1, 2, 3, 4, 5, 6]
+            "targets": [0, 1, 2, 3]
         }
     ]
 });

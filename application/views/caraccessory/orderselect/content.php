@@ -38,11 +38,11 @@
 
                 <table class="table table-striped" id="changes-table" width="100%" cellspacing="0">
                     <thead>
-                        <th>ลำดับ</th>
-                        <th>รูป</th>
-                        <th>รายละเอียดสินค้า</th>
+                        <!-- <th>ลำดับ</th>
+                        <th>รูป</th> -->
+                        <th data-priority="2">รายละเอียดสินค้า</th>
                         <th>จำนวน</th>
-                        <th> </th>
+                        <th data-priority="1"> </th>
                     </thead>
                 </table>
             </div>

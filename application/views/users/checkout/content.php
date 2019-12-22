@@ -109,9 +109,14 @@ img.exbrand {
                                             <div class="col-md-12 form-group">
                                                 <div class="form-group">
                                                     <label>รูปหลักฐานการจ่ายเงิน</label>
-                                                    <input type="file" class="form-control-file" name="slipfile"
-                                                        id="slipfile">
-                                                    <input type="hidden" name="slip" id="slip">
+                                                    <div class="image-editor">
+                                                        <input type="file" class="cropit-image-input" name="tempImage"
+                                                            required>
+                                                        <div class="cropit-preview"></div>
+                                                        <div class="image-size-label">ปรับขนาด</div>
+                                                        <input type="range" class="cropit-image-zoom-input">
+                                                        <input type="hidden" name="slip" class="hidden-image-data" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

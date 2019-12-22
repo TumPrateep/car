@@ -96,7 +96,8 @@ class Order extends BD_Controller
                 $nestedData['statusActive'] = $post->statusSuccess;
                 $nestedData['create_at'] = $post->create_at;
                 $nestedData['status'] = $post->status;
-                // $nestedData['depositflag'] = $post->depositflag;
+                $delever = $this->orderdetails->getDeliverStatus($post->orderId);
+                $nestedData['deliver'] = (empty($delever))?1:2;
                 $nestedData['create_by'] = $post->userId;
                 $nestedData['cost'] = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
                 // $nestedData['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
