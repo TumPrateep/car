@@ -24,7 +24,7 @@
                             <ul aria-expanded="false" class="collapse">
                                 <!-- <li><a class="garage-white" href="<?=base_url("garage/charge/lubricator");?>">ค่าแรงเปลี่ยนน้ำมันเครื่อง</a></li> -->
                                 <li><a class="garage-white"
-                                        href="<?=base_url("garage/charge/tire");?>">ค่าแรงเปลี่ยนยาง</a></li>
+                                        href="<?=base_url("garage/charge/tire");?>">ค่าแรงเปลี่ยนยางและถ่วงล้อ</a></li>
                                 <!-- <li><a class="garage-white" href="<?=base_url("garage/charge/spares");?>">ค่าแรงเปลี่ยนอะไหล่ช่วงล่าง</a></li> -->
                             </ul>
                         </li>

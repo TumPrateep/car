@@ -114,7 +114,7 @@ class Tire extends BD_Controller
             $count = 0;
             foreach ($posts as $post) {
                 $tire_change_data = $this->prices->getPriceFromGarageByRimId($post->rimId);
-                $garage_price = 0;
+                $garage_price = $this->prices->getPriceFromCarjaideeByRimId($post->rimId);
                 if (!empty($tire_change_data)) {
                     $garage_price = $tire_change_data->tire_price;
                 }

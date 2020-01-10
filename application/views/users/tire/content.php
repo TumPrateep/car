@@ -66,7 +66,8 @@ div.brand img {
                         <input type="hidden" name="t_brandId" id="t_brandId" value="<?=$brandId?>">
                         <input type="hidden" name="t_model_name" id="t_model_name" value="<?=$model_name?>">
                         <input type="hidden" name="t_year" id="t_year" value="<?=$year?>">
-                        <input type="hidden" name="t_modelofcarId" id="t_modelofcarId" value="<?=$modelofcarId?>">
+                        <input type="hidden" name="t_car_tire_size_id" id="t_car_tire_size_id"
+                            value="<?=$car_tire_size_id?>">
 
                         <input type="hidden" name="t_tire_brandId" id="t_tire_brandId" value="<?=$tire_brandId?>">
                         <input type="hidden" name="t_tire_modelId" id="t_tire_modelId" value="<?=$tire_modelId?>">
@@ -100,8 +101,9 @@ div.brand img {
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <select class="form-control main" id="modelofcarId" name="modelofcarId">
-                                                <option value="">รายละเอียดรุ่นรถ</option>
+                                            <select class="form-control main" name="car_tire_sizeId"
+                                                id="car_tire_sizeId">
+                                                <option>ขนาดยาง</option>
                                             </select>
                                         </div>
                                     </div>
@@ -114,20 +116,6 @@ div.brand img {
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <select class="form-control main" name="tire_brandId" id="tire_brandId">
-                                                <option>ยี่ห้อยาง</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <select class="form-control main" name="tire_modelId" id="tire_modelId">
-                                                <option>รุ่นยาง</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
                                             <select class="form-control main" name="rimId" id="rimId">
                                                 <option>ขอบยาง</option>
                                             </select>
@@ -137,6 +125,20 @@ div.brand img {
                                         <div class="form-group">
                                             <select class="form-control main" name="tire_sizeId" id="tire_sizeId">
                                                 <option>ขนาดยาง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" name="tire_brandId" id="tire_brandId">
+                                                <option>ยี่ห้อยาง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" name="tire_modelId" id="tire_modelId">
+                                                <option>รุ่นยาง</option>
                                             </select>
                                         </div>
                                     </div>

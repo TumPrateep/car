@@ -57,9 +57,9 @@ var table = $('#dt-table').DataTable({
         }).data().each(function(data, i) {
             if (last !== data.orderId) {
                 $(rows).eq(i).before(
-                    '<tr class="group"><td colspan="3"> หมายเลขสั่งซื้อ ' + data.orderId +
+                    '<tr class="group"><td colspan="4"> หมายเลขสั่งซื้อ ' + data.orderId +
                     ' ชื่อร้านอู่ ' + data.garageName + ' ' +
-                    '</td><td><button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
+                    '<button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
                     data.orderId + ')"><span>หลักฐานการส่ง</span></button></td></tr>'
                 );
 

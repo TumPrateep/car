@@ -242,7 +242,7 @@ $(document).ready(function() {
     $('.image-editor').cropit({
         allowDragNDrop: false,
         width: 300,
-        height: 533,
+        height: 300,
         type: 'image/jpeg'
     });
 

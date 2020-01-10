@@ -39,31 +39,31 @@
                             <br>
                             <form id="tire-search">
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <select class="form-control main" name="tire_brandId" id="tire_brandId">
-                                                <option>ยี่ห้อยาง</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <select class="form-control main" name="tire_modelId" id="tire_modelId">
-                                                <option>รุ่นยาง</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-3">
                                         <div class="form-group">
                                             <select class="form-control main" name="rimId" id="rimId">
                                                 <option>ขอบยาง</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-3">
                                         <div class="form-group">
                                             <select class="form-control main" name="tire_sizeId" id="tire_sizeId">
                                                 <option>ขนาดยาง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" name="tire_brandId" id="tire_brandId">
+                                                <option>ยี่ห้อยาง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <select class="form-control main" name="tire_modelId" id="tire_modelId">
+                                                <option>รุ่นยาง</option>
                                             </select>
                                         </div>
                                     </div>
@@ -81,14 +81,14 @@
                             <br>
                             <form id="car-search">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <select class="form-control main" name="brandId" id="brandId">
                                                 <option value="">ยี่ห้อรถยนต์</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <input type="hidden" name="car_type" id="car_type">
                                             <select class="form-control main" name="model_name" id="model_name">
@@ -96,14 +96,14 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <select class="form-control main" name="year" id="year">
                                                 <option value="">ปีผลิต</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6" id="show-detail" style="display:none;">
+                                    <div class="col-lg-4" id="show-detail" style="display:none;">
                                         <div>
                                             <div class="form-group">
                                                 <select class="form-control main" name="modelId" id="modelId">
@@ -112,11 +112,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <select class="form-control main" name="modelofcarId" id="modelofcarId">
-                                                <option value="">รายละเอียดรุ่น</option>
-                                            </select>
+                                            <div class="form-group">
+                                                <select class="form-control main" name="car_tire_sizeId"
+                                                    id="car_tire_sizeId">
+                                                    <option>รุ่นยาง</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">

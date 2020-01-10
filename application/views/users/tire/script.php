@@ -3,7 +3,7 @@ $(document).ready(function() {
     var brand = $("#brandId");
     var model = $("#model_name");
     var year = $("#year");
-    var modelofcar = $("#modelofcarId");
+    var car_tire_model = $("#car_tire_sizeId");
 
     var tireBrand = $("#tire_brandId");
     var tireModel = $("#tire_modelId");
@@ -12,16 +12,17 @@ $(document).ready(function() {
 
     var table;
     focus('tire-search');
+
     function clearCarData() {
         brand.val('');
         model.val('');
         year.val('');
-        modelofcar.val('');
+        car_tire_size.val('');
 
         $('#t_brandId').val('');
         $('#t_model_name').val('');
         $('#t_year').val('');
-        $('#t_modelofcarId').val('');
+        $('#t_car_tire_size_id').val('');
 
         clearTag();
     }
@@ -97,7 +98,7 @@ $(document).ready(function() {
             year: {
                 required: true
             },
-            modelofcarId: {
+            car_tire_size_id: {
                 required: true
             }
         },
@@ -111,8 +112,8 @@ $(document).ready(function() {
             year: {
                 required: "กรอกปีที่ผลิต"
             },
-            modelofcarId: {
-                required: "กรอกรายละเอียดรุ่น"
+            car_tire_size_id: {
+                required: "เลือกขนาดยาง"
             }
         },
     });
@@ -130,7 +131,7 @@ $(document).ready(function() {
         brand.html('<option value="">ยี่ห้อรถ</option>');
         model.html('<option value="">รุ่นรถ</option>');
         year.html('<option value="">ปีที่ผลิต</option>');
-        modelofcar.html('<option value="">รายละเอียดรุ่น</option>');
+        car_tire_model.html('<option value="">ขนาดยาง</option>');
         $.get(base_url + "service/Carselect/getActiveCarBrand", {},
             function(data) {
                 var brandData = data.data;
@@ -157,7 +158,7 @@ $(document).ready(function() {
         var brandId = brand.val();
         model.html('<option value="">รุ่นรถ</option>');
         year.html('<option value="">ปีที่ผลิต</option>');
-        modelofcar.html('<option value="">รายละเอียดรุ่น</option>');
+        car_tire_model.html('<option value="">ขนาดยาง</option>');
         $.get(base_url + "service/Carselect/getActiveCarModel", {
             brandId: brandId
         }, function(data) {
@@ -184,7 +185,7 @@ $(document).ready(function() {
         var brandId = brand.val();
         var modelName = $("#model_name option:selected").text();
         year.html('<option value="">ปีที่ผลิต</option>');
-        modelofcar.html('<option value="">รายละเอียดรุ่น</option>');
+        car_tire_model.html('<option value="">ขนาดยาง</option>');
         $.get(base_url + "service/Carselect/getMaxMinYear", {
             modelName: modelName
         }, function(data) {
@@ -206,30 +207,30 @@ $(document).ready(function() {
 
     year.change(function() {
         $("#t_year").val('');
-        $("#t_modelofcarId").val('');
+        $("#t_car_tire_size_id").val('');
         getModelOfCar();
     });
 
     function getModelOfCar() {
-        modelofcar.html('<option value="">รายละเอียดรุ่น</option>');
-        $.get(base_url + "service/Carselect/getModelOfCarByYear", {
+        car_tire_model.html('<option value="">ขนาดยาง</option>');
+        $.get(base_url + "service/Carselect/getTireSize", {
             brandId: brand.val(),
             modelName: $("#model_name option:selected").text(),
             year: year.val()
         }, function(data) {
-            var carModelData = data.data;
+            var tireData = data.data;
             // console.log(carModelData);
             var html = '';
-            $.each(carModelData, function(key, value) {
-                let modelofcarName = (value.modelofcarName) ? value.modelofcarName : '';
-                modelofcar.append('<option value="' + value.modelofcarId + '">' + value
-                    .machineSize + ' ' + modelofcarName + '</option>');
+            $.each(tireData, function(i, v) {
+                car_tire_model.append('<option value="' + v.tire_sizeId + '">' +
+                    v.tire_size + '</option>');
             });
-
-            var modelofcarId = $("#t_modelofcarId").val();
-            if (modelofcarId) {
-                modelofcar.val(modelofcarId);
+            var t_car_tire_sizeId = $("#t_car_tire_size_id").val();
+            if (t_car_tire_sizeId) {
+                car_tire_model.val(t_car_tire_sizeId);
             }
+
+            loadDataTable();
         });
     }
 
@@ -273,10 +274,14 @@ $(document).ready(function() {
                 "dataType": "json",
                 "type": "POST",
                 "data": function(data) {
+                    let tire_sizeId = $("#tire_sizeId").val();
+                    if (!tire_sizeId) {
+                        tire_sizeId = $("#car_tire_sizeId").val();
+                    }
                     data.tire_brandId = $("#tire_brandId").val();
                     data.tire_modelId = $("#tire_modelId").val();
                     data.rimId = $("#rimId").val();
-                    data.tire_sizeId = $("#tire_sizeId").val();
+                    data.tire_sizeId = tire_sizeId;
                     // data.price = $("#amount").val();
                     // data.can_change = $("#can_change").val();
                     // data.sort = $("#sort").val();
@@ -284,7 +289,7 @@ $(document).ready(function() {
                     // data.warranty_year = $("#warranty_year").val();
                     data.brandId = $("#brandId").val();
                     data.modelId = $("#modelId").val();
-                    data.modelofcarId = $("#modelofcarId").val();
+                    // data.modelofcarId = $("#modelofcarId").val();
                     data.year = $("#year").val();
                 }
             },
@@ -379,9 +384,9 @@ $(document).ready(function() {
 
     $("#tire-search").validate({
         rules: {
-            tire_brandId: {
-                required: true
-            },
+            // tire_brandId: {
+            //     required: true
+            // },
             // tire_modelId: {
             //     required: true
             // },
@@ -393,9 +398,9 @@ $(document).ready(function() {
             // }
         },
         messages: {
-            tire_brandId: {
-                required: "เลือกยี่ห้อยาง"
-            },
+            // tire_brandId: {
+            //     required: "เลือกยี่ห้อยาง"
+            // },
             // tire_modelId: {
             //     required: "เลือกรุ่นยาง"
             // },

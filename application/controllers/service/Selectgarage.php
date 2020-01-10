@@ -1,9 +1,9 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
-use \Firebase\JWT\JWT;
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Selectgarage extends BD_Controller {
+class Selectgarage extends BD_Controller
+{
 
-    function __construct()
+    public function __construct()
     {
         // Construct the parent class
         parent::__construct();
@@ -14,14 +14,15 @@ class Selectgarage extends BD_Controller {
         $this->load->model('prices');
     }
 
-    function search_post(){
+    public function search_post()
+    {
         $column = "garage.garageName";
         $sort = "asc";
-        if($this->post('column') == 3){
+        if ($this->post('column') == 3) {
             $column = "status";
-        }else if($this->post('column') == 2){
+        } else if ($this->post('column') == 2) {
             $sort = "desc";
-        }else{
+        } else {
             $sort = "asc";
         }
 
@@ -36,17 +37,19 @@ class Selectgarage extends BD_Controller {
 
         $rimData = $this->triesizes->gettrie_sizeById($tire_sizeId);
         $totalData = $this->selectgarages->select_garage_search_count($rimData->rimId);
-        $totalFiltered = $totalData; 
-        $posts =  $this->selectgarages->select_garage_search($limit,$start,$order,$dir,$rimData->rimId);
+        $totalFiltered = $totalData;
+        $posts = $this->selectgarages->select_garage_search($limit, $start, $order, $dir, $rimData->rimId);
         // $totalFiltered = $this->selectgarages->select_garage_search_count($rimData->rimId);
         // dd();
+
+        // < ------------
 
         $tireData = $this->tiredatas->getTireDataById($tire_dataId);
         $carjaidee_change_data = $this->prices->getPriceCarjaidee($rimData->rimId, $tire_sizeId);
         $carjaidee_price = 0;
-        if(!empty($carjaidee_change_data)){
+        if (!empty($carjaidee_change_data)) {
             $carjaidee_price = $carjaidee_change_data->price;
-            if($carjaidee_change_data->unit_id == 1){
+            if ($carjaidee_change_data->unit_id == 1) {
                 $carjaidee_price = $tireData->price * $carjaidee_change_data->price / 100;
             }
         }
@@ -56,14 +59,15 @@ class Selectgarage extends BD_Controller {
 
         $tireData->price = $tireData->price + $carjaidee_price + $service_price;
 
+        // --------------------->
+
         // dd($carjaidee_price);
 
         $nestedData = array();
         $count = 0;
         // $index = 0;
 
-        if(!empty($posts))
-        {
+        if (!empty($posts)) {
             foreach ($posts as $post) {
                 $nestedData[$count]['garageId'] = $post->garageId;
                 $nestedData[$count]['garageName'] = $post->garageName;
@@ -87,16 +91,16 @@ class Selectgarage extends BD_Controller {
                 //     $index++;
                 //     $nestedData = [];
                 // }
-                
+
                 $count++;
             }
         }
 
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $nestedData   
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $nestedData,
         );
 
         $this->set_response($json_data);

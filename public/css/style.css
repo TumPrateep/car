@@ -441,6 +441,19 @@ select.form-control:not([size]):not([multiple]) {
     .right img {
         margin-left: 0;
     }
+    .toggle-display {
+        display: initial;
+    }
+    .pt-10 {
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+    }
+}
+
+@media (min-width: 767px) {
+    .toggle-display {
+        display: none;
+    }
 }
 
 .hide-overflow {

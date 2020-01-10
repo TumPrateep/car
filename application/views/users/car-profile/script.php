@@ -81,7 +81,8 @@ var table = $('#order-table').DataTable({
                         // + '</div>'
                         +
                         '<div class="card">' +
-                        ' <a href="' + base_url + "user/cardetail/" +
+                        ' <a href="' + base_url + "user/carprofile/detail/" + value
+                        .car_profileId +
                         '"><img class="card-img-top" src="' + base_url +
                         'public/image/carprofile/' + value.picture +
                         '" width="100%" alt=""></a>' +

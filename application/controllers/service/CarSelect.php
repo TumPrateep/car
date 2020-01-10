@@ -1,64 +1,74 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
-use \Firebase\JWT\JWT;
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Carselect extends BD_Controller {
-    function __construct()
+class Carselect extends BD_Controller
+{
+    public function __construct()
     {
         parent::__construct();
         $this->load->model("brand");
         $this->load->model("model");
         $this->load->model("modelofcars");
+        $this->load->model("tirematch");
+        $this->load->model("triesizes");
     }
 
-    function getCarBrand_post(){
+    public function getCarBrand_post()
+    {
         $result = $this->brand->getAllBrandofRegister();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    function getCarBrand_get(){
+    public function getCarBrand_get()
+    {
         $result = $this->brand->getAllBrandofRegister();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    function getActiveCarBrand_get(){
+    public function getActiveCarBrand_get()
+    {
         $result = $this->brand->getAllBrandforSelect();
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    function getActiveCarYear_get(){
+    public function getActiveCarYear_get()
+    {
         $modelName = $this->get("modelName");
         $result = $this->model->getAllActiveYearanddetailforcar($modelName);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    function getActiveCarModel_get(){
+    public function getActiveCarModel_get()
+    {
         $brandId = $this->get("brandId");
         $result = $this->model->getAllActiveModelforcar($brandId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    function getCarModel_get(){
+    public function getCarModel_get()
+    {
         $brandId = $this->get("brandId");
         $result = $this->model->getAllmodelforcar($brandId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    function getCarYear_get(){
+    public function getCarYear_get()
+    {
         $modelName = $this->get("modelName");
         $result = $this->model->getAllYearanddetailforcar($modelName);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    function getMaxMinYear_get(){
+    public function getMaxMinYear_get()
+    {
         $modelName = $this->get("modelName");
         $min = $this->model->getMinFromModel($modelName);
         $max = $this->model->getMaxFromModel($modelName);
@@ -69,21 +79,24 @@ class Carselect extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    function getCarDetail_get(){
+    public function getCarDetail_get()
+    {
         $modelId = $this->get("modelId");
         $result = $this->modelofcars->getAllCarModelForSelect($modelId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    function getMultiCarDetail_post(){
+    public function getMultiCarDetail_post()
+    {
         $modelId = $this->post("modelId");
         $result = $this->modelofcars->getAllCarModelForMultiSelect($modelId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    function getModelByYear_get(){
+    public function getModelByYear_get()
+    {
         $brandId = $this->get("brandId");
         $modelName = $this->get("modelName");
         $year = $this->get("year");
@@ -92,7 +105,8 @@ class Carselect extends BD_Controller {
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
-    function getModelOfCarByYear_get(){
+    public function getModelOfCarByYear_get()
+    {
         $brandId = $this->get("brandId");
         $modelName = $this->get("modelName");
         $year = $this->get("year");
@@ -102,12 +116,31 @@ class Carselect extends BD_Controller {
 
     }
 
-    function getModelOfCarByModelId_get(){
+    public function getModelOfCarByModelId_get()
+    {
         $modelId = $this->get("modelId");
         $result = $this->modelofcars->getAllCarModelForSelect($modelId);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 
+    public function getTireSize_get()
+    {
+        $brandId = $this->get('brandId');
+        $modelName = $this->get('modelName');
+        $year = $this->get('year');
+        $modelId = $this->get('modelId');
+
+        $tire_sizeData = $this->tirematch->getTireSize($brandId, $modelName, $year, $modelId);
+
+        $tire_sizeId = [];
+        foreach ($tire_sizeData as $i => $v) {
+            $tire_sizeId[] = $v->tire_sizeId;
+        }
+
+        $result = $this->triesizes->getAllTireSizeByTireSizeId($tire_sizeId);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
 }
