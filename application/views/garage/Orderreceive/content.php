@@ -57,21 +57,29 @@
                 <form id="submit">
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="hidden" name="orderId" id="orderId">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <span>วันที่-เวลาส่ง</span>
-                                        <input type="text" class="form-control" id="time" name="time"
-                                            placeholder="วันที่-เวลาส่ง" readonly>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <span>วันที่-เวลาส่ง</span>
+                                <input type="text" class="form-control" id="time" name="time"
+                                    placeholder="วันที่-เวลาส่ง" readonly>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row p-t-20">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span>ปีผลิตยาง (DOT)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span id="dot"></span>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="hidden" name="orderId" id="orderId">
                             <div class="row p-t-20">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <span>ไฟล์หลักฐานการส่ง</span>
-                                        <img src="" width="100%" id="file_url">
+                                        <span>แนบไฟล์หลักฐานการส่ง</span><span class="error">*</span>
+                                        <img src="" width="80%" id="file_url">
                                     </div>
                                 </div>
                             </div>

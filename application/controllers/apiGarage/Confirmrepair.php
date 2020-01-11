@@ -21,12 +21,14 @@ class Confirmrepair extends BD_Controller
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $limit = $this->post('length');
         $start = $this->post('start');
+        $status = $this->post('status');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
-        $totalData = $this->confirmrepairs->allaccessstatuss_count($garageId);
+        $totalData = $this->confirmrepairs->allaccessstatuss_count($garageId, $status);
         $totalFiltered = $totalData;
         // if (empty($this->post('date,reservename,status'))) {
-        $posts = $this->confirmrepairs->allaccessstatuss($limit, $start, $order, $dir, $garageId);
+        $posts = $this->confirmrepairs->allaccessstatuss($limit, $start, $order, $dir, $garageId, $status);
+        
         // } else {
         //     $search = $this->post('date,reservename,status');
         //     $posts = $this->confirmrepairs->accessstatuss_search($limit, $start, $search, $order, $dir, $status, $garageId);

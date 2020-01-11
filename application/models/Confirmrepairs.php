@@ -18,15 +18,15 @@ class Confirmrepairs extends CI_Model
         return $this->db->insert('reserve', $data);
     }
 
-    public function allaccessstatuss($limit, $start, $col, $dir, $garageId)
+    public function allaccessstatuss($limit, $start, $col, $dir, $garageId, $status)
     {
         $this->db->select('car_profile.car_profileId, car_profile.mileage, order.mileage_carprofile, reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,order.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
         $this->db->from('order');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
         $this->db->join('car_profile', 'order.car_profileId = car_profile.car_profileId');
-        $this->db->where('order.status', 5);
-        $this->db->or_where('order.status', 6);
+        $this->db->where('order.status', $status);
+        // $this->db->or_where('order.status', 6);
         // $this->db->where('order.statusSuccess', 2);
         $this->db->where('reserve.garageId', $garageId);
 
@@ -39,14 +39,14 @@ class Confirmrepairs extends CI_Model
 
     }
 
-    public function allaccessstatuss_count($garageId)
+    public function allaccessstatuss_count($garageId, $status)
     {
         $this->db->select('car_profile.car_profileId, car_profile.mileage, order.mileage_carprofile, reserve.reserveId, order.orderId, order.statusSuccess, reserve.reserveDate, reserve.reservetime,user_profile.userId,order.status, concat(user_profile.firstname," ",user_profile.lastname) as name');
         $this->db->from('order');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('user_profile', 'order.userId = user_profile.userId');
         $this->db->join('car_profile', 'order.car_profileId = car_profile.car_profileId');
-        $this->db->where('order.status', 5);
+        $this->db->where('order.status', $status);
         // $this->db->where('order.statusSuccess', 2);
         $this->db->where('reserve.garageId', $garageId);
         $query = $this->db->get();

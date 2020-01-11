@@ -28,7 +28,10 @@ var table = $('#changes-table').DataTable({
         "dataType": "json",
         "type": "POST",
         "data": function(data) {
-            data.status = 5;
+            // data.date = $("#date").val();
+            // data.reservename = $("#reservename").val();
+            data.status = 6;
+            // data.statusSuccess = $("#statusSuccess").val();
         }
     },
     "order": [

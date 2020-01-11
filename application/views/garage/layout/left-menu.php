@@ -47,6 +47,10 @@
                         <li><a class="garage-white " href="<?=base_url("garage/confirmrepair");?>">
                                 <i class="fa fa-check garage-white"></i><span class="hide-menu">ยืนยันการซ่อม</span></a>
                         </li>
+                        <li><a class="garage-white " href="<?=base_url("garage/complete");?>">
+                                <i class="fa fa-list" aria-hidden="true"></i><span
+                                    class="hide-menu">ซ่อมเสร็จสิ้น</span></a>
+                        </li>
                         <!-- <li ><a class="garage-white " href="<?=base_url("garage/Effort");?>">
                             <i class="fa fa-handshake-o garage-white"></i><span class="hide-menu">ค่าแรงที่จะได้รับ</span></a>
                         </li> -->
