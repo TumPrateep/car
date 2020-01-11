@@ -22,7 +22,7 @@ class Tire extends CI_Controller
             'car_tire_size_id' => '',
         ];
 
-        $car_tire_size_id = $this->input->get('car_tire_size_id');
+        $car_tire_size_id = $this->input->get('car_tire_sizeId');
 
         if (!empty($car_tire_size_id)) {
             $data['cardata'] = 'active';

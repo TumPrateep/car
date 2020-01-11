@@ -11,6 +11,7 @@ class Orderselect extends BD_Controller
         $this->auth();
         $this->load->model("orderselects");
         $this->load->model("orders");
+        $this->load->model("tiredatas");
     }
 
     public function search_post()
@@ -50,8 +51,9 @@ class Orderselect extends BD_Controller
                 $nestedData['productId'] = $post->productId;
                 $nestedData['garageName'] = $post->garageName;
                 $nestedData['status'] = $post->status;
+                $nestedData['data'] = $this->tiredatas->getTireDataById($post->productId);
                 // $nestedData['picture'] = $post->picture;
-                $nestedData['data'] = getProductDetail($post->productId, $post->group);
+                // $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
                 $data[] = $nestedData;
             }
@@ -71,6 +73,8 @@ class Orderselect extends BD_Controller
     {
         $orderId = $this->post("orderId");
         $status = $this->post("status");
+        $caraccessory_price = $this->post("caraccessory_price");
+
         if ($status == 3) {
             $status = 4;
         } else {
@@ -78,15 +82,19 @@ class Orderselect extends BD_Controller
         }
 
         $data_check_update = $this->orderselects->getOrderDataById($orderId);
-        $data = array(
+        $data['order'] = array(
             'orderId' => $orderId,
             'status' => $status,
+        );
+
+        $data['orderdetail'] = array(
+            'real_product_price' => $caraccessory_price,
         );
 
         $option = [
             "data_check_update" => $data_check_update,
             "data" => $data,
-            "model" => $this->orders,
+            "model" => $this->orderselects,
         ];
 
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);

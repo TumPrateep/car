@@ -46,4 +46,24 @@ class Orderselects extends CI_Model
         return $query->row();
     }
 
+    public function update($data)
+    {
+        $this->db->trans_begin();
+
+        $this->db->where('orderId', $data['order']['orderId']);
+        $result = $this->db->update('order', $data['order']);
+
+        $this->db->where('orderId', $data['order']['orderId']);
+        $result = $this->db->update('orderdetail', $data['orderdetail']);
+
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
+        return $result;
+    }
+
 }
