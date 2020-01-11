@@ -240,8 +240,34 @@ class Orders extends CI_Model
         $result = $this->db->update('car_profile', ["point" => $point + $numberOfBonus]);
     }
 
-    public function all_count($userId)
+    public function all_count($userId, $selected)
     {
+        $this->db->select('order.*');
+        $condition = [];
+        if ($selected == 2) {
+            $this->db->group_start();
+            $this->db->or_where('order.status', 4);
+            $this->db->or_where('order.status', 5);
+            $this->db->group_end();
+            $this->db->where('orderdetail.status != ', 3);
+        } else if ($selected == 3) {
+            $this->db->group_start();
+            $this->db->where('order.status', 5);
+            $this->db->where('orderdetail.status', 3);
+            $this->db->group_end();
+        } else if ($selected == 4) {
+            $this->db->group_start();
+            $this->db->where('order.status', 6);
+            $this->db->group_end();
+        } else {
+            $this->db->group_start();
+            $this->db->or_where('order.status', 1);
+            $this->db->or_where('order.status', 2);
+            $this->db->or_where('order.status', 3);
+            $this->db->or_where('order.status', 8);
+            $this->db->group_end();
+        }
+        $this->db->join('orderdetail', 'order.orderId = orderdetail.orderId', 'left');
         $query = $this
             ->db
             ->where('create_by', $userId)
@@ -249,11 +275,37 @@ class Orders extends CI_Model
 
         return $query->num_rows();
     }
-    public function searchAllOrder($limit, $start, $col, $dir, $userId)
+    public function searchAllOrder($limit, $start, $col, $dir, $userId, $selected)
     {
+        $this->db->select('order.*');
+        $condition = [];
+        if ($selected == 2) {
+            $this->db->group_start();
+            $this->db->or_where('order.status', 4);
+            $this->db->or_where('order.status', 5);
+            $this->db->group_end();
+            $this->db->where('orderdetail.status != ', 3);
+        } else if ($selected == 3) {
+            $this->db->group_start();
+            $this->db->where('order.status', 5);
+            $this->db->where('orderdetail.status', 3);
+            $this->db->group_end();
+        } else if ($selected == 4) {
+            $this->db->group_start();
+            $this->db->where('order.status', 6);
+            $this->db->group_end();
+        } else {
+            $this->db->group_start();
+            $this->db->or_where('order.status', 1);
+            $this->db->or_where('order.status', 2);
+            $this->db->or_where('order.status', 3);
+            $this->db->or_where('order.status', 8);
+            $this->db->group_end();
+        }
+        $this->db->join('orderdetail', 'order.orderId = orderdetail.orderId', 'left');
         $query = $this
             ->db
-            ->where('create_by', $userId)
+            ->where('order.create_by', $userId)
             ->limit($limit, $start)
             ->order_by($col, $dir)
             ->get('order');

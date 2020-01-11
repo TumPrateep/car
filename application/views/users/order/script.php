@@ -6,6 +6,27 @@
 <script src="<?php echo base_url() ?>public/js/jquery-dateformat.min.js"></script>
 
 <script>
+$(document).ready(function() {
+    $('.icon').click(function() {
+        let path = base_url + 'public/image/icon/';
+        $('.icon').removeClass('icon-active');
+        $(this).addClass('icon-active');
+        let selected = $(this).data('icon');
+        let arrIconPath = [
+            // '',
+            (path + ((selected == 1) ? 'wallet_active.png' : 'wallet.png')),
+            (path + ((selected == 2) ? 'deliver_active.png' : 'deliver.png')),
+            (path + ((selected == 3) ? 'service_active.png' : 'service.png')),
+            (path + ((selected == 4) ? 'rating_active.png' : 'rating.png'))
+        ];
+
+        $(".icon").each(function(index) {
+            $(this).find("img").attr('src', arrIconPath[index]);
+        });
+
+        selectStatus(selected);
+    })
+});
 var table = $('#order-table').DataTable({
     "language": {
         "aria": {
@@ -35,7 +56,7 @@ var table = $('#order-table').DataTable({
         "dataType": "json",
         "type": "POST",
         "data": function(data) {
-            // data.status = $("#status").val()
+            data.selected = $("#selected").val()
             // data.statusSuccess = $("#statusSuccess").val()
         }
     },
@@ -53,89 +74,158 @@ var table = $('#order-table').DataTable({
             "data": null,
             "render": function(data, type, full, meta) {
 
-                // order status
-                var orderstatus = "<span>";
-                if (data.status == "1") {
-                    orderstatus += 'รอชำระเงิน';
-                } else if (data.status == "2") {
-                    orderstatus += 'กำลังตรวจสอบการชำระเงิน';
-                } else if (data.status == "3") {
-                    orderstatus += 'ชำระเงินเเล้ว';
-                } else if (data.status == "4") {
-                    orderstatus += 'อะไหล่กำลังถูกจัดส่ง';
-                } else if (data.status == "5" && data.deliver == 1) {
-                    orderstatus += 'อะไหล่กำลังถูกจัดส่ง';
-                } else if (data.status == "5" && data.deliver == 2) {
-                    orderstatus += 'อะไหล่ถูกจัดส่งแล้ว';
-                } else if (data.status == "9") {
-                    orderstatus += 'ยกเลิกการจอง';
-                } else if (data.status == "8") {
+                var html = '<div class="row">';
+                $.each(data, function(i, v) {
+                    // order status
+                    var orderstatus = "<span>";
+                    if (v.status == "1") {
+                        orderstatus += 'รอชำระเงิน';
+                    } else if (v.status == "2") {
+                        orderstatus += 'กำลังตรวจสอบการชำระเงิน';
+                    } else if (v.status == "3") {
+                        orderstatus += 'ชำระเงินเเล้ว';
+                    } else if (v.status == "4") {
+                        orderstatus += 'อะไหล่กำลังถูกจัดส่ง';
+                    } else if (v.status == "5" && v.deliver == 1) {
+                        orderstatus += 'อะไหล่กำลังถูกจัดส่ง';
+                    } else if (v.status == "5" && v.deliver == 2) {
+                        orderstatus += 'อะไหล่ถูกจัดส่งแล้ว';
+                    } else if (v.status == "9") {
+                        orderstatus += 'ยกเลิกการจอง';
+                    } else if (v.status == "8") {
+                        orderstatus += 'การชำระเงินไม่ถูกต้อง';
+                    } else {
+                        orderstatus += 'เสร็จสิ้น';
+                    }
+                    if (v.statusActive == "2") {
+                        orderstatus = "<span>";
+                        // orderstatus += 'เข้าใช้บริการ';
+                        orderstatus += 'ให้คะเเนนและรีวิว';
+                    } else if (v.statusActive == "3") {
+                        orderstatus = "<span>";
+                        orderstatus += 'การดำเนินการเสร็จสิ้น';
+                    }
+                    orderstatus += "</span>";
 
-                    orderstatus += 'การชำระเงินไม่ถูกต้อง';
+                    var success_status = "";
+                    if (v.status == "1") {
+                        success_status += '<a href="' + base_url + "user/order/payment/" + v
+                            .orderId +
+                            '"><button type="button" class="btn bg-orange">ชำระเงิน</button>'
+                    } else if (v.status == "3" || v.status == "4" || v.status == "5") {
+                        success_status += ''
+                    } else if (v.status == "8") {
+                        success_status += '<a href="' + base_url + "user/order/payment/" + v
+                            .orderId +
+                            '"><button type="button" class="btn bg-orange">ชำระเงิน</button>'
+                    }
+                    if (v.statusActive == "2") {
+                        success_status =
+                            '<button type="button" title="กดเพื่อให้คะเเนนการให้บริการ" onclick="commetrating(' +
+                            v.orderId +
+                            ')" class="btn bg-orange">ให้คะแนน</button> '
+                    }
 
-                }
-                if (data.statusActive == "2") {
-                    orderstatus = "<span>";
-                    // orderstatus += 'เข้าใช้บริการ';
-                    orderstatus += 'ให้คะเเนนและรีวิว';
-                } else if (data.statusActive == "3") {
-                    orderstatus = "<span>";
-                    orderstatus += 'การดำเนินการเสร็จสิ้น';
-                }
-                orderstatus += "</span>";
+                    let orderDetail = v.orderDetail[0];
+                    let reserve = v.reserve;
 
-                // process
-                var success_status = "";
-                if (data.status == "1") {
-                    success_status += '<a href="' + base_url + "user/order/payment/" + data.orderId +
-                        '"><button type="button" class="btn btn-main-md bg-orange">ชำระเงิน</button>'
-                } else if (data.status == "3" || data.status == "4" || data.status == "5") {
-                    success_status +=
-                        'รอเข้ารับบริการ'
-                } else if (data.status == "8") {
-                    success_status += '<a href="' + base_url + "user/order/payment/" + data
-                        .orderId +
-                        '"><button type="button" class="btn btn-main-md bg-orange">ชำระเงิน</button>'
-                    //  else if (data.statusActive == 3) {
-                    //     success_status +=
-                    //         '<a href="' + base_url + "user/garageagain/" +
-                    //         '"><button type="button" class="btn btn-main-md bg-orange">ศูนย์บริการ</button> '
-                    // }
-                }
-                if (data.statusActive == "2") {
-                    success_status =
-                        '<button type="button" title="กดเพื่อให้คะเเนนการให้บริการ" onclick="commetrating(' +
-                        data.orderId +
-                        ')" class="btn btn-main-md bg-orange">ให้คะแนน</button> '
-                }
-
-                ////
-                html = '<div class="row border-bottom  pb-2 pt-2">' +
-                    '<div class="col-md-2 text-center detail">' +
-                    '#' + data.orderId +
-                    '</div>' +
-                    '<div class="col-md-2 text-center detail">' +
-                    jQuery.format.date(data.create_at, "dd/MM/yyyy <br> HH:mm:ss") +
-                    '</div>' +
-                    '<div class="col-md-2 text-center detail">' +
-                    currency(data.cost, {
-                        precision: 0
-                    }).format() + " บาท" +
-                    '</div>' +
-                    '<div class="col-md-2 text-center detail">' +
-                    orderstatus +
-                    '</div>' +
-                    '<div class="col-md-2 text-center detail">' +
-                    '<a href="' + base_url + "user/order/orderdetails/" + data.orderId +
-                    '" class="btn btn-transparent-md"><i class="fa fa-search"></i></a>' +
-                    '</div>' +
-                    '<div class="col-md-2 text-center detail">' +
-                    success_status
-                    // + '<a href="#" class="btn btn-main-sm bg-orange btn-block">ชำระเงิน</a>'
-                    +
-                    '</div>' +
-                    '</div>';
+                    html += '<div class="col-lg-6 p-lt-0">' +
+                        '<div class="order-card">' +
+                        '<div class="row">' +
+                        '<div class="col-6">' +
+                        '<small>หมายเลขการสั่งซื้อ #' + v.orderId + '</small>' +
+                        '</div>' +
+                        '<div class="col-6 text-right">' +
+                        ' <small class="text-orange">' + orderstatus + '</small>' +
+                        '</div>' +
+                        '</div>' +
+                        '<hr>' +
+                        '<div class="row">' +
+                        '<div class="col-3">' +
+                        '<img src="' + base_url + 'public/image/tireproduct/' + orderDetail
+                        .picture + '" width="100%">' +
+                        '</div>' +
+                        '<div class="col-9 text-right">' +
+                        '<p><strong>' + orderDetail.tire_brandName + ' ' + orderDetail
+                        .tire_modelName + ' ' + orderDetail.tire_size + '</strong></p>' +
+                        '<p><small>1 ชิ้น ' + currency(orderDetail.price_per_unit, {
+                            precision: 0
+                        }).format() + ' บาท</small></p>' +
+                        '<p>นัดหมายวันที่ <strong>' + $.format.date(reserve.reserveDate + ' ' +
+                            reserve.reservetime, "dd/MM/yyyy HH:mm น.") + '</strong></p>' +
+                        '<p><a href="' + base_url + "user/order/orderdetails/" + v
+                        .orderId + '" class="text-orange">รายละเอียด</a></p>' +
+                        '</div>' +
+                        '</div>' +
+                        '<hr>' +
+                        '<div class="row">' +
+                        '<div class="col-4">' + success_status + '</div>' +
+                        '<div class="col-8 text-right">' +
+                        'รวมการสั่งซื้อ: ' + orderDetail.quantity +
+                        ' ชิ้น <strong class="h5 text-orange">' + currency(v
+                            .cost, {
+                                precision: 0
+                            }).format() + " บาท" + '</strong>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                });
+                html += '</div>';
                 return html;
+
+                // // process
+                // var success_status = "";
+                // if (data.status == "1") {
+                //     success_status += '<a href="' + base_url + "user/order/payment/" + data.orderId +
+                //         '"><button type="button" class="btn btn-main-md bg-orange">ชำระเงิน</button>'
+                // } else if (data.status == "3" || data.status == "4" || data.status == "5") {
+                //     success_status +=
+                //         'รอเข้ารับบริการ'
+                // } else if (data.status == "8") {
+                //     success_status += '<a href="' + base_url + "user/order/payment/" + data
+                //         .orderId +
+                //         '"><button type="button" class="btn btn-main-md bg-orange">ชำระเงิน</button>'
+                //     //  else if (data.statusActive == 3) {
+                //     //     success_status +=
+                //     //         '<a href="' + base_url + "user/garageagain/" +
+                //     //         '"><button type="button" class="btn btn-main-md bg-orange">ศูนย์บริการ</button> '
+                //     // }
+                // }
+                // if (data.statusActive == "2") {
+                //     success_status =
+                //         '<button type="button" title="กดเพื่อให้คะเเนนการให้บริการ" onclick="commetrating(' +
+                //         data.orderId +
+                //         ')" class="btn btn-main-md bg-orange">ให้คะแนน</button> '
+                // }
+
+                // ////
+                // html = '<div class="row border-bottom  pb-2 pt-2">' +
+                //     '<div class="col-md-2 text-center detail">' +
+                //     '#' + data.orderId +
+                //     '</div>' +
+                //     '<div class="col-md-2 text-center detail">' +
+                //     jQuery.format.date(data.create_at, "dd/MM/yyyy <br> HH:mm:ss") +
+                //     '</div>' +
+                //     '<div class="col-md-2 text-center detail">' +
+                //     currency(data.cost, {
+                //         precision: 0
+                //     }).format() + " บาท" +
+                //     '</div>' +
+                //     '<div class="col-md-2 text-center detail">' +
+                //     orderstatus +
+                //     '</div>' +
+                //     '<div class="col-md-2 text-center detail">' +
+                //     '<a href="' + base_url + "user/order/orderdetails/" + data.orderId +
+                //     '" class="btn btn-transparent-md"><i class="fa fa-search"></i></a>' +
+                //     '</div>' +
+                //     '<div class="col-md-2 text-center detail">' +
+                //     success_status
+                //     // + '<a href="#" class="btn btn-main-sm bg-orange btn-block">ชำระเงิน</a>'
+                //     +
+                //     '</div>' +
+                //     '</div>';
+                // return html;
             }
         },
         // {
@@ -170,6 +260,11 @@ var table = $('#order-table').DataTable({
     ]
 
 });
+
+function selectStatus(select) {
+    $('#selected').val(select);
+    table.ajax.reload();
+}
 
 function commetrating(orderId) {
     var userId = localStorage.getItem("userId");

@@ -10,6 +10,7 @@ class Order extends BD_Controller
         parent::__construct();
         $this->load->model('orders');
         $this->load->model('orderdetails');
+        $this->load->model('tiredatas');
     }
 
     // function calAllDeposit_post(){
@@ -83,27 +84,44 @@ class Order extends BD_Controller
         $userId = $this->session->userdata['logged_in']['id'];
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = 'create_at';
+        $selected = $this->post('selected');
+        $order = 'order.create_at';
         $dir = 'desc';
-        $totalData = $this->orders->all_count($userId);
-        $totalFiltered = $totalData;
-        $posts = $this->orders->searchAllOrder($limit, $start, $order, $dir, $userId);
 
+        $totalData = $this->orders->all_count($userId, $selected);
+        $totalFiltered = $totalData;
+        $posts = $this->orders->searchAllOrder($limit, $start, $order, $dir, $userId, $selected);
+        // dd();
         $data = array();
         if (!empty($posts)) {
+            $index = 0;
+            $count = 0;
             foreach ($posts as $post) {
-                $nestedData['orderId'] = $post->orderId;
-                $nestedData['statusActive'] = $post->statusSuccess;
-                $nestedData['create_at'] = $post->create_at;
-                $nestedData['status'] = $post->status;
-                $delever = $this->orderdetails->getDeliverStatus($post->orderId);
-                $nestedData['deliver'] = (empty($delever))?1:2;
-                $nestedData['create_by'] = $post->userId;
-                $nestedData['cost'] = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
-                // $nestedData['summary'] = calSummary($orderdetail->cost, $orderdetail->charge);
+                $nestedData[$count]['orderId'] = $post->orderId;
+                $nestedData[$count]['statusActive'] = $post->statusSuccess;
+                $nestedData[$count]['create_at'] = $post->create_at;
+                $nestedData[$count]['status'] = $post->status;
+                $deliver = $this->orderdetails->getDeliverStatus($post->orderId);
+                $nestedData[$count]['deliver'] = (empty($deliver)) ? 1 : 2;
+                $nestedData[$count]['create_by'] = $post->userId;
+                $nestedData[$count]['cost'] = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
+
+                $orderDetailData = $this->orderdetails->getOrderDetailByOrderId($post->orderId);
+                $alldata = $this->orderdetails->getIdData($post->orderId);
+                $tireData = $this->getTire($orderDetailData, $post->orderId);
+
+                $nestedData[$count]["orderDetail"] = $this->getCartData($tireData);
+                $nestedData[$count]['reserve'] = $this->orderdetails->getDatareserve($alldata->reserveId);
                 // $nestedData['costDelivery'] = $this->orderdetails->getSummarycostDelivery($post->orderId);
                 // $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
-                $data[] = $nestedData;
+                $data[$index] = $nestedData;
+                if ($count >= 2) {
+                    $count = -1;
+                    $index++;
+                    $nestedData = [];
+                }
+
+                $count++;
             }
         }
         $json_data = array(
@@ -113,6 +131,46 @@ class Order extends BD_Controller
             "data" => $data,
         );
         $this->set_response($json_data);
+    }
+
+    public function getCartData($tireData)
+    {
+        $data = [];
+
+        if ($tireData != null) {
+            foreach ($tireData as $value) {
+                $value->group = "tire";
+                $value->cost = $value->price_per_unit * $value->quantity;
+                $value->product_price = $value->product_price * $value->quantity;
+                $value->charge_price = $value->charge_price * $value->quantity;
+                $value->delivery_price = $value->delivery_price * $value->quantity;
+                $value->garage_service_price = $value->garage_service_price * $value->quantity;
+
+                $option = [
+                    'tire_brandId' => $value->tire_brandId,
+                    'tire_modelId' => $value->tire_modelId,
+                    'tire_sizeId' => $value->tire_sizeId,
+                    'rimId' => $value->rimId,
+                ];
+                $value->picture = getPictureTire($option);
+                array_push($data, $value);
+            }
+        }
+
+        return $data;
+    }
+
+    public function getTire($data, $orderId = null)
+    {
+        $tireArray = array_filter(
+            $data, function ($e) {return $e->group == "tire";}
+        );
+        $productId = [];
+        foreach ($tireArray as $key => $val) {
+            $productId[$key] = $val->productId;
+        }
+        $this->load->model("tiredatas");
+        return $this->tiredatas->getTireDataForOrderByIdArray($productId, $orderId, "tire");
     }
 
 }

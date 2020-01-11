@@ -321,7 +321,7 @@ class Orderdetails extends CI_Model
 
     public function getIdData($orderId)
     {
-        $this->db->select("reserve.garageId, order.car_profileId, reserve.reserveId");
+        $this->db->select("reserve.garageId, order.car_profileId, reserve.reserveId, reserve.reserveDate, reserve.reserveTime");
         $this->db->from('order');
         $this->db->join('reserve', 'order.orderId  = reserve.orderId');
         $this->db->where('order.orderId', $orderId);

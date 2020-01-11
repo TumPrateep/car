@@ -18,19 +18,39 @@ table>thead {
 }
 </style>
 <section class="section pricing">
+    <input type="hidden" name="selected" id="selected">
     <div class="container">
         <div class="row flex-row flex-wrap">
+            <div class="col-3 text-center icon icon-active" data-icon="1">
+                <p><img src="<?=base_url("public/image/icon/wallet_active.png")?>" class="w-100p" width="50%"></p>
+                ที่ต้องชำระ
+            </div>
+            <div class="col-3 text-center icon" data-icon="2">
+                <p><img src="<?=base_url("public/image/icon/deliver.png")?>" class="w-100p" width="50%"></p>
+                กำลังจัดส่ง
+            </div>
+            <div class="col-3 text-center icon" data-icon="3">
+                <p><img src="<?=base_url("public/image/icon/service.png")?>" class="w-100p" width="50%"></p>
+                เข้ารับบริการ
+            </div>
+            <div class="col-3 text-center icon" data-icon="4">
+                <p><img src="<?=base_url("public/image/icon/rating.png")?>" class="w-100p" width="50%"></p>
+                ให้คะแนน
+            </div>
+        </div>
+        <hr>
+        <div class="row">
             <div class="col-md-12">
                 <section class="schedule">
-                    <div class="section-title">
+
+
+                    <!-- <div class="section-title">
                         <h3>รายการ<span class="alternate" id="title">สั่งซื้อ</span></h3>
-                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusm tempor incididunt ut labore</p> -->
-                    </div>
+                    </div> -->
                     <div class="schedule-contents">
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active schedule-item" id="nov20">
-                                <!-- Headings -->
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-md-12 headtb">
                                         <div class="row">
                                             <div class="col-md-2 text-white text-center">รายการสั่งซื้อ</div>
@@ -41,8 +61,7 @@ table>thead {
                                             <div class="col-md-2 text-white text-center">รายการ</div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Schedule Details -->
+                                </div> -->
                                 <table id="order-table" width="100%" cellspacing="0"></table>
 
                             </div>

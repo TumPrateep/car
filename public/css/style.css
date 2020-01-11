@@ -448,6 +448,9 @@ select.form-control:not([size]):not([multiple]) {
         padding-right: 0px !important;
         padding-left: 0px !important;
     }
+    .w-100p {
+        width: 100% !important;
+    }
 }
 
 @media (min-width: 767px) {
@@ -3625,6 +3628,10 @@ span.main>.click {
     .logo {
         width: 165px;
     }
+    .p-lt-0 {
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+    }
 }
 
 @media (max-width: 460px) {
@@ -3638,6 +3645,8 @@ span.main>.click {
 
 .bg-orange {
     background-color: #ff6600;
+    color: white;
+    font-weight: normal;
 }
 
 .form-control.main {
@@ -3766,4 +3775,31 @@ a.text-orange {
     border-bottom: 1px solid #dee2e6;
     border-right: 1px solid #dee2e6;
     border-left: 1px solid #dee2e6;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.icon-active {
+    color: rgba(255, 102, 0, 1);
+    font-weight: bold;
+}
+
+.order-card {
+    border: 1px solid #ff6600;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.h5 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.schedule .schedule-contents {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    padding: 15px;
 }
