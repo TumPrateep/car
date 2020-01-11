@@ -66,15 +66,13 @@ class Deliverorder extends BD_Controller
 
     public function searchshoworder_post()
     {
-        $column = "	orderId";
+        $column = "orderId";
 
         $sort = "asc";
         if ($this->post('column') == 3) {
             $column = "status";
-        } else if ($this->post('column') == 2) {
-            $sort = "desc";
         } else {
-            $sort = "asc";
+            $sort = "desc";
         }
 
         $userId = $this->session->userdata['logged_in']['id'];
@@ -228,6 +226,7 @@ class Deliverorder extends BD_Controller
     {
         $orderId = $this->post('orderId');
         $time = $this->post('time');
+        $dot = $this->post('dot');
         // $config['upload_path'] = 'public/image/deliverorder/';
         $userId = $this->session->userdata['logged_in']['id'];
         // $img = $this->post('picture_tracking');
@@ -262,7 +261,7 @@ class Deliverorder extends BD_Controller
 
         if ($success) {
             $data_check = $this->deliverorders->data_check_create($orderId);
-            $data = array(
+            $data['numbertracking'] = array(
                 "numbertrakingId" => null,
                 "file_url" => $filename,
                 "create_at" => date('Y-m-d H:i:s', time()),
@@ -273,6 +272,7 @@ class Deliverorder extends BD_Controller
                 "orderId" => $orderId,
                 "time" => $time,
             );
+            $data['tire_dot'] = $dot;
             $option = [
                 "data_check" => $data_check,
                 "data" => $data,

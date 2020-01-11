@@ -59,7 +59,7 @@ var table = $('#dt-table').DataTable({
                     '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ ' + data.orderId +
                     ' ชื่อร้านอู่ ' + data.garageName +
                     ' <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
-                    data.orderId +
+                    data.orderId + ',' + data.quantity +
                     ')"><span>ที่อยู่จัดส่งสินค้า</span></button></td></tr>'
                 );
 
@@ -158,7 +158,7 @@ $("#price").slider({
     },
 });
 
-function tracking_order(orderId) {
+function tracking_order(orderId, quantity) {
     $.get(base_url + "apicaraccessories/garages/getGarageData", {
             orderId: orderId
         },
@@ -170,8 +170,23 @@ function tracking_order(orderId) {
             $("#garage-data").html(html);
         }
     );
+    renderDOT(quantity);
     $("#orderId").val(orderId);
     $("#tracking-order").modal("show");
+}
+
+function renderDOT(quantity) {
+    var html = '';
+    for (let i = 1; i <= quantity; i++) {
+        html += '<div class="form-group row">' +
+            '<label class="col-sm-4 col-form-label">ยางเส้นที่ ' + i + '</label>' +
+            '<div class="col-sm-8">' +
+            '<input type="number" name="dot[]" class="form-control">' +
+            '</div>' +
+            '</div>';
+    }
+
+    $('#dot').html(html);
 }
 
 $("#submit").submit(function() {
@@ -191,6 +206,11 @@ $("#submit").validate({
             required: true,
             extension: "jpg|jpeg|png",
             filesize: 2000000
+        },
+        'dot[]': {
+            required: true,
+            minlength: 4,
+            maxlength: 4
         }
     },
     messages: {
@@ -201,6 +221,11 @@ $("#submit").validate({
             required: "เลือกไฟล์",
             extension: "ประเภทไฟล์ไม่ถูกต้อง",
             filesize: "ไฟล์ขนาดใหญ่เกินไป"
+        },
+        'dot[]': {
+            required: 'กรอกหมายเลข DOT 4 หลัก',
+            minlength: 'หมายเลข DOT ไม่น้อยกว่า 4 หลัก',
+            maxlength: 'หมายเลข DOT ไม่เกิน 4 หลัก'
         }
     },
 });

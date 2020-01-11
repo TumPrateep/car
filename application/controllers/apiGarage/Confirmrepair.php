@@ -17,7 +17,6 @@ class Confirmrepair extends BD_Controller
         $columns = array(
             0 => null,
             1 => 'order.orderId',
-
         );
         $garageId = $this->session->userdata['logged_in']['garageId'];
         $limit = $this->post('length');

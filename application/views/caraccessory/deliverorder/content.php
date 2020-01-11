@@ -84,6 +84,16 @@
                                         </div>
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <span>ปีผลิตยาง (DOT)</span><span class="error">*</span> <label
+                                                id="dot[]-error" class="error" for="dot[]" style=""></label>
+                                            <span id="dot"></span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">

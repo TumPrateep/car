@@ -5651,6 +5651,9 @@ footer p {
         display: inline-block;
         width: 100%;
     }
+    .modal-dialog {
+        width: 100% !important;
+    }
 }
 
 @media (max-width: 360px) {

@@ -35,7 +35,7 @@ var table = $('#dt-table').DataTable({
         }
     },
     "order": [
-        [2, "dsc"]
+        [2, "desc"]
     ],
     "columns": [
         null,
@@ -166,12 +166,25 @@ function getNumberTrackingData(orderId) {
         },
         function(data, textStatus, jqXHR) {
             console.log(data);
-            let tracking = data.data;
+            let tracking = data.tracking;
             $("#time").val(tracking.time);
             $('#file_url').attr('src', base_url + 'public/image/deliverorder/' + tracking.file_url);
+            renderDot(data.dot);
             $("#tracking-order").modal("show");
         }
     );
+}
+
+function renderDot(dot) {
+    var html = '<div class="form-group row">';
+    $.each(dot, function(i, v) {
+        html += '<label class="col-4 col-form-label">ยางเส้นที่ ' + (i + 1) + '</label>' +
+            '<div class="col-2">' +
+            '<label class="col-form-label"><strong>' + v.dot + '</strong></label>' +
+            '</div>';
+    });
+    html += '</div>';
+    $("#dot").html(html);
 }
 
 // $("#submit").submit(function() {

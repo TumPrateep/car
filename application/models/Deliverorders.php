@@ -8,14 +8,18 @@ class Deliverorders extends CI_Model
     public function insert($data)
     {
         $this->db->trans_begin();
-        $this->db->insert('numbertracking', $data);
+        $this->db->insert('numbertracking', $data['numbertracking']);
 
-        $this->db->where('orderId', $data['orderId']);
-        $this->db->where('car_accessoriesId', $data['create_by']);
+        $this->db->where('orderId', $data['numbertracking']['orderId']);
+        $this->db->where('car_accessoriesId', $data['numbertracking']['create_by']);
         $this->db->update('orderdetail', ["status" => 2]);
 
-        $this->db->where('orderId', $data['orderId']);
+        $this->db->where('orderId', $data['numbertracking']['orderId']);
         $this->db->update('order', ["status" => 5]);
+
+        foreach ($data['tire_dot'] as $i => $v) {
+            $this->db->insert('tire_dot', ['orderId' => $data['numbertracking']['orderId'], 'dot' => $v]);
+        }
 
         if ($this->db->trans_status() === false) {
             $this->db->trans_rollback();
