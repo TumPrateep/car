@@ -246,10 +246,8 @@ class Register extends BD_Controller
         $passwords = password_hash($password, PASSWORD_BCRYPT);
         // $checkpassword = $this->post('checkpassword');
         //set8
-        // $data_check = $this->registergarages->data_check_create($username, $personalid, $businessRegistration);
-        $data_check = $this->registergarages->data_check_create($username, null, null);
-        
-        // dd();
+        $data_check = $this->registergarages->data_check_create($username, $personalid, $businessRegistration);
+
         if (!$success) {
             // var_dump("gg");
             // exit;

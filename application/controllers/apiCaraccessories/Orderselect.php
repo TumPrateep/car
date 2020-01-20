@@ -27,7 +27,6 @@ class Orderselect extends BD_Controller
         $dir = $this->post('order')[0]['dir'];
         $userId = $this->session->userdata['logged_in']['id'];
         $totalData = $this->orderselects->allData_count($userId);
-
         $totalFiltered = $totalData;
 
         if (empty($this->post('status'))) {

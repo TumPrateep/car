@@ -54,6 +54,14 @@ class Prices extends CI_Model
         return $data;
     }
 
+    public function getPriceCarjaideeChangePrice($rimId)
+    {
+        $this->db->select("rimId,tire_price as price");
+        $this->db->where('rimId', $rimId);
+        $result = $this->db->get("tire_change");
+        return $result->row('price');
+    }
+
     public function getPriceService($rimId)
     {
         $this->db->select("rimId,price");

@@ -45,8 +45,8 @@ class Checkout extends BD_Controller
         $garage_service = $this->prices->getPriceFromGarageByGarageId($tireData->rimId, $garageId);
 
         $tire_price = $tireData->price;
-        $tireData->price = ($tire_price + $carjaidee_price + $service_price + $garage_service->tire_price) * $number;
-        $tireData->price_per_unit = ($tire_price + $carjaidee_price + $service_price + $garage_service->tire_price);
+        $tireData->price = ($tire_price + $carjaidee_price + $service_price + ($garage_service->tire_price + 50)) * $number;
+        $tireData->price_per_unit = ($tire_price + $carjaidee_price + $service_price + ($garage_service->tire_price + 50));
         $tireData->number = $number;
 
         $serviceData = [
@@ -98,11 +98,14 @@ class Checkout extends BD_Controller
         ];
 
         $tireData = $this->tiredatas->getTireDataById($tire_dataId);
+        $minTireData = $this->tiredatas->getMinTireDataById($tire_dataId);
+        // $carjaidee_service_price = $this->prices->getPriceCarjaideeChangePrice($tireData->rimId);
 
         $data['orderdetail'] = [
             "orderId" => null,
             "userId" => $userId,
             "productId" => $tire_dataId,
+            "real_productId" => $minTireData->tire_dataId,
             "quantity" => $number,
             "status" => 1,
             "activeflag" => 1,
@@ -110,11 +113,15 @@ class Checkout extends BD_Controller
             "group" => "tire",
             "orderselect_status" => 0,
             "car_accessoriesId" => $tireData->car_accessoriesId,
+            'real_car_accessoriesId' => $minTireData->car_accessoriesId,
             "price_per_unit" => $price_per_unit,
             "product_price" => $product_price,
+            'min_product_price' => $minTireData->price,
+            'real_product_price' => $minTireData->price * $number,
             "charge_price" => $charge_price,
             "delivery_price" => $delivery_price,
             "garage_service_price" => $garage_service_price,
+            "carjaidee_service_price" => $garage_service_price + 50,
         ];
 
         $data["reserve"] = [

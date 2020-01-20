@@ -1,12 +1,17 @@
-<?php if(!defined('BASEPATH')) exit('No direct script allowed');
+<?php if (!defined('BASEPATH')) {
+    exit('No direct script allowed');
+}
 
-class Dataoption extends CI_Model {
+class Dataoption extends CI_Model
+{
 
-	function __construct() {
-        parent::__construct(); 
+    public function __construct()
+    {
+        parent::__construct();
     }
 
-    function getPictureSpare($option){
+    public function getPictureSpare($option)
+    {
         $this->db->select("picture");
         $this->db->from("spare_product");
         $this->db->where("spares_undercarriageId", $option['spares_undercarriageId']);
@@ -20,23 +25,25 @@ class Dataoption extends CI_Model {
         return $query->row();
     }
 
-    function getPictureTire($option){
+    public function getPictureTire($option)
+    {
         $this->db->select("picture");
-        $this->db->from("tire_product");
+        $this->db->from("tire_product_picture");
         $this->db->where("tire_brandId", $option['tire_brandId']);
         $this->db->where("tire_modelId", $option['tire_modelId']);
-        $this->db->where("rimId", $option['rimId']);
-        $this->db->where("tire_sizeId", $option['tire_sizeId']);
+        // $this->db->where("rimId", $option['rimId']);
+        // $this->db->where("tire_sizeId", $option['tire_sizeId']);
         $query = $this->db->get();
         return $query->row();
     }
 
-    function getPictureLubricator($option){
+    public function getPictureLubricator($option)
+    {
         $this->db->select("picture");
         $this->db->from("lubricator_product");
         $this->db->where("lubricatorId", $option['lubricatorId']);
         $query = $this->db->get();
         return $query->row();
     }
-    
+
 }

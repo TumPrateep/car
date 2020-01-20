@@ -124,9 +124,9 @@ class Garage extends CI_Model
     {
         $this->db->select('garage.garageId, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status');
         $this->db->from('garage');
-        $this->db->join('mechanic', 'mechanic.garageId = garage.garageId');
+        $this->db->join('mechanic', 'garage.garageId = mechanic.garageId', 'left');
         $this->db->where('mechanic.status', 1);
-
+        $this->db->or_where('mechanic.status is null', null, false);
         $this->db->limit($limit, $start)->order_by($order, $dir);
         $query = $this->db->get();
 

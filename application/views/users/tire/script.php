@@ -303,7 +303,8 @@ $(document).ready(function() {
 
                     var html = '<div class="row row-border">' +
                         '<div class="pic col-md-3 text-center">' +
-                        '<img src="https://www.tyremarket.com/images/products/EP150.jpg">' +
+                        '<img src="' + base_url + 'public/image/tireproduct/' + data
+                        .picture + '">' +
                         '</div>' +
                         '<div class="detail col-md-3">' +
                         '<div class="text"> ' + data.tire_brandName + ' </div>' +

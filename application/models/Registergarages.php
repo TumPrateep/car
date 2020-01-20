@@ -5,26 +5,34 @@ if(!defined('BASEPATH')) exit('No direct script allowed');
 class Registergarages extends CI_Model{
 
     function data_check_create($username,$personalid,$businessRegistration){
-        $this->db->select("id");
-        $this->db->from("users");
-        $this->db->where("username", $username);
-        $result1 = $this->db->get()->row();
-        if(!empty($result1)){
-            return $result1;
+        if(!empty($username)){
+            $this->db->select("id");
+            $this->db->from("users");
+            $this->db->where("username", $username);
+            $result1 = $this->db->get()->row();
+            if(!empty($result1)){
+                return $result1;
+            }
         }
-        $this->db->select("user_profile");
-        $this->db->from("user_profile");
-        $this->db->where("personalid", $personalid);
-        $result2 = $this->db->get()->row();
-        if(!empty($result2)){
-            return $result2;
+
+        if(!empty($personalid)){
+            $this->db->select("user_profile");
+            $this->db->from("user_profile");
+            $this->db->where("personalid", $personalid);
+            $result2 = $this->db->get()->row();
+            if(!empty($result2)){
+                return $result2;
+            }
         }
-        $this->db->select("garageId");
-        $this->db->from("garage");
-        $this->db->where("businessRegistration", $businessRegistration);
-        $result3 = $this->db->get()->row();
-        if(!empty($result3)){
-            return $result3;
+
+        if(!empty($businessRegistration)){
+            $this->db->select("garageId");
+            $this->db->from("garage");
+            $this->db->where("businessRegistration", $businessRegistration);
+            $result3 = $this->db->get()->row();
+            if(!empty($result3)){
+                return $result3;
+            }
         }
 
         return null;

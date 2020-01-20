@@ -79,7 +79,7 @@ class Selectgarage extends BD_Controller
                 $nestedData[$count]['longitude'] = (float) $post->longtitude;
                 $nestedData[$count]['picture'] = $post->picture;
                 $nestedData[$count]['garageService'] = (float) $post->garageService;
-                $nestedData[$count]['tire_price'] = $post->tire_price;
+                $nestedData[$count]['tire_price'] = $post->tire_price + 50;
                 $nestedData[$count]['tireData'] = $tireData;
 
                 $nestedData[$count]['provinceName'] = $this->location->getProvinceNameByProvinceId($post->provinceId);

@@ -1,5 +1,4 @@
-<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};HandleGoogleApiLibrary()"
-    onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script>
 $(document).ready(function() {
     var errorMessage = $("#error-message");
@@ -134,31 +133,48 @@ $(document).ready(function() {
     });
 });
 
-function HandleGoogleApiLibrary() {
+function init() {
     // Load "client" & "auth2" libraries
-    gapi.load('client:auth2', {
-        callback: function() {
-            // Initialize client library
-            // clientId & scope is provided => automatically initializes auth2 library
-            gapi.client.init({
-                apiKey: 'AIzaSyB35TEuf1rNhUFy17glysZ5AVOCknVX8-o',
-                clientId: '26870870058-s1cptuqcdgpei6dp38g246006k3kd2kd.apps.googleusercontent.com',
-                scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.me'
-            }).then(
-                // On success
-                function(success) {
-                    // After library is successfully loaded then enable the login button
-                    $("#login-button").removeAttr('disabled');
-                },
-                // On error
-                function(error) {
-                    $("#login-button").hide();
-                }
-            );
-        },
-        onerror: function() {
-            // Failed to load libraries
-        }
+    gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({
+            client_id: '963662169794-vnjpn0c7dnki4f9en731752iprm253d6.apps.googleusercontent.com',
+            fetch_basic_profile: true,
+            scope: 'profile'
+        });
+
+        // Sign the user in, and then retrieve their ID.
+    });
+    // gapi.load('client:auth2', {
+    //     callback: function() {
+    //         // Initialize client library
+    //         // clientId & scope is provided => automatically initializes auth2 library
+    //         gapi.auth2.init({
+    //             client_id: '963662169794-vnjpn0c7dnki4f9en731752iprm253d6.apps.googleusercontent.com',
+    //             fetch_basic_profile: true,
+    //             scope: 'profile'
+    //         }).then(
+    //             // On success
+    //             function(success) {
+    //                 console.log(success);
+    //                 // After library is successfully loaded then enable the login button
+    //                 $("#login-button").removeAttr('disabled');
+    //             },
+    //             // On error
+    //             function(error) {
+    //                 $("#login-button").hide();
+    //             }
+    //         );
+    //     },
+    //     onerror: function() {
+    //         // Failed to load libraries
+    //     }
+    // });
+}
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function() {
+        console.log('User signed out.');
     });
 }
 
@@ -166,45 +182,68 @@ function HandleGoogleApiLibrary() {
 $("#login-button").on('click', function() {
     $("#login-button").attr('disabled', 'disabled');
 
-    // API call for Google login
-    gapi.auth2.getAuthInstance().signIn().then(
-        // On success
-        function(success) {
-            // API call to get user information
-            gapi.client.request({
-                path: 'https://www.googleapis.com/plus/v1/people/me'
-            }).then(
-                // On success
-                function(success) {
-                    var user_info = JSON.parse(success.body);
-                    var data = {
-                        "name": user_info.displayName,
-                        "lastname": user_info.name.familyName,
-                        "firstname": user_info.name.givenName,
-                        "email": user_info.emails[0].value
-                    };
-
-                    $.post(base_url + "service/Auth/googleAuth/", data,
-                        function(data, textStatus, jqXHR) {
-                            successLogin(data);
-                        }
-                    );
-
-                    $("#login-button").hide();
-                },
-                // On error
-                function(error) {
-                    $("#login-button").removeAttr('disabled');
-                    alert('Error : Failed to get user user information');
+    auth2.signIn().then(function() {
+            // console.log(auth2.currentUser.get().getBasicProfile());
+            var user = auth2.currentUser.get().getBasicProfile();
+            var data = {
+                "name": user.ig,
+                "lastname": user.wea,
+                "firstname": user.ofa,
+                "email": user.U3
+            };
+            $.post(base_url + "service/Auth/googleAuth/", data,
+                function(data, textStatus, jqXHR) {
+                    successLogin(data);
                 }
             );
+
+            $("#login-button").hide();
         },
-        // On error
         function(error) {
             $("#login-button").removeAttr('disabled');
-            alert('Error : Login Failed');
-        }
-    );
+            alert('Error : Failed to get user user information');
+        });
+
+    // API call for Google login
+    //     gapi.auth2.getAuthInstance().signIn().then(
+    //             // On success
+    //             function(success) {
+    //                 // API call to get user information
+    //                 console.log();
+    //                 // gapi.client.request({
+    //                 //     path: 'https://www.googleapis.com/plus/v1/people/me'
+    //                 // }).then(
+    //                 //     // On success
+    //                 //     function(success) {
+    //                 //         var user_info = JSON.parse(success.body);
+    //                 //         var data = {
+    //                 //             "name": user_info.displayName,
+    //                 //             "lastname": user_info.name.familyName,
+    //                 //             "firstname": user_info.name.givenName,
+    //                 //             "email": user_info.emails[0].value
+    //                 //         };
+
+    //                 //         $.post(base_url + "service/Auth/googleAuth/", data,
+    //                 //             function(data, textStatus, jqXHR) {
+    //                 //                 successLogin(data);
+    //                 //             }
+    //                 //         );
+
+    //                 //         $("#login-button").hide();
+    //                 //     },
+    //                 //     // On error
+    //                 //     function(error) {
+    //                 //         $("#login-button").removeAttr('disabled');
+    //                 //         alert('Error : Failed to get user user information');
+    //                 //     }
+    //             );
+    //         },
+    //         // On error
+    //         function(error) {
+    //             $("#login-button").removeAttr('disabled');
+    //             alert('Error : Login Failed');
+    //         }
+    // );
 });
 
 function successLogin(data) {

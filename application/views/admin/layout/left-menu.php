@@ -335,6 +335,28 @@
                     </ul>
                 </li>
 
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
+                        href="#manage_revenue">
+                        <i class="fa fa-fw fa-dollar"></i>
+                        <span class="nav-link-text">การเงิน</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="manage_revenue">
+                        <li class="<?=activate_menu('revenue/income_item/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/revenue/income_item")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">รายได้แต่ละรายการ</span>
+                            </a>
+                        </li>
+                        <li class="<?=activate_menu('revenue/income/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/revenue/income")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">รายได้แต่ละเดือน</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                     <a class="nav-link" href="#">
                         <i class="fa fa-fw fa-link"></i>

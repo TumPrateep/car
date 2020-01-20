@@ -14,7 +14,7 @@ class Orderselects extends CI_Model
         $this->db->join('garage', 'garage.garageId = reserve.garageId');
         $this->db->where('order.status', 3);
         $this->db->where('reserve.status', 2);
-        $this->db->where('orderdetail.car_accessoriesId', $userId);
+        $this->db->where('orderdetail.real_car_accessoriesId', $userId);
         $query = $this->db->get();
         return $query->num_rows();
     }
@@ -29,7 +29,7 @@ class Orderselects extends CI_Model
         $this->db->join('garage', 'garage.garageId = reserve.garageId');
         $this->db->where('order.status', 3);
         $this->db->where('reserve.status', 2);
-        $this->db->where('orderdetail.car_accessoriesId', $userId);
+        $this->db->where('orderdetail.real_car_accessoriesId', $userId);
         $this->db->limit($limit, $start)->order_by($order, $dir);
         $query = $this->db->get();
 

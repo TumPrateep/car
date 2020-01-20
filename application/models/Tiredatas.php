@@ -263,4 +263,13 @@ class Tiredatas extends CI_Model
         return $result->row();
     }
 
+    public function getMinTireDataById($tire_dataId){
+        $tiredata = $this->getTireDataById($tire_dataId);
+        $this->db->where('tire_data.tire_modelId', $tiredata->tire_modelId);
+        $this->db->where('tire_data.tire_sizeId', $tiredata->tire_sizeId);
+        $this->db->order_by('tire_data.price', 'asc');
+        $result = $this->db->get('tire_data');
+        return $result->row();
+    }
+
 }

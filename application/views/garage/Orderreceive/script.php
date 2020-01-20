@@ -128,7 +128,7 @@ var table = $('#do-table').DataTable({
             "render": function(data, type, full, meta) {
                 var html = '';
                 // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
-                if (data.status == 2) {
+                if (data.status == 1) {
                     html += '<button type="button" class="btn btn-info"  onclick="confirmStatus(' +
                         data.orderDetailId + ')">รับสินค้า</button>';
                 } else if (data.status == 3) {

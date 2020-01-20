@@ -146,7 +146,7 @@
       $CI = get_instance();
       $CI->load->model("dataoption");
       $result = $CI->dataoption->getPictureTire($option);
-      if($result == null){
+      if(empty($result)){
         $result = new stdClass();
         $result->picture = "carimage.png";
       }

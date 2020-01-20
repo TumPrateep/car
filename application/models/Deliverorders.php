@@ -52,7 +52,7 @@ class Deliverorders extends CI_Model
         $this->db->join('garage', 'garage.garageId = reserve.garageId');
         $this->db->where('order.status', 4);
         $this->db->where('orderdetail.status', 1);
-        $this->db->where('orderdetail.car_accessoriesId', $userId);
+        $this->db->where('orderdetail.real_car_accessoriesId', $userId);
         $query = $this->db->get();
         return $query->num_rows();
 
@@ -68,7 +68,7 @@ class Deliverorders extends CI_Model
         $this->db->join('garage', 'garage.garageId = reserve.garageId');
         $this->db->where('order.status', 4);
         $this->db->where('orderdetail.status', 1);
-        $this->db->where('orderdetail.car_accessoriesId', $userId);
+        $this->db->where('orderdetail.real_car_accessoriesId', $userId);
         $this->db->limit($limit, $start)->order_by($order, $dir);
         $query = $this->db->get();
 
@@ -90,7 +90,7 @@ class Deliverorders extends CI_Model
         $this->db->join('numbertracking', 'numbertracking.orderId = order.orderId');
         $this->db->where('order.status >=', 5);
         // $this->db->where('orderdetail.status !=', 1);
-        $this->db->where('orderdetail.car_accessoriesId', $userId);
+        $this->db->where('orderdetail.real_car_accessoriesId', $userId);
         $query = $this->db->get();
 
         return $query->num_rows();
@@ -108,7 +108,7 @@ class Deliverorders extends CI_Model
         $this->db->join('numbertracking', 'numbertracking.orderId = order.orderId');
         $this->db->where('order.status >=', 5);
         // $this->db->where('orderdetail.status !=', 1);
-        $this->db->where('orderdetail.car_accessoriesId', $userId);
+        $this->db->where('orderdetail.real_car_accessoriesId', $userId);
         $this->db->limit($limit, $start)->order_by($order, $dir);
         $query = $this->db->get();
 

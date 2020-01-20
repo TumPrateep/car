@@ -171,7 +171,6 @@ class Orderdetail extends BD_Controller
         $data = array(
             'orderDetailId' => $orderDetailId,
             'status' => $status,
-
         );
         // $data_check_create = $this->orderdetails->getorderDetailById($orderDetailId);
 

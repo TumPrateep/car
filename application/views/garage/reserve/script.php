@@ -111,7 +111,7 @@ var table = $('#changes-table').DataTable({
                 let html = '';
 
                 if (data.status == 1) {
-                    html += '<button type="button" class="btn btn-success"  title="รับนัด" ' + disable +
+                    html += '<button type="button" class="btn btn-success"  title="รับนัด" ' +
                         ' onclick="confirmStatus(' + data.reserveId + ',' + data.orderId +
                         ')">รับนัดซ่อม</button>';
                 } else if (data.status == 2) {
