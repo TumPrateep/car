@@ -73,6 +73,10 @@
                                 <span class="hide-menu">รายการสินค้าที่ส่งแล้ว</span>
                             </a>
                         </li>
+                        <li><a class="garage-white " href="<?=base_url("caraccessory/bill");?>">
+                                <i class="fa fa-credit-card-alt" aria-hidden="true"></i><span
+                                    class="hide-menu">การจ่ายเงิน</span></a>
+                        </li>
                         <!-- <li>
                             <a class="garage-white" href="<?=base_url("caraccessory/repatriateorder");?>">
                                 <i class="fa fa-tachometer garage-white"></i>

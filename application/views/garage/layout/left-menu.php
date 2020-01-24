@@ -58,6 +58,10 @@
                                 <i class="fa fa-commenting-o garage-white"></i><span
                                     class="hide-menu">คะแนนและรีวิว</span></a>
                         </li>
+                        <li><a class="garage-white " href="<?=base_url("garage/bill");?>">
+                                <i class="fa fa-credit-card-alt" aria-hidden="true"></i><span
+                                    class="hide-menu">การจ่ายเงิน</span></a>
+                        </li>
                         <!-- <li ><a class="garage-white" href="#" onclick="logout()">
                             <i class="fa fa-sign-out garage-white"></i><span class="hide-menu">ออกจากระบบ</span></a>
                         </li> -->
