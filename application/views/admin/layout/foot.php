@@ -26,6 +26,9 @@
     <script src="<?=base_url("/public/locales/th.js") ?>"></script>
     <script src="<?=base_url("/public/js/jquery-confirm.min.js");?>"></script>
     <script src="<?=base_url("/public/themes/caraccessory/js/chosen.jquery.min.js") ?>"></script>
+
+    <script src="<?=base_url("/public/js/Chart.min.js") ?>"></script>
+    <script src="<?=base_url("/public/js/Chart.bundle.min.js") ?>"></script>
     
     <script>
         $(document).ready(function(){

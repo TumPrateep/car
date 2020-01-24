@@ -1,125 +1,98 @@
 <script>
-var table = $('#changes-table').DataTable({
-    "language": {
-        "aria": {
-            "sortAscending": ": activate to sort column ascending",
-            "sortDescending": ": activate to sort column descending"
+$(document).ready(function() {
+
+    var ctx = $('#line-profit');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'จำนวนเงิน',
+                data: [],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
         },
-        "emptyTable": "ไม่พบข้อมูล",
-        "info": "แสดง _START_ ถึง _END_ ของ _TOTAL_ รายการ",
-        "infoEmpty": "ไม่พบข้อมูล",
-        "infoFiltered": "(กรอง 1 จากทั้งหมด _MAX_ รายการ)",
-        "lengthMenu": "_MENU_ รายการ",
-        "zeroRecords": "ไม่พบข้อมูล",
-        "oPaginate": {
-            "sFirst": "หน้าแรก", // This is the link to the first page
-            "sPrevious": "ก่อนหน้า", // This is the link to the previous page
-            "sNext": "ถัดไป", // This is the link to the next page
-            "sLast": "หน้าสุดท้าย" // This is the link to the last page
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
-    },
-    "responsive": true,
-    "bLengthChange": true,
-    "searching": false,
-    "processing": true,
-    "serverSide": true,
-    "ajax": {
-        "url": base_url + "api/revenue/search",
-        "dataType": "json",
-        "type": "POST",
-        "data": function(data) {
-            // data.brandName = $("#table-search").val()
-            // data.status = $("#status").val()
+    });
+
+    init();
+
+    function init() {
+        var d = new Date();
+        var y = d.getFullYear();
+        var m = null; // d.getMonth() + 1;
+
+        setMonth(m);
+        setYear(y);
+        getProfitData(m, y);
+    }
+
+    function getProfitData(m, y) {
+        $.post(base_url + "api/profit/getProfit", {
+            'month': m,
+            'year': y
+        }, function(res, textStatus, jqXHR) {
+            let profit = res.data.profit;
+            if (profit) {
+                $('#txt-number').html(profit.number);
+                $('#txt-price').html(currency(profit.price, {
+                    precision: 0
+                }).format());
+                $('#txt-profit').html(currency(profit.profit, {
+                    precision: 0
+                }).format());
+            } else {
+                $('#txt-number').html(0);
+                $('#txt-price').html(currency(0, {
+                    precision: 0
+                }).format());
+                $('#txt-profit').html(currency(0, {
+                    precision: 0
+                }).format());
+            }
+
+            updateChart(res.data.profit_data);
+        });
+    }
+
+    function setMonth(m) {
+        $.each(months, function(i, v) {
+            $('#month').append('<option value="' + (i + 1) + '">' + v + '</option>');
+        });
+        $('#month').val(m);
+    }
+
+    function setYear(y) {
+        var startYear = 2019;
+        var endYear = y;
+        for (let i = startYear; i <= endYear; i++) {
+            $('#year').append('<option value="' + i + '">' + (i + 543) + '</option>');
         }
-    },
-    "order": [
-        [0, "desc"]
-    ],
-    "columns": [{
-        "data": "orderId"
-    }, {
-        "data": "price"
-    }, {
-        "data": "real_product_price"
-    }, {
-        "data": "charge_price"
-    }, {
-        "data": "garage_service_price"
-    }, {
-        "data": "delivery_price"
-    }, {
-        "data": "profit"
-    }],
-    "columnDefs": [{
-            "searchable": false,
-            "orderable": false,
-            "targets": [0]
-        },
-        {
-            "targets": 0,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return '#' + data;
-            }
-        },
-        {
-            "targets": 1,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return '<div class="badge badge-info">' + currency(data, {
-                    precision: 0
-                }).format() + '</div>';
-            }
-        },
-        {
-            "targets": 2,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return currency(data, {
-                        precision: 0
-                    }).format() + '<br><small class="badge badge-warning">+' + currency(full
-                        .profit_product_price, {
-                            precision: 0
-                        }).format() +
-                    '</small>';
-            }
-        },
-        {
-            "targets": 3,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return '<br><div class="badge badge-warning">+' + currency(data, {
-                    precision: 0
-                }).format() + '</div>';
-            }
-        },
-        {
-            "targets": 4,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return '<div>' + currency(data, {
-                        precision: 0
-                    }).format() + '</div><small class="badge badge-warning">+' + full
-                    .profit_service_price + '</small>';
-            }
-        },
-        {
-            "targets": 6,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return '<strong><div class="badge badge-warning">' + currency(data, {
-                    precision: 0
-                }).format() + '</div></strong>';
-            }
-        },
-        {
-            "className": "dt-center",
-            "targets": [0, 1, 2, 3, 4, 5, 6]
-        }, {
-            "className": "dt-head-center",
-            "targets": []
-        }
-    ]
+        $('#year').val(y);
+    }
+
+    $('#search').click(function(e) {
+        e.preventDefault();
+        var month = $('#month').val();
+        var year = $('#year').val();
+        getProfitData(month, year);
+    });
+
+    function updateChart(price_data) {
+        chart.data.datasets[0].data = price_data;
+        chart.update();
+    }
+
 
 });
 </script>

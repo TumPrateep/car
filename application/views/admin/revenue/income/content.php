@@ -17,7 +17,7 @@
                             <option value="">เลือกเดือน</option>
                         </select>
                         <div class="input-group-append">
-                            <span class="input-group-text"><i class="fa fa-usd" aria-hidden="true"></i></span>
+                            <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                             <option value="">เลือกปี</option>
                         </select>
                         <div class="input-group-append">
-                            <span class="input-group-text"><i class="fa fa-usd" aria-hidden="true"></i></span>
+                            <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                         </div>
                     </div>
                 </div>
@@ -36,23 +36,49 @@
                         ค้นหา</i></button>
                 </div>
             </div><br>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
-                            <thead>
-                                <th>หมายเลขคำสั่งซื้อ</th>
-                                <th>ราคาขาย</th>
-                                <th>ราคาร้านค้าส่ง</th>
-                                <th>ค่าบริการ</th>
-                                <th>ค่าถอดใส่</th>
-                                <th>ค่าจัดส่ง</th>
-                                <th>กำไร</th>
-                            </thead>
-                        </table>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card border-info mb-3">
+                            <div class="card-header">
+                                <strong>จำนวนรายการสั่งซื้อ</strong>
+                            </div>
+                            <div class="card-body">
+                                <span id="txt-number"></span> รายการ
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-info mb-3">
+                            <div class="card-header">
+                                <strong>รายได้รวม</strong>
+                            </div>
+                            <div class="card-body">
+                                <span id="txt-price"></span> บาท
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-warning mb-3">
+                            <div class="card-header">
+                                <strong>กำไร</strong>
+                            </div>
+                            <div class="card-body">
+                                <h5><span class="badge badge-warning">+<span id="txt-profit"></span></span> บาท</h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <br>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <canvas id="line-profit"></canvas>
+                    </div>
+                </div>
+            </div>
+            <br>
         </div>
     </div>
 </div>
