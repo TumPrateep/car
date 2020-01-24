@@ -373,6 +373,28 @@
                     </ul>
                 </li>
 
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
+                        href="#payment_user">
+                        <i class="fa fa-fw fa-dollar"></i>
+                        <span class="nav-link-text">การจ่ายเงิน</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="payment_user">
+                        <li class="<?=activate_menu('revenue/income_item/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/Payment/garagesmanagementindex")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">ศูนย์บริการคาร์ใจดี</span>
+                            </a>
+                        </li>
+                        <li class="<?=activate_menu('revenue/income/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/Payment/managepartsshopindex")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">ร้านค้าส่งคาร์ใจดี</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                     <a class="nav-link" href="#">
                         <i class="fa fa-fw fa-link"></i>

@@ -111,4 +111,128 @@ class Payments extends CI_Model
         }
     }
 
+    ///////////  ManagepartsshopPaymentApprove
+
+    public function allManagepartsshopPaymentApprove_count($car_accessoriesId)
+    {
+        $this->db->select('order.orderId, order.payment_status, orderdetail.real_product_price');
+        $this->db->from('order');
+        $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
+        $this->db->where('orderdetail.real_car_accessoriesId', $car_accessoriesId);
+        $query = $this->db->get();
+        return $query->num_rows();
+
+    }
+
+    public function allManagepartsshopPaymentApprove($limit, $start, $col, $dir, $car_accessoriesId)
+    {
+        $this->db->select('order.orderId, order.payment_status, orderdetail.real_product_price');
+        $this->db->from('order');
+        $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
+        $this->db->where('orderdetail.real_car_accessoriesId', $car_accessoriesId);
+
+        $query = $this->db->limit($limit, $start)->order_by($col, $dir)->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+
+    }
+
+    public function ManagepartsshopPaymentApprove_search($limit, $start, $search, $col, $dir, $status, $car_accessoriesId)
+    {
+        $this->db->select('order.orderId, order.payment_status, orderdetail.real_product_price');
+        $this->db->from('order');
+        $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
+        $this->db->like('order.orderId',$search);
+        $this->db->where('orderdetail.real_car_accessoriesId', $car_accessoriesId);
+
+        $query = $this->db->limit($limit, $start)
+            ->order_by($col, $dir)
+            ->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+    }
+
+    function ManagepartsshopPaymentApprove_search_count($search, $car_accessoriesId){
+       
+        $this->db->select('order.orderId, order.payment_status, orderdetail.real_product_price');
+        $this->db->from('order');
+        $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
+        $this->db->like('order.orderId',$search);
+        $this->db->where('orderdetail.real_car_accessoriesId', $car_accessoriesId);
+
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    ///////// Garagesmanagement
+
+    public function allGaragesmanagement_count($garageId)
+    {
+        $this->db->select('order.orderId, order.payment_status, orderdetail.garage_service_price, orderdetail.quantity');
+        $this->db->from('order');
+        $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
+        $this->db->join('reserve', 'reserve.orderId = order.orderId');
+        $this->db->where('reserve.garageId', $garageId);
+        $query = $this->db->get();
+        return $query->num_rows();
+
+    }
+
+    public function allGaragesmanagement($limit, $start, $col, $dir, $garageId)
+    {
+        $this->db->select('order.orderId, order.payment_status, orderdetail.garage_service_price, orderdetail.quantity');
+        $this->db->from('order');
+        $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
+        $this->db->join('reserve', 'reserve.orderId = order.orderId');
+        $this->db->where('reserve.garageId', $garageId);
+
+        $query = $this->db->limit($limit, $start)->order_by($col, $dir)->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+
+    }
+
+    public function Garagesmanagement_search($limit, $start, $search, $col, $dir, $status, $garageId)
+    {
+        $this->db->select('order.orderId, order.payment_status, orderdetail.garage_service_price, orderdetail.quantity');
+        $this->db->from('order');
+        $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
+        $this->db->join('reserve', 'reserve.orderId = order.orderId');
+        $this->db->like('order.orderId',$search);
+        $this->db->where('reserve.garageId', $garageId);
+
+        $query = $this->db->limit($limit, $start)
+            ->order_by($col, $dir)
+            ->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return null;
+        }
+    }
+
+    function Garagesmanagement_search_count($search, $garageId)
+    {
+        $this->db->select('order.orderId, order.payment_status, orderdetail.garage_service_price, orderdetail.quantity');
+        $this->db->from('order');
+        $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
+        $this->db->join('reserve', 'reserve.orderId = order.orderId');
+        $this->db->like('order.orderId',$search);
+        $this->db->where('reserve.garageId', $garageId);
+
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
 }

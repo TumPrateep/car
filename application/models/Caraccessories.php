@@ -22,7 +22,7 @@ class Caraccessories extends CI_Model
 
     public function allData($limit, $start, $order, $dir)
     {
-        $this->db->select('car_accessoriesId, car_accessoriesName,CONCAT(firstname,lastname)as name, phone, status');
+        $this->db->select('car_accessoriesId, car_accessoriesName,CONCAT(firstname,lastname)as name, phone, status, userId');
         $this->db->from('car_accessories');
 
         $this->db->limit($limit, $start)->order_by($order, $dir);
@@ -80,7 +80,7 @@ class Caraccessories extends CI_Model
 
     public function sparesUndercarriage_search($limit, $start, $search, $col, $dir, $status)
     {
-        $this->db->select('car_accessoriesId, car_accessoriesName,CONCAT(firstname,lastname)as name, phone, status');
+        $this->db->select('car_accessoriesId, car_accessoriesName,CONCAT(firstname,lastname)as name, phone, status, userId');
         $this->db->from('car_accessories');
 
         $this->db->like('car_accessoriesName', $search);
@@ -98,7 +98,7 @@ class Caraccessories extends CI_Model
     }
     public function sparesUndercarriage_search_count($search, $status)
     {
-        $this->db->select('car_accessoriesId, car_accessoriesName,CONCAT(firstname,lastname)as name, phone, status');
+        $this->db->select('car_accessoriesId, car_accessoriesName,CONCAT(firstname,lastname)as name, phone, status , userId');
         $this->db->from('car_accessories');
 
         $this->db->like('car_accessoriesName', $search);

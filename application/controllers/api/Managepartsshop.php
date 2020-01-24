@@ -48,6 +48,7 @@ class Managepartsshop extends BD_Controller {
                 $nestedData['name'] = $post->name;
                 $nestedData['phone'] = $post->phone;
                 $nestedData['status'] = $post->status;
+                $nestedData['userId'] = $post->userId;
 
                 $data[] = $nestedData;
             }
