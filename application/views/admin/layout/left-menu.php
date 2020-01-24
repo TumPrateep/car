@@ -246,6 +246,22 @@
 
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
+                        href="#Tirelimit" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-dollar"></i>
+                        <span class="nav-link-text">กำหนดราคาสินค้า</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="Tirelimit">
+                        <li class="<?=activate_menu('Tirelimit/tirescharge/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/Tirelimit/GarageGruop")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">ยางรถ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
                         href="#serviceCharge" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-dollar"></i>
                         <span class="nav-link-text">ราคาค่าบริการ</span>
