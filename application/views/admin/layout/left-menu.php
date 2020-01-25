@@ -245,8 +245,8 @@
                 </li>
 
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                    <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
-                        href="#Tirelimit" data-parent="#exampleAccordion">
+                    <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#Tirelimit"
+                        data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-dollar"></i>
                         <span class="nav-link-text">กำหนดราคาสินค้า</span>
                     </a>
@@ -353,6 +353,28 @@
 
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
+                        href="#payment_user">
+                        <i class="fa fa-fw fa-dollar"></i>
+                        <span class="nav-link-text">การจ่ายเงิน</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="payment_user">
+                        <li class="<?=activate_menu('payment/garage/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/payment/garage")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">ศูนย์บริการคาร์ใจดี</span>
+                            </a>
+                        </li>
+                        <li class="<?=activate_menu('payment/caraccessories/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/payment/caraccessories")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">ร้านค้าส่งคาร์ใจดี</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
                         href="#manage_revenue">
                         <i class="fa fa-fw fa-dollar"></i>
                         <span class="nav-link-text">การเงิน</span>
@@ -368,28 +390,6 @@
                             <a class="nav-link text-white" href="<?=base_url("admin/revenue/income")?>">
                                 <i class="fa fa-life-ring"></i>
                                 <span class="nav-link-text">รายได้แต่ละเดือน</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                    <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
-                        href="#payment_user">
-                        <i class="fa fa-fw fa-dollar"></i>
-                        <span class="nav-link-text">การจ่ายเงิน</span>
-                    </a>
-                    <ul class="sidenav-second-level collapse" id="payment_user">
-                        <li class="<?=activate_menu('revenue/income_item/');?>">
-                            <a class="nav-link text-white" href="<?=base_url("admin/Payment/garagesmanagementindex")?>">
-                                <i class="fa fa-life-ring"></i>
-                                <span class="nav-link-text">ศูนย์บริการคาร์ใจดี</span>
-                            </a>
-                        </li>
-                        <li class="<?=activate_menu('revenue/income/');?>">
-                            <a class="nav-link text-white" href="<?=base_url("admin/Payment/managepartsshopindex")?>">
-                                <i class="fa fa-life-ring"></i>
-                                <span class="nav-link-text">ร้านค้าส่งคาร์ใจดี</span>
                             </a>
                         </li>
                     </ul>

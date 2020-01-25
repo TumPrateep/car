@@ -1,70 +1,72 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 
-class Payment extends CI_Controller {
+class Payment extends CI_Controller
+{
 
-	function __construct()
+    public function __construct()
     {
         // Construct the parent class
-		parent::__construct();
-		$this->load->view("lib");
+        parent::__construct();
+        $this->load->view("lib");
     }
-	
-	// public function index()
-	// {
-	// 	$this->load->view("admin/layout/head");
-	// 	$this->load->view("admin/layout/left-menu");
-	// 	$this->load->view("admin/layout/header");
-	// 	$this->load->view("admin/garagesmanagement/content");
-	// 	$this->load->view("admin/layout/footer");
-	// 	$this->load->view("admin/layout/foot");	
-	// 	$this->load->view("admin/garagesmanagement/script");
-    // }  
-    
-    
-	public function garagesmanagementindex()
-	{
-		$this->load->view("admin/layout/head");
-		$this->load->view("admin/layout/left-menu");
-		$this->load->view("admin/layout/header");
-		$this->load->view("admin/payment/garagesmanagement/content");
-		$this->load->view("admin/layout/footer");
-		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/payment/garagesmanagement/script");
-	}
 
-	public function garagesmanagementshow($garageId)
-    {
-		$data['garageId'] = $garageId;
-		$this->load->view("admin/layout/head");
-		$this->load->view("admin/layout/left-menu");
-		$this->load->view("admin/layout/header");
-		$this->load->view("admin/payment/garagesmanagement/paymentapprove/content",$data);
-		$this->load->view("admin/layout/footer");
-		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/payment/garagesmanagement/paymentapprove/script");
-	}
+    // public function index()
+    // {
+    //     $this->load->view("admin/layout/head");
+    //     $this->load->view("admin/layout/left-menu");
+    //     $this->load->view("admin/layout/header");
+    //     $this->load->view("admin/garagesmanagement/content");
+    //     $this->load->view("admin/layout/footer");
+    //     $this->load->view("admin/layout/foot");
+    //     $this->load->view("admin/garagesmanagement/script");
+    // }
 
-    public function managepartsshopindex()
+    public function garage()
     {
-		$this->load->view("admin/layout/head");
-		$this->load->view("admin/layout/left-menu");
-		$this->load->view("admin/layout/header");
-		$this->load->view("admin/payment/managepartsshop/content");
-		$this->load->view("admin/layout/footer");
-		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/payment/managepartsshop/script");
-	}
+        $this->load->view("admin/layout/head");
+        $this->load->view("admin/layout/left-menu");
+        $this->load->view("admin/layout/header");
+        $this->load->view("admin/payment/garage/content");
+        $this->load->view("admin/layout/footer");
+        $this->load->view("admin/layout/foot");
+        $this->load->view("admin/payment/garage/script");
+    }
 
-	public function managepartsshopshow($userId)
+    public function garage_detail($garageId)
     {
-		$data['userId'] = $userId;
-		$this->load->view("admin/layout/head");
-		$this->load->view("admin/layout/left-menu");
-		$this->load->view("admin/layout/header");
-		$this->load->view("admin/payment/managepartsshop/paymentapprove/content",$data);
-		$this->load->view("admin/layout/footer");
-		$this->load->view("admin/layout/foot");	
-		$this->load->view("admin/payment/managepartsshop/paymentapprove/script");
-	}
+        $data['garageId'] = $garageId;
+        $this->load->view("admin/layout/head");
+        $this->load->view("admin/layout/left-menu");
+        $this->load->view("admin/layout/header");
+        $this->load->view("admin/payment/garage/detail/content", $data);
+        $this->load->view("admin/layout/footer");
+        $this->load->view("admin/layout/foot");
+        $this->load->view("admin/payment/garage/detail/script");
+    }
+
+    public function caraccessories()
+    {
+        $this->load->view("admin/layout/head");
+        $this->load->view("admin/layout/left-menu");
+        $this->load->view("admin/layout/header");
+        $this->load->view("admin/payment/caraccessories/content");
+        $this->load->view("admin/layout/footer");
+        $this->load->view("admin/layout/foot");
+        $this->load->view("admin/payment/caraccessories/script");
+    }
+
+    public function caraccessories_detail($userId)
+    {
+        $data['userId'] = $userId;
+        $this->load->view("admin/layout/head");
+        $this->load->view("admin/layout/left-menu");
+        $this->load->view("admin/layout/header");
+        $this->load->view("admin/payment/caraccessories/detail/content", $data);
+        $this->load->view("admin/layout/footer");
+        $this->load->view("admin/layout/foot");
+        $this->load->view("admin/payment/caraccessories/detail/script");
+    }
 
 }
