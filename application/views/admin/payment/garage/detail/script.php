@@ -43,7 +43,9 @@ var table = $('#brand-table').DataTable({
     "columns": [
         null,
         null,
-        { "data": "summary" },
+        {
+            "data": "summary"
+        },
         null
     ],
     "columnDefs": [{
@@ -63,21 +65,6 @@ var table = $('#brand-table').DataTable({
                 var html = '';
                 html += '<a href="' + base_url + 'admin/orderdetail/show/' + data.orderId + '">#' + data
                     .orderId + '</a><br>';
-                if (data.status == 1) {
-                    html += '<span class="badge badge-warning">รอตรวจสอบการโอนเงิน</span>';
-                } else if (data.status == 2) {
-                    html += '<span class="badge badge-success">โอนเงินเเล้ว</span>';
-                } else if (data.status == 8) {
-                    if (data.statusActive == 2) {
-                        html += '<span class="badge badge-danger">ยกเลิกชำระเงิน</span>';
-                    } else if (data.statusActive == 3) {
-                        html += '<span class="badge badge-danger">ยกเลิกการจอง</span>';
-                    }
-                } else if (data.status == 9) {
-                    html += '<span class="badge badge-danger">ยกเลิกการจอง</span>';
-                } else {
-                    html += '<span class="badge badge-default">รอโอนเงิน</span>';
-                }
                 return html;
             }
         },
@@ -100,10 +87,10 @@ var table = $('#brand-table').DataTable({
             "targets": 3,
             "data": null,
             "render": function(data, type, full, meta) {
-                var html = '';   
-                if (data.payment_status == 1) {
+                var html = '';
+                if (data.payment_status == 2) {
                     html += '<span class="badge badge-warning">จ่ายแล้ว</span>';
-                } else if (data.payment_status == 2) {
+                } else if (data.payment_status == 1) {
                     html += '<span class="badge badge-success">ยังไมจ่าย</span>';
                 }
                 return html;
@@ -117,10 +104,10 @@ var table = $('#brand-table').DataTable({
 
 });
 
-$("#OK").click(function(){
-        event.preventDefault();
-        table.ajax.reload();
-    })
+$("#OK").click(function() {
+    event.preventDefault();
+    table.ajax.reload();
+})
 
 function confirmStatus(paymentId, orderId) {
     var option = {

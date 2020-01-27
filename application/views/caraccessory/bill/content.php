@@ -15,19 +15,23 @@
     <!-- Container fluid  -->
     <div class="container-fluid">
         <div class="row">
-            <div class="card col-lg-12">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
-                                <thead>
-                                    <th>ลำดับ</th>
-                                    <th data-priority="1">วันที่จ่ายเงิน</th>
-                                    <th>ผู้จ่ายเงิน</th>
-                                    <th data-priority="2">จำนวนเงิน</th>
-                                    <th data-priority="3">รายละเอียด</th>
-                                </thead>
-                            </table>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
+                                        <thead>
+                                            <th>ลำดับ</th>
+                                            <th data-priority="1">วันที่จ่ายเงิน</th>
+                                            <th>ผู้จ่ายเงิน</th>
+                                            <th data-priority="2">จำนวนเงิน</th>
+                                            <th data-priority="3">รายละเอียด</th>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

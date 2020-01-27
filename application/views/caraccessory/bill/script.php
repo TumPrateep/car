@@ -69,11 +69,20 @@ var table = $('#changes-table').DataTable({
             }
         },
         {
+            "targets": 3,
+            "data": null,
+            "render": function(data, type, full, meta) {
+                return currency(data, {
+                    precision: 0
+                }).format(); // code ในการแปลงเวลา
+            }
+        },
+        {
             "targets": 4,
             "data": null,
             "render": function(data, type, full, meta) {
                 var html = '';
-                html += '<a href="#"><button class="btn btn-info">รายละเอียด</button></a>';
+                html += '<a href="'+base_url+'caraccessory/bill/detail/'+data.billId+'"><button class="btn btn-info">รายละเอียด</button></a>';
                 return html;
             }
         },

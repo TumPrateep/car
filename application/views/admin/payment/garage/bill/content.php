@@ -2,7 +2,10 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="<?=base_url("admin/paymentapprove ")?>">ยืนยันการจ่ายเงิน</a>
+            <a href="<?=base_url("admin/paymentapprove ")?>">บิลจ่ายเงิน</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="<?=base_url("admin/paymentapprove ")?>">รายการบิลจ่ายเงิน</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
     </ol>
@@ -12,13 +15,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-2">
-                <a href="<?=base_url('admin/payment/garage_bill/' . $garageId)?>" type="button"
-                    class="btn btn-warning btn-block"><i class="fa fa-book" aria-hidden="true"></i>
-                    บิลจ่ายเงิน</a>
+                <a href="<?=base_url('admin/payment/garage_create_bill/' . $garageId)?>" type="button"
+                    class="btn btn-info btn-block"><i class="fa fa-book" aria-hidden="true"></i>
+                    สร้างบิลจ่ายเงิน</a>
             </div>
             <div class="col-lg-3 offset-md-5">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="หมายเลขการสั่งซื้อ" id="orderId">
+                    <input type="text" class="form-control" placeholder="ผู้โอน" id="orderId">
                     <div class="input-group-append">
                         <span class="input-group-text fa fa-user-circle-o"></span>
                     </div>
@@ -34,12 +37,13 @@
             <input type="hidden" name="garageId" id="garageId" value="<?=$garageId?>">
             <div class="col-lg-12">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="brand-table" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
                         <thead>
                             <th>ลำดับ</th>
-                            <th>หมายเลขการสั่งซื้อ</th>
-                            <th>เงินทั้งหมด</th>
-                            <th></th>
+                            <th data-priority="1">วันที่จ่ายเงิน</th>
+                            <th>ผู้จ่ายเงิน</th>
+                            <th data-priority="2">จำนวนเงิน</th>
+                            <th data-priority="3">รายละเอียด</th>
                         </thead>
                     </table>
                 </div>

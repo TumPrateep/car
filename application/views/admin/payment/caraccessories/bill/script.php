@@ -24,13 +24,11 @@ var table = $('#changes-table').DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": {
-        "url": base_url + "apigarage/bill/search",
+        "url": base_url + "api/bill/search_caraccessories",
         "dataType": "json",
         "type": "POST",
         "data": function(data) {
-            // data.date = $("#date").val(),
-            //     data.reservename = $("#reservename").val(),
-            //     data.status = $("#status").val()
+            data.caraccessoriesId = $("#userId").val()
         }
     },
     "order": [
@@ -69,11 +67,22 @@ var table = $('#changes-table').DataTable({
             }
         },
         {
+            "targets": 3,
+            "data": null,
+            "render": function(data, type, full, meta) {
+                return currency(data, {
+                    precision: 0
+                }).format()
+            }
+        },
+        {
             "targets": 4,
             "data": null,
             "render": function(data, type, full, meta) {
                 var html = '';
-                html += '<a href="' + base_url + 'garage/bill/detail/' + data.billId +
+                html += '<a href="' + base_url + 'admin/payment/caraccessories_bill_detail/' + $(
+                        '#userId').val() + '/' + data
+                    .billId +
                     '"><button class="btn btn-info">รายละเอียด</button></a>';
                 return html;
             }
@@ -84,31 +93,8 @@ var table = $('#changes-table').DataTable({
         }
     ]
 });
-
-function confirmStatus(reserveId, orderId) {
-    var option = {
-        url: "/Reserve/changeStatus?reserveId=" + reserveId + "&orderId=" + orderId,
-        label: "ยืนยันการทำรายการการจอง",
-        status: 2,
-        content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
-        gotoUrl: "garage/reserve"
-    }
-    fnConfirm(option);
-}
-
-// function cancelStatus(reserveId, orderId) {
-//     var option = {
-//         url: "/Reserve/changeStatus?reserveId=" + reserveId + "&orderId=" + orderId,
-//         label: "ยกเลิกการทำรายการการจอง",
-//         status: 8,
-//         content: "คุณต้องการยกเลิกการทำรายการการจองนี้ ใช่หรือไม่",
-//         gotoUrl: "garage/reserve"
-//     }
-//     fnConfirm(option);
-// }
-
-$("#search").click(function() {
-    event.preventDefault();
-    table.ajax.reload();
-})
 </script>
+
+</body>
+
+</html>

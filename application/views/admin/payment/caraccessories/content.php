@@ -2,7 +2,7 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="<?=base_url("admin/managepartsshop")?>">การจัดการร้านอะไหล่</a>
+            <a href="<?=base_url("admin/payment/caraccessories")?>">การจ่ายเงิน</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
     </ol>

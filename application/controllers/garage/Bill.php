@@ -22,4 +22,16 @@ class Bill extends CI_Controller
         $this->load->view("garage/layout/foot");
         $this->load->view("garage/bill/script");
     }
+
+    public function detail($billId)
+    {
+        $data['billId'] = $billId;
+        $this->load->view("garage/layout/head");
+        $this->load->view("garage/layout/header");
+        $this->load->view("garage/layout/left-menu");
+        $this->load->view("garage/bill/bill_detail/content", $data);
+        $this->load->view("garage/layout/footer");
+        $this->load->view("garage/layout/foot");
+        $this->load->view("garage/bill/bill_detail/script");
+    }
 }

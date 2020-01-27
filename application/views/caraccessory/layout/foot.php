@@ -27,6 +27,7 @@
     <script src="<?=base_url("/public/themes/caraccessory/js/setup.js")?>"></script>
     <script src="<?=base_url("public/js/jquery-ui.min.js")?>"></script>
     <script src="<?=base_url("public/js/jquery.datetimepicker.full.min.js")?>"></script>
+    <script src="<?=base_url("/public/js/jquery-dateformat.min.js")?>"></script>
 
     <script>
 $.datetimepicker.setLocale('th');
