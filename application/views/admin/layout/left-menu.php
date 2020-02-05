@@ -248,11 +248,11 @@
                     <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#Tirelimit"
                         data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-dollar"></i>
-                        <span class="nav-link-text">กำหนดราคาสินค้า</span>
+                        <span class="nav-link-text">กำหนดราคาถอดใส่สูงสุด</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="Tirelimit">
-                        <li class="<?=activate_menu('Tirelimit/tirescharge/');?>">
-                            <a class="nav-link text-white" href="<?=base_url("admin/Tirelimit/GarageGruop")?>">
+                        <li class="<?=activate_menu('tirelimit/garagegroup/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/tirelimit/garagegroup")?>">
                                 <i class="fa fa-life-ring"></i>
                                 <span class="nav-link-text">ยางรถ</span>
                             </a>
@@ -267,18 +267,6 @@
                         <span class="nav-link-text">ราคาค่าบริการ</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="serviceCharge">
-                        <!-- <li class="<?=activate_menu('charge/brand/');?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/charge/brand")?>">
-                <i class="fa fa-cog"></i>
-                <span class="nav-link-text">ราคาค่าบริการเปลี่ยนอะไหล่ช่วงล่าง</span>
-              </a>
-            </li>
-            <li class="<?=activate_menu('charge/lubricatorcharge/');?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/charge/lubricatorcharge")?>">
-                <i class="fa fa-rebel"></i>
-                <span class="nav-link-text">ราคาค่าบริการเปลี่ยนน้ำมันเครื่อง</span>
-              </a>
-            </li> -->
                         <li class="<?=activate_menu('charge/tirescharge/');?>">
                             <a class="nav-link text-white" href="<?=base_url("admin/charge/tirescharge")?>">
                                 <i class="fa fa-life-ring"></i>
@@ -383,13 +371,19 @@
                         <li class="<?=activate_menu('revenue/income_item/');?>">
                             <a class="nav-link text-white" href="<?=base_url("admin/revenue/income_item")?>">
                                 <i class="fa fa-life-ring"></i>
-                                <span class="nav-link-text">รายได้แต่ละรายการ</span>
+                                <span class="nav-link-text">ยอดขายแต่ละรายการ</span>
                             </a>
                         </li>
                         <li class="<?=activate_menu('revenue/income/');?>">
                             <a class="nav-link text-white" href="<?=base_url("admin/revenue/income")?>">
                                 <i class="fa fa-life-ring"></i>
-                                <span class="nav-link-text">รายได้แต่ละเดือน</span>
+                                <span class="nav-link-text">ยอดขายแต่ละเดือน</span>
+                            </a>
+                        </li>
+                        <li class="<?=activate_menu('revenue/percent/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/revenue/percent")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">เปอร์เซ็นต์กําไร</span>
                             </a>
                         </li>
                     </ul>

@@ -107,7 +107,7 @@ var table = $('#changes-table').DataTable({
             "targets": 6,
             "data": null,
             "render": function(data, type, full, meta) {
-                return '<strong><div class="badge badge-warning">' + currency(data, {
+                return '<strong><br><div class="badge badge-warning">' + currency(data, {
                     precision: 0
                 }).format() + '</div></strong>';
             }

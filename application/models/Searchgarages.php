@@ -34,7 +34,7 @@ class Searchgarages extends CI_Model
             $this->db->select("(2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) * 1.609344) as distance, garage.*");
             $this->db->where("(2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) * 1.609344) <= ", 10);
             $this->db->where('garage.view', 1);
-            $query = $this->db->limit($limit, $start)->order_by($col, $dir)
+            $query = $this->db->limit($limit, $start)->order_by('distance', 'asc')
                 ->get('garage');
             if ($query->num_rows() > 0) {
                 $result = $query->result();
@@ -43,28 +43,6 @@ class Searchgarages extends CI_Model
 
         return $result;
     }
-
-    // function allgarage($limit,$start,$col,$dir,$garageId){
-    //     $this->db->select('garageId,garageName,businessRegistration,garageAddress,postCode,subdistrictId,districtId,provinceId,latitude,longtitude');
-    //     $this->db->from('garage');
-    //     $this->db->where("garageId",$garageId);
-
-    //     $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
-    //     if($query->num_rows()>0){
-    //         return $query->result();
-    //     }else{
-    //         return null;
-    //     }
-
-    // }
-    // function allgarage_count($garageId){
-    //     $this->db->select('garageId');
-    //     $this->db->from('garage');
-    //     $this->db->where("garageId",$garageId);
-    //     $query = $this->db->get();
-    //     return $query->num_rows();
-
-    // }
 
     public function garage_search($limit, $start, $col, $dir, $garageName, $provinceId, $districtId, $brandId, $service, $latitude, $longitude)
     {
@@ -94,7 +72,7 @@ class Searchgarages extends CI_Model
         $this->db->where('garage.view', 1);
 
         $query = $this->db->limit($limit, $start)
-            ->order_by($col, $dir)
+            ->order_by('distance', 'asc')
             ->get('garage');
 
         if ($query->num_rows() > 0) {

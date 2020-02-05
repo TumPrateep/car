@@ -34,11 +34,13 @@ class Selectgarage extends BD_Controller
         $tire_sizeId = $this->post('tire_sizeId');
         $tire_modelId = $this->post('tire_modelId');
         $tire_dataId = $this->post('tire_dataId');
+        $latitude = $this->post('latitude');
+        $longitude = $this->post('longitude');
 
         $rimData = $this->triesizes->gettrie_sizeById($tire_sizeId);
         $totalData = $this->selectgarages->select_garage_search_count($rimData->rimId);
         $totalFiltered = $totalData;
-        $posts = $this->selectgarages->select_garage_search($limit, $start, $order, $dir, $rimData->rimId);
+        $posts = $this->selectgarages->select_garage_search($limit, $start, $order, $dir, $rimData->rimId, null, $latitude, $longitude);
         // $totalFiltered = $this->selectgarages->select_garage_search_count($rimData->rimId);
         // dd();
 

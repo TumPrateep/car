@@ -10,8 +10,13 @@ class Selectgarages extends CI_Model
         parent::__construct();
     }
 
-    public function select_garage_search($limit, $start, $order, $dir, $rimId, $service = 2)
+    public function select_garage_search($limit, $start, $order, $dir, $rimId, $service = 2, $latitude = null, $longitude = null)
     {
+        if (!empty($latitude) && !empty($longitude)) {
+            $this->db->select("*, (2 * 3961 * asin(sqrt( power((sin(radians(($latitude - latitude) / 2))) , 2) + cos(radians(latitude)) * cos(radians($latitude)) * power((sin(radians(($longitude - longtitude) / 2))) , 2) )) * 1.609344) as distance");
+        } else {
+            $this->db->select('*');
+        }
 
         $this->db->from("garage");
         $this->db->join("tire_change_garage", "garage.garageId = tire_change_garage.garageId");
@@ -29,9 +34,13 @@ class Selectgarages extends CI_Model
             }
         }
 
-        $query = $this->db->limit($limit, $start)
-            ->order_by($order, $dir)
-            ->get();
+        $this->db->limit($limit, $start);
+        if (!empty($latitude) && !empty($longitude)) {
+            $this->db->order_by('distance', 'asc');
+        } else {
+            $this->db->order_by($order, $dir);
+        }
+        $query = $this->db->get();
 
         if ($query->num_rows() > 0) {
             return $query->result();

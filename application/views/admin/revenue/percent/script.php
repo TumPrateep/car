@@ -3,26 +3,16 @@ $(document).ready(function() {
 
     var ctx = $('#line-profit');
     var chart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: months,
             datasets: [{
-                    label: 'กำไรรวม',
-                    data: [],
-                    backgroundColor: '#17a2b8',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1,
-                    stack: 'Stack 0',
-                },
-                {
-                    label: 'รายได้รวม',
-                    data: [],
-                    backgroundColor: '#ffc107',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1,
-                    stack: 'Stack 0',
-                },
-            ]
+                label: 'เปอร์เซ็นต์กําไร',
+                data: [],
+                // backgroundColor: '#17a2b8',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+            }]
         },
         options: {
             tooltips: {
@@ -54,7 +44,7 @@ $(document).ready(function() {
     }
 
     function getProfitData(m, y) {
-        $.post(base_url + "api/profit/getProfit", {
+        $.post(base_url + "api/profit/getPercentProfit", {
             'month': m,
             'year': y
         }, function(res, textStatus, jqXHR) {
@@ -80,7 +70,7 @@ $(document).ready(function() {
                 }).format());
             }
 
-            updateChart(res.data.income_data, res.data.profit_data);
+            updateChart(res.data.profit_data);
         });
     }
 
@@ -107,9 +97,8 @@ $(document).ready(function() {
         getProfitData(month, year);
     });
 
-    function updateChart(price_data, profit_data) {
+    function updateChart(profit_data) {
         chart.data.datasets[0].data = profit_data;
-        chart.data.datasets[1].data = price_data;
         chart.update();
     }
 

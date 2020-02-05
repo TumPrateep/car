@@ -230,7 +230,7 @@ $(document).ready(function() {
                 car_tire_model.val(t_car_tire_sizeId);
             }
 
-            loadDataTable();
+            // loadDataTable();
         });
     }
 

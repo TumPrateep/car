@@ -14,7 +14,7 @@ $(document).ready(function() {
         // loadDataTable();
     }
 
-    function loadDataTable() {
+    function loadDataTable(latitude, longitude) {
 
         table = $('#garage-table').DataTable({
             "language": {
@@ -52,8 +52,8 @@ $(document).ready(function() {
                     data.tire_modelId = $("#tire_modelId").val();
                     // data.rimId = $("#rimId").val();
                     data.tire_sizeId = $("#tire_sizeId").val();
-                    // data.price = $("#amount").val();
-                    // data.can_change = $("#can_change").val();
+                    data.latitude = latitude;
+                    data.longitude = longitude;
                     // data.sort = $("#sort").val();
                     // data.warranty_distance = $("#warranty_distance").val();
                     // data.warranty_year = $("#warranty_year").val();
@@ -152,7 +152,7 @@ $(document).ready(function() {
                 latitude = position.coords.latitude;
                 longitude = position.coords.longitude;
                 $("#sort").append('<option value="3">ระยะทางน้อย-มาก</option>');
-                loadDataTable();
+                loadDataTable(latitude, longitude);
             }, function(error) {
                 latitude = null;
                 longitude = null;

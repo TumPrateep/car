@@ -2,7 +2,7 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="<?=base_url("admin/revenue/graph")?>">รายได้แต่ละเดือน</a>
+            <a href="<?=base_url("admin/revenue/percent")?>">เปอร์เซ็นต์กําไร</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
     </ol>
