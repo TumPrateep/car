@@ -186,6 +186,7 @@ class Bill extends BD_Controller
         $order = $this->post('order');
         $quantity = $this->post('quantity');
         $amount = $this->post('amount');
+        $delivery_price = $this->post('delivery_price');
         $total = $this->post('total');
         $transfer_time = $this->post('transfer_time_submit');
         $time = $this->post('time_submit');
@@ -221,6 +222,7 @@ class Bill extends BD_Controller
         $input['order'] = $order;
         $input['quantity'] = $quantity;
         $input['amount'] = $amount;
+        $input['delivery_price'] = $delivery_price;
 
         $option = [
             "data_check" => null,

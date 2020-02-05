@@ -68,21 +68,6 @@ var table = $('#brand-table').DataTable({
                 return html;
             }
         },
-        // {
-        //     "targets": 2,
-        //     "data": null,
-        //     "render": function(data, type, full, meta) {
-        //         var costDelivery = parseInt(data.costDelivery);
-        //         if (data.summary != null) {
-        //             return currency(data.summary + costDelivery, {
-        //                 precision: 0
-        //             }).format() + ' บาท';
-        //         } else {
-        //             return '<small><i class="gray">รอจ่ายเงิน</i></small>';
-        //         }
-
-        //     }
-        // },
         {
             "targets": 3,
             "data": null,
@@ -91,7 +76,7 @@ var table = $('#brand-table').DataTable({
                 if (data.payment_status == 2) {
                     html += '<span class="badge badge-warning">จ่ายแล้ว</span>';
                 } else if (data.payment_status == 1) {
-                    html += '<span class="badge badge-success">ยังไมจ่าย</span>';
+                    html += '<span class="badge badge-success">ยังไม่จ่าย</span>';
                 }
                 return html;
             }

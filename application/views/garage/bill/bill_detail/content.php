@@ -26,6 +26,8 @@
                                         <th scope="col" width="10%">คำสั่งซื้อ</th>
                                         <th scope="col">รายการ</th>
                                         <th scope="col" width="10%">จำนวน</th>
+                                        <th scope="col" width="10%">ค่าจัดส่งสินค้า</th>
+                                        <th scope="col" width="10%">ค่าถอดใส่</th>
                                         <th scope="col" width="20%">ราคารวม</th>
                                     </tr>
                                 </thead>

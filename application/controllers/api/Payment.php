@@ -88,7 +88,7 @@ class Payment extends BD_Controller
         if (!empty($posts)) {
             foreach ($posts as $post) {
                 $nestedData['orderId'] = $post->orderId;
-                $nestedData['summary'] = $post->garage_service_price * $post->quantity ;
+                $nestedData['summary'] = ($post->garage_service_price + $post->delivery_price) * $post->quantity;
                 $nestedData['payment_status'] = $post->payment_status;
                 $data[] = $nestedData;
             }

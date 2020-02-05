@@ -84,7 +84,7 @@ class Bills extends CI_Model
 
     public function getAllGarageOrder($garageId, $start_date, $end_date)
     {
-        $this->db->select('order.orderId, order.status, orderdetail.quantity, orderdetail.real_product_price, sum(orderdetail.garage_service_price*orderdetail.quantity) as service_price, tire_brand.tire_brandName, tire_model.tire_modelName, concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size');
+        $this->db->select('order.orderId, order.status, orderdetail.quantity, orderdetail.real_product_price, sum(orderdetail.garage_service_price*orderdetail.quantity) as service_price, sum(orderdetail.delivery_price * orderdetail.quantity) as delivery_price, tire_brand.tire_brandName, tire_model.tire_modelName, concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size');
         $this->db->from('order');
         $this->db->join('orderdetail', 'order.orderId = orderdetail.orderId');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
@@ -138,7 +138,7 @@ class Bills extends CI_Model
 
     public function getGarageBillById($billId)
     {
-        $this->db->select('bill_garage_payment.*,order.orderId, order.status, orderdetail.quantity, orderdetail.real_product_price, tire_brand.tire_brandName, tire_model.tire_modelName, concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size');
+        $this->db->select('bill_garage_payment.*,order.orderId, order.status, orderdetail.quantity, orderdetail.real_product_price, tire_brand.tire_brandName, tire_model.tire_modelName, concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size, bill_garage_detail.delivery_price');
         $this->db->from('bill_garage_payment');
         $this->db->join('bill_garage_detail', 'bill_garage_payment.billId = bill_garage_detail.billId');
         $this->db->join('order', 'order.orderId = bill_garage_detail.orderId');

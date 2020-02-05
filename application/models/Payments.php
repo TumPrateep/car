@@ -145,7 +145,7 @@ class Payments extends CI_Model
         $this->db->select('order.orderId, order.payment_status, orderdetail.real_product_price');
         $this->db->from('order');
         $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
-        $this->db->like('order.orderId',$search);
+        $this->db->like('order.orderId', $search);
         $this->db->where('orderdetail.real_car_accessoriesId', $car_accessoriesId);
 
         $query = $this->db->limit($limit, $start)
@@ -159,12 +159,13 @@ class Payments extends CI_Model
         }
     }
 
-    function ManagepartsshopPaymentApprove_search_count($search, $car_accessoriesId){
-       
+    public function ManagepartsshopPaymentApprove_search_count($search, $car_accessoriesId)
+    {
+
         $this->db->select('order.orderId, order.payment_status, orderdetail.real_product_price');
         $this->db->from('order');
         $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
-        $this->db->like('order.orderId',$search);
+        $this->db->like('order.orderId', $search);
         $this->db->where('orderdetail.real_car_accessoriesId', $car_accessoriesId);
 
         $query = $this->db->get();
@@ -187,7 +188,7 @@ class Payments extends CI_Model
 
     public function allGaragesmanagement($limit, $start, $col, $dir, $garageId)
     {
-        $this->db->select('order.orderId, order.payment_status, orderdetail.garage_service_price, orderdetail.quantity');
+        $this->db->select('order.orderId, order.payment_status, orderdetail.garage_service_price, orderdetail.quantity, orderdetail.delivery_price');
         $this->db->from('order');
         $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
         $this->db->join('reserve', 'reserve.orderId = order.orderId');
@@ -204,11 +205,11 @@ class Payments extends CI_Model
 
     public function Garagesmanagement_search($limit, $start, $search, $col, $dir, $status, $garageId)
     {
-        $this->db->select('order.orderId, order.payment_status, orderdetail.garage_service_price, orderdetail.quantity');
+        $this->db->select('order.orderId, order.payment_status, orderdetail.garage_service_price, orderdetail.quantity, orderdetail.delivery_price');
         $this->db->from('order');
         $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
         $this->db->join('reserve', 'reserve.orderId = order.orderId');
-        $this->db->like('order.orderId',$search);
+        $this->db->like('order.orderId', $search);
         $this->db->where('reserve.garageId', $garageId);
 
         $query = $this->db->limit($limit, $start)
@@ -222,13 +223,13 @@ class Payments extends CI_Model
         }
     }
 
-    function Garagesmanagement_search_count($search, $garageId)
+    public function Garagesmanagement_search_count($search, $garageId)
     {
         $this->db->select('order.orderId, order.payment_status, orderdetail.garage_service_price, orderdetail.quantity');
         $this->db->from('order');
         $this->db->join('orderdetail', 'orderdetail.orderId = order.orderId');
         $this->db->join('reserve', 'reserve.orderId = order.orderId');
-        $this->db->like('order.orderId',$search);
+        $this->db->like('order.orderId', $search);
         $this->db->where('reserve.garageId', $garageId);
 
         $query = $this->db->get();

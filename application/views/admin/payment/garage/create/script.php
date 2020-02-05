@@ -152,17 +152,23 @@ $(document).ready(function() {
                     '<td class="text-center"><input type="hidden" name="quantity[]" value="' + v
                     .quantity +
                     '">' + v.quantity + '</td>' +
+                    '<td class="text-right">' + v.delivery_price + '</td>' +
                     '<td class="text-right"><input type="hidden" name="amount[]" value="' + v
                     .service_price + '">' + currency(v.service_price, {
                         precision: 0
                     }).format() + '</td>' +
+                    '<td class="text-right"><input type="hidden" name="delivery_price[]" value="' + v
+                    .delivery_price + '">' + currency((parseFloat(v.service_price) + parseFloat(v
+                        .delivery_price)), {
+                        precision: 0
+                    }).format() + '</td>' +
                     '</tr>';
-                total += v.service_price;
+                total += parseFloat(v.service_price) + parseFloat(v.delivery_price);
             }
         });
 
         html += '<tr>' +
-            '<th class="text-center" colspan="3">รวม</th>' +
+            '<th class="text-center" colspan="5">รวม</th>' +
             '<th class="text-right"><input type="hidden" name="total" value="' + total + '">' + currency(
                 total, {
                     precision: 0

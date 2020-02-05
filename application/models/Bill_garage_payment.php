@@ -16,6 +16,7 @@ class Bill_garage_payment extends CI_Model
                 'orderId' => $v,
                 'quantity' => $data['quantity'][$i],
                 'amount' => $data['amount'][$i],
+                'delivery_price' => $data['delivery_price'][$i],
             ];
             $this->db->insert('bill_garage_detail', $temp);
 

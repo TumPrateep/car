@@ -74,16 +74,24 @@ $(document).ready(function() {
                 '<td>' + v.tire_brandName + ' ' + v.tire_modelName + ' ' + v.tire_size + '</td>' +
                 '<td class="text-center"><input type="hidden" name="quantity[]" value="' + v.quantity +
                 '">' + v.quantity + '</td>' +
+                '<td class="text-right">' + currency(v.delivery_price, {
+                    precision: 0
+                }).format() + '</td>' +
+                '<td class="text-right"><input type="hidden" name="amount[]" value="' + v
+                .amount + '">' + currency(v.amount - v.delivery_price, {
+                    precision: 0
+                }).format() + '</td>' +
                 '<td class="text-right"><input type="hidden" name="amount[]" value="' + v
                 .amount + '">' + currency(v.amount, {
                     precision: 0
                 }).format() + '</td>' +
+
                 '</tr>';
-            total += v.amount;
+            total += parseFloat(v.amount);
         });
 
         html += '<tr>' +
-            '<th class="text-center" colspan="3">รวม</th>' +
+            '<th class="text-center" colspan="5">รวม</th>' +
             '<th class="text-right"><input type="hidden" name="total" value="' + total + '">' + currency(
                 total, {
                     precision: 0
