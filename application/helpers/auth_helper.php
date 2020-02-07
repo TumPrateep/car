@@ -31,6 +31,35 @@ if (!function_exists('load_user_view')) {
     }
 }
 
+if (!function_exists('load_user_facebook_view')) {
+
+    function load_user_facebook_view($content, $script = null, $data = [])
+    {
+        $CI = get_instance();
+        $CI->load->view('users/layout-facebook/head', $data);
+        if (isset($CI->session->userdata['logged_in'])) {
+            $isUser = $CI->session->userdata['logged_in']['isUser'];
+
+            if (!$isUser) {
+                $CI->load->view("users/layout-facebook/header");
+            } else {
+                $data['name'] = $CI->session->userdata['logged_in']['name'];
+                $CI->load->view("users/layout-facebook/header_user");
+            }
+        } else {
+            $CI->load->view("users/layout-facebook/header");
+        }
+        $CI->load->view('users/layout/menu', $data);
+        $CI->load->view($content);
+        $CI->load->view('users/layout/footer');
+        $CI->load->view('users/layout/foot');
+        if ($script != null) {
+            $CI->load->view($script);
+        }
+        $CI->load->view('users/layout-facebook/end');
+    }
+}
+
 if (!function_exists('isUser')) {
 
     function isUser()

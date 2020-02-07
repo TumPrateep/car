@@ -64,6 +64,15 @@ class Tire extends BD_Controller
             $tire_size = [];
             if (!empty($tire_sizeId)) {
                 $tire_size[] = $tire_sizeId;
+            } else {
+                $brandId = $this->post('brandId');
+                $modelName = $this->post('model_name');
+                $year = $this->post('year');
+                $modelId = $this->post('modelId');
+                $tire_sizeData = $this->tirematch->getTireSize($brandId, $modelName, $year, $modelId);
+                foreach ($tire_sizeData as $i => $v) {
+                    $tire_size[] = $v->tire_sizeId;
+                }
             }
             // if (!empty($tire_sizeId)) {
             $posts = $this->tireproduct->tireDataByTireSize_search($limit, $start, $order, $dir, $tire_size, $tire_brandId, $tire_modelId, $rimId);

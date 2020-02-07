@@ -76,7 +76,7 @@ class Bills extends CI_Model
         if (!empty($end_date)) {
             $this->db->where('order.create_at <= ', $end_date);
         }
-        $this->db->where('order.status', '6');
+        $this->db->where('order.status >=', '5');
         $this->db->where('order.payment_status', '1');
         $query = $this->db->get();
         return $query->result();

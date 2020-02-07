@@ -21,14 +21,17 @@ $(document).ready(function() {
                 latitude = position.coords.latitude;
                 longitude = position.coords.longitude;
                 $("#sort").append('<option value="3">ระยะทางน้อย-มาก</option>');
-                lenderTable();
+                console.log(latitude, longitude);
+                lenderTable(latitude, longitude);
             }, function(error) {
                 latitude = null;
                 longitude = null;
                 lenderTable();
                 alert('ไม่สามารถดึงตำแหน่งปัจจุบันได้');
             }, {
-                timeout: 5000
+                maximumAge: 60000,
+                timeout: 5000,
+                enableHighAccuracy: true
             });
         } else {
             alert("ไม่สามารถดึงตำแหน่งปัจจุบันได้");
@@ -143,7 +146,7 @@ $(document).ready(function() {
         return settime;
     }
 
-    function lenderTable() {
+    function lenderTable(latitude = null, longitude = null) {
         table = $('#search-table').DataTable({
             "language": {
                 "aria": {
@@ -182,8 +185,8 @@ $(document).ready(function() {
                     // data.subdistrictIdSearch = $("#subdistrictIdSearch").val();
                     data.brandId = $("#brandId").val();
                     data.service = $("#Service").val();
-                    data.latitude = latitude;
-                    data.longitude = longitude;
+                    data.latitude = (latitude) ? latitude : 8.432982;
+                    data.longitude = (longitude) ? longitude : 99.960704;
 
                     data.service = $("#Service").val();
                     // data.sort = $("#sort").val();
@@ -218,7 +221,11 @@ $(document).ready(function() {
                             '<h5>ระยะทาง</h5>' +
                             '<h5>' + distance(value.latitude, value.longitude,
                                 latitude, longitude, "กม.") + '</h5>' +
-                            '</div>' +
+                            '<a class="btn btn-primary btn-sm" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' +
+                            base_url +
+                            'search/garage/detailgarage/' + value.garageId +
+                            '&amp;src=sdkpreparse" ' +
+                            'class="fb-xfbml-parse-ignore"><i class="fa fa-facebook-square" aria-hidden="true"></i> แชร์</a></div>' +
                             '<div class="card-block col-md-7">' +
                             '<br>' +
                             '<h5 class="card-title">' + value.garageName + '</h5>' +
@@ -252,8 +259,7 @@ $(document).ready(function() {
                             '</p>' +
                             '</p>' +
                             '<br><br>' +
-                            '<a href="' + base_url +
-                            'search/garage/detailgarage" class="btn btn-transparent-md btn-detail"><i class="fa fa-search"></i> รายละเอียด</a>' +
+                            '<a href="#" class="btn btn-transparent-md btn-detail"><i class="fa fa-search"></i> รายละเอียด</a>' +
                             '<a href="https://www.google.com/maps/?q=' + value
                             .latitude + ',' + value.longitude +
                             '"  target="_blank" class="btn btn-transparent-md btn-detail"><i class="fa fa-road"></i> แสดงเส้นทาง</a><br>' +
@@ -270,7 +276,8 @@ $(document).ready(function() {
 
     $("#btn-search").click(function(e) {
         e.preventDefault();
-        table.ajax.reload();
+        table.destroy();
+        getLocation();
     });
 });
 </script>

@@ -228,6 +228,7 @@ $(document).ready(function() {
             var t_car_tire_sizeId = $("#t_car_tire_size_id").val();
             if (t_car_tire_sizeId) {
                 car_tire_model.val(t_car_tire_sizeId);
+                loadDataTable();
             }
 
             // loadDataTable();
@@ -289,6 +290,7 @@ $(document).ready(function() {
                     // data.warranty_year = $("#warranty_year").val();
                     data.brandId = $("#brandId").val();
                     data.modelId = $("#modelId").val();
+                    data.model_name = $("#model_name").val();
                     // data.modelofcarId = $("#modelofcarId").val();
                     data.year = $("#year").val();
                 }
