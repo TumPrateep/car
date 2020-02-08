@@ -36,29 +36,29 @@ var table = $('#changes-table').DataTable({
     "order": [
         [1, "desc"]
     ],
-    "columns": [
-        null,
+    "columns": [{
+            "data": "amount"
+        },
         {
             "data": "transfer_time"
         },
         {
             "data": "transfer_name"
         },
-        {
-            "data": "amount"
-        },
         null
     ],
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [0]
+            "targets": [4]
         },
         {
             "targets": 0,
             "data": null,
             "render": function(data, type, full, meta) {
-                return meta.row + 1;
+                return currency(data, {
+                    precision: 0
+                }).format(); // code ในการแปลงเวลา
             }
         },
         {
@@ -66,6 +66,20 @@ var table = $('#changes-table').DataTable({
             "data": null,
             "render": function(data, type, full, meta) {
                 return $.format.date(new Date(data), "dd/MM/yyyy H:mm") + " น."; // code ในการแปลงเวลา
+            }
+        },
+        {
+            "targets": 3,
+            "data": null,
+            "render": function(data, type, full, meta) {
+                var html = '';
+                if (data.status == 2) {
+                    html += 'รับเงินแล้ว';
+                } else {
+                    html += '<button class="btn btn-warning" onclick="confirmPayment(' + data.billId +
+                        ')">ยืนยันรับเงิน</button>';
+                }
+                return html;
             }
         },
         {
@@ -85,16 +99,16 @@ var table = $('#changes-table').DataTable({
     ]
 });
 
-function confirmStatus(reserveId, orderId) {
-    var option = {
-        url: "/Reserve/changeStatus?reserveId=" + reserveId + "&orderId=" + orderId,
-        label: "ยืนยันการทำรายการการจอง",
-        status: 2,
-        content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
-        gotoUrl: "garage/reserve"
-    }
-    fnConfirm(option);
-}
+// function confirmStatus(reserveId, orderId) {
+//     var option = {
+//         url: "/Reserve/changeStatus?reserveId=" + reserveId + "&orderId=" + orderId,
+//         label: "ยืนยันการทำรายการการจอง",
+//         status: 2,
+//         content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
+//         gotoUrl: "garage/reserve"
+//     }
+//     fnConfirm(option);
+// }
 
 // function cancelStatus(reserveId, orderId) {
 //     var option = {
@@ -111,4 +125,15 @@ $("#search").click(function() {
     event.preventDefault();
     table.ajax.reload();
 })
+
+function confirmPayment(billId) {
+    var option = {
+        url: "/bill/changeStatus?billId=" + billId,
+        label: "ยันยันรับเงินใช่หรือไม่",
+        status: 2,
+        content: "คุณต้องการยืนยันรับเงิน ใช่หรือไม่",
+        gotoUrl: "caraccessory/garage"
+    }
+    fnConfirm(option);
+}
 </script>

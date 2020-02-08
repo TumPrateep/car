@@ -39,21 +39,21 @@
                             <br>
                             <form id="tire-search">
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <select class="form-control main" name="rimId" id="rimId">
                                                 <option>ขอบยาง</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <select class="form-control main" name="tire_sizeId" id="tire_sizeId">
                                                 <option>ขนาดยาง</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <!-- <div class="col-lg-3">
                                         <div class="form-group">
                                             <select class="form-control main" name="tire_brandId" id="tire_brandId">
                                                 <option>ยี่ห้อยาง</option>
@@ -66,7 +66,7 @@
                                                 <option>รุ่นยาง</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-lg-12">
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-transparent-md"><i

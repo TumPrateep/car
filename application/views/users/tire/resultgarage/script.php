@@ -111,6 +111,11 @@ $(document).ready(function() {
                             '<p>' + data.tireData.tire_modelName + '</p>' +
                             '<p>' + data.tireData.tire_size + '</p>' +
                             '</div>';
+                    } else {
+                        $('#txt-mobile-display').html(
+                            '<strong>' + data.tireData.tire_brandName + '</strong> ' +
+                            data.tireData.tire_modelName + ' ' + data.tireData.tire_size
+                            );
                     }
 
                     html += '<div class="detail col-md-3">' +

@@ -21,11 +21,11 @@
                         <div class="table-responsive">
                             <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
                                 <thead>
-                                    <th>ลำดับ</th>
-                                    <th data-priority="1">วันที่จ่ายเงิน</th>
+                                    <th data-priority="1">จำนวนเงิน</th>
+                                    <th>วันที่จ่ายเงิน</th>
                                     <th>ผู้จ่ายเงิน</th>
-                                    <th data-priority="2">จำนวนเงิน</th>
-                                    <th data-priority="3">รายละเอียด</th>
+                                    <th class="text-center" data-priority="2">ยืนยันรับเงิน</th>
+                                    <th>รายละเอียด</th>
                                 </thead>
                             </table>
                         </div>

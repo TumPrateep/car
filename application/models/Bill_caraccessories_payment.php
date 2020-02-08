@@ -30,4 +30,10 @@ class Bill_caraccessories_payment extends CI_Model
             return true;
         }
     }
+
+    function update($data){
+        $this->db->where('billId',$data['billId']);
+        $result = $this->db->update('bill_caraccessories_payment', $data);
+        return $result;
+    }
 }

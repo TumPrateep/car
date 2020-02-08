@@ -37,29 +37,21 @@ var table = $('#changes-table').DataTable({
         [1, "desc"]
     ],
     "columns": [
-        null,
+        {
+            "data": "amount"
+        },
         {
             "data": "transfer_time"
         },
         {
             "data": "transfer_name"
         },
-        {
-            "data": "amount"
-        },
         null
     ],
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [0]
-        },
-        {
-            "targets": 0,
-            "data": null,
-            "render": function(data, type, full, meta) {
-                return meta.row + 1;
-            }
+            "targets": [4]
         },
         {
             "targets": 1,
@@ -69,7 +61,7 @@ var table = $('#changes-table').DataTable({
             }
         },
         {
-            "targets": 3,
+            "targets": 0,
             "data": null,
             "render": function(data, type, full, meta) {
                 return currency(data, {
@@ -82,7 +74,21 @@ var table = $('#changes-table').DataTable({
             "data": null,
             "render": function(data, type, full, meta) {
                 var html = '';
-                html += '<a href="'+base_url+'caraccessory/bill/detail/'+data.billId+'"><button class="btn btn-info">รายละเอียด</button></a>';
+                html += '<a href="' + base_url + 'caraccessory/bill/detail/' + data.billId +
+                    '"><button class="btn btn-info">รายละเอียด</button></a>';
+                return html;
+            }
+        },
+        {
+            "targets": 3,
+            "data": null,
+            "render": function(data, type, full, meta) {
+                var html = '';
+                if(data.status == 2){
+                    html += 'รับเงินแล้ว';
+                }else{
+                    html += '<button class="btn btn-warning" onclick="confirmPayment('+data.billId+')">ยืนยันรับเงิน</button>';
+                }
                 return html;
             }
         },
@@ -93,27 +99,27 @@ var table = $('#changes-table').DataTable({
     ]
 });
 
-function confirmStatus(reserveId, orderId) {
-    var option = {
-        url: "/Reserve/changeStatus?reserveId=" + reserveId + "&orderId=" + orderId,
-        label: "ยืนยันการทำรายการการจอง",
-        status: 2,
-        content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
-        gotoUrl: "garage/reserve"
-    }
-    fnConfirm(option);
-}
-
-// function cancelStatus(reserveId, orderId) {
+// function confirmStatus(reserveId, orderId) {
 //     var option = {
 //         url: "/Reserve/changeStatus?reserveId=" + reserveId + "&orderId=" + orderId,
-//         label: "ยกเลิกการทำรายการการจอง",
-//         status: 8,
-//         content: "คุณต้องการยกเลิกการทำรายการการจองนี้ ใช่หรือไม่",
+//         label: "ยืนยันการทำรายการการจอง",
+//         status: 2,
+//         content: "คุณต้องการยืนยันการทำรายการการจองนี้ ใช่หรือไม่",
 //         gotoUrl: "garage/reserve"
 //     }
 //     fnConfirm(option);
 // }
+
+function confirmPayment(billId) {
+    var option = {
+        url: "/bill/changeStatus?billId=" + billId,
+        label: "ยันยันรับเงินใช่หรือไม่",
+        status: 2,
+        content: "คุณต้องการยืนยันรับเงิน ใช่หรือไม่",
+        gotoUrl: "caraccessory/bill"
+    }
+    fnConfirm(option);
+}
 
 $("#search").click(function() {
     event.preventDefault();

@@ -57,10 +57,13 @@ p.reply {
                                                 href="https://www.facebook.com/sharer/sharer.php?u=<?=base_url('search/garage/detailgarage/' . $garageId)?>&amp;src=sdkpreparse"
                                                 class="fb-xfbml-parse-ignore">แชร์</a></div>
                                     </h5>
-                                    <span><i class="fa fa-calendar" aria-hidden="true"></i> จ, อ, พฤ, ศ, ส,
-                                        อา</span><br>
-                                    <span><i class="fa fa-clock-o" aria-hidden="true"></i> 08:00 - 17:00 น.</span><br>
-                                    <span><i class="fa fa-phone" aria-hidden="true"></i> -</span><br>
+                                    <span><i class="fa fa-calendar" aria-hidden="true"></i>
+                                        <?=changeStringToDay($garageData->dayopenhour)?></span><br>
+                                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        <?=date('H:i', strtotime($garageData->openingtime))?> -
+                                        <?=date('H:i', strtotime($garageData->closingtime))?> น.</span><br>
+                                    <span><i class="fa fa-phone" aria-hidden="true"></i>
+                                        <?=$garageData->phone?></span><br>
                                     <img src="<?=base_url('public/images/icon/wifi.png')?>" class="icon"
                                         title="ไวไฟฟรี">
                                     <img src="<?=base_url('public/images/icon/airconditioner.png')?>" class="icon"

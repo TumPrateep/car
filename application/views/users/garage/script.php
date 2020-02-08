@@ -259,7 +259,9 @@ $(document).ready(function() {
                             '</p>' +
                             '</p>' +
                             '<br><br>' +
-                            '<a href="#" class="btn btn-transparent-md btn-detail"><i class="fa fa-search"></i> รายละเอียด</a>' +
+                            '<a href="' + base_url + 'search/garage/detailgarage/' +
+                            value.garageId +
+                            '" class="btn btn-transparent-md btn-detail"><i class="fa fa-search"></i> รายละเอียด</a>' +
                             '<a href="https://www.google.com/maps/?q=' + value
                             .latitude + ',' + value.longitude +
                             '"  target="_blank" class="btn btn-transparent-md btn-detail"><i class="fa fa-road"></i> แสดงเส้นทาง</a><br>' +

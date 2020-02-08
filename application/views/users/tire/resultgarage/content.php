@@ -56,7 +56,7 @@ table>thead {
 
             <div class="row toggle-display">
                 <div class="col-lg-12">
-                    <h4><strong>MICHELIN</strong> PRIMACY4 215/60R17</h4>
+                    <h4 id="txt-mobile-display"></h4>
                 </div>
             </div>
 

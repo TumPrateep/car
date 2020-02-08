@@ -130,6 +130,8 @@ img {
                         </p>
                         <p class="head"><span class="fa fa-check-circle available"></span>
                             เลือกร้านที่ดีที่สุดใกล้บ้านท่าน</p>
+                        <p class="head"><span class="fa fa-check-circle available"></span>
+                            ราคาเดียวจบ! ค่าขนส่ง ถอดใส่ ถ่วงล้อ</p>
                     </div>
                     <!-- Action Button -->
                     <!-- <a href="#" class="btn btn-white-md">get ticket now</a> -->

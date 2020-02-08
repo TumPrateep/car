@@ -353,5 +353,17 @@
     }
     return $total;
   }
+
+  function changeStringToDay($str) {
+      $html = "";
+      $day = ["จ", "อ", "พ", "พฤ", "ศ", "ส", "อา"];
+
+      for ($i = 0; $i < strlen($str); $i++) { // 1111011
+          if ($str[$i] == "1") {
+              $html .= $day[$i] . ", ";
+          }
+      }
+      return substr($html, 0, -2);
+  }
       
 ?>

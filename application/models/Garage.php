@@ -33,7 +33,7 @@ class Garage extends CI_Model
 
     public function getViewGarageByGarageId($garageId)
     {
-        $this->db->select("garage.garageId,garage.businessRegistration,garage.picture,garage.garageName,garage.latitude,garage.longtitude,province.provinceName,district.districtName,subdistrict.subdistrictName");
+        $this->db->select("garage.*,province.provinceName,district.districtName,subdistrict.subdistrictName");
         $this->db->from("garage");
         $this->db->join("province", "province.provinceId = garage.provinceId");
         $this->db->join("district", "district.districtId = garage.districtId");
