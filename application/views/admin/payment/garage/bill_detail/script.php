@@ -8,38 +8,23 @@
 <script src="<?=base_url('public/js/datepicker/translations/th_TH.js')?>"></script>
 <script>
 $(document).ready(function() {
-    var start = $("#start_date");
-    var end = $("#end_date");
+    var transfer_time = $("#transfer_time");
+    var time = $("#time");
 
-    start.pickadate({
-        format: 'dd mmmm yyyy',
+    transfer_time.pickadate({
+        max: true,
         formatSubmit: 'yyyy-mm-dd',
+        close: 'ปิด',
     });
 
-    var start_picker = start.pickadate('picker');
-
-    end.pickadate({
-        format: 'dd mmmm yyyy',
-        formatSubmit: 'yyyy-mm-dd',
+    time.pickatime({
+        format: 'HH:i',
+        formatSubmit: 'HH:i',
+        close: 'ปิด',
     });
 
-    var end_picker = end.pickadate('picker');
-
-    start.change(function() {
-        end_picker.set("min", getDate(start_picker));
-    });
-
-    end.change(function() {
-        start_picker.set("max", getDate(end_picker));
-    });
-
-    function getDate(target) {
-        var date = target.get();
-        if (!date) {
-            date = null;
-        }
-        return date;
-    }
+    var transfer_time_picker = transfer_time.pickadate('picker');
+    var time_picker = time.pickatime('picker');
 
     init();
 
@@ -57,8 +42,9 @@ $(document).ready(function() {
                 $('#file_path').attr('src', base_url + 'public/image/garage_bill/' + bill
                     .file_path);
                 $('#transfer_name').val(bill.transfer_name);
-                $('#transfer_time').val();
-                $('#time').val();
+                let date = (data.bill.transfer_time).split(' ');
+                transfer_time_picker.set('select', new Date(date[0]));
+                time_picker.set('select', new Date(date[1]));
                 $('#transfer_price').val(bill.transfer_price);
             }
         });

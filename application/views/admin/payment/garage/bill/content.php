@@ -32,7 +32,7 @@
                 </button>
             </div>
         </div>
-        <from></from>
+
         <div class="row">
             <input type="hidden" name="garageId" id="garageId" value="<?=$garageId?>">
             <div class="col-lg-12">
@@ -43,7 +43,8 @@
                             <th data-priority="1">วันที่จ่ายเงิน</th>
                             <th>ผู้จ่ายเงิน</th>
                             <th data-priority="2">จำนวนเงิน</th>
-                            <th data-priority="3">รายละเอียด</th>
+                            <th data-priority="3">สถานะการจ่ายเงิน</th>
+                            <th data-priority="4">รายละเอียด</th>
                         </thead>
                     </table>
                 </div>

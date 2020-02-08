@@ -70,6 +70,17 @@ var table = $('#changes-table').DataTable({
             "targets": 4,
             "data": null,
             "render": function(data, type, full, meta) {
+                var html = '<i>ได้รับเงินแล้ว</i>';
+                if (data.status == 1) {
+                    html = '<i>จ่ายเงินแล้ว</i>';
+                }
+                return html;
+            }
+        },
+        {
+            "targets": 5,
+            "data": null,
+            "render": function(data, type, full, meta) {
                 var html = '';
                 html += '<a href="' + base_url + 'admin/payment/garage_bill_detail/' + $(
                         '#garageId').val() + '/' + data

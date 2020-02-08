@@ -38,6 +38,7 @@ class Bill extends BD_Controller
                 $nestedData['amount'] = $post->amount;
                 $nestedData['transfer_time'] = $post->transfer_time;
                 $nestedData['transfer_name'] = $post->transfer_name;
+                $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
             }
         }
@@ -75,6 +76,7 @@ class Bill extends BD_Controller
                 $nestedData['amount'] = $post->amount;
                 $nestedData['transfer_time'] = $post->transfer_time;
                 $nestedData['transfer_name'] = $post->transfer_name;
+                $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
             }
         }
