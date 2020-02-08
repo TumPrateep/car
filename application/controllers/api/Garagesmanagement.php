@@ -98,6 +98,7 @@ class Garagesmanagement extends BD_Controller
         $latitude = $this->post('latitude');
         $longtitude = $this->post('longtitude');
         $userId = $this->session->userdata['logged_in']['id'];
+        $group = $this->post('group');
 
         $mechanicId = $this->post('mechanicId');
         $phone1 = $this->post('phone1');
@@ -122,6 +123,7 @@ class Garagesmanagement extends BD_Controller
             'longtitude' => $longtitude,
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s', time()),
+            'group' => $group,
         );
         $data['mechanicdata'] = array(
             'mechanicId' => $mechanicId,

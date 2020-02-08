@@ -176,7 +176,7 @@ class Garage extends CI_Model
 
     public function getGaragesmanagementById($garageId)
     {
-        $this->db->select('garage.garageId, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status ,
+        $this->db->select('garage.garageId, garage.group, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status ,
         garage.hno, garage.alley, garage.road, garage.village, garage.provinceId, garage.districtId, garage.subdistrictId, mechanic.phone AS mechanicphone, mechanic.mechanicId,
         garage.latitude, garage.longtitude, garage.businessRegistration, garage.postCode, mechanic.personalid');
         $this->db->from('garage');
