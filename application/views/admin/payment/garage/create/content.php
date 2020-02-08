@@ -58,6 +58,18 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <strong>บัญชีผู้รับ</strong>
+                            <span id="txt-bank"><strong>เลขที่บีญชี</strong> - <strong>ธนาคาร</strong> -
+                                <strong>ชื่อเจ้าของบัญชี</strong> - </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">

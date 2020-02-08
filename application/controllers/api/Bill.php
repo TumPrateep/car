@@ -12,6 +12,8 @@ class Bill extends BD_Controller
         $this->load->model('bills');
         $this->load->model('bill_caraccessories_payment');
         $this->load->model('bill_garage_payment');
+        $this->load->model('caraccessories');
+        $this->load->model('garage');
     }
 
     public function search_garage_post()
@@ -111,6 +113,20 @@ class Bill extends BD_Controller
             $end_date = date("Y-m-d");
         }
         $data = $this->bills->getAllGarageOrder($garageId, $start_date, $end_date);
+        $this->set_response($data, REST_Controller::HTTP_OK);
+    }
+
+    public function get_caraccessories_get()
+    {
+        $userId = $this->get('userId');
+        $data = $this->caraccessories->getCarAccessoriesFromCarAccessoriesByUserId($userId);
+        $this->set_response($data, REST_Controller::HTTP_OK);
+    }
+
+    public function get_garage_get()
+    {
+        $garageId = $this->get('garageId');
+        $data = $this->garage->getGarageByGarageId($garageId);
         $this->set_response($data, REST_Controller::HTTP_OK);
     }
 
@@ -235,4 +251,5 @@ class Bill extends BD_Controller
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
 
     }
+
 }

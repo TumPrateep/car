@@ -10,6 +10,7 @@
 $(document).ready(function() {
     var start = $("#start_date");
     var end = $("#end_date");
+    var garageId = $('#garageId').val();
 
     start.pickadate({
         format: 'dd mmmm yyyy',
@@ -93,7 +94,6 @@ $(document).ready(function() {
 
     $('#form').submit(function(e) {
         e.preventDefault();
-        var garageId = $('#garageId').val();
         var isvalid = $(this).valid();
         if (isvalid) {
             var imageData = $('.image-editor').cropit('export');
@@ -128,6 +128,20 @@ $(document).ready(function() {
 
     function init() {
         getBillOrder();
+        getGarage();
+    }
+
+    function getGarage() {
+        $.get(base_url + "api/bill/get_garage", {
+            'garageId': garageId
+        }, function(data, textStatus, jqXHR) {
+            if (data.bank_id && data.bank_name && data.bank_owner) {
+                $('#txt-bank').html(
+                    '<strong>เลขที่บีญชี</strong> ' + data.bank_id + ' <strong>ธนาคาร</strong> ' +
+                    data.bank_name + ' <strong>ชื่อเจ้าของบัญชี</strong> ' + data.bank_owner
+                );
+            }
+        });
     }
 
     function getBillOrder() {

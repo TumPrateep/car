@@ -61,19 +61,19 @@ class Tireproduct extends CI_Model
             $this->db->where_in('tire_data.tire_sizeId', $tire_sizeId);
         }
 
-        if ($tire_brandId != null) {
+        if (!empty($tire_brandId)) {
             $this->db->where('tire_brand.tire_brandId', $tire_brandId);
         }
 
-        if ($tire_modelId != null) {
+        if (!empty($tire_modelId)) {
             $this->db->where('tire_model.tire_modelId', $tire_modelId);
         }
 
-        if ($tire_modelId != null) {
+        if (!empty($tire_modelId)) {
             $this->db->where('tire_model.tire_modelId', $tire_modelId);
         }
 
-        if ($rimId != null) {
+        if (!empty($rimId)) {
             $this->db->where('rim.rimId', $rimId);
         }
 

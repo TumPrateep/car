@@ -444,7 +444,7 @@ function getbrand() {
 
 function showForm() {
     var html = '<div class="row justify-content-md-center">' +
-        '<div class="col-md-2">' +
+        '<div class="col-lg-2">' +
         '<button type="button" class="btn btn-main-md width-100p active" onclick="showForm()"><i class="fa fa-chevron-right" aria-hidden="true"></i> ถัดไป </button>' +
         '</div>' +
         '</div>';

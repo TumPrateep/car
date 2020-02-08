@@ -10,6 +10,7 @@
 $(document).ready(function() {
     var start = $("#start_date");
     var end = $("#end_date");
+    var userId = $('#userId').val();
 
     start.pickadate({
         format: 'dd mmmm yyyy',
@@ -108,7 +109,8 @@ $(document).ready(function() {
                 type: 'POST',
                 success: function(data) {
                     if (data.message == 200) {
-                        showMessage(data.message, "admin/payment/caraccessories_bill/"+userId);
+                        showMessage(data.message, "admin/payment/caraccessories_bill/" +
+                            userId);
                     } else {
                         showMessage(data.message);
                     }
@@ -127,6 +129,20 @@ $(document).ready(function() {
 
     function init() {
         getBillOrder();
+        getCaraccessories();
+    }
+
+    function getCaraccessories() {
+        $.get(base_url + "api/bill/get_caraccessories", {
+            'userId': userId
+        }, function(data, textStatus, jqXHR) {
+            if (data.bank_id && data.bank_name && data.bank_owner) {
+                $('#txt-bank').html(
+                    '<strong>เลขที่บีญชี</strong> ' + data.bank_id + ' <strong>ธนาคาร</strong> ' +
+                    data.bank_name + ' <strong>ชื่อเจ้าของบัญชี</strong> ' + data.bank_owner
+                );
+            }
+        });
     }
 
     function getBillOrder() {

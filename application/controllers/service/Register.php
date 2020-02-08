@@ -51,6 +51,9 @@ class Register extends BD_Controller
         $postCode_sparepart = $this->post('postCode_sparepart');
         $latitude = $this->post('latitude');
         $longtitude = $this->post('longtitude');
+        $bank_name = $this->post('bank_name');
+        $bank_id = $this->post('bank_id');
+        $bank_owner = $this->post('bank_owner');
         //set4
 
         $username = $this->post('username');
@@ -112,6 +115,9 @@ class Register extends BD_Controller
             'update_at' => null,
             'userId' => null,
             'status' => 1,
+            'bank_name' => $bank_name,
+            'bank_id' => $bank_id,
+            'bank_owner' => $bank_owner,
         );
 
         $data['users'] = array(
@@ -230,6 +236,9 @@ class Register extends BD_Controller
         $postCode_garage = $this->post('postCode_garage');
         $latitude = $this->post('latitude');
         $longtitude = $this->post('longtitude');
+        $bank_name = $this->post('bank_name');
+        $bank_id = $this->post('bank_id');
+        $bank_owner = $this->post('bank_owner');
         //set6
 
         $Wifi = $this->post('Wifi');
@@ -248,7 +257,7 @@ class Register extends BD_Controller
         //set8
         // $data_check = $this->registergarages->data_check_create($username, $personalid, $businessRegistration);
         $data_check = $this->registergarages->data_check_create($username, null, null);
-        
+
         // dd();
         if (!$success) {
             // var_dump("gg");
@@ -311,6 +320,9 @@ class Register extends BD_Controller
                 'create_at' => date('Y-m-d H:i:s', time()),
                 'update_at' => null,
                 'status' => 1,
+                'bank_name' => $bank_name,
+                'bank_id' => $bank_id,
+                'bank_owner' => $bank_owner,
             );
 
             $data['users'] = array(

@@ -40,6 +40,9 @@ class Tire extends BD_Controller
         $totalData = $this->tireproduct->allTire_count();
         $totalFiltered = $totalData;
 
+        $tire_sizeId = $this->post('tire_sizeId');
+        $tire_size = [];
+
         if (!empty($this->post('brandId')) && !empty($this->post('modelofcarId'))) {
             $modelofcarId = $this->post('modelofcarId');
             $tire_sizeData = $this->tirematch->getTireSizeByModelOfCarId($modelofcarId);
@@ -56,12 +59,10 @@ class Tire extends BD_Controller
                 $totalFiltered = 0;
             }
         } else {
-            $tire_sizeId = $this->post('tire_sizeId');
-            $rimId = $this->post('rimId');
             $tire_brandId = $this->post('tire_brandId');
             $tire_modelId = $this->post('tire_modelId');
+            $rimId = $this->post('rimId');
 
-            $tire_size = [];
             if (!empty($tire_sizeId)) {
                 $tire_size[] = $tire_sizeId;
             } else {
@@ -74,48 +75,16 @@ class Tire extends BD_Controller
                     $tire_size[] = $v->tire_sizeId;
                 }
             }
-            // if (!empty($tire_sizeId)) {
+
             $posts = $this->tireproduct->tireDataByTireSize_search($limit, $start, $order, $dir, $tire_size, $tire_brandId, $tire_modelId, $rimId);
             $totalFiltered = $this->tireproduct->tireDataByTireSize_search_count($tire_size, $tire_brandId, $tire_modelId, $rimId);
-            // } else {
-            //     $posts = [];
-            //     $totalFiltered = 0;
-            // }
+
         }
 
-        // if(empty($this->post('tire_brandId')) && empty($this->post('tire_modelId')) && empty($this->post('rimId')) && empty($this->post('tire_sizeId')) && empty($this->post('price')) &&empty($this->post('can_change')) && empty($this->post('brandId'))&& empty($this->post('modelId'))&& empty($this->post('modelofcarId')))
-        // {
-        // $posts = $this->tireproduct->allTires($limit,$start,$order,$dir);
-
-        // }else {
-
-        // $tire_brandId = $this->post('tire_brandId');
-        // $tire_modelId = $this->post('tire_modelId');
-        // $rimId = $this->post('rimId');
-        // $tire_sizeId = $this->post('tire_sizeId');
-        // $price = $this->post('price');
-        // $can_change = $this->post('can_change');
-        // $status = $this->post('status');
-        // $warranty_year = $this->post('warranty_year');
-        // $warranty_distance = $this->post('warranty_distance');
-        // $brandId = $this->post('brandId');
-        // $modelId = $this->post('modelId');
-        // $modelofcarId = $this->post('modelofcarId');
-        // $yearStart = $this->post('yearStart');
-        // $yearEnd = $this->post('yearEnd');
-        // $tire_matchingId = $this->post('tire_matchingId');
-
-        // $status = null;
-        //     $posts =  $this->tireproduct->tireData_search($limit,$start,$order,$dir,$status,$tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$brandId,$modelId,$modelofcarId,$yearStart,$yearEnd,$tire_matchingId);
-        //     $totalFiltered = $this->tireproduct->TireDatas_search_count($tire_brandId, $tire_modelId, $rimId, $tire_sizeId, $price, $can_change, $can_change,$warranty_year,$warranty_distance,$status,$brandId,$modelId,$modelofcarId,$yearStart,$yearEnd,$tire_matchingId);
-        // }
-
-        // $this->load->model("tirechanges");
-        // $tirePriceData = $this->tirechanges->getTireChangePrice();
-        // $charge = [];
-        // foreach($tirePriceData as $cost){
-        //     $charge[$cost->rimId] = $cost->tire_price;
-        // }
+        if ($totalFiltered == 0) {
+            $posts = $this->tireproduct->tireDataByTireSize_search($limit, $start, $order, $dir, $tire_size, null, null, null);
+            $totalFiltered = $this->tireproduct->tireDataByTireSize_search_count($tire_size, null, null, null);
+        }
 
         $nestedData = array();
         if (!empty($posts)) {

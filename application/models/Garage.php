@@ -124,7 +124,7 @@ class Garage extends CI_Model
 
     public function allData($limit, $start, $order, $dir)
     {
-        $this->db->select('garage.garageId, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status');
+        $this->db->select('garage.garageId, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status, garage.view');
         $this->db->from('garage');
         $this->db->join('mechanic', 'garage.garageId = mechanic.garageId', 'left');
         $this->db->where('mechanic.status', 1);
@@ -141,7 +141,7 @@ class Garage extends CI_Model
 
     public function Garagesmanagement_search($limit, $start, $search, $col, $dir, $status)
     {
-        $this->db->select('garage.garageId, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status');
+        $this->db->select('garage.garageId, garage.picture, garage.garageName, mechanic.titleName, mechanic.firstName, mechanic.lastName, garage.phone, garage.status, garage.view');
         $this->db->from('garage');
         $this->db->join('mechanic', 'mechanic.garageId = garage.garageId');
         $this->db->where('mechanic.status', 1);
@@ -180,7 +180,7 @@ class Garage extends CI_Model
         garage.hno, garage.alley, garage.road, garage.village, garage.provinceId, garage.districtId, garage.subdistrictId, mechanic.phone AS mechanicphone, mechanic.mechanicId,
         garage.latitude, garage.longtitude, garage.businessRegistration, garage.postCode, mechanic.personalid');
         $this->db->from('garage');
-        $this->db->join('mechanic', 'mechanic.garageId = garage.garageId');
+        $this->db->join('mechanic', 'mechanic.garageId = garage.garageId', 'left');
         $this->db->where('garage.garageId', $garageId);
 
         $query = $this->db->get();
