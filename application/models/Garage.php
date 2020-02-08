@@ -45,10 +45,12 @@ class Garage extends CI_Model
 
     public function getGarageByGarageId($garageId)
     {
-        $this->db->select("garageId,comment,businessRegistration,garageName,postCode,latitude,longtitude,subdistrictId,districtId,provinceId,
-                           option1,option2,option3,option4,option_outher,garagePicture1,userId,dayopenhour,openingtime,closingtime,hno");
+        $this->db->select("garage.*,province.provinceName,district.districtName,subdistrict.subdistrictName");
         $this->db->from("garage");
-        $this->db->where("garageId", $garageId);
+        $this->db->join("province", "province.provinceId = garage.provinceId");
+        $this->db->join("district", "district.districtId = garage.districtId");
+        $this->db->join("subdistrict", "subdistrict.subdistrictId = garage.subdistrictId");
+        $this->db->where("garage.garageId", $garageId);
         $query = $this->db->get();
         return $query->row();
     }
@@ -221,6 +223,23 @@ class Garage extends CI_Model
         $this->db->where("garageId", $garageId);
         $query = $this->db->get();
         return $query->row();
+    }
+
+    public function getOwnerById($garageId)
+    {
+        $this->db->from('mechanic');
+        $this->db->where("garageId", $garageId);
+        $this->db->where("status", 1);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function getRatingByGarageId($garageId)
+    {
+        $this->db->from('rating');
+        $this->db->where("garageId", $garageId);
+        $query = $this->db->get();
+        return $query->result();
     }
 
 }

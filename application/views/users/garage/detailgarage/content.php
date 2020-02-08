@@ -42,7 +42,8 @@ p.reply {
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-7">
+                <input type="hidden" name="garageId" id="garageId" value="<?=$garageId?>">
+                <div class="col-lg-7">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -82,19 +83,17 @@ p.reply {
                                 </div>
                             </div>
                             <br>
-                            <!-- <div class="row">
+                            <div class="row">
                                 <div class="col-12">
                                     <span><strong>ที่อยู่</strong></span><br>
-                                    <span>บ้านเลขที่ 238-1 ตำบล ท่าศาลา อำเภอ ท่าศาลา
-                                        จังหวัด นครศรีธรรมราช 80160</span>
+                                    <span id="txt-address"></span>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-md-1">
-                </div> -->
-                <!-- <div class="col-md-4">
+
+                <div class="col-lg-4" id="box-owner">
                     <div class="card">
                         <div class="card-body">
                             <p class="text-center">
@@ -104,14 +103,12 @@ p.reply {
                             <div class="row">
                                 <div class="col-12">
                                     <h5>เจ้าของศูนย์บริการ</h5>
-                                    <span>นาย Thanakorn limsakul</span><br>
-                                    <span><i class="fa fa-phone" aria-hidden="true"></i> 0833969552</span>
+                                    <span id="txt-owner"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br>
-                </div> -->
+                </div>
             </div>
             <br>
             <div class="row">

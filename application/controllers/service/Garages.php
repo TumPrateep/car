@@ -166,4 +166,13 @@ class Garages extends BD_Controller
         $data = $this->commentusers->allScoresearchgarage_count($garageId);
         return $data;
     }
+
+    public function getGarageById_get()
+    {
+        $garageId = $this->get('garageId');
+        $data['garage'] = $this->garage->getGarageByGarageId($garageId);
+        $data['owner'] = $this->garage->getOwnerById($garageId);
+        $data['rating'] = $this->garage->getRatingByGarageId($garageId);
+        $this->set_response($data, REST_Controller::HTTP_OK);
+    }
 }

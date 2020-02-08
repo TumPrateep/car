@@ -17,7 +17,7 @@ class Detailgarage extends CI_Controller
         $data = ['tire' => 'active', 'lubricator' => '', 'garage' => ''];
         $data['garageId'] = $garageId;
         $data['garageData'] = $this->garage->getViewGarageByGarageId($garageId);
-        load_user_facebook_view("users/garage/detailgarage/content", null, $data);
+        load_user_facebook_view("users/garage/detailgarage/content", "users/garage/detailgarage/script", $data);
     }
 
 }
