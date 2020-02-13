@@ -257,6 +257,12 @@
                                 <span class="nav-link-text">ยางรถ</span>
                             </a>
                         </li>
+                        <li class="<?=activate_menu('lubricatorlimit/garagegroup/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/lubricatorlimit/garagegroup")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">น้ำมันเครื่อง</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
