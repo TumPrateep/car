@@ -279,6 +279,12 @@
                                 <span class="nav-link-text">ยางรถ</span>
                             </a>
                         </li>
+                        <li class="<?=activate_menu('charge/lubricatorcharge/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/charge/lubricatorcharge")?>">
+                                <i class="fa fa-tint"></i>
+                                <span class="nav-link-text">น้ำมันเครื่อง</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
