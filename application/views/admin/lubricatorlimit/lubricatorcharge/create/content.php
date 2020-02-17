@@ -3,7 +3,7 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/charge/lubricatorcharge") ?>">ราคาเปลี่ยนน้ำมันเครื่อง</a>
+        <a href="<?=base_url("admin/lubricatorlimit/lubricatorcharge/".$groupId) ?>">ราคาเปลี่ยนถ่ายน้ำมันเครื่อง</a>
       </li>
       <li class="breadcrumb-item active">เพิ่มข้อมูลราคาเปลี่ยนน้ำมันเครื่อง</li>
     </ol>
@@ -24,6 +24,7 @@
                     <div class="form-group row">
                       <div class="col-md-4">
                           <label>ราคาค่าบริการ</label> <span class="error">*</span>
+                          <input type="hidden" name="groupId" id="groupId" value="<?=$groupId?>">
                           <input type="number" class="form-control" placeholder="ราคาค่าบริการ" name="lubricator_price" id="lubricator_price">
                       </div>
                     </div>

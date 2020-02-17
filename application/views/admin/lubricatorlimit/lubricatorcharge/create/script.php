@@ -3,6 +3,9 @@
         rules: {
             lubricator_price: {
                 required: true
+            },
+            groupId:{
+                require : true
             }
         },
         messages: {
@@ -34,12 +37,13 @@
     function createlubricatorchange(){
         event.preventDefault();
         var isValid = $("#submit").valid();
+        var groupId = $("#groupId").val();
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/Lubricatorchange/createlubricatorchange",data,
+            $.post(base_url+"api/lubricatorlimit/createlubricatorchange",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/charge/lubricatorcharge");
+                    showMessage(data.message,"admin/lubricatorlimit/lubricatorcharge/"+groupId);
                 }else{
                     showMessage(data.message,);
                 }

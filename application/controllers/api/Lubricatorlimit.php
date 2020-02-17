@@ -76,4 +76,76 @@ class Lubricatorlimit extends BD_Controller {
         $this->set_response($json_data);
     }
     
+    public function createlubricatorchange_post(){
+        $lubricator_price = $this->post('lubricator_price');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $groupId = $this->post('groupId');
+        $data_check = $this->lubricatorlimits->data_check_create();
+        $data = array(
+            'limitId' => null,
+            'price'  => $lubricator_price,
+            'groupId'  => $groupId,
+            'create_by' => $userId,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'update_at' => null
+        );
+        $option = [
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->lubricatorlimits,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
+    }
+    public function deleteLubricatorChange_get(){
+        $groupId = $this->get('groupId');
+        $data_check = $this->lubricatorlimits->getLubricatorChangeById($groupId);
+
+        $option = [
+            "data_check_delete" => $data_check,
+            "data" => $groupId,
+            "model" => $this->lubricatorlimits,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
+    }
+    public function update_post(){
+        $limitId = $this->post('limitId');
+        $price = $this->post('price');
+        $groupId = $this->post('groupId');
+        $userId = $this->session->userdata['logged_in']['id'];
+
+        $data_check_update = $this->lubricatorlimits->getLubricatorlimitChangeByLimitId($limitId);
+        $data_check = $this->lubricatorlimits->data_check_update($limitId, $groupId);
+        $data = array(
+            'limitId' => $limitId,
+            'price' => $price,
+            'groupId' => $groupId,
+            'update_by' => $userId,
+            'update_at' => date('Y-m-d H:i:s',time())
+        );
+
+        $option = [
+            "data_check_update" => $data_check_update,
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->lubricatorlimits,
+            "image_path" => null,
+            "old_image_path" => null,
+        ];
+
+        $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
+    }
+    function getLubricatorlimitChange_get(){
+        $limitId = $this->get('limitId');
+        $data_check = $this->lubricatorlimits->getUpdate($limitId);
+    
+        $option = [
+            "data_check" => $data_check
+        ];
+
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
 }

@@ -12,8 +12,9 @@
         },
     });
     
-    var lubricator_changeId = $("#lubricator_changeId").val();
-    
+    // var lubricator_changeId = $("#lubricator_changeId").val();
+    var limitId = $("#limitId").val();
+    var groupId = $("#groupId").val();
     $("#submit").submit(function(){
         updatelubricatorChange();
         
@@ -26,10 +27,10 @@
 
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/Lubricatorchange/update",data,
+            $.post(base_url+"api/lubricatorlimit/update",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/charge/lubricatorcharge");
+                    showMessage(data.message,"admin/lubricatorlimit/lubricatorcharge/" + groupId);
                 }else{
                     showMessage(data.message);
                 }
@@ -37,11 +38,11 @@
         }
     }
 
-    $.get(base_url+"api/Lubricatorchange/getUpdate",{
-        "lubricator_changeId": lubricator_changeId
+    $.get(base_url+"api/Lubricatorlimit/getLubricatorlimitChange",{
+        "limitId": limitId
     },function(data){
-        var lubricatorChange = data.data;
-        $("#lubricator_price").val(lubricatorChange.lubricator_price);
+        var lubricatorlimitchange = data.data;
+        $("#price").val(lubricatorlimitchange.price);
     });
 
     

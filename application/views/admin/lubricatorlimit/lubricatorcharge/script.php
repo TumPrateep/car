@@ -1,4 +1,5 @@
 <script>
+    var groupId = $("#groupId");
     var table = $('#changes-table').DataTable({
         "language": {
                 "aria": {
@@ -24,7 +25,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/Lubricatorlimit/searchLubricatorLimit",
+                "url": base_url+"api/lubricatorlimit/searchLubricatorLimit",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -51,7 +52,7 @@
                         return meta.row + 1;
                     }
                 },{ "targets": 1,
-                    "data": "lubricator_price",
+                    "data": "price",
                     "render": function ( data, type, full, meta ) {
                         return currency(data, { useVedic: true }).format();
                     }             
@@ -60,8 +61,9 @@
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+'admin/charge/updatelubricatorcharge/'+data.lubricator_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletelubricatorchange('+data.lubricator_changeId+',\''+data.lubricator_price+'\')"><i class="fa fa-trash"></i></button>';
+                        data.groupId = $("#groupId").val()
+                        return '<a href="'+base_url+'admin/lubricatorlimit/updateLubricatorCharge/'+data.limitId+'/'+data.groupId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletelubricatorchange('+data.groupId+',\''+data.price+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 { "orderable": false, "targets": 0 },
@@ -73,12 +75,12 @@
             ]	 
     });
 
-    function deletelubricatorchange(lubricator_changeId){
+    function deletelubricatorchange(groupId){
         var option = {
-            url: "/Lubricatorchange/deletelubricatorchange?lubricator_changeId="+lubricator_changeId,
+            url: "/Lubricatorlimit/deleteLubricatorChange?groupId="+groupId,
             label: "ลบราคาเปลี่ยนยางนอก",
             content: "คุณต้องการลบข้อมูลนี้ ใช่หรือไม่",
-            gotoUrl: "admin/Charge/LubricatorCharge"
+            gotoUrl: "admin/lubricatorlimit/lubricatorcharge/"+groupId ,
         }
         fnDelete(option);
     }
@@ -88,18 +90,18 @@
         table.ajax.reload();
     })
 
-    function updateStatus(lubricator_changeId,status){
-        $.post(base_url+"api/Lubricatorchange/changeStatus",{
-            "lubricator_changeId": lubricator_changeId,
-            "status": status
-        },function(data){
-            if(data.message == 200){
-                showMessage(data.message,"admin/charge/lubricatorcharge");
-            }else{
-                showMessage(data.message);
-            }
-        });
-    }
+    // function updateStatus(lubricator_changeId,status){
+    //     $.post(base_url+"api/Lubricatorchange/changeStatus",{
+    //         "lubricator_changeId": lubricator_changeId,
+    //         "status": status
+    //     },function(data){
+    //         if(data.message == 200){
+    //             showMessage(data.message,"admin/charge/lubricatorcharge");
+    //         }else{
+    //             showMessage(data.message);
+    //         }
+    //     });
+    // }
 </script>
 
 </body>
