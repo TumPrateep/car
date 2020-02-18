@@ -74,6 +74,16 @@ div.brand img {
     width: 100%;
     height: auto;
 }
+
+.section {
+    padding: 10px 0 !important;
+}
+
+.nav-tabs .nav-item {
+    margin-bottom: -1px;
+    width: 20%;
+    text-align: center;
+}
 </style>
 
 <input type="hidden" name="car_profileId" id="car_profileId" value="<?=$car_profileId?>">
@@ -86,48 +96,6 @@ div.brand img {
                 </div>
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="row">
-                         <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img id="myImg" src="<?php echo base_url('public/image/carprofile/front.jpg') ?>"
-                                        alt="หน้ารถ" class="w-75 border-0 rounded pointer mx-auto d-block">
-                                </div>
-                                <div class="card-footer">
-                                    <p>ด้านหน้า</p>
-                                </div>
-                            </div>
-                        </div>
-         <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img id="myImg" src="<?php echo base_url('public/image/carprofile/back.jpg') ?>"
-                                        alt="หลังรถ" class="w-75 border-0 rounded pointer mx-auto d-block">
-                                </div>
-                                <div class="card-footer">
-                                    <p>ด้านหลัง</p>
-                                </div>
-                            </div>
-                        </div>
-        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img id="myImg"
-                                        src="<?php echo base_url('public/image/carprofile/5d3c2cb0d56f6.png') ?>"
-                                        alt="เล่มทะเบียน" class="w-75 border-0 rounded pointer mx-auto d-block pb-4">
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <p>เล่มทะเบียน</p>
-                            </div>
-                        </div>
-    </div>
-    </div>
-    </div>
-    </div> -->
 
         <!-- The Modal -->
         <div id="myModal" class="modalpic">
@@ -136,39 +104,80 @@ div.brand img {
             <div id="caption" class="text-center text-white pt-4"></div>
         </div>
 
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <strong>ข้อมูลรถ</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <strong>ข้อมูลยาง</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
         <br>
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>ข้อมูลรถ</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p><strong>ทะเบียนรถ : </strong>กฉ 4802 สงขลา</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-target="#searchFromCar" data-toggle="tab"
+                                    href="#searchFromCar">
+                                    <div class="pricing-heading">
+                                        <!-- Title -->
+                                        <div class="title">
+                                            <h6>เช็ค<span class="alternate">ระยะ</span></h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-target="#searchFromCar" data-toggle="tab"
+                                    href="#searchFromCar">
+                                    <div class="pricing-heading">
+                                        <!-- Title -->
+                                        <div class="title">
+                                            <h6>ยาง<span class="alternate">รถยนต์</span></h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-target="#searchFromCar" data-toggle="tab"
+                                    href="#searchFromCar">
+                                    <div class="pricing-heading">
+                                        <!-- Title -->
+                                        <div class="title">
+                                            <h6>ผ้า<span class="alternate">เบรค</span></h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-target="#searchFromCar" data-toggle="tab"
+                                    href="#searchFromCar">
+                                    <div class="pricing-heading">
+                                        <!-- Title -->
+                                        <div class="title">
+                                            <h6>แบต<span class="alternate">เตอรี่</span></h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-main-search">
+                            <a name="tire"></a>
+                            <div class="tab-pane fade show active" id="searchFromCar">
+
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p><strong>ยี่ห้อ : </strong>Honda</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p><strong>รุ่น : </strong>Brio</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p><strong>ปีรถ : </strong>2018</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p><strong>เชื้อเพลิง : </strong>ดีเซล</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p><strong>สี : </strong>ดำคริสตัล</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p><strong>เลขกิโลเมตร : </strong>100000</p>
+                            <div class="tab-pane fade" id="searchFromTire">
+
                             </div>
                         </div>
                     </div>

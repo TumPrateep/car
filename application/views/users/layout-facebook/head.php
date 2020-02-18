@@ -15,8 +15,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <meta property="og:url" content="<?=base_url('search/garage/detailgarage/' . $garageId)?>" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="<?=$garageData->garageName?>" />
-    <meta property="og:description" content="เปิดให้บริการ <?=changeStringToDay($garageData->dayopenhour)?> <?=date('H:i', strtotime($garageData->openingtime))?> -
-                                        <?=date('H:i', strtotime($garageData->closingtime))?> น." />
+    <meta property="og:description" content='"เรื่องยาง" คลิกเดียวจบ!' />
     <meta property="og:image" content="<?=base_url('public/image/garage/' . $garageData->picture)?>" />
 
     <link href="https://fonts.googleapis.com/css?family=Prompt&display=swap" rel="stylesheet">

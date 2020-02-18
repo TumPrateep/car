@@ -123,15 +123,15 @@ img {
                     <!-- Coundown Timer -->
                     <h3>บำรุงรักษา&ซ่อมรถ อู่ที่ดีที่สุดใกล้บ้าน</h3>
                     <div>
+                        <p class="head"><span class="fa fa-check-circle available"></span>
+                            ราคาเดียวจบ! ค่าขนส่ง ถอดใส่ ถ่วงล้อ</p>
                         <p class="head"><span class="fa fa-check-circle available"></span> ประหยัดสูงสุด 30%</p>
-                        <p class="head"><span class="fa fa-check-circle available"></span> มียางให้เลือกมากกว่า 30
-                            ยี่ห้อ</p>
+                        <p class="head"><span class="fa fa-check-circle available"></span> มียางให้เลือกมากกว่า 50
+                            ขนาด</p>
                         <p class="head"><span class="fa fa-check-circle available"></span> ใช้เวลาเปลี่ยนไม่เกิน 1 ชม.
                         </p>
                         <p class="head"><span class="fa fa-check-circle available"></span>
                             เลือกร้านที่ดีที่สุดใกล้บ้านท่าน</p>
-                        <p class="head"><span class="fa fa-check-circle available"></span>
-                            ราคาเดียวจบ! ค่าขนส่ง ถอดใส่ ถ่วงล้อ</p>
                     </div>
                     <!-- Action Button -->
                     <!-- <a href="#" class="btn btn-white-md">get ticket now</a> -->

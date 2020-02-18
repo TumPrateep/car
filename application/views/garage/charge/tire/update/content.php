@@ -37,7 +37,7 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <label>ราคาค่าบริการถอดเปลี่ยนยางต่อเส้น (บาท)</label><span
+                                            <label>ค่าบริการถอดใส่+ถ่วง 2 ล้อหน้า (บาท)</label><span
                                                 class="error">*</span>
                                             <input type="number" class="form-control" name="tire_price" id="tire_price"
                                                 placeholder="ราคาค่าบริการถอดเปลี่ยนยางต่อเส้น" min=0>

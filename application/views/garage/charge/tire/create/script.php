@@ -40,7 +40,7 @@ $('#tire_rimId').change(function(e) {
                     messages: {
                         tire_price: {
                             required: "กรอกราคาขอบยาง",
-                            max: 'กรอกจำนวนเงินไม่เกิน' + max_price
+                            max: 'กรอกจำนวนเงินไม่เกิน ' + max_price + 'บาท'
                         }
                     },
 

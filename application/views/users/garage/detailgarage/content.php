@@ -48,8 +48,8 @@ p.reply {
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <img src="<?php echo base_url('public/image/garage/5cef50f1a3d54.png') ?>"
-                                        class="pic" alt="">
+                                    <img src="<?=base_url('public/image/garage/' . $garageData->picture)?>" class="pic"
+                                        alt="">
                                 </div>
                                 <div class="col-md-7">
                                     <h5><?=$garageData->garageName?> <div class="fb-share-button"

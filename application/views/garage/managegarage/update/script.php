@@ -42,6 +42,9 @@ $.post(base_url + "apigarage/Managegarage/getmanagegarage", {
         $("#openingtime").val(result.openingtime);
         $("#closingtime").val(result.closingtime);
         $("#option_outher").val(result.option_outher);
+        $("#bank_name").val(result.bank_name);
+        $("#bank_id").val(result.bank_id);
+        $("#bank_owner").val(result.bank_owner);
         if (result.option1 == 1) {
             $('#Wifi').each(function() {
                 this.checked = true;
@@ -264,9 +267,15 @@ $("#submit").validate({
         coordinates: {
             required: true
         },
-        // option_outher:  {
-        //     THEN: true
-        // },
+        bank_name: {
+            required: true
+        },
+        bank_id: {
+            required: true
+        },
+        bank_owner: {
+            required: true
+        },
     },
     messages: {
         garageName: {
@@ -316,7 +325,16 @@ $("#submit").validate({
         },
         option_outher: {
             // THEN: "กรอกข้อมูลไม่ถูกต้อง"
-        }
+        },
+        bank_name: {
+            required: 'กรอกชื่อธนาคาร'
+        },
+        bank_id: {
+            required: 'กรอกเลขที่บัญชี'
+        },
+        bank_owner: {
+            required: 'กรอกชื่อเจ้าของบัญชี'
+        },
     }
 });
 

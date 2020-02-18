@@ -264,7 +264,7 @@
                     <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
                         href="#serviceCharge" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-dollar"></i>
-                        <span class="nav-link-text">ราคาค่าบริการ</span>
+                        <span class="nav-link-text">กำไรจากสินค้า</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="serviceCharge">
                         <li class="<?=activate_menu('charge/tirescharge/');?>">
