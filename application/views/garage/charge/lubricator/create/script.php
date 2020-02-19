@@ -13,6 +13,42 @@
         },
     });
 
+    
+
+
+    var settings = $('form').validate().settings;
+    
+    $("#lubricator_price").change(function(e) {
+        e.preventDefault();
+        let price = $(this).val()
+        if (price) {
+            $.get(base_url + "apigarage/garagegroup/getMaxPriceLubricatorlimitService", 
+            // {
+            //     'lubricator_price': price
+            // }
+             function(data, textStatus, jqXHR) {
+                let max_price = data.max;
+                if (max_price) {
+                    $.extend(true, settings, {
+                        rules: {
+                            lubricator_price: {
+                                required: true,
+                                max: max_price
+                            },
+                        },
+                        messages: {
+                            lubricator_price: {
+                                required: "กรอกราคาขอบยาง",
+                                max: 'กรอกจำนวนเงินไม่เกิน ' + max_price + 'บาท'
+                            }
+                        },
+
+                    });
+                }
+            });
+        }
+    });
+
     $("#submit").submit(function(){
         createlubricatorchangegarage();
     })

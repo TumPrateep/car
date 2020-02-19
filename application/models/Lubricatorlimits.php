@@ -47,8 +47,9 @@ class Lubricatorlimits extends CI_Model
         }
 
     }
-    function data_check_create(){
+    function data_check_create($groupId){
         $this->db->from("lubricator_limit");
+        $this->db->where('groupId', $groupId);
         $result = $this->db->get();
         return $result->row();
     }
@@ -94,5 +95,10 @@ class Lubricatorlimits extends CI_Model
         $result = $this->db->get("lubricator_limit")->row();
         return $result;
     }
-    
+    public function getMaxPrice($groupId)
+    {
+        $this->db->where('groupId', $groupId);
+        $result = $this->db->get('lubricator_limit');
+        return $result->row();
+    }
 }

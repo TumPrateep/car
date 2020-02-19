@@ -80,9 +80,9 @@ class Lubricatorlimit extends BD_Controller {
         $lubricator_price = $this->post('lubricator_price');
         $userId = $this->session->userdata['logged_in']['id'];
         $groupId = $this->post('groupId');
-        $data_check = $this->lubricatorlimits->data_check_create();
+        $data_check = $this->lubricatorlimits->data_check_create($groupId);
         $data = array(
-            'limitId' => null,
+            //'limitId' => null,
             'price'  => $lubricator_price,
             'groupId'  => $groupId,
             'create_by' => $userId,
