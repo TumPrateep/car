@@ -146,6 +146,26 @@
 
                         <li>
                             <a class="nav-link-collapse text-white collapsed" data-toggle="collapse"
+                                href="#lubricatorgear">
+                                <i class="fa fa-tint"></i> น้ำมันเกียร์</a>
+                            <ul class="sidenav-third-level collapse" id="lubricatorgear">
+                                <li class="<?=activate_menu('lubricatornumber');?>">
+                                    <a class="nav-link text-white" href="<?=base_url("admin/lubricatorgearnumber")?>">
+                                        <i class="fa fa-safari"></i>
+                                        <span class="nav-link-text">เบอร์น้ำมันเกียร์</span>
+                                    </a>
+                                </li>
+                                <li class="<?=activate_menu('lubricator');?>">
+                                    <a class="nav-link text-white" href="<?=base_url("admin/Lubricatorgear")?>">
+                                        <i class="fa fa-rebel"></i>
+                                        <span class="nav-link-text">ยี่ห้อน้ำมันเกียร์</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="nav-link-collapse text-white collapsed" data-toggle="collapse"
                                 href="#collapseMultiTire">
                                 <i class="fa fa-life-ring"></i> ยางรถ</a>
                             <ul class="sidenav-third-level collapse" id="collapseMultiTire">
