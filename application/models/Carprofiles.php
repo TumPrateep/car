@@ -92,11 +92,11 @@ class Carprofiles extends CI_Model
 
     public function getCarProfileByUserIdAndCarprofileId($userId, $car_profileId)
     {
-        $this->db->select('car_profile.car_profileId,car_profile.number_plate,car_profile.character_plate,car_profile.province_plate,car_profile.mileage,car_profile.color,car_profile.pictureFront,car_profile.pictureBack,car_profile.circlePlate,car_profile.brandId,car_profile.modelId,car_profile.modelofcarId,car_profile.year,brand.brandName,model.modelName as detail,model.yearStart,model.yearEnd, model.modelName, brand.brandPicture');
+        $this->db->select('car_profile.car_profileId,car_profile.number_plate,car_profile.character_plate,car_profile.province_plate,car_profile.mileage,car_profile.color,car_profile.pictureFront,car_profile.pictureBack,car_profile.circlePlate,car_profile.brandId,car_profile.modelId,car_profile.modelofcarId,car_profile.year,brand.brandName,model.modelName as detail,model.yearStart,model.yearEnd, model.modelName, brand.brandPicture,provinceforcar.provinceforcarName');
         $this->db->from('car_profile');
         $this->db->join('brand', 'car_profile.brandId = brand.brandId');
         $this->db->join('model', 'car_profile.modelId = model.modelId');
-        // $this->db->join('modelofcar', 'car_profile.modelofcarId = modelofcar.modelofcarId', 'left');
+        $this->db->join('provinceforcar', 'car_profile.province_plate = provinceforcar.provinceforcarId');
         $this->db->where("car_profile.userId", $userId);
         $this->db->where("car_profile.car_profileId", $car_profileId);
         $query = $this->db->get();
@@ -217,5 +217,157 @@ class Carprofiles extends CI_Model
     public function delete($car_profileId)
     {
         return $this->db->delete('car_profile', array('car_profileId' => $car_profileId));
+    }
+
+    public function getTireSize($brandId, $modelName, $year)
+    {
+        $this->db->from('tire_matching');
+        $this->db->join('model', 'tire_matching.modelId = model.modelId');
+
+        if (!empty($brandId)) {
+            $this->db->where('model.brandId', $brandId);
+        }
+
+        if (!empty($modelName)) {
+            $this->db->where('model.modelName', $modelName);
+        }
+
+
+        if (!empty($year)) {
+            $this->db->group_start();
+            $this->db->group_start();
+            $this->db->where('model.yearStart <=', $year)
+                ->where('model.yearEnd >=', $year);
+            $this->db->group_end();
+            $this->db->or_where('model.yearStart', $year);
+            $this->db->group_end();
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getTiresizeOrder($car_profileId)
+    {
+        $this->db->from('order');
+        $this->db->join('orderdetail', 'order.orderId = orderdetail.orderId');
+        $this->db->where('order.car_profileId', $car_profileId);
+        $this->db->where('orderdetail.group', 'tire');
+        $this->db->order_by('order.orderId', 'desc');
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function getTireDataById($tire_dataId)
+    {
+        $this->db->select('tire_data.tire_dataId as productId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size,tire_data.status,tire_data.warranty_year,tire_data.warranty_distance,tire_data.can_change,tire_data.activeFlag,tire_data.create_by, tire_data.warranty, tire_data.tire_picture, tire_brand.tire_brandPicture, tire_brand.tire_brandId,rim.rimId, tire_data.tire_picture as picture, tire_model.tire_modelId,tire_size.tire_sizeId, tire_data.price, tire_data.car_accessoriesId');
+        $this->db->join('tire_brand', 'tire_brand.tire_brandId = tire_data.tire_brandId');
+        $this->db->join('tire_model', 'tire_model.tire_modelId = tire_data.tire_modelId');
+        $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');
+        $this->db->join('rim', 'rim.rimId = tire_data.rimId');
+        $this->db->where('tire_data.tire_dataId', $tire_dataId);
+        $result = $this->db->get('tire_data');
+        return $result->row();
+    }
+
+    public function getTireDataForCarprofile($car_profileId)
+    {
+        $car_profile = $this->getCarDeleteById($car_profileId);
+        if(!empty($car_profile)){
+            $orderData = $this->getTiresizeOrder($car_profileId);
+            $result = null;
+            if(!empty($orderData)){
+                $result = $this->getTireDataById($orderData->productId);
+                if(!empty($result)){
+                    $option = [
+                        'tire_brandId' => $result->tire_brandId,
+                        'tire_modelId' => $result->tire_modelId,
+                        'tire_sizeId' => $result->tire_sizeId,
+                        'rimId' => $result->rimId,
+                    ];
+    
+                    $result->picture = getPictureTire($option);
+                }
+            }
+            return $result;
+        }else{
+            return null;
+        }
+    }
+
+    public function getCarProfileByCarprofileId($car_profileId)
+    {
+        $this->db->select('car_profile.car_profileId,car_profile.number_plate,car_profile.character_plate,car_profile.province_plate,car_profile.mileage,car_profile.color,car_profile.pictureFront,car_profile.pictureBack,car_profile.circlePlate,car_profile.brandId,car_profile.modelId,car_profile.modelofcarId,car_profile.year,brand.brandName,model.modelName as detail,model.yearStart,model.yearEnd, model.modelName, brand.brandPicture,provinceforcar.provinceforcarName');
+        $this->db->from('car_profile');
+        $this->db->join('brand', 'car_profile.brandId = brand.brandId');
+        $this->db->join('model', 'car_profile.modelId = model.modelId');
+        $this->db->join('provinceforcar', 'car_profile.province_plate = provinceforcar.provinceforcarId');
+        $this->db->where("car_profile.car_profileId", $car_profileId);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    function getTireMatchingByCarprofile($car_profileId){
+        $car_profile = $this->getCarProfileByCarprofileId($car_profileId);
+        if(!empty($car_profile)){
+            $tire_sizeData = $this->getTireSize($car_profile->brandId, $car_profile->modelName, $car_profile->year);
+            $tire_sizeId = [];
+            foreach ($tire_sizeData as $i => $v) {
+                $tire_sizeId[] = $v->tire_sizeId;
+            }
+            return $tire_sizeId;
+        }else{
+            return [];
+        }
+    }
+
+    public function getAllTireSizeByTireSizeId($arrTireSizeId)
+    {
+        $this->db->select('tire_sizeId,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size');
+        $this->db->join('rim', 'tire_size.rimId = rim.rimId');
+        if (!empty($arrTireSizeId)) {
+            $this->db->where_in('tire_size.tire_sizeId', $arrTireSizeId);
+        } else {
+            $this->db->where('tire_size.tire_sizeId is null', null, false);
+        }
+        $this->db->order_by('tire_size', 'asc');
+        $query = $this->db->get("tire_size");
+        return $query->result();
+    }
+
+    public function getTireMatching($car_profileId)
+    {
+        $match_array = $this->getTireMatchingByCarprofile($car_profileId);
+        if(!empty($match_array)){
+            return $this->getAllTireSizeByTireSizeId($match_array);
+        }else{
+            return [];
+        }
+    }
+
+    public function getTireDataForMatching($limit, $start, $order, $dir, $tire_sizeId, $tire_brandId=null)
+    {
+        $this->db->select('tire_data.tire_dataId,tire_brand.tire_brandName,tire_model.tire_modelName,rim.rimName,concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tire_size,tire_data.status,tire_data.warranty_year,tire_data.warranty_distance,tire_data.can_change,tire_data.activeFlag,tire_data.create_by, tire_data.warranty, tire_data.tire_picture, tire_brand.tire_brandPicture, tire_brand.tire_brandId,rim.rimId,
+        tire_brand.tire_brandId,tire_model.tire_modelId,tire_size.tire_sizeId,rim.rimId,tire_data.price');
+        $this->db->from('tire_data');
+        $this->db->where('`tire_data`.`tire_dataId` IN (SELECT (SELECT `tire_dataId` FROM `tire_data` `rd` WHERE `tire_sizeId` = `re`.`tire_sizeId` AND `tire_brandId` = `re`.`tire_brandId` AND `tire_modelId` = `re`.`tire_modelId`ORDER BY `price` DESC LIMIT 1) as `tire_dataId` FROM `tire_data` `re` GROUP BY `rimId`)', null, false);
+        $this->db->join('tire_brand', 'tire_brand.tire_brandId = tire_data.tire_brandId');
+        $this->db->join('tire_model', 'tire_model.tire_modelId = tire_data.tire_modelId');
+        $this->db->join('tire_size', 'tire_size.tire_sizeId = tire_data.tire_sizeId');
+        $this->db->join('rim', 'rim.rimId = tire_data.rimId');
+
+        if (!empty($tire_sizeId)) {
+            $this->db->where_in('tire_data.tire_sizeId', $tire_sizeId);
+        }
+
+        if ($tire_brandId != null) {
+            $this->db->where('tire_brand.tire_brandId', $tire_brandId);
+        }
+
+        $query = $this->db
+            ->limit($limit, $start)
+            ->order_by($order, $dir)
+            ->get();
+
+        return $query->result();
     }
 }

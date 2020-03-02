@@ -1,53 +1,23 @@
 <style>
-.modalpic {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 100px;
-    /* Location of the box */
-    left: 0;
-    top: 15%;
+    .section{
+        padding: 30px 0;
+    }
+    .text-brand{
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .text-size{
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .btn-result {
+    padding: 7px 7px 7px 7px;
+}
+
+div.brand img {
+    margin: 45px 0px 0px 0px;
     width: 100%;
-    /* Full width */
-    height: 90%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.9);
-    /* Black w/ opacity */
-}
-
-.modalpic-content {
-    margin: auto;
-    display: block;
-    width: 50%;
-    max-width: 600px;
-}
-
-.close {
-    position: absolute;
-    top: 22px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.pointer {
-    cursor: pointer;
+    height: auto;
 }
 
 .card-body.order {
@@ -62,6 +32,7 @@
 
 .order>h5 {
     color: white !important;
+    font-size: 16px;
 }
 
 .footer.order {
@@ -69,62 +40,150 @@
     color: white;
 }
 
-div.brand img {
-    margin: 45px 0px 0px 0px;
-    width: 100%;
-    height: auto;
+.detail {
+    width: -webkit-fill-available !important;
 }
 
-.section {
-    padding: 10px 0 !important;
+div.pic img {
+    width: 145px;
+    height: auto !important;
 }
 
-.nav-tabs .nav-item {
-    margin-bottom: -1px;
-    width: 20%;
+.card-header {
+    background-color: rgba(0,0,0,0);
+}
+
+.dt-border{
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid #a2a2a2;
     text-align: center;
+    color: #212529;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.dt-border > .text {
+    font-size: 17px;
+}
+
+.col-lg-6{
+    margin-top: 10px;
+}
+#add-tire{
+    border: 1px solid #dfdfdf;
+    font-size: 30px;
+    color: #ff66009e;
+    padding-bottom: 35px;
+    padding-top: 35px;
+    cursor: pointer;
 }
 </style>
 
-<input type="hidden" name="car_profileId" id="car_profileId" value="<?=$car_profileId?>">
-<section class="section pricing">
+<input type="hidden" name="car_profileId" id="car_profileId" value="<?= $car_profileId ?>">
+<section class="section">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <div class="section-title">
-                    <h3>รายละเอียด<span class="alternate" id="title">รถ</span></h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- The Modal -->
-        <div id="myModal" class="modalpic">
-            <span class="close">&times;</span>
-            <img class="modalpic-content" id="img01">
-            <div id="caption" class="text-center text-white pt-4"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
+            <div class="col-lg-6">
+                <h5>ข้อมูล<span class="alternate">รถของคุณ</span></h5>
                 <div class="card">
                     <div class="card-body">
-                        <strong>ข้อมูลรถ</strong>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-6"><strong>
+                                        <h6>ข้อมูล<span class="alternate">รถ</span></h6></strong>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <img src="#" id="car-logo" alt="logo" class="rounded" width="70%">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p><img class="card-img-top" src="#" id="text-car-picture" width="100%" alt=""></p>
+                                        <div>
+                                            <p><strong id="text-car"> - </strong></p>
+                                            <p>
+                                                <div class="dt-border" id="text-vehicle">-</div>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <strong><h6>ข้อมูล<span class="alternate">ยาง</span></h6></strong>
+                                <div id="tire-data">
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <p><img src="#" id="text-tire-logo" alt="logo" width="90%"></p>
+                                            <p><img src="#" id="text-tire-picture" alt="tire" width="180px"></p>
+                                            <p>
+                                                <div class="text-brand"><div class="text" id="text-tire-brand">-</div></div>
+                                                <div class="text-size"><strong id="text-tire-size">-</strong></div>                             
+                                            </p>
+                                            <p>
+                                                <a href="#" class="text-orange">แก้ไขข้อมูลยาง</a></button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="add-tire" class="text-center">
+                                    <i class="fa fa-plus" aria-hidden="true"></i><br>
+                                    <small>เพิ่มข้อมูลยาง</small>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <h6>ข้อมูลรถและการ<span class="alternate">ซ่อมบำรุง</span></h6>
+                        <h6><span class="alternate">ยาง</span></h6>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong>ขนาดยางที่เหมาะสมกับรถ</strong>
+                            </div>
+                            <div class="col-md-7" id="text-matching">
+                                -
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong>ขนาดยางที่ใช้</strong>
+                            </div>
+                            <div class="col-md-7" id="text-current-tire">
+                                -
+                            </div>
+                        </div>
+                        <h6><span class="alternate">น้ำมันเครื่อง</span></h6>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong>น้ำมันเครื่องที่ใช้</strong>
+                            </div>
+                            <div class="col-md-4">
+                                -
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong>เลขไมล์ล่าสุด</strong>
+                            </div>
+                            <div class="col-md-4">
+                                -
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong>เลขไมล์ที่ต้องเปลี่ยนน้ำมันเครื่องครั้งถัดไป</strong>
+                            </div>
+                            <div class="col-md-4">
+                                -
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <strong>ข้อมูลยาง</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-lg-6">
                 <div class="row">
                     <div class="col-md-12">
+                        <h5>สินค้าที่เหมาะกับ<span class="alternate">รถของคุณ</span></h5>
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
                                 <a class="nav-link active" data-target="#searchFromCar" data-toggle="tab"
@@ -132,40 +191,18 @@ div.brand img {
                                     <div class="pricing-heading">
                                         <!-- Title -->
                                         <div class="title">
-                                            <h6>เช็ค<span class="alternate">ระยะ</span></h6>
+                                            <h6><span class="alternate">ยาง</span></h6>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-target="#searchFromCar" data-toggle="tab"
-                                    href="#searchFromCar">
+                                <a class="nav-link" data-target="#searchFromLubricator" data-toggle="tab"
+                                    href="#searchFromLubricator">
                                     <div class="pricing-heading">
                                         <!-- Title -->
                                         <div class="title">
-                                            <h6>ยาง<span class="alternate">รถยนต์</span></h6>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-target="#searchFromCar" data-toggle="tab"
-                                    href="#searchFromCar">
-                                    <div class="pricing-heading">
-                                        <!-- Title -->
-                                        <div class="title">
-                                            <h6>ผ้า<span class="alternate">เบรค</span></h6>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-target="#searchFromCar" data-toggle="tab"
-                                    href="#searchFromCar">
-                                    <div class="pricing-heading">
-                                        <!-- Title -->
-                                        <div class="title">
-                                            <h6>แบต<span class="alternate">เตอรี่</span></h6>
+                                            <h6><span class="alternate">น้ำมันเครื่อง</span></h6>
                                         </div>
                                     </div>
                                 </a>
@@ -173,194 +210,13 @@ div.brand img {
                         </ul>
                         <div class="tab-content pt-main-search">
                             <a name="tire"></a>
-                            <div class="tab-pane fade show active" id="searchFromCar">
-
-                            </div>
-                            <div class="tab-pane fade" id="searchFromTire">
-
-                            </div>
+                            <div class="tab-pane fade show active" id="searchFromCar"></div>
+                            <div class="tab-pane fade show" id="searchFromLubricator"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <br>
-        <!-- <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>ยางรถที่แนะนำ</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="text-center">
-                                                            <img src="http://localhost/car/public/image/tire_brand/5cc6fb979371e.png"
-                                                                width="100%">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-7">
-                                                        <div class="text-center">
-                                                            <img src="https://www.tyremarket.com/images/products/EP150.jpg"
-                                                                width="100%">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="text text-right"> MICHELIN </div>
-                                                        <div class="text text-right"> XCD2 </div>
-                                                        <div class="text text-right"> <strong>225/75R15</strong></div>
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="row">
-                                                    <div class="col-12 text-center">
-                                                        <a
-                                                            href="http://localhost/car/search/tire/resultgarage/7/101/39">
-                                                            <div class="card pointer full-view">
-                                                                <div class="card-body order">ราคาต่ำสุด<br>
-                                                                    <strong>1,000 บาท/เส้น</strong>
-                                                                </div>
-                                                                <div class="footer order">ค้นหาศูนย์บริการ / สั่งสินค้า
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="text-center">
-                                                            <img src="http://localhost/car/public/image/tire_brand/5cc6fb979371e.png"
-                                                                width="100%">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-7">
-                                                        <div class="text-center">
-                                                            <img src="https://www.tyremarket.com/images/products/EP150.jpg"
-                                                                width="100%">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="text text-right"> MICHELIN </div>
-                                                        <div class="text text-right"> XCD2 </div>
-                                                        <div class="text text-right"> <strong>225/75R15</strong></div>
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="row">
-                                                    <div class="col-12 text-center">
-                                                        <a
-                                                            href="http://localhost/car/search/tire/resultgarage/7/101/39">
-                                                            <div class="card pointer full-view">
-                                                                <div class="card-body order">ราคาต่ำสุด<br>
-                                                                    <strong>1,000 บาท/เส้น</strong>
-                                                                </div>
-                                                                <div class="footer order">ค้นหาศูนย์บริการ / สั่งสินค้า
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="text-center">
-                                                            <img src="http://localhost/car/public/image/tire_brand/5cc6fb979371e.png"
-                                                                width="100%">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-7">
-                                                        <div class="text-center">
-                                                            <img src="https://www.tyremarket.com/images/products/EP150.jpg"
-                                                                width="100%">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="text text-right"> MICHELIN </div>
-                                                        <div class="text text-right"> XCD2 </div>
-                                                        <div class="text text-right"> <strong>225/75R15</strong></div>
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="row">
-                                                    <div class="col-12 text-center">
-                                                        <a
-                                                            href="http://localhost/car/search/tire/resultgarage/7/101/39">
-                                                            <div class="card pointer full-view">
-                                                                <div class="card-body order">ราคาต่ำสุด<br>
-                                                                    <strong>1,000 บาท/เส้น</strong>
-                                                                </div>
-                                                                <div class="footer order">ค้นหาศูนย์บริการ / สั่งสินค้า
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-
-        <!-- <div class="row">
-            <div class="col-md-12">
-                <div class="row row-border">
-                    <div class="pic col-md-3 text-center">
-                        <img src="https://www.tyremarket.com/images/products/EP150.jpg">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="text"> MICHELIN </div>
-                        <div class="text"> XCD2 </div>
-                        <div class="text"> <strong>225/75R15</strong> </div>
-                    </div>
-                    <div class="brand col-md-3 text-center brand-logo sort-first">
-                        <img src="http://localhost/car/public/image/tire_brand/5cc6fb979371e.png" width="100%">
-                    </div>
-                    <div class="detail col-md-3">
-                        <a href="http://localhost/car/search/tire/resultgarage/7/101/39">
-                            <div class="card pointer full-view">
-                                <div class="card-body order">ราคาต่ำสุด
-                                    <h5>1,000 บาท/เส้น</h5>
-                                </div>
-                                <div class="footer order">ค้นหาศูนย์บริการ / สั่งสินค้า</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-
 
     </div>
 </section>

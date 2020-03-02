@@ -3803,3 +3803,11 @@ a.text-orange {
     margin-bottom: 30px;
     padding: 15px;
 }
+
+.banner-bottom {
+    position: fixed;
+}
+
+.Yellow-star {
+    color: #ffbc00;
+}

@@ -44,7 +44,7 @@ if (!function_exists('load_user_facebook_view')) {
                 $CI->load->view("users/layout-facebook/header");
             } else {
                 $data['name'] = $CI->session->userdata['logged_in']['name'];
-                $CI->load->view("users/layout-facebook/header_user");
+                $CI->load->view("users/layout-facebook/header_user", $data);
             }
         } else {
             $CI->load->view("users/layout-facebook/header");

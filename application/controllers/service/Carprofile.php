@@ -9,6 +9,7 @@ class Carprofile extends BD_Controller
         parent::__construct();
         $this->load->model("carprofiles");
         $this->load->model("orderdetails");
+        $this->load->model("prices");
     }
 
     public function getCarProfile_post()
@@ -17,6 +18,87 @@ class Carprofile extends BD_Controller
         $car_profileId = $this->post('car_profileId');
         $data_check = $this->carprofiles->getCarProfileByUserIdAndCarprofileId($userId, $car_profileId);
         // dd();
+        $option = [
+            "data_check" => $data_check,
+        ];
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
+
+    public function getCarProfileDetail_post(){
+        $userId = $this->session->userdata['logged_in']['id'];
+        $car_profileId = $this->post('car_profileId');
+        $data_check['carprofile'] = $this->carprofiles->getCarProfileByUserIdAndCarprofileId($userId, $car_profileId);
+        $tiredata = $this->carprofiles->getTireDataForCarprofile($car_profileId);
+        $data_check['tire_data'] = $tiredata;
+        $tirematching = $this->carprofiles->getTireMatching($car_profileId);
+        $data_check['tire_matching'] = $tirematching;
+
+        $tireproduct = [];
+        if(!empty($tiredata)){
+            $tiresize[] = $tiredata->tire_sizeId;
+            $tireproduct =  $this->carprofiles->getTireDataForMatching(3, 0, 'price', 'asc', $tiresize, $tiredata->tire_brandId);
+        }else{
+            $tiresize = [];
+            foreach ($tirematching as $i => $v) {
+                $tiresize[] = $v->tire_sizeId;
+            }
+            $tireproduct = $this->carprofiles->getTireDataForMatching(3, 0, 'price', 'asc', $tiresize);
+        }
+
+        $nestedData = array();
+        if (!empty($tireproduct)) {
+            // $index = 0;
+            $count = 0;
+            foreach ($tireproduct as $post) {
+                $tire_change_data = $this->prices->getPriceFromGarageByRimId($post->rimId);
+                $garage_price = 50;
+                if (!empty($tire_change_data)) {
+                    $garage_price += $tire_change_data->tire_price;
+                }
+
+                $carjaidee_change_data = $this->prices->getPriceCarjaidee($post->rimId, $post->tire_sizeId);
+                $carjaidee_price = 0;
+                if (!empty($carjaidee_change_data)) {
+                    $carjaidee_price = $carjaidee_change_data->price;
+                    if ($carjaidee_change_data->unit_id == 1) {
+                        $carjaidee_price = $post->price * $carjaidee_change_data->price / 100;
+                    }
+                }
+
+                $tire_service_data = $this->prices->getPriceService($post->rimId);
+                $service_price = $tire_service_data->price;
+
+                $nestedData[$count]['tire_dataId'] = $post->tire_dataId;
+                $nestedData[$count]['rimName'] = $post->rimName;
+                $nestedData[$count]['tire_size'] = $post->tire_size;
+                $nestedData[$count]['tire_modelName'] = $post->tire_modelName;
+                $nestedData[$count]['tire_brandName'] = $post->tire_brandName;
+                $nestedData[$count]['status'] = $post->status;
+                $nestedData[$count]['price'] = $post->price + $garage_price + $carjaidee_price + $service_price;
+                $nestedData[$count]['warranty_year'] = $post->warranty_year;
+                $nestedData[$count]['can_change'] = $post->can_change;
+                $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
+                $nestedData[$count]['activeFlag'] = $post->activeFlag;
+                $nestedData[$count]['warranty'] = $post->warranty;
+                $nestedData[$count]['tire_picture'] = $post->tire_picture;
+                $nestedData[$count]['tire_brandPicture'] = $post->tire_brandPicture;
+                $nestedData[$count]['tire_brandId'] = $post->tire_brandId;
+                $nestedData[$count]['tire_modelId'] = $post->tire_modelId;
+                $nestedData[$count]['tire_sizeId'] = $post->tire_sizeId;
+
+                $option = [
+                    'tire_brandId' => $post->tire_brandId,
+                    'tire_modelId' => $post->tire_modelId,
+                    'tire_sizeId' => $post->tire_sizeId,
+                    'rimId' => $post->rimId,
+                ];
+                $nestedData[$count]['picture'] = getPictureTire($option);
+                $count++;
+            }
+        }
+
+        $data_check['tire_product'] = $nestedData;
+
         $option = [
             "data_check" => $data_check,
         ];

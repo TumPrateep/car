@@ -33,7 +33,13 @@ class Machines extends CI_Model{
         $result = $this->db->get();
         return $result->row();
     }
-
+    function getOwnerByGarageId($garageId){
+        $this->db->from('mechanic');
+        $this->db->where('status', 1);
+        $this->db->where('garageId',$garageId);
+        $result = $this->db->get();
+        return $result->row();
+    }
     function update($data){
         $this->db->where('machineId',$data["machineId"]);
         return $this->db->update('machine', $data);

@@ -72,7 +72,7 @@ p.reply {
                                     <img src="<?=base_url('public/images/icon/toilet.png')?>" class="icon"
                                         title="มีสุขา">
                                     <div class="mb-20 text-center">
-                                        <h4>
+                                        <h4 id="show-rating">
                                             <i class="fa fa-star star"></i>
                                             <i class="fa fa-star star"></i>
                                             <i class="fa fa-star star"></i>
@@ -97,7 +97,7 @@ p.reply {
                     <div class="card">
                         <div class="card-body">
                             <p class="text-center">
-                                <img src="<?php echo base_url('public/image/role/3.jpg') ?>" alt="">
+                                <img src="#" id="owner-picture" alt="">
                             </p>
                             <br>
                             <div class="row">
@@ -112,8 +112,8 @@ p.reply {
             </div>
             <br>
             <div class="row">
-                <div class="col-md-12 text-center">
-
+                <div class="col-md-12">
+                    <span id="show-comment"></span>
                 </div>
             </div>
             <br>

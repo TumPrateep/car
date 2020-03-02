@@ -83,6 +83,15 @@ class Commentusers extends CI_Model
         return $query->num_rows();
     }
 
+    public function allSumScore($garageId)
+    {
+        $this->db->select("sum(scorerating) as sum");
+        $this->db->from('rating');
+        $this->db->where('garageId', $garageId);
+        $query = $this->db->get();
+        return $query->row('sum');
+    }
+
     public function allScoreOne_count($garageId)
     {
         $this->db->select('garageId');

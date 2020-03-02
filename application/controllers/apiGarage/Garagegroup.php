@@ -35,7 +35,6 @@ class Garagegroup extends BD_Controller
     {
         $garageId = $this->session->userdata['logged_in']['garageId'];
 
-
         $garageData = $this->garage->getGaragesmanagementById($garageId);
         $data['max'] = null;
         if (!empty($garageData)) {

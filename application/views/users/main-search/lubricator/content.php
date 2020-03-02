@@ -10,33 +10,33 @@
         <div id="content">
             <div class="row">
                 <div class="col-md-12">
-                    <!-- Pricing Item -->
+                    <h6>ค้นหาจาก<span class="alternate">ข้อมูลยาง</span></h6>
+                    
                     <div class="pricing-item">
-                        <div class="pricing-heading">
-                            <!-- Title -->
-                            <div class="title">
-                                <h6>ค้าหาจากข้อมูลรถ</h6></div>
-                        </div>
                         <div class="pricing-body">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <select class="form-control main">
                                             <option>ยี่ห้อรถยนต์</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <select class="form-control main">
                                             <option>รุ่นรถยนต์</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <select class="form-control main">
                                             <option>ประเภทเครื่องยนต์</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <select class="form-control main" id="select-ticket">
                                             <option>ชนิดเกียร์</option>
