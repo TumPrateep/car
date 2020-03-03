@@ -283,6 +283,12 @@
                                 <span class="nav-link-text">น้ำมันเครื่อง</span>
                             </a>
                         </li>
+                        <li class="<?=activate_menu('lubricatorgearlimit/garagegroup/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/lubricatorgearlimit/garagegroup")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">น้ำมันเกียร์</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
