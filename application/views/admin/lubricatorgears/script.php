@@ -25,7 +25,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/Lubricator/searchLubricator",
+                "url": base_url+"api/Lubricatorgear/searchLubricatorgears",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -38,10 +38,8 @@
             "columns": [
                 null,
                 { "data": "lubricatorName" },
-                { "data": "lubricator_number" },
-                { "data": "api" },
-                { "data": "capacity" },
-                { "data": "machine"},
+                null,
+                null,
                 null,
                 null
             ],
@@ -49,21 +47,14 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,4,5,6,7,3]
+                    "targets": [0,3,4,5]
                 },
                 {
-                    "targets": 4,
-                    "data": "capacity",
-                    "render": function ( data, type, full, meta ) {
-                        return  (data)? data +' ลิตร': '';
-                    }
-                },
-                {
-                    "targets": 7,
+                    "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/lubricator/updatelubricator/"+data.lubricator_brandId+'/'+data.lubricatorId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                        +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricator('+data.lubricatorId+',\''+data.lubricatorName+'\',\''+data.lubricator_brandId+'\')"><i class="fa fa-trash"></i></button>';
+                        return '<a href="'+base_url+"admin/Lubricatorgear/updatelubricatorgear/"+data.gear_brandId+'/'+data.lubricatorId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricator('+data.lubricatorId+',\''+data.lubricatorName+'\',\''+data.gear_brandId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{
                     "targets": 0,
@@ -72,7 +63,23 @@
                         return meta.row + 1;
                     }
                 },{
-                    "targets": 6,
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return '<small><i class="gray">ยังไม่มีข้อมูลให้ดึง</i></small>';
+                    }
+                },{
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(data.lubricator_gear == 1){
+                            return '<small><i class="gray">เกียร์ธรรมดา</i></small>';
+                        }else{
+                            return '<small><i class="gray">เกียร์ออโต้</i></small>';
+                        }
+                    }
+                },{
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -84,7 +91,7 @@
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.lubricatorId+','+data.status+','+data.lubricator_brandId+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.lubricatorId+','+data.status+','+data.gear_brandId+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
@@ -92,13 +99,9 @@
                 },
                 { "orderable": false, "targets": 0 },
                 {"className": "dt-head-center", "targets": [1]},
-                {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
+                {"className": "dt-center", "targets": [0,1,2,3,4]},
                 { "width": "9%", "targets": 0 },
-                { "width": "10%", "targets": 3 },
-                { "width": "12%", "targets": 1 },
-                // { "width": "17%", "targets": 8 },
-                { "width": "12%", "targets": 6 },
-                { "width": "9%", "targets": 4 }
+                { "width": "12%", "targets": 1 }
             ]	 
     });
    
@@ -107,25 +110,25 @@
         table.ajax.reload();
     })
 
-    function updateStatus(lubricatorId,status,lubricator_brandId){
-        $.post(base_url+"api/Lubricator/changeStatus",{
+    function updateStatus(lubricatorId, status, gear_brandId){
+        $.post(base_url+"api/Lubricatorgear/changeStatus",{
             "lubricatorId": lubricatorId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/lubricator/lubricators/"+lubricator_brandId);
+                showMessage(data.message,"admin/Lubricatorgear/lubricatorgears/"+gear_brandId);
             }else{
                 showMessage(data.message);
             }
         });
     }
 
-      function deleteLubricator(lubricatorId,lubricatorName,lubricator_brandId){
+      function deleteLubricator(lubricatorId,lubricatorName,gear_brandId){
         var option = {
-            url: "/Lubricator/delete?lubricatorId="+lubricatorId,
+            url: "/Lubricatorgear/delete?lubricatorId="+lubricatorId,
             label: "ลบประเภทน้ำมัน",
             content: "คุณต้องการลบ "+lubricatorName+" ใช่หรือไม่",
-            gotoUrl: "admin/lubricator/lubricators/"+lubricator_brandId
+            gotoUrl: "admin/Lubricatorgear/lubricatorgears/"+gear_brandId
         }
         fnDelete(option);
     }

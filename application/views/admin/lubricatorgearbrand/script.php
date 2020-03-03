@@ -103,12 +103,12 @@
     })
 
      function updateStatus(lubricator_brandId,status){
-        $.post(base_url+"api/Lubricatorbrand/changeStatus",{
+        $.post(base_url+"api/Lubricatorgearbrand/changeStatus",{
             "lubricator_brandId": lubricator_brandId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/lubricator/");
+                showMessage(data.message,"admin/Lubricatorgear/");
             }else{
                 showMessage(data.message);
             }
