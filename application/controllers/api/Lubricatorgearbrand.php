@@ -159,7 +159,7 @@ class Lubricatorgearbrand extends BD_Controller {
                 );
                 $oldImage = null;
                 if($data_check_update != null){
-                    $oldImage = $config['upload_path'].$data_check_update->lubricator_brandPicture;
+                    $oldImage = $config['upload_path'].$data_check_update->gear_picture;
                 }
     
                 $option = [

@@ -23,7 +23,8 @@ class Lubricatorgear extends BD_Controller {
             'gearId' => null,
             'lubricatorName' => $lubricatorName,  
             'gear_brandId' =>$gear_brandId,
-            'numberId' =>$lubricator_gear,
+            'gear_type' =>$lubricator_gear,
+            'numberId' =>$lubricator_numberId,
             'status' => 1,
             'create_at' => date('Y-m-d H:i:s',time()),
             'create_by' => $userId,
@@ -74,7 +75,8 @@ class Lubricatorgear extends BD_Controller {
                 $nestedData['lubricatorId'] = $post->gearId;
                 $nestedData['gear_brandId'] = $post->gear_brandId;
                 $nestedData['lubricatorName'] = $post->lubricatorName;
-                $nestedData['lubricator_gear'] = $post->numberId;
+                $nestedData['lubricator_gear'] = $post->gear_type;
+                $nestedData['namelubricatornumber'] = $post->number;
                 $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
             }
@@ -127,7 +129,8 @@ class Lubricatorgear extends BD_Controller {
         $data = array(
             'gearId' => $gearId,
             'lubricatorName' => $lubricatorName,
-            'numberId' => $lubricator_gear,
+            'gear_type' =>$lubricator_gear,
+            'numberId' =>$lubricator_numberId,
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time()),
             'activeFlag' => 1

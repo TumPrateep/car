@@ -66,7 +66,7 @@
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<small><i class="gray">ยังไม่มีข้อมูลให้ดึง</i></small>';
+                        return data.namelubricatornumber;
                     }
                 },{
                     "targets": 3,

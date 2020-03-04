@@ -5,11 +5,12 @@ class Lubricatorsgears extends CI_Model{
     function checkLubricator($lubricatorName, $gear_brandId, $lubricator_gear, $lubricator_numberId){
         // $this->db->select(''); 
         $this->db->from('lubricator_gear');
-        // $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
+        $this->db->where('gear_type',$lubricator_gear);
         $this->db->where('lubricatorName',$lubricatorName);
         $this->db->where('gear_brandId',$gear_brandId);
-        $this->db->where('numberId',$lubricator_gear);
+        $this->db->where('numberId',$lubricator_numberId);
         $result = $this->db->get();
+        // dd();
         return $result->row();
     }
 
@@ -19,17 +20,20 @@ class Lubricatorsgears extends CI_Model{
 
     function allLubricatorsgears_count($gear_brandId)
     {   
-        $this->db->where("gear_brandId", $gear_brandId);
-        $query = $this->db->get('lubricator_gear');
+        $this->db->select('lubricator_gear.gearId, lubricator_gear.lubricatorName, lubricator_gear.gear_brandId, lubricator_gear.numberId, lubricator_gear.gear_type, lubricator_gear_number.number, lubricator_gear.status');
+        $this->db->where("lubricator_gear.gear_brandId", $gear_brandId);
+        $this->db->from('lubricator_gear');
+        $this->db->join('lubricator_gear_number', 'lubricator_gear.numberId = lubricator_gear_number.numberId');
+        $query = $this->db->get();
         return $query->num_rows();                                                                                                                                                                                      
     }
     
     function allLubricatorsgears($limit,$start,$col,$dir,$gear_brandId)
     {  
-        // $this->db->select(''); 
+        $this->db->select('lubricator_gear.gearId, lubricator_gear.lubricatorName, lubricator_gear.gear_brandId, lubricator_gear.numberId, lubricator_gear.gear_type, lubricator_gear_number.number, lubricator_gear.status');
         $this->db->from('lubricator_gear');
-        // $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
-        $this->db->where("gear_brandId", $gear_brandId);
+        $this->db->join('lubricator_gear_number', 'lubricator_gear.numberId = lubricator_gear_number.numberId');
+        $this->db->where("lubricator_gear.gear_brandId", $gear_brandId);
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get();
@@ -46,13 +50,13 @@ class Lubricatorsgears extends CI_Model{
 
     function Lubricatorgears_search($limit,$start,$search,$col,$dir,$status,$gear_brandId)
     {
-        // $this->db->select(''); 
+        $this->db->select('lubricator_gear.gearId, lubricator_gear.lubricatorName, lubricator_gear.gear_brandId, lubricator_gear.numberId, lubricator_gear.gear_type, lubricator_gear_number.number, lubricator_gear.status');
         $this->db->from('lubricator_gear');
-        // $this->db->join('lubricator_number', 'lubricator.lubricator_numberId = lubricator_number.lubricator_numberId' , 'left');
-        $this->db->where("gear_brandId", $gear_brandId);
-        $this->db->like('lubricatorName',$search);
+        $this->db->join('lubricator_gear_number', 'lubricator_gear.numberId = lubricator_gear_number.numberId');
+        $this->db->where("lubricator_gear.gear_brandId", $gear_brandId);
+        $this->db->like('lubricator_gear.lubricatorName',$search);
         if($status != null){
-            $this->db->where("status", $status);
+            $this->db->where("lubricator_gear.status", $status);
         }
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
@@ -69,13 +73,16 @@ class Lubricatorsgears extends CI_Model{
 
     function Lubricatorgears_search_count($search,$status,$gear_brandId)
     {
-        $this->db->where("gear_brandId", $gear_brandId);
-        $this->db->like('lubricatorName',$search);
+        $this->db->select('lubricator_gear.gearId, lubricator_gear.lubricatorName, lubricator_gear.gear_brandId, lubricator_gear.numberId, lubricator_gear.gear_type, lubricator_gear_number.number, lubricator_gear.status');
+        $this->db->from('lubricator_gear');
+        $this->db->join('lubricator_gear_number', 'lubricator_gear.numberId = lubricator_gear_number.numberId');
+        $this->db->where("lubricator_gear.gear_brandId", $gear_brandId);
+        $this->db->like('lubricator_gear.lubricatorName',$search);
         if($status != null){
-            $this->db->where("status", $status);
+            $this->db->where("lubricator_gear.status", $status);
         }
                
-        $query = $this->db->get('lubricator_gear');
+        $query = $this->db->get();
     
         return $query->num_rows();
     } 
@@ -102,7 +109,8 @@ class Lubricatorsgears extends CI_Model{
         $this->db->from('lubricator_gear');
         $this->db->where('lubricatorName',$lubricatorName);
         $this->db->where('gear_brandId',$gear_brandId);
-        $this->db->where('numberId',$lubricator_gear);
+        $this->db->where('gear_type',$lubricator_gear);
+        $this->db->where('numberId',$lubricator_numberId);
         $this->db->where_not_in('gearId',$gearId);
         $result = $this->db->get();
         return $result->row();
