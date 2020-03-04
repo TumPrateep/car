@@ -37,13 +37,14 @@
 
                 if(data.message == 200){
                     result = data.data;
+                    getAllLubricatorNumber(result.gear_type);
                     $("#lubricatorName").val(result.lubricatorName);
                     if(result.typeId == 1){
                         $("#lubricator_gear").val(result.gear_type);
                     }else{
                         $("#lubricator_gear").val(result.gear_type);
                     }
-                    getAllLubricatorNumber(result.gear_type);
+
                 }
             });
         }
@@ -66,7 +67,7 @@
 
         lubricator_gear.change(function(){
             var lubricator_brandId = $("#lubricator_brandId").val();
-            getAllLubricatorNumber();
+            // getAllLubricatorNumber();
         });
 
         form.submit(function(){
