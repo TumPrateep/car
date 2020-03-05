@@ -101,6 +101,19 @@ class Lubricatorgearnumbers extends CI_Model {
         return $result;
     }
 
+    function getAllLubricatorNumberByStatus($status, $lubricator_gear){
+        $this->db->select("numberId, number, typeId");
+        $this->db->where("status",'1');
+        $this->db->where("typeId", $lubricator_gear);
+        // if($lubricator_numberId != null){
+        //     $this->db->or_where("lubricator_numberId", $lubricator_numberId);
+        // }
+        $this->db->order_by("numberId", "asc");
+        $this->db->order_by("number", "asc"); 
+        $result = $this->db->get("lubricator_gear_number");
+        return $result->result();
+    }
+
     ///
 
     // function wherenotLubricatorNumber($lubricator_numberId,$lubricator_number){
@@ -141,19 +154,6 @@ class Lubricatorgearnumbers extends CI_Model {
     //     }
 
     //     return true;
-    // }
-
-    // function getAllLubricatorNumberByStatus($status, $lubricator_numberId, $lubricator_gear){
-    //     $this->db->select("lubricator_numberId,lubricator_number,lubricator_gear");
-    //     $this->db->where("status",'1');
-    //     $this->db->where("lubricator_gear", $lubricator_gear);
-    //     if($lubricator_numberId != null){
-    //         $this->db->or_where("lubricator_numberId", $lubricator_numberId);
-    //     }
-    //     $this->db->order_by("lubricator_gear", "asc");
-    //     $this->db->order_by("lubricator_number", "asc"); 
-    //     $result = $this->db->get("lubricator_number");
-    //     return $result->result();
     // }
 
 }

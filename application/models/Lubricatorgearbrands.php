@@ -107,13 +107,13 @@ class Lubricatorgearbrands extends CI_Model{
         return $result;
     }
 
-    /// 
-
-    function updateStatus($lubricator_brandId,$data){
-        $this->db->where('lubricator_brandId',$lubricator_brandId);
-        $result = $this->db->update('lubricator_brand', $data);
+    function updateStatus($gear_brandId,$data){
+        $this->db->where('gear_brandId',$gear_brandId);
+        $result = $this->db->update('lubricator_gear_brand', $data);
         return $result; 
     }
+
+    /// 
 
     function checkStatusFromlubricatorbrand($lubricator_brandId,$status,$userId){
         $this->db->from('lubricator_brand');

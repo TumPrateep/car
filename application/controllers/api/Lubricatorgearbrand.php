@@ -159,7 +159,7 @@ class Lubricatorgearbrand extends BD_Controller {
                 );
                 $oldImage = null;
                 if($data_check_update != null){
-                    $oldImage = $config['upload_path'].$data_check_update->lubricator_brandPicture;
+                    $oldImage = $config['upload_path'].$data_check_update->gear_picture;
                 }
     
                 $option = [
@@ -177,31 +177,31 @@ class Lubricatorgearbrand extends BD_Controller {
             
         }
 
-        ////
-        
-        
         function changeStatus_post(){
-            $lubricator_brandId = $this->post("lubricator_brandId");
+            $gear_brandId = $this->post("lubricator_brandId");
             $status = $this->post("status");
             if($status == 1){
                 $status = 2;
             }else{
                 $status = 1;
             }
-            $data_check_update = $this->lubricatorbrands->getlubricatorgearbrandsById($lubricator_brandId);
+            $data_check_update = $this->lubricatorgearbrands->getlubricatorgearbrandsById($gear_brandId);
             $data = array(
-                'lubricator_brandId' => $lubricator_brandId,
+                'gear_brandId' => $gear_brandId,
                 'status' => $status,
                 'activeFlag' => 1
             );
             $option = [
                 "data_check_update" => $data_check_update,
                 "data" => $data,
-                "model" => $this->lubricatorbrands
+                "model" => $this->lubricatorgearbrands
             ];
     
             $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
         }
+
+        ////
+        
 
         function getAllLubricatorbrand_get(){
             $data_check = $this->lubricatorbrands->getAllLubricatorBrand();

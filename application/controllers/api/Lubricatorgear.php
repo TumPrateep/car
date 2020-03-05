@@ -8,49 +8,76 @@ class Lubricatorgear extends BD_Controller {
         parent::__construct();
         $this->auth();
         $this->load->model("lubricatorsgears");
+        $this->load->model("lubricatorgearnumbers");
     }
-    function searchLubricator_post(){
-        $lubricator_brandId = $this->post('lubricator_brandId');
+
+    function createlubricatogears_post(){
+        $lubricatorName = $this->post("lubricatorName");
+        $gear_brandId = $this->post("lubricator_brandId");
+        $lubricator_numberId = $this->post("lubricator_number");// หาตาราง save ไม่ได้ที่
+        $lubricator_gear = $this->post("lubricator_gear");
+        
+        $userId = $this->session->userdata['logged_in']['id'];
+        $data_check = $this->lubricatorsgears->checkLubricator($lubricatorName, $gear_brandId, $lubricator_gear, $lubricator_numberId);
+        $data = array(
+            'gearId' => null,
+            'lubricatorName' => $lubricatorName,  
+            'gear_brandId' =>$gear_brandId,
+            'gear_type' =>$lubricator_gear,
+            'numberId' =>$lubricator_numberId,
+            'status' => 1,
+            'create_at' => date('Y-m-d H:i:s',time()),
+            'create_by' => $userId,
+            'activeFlag' => 1
+        );
+
+        $option = [
+            "data_check" => $data_check,
+            "data" => $data,
+            "model" => $this->lubricatorsgears,
+            "image_path" => null
+        ];
+
+        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
+    }
+
+    function searchLubricatorgears_post(){
+        $gear_brandId = $this->post('lubricator_brandId');
         $columns = array( 
             0 => null,
             1 =>'lubricatorName',
             2 =>'lubricator_number',
             3 =>'lubricator_gear',
-            4 =>'status',
-            5 =>'machine_id'
+            4 =>'status'
         );
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         
-        $totalData = $this->lubricators->allLubricators_count($lubricator_brandId);
+        $totalData = $this->lubricatorsgears->allLubricatorsgears_count($gear_brandId);
         $totalFiltered = $totalData; 
         if(empty($this->post('lubricatorName')) && empty($this->post('status')))
         {            
-            $posts = $this->lubricators->allLubricators($limit,$start,$order,$dir,$lubricator_brandId);
+            $posts = $this->lubricatorsgears->allLubricatorsgears($limit,$start,$order,$dir,$gear_brandId);
         }
         else {
             $search = $this->post('lubricatorName');
             $status = $this->post('status');
-            $posts =  $this->lubricators->Lubricator_search($limit,$start,$search,$order,$dir,$status,$lubricator_brandId);
-            $totalFiltered = $this->lubricators->Lubricator_search_count($search,$status,$lubricator_brandId);
+            $posts =  $this->lubricatorsgears->Lubricatorgears_search($limit,$start,$search,$order,$dir,$status,$gear_brandId);
+            $totalFiltered = $this->lubricatorsgears->Lubricatorgears_search_count($search,$status,$gear_brandId);
         }
         $data = array();
         if(!empty($posts))
         {
             foreach ($posts as $post)
             {
-                $nestedData['lubricatorId'] = $post->lubricatorId;
-                $nestedData['lubricator_brandId'] = $post->lubricator_brandId;
+                $nestedData['lubricatorId'] = $post->gearId;
+                $nestedData['gear_brandId'] = $post->gear_brandId;
                 $nestedData['lubricatorName'] = $post->lubricatorName;
-                // $nestedData['lubricator_numberId'] = $post->lubricator_numberId;
+                $nestedData['lubricator_gear'] = $post->gear_type;
+                $nestedData['namelubricatornumber'] = $post->number;
                 $nestedData['status'] = $post->status;
-                $nestedData['machine'] = $post->machine_type;
-                $nestedData['lubricator_number'] = $post->lubricator_number;
-                $nestedData['api'] = $post->api;
-                $nestedData['capacity'] = $post->capacity;
-                $nestedData['lubricator_picture'] = $post->lubricator_picture;
                 $data[] = $nestedData;
             }
         }
@@ -62,101 +89,58 @@ class Lubricatorgear extends BD_Controller {
         );
         $this->set_response($json_data);
     }
-    
-    function changeStatus_post(){
-        $lubricatorId = $this->post("lubricatorId");
-        $status = $this->post("status");
-        if($status == 1){
-            $status = 2;
-        }else{
-            $status = 1;
-        }
-        $data = array(
-            'lubricatorId' => $lubricatorId,
-            'status' => $status,
-            'activeFlag' => 1
-        );
-        $data_check_update = $this->lubricators->getlubricatorbyId($lubricatorId);
 
-        $option = [
-            "data_check_update" => $data_check_update,
-            "data" => $data,
-            "model" => $this->lubricators
-        ];
-
-        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
-    }
-
-    function createlubricator_post(){
-        $lubricatorName = $this->post("lubricatorName");
-        $lubricator_brandId = $this->post("lubricator_brandId");
-        $lubricator_numberId = $this->post("lubricator_number");
-        $lubricator_gear = $this->post("lubricator_gear");
-        $api = $this->post('api');
-        $capacity = $this->post('capacity');
-        $machine_id = $this->post('machineId');
+    public function delete_get(){
+        $gearId = $this->get('lubricatorId');
         
-        $userId = $this->session->userdata['logged_in']['id'];
-
-        $data_check = $this->lubricators->checkLubricator($lubricatorName, $lubricator_brandId, $lubricator_gear, $machine_id, $lubricator_numberId, $capacity);
-        $data = array(
-            'lubricatorId' => null,
-            'lubricatorName' => $lubricatorName,  
-            'lubricator_brandId' =>$lubricator_brandId,
-            'lubricator_numberId' =>$lubricator_numberId,
-            'status' => 1,
-            'create_at' => date('Y-m-d H:i:s',time()),
-            'create_by' => $userId,
-            'activeFlag' => 1,
-            'capacity' => $capacity,
-            'capacity_id' => $capacity,
-            'api' => $api,
-            'api_id' => $api,
-            'machine_id' => $machine_id
-        );
-
+        $data_check = $this->lubricatorsgears->getlubricatorById($gearId);        
         $option = [
-            "data_check" => $data_check,
-            "data" => $data,
-            "model" => $this->lubricators,
+            "data_check_delete" => $data_check,
+            "data" => $gearId,
+            "model" => $this->lubricatorsgears,
             "image_path" => null
         ];
 
-        $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
+        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
 
-    public function updatelubricator_post(){
-        $lubricatorId = $this->post('lubricatorId');
+    function getlubricatorgears_post(){
+
+        $gearId = $this->post('lubricatorId');
+
+        $data_check = $this->lubricatorsgears->getlubricatorbyId($gearId);
+        $option = [
+            "data_check" => $data_check
+        ];
+
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
+
+    public function updatelubricatogears_post(){
+        $gear_brandId = $this->post("lubricator_brandId");
+        $gearId = $this->post('lubricatorId');
         $lubricatorName = $this->post("lubricatorName");
-        $lubricator_brandId = $this->post("lubricator_brandId");
         $lubricator_numberId = $this->post("lubricator_number");
         $lubricator_gear = $this->post("lubricator_gear");
-        $api = $this->post('api');
-        $capacity = $this->post('capacity');
-        $machine_id = $this->post('machineId');
        
         $userId = $this->session->userdata['logged_in']['id'];
-        $data_check_update = $this->lubricators->getlubricatorbyId($lubricatorId);
-        $data_check = $this->lubricators->checkbeforeupdate($lubricatorName,$lubricatorId,$lubricator_brandId,$lubricator_gear,$machine_id,$lubricator_numberId, $capacity);
+        $data_check_update = $this->lubricatorsgears->getlubricatorbyId($gearId);
+        $data_check = $this->lubricatorsgears->checkbeforeupdate($lubricatorName, $gearId, $gear_brandId, $lubricator_gear, $lubricator_numberId);
         $data = array(
-            'lubricatorId' => $lubricatorId,
+            'gearId' => $gearId,
             'lubricatorName' => $lubricatorName,
-            'lubricator_numberId' => $lubricator_numberId,
+            'gear_type' =>$lubricator_gear,
+            'numberId' =>$lubricator_numberId,
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time()),
-            'capacity' => $capacity,
-            'capacity_id' => $capacity,
-            'api' => $api,
-            'api_id' => $api,
-            'activeFlag' => 1,
-            'machine_id' => $machine_id
+            'activeFlag' => 1
         );
 
         $option = [
             "data_check_update" => $data_check_update,
             "data_check" => $data_check,
             "data" => $data,
-            "model" => $this->lubricators,
+            "model" => $this->lubricatorsgears,
             "image_path" => null,
             "old_image_path" => null,
         ];
@@ -164,32 +148,40 @@ class Lubricatorgear extends BD_Controller {
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
 
-    
-    public function delete_get(){
-        $lubricatorId = $this->get('lubricatorId');
-        
-        $data_check = $this->lubricators->getlubricatorById($lubricatorId);        
+    function changeStatus_post(){
+        $gearId = $this->post("lubricatorId");
+        $status = $this->post("status");
+        if($status == 1){
+            $status = 2;
+        }else{
+            $status = 1;
+        }
+        $data = array(
+            'gearId' => $gearId,
+            'status' => $status,
+            'activeFlag' => 1
+        );
+        $data_check_update = $this->lubricatorsgears->getlubricatorbyId($gearId);
+
         $option = [
-            "data_check_delete" => $data_check,
-            "data" => $lubricatorId,
-            "model" => $this->lubricators,
-            "image_path" => null
+            "data_check_update" => $data_check_update,
+            "data" => $data,
+            "model" => $this->lubricatorsgears
         ];
 
-        $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
+        $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
-    function getlubricator_post(){
-
-        $lubricatorId = $this->post('lubricatorId');
-
-        $data_check = $this->lubricators->getlubricatorbyId($lubricatorId);
-        $option = [
-            "data_check" => $data_check
-        ];
-
-        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    function getAllLubricatorgearsnumber_post(){
+        $lubricator_gear = $this->post("lubricator_gear");
+        $status = 1;
+        // $lubricator_numberId = $this->post("lubricator_numberId");
+        $result = $this->lubricatorgearnumbers->getAllLubricatorNumberByStatus($status, $lubricator_gear);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
     }
+
+    ///
 
     function getAlllubricator_post(){
 
