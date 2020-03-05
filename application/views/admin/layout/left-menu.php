@@ -311,6 +311,12 @@
                                 <span class="nav-link-text">น้ำมันเครื่อง</span>
                             </a>
                         </li>
+                        <li class="<?=activate_menu('charge/lubricatorgearcharge/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/charge/lubricatorgearcharge")?>">
+                                <i class="fa fa-tint"></i>
+                                <span class="nav-link-text">น้ำมันเกียร์</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

@@ -217,5 +217,34 @@ class Charge extends CI_Controller {
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/charge/lubricatorservice/update/script");
 	}
+	function LubricatorGearCharge()
+	{
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/charge/lubricatorgearcharge/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/charge/lubricatorgearcharge/script");
+	}
+	public function createLubricatorGearCharge(){
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/charge/lubricatorgearcharge/create/content");
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/charge/lubricatorgearcharge/create/script");
+	}
+	public function updateLubricatorGearCharge($lubricator_gear_changeId){
+		$data['lubricator_gear_changeId'] = $lubricator_gear_changeId;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/charge/lubricatorgearcharge/update/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/charge/lubricatorgearcharge/update/script");
+	}
 
 }
