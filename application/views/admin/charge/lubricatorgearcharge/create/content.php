@@ -5,7 +5,7 @@
       <li class="breadcrumb-item">
         <a href="<?=base_url("admin/charge/lubricatorgearcharge") ?>">ราคาเปลี่ยนน้ำมันเกียร์</a>
       </li>
-      <li class="breadcrumb-item active">เพิ่มข้อมูลราคาเปลี่ยนน้ำมันเครื่อง</li>
+      <li class="breadcrumb-item active">เพิ่มข้อมูลราคาเปลี่ยนน้ำมันเกียร์</li>
     </ol>
     <!-- Icon Cards-->
     <section class="content">
@@ -15,7 +15,7 @@
             <div class="card text-white bg-success">
                 <div class="card-header">
 
-                  <h3 class="card-title"><i class="fa fa fa-wrench"></i> เพิ่มข้อมูลราคาเปลี่ยนน้ำมันเครื่อง</h3>
+                  <h3 class="card-title"><i class="fa fa fa-wrench"></i> เพิ่มข้อมูลราคาเปลี่ยนน้ำมันเกียร์</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->

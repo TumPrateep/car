@@ -3,9 +3,9 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/charge/lubricatorgearcharge") ?>">ราคาเปลี่ยนน้ำมันเครื่อง</a>
+        <a href="<?=base_url("admin/charge/lubricatorgearcharge") ?>">ราคาเปลี่ยนน้ำมันเกียร์</a>
       </li>
-      <li class="breadcrumb-item active">แก้ไขข้อมูลราคาเปลี่ยนน้ำมันเครื่อง</li>
+      <li class="breadcrumb-item active">แก้ไขข้อมูลราคาเปลี่ยนน้ำมันเกียร์</li>
     </ol>
     <!-- Icon Cards-->
     <section class="content">
@@ -15,7 +15,7 @@
             <div class="card text-white bg-success">
                 <div class="card-header">
 
-                  <h3 class="card-title"><i class="fa fa fa-wrench"></i> แก้ไขข้อมูลราคาเปลี่ยนน้ำมันเครื่อง</h3>
+                  <h3 class="card-title"><i class="fa fa fa-wrench"></i> แก้ไขข้อมูลราคาเปลี่ยนน้ำมันเกียร์</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->

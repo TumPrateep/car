@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/charge/lubricatorgearcharge") ?>">ราคาเปลี่ยนน้ำมันเครื่อง</a>
+          <a href="<?=base_url("admin/charge/lubricatorgearcharge") ?>">ราคาเปลี่ยนน้ำมันเกียร์</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
