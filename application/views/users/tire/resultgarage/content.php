@@ -24,6 +24,10 @@ table>thead {
 .detail {
     width: -webkit-fill-available !important;
 }
+.option{
+    line-height: 120%;
+    font-style: italic;
+}
 </style>
 
 

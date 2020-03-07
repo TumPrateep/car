@@ -87,10 +87,16 @@ $(document).ready(function() {
                         html += '<br><h5 class="text-center">' + data.garageName + '</h5>';
                     }
 
-                    html += '<p>ตำบล ' + data.subdistrictName + '</p>' +
-                        '<p>อำเภอ ' + data.districtName + '</p>' +
-                        '<p>จังหวัด ' + data.provinceName + '</p>' +
+                    html += '<p>ต.' + data.subdistrictName + ' ' +
+                        'อ.' + data.districtName + ' ' +
+                        'จ.' + data.provinceName + '</p>' +
+                        '<p class="option"><small class="text-orange">'+
+                            'ตั้งศูนย์ล้อมูลค่า 500 บาทฟรี'+'<br/>'+
+                            'เติมลมไนโตรเจนฟรี'+'<br/>'+
+                            'test'+'<br/>'+
+                            '</small></p>'+
                         '</div>';
+
                     if (width >= 768) {
                         html += '<div class="detail col-md-2">' +
                             '<p class="text-center">' + distance(data.latitude, data

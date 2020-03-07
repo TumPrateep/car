@@ -2,11 +2,6 @@
 * {
     box-sizing: border-box;
 }
-
-body {
-    font-family: Verdana, sans-serif;
-}
-
 .mySlides {
     display: none;
 }

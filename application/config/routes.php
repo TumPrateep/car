@@ -108,5 +108,6 @@ $route['products/lubricator'] = 'user/lubricator';
 $route['register/caraccessory'] = 'user/register/caraccessory';
 $route['register/garage'] = 'user/register/garage';
 $route['login'] = 'user/login';
+$route['user/about-us'] = 'user/about';
 
 // $route['page/(:any)'] = 'main/Main/(:any)';

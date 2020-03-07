@@ -3811,3 +3811,27 @@ a.text-orange {
 .Yellow-star {
     color: #ffbc00;
 }
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(255, 255, 255);
+}
+
+.menu>.nav-item {
+    border: 1px solid white;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 0.25rem;
+    margin: 5px;
+}
+
+.menu>.nav-item.active {
+    background: #ff6600;
+}
+
+.about {
+    padding: 120px 0px 5px 0px;
+}
+
+.section {
+    padding: 30px 0;
+}
