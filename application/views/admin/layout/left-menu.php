@@ -66,6 +66,15 @@
                         <span class="nav-link-text">การจัดการยี่ห้อ/รุ่นรถ</span>
                     </a>
                 </li>
+
+                <li class="nav-item <?=activate_menu('news');?>" data-toggle="tooltip" data-placement="right"
+                    title="Dashboard">
+                    <a class="nav-link text-white" href="<?=base_url("admin/news")?>">
+                        <i class="fa fa-newspaper-o"></i>
+                        <span class="nav-link-text">ข่าวสาร</span>
+                    </a>
+                </li>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
                         href="#collapseComponents1" data-parent="#exampleAccordion">
@@ -141,6 +150,20 @@
                     <span class="nav-link-text">ประเภทน้ำมันเครื่องตามเครื่องยนต์</span>
                   </a>
                 </li> -->
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="nav-link-collapse text-white collapsed" data-toggle="collapse"
+                                href="#filter">
+                                <i class="fa fa-tint"></i> ไส่กรอง</a>
+                            <ul class="sidenav-third-level collapse" id="filter">
+                                <li class="<?=activate_menu('filter');?>">
+                                    <a class="nav-link text-white" href="<?=base_url("admin/filter")?>">
+                                        <i class="fa fa-rebel"></i>
+                                        <span class="nav-link-text">ยี่ห้อไส้กรอง</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
