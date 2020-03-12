@@ -1,21 +1,26 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Filterbrand extends BD_Controller {
+class News extends BD_Controller {
     function __construct()
     {
         // Construct the parent class
         parent::__construct();
         $this->auth();
-        $this->load->model("filterbrands");
+        $this->load->model("newss");
     }
 
-    function createfilter_post(){
+    function createnews_post(){
 
-        $config['upload_path'] = 'public/image/filter/';
+        $config['upload_path'] = 'public/image/news/';
         $config['allowed_types'] = 'gif|jpg|png';
-        $filter_brandName = $this->post("filter_brandName");
-        $img = $this->post("filter_brandPicture");
+
+        $news_title = $this->post("news_title");
+        $news_category = $this->post("news_category");
+        $news_content = $this->post("news_content");
+        $end_date = $this->post("end_date");
+        $img = $this->post("news_picture");
+
         $img = str_replace('data:image/png;base64,', '', $img);
 	    $img = str_replace(' ', '+', $img);
         $data = base64_decode($img);
@@ -29,20 +34,22 @@ class Filterbrand extends BD_Controller {
             $output["message"] = REST_Controller::MSG_ERROR;
 			$this->set_response($output, REST_Controller::HTTP_OK);
 		}else{
-            $data_check = $this->filterbrands->checkfiltersbrands($filter_brandName);
+            $data_check = $this->newss->checkNewss($news_title, $news_category);
                 $data = array(
-                    "filter_brandId"=> null,
-                    "filter_picture"=> $imageName,
-                    "filter_brandName"=> $filter_brandName,
+                    "news_id"=> null,
+                    "news_picture"=> $imageName,
+                    "news_title"=> $news_title,
+                    "news_category"=> $news_category,
+                    "news_content"=> $news_content,
+                    "end_date"=> $end_date,
                     "status"=> 1,
                     "create_at" => date('Y-m-d H:i:s',time()),
-                    "create_by" => $userId,
-                    "activeFlag" => 1
+                    "create_by" => $userId
                 );
                 $option = [
                     "data_check" => $data_check,
                     "data" => $data,
-                    "model" => $this->filterbrands,
+                    "model" => $this->newss,
                     "image_path" => $file
                 ];
         
@@ -51,36 +58,39 @@ class Filterbrand extends BD_Controller {
             }
         }
 
-        function searchfilter_post(){
+        function searchnews_post(){
             $columns = array( 
                 0 => null,
                 1 => null, 
                 2 => null,
-                3 =>'status'
+                3 => null,
+                4 => null
             );
             $limit = $this->post('length');
             $start = $this->post('start');
             $order = $columns[$this->post('order')[0]['column']];
             $dir = $this->post('order')[0]['dir'];
             
-            $totalData = $this->filterbrands->allFiltersbrands_count();
+            $totalData = $this->newss->allnews_count();
             $totalFiltered = $totalData; 
-            if(empty($this->post('filter_brandName')) && empty($this->post('status'))){            
-                $posts = $this->filterbrands->allFiltersbrands($limit,$start,$order,$dir);
+            if(empty($this->post('news_title')) && empty($this->post('status'))){            
+                $posts = $this->newss->allnews($limit,$start,$order,$dir);
             }else{
-                $search = $this->post('filter_brandName');
+                $search = $this->post('news_title');
                 $status = $this->post('status');
-                $posts =  $this->filterbrands->Filtersbrands_search($limit,$start,$search,$order,$dir,$status);
-                $totalFiltered = $this->filterbrands->Filtersbrands_search_count($search,$status);
+                $posts =  $this->newss->allnews_search($limit,$start,$search,$order,$dir,$status);
+                $totalFiltered = $this->newss->allnews_search_count($search,$status);
             }
             $data = array();
             if(!empty($posts))
             {
                 foreach ($posts as $post)
                 {
-                    $nestedData['filter_brandId'] = $post->filter_brandId;
-                    $nestedData['filter_brandNames'] = $post->filter_brandName;
-                    $nestedData['filter_pictures'] = $post->filter_picture;
+                    $nestedData['news_id'] = $post->news_id;
+                    $nestedData['news_picture'] = $post->news_picture;
+                    $nestedData['news_title'] = $post->news_title;
+                    $nestedData['news_category'] = $post->news_category;
+                    $nestedData['end_date'] = $post->end_date;
                     $nestedData['status'] = $post->status;
                     $data[] = $nestedData;
                 }
@@ -94,23 +104,23 @@ class Filterbrand extends BD_Controller {
             $this->set_response($json_data);
         }
 
-        function deleteFilter_get(){
-            $filter_brandId = $this->get('filter_brandId');
-            $data_check = $this->filterbrands->getfiltersbrandsById($filter_brandId);
+        function deleteNews_get(){
+            $news_id = $this->get('news_id');
+            $data_check = $this->newss->getnewsById($news_id);
         
             $option = [
                 "data_check_delete" => $data_check,
-                "data" => $filter_brandId,
-                "model" => $this->filterbrands,
-                "image_path" => "public/image/filter/" . $data_check->filter_picture
+                "data" => $news_id,
+                "model" => $this->newss,
+                "image_path" => "public/image/news/" . $data_check->news_picture,
             ];
     
             $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
         }
 
-        function getFilterById_post(){
-            $filter_brandId = $this->post('filter_brandId');
-            $data_check = $this->filterbrands->getfiltersbrandsFromId($filter_brandId);
+        function getNewsById_post(){
+            $news_id = $this->post('news_id');
+            $data_check = $this->newss->getnewsFromId($news_id);
             
             $option = [
                 "data_check" => $data_check
@@ -119,14 +129,19 @@ class Filterbrand extends BD_Controller {
             $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
         }
 
-        function updateFilterbrands_post(){
+        function updateNews_post(){
 
-            $config['upload_path'] = 'public/image/filter/';
+            $config['upload_path'] = 'public/image/news/';
             $config['allowed_types'] = 'gif|jpg|png';
             $userId = $this->session->userdata['logged_in']['id'];
-            $filter_brandName = $this->post("filter_brandName");
-            $filter_brandId = $this->post("filter_brandId");
-            $img = $this->post("filter_brandPicture");
+
+            $news_id = $this->post("news_id");
+            $news_title = $this->post("news_title");
+            $news_category = $this->post("news_category");
+            $news_content = $this->post("news_content");
+            $end_date = $this->post("end_date");
+            $img = $this->post("news_picture");
+
             $success = true;
             $file = null;
             $imageName = null; 
@@ -145,28 +160,30 @@ class Filterbrand extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_ERROR;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
-                $data_check_update = $this->filterbrands->getfiltersbrandsById($filter_brandId);
-                $data_check = $this->filterbrands->wherenot($filter_brandId, $filter_brandName);
+                $data_check_update = $this->newss->getnewsById($news_id);
+                $data_check = $this->newss->wherenot($news_id, $news_title, $news_category);
                 $userId = $this->session->userdata['logged_in']['id'];
                 $data = array(
-                    "filter_brandId"=> $filter_brandId,
-                    "filter_picture"=> $imageName,
-                    "filter_brandName"=> $filter_brandName,
+                    "news_id"=> $news_id,
+                    "news_picture"=> $imageName,
+                    "news_title"=> $news_title,
+                    "news_category"=> $news_category,
+                    "news_content"=> $news_content,
+                    "end_date"=> $end_date,
                     "status"=> 1,
                     'update_at' => date('Y-m-d H:i:s',time()),
-                    'update_by' => $userId,
-                    "activeFlag" => 1
+                    'update_by' => $userId
                 );
                 $oldImage = null;
                 if($data_check_update != null){
-                    $oldImage = $config['upload_path'].$data_check_update->filter_picture;
+                    $oldImage = $config['upload_path'].$data_check_update->news_picture;
                 }
     
                 $option = [
                     "data_check_update" => $data_check_update,
                     "data_check" => $data_check,
                     "data" => $data,
-                    "model" => $this->filterbrands,
+                    "model" => $this->newss,
                     "image_path" => $file,
                     "old_image_path" => $oldImage,
                 ];
@@ -178,7 +195,7 @@ class Filterbrand extends BD_Controller {
         }
 
         function changeStatus_post(){
-            $filter_brandId = $this->post("filter_brandId");
+            $news_id = $this->post("news_id");
             $status = $this->post("status");
             // $userId = $this->session->userdata['logged_in']['id'];
             if($status == 1){
@@ -186,16 +203,15 @@ class Filterbrand extends BD_Controller {
             }else{
                 $status = 1;
             }
-            $data_check_update = $this->filterbrands->getfiltersbrandsById($filter_brandId);
+            $data_check_update = $this->newss->getnewsById($news_id);
             $data = array(
-                'filter_brandId' => $filter_brandId,
-                'status' => $status,
-                'activeFlag' => 1
+                'news_id' => $news_id,
+                'status' => $status
             );
             $option = [
                 "data_check_update" => $data_check_update,
                 "data" => $data,
-                "model" => $this->filterbrands
+                "model" => $this->newss
             ];
     
             $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);

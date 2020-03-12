@@ -102,7 +102,7 @@ class Lubricatorgearbrand extends BD_Controller {
                 "data_check_delete" => $data_check,
                 "data" => $gear_brandId,
                 "model" => $this->lubricatorgearbrands,
-                "image_path" => null
+                "image_path" => "public/image/lubricator_brand_gear/" . $data_check->gear_picture
             ];
     
             $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);

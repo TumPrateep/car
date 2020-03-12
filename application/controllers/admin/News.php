@@ -31,8 +31,8 @@ class News extends CI_Controller {
 		$this->load->view("admin/news/create/script");
 	}
 
-	public function updatenews($lubricator_brandId){
-		$data["lubricator_brandId"] = $lubricator_brandId;
+	public function updatenews($news_id){
+		$data["news_id"] = $news_id;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
