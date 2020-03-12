@@ -1,3 +1,11 @@
+<script src="../../public/js/ckeditor.js"></script>
+<script src="../../public/js/bootstrap3-wysihtml5.all.min.js"></script>
+<script>
+  $(function () {
+    CKEDITOR.replace('editor1')
+    $('.textarea').wysihtml5()
+  })
+</script>
 <script> 
       $("#create-news").validate({
         rules: {
