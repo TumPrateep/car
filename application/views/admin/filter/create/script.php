@@ -22,11 +22,11 @@
         
         if(isValid){
             var data = $("#create-filter").serialize();
-            $.post(base_url+"api/Filter/createfilter/",data,
+            $.post(base_url+"api/filter/createfilter/",data,
             function(data){
                 var filter_brandId = $("#filter_brandId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Filter/filters/"+filter_brandId);
+                    showMessage(data.message,"admin/filter/filters/"+filter_brandId);
                 }else{
                     showMessage(data.message,);
                 }

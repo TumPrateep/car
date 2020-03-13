@@ -2,10 +2,10 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/Lubricatorgear") ?>">ยี่ห้อน้ำมันเกียร์</a>
+        <a href="<?=base_url("admin/lubricatorgear") ?>">ยี่ห้อน้ำมันเกียร์</a>
         </li>
         <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/Lubricatorgear/lubricatorgears/$lubricator_brandId") ?>">น้ำมันเกียร์</a>
+        <a href="<?=base_url("admin/lubricatorgear/lubricatorgears/$lubricator_brandId") ?>">น้ำมันเกียร์</a>
         </li>
         <li class="breadcrumb-item active">แก้ไขข้อมูล</li>
       </ol>

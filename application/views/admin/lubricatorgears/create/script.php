@@ -30,7 +30,7 @@
 
     function getAllLubricatorNumber(){
         lubricator_number.html('<option value="">เลือกเบอร์น้ำมันเกียร์</option>');
-        $.post(base_url+"api/Lubricatorgear/getAllLubricatorgearsnumber",{
+        $.post(base_url+"api/lubricatorgear/getAllLubricatorgearsnumber",{
             lubricator_gear: lubricator_gear.val()
         },function(result){
                 var data = result.data;
@@ -58,11 +58,11 @@
         
         if(isValid){
             var data = $("#create-lubricator").serialize();
-            $.post(base_url+"api/Lubricatorgear/createlubricatogears/",data,
+            $.post(base_url+"api/lubricatorgear/createlubricatogears/",data,
             function(data){
                 var lubricator_brandId = $("#lubricator_brandId").val();
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Lubricatorgear/lubricatorgears/"+lubricator_brandId);
+                    showMessage(data.message,"admin/lubricatorgear/lubricatorgears/"+lubricator_brandId);
                 }else{
                     showMessage(data.message,);
                 }

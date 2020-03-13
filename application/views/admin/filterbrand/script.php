@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/Filterbrand/searchfilter",
+                "url": base_url+"api/filterbrand/searchfilter",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -48,8 +48,8 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Filter/filters/"+data.filter_brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"admin/Filter/updatefilterbrand/"+data.filter_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/filter/filters/"+data.filter_brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"admin/filter/updatefilterbrand/"+data.filter_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteFilter('+data.filter_brandId+',\''+data.filter_brandNames+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -103,12 +103,12 @@
     })
 
      function updateStatus(filter_brandId,status){
-        $.post(base_url+"api/Filterbrand/changeStatus",{
+        $.post(base_url+"api/filterbrand/changeStatus",{
             "filter_brandId": filter_brandId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Filter/");
+                showMessage(data.message,"admin/filter/");
             }else{
                 showMessage(data.message);
             }
@@ -116,7 +116,7 @@
     }
     function deleteFilter(filter_brandId,filter_brandNames){
         var option = {
-            url: "/Filterbrand/deleteFilter?filter_brandIds="+filter_brandIds,
+            url: "/filterbrand/deleteFilter?filter_brandIds="+filter_brandIds,
             label: "ลบยี่ห้อไส้กรอง",
             content: "คุณต้องการลบ "+filter_brandNames+" ใช่หรือไม่",
             gotoUrl: "admin/Filter"

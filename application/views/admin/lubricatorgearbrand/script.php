@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/Lubricatorgearbrand/searchlubricatorgearbrands",
+                "url": base_url+"api/lubricatorgearbrand/searchlubricatorgearbrands",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -48,8 +48,8 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Lubricatorgear/lubricatorgears/"+data.lubricator_brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
-                            +'<a href="'+base_url+"admin/Lubricatorgear/updatelubricatorgearbrand/"+data.lubricator_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/lubricatorgear/lubricatorgears/"+data.lubricator_brandId+'"><button type="button" class="btn btn-info"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a> '
+                            +'<a href="'+base_url+"admin/lubricatorgear/updatelubricatorgearbrand/"+data.lubricator_brandId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricatorbrand('+data.lubricator_brandId+',\''+data.lubricator_brandName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
@@ -103,12 +103,12 @@
     })
 
      function updateStatus(lubricator_brandId,status){
-        $.post(base_url+"api/Lubricatorgearbrand/changeStatus",{
+        $.post(base_url+"api/lubricatorgearbrand/changeStatus",{
             "lubricator_brandId": lubricator_brandId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Lubricatorgear/");
+                showMessage(data.message,"admin/lubricatorgear/");
             }else{
                 showMessage(data.message);
             }
@@ -116,7 +116,7 @@
     }
     function deleteLubricatorbrand(lubricator_brandId,lubricator_brandName){
         var option = {
-            url: "/Lubricatorgearbrand/deleteLubricatorgearbrands?lubricator_brandId="+lubricator_brandId,
+            url: "/lubricatorgearbrand/deleteLubricatorgearbrands?lubricator_brandId="+lubricator_brandId,
             label: "ลบยี่ห้อน้ำมันเกียร์",
             content: "คุณต้องการลบ "+lubricator_brandName+" ใช่หรือไม่",
             gotoUrl: "admin/Lubricatorgear"

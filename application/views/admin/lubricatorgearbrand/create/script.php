@@ -31,14 +31,14 @@
             var myform = document.getElementById("create-lubricatorbrand");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/Lubricatorgearbrand/createlubricatorgearbrands",
+                url: base_url+"api/lubricatorgearbrand/createlubricatorgearbrands",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/Lubricatorgear");
+                        showMessage(data.message,"admin/lubricatorgear");
                     }else{
                         showMessage(data.message);
                     }

@@ -2,10 +2,10 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/Lubricatorgear") ?>">ยี่ห้อน้ำมันเกียร์</a>
+        <a href="<?=base_url("admin/lubricatorgear") ?>">ยี่ห้อน้ำมันเกียร์</a>
       </li>
       <li class="breadcrumb-item">
-        <a href="<?=base_url("admin/Lubricatorgear/lubricatorgears/$lubricator_brandId") ?>">น้ำมันเกียร์</a>
+        <a href="<?=base_url("admin/lubricatorgear/lubricatorgears/$lubricator_brandId") ?>">น้ำมันเกียร์</a>
       </li>
       <li class="breadcrumb-item active">ค้นหา</li>        
     </ol>
@@ -15,7 +15,7 @@
       <form id="form-search">
           <div class="form-row">
               <div class="col-md-2">
-              <a class="btn btn-primary create btn-block" href="<?=base_url("admin/Lubricatorgear/createlubricatorgear/$lubricator_brandId") ?>">
+              <a class="btn btn-primary create btn-block" href="<?=base_url("admin/lubricatorgear/createlubricatorgear/$lubricator_brandId") ?>">
                   <i class="fa fa-plus">  สร้าง</i>
               </a>
               </div>

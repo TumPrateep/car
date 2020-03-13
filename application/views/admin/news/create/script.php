@@ -1,5 +1,7 @@
-<script src="../../public/js/ckeditor.js"></script>
-<script src="../../public/js/bootstrap3-wysihtml5.all.min.js"></script>
+
+<script src="<?=base_url("/public/js/ckeditor.js")?>"></script>
+<script src="<?=base_url("/public/js/bootstrap3-wysihtml5.all.min.js")?>"></script>
+<link href="<?=base_url("/public/css/bootstrap3-wysihtml5.min.css")?>" rel="stylesheet" type="text/css" />
 <script>
   $(function () {
     CKEDITOR.replace('editor1')
@@ -45,14 +47,14 @@
             var myform = document.getElementById("create-news");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/News/createnews",
+                url: base_url+"api/news/createnews",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/News");
+                        showMessage(data.message,"admin/news");
                     }else{
                         showMessage(data.message);
                     }

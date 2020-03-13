@@ -12,7 +12,7 @@
         <form id="form-search">
             <div class="form-row">
                 <div class="col-md-2">
-                    <a class="btn btn-primary create btn-block" href="<?=base_url("admin/Lubricatorgearnumber/createlubricatorgearnumber ") ?>">
+                    <a class="btn btn-primary create btn-block" href="<?=base_url("admin/lubricatorgearnumber/createlubricatorgearnumber ") ?>">
                         <i class="fa fa-plus">  สร้าง</i>
                     </a>
                 </div>

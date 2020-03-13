@@ -28,11 +28,11 @@
         init();
 
         function init(){
-            $.post(base_url+"api/Lubricatorgear/getlubricatorgears",{
+            $.post(base_url+"api/lubricatorgear/getlubricatorgears",{
                 "lubricatorId": lubricatorId,
             },function(data){
                 if(data.message!=200){
-                    showMessage(data.message,"admin/Lubricatorgear/lubricatorgears/"+lubricator_brandId);
+                    showMessage(data.message,"admin/lubricatorgear/lubricatorgears/"+lubricator_brandId);
                 }
 
                 if(data.message == 200){
@@ -51,7 +51,7 @@
 
         function getAllLubricatorNumber(gear_type = null, numberId = null){
             lubricator_number.html('<option value="">เลือกเบอร์น้ำมันเกียร์</option>');
-            $.post(base_url+"api/Lubricatorgear/getAllLubricatorgearsnumber",{
+            $.post(base_url+"api/lubricatorgear/getAllLubricatorgearsnumber",{
                 lubricator_gear: gear_type
             },function(result){
                     var data = result.data;
@@ -79,10 +79,10 @@
             var isValid = form.valid();
             if(isValid){
             var data = form.serialize();
-            $.post(base_url+"api/Lubricatorgear/updatelubricatogears/",data,
+            $.post(base_url+"api/lubricatorgear/updatelubricatogears/",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Lubricatorgear/lubricatorgears/"+$("#lubricator_brandId").val());
+                    showMessage(data.message,"admin/lubricatorgear/lubricatorgears/"+$("#lubricator_brandId").val());
                 }else{
                     showMessage(data.message,);
                 }

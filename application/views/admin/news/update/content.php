@@ -2,7 +2,7 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="<?=base_url("admin/News ") ?>">ข่าวสาร</a>
+            <a href="<?=base_url("admin/news ") ?>">ข่าวสาร</a>
         </li>
         <li class="breadcrumb-item active">แก้ไขข่าวสาร</li>
     </ol>
@@ -22,7 +22,7 @@
                         <input type="hidden" id="news_id" name="news_id" value="<?=$news_id?>">
                             <div class="card-body black bg-light">
                                 <div class="row">
-                                    <div class="col-md-6 ">
+                                    <div class="col-lg-6 ">
                                         <div class="form-group">
                                             <label class="control-label">รูปหัวข้อข่าว</label>
                                             <div class="image-editor">
@@ -34,7 +34,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-label" for="mechanic">หัวข้อเรื่อง</label><span class="error">*</span>
                                             <input type="text" class="form-control" name="news_title" id="news_title" placeholder="หัวข้อเรื่อง">
@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1">เนื้อหา</label>
-                                            <textarea class="form-control" name="news_content" id="news_content" rows="7" placeholder="เนื้อหา"></textarea>
+                                            <textarea class="textarea form-control" placeholder="Place some text here"  name="news_content" id="news_content" rows="7"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label" for="mechanic">วันที่สิ้นสุด</label><span class="error">*</span>

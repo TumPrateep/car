@@ -25,7 +25,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/Filter/searchFilter",
+                "url": base_url+"api/filter/searchFilter",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -51,7 +51,7 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Filter/updatefilter/"+data.filter_brandId+'/'+data.filter_id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/filter/updatefilter/"+data.filter_brandId+'/'+data.filter_id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                         +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricator('+data.filter_id+',\''+data.filter_brandId+'\',\''+data.filter_name+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{
@@ -92,12 +92,12 @@
     })
 
     function updateStatus(filter_id, status, filter_brandId){
-        $.post(base_url+"api/Filter/changeStatus",{
+        $.post(base_url+"api/filter/changeStatus",{
             "filter_id": filter_id,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Filter/filters/"+filter_brandId);
+                showMessage(data.message,"admin/filter/filters/"+filter_brandId);
             }else{
                 showMessage(data.message);
             }
@@ -106,10 +106,10 @@
 
       function deleteLubricator(filter_id, filter_brandId, filter_name){
         var option = {
-            url: "/Filter/delete?filter_id="+filter_id,
+            url: "/filter/delete?filter_id="+filter_id,
             label: "ลบรุ่นไส้กรอง",
             content: "คุณต้องการลบ "+filter_name+" ใช่หรือไม่",
-            gotoUrl: "admin/Filter/filters/"+filter_brandId
+            gotoUrl: "admin/filter/filters/"+filter_brandId
         }
         fnDelete(option);
     }

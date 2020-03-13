@@ -31,14 +31,14 @@
             var myform = document.getElementById("create-filterd");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/Filterbrand/createfilter",
+                url: base_url+"api/filterbrand/createfilter",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/Filter");
+                        showMessage(data.message,"admin/filter");
                     }else{
                         showMessage(data.message);
                     }

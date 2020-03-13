@@ -2,10 +2,10 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-      <a href="<?=base_url("admin/Filter") ?>">ยี่ห้อไส้กรอง</a>
+      <a href="<?=base_url("admin/filter") ?>">ยี่ห้อไส้กรอง</a>
       </li>
       <li class="breadcrumb-item">
-      <a href="<?=base_url("admin/Filter/filters/$filter_brandId") ?>">รุ่นไส้กรอง</a>
+      <a href="<?=base_url("admin/filter/filters/$filter_brandId") ?>">รุ่นไส้กรอง</a>
       </li>
       <li class="breadcrumb-item active">ค้นหา</li>        
     </ol>
@@ -15,7 +15,7 @@
       <form id="form-search">
           <div class="form-row">
               <div class="col-md-2">
-              <a class="btn btn-primary create btn-block" href="<?=base_url("admin/Filter/createfilter/$filter_brandId") ?>">
+              <a class="btn btn-primary create btn-block" href="<?=base_url("admin/filter/createfilter/$filter_brandId") ?>">
                   <i class="fa fa-plus">  สร้าง</i>
               </a>
               </div>

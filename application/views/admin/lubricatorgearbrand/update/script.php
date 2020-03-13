@@ -13,7 +13,7 @@
     });
 
     var lubricator_brandId = $("#lubricator_brandId").val();
-    $.post(base_url+"api/Lubricatorgearbrand/getLubricatorgearbrandsById",{
+    $.post(base_url+"api/lubricatorgearbrand/getLubricatorgearbrandsById",{
         "lubricator_brandId": lubricator_brandId
     },function(data){
         if(data.message!=200){
@@ -51,14 +51,14 @@
             var myform = document.getElementById("update-lubricatorbrand");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/Lubricatorgearbrand/updateLubricatorgearbrands",
+                url: base_url+"api/lubricatorgearbrand/updateLubricatorgearbrands",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/Lubricatorgear");
+                        showMessage(data.message,"admin/lubricatorgear");
                     }else{
                         showMessage(data.message);
                     }

@@ -25,10 +25,10 @@
         
         if(isValid){
             var data = $("#create-lubricatornumber").serialize();
-            $.post(base_url+"api/Lubricatorgearnumber/createlubricatorgearnumber",data,
+            $.post(base_url+"api/lubricatorgearnumber/createlubricatorgearnumber",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Lubricatorgearnumber");
+                    showMessage(data.message,"admin/lubricatorgearnumber");
                 }else{
                     showMessage(data.message,);
                 }

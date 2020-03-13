@@ -25,7 +25,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/Lubricatorgear/searchLubricatorgears",
+                "url": base_url+"api/lubricatorgear/searchLubricatorgears",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -53,7 +53,7 @@
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/Lubricatorgear/updatelubricatorgear/"+data.gear_brandId+'/'+data.lubricatorId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                        return '<a href="'+base_url+"admin/lubricatorgear/updatelubricatorgear/"+data.gear_brandId+'/'+data.lubricatorId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                         +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricator('+data.lubricatorId+',\''+data.lubricatorName+'\',\''+data.gear_brandId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },{
@@ -111,12 +111,12 @@
     })
 
     function updateStatus(lubricatorId, status, gear_brandId){
-        $.post(base_url+"api/Lubricatorgear/changeStatus",{
+        $.post(base_url+"api/lubricatorgear/changeStatus",{
             "lubricatorId": lubricatorId,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/Lubricatorgear/lubricatorgears/"+gear_brandId);
+                showMessage(data.message,"admin/lubricatorgear/lubricatorgears/"+gear_brandId);
             }else{
                 showMessage(data.message);
             }
@@ -125,10 +125,10 @@
 
       function deleteLubricator(lubricatorId,lubricatorName,gear_brandId){
         var option = {
-            url: "/Lubricatorgear/delete?lubricatorId="+lubricatorId,
+            url: "/lubricatorgear/delete?lubricatorId="+lubricatorId,
             label: "ลบประเภทน้ำมัน",
             content: "คุณต้องการลบ "+lubricatorName+" ใช่หรือไม่",
-            gotoUrl: "admin/Lubricatorgear/lubricatorgears/"+gear_brandId
+            gotoUrl: "admin/lubricatorgear/lubricatorgears/"+gear_brandId
         }
         fnDelete(option);
     }

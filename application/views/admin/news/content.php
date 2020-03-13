@@ -2,7 +2,7 @@
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="<?=base_url("admin/News") ?>">ข่าวสาร</a>
+      <a href="<?=base_url("admin/news") ?>">ข่าวสาร</a>
     </li>
     <li class="breadcrumb-item active">ค้นหา</li>        
   </ol>
@@ -12,7 +12,7 @@
     <form id="form-search">
         <div class="form-row">
             <div class="col-md-2">
-            <a class="btn btn-primary create btn-block" href="<?=base_url("admin/News/createnews ") ?>">
+            <a class="btn btn-primary create btn-block" href="<?=base_url("admin/news/createnews ") ?>">
                 <i class="fa fa-plus">  สร้าง</i>
             </a>
             </div>

@@ -2,7 +2,7 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="<?=base_url("admin/Filter ") ?>">ยี่ห้อไส้กรอง</a>
+            <a href="<?=base_url("admin/filter ") ?>">ยี่ห้อไส้กรอง</a>
         </li>
         <li class="breadcrumb-item active">เเก้ไขข้อมูล</li>
     </ol>

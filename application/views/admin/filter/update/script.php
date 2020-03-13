@@ -20,11 +20,11 @@
             }
         });
 
-        $.post(base_url+"api/Filter/getFilter",{
+        $.post(base_url+"api/filter/getFilter",{
             "filter_id" : filter_id
         },function(data){
             if(data.message!=200){
-                showMessage(data.message,"admin/Filter/filters/"+filter_brandId);
+                showMessage(data.message,"admin/filter/filters/"+filter_brandId);
             }
             if(data.message == 200){
                 result = data.data;
@@ -45,7 +45,7 @@
             $.post(base_url+"api/Filter/updateFilter/",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Filter/filters/"+filter_brandId);
+                    showMessage(data.message,"admin/filter/filters/"+filter_brandId);
                 }else{
                     showMessage(data.message,);
                 }

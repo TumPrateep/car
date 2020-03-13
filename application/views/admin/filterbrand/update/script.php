@@ -13,7 +13,7 @@
     });
 
     var filter_brandId = $("#filter_brandId").val();
-    $.post(base_url+"api/Filterbrand/getFilterById",{
+    $.post(base_url+"api/filterbrand/getFilterById",{
         "filter_brandId": filter_brandId
     },function(data){
         if(data.message!=200){
@@ -51,14 +51,14 @@
             var myform = document.getElementById("update-filterbrand");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/Filterbrand/updateFilterbrands",
+                url: base_url+"api/filterbrand/updateFilterbrands",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/Filter");
+                        showMessage(data.message,"admin/filter");
                     }else{
                         showMessage(data.message);
                     }

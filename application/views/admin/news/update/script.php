@@ -1,3 +1,12 @@
+<script src="<?=base_url("/public/js/ckeditor.js")?>"></script>
+<script src="<?=base_url("/public/js/bootstrap3-wysihtml5.all.min.js")?>"></script>
+<link href="<?=base_url("/public/css/bootstrap3-wysihtml5.min.css")?>" rel="stylesheet" type="text/css" />
+<script>
+  $(function () {
+    CKEDITOR.replace('editor1')
+    $('.textarea').wysihtml5()
+  })
+</script>
 <script>
       $("#update-news").validate({
         rules: {
@@ -26,7 +35,7 @@
 
     var news_id = $("#news_id").val();
 
-    $.post(base_url+"api/News/getNewsById",{
+    $.post(base_url+"api/news/getNewsById",{
         "news_id": news_id
     },function(data){
         if(data.message!=200){
@@ -67,14 +76,14 @@
             var myform = document.getElementById("update-news");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/News/updateNews",
+                url: base_url+"api/news/updateNews",
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
                 success: function (data) {
                     if(data.message == 200){
-                        showMessage(data.message,"admin/News");
+                        showMessage(data.message,"admin/news");
                     }else{
                         showMessage(data.message);
                     }

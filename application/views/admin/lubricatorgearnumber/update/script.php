@@ -2,12 +2,12 @@
     var lubricator_numberId = $("#lubricator_numberId").val();
     var lubricatorNumber = $("#lubricator_number");
 
-    $.post(base_url+"api/Lubricatorgearnumber/getLubricatorNumber",{
+    $.post(base_url+"api/lubricatorgearnumber/getLubricatorNumber",{
         "lubricator_numberId": lubricator_numberId,
         
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/Lubricatorgearnumber");
+            showMessage(data.message,"admin/lubricatorgearnumber");
         }
 
         if(data.message == 200){
@@ -47,10 +47,10 @@
         var isValid = $("#update-lubricatornumber").valid();
         if(isValid){
             var data = $("#update-lubricatornumber").serialize();
-            $.post(base_url+"api/Lubricatorgearnumber/updatelubricatorgearnumber",data,
+            $.post(base_url+"api/lubricatorgearnumber/updatelubricatorgearnumber",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/Lubricatorgearnumber");
+                    showMessage(data.message,"admin/lubricatorgearnumber");
                 }else{
                     showMessage(data.message,);
                 }
