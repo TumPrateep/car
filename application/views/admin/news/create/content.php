@@ -10,7 +10,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="card text-white bg-success">
                         <div class="card-header">
 
@@ -21,7 +21,7 @@
                         <form id="create-news">
                             <div class="card-body black bg-light">
                                 <div class="row">
-                                    <div class="col-lg-6 ">
+                                    <div class="col-lg-5">
                                         <div class="form-group">
                                             <label class="control-label">รูปหัวข้อข่าว</label>
                                             <div class="image-editor">
@@ -33,7 +33,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label for="mechanic">หัวข้อเรื่อง</label><span class="error">*</span>
                                             <input type="text" class="form-control" name="news_title" id="news_title" placeholder="หัวข้อเรื่อง">
@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label" for="mechanic">วันที่สิ้นสุด</label><span class="error">*</span>
-                                            <input type="date" class="form-control" name="end_date" id="end_date" placeholder="วันที่สิ้นสุด">
+                                            <input type="text" class="form-control" name="end_date" id="end_date" placeholder="วันที่สิ้นสุด">
                                         </div>
 
                                     </div>

@@ -116,7 +116,7 @@ img {
                 <!-- Content Block -->
                 <div class="block">
                     <!-- Coundown Timer -->
-                    <h3>บำรุงรักษา&ซ่อมรถ อู่ที่ดีที่สุดใกล้บ้าน</h3>
+                    <h3>ยางรถยนต์สดใหม่จากโรงงาน ติดตั้งโดยศูนย์บริการใกล้บ้านฟรี</h3>
                     <div>
                         <p class="head"><span class="fa fa-check-circle available"></span>
                             ราคาเดียวจบ! ค่าขนส่ง ถอดใส่ ถ่วงล้อ</p>
@@ -126,7 +126,7 @@ img {
                         <p class="head"><span class="fa fa-check-circle available"></span> ใช้เวลาเปลี่ยนไม่เกิน 1 ชม.
                         </p>
                         <p class="head"><span class="fa fa-check-circle available"></span>
-                            เลือกร้านที่ดีที่สุดใกล้บ้านท่าน</p>
+                            เลือกศูนย์บริการใกล้บ้าน</p>
                     </div>
                     <!-- Action Button -->
                     <!-- <a href="#" class="btn btn-white-md">get ticket now</a> -->

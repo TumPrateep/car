@@ -1,7 +1,15 @@
 
+<link rel="stylesheet" href="<?=base_url("/public/css/bootstrap3-wysihtml5.min.css")?>" type="text/css" />
+<link rel="stylesheet" href="<?=base_url('public/js/datepicker/themes/default.css')?>">
+<link rel="stylesheet" href="<?=base_url('public/js/datepicker/themes/default.date.css')?>">
+<link rel="stylesheet" href="<?=base_url('public/js/datepicker/themes/default.time.css')?>">
+
 <script src="<?=base_url("/public/js/ckeditor.js")?>"></script>
 <script src="<?=base_url("/public/js/bootstrap3-wysihtml5.all.min.js")?>"></script>
-<link href="<?=base_url("/public/css/bootstrap3-wysihtml5.min.css")?>" rel="stylesheet" type="text/css" />
+<script src="<?=base_url('public/js/datepicker/picker.js')?>"></script>
+<script src="<?=base_url('public/js/datepicker/picker.date.js')?>"></script>
+<script src="<?=base_url('public/js/datepicker/picker.time.js')?>"></script>
+<script src="<?=base_url('public/js/datepicker/translations/th_TH.js')?>"></script>
 <script>
   $(function () {
     CKEDITOR.replace('editor1')
@@ -32,6 +40,11 @@
                 required: "กรุณาเลือกวันที่สิ้นสุด"
             }
         },
+    });
+
+    $("#end_date").pickadate({
+        format: 'dd mmmm yyyy',
+        formatSubmit: 'yyyy-mm-dd',
     });
 
     $("#create-news").submit(function(){

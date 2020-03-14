@@ -7,7 +7,7 @@ if (!function_exists('load_user_view')) {
     function load_user_view($content, $script = null, $data = [])
     {
         $CI = get_instance();
-        $CI->load->view('users/layout/head');
+        $CI->load->view('users/layout/head', $data);
         if (isset($CI->session->userdata['logged_in'])) {
             $isUser = $CI->session->userdata['logged_in']['isUser'];
 
@@ -20,7 +20,7 @@ if (!function_exists('load_user_view')) {
         } else {
             $CI->load->view("users/layout/header");
         }
-        $CI->load->view('users/layout/menu', $data);
+        $CI->load->view('users/layout/menu');
         $CI->load->view($content);
         $CI->load->view('users/layout/footer');
         $CI->load->view('users/layout/foot');

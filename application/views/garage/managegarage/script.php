@@ -55,20 +55,42 @@
                 $("#titleName").val(result.titleName);
                 $("#flName").val(ownerData.titleName+" "+ownerData.firstName+"  "+ownerData.lastName);
                 $('#owner.image-editor').cropit({
-                        allowDragNDrop: false,
-                        width: 200,
-                        height: 200,
-                        type: 'image',
-                        imageState: {
-                            src: picturePath+"mechanic/"+ownerData.picture
-                        }
-                    });
-                // setBrandPicture(ownerData.pictures);
+                    allowDragNDrop: false,
+                    width: 200,
+                    height: 200,
+                    type: 'image',
+                    imageState: {
+                        src: picturePath+"mechanic/"+ownerData.picture
+                    }
+                });
+                let service_option = render_service_option(result);
+                $('#service_options').html(service_option);
             }
 
             loadProvinceGarage(result.provinceId,result.districtId,result.subdistrictId);
             
         });
+
+        function render_service_option(data){
+            let html = '';
+            if(data.service_option1){
+                html += '- ตั้งค่าศูนย์ล้อฟรี';
+                if(data.service_option1_price){
+                    html += 'มูลค่า '+data.service_option1_price+' บาท';
+                }
+                html += '\n';
+            }
+
+            if(data.service_option2){
+                html += '- เติมลมไนโตรเจนฟรี\n';
+            }
+
+            if(data.service_option3){
+                html += '- '+data.service_option3;
+            }
+
+            return html;
+        }
 
 
         

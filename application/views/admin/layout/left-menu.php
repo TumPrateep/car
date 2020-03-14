@@ -31,6 +31,14 @@
                     </ul>
                 </li>
 
+                <li class="nav-item <?=activate_menu('news');?>" data-toggle="tooltip" data-placement="right"
+                    title="Dashboard">
+                    <a class="nav-link text-white" href="<?=base_url("admin/news")?>">
+                        <i class="fa fa-newspaper-o"></i>
+                        <span class="nav-link-text">ข่าวสาร</span>
+                    </a>
+                </li>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#user"
                         data-parent="#exampleAccordion">
@@ -64,14 +72,6 @@
                     <a class="nav-link text-white" href="<?=base_url("admin/car")?>">
                         <i class="fa fa-fw fa-car"></i>
                         <span class="nav-link-text">การจัดการยี่ห้อ/รุ่นรถ</span>
-                    </a>
-                </li>
-
-                <li class="nav-item <?=activate_menu('news');?>" data-toggle="tooltip" data-placement="right"
-                    title="Dashboard">
-                    <a class="nav-link text-white" href="<?=base_url("admin/news")?>">
-                        <i class="fa fa-newspaper-o"></i>
-                        <span class="nav-link-text">ข่าวสาร</span>
                     </a>
                 </li>
 

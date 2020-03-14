@@ -41,7 +41,7 @@
                                                 <div class="shop">
                                                     <div class="container">
                                                         <div class="row">
-                                                            <div class="card col-md-4">
+                                                            <div class="col-md-4">
                                                                 <div class="row p-t-20">
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
@@ -54,7 +54,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="card col-md-8"> 
+                                                            <div class="col-md-8"> 
                                                             <h3>ข้อมูลทั่วไป</h3>
                                                                 <div class="row">
                                                                     <div class="col-sm-6">
@@ -82,9 +82,9 @@
                                                                         <a  href="<?=base_url("garage/managegarage/create") ?>"><button type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>สร้าง</button></a>
                                                                     </div>
                                                                  </div> -->
-                                                                <div class="col-md-2">
+                                                                <div class="col-md-3">
                                                                     <div class="form-group">
-                                                                        <a  href="<?=base_url("garage/managegarage/updateowner") ?>"><button type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไข</button></a>
+                                                                        <a  href="<?=base_url("garage/managegarage/updateowner") ?>"><button type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไขข้อมูลเจ้าของอู่</button></a>
                                                                     </div>
                                                                  </div>
                                                                 </div><br>
@@ -107,7 +107,7 @@
                                                 <div class="shop">
                                                     <div class="container">
                                                         <div class="row">
-                                                            <div class="card col-md-4">
+                                                            <div class="col-md-4">
                                                                 <div class="row p-t-20">
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
@@ -120,7 +120,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="card col-md-8"> 
+                                                            <div class="col-md-8"> 
                                                             <h3>ข้อมูลทั่วไป</h3>
                                                                 <div class="row">
                                                                     <div class="col-sm">
@@ -155,25 +155,27 @@
                                                                     </div>
                                                                     <div class="col-sm">
                                                                         <label for="garage">วันทำการ</label>
-                                                                        <input type="text" class="form-control" name="dateSE"  id="dateSE"  readonly>
+                                                                        <input type="text" class="form-control" name="dateSE"  id="dateSE" readonly>
                                                                     </div>
                                                                 </div><br>
-                                                                <!-- <div class="row">
-                                                                    <div class="col-sm-6">
-                                                                        <label for="garage">ความเชี่ยวชาญด้านรถ</label>
-                                                                        <input type="text" class="form-control" name="brandId" id="brandId" readonly>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <label for="garage">บริการเพิ่มเติม</label>
+                                                                        <textarea id="service_options" rows="4" class="form-control" readonly></textarea>
                                                                     </div>
-                                                                </div><br> -->
+                                                                </div>
                                                             </div>  
-                                                        </div>
+                                                        </div><br>
                                                         <div class="row">
-                                                            <div class="card col-md-12"> 
-                                                            <h3>ที่อยู่</h3>
-                                                                <textarea class="form-control" rows="5" id="address" readonly></textarea>
+                                                            <div class="col-md-12"> 
+                                                                <h3>ที่อยู่</h3>
+                                                                <textarea class="form-control" rows="3" id="address" readonly></textarea>
                                                             </div>
-                                                            <div class="col-md-2">
+                                                        </div><br>
+                                                        <div class="row justify-content-md-center">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
-                                                            		<a  href="<?=base_url("garage/managegarage/update") ?>"><button type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไข</button></a>
+                                                            		<a  href="<?=base_url("garage/managegarage/update") ?>"><button type="button" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไขข้อมูลอู่ซ่อมรถ</button></a>
 															    </div>
                                                             </div>
                                                         </div>

@@ -10,7 +10,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="card text-white bg-success">
                         <div class="card-header">
 
@@ -22,7 +22,7 @@
                         <input type="hidden" id="news_id" name="news_id" value="<?=$news_id?>">
                             <div class="card-body black bg-light">
                                 <div class="row">
-                                    <div class="col-lg-6 ">
+                                    <div class="col-lg-5">
                                         <div class="form-group">
                                             <label class="control-label">รูปหัวข้อข่าว</label>
                                             <div class="image-editor">
@@ -34,7 +34,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label" for="mechanic">หัวข้อเรื่อง</label><span class="error">*</span>
                                             <input type="text" class="form-control" name="news_title" id="news_title" placeholder="หัวข้อเรื่อง">

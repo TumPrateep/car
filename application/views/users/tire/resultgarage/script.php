@@ -91,9 +91,7 @@ $(document).ready(function() {
                         'อ.' + data.districtName + ' ' +
                         'จ.' + data.provinceName + '</p>' +
                         '<p class="option"><small class="text-orange">'+
-                            'ตั้งศูนย์ล้อมูลค่า 500 บาทฟรี'+'<br/>'+
-                            'เติมลมไนโตรเจนฟรี'+'<br/>'+
-                            'test'+'<br/>'+
+                            render_service_option(data) +
                             '</small></p>'+
                         '</div>';
 

@@ -57,14 +57,14 @@ class Lubricatorgearlimits extends CI_Model
     function insert($data){
         return $this->db->insert('lubricator_gear_limit',$data);
     }
-    function getLubricatorChangeById($groupId){
-        $this->db->select("groupId");
-        $this->db->where('groupId',$groupId);
+    function getLubricatorChangeById($limitId){
+        $this->db->select("limitId");
+        $this->db->where('limitId',$limitId);
         $result = $this->db->get("lubricator_gear_limit");
         return $result->row();
     }
-    function delete($groupId){
-        return $this->db->delete('lubricator_gear_limit', array('groupId' => $groupId));
+    function delete($limitId){
+        return $this->db->delete('lubricator_gear_limit', array('limitId' => $limitId));
     }
     public function getLubricatorgearlimitChangeByLimitId($limitId)
     {

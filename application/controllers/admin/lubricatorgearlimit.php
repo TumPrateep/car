@@ -2,7 +2,7 @@
     exit('No direct script access allowed');
 }
 
-class lubricatorgearlimit extends CI_Controller
+class Lubricatorgearlimit extends CI_Controller
 {
 
     public function __construct()

@@ -87,6 +87,10 @@ class Garages extends BD_Controller
                 $nestedData[$count]['option4'] = $post->option4;
                 $nestedData[$count]['latitude'] = (float) $post->latitude;
                 $nestedData[$count]['longitude'] = (float) $post->longtitude;
+                $nestedData[$count]['service_option1'] = $post->service_option1;
+                $nestedData[$count]['service_option1_price'] = $post->service_option1_price;
+                $nestedData[$count]['service_option2'] = $post->service_option2;
+                $nestedData[$count]['service_option3'] = $post->service_option3;
                 if (!empty($post->distance)) {
                     $nestedData[$count]['distance'] = (float) $post->distance;
                 }

@@ -23,6 +23,18 @@
         <li class="nav-item">
           <a class="nav-link" href="<?=base_url("user/carprofile")?>">ข้อมูลรถ</a>
         </li>
+        <li class="nav-item menu <?=$tire?>">
+            <a class="nav-link" href="<?=base_url("search/tire")?>">ยางรถยนต์</a>
+        </li>
+        <li class="nav-item menu <?=$garage?>">
+            <a class="nav-link" href="<?=base_url("search/garage")?>">ค้นหาศูนย์บริการ</a>
+        </li>
+        <li class="nav-item menu">
+            <a class="nav-link" href="<?=base_url("user/news")?>">ข่าวสาร/โปรโมชั่น</a>
+        </li>
+        <li class="nav-item menu">
+            <a class="nav-link" href="<?=base_url("user/about-us")?>">เกี่ยวกับเรา</a>
+        </li>
       </ul>
       <div>
         <div class="dropdown">

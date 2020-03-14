@@ -63,7 +63,7 @@
                     "render": function ( data, type, full, meta ) {
                         data.groupId = $("#groupId").val()
                         return '<a href="'+base_url+'admin/lubricatorgearlimit/updateLubricatorGearCharge/'+data.limitId+'/'+data.groupId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deletelubricatorchange('+data.groupId+',\''+data.price+'\')"><i class="fa fa-trash"></i></button>';
+                            +'<button type="button" class="delete btn btn-danger" onclick="deletelubricatorchange('+data.limitId+',\''+data.groupId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 { "orderable": false, "targets": 0 },
@@ -75,12 +75,12 @@
             ]	 
     });
 
-    function deletelubricatorchange(groupId){
+    function deletelubricatorchange(limitId, groupId){
         var option = {
-            url: "/Lubricatorlimit/deleteLubricatorChange?groupId="+groupId,
+            url: "/lubricatorgearlimit/deleteLubricatorGearChange?limitId="+limitId,
             label: "ลบราคาเปลี่ยนยางนอก",
-            content: "คุณต้องการลบข้อมูลนี้ ใช่หรือไม่",
-            gotoUrl: "admin/lubricatorlimit/lubricatorcharge/"+groupId ,
+            content: "คุณต้องการลบข้อมูลนี้ใช่หรือไม่",
+            gotoUrl: "admin/lubricatorgearlimit/lubricatorgearcharge/"+groupId ,
         }
         fnDelete(option);
     }

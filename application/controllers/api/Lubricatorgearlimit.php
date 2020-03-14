@@ -98,19 +98,21 @@ class Lubricatorgearlimit extends BD_Controller {
 
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
-    public function deleteLubricatorChange_get(){
-        $groupId = $this->get('groupId');
-        $data_check = $this->lubricatorgearlimits->getLubricatorChangeById($groupId);
+
+    public function deleteLubricatorGearChange_get(){
+        $limitId = $this->get('limitId');
+        $data_check = $this->lubricatorgearlimits->getLubricatorChangeById($limitId);
 
         $option = [
             "data_check_delete" => $data_check,
-            "data" => $groupId,
+            "data" => $limitId,
             "model" => $this->lubricatorgearlimits,
             "image_path" => null
         ];
 
         $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
     }
+    
     public function update_post(){
         $limitId = $this->post('limitId');
         $price = $this->post('price');
@@ -138,6 +140,7 @@ class Lubricatorgearlimit extends BD_Controller {
 
         $this->set_response(decision_update($option), REST_Controller::HTTP_OK);
     }
+
     function getLubricatorgearlimitChange_get(){
         $limitId = $this->get('limitId');
         $data_check = $this->lubricatorgearlimits->getUpdate($limitId);

@@ -66,6 +66,17 @@
                     }
                 },
                 {
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        if(!data){
+                            return '-';
+                        }else{
+                            return $.format.date(data, "dd/MM/yyyy");
+                        }
+                    }
+                },
+                {
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {

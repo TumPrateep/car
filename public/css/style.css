@@ -3835,3 +3835,30 @@ a.text-orange {
 .section {
     padding: 30px 0;
 }
+
+@media (max-width: 991px) {
+    .about {
+        padding: 40px 0px 15px 0px !important;
+    }
+    .main-nav .navbar-brand {
+        border-right: 0px solid #e5e5e5;
+    }
+    .navbar-collapse {
+        text-align: center;
+    }
+    .navbar-nav.mx-auto>li.menu {
+        display: initial !important;
+    }
+}
+
+.navbar-nav.mx-auto>li.menu {
+    display: none;
+}
+
+.card.flex-row {
+    width: 100%;
+}
+
+.mb-7 {
+    margin-bottom: 7px;
+}

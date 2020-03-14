@@ -5786,7 +5786,7 @@ footer p {
 }
 
 .form-control {
-    height: 37px;
+    /* height: 37px; */
     /* border-radius: 0; */
     box-shadow: none;
     border-color: #e7e7e7;

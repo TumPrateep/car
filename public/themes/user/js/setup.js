@@ -134,3 +134,24 @@ function focus(id) {
         });
     }
 }
+
+function render_service_option(data) {
+    let html = '';
+    if (data.service_option1) {
+        html += '- ตั้งค่าศูนย์ล้อฟรี';
+        if (data.service_option1_price) {
+            html += 'มูลค่า ' + data.service_option1_price + ' บาท';
+        }
+        html += '<br/>';
+    }
+
+    if (data.service_option2) {
+        html += '- เติมลมไนโตรเจนฟรี<br/>';
+    }
+
+    if (data.service_option3) {
+        html += '- ' + data.service_option3;
+    }
+
+    return html;
+}

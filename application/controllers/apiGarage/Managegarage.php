@@ -45,6 +45,14 @@ class Managegarage extends BD_Controller
         $bank_id = $this->post('bank_id');
         $bank_owner = $this->post('bank_owner');
 
+        $option_service1 = $this->post('option_service1');
+        $service_option1_price = null;
+        if(!empty($option_service1)){
+            $service_option1_price = $this->post('service_option1_price');    
+        }
+        $option_service2 = $this->post('option_service2');
+        $option_service3 = $this->post('option_service3');
+
         $openDay = "";
         $daym = $this->post('monday');
         $openDay .= (isset($daym) ? 1 : 0);
@@ -148,7 +156,12 @@ class Managegarage extends BD_Controller
                 'bank_name' => $bank_name,
                 'bank_id' => $bank_id,
                 'bank_owner' => $bank_owner,
+                'service_option1' => $option_service1,
+                'service_option1_price' => $service_option1_price,
+                'service_option2' => $option_service2,
+                'service_option3' => $option_service3
             );
+
             $oldImage = null;
             if ($data_check_update != null) {
                 $oldImage = $config['upload_path'] . $data_check_update->picture;

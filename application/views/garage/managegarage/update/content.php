@@ -192,7 +192,7 @@
                                                                     value="7">อาทิตย์</label>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div><br>
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <div class="form-group">
@@ -283,11 +283,9 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="garage">สิ่งอำนวยความสะดวก</label>
-                                                        </div>
+                                                        <h4>สิ่งอำนวยความสะดวก</h4>
                                                     </div>
-                                                </div>
+                                                </div><br>
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <div class="form-check">
@@ -330,46 +328,42 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <!-- <div class="col-md-6">
-													<div class="row p-t-20">
-														<div class="col-md-12">
-															<div class="form-group">
-																<label class="control-label">รูปภายในอู่ซ่อมรถ</label>
-																<div class="image-editorgarage">
-																	<input type="file" class="cropit-image-input" name="tempImage">
-																	<div class="cropit-preview"></div>
-																	<div class="image-size-label">ปรับขนาด</div>
-																	<input type="range" class="cropit-image-zoom-input">
-																	<input type="hidden" name="garagePicture1" id="garagePicture1" class="hidden-image-data" />
-																</div>
-															</div>
-														</div>
-													</div>
-												</div> -->
-                                                    <!-- <div class="col-md-6">
-													<div class="row p-t-20">
-														<div class="col-md-12">
-															<div class="form-group">
-																<label class="control-label">รูปภายในอู่ซ่อมรถ</label>
-																<div class="image-editor">
-																	<input type="file" class="cropit-image-input" name="tempImage">
-																	<div class="cropit-preview"></div>
-																	<div class="image-size-label">ปรับขนาด</div>
-																	<input type="range" class="cropit-image-zoom-input">
-																	<input type="hidden" name="garagePicture2" id="garagePicture2" class="hidden-image-data" />
-																</div>
-															</div>
-														</div>
-													</div>
-												</div> -->
-                                                </div>
+                                                    <div class="col-md-12">
+                                                        <h4>บริการเพิ่มเติม</h4>
+                                                    </div>
+                                                </div><br>
                                                 <div class="row">
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="garage">บัญชีที่ใช้ในการรับเงิน</label>
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" name="option_service1" id="option_service1" value="1">
+                                                            <label class="form-check-label">ตั้งศูนย์ล้อฟรีมูลค่า</label>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div class="col-md-3">
+                                                        <input type="number" class="form-control" id="service_option1_price" name="service_option1_price" placeholder="ราคาตั้งศูนย์ล้อ">
+                                                    </div>
+                                                </div><br>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" name="option_service2" id="option_service2" value="1">
+                                                            <label class="form-check-label">เติมลมไนโตรเจนฟรี</label>
+                                                        </div>
+                                                    </div>
+                                                </div><br>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>บริการอื่นๆฟรี</label>
+                                                            <textarea class="form-control" name="option_service3" id="option_service3" rows="3"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div><br>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <h4>บัญชีที่ใช้ในการรับเงิน</h4>
+                                                    </div>
+                                                </div><br>
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="form-group">

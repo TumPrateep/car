@@ -213,9 +213,11 @@ $(document).ready(function() {
                             scorerating = 0;
                         }
 
-                        html += '<div class="col-md-6">' +
+                        let garageData = render_service_option(value);
+
+                        html += '<div class="col-md-6 d-flex mb-7">' +
                             '<div class="card flex-row flex-wrap">' +
-                            '<div class="card-header col-md-5 text-center">' +
+                            '<div class="card-body col-md-5 text-center flex-fill">' +
                             '<img src="' + imagePath + value.picture +
                             '"><br><br>' +
                             '<h5>ระยะทาง</h5>' +
@@ -246,7 +248,7 @@ $(document).ready(function() {
                             'public/images/icon/airconditioner.png" title="มีเครื่องปรับอากาศ"> ' +
                             '<img src="' + base_url +
                             'public/images/icon/toilet.png" title="มีสุขา"> ' +
-                            '<br><br>' +
+                            '<br><small class="text-orange">'+garageData+'</small><br>' +
                             '<p class="text-center" style="font-size:27px;">' +
                             '<span>';
                         for (var i = 0; i < scorerating; i++) {

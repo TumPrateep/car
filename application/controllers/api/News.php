@@ -18,7 +18,7 @@ class News extends BD_Controller {
         $news_title = $this->post("news_title");
         $news_category = $this->post("news_category");
         $news_content = $this->post("news_content");
-        $end_date = $this->post("end_date");
+        $end_date = $this->post("end_date_submit");
         $img = $this->post("news_picture");
 
         $img = str_replace('data:image/png;base64,', '', $img);
@@ -139,7 +139,7 @@ class News extends BD_Controller {
             $news_title = $this->post("news_title");
             $news_category = $this->post("news_category");
             $news_content = $this->post("news_content");
-            $end_date = $this->post("end_date");
+            $end_date = $this->post("end_date_submit");
             $img = $this->post("news_picture");
 
             $success = true;

@@ -11,7 +11,6 @@ $(document).ready(function() {
 
     var form = $("#update-member-form");
 
-
 });
 
 var garageId = $("#garageId").val();
@@ -115,6 +114,19 @@ $.post(base_url + "apigarage/Managegarage/getmanagegarage", {
                     this.checked = true;
                 });
             }
+        }
+
+        if(result.service_option1 == '1'){
+            $('#option_service1').prop('checked', true);
+            $('#service_option1_price').val(result.service_option1_price);
+        }
+
+        if(result.service_option2 == '1'){
+            $('#option_service2').prop('checked', true);
+        }
+        
+        if(result.service_option3){
+            $('#option_service3').text(result.service_option3);
         }
 
         setBrandPicture(result.picture);
@@ -370,7 +382,6 @@ $("#submit").submit(function() {
 function updategarage() {
     event.preventDefault();
     var isValid = $("#submit").valid();
-
 
     if (isValid) {
         var imageData = $('.image-editor').cropit('export');

@@ -1,6 +1,14 @@
+<link rel="stylesheet" href="<?=base_url("/public/css/bootstrap3-wysihtml5.min.css")?>" type="text/css" />
+<link rel="stylesheet" href="<?=base_url('public/js/datepicker/themes/default.css')?>">
+<link rel="stylesheet" href="<?=base_url('public/js/datepicker/themes/default.date.css')?>">
+<link rel="stylesheet" href="<?=base_url('public/js/datepicker/themes/default.time.css')?>">
+
 <script src="<?=base_url("/public/js/ckeditor.js")?>"></script>
 <script src="<?=base_url("/public/js/bootstrap3-wysihtml5.all.min.js")?>"></script>
-<link href="<?=base_url("/public/css/bootstrap3-wysihtml5.min.css")?>" rel="stylesheet" type="text/css" />
+<script src="<?=base_url('public/js/datepicker/picker.js')?>"></script>
+<script src="<?=base_url('public/js/datepicker/picker.date.js')?>"></script>
+<script src="<?=base_url('public/js/datepicker/picker.time.js')?>"></script>
+<script src="<?=base_url('public/js/datepicker/translations/th_TH.js')?>"></script>
 <script>
   $(function () {
     CKEDITOR.replace('editor1')
@@ -35,6 +43,13 @@
 
     var news_id = $("#news_id").val();
 
+    $("#end_date").pickadate({
+        format: 'dd mmmm yyyy',
+        formatSubmit: 'yyyy-mm-dd',
+    });
+
+    var end_picker = $("#end_date").pickadate('picker');
+
     $.post(base_url+"api/news/getNewsById",{
         "news_id": news_id
     },function(data){
@@ -45,7 +60,10 @@
             $("#news_title").val(result.news_title);
             $("#news_category").val(result.news_category);
             $("#news_content").val(result.news_content);
-            $("#end_date").val(result.end_date);
+
+            end_picker.set('select', result.end_date);
+            // let end_date = moment(result.end_date, "DD-MM-YYYY");
+            // $("#end_date").val(end_date.format('DD-MM-YYYY'));
             setlubricatorbrand(result.news_picture);
 
         }

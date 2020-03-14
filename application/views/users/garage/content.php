@@ -84,7 +84,7 @@ div.card-header img {
 }
 
 i.star {
-    color: #fff424;
+    color: #fdbf34;
     text-shadow: 0 0 3px #000;
     text-align: center;
     cursor: pointer;
