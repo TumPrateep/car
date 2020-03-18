@@ -39,6 +39,14 @@
                     </a>
                 </li>
 
+                <li class="nav-item <?=activate_menu('advertisement');?>" data-toggle="tooltip" data-placement="right"
+                    title="Dashboard">
+                    <a class="nav-link text-white" href="<?=base_url("admin/advertisement")?>">
+                        <i class="fa fa-bullhorn"></i>
+                        <span class="nav-link-text">โฆษณา</span>
+                    </a>
+                </li>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse" href="#user"
                         data-parent="#exampleAccordion">
