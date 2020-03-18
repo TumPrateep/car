@@ -16,7 +16,7 @@ class Checkout extends CI_Controller {
 		$data['garageId'] = $garageId;
 		$data['number'] = $number;
 
-		load_user_view("users/checkout/content", "users/checkout/script", $data);
+		load_user_view("users/checkout/content", "users/checkout/script", $data, false);
     }
 
 }

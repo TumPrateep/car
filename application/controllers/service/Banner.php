@@ -17,4 +17,12 @@ class Banner extends BD_Controller
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
+
+    public function getAllNews_get()
+    {
+        $limit = $this->get('limit');
+        $result = $this->promotes->getAllNewsWithStatus($limit);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
 }

@@ -15,7 +15,7 @@ class Resultgarage extends CI_Controller {
 		$data['tire_sizeId'] = $tire_sizeId;
 		$data['tire_dataId'] = $tire_dataId;
 
-		load_user_view("users/tire/resultgarage/content", "users/tire/resultgarage/script", $data);
+		load_user_view("users/tire/resultgarage/content", "users/tire/resultgarage/script", $data, false);
 
     }
 

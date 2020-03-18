@@ -3,14 +3,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title">
-                    <h3>ข่าวสาร<span class="alternate">/โปรโมชั่น</span></h3>
+                    <h3>ความรู้/<span class="alternate">ข่าวสาร</span></h3>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                ......
-            </div>
-        </div>
+        <div class="row" id="news-all"></div>
     </div>
 </section>

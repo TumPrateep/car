@@ -12,7 +12,7 @@ class Garage extends CI_Controller {
 	function index(){
 		$data = ['tire'=>'', 'lubricator' => '', 'garage' => 'active'];
 
-		load_user_view("users/garage/content", 'users/garage/script', $data);
+		load_user_view("users/garage/content", 'users/garage/script', $data, false);
     }
 
 }

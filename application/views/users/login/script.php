@@ -185,11 +185,13 @@ $("#login-button").on('click', function() {
     auth2.signIn().then(function() {
             // console.log(auth2.currentUser.get().getBasicProfile());
             var user = auth2.currentUser.get().getBasicProfile();
+            name = user.getName();
+            arrname = name.split(" ");
             var data = {
-                "name": user.ig,
-                "lastname": user.wea,
-                "firstname": user.ofa,
-                "email": user.U3
+                "name": name,
+                "lastname": arrname[0],
+                "firstname": arrname[1],
+                "email": user.getEmail()
             };
             $.post(base_url + "service/Auth/googleAuth/", data,
                 function(data, textStatus, jqXHR) {

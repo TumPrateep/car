@@ -1,16 +1,4 @@
 <?php $basedata = loadBasicData();?>
-<footer class="footer-main">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-            <h3 class="text-orange">เกี่ยวกับเรา</h3>
-            <p>
-                ......
-            </p>
-        </div>
-      </div>
-    </div>
-</footer>
 <!-- Subfooter -->
 <footer class="subfooter">
     <div class="container">

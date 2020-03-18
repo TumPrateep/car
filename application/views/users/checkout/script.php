@@ -53,9 +53,9 @@ $(document).ready(function() {
 
     function showGarageData(garageData) {
         var html = '<span>' + garageData.garageName + '</span><br>' +
-            '<span>ตำบล/แขวง ' + garageData.subdistrictName + ' อำเภอ/เขต ' + garageData.districtName +
-            '</span><br>' +
-            '<span>จังหวัด ' + garageData.provinceName + '</span>';
+            '<span>ต.' + garageData.subdistrictName + ' อ.' + garageData.districtName +
+            '</span> ' +
+            '<span>จ.' + garageData.provinceName + '</span>';
         $('#garage').html(html);
 
         setDatepicker(garageData);

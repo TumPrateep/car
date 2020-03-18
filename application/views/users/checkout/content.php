@@ -73,8 +73,8 @@ img.exbrand {
                                         </div>
                                         <div class="col-8">
                                             <span>ธนาคารกสิกรไทย</span><br>
-                                            <span>ชื่อ Carjaidee สาขา ท่าศาลา</span><br>
-                                            <span>11-5586-3598</span>
+                                            <span>ชื่อ Carjaidee สาขา -</span><br>
+                                            <span>-</span>
                                         </div>
                                     </div>
                                 </div>

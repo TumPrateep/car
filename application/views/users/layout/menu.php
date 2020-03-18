@@ -13,7 +13,7 @@
                             <a class="nav-link" href="<?=base_url("search/garage")?>">ค้นหาศูนย์บริการ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=base_url("user/news")?>">ข่าวสาร/โปรโมชั่น</a>
+                            <a class="nav-link" href="<?=base_url("user/news")?>">ความรู้/ข่าวสาร</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=base_url("user/about-us")?>">เกี่ยวกับเรา</a>

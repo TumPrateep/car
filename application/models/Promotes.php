@@ -68,4 +68,19 @@ class Promotes extends CI_Model
         return $result->result();
     }
 
+    public function getAllNewsWithStatus($limit=null){
+        $this->db->where('status', 1);
+        if(!empty($limit)){
+            $this->db->limit($limit);
+        }
+        $result = $this->db->get('news');
+        return $result->result();
+    }
+
+    public function getNewsDetail($news_id){
+        $this->db->where('news_id', $news_id);
+        $result = $this->db->get('news');
+        return $result->row();
+    }
+
 }

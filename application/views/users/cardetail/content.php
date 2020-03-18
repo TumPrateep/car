@@ -89,16 +89,35 @@ div.pic img {
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="col-6"><strong>
+                                    <div class="col-4"><strong>
                                         <h6>ข้อมูล<span class="alternate">รถ</span></h6></strong>
                                     </div>
-                                    <div class="col-6 text-right">
-                                        <img src="#" id="car-logo" alt="logo" class="rounded" width="70%">
+                                    <div class="col-8">
+                                        <!-- <img src="#" id="car-logo" alt="logo" class="rounded" width="70%"> -->
+                                        <strong id="text-car"> - </strong>
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-md-4">
+                                        <h6>ทะเบียน<span class="alternate">รถ</span></h6></strong>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>
+                                            <div class="dt-border" id="text-vehicle">-</div>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6>เลข<span class="alternate">ไมล์</span></h6></strong>
+                                    </div>
+                                    <div class="col-md-6">
+                                        -
+                                    </div>
+                                </div>
+                                <!-- <div class="row">
                                     <div class="col-md-12">
                                         <p><img class="card-img-top" src="#" id="text-car-picture" width="100%" alt=""></p>
                                         <div>
@@ -108,9 +127,9 @@ div.pic img {
                                             </p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
-                            <div class="col-lg-6">
+                            <!-- <div class="col-lg-6">
                                 <strong><h6>ข้อมูล<span class="alternate">ยาง</span></h6></strong>
                                 <div id="tire-data">
                                     <div class="row">
@@ -131,10 +150,10 @@ div.pic img {
                                     <i class="fa fa-plus" aria-hidden="true"></i><br>
                                     <small>เพิ่มข้อมูลยาง</small>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
-                        <hr>
-                        <h6>ข้อมูลรถและการ<span class="alternate">ซ่อมบำรุง</span></h6>
+                        <!-- <hr> -->
+                        <!-- <h6>ข้อมูลรถและการ<span class="alternate">ซ่อมบำรุง</span></h6>
                         <h6><span class="alternate">ยาง</span></h6>
                         <div class="row">
                             <div class="col-md-5">
@@ -176,7 +195,7 @@ div.pic img {
                             <div class="col-md-4">
                                 -
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -196,17 +215,16 @@ div.pic img {
                                     </div>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" data-target="#searchFromLubricator" data-toggle="tab"
                                     href="#searchFromLubricator">
                                     <div class="pricing-heading">
-                                        <!-- Title -->
                                         <div class="title">
                                             <h6><span class="alternate">น้ำมันเครื่อง</span></h6>
                                         </div>
                                     </div>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                         <div class="tab-content pt-main-search">
                             <a name="tire"></a>

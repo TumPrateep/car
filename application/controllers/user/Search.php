@@ -12,13 +12,13 @@ class Search extends CI_Controller {
 	function lubricator(){
 		$data = ['tire'=>'', 'lubricator' => 'active', 'garage' => ''];
 
-		load_user_view("users/main-search/lubricator/content", null, $data);
+		load_user_view("users/main-search/lubricator/content", null, $data, false);
     }
 
 	function tire(){
 		$data = ['tire'=>'active', 'lubricator' => '', 'garage' => ''];
 
-		load_user_view("users/main-search/tire/content", 'users/main-search/tire/script', $data);
+		load_user_view("users/main-search/tire/content", 'users/main-search/tire/script', $data, false);
 
 	}
 }

@@ -15,7 +15,7 @@ class Garageagain extends CI_Controller {
 		
 		
 
-		load_user_view("users/garageagain/content", "users/garageagain/script" ,$data ); //,"users/garageagain/script" 
+		load_user_view("users/garageagain/content", "users/garageagain/script" ,$data, false); //,"users/garageagain/script" 
 	}
 
 }

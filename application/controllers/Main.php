@@ -27,6 +27,7 @@ class Main extends CI_Controller {
 		$this->load->view('users/layout/menu');
 		$this->load->view('users/layout/banner');
 		$this->load->view('users/main-search/tire/content');
+		$this->load->view('users/layout/news');
 		$this->load->view('users/layout/footer');
 		$this->load->view('users/layout/foot');
 		$this->load->view('users/main-search/tire/script');

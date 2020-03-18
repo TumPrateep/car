@@ -11,7 +11,14 @@ class News extends CI_Controller {
 	
 	function index(){
 		$data = ['tire'=>'', 'lubricator' => '', 'garage' => ''];
-		load_user_view("users/news/content", 'users/news/script', $data);
+		load_user_view("users/news/content", 'users/news/script', $data, false);
+	}
+	
+	function detail($news_id){
+		$data = ['tire'=>'', 'lubricator' => '', 'garage' => ''];
+		$this->load->model("promotes");
+		$data['news'] = $this->promotes->getNewsDetail($news_id);
+		load_user_view("users/news/detail/content", 'users/news/detail/script', $data, false);
     }
 
 }

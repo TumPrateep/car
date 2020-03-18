@@ -11,7 +11,7 @@ class About extends CI_Controller {
 	
 	function index(){
 		$data = ['tire'=>'', 'lubricator' => '', 'garage' => ''];
-		load_user_view("users/about/content", 'users/about/script', $data);
+		load_user_view("users/about/content", 'users/about/script', $data, false);
     }
 
 }

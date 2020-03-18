@@ -4,7 +4,7 @@
 
 if (!function_exists('load_user_view')) {
 
-    function load_user_view($content, $script = null, $data = [])
+    function load_user_view($content, $script = null, $data = [], $loadNew = true)
     {
         $CI = get_instance();
         $CI->load->view('users/layout/head', $data);
@@ -22,6 +22,9 @@ if (!function_exists('load_user_view')) {
         }
         $CI->load->view('users/layout/menu');
         $CI->load->view($content);
+        if($loadNew){
+            $CI->load->view('users/layout/news');
+        }
         $CI->load->view('users/layout/footer');
         $CI->load->view('users/layout/foot');
         if ($script != null) {

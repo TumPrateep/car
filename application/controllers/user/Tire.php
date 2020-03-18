@@ -43,7 +43,7 @@ class Tire extends CI_Controller
             $data['tire_sizeId'] = $this->input->get('tire_sizeId');
         }
 
-        load_user_view("users/tire/content", 'users/tire/script', $data);
+        load_user_view("users/tire/content", 'users/tire/script', $data, false);
     }
 
 }

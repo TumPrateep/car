@@ -19,7 +19,7 @@ class Detailgarage extends CI_Controller
         $data['garageId'] = $garageId;
         $data['garageData'] = $this->garage->getViewGarageByGarageId($garageId);
         $data['ownerData'] = $this->machines->getOwnerByGarageId($garageId);
-        load_user_facebook_view("users/garage/detailgarage/content", "users/garage/detailgarage/script", $data);
+        load_user_facebook_view("users/garage/detailgarage/content", "users/garage/detailgarage/script", $data, false);
     }
 
 }
