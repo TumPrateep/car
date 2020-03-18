@@ -71,46 +71,45 @@ class Advertisements extends CI_Model{
                 ->db
                 ->like('advertisement_name',$search)
                 ->where('status',$status)
-                ->get('news');
+                ->get('advertisement');
     
         return $query->num_rows();
     }
 
-    function getnewsById($news_id){
-        $this->db->select("news_id, news_picture, news_title, news_category, end_date");
-        return $this->db->where('news_id',$news_id)->get("news")->row();
+    function getadvertisementById($advertisement_id){
+        // $this->db->select("news_id, news_picture, news_title, news_category, end_date");
+        return $this->db->where('advertisement_id',$advertisement_id)->get("advertisement")->row();
     }
 
-    function delete($news_id){
-        return $this->db->delete('news', array('news_id' => $news_id));
+    function delete($advertisement_id){
+        return $this->db->delete('advertisement', array('advertisement_id' => $advertisement_id));
     }
 
-    function getnewsFromId($news_id){
-        $this->db->select("news_id, news_picture, news_title, news_category, end_date, news_content");
-        $this->db->where('news_id',$news_id);
-        $result = $this->db->get('news')->row();
+    function getadvertisementFromId($advertisement_id){
+        // $this->db->select("news_id, news_picture, news_title, news_category, end_date, news_content");
+        $this->db->where('advertisement_id',$advertisement_id);
+        $result = $this->db->get('advertisement')->row();
         return $result;
     }
 
-    function wherenot($news_id, $news_title, $news_category){
-        $this->db->select("news_id");
-        $this->db->from("news");
-        $this->db->where('news_title', $news_title);
-        $this->db->where('news_category', $news_category);
-        $this->db->where_not_in('news_id', $news_id);
+    function wherenot($advertisement_id, $advertisement_name){
+        $this->db->select("advertisement_id");
+        $this->db->from("advertisement");
+        $this->db->where('advertisement_name', $advertisement_name);
+        $this->db->where_not_in('advertisement_id', $advertisement_id);
         $result = $this->db->get();
         return $result->row();
     }
 
     function update($data){
-        $this->db->where('news_id',$data['news_id']);
-        $result = $this->db->update('news', $data);
+        $this->db->where('advertisement_id',$data['advertisement_id']);
+        $result = $this->db->update('advertisement', $data);
         return $result;
     }
 
-    function updateStatus($news_id,$data){
-        $this->db->where('news_id',$news_id);
-        $result = $this->db->update('news', $data);
+    function updateStatus($advertisement_id,$data){
+        $this->db->where('advertisement_id',$advertisement_id);
+        $result = $this->db->update('advertisement', $data);
         return $result; 
     }
 

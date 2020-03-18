@@ -49,8 +49,8 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '<a href="'+base_url+"admin/news/updatenews/"+data.news_id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
-                            +'<button type="button" class="delete btn btn-danger" onclick="deleteNews('+data.news_id+',\''+data.news_title+'\')"><i class="fa fa-trash"></i></button>';
+                        return '<a href="'+base_url+"admin/advertisement/updateadvertisement/"+data.advertisement_id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
+                            +'<button type="button" class="delete btn btn-danger" onclick="deleteadvertisement('+data.advertisement_id+',\''+data.advertisement_name+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
                 {
@@ -81,7 +81,7 @@
                             active = "";
                         }
                         return '<div>'
-                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.news_id+','+data.status+')">'
+                        +'<button type="button" class="btn btn-sm btn-toggle '+active+'" data-toggle="button" aria-pressed="'+switchVal+'" autocomplete="Off" onclick="updateStatus('+data.advertisement_id+','+data.status+')">'
                         +'<div class="handle"></div>'
                         +'</button>'
                         +'</div>';
@@ -102,24 +102,24 @@
         table.ajax.reload();
     })
 
-     function updateStatus(news_id, status){
-        $.post(base_url+"api/news/changeStatus",{
-            "news_id": news_id,
+     function updateStatus(advertisement_id, status){
+        $.post(base_url+"api/advertisement/changeStatus",{
+            "advertisement_id": advertisement_id,
             "status": status
         },function(data){
             if(data.message == 200){
-                showMessage(data.message,"admin/news/");
+                showMessage(data.message,"admin/advertisement/");
             }else{
                 showMessage(data.message);
             }
         });
     }
-    function deleteNews(news_id, news_title){
+    function deleteadvertisement(advertisement_id, advertisement_name){
         var option = {
-            url: "/news/deleteNews?news_id="+news_id,
-            label: "ลบหัวข้อข่าวสาร",
-            content: "คุณต้องการลบ "+news_title+" ใช่หรือไม่",
-            gotoUrl: "admin/News"
+            url: "/news/deleteadvertisement?advertisement_id="+advertisement_id,
+            label: "ลบโฆษณา",
+            content: "คุณต้องการลบ "+advertisement_name+" ใช่หรือไม่",
+            gotoUrl: "admin/advertisement"
         }
         fnDelete(option);
     }

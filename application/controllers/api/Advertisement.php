@@ -32,7 +32,7 @@ class Advertisement extends BD_Controller {
             $data_check = $this->advertisements->checkadvertisements($advertisement_name);
                 $data = array(
                     "advertisement_id"=> null,
-                    // "advertisement_picture"=> $imageName,
+                    "advertisement_picture"=> $imageName,
                     "advertisement_name"=> $advertisement_name,
                     "status"=> 1,
                     "create_at" => date('Y-m-d H:i:s',time()),
@@ -94,23 +94,23 @@ class Advertisement extends BD_Controller {
             $this->set_response($json_data);
         }
 
-        function deleteNews_get(){
-            $news_id = $this->get('news_id');
-            $data_check = $this->newss->getnewsById($news_id);
+        function deleteadvertisement_get(){
+            $advertisement_id = $this->get('advertisement_id');
+            $data_check = $this->advertisements->getadvertisementById($advertisement_id);
         
             $option = [
                 "data_check_delete" => $data_check,
                 "data" => $news_id,
-                "model" => $this->newss,
-                "image_path" => "public/image/news/" . $data_check->news_picture,
+                "model" => $this->advertisements,
+                "image_path" => "public/image/advertisement/" . $data_check->advertisement_picture,
             ];
     
             $this->set_response(decision_delete($option), REST_Controller::HTTP_OK);
         }
 
-        function getNewsById_post(){
-            $news_id = $this->post('news_id');
-            $data_check = $this->newss->getnewsFromId($news_id);
+        function getadvertisementsById_post(){
+            $advertisement_id = $this->post('advertisement_id');
+            $data_check = $this->advertisements->getadvertisementFromId($advertisement_id);
             
             $option = [
                 "data_check" => $data_check
@@ -119,18 +119,15 @@ class Advertisement extends BD_Controller {
             $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
         }
 
-        function updateNews_post(){
+        function updateadvertisements_post(){
 
-            $config['upload_path'] = 'public/image/news/';
+            $config['upload_path'] = 'public/image/advertisement/';
             $config['allowed_types'] = 'gif|jpg|png';
             $userId = $this->session->userdata['logged_in']['id'];
 
-            $news_id = $this->post("news_id");
-            $news_title = $this->post("news_title");
-            $news_category = $this->post("news_category");
-            $news_content = $this->post("news_content");
-            $end_date = $this->post("end_date_submit");
-            $img = $this->post("news_picture");
+            $advertisement_id = $this->post("advertisement_id");
+            $advertisement_name = $this->post("advertisement_name");
+            $img = $this->post("advertisement_picture");
 
             $success = true;
             $file = null;
@@ -150,16 +147,13 @@ class Advertisement extends BD_Controller {
                 $output["message"] = REST_Controller::MSG_ERROR;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }else{
-                $data_check_update = $this->newss->getnewsById($news_id);
-                $data_check = $this->newss->wherenot($news_id, $news_title, $news_category);
+                $data_check_update = $this->advertisements->getadvertisementById($advertisement_id);
+                $data_check = $this->advertisements->wherenot($advertisement_id, $advertisement_name);
                 $userId = $this->session->userdata['logged_in']['id'];
                 $data = array(
-                    "news_id"=> $news_id,
-                    "news_picture"=> $imageName,
-                    "news_title"=> $news_title,
-                    "news_category"=> $news_category,
-                    "news_content"=> $news_content,
-                    "end_date"=> $end_date,
+                    "advertisement_id"=> $advertisement_id,
+                    "advertisement_picture"=> $imageName,
+                    "advertisement_name"=> $advertisement_name,
                     "status"=> 1,
                     'update_at' => date('Y-m-d H:i:s',time()),
                     'update_by' => $userId
@@ -173,7 +167,7 @@ class Advertisement extends BD_Controller {
                     "data_check_update" => $data_check_update,
                     "data_check" => $data_check,
                     "data" => $data,
-                    "model" => $this->newss,
+                    "model" => $this->advertisements,
                     "image_path" => $file,
                     "old_image_path" => $oldImage,
                 ];
@@ -185,7 +179,7 @@ class Advertisement extends BD_Controller {
         }
 
         function changeStatus_post(){
-            $news_id = $this->post("news_id");
+            $advertisement_id = $this->post("advertisement_id");
             $status = $this->post("status");
             // $userId = $this->session->userdata['logged_in']['id'];
             if($status == 1){
@@ -193,15 +187,15 @@ class Advertisement extends BD_Controller {
             }else{
                 $status = 1;
             }
-            $data_check_update = $this->newss->getnewsById($news_id);
+            $data_check_update = $this->advertisements->getadvertisementById($advertisement_id);
             $data = array(
-                'news_id' => $news_id,
+                'advertisement_id' => $advertisement_id,
                 'status' => $status
             );
             $option = [
                 "data_check_update" => $data_check_update,
                 "data" => $data,
-                "model" => $this->newss
+                "model" => $this->advertisements
             ];
     
             $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);

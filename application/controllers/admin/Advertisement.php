@@ -31,8 +31,8 @@ class Advertisement extends CI_Controller {
 		$this->load->view("admin/advertisement/create/script");
 	}
 
-	public function updateadvertisement($news_id){
-		$data["news_id"] = $news_id;
+	public function updateadvertisement($advertisement_id){
+		$data["advertisement_id"] = $advertisement_id;
 		$this->load->view("admin/layout/head");
 		$this->load->view("admin/layout/left-menu");
 		$this->load->view("admin/layout/header");
