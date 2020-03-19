@@ -116,7 +116,7 @@ var base_url = '<?=base_url()?>';
         if(width < 960){
             $('.banner-bottom').hide();
         }else{
-            // $('.banner-bottom').show();
+            $('.banner-bottom').show();
         }
     });
 
