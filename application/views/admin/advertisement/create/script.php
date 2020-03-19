@@ -26,7 +26,7 @@
             var myform = document.getElementById("create-advertisement");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/advertisement/createadvertisement",
+                url: base_url+"api/publish/createadvertisement",
                 data: formData,
                 processData: false,
                 contentType: false,

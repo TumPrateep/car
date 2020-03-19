@@ -18,7 +18,7 @@ class Advertisements extends CI_Model{
 		return $this->db->insert('advertisement', $data);
     }
 
-    function alladvertisements_count()
+    function alladvertisement_count()
     {   
         $query = $this
                 ->db
@@ -81,6 +81,21 @@ class Advertisements extends CI_Model{
         return $this->db->where('advertisement_id',$advertisement_id)->get("advertisement")->row();
     }
 
+    function getadvertisementByIdForstatusOne($status){
+        $this->db->select("advertisement_id");
+        $this->db->where('status', $status);
+        $result = $this->db->get('advertisement')->row();
+        return $result;
+    }
+
+    function getadvertisementByIdForstatusTwo($advertisement_id, $status){
+        $this->db->select("advertisement_id");
+        $this->db->where('advertisement_id', $advertisement_id);
+        $this->db->where('status', $status);
+        $result = $this->db->get('advertisement')->row();
+        return $result;
+    }
+
     function delete($advertisement_id){
         return $this->db->delete('advertisement', array('advertisement_id' => $advertisement_id));
     }
@@ -88,6 +103,13 @@ class Advertisements extends CI_Model{
     function getadvertisementFromId($advertisement_id){
         // $this->db->select("news_id, news_picture, news_title, news_category, end_date, news_content");
         $this->db->where('advertisement_id',$advertisement_id);
+        $result = $this->db->get('advertisement')->row();
+        return $result;
+    }
+
+    function advertisement_picture(){
+        $this->db->select("advertisement_picture");
+        $this->db->where('status', 1);
         $result = $this->db->get('advertisement')->row();
         return $result;
     }

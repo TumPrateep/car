@@ -14,7 +14,7 @@
 
     var advertisement_id = $("#advertisement_id").val();
 
-    $.post(base_url+"api/advertisement/getadvertisementsById",{
+    $.post(base_url+"api/publish/getadvertisementsById",{
         "advertisement_id": advertisement_id
     },function(data){
         if(data.message!=200){
@@ -34,7 +34,7 @@
             height: 100,
             type: 'image',
             imageState: {
-                src: picturePath+"advertisement/"+advertisement_picture
+                src: picturePath+"publish/"+advertisement_picture
             }
         });
     }
@@ -52,7 +52,7 @@
             var myform = document.getElementById("update-advertisement");
             var formData = new FormData(myform);
             $.ajax({
-                url: base_url+"api/advertisement/updateadvertisements",
+                url: base_url+"api/publish/updateadvertisements",
                 data: formData,
                 processData: false,
                 contentType: false,

@@ -116,10 +116,20 @@ var base_url = '<?=base_url()?>';
         if(width < 960){
             $('.banner-bottom').hide();
         }else{
-            $('.banner-bottom').show();
+
+            $.post(base_url+"service/publish/getadvertisement_picture",{
+            },function(data){
+                
+                result = data.data;
+                $("advertisement_picture_show").css('background-image', 'url(' + imageUrl + 'publish/'+result.advertisement_picture+')');    
+                $('.banner-bottom').show();
+
+            });
+            
         }
     });
-
+    // $('.banner-bottom').show();
+    
     $('.banner-bottom').click(function(){
         $('.banner-bottom').hide();
     });

@@ -24,7 +24,7 @@
             "processing": true,
             "serverSide": true,
             "ajax":{
-                "url": base_url+"api/advertisement/searchadvertisement",
+                "url": base_url+"api/publish/searchadvertisement",
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
@@ -64,7 +64,7 @@
                     "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        var path = pathImage + "advertisement/"+data.advertisement_picture;
+                        var path = pathImage + "publish/"+data.advertisement_picture;
                         var imageHtml = '<img src="'+ path +'" class="rounded" width="100px">';
                         return imageHtml;
                     }
@@ -103,7 +103,7 @@
     })
 
      function updateStatus(advertisement_id, status){
-        $.post(base_url+"api/advertisement/changeStatus",{
+        $.post(base_url+"api/publish/changeStatus",{
             "advertisement_id": advertisement_id,
             "status": status
         },function(data){
@@ -116,7 +116,7 @@
     }
     function deleteadvertisement(advertisement_id, advertisement_name){
         var option = {
-            url: "/news/deleteadvertisement?advertisement_id="+advertisement_id,
+            url: "/publish/deleteadvertisement?advertisement_id="+advertisement_id,
             label: "ลบโฆษณา",
             content: "คุณต้องการลบ "+advertisement_name+" ใช่หรือไม่",
             gotoUrl: "admin/advertisement"
