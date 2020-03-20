@@ -109,23 +109,27 @@ var base_url = '<?=base_url()?>';
         );
     }
 
-    $('.banner-bottom').hide();
+    // $('.banner-bottom').hide();
+    getPublish();
+
+    function getPublish(){
+        $.post(base_url+"service/publish/getadvertisement_picture",function(data){
+            if(data.message == 200){
+                result = data.data;
+                $("#advertisement_picture_show").css('background-image', 'url(' + base_url + 'public/image/publish/'+result.advertisement_picture+')');  
+                $('.banner-bottom').show();
+            }else{
+                $('.banner-bottom').hide();
+            }
+        });
+    }
 
     $(window).resize(function() {
         var width = $(window).width(); // New width
         if(width < 960){
             $('.banner-bottom').hide();
         }else{
-
-            $.post(base_url+"service/publish/getadvertisement_picture",{
-            },function(data){
-                
-                result = data.data;
-                $("advertisement_picture_show").css('background-image', 'url(' + imageUrl + 'publish/'+result.advertisement_picture+')');    
-                $('.banner-bottom').show();
-
-            });
-            
+            $('.banner-bottom').show();
         }
     });
     // $('.banner-bottom').show();

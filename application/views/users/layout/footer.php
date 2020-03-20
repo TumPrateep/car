@@ -169,7 +169,7 @@
         </div>
     </div>
     <!-- <a href="#" target="_blank"> -->
-        <div class="visible-md visible-lg" id="advertisement_picture_show" style="background-image: url(<?=base_url('public/image/banner/banner-mini.png')?>);background-repeat: no-repeat;background-size: contain;background-position: center;height: 120px;width: 57%;position: relative;">
+        <div class="visible-md visible-lg" id="advertisement_picture_show" style="background-repeat: no-repeat;background-size: contain;background-position: center;height: 120px;width: 57%;position: relative;">
           
         </div>
      

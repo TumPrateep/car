@@ -198,10 +198,15 @@ class Publish extends BD_Controller {
             $status = 1;
         }
 
+        $data_check_update = $this->advertisements->getadvertisementByIdForstatusTwo($advertisement_id);
         if($status == 1){
-            $data_check_update = $this->advertisements->getadvertisementByIdForstatusTwo($advertisement_id, $status);
-        }else{
-            $data_check_update = $this->advertisements->getadvertisementByIdForstatusOne($status);
+            $is_check = $this->advertisements->getadvertisementByIdForstatusOne();
+            // var_dump($is_check);
+            if(!empty($is_check)){
+                $data_check_update = null;
+                $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
         }
         $data = array(
             'advertisement_id' => $advertisement_id,

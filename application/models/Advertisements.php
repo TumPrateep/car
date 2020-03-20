@@ -81,17 +81,16 @@ class Advertisements extends CI_Model{
         return $this->db->where('advertisement_id',$advertisement_id)->get("advertisement")->row();
     }
 
-    function getadvertisementByIdForstatusOne($status){
+    function getadvertisementByIdForstatusOne(){
         $this->db->select("advertisement_id");
-        $this->db->where('status', $status);
+        $this->db->where('status', 1);
         $result = $this->db->get('advertisement')->row();
         return $result;
     }
 
-    function getadvertisementByIdForstatusTwo($advertisement_id, $status){
+    function getadvertisementByIdForstatusTwo($advertisement_id){
         $this->db->select("advertisement_id");
         $this->db->where('advertisement_id', $advertisement_id);
-        $this->db->where('status', $status);
         $result = $this->db->get('advertisement')->row();
         return $result;
     }
