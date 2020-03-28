@@ -74,7 +74,7 @@
         function render_service_option(data){
             let html = '';
             if(data.service_option1){
-                html += '- ตั้งค่าศูนย์ล้อฟรี';
+                html += '- ตั้งศูนย์ล้อฟรี';
                 if(data.service_option1_price){
                     html += 'มูลค่า '+data.service_option1_price+' บาท';
                 }

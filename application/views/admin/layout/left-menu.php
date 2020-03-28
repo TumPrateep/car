@@ -164,7 +164,7 @@
                         <li>
                             <a class="nav-link-collapse text-white collapsed" data-toggle="collapse"
                                 href="#filter">
-                                <i class="fa fa-tint"></i> ไส่กรอง</a>
+                                <i class="fa fa-tint"></i> ไส้กรอง</a>
                             <ul class="sidenav-third-level collapse" id="filter">
                                 <li class="<?=activate_menu('filter');?>">
                                     <a class="nav-link text-white" href="<?=base_url("admin/filter")?>">
@@ -318,6 +318,22 @@
                             <a class="nav-link text-white" href="<?=base_url("admin/lubricatorgearlimit/garagegroup")?>">
                                 <i class="fa fa-life-ring"></i>
                                 <span class="nav-link-text">น้ำมันเกียร์</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
+                        href="#credit-charge" data-parent="#exampleAccordion">
+                        <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                        <span class="nav-link-text">กำหนดเงินบัตรเครดิต</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="credit-charge">
+                        <li class="<?=activate_menu('credit/tirescharge/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/credit/tirescharge")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">ยางรถ</span>
                             </a>
                         </li>
                     </ul>

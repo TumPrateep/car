@@ -3867,3 +3867,7 @@ a.text-orange {
 .pricing {
     min-height: 350px;
 }
+
+.page-item.active .page-link {
+    z-index: auto;
+}

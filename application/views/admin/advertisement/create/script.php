@@ -43,8 +43,8 @@
     }
     $('.image-editor').cropit({
         allowDragNDrop: false,
-        width: 600,
-        height: 100,
+        width: 1000,
+        height: 115,
         type: 'image/jpeg'
     });
 </script>

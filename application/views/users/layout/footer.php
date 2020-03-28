@@ -162,7 +162,7 @@
     </div>
 </div>
 
-<div class="banner-bottom" style="bottom: 1%; left: 250px; width: 100%;">
+<div class="banner-bottom" style="bottom: 1%; left: 24%; width: 100%;">
     <div style="width: 100%;float: left;height: 20px;border:none;outline: none;cursor:pointer;" role="button" tabindex="0">
         <div style="background-color: #fafafa;color: #ff6600;display: inline-block;padding: 3px 8px;border-radius: 56%;border:1px solid #000;font-size: 12px;position: absolute;z-index: 70;left: 56%;font-weight: 900;margin-top: 10px;">
                  x 

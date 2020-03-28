@@ -30,8 +30,8 @@
     function setadvertisement(advertisement_picture){
         $('.image-editor').cropit({
             allowDragNDrop: false,
-            width: 600,
-            height: 100,
+            width: 1000,
+            height: 115,
             type: 'image',
             imageState: {
                 src: picturePath+"publish/"+advertisement_picture
