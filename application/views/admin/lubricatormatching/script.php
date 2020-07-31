@@ -36,8 +36,7 @@
             "columns": [
                 null,
                 null,
-                { "data": "machine_type" },
-                { "data": "lubricator_brandName" },
+                // { "data": "lubricator_brandName" },
                 null,
                 null
             ],
@@ -45,8 +44,9 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0]
-                },{
+                    "targets": [0,2]
+                },
+                {
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
@@ -57,16 +57,35 @@
                     "targets": 1,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return data.brandName+'<br><span class="badge badge-info">'+data.model_name+'</span>';
+                        return data.brandName+'<br><span class="badge badge-info">'+data.modelName+'</span>';
+                    }
+                },
+                {
+                    "targets": 2,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return "ปี"+" "+data.yearStart+"-"+data.yearEnd+" <br>"+data.detail;
+                    }
+                },
+                {
+                    "targets": 3,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        let str = '';
+                        if(data.lubricator_gear){
+                            str = lubricatorLib[data.lubricator_gear]
+                        }
+                        return str;
                     }
                 },
                 {
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return data.lubricatorName+'<br><span class="badge badge-info">'+data.lubricator_number+'</span> <span class="badge badge-warning">'+data.capacity+' ลิตร</span>';
+                        return data.lubricator_number;
                     }
-                },{
+                },
+                {
                     "targets": 5,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
@@ -91,8 +110,8 @@
                         return '<button type="button" class="delete btn btn-danger" onclick="deleteLubricatorMatching('+data.lubricator_matching_id+',\''+data.lubricatorName+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
-                {"className": "dt-center", "targets": [0,1,2,3,5,6]},
-                {"className": "dt-head-center", "targets": [4]}
+                {"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
+                {"className": "dt-head-center", "targets": []}
             ]	
         });
 

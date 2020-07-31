@@ -55,9 +55,24 @@ class Machines extends CI_Model{
                                                                                                                                                                                                 
     }
 
-    function getAllMachine(){   
+    function getAll(){   
         $this->db->select('machineId,machine_type');
         $this->db->where('status','1');
+        return $this->db->get('machine')->result();
+    }
+
+    function getAllMachine($machineId = null){   
+        $this->db->select('machineId,machine_type');
+        $this->db->where('status','1');
+        if(!empty($machineId)){
+            if($machineId == 1){
+                $this->db->where_in('machineId',[1,2]);
+            }else if($machineId == 2){
+                $this->db->where_in('machineId',[4]);
+            }else if($machineId == 3){
+                $this->db->where_in('machineId',[3]);
+            }
+        }
         return $this->db->get('machine')->result();
     }
     

@@ -15,8 +15,9 @@ class Lubricatorchange extends BD_Controller {
         $lubricator_price = $this->post('lubricator_price');
         $userId = $this->session->userdata['logged_in']['id'];
         $garageId = $this->session->userdata['logged_in']['garageId'];
+        $machine_id = $this->post('machine_id');
 
-        $data_check = $this->lubricatorchangegarages->data_check_create($garageId);
+        $data_check = $this->lubricatorchangegarages->data_check_create($garageId, $machine_id);
         $data = array(
             'lubricator_change_garageId' => null,
             'lubricator_price'  => $lubricator_price,
@@ -24,7 +25,8 @@ class Lubricatorchange extends BD_Controller {
             'garageId' => $garageId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
-            'activeFlag' => 1
+            'activeFlag' => 1,
+            'machine_id' => $machine_id
         );
         $option = [
             "data_check" => $data_check,
@@ -52,13 +54,15 @@ class Lubricatorchange extends BD_Controller {
         $lubricator_price = $this->post('lubricator_price');
         $userId = $this->session->userdata['logged_in']['id'];
         $garageId = $this->session->userdata['logged_in']['garageId'];
+        $machine_id = $this->post('machine_id');
 
         $data_check_update = $this->lubricatorchangegarages->getLubricatorChangeById($lubricator_change_garageId,$garageId);
-        $data_check = $this->lubricatorchangegarages->data_check_update($lubricator_change_garageId,$garageId);
+        $data_check = $this->lubricatorchangegarages->data_check_update($lubricator_change_garageId,$garageId, $machine_id);
 
         $data = array(
             'lubricator_change_garageId' => $lubricator_change_garageId,
             'lubricator_price'  => $lubricator_price,
+            'machine_id' => $machine_id,
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time())
         );
@@ -93,7 +97,8 @@ class Lubricatorchange extends BD_Controller {
     function searchLubricatorChange_post(){
         $columns = array( 
             0 => null,
-            1 => 'lubricator_change_garageId'
+            1 => null,
+            2 => 'lubricator_change_garageId'
 
         );
         $garageId = $this->session->userdata['logged_in']['garageId'];
@@ -121,6 +126,7 @@ class Lubricatorchange extends BD_Controller {
                 $nestedData['lubricator_change_garageId'] = $post->lubricator_change_garageId;
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['lubricator_price'] = $post->lubricator_price;
+                $nestedData['machine_type'] = $post->machine_type;
                 $nestedData['status'] = $post->status;
                 $data[] = $nestedData;
             }

@@ -175,7 +175,7 @@
                             </ul>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <a class="nav-link-collapse text-white collapsed" data-toggle="collapse"
                                 href="#lubricatorgear">
                                 <i class="fa fa-tint"></i> น้ำมันเกียร์</a>
@@ -193,7 +193,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li>
                             <a class="nav-link-collapse text-white collapsed" data-toggle="collapse"
@@ -232,12 +232,6 @@
                         <span class="nav-link-text">ข้อมูลอะไหล่ตามข้อมูลรถยนต์</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="matchingProduct">
-                        <li class="<?=activate_menu('spareundercarriesdata');?>">
-                            <a class="nav-link text-white" href="<?=base_url("admin/spareundercarriesdata")?>">
-                                <i class="fa fa-car"></i>
-                                <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
-                            </a>
-                        </li>
                         <li class="<?=activate_menu('lubricatormatching');?>">
                             <a class="nav-link text-white" href="<?=base_url("admin/lubricatormatching")?>">
                                 <i class="fa fa-tint"></i>

@@ -5,6 +5,7 @@
       if($option["data_check"] == null){
         $result = $option["model"]->insert($option["data"]);
         if($result){
+          $output['data'] = $result;
           $output["message"] = REST_Controller::MSG_SUCCESS;
         }else{
           $output["message"] = REST_Controller::MSG_NOT_CREATE;

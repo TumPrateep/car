@@ -16,7 +16,7 @@
                 <!-- Start Page Content -->
                 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                         <div class="card">
                             <div class="card-title">
                                 <h4>แก้ไขข้อมูลราคาเปลี่ยนน้ำมันเครื่อง</h4>
@@ -25,12 +25,20 @@
                                 <div class="basic-form">
                                     <form id="submit">
                                         <input type="hidden" id="lubricator_change_garageId" name="lubricator_change_garageId" value="<?=$lubricator_change_garageId ?>">
-                                        <div class="form-group">
-                                            <label>ราคาเปลี่ยนน้ำมันเครื่อง (บาท)</label><span class="error">*</span>
-                                            <input type="number" class="form-control input-default "id="lubricator_price" name="lubricator_price" placeholder="ราคาค่าบริการ" min=0 >
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-info ">บันทึก</button>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>ชนิดน้ำมันเครื่อง/เกียร์</label> <span class="error">*</span>
+                                                <select class="form-control" name="machine_id" id="machine_id"></select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>ราคาเปลี่ยนน้ำมันเครื่อง (บาท)</label><span class="error">*</span>
+                                                    <input type="number" class="form-control input-default " id="lubricator_price" name="lubricator_price" placeholder="ราคาค่าบริการ" min=0 >
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-info ">บันทึก</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>

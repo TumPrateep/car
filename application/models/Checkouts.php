@@ -27,6 +27,8 @@ class Checkouts extends CI_Model
             $this->db->trans_rollback();
             return false;
         } else {
+            $message = "หมายเลขสั่งซื้อ: ".$orderId."\nผู้สั่งซื้อ: ".$data['order']['userId']."\nสินค้าที่สั่ง: ยางรถยนต์".$data['orderdetail']['productId']."\nจำนวน: ".$data['orderdetail']['quantity']."\nราคารวม: ".$data["payments"]['money']."\nสถานะ: ".$data["payments"]['status'];
+            send_line_message($message);
             $this->db->trans_commit();
             return true;
         }

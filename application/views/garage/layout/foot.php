@@ -28,8 +28,13 @@
     <script src='<?=base_url("/public/js/locale-all.js") ?>'></script>
 
     <script src="<?=base_url("/public/js/jquery-dateformat.min.js") ?>"></script>
-    
+    <script src="<?=base_url("/public/js/jquery.cookie.js")?>"></script>
 
+    <script>
+        localStorage.token = $.cookie('token');
+        localStorage.userId = $.cookie('userId');
+    </script>
+    
     <script>
         function substr(str) {
             // var str = null;

@@ -56,31 +56,64 @@ img.exbrand {
                                 </div>
                             </div>
                             <br>
+                            <div>
+                                <h5>ช่องทางการชำระเงิน</h5>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <img src="<?=base_url('public/image/payment.png')?>" class="img-fluid">
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="checkbox" name="next" id="next" value="next"> ชำระเงินภายหลัง
+                                    <div class="form-check">
+                                        <input class="form-check-input next" type="radio" name="next" value="2">
+                                        <label class="form-check-label">
+                                            จ่ายผ่านบัตร Debit/Credit
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input next" type="radio" name="next" value="3">
+                                        <label class="form-check-label">
+                                            โอนเงินผ่านบัญชีธนาคาร
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input next" type="radio" name="next" value="1">
+                                        <label class="form-check-label">
+                                            ชำระเงินภายหลัง
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label id="next-error" class="error" for="next"></label>
                                 </div>
                             </div>
                             <br>
-                            <div class="row" id="bank">
+                            <div class="row" id="bank" style="display: none;">
                                 <div class="col-md-12 card">
                                     <div class="row card-body">
                                         <div class="col-3 text-center">
-                                            <img src="https://i.pinimg.com/474x/00/24/29/002429e4b28532ce5273cafa10be61c2.jpg"
+                                            <img src="<?=base_url('public/images/logo/scb.png')?>"
                                                 class="logobank" alt="">
                                         </div>
                                         <div class="col-1">
                                         </div>
                                         <div class="col-8">
-                                            <span>ธนาคารกสิกรไทย</span><br>
-                                            <span>ชื่อ Carjaidee สาขา -</span><br>
-                                            <span>-</span>
+                                            <strong>ธนาคารไทยพาณิชย์</strong><br>
+                                            <span><strong>ชื่อบัญชี</strong> นายพล ออโต้ เทรดดิ้งโดย นาย สาทร ช่วยสง <br><strong>สาขา</strong> โรบินสัน นครศรีธรรมราช</span><br>
+                                            <span><strong>เลขที่บัญชี</strong> 866-235705-3</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <br>
-                            <div class="row" id="payment">
+                            <div class="row" id="payment" style="display: none;">
                                 <div class="col-md-12 card">
                                     <div class="card-body">
                                         <h5>รายละเอียดการสั่งสินค้า</h5>

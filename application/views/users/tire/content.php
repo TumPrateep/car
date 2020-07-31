@@ -165,13 +165,6 @@ div.brand img {
                 </div>
             </div>
             <br>
-            <!-- <div class="row">
-                <a href="<?=base_url("search/tire/resultgarage")?>" class="btn btn-transparent-md">
-                    ราคาดีที่สุด <br><br>
-                    <div class="btn btn-dark"> <i class="fa fa-shopping-cart"></i> xxxxx ฿ </div>
-                    <br><br> ค้นหาผู้ให้บริการ / สั่งสินค้า
-                </a>
-            </div>             -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">

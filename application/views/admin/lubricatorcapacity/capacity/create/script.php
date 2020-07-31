@@ -23,7 +23,7 @@
         var machineId = $('#machineId').val();
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/Lubricatorcarpacity/createcarpacity",data,
+            $.post(base_url+"api/Lubricatorcapacity/createcarpacity",data,
             function(data){
                 if(data.message == 200){
                     showMessage(data.message,"admin/lubricatorcapacity/capacity/"+machineId);//capacity/"+data.machineId 

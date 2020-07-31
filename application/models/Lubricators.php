@@ -152,9 +152,34 @@ class Lubricators extends CI_Model{
         $this->db->join("lubricator_number", "lubricator_number.lubricator_numberId = lubricator.lubricator_numberId");
         $this->db->join('lubricator_api', 'lubricator.api_id = lubricator_api.apiId', 'left');
         $this->db->join('lubricator_capacity', 'lubricator.capacity_id = lubricator_capacity.capacity_id', 'left');
+
         $this->db->where("lubricator.lubricator_brandId", $lubricator_brandId);
         $this->db->where('lubricator.status','1');
         $this->db->where("lubricator_number.lubricator_gear", $lubricator_gear);
+
+        $this->db->order_by("lubricator.lubricatorName","ASC");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function getAllLubricatorByType($lubricator_brandId, $lubricator_gear, $lubricator_type=null){
+        $this->db->select("lubricator.lubricatorId,lubricator.lubricatorName,lubricator_capacity.capacity, lubricator_number.lubricator_number,lubricator_api.api,lubricator_type.lubricator_typeName,lubricator_type.lubricator_typeSize");
+        $this->db->from("lubricator");
+        $this->db->join("lubricator_number", "lubricator_number.lubricator_numberId = lubricator.lubricator_numberId");
+        $this->db->join('lubricator_api', 'lubricator.api_id = lubricator_api.apiId', 'left');
+        $this->db->join('lubricator_capacity', 'lubricator.capacity_id = lubricator_capacity.capacity_id', 'left');
+        $this->db->join("lubricator_type", "lubricator_number.lubricator_typeId = lubricator_type.lubricator_typeId", "left");
+
+        $this->db->where("lubricator.lubricator_brandId", $lubricator_brandId);
+        $this->db->where('lubricator.status','1');
+        $this->db->where("lubricator_number.lubricator_gear", $lubricator_gear);
+
+        if(!empty($lubricator_type)){
+            $this->db->where('lubricator_type.lubricator_typeId', $lubricator_type);
+        }else{
+            $this->db->where('lubricator_type.lubricator_typeId IS NULL', null, false);
+        }
+
         $this->db->order_by("lubricator.lubricatorName","ASC");
         $query = $this->db->get();
         return $query->result();

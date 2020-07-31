@@ -1,5 +1,6 @@
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-<script>
+<script type="module">
+// import Cookies from 'js-cookie'
 $(document).ready(function() {
     var errorMessage = $("#error-message");
     var login = $("#login");
@@ -95,6 +96,8 @@ $(document).ready(function() {
                     if (message == "2001") {
                         localStorage.token = data.token;
                         localStorage.userId = data.userId;
+                        $.cookie('token', data.token, { expires: 365 })
+                        $.cookie('userId', data.userId, { expires: 365 })
                         // synCartData();
                         window.location = base_url + "role";
                     } else if (message == "2002") {

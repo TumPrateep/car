@@ -20,11 +20,15 @@
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form id="submit">
+                  <input type="hidden" name="groupId" id="groupId" value="<?=$groupId?>">
                   <div class="card-body black bg-light">
                     <div class="form-group row">
                       <div class="col-md-4">
+                        <label>ชนิดน้ำมันเครื่อง/เกียร์</label> <span class="error">*</span>
+                          <select class="form-control" name="machine_id" id="machine_id"></select>
+                      </div>
+                      <div class="col-md-4">
                           <label>ราคาค่าบริการ</label> <span class="error">*</span>
-                          <input type="hidden" name="groupId" id="groupId" value="<?=$groupId?>">
                           <input type="number" class="form-control" placeholder="ราคาค่าบริการ" name="lubricator_price" id="lubricator_price">
                       </div>
                     </div>

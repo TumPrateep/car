@@ -69,13 +69,36 @@
     var lubricator_brand = $("#lubricator_brandId");
     var lubricator = $("#lubricatorId");
     var lubricator_gear = $("#lubricator_gear");
+    var lubricator_typeId = $('#lubricator_typeId');
 
     init();
 
     function init(){
         getLubracatorBrand();
+        getLubracatorType();
         // initpicture();
     }
+
+    function getLubracatorType(){
+        lubricator_typeId.html('<option></option>')
+        $.get(base_url+"apicaraccessories/lubricatorbrand/getAllLubricatorType",{},
+            function(data){
+                var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    lubricator_typeId.append('<option value="' + value.lubricator_typeId + '">' + value.lubricator_typeName + ' ('+value.lubricator_typeSize+' กม.)</option>');
+                });
+                lubricator_typeId.trigger("chosen:updated");
+            }
+        );
+    }
+
+    lubricator_typeId.change(function(){
+        lubricator_brand.val(null);
+        lubricator_brand.trigger('chosen:updated');
+        lubricator.val(null);
+        lubricator.trigger('chosen:updated');
+        // lubricator.html('<option value="">เลือกรุ่นน้ำมันเครื่อง</option>');
+    });
 
     function getLubracatorBrand(){
         lubricator_brand.html('<option></option>')
@@ -91,6 +114,14 @@
     }
 
     lubricator_gear.change(function(){
+        var isGear = lubricator_gear.val() > 1;
+        if(isGear){
+            $('#box-lubricator_typeId').hide();
+            lubricator_typeId.val(null);
+            lubricator_typeId.trigger('chosen:updated');
+        }else{
+            $('#box-lubricator_typeId').show();
+        }
         lubricator_brand.val(null);
         lubricator_brand.trigger('chosen:updated');
         lubricator.val(null);
@@ -102,11 +133,12 @@
         lubricator.html('<option></option>');
         $.get(base_url+"apicaraccessories/lubricator/getAllLubricator",{
             lubricator_brandId: $(this).val(),
-            lubricator_gear: lubricator_gear.val()
+            lubricator_gear: lubricator_gear.val(),
+            lubricator_type: lubricator_typeId.val()
         },function(data){
                 var lubricatorData = data.data;
                 $.each( lubricatorData, function( key, value ) {
-                    lubricator.append('<option value="' + value.lubricatorId + '">' + value.lubricatorName + ((value.capacity)?' | '+value.capacity+' ลิตร': '') + ((value.lubricator_number)?' | '+value.lubricator_number:'') + '</option>').trigger("chosen:updated");
+                    lubricator.append('<option value="' + value.lubricatorId + '">' + value.lubricatorName + ((value.capacity)?' | '+value.capacity+' ลิตร': '') + ((value.lubricator_number)?' | '+value.lubricator_number:'') + ((value.lubricator_typeName)?' | '+value.lubricator_typeName:'') + ' </option>').trigger("chosen:updated");
                 });
                 lubricator.trigger('chosen:updated');
             }

@@ -112,7 +112,7 @@ class Lubricatortypes extends CI_Model{
     }
 
     function getAllLubricatorTypes(){
-        $this->db->select("lubricator_typeId,lubricator_typeName");
+        $this->db->select("lubricator_typeId,lubricator_typeName,lubricator_typeSize");
         $result = $this->db->get("lubricator_type")->result();
         return $result;
     }

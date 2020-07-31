@@ -15,10 +15,24 @@
   <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js")?>"></script>
   <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js")?>"></script>
   <script src="<?=base_url("/public/js/currency.min.js")?>"></script>
+  <script src="<?=base_url("/public/js/jquery.cookie.js")?>"></script>
 
-  <script>
-var base_url = '<?=base_url()?>';
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162027611-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162027611-1');
+</script>
+
+
+  <script type="module">
+    localStorage.token = $.cookie('token');
+    localStorage.userId = $.cookie('userId');
   </script>
+  <script>var base_url = '<?=base_url()?>';</script>
   <script src="<?=base_url("/public/themes/user/js/setup.js")?>?<?php echo time(); ?>"></script>
   <script>
     function distance(lat1, lon1, lat2, lon2, unit) {
@@ -117,19 +131,21 @@ var base_url = '<?=base_url()?>';
             if(data.message == 200){
                 result = data.data;
                 $("#advertisement_picture_show").css('background-image', 'url(' + base_url + 'public/image/publish/'+result.advertisement_picture+')');  
-                $('.banner-bottom').show();
+                // $('.banner-bottom').show();
             }else{
                 $('.banner-bottom').hide();
             }
         });
     }
 
+    $('.banner-bottom').hide();
+
     $(window).resize(function() {
         var width = $(window).width(); // New width
         if(width < 960){
             $('.banner-bottom').hide();
         }else{
-            $('.banner-bottom').show();
+            // $('.banner-bottom').show();
         }
     });
     // $('.banner-bottom').show();

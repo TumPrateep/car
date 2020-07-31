@@ -39,9 +39,10 @@
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
                                         <thead>
-                                        <th><i class="fa fa-sort"></i>  ลำดับ</th>
-                                        <th><i class="fa fa-toggle-left"></i>  ค่าบริการ (บาท)</th>
-                                        <th></th>
+                                            <th><i class="fa fa-sort"></i>  ลำดับ</th>
+                                            <th><i class="fa fa-sort"></i>  ชนิดน้ำมันเครื่อง/เกียร์</th>
+                                            <th><i class="fa fa-toggle-left"></i>  ค่าบริการ (บาท)</th>
+                                            <th></th>
                                         </thead>	
                                     </table>
                                 </div>

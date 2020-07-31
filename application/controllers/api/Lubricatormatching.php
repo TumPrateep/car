@@ -13,10 +13,10 @@ class Lubricatormatching extends BD_Controller {
     function search_post(){
         $columns = array( 
             0 => null,
-            1 => 'lubricator_matching.brand_id', 
-            2 => 'lubricator_matching.machine_id',
-            3 => 'lubricator_brandName',
-            4 => 'lubricatorName',
+            1 => 'brand.brandName', 
+            2 => null,
+            3 => 'lubricator_matching.lubricator_gear',
+            4 => null,
             5 => 'lubricator_matching.status'
         );
         $limit = $this->post('length');
@@ -57,19 +57,18 @@ class Lubricatormatching extends BD_Controller {
     
     function create_post(){
         $brand_id = $this->post("brand_id");
-        $model_name = $this->post("model_name");
+        $model_id = $this->post("model_id");
         $lubricator_gear = $this->post("lubricator_gear");
-        $machine_id = $this->post("machine_id");
-        $lubricator_brand_id = $this->post("lubricator_brand_id");
-        $lubricator_id = $this->post("lubricator");
+        $detail = $this->post("detail");
+        $lubricator_number = $this->post("lubricator_number");
 
         $data['model'] = [
             "brand_id" => $brand_id,
-            "model_name" => $model_name,
+            "model_id" => $model_id,
             "lubricator_gear" => $lubricator_gear,
-            "machine_id" => $machine_id
+            "detail" => $detail
         ];
-        $data['lubricator_id'] = $lubricator_id;
+        $data['lubricator_number'] = $lubricator_number;
 
         $option = [
             "data_check" => null,

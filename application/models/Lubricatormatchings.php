@@ -13,16 +13,14 @@ class Lubricatormatchings extends CI_Model {
 
     function allLubricatorMatching($limit,$start,$col,$dir)
     {  
-        $this->db->select('lubricator_matching.lubricator_matching_id, lubricator_matching.status, lubricator_matching.model_name, machine.machine_type, 
-        lubricator_brand.lubricator_brandName, lubricator.lubricatorName, lubricator_number.lubricator_number, lubricator_capacity.capacity, brand.brandName'); 
+        $this->db->select('lubricator_matching.lubricator_matching_id, lubricator_matching.status, lubricator_matching.lubricator_gear,
+        lubricator_number.lubricator_number, brand.brandName, model.modelName,model.yearStart, model.yearEnd, model.detail'); 
         $this->db->from('lubricator_matching');
         $this->db->join('brand', 'lubricator_matching.brand_id = brand.brandId');
-        $this->db->join('lubricator', 'lubricator_matching.lubricator_id = lubricator.lubricatorId');
-        $this->db->join('lubricator_number', 'lubricator_number.lubricator_numberId = lubricator.lubricator_numberId');
-        $this->db->join('machine', 'lubricator_matching.machine_id = machine.machineId');
-        $this->db->join('lubricator_brand','lubricator_brand.lubricator_brandId = lubricator.lubricator_brandId');
-        $this->db->join('lubricator_capacity', 'lubricator.capacity_id = lubricator_capacity.capacity_id', 'left');
-
+        $this->db->join('model', 'lubricator_matching.model_id = model.modelId');
+        // $this->db->join('modelofcar', 'lubricator_matching.detail = modelofcar.modelofcarId');
+        $this->db->join('lubricator_number', 'lubricator_matching.lubricator_number = lubricator_number.lubricator_numberId');
+       
         $query = $this->db->limit($limit,$start)
                 ->order_by($col,$dir)
                 ->get();
@@ -34,19 +32,19 @@ class Lubricatormatchings extends CI_Model {
         }  
     }
 
-    function data_check_create($model_name, $lubricator_id){
-        $this->db->where("model_name", $model_name);
-        $this->db->where("lubricator_id", $lubricator_id);
+    function data_check_create($detail, $lubricator_number){
+        $this->db->where("detail", $detail);
+        $this->db->where("lubricator_number", $lubricator_number);
         $query = $this->db->get("lubricator_matching")->row();
         return ($query == null)?false:true;
     }
 
     function insert($data){
         $this->db->trans_begin();
-            foreach ($data['lubricator_id'] as $key => $lubricator_id) {
+            foreach ($data['lubricator_number'] as $key => $lubricator_number) {
                 $model = $data['model'];
-                $model['lubricator_id'] = $lubricator_id;
-                $isDuplicate = $this->data_check_create($model['model_name'], $lubricator_id);
+                $model['lubricator_number'] = $lubricator_number;
+                $isDuplicate = $this->data_check_create($model['detail'], $lubricator_number);
                 if(!$isDuplicate){
                     $this->db->insert('lubricator_matching', $model);
                 }

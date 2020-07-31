@@ -40,7 +40,7 @@
                 null,
                 {'data': 'lubricator_brandName'},
                 null,
-                {'data': 'machine_type'},
+                null,
                 null,
                 null
             ],
@@ -69,6 +69,17 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return  data.lubricatorName + ((data.capacity)?' <i class="fa fa-circle-o" aria-hidden="true"></i> '+data.capacity+' ลิตร': '') + ((data.lubricator_number)?' <i class="fa fa-circle-o" aria-hidden="true"></i> '+data.lubricator_number:'');
+                    }
+                },
+                {
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        var txt = '-';
+                        if(data.machine_id < 3){
+                            txt = data.machine_type;
+                        }
+                        return  txt;
                     }
                 },
                 {

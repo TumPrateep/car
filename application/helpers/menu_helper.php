@@ -40,5 +40,14 @@ if(!function_exists('active_link')) {
 
   }
 
+  function get_gear($gear){
+    $strGear = ['','น้ำมันเครื่อง','น้ำมันเกียร์ธรรมดา','น้ำมันเกียร์ออโต'];
+    if(!empty($gear)){
+      return $strGear[$gear];
+    }else{
+      return '';
+    }
+  }
+
 
 }?>

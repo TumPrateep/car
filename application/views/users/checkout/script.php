@@ -26,8 +26,8 @@ $(document).ready(function() {
         editable: true
     });
 
-    $("#next").click(function() {
-        if ($(this).prop("checked")) {
+    $(".next").click(function() {
+        if ($(this).val() != 3) {
             $("#payment, #bank").fadeOut("slow");
         } else {
             $("#payment, #bank").fadeIn("slow");
@@ -210,6 +210,9 @@ $(document).ready(function() {
             },
             car_profile: {
                 required: true
+            },
+            next: {
+                required: true
             }
         },
         messages: {
@@ -235,6 +238,9 @@ $(document).ready(function() {
             },
             car_profile: {
                 required: "เลือกรถเข้าใช้บริการ"
+            },
+            next: {
+                required: "เลือกรูปแบบการชำระเงิน"
             }
         }
     });
@@ -258,21 +264,39 @@ $(document).ready(function() {
                 formData.append(i, v);
                 console.log(i, v);
             });
-            $.ajax({
-                url: base_url + "service/checkout/order",
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                success: function(data) {
-                    if (data.message == 200) {
-                        showMessage(data.message, "user/order");
-                    } else {
-                        showMessage(data.message);
+            let payment = $('.next:checked').val();
+            if(payment == 2){
+                $.ajax({
+                    url: base_url + "service/checkout/order_credit",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    success: function(data) {
+                        if (data.message == 200) {
+                            window.location = data.url;
+                        } else {
+                            showMessage(data.message);
+                        }                        
                     }
-                    // console.log(data);
-                }
-            });
+                });
+            }else{
+                $.ajax({
+                    url: base_url + "service/checkout/order",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    success: function(data) {
+                        if (data.message == 200) {
+                            showMessage(data.message, "user/order");
+                        } else {
+                            showMessage(data.message);
+                        }
+                        // console.log(data);
+                    }
+                });
+            }
         }
     });
 

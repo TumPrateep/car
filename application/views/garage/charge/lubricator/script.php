@@ -34,6 +34,7 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
+                { "data": "machine_type" },
                 { "data": "lubricator_price" },
                 null
             ],
@@ -41,7 +42,7 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,2]
+                    "targets": [0,3]
                 },{
                     "targets": 0,
                     "data": null,
@@ -50,14 +51,14 @@
                     }
                 },
                 {
-                    "targets": 2,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="updatelubricator/' +data.lubricator_change_garageId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteLubricatorChange('+data.lubricator_change_garageId+')"><i class="fa fa-trash"></i></button>';
                     }
                 },
-                {"className": "dt-center", "targets": [0,1,2]}
+                {"className": "dt-center", "targets": [0,1,2,3]}
             ]	 
     });
 

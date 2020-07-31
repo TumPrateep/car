@@ -15,6 +15,17 @@ class Prices extends CI_Model
         return $query->row();
     }
 
+    public function getPriceFromGarageByGarageAndRimId($rimId, $garageId)
+    {
+        $this->db->from("tire_change_garage");
+        $this->db->where("rimId", $rimId);
+        $this->db->where("garageId", $garageId);
+        $this->db->order_by('tire_price', 'asc');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
     public function getPriceFromCarjaideeByRimId($rimId)
     {
         $this->db->from("tire_change");

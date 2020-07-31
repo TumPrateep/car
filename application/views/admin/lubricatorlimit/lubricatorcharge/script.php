@@ -37,6 +37,7 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
+                { "data" : "machine_type"},
                 { "data": "price" },
                 null
             ],
@@ -51,14 +52,14 @@
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
-                },{ "targets": 1,
+                },{ "targets": 2,
                     "data": "price",
                     "render": function ( data, type, full, meta ) {
                         return currency(data, { useVedic: true }).format();
                     }             
                 },
                 {
-                    "targets": 2,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         data.groupId = $("#groupId").val()
@@ -66,12 +67,13 @@
                             +'<button type="button" class="delete btn btn-danger" onclick="deletelubricatorchange('+data.groupId+',\''+data.price+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
-                { "orderable": false, "targets": 0 },
+                { "orderable": false, "targets": [0,1,3] },
                 // {"className": "dt-head-center", "targets": [2]},
                 {"className": "dt-center", "targets": [0,1,2]},
                 { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 1 },
-                { "width": "20%", "targets": 2 },
+                { "width": "30%", "targets": 1 },
+                { "width": "30%", "targets": 2 },
+                { "width": "20%", "targets": 3 },
             ]	 
     });
 

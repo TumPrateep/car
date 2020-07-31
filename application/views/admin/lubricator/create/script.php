@@ -47,7 +47,7 @@
 
     function init(){
         getAllLubricatorNumber();
-        getAllMachine();
+        getAllMachine(1);
     }
 
     function getAllLubricatorNumber(){
@@ -68,27 +68,31 @@
     lubricator_gear.change(function(){
         var lubricator_gear_id = $(this).val();
         var lubricator_brandId = $("#lubricator_brandId").val();
+        api.html('<option value="">เลือก API</option>');
+        capacity.html('<option value="">เลือกความจุ</option>');
         getAllLubricatorNumber();
+        getAllMachine(lubricator_gear_id);
         triggerLubricatorDetail(lubricator_gear_id);
     });
 
     function triggerLubricatorDetail(lubricator_gear_id){
-        if(lubricator_gear_id != 1){
-            machine.val('');
-            machine.prop('disabled', true);
-            capacity.prop('disabled', true);
-            capacity.val('');
-            api.prop('disabled', true);
-            api.val('');
-        }else{
-            machine.prop('disabled', false);
-            capacity.prop('disabled', false);
-            api.prop('disabled', false);
-        }
+        // if(lubricator_gear_id != 1){
+        //     machine.val('');
+        //     machine.prop('disabled', true);
+        //     capacity.prop('disabled', true);
+        //     capacity.val('');
+        //     api.prop('disabled', true);
+        //     api.val('');
+        // }else{
+        //     machine.prop('disabled', false);
+        //     capacity.prop('disabled', false);
+        //     api.prop('disabled', false);
+        // }
     }
 
-    function getAllMachine(){
-        $.post(base_url+"api/Machine/getAllmachine",{},
+    function getAllMachine(machineId){
+        machine.html('<option value="">เลือกประเภทเครื่องยนต์</option>');
+        $.post(base_url+"api/Machine/getAllmachine",{machineId: machineId},
         function(result){
             var data = result.data;
             if(data != null){

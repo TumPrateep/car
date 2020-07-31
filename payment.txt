@@ -1,0 +1,3 @@
+https://sandbox.mpay.co.th/mpay-sandbox-api/InterfaceService?
+
+projectCode=TEPS&command=RequestOrderTepsApi&sid=ef1dbec1e555b8416e6bf8e7396e1edbc91a8952e80f95cda6a3d2ef3917296a&redirectUrl=&merchantId=37222&orderId=0003&purchaseAmt=1000&currency=THB&paymentMethod=&productDesc=&smsMobile=&mobileNo=&smsFlag=N&tokenKey=&orderExpire=720&ref1=&ref2=&ref3=&ref4=&ref5=&integrityStr=bfb595d54e00cce6ab08d1256db71b25a69d28f380c595016cb5dc48946b3650

@@ -26,18 +26,20 @@ class Lubricatorlimits extends CI_Model
 
     }
 
-    public function allLubricatorlimit_count()
+    public function allLubricatorlimit_count($groupId)
     {
         $this->db->from('lubricator_limit');
+        $this->db->where('lubricator_limit.groupId',$groupId);
         $query = $this->db->get();
         return $query->num_rows();
 
     }
 
-    public function allLubricatorlimit($limit, $start, $col, $dir,$groupId)
+    public function allLubricatorlimit($limit, $start, $col, $dir, $groupId)
     {
         $this->db->from('lubricator_limit');
-        $this->db->where('groupId',$groupId);
+        $this->db->join('machine', 'lubricator_limit.machine_id = machine.machineId');
+        $this->db->where('lubricator_limit.groupId',$groupId);
         $query = $this->db->limit($limit, $start)->order_by($col, $dir)->get();
 
         if ($query->num_rows() > 0) {
@@ -47,9 +49,10 @@ class Lubricatorlimits extends CI_Model
         }
 
     }
-    function data_check_create($groupId){
+    function data_check_create($groupId, $machine_id){
         $this->db->from("lubricator_limit");
         $this->db->where('groupId', $groupId);
+        $this->db->where('machine_id', $machine_id);
         $result = $this->db->get();
         return $result->row();
     }
@@ -73,11 +76,12 @@ class Lubricatorlimits extends CI_Model
         $result = $this->db->get("lubricator_limit");
         return $result->row();
     }
-    public function data_check_update($limitId, $groupId)
+    public function data_check_update($limitId, $groupId, $machine_id)
     {
         $this->db->select("limitId, price");
         $this->db->from("lubricator_limit");
         $this->db->where('groupId', $groupId);
+        $this->db->where('machine_id', $machine_id);
         $this->db->where_not_in('limitId', $limitId);
         $result = $this->db->get();
         return $result->row();
@@ -90,7 +94,7 @@ class Lubricatorlimits extends CI_Model
     }
     public function getUpdate($limitId)
     {
-        $this->db->select("limitId, price");
+        $this->db->select("limitId, price, machine_id");
         $this->db->where('limitId', $limitId);
         $result = $this->db->get("lubricator_limit")->row();
         return $result;

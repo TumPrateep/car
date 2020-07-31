@@ -21,9 +21,9 @@
                     <div class="card card-header-blue">
                             <div class="form-body"> <br>
                                 <div class="row p-t-20">
-                                    <div class="col-md-4">
+                                    <div class="col-md">
                                         <div class="form-group">
-                                            <label class="control-label">ชนิดน้ำมันเครื่อง</label><span class="error">*</span>
+                                            <label class="control-label">ชนิดของเหลว</label><span class="error">*</span>
                                             <div class="input-group input-group-default">
                                                 <select class="form-control form-control-chosen-required" name="lubricator_gear" id="lubricator_gear">
                                                     <option value="1">น้ำมันเครื่อง</option>
@@ -33,7 +33,16 @@
                                             </div>
                                         </div>
                                     </div> 
-                                    <div class="col-md-4">
+                                    <div class="col-md" id="box-lubricator_typeId">
+                                        <div class="form-group">
+                                            <label class="control-label">ชนิดน้ำมันเครื่อง</label><span class="error">*</span>
+                                            <div class="input-group input-group-default">
+                                                <select class="form-control form-control-chosen-required" name="lubricator_typeId" id="lubricator_typeId" data-placeholder="ชนิดน้ำมันเครื่อง">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
                                         <div class="form-group">
                                             <label class="control-label">ยี่ห้อน้ำมันเครื่อง</label><span class="error">*</span> <label id="lubricator_brandId-error" class="error" for="lubricator_brandId"></label>
                                             <div class="input-group input-group-default">
@@ -42,7 +51,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md">
                                         <div class="form-group">
                                             <label class="control-label">รุ่นน้ำมันเครื่อง</label><span class="error">*</span> <label id="lubricatorId-error" class="error" for="lubricatorId"></label>
                                             <div class="input-group input-group-default">

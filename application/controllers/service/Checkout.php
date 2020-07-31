@@ -14,6 +14,7 @@ class Checkout extends BD_Controller
         $this->load->model('prices');
         $this->load->model('selectgarages');
         $this->load->model('checkouts');
+        $this->load->model('checkout_credit');
         $this->load->model('payments');
     }
 
@@ -170,6 +171,99 @@ class Checkout extends BD_Controller
         ];
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
 
+    }
+
+    public function order_credit_post()
+    {
+        $tire_dataId = $this->post('tire_dataId');
+        $garageId = $this->post('garageId');
+        $number = $this->post('quantity');
+        $hire_date = $this->post('hire_date_submit');
+        $hire_time = $this->post('hire_time_submit');
+        $car_profile = $this->post('car_profile');
+
+        $price_per_unit = $this->post('price_per_unit');
+        $product_price = $this->post('product_price');
+        $charge_price = $this->post('charge_price');
+        $delivery_price = $this->post('delivery_price');
+        $garage_service_price = $this->post('garage_service_price');
+
+        //payment
+        $name = $this->post('name');
+        $slipdate = $this->post('slipdate_submit');
+        $sliptime = $this->post('sliptime_submit');
+        $slip = $this->post('slip');
+        $userId = $this->session->userdata['logged_in']['id'];
+
+        $data['order'] = [
+            "userId" => $userId,
+            "create_by" => $userId,
+            "status" => 1,
+            "statusSuccess" => 1,
+            "activeflag" => 1,
+            "create_at" => date('Y-m-d H:i:s', time()),
+            "car_profileId" => $car_profile,
+        ];
+
+        $tireData = $this->tiredatas->getTireDataById($tire_dataId);
+        $minTireData = $this->tiredatas->getMinTireDataById($tire_dataId);
+        // $carjaidee_service_price = $this->prices->getPriceCarjaideeChangePrice($tireData->rimId);
+
+        $data['orderdetail'] = [
+            "orderId" => null,
+            "userId" => $userId,
+            "productId" => $tire_dataId,
+            "real_productId" => $minTireData->tire_dataId,
+            "quantity" => $number,
+            "status" => 1,
+            "activeflag" => 1,
+            "create_at" => date('Y-m-d H:i:s', time()),
+            "group" => "tire",
+            "orderselect_status" => 0,
+            "car_accessoriesId" => $tireData->car_accessoriesId,
+            'real_car_accessoriesId' => $minTireData->car_accessoriesId,
+            "price_per_unit" => $price_per_unit,
+            "product_price" => $product_price,
+            'min_product_price' => $minTireData->price,
+            'real_product_price' => $minTireData->price * $number,
+            "charge_price" => $charge_price,
+            "delivery_price" => $delivery_price,
+            "garage_service_price" => $garage_service_price,
+            "carjaidee_service_price" => $garage_service_price + 50,
+        ];
+
+        $data["reserve"] = [
+            "reserveDate" => $hire_date,
+            "reservetime" => $hire_time,
+            "garageId" => $garageId,
+            "created_at" => date('Y-m-d H:i:s', time()),
+            "created_by" => $userId,
+            "status" => 1,
+            "orderId" => null,
+        ];
+
+        $option = [
+            "data_check" => null,
+            "data" => $data,
+            "model" => $this->checkout_credit,
+        ];
+
+        $result = $this->checkout_credit->insert($data);
+        $return = [];
+        if($result){
+            $xml = file_get_contents($result['url']);
+            $arr = simplexml_load_string($xml);
+            if($arr->status == 's'){
+                $return['url'] = urldecode($arr->endPointUrl);
+                $return["message"] = REST_Controller::MSG_SUCCESS;
+            }else{
+                $return["message"] = REST_Controller::MSG_NOT_CREATE;
+            }
+        }else{
+            $return["message"] = REST_Controller::MSG_NOT_CREATE;
+        }
+
+        $this->set_response($return, REST_Controller::HTTP_OK);
     }
 
     public function createPaymentDetail_post()

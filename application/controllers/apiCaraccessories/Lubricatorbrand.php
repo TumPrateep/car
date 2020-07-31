@@ -9,6 +9,7 @@ class Lubricatorbrand extends BD_Controller {
         parent::__construct();
         $this->auth();
         $this->load->model("lubricatorbrands");
+        $this->load->model("lubricatortypes");
     }
 
     function createLubricatorbrand_post(){
@@ -205,6 +206,13 @@ class Lubricatorbrand extends BD_Controller {
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
+
+    function getAllLubricatorType_get(){
+        $result = $this->lubricatortypes->getAllLubricatorTypes();
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
 }
 
 

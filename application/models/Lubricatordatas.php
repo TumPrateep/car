@@ -26,7 +26,7 @@ class Lubricatordatas extends CI_Model
     {
         $this->db->select('lubricator_data.lubricator_dataId, lubricator_data.status, lubricator_brand.lubricator_brandName,
         lubricator_data.price, lubricator_data.warranty_year, lubricator_data.warranty_distance, lubricator_data.create_by, lubricator_data.warranty,
-        machine.machine_type,lubricator.lubricatorId,lubricator.lubricatorName,lubricator_capacity.capacity,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_number,lubricator_capacity.capacity');
+        machine.machine_type,lubricator.lubricatorId,lubricator.lubricatorName,lubricator_capacity.capacity,lubricator.lubricator_brandId,lubricator.status,lubricator.activeFlag,lubricator.create_by,lubricator_number.lubricator_gear,lubricator_number.lubricator_number,lubricator_capacity.capacity,lubricator.machine_id');
         $this->db->from('lubricator_data');
         $this->db->join('lubricator', 'lubricator.lubricatorId = lubricator_data.lubricatorId');
         $this->db->join('lubricator_brand', 'lubricator_brand.lubricator_brandId = lubricator.lubricator_brandId');

@@ -20,11 +20,11 @@ class Onload
             $sess_array = $this->ci->basicdata->get();
             $this->ci->session->set_userdata('basic_data', $sess_array);
         }
-
+        
         if (empty($this->ci->session->userdata['logged_in'])) {
             if (
                 // $controller != "auth" &&
-                $directory != "public/" && $directory != "api/" && $directory != "service/" && $controller != "main"
+                $directory != "public/" && $directory != "api/" && $directory != "service/" && $controller != "main" && $controller != "payment"
                 && $directory != "user/" // &&
                 // $directory != "apiCaraccessories/"
             ) {
@@ -32,6 +32,8 @@ class Onload
                 exit();
             }
         } else {
+            
+            // exit();
             //     if($directory != "api/" && $directory != "apiCaraccessories/" && $controller != "role" && $controller != "auth"){
             //         $role = $this->ci->session->userdata['logged_in']['role'];
             //         if($role == 1){

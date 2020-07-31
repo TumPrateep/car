@@ -3,6 +3,10 @@
     border-left: 1px solid #ced4da;
 }
 
+.pt-10{
+    padding: 10px;
+}
+
 .btn-fb {
     padding: 15px 20px;
     background: #ffffff;
@@ -102,10 +106,13 @@
                                                 aria-haspopup="true" aria-expanded="false">
                                                 <i class="fa fa-sign-in" aria-hidden="true"></i> เข้าสู่ระบบ
                                             </button>
+                                            <p class="pt-10">
+                                                <a href="<?php echo base_url('forgotPassword') ?>">ลืมรหัสผ่านใช่หรือไม่</a>
+                                            </p>
                                         </div>
                                     </div>
                                 </form>
-                                <br>
+                                <hr>
                                 <div class="row">
                                     <div class="col">
                                         <button type="button" class="btn google-button btn-block" id="login-button">

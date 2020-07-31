@@ -28,6 +28,12 @@
     <script src="<?=base_url("public/js/jquery-ui.min.js")?>"></script>
     <script src="<?=base_url("public/js/jquery.datetimepicker.full.min.js")?>"></script>
     <script src="<?=base_url("/public/js/jquery-dateformat.min.js")?>"></script>
+    <script src="<?=base_url("/public/js/jquery.cookie.js")?>"></script>
+
+    <script>
+        localStorage.token = $.cookie('token');
+        localStorage.userId = $.cookie('userId');
+    </script>
 
     <script>
 $.datetimepicker.setLocale('th');

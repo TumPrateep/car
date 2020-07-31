@@ -4,13 +4,16 @@
             lubricator_price: {
                 required: true
             },
-            groupId:{
-                require : true
+            machine_id:{
+                required: true
             }
         },
         messages: {
             lubricator_price: {
                 required: "กรอกราคาค่าบริการ"
+            },
+            machine_id:{
+                required: "เลือกชนิดน้ำมันเครื่อง/เกียร์"
             }
         },
     });
@@ -19,20 +22,21 @@
         createlubricatorchange();
     })
 
-    // var tire_rim = $("#tire_rimId");
+    var machine = $("#machine_id");
 
-    // getRim();
+    getMachine();
 
-    // function getRim(rimId = null){
-    //     $.get(base_url+"api/Rim/getAllRims",{},
-    //         function(data){
-    //             var brandData = data.data;
-    //             $.each( brandData, function( key, value ) {
-    //                 tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>');
-    //             });
-    //         }
-    //     );
-    // }
+    function getMachine(){
+        machine.html('<option value="">เลือกชนิดน้ำมันเครื่อง/เกียร์</option>');
+        $.get(base_url+"api/machine/getAllmachine",{},
+            function(data){
+                var machineData = data.data;
+                $.each( machineData, function( key, value ) {
+                    machine.append('<option value="' + value.machineId + '">' + value.machine_type + '</option>');
+                });
+            }
+        );
+    }
 
     function createlubricatorchange(){
         event.preventDefault();

@@ -55,9 +55,9 @@
           <thead>
             <th><i class="fa fa-sort"></i> ลำดับ</th>
             <th><i class="fa fa-car"></i>  ข้อมูลรถยนต์</th>
-            <th><i class="fa fa-car"></i>  ประเภทเครื่องยนต์</th>
-            <th><i class="fa fa-tint"></i>  ยี่ห้อน้ำมันเครื่อง</th>
-            <th><i class="fa fa-tint"></i>  น้ำมันเครื่อง</th>
+            <th><i class="fa fa-automobile"></i>  โฉมรถยนต์</th>
+            <th><i class="fa fa-car"></i>  ประเภทน้ำมันเครื่อง</th>
+            <th><i class="fa fa-tint"></i>  เบอร์น้ำมันเครื่อง</th>
             <th><i class="fa fa-user-circle"></i>  สถานะ</th>
             <th></th>
           </thead>	

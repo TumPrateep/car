@@ -77,8 +77,8 @@ class Lubricatordata extends BD_Controller {
                 $nestedData['warranty_distance'] = $post->warranty_distance;
                 $nestedData['warranty'] = $post->warranty;
                 
+                $nestedData['machine_id'] = $post->machine_id;
                 $nestedData['lubricator_gear'] = $post->lubricator_gear;
-                // $nestedData['lubricator_typeSize'] = $post->lubricator_typeSize;
                 $nestedData['capacity'] = $post->capacity;
                 $nestedData['machine_type'] = $post->machine_type;
 

@@ -46,15 +46,16 @@ class Lubricatorlimit extends BD_Controller {
     function searchLubricatorLimit_post(){
         $columns = array( 
             0 => null,
-            1 => 'price', 
-            2 => null
+            1 => null,
+            2 => 'price', 
+            3 => null
         );
         $limit = $this->post('length');
         $start = $this->post('start');
         $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
         $groupId = $this->post('groupId');
-        $totalData = $this->lubricatorlimits->allLubricatorlimit_count();
+        $totalData = $this->lubricatorlimits->allLubricatorlimit_count($groupId);
         $totalFiltered = $totalData;           
         $posts = $this->lubricatorlimits->allLubricatorlimit($limit,$start,$order,$dir,$groupId);
         $data = array();
@@ -64,6 +65,7 @@ class Lubricatorlimit extends BD_Controller {
             {
                 $nestedData['limitId'] = $post->limitId;
                 $nestedData['price'] = $post->price;
+                $nestedData['machine_type'] = $post->machine_type;
                 $data[] = $nestedData;
             }
         }
@@ -78,11 +80,12 @@ class Lubricatorlimit extends BD_Controller {
     
     public function createlubricatorchange_post(){
         $lubricator_price = $this->post('lubricator_price');
+        $machine_id = $this->post('machine_id');
         $userId = $this->session->userdata['logged_in']['id'];
         $groupId = $this->post('groupId');
-        $data_check = $this->lubricatorlimits->data_check_create($groupId);
+        $data_check = $this->lubricatorlimits->data_check_create($groupId, $machine_id);
         $data = array(
-            //'limitId' => null,
+            'machine_id' => $machine_id,
             'price'  => $lubricator_price,
             'groupId'  => $groupId,
             'create_by' => $userId,
@@ -116,13 +119,15 @@ class Lubricatorlimit extends BD_Controller {
         $price = $this->post('price');
         $groupId = $this->post('groupId');
         $userId = $this->session->userdata['logged_in']['id'];
+        $machine_id = $this->post('machine_id');
 
         $data_check_update = $this->lubricatorlimits->getLubricatorlimitChangeByLimitId($limitId);
-        $data_check = $this->lubricatorlimits->data_check_update($limitId, $groupId);
+        $data_check = $this->lubricatorlimits->data_check_update($limitId, $groupId, $machine_id);
         $data = array(
             'limitId' => $limitId,
             'price' => $price,
             'groupId' => $groupId,
+            'machine_id' => $machine_id,
             'update_by' => $userId,
             'update_at' => date('Y-m-d H:i:s',time())
         );
