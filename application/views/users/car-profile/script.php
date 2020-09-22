@@ -90,13 +90,15 @@ var table = $('#order-table').DataTable({
                         '"><img class="card-img-top" src="' + base_url +
                         'public/image/carprofile/' + picture +
                         '" width="100%" alt=""></a>' +
-                        '        <div class="card-body">' +
-                        '            <div>' +
-                        '                <p> <strong>ยี่ห้อ :</strong> ' + brand +
-                        ' </p> <p><strong>เลขทะเบียน :</strong> ' +
-                        value.character_plate + '  ' + value.number_plate + ' ' + value
+                        '        <div class="card-body" >' +
+                        '            <div class="desc card border-black">' +
+                        '               <p> ' +
+                        value.character_plate + '  ' + value.number_plate + '</br>' + value
                         .provinceforcarName + '</p>' +
                         '            </div>' +
+                        '            </br><div>'+
+                        '                <p> <strong>ยี่ห้อ :</strong> ' + brand +
+                        '</p> </div>' +
                         '            <div>' +
                         '                <ul class="list-inline">' +
                         '                    <li class="list-inline-item">' +

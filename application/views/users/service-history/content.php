@@ -29,118 +29,89 @@
                         </li>
                         </ul>
                     </div>
+
                     <div class="schedule-contents">
                         <div class="tab-content">
                         <div class="tab-pane fade show active schedule-item" id="nov1">
-                            <!-- Headings -->
-                            <ul class="m-0 p-0">
-                                <li class="headings">
-                                    <div class="time">ลำดับ</div>
-                                    <div class="speaker">คำสั่งซื้อ</div>
-                                    <div class="subject">สินค้าที่ซ่อม</div>
-                                    <div class="venue">วันที่และเวลาเข้าซ่อม</div>
-                                </li>
-                                <!-- Schedule Details -->
-                                <li class="schedule-details">
-                                    <div class="block">
-                                        <!-- time -->
-                                        <div class="time">
-                                            1
-                                        </div>
-                                        <!-- Speaker -->
-                                        <div class="speaker">
-                                                <a href="<?=base_url("/user/order/orderdetails") ?>">
-                                                    คำสั่งซื้อ 10010 
-                                                </a>
-                                        </div>
-                                        <!-- Subject -->
-                                        <div class="subject">
-                                            bridgestone 255/65r17
-                                        </div>
-                                        <!-- Venue -->
-                                        <div class="venue">
-                                            <i class="fa fa-clock-o"></i>
-                                            <span class="time">05/06/2019</span>
-                                        </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="service-table" width="100%" cellspacing="0">
+                                            <thead>
+                                                <!-- <th data-priority="3">ลำดับ</th> -->
+                                                <th>ลำดับ</th>
+                                                <th>คำสั่งซื้อ</th>
+                                                <th>วันที่และเวลาเข้าซ่อม</th>
+                                                <th>สินค้าที่ซ่อม</th>
+                                            </thead>
+                                        </table>
                                     </div>
-                                </li>
-                                <!-- Schedule Details -->
-                            </ul>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="tab-pane fade schedule-item" id="nov2">
-                            <!-- Headings -->
                             <ul class="m-0 p-0">
-                                <li class="headings">
+                                <!-- <li class="headings">
                                     <div class="time">ลำดับ</div>
                                     <div class="speaker">คำสั่งซื้อ</div>
                                     <div class="subject">สินค้าที่ซ่อม</div>
                                     <div class="venue">วันที่และเวลาเข้าซ่อม</div>
                                 </li>
-                                <!-- Schedule Details -->
                                 <li class="schedule-details">
                                     <div class="block">
-                                        <!-- time -->
                                         <div class="time">
                                             1
                                         </div>
-                                        <!-- Speaker -->
                                         <div class="speaker">
                                             <a href="<?=base_url() ?>">
                                                 คำสั่งซื้อ 10010 
                                             </a>
                                         </div>
-                                        <!-- Subject -->
                                         <div class="subject">
                                             zic x7
                                         </div>
-                                        <!-- Venue -->
                                         <div class="venue">
                                             <i class="fa fa-clock-o"></i>
                                             <span class="time">06/08/2019</span>
                                         </div>
                                     </div>
                                 </li>
-                                <!-- Schedule Details -->
-                            </ul>
+                            </ul> -->
                         </div>
+                        
                         <div class="tab-pane fade schedule-item" id="nov3">
-                            <!-- Headings -->
-                            <ul class="m-0 p-0">
+                            <!-- <ul class="m-0 p-0">
                                 <li class="headings">
                                     <div class="time">ลำดับ</div>
                                     <div class="speaker">คำสั่งซื้อ</div>
                                     <div class="subject">สินค้าที่ซ่อม</div>
                                     <div class="venue">วันที่และเวลาเข้าซ่อม</div>
                                 </li>
-                                <!-- Schedule Details -->
                                 <li class="schedule-details">
                                     <div class="block">
-                                        <!-- time -->
                                         <div class="time">
                                             1
                                         </div>
-                                        <!-- Speaker -->
                                         <div class="speaker">
                                                 <a href="<?=base_url() ?>">
                                                     คำสั่งซื้อ 10010 
                                                 </a>
                                         </div>
-                                        <!-- Subject -->
                                         <div class="subject">
                                             โช้คหน้าคู่ TRW
                                         </div>
-                                        <!-- Venue -->
                                         <div class="venue">
                                             <i class="fa fa-clock-o"></i>
                                             <span class="time">05/06/2019</span>
                                         </div>
                                     </div>
                                 </li>
-                                <!-- Schedule Details -->
-                            </ul>
+                            </ul> -->
                         </div>
                         </div>
                     </div>
+
                 </section>
             </div>
         </div>
