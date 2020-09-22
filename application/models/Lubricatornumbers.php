@@ -127,7 +127,7 @@ class Lubricatornumbers extends CI_Model {
         $this->db->where("lubricator_number", $lubricator_number);
         $this->db->where("lubricator_gear", $lubricator_gear);
 
-        if($lubricatorNumberId != null){
+        if($lubricator_numberId != null){
             $this->db->where("lubricator_numberId", $lubricator_numberId);
         }
 
@@ -155,6 +155,35 @@ class Lubricatornumbers extends CI_Model {
         $this->db->order_by("lubricator_number", "asc"); 
         $result = $this->db->get("lubricator_number");
         return $result->result();
+    }
+
+    function getAllNumberFromGear($lubricator_gear){
+        $this->db->select("lubricator_numberId,lubricator_number,lubricator_gear");
+        $this->db->where("status",'1');
+        $this->db->where("lubricator_gear", $lubricator_gear);
+        $this->db->order_by("lubricator_gear", "asc");
+        $this->db->order_by("lubricator_number", "asc"); 
+        $result = $this->db->get("lubricator_number");
+        return $result->result();
+    }
+
+    function getArrayLubricatorBrand($lubricator_number){
+        $this->db->where('lubricator_numberId', $lubricator_number);
+        $query = $this->db->get('lubricator');
+        $arrayLubricatorBrand = [];
+        foreach ($query->result() as $i => $v) {
+            $arrayLubricatorBrand[] = $v->lubricator_brandId;
+        }
+        return $arrayLubricatorBrand;
+    }
+
+    function getAllBrandFromNumber($lubricator_number){
+        $arrayLubricatorBrand = $this->getArrayLubricatorBrand($lubricator_number);
+        
+        $this->db->select('lubricator_brandId, lubricator_brandName');
+        $this->db->where_in('lubricator_brandId', $arrayLubricatorBrand);
+        $query = $this->db->get('lubricator_brand');
+        return $query->result();
     }
 
 }

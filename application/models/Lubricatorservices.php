@@ -2,18 +2,18 @@
 
 class Lubricatorservices extends CI_Model{
 
-    // function data_check_create($rimId){
-    //     $this->db->from("tire_service");
-    //     $this->db->where('tire_service.rimId',$rimId);
-    //     $result = $this->db->get();
-    //     return $result->row();
-    // }
+    function data_check_create($machine_id){
+        $this->db->from("lubricator_service");
+        $this->db->where('machine_id',$machine_id);
+        $result = $this->db->get();
+        return $result->row();
+    }
 
-    function data_check_update($lubricator_serviceId){
+    function data_check_update($lubricator_serviceId, $machineId){
         $this->db->select("lubricator_service.price");
         $this->db->from("lubricator_service");
         // $this->db->join('rim','tire_service.rimId = rim.rimId');
-        // $this->db->where('tire_service.rimId',$rimId);
+        $this->db->where('lubricator_service.machine_id', $machineId);
         $this->db->where_not_in('lubricator_service.lubricator_serviceId',$lubricator_serviceId);
         $result = $this->db->get();
         return $result->row();
@@ -34,9 +34,9 @@ class Lubricatorservices extends CI_Model{
     //     return $result;
     // }
     function allLubricatorService($limit,$start,$col,$dir){
-        $this->db->select('lubricator_service.price, lubricator_service.status, lubricator_service.lubricator_serviceId');
+        $this->db->select('lubricator_service.price, lubricator_service.status, lubricator_service.lubricator_serviceId, machine.machine_type');
         $this->db->from('lubricator_service');
-        // $this->db->join('lubricator_service.rimId = rim.rimId');
+        $this->db->join('machine','lubricator_service.machine_id = machine.machineId');
         $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
         
         if($query->num_rows()>0){
@@ -94,10 +94,8 @@ class Lubricatorservices extends CI_Model{
 
     function getLubricatorServiceById($lubricator_serviceId){
         // $this->db->select("tire_serviceId");
-        $this->db->where('lubricator_service',$lubricator_serviceId);
+        $this->db->where('lubricator_serviceId',$lubricator_serviceId);
         $result = $this->db->get("lubricator_service");
         return $result->row();
     }
-
-
 }

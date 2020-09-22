@@ -30,6 +30,19 @@ class Carts extends CI_Model {
         return $result->result();
     }
 
+    function getCartById($cartId){
+        $result = $this->db->where("cartId",$cartId)->get("cart");
+        return $result->row();
+    }
+
+    function getCartByProductId($productId, $group, $userId){
+        $result = $this->db->where("productId",$productId)
+                    ->where("group",$group)
+                    ->where("create_by",$userId)
+                    ->get("cart");
+        return $result->row();
+    }
+
     function data_check_userId($userId){
         $this->db->select("userId");
         $this->db->from("cart");
@@ -42,7 +55,10 @@ class Carts extends CI_Model {
         $this->db->where('userId',$data['userId']);
         $result = $this->db->update('cart', $data);
         return $result;
-        
+    }
+
+    function delete($cartId){
+        return $this->db->delete('cart', array('cardId' => $cartId));
     }
 
 }

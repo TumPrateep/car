@@ -2,15 +2,17 @@
 
 class Lubricatorchanges extends CI_Model{
 
-    function data_check_create(){
+    function data_check_create($machineId){
         $this->db->from("lubricator_change");
+        $this->db->where('machine_id', $machineId);
         $result = $this->db->get();
         return $result->row();
     }
 
-    function data_check_update($lubricator_changeId){
+    function data_check_update($lubricator_changeId, $machineId){
         $this->db->from("lubricator_change");
         $this->db->where_not_in('lubricator_changeId',$lubricator_changeId);
+        $this->db->where('machine_id', $machineId);
         $result = $this->db->get();
         return $result->row();
     }
@@ -33,9 +35,10 @@ class Lubricatorchanges extends CI_Model{
     }
 
     function allLubricatorchanges($limit,$start,$col,$dir){
-        $this->db->select('lubricator_changeId,lubricator_price,status');
+        $this->db->select('lubricator_change.lubricator_changeId,lubricator_change.lubricator_price,lubricator_change.status, unit.unit, machine.machine_type');
         $this->db->from('lubricator_change');
-
+        $this->db->join('unit','unit.unit_id = lubricator_change.unit_id');
+        $this->db->join('machine','lubricator_change.machine_id = machine.machineId');
         $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
         if($query->num_rows()>0){
             return $query->result(); 
@@ -55,8 +58,10 @@ class Lubricatorchanges extends CI_Model{
 
     function lubricatorchanges_search($limit,$start,$search,$col,$dir,$status){
         
-        $this->db->select('lubricator_change.lubricator_changeId, lubricator_change.lubricator_price, lubricator_change.status');
+        $this->db->select('lubricator_change.lubricator_changeId,lubricator_change.lubricator_price,lubricator_change.status, unit.unit, machine.machine_type');
         $this->db->from('lubricator_change');
+        $this->db->join('unit','unit.unit_id = lubricator_change.unit_id');
+        $this->db->join('machine','lubricator_change.machine_id = machine.machineId');
         if($search != null){
             $this->db->where("lubricator_change.lubricator_changeId",$search);
         }
@@ -89,7 +94,7 @@ class Lubricatorchanges extends CI_Model{
     } 
 
     function getUpdate($lubricator_changeId){
-        $this->db->select('lubricator_change.lubricator_changeId,lubricator_change.lubricator_price');
+        // $this->db->select('lubricator_change.lubricator_changeId,lubricator_change.lubricator_price');
         $this->db->where('lubricator_changeId',$lubricator_changeId);
         $result = $this->db->get("lubricator_change")->row();
         return $result;

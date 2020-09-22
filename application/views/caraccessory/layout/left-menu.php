@@ -10,13 +10,13 @@
                         <!-- <li><a class="garage-white" href="<?=base_url("caraccessory/car");?>"><i class="fa fa-tachometer garage-white"></i>
                         <span class="hide-menu">การจัดการยี่ห้อ/รุ่นรถ</span></a></li> -->
                         <!-- <li> <a class="has-arrow garage-white" href="#" aria-expanded="false"><i class="fa fa-tachometer garage-white"></i><span class="hide-menu">ข้อมูลอะไหล่ </span></a> -->
-                        <ul aria-expanded="false" class="collapse">
+                        <!-- <ul aria-expanded="false" class="collapse">
                             <li><a class="garage-white"
                                     href="<?=base_url("caraccessory/Spareundercarries");?>">อะไหล่ช่วงล่าง </a></li>
-                            <!-- <li><a href="<?=base_url("caraccessory/Lubricator");?>">น้ำมันเครื่อง </a></li> -->
+                            <li><a href="<?=base_url("caraccessory/Lubricator");?>">น้ำมันเครื่อง </a></li>
                             <li class="active"> <a class="has-arrow" href="#" aria-expanded="true">น้ำมันเครื่อง </a>
                                 <ul aria-expanded="true" class="collapse in" style="">
-                                    <!-- <li><a href="<?=base_url("caraccessory/LubricatorType");?>">ประเภทน้ำมันเครื่อง</a></li> -->
+                                    <li><a href="<?=base_url("caraccessory/LubricatorType");?>">ประเภทน้ำมันเครื่อง</a></li>
                                     <li><a class="garage-white"
                                             href="<?=base_url("caraccessory/NumberLubricator");?>">เบอร์น้ำมันเครื่อง</a>
                                     </li>
@@ -33,15 +33,15 @@
                                             href="<?=base_url("caraccessory/TireBrand");?>">ยี่ห้อ/รุ่นยาง</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul> -->
                         </li>
                         <li class="nav-label">ส่วนของร้านอะไหล่</li>
-                        <li>
+                        <!-- <li>
                             <a class="garage-white" href="<?=base_url("caraccessory/spareundercarriesdata");?>">
                                 <i class="fa fa-wrench garage-white" aria-hidden="true"></i>
                                 <span class="hide-menu">ข้อมูลอะไหล่ช่วงล่าง</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a class="garage-white" href="<?=base_url("caraccessory/lubricatordata");?>">
                                 <i class="fa fa-square" aria-hidden="true"></i><span

@@ -29,6 +29,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!-- Slick Carousel -->
     <link href="<?=base_url('public/')?>plugins/slick/slick.css" rel="stylesheet">
     <link href="<?=base_url('public/')?>plugins/slick/slick-theme.css" rel="stylesheet">
+    <link href="<?=base_url("public/themes/user/styles/jquery-confirm.min.css");?>" rel="stylesheet">
     <!-- CUSTOM CSS -->
     <link href="<?=base_url('public/')?>css/style.css?<?php echo time(); ?>" rel="stylesheet">
 

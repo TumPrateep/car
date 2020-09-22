@@ -16,7 +16,8 @@ class Lubricator extends BD_Controller {
         $this->load->model("brand");
         $this->load->model("model");
         $this->load->model("modelofcars");
-        // $this->load->model("lubricator_type");
+        $this->load->model("lubricatornumbers");
+        $this->load->model("prices");
         
 
         
@@ -25,13 +26,13 @@ class Lubricator extends BD_Controller {
     public function search_post(){
         $column = "lubricator_dataId";
         $sort = "asc";
-        if($this->post('column') == 3){
-            $column = "status";
-        }else if($this->post('column') == 2){
-            $sort = "desc";
-        }else{
-            $sort = "asc";
-        }
+        // if ($this->post('column') == 3) {
+        //     $column = "status";
+        // } else if ($this->post('column') == 2) {
+        //     $sort = "desc";
+        // } else {
+        //     $sort = "asc";
+        // }
 
         $limit = $this->post('length');
         $start = $this->post('start');
@@ -39,89 +40,104 @@ class Lubricator extends BD_Controller {
         $dir = $sort;
 
         $totalData = $this->lubricatorproduct->allLubricatordata_count();
-        $totalFiltered = $totalData; 
-        if(empty($this->post('lubricatortypeFormachineId')) 
-            && empty($this->post('lubricator_gear')) 
-            && empty($this->post('lubricator_brandId')) 
-            && empty($this->post('lubricatorId'))
-            && empty($this->post('price')))
-        {            
-            $posts = $this->lubricatorproduct->allLubricatordatas($limit,$start,$order,$dir);
-        }else{
-            $lubricatortypeFormachineId = $this->post('lubricatortypeFormachineId');
-            $lubricatorId = $this->post('lubricatorId');
-            $lubricator_brandId = $this->post('lubricator_brandId');
-            $lubricator_gear = $this->post('lubricator_gear');
-            $price = $this->post('price');
-            
-            // $status = null; 
-            $posts =  $this->lubricatorproduct->LubricatorDatas_search($limit,$start,$order,$dir,$lubricatorId, $lubricator_brandId, $lubricator_gear, $price, $lubricatortypeFormachineId);
+        $totalFiltered = $totalData;
 
-            $totalFiltered = $this->lubricatorproduct->LubricatorDatas_search_count($lubricatorId, $lubricator_brandId, $lubricator_gear, $price, $lubricatortypeFormachineId);
-        }
+        // $tire_sizeId = $this->post('tire_sizeId');
+        // $tire_size = [];
 
-        $this->load->model("lubricatorchanges");
-        $charge = $this->lubricatorchanges->getLubricatorChangePrice();
-        
+        // if (!empty($this->post('brandId')) && !empty($this->post('modelofcarId'))) {
+        //     $modelofcarId = $this->post('modelofcarId');
+        //     $tire_sizeData = $this->tirematch->getTireSizeByModelOfCarId($modelofcarId);
+        //     $tire_sizeId = [];
+        //     foreach ($tire_sizeData as $i => $v) {
+        //         $tire_sizeId[] = $v->tire_sizeId;
+        //     }
 
-        $data = array();
-        if(!empty($posts))
-        {
-            $index = 0;
+        //     if (count($tire_sizeId) > 0) {
+        //         $posts = $this->tireproduct->tireDataByTireSize_search($limit, $start, $order, $dir, $tire_sizeId);
+        //         $totalFiltered = $this->tireproduct->tireDataByTireSize_search_count($tire_sizeId);
+        //     } else {
+        //         $posts = [];
+        //         $totalFiltered = 0;
+        //     }
+        // } else {
+            $lubricator_brand = $this->post('lubricator_brand');
+            $lubricator_number = $this->post('lubricator_number');
+        //     $rimId = $this->post('rimId');
+
+        //     if (!empty($tire_sizeId)) {
+        //         $tire_size[] = $tire_sizeId;
+        //     } else {
+        //         $brandId = $this->post('brandId');
+        //         $modelName = $this->post('model_name');
+        //         $year = $this->post('year');
+        //         $modelId = $this->post('modelId');
+        //         $tire_sizeData = $this->tirematch->getTireSize($brandId, $modelName, $year, $modelId);
+        //         foreach ($tire_sizeData as $i => $v) {
+        //             $tire_size[] = $v->tire_sizeId;
+        //         }
+        //     }
+
+            $posts = $this->lubricatorproduct->lubricatorDataByNumber_search($limit, $start, $order, $dir, $lubricator_brand, $lubricator_number);
+            $totalFiltered = $this->lubricatorproduct->lubricatorDataByNumber_search_count($lubricator_brand, $lubricator_number);
+
+        // }
+
+        // if ($totalFiltered == 0) {
+        //     $posts = $this->tireproduct->tireDataByTireSize_search($limit, $start, $order, $dir, $tire_size, null, null, null);
+        //     $totalFiltered = $this->tireproduct->tireDataByTireSize_search_count($tire_size, null, null, null);
+        // }
+
+        $nestedData = array();
+        if (!empty($posts)) {
+            // $index = 0;
             $count = 0;
-            foreach ($posts as $post)
-            {
-                
-                $nestedData[$count]['lubricator_dataId'] = $post->lubricator_dataId;
-                $lubicatorType = "";
-                if($post->lubricator_typeName != null){
-                    $lubicatorType = $post->lubricator_typeName;
-                }else{
-                    if((int)$post->lubricator_gear == 2){
-                        $lubicatorType = "น้ำมันเกียร์ธรรมดา";
-                    }else{
-                        $lubicatorType = "น้ำมันเกียร์ออโต";
+            foreach ($posts as $post) {
+                $lubricator_change_data = $this->prices->getPriceFromGarageByMachineId($post->machine_id);
+                $garage_price = 50;
+                if (!empty($lubricator_change_data)) {
+                    $garage_price = $lubricator_change_data->lubricator_price;
+                }
+
+                $carjaidee_change_data = $this->prices->getLubricatorPriceCarjaidee($post->machine_id);
+                $carjaidee_price = 0;
+                if (!empty($carjaidee_change_data)) {
+                    $carjaidee_price = $carjaidee_change_data->price;
+                    if ($carjaidee_change_data->unit_id == 1) {
+                        $carjaidee_price = $post->price * $carjaidee_change_data->price / 100;
                     }
                 }
-                $nestedData[$count]['lubricator_typeName'] = $lubicatorType;
+
+                $lubricator_service_data = $this->prices->getLubricatorPriceService($post->machine_id);
+                $service_price = $lubricator_service_data->price;
+
+                $nestedData[$count]['lubricator_dataId'] = $post->lubricator_dataId;
+                $nestedData[$count]['lubricatorId'] = $post->lubricatorId;
+                $nestedData[$count]['machine_id'] = $post->machine_id;
+                $nestedData[$count]['lubricator_numberId'] = $post->lubricator_numberId;
                 $nestedData[$count]['lubricator_brandName'] = $post->lubricator_brandName;
-                $nestedData[$count]['lubricatorName'] = $post->lubricatorName;
-                $nestedData[$count]['lubricator_number'] = $post->lubricator_number;
-                $nestedData[$count]['status'] = $post->status;
-                $nestedData[$count]['price'] = ($post->price*1.1) + $charge->lubricator_price;
-                $nestedData[$count]['warranty_year'] = $post->warranty_year;
-                $nestedData[$count]['warranty_distance'] = $post->warranty_distance;
-                $nestedData[$count]['warranty'] = $post->warranty;
-                $nestedData[$count]['lubricator_dataPicture'] = $post->lubricator_dataPicture;
-                $nestedData[$count]['lubricator_gear'] = $post->lubricator_gear;
-                $nestedData[$count]['lubricator_typeSize'] = $post->lubricator_typeSize;
-                $nestedData[$count]['capacity'] = $post->capacity;
-                // $nestedData[$count]['lubricator_typeName'] = $post->lubricator_typeName;
-                $nestedData[$count]['lubricatortypeFormachine'] = $post->lubricatortypeFormachine;
+                $nestedData[$count]['price'] = $post->price + $garage_price + $carjaidee_price + $service_price;
+                $nestedData[$count]['price2'] = [$post->price,$garage_price,$carjaidee_price,$service_price];
+                $nestedData[$count]['machine_type'] = $post->machine_type;
                 $nestedData[$count]['lubricator_brandPicture'] = $post->lubricator_brandPicture;
-                
+                $nestedData[$count]['lubricator_typeName'] = $post->lubricator_typeName;
+                $nestedData[$count]['capacity'] = $post->capacity;
+                $nestedData[$count]['lubricator_number'] = $post->lubricator_number;
+                $nestedData[$count]['lubricator'] = $post->lubricator;
+
                 $option = [
                     'lubricatorId' => $post->lubricatorId
                 ];
                 $nestedData[$count]['picture'] = getPictureLubricator($option);
-                
-                $data[$index] = $nestedData;
-                if($count >= 3){
-                    $count = -1;
-                    $index++;
-                    $nestedData = [];
-                }
-                
                 $count++;
-
             }
         }
 
         $json_data = array(
-            "draw"            => intval($this->post('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $data   
+            "draw" => intval($this->post('draw')),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $nestedData,
         );
 
         $this->set_response($json_data);
@@ -175,6 +191,20 @@ class Lubricator extends BD_Controller {
     function getAlldetail_get(){
         $modelName = $this->get("modelName");
         $result = $this->model->getAlldetail($modelName);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getLubricatorNumber_get(){
+        $lubricator_gear = $this->get('lubricator_gear');
+        $result = $this->lubricatornumbers->getAllNumberFromGear($lubricator_gear);
+        $output["data"] = $result;
+        $this->set_response($output, REST_Controller::HTTP_OK);
+    }
+
+    function getLubricatorBrand_get(){
+        $lubricator_number = $this->get('lubricator_number');
+        $result = $this->lubricatornumbers->getAllBrandFromNumber($lubricator_number);
         $output["data"] = $result;
         $this->set_response($output, REST_Controller::HTTP_OK);
     }

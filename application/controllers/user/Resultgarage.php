@@ -17,6 +17,16 @@ class Resultgarage extends CI_Controller {
 
 		load_user_view("users/tire/resultgarage/content", "users/tire/resultgarage/script", $data, false);
 
+	}
+	
+	function lubricator($machine_id, $lubricator_numberId, $lubricator_dataId){
+		$data = ['tire'=>'', 'lubricator' => '', 'garage' => ''];
+		$data['machine_id'] = $machine_id;
+		$data['lubricator_numberId'] = $lubricator_numberId;
+		$data['lubricator_dataId'] = $lubricator_dataId;
+
+		load_user_view("users/lubricator/resultgarage/content", "users/lubricator/resultgarage/script", $data, false);
+
     }
 
 }

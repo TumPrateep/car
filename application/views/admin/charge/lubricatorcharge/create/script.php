@@ -1,13 +1,22 @@
 <script>
+    var unit_id = $("#unit_id");
+    var machine = $("#machineId");
+
     $("#submit").validate({
         rules: {
-            lubricator_price: {
+            tire_price: {
+                required: true
+            },
+            unit_id: {
                 required: true
             }
         },
         messages: {
-            lubricator_price: {
+            tire_price: {
                 required: "กรอกราคาค่าบริการ"
+            },
+            unit_id: {
+                required: "เลือกหน่วย"
             }
         },
     });
@@ -16,20 +25,37 @@
         createlubricatorchange();
     })
 
-    // var tire_rim = $("#tire_rimId");
+    init();
 
-    // getRim();
+    function init(){
+        getunit();
+        getAllMachine();
+    }
 
-    // function getRim(rimId = null){
-    //     $.get(base_url+"api/Rim/getAllRims",{},
-    //         function(data){
-    //             var brandData = data.data;
-    //             $.each( brandData, function( key, value ) {
-    //                 tire_rim.append('<option value="' + value.rimId + '">' + value.rimName + ' นิ้ว</option>');
-    //             });
-    //         }
-    //     );
-    // }
+    function getAllMachine(){
+        machine.html('<option value="">เลือกประเภทเครื่องยนต์</option>');
+        $.get(base_url+"api/Machine/getAllmachine",{},
+        function(result){
+            var data = result.data;
+            if(data != null){
+                $.each( data, function( key, value ) {
+                    machine.append('<option value="' + value.machineId + '">' + value.machine_type + '</option>');
+                });
+            }
+        });
+    }
+
+    function getunit(){
+        unit_id.html('<option value="">เลือกหน่วย</option>');
+        $.get(base_url+"api/tirechangessize/getAllunit",{},
+            function(data){
+                var unitData = data.data;
+                $.each( unitData, function( key, value ) {
+                    unit_id.append('<option value="' + value.unit_id + '">' + value.unit + ' </option>');
+                });
+            } 
+        );
+    }
 
     function createlubricatorchange(){
         event.preventDefault();

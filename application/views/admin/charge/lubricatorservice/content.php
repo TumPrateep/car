@@ -26,7 +26,8 @@
       <table class="table table-bordered" id="service-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
-          <th><i class="fa fa-usd" ></i>  ราคาค่าจัดส่ง</th>
+          <th><i class="fa fa-usd"></i> ประเภทน้ำมันเครื่อง</th>
+          <th><i class="fa fa-usd"></i>  ราคาค่าจัดส่ง</th>
           <th><i class="fa fa-pencil text-center"></i>  แก้ไข</th>
         </thead>	
       </table>

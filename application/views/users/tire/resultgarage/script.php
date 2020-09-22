@@ -141,8 +141,11 @@ $(document).ready(function() {
                         '<span class="mb-10"></span>' +
                         '<div class="row">' +
                         '<div class="col-12">' +
-                        '<button onclick="gotolink(' + tire_dataId + ',' + data.garageId +
-                        ')" class="btn btn-main-md width-100p bg-orange btn-lg"><i class="fa fa-shopping-bag" aria-hidden="true"></i> สั่งซื้อสินค้า </button>' +
+                        '<button onclick="setCart(\'tire\',' + tire_dataId +',\'.number-'+ data
+                        .garageId +'\',' + data.garageId +')" '+
+                        'class="btn btn-main-md width-100p bg-orange btn-lg"><i class="fa fa-shopping-bag" aria-hidden="true"></i> สั่งซื้อสินค้า </button>' +
+                        // '<button onclick="gotolink(' + tire_dataId + ',' + data.garageId +
+                        // ')" class="btn btn-main-md width-100p bg-orange btn-lg"><i class="fa fa-shopping-bag" aria-hidden="true"></i> สั่งซื้อสินค้า </button>' +
                         '</div>' +
                         '</div>' +
                         '</div>' +

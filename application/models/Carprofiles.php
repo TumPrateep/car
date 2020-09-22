@@ -27,7 +27,7 @@ class Carprofiles extends CI_Model
 
     public function allprofile($limit, $start, $col, $dir, $userId)
     {
-        $this->db->join("brand", "brand.brandId = car_profile.brandId");
+        $this->db->join("brand", "brand.brandId = car_profile.brandId", 'left');
         $this->db->join("provinceforcar", "provinceforcar.provinceforcarId = car_profile.province_plate");
         $this->db->where("userId", $userId);
         $query = $this->db
@@ -94,8 +94,8 @@ class Carprofiles extends CI_Model
     {
         $this->db->select('car_profile.car_profileId,car_profile.number_plate,car_profile.character_plate,car_profile.province_plate,car_profile.mileage,car_profile.color,car_profile.pictureFront,car_profile.pictureBack,car_profile.circlePlate,car_profile.brandId,car_profile.modelId,car_profile.modelofcarId,car_profile.year,brand.brandName,model.modelName as detail,model.yearStart,model.yearEnd, model.modelName, brand.brandPicture,provinceforcar.provinceforcarName');
         $this->db->from('car_profile');
-        $this->db->join('brand', 'car_profile.brandId = brand.brandId');
-        $this->db->join('model', 'car_profile.modelId = model.modelId');
+        $this->db->join('brand', 'car_profile.brandId = brand.brandId', 'left');
+        $this->db->join('model', 'car_profile.modelId = model.modelId', 'left');
         $this->db->join('provinceforcar', 'car_profile.province_plate = provinceforcar.provinceforcarId');
         $this->db->where("car_profile.userId", $userId);
         $this->db->where("car_profile.car_profileId", $car_profileId);
@@ -205,7 +205,7 @@ class Carprofiles extends CI_Model
     {
         $this->db->select('car_profile.car_profileId,car_profile.number_plate,car_profile.character_plate,car_profile.province_plate,car_profile.mileage,car_profile.color,car_profile.pictureFront,car_profile.brandId,car_profile.modelId,car_profile.modelofcarId,brand.brandName,model.modelName as detail, provinceforcar.provinceforcarName');
         $this->db->from('car_profile');
-        $this->db->join('brand', 'car_profile.brandId = brand.brandId');
+        $this->db->join('brand', 'car_profile.brandId = brand.brandId', 'left');
         $this->db->join('model', 'car_profile.modelId = model.modelId', 'left');
         $this->db->join('modelofcar', 'car_profile.modelofcarId = modelofcar.modelofcarId', 'left');
         $this->db->join('provinceforcar', 'car_profile.province_plate = provinceforcar.provinceforcarId');

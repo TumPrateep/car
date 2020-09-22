@@ -10,6 +10,9 @@ class Cart extends BD_Controller {
         $this->load->model("carts");
         $this->load->model('carprofiles');
         $this->load->model('orderdetails');
+        $this->load->model('lubricatorchangegarages');
+        $this->load->model('tirechangesgarge');
+        $this->load->model('garage');
     }
 
     function cartDetail_post(){
@@ -17,45 +20,92 @@ class Cart extends BD_Controller {
         if($cartData == null){
             $cartData = [];
         }
+        $garageId = [];
+        foreach ($cartData as $v) {
+            $garageId[$v['group']][$v['productId']] = (!empty($v['garageId']))?$v['garageId']:'';
+        }
         $lubricatorData = $this->getLubricator($cartData);
         $tireData = $this->getTire($cartData);
         $spareData = $this->getSpare($cartData);
         $data["caraccessoryId"] = getCaracessoryId($cartData);
-        $data["cartData"] = $this->getCartData($lubricatorData, $tireData, $spareData);
+        $data["cartData"] = $this->getCartData($lubricatorData, $tireData, $spareData, $garageId);
         $this->set_response($data, REST_Controller::HTTP_OK);
     }
 
-    function getCartData($lubricatorData, $tireData, $spareData){
+    function getCartData($lubricatorData, $tireData, $spareData, $garageId){
         $data = [];
         if($lubricatorData != null){
-            $this->load->model("lubricatorchanges");
-            $charge = $this->lubricatorchanges->getLubricatorChangePrice();
+            $this->load->model("prices");
+            // $charge = $this->lubricatorchanges->getLubricatorChangePrice();
 
             foreach ($lubricatorData as $value){
+
+                $carjaidee_change_data = $this->prices->getLubricatorPriceCarjaidee($value->machine_id);
+                $carjaidee_price = 0;
+                if (!empty($carjaidee_change_data)) {
+                    $carjaidee_price = $carjaidee_change_data->price;
+                    if ($carjaidee_change_data->unit_id == 1) {
+                        $carjaidee_price = $value->price * $carjaidee_change_data->price / 100;
+                    }
+                }
+
+                $lubricator_service_data = $this->prices->getLubricatorPriceService($value->machine_id);
+                $service_price = $lubricator_service_data->price;
+
+                $garage = $this->lubricatorchangegarages->getLubricatorChangeByIdAndMachine($garageId['lubricator'][$value->lubricator_dataId], $value->machine_id);
+                $garage_service_price = 0;
+                if(!empty($garage)){
+                    $garage_service_price = (int)$garage->lubricator_price;
+                }
+
+                $data["lubricator"][$value->lubricator_dataId]["garage"] = $garage;
+                $data["lubricator"][$value->lubricator_dataId]["machine_id"] = $value->machine_id;
                 $data["lubricator"][$value->lubricator_dataId]["productId"] = $value->lubricator_dataId;
-                $data["lubricator"][$value->lubricator_dataId]["price"] =  ($value->price*1.1) + $charge->lubricator_price;
+                $data["lubricator"][$value->lubricator_dataId]["price"] =  $value->price + $carjaidee_price + $service_price + $garage_service_price;
                 $option = [
                     'lubricatorId' => $value->lubricatorId
                 ];
                 $data["lubricator"][$value->lubricator_dataId]['picture'] = getPictureLubricator($option);
-                // $data["lubricator"][$value->lubricator_dataId]["picture"] = $value->lubricator_dataPicture;
+                $data["lubricator"][$value->lubricator_dataId]["brandPicture"] = $value->lubricator_brandPicture;
                 $data["lubricator"][$value->lubricator_dataId]["brandName"] = $value->lubricator_brandName;
                 $data["lubricator"][$value->lubricator_dataId]["name"] = $value->lubricatorName;
                 $data["lubricator"][$value->lubricator_dataId]["lubricatorNumber"] = $value->lubricator_number;
                 $data["lubricator"][$value->lubricator_dataId]["capacity"] = $value->capacity;
+                $data["lubricator"][$value->lubricator_dataId]["machine_type"] = $value->machine_type;
+                $data["lubricator"][$value->lubricator_dataId]["lubricator_type_name"] = $value->lubricator_typeName;
             }
     
         }
         if($tireData != null){
             $this->load->model("tirechanges");
-            $tirePriceData = $this->tirechanges->getTireChangePrice();
-            $charge = [];
-            foreach($tirePriceData as $cost){
-                $charge[$cost->rimId] = $cost->tire_price;
-            }
+            $this->load->model("prices");
+
             foreach($tireData as $value){
+
+                $carjaidee_change_data = $this->prices->getPriceCarjaidee($value->rimId, $value->tire_sizeId);
+                $carjaidee_price = 0;
+                if (!empty($carjaidee_change_data)) {
+                    $carjaidee_price = $carjaidee_change_data->price;
+                    if ($carjaidee_change_data->unit_id == 1) {
+                        $carjaidee_price = $value->price * $carjaidee_change_data->price / 100;
+                    }
+                }
+
+                $tire_service_data = $this->prices->getPriceService($value->rimId);
+                $service_price = $tire_service_data->price;
+
+                // $garage = $this->garage->getGarageByGarageId($garageId['tire'][$value->tire_dataId]);
+                
+                $garage_service = $this->tirechangesgarge->getTireChangeByIdAndRim($garageId['tire'][$value->tire_dataId], $value->rimId);
+                $garage_service_price = 0;
+                if(!empty($garage)){
+                    $garage_service_price = (int)$garage_service->tire_price;
+                }
+
+                $data["tire"][$value->tire_dataId]["garage"] = $garage_service;
                 $data["tire"][$value->tire_dataId]["productId"] = $value->tire_dataId;
-                $data["tire"][$value->tire_dataId]["price"] = ($value->price*1.1) + $charge[$value->rimId];
+                $data["tire"][$value->tire_dataId]["price2"] = $garage_service_price;
+                $data["tire"][$value->tire_dataId]["price"] = $value->price + $carjaidee_price + $service_price + $garage_service_price;
                 $option = [
                     'tire_brandId' => $value->tire_brandId,
                     'tire_modelId' => $value->tire_modelId,
@@ -63,7 +113,7 @@ class Cart extends BD_Controller {
                     'rimId' => $value->rimId
                 ];
                 $data["tire"][$value->tire_dataId]['picture'] = getPictureTire($option);
-                // $data["tire"][$value->tire_dataId]["picture"] = $value->tire_picture;
+                $data["tire"][$value->tire_dataId]["brandPicture"] = $value->tire_brandPicture;
                 $data["tire"][$value->tire_dataId]["brandName"] = $value->tire_brandName;
                 $data["tire"][$value->tire_dataId]["name"] = $value->tire_modelName;
                 $data["tire"][$value->tire_dataId]["number"] = $value->tire_size;
@@ -223,6 +273,7 @@ class Cart extends BD_Controller {
                     $data[$index]["productId"] = $val['productId'];
                     $data[$index]["group"] = $val['group'];
                     $data[$index]["quantity"] = $val['number'];
+                    $data[$index]["garageId"] = $val['garageId'];
                     $data[$index]["create_at"] = date('Y-m-d H:i:s',time());
                     $data[$index]["create_by"] = $userId;
                     $index++;
@@ -239,6 +290,19 @@ class Cart extends BD_Controller {
         $this->set_response(decision_create($option), REST_Controller::HTTP_OK);
     }
 
-    
+    public function delete_get(){
+        $productId = $this->get('productId');
+        $role = $this->get('role');
+        $userId = $this->session->userdata['logged_in']['id'];
+        $result = false;
+        if(!empty($userId)){
+            $data = $this->carts->getCartByProductId($productId, $role, $userId);
+            if(!empty($data)){
+                $result = $this->carts->delete($data->cardId);
+            }
+        }
+
+        $this->set_response(["result" => $result], REST_Controller::HTTP_OK);
+    }
     
 }

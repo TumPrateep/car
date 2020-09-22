@@ -142,4 +142,13 @@ class Tirechangesgarge extends CI_Model{
         $result = $this->db->get("tire_change_garage");
         return $result->result();
     }
+
+    function getTireChangeByIdAndRim($garageId, $rimId){
+        $this->db->from('tire_change_garage');
+        $this->db->join('garage', 'tire_change_garage.garageId = garage.garageId');
+        $this->db->where('garage.garageId',$garageId);
+        $this->db->where('tire_change_garage.rimId',$rimId);
+        $result = $this->db->get();
+        return $result->row();
+    }
 }

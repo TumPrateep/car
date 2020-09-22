@@ -90,7 +90,7 @@
                         <span class="nav-link-text">เมนูอะไหล่</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseComponents1">
-                        <li>
+                        <!-- <li>
                             <a class="nav-link-collapse text-white collapsed" data-toggle="collapse"
                                 href="#collapseMulti3">
                                 <i class="fa fa-tint"></i> อะไหล่ช่วงล่าง</a>
@@ -115,7 +115,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li>
                             <a class="nav-link-collapse text-white collapsed" data-toggle="collapse"
@@ -161,7 +161,7 @@
                             </ul>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <a class="nav-link-collapse text-white collapsed" data-toggle="collapse"
                                 href="#filter">
                                 <i class="fa fa-tint"></i> ไส้กรอง</a>
@@ -173,7 +173,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <!-- <li>
                             <a class="nav-link-collapse text-white collapsed" data-toggle="collapse"
@@ -259,19 +259,13 @@
                 <i class="fa fa-cog"></i>
                 <span class="nav-link-text">อะไหล่ช่วงล่าง</span>
               </a>
-            </li>
-            <li class="<?=activate_menu('lubricatorproduct');?>">
-              <a class="nav-link text-white" href="<?=base_url("admin/lubricatorproduct")?>">
-                <i class="fa fa-rebel"></i>
-                <span class="nav-link-text">น้ำมันเครื่อง</span>
-              </a>
             </li> -->
-                        <!-- <li class="<?=activate_menu('tireproduct');?>">
-                            <a class="nav-link text-white" href="<?=base_url("admin/tireproduct")?>">
-                                <i class="fa fa-life-ring"></i>
-                                <span class="nav-link-text">ยางรถ</span>
+                        <li class="<?=activate_menu('lubricatorpicture');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/lubricatorpicture")?>">
+                                <i class="fa fa-rebel"></i>
+                                <span class="nav-link-text">น้ำมันเครื่อง</span>
                             </a>
-                        </li> -->
+                        </li> 
                         <li class="<?=activate_menu('tirepicture');?>">
                             <a class="nav-link text-white" href="<?=base_url("admin/tirepicture")?>">
                                 <i class="fa fa-life-ring"></i>
@@ -308,12 +302,12 @@
                                 <span class="nav-link-text">น้ำมันเครื่อง</span>
                             </a>
                         </li>
-                        <li class="<?=activate_menu('lubricatorgearlimit/garagegroup/');?>">
+                        <!-- <li class="<?=activate_menu('lubricatorgearlimit/garagegroup/');?>">
                             <a class="nav-link text-white" href="<?=base_url("admin/lubricatorgearlimit/garagegroup")?>">
                                 <i class="fa fa-life-ring"></i>
                                 <span class="nav-link-text">น้ำมันเกียร์</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
 
@@ -352,12 +346,12 @@
                                 <span class="nav-link-text">น้ำมันเครื่อง</span>
                             </a>
                         </li>
-                        <li class="<?=activate_menu('charge/lubricatorgearcharge/');?>">
+                        <!-- <li class="<?=activate_menu('charge/lubricatorgearcharge/');?>">
                             <a class="nav-link text-white" href="<?=base_url("admin/charge/lubricatorgearcharge")?>">
                                 <i class="fa fa-tint"></i>
                                 <span class="nav-link-text">น้ำมันเกียร์</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
 
@@ -372,6 +366,12 @@
                             <a class="nav-link text-white" href="<?=base_url("admin/charge/tireservice")?>">
                                 <i class="fa fa-life-ring"></i>
                                 <span class="nav-link-text">ยางรถ</span>
+                            </a>
+                        </li>
+                        <li class="<?=activate_menu('charge/lubricatorservice/');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/charge/lubricatorservice")?>">
+                                <i class="fa fa-life-ring"></i>
+                                <span class="nav-link-text">น้ำมันเครื่อง</span>
                             </a>
                         </li>
                     </ul>

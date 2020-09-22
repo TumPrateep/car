@@ -829,87 +829,87 @@ $(document).ready(function () {
         }
     });
     
-    form.steps({
-        headerTag: "h3",
-        bodyTag: "fieldset",
-        transitionEffect: "fade",
-        labels: {
-            previous : 'ก่อนหน้า',
-            next : 'ถัดไป',
-            finish : 'บันทึก',
-            current : ''
-        },
-        titleTemplate : '<span class="title">#title#</span>',
-        onStepChanging: function (event, currentIndex, newIndex)
-        {
-            var isvalid = true;
-            // form.validate().settings.ignore = ":disabled,:hidden";
-            if(currentIndex == 1){
-                if(fullMoney <= 0){
-                    isvalid = false;
-                    $(".alert").show();
-                    $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
-                }
-                getCartList();
-            }
-            if(currentIndex == 0){
-                isvalid = $("#image-picker-car").val() != "";
-                if(!isvalid){
-                    $(".alert").show();
-                    $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
-                }
-            }
-            if(currentIndex == 2){
-                var reserve = $("#reserve").val();
-                isvalid = ($("#image-picker").val() != "" && form.valid() && reserve != "");
-                if(!isvalid){
-                    $(".alert").show();
-                    $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
-                }
-                else{
-                    setCartShowDetail();
-                }
-            }
-            return isvalid;
-        },
-        onFinishing: function (event, currentIndex)
-        {
-            // form.validate().settings.ignore = ":disabled";
-            return form.valid();
-        },
-        onFinished: function (event, currentIndex)
-        {
-              var isValid = form.valid();
-              if(isValid){
-                var reserve = $("#reserve").val();
-                var reserveArr = reserve.split(' ');
-                console.log(reserve);
-                var data = form.serializeArray();
-                data[data.length] = { name: "productData", value: getCartList() };
-                data[data.length] = { name: "isDeposit", value: false };
-                data[data.length] = { name: "reserve_day", value: reserveArr[0] };
-                data[data.length] = { name: "reserve_time", value: reserveArr[1] };
-                $.post(base_url+"service/Order/createOrderDetail", data,
-                    function (data, textStatus, jqXHR) {
-                        if(data.message == 200){
-                            localStorage.setItem("data",JSON.stringify([]));
-                            cartData = [];
-                            synCartData();
-                            synchroData();
-                            showMessage(data.message,"shop/order");
-                        }else{
-                            showMessage(data.message);
-                        }
-                    }
-                );
-              }
+    // form.steps({
+    //     headerTag: "h3",
+    //     bodyTag: "fieldset",
+    //     transitionEffect: "fade",
+    //     labels: {
+    //         previous : 'ก่อนหน้า',
+    //         next : 'ถัดไป',
+    //         finish : 'บันทึก',
+    //         current : ''
+    //     },
+    //     titleTemplate : '<span class="title">#title#</span>',
+    //     onStepChanging: function (event, currentIndex, newIndex)
+    //     {
+    //         var isvalid = true;
+    //         // form.validate().settings.ignore = ":disabled,:hidden";
+    //         if(currentIndex == 1){
+    //             if(fullMoney <= 0){
+    //                 isvalid = false;
+    //                 $(".alert").show();
+    //                 $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
+    //             }
+    //             getCartList();
+    //         }
+    //         if(currentIndex == 0){
+    //             isvalid = $("#image-picker-car").val() != "";
+    //             if(!isvalid){
+    //                 $(".alert").show();
+    //                 $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
+    //             }
+    //         }
+    //         if(currentIndex == 2){
+    //             var reserve = $("#reserve").val();
+    //             isvalid = ($("#image-picker").val() != "" && form.valid() && reserve != "");
+    //             if(!isvalid){
+    //                 $(".alert").show();
+    //                 $.wait( function(){ $(".alert").fadeOut( "slow") }, 5);
+    //             }
+    //             else{
+    //                 setCartShowDetail();
+    //             }
+    //         }
+    //         return isvalid;
+    //     },
+    //     onFinishing: function (event, currentIndex)
+    //     {
+    //         // form.validate().settings.ignore = ":disabled";
+    //         return form.valid();
+    //     },
+    //     onFinished: function (event, currentIndex)
+    //     {
+    //           var isValid = form.valid();
+    //           if(isValid){
+    //             var reserve = $("#reserve").val();
+    //             var reserveArr = reserve.split(' ');
+    //             console.log(reserve);
+    //             var data = form.serializeArray();
+    //             data[data.length] = { name: "productData", value: getCartList() };
+    //             data[data.length] = { name: "isDeposit", value: false };
+    //             data[data.length] = { name: "reserve_day", value: reserveArr[0] };
+    //             data[data.length] = { name: "reserve_time", value: reserveArr[1] };
+    //             $.post(base_url+"service/Order/createOrderDetail", data,
+    //                 function (data, textStatus, jqXHR) {
+    //                     if(data.message == 200){
+    //                         localStorage.setItem("data",JSON.stringify([]));
+    //                         cartData = [];
+    //                         synCartData();
+    //                         // synchroData();
+    //                         showMessage(data.message,"shop/order");
+    //                     }else{
+    //                         showMessage(data.message);
+    //                     }
+    //                 }
+    //             );
+    //           }
 
-            // window.location = base_url+"shop/payment/10011";
-        },
-        // onInit : function (event, currentIndex) {
-        //     event.append('demo');
-        // }
-    });
+    //         // window.location = base_url+"shop/payment/10011";
+    //     },
+    //     // onInit : function (event, currentIndex) {
+    //     //     event.append('demo');
+    //     // }
+    // });
 
     // var form = $("#submit");
     // var confirmForm = $("#confirm");

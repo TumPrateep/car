@@ -21,12 +21,12 @@
                         <form id="submit">
                             <div class="card-body black bg-light">
                                 <div class="form-group row">
-                                    <!-- <div class="col-md-4">
-                                        <label>ขอบยาง</label> <span class="error">*</span>
-                                        <select class="form-control" name="tire_rimId" id="tire_rimId">
-                                            <option value="">เลือกขอบยาง</option>
+                                    <div class="col-md-4">
+                                        <label>ประเภทน้ำมันเครื่อง/เกียร์</label>
+                                        <select class="form-control" name="machineId" id="machineId">
+                                            <option value="">เลือกประเภทเครื่องยนต์</option>
                                         </select>
-                                    </div> -->
+                                    </div>
                                     <div class="col-md-4">
                                         <label>ราคาค่าขนส่งน้ำมันเครื่อง</label> <span class="error">*</span>
                                         <input type="number" class="form-control" placeholder="ราคาค่าขนส่งน้ำมันเครื่อง" name="price" id="price">

@@ -64,7 +64,11 @@
                     "targets": 2,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return "ปี"+" "+data.yearStart+"-"+data.yearEnd+" <br>"+data.detail;
+                        var detail = '';
+                        if(data.detail){
+                            detail = data.detail;
+                        }
+                        return "ปี"+" "+data.yearStart+"-"+data.yearEnd+" <br>"+detail;
                     }
                 },
                 {
@@ -82,7 +86,7 @@
                     "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return data.lubricator_number;
+                        return data.lubricator_number+"<br> <small>น้อยกว่า "+data.mileage+" กม.</small>";
                     }
                 },
                 {

@@ -32,7 +32,7 @@
                     rules: {
                         lubricator_price: {
                             required: true,
-                            max: max_price
+                            // max: max_price
                         },
                         machine_id:{
                             required: true

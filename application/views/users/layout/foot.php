@@ -14,8 +14,10 @@
 
   <script src="<?=base_url("/public/vendor/datatables/jquery.dataTables.js")?>"></script>
   <script src="<?=base_url("/public/vendor/datatables/dataTables.bootstrap4.js")?>"></script>
+  <script src="<?=base_url("/public/themes/user/js/jquery-confirm.min.js");?>"></script>
   <script src="<?=base_url("/public/js/currency.min.js")?>"></script>
   <script src="<?=base_url("/public/js/jquery.cookie.js")?>"></script>
+  <script src="<?=base_url("/public/themes/user/js/shop.js")?>"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162027611-1"></script>

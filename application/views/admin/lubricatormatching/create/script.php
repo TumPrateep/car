@@ -5,7 +5,7 @@
         var detail = $("#detail");
         var gear = $("#lubricator_gear");
         var lubricator_number = $("#lubricator_numberId");
-        // var lubricator = $("#lubricatorId");
+        var mileage = $("#mileage");
         // // call data 
         
         init();
@@ -127,9 +127,9 @@
                 lubricator_gear: {
                     required: true   
                 },
-                // lubricatorId: {
-                //     required: true   
-                // } 
+                mileage: {
+                    required: true   
+                } 
             },
             messages: {
                 brandId: {
@@ -147,9 +147,9 @@
                 lubricator_gear: {
                     required: "เลือกชนิดน้ำมันเครื่อง"
                 },
-                // lubricatorId: {
-                //     required: "กรุณาเลือกน้ำมันเครื่อง"
-                // }
+                mileage: {
+                    required: "ระบุเลขไมล์"
+                }
             },
         });
 
@@ -163,6 +163,7 @@
                     "detail": detail.val(),
                     "lubricator_gear" : gear.val(),
                     "lubricator_number" : lubricator_number.val(),
+                    "mileage": mileage.val()
                 },function (data, textStatus, jqXHR) {
                     if(data.message == 200){
                         showMessage(data.message,"admin/lubricatormatching");

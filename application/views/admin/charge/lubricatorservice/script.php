@@ -28,33 +28,34 @@
                 "dataType": "json",
                 "type": "POST",
                 "data": function ( data ) {
-                    data.price = $("#table-search").val(),
-                    data.status = $("#status").val()
+                    // data.price = $("#table-search").val(),
+                    // data.status = $("#status").val()
                 }
             },
-            "order": [[ 1, "asc" ]],
+            "order": [[ 2, "asc" ]],
             "columns": [
                 null,
+                { "data": "machine_type" },
                 { "data": "price" },
             ],
             "columnDefs": [
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,2]
+                    "targets": [0,3]
                 },{
                     "targets": 0,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
-                },{ "targets": 1,
+                },{ "targets": 2,
                     "data": "price",
                     "render": function ( data, type, full, meta ) {
                         return currency(data, { useVedic: true }).format();
                     }             
                 },{
-                    "targets": 2,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+'admin/charge/updatelubricatorservice/'+data.lubricator_serviceId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> ';
@@ -63,7 +64,7 @@
                
                 { "orderable": false, "targets": 0 },
                 // {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,2]},
+                {"className": "dt-center", "targets": [0,2,3]},
                 { "width": "10%", "targets": 0 },
                 { "width": "30%", "targets": 1 },
                 { "width": "30%", "targets": 2 }

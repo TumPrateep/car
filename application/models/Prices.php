@@ -5,6 +5,33 @@
 class Prices extends CI_Model
 {
 
+    public function getPriceFromGarageByMachineId($machine_id)
+    {
+        $this->db->from("lubricator_change_garage");
+        $this->db->where("machine_id", $machine_id);
+        $this->db->order_by('lubricator_price', 'asc');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function getLubricatorPriceCarjaidee($machine_id)
+    {
+        $this->db->select('lubricator_price as price, unit_id');
+        $this->db->from('lubricator_change');
+        $this->db->where("machine_id", $machine_id);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function getLubricatorPriceService($machine_id)
+    {
+        $this->db->select("price");
+        $this->db->where('machine_id', $machine_id);
+        $result = $this->db->get("lubricator_service");
+        return $result->row();
+    }
+
     public function getPriceFromGarageByRimId($rimId)
     {
         $this->db->from("tire_change_garage");

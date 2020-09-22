@@ -106,5 +106,13 @@ class Lubricatorchangegarages extends CI_Model{
         return $query->num_rows();
     } 
 
+    function getLubricatorChangeByIdAndMachine($garageId, $machine_id){
+        $this->db->from('lubricator_change_garage');
+        $this->db->join('garage', 'lubricator_change_garage.garageId = garage.garageId');
+        $this->db->where('garage.garageId',$garageId);
+        $this->db->where('lubricator_change_garage.machine_id',$machine_id);
+        $result = $this->db->get();
+        return $result->row();
+    }
 
 }

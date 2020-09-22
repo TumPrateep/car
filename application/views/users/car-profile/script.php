@@ -48,6 +48,10 @@ var table = $('#order-table').DataTable({
 
                 $.each(data, function(index, value) {
                     var car_profile = value.car_profile;
+                    var picture = value.picture;
+                    if(!picture){
+                        picture = 'example.png';
+                    }
                     var brand = '';
                     if (car_profile != null) {
                         brand += car_profile.brandName + ' ' + car_profile.modelName + ' ' +
@@ -84,7 +88,7 @@ var table = $('#order-table').DataTable({
                         ' <a href="' + base_url + "user/carprofile/detail/" + value
                         .car_profileId +
                         '"><img class="card-img-top" src="' + base_url +
-                        'public/image/carprofile/' + value.picture +
+                        'public/image/carprofile/' + picture +
                         '" width="100%" alt=""></a>' +
                         '        <div class="card-body">' +
                         '            <div>' +

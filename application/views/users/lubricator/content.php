@@ -1,78 +1,134 @@
+<style>
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+ul.pagination li a {
+    font-size: 13px;
+}
+
+table>thead {
+    display: none;
+}
+
+.btn-result {
+    padding: 7px 7px 7px 7px;
+}
+
+div.brand img {
+    margin: 45px 0px 0px 0px;
+    width: 100%;
+    height: auto;
+}
+
+.card-body.order {
+    background-color: #ff6600;
+    color: aliceblue;
+    padding: 0.5rem;
+}
+
+.card.pointer {
+    cursor: pointer;
+}
+
+.order>h5 {
+    color: white !important;
+}
+
+.footer.order {
+    background-color: #343a40;
+    color: white;
+}
+
+.detail {
+    width: -webkit-fill-available !important;
+}
+</style>
 <section class="section pricing" id="search">
     <div class="container">
         <div id="boby"> 
             <!-- id="content" show like search tire -->
             <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <select class="form-control main" id="brandId">
-                            <option>-- ยี่ห้อรถยนต์ --</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <select class="form-control main" id="model_name">
-                            <option>-- รุ่นรถ --</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <select class="form-control main" id="year">
-                            <option>-- ประเภทของเครื่องยนต์ --</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <select class="form-control main" id="modelofcarId">
-                            <option>-- ชนิดเกียร์ --</option>
-                        </select>
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link <?=$lubricatordata?>" data-target="#searchFromLubricator" data-toggle="tab"
+                                href="#searchFromLubricator">ค้นหาจากข้อมูลของเหลว</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?=$cardata?>" data-target="#searchFromCar" data-toggle="tab"
+                                href="#searchFromCar">ค้นหาจากข้อมูลรถ</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+
+                        <input type="hidden" name="t_lubricator_gear" id="t_lubricator_gear" value="<?=$lubricator_gear?>">
+                        <input type="hidden" name="t_lubricator_number" id="t_lubricator_number" value="<?=$lubricator_number?>">
+                        <input type="hidden" name="t_lubricator_brand" id="t_lubricator_brand" value="<?=$lubricator_brand?>">
+
+                        <div class="tab-pane fade <?=(!empty($cardata) ? 'show active' : '')?>" id="searchFromCar">
+                            <br>
+                            <form id="car-search">
+                                
+                            </form>
+                        </div>
+                        <div class="tab-pane fade  <?=(!empty($lubricatordata) ? 'show active' : '')?>" id="searchFromLubricator">
+                            <br>
+                            <form id="lubricator-search">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <select class="form-control main" name="lubricator_gear" id="lubricator_gear">
+                                                <option value="">ประเภทของเหลว</option>
+                                                <option value="1">น้ำมันเครื่อง</option>
+                                                <option value="2">น้ำมันเกียร์ธรรมดา</option>
+                                                <option value="3">น้ำมันเกียร์ออโต</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <select class="form-control main" name="lubricator_number" id="lubricator_number">
+                                                <option value="">เบอร์น้ำมันเครื่อง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <select class="form-control main" name="lubricator_brand" id="lubricator_brand">
+                                                <option value="">ยี่ห้อน้ำมันเครื่อง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-md-8">
-                    <div class="searchTag">
-                        <div class="desc">
-                            Honda
-                            <i class="fa fa-times-circle close" onClick=""></i>
-                        </div>
-                    </div>
-                    <div class="searchTag">
-                        <div class="desc">
-                            Accord
-                            <i class="fa fa-times-circle close" onClick=""></i>
-                        </div>
-                    </div>
-                    <div class="searchTag">
-                        <div class="desc">
-                            Desel
-                            <i class="fa fa-times-circle close" onClick=""></i>
-                        </div>
-                    </div>
-                    <div class="searchTag">
-                        <div class="desc">
-                            Auto
-                            <i class="fa fa-times-circle close" onClick=""></i>
-                        </div>
-                    </div>
+                    <div id="tag-show"></div>
                 </div>
-                <div class="col-md-4">    
+                <div class="col-md-4">
                     <div class="justify-content-end">
                         <div class="text-right">
-                            <button class="btn btn-transparent-md"><i class="fa fa-search"></i> ค้นหา</button>
-                            <button class="btn btn-transparent-md"><i class="fa fa-eraser"></i>ล้างคำค้นหา</button>
+                            <button class="btn btn-transparent-md" id="btn-lubricator-search"><i class="fa fa-search"></i>
+                                ค้นหา</button>
+                            <button class="btn btn-transparent-md" id="btn-clear"><i
+                                    class="fa fa-eraser"></i>ล้างคำค้นหา</button>
                         </div>
                     </div>
                 </div>
-            </div>        
-            <br>            
+            </div>
+            <br>           
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h3>ค้นหา<span class="alternate">น้ำมันเกียร์</span></h3> 
+                        <h3>ค้นหา<span class="alternate">ของเหลว</span></h3> 
                         <!-- id="title" show "ยางรถยนต์"-->
                     </div>
                 </div>
@@ -94,61 +150,15 @@
             </div>
             <br>
             <div class="borderTB">
-                <div class="row row-border">
-                    <div class="pic col-md-3 text-center">
-                        <img src="http://www.valvoline.co.th/media/Images/products/atf4.png">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="text"> ยี่ห้อน้ำมันเครื่อง + รุ่น </div>
-                        <div class="text"> เบอร์น้ำมันเครื่อง + ความจุ </div>
-                        <div class="text"> ดีเซล สังเคราะห์แท้ </div>
-                    </div>
-                    <div class="brand col-md-3 text-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/ENEOS_logo.svg">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="price"> ราคา 500 ฿ </div>
-                        <br>
-                        <button class="btn btn-transparent-md"><i class="fa fa-shopping-cart"></i>สั่งซื้อ</button>
-                    </div>
-                </div>
-                <div class="row row-border">
-                    <div class="pic col-md-3 text-center">
-                        <img src="https://www.eneosthailand.com/images/img_upload/product_20181110102613.png">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="text"> ยี่ห้อน้ำมันเครื่อง + รุ่น </div>
-                        <div class="text"> เบอร์น้ำมันเครื่อง + ความจุ </div>
-                        <div class="text"> ดีเซล สังเคราะห์แท้ </div>
-                    </div>
-                    <div class="brand col-md-3 text-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/ENEOS_logo.svg">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="price"> ราคา 1,000 ฿ </div>
-                        <br>
-                        <button class="btn btn-transparent-md"><i class="fa fa-shopping-cart"></i>สั่งซื้อ</button>
-                    </div>
-                </div>
-                <div class="row row-border">
-                    <div class="pic col-md-3 text-center">
-                        <img src="https://www.eneosthailand.com/images/img_upload/product_20181110101318.png">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="text"> ยี่ห้อน้ำมันเครื่อง + รุ่น </div>
-                        <div class="text"> เบอร์น้ำมันเครื่อง + ความจุ </div>
-                        <div class="text"> ดีเซล สังเคราะห์แท้ </div>
-                    </div>
-                    <div class="brand col-md-3 text-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/ENEOS_logo.svg">
-                    </div>
-                    <div class="detail col-md-3">
-                        <div class="price"> ราคา 1,500 ฿ </div>
-                        <br>
-                        <button class="btn btn-transparent-md"><i class="fa fa-shopping-cart"></i>สั่งซื้อ</button>
-                    </div>
-                </div>
+                <a name="tire"></a>
+                <table class="" id="lubricator-table" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
             </div>    
-        </div>
+        </>
     </div>            
 </section>

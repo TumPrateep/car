@@ -13,7 +13,7 @@ class Lubricatorchange extends BD_Controller {
     function searchLubricatorChange_post(){
         $columns = array( 
             0 => null,
-            1 => 'lubricator_changeId', 
+            1 => 'machine_id', 
             2 => 'status'
         );
         $limit = $this->post('length');
@@ -40,6 +40,8 @@ class Lubricatorchange extends BD_Controller {
                 $nestedData['lubricator_changeId'] = $post->lubricator_changeId;
                 $nestedData['lubricator_price'] = $post->lubricator_price;
                 $nestedData['status'] = $post->status;
+                $nestedData['unit'] = $post->unit;
+                $nestedData['machine_type'] = $post->machine_type;
                 $data[] = $nestedData;
             }
         }
@@ -54,12 +56,17 @@ class Lubricatorchange extends BD_Controller {
 
     public function createLubricatorchange_post(){
         $lubricator_price = $this->post('lubricator_price');
+        $machineId = $this->post('machineId');
+        $unit_id = $this->post('unit_id');
+
         $userId = $this->session->userdata['logged_in']['id'];
 
-        $data_check = $this->lubricatorchanges->data_check_create();
+        $data_check = $this->lubricatorchanges->data_check_create($machineId);
         $data = array(
             'lubricator_changeId' => null,
             'lubricator_price'  => $lubricator_price,
+            'machine_id' => $machineId,
+            'unit_id' => $unit_id,
             'create_by' => $userId,
             'create_at' => date('Y-m-d H:i:s',time()),
             'status' => 1,
@@ -89,10 +96,12 @@ class Lubricatorchange extends BD_Controller {
     public function update_post(){
         $lubricator_changeId = $this->post('lubricator_changeId');
         $lubricator_price = $this->post('lubricator_price');
+        $machineId = $this->post('machineId');
+        $unit_id = $this->post('unit_id');
         $userId = $this->session->userdata['logged_in']['id'];
 
         $data_check_update = $this->lubricatorchanges->getLubricatorChangeById($lubricator_changeId);
-        $data_check = $this->lubricatorchanges->data_check_update($lubricator_changeId);
+        $data_check = $this->lubricatorchanges->data_check_update($lubricator_changeId, $machineId);
         $data = array(
             'lubricator_changeId' => $lubricator_changeId,
             'lubricator_price'  => $lubricator_price,

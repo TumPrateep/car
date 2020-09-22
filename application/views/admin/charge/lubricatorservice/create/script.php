@@ -1,16 +1,40 @@
 <script>
+$(document).ready(function () {
+    var machine = $("#machineId");
+
     $("#submit").validate({
         rules: {
             price: {
                 required: true
-            }
+            },
+            machineId: {
+                required: true
+            },
         },
         messages: {
             price: {
-                required: "กรุณากรอกราคาค่าขนส่งน้ำมันเครื่อง"
-            }
+                required: "ราคาค่าขนส่งน้ำมันเครื่อง"
+            },
+            machineId: {
+                required: "เลือกประเภทน้ำมันเครื่อง/เกียร์"
+            },
         },
     });
+
+    getAllMachine();
+
+    function getAllMachine(){
+        machine.html('<option value="">เลือกประเภทเครื่องยนต์</option>');
+        $.get(base_url+"api/Machine/getAllmachine",{},
+        function(result){
+            var data = result.data;
+            if(data != null){
+                $.each( data, function( key, value ) {
+                    machine.append('<option value="' + value.machineId + '">' + value.machine_type + '</option>');
+                });
+            }
+        });
+    }
 
     $("#submit").submit(function(){
         createlubricatorservice();
@@ -32,4 +56,5 @@
             
         }
     }
+});
 </script>

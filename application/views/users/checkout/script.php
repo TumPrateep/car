@@ -8,8 +8,8 @@
 <script src="<?=base_url('public/js/datepicker/translations/th_TH.js')?>"></script>
 <script>
 $(document).ready(function() {
-    var price_per_unit = 0;
-    var service_data = [];
+    var total = 0;
+    // var service_data = [];
 
     $('#slipdate').pickadate({
         max: true,
@@ -37,18 +37,111 @@ $(document).ready(function() {
     init();
 
     function init() {
+        var product_data = JSON.parse(localStorage.getItem("sendData"));
+        var garageId = localStorage.getItem("garageId");
         $.post(base_url + "service/Checkout/getData", {
-            tire_dataId: $('#tire_dataId').val(),
-            garageId: $('#garageId').val(),
-            number: $('#number').val()
+            product_data: product_data,
+            garageId: garageId,
+            // number: $('#number').val()
         }, function(data, textStatus, jqXHR) {
             var garage_data = data.garage_data;
             showGarageData(data.garage_data);
             // disableDay(data.garage_data);
-            showTireData(data.tire_data);
+            // showProduct(data.products);
             getCarProfile();
-            service_data = data.service;
+
+            var html = '';
+            $.each(data.products, function( index, value ) {
+                if(index == "lubricator"){
+                    html += getLubricator(value);
+                }else if(index == "tire"){
+                    html += getTire(value);
+                }else{
+                    // alert('test');
+                    // html += getspare(value, index);
+                }
+            });
+
+            $('#product-data').html(html);
+            $('.amount').html(currency(total, {precision: 0}).format() + ' บาท');
+
         });
+    }
+
+    function getTire(data) {
+
+        var html = '';
+        $.each(data, function (i, tireData) { 
+            total += tireData.number_product*tireData.price;
+            html += '<div class="row">'
+                +'<div class="col-4">'
+                    +'<img src="https://www.tyremarket.com/images/products/EP150.jpg"'
+                        +'class="extire" alt="">'
+                +'</div>'
+                +'<div class="col-8 text-right">'
+                    + '<img src="' + base_url + 'public/image/tire_brand/' + tireData.brandPicture
+                    + '" width="180px" alt=""><br>'
+                    + '<span><strong>' + tireData.brandName + '</strong></span><br>'
+                    + '<span>' + tireData.name + '</span><br>'
+                    + '<span>' + tireData.number + '</span><br>'
+                    + '<h6>' + tireData.number_product + ' x '+currency(tireData.price, {  precision: 0 }).format()+' = '+currency((tireData.number_product*tireData.price), {  precision: 0 }).format()+' </h6><br>'
+                +'</div>'
+            +'</div>'
+        });        
+       
+        // $('#product-data').html(html);
+
+        // $('.v-number').val(tireData.number);
+        // $('.number').html(tireData.number);
+
+        // price_per_unit = tireData.price_per_unit;
+        return html;
+    }
+
+    function getTire(data) {
+
+        var html = '';
+        $.each(data, function (i, v) { 
+            total += v.number_product*v.price;
+            html += '<div class="row">'
+                +'<div class="col-4">'
+                    +'<img src="'+base_url+'/public/image/tireproduct/'+((v.picture)?v.picture:'example.png')+'"'
+                        +'class="extire" alt="">'
+                +'</div>'
+                +'<div class="col-8 text-right">'
+                    + '<img src="' + base_url + 'public/image/tire_brand/' + v.brandPicture
+                    + '" width="180px" alt=""><br>'
+                    + '<span><strong>' + v.brandName + '</strong></span><br>'
+                    + '<span>' + v.name + '</span><br>'
+                    + '<span>' + v.number + '</span><br>'
+                    + '<h6>' + v.number_product + ' x '+currency(v.price, {  precision: 0 }).format()+' = '+currency((v.number_product*v.price), {  precision: 0 }).format()+' </h6><br>'
+                +'</div>'
+            +'</div>'
+        });        
+       
+        return html;
+    }
+
+    function getLubricator(data) {
+
+        var html = '';
+        $.each(data, function (i, v) { 
+            total += v.number_product*v.price;
+            html += '<div class="row">'
+                +'<div class="col-4">'
+                    +'<img src="'+base_url+'public/image/lubricatorproduct/'+((v.picture)?v.picture:'example.png')+'"'
+                        +'class="extire" alt="">'
+                +'</div>'
+                +'<div class="col-8 text-right">'
+                    + '<img src="' +base_url+'public/image/lubricator_brand/'+v.brandPicture+'" width="180px" alt=""><br>'
+                    + '<span><strong>' +v.brandName+' '+v.name+ '</strong></span><br>'
+                    + '<span>' +v.lubricatorNumber+' '+v.capacity+' ลิตร </span><br>'
+                    + '<span>' +v.machine_type+' '+v.lubricator_type_name+ '</span><br>'
+                    + '<h6>' + v.number_product + ' x '+currency(v.price, {  precision: 0 }).format()+' = '+currency((v.number_product*v.price), {  precision: 0 }).format()+' </h6><br>'
+                +'</div>'
+            +'</div>'
+        });        
+        return html;
     }
 
     function showGarageData(garageData) {
@@ -95,30 +188,13 @@ $(document).ready(function() {
         });
     }
 
-    function showTireData(tireData) {
-        var html = '<img src="' + base_url + 'public/image/tire_brand/' + tireData.tire_brandPicture +
-            '" width="100%" alt=""><br>' +
-            '<span><strong>' + tireData.tire_brandName + '</strong></span><br>' +
-            '<span>' + tireData.tire_modelName + '</span><br>' +
-            '<span>' + tireData.tire_size + '</span>';
-        $('#tire-data').html(html);
-
-        $('.v-number').val(tireData.number);
-        $('.number').html(tireData.number);
-        $('.amount').html(currency(tireData.price, {
-            precision: 0
-        }).format() + ' บาท');
-
-        price_per_unit = tireData.price_per_unit;
-    }
-
-    $(".v-number").change(function(e) {
-        var number = $(this).val();
-        $('.number').html(number);
-        $('.amount').html(currency(number * price_per_unit, {
-            precision: 0
-        }).format() + ' บาท');
-    });
+    // $(".v-number").change(function(e) {
+    //     var number = $(this).val();
+    //     $('.number').html(number);
+    //     $('.amount').html(currency(number * price_per_unit, {
+    //         precision: 0
+    //     }).format() + ' บาท');
+    // });
 
     function getCarProfile() {
         var car_profile = $("#car_profile");
@@ -160,10 +236,10 @@ $(document).ready(function() {
                 $('#img-carprofile').html('<img src="' + base_url + 'public/image/carprofile/' +
                     carprofile.pictureFront + '" width="100%">');
                 // $('#img-carbrand').html('<img src="'+base_url+'public/image/brand/'+carprofile.brandPicture+'" width="100%" alt="">');
-                $('#carprofile-data').html('<br><strong>' + carprofile.brandName +
+                $('#carprofile-data').html('<br><strong>' + (carprofile.brandName)?carprofile.brandName:'-' +
                     '</strong><br>' +
-                    '<span>' + carprofile.modelName + '</span><br>' +
-                    '<span>ปี ' + carprofile.year +
+                    '<span>' + (carprofile.modelName)?carprofile.modelName:'-' + '</span><br>' +
+                    '<span>' + (carprofile.year)?'ปี '+carprofile.year:'-' +
                     '</span><br>');
             });
         } else {
@@ -173,18 +249,18 @@ $(document).ready(function() {
         }
     });
 
-    function changeStringToYear(start_year, end_year) {
-        let html = '';
-        html += start_year;
-        if (end_year) {
-            html = '( ' + html + ' - ' + end_year + ' )';
-        }
-        return html;
-    }
+    // function changeStringToYear(start_year, end_year) {
+    //     let html = '';
+    //     html += start_year;
+    //     if (end_year) {
+    //         html = '( ' + html + ' - ' + end_year + ' )';
+    //     }
+    //     return html;
+    // }
 
-    $.validator.addMethod('filesize', function(value, element, param) {
-        return this.optional(element) || (element.files[0].size <= param)
-    }, 'ไฟล์ขนาดใหญ่กว่า {0}');
+    // $.validator.addMethod('filesize', function(value, element, param) {
+    //     return this.optional(element) || (element.files[0].size <= param)
+    // }, 'ไฟล์ขนาดใหญ่กว่า {0}');
 
     $("#form-rent").validate({
         rules: {
@@ -252,53 +328,53 @@ $(document).ready(function() {
         type: 'image/jpeg'
     });
 
-    $("#form-rent").submit(function(e) {
-        e.preventDefault();
-        var isvalid = $(this).valid();
-        if (isvalid) {
-            var imageData = $('.image-editor').cropit('export');
-            $('.hidden-image-data').val(imageData);
-            var myform = document.getElementById("form-rent");
-            var formData = new FormData(myform);
-            $.each(service_data, function(i, v) {
-                formData.append(i, v);
-                console.log(i, v);
-            });
-            let payment = $('.next:checked').val();
-            if(payment == 2){
-                $.ajax({
-                    url: base_url + "service/checkout/order_credit",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    type: 'POST',
-                    success: function(data) {
-                        if (data.message == 200) {
-                            window.location = data.url;
-                        } else {
-                            showMessage(data.message);
-                        }                        
-                    }
-                });
-            }else{
-                $.ajax({
-                    url: base_url + "service/checkout/order",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    type: 'POST',
-                    success: function(data) {
-                        if (data.message == 200) {
-                            showMessage(data.message, "user/order");
-                        } else {
-                            showMessage(data.message);
-                        }
-                        // console.log(data);
-                    }
-                });
-            }
-        }
-    });
+    // $("#form-rent").submit(function(e) {
+    //     e.preventDefault();
+    //     var isvalid = $(this).valid();
+    //     if (isvalid) {
+    //         var imageData = $('.image-editor').cropit('export');
+    //         $('.hidden-image-data').val(imageData);
+    //         var myform = document.getElementById("form-rent");
+    //         var formData = new FormData(myform);
+    //         $.each(service_data, function(i, v) {
+    //             formData.append(i, v);
+    //             console.log(i, v);
+    //         });
+    //         let payment = $('.next:checked').val();
+    //         if(payment == 2){
+    //             $.ajax({
+    //                 url: base_url + "service/checkout/order_credit",
+    //                 data: formData,
+    //                 processData: false,
+    //                 contentType: false,
+    //                 type: 'POST',
+    //                 success: function(data) {
+    //                     if (data.message == 200) {
+    //                         window.location = data.url;
+    //                     } else {
+    //                         showMessage(data.message);
+    //                     }                        
+    //                 }
+    //             });
+    //         }else{
+    //             $.ajax({
+    //                 url: base_url + "service/checkout/order",
+    //                 data: formData,
+    //                 processData: false,
+    //                 contentType: false,
+    //                 type: 'POST',
+    //                 success: function(data) {
+    //                     if (data.message == 200) {
+    //                         showMessage(data.message, "user/order");
+    //                     } else {
+    //                         showMessage(data.message);
+    //                     }
+    //                     // console.log(data);
+    //                 }
+    //             });
+    //         }
+    //     }
+    // });
 
 });
 </script>

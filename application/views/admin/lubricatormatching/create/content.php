@@ -46,24 +46,30 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                  <label>ชนิดน้ำมันเครื่อง</label> <span class="error">*</span>
-                                  <select class="form-control form-control-chosen-required" name="lubricator_gear" id="lubricator_gear" data-placeholder="เลือกชนิดน้ำมันเครื่อง">
-                                    <option></option>
-                                  </select>
-                                <label id="lubricator_gear-error" class="error" for="lubricator_gear"></label>
-                              </div>
-                            </div>
-                            <div class="col-md-8">
-                              <div class="form-group">
-                                  <label>เบอร์น้ำมันเครื่อง</label> <span class="error">*</span>
-                                  <select class="form-control form-control-chosen" name="lubricator_numberId" id="lubricator_numberId" data-placeholder="เลือกเบอร์น้ำมันเครื่อง" multiple>
-                                  </select>
-                                  <label id="lubricator_numberId-error" class="error" for="lubricator_numberId"></label>
-                              </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                                <label>ชนิดน้ำมันเครื่อง</label> <span class="error">*</span>
+                                <select class="form-control form-control-chosen-required" name="lubricator_gear" id="lubricator_gear" data-placeholder="เลือกชนิดน้ำมันเครื่อง">
+                                  <option></option>
+                                </select>
+                              <label id="lubricator_gear-error" class="error" for="lubricator_gear"></label>
                             </div>
                           </div>
+                          <div class="col-md-8">
+                            <div class="form-group">
+                                <label>เบอร์น้ำมันเครื่อง</label> <span class="error">*</span>
+                                <select class="form-control form-control-chosen" name="lubricator_numberId" id="lubricator_numberId" data-placeholder="เลือกเบอร์น้ำมันเครื่อง" multiple>
+                                </select>
+                                <label id="lubricator_numberId-error" class="error" for="lubricator_numberId"></label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>เลขไมล์</label> <span class="error">*</span>
+                            <input type="number" class="form-control" name="mileage" id="mileage" placeholder="เลขไมล์">
+                          </div>
+                        </div><br>
                         <div class="form-group"> 
                             <button type="submit" class="btn btn-primary">บันทึก</button>
                         </div>

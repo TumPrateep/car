@@ -3,7 +3,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="<?=base_url("admin/charge/lubricatorcharge") ?>">ราคาเปลี่ยนน้ำมันเครื่อง</a>
+          <a href="<?=base_url("admin/charge/lubricatorcharge") ?>">กำไรจากการเปลี่ยนน้ำมันเครื่อง</a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
       </ol>
@@ -41,7 +41,8 @@
       <table class="table table-bordered" id="changes-table" width="100%" cellspacing="0">
         <thead>
           <th><i class="fa fa-sort"></i>  ลำดับ</th>
-          <th><i class="fa fa-toggle-left"></i>  ค่าบริการ</th>
+          <th><i class="fa fa-circle-o"></i> ประเภทน้ำมันเครื่อง</th>
+          <th><i class="fa fa-usd"></i> กำไรจากสินค้า</th>
           <th><i class="fa fa-toggle-right"></i>  สถานะ</th>
           <th></th>
         </thead>	

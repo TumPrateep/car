@@ -98,8 +98,7 @@ $(document).ready(function() {
                         localStorage.userId = data.userId;
                         $.cookie('token', data.token, { expires: 365 })
                         $.cookie('userId', data.userId, { expires: 365 })
-                        // synCartData();
-                        window.location = base_url + "role";
+                        synLogin(base_url + "role");
                     } else if (message == "2002") {
                         errorMessage.html("ไม่พบชื่อผู้ใช้งาน <a href='" + base_url + "register" +
                             "'>ลงทะเบียน</a>");
@@ -262,7 +261,9 @@ function successLogin(data) {
         errorMessage.show();
     }
 }
+</script>
 
+<script>
 function register() {
     $('.form-login').hide();
     $('.form-register').show("slow");

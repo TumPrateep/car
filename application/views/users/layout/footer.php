@@ -1,3 +1,23 @@
+
+<footer class="footer-main">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+            <div class="section-title white">
+                <h3><span class="alternate">CARJAIDEE.COM</span></h3>
+            </div>
+            <p>
+                <span class="text-white">
+                คาร์ใจดี คือผู้ช่วยของผู้ใช้รถ ด้านการดูแลบำรุงรักษารถยนต์ (Maintenance) เพื่อแก้ปัญหาการดูแลรถยนต์หลังการขายที่หมดจากการรับประกันของศูนย์บริการรถยนต์ทุกยี่ห้อ ด้วยข้อมูลด้านเทคนิคที่ถูกต้อง และประหยัดค่าดูแลรถให้ผู้ใช้รถยนค์ โดยศูนย์บริการที่มีประสบการณ์สูงใกล้บ้าน
+                <br>
+                คาร์ใจดี คือ ผู้รวบรวมเอาโรงงานผู้ผลิต ผู้ค้าส่งสินค้ามาไว้บนระบบ  เพื่อให้มั่นใจได้ว่า ท่านได้สินค้าที่เป็นราคาโรงงาน และมีคุณภาพ สดใหม่ เพราะเราทราบดีว่ามีผลต่อความปลอดภัยในการใช้รถ
+                </span>
+            </p>
+        </div>
+      </div>
+    </div>
+</footer>
+
 <?php $basedata = loadBasicData();?>
 <!-- Subfooter -->
 <footer class="subfooter">
@@ -139,7 +159,7 @@
     </div>
 </div>
 
-<div class="modal" tabindex="-1" role="dialog" id="modal-cart">
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-cart">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -149,17 +169,43 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p class="text-center"><i class="far fa-check-circle correct-logo"></i> <br>สินค้าถูกหยิบใส่ตะกร้าแล้ว
+                <p class="text-center"><img src="<?php echo base_url('public/themes/user/images/cartt.png'); ?>" width="70px"> <br>สินค้าถูกหยิบใส่ตะกร้าแล้ว
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">เลือกสินค้าต่อ</button>
-                <a href="<?=base_url("shop/cart")?>"><button type="button" class="btn btn-orange btn-block">
+                <a href="<?=base_url("cart")?>"><button type="button" class="btn btn-orange btn-block">
                         ยืนยันการสั่งสินค้า</button></a>
                 <!-- <button type="button" class="btn btn-primary" >ยืนยันการสั่งสินค้า</button> -->
             </div>
         </div>
     </div>
+</div>
+
+<div class="shopping-cart">
+    <!-- <a href="#" target="_blank"> -->
+    <div style="cursor:pointer;" role="button" tabindex="0">
+        <div style="position: absolute;z-index: 70;left: 56%;">
+            <div class="col-lg-2 col-9 order-lg-3 order-2 text-lg-left text-right">
+                <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+                    <div class="cart">
+                        <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                            <div class="cart_icon">
+                                <a href="<?php echo base_url('cart') ?>">
+                                    <img src="https://demo.carjaidee.com/public/themes/user/images/cartt.png" alt="">
+                                    <div class="cart_count"><span id="cart_count">0</span></div>
+                                </a>
+                            </div>
+                            <div class="cart_content">
+                                <div class="cart_text"><a href="<?php echo base_url('cart') ?>" style="color: #ff6600;padding-left: 10px;"> ตะกร้า</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </a> -->
 </div>
 
 <div class="banner-bottom" style="bottom: 1%; left: 24%; width: 100%;">

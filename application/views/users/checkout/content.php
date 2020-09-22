@@ -27,9 +27,9 @@ img.exbrand {
                     </div>
                 </div>
                 <form id="form-rent">
-                    <input type="hidden" name="tire_dataId" id="tire_dataId" value="<?=$tire_dataId?>">
+                    <!-- <input type="hidden" name="tire_dataId" id="tire_dataId" value="<?=$tire_dataId?>">
                     <input type="hidden" name="garageId" id="garageId" value="<?=$garageId?>">
-                    <input type="hidden" name="number" id="number" value="<?=$number?>">
+                    <input type="hidden" name="number" id="number" value="<?=$number?>"> -->
 
                     <div class="row">
                         <div class="col-md-6">
@@ -203,25 +203,8 @@ img.exbrand {
                                                 <hr>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <img src="https://www.tyremarket.com/images/products/EP150.jpg"
-                                                    class="extire" alt="">
-                                            </div>
-                                            <div class="col-8 text-right">
-                                                <span id="tire-data"></span>
-                                            </div>
-                                        </div>
+                                        <div class="show-product" id="product-data"></div>
                                         <br>
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <input type="number" name="quantity" class="form-control v-number"
-                                                    value="4" min="1">
-                                            </div>
-                                            <div class="col-9 text-right">
-                                                <h4 class="amount"></h4>
-                                            </div>
-                                        </div>
                                         <div class="row">
                                             <div class="col-12">
                                                 <hr>
@@ -229,25 +212,10 @@ img.exbrand {
                                         </div>
                                         <div class="row">
                                             <div class="col-6">
-                                                <span>ยางรถยนต์</span>
+                                                <h6>รวมทั้งหมด</h6>
                                             </div>
-                                            <div class="col-2 text-center">
-                                                <span class="number"></span>
-                                            </div>
-                                            <div class="col-4 text-right">
-                                                <span class="amount"></span>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <span><strong>รวมทั้งหมด</strong></span>
-                                            </div>
-                                            <div class="col-2 text-center">
-                                                <span><strong class="number"></strong></span>
-                                            </div>
-                                            <div class="col-4 text-right">
-                                                <span><strong class="amount"></strong></span>
+                                            <div class="col-6 text-right">
+                                                <span class="alternate"><strong class="amount"></strong></span>
                                             </div>
                                         </div>
                                         <div class="row">

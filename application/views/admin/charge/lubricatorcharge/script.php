@@ -35,6 +35,7 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
+                {"data": "machine_type"},
                 { "data": "lubricator_price" },
                 null,
                 null
@@ -50,14 +51,14 @@
                     "render": function ( data, type, full, meta ) {
                         return meta.row + 1;
                     }
-                },{ "targets": 1,
+                },{ "targets": 2,
                     "data": "lubricator_price",
                     "render": function ( data, type, full, meta ) {
-                        return currency(data, { useVedic: true }).format();
+                        return currency(data, { useVedic: true }).format() +' '+ full.unit;
                     }             
                 },
                 {
-                    "targets": 2,
+                    "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         var switchVal = "true";
@@ -75,7 +76,7 @@
                         +'</div>';
                     }
                 },{
-                    "targets": 3,
+                    "targets": 4,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+'admin/charge/updatelubricatorcharge/'+data.lubricator_changeId+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
@@ -86,7 +87,7 @@
                 // {"className": "dt-head-center", "targets": [2]},
                 {"className": "dt-center", "targets": [0,1,2,3]},
                 { "width": "10%", "targets": 0 },
-                { "width": "20%", "targets": 1 },
+                { "width": "30%", "targets": 1 },
                 { "width": "20%", "targets": 2 },
                 { "width": "20%", "targets": 3 }
             ]	 

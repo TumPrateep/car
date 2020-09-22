@@ -13,7 +13,7 @@ class Lubricatormatchings extends CI_Model {
 
     function allLubricatorMatching($limit,$start,$col,$dir)
     {  
-        $this->db->select('lubricator_matching.lubricator_matching_id, lubricator_matching.status, lubricator_matching.lubricator_gear,
+        $this->db->select('lubricator_matching.lubricator_matching_id, lubricator_matching.status, lubricator_matching.lubricator_gear, lubricator_matching.mileage,
         lubricator_number.lubricator_number, brand.brandName, model.modelName,model.yearStart, model.yearEnd, model.detail'); 
         $this->db->from('lubricator_matching');
         $this->db->join('brand', 'lubricator_matching.brand_id = brand.brandId');

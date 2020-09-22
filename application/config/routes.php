@@ -78,7 +78,7 @@ $route['shop/sparepart/(\d+)/(:any)/(\d+)/(\d+)'] = 'public/Menu/sparepart/$1/$2
 $route['shop/tire'] = 'public/Menu/tire';
 $route['shop/showshop'] = 'public/Menu/showshop';
 
-$route['shop/cart'] = 'public/Menu/cart';
+$route['cart'] = 'user/menu/cart';
 $route['shop/detail/([a-zA-Z]+)/(\d+)'] = function ($group, $id) {
     if ($group == "lubricator") {
         return 'public/SingleProduct/lubricatordetail/' . strtolower($group) . '/' . $id;
@@ -100,6 +100,9 @@ $route['comment/(\d+)'] = function ($id) {
 };
 
 $route['search/lubricator'] = 'user/search/lubricator';
+$route['search/lubricator/resultgarage/(\d+)/(\d+)/(\d+)'] = function ($machine_id, $lubricator_numberId, $lubricator_dataId) {
+    return 'user/resultgarage/lubricator/' . $machine_id . '/' . $lubricator_numberId . '/' . $lubricator_dataId;
+};
 $route['search/tire'] = 'user/search/tire';
 $route['search/tire/resultgarage/(\d+)/(\d+)/(\d+)'] = function ($tire_modelId, $tire_size_id, $tire_dataId) {
     return 'user/resultgarage/index/' . $tire_modelId . '/' . $tire_size_id . '/' . $tire_dataId;
@@ -108,9 +111,7 @@ $route['search/garage'] = 'user/Garage';
 $route['search/garage/detailgarage/(\d+)'] = function ($garageId) {
     return 'user/detailgarage/index/' . $garageId;
 };
-$route['checkout/(\d+)/(\d+)/(\d+)'] = function ($tire_dataId, $garageId, $number) {
-    return 'user/checkout/index/' . $tire_dataId . '/' . $garageId . '/' . $number;
-};
+$route['checkout'] = 'user/checkout/index/';
 $route['products/tire'] = 'user/tire';
 $route['products/lubricator'] = 'user/lubricator';
 // user route

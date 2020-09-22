@@ -40,8 +40,8 @@ class Dataoption extends CI_Model
     public function getPictureLubricator($option)
     {
         $this->db->select("picture");
-        $this->db->from("lubricator_product");
-        $this->db->where("lubricatorId", $option['lubricatorId']);
+        $this->db->from("lubricator_product_picture");
+        $this->db->where("lubricator_id", $option['lubricatorId']);
         $query = $this->db->get();
         return $query->row();
     }

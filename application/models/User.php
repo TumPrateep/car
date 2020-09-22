@@ -94,6 +94,26 @@ class User extends CI_Model
         }
     }
 
+    public function insert_user_car_profile($data)
+    {
+        // return $this->db->insert('users', $data);
+        $this->db->trans_begin();
+        $this->db->insert('users', $data['users']);
+        $userId = $this->db->insert_id();
+        $data['profile']['userId'] = $userId;
+        $this->db->insert('user_profile', $data['profile']);
+        $data['car_profile']['userId'] = $userId;
+        $this->db->insert('car_profile', $data['car_profile']);
+
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
+    }
+
     public function data_check_create($username, $phone)
     {
         $this->db->select("username");

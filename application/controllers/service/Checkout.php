@@ -16,13 +16,15 @@ class Checkout extends BD_Controller
         $this->load->model('checkouts');
         $this->load->model('checkout_credit');
         $this->load->model('payments');
+        $this->load->model('tirechangesgarge');
+        $this->load->model('lubricatorchangegarages');
     }
 
     public function getData_post()
     {
-        $tire_dataId = $this->post('tire_dataId');
+        $product_data = $this->post('product_data');
         $garageId = $this->post('garageId');
-        $number = $this->post('number');
+        // $number = $this->post('number');
 
         $garageData = $this->garage->getGarageByGarageId($garageId);
 
@@ -30,40 +32,175 @@ class Checkout extends BD_Controller
         $garageData->districtName = $this->location->getDistrictNameByDistrictId($garageData->districtId);
         $garageData->subdistrictName = $this->location->getSubDistrictBySubDistrictId($garageData->subdistrictId);
 
-        $tireData = $this->tiredatas->getTireDataById($tire_dataId);
-        $carjaidee_change_data = $this->prices->getPriceCarjaidee($tireData->rimId, $tireData->tire_sizeId);
-        $carjaidee_price = 0;
-        if (!empty($carjaidee_change_data)) {
-            $carjaidee_price = $carjaidee_change_data->price;
-            if ($carjaidee_change_data->unit_id == 1) {
-                $carjaidee_price = $tireData->price * $carjaidee_change_data->price / 100;
-            }
+        if($product_data == null){
+            $product_data = [];
+        }
+        $number_product = [];
+        foreach ($product_data as $v) {
+            $number_product[$v['group']][$v['productId']] = (!empty($v['number']))?$v['number']:'';
         }
 
-        $tire_service_data = $this->prices->getPriceService($tireData->rimId);
-        $service_price = $tire_service_data->price;
+        $lubricatorData = $this->getLubricator($product_data);
+        $tireData = $this->getTire($product_data);
+        $spareData = $this->getSpare($product_data);
 
-        $garage_service = $this->prices->getPriceFromGarageByGarageId($tireData->rimId, $garageId);
-
-        $tire_price = $tireData->price;
-        $tireData->price = ($tire_price + $carjaidee_price + $service_price + ($garage_service->tire_price + 50)) * $number;
-        $tireData->price_per_unit = ($tire_price + $carjaidee_price + $service_price + ($garage_service->tire_price + 50));
-        $tireData->number = $number;
-
-        $serviceData = [
-            'price_per_unit' => $tireData->price_per_unit,
-            'product_price' => $tire_price,
-            'charge_price' => $carjaidee_price,
-            'delivery_price' => $service_price,
-            'garage_service_price' => $garage_service->tire_price,
-        ];
+        $products = $this->getCartData($lubricatorData, $tireData, $spareData, $garageId, $number_product);
 
         $data = [
             "garage_data" => $garageData,
-            "tire_data" => $tireData,
-            'service' => $serviceData,
+            "products" => $products,
+            // 'service' => $serviceData,
         ];
         $this->set_response($data, REST_Controller::HTTP_OK);
+    }
+
+    function getLubricator($data){
+        $lubricatorArray = array_filter(
+            $data, function ($e) { 
+                return $e["group"] == "lubricator"; 
+            }
+        );
+        $lubricatorDataIdArray = array_column($lubricatorArray, 'productId');
+        $this->load->model("lubricatordatas");
+        return $this->lubricatordatas->getLubricatorDataForCartByIdArray($lubricatorDataIdArray);
+    }
+
+    function getTire($data){
+        $tireArray = array_filter(
+            $data, function ($e) { return $e["group"] == "tire"; }
+        );
+        $tireDataIdArray = array_column($tireArray, 'productId');
+        $this->load->model("tiredatas");
+        return $this->tiredatas->getTireDataForCartByIdArray($tireDataIdArray);
+    }
+
+    function getSpare($data){
+        $spareArray = array_filter(
+            $data, function ($e) { return $e["group"] == "spare"; }
+        );
+        $spareDataIdArray = array_column($spareArray, 'productId');
+        $this->load->model("Spare_undercarriagedatas");
+        return $this->Spare_undercarriagedatas->getSpareDataForCartByIdArray($spareDataIdArray);
+    }
+
+    function getCartData($lubricatorData, $tireData, $spareData, $garageId, $number_product){
+        $data = [];
+        if($lubricatorData != null){
+            $this->load->model("prices");
+            // $charge = $this->lubricatorchanges->getLubricatorChangePrice();
+
+            foreach ($lubricatorData as $value){
+
+                $carjaidee_change_data = $this->prices->getLubricatorPriceCarjaidee($value->machine_id);
+                $carjaidee_price = 0;
+                if (!empty($carjaidee_change_data)) {
+                    $carjaidee_price = $carjaidee_change_data->price;
+                    if ($carjaidee_change_data->unit_id == 1) {
+                        $carjaidee_price = $value->price * $carjaidee_change_data->price / 100;
+                    }
+                }
+
+                $lubricator_service_data = $this->prices->getLubricatorPriceService($value->machine_id);
+                $service_price = $lubricator_service_data->price;
+
+                $garage = $this->lubricatorchangegarages->getLubricatorChangeByIdAndMachine($garageId, $value->machine_id);
+                $garage_service_price = 0;
+                if(!empty($garage)){
+                    $garage_service_price = (int)$garage->lubricator_price;
+                }
+
+                $data["lubricator"][$value->lubricator_dataId]["number_product"] = $number_product['lubricator'][$value->lubricator_dataId];
+                $data["lubricator"][$value->lubricator_dataId]["garage"] = $garage;
+                $data["lubricator"][$value->lubricator_dataId]["machine_id"] = $value->machine_id;
+                $data["lubricator"][$value->lubricator_dataId]["productId"] = $value->lubricator_dataId;
+                $data["lubricator"][$value->lubricator_dataId]["price"] =  $value->price + $carjaidee_price + $service_price + $garage_service_price;
+                $option = [
+                    'lubricatorId' => $value->lubricatorId
+                ];
+                $data["lubricator"][$value->lubricator_dataId]['picture'] = getPictureLubricator($option);
+                $data["lubricator"][$value->lubricator_dataId]["brandPicture"] = $value->lubricator_brandPicture;
+                $data["lubricator"][$value->lubricator_dataId]["brandName"] = $value->lubricator_brandName;
+                $data["lubricator"][$value->lubricator_dataId]["name"] = $value->lubricatorName;
+                $data["lubricator"][$value->lubricator_dataId]["lubricatorNumber"] = $value->lubricator_number;
+                $data["lubricator"][$value->lubricator_dataId]["capacity"] = $value->capacity;
+                $data["lubricator"][$value->lubricator_dataId]["machine_type"] = $value->machine_type;
+                $data["lubricator"][$value->lubricator_dataId]["lubricator_type_name"] = $value->lubricator_typeName;
+            }
+    
+        }
+        if($tireData != null){
+            $this->load->model("tirechanges");
+            $this->load->model("prices");
+
+            foreach($tireData as $value){
+
+                $carjaidee_change_data = $this->prices->getPriceCarjaidee($value->rimId, $value->tire_sizeId);
+                $carjaidee_price = 0;
+                if (!empty($carjaidee_change_data)) {
+                    $carjaidee_price = $carjaidee_change_data->price;
+                    if ($carjaidee_change_data->unit_id == 1) {
+                        $carjaidee_price = $value->price * $carjaidee_change_data->price / 100;
+                    }
+                }
+
+                $tire_service_data = $this->prices->getPriceService($value->rimId);
+                $service_price = $tire_service_data->price;
+
+                // $garage = $this->garage->getGarageByGarageId($garageId['tire'][$value->tire_dataId]);
+                
+                $garage_service = $this->tirechangesgarge->getTireChangeByIdAndRim($garageId, $value->rimId);
+                $garage_service_price = 0;
+                if(!empty($garage)){
+                    $garage_service_price = (int)$garage_service->tire_price;
+                }
+
+                $data["tire"][$value->tire_dataId]["number_product"] = $number_product['tire'][$value->tire_dataId];
+                $data["tire"][$value->tire_dataId]["garage"] = $garage_service;
+                $data["tire"][$value->tire_dataId]["productId"] = $value->tire_dataId;
+                $data["tire"][$value->tire_dataId]["price2"] = $garage_service_price;
+                $data["tire"][$value->tire_dataId]["price"] = $value->price + $carjaidee_price + $service_price + $garage_service_price;
+                $option = [
+                    'tire_brandId' => $value->tire_brandId,
+                    'tire_modelId' => $value->tire_modelId,
+                    'tire_sizeId' => $value->tire_sizeId,
+                    'rimId' => $value->rimId
+                ];
+                $data["tire"][$value->tire_dataId]['picture'] = getPictureTire($option);
+                $data["tire"][$value->tire_dataId]["brandPicture"] = $value->tire_brandPicture;
+                $data["tire"][$value->tire_dataId]["brandName"] = $value->tire_brandName;
+                $data["tire"][$value->tire_dataId]["name"] = $value->tire_modelName;
+                $data["tire"][$value->tire_dataId]["number"] = $value->tire_size;
+            }
+        }
+        if($spareData != null){
+            $this->load->model("sparechanges");
+            $sparePriceData = $this->sparechanges->getSpareChangePrice();
+            $charge = [];
+            foreach($sparePriceData as $cost){
+                $charge[$cost->spares_undercarriageId] = $cost->spares_price;
+            }
+            foreach($spareData as $value){
+                $data["spare"][$value->spares_undercarriageDataId]["productId"] = $value->spares_undercarriageDataId;
+                $data["spare"][$value->spares_undercarriageDataId]["price"] = ($value->price*1.1) + $charge[$value->spares_undercarriageId];
+                $option = [
+                    'spares_undercarriageId' => $value->spares_undercarriageId,
+                    'spares_brandId' => $value->spares_brandId,
+                    'brandId' => $value->brandId,
+                    'modelId' => $value->modelId,
+                    'modelofcarId' => $value->modelofcarId
+                    // 'spares_brandPicture' => $value->spares_brandPicture
+                ];
+                $data["spare"][$value->spares_undercarriageDataId]['picture'] = getPictureSpare($option);
+                // $data["spare"][$value->spares_undercarriageDataId]["spares_brandPicture"] = $value->spares_brandPicture;
+                $data["spare"][$value->spares_undercarriageDataId]["brandName"] = $value->brandName;
+                $data["spare"][$value->spares_undercarriageDataId]["modelName"] = $value->modelName;
+                $data["spare"][$value->spares_undercarriageDataId]["year"] = $value->year;
+                $data["spare"][$value->spares_undercarriageDataId]["spares_brandName"] = $value->spares_brandName;
+                $data["spare"][$value->spares_undercarriageDataId]["spares_undercarriageName"] = $value->spares_undercarriageName;
+            }
+        }
+
+        return $data;
     }
 
     public function order_post()

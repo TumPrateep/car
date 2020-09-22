@@ -131,16 +131,31 @@ if(!function_exists('resetPasswordEmail'))
     function resetPasswordEmail($detail)
     {
         $data["data"] = $detail;
-        // pre($detail);
-        // die;
+
+        $CI = &get_instance();
+        $CI->load->library('email');
         
-        $CI = setProtocol();        
+        $config['protocol'] = 'smtp';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['smtp_host'] = 'smtp.carjaidee.com';
+        $config['smtp_port'] = '25';
+        $config['smtp_user'] = 'carjaide@carjaidee.com';
+        $config['smtp_pass'] = '5Uythv9L97';
+        $config['charset'] = "utf-8";
+        $config['mailtype'] = "html";
+        $config['newline'] = "\r\n";
+        
+        $CI->email->initialize($config);
+        
+        // $CI = setProtocol();        
         
         $CI->email->from('carjaide@carjaidee.com', 'Carjaidee');
         $CI->email->subject("Reset Password");
         $CI->email->message($CI->load->view('email/resetPassword', $data, TRUE));
         $CI->email->to($detail["email"]);
         $status = $CI->email->send();
+
+        // var_dump($CI->email->get_debugger_messages());
         
         return $status;
     }
@@ -156,7 +171,7 @@ if(!function_exists('setProtocol'))
         
         $config['protocol'] = 'smtp';
         $config['mailpath'] = '/usr/sbin/sendmail';
-        $config['smtp_host'] = 'smtp.carjaidee.com';
+        $config['smtp_host'] = 'smtp.thaidata.com';
         $config['smtp_port'] = '25';
         $config['smtp_user'] = 'carjaide';
         $config['smtp_pass'] = '@Carjaidee1!@';

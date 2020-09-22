@@ -322,6 +322,7 @@ $(document).ready(function() {
                         '<a href="' + base_url + 'search/tire/resultgarage/' + data
                         .tire_modelId + '/' + data.tire_sizeId + '/' + data.tire_dataId +
                         '">' +
+                        // '<a class="product_cart_button" onclick="setCart(\'tire\','+ data.tire_dataId +',this)">'+
                         '<div class="card pointer full-view">' +
                         '<div class="card-body order">' +
                         'ราคาต่ำสุด' +

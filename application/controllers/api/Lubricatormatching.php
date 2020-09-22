@@ -61,12 +61,14 @@ class Lubricatormatching extends BD_Controller {
         $lubricator_gear = $this->post("lubricator_gear");
         $detail = $this->post("detail");
         $lubricator_number = $this->post("lubricator_number");
+        $mileage = $this->post('mileage');
 
         $data['model'] = [
             "brand_id" => $brand_id,
             "model_id" => $model_id,
             "lubricator_gear" => $lubricator_gear,
-            "detail" => $detail
+            "detail" => $detail,
+            "mileage" => $mileage
         ];
         $data['lubricator_number'] = $lubricator_number;
 

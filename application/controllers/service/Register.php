@@ -349,6 +349,78 @@ class Register extends BD_Controller
         }
     }
 
+    public function users_car_post(){
+        $username = $this->post('username');
+        $phone = $this->post('phone');
+        $password = $this->post('password');
+        $p = password_hash($password, PASSWORD_BCRYPT);
+
+        $firstname = $this->post('firstname');
+        $lastname = $this->post('lastname');
+
+        $character_plate = $this->post('character_plate');
+        $number_plate = $this->post('number_plate');
+        $province_plate = $this->post('province_plate');
+
+        $isCheck = $this->user->data_check_create($username, $phone);
+        if ($isCheck == null) {
+            $data['users'] = array(
+                'id' => null,
+                'username' => $username,
+                'phone' => $phone,
+                'password' => $p,
+                'category' => 4,
+                'status' => 1,
+                'create_at' => date('Y-m-d H:i:s', time()),
+            );
+            $data['profile'] = array(
+                'user_profile' => null,
+                'titleName' => null,
+                'firstName' => $firstname,
+                'lastname' => $lastname,
+                'hno' => null,
+                'alley' => null,
+                'road' => null,
+                'village' => null,
+                'provinceId' => null,
+                'districtId' => null,
+                'subdistrictId' => null,
+                'postCodes' => null,
+                'phone1' => null,
+                'phone2' => null,
+                'create_by' => null,
+                'update_by' => null,
+                'create_at' => date('Y-m-d H:i:s', time()),
+                'update_at' => null,
+                'userId' => null,
+                'status' => 1,
+                'activeFlag' => 1,
+            );
+
+            $data['car_profile'] = array(
+                'character_plate' => $character_plate,
+                'number_plate' => $number_plate,
+                'province_plate' => $province_plate,
+            );
+
+            $result = $this->user->insert_user_car_profile($data);
+            if ($result) {
+                $output['result'] = $result;
+                $output["message"] = REST_Controller::MSG_SUCCESS;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            } else {
+                $output['result'] = $result;
+                $output["message"] = REST_Controller::MSG_NOT_CREATE;
+                $this->set_response($output, REST_Controller::HTTP_OK);
+            }
+        } else {
+            $output["status"] = false;
+            $output["data"] = "username ซ้ำ";
+            $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
+            $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);
+        }
+    }
+
     public function users_post()
     {
 
