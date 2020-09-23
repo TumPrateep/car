@@ -39,7 +39,7 @@
         ],
         "columns": [
             null,
-            { "data": "orderId" },
+            null,
             null,
             null
 
@@ -53,6 +53,12 @@
                 "data": null,
                 "render": function(data, type, full, meta) {
                     return meta.row + 1;
+                }
+            },{
+                "targets": 1,
+                "data": null,
+                "render": function(data, type, full, meta) {
+                    return '#'+data.orderId; 
                 }
             },{
                 "targets": 2,
