@@ -37,7 +37,7 @@
                                 <div class="col-lg-12">
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="service-table" width="100%" cellspacing="0">
-                                            <thead>
+                                            <thead class="schedule">
                                                 <!-- <th data-priority="3">ลำดับ</th> -->
                                                 <th>ลำดับ</th>
                                                 <th>คำสั่งซื้อ</th>

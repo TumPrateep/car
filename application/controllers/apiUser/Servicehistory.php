@@ -15,13 +15,14 @@ class Servicehistory extends BD_Controller
     public function servicehistory_post()
     {
         $columns = array(
-            0 => 'order.orderId',
+            1 => 'order.orderId',
+            2 => 'reserve.reserveDate',
         );
         // $garageId = $this->session->userdata['logged_in']['garageId'];
 
         $limit = $this->post('length');
         $start = $this->post('start');
-        $order = 'order.orderId';
+        $order = $columns[$this->post('order')[0]['column']];
         $dir = $this->post('order')[0]['dir'];
 
         $totalData = $this->servicehistorys->getservicehistory_count();

@@ -1,3 +1,4 @@
+<script src="<?php echo base_url() ?>public/js/jquery-dateformat.min.js"></script>
 <script>
     var table = $('#service-table').DataTable({
         "language": {
@@ -34,7 +35,7 @@
             }
         },
         "order": [
-            [0, "desc"]
+            [1, "desc"]
         ],
         "columns": [
             null,
@@ -46,7 +47,7 @@
         "columnDefs": [{
                 "searchable": false,
                 "orderable": false,
-                "targets": []
+                "targets": [0,3]
             },{
                 "targets": 0,
                 "data": null,
@@ -57,17 +58,17 @@
                 "targets": 2,
                 "data": null,
                 "render": function(data, type, full, meta) {
-                    return data.reserveDate + ' ' +data.reservetime;
+                    return $.format.date(new Date(data.reserveDate), "dd/MM/yyyy") + ' ' + data.reservetime + " น."; // code ในการแปลงเวลา
                 }
             },{
                 "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return 'รายละเอียด <a href="order/orderdetails/' +data.orderId+'"><button type="button" class="btn btn-primary"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button></a> ';
+                        return '<a href="order/orderdetails/' +data.orderId+'"><button type="button" class="btn bg-orange"><i class="fa fa-plus-square-o" aria-hidden="true"></i> รายละเอียด</button></a> ';
                     }
             },
-            {"className": "dt-head-center", "targets": [0, 1, 2, 3]},
-            {"className": "dt-center", "targets": [0, 1, 2, 3]}
+            {"className": "dt-head-center", "targets": [0, 1, 2, 3]}
+            // {"className": "dt-center", "targets": [0, 1, 2, 3]}
         ]
     });
 
