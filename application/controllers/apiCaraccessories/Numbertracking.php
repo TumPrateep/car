@@ -13,9 +13,9 @@ class Numbertracking extends BD_Controller
 
     public function getNumbertracking_get()
     {
-        $orderId = $this->get("orderId");
-        $output["tracking"] = $this->numbertrackings->getNumbertracking($orderId);
-        $output["dot"] = $this->tire_dots->getAllDot($orderId);
+        $orderDetailId = $this->get("orderDetailId");
+        $output["tracking"] = $this->numbertrackings->getNumbertracking($orderDetailId);
+        $output["dot"] = $this->tire_dots->getAllDot($orderDetailId);
         $this->set_response($output, REST_Controller::HTTP_OK);
     }
 

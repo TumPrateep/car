@@ -57,10 +57,8 @@ var table = $('#dt-table').DataTable({
         }).data().each(function(data, i) {
             if (last !== data.orderId) {
                 $(rows).eq(i).before(
-                    '<tr class="group"><td colspan="4"> หมายเลขสั่งซื้อ ' + data.orderId +
-                    ' ชื่อร้านอู่ ' + data.garageName + ' ' +
-                    '<button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
-                    data.orderId + ')"><span>หลักฐานการส่ง</span></button></td></tr>'
+                    '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ ' + data.orderId +
+                    ' ชื่อร้านอู่ ' + data.garageName + ' ' +'</td></tr>'
                 );
 
                 last = data.orderId;
@@ -70,7 +68,7 @@ var table = $('#dt-table').DataTable({
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [0, 1, 2]
+            "targets": [0, 1, 2, 4]
         },
         // {
         //     "targets": 0,
@@ -129,6 +127,15 @@ var table = $('#dt-table').DataTable({
             }
         },
         {
+            "targets": 4,
+            "data": null,
+            "render": function(data, type, full, meta) {
+                let htmlStatus = '<button type="button" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
+                    data.orderDetailId + ')"><span>หลักฐานการส่ง</span></button>'
+                return htmlStatus;
+            }
+        },
+        {
             "className": "dt-center",
             "targets": [1, 2]
         },
@@ -155,14 +162,14 @@ var table = $('#dt-table').DataTable({
 // });
 
 
-function tracking_order(orderId) {
-    $("#orderId").val(orderId);
-    getNumberTrackingData(orderId);
+function tracking_order(orderDetailId) {
+    $("#orderDetailId").val(orderDetailId);
+    getNumberTrackingData(orderDetailId);
 }
 
-function getNumberTrackingData(orderId) {
+function getNumberTrackingData(orderDetailId) {
     $.get(base_url + "apicaraccessories/numbertracking/getNumbertracking", {
-            orderId: orderId
+        orderDetailId: orderDetailId
         },
         function(data, textStatus, jqXHR) {
             console.log(data);

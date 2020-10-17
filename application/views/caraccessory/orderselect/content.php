@@ -64,20 +64,21 @@
                     </button>
                 </div>
                 <div class="modal-body" id="content-delete">
-                    <div class="alert alert-warning" role="alert" id="product-detail"></div>
+                    <div class="alert alert-info" role="alert" id="product-detail"></div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">ราคารวมค่าสินค้า</label>
+                        <label class="col-sm-4 col-form-label">ส่วนลดจากโปรโมชั่น</label>
                         <div class="col-sm-8">
-                            <label class="col-form-label" id="product-price"></label>
+                            <form id="caraccessory-price-form">
+                                <input type="hidden" name="caraccessory_price"  id="caraccessory_price">
+                                <input type="number" class="form-control" name="discount_price"
+                                    id="discount_price" placeholder="ส่วนลดจากโปรโมชั่น (บาท)">
+                            </form>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">ราคารวมค่าสินค้าหลังหักโปรโมชั่น</label>
+                        <label class="col-sm-4 col-form-label">ราคารวมค่าสินค้าหลังหักค่าโปรโมชั่น</label>
                         <div class="col-sm-8">
-                            <form id="caraccessory-price-form">
-                                <input type="number" class="form-control" name="caraccessory_price"
-                                    id="caraccessory_price" placeholder="ราคาหลังหักโปรโมชั่น">
-                            </form>
+                            <label class="col-form-label" id="product-price"></label>
                         </div>
                     </div>
                 </div>

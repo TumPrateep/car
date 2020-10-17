@@ -140,21 +140,36 @@ var table = $('#order-table').DataTable({
                         '</div>' +
                         '</div>' +
                         '<hr>' +
-                        '<div class="row">' +
-                        '<div class="col-3">' +
+                        '<div class="row">';
+                    if(orderDetail.group == 'tire'){
+                        html += '<div class="col-3">' +
                         '<img src="' + base_url + 'public/image/tireproduct/' + orderDetail
                         .picture + '" width="100%">' +
                         '</div>' +
-                        '<div class="col-9 text-right">' +
+                        '<div class="col-9 text-right">'+
                         '<p><strong>' + orderDetail.tire_brandName + ' ' + orderDetail
-                        .tire_modelName + ' ' + orderDetail.tire_size + '</strong></p>' +
-                        '<p><small>1 ชิ้น ' + currency(orderDetail.price_per_unit, {
+                        .tire_modelName + ' ' + orderDetail.tire_size + '</strong></p>';
+                    }else if(orderDetail.group == 'lubricator'){
+                        html += '<div class="col-3">' +
+                        '<img src="' + base_url + 'public/image/lubricatorproduct/' + orderDetail
+                        .picture + '" width="100%">' +
+                        '</div>' +
+                        '<div class="col-9 text-right">'+
+                        '<p><strong>' + orderDetail.lubricator + ' ' + orderDetail
+                        .lubricator_number + ' ' + orderDetail.lubricator_typeName + '</strong></p>';
+                    }
+                        
+                    html +='<p><small>1 ชิ้น ' + currency(orderDetail.price_per_unit, {
                             precision: 0
                         }).format() + ' บาท</small></p>' +
                         '<p>นัดหมายวันที่ <strong>' + $.format.date(reserve.reserveDate + ' ' +
                             reserve.reservetime, "dd/MM/yyyy HH:mm น.") + '</strong></p>' +
                         '<p><a href="' + base_url + "user/order/orderdetails/" + v
-                        .orderId + '" class="text-orange">รายละเอียด</a></p>' +
+                        .orderId + '" class="text-orange">';
+                        if(v.orderDetail.length > 1){
+                            html += '<span class="badge badge-danger bg-orange">มีสินค้า +'+(v.orderDetail.length-1)+' รายการ</span> ';
+                        }
+                    html += 'รายละเอียด</a></p>' +
                         '</div>' +
                         '</div>' +
                         '<hr>' +

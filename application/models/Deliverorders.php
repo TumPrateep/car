@@ -4,21 +4,31 @@
 
 class Deliverorders extends CI_Model
 {
+    public function getNumberFromOrderDetailNonApprove($orderId){
+        $this->db->where('orderId', $orderId);
+        $this->db->where('deliver_flag', 1);
+        $query = $this->db->get('orderdetail');
+        return $query->num_rows();
+    }
 
     public function insert($data)
     {
         $this->db->trans_begin();
         $this->db->insert('numbertracking', $data['numbertracking']);
 
-        $this->db->where('orderId', $data['numbertracking']['orderId']);
+        $this->db->where('orderDetailId', $data['numbertracking']['orderDetailId']);
         $this->db->where('car_accessoriesId', $data['numbertracking']['create_by']);
-        $this->db->update('orderdetail', ["status" => 2]);
+        $this->db->update('orderdetail', ["status" => 2, "deliver_flag"=>2]);
 
-        $this->db->where('orderId', $data['numbertracking']['orderId']);
-        $this->db->update('order', ["status" => 5]);
+        $number = $this->getNumberFromOrderDetailNonApprove($data['numbertracking']['orderId']);
+
+        if($number == 0){
+            $this->db->where('orderId', $data['numbertracking']['orderId']);
+            $this->db->update('order', ["status" => 5]);
+        }
 
         foreach ($data['tire_dot'] as $i => $v) {
-            $this->db->insert('tire_dot', ['orderId' => $data['numbertracking']['orderId'], 'dot' => $v]);
+            $this->db->insert('tire_dot', ['orderId' => $data['numbertracking']['orderId'], 'dot' => $v, 'orderDetailId' => $data['numbertracking']['orderDetailId']]);
         }
 
         if ($this->db->trans_status() === false) {
@@ -61,7 +71,7 @@ class Deliverorders extends CI_Model
     public function allDeliverorders($limit, $start, $order, $dir, $userId) //$limit,$start,$col,$dir,$order
 
     {
-        $this->db->select("order.orderId, orderdetail.quantity, orderdetail.product_price, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName");
+        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.product_price, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName");
         $this->db->from('order');
         $this->db->join('orderdetail', 'order.orderId  = orderdetail.orderId');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
@@ -100,12 +110,12 @@ class Deliverorders extends CI_Model
     public function allShoworders($limit, $start, $order, $dir, $userId) //$limit,$start,$col,$dir,$order
 
     {
-        $this->db->select("order.orderId, orderdetail.quantity, orderdetail.product_price, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName, numbertracking.create_at, order.statusSuccess, orderdetail.status");
+        $this->db->select("order.orderId, orderdetail.orderDetailId, orderdetail.quantity, orderdetail.product_price, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName, order.statusSuccess, orderdetail.status");
         $this->db->from('order');
         $this->db->join('orderdetail', 'order.orderId  = orderdetail.orderId');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('garage', 'garage.garageId = reserve.garageId');
-        $this->db->join('numbertracking', 'numbertracking.orderId = order.orderId');
+        // $this->db->join('numbertracking', 'numbertracking.orderId = order.orderId');
         $this->db->where('order.status >=', 5);
         // $this->db->where('orderdetail.status !=', 1);
         $this->db->where('orderdetail.real_car_accessoriesId', $userId);

@@ -39,6 +39,14 @@
                     </a>
                 </li>
 
+                <li class="nav-item <?=activate_menu('import');?>" data-toggle="tooltip" data-placement="right"
+                    title="Dashboard">
+                    <a class="nav-link text-white" href="<?=base_url("admin/import")?>">
+                        <i class="fa fa-newspaper-o"></i>
+                        <span class="nav-link-text">นำเข้าข้อมูล</span>
+                    </a>
+                </li>
+
                 <li class="nav-item <?=activate_menu('advertisement');?>" data-toggle="tooltip" data-placement="right"
                     title="Dashboard">
                     <a class="nav-link text-white" href="<?=base_url("admin/advertisement")?>">

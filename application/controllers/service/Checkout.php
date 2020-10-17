@@ -114,6 +114,10 @@ class Checkout extends BD_Controller
                 $data["lubricator"][$value->lubricator_dataId]["machine_id"] = $value->machine_id;
                 $data["lubricator"][$value->lubricator_dataId]["productId"] = $value->lubricator_dataId;
                 $data["lubricator"][$value->lubricator_dataId]["price"] =  $value->price + $carjaidee_price + $service_price + $garage_service_price;
+                $data["lubricator"][$value->lubricator_dataId]["price_per_unit"] = $value->price;
+                $data["lubricator"][$value->lubricator_dataId]["carjaidee_price"] = $carjaidee_price;
+                $data["lubricator"][$value->lubricator_dataId]["service_price"] = $service_price;
+                $data["lubricator"][$value->lubricator_dataId]["garage_service_price"] = $garage_service_price;
                 $option = [
                     'lubricatorId' => $value->lubricatorId
                 ];
@@ -150,15 +154,19 @@ class Checkout extends BD_Controller
                 
                 $garage_service = $this->tirechangesgarge->getTireChangeByIdAndRim($garageId, $value->rimId);
                 $garage_service_price = 0;
-                if(!empty($garage)){
+                if(!empty($garage_service)){
                     $garage_service_price = (int)$garage_service->tire_price;
                 }
 
                 $data["tire"][$value->tire_dataId]["number_product"] = $number_product['tire'][$value->tire_dataId];
                 $data["tire"][$value->tire_dataId]["garage"] = $garage_service;
                 $data["tire"][$value->tire_dataId]["productId"] = $value->tire_dataId;
-                $data["tire"][$value->tire_dataId]["price2"] = $garage_service_price;
+                // $data["tire"][$value->tire_dataId]["price2"] = $garage_service_price;
                 $data["tire"][$value->tire_dataId]["price"] = $value->price + $carjaidee_price + $service_price + $garage_service_price;
+                $data["tire"][$value->tire_dataId]["price_per_unit"] = $value->price;
+                $data["tire"][$value->tire_dataId]["carjaidee_price"] = $carjaidee_price;
+                $data["tire"][$value->tire_dataId]["service_price"] = $service_price;
+                $data["tire"][$value->tire_dataId]["garage_service_price"] = $garage_service_price;
                 $option = [
                     'tire_brandId' => $value->tire_brandId,
                     'tire_modelId' => $value->tire_modelId,
@@ -205,18 +213,19 @@ class Checkout extends BD_Controller
 
     public function order_post()
     {
-        $tire_dataId = $this->post('tire_dataId');
-        $garageId = $this->post('garageId');
-        $number = $this->post('quantity');
-        $hire_date = $this->post('hire_date_submit');
-        $hire_time = $this->post('hire_time_submit');
-        $car_profile = $this->post('car_profile');
-
+        $productId = $this->post('productId');
+        $number = $this->post('number');
+        $group = $this->post('group');
         $price_per_unit = $this->post('price_per_unit');
-        $product_price = $this->post('product_price');
+        $price = $this->post('price');
         $charge_price = $this->post('charge_price');
         $delivery_price = $this->post('delivery_price');
         $garage_service_price = $this->post('garage_service_price');
+
+        $garageId = $this->post('garageId');
+        $hire_date = $this->post('hire_date_submit');
+        $hire_time = $this->post('hire_time_submit');
+        $car_profile = $this->post('car_profile');
 
         //payment
         $name = $this->post('name');
@@ -224,6 +233,18 @@ class Checkout extends BD_Controller
         $sliptime = $this->post('sliptime_submit');
         $slip = $this->post('slip');
         $userId = $this->session->userdata['logged_in']['id'];
+        
+        $data = [
+            'productId' => $productId,
+            'number' => $number,
+            'group' => $group,
+            'price_per_unit' => $price_per_unit,
+            'product_price' => $price,
+            'charge_price' => $charge_price,
+            'delivery_price' => $delivery_price,
+            'garage_service_price' => $garage_service_price,
+            'userId' => $userId
+        ];
 
         $data['order'] = [
             "userId" => $userId,
@@ -235,31 +256,31 @@ class Checkout extends BD_Controller
             "car_profileId" => $car_profile,
         ];
 
-        $tireData = $this->tiredatas->getTireDataById($tire_dataId);
-        $minTireData = $this->tiredatas->getMinTireDataById($tire_dataId);
-        // $carjaidee_service_price = $this->prices->getPriceCarjaideeChangePrice($tireData->rimId);
+        // $tireData = $this->tiredatas->getTireDataById($tire_dataId);
+        // $minTireData = $this->tiredatas->getMinTireDataById($tire_dataId);
+        // // $carjaidee_service_price = $this->prices->getPriceCarjaideeChangePrice($tireData->rimId);
 
         $data['orderdetail'] = [
             "orderId" => null,
             "userId" => $userId,
-            "productId" => $tire_dataId,
-            "real_productId" => $minTireData->tire_dataId,
-            "quantity" => $number,
+            // "productId" => $tire_dataId,
+            // "real_productId" => $minTireData->tire_dataId,
+            // "quantity" => $number,
             "status" => 1,
             "activeflag" => 1,
             "create_at" => date('Y-m-d H:i:s', time()),
             "group" => "tire",
             "orderselect_status" => 0,
-            "car_accessoriesId" => $tireData->car_accessoriesId,
-            'real_car_accessoriesId' => $minTireData->car_accessoriesId,
-            "price_per_unit" => $price_per_unit,
-            "product_price" => $product_price,
-            'min_product_price' => $minTireData->price,
-            'real_product_price' => $minTireData->price * $number,
-            "charge_price" => $charge_price,
-            "delivery_price" => $delivery_price,
-            "garage_service_price" => $garage_service_price,
-            "carjaidee_service_price" => $garage_service_price + 50,
+            // "car_accessoriesId" => $tireData->car_accessoriesId,
+            // 'real_car_accessoriesId' => $minTireData->car_accessoriesId,
+            // "price_per_unit" => $price_per_unit,
+            // "product_price" => $product_price,
+            // 'min_product_price' => $minTireData->price,
+            // 'real_product_price' => $minTireData->price * $number,
+            // "charge_price" => $charge_price,
+            // "delivery_price" => $delivery_price,
+            // "garage_service_price" => $garage_service_price,
+            // "carjaidee_service_price" => $garage_service_price + 50,
         ];
 
         $data["reserve"] = [
@@ -291,7 +312,7 @@ class Checkout extends BD_Controller
                 "date" => $slipdate,
                 "time" => $sliptime,
                 "transfer" => $name,
-                "money" => $price_per_unit * $number,
+                // "money" => $price_per_unit * $number,
                 "slip" => $imageName,
                 "orderId" => null,
                 "created_by" => $userId,
@@ -312,25 +333,33 @@ class Checkout extends BD_Controller
 
     public function order_credit_post()
     {
-        $tire_dataId = $this->post('tire_dataId');
-        $garageId = $this->post('garageId');
-        $number = $this->post('quantity');
-        $hire_date = $this->post('hire_date_submit');
-        $hire_time = $this->post('hire_time_submit');
-        $car_profile = $this->post('car_profile');
-
+        $productId = $this->post('productId');
+        $number = $this->post('number');
+        $group = $this->post('group');
         $price_per_unit = $this->post('price_per_unit');
-        $product_price = $this->post('product_price');
+        $price = $this->post('price');
         $charge_price = $this->post('charge_price');
         $delivery_price = $this->post('delivery_price');
         $garage_service_price = $this->post('garage_service_price');
 
-        //payment
-        $name = $this->post('name');
-        $slipdate = $this->post('slipdate_submit');
-        $sliptime = $this->post('sliptime_submit');
-        $slip = $this->post('slip');
+        $garageId = $this->post('garageId');
+        $hire_date = $this->post('hire_date_submit');
+        $hire_time = $this->post('hire_time_submit');
+        $car_profile = $this->post('car_profile');
+
         $userId = $this->session->userdata['logged_in']['id'];
+
+        $data = [
+            'productId' => $productId,
+            'number' => $number,
+            'group' => $group,
+            'price_per_unit' => $price_per_unit,
+            'product_price' => $price,
+            'charge_price' => $charge_price,
+            'delivery_price' => $delivery_price,
+            'garage_service_price' => $garage_service_price,
+            'userId' => $userId
+        ];
 
         $data['order'] = [
             "userId" => $userId,
@@ -342,31 +371,18 @@ class Checkout extends BD_Controller
             "car_profileId" => $car_profile,
         ];
 
-        $tireData = $this->tiredatas->getTireDataById($tire_dataId);
-        $minTireData = $this->tiredatas->getMinTireDataById($tire_dataId);
+        // $tireData = $this->tiredatas->getTireDataById($tire_dataId);
+        // $minTireData = $this->tiredatas->getMinTireDataById($tire_dataId);
         // $carjaidee_service_price = $this->prices->getPriceCarjaideeChangePrice($tireData->rimId);
 
         $data['orderdetail'] = [
             "orderId" => null,
             "userId" => $userId,
-            "productId" => $tire_dataId,
-            "real_productId" => $minTireData->tire_dataId,
-            "quantity" => $number,
             "status" => 1,
             "activeflag" => 1,
             "create_at" => date('Y-m-d H:i:s', time()),
             "group" => "tire",
             "orderselect_status" => 0,
-            "car_accessoriesId" => $tireData->car_accessoriesId,
-            'real_car_accessoriesId' => $minTireData->car_accessoriesId,
-            "price_per_unit" => $price_per_unit,
-            "product_price" => $product_price,
-            'min_product_price' => $minTireData->price,
-            'real_product_price' => $minTireData->price * $number,
-            "charge_price" => $charge_price,
-            "delivery_price" => $delivery_price,
-            "garage_service_price" => $garage_service_price,
-            "carjaidee_service_price" => $garage_service_price + 50,
         ];
 
         $data["reserve"] = [
@@ -379,11 +395,11 @@ class Checkout extends BD_Controller
             "orderId" => null,
         ];
 
-        $option = [
-            "data_check" => null,
-            "data" => $data,
-            "model" => $this->checkout_credit,
-        ];
+        // $option = [
+        //     "data_check" => null,
+        //     "data" => $data,
+        //     "model" => $this->checkout_credit,
+        // ];
 
         $result = $this->checkout_credit->insert($data);
         $return = [];

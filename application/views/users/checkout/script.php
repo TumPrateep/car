@@ -39,6 +39,7 @@ $(document).ready(function() {
     function init() {
         var product_data = JSON.parse(localStorage.getItem("sendData"));
         var garageId = localStorage.getItem("garageId");
+        $('#garageId').val(garageId);
         $.post(base_url + "service/Checkout/getData", {
             product_data: product_data,
             garageId: garageId,
@@ -71,40 +72,18 @@ $(document).ready(function() {
     function getTire(data) {
 
         var html = '';
-        $.each(data, function (i, tireData) { 
-            total += tireData.number_product*tireData.price;
-            html += '<div class="row">'
-                +'<div class="col-4">'
-                    +'<img src="https://www.tyremarket.com/images/products/EP150.jpg"'
-                        +'class="extire" alt="">'
-                +'</div>'
-                +'<div class="col-8 text-right">'
-                    + '<img src="' + base_url + 'public/image/tire_brand/' + tireData.brandPicture
-                    + '" width="180px" alt=""><br>'
-                    + '<span><strong>' + tireData.brandName + '</strong></span><br>'
-                    + '<span>' + tireData.name + '</span><br>'
-                    + '<span>' + tireData.number + '</span><br>'
-                    + '<h6>' + tireData.number_product + ' x '+currency(tireData.price, {  precision: 0 }).format()+' = '+currency((tireData.number_product*tireData.price), {  precision: 0 }).format()+' </h6><br>'
-                +'</div>'
-            +'</div>'
-        });        
-       
-        // $('#product-data').html(html);
-
-        // $('.v-number').val(tireData.number);
-        // $('.number').html(tireData.number);
-
-        // price_per_unit = tireData.price_per_unit;
-        return html;
-    }
-
-    function getTire(data) {
-
-        var html = '';
         $.each(data, function (i, v) { 
             total += v.number_product*v.price;
             html += '<div class="row">'
                 +'<div class="col-4">'
+                + '<input type="hidden" name="productId[]" value="'+v.productId+'">'
+                + '<input type="hidden" name="price_per_unit[]" value="'+v.price+'">'
+                + '<input type="hidden" name="price[]" value="'+v.price_per_unit+'">'
+                + '<input type="hidden" name="charge_price[]" value="'+v.carjaidee_price+'">'
+                + '<input type="hidden" name="garage_service_price[]" value="'+v.garage_service_price+'">'
+                + '<input type="hidden" name="delivery_price[]" value="'+v.service_price+'">'
+                + '<input type="hidden" name="number[]" value="'+v.number_product+'">'
+                + '<input type="hidden" name="group[]" value="tire">'
                     +'<img src="'+base_url+'/public/image/tireproduct/'+((v.picture)?v.picture:'example.png')+'"'
                         +'class="extire" alt="">'
                 +'</div>'
@@ -129,6 +108,14 @@ $(document).ready(function() {
             total += v.number_product*v.price;
             html += '<div class="row">'
                 +'<div class="col-4">'
+                + '<input type="hidden" name="productId[]" value="'+v.productId+'">'
+                + '<input type="hidden" name="price_per_unit[]" value="'+v.price+'">'
+                + '<input type="hidden" name="price[]" value="'+v.price_per_unit+'">'
+                + '<input type="hidden" name="charge_price[]" value="'+v.carjaidee_price+'">'
+                + '<input type="hidden" name="garage_service_price[]" value="'+v.garage_service_price+'">'
+                + '<input type="hidden" name="delivery_price[]" value="'+v.service_price+'">'
+                + '<input type="hidden" name="number[]" value="'+v.number_product+'">'
+                + '<input type="hidden" name="group[]" value="lubricator">'
                     +'<img src="'+base_url+'public/image/lubricatorproduct/'+((v.picture)?v.picture:'example.png')+'"'
                         +'class="extire" alt="">'
                 +'</div>'
@@ -328,53 +315,59 @@ $(document).ready(function() {
         type: 'image/jpeg'
     });
 
-    // $("#form-rent").submit(function(e) {
-    //     e.preventDefault();
-    //     var isvalid = $(this).valid();
-    //     if (isvalid) {
-    //         var imageData = $('.image-editor').cropit('export');
-    //         $('.hidden-image-data').val(imageData);
-    //         var myform = document.getElementById("form-rent");
-    //         var formData = new FormData(myform);
-    //         $.each(service_data, function(i, v) {
-    //             formData.append(i, v);
-    //             console.log(i, v);
-    //         });
-    //         let payment = $('.next:checked').val();
-    //         if(payment == 2){
-    //             $.ajax({
-    //                 url: base_url + "service/checkout/order_credit",
-    //                 data: formData,
-    //                 processData: false,
-    //                 contentType: false,
-    //                 type: 'POST',
-    //                 success: function(data) {
-    //                     if (data.message == 200) {
-    //                         window.location = data.url;
-    //                     } else {
-    //                         showMessage(data.message);
-    //                     }                        
-    //                 }
-    //             });
-    //         }else{
-    //             $.ajax({
-    //                 url: base_url + "service/checkout/order",
-    //                 data: formData,
-    //                 processData: false,
-    //                 contentType: false,
-    //                 type: 'POST',
-    //                 success: function(data) {
-    //                     if (data.message == 200) {
-    //                         showMessage(data.message, "user/order");
-    //                     } else {
-    //                         showMessage(data.message);
-    //                     }
-    //                     // console.log(data);
-    //                 }
-    //             });
-    //         }
-    //     }
-    // });
+    $("#form-rent").submit(function(e) {
+        e.preventDefault();
+        var isvalid = $(this).valid();
+        if (isvalid) {
+            var imageData = $('.image-editor').cropit('export');
+            $('.hidden-image-data').val(imageData);
+            var myform = document.getElementById("form-rent");
+            var formData = new FormData(myform);
+            // $.each(service_data, function(i, v) {
+            //     formData.append(i, v);
+            //     console.log(i, v);
+            // });
+            // console.log(myform);
+            let payment = $('.next:checked').val();
+            if(payment == 2){
+                $.ajax({
+                    url: base_url + "service/checkout/order_credit",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    success: function(data) {
+                        if (data.message == 200) {
+                            localStorage.removeItem("data");
+                            cartData = [];
+                            synLogin(data.url);
+                        } else {
+                            showMessage(data.message);
+                        }                        
+                    }
+                });
+            }else{
+                $.ajax({
+                    url: base_url + "service/checkout/order",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    success: function(data) {
+                        console.log(data);
+                        if (data.message == 200) {
+                            showMessage(data.message);
+                            localStorage.removeItem("data");
+                            cartData = [];
+                            synLogin(base_url + "user/order");
+                        } else {
+                            showMessage(data.message);
+                        }
+                    }
+                });
+            }
+        }
+    });
 
 });
 </script>

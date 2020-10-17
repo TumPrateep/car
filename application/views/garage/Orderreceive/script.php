@@ -61,8 +61,7 @@ var table = $('#do-table').DataTable({
                     .orderId +
                     '" class="text-orange">หมายเลขสั่งซื้อ #' + data.orderId +
                     '</a></strong> ' +
-                    '</span> <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
-                    data.orderId + ')"><span>หลักฐานการส่ง</span></button></td></tr>'
+                    '</span></td></tr>'
                 );
 
                 last = data.orderId;
@@ -72,7 +71,7 @@ var table = $('#do-table').DataTable({
     "columnDefs": [{
             "searchable": false,
             "orderable": false,
-            "targets": [0, 1, 2, 3]
+            "targets": [0, 1, 2, 3, 4]
         },
         //  {
         //     "targets": 0,
@@ -128,7 +127,7 @@ var table = $('#do-table').DataTable({
             "render": function(data, type, full, meta) {
                 var html = '';
                 // html+='<a href="'+base_url+'admin/OrderDetail/show/'+data.status+'">#'+data.status+'</a><br>';
-                if (data.status == 1) {
+                if (data.status == 2) {
                     html += '<button type="button" class="btn btn-info"  onclick="confirmStatus(' +
                         data.orderDetailId + ')">รับสินค้า</button>';
                 } else if (data.status == 3) {
@@ -138,6 +137,16 @@ var table = $('#do-table').DataTable({
                 } else {
                     html += '<span class="badge badge-danger">ผิดพลาด</span>';
                 }
+                return html;
+
+            }
+        },
+        {
+            "targets": 4,
+            "data": null,
+            "render": function(data, type, full, meta) {
+                var html = '<button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
+                    data.orderDetailId + ')"><span>หลักฐานการส่ง</span></button>';
                 return html;
 
             }
@@ -224,14 +233,14 @@ $("#search-hide").click(function() {
     $("#show-search").show(100);
 });
 
-function tracking_order(orderId) {
-    $("#orderId").val(orderId);
-    getNumberTrackingData(orderId);
+function tracking_order(orderDetailId) {
+    $("#orderDetailId").val(orderDetailId);
+    getNumberTrackingData(orderDetailId);
 }
 
-function getNumberTrackingData(orderId) {
+function getNumberTrackingData(orderDetailId) {
     $.get(base_url + "apicaraccessories/numbertracking/getNumbertracking", {
-            orderId: orderId
+        orderDetailId: orderDetailId
         },
         function(data, textStatus, jqXHR) {
             console.log(data);

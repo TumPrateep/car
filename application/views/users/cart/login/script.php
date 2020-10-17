@@ -200,6 +200,7 @@ function deleteCart(index, role, productId){
                 action: function(){
                     cartData.splice(index, 1);
                     localStorage.setItem("data", JSON.stringify(cartData));
+                    window.location.reload();
                 }
             },
             cancle: {

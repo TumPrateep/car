@@ -27,9 +27,6 @@ img.exbrand {
                     </div>
                 </div>
                 <form id="form-rent">
-                    <!-- <input type="hidden" name="tire_dataId" id="tire_dataId" value="<?=$tire_dataId?>">
-                    <input type="hidden" name="garageId" id="garageId" value="<?=$garageId?>">
-                    <input type="hidden" name="number" id="number" value="<?=$number?>"> -->
 
                     <div class="row">
                         <div class="col-md-6">
@@ -204,6 +201,7 @@ img.exbrand {
                                             </div>
                                         </div>
                                         <div class="show-product" id="product-data"></div>
+                                        <input type="hidden" name="garageId" id="garageId">
                                         <br>
                                         <div class="row">
                                             <div class="col-12">

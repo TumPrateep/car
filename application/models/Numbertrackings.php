@@ -2,9 +2,9 @@
 
 class Numbertrackings extends CI_Model
 {
-    public function getNumbertracking($orderId)
+    public function getNumbertracking($orderDetailId)
     {
-        $this->db->where('orderId', $orderId);
+        $this->db->where('orderDetailId', $orderDetailId);
         $query = $this->db->get("numbertracking");
         return $query->row();
     }

@@ -36,6 +36,7 @@
                             <th><i class="fa fa-picture-o"></i> รูปสินค้า</th>
                             <th>จำนวน</th>
                             <th data-priority="2"><i class="fa fa-user-circle"></i> สถานะ</th>
+                            <th></th>
                         </thead>
                     </table>
                 </div>
@@ -74,7 +75,7 @@
                     <span id="dot"></span>
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="hidden" name="orderId" id="orderId">
+                            <input type="hidden" name="orderDetailId" id="orderDetailId">
                             <div class="row p-t-20">
                                 <div class="col-md-12">
                                     <div class="form-group">

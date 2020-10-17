@@ -242,8 +242,8 @@ class Orders extends CI_Model
 
     public function all_count($userId, $selected)
     {
-        $this->db->select('order.*');
-        $condition = [];
+        $this->db->distinct();
+        $this->db->select('order.orderId');
         if ($selected == 2) {
             $this->db->group_start();
             $this->db->or_where('order.status', 4);
@@ -268,32 +268,37 @@ class Orders extends CI_Model
             $this->db->group_end();
         }
         $this->db->join('orderdetail', 'order.orderId = orderdetail.orderId', 'left');
-        $query = $this
+        $count = $this
             ->db
             ->where('create_by', $userId)
-            ->get('order');
+            ->count_all_results('order');
 
-        return $query->num_rows();
+        return $count;
     }
     public function searchAllOrder($limit, $start, $col, $dir, $userId, $selected)
     {
-        $this->db->select('order.*');
-        $condition = [];
+        $this->db->select('order.*, orderdetail.orderDetailId');
         if ($selected == 2) {
             $this->db->group_start();
             $this->db->or_where('order.status', 4);
             $this->db->or_where('order.status', 5);
             $this->db->group_end();
-            $this->db->where('orderdetail.status != ', 3);
+            // $this->db->where('orderdetail.status != ', 3);
+            $this->db->join('orderdetail', 'order.orderId = orderdetail.orderId and order.orderId = 
+            (select orderdetail.orderId from orderdetail where orderdetail.status != 3 limit 1)', 'left');
         } else if ($selected == 3) {
             $this->db->group_start();
             $this->db->where('order.status', 5);
-            $this->db->where('orderdetail.status', 3);
+            // $this->db->where('orderdetail.status', 3);
             $this->db->group_end();
+            $this->db->join('orderdetail', 'order.orderId = orderdetail.orderId and order.orderId = 
+            (select orderdetail.orderId from orderdetail where orderdetail.status = 3 limit 1)', 'left');
         } else if ($selected == 4) {
             $this->db->group_start();
             $this->db->where('order.status', 6);
             $this->db->group_end();
+            $this->db->join('orderdetail', 'order.orderId = orderdetail.orderId and order.orderId = 
+            (select orderdetail.orderId from orderdetail limit 1)', 'left');
         } else {
             $this->db->group_start();
             $this->db->or_where('order.status', 1);
@@ -301,8 +306,9 @@ class Orders extends CI_Model
             $this->db->or_where('order.status', 3);
             $this->db->or_where('order.status', 8);
             $this->db->group_end();
+            $this->db->join('orderdetail', 'order.orderId = orderdetail.orderId and order.orderId = 
+            (select orderdetail.orderId from orderdetail limit 1)', 'left');
         }
-        $this->db->join('orderdetail', 'order.orderId = orderdetail.orderId', 'left');
         $query = $this
             ->db
             ->where('order.create_by', $userId)

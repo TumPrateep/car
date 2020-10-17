@@ -37,7 +37,6 @@ class Orderdetails extends CI_Model
 
     public function getOrderDetailByOrderId($orderId)
     {
-
         $this->db->where("orderId", $orderId);
         $query = $this->db->get("orderdetail");
         return $query->result();
@@ -95,7 +94,7 @@ class Orderdetails extends CI_Model
         $this->db->join('orderdetail', 'order.orderId  = orderdetail.orderId');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('garage', 'reserve.garageId = garage.garageId');
-        $this->db->join('numbertracking', 'numbertracking.orderId = order.orderId');
+        // $this->db->join('numbertracking', 'numbertracking.orderId = order.orderId');
 
         $this->db->where('order.status', 5);
         // $this->db->where('orderdetail.status', 2);
@@ -115,7 +114,7 @@ class Orderdetails extends CI_Model
         $this->db->join('orderdetail', 'order.orderId  = orderdetail.orderId');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
         $this->db->join('garage', 'reserve.garageId = garage.garageId');
-        $this->db->join('numbertracking', 'numbertracking.orderId = order.orderId');
+        // $this->db->join('numbertracking', 'numbertracking.orderId = order.orderId');
 
         $this->db->where('order.status', 5);
         // $this->db->where('orderdetail.status', 2);
@@ -219,10 +218,10 @@ class Orderdetails extends CI_Model
     public function orders_search($limit, $start, $col, $dir, $orderId)
     {
         $this->db->where('status', 2);
-        $this->db->like('firstName', $firstname);
-        if ($brandId != null) {
-            $this->db->where("brandId", $brandId);
-        }
+        // $this->db->like('firstName', $firstname);
+        // if ($brandId != null) {
+        //     $this->db->where("brandId", $brandId);
+        // }
         $query = $this->db->limit($limit, $start)
             ->order_by($col, $dir)
             ->get('order');
@@ -252,8 +251,8 @@ class Orderdetails extends CI_Model
     public function orders_search_count($orderId)
     {
         $this->db->where('status', 2);
-        $this->db->where("garageId", $garageId);
-        $this->db->like('firstName', $firstname);
+        // $this->db->where("garageId", $garageId);
+        // $this->db->like('firstName', $firstname);
         if ($orderId != null) {
             $this->db->where("$orderId", $$orderId);
         }

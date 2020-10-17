@@ -92,8 +92,12 @@ class Orderdetail extends BD_Controller
         if ($lubricatorData != null) {
             foreach ($lubricatorData as $value) {
                 $value->group = "lubricator";
-                $value->cost = calSummary($value->cost, $value->charge) * $value->quantity;
-                $value->charge = 0;
+                $value->cost = $value->price_per_unit * $value->quantity;
+                $value->product_price = $value->product_price * $value->quantity;
+                $value->charge_price = $value->charge_price * $value->quantity;
+                $value->delivery_price = $value->delivery_price * $value->quantity;
+                $value->garage_service_price = $value->garage_service_price * $value->quantity;
+                
                 $option = [
                     'lubricatorId' => $value->lubricatorId,
                 ];
@@ -107,6 +111,7 @@ class Orderdetail extends BD_Controller
                 $value->group = "tire";
                 $value->cost = $value->price_per_unit * $value->quantity;
                 $value->product_price = $value->product_price * $value->quantity;
+                $value->min_product_price = $value->min_product_price * $value->quantity;
                 $value->charge_price = $value->charge_price * $value->quantity;
                 $value->delivery_price = $value->delivery_price * $value->quantity;
                 $value->garage_service_price = $value->garage_service_price * $value->quantity;

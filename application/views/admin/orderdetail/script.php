@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function() {
-
+    $('[data-toggle="tooltip"]').tooltip();  
     var table = $("#showOrder");
     var orderId = $("#orderId").val();
     var picturePath = base_url + 'public/image/';
@@ -33,12 +33,22 @@ $(document).ready(function() {
                 html += '<tr>' +
                     '<td>' + content + '</td>' +
                     '<td>' + quantity + '</td>' +
-                    '<td><strong><span class="badge badge-primary">' + currency((val
+                    '<td><strong data-toggle="tooltip" title="ราคาสินค้า"><span class="badge badge-primary mb-10">'+currency((val.min_product_price), {
+                        precision: 0
+                    }).format()+' บาท</span></strong><br><strong data-toggle="tooltip" data-placement="top" title="ราคาที่ลูกค้าซื้อ"><span class="badge badge-success">' + currency((val
                         .product_price), {
                         precision: 0
                     }).format() + ' บาท</span></strong></td>' +
                     '<td><strong><span class="badge badge-primary">' + currency((val
                         .garage_service_price), {
+                        precision: 0
+                    }).format() + ' บาท</span></strong></td>' +
+                    '<td><strong><span class="badge badge-primary">' + currency((val
+                        .charge_price + (val.product_price - val.min_product_price)), {
+                        precision: 0
+                    }).format() + ' บาท</span></strong></td>' +
+                    '<td><strong><span class="badge badge-primary">' + currency((val
+                        .delivery_price), {
                         precision: 0
                     }).format() + ' บาท</span></strong></td>' +
                     '<td><span class="badge badge-success">' + currency((val.cost), {

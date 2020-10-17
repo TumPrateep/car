@@ -22,7 +22,7 @@ class Orderselects extends CI_Model
     public function allData($limit, $start, $order, $dir, $userId)
     {
 
-        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName,order.status");
+        $this->db->select("order.orderId, orderdetail.quantity, reserve.garageId, orderdetail.group, orderdetail.productId,garage.garageName,order.status, orderdetail.orderDetailId, orderdetail.deliver_flag, orderdetail.car_accept_flag");
         $this->db->from('order');
         $this->db->join('orderdetail', 'order.orderId  = orderdetail.orderId');
         $this->db->join('reserve', 'order.orderId = reserve.orderId');
@@ -46,15 +46,26 @@ class Orderselects extends CI_Model
         return $query->row();
     }
 
+    public function getNumberFromOrderDetailNonApprove($orderId){
+        $this->db->where('orderId', $orderId);
+        $this->db->where('car_accept_flag', 1);
+        $query = $this->db->get('orderdetail');
+        return $query->num_rows();
+    }
+
     public function update($data)
     {
         $this->db->trans_begin();
 
-        $this->db->where('orderId', $data['order']['orderId']);
-        $result = $this->db->update('order', $data['order']);
-
-        $this->db->where('orderId', $data['order']['orderId']);
+        $this->db->where('orderDetailId', $data['orderdetail']['orderDetailId']);
         $result = $this->db->update('orderdetail', $data['orderdetail']);
+
+        $number = $this->getNumberFromOrderDetailNonApprove($data['order']['orderId']);
+
+        if($number == 0){
+            $this->db->where('orderId', $data['order']['orderId']);
+            $result = $this->db->update('order', $data['order']);
+        }
 
         if ($this->db->trans_status() === false) {
             $this->db->trans_rollback();

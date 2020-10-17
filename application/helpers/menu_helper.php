@@ -24,6 +24,16 @@ if(!function_exists('active_link')) {
     return $CI->session->userdata['logged_in']['name'];
   }
 
+  function get_garage(){
+    $CI =& get_instance();
+    return $CI->session->userdata['logged_in']['garageName'];
+  }
+
+  function get_caraccessory(){
+    $CI =& get_instance();
+    return $CI->session->userdata['logged_in']['car_accessoriesName'];
+  }
+
   function gear_type_dropdown(){
     $CI =& get_instance();
     $CI->load->model("geartypes");

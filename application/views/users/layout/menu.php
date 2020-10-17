@@ -9,9 +9,9 @@
                         <li class="nav-item <?=$tire?>">
                             <a class="nav-link" href="<?=base_url("search/tire")?>">ยางรถยนต์</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="<?=base_url("search/lubricator")?>">เปลี่ยนของเหลว</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item <?=$garage?>">
                             <a class="nav-link" href="<?=base_url("search/garage")?>">ค้นหาศูนย์บริการ</a>
                         </li>

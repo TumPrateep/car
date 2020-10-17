@@ -108,14 +108,14 @@ class Order extends BD_Controller
 
                 $orderDetailData = $this->orderdetails->getOrderDetailByOrderId($post->orderId);
                 $alldata = $this->orderdetails->getIdData($post->orderId);
-                $tireData = $this->getTire($orderDetailData, $post->orderId);
+                $productData = $this->getProduct($orderDetailData, $post->orderId);
 
-                $nestedData[$count]["orderDetail"] = $this->getCartData($tireData);
+                $nestedData[$count]["orderDetail"] = $this->getCartData($productData);
                 $nestedData[$count]['reserve'] = $this->orderdetails->getDatareserve($alldata->reserveId);
                 // $nestedData['costDelivery'] = $this->orderdetails->getSummarycostDelivery($post->orderId);
                 // $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
                 $data[$index] = $nestedData;
-                if ($count >= 2) {
+                if ($count > 2) {
                     $count = -1;
                     $index++;
                     $nestedData = [];
@@ -133,13 +133,15 @@ class Order extends BD_Controller
         $this->set_response($json_data);
     }
 
-    public function getCartData($tireData)
+    public function getCartData($productData)
     {
         $data = [];
 
-        if ($tireData != null) {
-            foreach ($tireData as $value) {
+        if (!empty($productData['tire'])) {
+            foreach ($productData['tire'] as $value) {
                 $value->group = "tire";
+                // var_dump($productData);
+                // exit();
                 $value->cost = $value->price_per_unit * $value->quantity;
                 $value->product_price = $value->product_price * $value->quantity;
                 $value->charge_price = $value->charge_price * $value->quantity;
@@ -157,20 +159,53 @@ class Order extends BD_Controller
             }
         }
 
+        if (!empty($productData['lubricator'])) {
+            foreach ($productData['lubricator'] as $value) {
+                $value->group = "lubricator";
+                // var_dump($productData);
+                // exit();
+                $value->cost = $value->price_per_unit * $value->quantity;
+                $value->product_price = $value->product_price * $value->quantity;
+                $value->charge_price = $value->charge_price * $value->quantity;
+                $value->delivery_price = $value->delivery_price * $value->quantity;
+                $value->garage_service_price = $value->garage_service_price * $value->quantity;
+
+                $option = [
+                    'lubricatorId' => $value->lubricatorId
+                ];
+                $value->picture = getPictureLubricator($option);
+                array_push($data, $value);
+            }
+        }
+
         return $data;
     }
 
-    public function getTire($data, $orderId = null)
+    public function getProduct($data, $orderId = null)
     {
         $tireArray = array_filter(
             $data, function ($e) {return $e->group == "tire";}
         );
-        $productId = [];
+        $lubricatorArray = array_filter(
+            $data, function ($e) {return $e->group == "lubricator";}
+        );
+        $tireId = [];
         foreach ($tireArray as $key => $val) {
-            $productId[$key] = $val->productId;
+            $tireId[$key] = $val->productId;
+        }
+        $lubricatorId = [];
+        foreach ($lubricatorArray as $key => $val) {
+            $lubricatorId[$key] = $val->productId;
         }
         $this->load->model("tiredatas");
-        return $this->tiredatas->getTireDataForOrderByIdArray($productId, $orderId, "tire");
+        $this->load->model("lubricatordatas");
+
+        $product = [];
+        $product['tire'] = $this->tiredatas->getTireDataForOrderByIdArray($tireId, $orderId, "tire");
+        $product['lubricator'] = $this->lubricatordatas->getLubricatorDataForOrderByIdArray($lubricatorId, $orderId, "lubricator");
+        // var_dump($product);
+        // exit();
+        return $product;
     }
 
 }

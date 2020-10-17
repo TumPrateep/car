@@ -116,12 +116,26 @@ var table = $('#changes-table').DataTable({
             "data": null,
             "render": function(data, type, full, meta) {
                 var productData = data.data;
-                var name = productData.tire_brandName + " " + productData.tire_modelName +
+                var name = '';
+                if(data.group == 'tire'){
+                    name = productData.tire_brandName + " " + productData.tire_modelName +
                     " <strong>" + productData.tire_size + " x " + data.quantity + " เส้น </strong>";
-                return '<button type="button" class="btn btn-success" ' + '  onclick="updateStatus(' +
-                    data.orderId + ',' + data.status + ',' + '\'' + name + '\'' + ',' + productData
-                    .price + ',' + data.quantity +
-                    ')">ยืนยันการสั่งซื้อ</button> ';
+                }
+
+                if(data.group == 'lubricator'){
+                    name = productData.lubricator + " " + productData.lubricator_number +
+                    " <strong>" + productData.lubricator_typeName + " x " + data.quantity + " เส้น </strong>";
+                }
+
+                if(data.car_accept_flag == 1){
+                    return '<button type="button" class="btn btn-success" ' + '  onclick="updateStatus(' +
+                        data.orderId + ','+ data.orderDetailId +',' + data.status + ',' + '\'' + name + '\'' + ',' + productData
+                        .product_price + ',' + data.quantity +
+                        ')">ยืนยันการสั่งซื้อ</button> ';
+                }else{
+                    return '';
+                }
+                
             }
         },
         {
@@ -140,13 +154,15 @@ $('#btn-save-car-price').click(function(e) {
     let isvalid = $('#caraccessory-price-form').valid();
     if (isvalid) {
         let orderId = $(this).data('order-id');
+        let orderDetailId = $(this).data('orderdetailid');
         let status = $(this).data('status');
         let caraccessory_price = $('#caraccessory_price').val();
 
         $.post(base_url + "apicaraccessories/orderselect/changeStatus", {
             "orderId": orderId,
             "status": status,
-            "caraccessory_price": caraccessory_price
+            "caraccessory_price": caraccessory_price,
+            "orderDetailId": orderDetailId
         }, function(data) {
             if (data.message == 200) {
                 showMessage(data.message, "caraccessory/orderselect");
@@ -158,33 +174,44 @@ $('#btn-save-car-price').click(function(e) {
 
 });
 
-function updateStatus(orderId, status, name, price, quantity) {
+function updateStatus(orderId, orderDetailId, status, name, price, quantity) {
     $('#product-detail').html(name);
     $('#btn-save-car-price').attr('data-order-id', orderId);
+    $('#btn-save-car-price').attr('data-orderdetailid', orderDetailId);
     $('#btn-save-car-price').attr('data-status', status);
-    $('#product-price').html(quantity + ' เส้น x ' + currency(price, {
-        precision: 0
-    }).format() + ' รวม <strong>' + currency((price * quantity), {
+    $('#product-price').html('<strong>'+currency(price*quantity, {
         precision: 0
     }).format() + ' บาท</strong>')
 
-    form.validate({
-        rules: {
-            caraccessory_price: {
-                required: true,
-                max: (price * quantity)
-            }
-        },
-        messages: {
-            caraccessory_price: {
-                required: 'ราคารวมค่าสินค้าหรือราคาหลังหักโปรโมชั่น',
-                max: 'ราคาสูงกว่าที่ได้ตั้งไว้ในระบบ'
-            }
-        }
-    });
+    $('#caraccessory_price').val(price*quantity);
+
+    // form.validate({
+    //     rules: {
+    //         caraccessory_price: {
+    //             required: true,
+    //             max: (price * quantity)
+    //         }
+    //     },
+    //     messages: {
+    //         caraccessory_price: {
+    //             required: 'ราคารวมค่าสินค้าหรือราคาหลังหักโปรโมชั่น',
+    //             max: 'ราคาสูงกว่าที่ได้ตั้งไว้ในระบบ'
+    //         }
+    //     }
+    // });
 
     $('#confirm-price-modal').modal('show');
 }
+
+$(document).ready(function () {
+    $('#discount_price').change(function(){
+        var discount = $(this).val();
+        var price = $('#caraccessory_price').val();
+        $('#product-price').html('<strong>'+currency(price, {precision: 0}).format() + 
+        ' บาท</strong> <span class="text-danger">ส่วนลด '+currency(discount, {precision: 0}).format()+' บาท</span><br><strong class="text-info">รวม '+ 
+        currency((price-discount), {precision: 0}).format() +' บาท</strong>')
+    });
+});
 </script>
 
 </body>

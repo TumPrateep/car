@@ -43,6 +43,7 @@ class Deliverorder extends BD_Controller
                 $nestedData['orderId'] = $post->orderId;
                 $nestedData['quantity'] = $post->quantity;
                 $nestedData['garageId'] = $post->garageId;
+                $nestedData['orderDetailId'] = $post->orderDetailId;
                 $nestedData['group'] = $post->group;
                 $nestedData['productId'] = $post->productId;
                 $nestedData['garageName'] = $post->garageName;
@@ -96,7 +97,7 @@ class Deliverorder extends BD_Controller
                 $nestedData['productId'] = $post->productId;
                 $nestedData['garageName'] = $post->garageName;
                 $nestedData['product_price'] = $post->product_price;
-                $nestedData['create_at'] = $post->create_at;
+                $nestedData['orderDetailId'] = $post->orderDetailId;
                 $nestedData['statusActive'] = $post->statusSuccess;
                 $nestedData['status'] = $post->status;
                 $nestedData['data'] = getProductDetail($post->productId, $post->group);
@@ -225,6 +226,7 @@ class Deliverorder extends BD_Controller
     public function createtracking_post()
     {
         $orderId = $this->post('orderId');
+        $orderDetailId = $this->post('orderDetailId');
         $time = $this->post('time');
         $dot = $this->post('dot');
         // $config['upload_path'] = 'public/image/deliverorder/';
@@ -260,9 +262,10 @@ class Deliverorder extends BD_Controller
         }
 
         if ($success) {
-            $data_check = $this->deliverorders->data_check_create($orderId);
+            // $data_check = $this->deliverorders->data_check_create($orderId);
             $data['numbertracking'] = array(
                 "numbertrakingId" => null,
+                "orderDetailId" => $orderDetailId,
                 "file_url" => $filename,
                 "create_at" => date('Y-m-d H:i:s', time()),
                 "create_by" => $userId,
@@ -274,7 +277,7 @@ class Deliverorder extends BD_Controller
             );
             $data['tire_dot'] = $dot;
             $option = [
-                "data_check" => $data_check,
+                "data_check" => null,
                 "data" => $data,
                 "model" => $this->deliverorders,
                 "image_path" => $file_path,

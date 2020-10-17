@@ -12,6 +12,7 @@ class Orderselect extends BD_Controller
         $this->load->model("orderselects");
         $this->load->model("orders");
         $this->load->model("tiredatas");
+        $this->load->model("lubricatordatas");
     }
 
     public function search_post()
@@ -43,14 +44,27 @@ class Orderselect extends BD_Controller
         $data = array();
         if (!empty($posts)) {
             foreach ($posts as $post) {
+                // var_dump($post);
+                // exit();
                 $nestedData['orderId'] = $post->orderId;
+                $nestedData['orderDetailId'] = $post->orderDetailId;
+                $nestedData['car_accept_flag'] = $post->car_accept_flag;
                 $nestedData['quantity'] = $post->quantity;
                 $nestedData['garageId'] = $post->garageId;
                 $nestedData['group'] = $post->group;
                 $nestedData['productId'] = $post->productId;
                 $nestedData['garageName'] = $post->garageName;
                 $nestedData['status'] = $post->status;
-                $nestedData['data'] = $this->tiredatas->getTireDataById($post->productId);
+                $nestedData['data'] = [];
+                if($post->group == 'tire'){
+                    $nestedData['data'] = $this->tiredatas->getTireObjectForOrderByIdArray($post->productId, $post->orderId, "tire");
+                }
+
+                if($post->group == 'lubricator'){
+                    $nestedData['data'] = $this->lubricatordatas->getLubricatorObjectForOrderByIdArray($post->productId, $post->orderId, "lubricator");
+                }
+                
+                // $this->tiredatas->getTireDataById($post->productId);
                 // $nestedData['picture'] = $post->picture;
                 // $nestedData['data'] = getProductDetail($post->productId, $post->group);
 
@@ -71,6 +85,7 @@ class Orderselect extends BD_Controller
     public function changeStatus_post()
     {
         $orderId = $this->post("orderId");
+        $orderDetailId = $this->post("orderDetailId");
         $status = $this->post("status");
         $caraccessory_price = $this->post("caraccessory_price");
 
@@ -87,7 +102,9 @@ class Orderselect extends BD_Controller
         );
 
         $data['orderdetail'] = array(
+            'orderDetailId' => $orderDetailId,
             'real_product_price' => $caraccessory_price,
+            'car_accept_flag' => 2
         );
 
         $option = [

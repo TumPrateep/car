@@ -85,6 +85,24 @@ class Payments extends CI_Model
         }
     }
 
+    public function insert_credit($data)
+    {
+        $this->db->trans_begin();
+        $userId = $this->session->userdata['logged_in']['id'];
+        $this->db->insert('payment', $data);
+
+        $this->db->where('orderId', $data['orderId']);
+        $result = $this->db->update('order', ['status' => 3]);
+
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
+    }
+
     public function getฺBank()
     {
         $this->db->select("bankId,bankName");

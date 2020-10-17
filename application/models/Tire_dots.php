@@ -10,9 +10,9 @@ class Tire_dots extends CI_Model
         parent::__construct();
     }
 
-    public function getAllDot($orderId)
+    public function getAllDot($orderDetailId)
     {
-        $this->db->where('orderId', $orderId);
+        $this->db->where('orderDetailId', $orderDetailId);
         $query = $this->db->get('tire_dot');
         return $query->result();
     }

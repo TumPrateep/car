@@ -33,13 +33,13 @@ class Payment extends CI_Controller {
         redirect($url.$parameter);
     }
     
-    public function savePayment()
+    public function savePayment($userId)
     {
         $input = $this->input->post();
         // { ["tranId"]=> string(5) "11176" ["respDesc"]=> string(7) "Success" ["amount"]=> string(6) "319500" ["saleId"]=> string(5) "11176" ["orderId"]=> string(2) "55" ["incCustomerFee"]=> string(1) "0" ["excCustomerFee"]=> string(4) "1500" ["paymentCode"]=> string(10) "0070011176" ["exchangeRate"]=> string(6) "100000" ["orderExpireDate"]=> string(14) "20200701202341" ["purchaseAmt"]=> string(6) "319500" ["currency"]=> string(3) "THB" ["respCode"]=> string(4) "0000" ["paymentStatus"]=> string(7) "SUCCESS" ["status"]=> string(1) "S" }
         $string = json_encode($input);
 
-        $userId = $this->session->userdata['logged_in']['id'];
+        // $userId = $this->session->userdata['logged_in']['id'];
         $data = array();
         $orderId = $input['orderId'];
         $date = date('Y-m-d', time());
@@ -47,7 +47,7 @@ class Payment extends CI_Controller {
         $btransfer = "Credit Card";
         $money = intval ($input['amount'])/100;
  
-        $paymentdetail = $this->payments->getPaymentId($orderId);
+        // $paymentdetail = $this->payments->getPaymentId($orderId);
 
         $data = array(
             'orderId' => $orderId,
@@ -70,8 +70,8 @@ class Payment extends CI_Controller {
         //     "model" => $this->payments,
         // ];
 
-        $this->payments->insert($data);
-        send_line_message(implode(" ",$data));
+        $this->payments->insert_credit($data);
+        // send_line_message(implode(" ",$data));
         redirect('user/order');
     }
     

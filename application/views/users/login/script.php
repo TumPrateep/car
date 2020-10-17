@@ -1,6 +1,7 @@
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-<script type="module">
+<script>
 // import Cookies from 'js-cookie'
+
 $(document).ready(function() {
     var errorMessage = $("#error-message");
     var login = $("#login");

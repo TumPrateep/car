@@ -37,10 +37,74 @@
                     <th><i class="fa fa-bars"></i> รายละเอียดสินค้า</th>
                     <th> จำนวน</th>
                     <th> ราคา (บาท)</th>
+                    <th></th>
                     <!-- <th><i class="fa fa-user-circle"></i>  สถานะ</th> -->
                     <!-- <th></th> -->
                 </thead>
             </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="tracking-order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" id="maxWidthSelect" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">รายละเอียดหลักฐานการส่ง</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="submit">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="hidden" name="orderId" id="orderId">
+                                <input type="hidden" name="orderDetailId" id="orderDetailId">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <strong>ข้อมูลศูนย์บริการที่จัดส่ง</strong> <br>
+                                            <span id="garage-data"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <span>วันที่-เวลาส่ง</span><span class="error">*</span>
+                                            <input type="text" class="form-control" id="time" name="time"
+                                                placeholder="วันที่-เวลาส่ง">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row p-t-20">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <span>แนบไฟล์หลักฐานการส่ง</span><span class="error">*</span>
+                                            <input type="file" name="tracking" id="tracking">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <span>ปีผลิตยาง (DOT)</span><span class="error">*</span> <label
+                                                id="dot[]-error" class="error" for="dot[]" style=""></label>
+                                            <span id="dot"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success"> บันทึก</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"> ปิด</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 

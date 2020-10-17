@@ -56,11 +56,8 @@ var table = $('#dt-table').DataTable({
         }).data().each(function(data, i) {
             if (last !== data.orderId) {
                 $(rows).eq(i).before(
-                    '<tr class="group"><td colspan="5"> หมายเลขสั่งซื้อ ' + data.orderId +
-                    ' ชื่อร้านอู่ ' + data.garageName +
-                    ' <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
-                    data.orderId + ',' + data.quantity +
-                    ')"><span>ที่อยู่จัดส่งสินค้า</span></button></td></tr>'
+                    '<tr class="group"><td colspan="6"> หมายเลขสั่งซื้อ ' + data.orderId +
+                    ' ชื่อร้านอู่ ' + data.garageName +'</td></tr>'
                 );
 
                 last = data.orderId;
@@ -117,6 +114,15 @@ var table = $('#dt-table').DataTable({
             }
         },
         {
+            "targets": 3,
+            "data": null,
+            "render": function(data, type, full, meta) {
+                return ' <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top" onclick="tracking_order(' +
+                    data.orderId + ','+ data.orderDetailId +',' + data.quantity +
+                    ')"><span>จัดส่งสินค้า</span></button>';
+            }
+        },
+        {
             "className": "dt-center",
             "targets": [1, 2]
         }
@@ -158,7 +164,7 @@ $("#price").slider({
     },
 });
 
-function tracking_order(orderId, quantity) {
+function tracking_order(orderId, orderDetailId,quantity) {
     $.get(base_url + "apicaraccessories/garages/getGarageData", {
             orderId: orderId
         },
@@ -172,6 +178,7 @@ function tracking_order(orderId, quantity) {
     );
     renderDOT(quantity);
     $("#orderId").val(orderId);
+    $("#orderDetailId").val(orderDetailId);
     $("#tracking-order").modal("show");
 }
 

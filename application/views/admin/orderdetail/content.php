@@ -33,6 +33,8 @@
                                                 <th scope="col">จำนวน</th>
                                                 <th scope="col">ค่าสินค้า</th>
                                                 <th scope="col">ค่าเปลี่ยนอะไหล่</th>
+                                                <th scope="col">ค่าบริการ</th>
+                                                <th scope="col">ค่าจัดส่ง</th>
                                                 <th scope="col">จำนวนเงินรวม</th>
                                                 <th scope="col">ร้านค้าส่งคาร์ใจดี</th>
                                             </tr>

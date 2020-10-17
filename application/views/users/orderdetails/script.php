@@ -50,7 +50,8 @@
 
                 $.each(data.orderDetail, function (index, val) { 
 
-                    html += '<li class="schedule-details">'
+                    if(val.group == "tire"){
+                        html += '<li class="schedule-details">'
                                 +'<div class="block">'
                                     +'<div class="time">'
                                         +'<div class="image">'
@@ -68,6 +69,29 @@
                                     +'</div>'
                                 +'</div>'
                             +'</li>'; 
+                    }
+
+                    if(val.group == "lubricator"){
+                        html += '<li class="schedule-details">'
+                                +'<div class="block">'
+                                    +'<div class="time">'
+                                        +'<div class="image">'
+                                            +'<img src="'+base_url+'public/image/tireproduct/'+val.picture+'" width=40%;>'
+                                        +'</div>'
+                                    +'</div>'
+                                    +'<div class="speaker">'
+                                        +val.lubricator+" "+val.lubricator_number+" "+val.lubricator_typeName
+                                    +'</div>'
+                                    +'<div class="subject">'
+                                        +val.quantity
+                                    +'</div>'
+                                    +'<div class="venue">'
+                                        +currency((val.cost), {  precision: 0 }).format()+' บาท'
+                                    +'</div>'
+                                +'</div>'
+                            +'</li>'; 
+                    }
+
                 //     var picture = "";
                 //     var content = "";
                 //     var quantity = "";
