@@ -12,7 +12,12 @@
     <div class="card-tools one">
         <form id="form-search">
             <div class="form-row">
-                <div class="col-md-3 offset-md-5">
+                <div class="col-md-2">
+                    <a class="btn btn-primary create btn-block" href="<?php echo base_url('admin/managepartsshop/create'); ?>">
+                        <i class="fa fa-plus">  สร้าง</i>
+                    </a>
+                </div>
+                <div class="col-md-3 offset-md-3">
                     <div class="input-group">
                         <input name="car_search" id="table-search" class="form-control float-right"
                             placeholder="ชื่อร้านอะไหล่">

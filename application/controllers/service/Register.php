@@ -470,14 +470,16 @@ class Register extends BD_Controller
             );
             $result = $this->user->insert_user($data);
             if ($result) {
+                $output['result'] = $result;
                 $output["message"] = REST_Controller::MSG_SUCCESS;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             } else {
+                $output['result'] = $result;
                 $output["message"] = REST_Controller::MSG_NOT_CREATE;
                 $this->set_response($output, REST_Controller::HTTP_OK);
             }
         } else {
-            $output["status"] = false;
+            $output["result"] = false;
             $output["data"] = "username ซ้ำ";
             $output["message"] = REST_Controller::MSG_CREATE_DUPLICATE;
             $this->set_response($output, REST_Controller::HTTP_NOT_FOUND);

@@ -150,7 +150,7 @@ function setTotalAmount(){
     // fullMoney = money;
     // $("#order_total_cost").html(currency(total, {  precision: 0 }).format() + " บาท");
     // $("#order_total_delivery").html(currency(deliveryCost, {  precision: 0 }).format() + " บาท");
-    $("#total-amount").html(currency(total_amount, {  precision: 0 }).format() + " บาท");
+    // $("#total-amount").html(currency(total_amount, {  precision: 0 }).format() + " บาท");
     $("#order_total_amount").html(currency(total, {  precision: 0 }).format() + " บาท");
     // $("#money").html("ราคารวม "+currency(fullMoney, {  precision: 0 }).format() + " บาท");
     // $("#fullMoney").html(currency(fullMoney, {  precision: 0 }).format()+" บาท");
@@ -182,7 +182,7 @@ function checkData(){
     }else if(garageId.length == 1){
         localStorage.setItem("sendData", JSON.stringify(sendData));
         localStorage.setItem("garageId", JSON.stringify(garageId[0]));
-        window.location = base_url + "checkout";
+        window.location = base_url + "booking";
     }else{
         alert("เลือกศูนย์บริการคาร์ใจดีได้เพียง 1 ศุนย์บริการต่อการสั่งซื้อ");
     }
@@ -266,7 +266,7 @@ function getTire(value, index){
     var product = cartDataDetail["tire"][value.productId];
     var totalCost = (product.price*value.number);
     var html = '<tr role="row">'
-        +'<td><div class="form-check top selected-cart"><input class="form-check-input size-check" type="checkbox" value="" onchange="setTotalAmount()" data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'" data-garage="'+product.garage.garageId+'" style="width: 1rem !important;"></div></td>'
+        +'<td><div class="form-check top selected-cart"><input class="form-check-input size-check" type="checkbox" checked value="" onchange="setTotalAmount()" data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'" data-garage="'+product.garage.garageId+'" style="width: 1rem !important;"></div></td>'
         +'<td>'
             +'<div class="row">'
                 +'<div class="pic col-md-3 text-center">'
@@ -274,19 +274,19 @@ function getTire(value, index){
                 +'</div>'
                 +'<div class="col-md-9">'
                     +'<div class="row">'
-                        +'<div class="col-md-12">'
+                        +'<div class="col-md-12 sort-3">'
                         + '<img src="'+base_url+'public/image/garage/'+product.garage.picture+'" style="width: 40px;border-radius: 50px;"> '
                         + product.garage.garageName
                         +'</div>'
-                        +'<div class="detail col-md-4">'
+                        +'<div class="detail col-md-4 sort-2">'
                             +'<div class="text"> '+product.brandName+' </div>'
                             +'<div class="text"> '+product.name+' </div>'
                             +'<div class="text"> <strong>'+product.number+'</strong> </div>'
                         +'</div>'
-                        +'<div class="brand col-md-4 text-center brand-logo sort-first">'
+                        +'<div class="brand col-md-4 text-center brand-logo sort-1">'
                             +'<img src="'+base_url+'public/image/tire_brand/'+product.brandPicture+'" width="100%">'
                         +'</div>'
-                        +'<div class="detail col-md-4">'
+                        +'<div class="detail col-md-4 sort-4">'
                             + '<div class="row">'
                                 + '<div class="col-5 mbt-5">'
                                     + '<small>จำนวน</small> <input type="number" class="form-control qty" value="'+value.number+'" min="1" onchange="setNumber('+index+', this)">'
@@ -365,6 +365,31 @@ function getTypeOfProduct(){
         data[val.group] = 1;                
     });
     return data;
+}
+
+function login_user(data){
+    $.post(base_url + "api/Auth/login", data,
+        function(data, textStatus, jqXHR) {
+            var message = data.message;
+            if (message == "2001") {
+                localStorage.token = data.token;
+                localStorage.userId = data.userId;
+                $.cookie('token', data.token, { expires: 365 })
+                $.cookie('userId', data.userId, { expires: 365 })
+                synLogin(base_url + "cart");
+            } else if (message == "2002") {
+                errorMessage.html("ไม่พบชื่อผู้ใช้งาน <a href='" + base_url + "register" +
+                    "'>ลงทะเบียน</a>");
+                errorMessage.show();
+            } else if (message == "2003") {
+                errorMessage.html("ชื่อผู้ใช้งานถูกปิดใช้งาน");
+                errorMessage.show();
+            } else {
+                errorMessage.html("ชื่อหรือรหัสผ่านไม่ถูกต้อง");
+                errorMessage.show();
+            }
+        }
+    );
 }
 
 $(document).ready(function () {

@@ -165,7 +165,7 @@ $('#btn-save-car-price').click(function(e) {
             "orderDetailId": orderDetailId
         }, function(data) {
             if (data.message == 200) {
-                showMessage(data.message, "caraccessory/orderselect");
+                showMessage(data.message, "caraccessory/deliverorder");
             } else {
                 showMessage(data.message);
             }

@@ -98,7 +98,7 @@ class Cart extends BD_Controller {
                 
                 $garage_service = $this->tirechangesgarge->getTireChangeByIdAndRim($garageId['tire'][$value->tire_dataId], $value->rimId);
                 $garage_service_price = 0;
-                if(!empty($garage)){
+                if(!empty($garage_service)){
                     $garage_service_price = (int)$garage_service->tire_price;
                 }
 

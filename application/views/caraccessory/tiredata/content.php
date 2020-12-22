@@ -25,14 +25,14 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="input-group">
                         <select class="form-control" id="tire_brandId" name="tire_brandId">
                             <option value="">เลือกยี่ห้อยาง</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="input-group">
                         <select class="form-control" id="tire_modelId" name="tire_modelId">
                             <option value="">เลือกรุ่นยาง</option>
@@ -50,6 +50,9 @@
                             <i class="fa fa-search"></i> ค้นหา
                         </button>
                     </div>
+                </div>
+                <div class="col-lg-2">
+                    <a href="<?=base_url("caraccessory/import/tireimport/")?>" class="btn btn-info btn-block"><i class="fa fa-download" aria-hidden="true"></i> นำเข้าราคาสินค้า</a>
                 </div>
             </div>
         </form>

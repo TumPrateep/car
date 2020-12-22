@@ -40,6 +40,7 @@ div.brand img {
 .footer.order {
     background-color: #343a40;
     color: white;
+    font-size: 14px;
 }
 
 .detail {
@@ -168,7 +169,7 @@ div.brand img {
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h3>ค้นหา<span class="alternate">ยางรถยนต์</span></h3>
+                        <h3>ผลการค้นหา<span class="alternate">ยางรถยนต์</span></h3>
                     </div>
                 </div>
             </div>

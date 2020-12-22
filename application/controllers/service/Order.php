@@ -79,6 +79,15 @@ class Order extends BD_Controller
 
     }
 
+    public function getNumberOfOrder_get(){
+        $userId = $this->session->userdata['logged_in']['id'];
+        $number = [];
+        for ($i=1; $i < 5; $i++) { 
+            $number[$i] = $this->orders->all_count($userId, $i);
+        }
+        $this->set_response($number);
+    }
+
     public function search_post()
     {
         $userId = $this->session->userdata['logged_in']['id'];
@@ -94,34 +103,47 @@ class Order extends BD_Controller
         // dd();
         $data = array();
         if (!empty($posts)) {
-            $index = 0;
-            $count = 0;
+            $index = -1;
+            $count = -1;
+            $orderId = null;
+            $temp = [];
+            $c_temp = 0;
+            $is_first = true;
             foreach ($posts as $post) {
-                $nestedData[$count]['orderId'] = $post->orderId;
-                $nestedData[$count]['statusActive'] = $post->statusSuccess;
-                $nestedData[$count]['create_at'] = $post->create_at;
-                $nestedData[$count]['status'] = $post->status;
+                if($post->orderId != $orderId){
+                    $temp = [];
+                    $c_temp = 0;
+                    $index++;
+                    $orderId = $post->orderId;
+                }
+
+                $temp[$c_temp]['orderId'] = $post->orderId;
+                $temp[$c_temp]['statusActive'] = $post->statusSuccess;
+                $temp[$c_temp]['create_at'] = $post->create_at;
+                $temp[$c_temp]['status'] = $post->status;
                 $deliver = $this->orderdetails->getDeliverStatus($post->orderId);
-                $nestedData[$count]['deliver'] = (empty($deliver)) ? 1 : 2;
-                $nestedData[$count]['create_by'] = $post->userId;
-                $nestedData[$count]['cost'] = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
+                $temp[$c_temp]['deliver'] = (empty($deliver)) ? 1 : 2;
+                $temp[$c_temp]['create_by'] = $post->userId;
+                $temp[$c_temp]['cost'] = $this->orderdetails->getSummaryCostFromOrderDetail($post->orderId, $userId);
 
                 $orderDetailData = $this->orderdetails->getOrderDetailByOrderId($post->orderId);
                 $alldata = $this->orderdetails->getIdData($post->orderId);
                 $productData = $this->getProduct($orderDetailData, $post->orderId);
 
-                $nestedData[$count]["orderDetail"] = $this->getCartData($productData);
-                $nestedData[$count]['reserve'] = $this->orderdetails->getDatareserve($alldata->reserveId);
-                // $nestedData['costDelivery'] = $this->orderdetails->getSummarycostDelivery($post->orderId);
-                // $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
-                $data[$index] = $nestedData;
-                if ($count > 2) {
-                    $count = -1;
-                    $index++;
-                    $nestedData = [];
-                }
+                $temp[$c_temp]["orderDetail"] = $this->getCartData($productData);
+                $temp[$c_temp]['reserve'] = $this->orderdetails->getDatareserve($alldata->reserveId);
+                // // $nestedData['costDelivery'] = $this->orderdetails->getSummarycostDelivery($post->orderId);
+                // // $nestedData['deposit'] = calDeposit($orderdetail->cost, $orderdetail->charge, $orderdetail->chargeGarage, $orderdetail->costCaraccessories);
+                
+                $data[$index] = $temp[0];
+                // if ($count > 2) {
+                //     $count = -1;
+                //     $index++;
+                //     $nestedData = [];
+                // }
 
-                $count++;
+                // $count++;
+                $c_temp++;
             }
         }
         $json_data = array(

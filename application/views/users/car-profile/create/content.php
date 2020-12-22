@@ -63,7 +63,7 @@
                                 <div class="form-group col-md-3">
                                     <div class="form-group">
                                         <label class="form-label required" for="garage"
-                                            aria-required="true">เชื้อเพลิง</label> <span class="error">*</span>
+                                            aria-required="true">เชื้อเพลิง</label> 
                                         <select class="form-control input-default">
                                             <option value="">เลือกเชื้อเพลิง</option>
                                             <option value="1">ดีเซล</option>
@@ -75,7 +75,7 @@
 
                             <div class="form-group row ">
                                 <div class="form-group col-md-4">
-                                    <label for="phone">สี</label><span class="error">*</span>
+                                    <label for="phone">สี</label>
                                     <input type="text" class="form-control" name="color" id="color" placeholder=" สี">
                                 </div>
                                 <div class="form-group col-md-4">
@@ -84,7 +84,7 @@
                                         placeholder="เลขกิโลเมตร" min="0">
                                 </div>
                             </div>
-                            <div class="row p-t-20">
+                            <!-- <div class="row p-t-20">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">รูปหน้ารถ</label>
@@ -150,7 +150,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group row ">
                                 <div class="col-md-12">
                                     <div class="form-group text-center">

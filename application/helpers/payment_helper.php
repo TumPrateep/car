@@ -19,7 +19,7 @@ function gen_credit($orderId, $amount, $userId){
 
 function send_line_message($sMessage){
 
-    $sToken = "FW46Wo1SnrhxDXvhFFUjwEz4PF9ohJCIxA5RjIZnvft";
+    $sToken = "RndmS8LeYpCNaUvrfuJvTtqGVU2LndNTDWmce3Be2eg";
 	// $sMessage = "มีรายการสั่งซื้อเข้าจ้า....";
 
 	$chOne = curl_init(); 

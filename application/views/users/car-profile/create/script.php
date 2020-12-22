@@ -26,12 +26,12 @@ $(document).ready(function() {
             detail: {
                 required: true
             },
-            color: {
-                required: true
-            },
-            tempImage1: {
-                required: true
-            }
+            // color: {
+            //     required: true
+            // },
+            // tempImage1: {
+            //     required: true
+            // }
         },
         messages: {
             character_plate: {
@@ -54,18 +54,18 @@ $(document).ready(function() {
             detail: {
                 required: "กรุณาเลือกรายละเอียดรถ"
             },
-            color: {
-                required: "กรุณากรอกสีรถ"
-            },
-            tempImage1: {
-                required: "เลือกไฟล์รูปภาพ"
-            },
-            tempImage2: {
-                required: "เลือกไฟล์รูปภาพ"
-            },
-            tempImage3: {
-                required: "เลือกไฟล์รูปภาพ"
-            }
+            // color: {
+            //     required: "กรุณากรอกสีรถ"
+            // },
+            // tempImage1: {
+            //     required: "เลือกไฟล์รูปภาพ"
+            // },
+            // tempImage2: {
+            //     required: "เลือกไฟล์รูปภาพ"
+            // },
+            // tempImage3: {
+            //     required: "เลือกไฟล์รูปภาพ"
+            // }
         }
     });
 
@@ -80,12 +80,12 @@ $(document).ready(function() {
         var isValid = form.valid();
 
         if (isValid) {
-            var imageData = $('.image-editor-front').cropit('export');
-            $('.hidden-image-front').val(imageData);
-            var imageData = $('.image-editor-back').cropit('export');
-            $('.hidden-image-back').val(imageData);
-            var imageData = $('.image-editor-form').cropit('export');
-            $('.hidden-image-form').val(imageData);
+            // var imageData = $('.image-editor-front').cropit('export');
+            // $('.hidden-image-front').val(imageData);
+            // var imageData = $('.image-editor-back').cropit('export');
+            // $('.hidden-image-back').val(imageData);
+            // var imageData = $('.image-editor-form').cropit('export');
+            // $('.hidden-image-form').val(imageData);
             var myform = document.getElementById("submit");
             var formData = new FormData(myform);
             $.ajax({
@@ -97,7 +97,12 @@ $(document).ready(function() {
                 type: 'POST',
                 success: function(data) {
                     if (data.message == 200) {
-                        showMessage(data.message, "user/carprofile");
+                        if(localStorage.carprofile){
+                            localStorage.setItem('carprofile', false);
+                            showMessage(data.message, "checkout");
+                        }else{
+                            showMessage(data.message, "user/carprofile");
+                        }
                     } else {
                         showMessage(data.message);
                     }

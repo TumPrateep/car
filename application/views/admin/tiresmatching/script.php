@@ -1,4 +1,5 @@
 <script>
+    var brand =$("#brandId");
     var table = $('#matching-table').DataTable({
         "language": {
                 "aria": {
@@ -29,8 +30,7 @@
                 "type": "POST",
                 "data": function ( data ) {
                     data.tiresize = $("#table-search").val(),
-                    // data.brandName = $("#table-search").val(),
-                    // data.tire_size = $("#table-search").val(),
+                    data.brand = brand.val(),
                     data.status = $("#status").val()
                 }
             },
@@ -142,6 +142,17 @@
             }
         });
     }
+
+    $(document).ready(function () {
+        $.get(base_url+"service/Carselect/getCarBrand",{},
+        function(data){
+            var brandData = data.data;
+                $.each( brandData, function( key, value ) {
+                    brand.append('<option value="' + value.brandId + '">' + value.brandName + '</option>');
+                });
+            }
+        );
+    });
 </script>
 
 </body>

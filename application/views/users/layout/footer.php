@@ -173,7 +173,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">เลือกสินค้าต่อ</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="backto()">เลือกสินค้าต่อ</button>
                 <a href="<?=base_url("cart")?>"><button type="button" class="btn bg-orange btn-block">
                         ยืนยันการสั่งสินค้า</button></a>
                 <!-- <button type="button" class="btn btn-primary" >ยืนยันการสั่งสินค้า</button> -->

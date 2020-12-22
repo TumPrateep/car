@@ -28,6 +28,9 @@ table>thead {
     line-height: 120%;
     font-style: italic;
 }
+.fs-20{
+    font-size: 20px;
+}
 </style>
 
 
@@ -41,28 +44,33 @@ table>thead {
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h3>ผลการค้นหา<span class="alternate">ยางรถยนต์</span></h3>
+                        <h3>สั่งสินค้า/<span class="alternate">เลือกศูนย์บริการติดตั้งฟรี</span></h3>
                     </div>
                 </div>
             </div>
-            <div class="form-group row justify-content-end">
-                <label for="staticEmail" class="col-md-1 col-form-label">จัดเรียง</label>
-                <div class="col-md-2">
-                    <select class="form-control" id="modelofcarId">
-                        <option>ก - ฮ</option>
-                        <option>ฮ - ก</option>
-                        <option>ราคาต่ำไปสูง</option>
-                        <option>ราคาสูงไปต่ำ</option>
-                    </select>
+            <div class="row justify-content-between">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p id="txt-mobile-display" class="fs-20"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group row justify-content-end">
+                        <label for="staticEmail" class="col-md-4 col-form-label">จัดเรียง</label>
+                        <div class="col-md-8">
+                            <select class="form-control" id="modelofcarId">
+                                <option>ก - ฮ</option>
+                                <option>ฮ - ก</option>
+                                <option>ราคาต่ำไปสูง</option>
+                                <option>ราคาสูงไปต่ำ</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <br>
-
-            <div class="row toggle-display">
-                <div class="col-lg-12">
-                    <h4 id="txt-mobile-display"></h4>
-                </div>
-            </div>
 
             <div class="borderTB">
                 <table class="" id="garage-table" width="100%" cellspacing="0">

@@ -21,21 +21,30 @@ table>thead {
     <input type="hidden" name="selected" id="selected">
     <div class="container">
         <div class="row flex-row flex-wrap">
-            <div class="col-3 text-center icon icon-active" data-icon="1">
-                <p><img src="<?=base_url("public/image/icon/wallet_active.png")?>" class="w-100p" width="50%"></p>
-                ที่ต้องชำระ
+            <div class="col-3 text-center icon icon-1 icon-active" data-icon="1">
+                <span class="bell">
+                    <img src="<?=base_url("public/image/icon/wallet_active.png")?>" class="w-100p" width="50%">
+                    <span class="bellnumbers number-1">0</span><br>ชำระเงินแล้ว
+                </span>
             </div>
-            <div class="col-3 text-center icon" data-icon="2">
-                <p><img src="<?=base_url("public/image/icon/deliver.png")?>" class="w-100p" width="50%"></p>
-                กำลังจัดส่ง
+            <div class="col-3 text-center icon icon-2" data-icon="2">
+                <span class="bell">
+                    <img src="<?=base_url("public/image/icon/deliver.png")?>" class="w-100p" width="50%">
+                    <span class="bellnumbers number-2">0</span><br>กำลังจัดส่ง
+                </span>
             </div>
-            <div class="col-3 text-center icon" data-icon="3">
-                <p><img src="<?=base_url("public/image/icon/service.png")?>" class="w-100p" width="50%"></p>
-                เข้ารับบริการ
+            <div class="col-3 text-center icon icon-3" data-icon="3">
+                <span class="bell">
+                    <img src="<?=base_url("public/image/icon/service.png")?>" class="w-100p" width="50%">
+                    <span class="bellnumbers number-3">0</span><br>เข้ารับบริการ
+                </span>
             </div>
-            <div class="col-3 text-center icon" data-icon="4">
-                <p><img src="<?=base_url("public/image/icon/rating.png")?>" class="w-100p" width="50%"></p>
-                ให้คะแนน
+            <div class="col-3 text-center icon icon-4" data-icon="4">
+                <span class="bell">
+                    <img src="<?=base_url("public/image/icon/rating.png")?>" class="w-100p" width="50%">
+                    <span class="bellnumbers number-4">0</span><br>
+                    ให้คะแนน
+                </span>
             </div>
         </div>
         <hr>

@@ -26,15 +26,16 @@ class Tirematching extends BD_Controller {
         $totalData = $this->tirematch->allTirematching_count();
         $totalFiltered = $totalData; 
         // $search = $this->post('tire_size');
-        if(empty($this->post('tiresize')) && empty($this->post('status')))
+        if(empty($this->post('tiresize')) && empty($this->post('brand')) && empty($this->post('status')))
         {            
             $posts = $this->tirematch->allTirematching($limit,$start,$order,$dir);
         }
         else {
             $search = $this->post('tiresize');
             $status = $this->post('status');
-            $posts =  $this->tirematch->tirematching_search($limit,$start,$search,$order,$dir,$status);
-            $totalFiltered = $this->tirematch->tirematching_search_count($search,$status);
+            $brand = $this->post('brand');
+            $posts =  $this->tirematch->tirematching_search($limit,$start,$search,$order,$dir,$status,$brand);
+            $totalFiltered = $this->tirematch->tirematching_search_count($search,$status,$brand);
         }
         $data = array();
         if(!empty($posts))

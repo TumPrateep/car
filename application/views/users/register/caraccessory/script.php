@@ -76,8 +76,8 @@ $(document).ready(function() {
                 required: true
             },
             personalid: {
-                required: true,
-                pid: true
+                // required: true,
+                // pid: true
             },
             phone_sparepart: {
                 minlength: 9,
@@ -169,8 +169,8 @@ $(document).ready(function() {
                 required: "ชื่อ"
             },
             personalid: {
-                required: "รหัสบัตรประชาชน",
-                pid: "รหัสบัตรประชาชนให้ถูกต้อง"
+                // required: "รหัสบัตรประชาชน",
+                // pid: "รหัสบัตรประชาชนให้ถูกต้อง"
             },
             hno_sparepart: {
                 required: "บ้านเลขที่"

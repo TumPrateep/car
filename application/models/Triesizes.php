@@ -223,7 +223,9 @@ class Triesizes extends CI_Model
         } else {
             $this->db->where('tire_size.tire_sizeId is null', null, false);
         }
-        $this->db->order_by('tire_size', 'asc');
+        $this->db->order_by('rim.rimName', 'asc');
+        $this->db->order_by('tire_size.tire_series', 'asc');
+        $this->db->order_by('tire_size.tire_size', 'asc');
         $query = $this->db->get("tire_size");
         return $query->result();
     }

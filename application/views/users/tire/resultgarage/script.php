@@ -111,16 +111,16 @@ $(document).ready(function() {
 
                     if (width >= 768) {
                         html += '<div class="col-md-2 address">' +
-                            '<p><strong>' + data.tireData.tire_brandName + '</strong></p>' +
-                            '<p>' + data.tireData.tire_modelName + '</p>' +
-                            '<p>' + data.tireData.tire_size + '</p>' +
+                            // '<p><strong>' + data.tireData.tire_brandName + '</strong></p>' +
+                            // '<p>' + data.tireData.tire_modelName + '</p>' +
+                            // '<p>' + data.tireData.tire_size + '</p>' +
                             '</div>';
-                    } else {
-                        $('#txt-mobile-display').html(
-                            '<strong>' + data.tireData.tire_brandName + '</strong> ' +
-                            data.tireData.tire_modelName + ' ' + data.tireData.tire_size
+                    } 
+
+                    $('#txt-mobile-display').html(
+                            '<span class="alternate">'+data.tireData.tire_size+'</span><br>'+'<strong>' + data.tireData.tire_brandName + '</strong> ' +
+                            data.tireData.tire_modelName
                             );
-                    }
 
                     html += '<div class="detail col-md-3">' +
                         '<div class="row">' +
@@ -194,5 +194,9 @@ function changeNumber(garageId, price) {
 function gotolink(tire_dataId, garageId) {
     var number = $('.number-' + garageId).val();
     window.location.href = base_url + 'checkout/' + tire_dataId + '/' + garageId + '/' + number;
+}
+
+function backto(){
+    window.location.href = base_url + 'search/tire';
 }
 </script>

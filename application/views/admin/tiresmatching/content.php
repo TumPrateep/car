@@ -17,7 +17,14 @@
                 <i class="fa fa-plus">  สร้าง</i>
             </a>
             </div>
-            <div class="col-md-3 offset-md-3">
+            <div class="col-md-3">
+              <div class="form-group">
+                <select class="form-control" name="brandId" id="brandId">
+                  <option value="">เลือกยี่ห้อรถ</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3">
                 <div class="input-group">
                     <input id="table-search" class="form-control float-right" placeholder="ขนาดยาง">
                     <div class="input-group-append">

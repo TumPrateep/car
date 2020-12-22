@@ -12,7 +12,7 @@ table>thead {
         <div class="row" id="">
             <div class="col-md-12">
                 <div class="section-title">
-                    <h3>ค้นหา<span class="alternate">ข้อมูลรถยนต์</span></h3>
+                    <h3>รถยนต์ของ<span class="alternate">คุณ<?=$name?></span></h3>
                 </div>
             </div>
         </div>

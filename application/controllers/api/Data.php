@@ -57,6 +57,7 @@ class Data extends BD_Controller {
                 $nestedData['warranty'] = $post->warranty;
                 $nestedData['tire_picture'] = $post->tire_picture;
                 $nestedData['tire_brandPicture'] = $post->tire_brandPicture;
+                $nestedData['userId'] = $post->car_accessoriesId;
 
                 // $option = [
                 //     'tire_brandId' => $post->tire_brandId,
@@ -79,6 +80,30 @@ class Data extends BD_Controller {
         );
 
         $this->set_response($json_data);
+    }
+
+    function save_tireimport_post(){
+        $csvData = $this->post('csvData');
+        $data = [];
+        foreach ($csvData as $i => $row) {            
+            $data[] = array(
+                'tire_dataId' => !empty($row[1]) ? $row[1] : '',
+                'price' => !empty($row[3]) ? $row[3] : '',
+            );
+        }
+
+        $result = $this->tiredatas->import($data);
+
+        if ($result) {
+            $output["message"] = REST_Controller::MSG_SUCCESS;
+            $output["result"] = $result;
+            $this->set_response($output, REST_Controller::HTTP_OK);
+        } else {
+            $output["status"] = false;
+            $output["message"] = REST_Controller::MSG_NOT_UPDATE;
+            $output["data"] = $data;
+            $this->set_response($output, REST_Controller::HTTP_CONFLICT);
+        }
     }
 
 }

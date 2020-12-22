@@ -17,13 +17,13 @@ class Deliverorder extends BD_Controller
     {
         $column = "	orderId";
 
-        $sort = "asc";
+        $sort = "desc";
         if ($this->post('column') == 3) {
             $column = "status";
         } else if ($this->post('column') == 2) {
             $sort = "desc";
         } else {
-            $sort = "asc";
+            $sort = "desc";
         }
 
         $userId = $this->session->userdata['logged_in']['id'];
@@ -261,6 +261,17 @@ class Deliverorder extends BD_Controller
             }
         }
 
+        // $dot
+        $tire_dot = [];
+        $str_dot = '';
+        foreach ($dot as $i => $v) {
+            $str_dot .= $v;
+            if(($i+1)%4 == 0){
+                $tire_dot[] = $str_dot;
+                $str_dot = '';
+            }
+        }
+
         if ($success) {
             // $data_check = $this->deliverorders->data_check_create($orderId);
             $data['numbertracking'] = array(
@@ -275,7 +286,7 @@ class Deliverorder extends BD_Controller
                 "orderId" => $orderId,
                 "time" => $time,
             );
-            $data['tire_dot'] = $dot;
+            $data['tire_dot'] = $tire_dot;
             $option = [
                 "data_check" => null,
                 "data" => $data,

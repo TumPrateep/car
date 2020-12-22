@@ -82,7 +82,8 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <span>แนบไฟล์หลักฐานการส่ง</span><span class="error">*</span>
-                                            <input type="file" name="tracking" id="tracking">
+                                            <input type="file" name="tracking" id="tracking" accept="image/*"><br>
+                                            <small>ไฟล์รูปแบบ .jpg หรือ .png เท่านั้น</small>
                                         </div>
                                     </div>
                                 </div>

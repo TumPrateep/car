@@ -12,20 +12,20 @@ class Registercaraccessorys extends CI_Model{
         if(!empty($result1)){
             return $result1;
         }
-        $this->db->select("user_profile");
-        $this->db->from("user_profile");
-        $this->db->where("personalid", $personalid);
-        $result2 = $this->db->get()->row();
-        if(!empty($result2)){
-            return $result2;
-        }
-        $this->db->select("car_accessoriesId");
-        $this->db->from("car_accessories");
-        $this->db->where("businessRegistration", $businessRegistration);
-        $result3 = $this->db->get()->row();
-        if(!empty($result3)){
-            return $result3;
-        }
+        // $this->db->select("user_profile");
+        // $this->db->from("user_profile");
+        // $this->db->where("personalid", $personalid);
+        // $result2 = $this->db->get()->row();
+        // if(!empty($result2)){
+        //     return $result2;
+        // }
+        // $this->db->select("car_accessoriesId");
+        // $this->db->from("car_accessories");
+        // $this->db->where("businessRegistration", $businessRegistration);
+        // $result3 = $this->db->get()->row();
+        // if(!empty($result3)){
+        //     return $result3;
+        // }
 
         return null;
 

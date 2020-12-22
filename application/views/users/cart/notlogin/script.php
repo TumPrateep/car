@@ -291,7 +291,7 @@ function getLubricator(value, index){
     var product = cartDataDetail["lubricator"][value.productId];
     var totalCost = (product.price*value.number);
     var html = '<tr role="row">'
-            +'<td><div class="form-check top selected-cart"><input class="form-check-input size-check" type="checkbox" value="" onchange="setTotalAmount()" data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'" data-garage="'+product.garage.garageId+'" style="width: 1rem !important;"></div></td>'
+            +'<td><div class="form-check top selected-cart"><input class="form-check-input size-check" type="checkbox" checked value="" onchange="setTotalAmount()" data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'" data-garage="'+product.garage.garageId+'" style="width: 1rem !important;"></div></td>'
             +'<td>'
                 +'<div class="row">'
                     +'<div class="pic col-md-3 text-center">'
@@ -336,11 +336,16 @@ function getLubricator(value, index){
     return html;
 }
 
+function gotoLogin(){
+    localStorage.setItem('checkout', true);
+    window.location.href = base_url+"login";
+}
+
 function getTire(value, index){
     var product = cartDataDetail["tire"][value.productId];
     var totalCost = (product.price*value.number);
     var html = '<tr role="row">'
-        +'<td><div class="form-check top selected-cart"><input class="form-check-input size-check" type="checkbox" value="" onchange="setTotalAmount()" data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'" data-garage="'+product.garage.garageId+'" style="width: 1rem !important;"></div></td>'
+        +'<td><div class="form-check top selected-cart"><input class="form-check-input size-check" type="checkbox" checked value="" onchange="setTotalAmount()" data-amount="'+totalCost+'" data-productId="'+value.productId+'" data-group="'+value.group+'" data-number="'+value.number+'" data-garage="'+product.garage.garageId+'" style="width: 1rem !important;"></div></td>'
         +'<td>'
             +'<div class="row">'
                 +'<div class="pic col-md-3 text-center">'

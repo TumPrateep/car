@@ -2,47 +2,17 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="<?=base_url("admin/import")?>">นำเข้าข้อมูล (ยาง)</a>
+            <a href="<?=base_url("admin/import")?>">นำเข้าข้อมูล (ยาง) <?php echo $car_accessories->car_accessoriesName; ?></a>
         </li>
         <li class="breadcrumb-item active">ค้นหา</li>
     </ol>
 
-
-    <!-- Example DataTables Card-->
-    <!-- <div class="card-tools one">
-        <form id="form-search">
-            <div class="form-row">
-                <div class="col-md-3 offset-md-5">
-                    <div class="input-group">
-                        <input name="car_search" id="table-search" class="form-control float-right"
-                            placeholder="ชื่อร้านอะไหล่">
-                        <div class="input-group-append">
-                            <span class="input-group-text fa fa-cogs"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2 ">
-                    <div class="input-group">
-                        <select class="form-control" name="status" id="status">
-                            <option value>สถานะ</option>
-                            <option value=1>เปิด</option>
-                            <option value=2>ปิด</option>
-                        </select>
-                        <div class="input-group-append">
-                            <span class="input-group-text fa fa-toggle-on"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="input-group-append">
-                        <button type="submit" id="btn-search" class="btn btn-success btn-block">
-                            <i class="fa fa-search"></i> ค้นหา
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div> -->
+    <div class="row">
+        <div class="col-md-9"></div>
+        <div class="col-md-3">
+            <a href="<?=base_url("admin/import/tireimport/".$car_accessoriesId)?>" class="btn btn-info btn-block"><i class="fa fa-download" aria-hidden="true"></i> นำเข้าราคาสินค้า</a>
+        </div>
+    </div>
 
     <input type="hidden" name="userId" id="userId" value="<?=$car_accessoriesId?>">
 

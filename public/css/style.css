@@ -428,6 +428,24 @@ select.form-control:not([size]):not([multiple]) {
     .sort-first {
         order: -1;
     }
+    .sort-1 {
+        order: 0;
+    }
+    .sort-2 {
+        order: 1;
+    }
+    .sort-3 {
+        order: 2;
+    }
+    .sort-4 {
+        order: 3;
+    }
+    .sort-5 {
+        order: 4;
+    }
+    .sort-6 {
+        order: 5;
+    }
 }
 
 .right {
@@ -3937,14 +3955,50 @@ a.text-orange {
     font-weight: 400;
 }
 
-thead.schedule{
-    padding:  22px 40px;
+thead.schedule {
+    padding: 22px 40px;
     background: #ff6600;
     color: #fff;
     text-align: center;
 }
 
-.border-black{
+.border-black {
     border: 3px solid black;
     border-radius: 7px;
+}
+
+.bell {
+    display: inline-block;
+    position: relative;
+    background-color: #eee;
+    text-align: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 5px;
+}
+
+.bellnumbers {
+    font-size: 12px;
+    background-color: #ff6600;
+    width: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    border-radius: 3px;
+    position: absolute;
+    right: 5px;
+    font-weight: 300;
+}
+
+.badge-change {
+    display: inline-block;
+    padding: .25em .4em;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }

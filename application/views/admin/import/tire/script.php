@@ -33,9 +33,8 @@
             "order": [[ 1, "asc" ]],
             "columns": [
                 null,
-                // { "data": "car_accessoriesName" },
-                // { "data": "name" },
-                // null
+                null,
+                null
             ],
             "columnDefs": [
                 {
@@ -47,7 +46,7 @@
                     "targets": 3,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
-                        return '';
+                        return '<a href="'+base_url+"admin/import/tire/"+data.userId+'/'+data.tire_dataId+'"><button type="button" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></button></a> ';
                     }
                 },
                 {
@@ -72,8 +71,8 @@
                     }
                 },
                 // { "orderable": false, "targets": 0 },
-                // {"className": "dt-head-center", "targets": [2]},
-                // {"className": "dt-center", "targets": [0,1,3]},
+                {"className": "dt-head-center", "targets": [1]},
+                {"className": "dt-center", "targets": [0,2,3]},
                 // { "width": "10%", "targets": 0 },
                 // { "width": "20%", "targets": 1 },
                 // // { "width": "20%", "targets": 4 },

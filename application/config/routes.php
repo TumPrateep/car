@@ -112,6 +112,7 @@ $route['search/garage/detailgarage/(\d+)'] = function ($garageId) {
     return 'user/detailgarage/index/' . $garageId;
 };
 $route['checkout'] = 'user/checkout/index/';
+$route['booking'] = 'user/booking/index/';
 $route['products/tire'] = 'user/tire';
 $route['products/lubricator'] = 'user/lubricator';
 // user route

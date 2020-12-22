@@ -52,9 +52,47 @@ input[type="checkbox"] {
 }
 
 </style>
+<link href="<?=base_url('public/')?>css/mdb.css?<?php echo time(); ?>" rel="stylesheet">
 <section class="section pricing" id="search">
     <div class="container">
         <div id="boby">
+            <!-- Horizontal Steppers -->
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- Stepers Wrapper -->
+                    <ul class="stepper stepper-horizontal">
+
+                    <!-- First Step -->
+                    <li class="warning">
+                        <a href="#!">
+                        <span class="circle">1</span>
+                        <span class="label">รายการสินค้า</span>
+                        </a>
+                    </li>
+
+                    <!-- Second Step -->
+                    <li>
+                        <a href="#!">
+                        <span class="circle">2</span>
+                        <span class="label">จองติดตั้ง</span>
+                        </a>
+                    </li>
+
+                    <!-- Third Step -->
+                    <li>
+                        <a href="#!">
+                        <span class="circle">3</span>
+                        <span class="label">ชำระเงิน</span>
+                        </a>
+                    </li>
+
+                    </ul>
+                    <!-- /.Stepers Wrapper -->
+
+                </div>
+            </div>
+            <!-- /.Horizontal Steppers -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
@@ -67,9 +105,9 @@ input[type="checkbox"] {
                     <table class="table table-hover" id="cart-table">
                         <tbody id="cart_list"></tbody>
                         <tfoot>
-                            <tr>
+                            <!-- <tr>
                                 <th colspan="2" class="text-right"><div class="row"><div class="col-9"><span class="font-italic">ราคารวมสินค้าในตะกร้า : </span></div><div class="col"><span class="font-italic" id="total-amount"></span></div></div></th>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <th colspan="2" class="text-right"><div class="row"><div class="col-9"><span class="amount">ราคารวม : </span></div><div class="col"><span class="amount" id="order_total_amount"></span></div></div></th>
                             </tr>
@@ -79,7 +117,7 @@ input[type="checkbox"] {
             </div>
             <br>
             <div class="row justify-content-md-center">
-                <div class="col-4">
+                <div class="col-md-4">
                     <button class="btn btn-main-md width-100p bg-orange" onclick="checkData()"> ยืนยันชำระเงิน</button> 
                 </div>
             </div>

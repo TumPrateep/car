@@ -4,6 +4,7 @@
 
 $(document).ready(function() {
     var errorMessage = $("#error-message");
+    var errorMessage2 = $("#error-message2");
     var login = $("#login");
     var register = $("#register");
 
@@ -52,7 +53,7 @@ $(document).ready(function() {
             },
             password_again: {
                 required: true,
-                equalTo: "#password"
+                equalTo: "#t_password"
             }
         },
         messages: {
@@ -99,7 +100,13 @@ $(document).ready(function() {
                         localStorage.userId = data.userId;
                         $.cookie('token', data.token, { expires: 365 })
                         $.cookie('userId', data.userId, { expires: 365 })
-                        synLogin(base_url + "role");
+                        if(localStorage.checkout){
+                            localStorage.setItem('checkout', false);
+                            synLogin(base_url + "cart");
+                        }else{
+                            synLogin(base_url + "role");
+                        }
+                        
                     } else if (message == "2002") {
                         errorMessage.html("ไม่พบชื่อผู้ใช้งาน <a href='" + base_url + "register" +
                             "'>ลงทะเบียน</a>");
@@ -121,20 +128,57 @@ $(document).ready(function() {
         var isValid = register.valid();
         if (isValid) {
             var data = register.serialize();
-            errorMessage.hide();
+            errorMessage2.hide();
             $.post(base_url + "service/register/users", data,
                 function(data, textStatus, jqXHR) {
-                    showMessage(data.message, "login");
+                    if(data.result){
+                        var data_login = {
+                            "username": $("#t_username").val(),
+                            "password": $("#t_password").val()
+                        };
+                        login_user(data_login);
+                    }else{
+                        showMessage(data.message);
+                    }
                 }
             ).fail(function(data) {
                 if (data.responseJSON.message == 3001) {
-                    errorMessage.html("ชื่อผู้ใช้งานหรือเบอร์โทรนี้ถูกใช้งานแล้ว");
-                    errorMessage.show();
+                    errorMessage2.html("ชื่อผู้ใช้งานหรืออีเมลถูกใช้งานแล้ว");
+                    errorMessage2.show();
+                    $('html, body').animate({
+                        scrollTop: $("#top-register").offset().top
+                    }, 1000);
+                    // showMessage(data.message);
                 }
             })
         }
     });
 });
+
+function login_user(data){
+    $.post(base_url + "api/Auth/login", data,
+        function(data, textStatus, jqXHR) {
+            var message = data.message;
+            if (message == "2001") {
+                localStorage.token = data.token;
+                localStorage.userId = data.userId;
+                $.cookie('token', data.token, { expires: 365 })
+                $.cookie('userId', data.userId, { expires: 365 })
+                synLogin(base_url + "cart");
+            } else if (message == "2002") {
+                errorMessage.html("ไม่พบชื่อผู้ใช้งาน <a href='" + base_url + "register" +
+                    "'>ลงทะเบียน</a>");
+                errorMessage.show();
+            } else if (message == "2003") {
+                errorMessage.html("ชื่อผู้ใช้งานถูกปิดใช้งาน");
+                errorMessage.show();
+            } else {
+                errorMessage.html("ชื่อหรือรหัสผ่านไม่ถูกต้อง");
+                errorMessage.show();
+            }
+        }
+    );
+}
 
 function init() {
     // Load "client" & "auth2" libraries

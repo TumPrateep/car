@@ -219,7 +219,7 @@ $(document).ready(function() {
                             '<div class="card flex-row flex-wrap">' +
                             '<div class="card-body col-md-5 text-center flex-fill">' +
                             '<img src="' + imagePath + value.picture +
-                            '"><br><br>' +
+                            '" width="100%"><br><br>' +
                             '<h5>ระยะทาง</h5>' +
                             '<h5>' + distance(value.latitude, value.longitude,
                                 latitude, longitude, "กม.") + '</h5>' +

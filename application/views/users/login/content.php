@@ -74,7 +74,7 @@
     box-sizing: border-box;
 }
 </style>
-<section class="section pricing">
+<section class="section pricing" id="top-register">
     <div class="container">
         <br>
         <div class="row justify-content-center">
@@ -165,6 +165,7 @@
                                 <form id="register">
                                     <div class="row">
                                         <div class="col-lg-12">
+                                            <div id="error-message2" class="alert alert-warning hide" role="alert"></div>
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <span>ชื่อ</span>
@@ -192,12 +193,12 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <span>ชื่อผู้ใช้งาน</span>
-                                                    <input type="text" name="username" class="form-control main"
+                                                    <input type="text" name="username" id="t_username" class="form-control main"
                                                         placeholder="ชื่อผู้ใช้งาน" required>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <span>รหัสผ่าน</span>
-                                                    <input type="password" name="password" id="password"
+                                                    <input type="password" name="password" id="t_password"
                                                         class="form-control main" placeholder="รหัสผ่าน" required>
                                                 </div>
                                             </div>

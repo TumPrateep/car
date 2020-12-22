@@ -35,8 +35,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="form-label required" for="mechanic">เลขรหัสบัตรประชาชน</label><span
-                        class="error">*</span>
+                    <label class="form-label required" for="mechanic">เลขรหัสบัตรประชาชน</label>
                     <input type="number" class="form-control main-md btn-ga" name="personalid" id="personalid"
                         placeholder="เลขรหัสบัตรประชาชน">
                 </div>
@@ -356,9 +355,10 @@
                                 id="checkpassword" placeholder="ยืนยันรหัสผ่าน">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">บันทึก</button>
+                            <!-- <a href="http://localhost/car/user/news" type="submit" class="btn btn-main-md bg-orange"><i class="fa fa-search"></i> ดูทั้งหมด</a> -->
+                            <button type="submit" class="btn btn-main-md bg-orange">บันทึก</button>
                         </div>
                     </div>
                 </div>

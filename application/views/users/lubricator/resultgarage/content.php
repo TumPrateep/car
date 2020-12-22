@@ -41,7 +41,7 @@ table>thead {
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h3>ผลการค้นหา<span class="alternate">ของเหลว</span></h3>
+                        <h3>สั่งสินค้า/<span class="alternate">เลือกศูนย์บริการติดตั้งฟรี</span></h3>
                     </div>
                 </div>
             </div>

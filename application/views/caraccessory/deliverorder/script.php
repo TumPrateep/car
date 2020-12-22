@@ -187,8 +187,17 @@ function renderDOT(quantity) {
     for (let i = 1; i <= quantity; i++) {
         html += '<div class="form-group row">' +
             '<label class="col-sm-4 col-form-label">ยางเส้นที่ ' + i + '</label>' +
-            '<div class="col-sm-8">' +
-            '<input type="number" name="dot[]" class="form-control">' +
+            '<div class="col-sm-2">' +
+            '<input type="number" name="dot[]" class="form-control" min="0" max="9" required>' +
+            '</div>' +
+            '<div class="col-sm-2">' +
+            '<input type="number" name="dot[]" class="form-control" min="0" max="9" required>' +
+            '</div>' +
+            '<div class="col-sm-2">' +
+            '<input type="number" name="dot[]" class="form-control" min="0" max="9" required>' +
+            '</div>' +
+            '<div class="col-sm-2">' +
+            '<input type="number" name="dot[]" class="form-control" min="0" max="9" required>' +
             '</div>' +
             '</div>';
     }
@@ -216,8 +225,8 @@ $("#submit").validate({
         },
         'dot[]': {
             required: true,
-            minlength: 4,
-            maxlength: 4
+            min: 0,
+            max: 9
         }
     },
     messages: {
@@ -230,9 +239,9 @@ $("#submit").validate({
             filesize: "ไฟล์ขนาดใหญ่เกินไป"
         },
         'dot[]': {
-            required: 'กรอกหมายเลข DOT 4 หลัก',
-            minlength: 'หมายเลข DOT ไม่น้อยกว่า 4 หลัก',
-            maxlength: 'หมายเลข DOT ไม่เกิน 4 หลัก'
+            required: 'กรอกหมายเลข 0-9',
+            min: 'หมายเลขไม่น้อยกว่า 0',
+            max: 'หมายเลขไม่เกิน 9'
         }
     },
 });

@@ -40,7 +40,7 @@ class Tirematch extends CI_Model
 
     }
 
-    public function tirematching_search($limit, $start, $search, $col, $dir, $status)
+    public function tirematching_search($limit, $start, $search, $col, $dir, $status,$brandId=null)
     {
 
         $this->db->select('tire_matching.tire_matchingId, tire_matching.status, brand.brandName, model.modelName, concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tiresize, modelofcar.modelofcarName, model.yearStart, model.yearEnd, modelofcar.machineSize')->select("IFNULL(`detail`, '') AS `detail`", false);
@@ -55,6 +55,9 @@ class Tirematch extends CI_Model
         if ($status != null) {
             $this->db->where("tire_matching.status", $status);
         }
+        if(!empty($brandId)){
+            $this->db->where("brand.brandId", $brandId);
+        }
         $query = $this->db->limit($limit, $start)
             ->order_by($col, $dir)
             ->get();
@@ -66,7 +69,7 @@ class Tirematch extends CI_Model
         }
     }
 
-    public function tirematching_search_count($search, $status)
+    public function tirematching_search_count($search, $status, $brandId=null)
     {
         $this->db->select('tire_matching.tire_matchingId, tire_matching.status, brand.brandName, model.modelName, concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName) as tiresize, modelofcar.modelofcarName,model.yearStart, model.yearEnd, modelofcar.machineSize')->select("IFNULL(`detail`, '') AS `detail`", false);
         $this->db->from('tire_matching');
@@ -79,6 +82,10 @@ class Tirematch extends CI_Model
         $this->db->like('concat(tire_size.tire_size,"/",tire_size.tire_series,"R",rim.rimName)', $search);
         if ($status != null) {
             $this->db->where("tire_matching.status", $status);
+        }
+
+        if(!empty($brandId)){
+            $this->db->where("brand.brandId", $brandId);
         }
         // $query = $this->db->limit($limit,$start)
         //         ->order_by($col,$dir)

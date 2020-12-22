@@ -10,6 +10,8 @@
 $(document).ready(function() {
     var total = 0;
     // var service_data = [];
+    var pdate;
+    var ptime;
 
     $('#slipdate').pickadate({
         max: true,
@@ -49,7 +51,14 @@ $(document).ready(function() {
             showGarageData(data.garage_data);
             // disableDay(data.garage_data);
             // showProduct(data.products);
-            getCarProfile();
+            var bookingData = JSON.parse(localStorage.getItem("bookingData"));
+            getCarProfile(bookingData.car_profile);
+
+            $('#booking').html(
+                bookingData.hire_date+' '+bookingData.hire_time+' น.'+
+                '<input type="hidden" name="hire_date_submit" value="'+bookingData.hire_date_submit+'">'+
+                '<input type="hidden" name="hire_time_submit" value="'+bookingData.hire_time_submit+'">'
+            );
 
             var html = '';
             $.each(data.products, function( index, value ) {
@@ -138,42 +147,74 @@ $(document).ready(function() {
             '<span>จ.' + garageData.provinceName + '</span>';
         $('#garage').html(html);
 
-        setDatepicker(garageData);
+        // setDatepicker(garageData);
     }
 
-    function setDatepicker(garageData) {
-        var d = new Date();
-        var n = d.getDay()
-        var min = 4;
-        if (n == 6) {
-            min = 6;
-        } else if (n == 7) {
-            min = 5
-        }
-        console.log(openday);
-        var openday = garageData.dayopenhour;
-        var opendata = [];
-        var index = 0;
-        for (let i = 0; i < openday.length; i++) {
-            if (openday.charAt(i) == 0) {
-                opendata[index] = i + 1;
-                index++;
-            }
-        }
+    // function setDatepicker(garageData) {
+    //     var d = new Date();
+    //     var n = d.getDay()
+    //     var min = 4;
+    //     if (n == 6) {
+    //         min = 4;
+    //     } else if (n == 7) {
+    //         min = 5
+    //     }
+    //     console.log(openday);
+    //     var openday = garageData.dayopenhour;
+    //     var opendata = [];
+    //     var index = 0;
+    //     for (let i = 0; i < openday.length; i++) {
+    //         if (openday.charAt(i) == 0) {
+    //             opendata[index] = i + 1;
+    //             index++;
+    //         }
+    //     }
 
-        $('#hire_date').pickadate({
-            min: +min,
-            formatSubmit: 'yyyy-mm-dd',
-            close: 'ปิด',
-            disable: opendata
-        });
-        $('#hire_time').pickatime({
-            format: 'HH:i',
-            formatSubmit: 'HH:i',
-            min: garageData.openingtime,
-            max: garageData.closingtime
-        });
-    }
+    //     var $pinput = $('#hire_date').pickadate({
+    //         min: +min,
+    //         formatSubmit: 'yyyy-mm-dd',
+    //         close: 'ปิด',
+    //         disable: opendata,
+    //     });
+
+    //     pdate = $pinput.pickadate('picker')
+        
+    //     var checkdate = localStorage.getItem('hire_date');
+    //     if(checkdate){
+    //         pdate.set('select', new Date(checkdate))
+    //     }
+
+    //     var $tinput = $('#hire_time').pickatime({
+    //         format: 'HH:i',
+    //         formatSubmit: 'HH:i',
+    //         min: (garageData.openingtime != '00:00:00')?garageData.openingtime:'08:00',
+    //         max: (garageData.closingtime != '00:00:00')?garageData.closingtime:'17:00'
+    //     });
+
+    //     tdate = $tinput.pickatime('picker')
+    //     var checktime = localStorage.getItem('hire_time');
+    //     if(checktime){
+    //         tdate.set('select', checktime)
+    //     }
+    // }
+
+    // $('#hire_date').change(function (e) { 
+    //     setTimeout(
+    //     function() 
+    //     {
+    //         console.log($("input[name='hire_date_submit']").val());
+    //         localStorage.setItem('hire_date', $("input[name='hire_date_submit']").val());
+    //     }, 500);
+    // });
+
+    // $('#hire_time').change(function (e) { 
+    //     setTimeout(
+    //     function() 
+    //     {
+    //         console.log($("input[name='hire_time_submit']").val());
+    //         localStorage.setItem('hire_date', $("input[name='hire_time_submit']").val());
+    //     }, 500);
+    // });
 
     // $(".v-number").change(function(e) {
     //     var number = $(this).val();
@@ -183,58 +224,62 @@ $(document).ready(function() {
     //     }).format() + ' บาท');
     // });
 
-    function getCarProfile() {
-        var car_profile = $("#car_profile");
-        if (car_profile.length) {
-            getProfile();
-        }
-    }
+    // function getCarProfile() {
+    //     var car_profile = $("#car_profile");
+    //     if (car_profile.length) {
+    //         getProfile();
+    //     }
+    // }
 
-    function getProfile() {
-        var carprofile = $("#car_profile");
+    // function getProfile() {
+    //     var carprofile = $("#car_profile");
 
-        var html = '<option value="">เลือกรถเข้าใช้บริการ</option>';
-        // carprofileData = [];
-        $.get(base_url + "service/Carprofile/getAllCarProfileByUserId", {},
-            function(data, textStatus, jqXHR) {
-                $.each(data, function(i, v) {
-                    html += '<option value="' + v.car_profileId + '">' + v.character_plate + ' ' + v
-                        .number_plate + ' ' + v.provinceforcarName + '</option>';
-                });
+    //     var html = '<option value="">เลือกรถเข้าใช้บริการ</option>';
+    //     // carprofileData = [];
+    //     $.get(base_url + "service/Carprofile/getAllCarProfileByUserId", {},
+    //         function(data, textStatus, jqXHR) {
+    //             $.each(data, function(i, v) {
+    //                 html += '<option value="' + v.car_profileId + '">' + v.character_plate + ' ' + v
+    //                     .number_plate + ' ' + v.provinceforcarName + '</option>';
+    //             });
 
-                carprofile.html(html);
+    //             carprofile.html(html);
 
-                var carId = $("#carId").val();
-                if (carId != null) {
-                    carprofile.val(carId);
-                }
-            }
-        );
-    }
+    //             var carId = $("#carId").val();
+    //             if (carId != null) {
+    //                 carprofile.val(carId);
+    //             }
+    //         }
+    //     );
+    // }
 
-    $("#car_profile").change(function() {
-        var car_id = $(this).val();
+    function getCarProfile(car_profile) { 
+        var car_id = car_profile;
 
         if (car_id) {
             $.post(base_url + "service/carprofile/getCarProfile", {
                 'car_profileId': car_id
             }, function(data, textStatus, jqXHR) {
                 var carprofile = data.data;
-                $('#img-carprofile').html('<img src="' + base_url + 'public/image/carprofile/' +
-                    carprofile.pictureFront + '" width="100%">');
+                // $('#img-carprofile').html('<img src="' + base_url + 'public/image/carprofile/' +
+                //     carprofile.pictureFront + '" width="100%">');
                 // $('#img-carbrand').html('<img src="'+base_url+'public/image/brand/'+carprofile.brandPicture+'" width="100%" alt="">');
-                $('#carprofile-data').html('<br><strong>' + (carprofile.brandName)?carprofile.brandName:'-' +
-                    '</strong><br>' +
-                    '<span>' + (carprofile.modelName)?carprofile.modelName:'-' + '</span><br>' +
-                    '<span>' + (carprofile.year)?'ปี '+carprofile.year:'-' +
-                    '</span><br>');
+                var html = '';
+                html += '<strong>- '+carprofile.brandName+'</strong> ' +
+                    '<span>'+carprofile.modelName+'</span> ';
+                if(carprofile.year){
+                    html += '<span>' + 'ปี '+carprofile.year+'</span>';
+                }
+                html += '<br>- ทะเบียนรถ: '+carprofile.character_plate+' '+carprofile.number_plate+' '+carprofile.provinceforcarName;
+                html += '<input type="hidden" name="car_profile" value="'+carprofile.car_profileId+'">';
+                $('#carprofile-data').html(html);
             });
         } else {
             $('#img-carprofile').html('');
             $('#img-carbrand').html('');
             $('#carprofile-data').html('');
         }
-    });
+    }
 
     // function changeStringToYear(start_year, end_year) {
     //     let html = '';
@@ -323,11 +368,8 @@ $(document).ready(function() {
             $('.hidden-image-data').val(imageData);
             var myform = document.getElementById("form-rent");
             var formData = new FormData(myform);
-            // $.each(service_data, function(i, v) {
-            //     formData.append(i, v);
-            //     console.log(i, v);
-            // });
-            // console.log(myform);
+            localStorage.removeItem("hire_date");
+            localStorage.removeItem("hire_time");
             let payment = $('.next:checked').val();
             if(payment == 2){
                 $.ajax({
@@ -370,4 +412,9 @@ $(document).ready(function() {
     });
 
 });
+
+function gotoCarProfile(){
+    localStorage.setItem('carprofile', true);
+    window.location.href = base_url+"user/carprofile/create";
+}
 </script>
