@@ -236,6 +236,28 @@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
                         href="#matchingProduct" data-parent="#exampleAccordion">
+                        <i class="fa fa-flag-checkered" aria-hidden="true"></i>
+                        <span class="nav-link-text">เช็คระยะ</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="matchingProduct">
+                        <li class="<?=activate_menu('partsproduct');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/partsproduct")?>">
+                                <i class="fa fa-tasks" aria-hidden="true"></i>
+                                <span class="nav-link-text">รายการสินค้า</span>
+                            </a>
+                        </li>
+                        <li class="<?=activate_menu('partstable');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/partstable")?>">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="nav-link-text">ตารางการเช็คระยะ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
+                        href="#matchingProduct" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-dollar"></i>
                         <span class="nav-link-text">ข้อมูลอะไหล่ตามข้อมูลรถยนต์</span>
                     </a>

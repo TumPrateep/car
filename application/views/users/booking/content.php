@@ -29,7 +29,7 @@
                     <li class="completed">
                         <a href="<?php echo base_url('cart'); ?>">
                         <span class="circle">1</span>
-                        <span class="label">รายการสินค้า</span>
+                        <span class="label">เลือกสินค้า</span>
                         </a>
                     </li>
 
@@ -37,7 +37,7 @@
                     <li class="warning">
                         <a href="#!">
                         <span class="circle">2</span>
-                        <span class="label">จองติดตั้ง</span>
+                        <span class="label">จองวันเข้าใช้บริการ</span>
                         </a>
                     </li>
 

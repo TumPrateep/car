@@ -29,7 +29,7 @@
                     <li class="completed">
                         <a href="<?php echo base_url('cart'); ?>">
                         <span class="circle">1</span>
-                        <span class="label">รายการสินค้า</span>
+                        <span class="label">เลือกสินค้า</span>
                         </a>
                     </li>
 
@@ -37,7 +37,7 @@
                     <li class="completed">
                         <a href="<?php echo base_url('booking'); ?>">
                         <span class="circle">2</span>
-                        <span class="label">จองติดตั้ง</span>
+                        <span class="label">จองวันเข้าใช้บริการ</span>
                         </a>
                     </li>
 
@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-title">
-                            <h3>รายละเอียด<span class="alternate"></span>การจอง</h3>
+                            <h3>ข้อมูล<span class="alternate"></span>การชำระเงิน</h3>
                         </div>
                     </div>
                 </div>
@@ -182,6 +182,10 @@
                             <div class="row">
                                 <div class="col-md-12 card">
                                     <div class="card-body">
+                                        <div>
+                                            <h5>รายละเอียดการจอง</h5>
+                                        </div>
+                                        <hr>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <span><strong>วันที่จองติดตั้ง:</strong></span><br>

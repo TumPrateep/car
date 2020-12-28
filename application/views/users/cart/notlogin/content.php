@@ -143,7 +143,7 @@ input[type="checkbox"] {
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-4">
-                    <button class="btn btn-main-md width-100p bg-orange" onclick="gotoLogin()"> ยืนยันชำระเงิน</button> 
+                    <button class="btn btn-main-md width-100p bg-orange" onclick="gotoLogin()"> จองวันเข้าใช้บริการ</button> 
                 </div>
             </div>
             <br>

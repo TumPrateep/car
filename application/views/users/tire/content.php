@@ -170,6 +170,7 @@ div.brand img {
                 <div class="col-md-12">
                     <div class="section-title">
                         <h3>ผลการค้นหา<span class="alternate">ยางรถยนต์</span></h3>
+                        <span class="main">ราคาเดียวจบ! <span class="click">ฟรีค่าขนส่ง ฟรีค่าติดตั้ง</span></span>
                     </div>
                 </div>
             </div>

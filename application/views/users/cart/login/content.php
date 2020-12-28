@@ -67,7 +67,7 @@ input[type="checkbox"] {
                     <li class="warning">
                         <a href="#!">
                         <span class="circle">1</span>
-                        <span class="label">รายการสินค้า</span>
+                        <span class="label">เลือกสินค้า</span>
                         </a>
                     </li>
 
@@ -75,7 +75,7 @@ input[type="checkbox"] {
                     <li>
                         <a href="#!">
                         <span class="circle">2</span>
-                        <span class="label">จองติดตั้ง</span>
+                        <span class="label">จองวันเข้าใช้บริการ</span>
                         </a>
                     </li>
 
@@ -118,7 +118,7 @@ input[type="checkbox"] {
             <br>
             <div class="row justify-content-md-center">
                 <div class="col-md-4">
-                    <button class="btn btn-main-md width-100p bg-orange" onclick="checkData()"> ยืนยันชำระเงิน</button> 
+                    <button class="btn btn-main-md width-100p bg-orange" onclick="checkData()"> จองวันเข้าใช้บริการ</button> 
                 </div>
             </div>
             <br>
