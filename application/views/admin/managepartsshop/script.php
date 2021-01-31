@@ -37,6 +37,7 @@
                 { "data": "car_accessoriesName" },
                 { "data": "name" },
                 { "data": "phone" },
+                { "data": "deliver_day" },
                 { "data": "status" },
                 null
             ],
@@ -44,10 +45,10 @@
                 {
                     "searchable": false,
                     "orderable": false,
-                    "targets": [0,1,4]
+                    "targets": [0,1,2,3,4,5,6]
                 },
                 {
-                    "targets": 5,
+                    "targets": 6,
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+"admin/Managepartsshop/view/"+data.car_accessoriesId+'"><button type="button" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button></a> ' 
@@ -55,13 +56,24 @@
                         // +'<button type="button" class="delete btn btn-danger" onclick="deleteSpareBrand(\''+data.car_accessoriesId+'\')"><i class="fa fa-trash"></i></button>';
                     }
                 },
-                // {
-                //     "targets": 1,
-                //     "data": null,
-                //     "render": function ( data, type, full, meta ) {
-                //         return '<img src="'+picturePath+'spare_picture/'+data.picture+'" width="100" />';
-                //     } 
-                // },
+                {
+                    "targets": 5,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        let status = 'เปิดใช้งาน';
+                        if(status == 2){
+                            status = 'ปิดใช้งาน'
+                        }
+                        return status;
+                    } 
+                },
+                {
+                    "targets": 4,
+                    "data": null,
+                    "render": function ( data, type, full, meta ) {
+                        return data+ " วัน";
+                    } 
+                },
                 {
                     "targets": 0,
                     "data": null,
@@ -69,12 +81,12 @@
                         return meta.row + 1;
                     }
                 },
-                { "orderable": false, "targets": 0 },
-                {"className": "dt-head-center", "targets": [2]},
-                {"className": "dt-center", "targets": [0,1,4,3]},
+                { "orderable": false, "targets": [0,1,2,3,4,5,6] },
+                {"className": "dt-head-center", "targets": [1,2]},
+                {"className": "dt-center", "targets": [0,3,4,5,6]},
                 { "width": "10%", "targets": 0 },
                 { "width": "20%", "targets": 1 },
-                { "width": "20%", "targets": 4 },
+                { "width": "15%", "targets": 4 },
                 { "width": "12%", "targets": 3 }
             ]	 
 

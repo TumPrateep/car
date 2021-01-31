@@ -36,15 +36,14 @@
                                         <input type="number" class="form-control form-control-chosen-required" placeholder="ชื่อยี่ห้อรถ" name="car_accessories_phone" id="car_accessories_phone">
                                         <label id="car_accessories_phone-error" class="error" for="car_accessories_phone"></label>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <label>จำนวนวันที่จัดส่ง</label> <span class="error">*</span>
+                                        <input type="number" class="form-control" placeholder="จำนวนวันที่จัดส่ง" name="deliver_day" id="deliver_day">
+                                        <label id="deliver_day-error" class="error" for="deliver_day"></label>
+                                    </div>
                                 </div>
                                 <br>
-                                <!-- <div class=row>
-                                                            <div class="col-md-12">
-                                                                <label>ที่อยู่</label><span class="error">*</span>
-                                                                <textarea class="form-control form-control-chosen-required" rows="3" id="shop_address" name="shop_address"></textarea>
-                                                                <label id="shop_address-error" class="error" for="shop_address"></label>
-                                                            </div>
-                                                        </div> -->
                                 <h3>ที่อยู่</h3>
                                 <div class="row">
                                     <div class="col-md-3">

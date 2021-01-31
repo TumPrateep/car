@@ -143,4 +143,14 @@ class Partstable extends BD_Controller {
         $this->set_response(decision_update_status($option), REST_Controller::HTTP_OK);
     }
 
+    function getAllData_get(){
+        $data_check = $this->partstables->all();
+    
+        $option = [
+            "data_check" => $data_check
+        ];
+
+        $this->set_response(decision_getdata($option), REST_Controller::HTTP_OK);
+    }
+
 }

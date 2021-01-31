@@ -18,6 +18,7 @@ class Checkout extends BD_Controller
         $this->load->model('payments');
         $this->load->model('tirechangesgarge');
         $this->load->model('lubricatorchangegarages');
+        $this->load->model('caraccessories');
     }
 
     public function getData_post()
@@ -40,6 +41,16 @@ class Checkout extends BD_Controller
             $number_product[$v['group']][$v['productId']] = (!empty($v['number']))?$v['number']:'';
         }
 
+        $productId = null;
+        $car_accessories = [];
+        if(!empty($product_data)){
+            $productId = $product_data[0]['productId'];
+            $minTireData = $this->tiredatas->getMinTireDataById($productId);
+            if(!empty($minTireData)){
+                $car_accessories = $this->caraccessories->getDeliverDay($minTireData->car_accessoriesId);
+            }
+        }
+
         $lubricatorData = $this->getLubricator($product_data);
         $tireData = $this->getTire($product_data);
         $spareData = $this->getSpare($product_data);
@@ -49,7 +60,7 @@ class Checkout extends BD_Controller
         $data = [
             "garage_data" => $garageData,
             "products" => $products,
-            // 'service' => $serviceData,
+            'service' => $car_accessories,
         ];
         $this->set_response($data, REST_Controller::HTTP_OK);
     }

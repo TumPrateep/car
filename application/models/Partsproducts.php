@@ -44,6 +44,18 @@ class Partsproducts extends CI_Model{
         return $query->num_rows();                                                                                                                                                                                
     }
 
+    function all(){  
+        $this->db->from('parts_product');
+        $query = $this->db->get();
+        return $query->result();                                                                                                                                                                                
+    }
+
+    function getPartsByPartId($partId){
+        $this->db->where('partId',$partId);
+        $result = $this->db->get("parts_product_list");
+        return $result->result();
+    }
+
     function allParts($limit,$start,$col,$dir){
         $this->db->from('parts_product');
         $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
@@ -60,4 +72,11 @@ class Partsproducts extends CI_Model{
         return $result;
     }
 
+    function productList($partId, $parts_table_list_id){  
+        $this->db->from('parts_product_list');
+        $this->db->where('partId', $partId);
+        $this->db->where('parts_table_list_id', $parts_table_list_id);
+        $query = $this->db->get();
+        return $query->row();                                                                                                                                                                                
+    }
 }

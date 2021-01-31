@@ -56,6 +56,7 @@
                 <th><i class="fa fa-home"></i> ชื่อร้านอะไหล่</th>
                 <th><i class="fa fa-user"></i> ชื่อเจ้าของร้าน</th>
                 <th><i class="fa fa-phone"></i> เบอร์โทรศัพท์</th>
+                <th><i class="fa fa-clock-o"></i> จำนวนวันที่จัดส่ง</th>
                 <th><i class="fa fa-user-circle"></i> สถานะ</th>
                 <th></th>
             </thead>

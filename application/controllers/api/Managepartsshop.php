@@ -48,6 +48,7 @@ class Managepartsshop extends BD_Controller {
                 $nestedData['name'] = $post->name;
                 $nestedData['phone'] = $post->phone;
                 $nestedData['status'] = $post->status;
+                $nestedData['deliver_day'] = $post->deliver_day;
                 $nestedData['userId'] = $post->userId;
 
                 $data[] = $nestedData;
@@ -90,6 +91,7 @@ class Managepartsshop extends BD_Controller {
         $provinceId = $this->post('provinceId');
         $districtId = $this->post('districtId');
         $subdistrictId = $this->post('subdistrictId');
+        $deliver_day = $this->post('deliver_day');
         $userId = $this->session->userdata['logged_in']['id'];
 
         $data_check_update = $this->caraccessories->getUpdate($car_accessoriesId);
@@ -108,6 +110,7 @@ class Managepartsshop extends BD_Controller {
             'provinceId' => $provinceId,
             'districtId' => $districtId,
             'subdistrictId' => $subdistrictId,
+            'deliver_day' => $deliver_day,
             'update_by' => $userId,
             'update_at' =>date('Y-m-d H:i:s',time())
         );

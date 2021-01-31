@@ -48,7 +48,7 @@ $(document).ready(function() {
             // number: $('#number').val()
         }, function(data, textStatus, jqXHR) {
             var garage_data = data.garage_data;
-            showGarageData(data.garage_data);
+            showGarageData(data.garage_data, data.service);
             // disableDay(data.garage_data);
             // showProduct(data.products);
             getCarProfile();
@@ -133,24 +133,28 @@ $(document).ready(function() {
         return html;
     }
 
-    function showGarageData(garageData) {
+    function showGarageData(garageData, service) {
         var html = '<span>' + garageData.garageName + '</span><br>' +
             '<span>ต.' + garageData.subdistrictName + ' อ.' + garageData.districtName +
             '</span> ' +
             '<span>จ.' + garageData.provinceName + '</span>';
         $('#garage').html(html);
 
-        setDatepicker(garageData);
+        setDatepicker(garageData, service);
     }
 
-    function setDatepicker(garageData) {
+    function setDatepicker(garageData, service) {
         var d = new Date();
+        var t = d.getHours();
         var n = d.getDay()
-        var min = 4;
+        var min = (service.deliver_day)?service.deliver_day:4;
+        if(t > 14){
+            min = parseInt(min) + 1;
+        }
         if (n == 6) {
-            min = 4;
+            min = min;
         } else if (n == 7) {
-            min = 5
+            min = parseInt(min) + 1;
         }
         console.log(openday);
         var openday = garageData.dayopenhour;

@@ -1,49 +1,49 @@
 <script>
     $("#submit").validate({
         rules: {
-            kilometre: {
+            partsName: {
                 required: true
             }
         },
         messages: {
-            kilometre: {
-                required: "ระยะในการเช็ค(กม.)"
+            partsName: {
+                required: "กรอกรายการสินค้า"
             }
         },
     });
 
-    var parts_table_id = $("#parts_table_id").val();
-    var parts_table_list_id = $("#parts_table_list_id").val();
 
-    $.get(base_url+"api/partstablelist/getUpdate",{
-        "parts_table_list_id" : parts_table_list_id
+    var partId = $("#partId").val();
+
+    $.get(base_url+"api/partsproduct/getUpdate",{
+        "partId" : partId
     },function(data){
         if(data.message!=200){
-            showMessage(data.message,"admin/partstable/lists/"+parts_table_id);
+            showMessage(data.message,"admin/partsproduct");
         }
 
         if(data.message == 200){
             result = data.data;
-            $("#kilometre").val(result.kilometre);
+            $("#partsName").val(result.partsName);
         }
         
     });
     
     $("#submit").submit(function(){
-        update();
+        updateBanks();
     })
 
 
-    function update(){
+    function updateBanks(){
         event.preventDefault();
         var isValid = $("#submit").valid();
 
         if(isValid){
             var data = $("#submit").serialize();
-            $.post(base_url+"api/partstablelist/update",data,
+            $.post(base_url+"api/partsproduct/update",data,
             function(data){
                 if(data.message == 200){
-                    showMessage(data.message,"admin/partstable/lists/"+parts_table_id);
+                    showMessage(data.message,"admin/partsproduct");
                 }else{
                     showMessage(data.message);
                 }

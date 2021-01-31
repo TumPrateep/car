@@ -22,7 +22,7 @@ class Caraccessories extends CI_Model
 
     public function allData($limit, $start, $order, $dir)
     {
-        $this->db->select('car_accessoriesId, car_accessoriesName,CONCAT(firstname,lastname)as name, phone, status, userId');
+        $this->db->select('car_accessoriesId, car_accessoriesName,CONCAT(firstname,lastname)as name, phone, status, userId, deliver_day');
         $this->db->from('car_accessories');
 
         $this->db->limit($limit, $start)->order_by($order, $dir);
@@ -64,6 +64,14 @@ class Caraccessories extends CI_Model
         return $result;
     }
 
+    public function getDeliverDay($userId)
+    {
+        $this->db->select('deliver_day');
+        $this->db->where('userId', $userId);
+        $result = $this->db->get("car_accessories")->row();
+        return $result;
+    }
+
     public function data_check_update($car_accessoriesId, $car_accessoriesName)
     {
         $this->db->from("car_accessories");
@@ -80,7 +88,7 @@ class Caraccessories extends CI_Model
 
     public function sparesUndercarriage_search($limit, $start, $search, $col, $dir, $status)
     {
-        $this->db->select('car_accessoriesId, car_accessoriesName,CONCAT(firstname,lastname)as name, phone, status, userId');
+        $this->db->select('car_accessoriesId, car_accessoriesName,CONCAT(firstname,lastname)as name, phone, status, userId, deliver_day');
         $this->db->from('car_accessories');
 
         $this->db->like('car_accessoriesName', $search);

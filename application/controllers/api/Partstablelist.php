@@ -85,6 +85,7 @@ class Partstablelist extends BD_Controller {
     }
 
     public function update_post(){
+        $parts_table_id = $this->post('parts_table_id');
         $parts_table_list_id = $this->post('parts_table_list_id');
         $kilometre = $this->post('kilometre');
 

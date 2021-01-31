@@ -235,11 +235,11 @@
 
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed text-white" data-toggle="collapse"
-                        href="#matchingProduct" data-parent="#exampleAccordion">
+                        href="#partsProduct" data-parent="#exampleAccordion">
                         <i class="fa fa-flag-checkered" aria-hidden="true"></i>
                         <span class="nav-link-text">เช็คระยะ</span>
                     </a>
-                    <ul class="sidenav-second-level collapse" id="matchingProduct">
+                    <ul class="sidenav-second-level collapse" id="partsProduct">
                         <li class="<?=activate_menu('partsproduct');?>">
                             <a class="nav-link text-white" href="<?=base_url("admin/partsproduct")?>">
                                 <i class="fa fa-tasks" aria-hidden="true"></i>
@@ -250,6 +250,12 @@
                             <a class="nav-link text-white" href="<?=base_url("admin/partstable")?>">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="nav-link-text">ตารางการเช็คระยะ</span>
+                            </a>
+                        </li>
+                        <li class="<?=activate_menu('partsmapproduct');?>">
+                            <a class="nav-link text-white" href="<?=base_url("admin/partsmapproduct")?>">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="nav-link-text">เช็คระยะตามข้อมูลรถ</span>
                             </a>
                         </li>
                     </ul>

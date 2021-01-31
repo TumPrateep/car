@@ -25,29 +25,35 @@
             phone1: {
                 required: true
             },
+            deliver_day: {
+                required: true
+            }
         },
         messages: {
             car_accessoriesName: {
-                required: "กรุณากรอกชื่อร้าน"
+                required: "กรอกชื่อร้าน"
             },
             car_accessories_phone: {
-                required: "กรุณากรอกเบอร์โทรศัพท์ร้าน"
+                required: "กรอกเบอร์โทรศัพท์ร้าน"
             },
             shop_address: {
-              required: "กรุณากรอกที่อยู่ร้าน"  
+              required: "กรอกที่อยู่ร้าน"  
             },
             titleName: {
-                required: "กรุณาเลือกคำนำหน้า"
+                required: "เลือกคำนำหน้า"
             },
             firstname: {
-                required: "กรุณากรอกชื่อ"
+                required: "กรอกชื่อ"
             },
             lastname: {
-                required: "กรุณากรอกนามสกุล"
+                required: "กรอกนามสกุล"
             },
             phone1: {
-                required: "กรุณากรอกเบอร์โทรศัพท์"
+                required: "กรอกเบอร์โทรศัพท์"
             },
+            deliver_day: {
+                required: "กรอกจำนวนวันที่จัดส่ง"
+            }
             
         },
     });
@@ -74,6 +80,7 @@
                 $("#alley").val(result.alley);
                 $("#road").val(result.road);
                 $("#village").val(result.village);
+                $("#deliver_day").val(result.deliver_day);
                 // $("#provinceId").val(result.provinceId);
                 // $("#districtId").val(result.districtId);
                 // $("#subdistrictId").val(result.subdistrictId);

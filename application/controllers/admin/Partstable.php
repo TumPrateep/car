@@ -7,6 +7,7 @@ class Partstable extends CI_Controller {
         // Construct the parent class
 		parent::__construct();
 		$this->load->view("lib");
+		$this->load->model('partsproducts');
 	}
 	
 	public function index()
@@ -74,5 +75,29 @@ class Partstable extends CI_Controller {
 		$this->load->view("admin/layout/footer");
 		$this->load->view("admin/layout/foot");	
 		$this->load->view("admin/partstable/lists/update/script");
-    }
+	}
+	
+	public function product($parts_table_id){
+		$data["parts_table_id"] = $parts_table_id;
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/partstable/product/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/partstable/product/script");
+	}
+
+	public function product_edit($parts_table_id, $partId){
+		$data["parts_table_id"] = $parts_table_id;
+		$data["partId"] = $partId;
+		$data['partdata'] = $this->partsproducts->getUpdate($partId);
+		$this->load->view("admin/layout/head");
+		$this->load->view("admin/layout/left-menu");
+		$this->load->view("admin/layout/header");
+		$this->load->view("admin/partstable/productedit/content",$data);
+		$this->load->view("admin/layout/footer");
+		$this->load->view("admin/layout/foot");	
+		$this->load->view("admin/partstable/productedit/script");
+	}
 }

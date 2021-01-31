@@ -80,6 +80,7 @@
                     "data": null,
                     "render": function ( data, type, full, meta ) {
                         return '<a href="'+base_url+'admin/partstable/lists/'+data.parts_table_id+'"><button type="button" class="btn btn-info"><i class="fa fa-table" aria-hidden="true"></i></button></a> ' 
+                            + '<a href="'+base_url+'admin/partstable/product/'+data.parts_table_id+'"><button type="button" class="btn btn-primary"><i class="fa fa-product-hunt" aria-hidden="true"></i></button></a> ' 
                             + '<a href="'+base_url+'admin/partstable/update/'+data.parts_table_id+'"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a> '
                             +'<button type="button" class="delete btn btn-danger" onclick="deleteParts('+data.parts_table_id+',\''+data.parts_table_name+'\')"><i class="fa fa-trash"></i></button>';
                     }

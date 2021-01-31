@@ -9,6 +9,7 @@ class Checkout extends CI_Controller {
 		parent::__construct();
 		// $this->load->view("lib");
 	}
+	
 	function index(){
 		$data = ['tire'=>'active', 'lubricator' => '', 'garage' => ''];
 

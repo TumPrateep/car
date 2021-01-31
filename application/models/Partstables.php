@@ -44,6 +44,12 @@ class Partstables extends CI_Model{
         return $query->num_rows();                                                                                                                                                                                
     }
 
+    function all(){  
+        $this->db->from('parts_table');
+        $query = $this->db->get();
+        return $query->result();                                                                                                                                                                                
+    }
+
     function allParts($limit,$start,$col,$dir){
         $this->db->from('parts_table');
         $query = $this->db->limit($limit,$start)->order_by($col,$dir)->get();
